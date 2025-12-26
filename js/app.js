@@ -1,6 +1,6 @@
 /**
  * FeedSieve Frontend Application
- * Fetches and renders AI-curated content from JSON feed
+ * Clean, Feedly-inspired feed reader interface
  */
 
 const FEED_URL = 'data/feed.json';
@@ -21,11 +21,12 @@ class FeedSieve {
     }
 
     bindEvents() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
+        // Sidebar navigation
+        document.querySelectorAll('.nav-item').forEach(btn => {
             btn.addEventListener('click', (e) => this.handleFilterClick(e));
         });
 
+        // Search
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -34,23 +35,26 @@ class FeedSieve {
             });
         }
 
-        const sortBtns = document.querySelectorAll('.sort-btn');
-        sortBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => this.handleSortClick(e));
-        });
+        // Sort
+        const sortSelect = document.getElementById('sort-select');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                this.sortBy = e.target.value;
+                this.applyFilters();
+            });
+        }
     }
 
     async loadFeed() {
         try {
             const response = await fetch(FEED_URL);
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
             const data = await response.json();
             this.items = data.items || [];
+            this.updateCounts();
             this.applyFilters();
-            this.updateStats(data);
-            this.updateLastUpdated(data.generated_at);
+            this.updateLastUpdated(data.updated_at);
         } catch (error) {
             console.error('Failed to load feed:', error);
             this.showError();
@@ -58,38 +62,40 @@ class FeedSieve {
     }
 
     handleFilterClick(e) {
-        const btn = e.target;
+        const btn = e.currentTarget;
         const filter = btn.dataset.filter;
 
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         this.currentFilter = filter;
+        this.updateFeedTitle(filter);
         this.applyFilters();
     }
 
-    handleSortClick(e) {
-        const btn = e.target;
-        const sort = btn.dataset.sort;
-
-        document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        this.sortBy = sort;
-        this.applyFilters();
+    updateFeedTitle(filter) {
+        const titles = {
+            all: 'All Articles',
+            rss: 'RSS Feeds',
+            youtube: 'YouTube',
+            blog: 'Blogs',
+            nitter: 'Twitter/X'
+        };
+        document.getElementById('feed-title').textContent = titles[filter] || 'All Articles';
     }
 
     applyFilters() {
         this.filteredItems = this.items.filter(item => {
-            if (this.currentFilter !== 'all' && item.source_type !== this.currentFilter) {
-                return false;
+            // Type filter
+            if (this.currentFilter !== 'all') {
+                const itemType = item.source_type || 'rss';
+                if (itemType !== this.currentFilter) return false;
             }
 
+            // Search filter
             if (this.searchQuery) {
-                const searchIn = `${item.title} ${item.summary} ${item.source_name}`.toLowerCase();
-                if (!searchIn.includes(this.searchQuery)) {
-                    return false;
-                }
+                const searchIn = `${item.title} ${item.summary} ${item.source_name || ''}`.toLowerCase();
+                if (!searchIn.includes(this.searchQuery)) return false;
             }
 
             return true;
@@ -102,104 +108,114 @@ class FeedSieve {
     sortItems() {
         this.filteredItems.sort((a, b) => {
             if (this.sortBy === 'rating') {
-                return b.rating - a.rating;
-            } else {
-                const dateA = new Date(a.processed_at || a.published_at);
-                const dateB = new Date(b.processed_at || b.published_at);
-                return dateB - dateA;
+                return (b.rating || 0) - (a.rating || 0);
             }
+            const dateA = new Date(a.published_at || a.processed_at || 0);
+            const dateB = new Date(b.published_at || b.processed_at || 0);
+            return dateB - dateA;
+        });
+    }
+
+    updateCounts() {
+        const counts = { all: this.items.length, rss: 0, youtube: 0, blog: 0, nitter: 0 };
+
+        this.items.forEach(item => {
+            const type = item.source_type || 'rss';
+            if (counts[type] !== undefined) counts[type]++;
+        });
+
+        Object.keys(counts).forEach(key => {
+            const el = document.getElementById(`count-${key}`);
+            if (el) el.textContent = counts[key];
         });
     }
 
     render() {
-        const grid = document.getElementById('card-grid');
+        const list = document.getElementById('article-list');
         const noResults = document.getElementById('no-results');
+        const feedCount = document.getElementById('feed-count');
+
+        feedCount.textContent = `${this.filteredItems.length} article${this.filteredItems.length !== 1 ? 's' : ''}`;
 
         if (this.filteredItems.length === 0) {
-            grid.innerHTML = '';
+            list.innerHTML = '';
             noResults.classList.remove('hidden');
             return;
         }
 
         noResults.classList.add('hidden');
-        grid.innerHTML = this.filteredItems.map(item => this.createCard(item)).join('');
+        list.innerHTML = this.filteredItems.map(item => this.createArticle(item)).join('');
     }
 
-    createCard(item) {
-        const ratingClass = this.getRatingClass(item.rating);
-        const formattedDate = this.formatDate(item.processed_at || item.published_at);
+    createArticle(item) {
+        const sourceType = item.source_type || 'rss';
+        const sourceName = item.source_name || '';
+        const date = this.formatDate(item.published_at || item.processed_at);
+        const url = item.original_url || item.url || '#';
+        const ideas = this.renderIdeas(item.ideas);
 
         return `
-            <article class="card">
-                <div class="card-header">
-                    <span class="source-badge ${item.source_type}">${item.source_type}</span>
-                    <span class="rating ${ratingClass}">${item.rating}/100</span>
+            <article class="article-item" onclick="window.open('${this.escapeHtml(url)}', '_blank')">
+                <div class="article-header">
+                    <span class="source-badge ${sourceType}">${sourceType}</span>
+                    ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
+                    <span class="article-date">${date}</span>
                 </div>
-                <h3 class="card-title">${this.escapeHtml(item.title)}</h3>
-                <p class="card-summary">${this.escapeHtml(item.summary || 'No summary available.')}</p>
-                <div class="card-footer">
-                    <div class="card-meta">
-                        <span class="source-name">${this.escapeHtml(item.source_name)}</span>
-                        <span class="date">${formattedDate}</span>
-                    </div>
-                    <a href="${this.escapeHtml(item.original_url)}" target="_blank" rel="noopener noreferrer" class="read-link">
-                        Read Original &rarr;
+                <h3 class="article-title">
+                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+                        ${this.escapeHtml(item.title)}
                     </a>
-                </div>
+                </h3>
+                <p class="article-summary">${this.escapeHtml(item.summary || '')}</p>
+                ${ideas}
             </article>
         `;
     }
 
-    getRatingClass(rating) {
-        if (rating >= 90) return 'high';
-        if (rating >= 80) return 'mid';
-        return 'low';
+    renderIdeas(ideas) {
+        if (!ideas || ideas.length === 0) return '';
+
+        const tags = ideas.slice(0, 4).map(idea =>
+            `<span class="idea-tag">${this.escapeHtml(idea)}</span>`
+        ).join('');
+
+        const more = ideas.length > 4 ? `<span class="idea-tag">+${ideas.length - 4} more</span>` : '';
+
+        return `<div class="article-ideas">${tags}${more}</div>`;
     }
 
     formatDate(dateStr) {
         if (!dateStr) return '';
         try {
             const date = new Date(dateStr);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffHours < 1) return 'Just now';
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         } catch {
-            return dateStr;
+            return '';
         }
-    }
-
-    updateStats(data) {
-        const stats = document.getElementById('stats');
-        const typeCounts = this.items.reduce((acc, item) => {
-            acc[item.source_type] = (acc[item.source_type] || 0) + 1;
-            return acc;
-        }, {});
-
-        stats.innerHTML = `
-            <span class="stat-item">
-                <span class="stat-value">${data.total_items || this.items.length}</span> items
-            </span>
-            ${typeCounts.rss ? `<span class="stat-item"><span class="stat-value">${typeCounts.rss}</span> RSS</span>` : ''}
-            ${typeCounts.youtube ? `<span class="stat-item"><span class="stat-value">${typeCounts.youtube}</span> YouTube</span>` : ''}
-            ${typeCounts.blog ? `<span class="stat-item"><span class="stat-value">${typeCounts.blog}</span> Blogs</span>` : ''}
-        `;
     }
 
     updateLastUpdated(timestamp) {
         const el = document.getElementById('last-updated');
-        if (timestamp) {
+        if (el && timestamp) {
             const date = new Date(timestamp);
-            el.textContent = `Last updated: ${date.toLocaleString()}`;
+            el.textContent = `Updated ${this.formatDate(timestamp)}`;
         }
     }
 
     showError() {
-        const grid = document.getElementById('card-grid');
-        grid.innerHTML = `
+        const list = document.getElementById('article-list');
+        list.innerHTML = `
             <div class="no-results">
-                <p>Unable to load content. Please try again later.</p>
+                <p>Unable to load articles. Please try again later.</p>
             </div>
         `;
     }
