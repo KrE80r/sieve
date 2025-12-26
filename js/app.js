@@ -153,21 +153,27 @@ class FeedSieve {
         const date = this.formatDate(item.published_at || item.processed_at);
         const url = item.original_url || item.url || '#';
         const ideas = this.renderIdeas(item.ideas);
+        const summary = item.summary ? `<div class="article-summary">${this.escapeHtml(item.summary)}</div>` : '';
 
         return `
-            <article class="article-item" onclick="window.open('${this.escapeHtml(url)}', '_blank')">
+            <article class="article-item">
                 <div class="article-header">
                     <span class="source-badge ${sourceType}">${sourceType}</span>
                     ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
                     <span class="article-date">${date}</span>
                 </div>
                 <h3 class="article-title">
-                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener">
                         ${this.escapeHtml(item.title)}
                     </a>
                 </h3>
-                <p class="article-summary">${this.escapeHtml(item.summary || '')}</p>
+                ${summary}
                 ${ideas}
+                <div class="article-footer">
+                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
+                        Read Original →
+                    </a>
+                </div>
             </article>
         `;
     }
@@ -175,13 +181,12 @@ class FeedSieve {
     renderIdeas(ideas) {
         if (!ideas || ideas.length === 0) return '';
 
-        const tags = ideas.slice(0, 4).map(idea =>
+        // Show all ideas
+        const tags = ideas.map(idea =>
             `<span class="idea-tag">${this.escapeHtml(idea)}</span>`
         ).join('');
 
-        const more = ideas.length > 4 ? `<span class="idea-tag">+${ideas.length - 4} more</span>` : '';
-
-        return `<div class="article-ideas">${tags}${more}</div>`;
+        return `<div class="article-ideas">${tags}</div>`;
     }
 
     formatDate(dateStr) {
