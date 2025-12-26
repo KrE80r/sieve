@@ -1,6 +1,6 @@
 /**
  * FeedSieve Frontend Application
- * Clean, Feedly-inspired feed reader interface
+ * Feedly-inspired feed reader with Today view and hierarchical sources
  */
 
 const FEED_URL = 'data/feed.json';
@@ -9,9 +9,12 @@ class FeedSieve {
     constructor() {
         this.items = [];
         this.filteredItems = [];
-        this.currentFilter = 'all';
+        this.currentFilter = 'today';
+        this.currentSource = null;
         this.searchQuery = '';
         this.sortBy = 'date';
+        this.sources = {};
+        this.expandedGroups = new Set();
         this.init();
     }
 
@@ -21,9 +24,14 @@ class FeedSieve {
     }
 
     bindEvents() {
-        // Sidebar navigation
-        document.querySelectorAll('.nav-item').forEach(btn => {
+        // Timeline and type filter buttons
+        document.querySelectorAll('.nav-item:not(.nav-parent):not(.nav-child)').forEach(btn => {
             btn.addEventListener('click', (e) => this.handleFilterClick(e));
+        });
+
+        // Parent type buttons (RSS, YouTube, etc.)
+        document.querySelectorAll('.nav-parent').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleParentClick(e));
         });
 
         // Search
@@ -52,7 +60,9 @@ class FeedSieve {
 
             const data = await response.json();
             this.items = data.items || [];
+            this.buildSourceIndex();
             this.updateCounts();
+            this.renderSourceLists();
             this.applyFilters();
             this.updateLastUpdated(data.updated_at);
         } catch (error) {
@@ -61,20 +71,116 @@ class FeedSieve {
         }
     }
 
-    handleFilterClick(e) {
+    buildSourceIndex() {
+        this.sources = {};
+        this.items.forEach(item => {
+            const type = item.source_type || 'rss';
+            const sourceName = item.source_name || 'Unknown';
+            const sourceId = item.source_id;
+
+            if (!this.sources[type]) {
+                this.sources[type] = {};
+            }
+            if (!this.sources[type][sourceId]) {
+                this.sources[type][sourceId] = {
+                    name: sourceName,
+                    count: 0
+                };
+            }
+            this.sources[type][sourceId].count++;
+        });
+    }
+
+    renderSourceLists() {
+        const types = ['rss', 'youtube', 'blog', 'nitter'];
+
+        types.forEach(type => {
+            const container = document.getElementById(`sources-${type}`);
+            if (!container) return;
+
+            const typeSources = this.sources[type] || {};
+            const sourceIds = Object.keys(typeSources);
+
+            if (sourceIds.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = sourceIds
+                .sort((a, b) => typeSources[b].count - typeSources[a].count)
+                .map(sourceId => `
+                    <button class="nav-item nav-child" data-filter="source" data-source-id="${sourceId}" data-source-type="${type}">
+                        <span class="nav-icon">•</span>
+                        ${this.escapeHtml(typeSources[sourceId].name)}
+                        <span class="nav-count">${typeSources[sourceId].count}</span>
+                    </button>
+                `).join('');
+
+            // Bind click events to source items
+            container.querySelectorAll('.nav-child').forEach(btn => {
+                btn.addEventListener('click', (e) => this.handleSourceClick(e));
+            });
+        });
+    }
+
+    handleParentClick(e) {
+        e.stopPropagation();
         const btn = e.currentTarget;
         const filter = btn.dataset.filter;
+        const group = btn.closest('.nav-group');
 
-        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        // Toggle expand/collapse
+        if (group) {
+            group.classList.toggle('expanded');
+            const toggle = btn.querySelector('.nav-toggle');
+            if (toggle) {
+                toggle.textContent = group.classList.contains('expanded') ? '▲' : '▼';
+            }
+        }
 
+        // Also filter by this type
+        this.setActiveNav(btn);
         this.currentFilter = filter;
+        this.currentSource = null;
         this.updateFeedTitle(filter);
         this.applyFilters();
     }
 
+    handleSourceClick(e) {
+        e.stopPropagation();
+        const btn = e.currentTarget;
+        const sourceId = btn.dataset.sourceId;
+        const sourceType = btn.dataset.sourceType;
+
+        this.setActiveNav(btn);
+        this.currentFilter = 'source';
+        this.currentSource = { id: sourceId, type: sourceType };
+
+        const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
+        document.getElementById('feed-title').textContent = sourceName;
+        this.applyFilters();
+    }
+
+    handleFilterClick(e) {
+        const btn = e.currentTarget;
+        const filter = btn.dataset.filter;
+
+        this.setActiveNav(btn);
+        this.currentFilter = filter;
+        this.currentSource = null;
+        this.updateFeedTitle(filter);
+        this.applyFilters();
+    }
+
+    setActiveNav(activeBtn) {
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+        activeBtn.classList.add('active');
+    }
+
     updateFeedTitle(filter) {
         const titles = {
+            today: 'Today',
+            week: 'This Week',
             all: 'All Articles',
             rss: 'RSS Feeds',
             youtube: 'YouTube',
@@ -84,12 +190,41 @@ class FeedSieve {
         document.getElementById('feed-title').textContent = titles[filter] || 'All Articles';
     }
 
+    isToday(dateStr) {
+        if (!dateStr) return false;
+        const date = new Date(dateStr);
+        const today = new Date();
+        return date.toDateString() === today.toDateString();
+    }
+
+    isThisWeek(dateStr) {
+        if (!dateStr) return false;
+        const date = new Date(dateStr);
+        const now = new Date();
+        const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+        return date >= weekAgo;
+    }
+
     applyFilters() {
         this.filteredItems = this.items.filter(item => {
+            const itemDate = item.published_at || item.processed_at;
+
+            // Time-based filters
+            if (this.currentFilter === 'today') {
+                if (!this.isToday(itemDate)) return false;
+            } else if (this.currentFilter === 'week') {
+                if (!this.isThisWeek(itemDate)) return false;
+            }
+
             // Type filter
-            if (this.currentFilter !== 'all') {
+            if (['rss', 'youtube', 'blog', 'nitter'].includes(this.currentFilter)) {
                 const itemType = item.source_type || 'rss';
                 if (itemType !== this.currentFilter) return false;
+            }
+
+            // Source filter
+            if (this.currentFilter === 'source' && this.currentSource) {
+                if (String(item.source_id) !== String(this.currentSource.id)) return false;
             }
 
             // Search filter
@@ -117,11 +252,23 @@ class FeedSieve {
     }
 
     updateCounts() {
-        const counts = { all: this.items.length, rss: 0, youtube: 0, blog: 0, nitter: 0 };
+        const counts = {
+            all: this.items.length,
+            today: 0,
+            week: 0,
+            rss: 0,
+            youtube: 0,
+            blog: 0,
+            nitter: 0
+        };
 
         this.items.forEach(item => {
             const type = item.source_type || 'rss';
+            const itemDate = item.published_at || item.processed_at;
+
             if (counts[type] !== undefined) counts[type]++;
+            if (this.isToday(itemDate)) counts.today++;
+            if (this.isThisWeek(itemDate)) counts.week++;
         });
 
         Object.keys(counts).forEach(key => {
@@ -181,7 +328,6 @@ class FeedSieve {
     renderIdeas(ideas) {
         if (!ideas || ideas.length === 0) return '';
 
-        // Show all ideas
         const tags = ideas.map(idea =>
             `<span class="idea-tag">${this.escapeHtml(idea)}</span>`
         ).join('');
@@ -211,7 +357,6 @@ class FeedSieve {
     updateLastUpdated(timestamp) {
         const el = document.getElementById('last-updated');
         if (el && timestamp) {
-            const date = new Date(timestamp);
             el.textContent = `Updated ${this.formatDate(timestamp)}`;
         }
     }

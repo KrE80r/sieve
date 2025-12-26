@@ -18,34 +18,74 @@
                     FeedSieve
                 </h1>
             </div>
-            <nav class="sidebar-nav">
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <!-- Time-based section -->
                 <div class="nav-section">
-                    <h3 class="nav-title">Feeds</h3>
-                    <button class="nav-item active" data-filter="all">
+                    <h3 class="nav-title">Timeline</h3>
+                    <button class="nav-item active" data-filter="today">
+                        <span class="nav-icon">📅</span>
+                        Today
+                        <span class="nav-count" id="count-today">0</span>
+                    </button>
+                    <button class="nav-item" data-filter="week">
+                        <span class="nav-icon">📆</span>
+                        This Week
+                        <span class="nav-count" id="count-week">0</span>
+                    </button>
+                    <button class="nav-item" data-filter="all">
                         <span class="nav-icon">📋</span>
                         All Articles
                         <span class="nav-count" id="count-all">0</span>
                     </button>
-                    <button class="nav-item" data-filter="rss">
-                        <span class="nav-icon">📡</span>
-                        RSS
-                        <span class="nav-count" id="count-rss">0</span>
-                    </button>
-                    <button class="nav-item" data-filter="youtube">
-                        <span class="nav-icon">🎬</span>
-                        YouTube
-                        <span class="nav-count" id="count-youtube">0</span>
-                    </button>
-                    <button class="nav-item" data-filter="blog">
-                        <span class="nav-icon">📝</span>
-                        Blogs
-                        <span class="nav-count" id="count-blog">0</span>
-                    </button>
-                    <button class="nav-item" data-filter="nitter">
-                        <span class="nav-icon">🐦</span>
-                        Twitter/X
-                        <span class="nav-count" id="count-nitter">0</span>
-                    </button>
+                </div>
+
+                <!-- Source Types section -->
+                <div class="nav-section">
+                    <h3 class="nav-title">By Type</h3>
+
+                    <!-- RSS Section -->
+                    <div class="nav-group" data-type="rss">
+                        <button class="nav-item nav-parent" data-filter="rss">
+                            <span class="nav-icon">📡</span>
+                            RSS Feeds
+                            <span class="nav-count" id="count-rss">0</span>
+                            <span class="nav-toggle">▼</span>
+                        </button>
+                        <div class="nav-children" id="sources-rss"></div>
+                    </div>
+
+                    <!-- YouTube Section -->
+                    <div class="nav-group" data-type="youtube">
+                        <button class="nav-item nav-parent" data-filter="youtube">
+                            <span class="nav-icon">🎬</span>
+                            YouTube
+                            <span class="nav-count" id="count-youtube">0</span>
+                            <span class="nav-toggle">▼</span>
+                        </button>
+                        <div class="nav-children" id="sources-youtube"></div>
+                    </div>
+
+                    <!-- Blogs Section -->
+                    <div class="nav-group" data-type="blog">
+                        <button class="nav-item nav-parent" data-filter="blog">
+                            <span class="nav-icon">📝</span>
+                            Blogs
+                            <span class="nav-count" id="count-blog">0</span>
+                            <span class="nav-toggle">▼</span>
+                        </button>
+                        <div class="nav-children" id="sources-blog"></div>
+                    </div>
+
+                    <!-- Twitter/X Section -->
+                    <div class="nav-group" data-type="nitter">
+                        <button class="nav-item nav-parent" data-filter="nitter">
+                            <span class="nav-icon">🐦</span>
+                            Twitter/X
+                            <span class="nav-count" id="count-nitter">0</span>
+                            <span class="nav-toggle">▼</span>
+                        </button>
+                        <div class="nav-children" id="sources-nitter"></div>
+                    </div>
                 </div>
             </nav>
             <div class="sidebar-footer">
@@ -57,7 +97,7 @@
         <main class="main-content">
             <header class="content-header">
                 <div class="header-left">
-                    <h2 class="feed-title" id="feed-title">All Articles</h2>
+                    <h2 class="feed-title" id="feed-title">Today</h2>
                     <span class="feed-count" id="feed-count">0 articles</span>
                 </div>
                 <div class="header-right">
@@ -85,7 +125,7 @@
             </div>
 
             <div class="no-results hidden" id="no-results">
-                <p>No articles found matching your search.</p>
+                <p>No articles found matching your criteria.</p>
             </div>
         </main>
     </div>
