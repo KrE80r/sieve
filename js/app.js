@@ -20,7 +20,45 @@ class FeedSieve {
 
     async init() {
         this.bindEvents();
+        this.setupMobileMenu();
         await this.loadFeed();
+    }
+
+    setupMobileMenu() {
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        if (!menuToggle || !sidebar || !overlay) return;
+
+        const closeSidebar = () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+        };
+
+        const openSidebar = () => {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            menuToggle.classList.add('active');
+        };
+
+        menuToggle.addEventListener('click', () => {
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+
+        overlay.addEventListener('click', closeSidebar);
+
+        // Close sidebar when nav item is clicked on mobile
+        sidebar.addEventListener('click', (e) => {
+            if (e.target.closest('.nav-item') && window.innerWidth <= 768) {
+                closeSidebar();
+            }
+        });
     }
 
     bindEvents() {
@@ -322,9 +360,9 @@ class FeedSieve {
                 ${ideas.length > 0 ? `
                     <div class="modal-ideas">
                         <h4>Key Ideas</h4>
-                        <ul>
-                            ${ideas.map(idea => `<li>${this.escapeHtml(idea)}</li>`).join('')}
-                        </ul>
+                        <div class="modal-ideas-chips">
+                            ${ideas.map(idea => `<span class="modal-idea-chip">${this.escapeHtml(idea)}</span>`).join('')}
+                        </div>
                     </div>
                 ` : ''}
                 <div class="modal-footer">
@@ -355,6 +393,8 @@ class FeedSieve {
         const date = this.formatDate(item.published_at || item.processed_at);
         const url = item.original_url || item.url || '#';
         const summaryPreview = item.summary ? this.truncate(item.summary, 150) : '';
+        const ideas = item.ideas || [];
+        const ideasHtml = ideas.length > 0 ? this.renderIdeasChips(ideas.slice(0, 3)) : '';
 
         return `
             <article class="article-item" data-item-id="${item.id}">
@@ -364,6 +404,7 @@ class FeedSieve {
                 </div>
                 <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
                 ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
+                ${ideasHtml}
                 <div class="article-footer">
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
                         Read Original →
@@ -378,14 +419,14 @@ class FeedSieve {
         return str.substring(0, maxLen).trim() + '...';
     }
 
-    renderIdeas(ideas) {
+    renderIdeasChips(ideas) {
         if (!ideas || ideas.length === 0) return '';
 
-        const tags = ideas.map(idea =>
-            `<span class="idea-tag">${this.escapeHtml(idea)}</span>`
+        const chips = ideas.map(idea =>
+            `<span class="idea-chip">${this.escapeHtml(idea)}</span>`
         ).join('');
 
-        return `<div class="article-ideas">${tags}</div>`;
+        return `<div class="article-ideas">${chips}</div>`;
     }
 
     formatDate(dateStr) {
