@@ -1,6 +1,6 @@
 /**
  * FeedSieve Frontend Application
- * Feedly-inspired feed reader with Today view and hierarchical sources
+ * Mobile-first reading sanctuary with rating visibility
  */
 
 const FEED_URL = 'data/feed.json';
@@ -35,15 +35,18 @@ class FeedSieve {
             sidebar.classList.remove('open');
             overlay.classList.remove('active');
             menuToggle.classList.remove('active');
+            document.body.style.overflow = '';
         };
 
         const openSidebar = () => {
             sidebar.classList.add('open');
             overlay.classList.add('active');
             menuToggle.classList.add('active');
+            document.body.style.overflow = 'hidden';
         };
 
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (sidebar.classList.contains('open')) {
                 closeSidebar();
             } else {
@@ -55,7 +58,14 @@ class FeedSieve {
 
         // Close sidebar when nav item is clicked on mobile
         sidebar.addEventListener('click', (e) => {
-            if (e.target.closest('.nav-item') && window.innerWidth <= 768) {
+            if (e.target.closest('.nav-item:not(.nav-parent)') && window.innerWidth <= 768) {
+                setTimeout(closeSidebar, 150);
+            }
+        });
+
+        // Close sidebar on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
                 closeSidebar();
             }
         });
@@ -345,12 +355,15 @@ class FeedSieve {
     showModal(item) {
         const url = item.original_url || item.url || '#';
         const ideas = item.ideas || [];
+        const rating = item.rating || null;
+        const ratingHtml = rating ? this.createRatingBadgeHtml(rating, 'modal-rating') : '';
 
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
         modal.innerHTML = `
             <div class="modal-content">
                 <button class="modal-close">&times;</button>
+                ${ratingHtml}
                 <div class="modal-header">
                     <span class="source-badge ${item.source_type || 'rss'}">${item.source_type || 'rss'}</span>
                     <span class="source-name">${this.escapeHtml(item.source_name || '')}</span>
@@ -374,18 +387,29 @@ class FeedSieve {
         `;
 
         document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
 
         // Close handlers
-        modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.remove();
+        modal.querySelector('.modal-close').addEventListener('click', () => {
+            modal.remove();
+            document.body.style.overflow = '';
         });
-        document.addEventListener('keydown', function closeOnEsc(e) {
-            if (e.key === 'Escape') {
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
                 modal.remove();
-                document.removeEventListener('keydown', closeOnEsc);
+                document.body.style.overflow = '';
             }
         });
+
+        const closeOnEsc = (e) => {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', closeOnEsc);
+            }
+        };
+        document.addEventListener('keydown', closeOnEsc);
     }
 
     createArticle(item) {
@@ -395,9 +419,12 @@ class FeedSieve {
         const summaryPreview = item.summary ? this.truncate(item.summary, 150) : '';
         const ideas = item.ideas || [];
         const ideasHtml = ideas.length > 0 ? this.renderIdeasChips(ideas.slice(0, 3)) : '';
+        const rating = item.rating || null;
+        const ratingBadgeHtml = rating ? this.createRatingBadgeHtml(rating, 'rating-badge') : '';
 
         return `
             <article class="article-item" data-item-id="${item.id}">
+                ${ratingBadgeHtml}
                 <div class="article-header">
                     ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
                     <span class="article-date">${date}</span>
@@ -412,6 +439,17 @@ class FeedSieve {
                 </div>
             </article>
         `;
+    }
+
+    createRatingBadgeHtml(rating, className) {
+        const ratingClass = this.getRatingClass(rating);
+        return `<div class="${className} ${ratingClass}">${rating}</div>`;
+    }
+
+    getRatingClass(rating) {
+        if (rating >= 95) return 'rating-excellent';
+        if (rating >= 90) return 'rating-great';
+        return 'rating-good';
     }
 
     truncate(str, maxLen) {
