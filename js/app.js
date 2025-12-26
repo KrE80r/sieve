@@ -292,37 +292,90 @@ class FeedSieve {
 
         noResults.classList.add('hidden');
         list.innerHTML = this.filteredItems.map(item => this.createArticle(item)).join('');
+
+        // Bind click handlers for modal
+        list.querySelectorAll('.article-item').forEach(article => {
+            article.addEventListener('click', (e) => {
+                if (e.target.closest('.read-link')) return;
+                const itemId = parseInt(article.dataset.itemId);
+                const item = this.items.find(i => i.id === itemId);
+                if (item) this.showModal(item);
+            });
+        });
+    }
+
+    showModal(item) {
+        const url = item.original_url || item.url || '#';
+        const ideas = item.ideas || [];
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-header">
+                    <span class="source-badge ${item.source_type || 'rss'}">${item.source_type || 'rss'}</span>
+                    <span class="source-name">${this.escapeHtml(item.source_name || '')}</span>
+                </div>
+                <h2 class="modal-title">${this.escapeHtml(item.title)}</h2>
+                ${item.summary ? `<div class="modal-summary">${this.escapeHtml(item.summary)}</div>` : ''}
+                ${ideas.length > 0 ? `
+                    <div class="modal-ideas">
+                        <h4>Key Ideas</h4>
+                        <ul>
+                            ${ideas.map(idea => `<li>${this.escapeHtml(idea)}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                <div class="modal-footer">
+                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
+                        Read Original →
+                    </a>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Close handlers
+        modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.remove();
+        });
+        document.addEventListener('keydown', function closeOnEsc(e) {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', closeOnEsc);
+            }
+        });
     }
 
     createArticle(item) {
-        const sourceType = item.source_type || 'rss';
         const sourceName = item.source_name || '';
         const date = this.formatDate(item.published_at || item.processed_at);
         const url = item.original_url || item.url || '#';
-        const ideas = this.renderIdeas(item.ideas);
-        const summary = item.summary ? `<div class="article-summary">${this.escapeHtml(item.summary)}</div>` : '';
+        const summaryPreview = item.summary ? this.truncate(item.summary, 150) : '';
 
         return `
-            <article class="article-item">
+            <article class="article-item" data-item-id="${item.id}">
                 <div class="article-header">
-                    <span class="source-badge ${sourceType}">${sourceType}</span>
                     ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
                     <span class="article-date">${date}</span>
                 </div>
-                <h3 class="article-title">
-                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener">
-                        ${this.escapeHtml(item.title)}
-                    </a>
-                </h3>
-                ${summary}
-                ${ideas}
+                <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
+                ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
                 <div class="article-footer">
-                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
+                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
                         Read Original →
                     </a>
                 </div>
             </article>
         `;
+    }
+
+    truncate(str, maxLen) {
+        if (!str || str.length <= maxLen) return str;
+        return str.substring(0, maxLen).trim() + '...';
     }
 
     renderIdeas(ideas) {
