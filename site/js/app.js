@@ -167,7 +167,6 @@ class FeedSieve {
                     </a>
                 </h3>
                 <p class="article-summary">${this.escapeHtml(item.summary || '')}</p>
-                ${ideas}
             </article>
         `;
     }
