@@ -355,15 +355,66 @@ class FeedSieve {
         noResults.classList.add('hidden');
         list.innerHTML = this.filteredItems.map(item => this.createArticle(item)).join('');
 
+        // Apply read state from localStorage
+        list.querySelectorAll('.article-item').forEach(article => {
+            const itemId = article.dataset.itemId;
+            if (this.isRead(itemId)) {
+                article.classList.add('read');
+            }
+        });
+
         // Bind click handlers for modal
         list.querySelectorAll('.article-item').forEach(article => {
             article.addEventListener('click', (e) => {
                 if (e.target.closest('.read-link')) return;
+                if (e.target.closest('.mark-unread-btn')) return;
+
                 const itemId = parseInt(article.dataset.itemId);
                 const item = this.items.find(i => i.id === itemId);
-                if (item) this.showModal(item);
+                if (item) {
+                    this.markAsRead(itemId);
+                    this.showModal(item);
+                }
             });
         });
+
+        // Bind mark-unread buttons
+        list.querySelectorAll('.mark-unread-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const itemId = e.currentTarget.dataset.itemId;
+                this.markAsUnread(itemId);
+            });
+        });
+
+        // Bind "Read Original" links to mark as read
+        list.querySelectorAll('.read-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const article = e.target.closest('.article-item');
+                const itemId = article.dataset.itemId;
+                this.markAsRead(itemId);
+            });
+        });
+    }
+
+    isRead(itemId) {
+        return localStorage.getItem('read_' + itemId) === 'true';
+    }
+
+    markAsRead(itemId) {
+        localStorage.setItem('read_' + itemId, 'true');
+        const article = document.querySelector(`[data-item-id="${itemId}"]`);
+        if (article) {
+            article.classList.add('read');
+        }
+    }
+
+    markAsUnread(itemId) {
+        localStorage.removeItem('read_' + itemId);
+        const article = document.querySelector(`[data-item-id="${itemId}"]`);
+        if (article) {
+            article.classList.remove('read');
+        }
     }
 
     showModal(item) {
@@ -451,6 +502,11 @@ class FeedSieve {
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
                         Read Original →
                     </a>
+                    <button class="mark-unread-btn" data-item-id="${item.id}" title="Mark as unread">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="8" cy="8" r="6"/>
+                        </svg>
+                    </button>
                 </div>
             </article>
         `;
