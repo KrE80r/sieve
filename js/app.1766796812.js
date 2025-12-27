@@ -207,6 +207,20 @@ class FeedSieve {
         const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
         document.getElementById('feed-title').textContent = sourceName;
         this.applyFilters();
+
+        // Auto-close sidebar on mobile when source is selected
+        if (window.innerWidth <= 768) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+
+            if (sidebar && overlay && menuToggle) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     }
 
     handleFilterClick(e) {
@@ -433,7 +447,6 @@ class FeedSieve {
                 </div>
                 <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
                 ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
-                ${ideasHtml}
                 <div class="article-footer">
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
                         Read Original →
