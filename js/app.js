@@ -424,10 +424,12 @@ class FeedSieve {
 
         return `
             <article class="article-item" data-item-id="${item.id}">
-                ${ratingBadgeHtml}
                 <div class="article-header">
-                    ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
-                    <span class="article-date">${date}</span>
+                    <div class="article-meta">
+                        ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
+                        <span class="article-date">${date}</span>
+                    </div>
+                    ${ratingBadgeHtml}
                 </div>
                 <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
                 ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
