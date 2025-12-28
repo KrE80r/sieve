@@ -11,7 +11,6 @@ class FeedSieve {
         this.filteredItems = [];
         this.currentFilter = 'today';
         this.currentSource = null;
-        this.currentLabel = null;
         this.searchQuery = '';
         this.sortBy = 'date';
         this.sources = {};
@@ -73,7 +72,7 @@ class FeedSieve {
     }
 
     bindEvents() {
-        // Timeline, type, and label filter buttons
+        // Timeline and type filter buttons
         document.querySelectorAll('.nav-item:not(.nav-parent):not(.nav-child)').forEach(btn => {
             btn.addEventListener('click', (e) => this.handleFilterClick(e));
         });
@@ -227,18 +226,11 @@ class FeedSieve {
     handleFilterClick(e) {
         const btn = e.currentTarget;
         const filter = btn.dataset.filter;
-        const label = btn.dataset.label;
 
         this.setActiveNav(btn);
         this.currentFilter = filter;
         this.currentSource = null;
-        this.currentLabel = label || null;
-
-        if (filter === 'label' && label) {
-            document.getElementById('feed-title').textContent = label;
-        } else {
-            this.updateFeedTitle(filter);
-        }
+        this.updateFeedTitle(filter);
         this.applyFilters();
     }
 
@@ -297,12 +289,6 @@ class FeedSieve {
                 if (String(item.source_id) !== String(this.currentSource.id)) return false;
             }
 
-            // Label/category filter
-            if (this.currentFilter === 'label' && this.currentLabel) {
-                const itemLabels = item.labels || [];
-                if (!itemLabels.includes(this.currentLabel)) return false;
-            }
-
             // Search filter
             if (this.searchQuery) {
                 const searchIn = `${item.title} ${item.summary} ${item.source_name || ''}`.toLowerCase();
@@ -338,15 +324,6 @@ class FeedSieve {
             nitter: 0
         };
 
-        const labelCounts = {
-            AI: 0,
-            CyberSecurity: 0,
-            Tech: 0,
-            Sysadmin: 0,
-            Productivity: 0,
-            Philosophy: 0
-        };
-
         this.items.forEach(item => {
             const type = item.source_type || 'rss';
             const itemDate = item.published_at || item.processed_at;
@@ -354,25 +331,11 @@ class FeedSieve {
             if (counts[type] !== undefined) counts[type]++;
             if (this.isToday(itemDate)) counts.today++;
             if (this.isThisWeek(itemDate)) counts.week++;
-
-            // Count labels
-            const itemLabels = item.labels || [];
-            itemLabels.forEach(label => {
-                if (labelCounts[label] !== undefined) {
-                    labelCounts[label]++;
-                }
-            });
         });
 
         Object.keys(counts).forEach(key => {
             const el = document.getElementById(`count-${key}`);
             if (el) el.textContent = counts[key];
-        });
-
-        // Update label counts
-        Object.keys(labelCounts).forEach(label => {
-            const el = document.getElementById(`count-label-${label}`);
-            if (el) el.textContent = labelCounts[label];
         });
     }
 
