@@ -17,7 +17,22 @@ class FeedSieve {
         this.sources = {};
         this.categories = {};
         this.expandedGroups = new Set();
+        this.readItems = new Set(JSON.parse(localStorage.getItem('readItems') || '[]'));
         this.init();
+    }
+
+    markAsRead(itemId) {
+        this.readItems.add(itemId);
+        localStorage.setItem('readItems', JSON.stringify([...this.readItems]));
+    }
+
+    markAsUnread(itemId) {
+        this.readItems.delete(itemId);
+        localStorage.setItem('readItems', JSON.stringify([...this.readItems]));
+    }
+
+    isRead(itemId) {
+        return this.readItems.has(itemId);
     }
 
     async init() {
@@ -465,6 +480,9 @@ class FeedSieve {
         const rating = item.rating || null;
         const ratingHtml = rating ? this.createRatingBadgeHtml(rating, 'modal-rating') : '';
 
+        // Mark as read when modal opens
+        this.markAsRead(item.id);
+
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
         modal.innerHTML = `
@@ -486,6 +504,9 @@ class FeedSieve {
                     </div>
                 ` : ''}
                 <div class="modal-footer">
+                    <button class="mark-unread-btn" data-item-id="${item.id}">
+                        Mark as Unread
+                    </button>
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
                         Read Original →
                     </a>
@@ -496,23 +517,31 @@ class FeedSieve {
         document.body.appendChild(modal);
         document.body.style.overflow = 'hidden';
 
-        // Close handlers
-        modal.querySelector('.modal-close').addEventListener('click', () => {
+        // Mark as unread button
+        const unreadBtn = modal.querySelector('.mark-unread-btn');
+        unreadBtn.addEventListener('click', () => {
+            this.markAsUnread(item.id);
             modal.remove();
             document.body.style.overflow = '';
+            this.render(); // Re-render to update visual state
         });
 
+        // Close handlers
+        const closeModal = () => {
+            modal.remove();
+            document.body.style.overflow = '';
+            this.render(); // Re-render to update visual state
+        };
+
+        modal.querySelector('.modal-close').addEventListener('click', closeModal);
+
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-                document.body.style.overflow = '';
-            }
+            if (e.target === modal) closeModal();
         });
 
         const closeOnEsc = (e) => {
             if (e.key === 'Escape') {
-                modal.remove();
-                document.body.style.overflow = '';
+                closeModal();
                 document.removeEventListener('keydown', closeOnEsc);
             }
         };
@@ -528,9 +557,10 @@ class FeedSieve {
         const ideasHtml = ideas.length > 0 ? this.renderIdeasChips(ideas.slice(0, 3)) : '';
         const rating = item.rating || null;
         const ratingBadgeHtml = rating ? this.createRatingBadgeHtml(rating, 'rating-badge') : '';
+        const readClass = this.isRead(item.id) ? ' read' : '';
 
         return `
-            <article class="article-item" data-item-id="${item.id}">
+            <article class="article-item${readClass}" data-item-id="${item.id}">
                 <div class="article-header">
                     <div class="article-meta">
                         ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
