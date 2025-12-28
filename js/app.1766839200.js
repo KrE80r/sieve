@@ -11,9 +11,11 @@ class FeedSieve {
         this.filteredItems = [];
         this.currentFilter = 'today';
         this.currentSource = null;
+        this.currentCategory = null;
         this.searchQuery = '';
         this.sortBy = 'date';
         this.sources = {};
+        this.categories = {};
         this.expandedGroups = new Set();
         this.init();
     }
@@ -109,8 +111,10 @@ class FeedSieve {
             const data = await response.json();
             this.items = data.items || [];
             this.buildSourceIndex();
+            this.buildCategoryIndex();
             this.updateCounts();
             this.renderSourceLists();
+            this.renderCategoriesList();
             this.applyFilters();
             this.updateLastUpdated(data.updated_at);
         } catch (error) {
@@ -137,6 +141,86 @@ class FeedSieve {
             }
             this.sources[type][sourceId].count++;
         });
+    }
+
+    buildCategoryIndex() {
+        this.categories = {};
+        const categoryIcons = {
+            'CyberSecurity': '🔒',
+            'AI': '🤖',
+            'Productivity': '⚡',
+            'Tech': '💻',
+            'Sysadmin': '🖥️',
+            'Philosophy': '🤔'
+        };
+
+        this.items.forEach(item => {
+            const labels = item.labels || [];
+            labels.forEach(label => {
+                if (!this.categories[label]) {
+                    this.categories[label] = {
+                        count: 0,
+                        icon: categoryIcons[label] || '🏷️'
+                    };
+                }
+                this.categories[label].count++;
+            });
+        });
+    }
+
+    renderCategoriesList() {
+        const container = document.getElementById('categories-list');
+        if (!container) return;
+
+        const categoryNames = Object.keys(this.categories);
+
+        if (categoryNames.length === 0) {
+            container.innerHTML = '<div class="nav-empty">No categories yet</div>';
+            return;
+        }
+
+        container.innerHTML = categoryNames
+            .sort((a, b) => this.categories[b].count - this.categories[a].count)
+            .map(name => `
+                <button class="nav-item" data-filter="category" data-category="${name}">
+                    <span class="nav-icon">${this.categories[name].icon}</span>
+                    ${this.escapeHtml(name)}
+                    <span class="nav-count">${this.categories[name].count}</span>
+                </button>
+            `).join('');
+
+        // Bind click events
+        container.querySelectorAll('.nav-item').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleCategoryClick(e));
+        });
+    }
+
+    handleCategoryClick(e) {
+        e.stopPropagation();
+        const btn = e.currentTarget;
+        const category = btn.dataset.category;
+
+        this.setActiveNav(btn);
+        this.currentFilter = 'category';
+        this.currentCategory = category;
+        this.currentSource = null;
+
+        document.getElementById('feed-title').textContent = category;
+        this.applyFilters();
+
+        // Auto-close sidebar on mobile
+        if (window.innerWidth <= 768) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+
+            if (sidebar && overlay && menuToggle) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     }
 
     renderSourceLists() {
@@ -190,6 +274,7 @@ class FeedSieve {
         this.setActiveNav(btn);
         this.currentFilter = filter;
         this.currentSource = null;
+        this.currentCategory = null;
         this.updateFeedTitle(filter);
         this.applyFilters();
     }
@@ -203,6 +288,7 @@ class FeedSieve {
         this.setActiveNav(btn);
         this.currentFilter = 'source';
         this.currentSource = { id: sourceId, type: sourceType };
+        this.currentCategory = null;
 
         const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
         document.getElementById('feed-title').textContent = sourceName;
@@ -230,6 +316,7 @@ class FeedSieve {
         this.setActiveNav(btn);
         this.currentFilter = filter;
         this.currentSource = null;
+        this.currentCategory = null;
         this.updateFeedTitle(filter);
         this.applyFilters();
     }
@@ -287,6 +374,12 @@ class FeedSieve {
             // Source filter
             if (this.currentFilter === 'source' && this.currentSource) {
                 if (String(item.source_id) !== String(this.currentSource.id)) return false;
+            }
+
+            // Category filter
+            if (this.currentFilter === 'category' && this.currentCategory) {
+                const labels = item.labels || [];
+                if (!labels.includes(this.currentCategory)) return false;
             }
 
             // Search filter
@@ -355,66 +448,15 @@ class FeedSieve {
         noResults.classList.add('hidden');
         list.innerHTML = this.filteredItems.map(item => this.createArticle(item)).join('');
 
-        // Apply read state from localStorage
-        list.querySelectorAll('.article-item').forEach(article => {
-            const itemId = article.dataset.itemId;
-            if (this.isRead(itemId)) {
-                article.classList.add('read');
-            }
-        });
-
         // Bind click handlers for modal
         list.querySelectorAll('.article-item').forEach(article => {
             article.addEventListener('click', (e) => {
                 if (e.target.closest('.read-link')) return;
-                if (e.target.closest('.mark-unread-btn')) return;
-
                 const itemId = parseInt(article.dataset.itemId);
                 const item = this.items.find(i => i.id === itemId);
-                if (item) {
-                    this.markAsRead(itemId);
-                    this.showModal(item);
-                }
+                if (item) this.showModal(item);
             });
         });
-
-        // Bind mark-unread buttons
-        list.querySelectorAll('.mark-unread-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const itemId = e.currentTarget.dataset.itemId;
-                this.markAsUnread(itemId);
-            });
-        });
-
-        // Bind "Read Original" links to mark as read
-        list.querySelectorAll('.read-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const article = e.target.closest('.article-item');
-                const itemId = article.dataset.itemId;
-                this.markAsRead(itemId);
-            });
-        });
-    }
-
-    isRead(itemId) {
-        return localStorage.getItem('read_' + itemId) === 'true';
-    }
-
-    markAsRead(itemId) {
-        localStorage.setItem('read_' + itemId, 'true');
-        const article = document.querySelector(`[data-item-id="${itemId}"]`);
-        if (article) {
-            article.classList.add('read');
-        }
-    }
-
-    markAsUnread(itemId) {
-        localStorage.removeItem('read_' + itemId);
-        const article = document.querySelector(`[data-item-id="${itemId}"]`);
-        if (article) {
-            article.classList.remove('read');
-        }
     }
 
     showModal(item) {
@@ -502,11 +544,6 @@ class FeedSieve {
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
                         Read Original →
                     </a>
-                    <button class="mark-unread-btn" data-item-id="${item.id}" title="Mark as unread">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="8" cy="8" r="6"/>
-                        </svg>
-                    </button>
                 </div>
             </article>
         `;
