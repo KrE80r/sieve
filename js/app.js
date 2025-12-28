@@ -11,9 +11,11 @@ class FeedSieve {
         this.filteredItems = [];
         this.currentFilter = 'today';
         this.currentSource = null;
+        this.currentCategory = null;
         this.searchQuery = '';
         this.sortBy = 'date';
         this.sources = {};
+        this.categories = {};
         this.expandedGroups = new Set();
         this.init();
     }
@@ -109,8 +111,10 @@ class FeedSieve {
             const data = await response.json();
             this.items = data.items || [];
             this.buildSourceIndex();
+            this.buildCategoryIndex();
             this.updateCounts();
             this.renderSourceLists();
+            this.renderCategoriesList();
             this.applyFilters();
             this.updateLastUpdated(data.updated_at);
         } catch (error) {
@@ -136,6 +140,55 @@ class FeedSieve {
                 };
             }
             this.sources[type][sourceId].count++;
+        });
+    }
+
+    buildCategoryIndex() {
+        this.categories = {};
+        this.items.forEach(item => {
+            const labels = item.labels || [];
+            labels.forEach(label => {
+                if (!this.categories[label]) {
+                    this.categories[label] = 0;
+                }
+                this.categories[label]++;
+            });
+        });
+    }
+
+    renderCategoriesList() {
+        const container = document.getElementById('categories-list');
+        if (!container) return;
+
+        const categoryIcons = {
+            'CyberSecurity': '🛡️',
+            'AI': '🤖',
+            'Productivity': '📈',
+            'Tech': '💻',
+            'Sysadmin': '⚙️',
+            'Philosophy': '🧠'
+        };
+
+        const categories = Object.keys(this.categories).sort((a, b) =>
+            this.categories[b] - this.categories[a]
+        );
+
+        if (categories.length === 0) {
+            container.innerHTML = '';
+            return;
+        }
+
+        container.innerHTML = categories.map(category => `
+            <button class="nav-item" data-filter="category" data-category="${category}">
+                <span class="nav-icon">${categoryIcons[category] || '🏷️'}</span>
+                ${category}
+                <span class="nav-count">${this.categories[category]}</span>
+            </button>
+        `).join('');
+
+        // Bind click events to category buttons
+        container.querySelectorAll('[data-filter="category"]').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleCategoryClick(e));
         });
     }
 
@@ -203,6 +256,7 @@ class FeedSieve {
         this.setActiveNav(btn);
         this.currentFilter = 'source';
         this.currentSource = { id: sourceId, type: sourceType };
+        this.currentCategory = null;
 
         const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
         document.getElementById('feed-title').textContent = sourceName;
@@ -223,6 +277,19 @@ class FeedSieve {
         }
     }
 
+    handleCategoryClick(e) {
+        const btn = e.currentTarget;
+        const category = btn.dataset.category;
+
+        this.setActiveNav(btn);
+        this.currentFilter = 'category';
+        this.currentCategory = category;
+        this.currentSource = null;
+
+        document.getElementById('feed-title').textContent = category;
+        this.applyFilters();
+    }
+
     handleFilterClick(e) {
         const btn = e.currentTarget;
         const filter = btn.dataset.filter;
@@ -230,6 +297,7 @@ class FeedSieve {
         this.setActiveNav(btn);
         this.currentFilter = filter;
         this.currentSource = null;
+        this.currentCategory = null;
         this.updateFeedTitle(filter);
         this.applyFilters();
     }
@@ -287,6 +355,12 @@ class FeedSieve {
             // Source filter
             if (this.currentFilter === 'source' && this.currentSource) {
                 if (String(item.source_id) !== String(this.currentSource.id)) return false;
+            }
+
+            // Category filter
+            if (this.currentFilter === 'category' && this.currentCategory) {
+                const labels = item.labels || [];
+                if (!labels.includes(this.currentCategory)) return false;
             }
 
             // Search filter
