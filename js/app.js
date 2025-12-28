@@ -140,7 +140,7 @@ class FeedSieve {
     }
 
     renderSourceLists() {
-        const types = ['rss', 'youtube', 'blog', 'nitter'];
+        const types = ['rss', 'youtube', 'newsletter', 'nitter'];
 
         types.forEach(type => {
             const container = document.getElementById(`sources-${type}`);
@@ -246,7 +246,7 @@ class FeedSieve {
             all: 'All Articles',
             rss: 'RSS Feeds',
             youtube: 'YouTube',
-            blog: 'Blogs',
+            newsletter: 'Newsletters',
             nitter: 'Twitter/X'
         };
         document.getElementById('feed-title').textContent = titles[filter] || 'All Articles';
@@ -279,7 +279,7 @@ class FeedSieve {
             }
 
             // Type filter
-            if (['rss', 'youtube', 'blog', 'nitter'].includes(this.currentFilter)) {
+            if (['rss', 'youtube', 'newsletter', 'nitter'].includes(this.currentFilter)) {
                 const itemType = item.source_type || 'rss';
                 if (itemType !== this.currentFilter) return false;
             }
@@ -320,7 +320,7 @@ class FeedSieve {
             week: 0,
             rss: 0,
             youtube: 0,
-            blog: 0,
+            newsletter: 0,
             nitter: 0
         };
 
