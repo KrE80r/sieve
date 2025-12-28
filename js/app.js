@@ -343,7 +343,8 @@ class FeedSieve {
             CyberSecurity: 0,
             Tech: 0,
             Sysadmin: 0,
-            Productivity: 0
+            Productivity: 0,
+            Philosophy: 0
         };
 
         this.items.forEach(item => {
