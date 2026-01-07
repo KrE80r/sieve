@@ -1,7 +1,33 @@
 {
-  "updated_at": "2026-01-07T13:00:00.065964",
+  "updated_at": "2026-01-07T14:00:00.075376",
   "total_items": 100,
   "items": [
+    {
+      "id": 188,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2025/Dec/26/how-uv-got-so-fast/",
+      "title": "How uv got so fast",
+      "summary": "uv achieves speed by fetching only essential wheel metadata via HTTP range requests and by encoding versions as 64‑bit integers for rapid comparison.",
+      "ideas": [
+        "uv uses HTTP range requests to fetch wheel metadata without downloading the whole file.",
+        "It first tries PEP 658 metadata, then falls back to zip central directory via range request.",
+        "This fast path covers about 99% of cases, dramatically reducing bandwidth usage.",
+        "uv packs version numbers into 64‑bit integers for fast comparison and hashing.",
+        "Over 90% of versions fit in a single u64, enabling efficient sorting.",
+        "The provided script extracts METADATA using only 18 KB of a 40 MB wheel.",
+        "Compact version representation preserves correct ordering for pre‑release and post‑release tags.",
+        "uv’s performance gains stem from avoiding legacy pip compatibility code."
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete insights—HTTP range requests for wheel metadata, compact u64 version packing, and a working script—providing practical knowledge and evidence of performance gains. It stays focused on technical optimization without clickbait or excessive promotion, aligning well with technology and productivity themes.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-01-07T23:30:09.349708"
+    },
     {
       "id": 187,
       "source_id": 1,
@@ -2125,27 +2151,6 @@
       "source_type": "newsletter",
       "source_name": "tl;dr sec",
       "published_at": "2025-12-29T00:10:21.919159"
-    },
-    {
-      "id": 88,
-      "source_id": 15,
-      "original_url": "https://bughunters.google.com/blog/6715529872080896/beyond-sandbox-domains-rendering-untrusted-web-content-with-safecontentframe",
-      "title": "Beyond Sandbox Domains: Rendering Untrusted Web Content with SafeContentFrame",
-      "summary": "SafeContentFrame provides secure isolation for untrusted web content using unique origins and integrity checks to bypass sandbox domain limitations.",
-      "ideas": [
-        "SafeContentFrame renders untrusted content securely",
-        "Replaces sandbox domains with unique origins",
-        "Uses client-side library and HTML shim",
-        "Communication handled via postMessage",
-        "Defends against XSS and origin leakage",
-        "Prevents side-channel attacks"
-      ],
-      "labels": [],
-      "rating": 85,
-      "rating_reason": "This content delivers high technical density for a security professional, efficiently introducing a novel tool that solves specific architectural problems with traditional sandbox domains. It provides clear value instances by identifying the library, its unique origin mechanism, and specific threats it mitigates (XSS, origin leakage, side-channel attacks) without padding.",
-      "source_type": "newsletter",
-      "source_name": "tl;dr sec",
-      "published_at": "2025-12-29T00:06:55.769334"
     }
   ]
 }
