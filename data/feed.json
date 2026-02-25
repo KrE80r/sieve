@@ -1,7 +1,59 @@
 {
-  "updated_at": "2026-02-24T23:00:00.075379",
+  "updated_at": "2026-02-25T01:00:00.058739",
   "total_items": 100,
   "items": [
+    {
+      "id": 707,
+      "source_id": 4,
+      "original_url": "https://www.errno.fr/Overflowing_STM32H5.html",
+      "title": "ROP the ROM: Exploiting a Stack Buffer Overflow on STM32H5 in Multiple WaysROP the ROM: Exploiting a Stack Buffer Overflow on STM32H5 in Multiple Ways | Guillaume Quéré",
+      "summary": "ROM bootloader code can be leveraged for ROP to bypass MPU protections and extract firmware on STM32H5 devices.",
+      "ideas": [
+        "Stack buffer overflow in STM32H5 update mechanism can be exploited to dump flash via UART.",
+        "Shellcode must be written in THUMB mode and LSB of branch addresses set to 1.",
+        "Use NOP sled and brute-force payload length to locate stack pointer and LR overwrite.",
+        "MPU XN protection can be enabled via OpenOCD writes to MPU registers.",
+        "ROM bootloader code provides reusable ROP gadgets for embedded exploitation.",
+        "Ropper tool can extract 2‑instruction ARM‑THUMB gadgets from ROM binary.",
+        "Naive ROP chain writing directly to UART fails without status register checks.",
+        "Calling ROM UART_write_byte via ROP requires setting up UART base address in memory.",
+        "Looping ROM UART function can dump entire flash with a linear ROP chain.",
+        "Disabling MPU by writing zero to MPU_CTRL enables execution of shellcode in SRAM.",
+        "Protect against ROM ROP by unmapping ROM region in MPU configuration."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple concrete exploitation techniques, code snippets, and MPU configuration details that a security researcher can directly apply, showing strong thematic relevance to cybersecurity and embedded tech. It provides high value density with over ten distinct actionable ideas and minimal padding, earning a high score without penalties.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-25T10:34:44.159189"
+    },
+    {
+      "id": 706,
+      "source_id": 4,
+      "original_url": "https://www.recordedfuture.com/blog/january-2026-cve-landscape",
+      "title": "January 2026 CVE Landscape: 23 Critical Vulnerabilities Mark 5% Increase, APT28 Exploits Microsoft Office Zero-Day",
+      "summary": "The January 2026 CVE landscape saw a 5% increase in high-impact vulnerabilities, with 23 critical vulnerabilities requiring immediate remediation, including a Microsoft Office zero-day exploited by APT28.",
+      "ideas": [
+        "APT28's Operation Neusploit exploits Microsoft Office zero-day",
+        "23 critical vulnerabilities require immediate remediation",
+        "Code Injection and Authentication Bypass are common weakness types",
+        "Public exploits are available for 14 of the 23 vulnerabilities",
+        "Microsoft and SmarterTools are among the most affected vendors",
+        "Immediate actions are required to mitigate vulnerabilities like CVE-2026-21509 and CVE-2026-23760"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides high-value insights into the January 2026 CVE landscape, including 23 critical vulnerabilities and their exploitation by threat actors like APT28. The article delivers novel ideas, practical knowledge, and useful resources, making it highly relevant to the CyberSecurity theme. The density of valuable information is high, with multiple vulnerabilities and their details discussed in depth.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-25T10:34:12.570136"
+    },
     {
       "id": 705,
       "source_id": 4,
@@ -2437,60 +2489,6 @@
       "source_type": "rss",
       "source_name": "Simon Willison's Weblog",
       "published_at": "2026-02-15T16:32:35.920627"
-    },
-    {
-      "id": 607,
-      "source_id": 4,
-      "original_url": "https://0xdf.gitlab.io/2026/02/14/htb-soulmate.html",
-      "title": "HTB: Soulmate | 0xdf hacks stuff",
-      "summary": "Exploiting CrushFTP vulnerabilities to gain admin access and a shell as www-data on the Soulmate box from HackTheBox.",
-      "ideas": [
-        "Using CVE-2025-31161 to bypass authentication in CrushFTP",
-        "Exploiting CrushFTP vulnerabilities to gain admin access",
-        "Using feroxbuster to brute force directories",
-        "Identifying tech stacks using HTTP response headers",
-        "Using ffuf to scan for subdomains",
-        "Exploiting PHP-based vulnerabilities"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 85,
-      "rating_reason": "The content provides a detailed walkthrough of exploiting vulnerabilities in CrushFTP to gain admin access and eventually a shell as www-data. It includes specific examples, code snippets, and explanations of the vulnerabilities, making it a valuable resource for those interested in penetration testing and cybersecurity. The content is well-structured, easy to follow, and includes relevant screenshots and links to additional resources.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-15T04:32:24.143838"
-    },
-    {
-      "id": 606,
-      "source_id": 7,
-      "original_url": "https://martinfowler.com/articles/agentic-ai-security.html",
-      "title": "Agentic AI and Security",
-      "summary": "Agentic AI faces a fundamental security flaw where LLMs cannot distinguish instructions from data, creating a 'Lethal Trifecta' risk when systems access sensitive data, consume untrusted content, and communicate externally.",
-      "ideas": [
-        "LLMs cannot distinguish between safe content and executable instructions",
-        "Agentic AI extends LLMs with logic, tools, and autonomous actions",
-        "MCP servers are standardized APIs designed specifically for LLM tooling",
-        "The Lethal Trifecta combines sensitive data, untrusted content, and external comms",
-        "Untrusted content can inject malicious commands into the LLM context",
-        "Attackers can craft tickets or prompts to exfiltrate data via external comms",
-        "Security mitigation requires blocking at least one element of the Trifecta",
-        "Minimize sensitive data access to reduce potential attack surface",
-        "Sandboxing environments restrict the potential damage of compromised agents",
-        "Splitting complex tasks into isolated sub-tasks limits security exposure",
-        "Human oversight is essential to control and review agentic actions"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech"
-      ],
-      "rating": 88,
-      "rating_reason": "This article provides a high-density, expert synthesis of Agentic AI security risks, specifically distilling Simon Willison's 'Lethal Trifecta' concept into a practical framework. It offers clear value by explaining the fundamental mechanism of prompt injection (inability to separate data from instructions), providing a concrete attack example (AgentFlayer/Jira), and outlining specific architectural mitigations. The content is highly relevant to current engineering challenges.",
-      "source_type": "nitter",
-      "source_name": "Bilgin Ibryam",
-      "published_at": "2026-02-14T22:32:40.329514"
     }
   ]
 }
