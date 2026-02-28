@@ -1,7 +1,179 @@
 {
-  "updated_at": "2026-02-28T00:00:00.447022",
+  "updated_at": "2026-02-28T01:00:00.104825",
   "total_items": 100,
   "items": [
+    {
+      "id": 775,
+      "source_id": 4,
+      "original_url": "https://r3verii.github.io/cve/2026/02/27/nodejs-toctou.html",
+      "title": "The Forgotten Bug: How a Node.js Core Design Flaw Enables HTTP Request Splitting | CyberSec NotesThe Forgotten Bug: How a Node.js Core Design Flaw Enables HTTP Request Splitting | CyberSec Notes",
+      "summary": "Mutable request paths in Node.js create a TOCTOU window that enables HTTP request splitting attacks.",
+      "ideas": [
+        "Node.js validates request path only at construction, not before sending.",
+        "The .path property is a plain writable field, allowing post‑construction mutation.",
+        "Mutating .path after validation creates a TOCTOU window enabling CRLF injection.",
+        "CRLF injection can lead to header injection, body injection, or full request splitting.",
+        "The original 2018 fix (CVE‑2018‑12116) only covered Unicode truncation, not mutable path.",
+        "Several popular Node.js libraries inherit this flaw, exposing many applications.",
+        "Node.js team classified the issue as “not a vulnerability,” but mitigation is still needed."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides deep, original analysis of a Node.js TOCTOU flaw, complete source‑code walkthrough, and concrete attack scenarios, delivering multiple actionable insights. It aligns strongly with cybersecurity and tech themes and contains no clickbait or padding, resulting in high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:38:37.147634"
+    },
+    {
+      "id": 774,
+      "source_id": 4,
+      "original_url": "https://hackread.com/openclaw-vulnerability-openclaw-hijack-ai-agents/",
+      "title": "ClawJacked Vulnerability in OpenClaw Could Let Websites Hijack AI Agents",
+      "summary": "OpenClaw’s trust of localhost connections lets malicious sites hijack AI agents via WebSockets, requiring immediate patching.",
+      "ideas": [
+        "OpenClaw trusts localhost connections, enabling hijack via malicious website",
+        "WebSocket communication bypasses user prompts to control AI agents",
+        "Proof‑of‑concept guesses passwords hundreds per second, defeating human passwords",
+        "Attacker can read Slack, steal API keys, and exfiltrate files via AI",
+        "Patch released within 24 hours; update to version 2026.2.25+ immediately",
+        "Experts urge treating AI agents as privileged identities and tightening authentication"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: it explains the novel ClawJacked vulnerability, details the WebSocket attack vector, shares proof‑of‑concept speed metrics, outlines real‑world impacts, and gives actionable remediation advice plus expert perspectives. It stays on topic, aligns with cybersecurity and AI themes, and contains no clickbait or padding that would merit penalties.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:38:13.237982"
+    },
+    {
+      "id": 773,
+      "source_id": 4,
+      "original_url": "https://github.com/praetorian-inc/nerva",
+      "title": "ssh://example.com:22",
+      "summary": "Nerva enables fast, detailed fingerprinting of hundreds of network services across multiple transports.",
+      "ideas": [
+        "Nerva fingerprints 120+ network protocols across TCP, UDP, and SCTP.",
+        "Fast mode scans only default ports for rapid reconnaissance.",
+        "Outputs results in JSON, CSV, or human‑readable formats.",
+        "Can pipe input from port scanners like Naabu or Nmap.",
+        "Provides a Go library for direct integration into applications.",
+        "Includes plugins for web services, databases, industrial and telecom protocols.",
+        "Use cases: penetration testing, asset discovery pipelines, CI/CD security scanning.",
+        "Install via prebuilt binary, go install, or Docker container.",
+        "Troubleshooting tips: adjust timeout, enable UDP, run on Linux for SCTP.",
+        "Compared to Nmap and zgrab2, Nerva offers smarter defaults and auto‑detection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The README delivers extensive practical knowledge: installation steps, usage flags, code example, and 120+ protocol plugins, all directly applicable to security reconnaissance. Its focus on service fingerprinting, integration with port scanners, and clear troubleshooting provides high value density for cybersecurity professionals. No clickbait or padding is present, and the content aligns strongly with CyberSecurity and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:36:52.626865"
+    },
+    {
+      "id": 772,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/188627/mobile-2/aeternum-botnet-hides-commands-in-polygon-smart-contracts.html",
+      "title": "Aeternum botnet hides commands in Polygon smart contracts",
+      "summary": "Botnets are increasingly using immutable blockchain smart contracts as primary command infrastructure to evade traditional takedowns.",
+      "ideas": [
+        "Aeternum uses Polygon smart contracts for decentralized command and control",
+        "Blockchain-based C2 is immune to traditional server takedowns",
+        "Infected hosts poll public RPC endpoints to read on-chain instructions",
+        "Operators manage payloads via a web dashboard and crypto wallet",
+        "Transaction costs are low, making operations cheap and resilient",
+        "Aeternum includes built-in AV evasion and anti-sandbox checks",
+        "Defenses must shift to edge filtering instead of upstream takedowns"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This article delivers high value density by concisely explaining a significant evolution in malware infrastructure using blockchain for C2. It offers specific technical details on the Aeternum botnet's operation, cost structure, and evasion techniques, making it highly relevant for cybersecurity professionals. The content avoids fluff, providing actionable intelligence on why traditional takedowns are failing against this new class of resilient botnets.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:36:46.560749"
+    },
+    {
+      "id": 771,
+      "source_id": 4,
+      "original_url": "https://hackread.com/hackers-1campaign-hide-malicious-ads-google-reviewers/",
+      "title": "Hackers Use 1Campaign to Hide Malicious Ads From Google Reviewers",
+      "summary": "1Campaign cloaks malicious ads from Google reviewers, letting only real users see the harmful content.",
+      "ideas": [
+        "1Campaign uses cloaking to show safe page to Google reviewers, malicious page to users.",
+        "Fraud score system blocks tech‑company or VPN visitors, letting only real victims see malicious site.",
+        "Blockbyblockchain campaign let 99.4% of visitors filtered, only 10 victims out of 1,676.",
+        "Platform packages multiple hacker tools, targeting Google Ads for malvertising.",
+        "Tool enables non‑technical attackers to launch high‑level scams via ad space.",
+        "Global traffic observed from UK, US, Netherlands, China, Germany.",
+        "Advice: treat promoted search results cautiously and verify URLs before entering data."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete insights about the 1Campaign cloaking platform, including how it shows safe pages to reviewers, uses fraud scores to filter visitors, and enables low‑skill attackers to run malvertising via Google Ads, supported by specific data and expert quotes. It stays focused with minimal filler, aligning well with cybersecurity themes, yielding high value density for its short length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:34:43.701359"
+    },
+    {
+      "id": 770,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/2026/02/27/suspected_nork_digital_intruders_caught/",
+      "title": "Suspected Nork intruders infecting US healthcare, education • The Register",
+      "summary": "Suspected North Korean digital intruders have been caught infecting US healthcare and education organizations with a new backdoor malware called Dohdoor, potentially for financial gain.",
+      "ideas": [
+        "New Dohdoor malware used in attacks",
+        "Suspected North Korean involvement",
+        "Targets include US healthcare and education",
+        "Malware uses DNS-over-HTTPS for stealth",
+        "Similarities to Lazarus Group tactics",
+        "Potential for financial gain"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "This article provides high-value insights into a suspected North Korean cyber attack on US healthcare and education sectors, including details on the malware used and the tactics employed by the attackers. The content is well-researched, informative, and aligns strongly with the CyberSecurity theme. However, it may benefit from more concise language and a clearer structure to improve its overall density and readability.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:34:35.610354"
+    },
+    {
+      "id": 769,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/02/900-sangoma-freepbx-instances.html",
+      "title": "900+ Sangoma FreePBX Instances Compromised in Ongoing Web Shell Attacks",
+      "summary": "Over 900 Sangoma FreePBX instances have been compromised in ongoing web shell attacks exploiting a command injection vulnerability, with the US, Brazil, and Canada being the most affected countries.",
+      "ideas": [
+        "Web shell attacks are targeting Sangoma FreePBX instances",
+        "CVE-2025-64328 vulnerability is being exploited",
+        "Over 900 instances have been compromised",
+        "US, Brazil, and Canada are the most affected countries",
+        "Mitigations include updating FreePBX to the latest version and restricting access to the Administration Control Panel"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides a clear and concise report on the ongoing web shell attacks targeting Sangoma FreePBX instances, including the number of compromised instances, the vulnerability exploited, and recommendations for mitigation. The content is well-structured, informative, and relevant to the cybersecurity theme, with a good balance of technical details and contextual information.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-02-28T10:32:55.938815"
+    },
     {
       "id": 768,
       "source_id": 7,
@@ -2321,180 +2493,6 @@
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
       "published_at": "2026-02-23T16:32:07.775302"
-    },
-    {
-      "id": 675,
-      "source_id": 4,
-      "original_url": "https://haveibeenpwned.com/Breach/CarGurus",
-      "title": "Have I Been Pwned: CarGurus Data Breach",
-      "summary": "The CarGurus data breach exposed over 12 million email addresses and other sensitive information, and individuals are advised to change their passwords and enable two-factor authentication to protect themselves from potential fraud.",
-      "ideas": [
-        "CarGurus suffered a data breach in February 2026",
-        "Over 12 million email addresses were compromised",
-        "Affected data includes names, phone numbers, and physical addresses",
-        "Use a password manager to generate strong, unique passwords",
-        "Enable two-factor authentication for added security",
-        "Monitor for identity fraud with real-time alerts"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 80,
-      "rating_reason": "The content provides a clear and concise overview of the CarGurus data breach, including the compromised data and recommended actions for affected individuals. It also offers specific advice for Australians and promotes the use of password managers and identity protection tools. However, the presence of sponsored content slightly detracts from the overall value. The content is well-structured, easy to follow, and aligns with the CyberSecurity theme.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-22T16:33:15.414039"
-    },
-    {
-      "id": 674,
-      "source_id": 14,
-      "original_url": "https://www.youtube.com/watch?v=t_NO1bK_boM",
-      "title": "It’s time to rethink your entire life plan - Dave Evans",
-      "summary": "Rethinking one's life plan involves moving beyond traditional notions of impact and fulfillment, embracing the present moment, and finding meaning in the particularities of life.",
-      "ideas": [
-        "Life design involves applying design thinking principles to one's life",
-        "Navigation vs wayfinding: knowing where you are vs finding your way",
-        "Impact is not the only source of meaning",
-        "Fulfillment is not about being all you can be, but about being fully alive",
-        "The scandal of particularity: reality is only expressed in partial reflections",
-        "Befriending the longing for perfection",
-        "Embracing the present moment for meaning-making experiences",
-        "Distinguishing between the transactional world and the flow world"
-      ],
-      "labels": [
-        "Philosophy"
-      ],
-      "rating": 85,
-      "rating_reason": "This content delivers high value through its exploration of life design, the distinction between navigation and wayfinding, and the importance of embracing the present moment. It challenges conventional notions of impact, fulfillment, and meaning, offering a nuanced perspective on how individuals can approach these concepts. The conversation is rich in insights, with the guest sharing personal anecdotes and expert knowledge to illustrate key points. The discussion on the scandal of particularity and befriending longing adds depth to the conversation, making it a worthwhile investment of time for listeners.",
-      "source_type": "youtube",
-      "source_name": "Chris Williamson",
-      "published_at": "2026-02-22T04:32:06.650454"
-    },
-    {
-      "id": 673,
-      "source_id": 7,
-      "original_url": "https://www.youtube.com/watch?v=We7BZVKbCVw",
-      "title": "Skip navigation",
-      "summary": "AI coding agents have shifted software development from manual coding to high‑level orchestration, making traditional coding effectively solved.",
-      "ideas": [
-        "Claude Code now writes 100% of Boris Cherny's production code, enabling 10‑30 PRs daily.",
-        "Claude Code contributes roughly 4% of public GitHub commits, projected to reach 20% by 2026.",
-        "Underfunding teams forces reliance on AI agents, boosting productivity via unlimited token usage.",
-        "Manual coding skills are expected to become obsolete within one to two years.",
-        "The AI shift parallels Gutenberg's press, democratizing software creation for non‑engineers.",
-        "Future roles will merge PM, designer, and engineer into a generalist \"Builder\".",
-        "Product features emerge from observing user misuse, revealing latent demand for agentic tools.",
-        "The \"CoWork\" product was built in ten days using Claude Code to generate its own VM and security.",
-        "Anthropic ensures AI safety through mechanistic interpretability, evals, and in‑the‑wild monitoring.",
-        "Strategic advice: build for model capabilities six months ahead rather than current limitations."
-      ],
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "rating": 82,
-      "rating_reason": "The content delivers many concrete insights about AI‑generated code (e.g., 100% of Claude Code's output, 4% of GitHub commits, underfunding strategy, the rise of the \"Builder\" role, latent demand, safety layers, and forward‑looking product strategy). These align strongly with technology, AI, and productivity themes, giving high value density. However, the inclusion of unrelated comment threads and a long list of other videos adds padding and off‑topic drift, warranting a modest penalty.",
-      "source_type": "nitter",
-      "source_name": "Bilgin Ibryam",
-      "published_at": "2026-02-21T22:32:40.947195"
-    },
-    {
-      "id": 672,
-      "source_id": 4,
-      "original_url": "https://thehackernews.com/2026/02/cisa-adds-two-actively-exploited.html",
-      "title": "CISA Adds Two Actively Exploited Roundcube Flaws to KEV Catalog",
-      "summary": "CISA has added two actively exploited Roundcube webmail software vulnerabilities to its Known Exploited Vulnerabilities catalog, citing evidence of active exploitation and providing remediation deadlines for federal agencies.",
-      "ideas": [
-        "Roundcube webmail software vulnerabilities are being actively exploited",
-        "CISA has added two vulnerabilities to its Known Exploited Vulnerabilities catalog",
-        "Vulnerabilities have CVSS scores of 9.9 and 7.2",
-        "Exploitation can lead to remote code execution and cross-site scripting",
-        "Federal agencies have remediation deadlines to secure their networks"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 80,
-      "rating_reason": "The article provides valuable information about two actively exploited Roundcube webmail software vulnerabilities, including their CVE numbers, CVSS scores, and details about their exploitation. It also mentions the addition of these vulnerabilities to CISA's Known Exploited Vulnerabilities catalog and provides remediation deadlines for federal agencies. The content is well-structured, informative, and relevant to the cybersecurity theme.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-21T22:32:06.406738"
-    },
-    {
-      "id": 671,
-      "source_id": 4,
-      "original_url": "https://www.theregister.com/2026/02/20/openclaw_snuck_into_cline_package/",
-      "title": "AI coding assistant Cline compromised, installs OpenClaw • The Register",
-      "summary": "A compromised Cline npm package silently installed OpenClaw on thousands of developers' machines, highlighting supply‑chain risks and the need for immediate updates.",
-      "ideas": [
-        "Supply chain attack inserted OpenClaw via compromised Cline npm package.",
-        "Attack affected about 4,000 installations during an 8‑hour window on Feb 17.",
-        "Compromise used a stolen token; maintainers revoked it and added OIDC provenance.",
-        "Users should upgrade to Cline 2.4.0+ and verify no OpenClaw remains.",
-        "Prior prompt‑injection vulnerability in Cline enabled the malicious injection.",
-        "Supply‑chain attacks are fueling a self‑reinforcing cybercrime economy.",
-        "AI agents like OpenClaw can be weaponized by criminals despite limited autonomy."
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI"
-      ],
-      "rating": 81,
-      "rating_reason": "The article delivers concrete, actionable information about a real supply‑chain compromise of the Cline CLI, including timeline, impact numbers, mitigation steps, and broader context on AI‑enabled cybercrime, providing at least five clear value instances for a medium‑length piece. It aligns well with CyberSecurity and AI themes and contains no clickbait or padding, resulting in a solid good rating.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-21T16:32:45.366547"
-    },
-    {
-      "id": 670,
-      "source_id": 1,
-      "original_url": "https://simonwillison.net/2026/Feb/20/beats/",
-      "title": "Adding TILs, releases, museums, tools and research to my blog",
-      "summary": "AI agents like Claude can rapidly prototype and implement custom content integrations for a blog, turning a morning’s work into a functional feature.",
-      "ideas": [
-        "Introduce \"beats\" to aggregate external content types on a blog.",
-        "Use Claude Code to generate parser regex from raw Markdown.",
-        "Automate GitHub release imports via JSON and GitHub Actions.",
-        "Import TIL posts using SQL over JSON and HTTP.",
-        "Create custom JSON feeds for niche museum blog integration.",
-        "Build HTML/JS tools integration via Claude-generated artifacts.",
-        "Leverage AI agents to prototype UI mockups quickly.",
-        "Implement content types across homepage, search, and archive views."
-      ],
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "rating": 80,
-      "rating_reason": "The post offers several concrete, actionable insights on using Claude AI to automate blog content integration, including practical code examples and links to reusable resources, aligning well with AI and tech themes. It provides multiple value instances (novel workflow, useful resources, expert insight) without noticeable clickbait or padding, resulting in good density for its medium length.",
-      "source_type": "rss",
-      "source_name": "Simon Willison's Weblog",
-      "published_at": "2026-02-21T10:32:13.369438"
-    },
-    {
-      "id": 669,
-      "source_id": 10,
-      "original_url": "https://www.youtube.com/watch?v=W5dlgzluems",
-      "title": "Google just dropped Gemini 3.1... (WOAH)",
-      "summary": "Gemini 3.1 Pro demonstrates substantial advancements in AI capabilities, outperforming predecessors and competitors in various benchmarks and showcasing potential for complex tasks like urban planning and 3D printing.",
-      "ideas": [
-        "Gemini 3.1 Pro improves SVG creation",
-        "Outperforms competitors in benchmarks like ARC AGI 2",
-        "Excels in scientific knowledge tests like GPQA Diamond",
-        "Shows potential for urban planning simulations",
-        "Can generate CAD models for 3D printing",
-        "Improves upon Gemini 3 Pro in coding scores",
-        "Dominates in T2Bench for tool use",
-        "Scores high in multilingual Q&A tests like MMLU"
-      ],
-      "labels": [],
-      "rating": 82,
-      "rating_reason": "The content delivers high value density by showcasing the capabilities of Gemini 3.1 Pro through various benchmarks and examples, demonstrating significant improvements over its predecessor. It aligns strongly with the TECHNOLOGY & INNOVATION theme, particularly in artificial intelligence and its impact on society. The use of specific, detailed examples such as SVG creation, urban planning simulation, and CAD model generation for 3D printing provides practical insights into the model's capabilities. However, the content could be slightly more concise and focused, with some sections feeling like promotional material.",
-      "source_type": "youtube",
-      "source_name": "Matthew Berman",
-      "published_at": "2026-02-21T10:32:06.506497"
     }
   ]
 }
