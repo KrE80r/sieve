@@ -1,7 +1,161 @@
 {
-  "updated_at": "2026-02-28T17:00:00.062474",
+  "updated_at": "2026-02-28T19:00:00.059631",
   "total_items": 100,
   "items": [
+    {
+      "id": 784,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/02/28/htb-guardian.html",
+      "title": "HTB: Guardian | 0xdf hacks stuff",
+      "summary": "The article describes a step-by-step approach to hacking the Guardian box, exploiting an IDOR in the chat feature, using a vulnerability in PhpSpreadsheet to steal a lecturer's session cookie, and eventually gaining root access through a combination of CSRF and local file include vulnerabilities.",
+      "ideas": [
+        "Initial scanning with nmap to identify open ports",
+        "Subdomain brute force using ffuf",
+        "Directory brute force using feroxbuster",
+        "Exploiting IDOR in the chat feature",
+        "Using a vulnerability in PhpSpreadsheet to steal a lecturer's session cookie",
+        "Combining CSRF and local file include vulnerabilities to gain root access"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a detailed walkthrough of hacking the Guardian box on HackTheBox, including initial scanning, subdomain brute force, directory brute force, and exploiting vulnerabilities to gain root access. The write-up is well-structured, and the author provides explanations for each step, making it easy to follow. The content is rich in ideas and insights, with a high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-01T04:34:12.867557"
+    },
+    {
+      "id": 783,
+      "source_id": 4,
+      "original_url": "https://ahm3dgg.github.io/HAX/Reverse-Engineering-LockHunter-and-Adding-a-New-Visibility-Feature",
+      "title": "Reverse Engineering LockHunter and Adding a New Visibility FeatureSearchDark modeLight modeReader mode",
+      "summary": "Section objects can lock files even after handles close, and querying system handles reveals them for better lock visibility.",
+      "ideas": [
+        "Windows Section Objects implement shared memory and memory‑mapped files.",
+        "Page‑file backed sections store dirty data in the system pagefile.",
+        "File‑backed sections map files; executables are image‑backed and copy‑on‑write.",
+        "Closing a section handle alone doesn't unlock a file if the section is mapped.",
+        "NtQuerySystemInformation with SystemHandleInformation retrieves all system handles.",
+        "SystemExtendedHandleInformation provides 64‑bit handle values on modern Windows.",
+        "Dynamic buffer allocation loop handles STATUS_INFO_LENGTH_MISMATCH responses.",
+        "Obtaining object type index via opening NUL file avoids hard‑coding IDs.",
+        "LockHunter uses a driver (USRFindHandle64.sys) to enumerate handles.",
+        "Adding visibility of section handles improves LockHunter’s lock detection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article provides numerous concrete insights into Windows Section Objects, NT API usage, and reverse‑engineering techniques, delivering high value density for a medium‑length technical piece. It includes practical code, explains system handle enumeration, and shows how to extend LockHunter, all without clickbait or padding, aligning well with cybersecurity and tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-01T04:34:06.243642"
+    },
+    {
+      "id": 782,
+      "source_id": 4,
+      "original_url": "https://medium.com/@jatin-dot-py/i-reverse-engineered-zomatos-food-rescue-feature-here-s-what-i-found-inside-f7043d3710ee",
+      "title": "Reverse engineering Zomato's Android app: Bypassing SSL pinning to find plain-JSON MQTT credentials",
+      "summary": "Zomato's server-driven UI architecture exposes MQTT credentials in plain text, allowing one to intercept real-time 'Food Rescue' events by bypassing SSL pinning and subscribing to their message broker.",
+      "ideas": [
+        "Zomato uses server-driven UI architecture",
+        "MQTT credentials exposed in home feed JSON",
+        "SSL pinning bypassed using apk-mitm",
+        "Food Rescue relies on MQTT race conditions",
+        "Create-cart endpoint enforces pitch-once constraint",
+        "MQTT broker retains messages like order_claimed",
+        "LLMs helped find the MQTT host address",
+        "Ported Python logic to Kotlin for mobile use",
+        "Server-driven UI exposes internal app logic",
+        "MQTT used for real-time order broadcasting"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a high-density technical write-up that delivers on its promise with specific, actionable steps for reverse engineering a production Android app. It provides multiple valuable insights including the discovery of exposed MQTT credentials in the API response, methods for bypassing SSL pinning using apk-mitm, and architectural analysis of Zomato's server-driven UI. The author shares concrete tools (HTTPToolkit, mitmproxy), code snippets, and open-source repositories, significantly raising the utility of the content for developers and security researchers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-01T04:33:16.781998"
+    },
+    {
+      "id": 781,
+      "source_id": 4,
+      "original_url": "https://medium.com/@louis-e/from-wi-fi-access-to-root-reverse-engineering-a-50-carplay-dongle-a3fbeeeb0be9",
+      "title": "From Wi‑Fi Access to Root: Reverse Engineering a $50 CarPlay Dongle",
+      "summary": "An unauthenticated firmware upload allows anyone on the dongle’s Wi‑Fi to gain persistent root access.",
+      "ideas": [
+        "Fixed Wi‑Fi password is hard‑coded and publicly discoverable",
+        "UART debug pads expose a read‑only boot console",
+        "Firmware is stored unencrypted in SWUpdate format and can be extracted",
+        "Upload endpoint lacks authentication, enabling arbitrary firmware flashing",
+        "Root password hash is default DES and trivially crackable",
+        "Hardcoded Alibaba Cloud credentials leak device logs and data",
+        "Modified firmware can embed a CGI web shell for root command execution",
+        "All services run as root with no firewall or privilege separation",
+        "Firmware lacks cryptographic signing; MD5 checksum can be forged",
+        "Device uses counterfeit MFi chips, raising legal and security concerns"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides numerous concrete, actionable security insights—hardware teardown, UART debugging, firmware extraction, unauthenticated firmware upload, root shell creation, and a detailed vulnerability list—making it highly valuable for cybersecurity practitioners. It stays focused, avoids clickbait, and aligns strongly with cybersecurity and embedded tech themes, with no evident padding or shallow treatment.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-01T04:32:50.327636"
+    },
+    {
+      "id": 780,
+      "source_id": 4,
+      "original_url": "https://www.credrelay.com/p/cred-relay-issue-2",
+      "title": "Cred Relay Issue #2caret-rightbeehiiv",
+      "summary": "The author uses MCP Ghidra and Claude Code to reverse engineer kernel drivers, discovering vulnerabilities in the process, and shares their methodology and findings, including a step-by-step guide on how to replicate the process.",
+      "ideas": [
+        "Using MCP Ghidra and Claude Code for kernel driver reverse engineering",
+        "Identifying vulnerabilities in kernel drivers",
+        "Creating a process for narrowing down which drivers to target",
+        "Utilizing cthaeh tool for driver analysis",
+        "Importance of SDDL security descriptors in driver development",
+        "Reverse engineering as a means to improve cybersecurity"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers high-value insights into reverse engineering kernel drivers using MCP Ghidra and Claude Code, providing a detailed walkthrough of the process and tools used. The author shares their experience, including the discovery of vulnerabilities in specific drivers, and offers practical advice on how to replicate the process. The content is dense with valuable information, including code snippets, screenshots, and explanations of complex concepts, making it an exceptional resource for those interested in cybersecurity and kernel driver analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-01T04:32:43.680699"
+    },
+    {
+      "id": 779,
+      "source_id": 9,
+      "original_url": "https://www.youtube.com/watch?v=6pP8x8sXoaM",
+      "title": "The Great Transition",
+      "summary": "AI agents are replacing humans as the primary consumers of software, driving a shift from user interfaces to API-first services where digital assistants orchestrate bespoke experiences.",
+      "ideas": [
+        "Knowledge is shifting from private expert minds to public AI-accessible pools.",
+        "LLMs aggregate disparate public content to reduce the value of private expertise.",
+        "Strategies involve distilling proprietary models into open source to diffuse knowledge.",
+        "Products are transforming into APIs for agent consumption rather than human apps.",
+        "Traditional UIs and marketing websites are becoming obsolete in an agent-first world.",
+        "AI agents will use rating directories to automatically select and integrate software services.",
+        "Personal digital assistants will generate bespoke software interfaces on demand."
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "The content delivers several high-value, predictive insights about the impact of AI on knowledge dynamics and software architecture. The concept of the 'Great Transition' from private knowledge to public, driven by LLMs and 'skills,' is a profound observation. The shift from standalone apps to API-first products consumed by agents rather than humans is a crucial strategic pivot for developers. While the transcript format includes conversational filler and repetition, the density of novel ideas about the future of software consumption and interface design is strong, aligning perfectly with Technology & Business Strategy themes.",
+      "source_type": "youtube",
+      "source_name": "Unsupervised Learning",
+      "published_at": "2026-03-01T04:32:29.413734"
+    },
     {
       "id": 778,
       "source_id": 7,
@@ -2339,159 +2493,6 @@
       "source_type": "rss",
       "source_name": "Simon Willison's Weblog",
       "published_at": "2026-02-24T10:32:06.106692"
-    },
-    {
-      "id": 684,
-      "source_id": 4,
-      "original_url": "https://www.malwarebytes.com/blog/scams/2026/02/huorong",
-      "title": "Fake Huorong security site infects users with ValleyRAT | MalwarebytesMalwarebytes logo",
-      "summary": "Typosquatted fake security sites can deliver sophisticated DLL‑sideloaded RATs that evade detection and persist via scheduled tasks.",
-      "ideas": [
-        "Typosquatted domain huoronga.com mimics legitimate huorong.cn to lure users.",
-        "Attack uses trojanized NSIS installer to evade detection.",
-        "Malware employs DLL sideloading via malicious DuiLib_u.dll.",
-        "Persistence achieved through scheduled task 'Batteries' and Defender exclusions.",
-        "C2 communication uses TCP 443 with custom binary protocol, masquerading as HTTPS.",
-        "ProcessKiller module can terminate security software on infected systems.",
-        "Keylogging implemented via SetWindowsHookExW in rundll32.exe.",
-        "Malware checks for debuggers, VMs, and locale to avoid analysis.",
-        "Indicators of compromise include specific file names, registry keys, and mutex strings.",
-        "Attribution to Silver Fox APT group based on campaign patterns."
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 88,
-      "rating_reason": "The article delivers extensive, actionable threat intelligence on a sophisticated malware campaign, providing multiple novel technical details such as typosquatting tactics, DLL sideloading, and persistence mechanisms. It aligns strongly with cybersecurity themes and offers concrete IOCs and detection guidance, though brief self‑promotion links incur a minor penalty.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-24T04:38:06.404474"
-    },
-    {
-      "id": 683,
-      "source_id": 4,
-      "original_url": "https://www.schneier.com/blog/archives/2026/02/on-the-security-of-password-managers.html",
-      "title": "On the Security of Password Managers - Schneier on Security",
-      "summary": "Password managers may have backdoors and vulnerabilities, and alternative solutions like Password Safe can provide better security through encryption and no recovery features.",
-      "ideas": [
-        "Password managers can have backdoors",
-        "Alternative solutions like Password Safe can be more secure",
-        "Encryption is crucial for security",
-        "No recovery features can enhance security",
-        "Cloud-based password managers may be vulnerable",
-        "Quantum computing can compromise current encryption methods"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 82,
-      "rating_reason": "The content provides valuable insights into the security of password managers, highlighting potential backdoors and vulnerabilities. It also offers an alternative solution, Password Safe, and discusses the importance of encryption and security measures. The comments section adds to the discussion, with readers sharing their own experiences and opinions. However, the content could be more comprehensive and in-depth, and some of the comments are tangential to the main topic.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-24T04:36:41.030879"
-    },
-    {
-      "id": 682,
-      "source_id": 4,
-      "original_url": "https://thehackernews.com/2026/02/malicious-npm-packages-harvest-crypto.html",
-      "title": "Malicious npm Packages Harvest Crypto Keys, CI Secrets, and API Tokens",
-      "summary": "An active npm supply chain worm named SANDWORM_MODE steals secrets, targets AI coding assistants, and contains destructive capabilities.",
-      "ideas": [
-        "Active campaign SANDWORM_MODE targets npm registry",
-        "19 malicious packages harvest crypto keys and API tokens",
-        "Attackers used publisher aliases official334 and javaorg",
-        "McpInject module poisons AI coding assistants",
-        "Prompt injection targets Claude, Cursor, and VS Code",
-        "Malware steals SSH keys and LLM API keys",
-        "Weaponized GitHub Actions harvest CI/CD secrets",
-        "Polymorphic engine uses DeepSeek Coder to evade detection",
-        "Developers must rotate tokens and remove affected packages"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 88,
-      "rating_reason": "The content delivers high value by providing actionable intelligence, including a specific list of malicious packages and detailed technical breakdown of a novel supply chain attack. It effectively explains the sophisticated 'McpInject' technique targeting AI coding assistants and offers clear remediation steps for affected users.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-24T04:36:33.425697"
-    },
-    {
-      "id": 681,
-      "source_id": 14,
-      "original_url": "https://www.youtube.com/watch?v=6SNJK_p2GRo",
-      "title": "How to Survive the Death of Your Old Self - Charlie Houpert (4K)",
-      "summary": "Personal growth requires moving through distinct stages—focusing on results, then behavior, then emotions, and finally spirit—and experiencing the inevitable failure of 'unteachable lessons' is a necessary, not shameful, part of that evolution.",
-      "ideas": [
-        "Success without emotional nourishment leads to subconscious self-sabotage.",
-        "The 'second lonely chapter' occurs when you outgrow friends still optimizing material life.",
-        "'Unteachable lessons' must be experienced firsthand regardless of warnings from others.",
-        "Personal development follows a pyramid: Results, Behavior, Emotions, and Spirit.",
-        "Transitioning between development levels causes a temporary dip in external performance.",
-        "Modern Westerners often suffer from a spiritual wound of separation from ancestry and land.",
-        "Don't aggressively pull peers to your level of development; allow them their own pace.",
-        "The 'God pivot' is a reliable phase for those who have mastered material and emotional realms."
-      ],
-      "labels": [
-        "Philosophy"
-      ],
-      "rating": 82,
-      "rating_reason": "The content delivers a robust framework for personal development (The Pyramid: Results, Behavior, Emotion, Spirit) and introduces the compelling concept of 'unteachable lessons,' arguing that personal failure is biologically inevitable rather than a sign of incompetence. It strongly aligns with human development themes by addressing the specific 'second lonely chapter' high achievers face when moving from material optimization to emotional and spiritual fulfillment.",
-      "source_type": "youtube",
-      "source_name": "Chris Williamson",
-      "published_at": "2026-02-24T04:33:10.435767"
-    },
-    {
-      "id": 680,
-      "source_id": 11,
-      "original_url": "https://www.youtube.com/watch?v=f8cfH5XX-XU",
-      "title": "The Pi Coding Agent: The ONLY REAL Claude Code COMPETITOR",
-      "summary": "Pi is a customizable and open-source agentic coding tool that offers an alternative to Cloud Code, providing advanced engineers with the ability to tailor their coding experience and push the boundaries of what is possible.",
-      "ideas": [
-        "Pi is an open-source agentic coding tool",
-        "Customization is a key feature of Pi",
-        "Cloud Code has limitations due to its closed-source nature",
-        "Pi offers advanced engineers the ability to tailor their coding experience",
-        "Design philosophy differs between Cloud Code and Pi",
-        "Pi has a minimal approach to coding",
-        "Cloud Code has strong opinions and defaults",
-        "Pi allows for programmatic support and extension",
-        "Pi's customization capabilities include changing the font color and layout",
-        "Pi has a community-driven approach to development"
-      ],
-      "labels": [],
-      "rating": 82,
-      "rating_reason": "The content provides a detailed comparison between Cloud Code and Pi, highlighting their design philosophies, customization capabilities, and use cases. It offers practical insights and showcases Pi's potential as a customizable and open-source alternative. However, the content could benefit from a more concise structure and clearer transitions between ideas. The author's enthusiasm and expertise in the subject matter are evident, making the content engaging and informative.",
-      "source_type": "youtube",
-      "source_name": "IndyDevDan",
-      "published_at": "2026-02-24T04:32:34.478528"
-    },
-    {
-      "id": 679,
-      "source_id": 7,
-      "original_url": "https://www.anthropic.com/research/measuring-agent-autonomy",
-      "title": "Measuring AI agent autonomy in practice \\ Anthropic",
-      "summary": "Real‑world AI agents are gaining more autonomy over time, but effective oversight still requires new monitoring and interaction designs.",
-      "ideas": [
-        "Agents' autonomous session length doubled from 25 to 45 minutes over three months.",
-        "Experienced users auto‑approve actions more, but also interrupt more frequently.",
-        "Claude Code pauses for clarification twice as often as humans interrupt.",
-        "Most agent actions are low‑risk; emerging use in healthcare, finance, cybersecurity.",
-        "New metrics combine public API tool calls and Claude Code session data.",
-        "Autonomy growth is smooth across model releases, suggesting factors beyond capability.",
-        "Effective oversight will need new monitoring infrastructure and interaction paradigms."
-      ],
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The article provides several concrete value instances: novel empirical data on agent autonomy growth, practical insights on user behavior (auto‑approve vs interrupt), evidence from millions of interactions, useful resources (CLIO tool, API links), and expert analysis of oversight needs. It aligns well with AI and technology themes and contains minimal padding or clickbait, yielding a solid but not exceptional score.",
-      "source_type": "nitter",
-      "source_name": "Bilgin Ibryam",
-      "published_at": "2026-02-23T22:32:20.259879"
     }
   ]
 }
