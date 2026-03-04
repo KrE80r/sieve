@@ -1,7 +1,58 @@
 {
-  "updated_at": "2026-03-04T00:00:00.424364",
+  "updated_at": "2026-03-04T01:00:00.090338",
   "total_items": 100,
   "items": [
+    {
+      "id": 829,
+      "source_id": 4,
+      "original_url": "https://www.elastic.co/security-labs/linux-rootkits-1-hooked-on-linux",
+      "title": "Hooked on Linux: Rootkit Taxonomy, Hooking Techniques and Tradecraft — Elastic Security Labs",
+      "summary": "Rootkits continuously migrate to newer kernel interfaces such as eBPF and io_uring to stay hidden from detection.",
+      "ideas": [
+        "Linux rootkits evolved from userland SO hijacking to LKM, eBPF, and io_uring techniques.",
+        "User-space rootkits use LD_PRELOAD to intercept libc functions like opendir and readdir.",
+        "Kernel-space rootkits load malicious LKMs to hook sys_call_table and hide artifacts.",
+        "eBPF rootkits attach programs to syscalls, evading traditional module scanners.",
+        "io_uring rootkits batch operations, reducing observable syscalls and bypassing EDRs.",
+        "Detection requires memory forensics, kernel integrity checks, and low‑level telemetry.",
+        "Linux fragmentation and security modules increase rootkit development complexity.",
+        "Loader components can be droppers, userland initializers, or custom kernel loaders.",
+        "Examples include Jynx, Azazel, Adore‑ng, Diamorphine, TripleCross, Boopkit, and RingReaper.",
+        "Linux rootkits are rising due to cloud, containers, and IoT deployments."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers multiple concrete insights—taxonomy evolution, hooking methods, and emerging eBPF/io_uring techniques—along with practical detection guidance and real-world examples, giving high value density for a technical audience. It stays focused, avoids clickbait or promotional padding, and aligns strongly with cybersecurity and technology themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-04T10:34:08.521099"
+    },
+    {
+      "id": 828,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/03/fake-tech-support-spam-deploys.html",
+      "title": "Fake Tech Support Spam Deploys Customized Havoc C2 Across Organizations",
+      "summary": "Threat actors are using fake IT support spam to deploy the Havoc C2 framework, allowing for potential data exfiltration or ransomware attacks, and employing sophisticated evasion techniques to bypass security software.",
+      "ideas": [
+        "Fake IT support spam as an initial attack vector",
+        "Use of Havoc C2 framework for malware delivery",
+        "Layered malware delivery pipeline for evasion",
+        "Lateral movement across victim environments",
+        "Use of legitimate tools for persistence",
+        "Evasion techniques such as control flow obfuscation and hooking ntdll.dll functions"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a detailed analysis of a new campaign where threat actors masquerade as fake IT support to deliver the Havoc C2 framework, leading to potential data exfiltration or ransomware attacks. The content is rich in technical details, including the attack chain, malware delivery pipeline, and evasion techniques, making it highly informative for cybersecurity professionals. The article also references specific research and provides context about the threat actors' modus operandi, adding to its credibility and value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-04T10:33:06.010248"
+    },
     {
       "id": 827,
       "source_id": 7,
@@ -2428,56 +2479,6 @@
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
       "published_at": "2026-02-26T16:36:01.596271"
-    },
-    {
-      "id": 729,
-      "source_id": 4,
-      "original_url": "https://securityaffairs.com/188501/security/critical-zyxel-router-flaw-exposed-devices-to-remote-attacks.html",
-      "title": "Critical Zyxel router flaw exposed devices to remote attacks",
-      "summary": "A critical remote code execution vulnerability in Zyxel routers allows unauthenticated attackers to execute commands remotely, and users are advised to update their firmware to prevent exploitation.",
-      "ideas": [
-        "Zyxel router flaw allows remote code execution",
-        "Vulnerability affects multiple router models",
-        "CVE-2025-13942 has a CVSS score of 9.8",
-        "Update firmware to prevent exploitation",
-        "WAN access and UPnP function must be enabled for remote exploitation"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 80,
-      "rating_reason": "The article provides a clear and concise description of a critical Zyxel router flaw, its impact, and the necessary steps to mitigate it. The content is well-structured, informative, and relevant to the theme of cybersecurity, specifically router security and vulnerabilities. The inclusion of specific details such as CVE numbers, affected models, and the CVSS score adds to the article's credibility and usefulness.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-26T16:35:15.078192"
-    },
-    {
-      "id": 728,
-      "source_id": 4,
-      "original_url": "https://labs.watchtowr.com/buy-a-help-desk-bundle-a-remote-access-solution-solarwinds-web-help-desk-pre-auth-rce-chain-s/",
-      "title": "Buy A Help Desk, Bundle A Remote Access Solution? (SolarWinds Web Help Desk Pre-Auth RCE Chain(s))",
-      "summary": "SolarWinds Web Help Desk can be fully compromised pre‑auth via a deserialization RCE chain exploiting legacy WebObjects components.",
-      "ideas": [
-        "SolarWinds Web Help Desk has three new pre‑auth deserialization CVEs (CVE‑2025‑40552, ‑40553, ‑40554).",
-        "An authentication bypass can be chained with RCE via Java deserialization.",
-        "The product relies on the obsolete Java WebObjects framework, increasing attack surface.",
-        "AjaxProxy exposes a JSON‑RPC endpoint with over 140 callable methods.",
-        "Method wopage.takeValueForKey allows attacker‑controlled object deserialization.",
-        "JSONBridge.unmarshallArgs processes attacker parameters, leading to arbitrary code execution.",
-        "Previous patches (CVE‑2024‑28986, ‑28988, ‑26399) were bypassed by the new chain.",
-        "A crafted POST request to AjaxProxy demonstrates the exploit in a fully patched instance.",
-        "The research underscores the risks of insecure deserialization in legacy systems.",
-        "Secure deserialization practices and framework updates are essential to prevent such exploits."
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 82,
-      "rating_reason": "The article delivers multiple genuine value instances: discovery of three new CVEs, a detailed pre‑auth RCE chain, deep analysis of the legacy WebObjects framework, and concrete exploit code. It aligns strongly with CyberSecurity and Tech themes and contains actionable technical insight without clickbait or padding, resulting in high value density for security professionals.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-26T16:35:08.888222"
     }
   ]
 }
