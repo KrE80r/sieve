@@ -1,7 +1,61 @@
 {
-  "updated_at": "2026-03-05T23:00:00.182657",
+  "updated_at": "2026-03-06T01:00:00.083135",
   "total_items": 100,
   "items": [
+    {
+      "id": 866,
+      "source_id": 4,
+      "original_url": "https://nono.sh/blog/blog-credential-injection",
+      "title": "Credential Protection for AI Agents: The Phantom Token Pattern - nono",
+      "summary": "A localhost proxy swaps short session tokens for real API keys, preventing AI agents from leaking credentials.",
+      "ideas": [
+        "Use a localhost proxy to replace session tokens with real API credentials.",
+        "Generate a 256‑bit random session token for each agent session.",
+        "Store real credentials in system keystore (Keychain or Secret Service).",
+        "Validate tokens with constant‑time comparison to avoid timing attacks.",
+        "Zeroize credential strings in memory to prevent residual leakage.",
+        "Redirect SDK traffic via environment variables pointing to the proxy.",
+        "Define credential services in network‑policy.json for automatic injection.",
+        "Create user profiles to manage proxy credentials and network allowlists.",
+        "Enforce domain allowlists and denylists to block unauthorized hosts.",
+        "Support custom credential injection modes: header, query parameter, etc.",
+        "Use the proxy to protect tokens from prompt‑injection attacks in AI agents.",
+        "Log unauthorized token attempts with 401 responses."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers numerous concrete security techniques—phantom token proxy, constant‑time validation, zero‑memory wiping, keystore integration—and practical guides for setup, profiles, and custom credentials, aligning strongly with AI and cybersecurity themes. With over ten distinct value instances in a concise technical format and no evident padding or clickbait, its value density is high, meriting a rating of 88.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-06T10:32:46.829564"
+    },
+    {
+      "id": 865,
+      "source_id": 4,
+      "original_url": "https://decipher.sc/2026/03/05/google-commercial-surveillance-vendors-dominated-zero-day-exploitation-in-2025/",
+      "title": "Google: Commercial Surveillance Vendors Dominated Zero-Day Exploitation in 2025  - Decipher",
+      "summary": "Commercial surveillance vendors dominated zero-day exploitation in 2025, with 18 out of 42 unique zero days attributed to them, surpassing state-sponsored espionage groups.",
+      "ideas": [
+        "Commercial surveillance vendors are increasingly dominant in zero-day exploitation",
+        "CSVs are adaptable and can change techniques to bypass security measures",
+        "State-sponsored espionage groups are still significant developers and users of zero-day exploits",
+        "The commercial surveillance market provides turn-key solutions for the entire attack lifecycle",
+        "CSVs have become more accessible to a wider range of customers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides valuable insights into the dominance of commercial surveillance vendors in zero-day exploitation, citing a Google report that attributes 18 out of 42 unique zero days to these vendors. The article offers a clear and concise overview of the threat landscape, including the adaptability of CSVs and their ability to change techniques to stay ahead of security measures. However, the content could be improved with more in-depth analysis and concrete examples.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-06T10:32:07.291630"
+    },
     {
       "id": 864,
       "source_id": 4,
@@ -2440,53 +2494,6 @@
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
       "published_at": "2026-02-28T04:33:36.278145"
-    },
-    {
-      "id": 766,
-      "source_id": 4,
-      "original_url": "https://threatroad.substack.com/p/researchers-deanonymize-reddit-and",
-      "title": "Researchers Deanonymize Reddit and Hacker News Users at Scale",
-      "summary": "LLM‑driven deanonymization makes large‑scale linking of pseudonymous online profiles to real identities cheap and practical, ending the era of ‘practical obscurity’.",
-      "ideas": [
-        "LLMs achieve 68% recall at 90% precision for matching anonymous profiles to real identities.",
-        "A four‑stage pipeline extracts signals, searches embeddings, reasons over candidates, and calibrates confidence.",
-        "Deanonymization cost drops to $1‑4 per target, enabling large‑scale attacks.",
-        "More user activity increases identification risk; sharing 10+ movies raises recall to 48%.",
-        "Platforms should rate‑limit API access and restrict bulk data exports to mitigate attacks.",
-        "Traditional k‑anonymity and differential privacy fail against text‑based LLM attacks.",
-        "Activists and whistleblowers can no longer rely on pseudonymity for safety."
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI"
-      ],
-      "rating": 82,
-      "rating_reason": "The article provides multiple concrete value instances: novel research results with recall/precision metrics, a detailed four‑stage deanonymization pipeline, cost analysis showing attacks cost $1‑4 each, and practical mitigation advice for users and platforms. It aligns strongly with AI and cybersecurity themes and contains no clickbait or padding, resulting in a high‑density, informative piece.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-28T04:32:50.937489"
-    },
-    {
-      "id": 765,
-      "source_id": 4,
-      "original_url": "https://www.netresec.com/?page=Blog&month=2026-02&post=CISA-mixup-of-IOC-domains",
-      "title": "CISA mixup of IOC domains",
-      "summary": "Official IOC lists can contain domain typos, so analysts must cross‑check indicators before trusting them.",
-      "ideas": [
-        "CISA IOC list includes typo domains like \"accesscan.org\" versus the malicious \"accesscam.org\"",
-        "Typos in IOCs can cause analysts to miss or misclassify threat activity",
-        "Dynu Systems dynamic DNS is commonly abused by malicious actors",
-        "Always verify IOC accuracy against multiple reputable sources",
-        "The \"glize.com\" entry appears legitimate, likely a typo for malicious domains"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 80,
-      "rating_reason": "The post offers concrete, actionable insight by highlighting specific IOC typos in CISA's alert and showing how they differ from verified malicious domains, which is valuable for security analysts. It also points out the frequent abuse of Dynu Systems and advises verification against multiple sources, aligning well with cybersecurity themes. No clickbait or padding is present, but the piece contains only a few distinct insights, limiting its score.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-02-27T22:34:06.363306"
     }
   ]
 }
