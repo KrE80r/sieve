@@ -1,7 +1,59 @@
 {
-  "updated_at": "2026-03-07T05:00:00.070460",
+  "updated_at": "2026-03-07T07:00:00.097618",
   "total_items": 100,
   "items": [
+    {
+      "id": 894,
+      "source_id": 4,
+      "original_url": "https://claroty.com/team82/research/critical-authentication-bypass-in-rockwell-software",
+      "title": "Team82 Discovers Critical Authentication Bypass in Rockwell Software | Claroty",
+      "summary": "An unauthenticated attacker can bypass authentication and control Rockwell PLCs by extracting a secret cryptographic key.",
+      "ideas": [
+        "CVE-2021-22681 is a critical authentication bypass in Rockwell Studio 5000 Logix Designer.",
+        "The flaw lets attackers extract a secret cryptographic key used for PLC communication verification.",
+        "With the key, attackers can remotely connect, upload malicious code, and modify PLC configurations.",
+        "Affected products include Studio 5000 versions 21+, RSLogix 5000 16‑20, and various Logix controllers.",
+        "Mitigations: enable CIP Security and set controller mode to Run.",
+        "Enforce network segmentation, firewalls, and VPNs to isolate control systems.",
+        "Detect anomalies via controller change logs, Logix Designer Change Detection, and FactoryTalk AssetCentre."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides multiple concrete value instances: a detailed CVE disclosure, technical explanation of the key extraction flaw, list of affected products, and specific mitigation steps. It aligns strongly with CyberSecurity and Tech themes and contains actionable guidance without clickbait or excessive padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-07T16:32:50.220463"
+    },
+    {
+      "id": 893,
+      "source_id": 4,
+      "original_url": "https://blog.calif.io/p/a-race-within-a-race-exploiting-cve",
+      "title": "A Race Within A Race: Exploiting CVE-2025-38617 in Linux Packet Sockets",
+      "summary": "Sleeping mutex holders stretch race windows, making kernel race conditions predictable and exploitable for privilege escalation.",
+      "ideas": [
+        "Sleeping mutex holders create predictable, stretchable race windows",
+        "CVE-2025-38617 is a 20-year-old Linux packet socket race condition",
+        "Race between packet_set_ring and packet_notifier causes UAF",
+        "Page allocator lacks segregation unlike the slab allocator",
+        "TPACKET_V3 ring buffer mapping converts pointer corruption to R/W",
+        "simple_xattr objects serve as ideal heap grooming targets",
+        "Exploit bypasses kernel mitigations like RANDOM_KMALLOC_CACHES",
+        "Multi-stage exploit chains primitives to defeat hardening",
+        "User namespaces provide CAP_NET_RAW for unprivileged attackers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content is an exceptional deep dive into a complex Linux kernel vulnerability, offering high value density for security researchers. It provides a novel bug-hunting heuristic regarding sleeping mutexes, detailed technical breakdown of kernel memory allocators, and a sophisticated 5-stage exploit methodology. The text is void of fluff, focusing entirely on actionable, high-level technical insights that are rarely explained this clearly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-07T16:32:41.401608"
+    },
     {
       "id": 892,
       "source_id": 4,
@@ -2435,53 +2487,6 @@
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
       "published_at": "2026-03-02T16:33:00.602552"
-    },
-    {
-      "id": 794,
-      "source_id": 4,
-      "original_url": "https://hackread.com/microsoft-fake-xeno-roblox-utilities-windows-rat/",
-      "title": "Microsoft: Fake Xeno and Roblox Utilities Used to Install Windows RAT",
-      "summary": "Attackers are using fake Xeno and Roblox gaming utilities to install a Windows remote access trojan (RAT) on victim machines, leveraging PowerShell and living-off-the-land binaries (LOLBins) to evade detection.",
-      "ideas": [
-        "Fake gaming utilities are being used to install malware",
-        "Attackers leverage PowerShell and LOLBins for evasion",
-        "Malware installs a remote access trojan (RAT) for long-term access",
-        "Microsoft Defender detects the malware and behavior patterns",
-        "Organizations should monitor outbound traffic and block suspicious connections"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The content provides a clear and detailed explanation of a specific cybersecurity threat, including the tactics, techniques, and procedures (TTPs) used by attackers. It also offers actionable advice for organizations to detect and prevent such attacks. However, the content is somewhat dense and assumes a certain level of prior knowledge about cybersecurity and Windows systems.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-02T16:32:51.429887"
-    },
-    {
-      "id": 793,
-      "source_id": 4,
-      "original_url": "https://github.com/olizimmermann/phishcollector",
-      "title": "Install (inside container or local venv with requirements.txt)",
-      "summary": "PhishCollector is a secure, extensible research framework for automating the collection and fingerprinting of phishing sites using headless browsers.",
-      "ideas": [
-        "Automate phishing analysis using headless Chromium with stealth measures",
-        "Route traffic through Tor or Burp Suite to hide analyst IP",
-        "Extend threat intel by writing simple async Python plugins",
-        "Detect specific phishing kits using customizable regex patterns",
-        "Identify infrastructure via favicon hashing and tech signatures",
-        "Safely store captured HTML without risking accidental execution"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 88,
-      "rating_reason": "High-density technical documentation that provides actionable, expert-level knowledge for security researchers. It efficiently delivers specific instructions on tool setup, proxy routing for anonymity, and custom plugin development with minimal padding.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-02T16:32:39.130041"
     }
   ]
 }
