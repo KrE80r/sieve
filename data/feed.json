@@ -1,7 +1,354 @@
 {
-  "updated_at": "2026-03-19T17:00:00.070947",
+  "updated_at": "2026-03-19T19:00:00.125319",
   "total_items": 100,
   "items": [
+    {
+      "id": 1176,
+      "source_id": 4,
+      "original_url": "https://unit42.paloaltonetworks.com/ai-use-in-malware/",
+      "title": "Analyzing the Current State of AI Use in Malware",
+      "summary": "Current AI-integrated malware often relies on 'theater,' using LLMs inefficiently for logging rather than functional capability, though it lowers the barrier to entry for attackers.",
+      "ideas": [
+        "Three primary AI use cases in malware: writing, remote decisions, local execution.",
+        "Locally executed agentic AI malware flows are not yet observed in the wild.",
+        "AI enables lower-skilled threat actors to create functional malware.",
+        "Analyzed .NET infostealer using OpenAI GPT-3.5-Turbo via HTTP API.",
+        "Malware LLM integration was 'AI theater,' logging techniques without implementing them.",
+        "API calls to LLMs generate detectable network noise for defenders.",
+        "GenerateEvasionTechnique function only logs a technique name like Random Delay.",
+        "Malware used ConfuserEx 2 obfuscation to hinder analysis."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This content delivers high-value expert analysis by deconstructing real-world malware samples that integrate LLMs, effectively distinguishing between hype and actual technical implementation. The detailed breakdown of the 'AI Theater' sample, where AI integration adds noise rather than functionality, provides a rare, counterintuitive insight into the current limitations of AI-assisted attacks. It scores highly for density and relevance to cybersecurity professionals, offering specific code-level evidence and clear takeaways.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:46:38.072658"
+    },
+    {
+      "id": 1175,
+      "source_id": 4,
+      "original_url": "https://www.elastic.co/security-labs/teampcp-container-attack-scenario",
+      "title": "Linux & Cloud Detection Engineering - TeamPCP Container Attack Scenario — Elastic Security Labs",
+      "summary": "Elastic Defend for Containers telemetry can be leveraged to detect each stage of a container ransomware attack through specific runtime patterns.",
+      "ideas": [
+        "Detect download‑and‑pipe shell execution via curl/wget and immediate bash spawn.",
+        "Identify suspicious process killing commands (pkill, killall) within containers.",
+        "Alert on reading Kubernetes service account token files for environment discovery.",
+        "Flag enumeration of environment variables and sensitive file reads as discovery activity.",
+        "Correlate interactive file download followed by immediate execution in temporary paths.",
+        "Detect remote file download commands with IP/URL patterns in container processes.",
+        "Spot creation of systemd unit files inside containers as persistence attempts."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete detection rules, real‑world attack walk‑through, and links to reusable resources, providing strong practical value for security engineers. It aligns well with CyberSecurity and Tech themes and contains no clickbait or padding, though its length is substantial, the density of actionable insights remains high.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:46:10.311589"
+    },
+    {
+      "id": 1174,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/news/beast-ransomwares-toolkit-revealed-by-exposed-directory",
+      "title": "Beast Ransomware’s toolkit revealed by exposed directory",
+      "summary": "Beast Ransomware's exposed directory reveals a specific toolkit of common but dangerous tools used for reconnaissance, credential theft, lateral movement, and exfiltration that defenders can actively hunt for.",
+      "ideas": [
+        "Beast uses Advanced IP and Port Scanners for network mapping.",
+        "Everything.exe locates sensitive files during attacks.",
+        "Mimikatz, LaZagne, and Automim dump credentials from memory.",
+        "Registry modification forces cleartext password storage in memory.",
+        "Kerberos.ps1 script performs Kerberoasting attacks.",
+        "PsExec, OpenSSH, and AnyDesk facilitate lateral movement.",
+        "MEGASync automates data exfiltration to Mega.nz.",
+        "disable_backup.bat deletes shadow copies to prevent recovery.",
+        "CleanExit.exe wipes logs and removes attack tools.",
+        "Binaries target both Windows and Linux/ESXi systems."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides high-density, actionable threat intelligence by listing specific tools and scripts found in the Beast Ransomware operator's exposed directory. It delivers concrete IOCs across the entire attack kill chain—from reconnaissance to exfiltration—making it highly valuable for defenders hunting for this specific threat. While the tools themselves are standard, their aggregation into a specific gang profile provides practical utility.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:45:02.791507"
+    },
+    {
+      "id": 1173,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-22729-jsonpath-injection-spring-ai-pgvectorstore/",
+      "title": "CVE-2026-22729: JSONPath Injection in Spring AI's PgVectorStore",
+      "summary": "Unescaped string handling in Spring AI's AbstractFilterExpressionConverter enables JSONPath injection that bypasses access controls.",
+      "ideas": [
+        "AbstractFilterExpressionConverter.doSingleValue wraps strings without escaping, enabling injection",
+        "PgVectorFilterExpressionConverter inherits unsafe method, allowing JSONPath injection",
+        "Injection can bypass access controls and retrieve admin‑level documents",
+        "Payload \" || $.accessLevel == \"admin\" exploits the vulnerability",
+        "Fix by overriding doSingleValue with proper escaping or parameterized queries",
+        "Affected Spring AI versions: 1.0.x <1.0.4 and 1.1.x <1.1.3",
+        "Similar issue existed in MariaDB adapter but involved SQL injection",
+        "JSONPath injection occurs via unescaped double quotes in PostgreSQL JSONPath literals",
+        "Remediation includes updating to Spring AI 1.0.4 or 1.1.3",
+        "Cross‑tenant data exfiltration possible via department injection"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: it identifies the vulnerable method, explains the injection mechanics, shows a working proof‑of‑concept, details the impact on data isolation, compares to a similar MariaDB issue, and offers remediation steps. This delivers high relevance for cybersecurity and AI developers despite some navigation padding. The content aligns with CyberSecurity, AI, and Tech themes, giving readers actionable insight and mitigation guidance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:44:40.765742"
+    },
+    {
+      "id": 1172,
+      "source_id": 4,
+      "original_url": "https://www.recordedfuture.com/research/2025-year-in-review-malicious-infrastructure",
+      "title": "2025 Year in Review: Malicious, Infrastructure",
+      "summary": "The 2025 year in review report highlights key trends and shifts in malicious infrastructure, including the evolution of malware families, the rise of new threat actors, and the importance of tracking and mitigating these threats to enhance security controls.",
+      "ideas": [
+        "Cobalt Strike remains a dominant offensive security tool",
+        "RedGuard and Ligolo are gaining traction as alternative tools",
+        "Traffic distribution systems continue to be widely used",
+        "Malware-as-a-service offerings are dominating the infostealer ecosystem",
+        "Artificial intelligence may increasingly be used to support evasion and operational resilience",
+        "The 'as-a-service' ecosystem is expanding across malware categories",
+        "Defenders should prioritize detection and mitigation of prevalent malware families",
+        "Organizations should invest in tracking evolving malicious infrastructure dynamics"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This report provides a comprehensive overview of malicious infrastructure in 2025, including trends, notable shifts, and emerging threats. It delivers high-value insights, such as the continued dominance of Cobalt Strike, the growth of RedGuard and Ligolo, and the sustained use of traffic distribution systems. The content is rich in data-driven analysis, expert insights, and actionable advice for defenders, making it a valuable resource for those looking to strengthen their security controls.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:44:33.724490"
+    },
+    {
+      "id": 1171,
+      "source_id": 4,
+      "original_url": "https://blog.dshr.org/2026/03/metastablecoin-fragmentation.html",
+      "title": "DSHR's Blog: Metastablecoin Fragmentation",
+      "summary": "The security of decentralized systems like blockchains depends on the cost of an attack being greater than the potential reward, and various consensus mechanisms impose these costs, but at a significant economic expense that must be borne by users, leading to market competition among blockchains with different tradeoffs.",
+      "ideas": [
+        "Blockchain security depends on the cost of an attack being greater than the potential reward",
+        "Proof-of-work and proof-of-stake consensus mechanisms impose significant economic costs",
+        "Tokenomics and blockchain fragmentation are critical to understanding decentralized system security",
+        "The cost of security in decentralized systems is linear, not exponential, unlike centralized systems",
+        "Market competition among blockchains leads to fragmentation due to different tradeoffs in security and cost",
+        "Validators' strategic uncertainty affects their decision to contribute to blockchain security",
+        "High decentralization thresholds require higher rewards to sustain validation"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers high value through its in-depth analysis of the economics of blockchain security, specifically the costs and tradeoffs involved in proof-of-work and proof-of-stake consensus mechanisms. It references and builds upon existing research, such as Hyun Song Shin's work on tokenomics and blockchain fragmentation, providing a rich and well-supported argument. The author's use of specific examples, like Bitcoin and Ethereum, and inclusion of data and research findings, enhance the content's credibility and informational value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:43:36.426920"
+    },
+    {
+      "id": 1170,
+      "source_id": 4,
+      "original_url": "https://blog.huli.tw/2026/03/19/en/coupang-insider-kms-and-jwt/",
+      "title": "Learn Internal Threats, Key Management, and JWT from the Coupang Data Breach - Huli's blog",
+      "summary": "Mitigate insider threats by ensuring no human ever sees signing keys, utilizing KMS or HSMs to handle cryptographic operations without exposing secret material to applications or personnel.",
+      "ideas": [
+        "Insider threats can forge JWTs using signing keys obtained during employment.",
+        "Secure key management must begin at the generation phase, not just storage.",
+        "Developers generating keys locally creates a vulnerability prior to vault entry.",
+        "Use cloud CLI commands to generate secrets internally, avoiding human visibility.",
+        "KMS services abstract signing operations, keeping keys inaccessible to the application.",
+        "HSMs provide hardware-level protection against both digital and physical extraction.",
+        "Enforce strict key rotation immediately after any privileged employee departure."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides a high-density technical analysis of a significant security incident, transforming a news story into actionable engineering advice. It delivers clear insights into the key management lifecycle, practical AWS CLI usage for secure secret generation, and architectural comparisons between Secret Managers and KMS. The text avoids fluff and strongly aligns with CyberSecurity and Sysadmin themes by offering concrete methods to mitigate insider threats.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-20T04:43:27.753076"
+    },
+    {
+      "id": 1169,
+      "source_id": 15,
+      "original_url": "https://builders.ramp.com/post/100-vulnerabilities-patched-with-0-humans",
+      "title": "We proactively fixed ~100 security issues in 6 days with 0 humans",
+      "summary": "A custom AI-powered agent pipeline can autonomously find and fix numerous security issues in a short timeframe.",
+      "ideas": [
+        "AI can autonomously fix security issues",
+        "Custom agent pipelines for security",
+        "Autonomous false positive reduction",
+        "Parallel detector agents for vulnerability detection"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers a novel insight into autonomous security issue fixing using AI, with a custom agent pipeline that found and fixed ~100 security issues in 6 days. This showcases high value density and strong thematic relevance to AI and security. The use of specific technical terms like IDOR and XSS adds to the content's credibility and expertise.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-20T04:42:42.971084"
+    },
+    {
+      "id": 1168,
+      "source_id": 15,
+      "original_url": "https://medium.com/@terminalsandcoffee/building-a-cloud-native-detection-engineering-lab-with-terraform-and-aws-63d3990190f1",
+      "title": "Building a Cloud-Native Detection Engineering Lab with Terraform and AWS",
+      "summary": "Build a cloud-native detection engineering lab with Terraform and AWS to simulate and test security scenarios.",
+      "ideas": [
+        "Use Terraform to automate lab setup",
+        "Deploy EC2 instances for attacker, target, and SIEM",
+        "Overcome local hardware limitations with cloud-based lab",
+        "Utilize Kali Linux for attacker simulation",
+        "Implement Sysmon and Winlogbeat for target monitoring",
+        "Use Elasticsearch and Kibana for SIEM"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "This content provides a practical and actionable guide to building a cloud-native detection engineering lab using Terraform and AWS, overcoming local hardware limitations. The lab setup includes three EC2 instances for attacker, target, and SIEM systems, making it a valuable resource for security professionals. The content is concise, well-structured, and relevant to the theme of cybersecurity and tech.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-20T04:40:07.155944"
+    },
+    {
+      "id": 1167,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=pNl9z5_0i_w",
+      "title": "19 Uncomfortable Truths About Human Nature - Gurwinder Bhogal",
+      "summary": "The oxytocin paradox reveals that empathy can be selective and even lead to cruelty towards those outside one's empathized group, while the Rumple Stiltskin effect shows how labeling problems can provide a sense of control but also potentially prevent action.",
+      "ideas": [
+        "Oxytocin can increase spitefulness",
+        "Empathy is often selective and tribal",
+        "Labeling problems can provide a sense of control",
+        "The Rumple Stiltskin effect can prevent action",
+        "Anxiety is the most common mental health condition",
+        "Diagnosing disorders can be a double-edged sword",
+        "Concept creep can lead to overdiagnosis",
+        "Selective empathy can lead to hostility towards others"
+      ],
+      "labels": [
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "The content delivers several novel insights into human nature, particularly the oxytocin paradox and the Rumple Stiltskin effect. It challenges common assumptions about empathy and the labeling of mental health conditions, offering a nuanced discussion on the complexities of human behavior. The conversation is engaging, and the ideas are well-supported with personal anecdotes and references to research. However, the content could benefit from more concise language and a clearer structure.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-03-20T04:38:43.204474"
+    },
+    {
+      "id": 1166,
+      "source_id": 15,
+      "original_url": "https://onecloudplease.com/blog/bucketsquatting-is-finally-dead",
+      "title": "Bucketsquatting is (Finally) Dead",
+      "summary": "AWS introduces S3 bucket namespace protection to prevent bucketsquatting attacks by requiring a specific bucket naming format.",
+      "ideas": [
+        "AWS S3 bucket namespace protection prevents bucketsquatting",
+        "New bucket naming format requires prefix, account ID, region, and suffix",
+        "s3:x-amz-bucket-namespace condition key for SCP policies"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a specific and valuable insight into AWS's new S3 bucket namespace protection, which prevents bucketsquatting attacks. This is a high-value instance of 'TECH' and 'CyberSecurity' knowledge, with a clear explanation of the solution and its implementation. The content is concise and to the point, with no apparent penalties for clickbait, padding, or shallow treatment.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-20T04:37:52.169294"
+    },
+    {
+      "id": 1165,
+      "source_id": 15,
+      "original_url": "https://synacktiv.com/en/publications/mitmproxy-for-fun-and-profit-interception-and-analysis-of-application-traffic",
+      "title": "mitmproxy for fun and profit: Interception and Analysis of Application",
+      "summary": "Mitmproxy can be leveraged to rewrite git URLs, spoof mobile geolocation, and extract VoIP chat data via custom protobuf handling.",
+      "ideas": [
+        "Redirect git clone requests by modifying HTTP paths with mitmproxy",
+        "Spoof Android geolocation by parsing and altering gRPC protobuf coordinates",
+        "Capture Mumble VoIP chat messages using reverse TLS mode and custom protobuf parsing scripts"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The guide delivers three concrete, actionable techniques for using mitmproxy to intercept and modify traffic on Linux, Android, and iOS, providing clear practical value for AppSec practitioners. Its short length makes the insights dense, and it aligns strongly with cyber‑security themes without any clickbait or padding. No penalties apply.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-20T04:37:14.552519"
+    },
+    {
+      "id": 1164,
+      "source_id": 15,
+      "original_url": "https://bishopfox.com/blog/swagger-jacker-auditing-openapi-definition-files",
+      "title": "Introducing Swagger Jacker: Auditing OpenAPI Definition Files",
+      "summary": "Swagger Jacker is a command-line tool for auditing endpoints defined in OpenAPI definition files, enabling efficient security testing and analysis.",
+      "ideas": [
+        "Audit OpenAPI definition files for security",
+        "Parse definition files for paths and parameters",
+        "Automate testing with response status code analysis",
+        "Generate templates for manual testing",
+        "Discover hidden definition files"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content introduces Swagger Jacker, a valuable tool for auditing OpenAPI definition files, providing a clear and concise description of its capabilities and use cases. The tool's ability to parse definition files and pass results to various subcommands for further analysis is a significant value instance. However, the content is somewhat brief and lacks in-depth technical details, which prevents it from scoring higher.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-20T04:37:08.359253"
+    },
+    {
+      "id": 1163,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Mar/19/openai-acquiring-astral/",
+      "title": "Thoughts on OpenAI acquiring Astral and uv/ruff/ty",
+      "summary": "OpenAI's acquisition of Astral may have significant implications for the Python ecosystem, particularly with regards to the future of open-source projects like uv, ruff, and ty.",
+      "ideas": [
+        "OpenAI acquires Astral, the company behind uv, ruff, and ty",
+        "Astral's projects will continue to be maintained as open-source",
+        "uv is a crucial tool for Python environment management",
+        "The acquisition may impact the competition between OpenAI and Anthropic",
+        "Forking may be a credible exit strategy if things go south",
+        "OpenAI's track record with acquiring and maintaining open-source projects is unclear"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a thoughtful analysis of OpenAI's acquisition of Astral, discussing the potential implications for the Python ecosystem and the future of open-source projects. The author raises important questions about the strategic risk of a single company owning key infrastructure and the potential for forking as a credible exit strategy. The content is well-researched, with references to relevant announcements and discussions in the industry.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-03-20T04:34:33.745250"
+    },
     {
       "id": 1162,
       "source_id": 7,
@@ -2130,351 +2477,6 @@
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
       "published_at": "2026-03-16T22:35:09.435320"
-    },
-    {
-      "id": 1076,
-      "source_id": 4,
-      "original_url": "https://www.derp.ca/research/payload-ransomware-babuk-derivative/",
-      "title": "Payload ransomware group: mutex MakeAmericaGreatAgain | Derp",
-      "summary": "The Payload ransomware group utilizes a sophisticated encryption scheme and employs various anti-forensics techniques to evade detection, making it a significant threat to organizations worldwide.",
-      "ideas": [
-        "Payload ransomware uses Curve25519 and ChaCha20 encryption",
-        "The malware appends a 56-byte RC4-encrypted footer to each file",
-        "The footer contains the per-file public key and ChaCha20 nonce",
-        "The operator's private key is required for decryption",
-        "The malware employs anti-forensics techniques, including ETW patching and event log wiping",
-        "The Linux/ESXi variant targets virtual machines and uses a different operator public key"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 92,
-      "rating_reason": "This content provides an in-depth analysis of the Payload ransomware group, including its encryption scheme, binary structure, and behavioral patterns. The author delivers multiple novel insights, such as the use of Curve25519 and ChaCha20 encryption, the RC4-encrypted footer, and the anti-forensics techniques employed by the malware. The content is rich in technical details, making it a valuable resource for security professionals and researchers. The only drawback is the lack of a clear conclusion or recommendation for mitigation strategies.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T22:32:52.549743"
-    },
-    {
-      "id": 1075,
-      "source_id": 4,
-      "original_url": "https://nullcathedral.com/posts/2026-03-16-perfex-crm-unauthenticated-rce-insecure-deserialization/",
-      "title": "Perfex CRM <=3.4.0 allows unauthenticated RCE via insecure deserialization — NULL CATHEDRAL",
-      "summary": "PHP's obscure `S:` serialization format can bypass null-byte stripping filters to achieve unauthenticated RCE.",
-      "ideas": [
-        "Perfex CRM allowed unauthenticated RCE via insecure deserialization",
-        "PHP's `S:` serialization format hex-encodes characters to bypass filters",
-        "CodeIgniter's XSS filter strips null bytes required for private properties",
-        "GuzzleHttp FileCookieJar gadget chain writes arbitrary files to disk",
-        "Wrapping gadget objects in arrays bypasses `isset()` type checks",
-        "Hex encoding payload characters prevents `xss_clean` from stripping PHP tags",
-        "Remediation involves replacing serialization with JSON encoding"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 92,
-      "rating_reason": "This is exceptional technical content that delivers expert-level insight on bypassing security controls via PHP internals. It reveals a novel technique using PHP's obscure `S:` serialization format to circumvent null-byte stripping in XSS filters, providing deep value for security researchers. The post efficiently combines vulnerability analysis, historical context, and concrete remediation without fluff.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T22:32:44.422957"
-    },
-    {
-      "id": 1074,
-      "source_id": 10,
-      "original_url": "https://www.youtube.com/watch?v=I0me2uEbfuE",
-      "title": "Every AI Model Explained in 20 Minutes",
-      "summary": "The video explains different types of artificial intelligence models, including Chat GPT, Claude, Gemini, and Grok, and discusses their features, pricing, and use cases, as well as open-source and image generation models.",
-      "ideas": [
-        "Chat GPT is a large language model with image generation and voice capabilities",
-        "Claude is an AI model with better coding and writing capabilities",
-        "Gemini is Google's AI model with fast performance and best integrations",
-        "Grock is Elon Musk's AI model with excellent Twitter search capabilities",
-        "Open-source models offer better privacy and control but are less powerful than hosted models",
-        "Image generation models can create realistic images from prompts",
-        "Video generation models are more difficult to run locally and require powerful hardware"
-      ],
-      "labels": [],
-      "rating": 82,
-      "rating_reason": "The content provides a comprehensive overview of various AI models, including their features, pricing plans, and use cases. It also covers open-source models, image generation models, and video generation models, making it a valuable resource for those interested in AI. However, the content is somewhat promotional, especially when discussing the sponsor, MedO, which reduces its overall value.",
-      "source_type": "youtube",
-      "source_name": "Matthew Berman",
-      "published_at": "2026-03-16T22:32:08.505478"
-    },
-    {
-      "id": 1073,
-      "source_id": 4,
-      "original_url": "https://rushter.com/blog/github-malware/",
-      "title": "The rise of malicious repositories on GitHub | Artem Golubin ",
-      "summary": "Malicious repositories on GitHub are on the rise, with some mimicking legitimate repositories and others being completely generated by LLMs to get traffic from search engines and GitHub.",
-      "ideas": [
-        "Malicious repositories on GitHub are increasing",
-        "Fake repositories mimic legitimate ones",
-        "LLMs generate repositories for search engine traffic",
-        "GitHub search can be used to find malicious links",
-        "Browsers often refuse to download flagged malicious files"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 82,
-      "rating_reason": "The article provides a genuine insight into the rise of malicious repositories on GitHub, with the author sharing a personal experience of discovering a fake repository and reporting it to GitHub. The content delivers practical knowledge on how to identify such repositories and includes a simple dork for GitHub search. However, the article could benefit from more in-depth analysis and expert insight. The thematic relevance is strong, aligning with the CyberSecurity theme.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T16:35:09.817606"
-    },
-    {
-      "id": 1072,
-      "source_id": 4,
-      "original_url": "https://github.com/orinimron123/DriverExplorer",
-      "title": "Launch GUI",
-      "summary": "DriverExplorer is a powerful tool for managing and analyzing Windows kernel drivers, offering real-time enumeration, digital signature verification, and multi-format exports through a modern GUI and CLI interface.",
-      "ideas": [
-        "Real-time driver enumeration",
-        "Digital signature verification",
-        "Service control management",
-        "Multi-format exports",
-        "GUI and CLI interfaces",
-        "Driver registration and unregistration",
-        "Configurable start type and driver type",
-        "UAC elevation via ShellExecuteW"
-      ],
-      "labels": [
-        "Tech",
-        "Sysadmin"
-      ],
-      "rating": 85,
-      "rating_reason": "This content provides a comprehensive overview of the DriverExplorer tool, including its features, technical stack, and usage. The tool itself offers significant value in managing and analyzing Windows kernel drivers, with a user-friendly GUI and CLI interface. The content is well-structured, informative, and free of fluff, making it a valuable resource for those interested in driver management. However, the content's focus is somewhat niche, limiting its broader appeal.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T16:33:26.184726"
-    },
-    {
-      "id": 1071,
-      "source_id": 4,
-      "original_url": "https://github.com/pikpikcu/airecon",
-      "title": "Add to ~/.bashrc or ~/.zshrc if needed",
-      "summary": "AIRecon enables fully offline, LLM-powered autonomous penetration testing by integrating a local model with a Kali Docker sandbox.",
-      "ideas": [
-        "Combine self-hosted Ollama LLM with Kali Docker sandbox for offline pentesting.",
-        "Use a RECON → ANALYSIS → EXPLOIT → REPORT pipeline guided by AI.",
-        "Minimum model size 30B parameters; smaller models hallucinate tool output.",
-        "Export PATH to include ~/.local/bin after install.",
-        "Configuration file allows tuning temperature, context size, and tool iteration limits.",
-        "Built-in Caido integration provides native proxy tools for replay and fuzzing.",
-        "Troubleshoot Ollama OOM by reducing context size or restarting service.",
-        "Sessions persist with detailed recon data in ~/.airecon/sessions.",
-        "Ethical disclaimer stresses authorized use only for security assessments."
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech"
-      ],
-      "rating": 82,
-      "rating_reason": "The README delivers concrete, actionable knowledge for setting up and using an offline AI-driven pentesting tool, offering multiple practical insights (installation, model specs, config tuning, usage examples, troubleshooting). It aligns strongly with CyberSecurity and AI themes and contains no clickbait or padding, resulting in good value density for its ~900-word length.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T16:32:15.928192"
-    },
-    {
-      "id": 1070,
-      "source_id": 4,
-      "original_url": "https://github.com/ray-project/ray",
-      "title": "Skip to content",
-      "summary": "Ray is a unified framework for scaling AI and Python applications, consisting of a core distributed runtime and a set of AI libraries for simplifying ML compute.",
-      "ideas": [
-        "Ray is a unified framework for scaling AI and Python applications",
-        "Ray consists of a core distributed runtime and AI libraries",
-        "Ray AI libraries include Data, Train, Tune, RLlib, and Serve",
-        "Ray Core includes Tasks, Actors, and Objects",
-        "Ray supports monitoring and debugging with the Ray Dashboard and Distributed Debugger",
-        "Ray can run on any machine, cluster, cloud provider, and Kubernetes"
-      ],
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The content provides a comprehensive overview of the Ray framework, including its core components, AI libraries, and key abstractions. It also offers resources for learning more about Ray, such as documentation, whitepapers, and community forums. The content is well-structured and easy to follow, making it a valuable resource for developers and users. However, it lacks novel insights and practical knowledge, which prevents it from receiving a perfect score.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T16:32:07.936727"
-    },
-    {
-      "id": 1069,
-      "source_id": 1,
-      "original_url": "https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/",
-      "title": "What is agentic engineering?",
-      "summary": "Software engineering is shifting from writing syntax to managing coding agents that write and execute code in loops, making code generation cheap while increasing the importance of defining goals and navigating tradeoffs.",
-      "ideas": [
-        "Agents run tools in a loop to achieve a goal",
-        "Coding agents must both write and execute code",
-        "Code execution is the defining capability of agentic engineering",
-        "Engineers must navigate tradeoffs rather than just write code",
-        "Writing code is cheap, shifting value to decision making",
-        "Agents don't learn unless instructions are deliberately updated"
-      ],
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "rating": 82,
-      "rating_reason": "This content provides high-density value by succinctly defining the often-misunderstood term 'agentic engineering' and grounding it in a practical mental model (agents running tools in a loop). It efficiently shifts the reader's perspective on the software engineer's evolving role from code generation to architectural oversight and verification, aligning perfectly with high-value AI and Technology themes.",
-      "source_type": "rss",
-      "source_name": "Simon Willison's Weblog",
-      "published_at": "2026-03-16T10:32:20.558297"
-    },
-    {
-      "id": 1068,
-      "source_id": 7,
-      "original_url": "https://tessl.io/blog/context-development-lifecycle-better-context-for-ai-coding-agents/",
-      "title": "The Context Development Lifecycle 👌\n\n- from the father of DevOps (@patrickdebois )",
-      "summary": "Effective AI coding hinges on engineering context with a disciplined lifecycle, not just larger models.",
-      "ideas": [
-        "Context is the new bottleneck in AI‑assisted software development.",
-        "Treat context as an engineering artifact with generate‑evaluate‑distribute‑observe stages.",
-        "Use TDD‑style evaluations to test context specifications.",
-        "Version and secure context packages like code dependencies.",
-        "Continuously observe agent output to identify context gaps.",
-        "Infinite context windows increase conflicts, requiring governance.",
-        "Better context, not bigger models, determines success with coding agents.",
-        "Collaboration shifts to a shared human‑agent vocabulary."
-      ],
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "rating": 82,
-      "rating_reason": "The article offers several concrete, novel insights—treating context as a versioned, testable artifact and outlining a generate‑evaluate‑distribute‑observe lifecycle—providing actionable guidance for AI‑assisted development. It aligns well with AI, tech, and productivity themes and contains few padding or clickbait, though it leans heavily on conceptual discussion rather than concrete tools, keeping it solidly good but not exceptional.",
-      "source_type": "nitter",
-      "source_name": "Bilgin Ibryam",
-      "published_at": "2026-03-16T04:35:01.357295"
-    },
-    {
-      "id": 1067,
-      "source_id": 4,
-      "original_url": "https://grantex.dev/report/state-of-agent-security-2026",
-      "title": "Research Report",
-      "summary": "A research report exposes significant security vulnerabilities in AI agent projects, highlighting the need for scoped tokens, per-agent identity, user consent, granular revocation, audit trails, and delegation control to prevent authorization gaps and potential attacks.",
-      "ideas": [
-        "Unscoped API keys are widely used in AI agent projects",
-        "Lack of per-agent identity hinders action attribution and authorization",
-        "User consent is absent in most AI agent projects",
-        "Revocation mechanisms are often all-or-nothing, not granular",
-        "Audit trails are rare and not tied to authorization grants",
-        "Delegation control is unimplemented, leading to privilege escalation risks"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI"
-      ],
-      "rating": 95,
-      "rating_reason": "This research report provides exceptional value by revealing alarming security gaps in popular AI agent projects, including the widespread use of unscoped API keys, lack of per-agent identity, and absence of user consent mechanisms. The report delivers multiple novel insights, backed by a thorough audit of 30 projects and real-world incident examples, making it highly relevant to the theme of CyberSecurity and AI. The content is dense with valuable information, including a comprehensive framework-by-framework audit, alignment with OWASP Agentic Top 10 risks, and actionable recommendations for implementing authorization primitives.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T04:34:54.374693"
-    },
-    {
-      "id": 1066,
-      "source_id": 4,
-      "original_url": "https://arxiv.org/html/2512.20334",
-      "title": "Comment Traps: How Defective Commented-Out Code Augment Defects in AI-Assisted Code Generation",
-      "summary": "Defective commented-out code can significantly increase the rate of defects in AI-generated code, with AI coding assistants actively reasoning to complete incomplete defect patterns and continuing to produce defective code despite distractions.",
-      "ideas": [
-        "Defective commented-out code affects AI-assisted code generation",
-        "AI coding assistants interpret CO code as part of the prompt",
-        "Defects in CO code lead to additional flaws in generated code",
-        "AI assistants reason to complete incomplete defect patterns",
-        "Explicit instructions to ignore defective CO code reduce defects by up to 21.84%",
-        "Improved robustness and security measures are needed in AI coding assistants"
-      ],
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "rating": 92,
-      "rating_reason": "This research paper delivers high value by exploring the underexamined impact of defective commented-out code on AI-assisted code generation, providing novel insights into how AI coding assistants interpret and generate code based on such prompts. The study's methodology, experimental design, and results offer a comprehensive understanding of the issue, making it a significant contribution to the field of software engineering and AI-assisted coding. The paper's thematic relevance to TECHNOLOGY & INNOVATION, specifically AI and software development, is strong.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T04:33:00.535993"
-    },
-    {
-      "id": 1065,
-      "source_id": 4,
-      "original_url": "https://www.theguardian.com/us-news/2026/mar/15/hacked-data-homeland-security",
-      "title": "Hacked data shines light on homeland security’s AI surveillance ambitions | US news | The Guardian",
-      "summary": "Hacked DHS data exposes millions in funding for AI tools that expand biometric scanning and predictive policing capabilities.",
-      "ideas": [
-        "DHS incubator funded AI surveillance via hacked data",
-        "$845m spent on 1,400 surveillance tech contracts",
-        "Phone adapters enable biometric scanning for agents",
-        "Airport AI analyzes physical characteristics via CCTV",
-        "Predictive policing AI maps 911 call data nationally",
-        "Past behavior detection programs failed and cost $900m",
-        "Specific companies funded include Intellisense and Idea Mind"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Philosophy"
-      ],
-      "rating": 82,
-      "rating_reason": "This content provides significant value through exclusive reporting based on leaked data, offering concrete details on specific DHS contracts and technologies like phone-based biometric scanners and airport surveillance AI. It delivers high information density with actionable intelligence regarding government spending and corporate partnerships in surveillance, strongly aligning with CyberSecurity and AI themes.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-16T04:32:52.685834"
-    },
-    {
-      "id": 1064,
-      "source_id": 4,
-      "original_url": "https://arstechnica.com/security/2026/03/supply-chain-attack-using-invisible-code-hits-github-and-other-repositories/",
-      "title": "Supply-chain attack using invisible code hits GitHub and other repositories - Ars Technica",
-      "summary": "Attackers are using invisible Unicode characters to hide malicious payloads in code repositories, bypassing visual reviews and static analysis tools.",
-      "ideas": [
-        "Invisible Unicode characters hide malicious code in repositories",
-        "\"Glassworm\" group attacks GitHub, NPM, and Open VSX",
-        "Attackers likely use LLMs to scale malicious package creation",
-        "Public Use Areas render visible code to computers, not humans",
-        "Static analysis tools fail to detect invisible character payloads",
-        "Malware uses decoders to translate whitespace into executable bytes",
-        "Previously abandoned Unicode technique revived for modern attacks"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech"
-      ],
-      "rating": 82,
-      "rating_reason": "The article provides high-density technical reporting on a novel supply-chain attack vector using invisible Unicode characters. It offers specific insights into the mechanics (public use areas, decoding functions), the suspected role of LLMs in scaling the attack, and historical context, making it highly relevant for security professionals and developers.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-15T22:34:39.403103"
-    },
-    {
-      "id": 1063,
-      "source_id": 4,
-      "original_url": "https://haveibeenpwned.com/Breach/DivineSkins",
-      "title": "Have I Been Pwned: Divine Skins Data Breach",
-      "summary": "The Divine Skins data breach exposed email addresses, usernames, and purchase history of 105.8 thousand accounts, prompting users to change passwords and enable two-factor authentication to protect against potential fraud.",
-      "ideas": [
-        "Divine Skins suffered a data breach in March 2026",
-        "Compromised data includes email addresses, usernames, and purchase history",
-        "Use a password manager for strong, unique passwords",
-        "Enable two-factor authentication for extra security",
-        "Monitor for identity fraud with real-time alerts"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 80,
-      "rating_reason": "The content provides a clear and concise overview of the Divine Skins data breach, including the compromised data and recommended actions for affected users. It also offers relevant advice and resources for protecting against identity fraud and data breaches, aligning well with the CyberSecurity theme. However, the presence of sponsored content slightly detracts from the overall value.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-15T22:32:49.924478"
     }
   ]
 }
