@@ -1,7 +1,325 @@
 {
-  "updated_at": "2026-03-26T17:00:00.067766",
+  "updated_at": "2026-03-26T20:00:00.067811",
   "total_items": 100,
   "items": [
+    {
+      "id": 1310,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2024-54676-apache-openmeetings-openjpa-rce/",
+      "title": "CVE-2024-54676: Apache OpenMeetings OpenJPA RCE Explained",
+      "summary": "Properly configuring OpenJPA’s serialization blacklist and whitelist eliminates the CVE‑2024‑54676 RCE vector.",
+      "ideas": [
+        "CVE-2024-54676 is a critical Java deserialization RCE in Apache OpenMeetings OpenJPA.",
+        "Vulnerability stems from TCPRemoteCommitProvider deserializing without authentication or filtering.",
+        "Exploiting requires sending crafted packet to port 5636, achieving root in containerized deployments.",
+        "Lab can be reproduced using Docker Compose with vulnerable server and exploit scripts.",
+        "Patch adds OpenJPA serialization blacklist and whitelist via JVM options to block gadget classes.",
+        "Mitigation includes configuring blacklist/whitelist and restricting network access to the TCP port."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: a clear explanation of the CVE, step‑by‑step lab setup with Docker, detailed patch diff showing how serialization controls are enabled, an attack flow overview, and actionable mitigation guidance. The content aligns well with cybersecurity and technical themes and, despite some duplicated navigation menus, delivers dense, practical insight for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:52:08.633050"
+    },
+    {
+      "id": 1309,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/03/claude-extension-flaw-enabled-zero.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "An overly permissive origin allowlist combined with an XSS flaw enabled zero‑click prompt injection in the Claude Chrome extension, now patched.",
+      "ideas": [
+        "Overly permissive origin allowlist let any *.claude.ai subdomain send prompts to Claude.",
+        "DOM‑based XSS existed in Arkose Labs CAPTCHA on a‑cdn.claude.ai.",
+        "Attack uses hidden iframe, postMessage, and XSS to inject prompts without user interaction.",
+        "Zero‑click exploit can steal tokens, conversation history, and send impersonated emails.",
+        "Patch 1.0.41 enforces exact origin match \"claude.ai\" to block the flaw.",
+        "Arkose Labs fixed the underlying XSS vulnerability on Feb 19, 2026.",
+        "AI browser assistants are high‑value targets due to autonomous capabilities."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable security insights about a novel zero‑click XSS chain affecting an AI browser extension, including technical details and mitigation steps, which aligns with cybersecurity and AI themes. While it contains some promotional boilerplate, the core content is concise and dense with five distinct value instances, earning a solid good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:49:49.028113"
+    },
+    {
+      "id": 1308,
+      "source_id": 4,
+      "original_url": "https://any.run/cybersecurity-blog/banks-magecart-campaign/",
+      "title": "Global Magecart Campaign Puts Banks Under Pressure",
+      "summary": "Magecart attackers sustain a global, multi‑stage campaign by mimicking payment systems and using resilient, dynamic delivery methods.",
+      "ideas": [
+        "Magecart campaign persisted over 24 months using 100+ domains",
+        "Attackers mimic payment providers like Spain's Redsys to increase success",
+        "WebSocket exfiltration evades traditional monitoring tools",
+        "Multi‑stage loader uses fallback domains for resilience",
+        "Dynamic payload delivery enables rapid adaptation and avoids re‑infection",
+        "LocalStorage persistence and masquerading as legit libraries aid stealth",
+        "Compromised e‑commerce sites cause financial loss primarily for banks",
+        "Campaign is global but tailored to regional payment ecosystems",
+        "Obfuscated JavaScript loader fetches configuration via encoded numeric arrays",
+        "Attack replaces legitimate checkout UI with malicious overlay"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete insights about a long‑running Magecart operation, including technical delivery mechanisms, payment‑page mimicry, and WebSocket exfiltration, all highly relevant to cybersecurity. It provides actionable knowledge for defenders without excessive filler, though the surrounding site navigation adds minor padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:47:44.343258"
+    },
+    {
+      "id": 1307,
+      "source_id": 4,
+      "original_url": "https://fortgale.com/blog/defence/operation-storming-tide/",
+      "title": "Operation Storming Tide: A massive multi-stage intrusion campaign",
+      "summary": "Storming Tide shows threat actors using VPN persistence, a MaaS loader, and living‑off‑the‑land tools for stealthy espionage and possible ransomware.",
+      "ideas": [
+        "Storming Tide campaign links multiple Russian criminal groups via shared C2 infrastructure",
+        "Threat actor used compromised Fortinet firewall to create persistent VPN tunnel",
+        "Matanbuchus 3.0 loader offers in‑memory execution and encrypted Protobuf communication",
+        "First documented use of SystemBC proxy deployed through Matanbuchus",
+        "RClone leveraged as living‑off‑the‑land tool for high‑volume data exfiltration to S3",
+        "Mora_001 shifted from rapid ransomware to patient espionage with months of dwell time",
+        "Exploited CVE‑2024‑55591 and CVE‑2025‑24472 to gain initial firewall access",
+        "Dual‑purpose operations combine intelligence collection with potential ransomware payout",
+        "Malware‑as‑a‑Service model prices Matanbuchus at $10‑15k per month",
+        "Attack chain: loader → RAT → proxy → exfiltration utility"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The report provides numerous concrete insights—including a novel coordinated campaign, VPN tunnel persistence, detailed malware capabilities, and the first documented SystemBC deployment—delivered efficiently without filler or promotional content. Its strong focus on cyber‑threat tactics aligns tightly with the CyberSecurity theme, resulting in high value density. No significant penalties apply.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:46:22.916012"
+    },
+    {
+      "id": 1306,
+      "source_id": 4,
+      "original_url": "https://blog.dshr.org/2026/03/the-handoff-problem.html",
+      "title": "DSHR's Blog: The Handoff Problem",
+      "summary": "Improved automation makes human handoffs rarer but more hazardous, exposing a critical safety gap.",
+      "ideas": [
+        "As autonomous systems improve, human drivers lose skills, worsening handoff problem.",
+        "Waymo eliminates handoff by using remote operators and detailed maps.",
+        "Tesla relies on Level 2 driver assist, requiring frequent human takeover.",
+        "Drivers overtrust near-perfect automation, leading to slower reaction times.",
+        "Studies show driver disengagement increases sixfold after months of adaptive cruise use.",
+        "Tesla robotaxi crashes six times more often than human-driven taxis.",
+        "Scaling constraints prevent Tesla from deploying remote operators like Waymo.",
+        "Mass-market self-driving may require handoff once per year, eroding driver skill."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post offers several concrete insights—data on Tesla crash rates, a study on driver disengagement, and a clear comparison of Waymo’s remote‑operator model versus Tesla’s Level‑2 handoff reliance—providing genuine value for readers interested in AI‑driven transportation. It stays on topic without clickbait or excessive padding, aligning well with AI and technology themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:44:04.223930"
+    },
+    {
+      "id": 1305,
+      "source_id": 4,
+      "original_url": "https://www.mdsec.co.uk/2026/03/disabling-security-features-in-a-locked-bios/",
+      "title": "Disabling Security Features in a Locked BIOS - MDSec",
+      "summary": "By extracting and editing the BIOS Setup module’s NVRAM variable, you can silently disable pre‑boot DMA protection.",
+      "ideas": [
+        "Firmware can be patched at flash level to disable pre‑boot DMA protection without visible BIOS changes.",
+        "Use flashrom with internal programmer to dump BIOS image: flashrom -p internal -r dump.bin --ifd -i bios.",
+        "Locate the Setup module in the BIOS dump using UEFITool’s search for “Setup”.",
+        "Extract the PE32 image from the Setup module and parse IFR with IFRExtractor to view option data.",
+        "Identify “Control Iommu Pre‑boot Behavior” variable via VarStoreId 0x1, VarOffset 0x975, size 1 byte.",
+        "Modify the corresponding byte to disable DMA protection, then reflash the modified image to the chip."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable guidance for disabling pre‑boot DMA protection by patching UEFI firmware, including specific tools (flashrom, UEFITool, IFRExtractor) and detailed variable interpretation. It offers multiple practical value instances without clickbait or excessive promotion, aligning well with cybersecurity and low‑level tech themes. The density is solid for a medium‑length technical guide.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:43:03.442778"
+    },
+    {
+      "id": 1304,
+      "source_id": 4,
+      "original_url": "https://www.anvilsecure.com/blog/exploiting-aql-injection-vulnerabilities-in-arangodb.html",
+      "title": "Exploiting AQL Injection Vulnerabilities in ArangoDB",
+      "summary": "AQL injections can be exploited and mitigated by using parameterized queries and error‑based techniques, with tools like aqlmap to automate attacks.",
+      "ideas": [
+        "AQL injection occurs when user input is concatenated into query strings without sanitization.",
+        "Parameterized AQL queries use @ for values and @@ for collection names to prevent injection.",
+        "The FAIL() function can force error messages containing attacker‑controlled data for exfiltration.",
+        "Blind, error‑based, reflected, and time‑based techniques can automate data extraction from vulnerable AQL.",
+        "Use Docker to spin up a local ArangoDB instance for safe injection testing.",
+        "The COLLECTIONS() function returns all collection names, aiding enumeration after a successful injection.",
+        "ArangoDB’s AQL differs from SQL in comment syntax and case sensitivity of variables.",
+        "The open‑source tool aqlmap implements multiple AQL injection techniques for automated exploitation.",
+        "Verbose error messages reveal syntax errors that can indicate injection points.",
+        "Dynamic collection names can be safely injected using @@ syntax in parameterized queries."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides multiple concrete insights such as parameterized AQL syntax, error‑based data exfiltration, and a practical tool (aqlmap), delivering high value for security professionals. It stays focused, avoids clickbait, and aligns well with cybersecurity and technology themes, though its length limits density slightly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-27T04:41:23.275705"
+    },
+    {
+      "id": 1303,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/03/26/coding-guidelines-for-ai-agents-and-people-too/",
+      "title": "Building shared coding guidelines for AI (and people too)",
+      "summary": "Creating effective coding guidelines for AI agents and human developers requires a thoughtful and structured approach, emphasizing clarity, consistency, and feedback loops to ensure high-quality and maintainable code.",
+      "ideas": [
+        "Coding guidelines for AI agents need to be explicit and demonstrative",
+        "Clear and consistent language is crucial for effective guidelines",
+        "Examples and feedback loops are essential for improving guidelines",
+        "Guidelines should be tailored to the organization's specific needs and context",
+        "Human feedback and review are critical for ensuring guideline effectiveness"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a comprehensive guide on creating coding guidelines for AI agents and human developers, emphasizing the importance of explicit, demonstrative, and obvious guidelines. It offers practical advice on how to create and implement these guidelines, including the use of clear and consistent language, examples, and feedback loops. The article is well-structured, well-researched, and provides valuable insights for software engineers and organizations looking to improve their coding practices.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-03-27T04:40:19.191250"
+    },
+    {
+      "id": 1302,
+      "source_id": 15,
+      "original_url": "https://www.provos.org/p/ironcurtain-secure-personal-assistant",
+      "title": "IronCurtain: A Personal AI Assistant Built Secure from the Ground Up",
+      "summary": "IronCurtain is a personal AI assistant that prioritizes security through sandboxing LLM-generated code and policy enforcement.",
+      "ideas": [
+        "Building AI assistants with security in mind",
+        "Sandboxing LLM-generated code for security",
+        "Enforcing policy in plain English",
+        "Keeping credentials secure from AI agents"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a novel idea by introducing IronCurtain, a personal AI assistant built with security in mind from the start. It efficiently delivers insights into how IronCurtain sandboxes LLM-generated code and enforces policy, showcasing a high value density. The thematic relevance is strong, aligning with AI and security themes.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-27T04:38:48.780762"
+    },
+    {
+      "id": 1301,
+      "source_id": 15,
+      "original_url": "https://ctrlaltintel.com/threat%20research/FancyBear",
+      "title": "FancyBear Exposed: Major OPSEC Blunder Inside Russian Espionage Ops",
+      "summary": "FancyBear's espionage campaign was compromised due to an exposed open-directory on a C2 server, revealing sensitive information and exfiltrated data from government and military entities across several countries.",
+      "ideas": [
+        "FancyBear exposed due to OPSEC blunder",
+        "Exfiltrated data from 500+ day espionage campaign",
+        "Toolkit and telemetry logs revealed",
+        "2,800+ emails and 240+ credential sets compromised",
+        "TOTP 2FA secrets exposed"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content delivers high value by exposing a significant OPSEC blunder in FancyBear's operations, revealing their toolkit, telemetry logs, and exfiltrated data from a long-term espionage campaign. This insight is highly relevant to cybersecurity and provides actionable information for blue teams. The content is concise and efficiently delivers its findings, with no apparent padding or sensationalism.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-27T04:38:12.141064"
+    },
+    {
+      "id": 1300,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=ETlh_DVUU4A",
+      "title": "The Hotdog Effect: Secrets of the World’s #1 Restaurants - Will Guidara",
+      "summary": "The key to success lies in providing 'unreasonable hospitality' by making people feel seen, cared for, and connected, rather than just delivering good service.",
+      "ideas": [
+        "Unreasonable hospitality is about making people feel seen and cared for",
+        "Hospitality is different from service",
+        "People remember how you made them feel, not what you did",
+        "Trust is key in building strong relationships",
+        "Leaders should prioritize their team's growth and well-being",
+        "Childlike wonder and curiosity can be beneficial in adulthood",
+        "Language and articulation of values are crucial for effective leadership"
+      ],
+      "labels": [],
+      "rating": 85,
+      "rating_reason": "This content delivers high value through its exploration of the concept of 'unreasonable hospitality' and its application in achieving success. It provides novel insights into the importance of making people feel seen and cared for, and offers practical advice on how to implement this approach. The conversation is engaging, and the themes of hospitality, personal growth, and leadership are strongly aligned with high-value themes. The content is dense with meaningful ideas and avoids common pitfalls like clickbait or shallow treatment.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-03-27T04:34:52.587121"
+    },
+    {
+      "id": 1299,
+      "source_id": 15,
+      "original_url": "https://www.beyondtrust.com/blog/entry/pwning-aws-agentcore-code-interpreter",
+      "title": "Pwning AI Code Interpreters in AWS Bedrock AgentCore",
+      "summary": "AWS Bedrock AgentCore's Sandbox mode can be exploited for bidirectional communication and data exfiltration despite its 'complete isolation' claim.",
+      "ideas": [
+        "AWS Bedrock AgentCore's Sandbox allows public DNS queries",
+        "Custom tunneling protocol via DNS for C2",
+        "Obtaining full interactive reverse shell",
+        "Data exfiltration via DNS queries",
+        "Command execution within Code Interpreter"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content delivers high-value insights into a critical vulnerability in AWS Bedrock AgentCore, specifically how its Sandbox network mode can be exploited for bidirectional communication and data exfiltration. The post provides a detailed walkthrough of establishing a custom tunneling protocol via DNS queries, obtaining a reverse shell, and executing commands. This is a significant finding with strong thematic relevance to cloud security and AI code interpreters. The content's density is high, with multiple novel ideas presented efficiently.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-27T04:34:19.031039"
+    },
+    {
+      "id": 1298,
+      "source_id": 15,
+      "original_url": "https://pentesterlab.com/blog/freshrss-bcrypt-truncation-auth-bypass",
+      "title": "How \"Strengthening Crypto\" Broke Authentication: FreshRSS and bcrypt's 72-Byte Limit",
+      "summary": "Changing a nonce to SHA‑256 can exceed bcrypt’s input limit, unintentionally breaking authentication.",
+      "ideas": [
+        "Replacing SHA‑1 with SHA‑256 increased nonce length to 64 characters.",
+        "bcrypt processes only the first 72 bytes of input, truncating longer strings.",
+        "Concatenating a long nonce with the bcrypt hash caused password verification to ignore the password portion.",
+        "The “strengthen crypto” commit unintentionally introduced an authentication bypass (CVE‑2025‑68402).",
+        "Security changes must consider downstream effects on existing cryptographic primitives."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The piece delivers concrete, actionable insight into bcrypt’s 72‑byte truncation limit and how a well‑intentioned crypto upgrade caused an auth bypass (CVE‑2025‑68402). It provides a real‑world example and a cautionary lesson for developers, with no filler or promotional content. The content is concise yet dense, aligning strongly with cybersecurity themes.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-03-27T04:32:19.622705"
+    },
     {
       "id": 1297,
       "source_id": 4,
@@ -2114,333 +2432,6 @@
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
       "published_at": "2026-03-22T10:32:44.156678"
-    },
-    {
-      "id": 1210,
-      "source_id": 4,
-      "original_url": "https://www.welivesecurity.com/en/eset-research/edr-killers-explained-beyond-the-drivers/",
-      "title": "EDR killers explained: Beyond the drivers",
-      "summary": "EDR killers are ubiquitous in modern ransomware because they offer operational stability, but relying on driver signatures for attribution is misleading due to widespread reuse and independent tool selection by affiliates.",
-      "ideas": [
-        "Driver-based attribution is often misleading due to code reuse",
-        "Affiliates, not core operators, typically select EDR killer tools",
-        "BYOVD is dominant, but driverless methods are growing",
-        "Legitimate anti-rootkit tools are abused as EDR killers",
-        "EDR killers provide predictable stability over code obfuscation",
-        "Analysis of nearly 90 EDR killers shows diverse techniques",
-        "AI is suspected to assist in developing some EDR killers",
-        "Vulnerable drivers offer kernel-level power for low cost"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 85,
-      "rating_reason": "This content provides high-value, expert-level analysis backed by telemetry from nearly 90 active EDR killers. It dispels industry misconceptions regarding driver-based attribution and offers a clear, technical categorization of disruption techniques, providing actionable intelligence for security professionals.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-22T10:32:36.487638"
-    },
-    {
-      "id": 1209,
-      "source_id": 1,
-      "original_url": "https://simonwillison.net/guides/agentic-engineering-patterns/using-git-with-coding-agents/",
-      "title": "Using Git with coding agents",
-      "summary": "Coding agents can automate and simplify complex Git workflows, turning version control into an interactive, error‑proof process.",
-      "ideas": [
-        "Prompt agents to init a new Git repository with “Start a new Git repo here”.",
-        "Use “Commit these changes” prompt to create commits via git commit -m.",
-        "Add a GitHub remote by prompting “Add username/repo as a github remote”.",
-        "Ask agents to “Review changes made today” to run git log and load recent context.",
-        "Request “Integrate latest changes from main” to fetch and merge using various strategies.",
-        "Let agents resolve merge conflicts by reasoning and running tests before finalizing.",
-        "Recover lost code using agents to search reflog and stash entries.",
-        "Have agents perform git bisect to locate bug‑introducing commits automatically.",
-        "Instruct agents to undo last commit with git reset --soft HEAD~1.",
-        "Combine multiple commits and improve messages using agents’ editorial taste.",
-        "Extract a subdirectory into a new repo while preserving its commit history via agents."
-      ],
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "rating": 82,
-      "rating_reason": "The guide offers numerous actionable prompts and techniques for leveraging coding agents with Git, providing concrete value such as automated conflict resolution, bisecting bugs, history rewriting, and repository extraction. It aligns well with AI and technology themes and contains no clickbait or excessive padding, earning a strong but not exceptional score.",
-      "source_type": "rss",
-      "source_name": "Simon Willison's Weblog",
-      "published_at": "2026-03-22T10:32:08.453473"
-    },
-    {
-      "id": 1208,
-      "source_id": 14,
-      "original_url": "https://www.youtube.com/watch?v=Gh3U8GWuNAw",
-      "title": "A Masterclass in Changing Your Limiting Beliefs - Nir Eyal",
-      "summary": "Your brain constructs reality based on limited processing capacity and existing beliefs, meaning you can strategically adopt empowering beliefs or rituals like prayer to improve outcomes even without supernatural faith.",
-      "ideas": [
-        "Beliefs shape physical perception (Khafra illusion)",
-        "Placebos work effectively even when you know they are placebos",
-        "Distinction between sickness (body) and illness (perception)",
-        "Prayer improves health metrics even without supernatural faith",
-        "Spiritual but not religious demographic has highest anxiety rates",
-        "Brain receives 11 million bits but processes only 50",
-        "Reality is a prediction based on priors (predictive processing)",
-        "Limiting beliefs are automatic delusions you can choose to change"
-      ],
-      "labels": [],
-      "rating": 82,
-      "rating_reason": "The content delivers high value density by synthesizing complex psychological concepts like predictive processing and the placebo effect into actionable advice. It provides counter-intuitive insights, such as the efficacy of open-label placebos and the benefits of religious ritual without faith, supported by specific studies (Kaptchuk, pain tolerance tests). Strong alignment with human development and science themes.",
-      "source_type": "youtube",
-      "source_name": "Chris Williamson",
-      "published_at": "2026-03-22T04:32:36.641040"
-    },
-    {
-      "id": 1207,
-      "source_id": 4,
-      "original_url": "https://unit42.paloaltonetworks.com/retail-fraud-agentic-ai/",
-      "title": "Who’s Really Shopping? Retail Fraud in the Age of Agentic AI",
-      "summary": "Agentic AI agents can be hijacked via indirect prompt injection, enabling hidden gift‑card purchases and unauthorized refunds that threaten retailer security.",
-      "ideas": [
-        "Agentic commerce could handle 15‑25% of e‑commerce volume by 2030",
-        "AI‑enabled fraud may cause one in four data breaches by 2028",
-        "Indirect prompt injection can add hidden gift‑card line items to checkout payloads",
-        "Malicious metadata can hijack return logic to issue instant refunds without shipment",
-        "Organized retail crime costs average $700k per $1B sales, rising 57% year‑over‑year",
-        "Google’s Universal Commerce Protocol provides tokenized payments and verifiable credentials",
-        "Retailers must design UI to expose hidden line‑items to prevent chargeback damage"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The article delivers several concrete value instances: market forecasts for agentic AI, breach statistics, detailed threat scenarios (gift‑card theft and returns fraud via indirect prompt injection), and actionable insights on how these attacks could unfold. It aligns well with CyberSecurity and AI themes and contains no clickbait or excessive padding, though it is promotional in nature. The density of insights is solid for its length, justifying a good rating.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T16:36:14.696986"
-    },
-    {
-      "id": 1206,
-      "source_id": 4,
-      "original_url": "https://www.scworld.com/news/critical-langflow-rce-vulnerability-exploited-within-20-hours",
-      "title": "Critical Langflow RCE vulnerability exploited within 20 hours",
-      "summary": "A critical Langflow RCE vulnerability was exploited within 20 hours of disclosure, with attackers using the vulnerability to exfiltrate sensitive data and highlighting the need for timely patching and behavior-based runtime detection solutions.",
-      "ideas": [
-        "Langflow RCE vulnerability exploited within 20 hours",
-        "Attackers used vulnerability to exfiltrate sensitive data",
-        "Timely patching is crucial to prevent exploitation",
-        "Behavior-based runtime detection solutions can help recognize exploitation patterns",
-        "Deception infrastructure can surface intrusions silently"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 85,
-      "rating_reason": "The article provides a detailed and timely report on the exploitation of a critical Langflow RCE vulnerability, including specific examples of attack attempts and recommendations for mitigation. It demonstrates strong thematic relevance to cybersecurity and vulnerability management, with a high value density due to the inclusion of technical details and expert insights. However, the presence of advertisements and some tangential information slightly reduces the overall score.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T16:36:07.611529"
-    },
-    {
-      "id": 1205,
-      "source_id": 4,
-      "original_url": "https://www.bleepingcomputer.com/news/security/fbi-links-signal-phishing-attacks-to-russian-intelligence-services/",
-      "title": "FBI links Signal phishing attacks to Russian intelligence services",
-      "summary": "Russian intelligence services are conducting phishing attacks on Signal and WhatsApp users, bypassing encryption through account hijacks, and thousands of accounts have been compromised worldwide.",
-      "ideas": [
-        "Russian intelligence services are linked to phishing attacks on Signal and WhatsApp",
-        "Attackers bypass encryption through account hijacks, not by breaking encryption",
-        "Thousands of accounts have been compromised worldwide",
-        "Attackers target individuals with access to sensitive information",
-        "Victims are tricked into sharing verification codes or scanning malicious QR codes",
-        "Encryption in Signal and WhatsApp is not broken, and no vulnerabilities are being exploited"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 82,
-      "rating_reason": "The article provides high-value information about phishing attacks linked to Russian intelligence services targeting Signal and WhatsApp users. It delivers multiple insights, including the tactics used by the attackers, the impact of the attacks, and advice on how to stay safe. The content is well-researched, informative, and aligns strongly with the CyberSecurity theme.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T16:33:20.494042"
-    },
-    {
-      "id": 1204,
-      "source_id": 4,
-      "original_url": "https://agentseal.org/blog/toxic-data-flows-mcp-servers",
-      "title": "555 MCP Servers Have Toxic Data Flows | AgentSeal - AgentSeal",
-      "summary": "Individual safe tools can combine to create dangerous attack paths in AI agents, with risk growing quadratically as tools increase.",
-      "ideas": [
-        "Toxic data flows combine safe tools dangerously",
-        "Capable models follow injected instructions 73% of time",
-        "Tool risk grows quadratically, not linearly",
-        "10.8% of MCP servers have toxic flows",
-        "Risk exists at agent orchestration layer",
-        "Seven categories of compositional attack surface",
-        "Inherent capabilities differ from security defects",
-        "Static analysis + runtime probes reveal attack paths",
-        "Even safe-scoring servers harbor combined risks"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech"
-      ],
-      "rating": 88,
-      "rating_reason": "Original research introducing the novel concept of 'toxic data flows' in AI agent tool composition, supported by empirical data from 5,125 servers and runtime validation. High value density with actionable methodology, clear taxonomy of 7 attack vectors, and honest transparency about limitations. Strong alignment with CyberSecurity and AI themes.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T16:33:13.148388"
-    },
-    {
-      "id": 1203,
-      "source_id": 1,
-      "original_url": "https://simonwillison.net/2026/Mar/20/turbo-pascal/",
-      "title": "Turbo Pascal 3.02A, deconstructed",
-      "summary": "Modern LLMs can successfully decompile and visualize historical binaries, revealing how remarkably efficient early software engineering packed a full IDE and compiler into just 39KB.",
-      "ideas": [
-        "Modern LLMs can decompile historical binaries effectively",
-        "Turbo Pascal 3.02 packed full IDE in 39KB",
-        "Binary structure reveals 17 distinct functional segments",
-        "AI-assisted reverse engineering is now viable",
-        "Historical software offers lessons in efficiency optimization",
-        "Interactive visualization aids code understanding significantly"
-      ],
-      "labels": [
-        "Tech",
-        "AI"
-      ],
-      "rating": 85,
-      "rating_reason": "Exceptional value density with 7 distinct insights in a concise post pointing to an extensive interactive resource. The author demonstrates a novel application of AI for binary archaeology, created a genuinely useful tool for exploring Turbo Pascal's architecture, and shared reproducible methodology. Strong thematic relevance to Tech and AI, plus educational value about software optimization history.",
-      "source_type": "rss",
-      "source_name": "Simon Willison's Weblog",
-      "published_at": "2026-03-21T16:32:28.745698"
-    },
-    {
-      "id": 1202,
-      "source_id": 7,
-      "original_url": "https://agentultra.com/blog/how-i-learned-everything-i-know/index.html",
-      "title": "Agentultra - How I Learned Everything I Know About Programming",
-      "summary": "Active, curiosity‑driven practice and community engagement are essential for truly mastering programming, far beyond what LLM shortcuts can provide.",
-      "ideas": [
-        "Active learning and curiosity outperform passive LLM answers for programming mastery.",
-        "Retention improves by solving problems yourself rather than just reading solutions.",
-        "Explaining concepts to others solidifies your own understanding.",
-        "Use free resources like PLFA, NAND2Tetris, and open‑source code to learn fundamentals.",
-        "Community interaction provides feedback and motivation absent in LLM‑only learning.",
-        "Building small projects (text editor, hash table) reinforces language and system concepts.",
-        "Each new insight eases learning of related topics, creating a cumulative knowledge snowball."
-      ],
-      "labels": [
-        "Productivity",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The essay offers several concrete, actionable learning strategies and resource suggestions, providing genuine value for aspiring programmers. It includes novel insights about retention versus passive LLM use, practical project ideas, and the importance of community interaction, with no clickbait or padding. The content aligns well with productivity and tech themes, delivering a solid density of value for its length.",
-      "source_type": "nitter",
-      "source_name": "Bilgin Ibryam",
-      "published_at": "2026-03-21T10:34:39.701130"
-    },
-    {
-      "id": 1201,
-      "source_id": 4,
-      "original_url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-max-severity-cisco-flaw-by-sunday/",
-      "title": "CISA orders feds to patch max-severity Cisco flaw by Sunday",
-      "summary": "CISA orders federal agencies to patch a max-severity Cisco Secure Firewall Management Center vulnerability by Sunday due to active exploitation by ransomware gangs.",
-      "ideas": [
-        "CISA orders patch for max-severity Cisco flaw",
-        "Vulnerability allows arbitrary Java code execution",
-        "Interlock ransomware gang exploits the flaw",
-        "ClickFix technique used for initial access",
-        "Patch deadline for federal agencies is Sunday",
-        "Vulnerability has been exploited since January"
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 80,
-      "rating_reason": "The article provides high-value information about a max-severity Cisco flaw, its active exploitation, and the urgency for federal agencies to patch it by a specific deadline. It delivers practical knowledge on the vulnerability, including its cause and the potential for arbitrary Java code execution. The content is dense with valuable insights, including the involvement of the Interlock ransomware gang and the use of the ClickFix technique. However, it does not offer novel ideas beyond the immediate threat and patching instructions.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T10:34:32.717720"
-    },
-    {
-      "id": 1200,
-      "source_id": 4,
-      "original_url": "https://www.armadin.com/blog-posts/automating-the-operator-integrating-llms-into-offensive-security-workflows",
-      "title": "PlatformCompanyResourcesContact",
-      "summary": "LLM CLI combined with MCP servers can autonomously drive offensive security tasks, but careful prompt and context management are essential.",
-      "ideas": [
-        "LLM CLI can execute commands, parse output, and autonomously chain attack steps.",
-        "MCP servers expose tools like Burp Suite to LLMs via structured JSON APIs.",
-        "YOLO mode enables fully hands‑off LLM execution in isolated lab environments.",
-        "LLMs may misinterpret tool output when presented with excessive data.",
-        "Effective prompt engineering and context limits are crucial for reliable LLM analysis.",
-        "BloodHound MCP server lets LLMs query AD privilege paths but struggles with custom cypher queries.",
-        "Improved Burp Suite MCP server design reduces data overload and enhances LLM performance."
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech"
-      ],
-      "rating": 82,
-      "rating_reason": "The article delivers multiple concrete value instances: practical guidance on LLM CLI usage, safety modes, and MCP integration; actionable resources with GitHub links; real-world examples showing both successes and pitfalls; and expert insights on prompt engineering and limitations. It aligns strongly with CyberSecurity and AI themes and contains minimal padding or clickbait, justifying a good rating.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T10:32:14.668491"
-    },
-    {
-      "id": 1199,
-      "source_id": 7,
-      "original_url": "https://addyo.substack.com/p/death-of-the-ide",
-      "title": "Death of the IDE? - by Addy Osmani - Elevate",
-      "summary": "Developer work is shifting from writing code in IDEs to orchestrating AI agents within a control plane, where the primary tasks become specifying intent and reviewing outcomes.",
-      "ideas": [
-        "Developer center of gravity moves from editor to control plane",
-        "New workflow: specify intent, delegate, observe, review, merge",
-        "Agent orchestration is becoming the primary developer interface",
-        "Git worktrees provide necessary isolation for parallel agents",
-        "Task and state management replace file tabs in new UIs",
-        "Async background agents remove need for real-time observation",
-        "IDEs remain critical for debugging and local reasoning",
-        "Review fatigue and governance are emerging costs of agent workflows"
-      ],
-      "labels": [
-        "Tech",
-        "AI",
-        "Productivity"
-      ],
-      "rating": 88,
-      "rating_reason": "This article provides high-density analysis of a paradigm shift in software development, moving from manual editing to agent orchestration. It identifies specific interface patterns and emerging tools to substantiate its claim that the IDE is being 'de-centered' rather than destroyed. The content efficiently delivers novel insights about the future developer workflow, avoiding fluff and clearly articulating the new 'intent-to-review' loop.",
-      "source_type": "nitter",
-      "source_name": "Bilgin Ibryam",
-      "published_at": "2026-03-21T04:37:08.002316"
-    },
-    {
-      "id": 1198,
-      "source_id": 4,
-      "original_url": "https://thehackernews.com/2026/03/google-adds-24-hour-wait-for-unverified.html",
-      "title": "Google Adds 24-Hour Wait for Unverified App Sideloading to Reduce Malware and Scams",
-      "summary": "Google introduces a 24-hour wait period for unverified app sideloading on Android devices to enhance security and reduce malware distribution.",
-      "ideas": [
-        "Google's 24-hour wait period for unverified app sideloading",
-        "Android developer verification mandate",
-        "Potential risks of sideloading apps from unverified developers",
-        "Google's advanced flow for power users",
-        "Free limited distribution accounts for hobbyist developers and students",
-        "Emergence of new Android malware like Perseus"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The content provides valuable information about Google's new 24-hour wait period for unverified app sideloading, which aims to reduce malware and scams. The article offers a clear explanation of the process, its benefits, and the potential concerns raised by app developers and marketplaces. The inclusion of relevant examples, such as the Perseus Android malware, adds to the content's value and thematic relevance.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-21T04:36:37.943371"
     }
   ]
 }
