@@ -1,7 +1,112 @@
 {
-  "updated_at": "2026-03-30T06:00:01.386798",
+  "updated_at": "2026-03-30T07:00:00.066793",
   "total_items": 100,
   "items": [
+    {
+      "id": 1361,
+      "source_id": 4,
+      "original_url": "https://github.com/stevenkozeniesky02/agentsid-scanner/blob/master/docs/state-of-agent-security-2026.md",
+      "title": "Skip to content",
+      "summary": "MCP’s flexible design creates systemic security gaps, especially hallucination-based vulnerabilities, requiring stricter validation and audit mechanisms.",
+      "ideas": [
+        "Hallucination-based vulnerabilities arise from vague tool definitions causing LLM over-privilege",
+        "71% of MCP servers receive failing grades due to insecure defaults",
+        "MCP spec lacks per-tool authentication and audit logging, leading to unrestricted agent access",
+        "Static regex detection misses semantic injection; LLM-based analysis is needed",
+        "Mandatory unauthenticated /tools/list endpoint would improve server auditability",
+        "Strict input schema validation prevents RCE-class CVEs in MCP tools",
+        "Vendor reference implementations also score F, indicating protocol-level security flaws",
+        "Open-source scanner evaluates seven security categories across MCP servers",
+        "Short tool descriptions create non-deterministic LLM behavior, a security risk",
+        "Grading framework assigns points and deductions based on severity of findings"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The report delivers multiple novel insights, extensive empirical data, and actionable security recommendations, aligning strongly with AI and cybersecurity themes. It introduces hallucination-based vulnerabilities, provides a reproducible grading framework, and highlights systemic protocol flaws, offering high value density without clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-30T16:34:07.551662"
+    },
+    {
+      "id": 1360,
+      "source_id": 4,
+      "original_url": "https://mwalkowski.com/post/decompiling-an-android-application-written-in-net-maui-9-xamarin/",
+      "title": "Decompiling an Android Application Written in .NET MAUI 9 (Xamarin) | Michał Walkowski",
+      "summary": ".NET MAUI 9 packages DLLs inside ELF payloads, which can be extracted, parsed, and LZ4‑decompressed to recover usable assemblies.",
+      "ideas": [
+        ".NET MAUI 9 embeds DLLs in ELF .so files named libassemblies.<arch>.blob.so.",
+        "Use llvm-readelf to inspect ELF sections and locate the custom 'payload' section.",
+        "Extract the payload with llvm-objcopy dumping the payload section to a binary file.",
+        "The payload starts with 'XABA' magic indicating the .NET assembly store format.",
+        "Assembly store contains header, descriptors, library names, and compressed library data.",
+        "Parse the 20‑byte header and 28‑byte descriptors using Python struct.unpack.",
+        "Library names are stored as length‑prefixed UTF‑8 strings after descriptors.",
+        "Extract each DLL by seeking to its offset and writing the data to disk.",
+        "DLL data is further compressed with LZ4, identified by 'XALZ' signature.",
+        "Decompress LZ4 payload using lz4.block.decompress to obtain usable .dll files.",
+        "Decompressed DLLs can be opened with .NET decompilers like dotPeek.",
+        "A ready‑made script automates the entire extraction process (pymauistore)."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable guidance for extracting .NET MAUI 9 libraries from ELF files, including multiple code snippets, format explanations, and a ready‑made script, providing high thematic relevance to technology. No clickbait or padding is present, and the density of practical insights is strong for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-30T16:33:14.203220"
+    },
+    {
+      "id": 1359,
+      "source_id": 4,
+      "original_url": "https://www.synacktiv.com/en/publications/exploring-cross-domain-cross-forest-rbcd",
+      "title": "Exploring cross-domain & cross-forest RBCD ",
+      "summary": "The article presents a comprehensive guide to performing cross-domain and cross-forest RBCD attacks, including a detailed explanation of the Kerberos protocol and the steps involved in the attack, as well as a custom implementation using Impacket.",
+      "ideas": [
+        "Cross-domain RBCD attack",
+        "Cross-forest RBCD attack",
+        "Kerberos protocol",
+        "Impacket implementation",
+        "Rubeus implementation",
+        "S4U2Self and S4U2Proxy steps",
+        "Custom implementation using Impacket's getST.py"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 90,
+      "rating_reason": "This article provides a detailed and technical explanation of the cross-domain and cross-forest Resource-Based Constrained Delegation (RBCD) attack, including a step-by-step guide on how to perform the attack using Impacket and Rubeus. The content is highly relevant to the theme of cybersecurity and delivers multiple novel insights, making it a valuable resource for security professionals and researchers. The author's implementation of the cross-domain RBCD attack on Impacket's getST.py is also a significant contribution to the field.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-30T16:32:31.206384"
+    },
+    {
+      "id": 1358,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/2026/03/30/professor_criticizes_fcc_router_ban/",
+      "title": "US router ban is ‘industrial policy' not better infosec • The Register",
+      "summary": "A US ban on foreign-made SOHO routers may worsen cybersecurity by incentivizing the use of older, less secure devices, and appears to be driven by industrial policy rather than security concerns.",
+      "ideas": [
+        "The digital economy is global, making geographic location less relevant to cybersecurity",
+        "The ban focuses on hardware rather than software supply chain, which is a more significant vulnerability",
+        "The ban may increase the total attack surface of the US by keeping older, less secure devices in use",
+        "The policy appears to be driven by industrial policy rather than cybersecurity concerns",
+        "The ban may benefit US companies like Netgear, which have lobbied for such policies"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a well-reasoned critique of the US ban on foreign-made SOHO routers, arguing that it prioritizes industrial policy over cybersecurity. The author presents several key points, including the global nature of the digital economy, the focus on geographic location rather than software supply chain, and the potential for the ban to increase the total attack surface of the US. The article is well-structured, informative, and offers a unique perspective on the issue.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-03-30T16:32:12.530229"
+    },
     {
       "id": 1357,
       "source_id": 4,
@@ -2375,102 +2480,6 @@
       "source_type": "rss",
       "source_name": "Simon Willison's Weblog",
       "published_at": "2026-03-25T04:32:12.595271"
-    },
-    {
-      "id": 1261,
-      "source_id": 4,
-      "original_url": "https://securityaffairs.com/189880/security/north-korea-linked-threat-actors-abuse-vs-code-auto-run-to-spread-stoatwaffle-malware.html",
-      "title": "North Korea-linked threat actors abuse VS Code auto-run to spread StoatWaffle malware",
-      "summary": "VS Code’s auto‑run tasks can be weaponized to deliver modular Node.js malware across operating systems.",
-      "ideas": [
-        "VS Code tasks.json can auto-run code on folder open, enabling stealthy malware delivery.",
-        "Team 8 uses StoatWaffle, a Node.js modular malware with stealer and RAT components.",
-        "The malware downloads payloads from Vercel and installs Node.js if absent.",
-        "Stealer module extracts browser credentials, extension data, and macOS Keychain information.",
-        "RAT module allows remote command execution on infected systems across OSes.",
-        "Attack leverages malicious GitHub repositories disguised as blockchain projects.",
-        "Multi-stage infection chain uses downloader then additional modules for persistence."
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 82,
-      "rating_reason": "The article reveals a novel abuse of VS Code's tasks.json auto‑run feature to spread the cross‑platform StoatWaffle malware, providing concrete technical details, evidence from NTT Security, and actionable indicators for defenders. It offers multiple practical insights without clickbait or padding, aligning strongly with cybersecurity themes.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-24T22:34:40.307074"
-    },
-    {
-      "id": 1260,
-      "source_id": 4,
-      "original_url": "https://thehackernews.com/2026/03/us-sentences-russian-hacker-to-675.html",
-      "title": "U.S. Sentences Russian Hacker to 6.75 Years for Role in $9M Ransomware Damage",
-      "summary": "A Russian hacker has been sentenced to 6.75 years in prison for facilitating ransomware attacks against U.S. companies, causing over $9 million in actual losses.",
-      "ideas": [
-        "Ransomware attacks are a significant threat to U.S. companies",
-        "Initial access brokers play a crucial role in facilitating these attacks",
-        "Law enforcement is taking action against individuals involved in ransomware crimes",
-        "Ransomware gangs like Yanluowang and BlackCat are major players in cybercrime",
-        "The use of cryptocurrency in ransomware attacks is a key aspect of these crimes"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The article provides a clear and concise report on the sentencing of a Russian hacker for their role in ransomware attacks, including specific details about the crimes and the consequences. It also offers additional context about related cases and the broader issue of ransomware attacks, demonstrating a good balance of information and thematic relevance. However, the content could be improved with more in-depth analysis or expert insights to elevate its value density.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-24T22:34:32.103513"
-    },
-    {
-      "id": 1259,
-      "source_id": 4,
-      "original_url": "https://thehackernews.com/2026/03/citrix-urges-patching-critical.html",
-      "title": "Citrix Urges Patching Critical NetScaler Flaw Allowing Unauthenticated Data Leaks",
-      "summary": "Citrix NetScaler devices have critical vulnerabilities requiring immediate patching if configured as SAML IDPs or Gateways.",
-      "ideas": [
-        "Critical NetScaler flaw CVE-2026-3055 allows unauthenticated memory leaks",
-        "CVE-2026-4368 causes session mixups via race conditions",
-        "SAML IDP or Gateway configurations are required for exploitability",
-        "Check configs for specific strings to identify vulnerability",
-        "Patch versions 14.1 before 14.1-66.59 and 13.1 before 13.1-62.23",
-        "Imminent exploitation is likely due to past Citrix Bleed attacks",
-        "Default configurations are not affected by these flaws"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 85,
-      "rating_reason": "The content delivers high-value, actionable security intelligence efficiently. It provides specific CVE details, exact affected version numbers, and unique detection commands to identify vulnerable configurations, making it highly relevant for CyberSecurity professionals. The inclusion of expert context regarding the likelihood of exploitation based on historical patterns (Citrix Bleed) adds significant weight to the urgency.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-24T22:34:24.231459"
-    },
-    {
-      "id": 1258,
-      "source_id": 4,
-      "original_url": "https://blog.sekoia.io/silver-fox-the-only-tax-audit-where-the-fine-print-installs-malware/",
-      "title": "Silver Fox: The only Tax Audit Where Fine Print Installs Malware",
-      "summary": "Silver Fox, a China-based intrusion set, has evolved to conduct both financially motivated and APT-style operations, using a range of malware and techniques to gain initial access and maintain persistence.",
-      "ideas": [
-        "Silver Fox intrusion set has dual objectives: financial gain and espionage",
-        "The group uses culturally relevant lures to impersonate national taxation authorities",
-        "ValleyRAT is the primary modular backdoor used by Silver Fox",
-        "The group has evolved to use other malicious payloads, such as HoldingHands and Python-based stealer",
-        "Silver Fox's arsenal is modular, allowing for rapid adaptation and low-profile operations",
-        "The group's campaigns have targeted entities in South Asia, including Taiwan, Japan, and Malaysia"
-      ],
-      "labels": [
-        "CyberSecurity",
-        "AI"
-      ],
-      "rating": 85,
-      "rating_reason": "The content provides a detailed analysis of the Silver Fox intrusion set, including its evolution, arsenal, and infrastructure. It delivers multiple novel insights, such as the group's dual objectives and its use of culturally relevant lures to gain initial access. The content is well-researched, with references to various reports and sources, and provides a clear understanding of the threat actor's tactics, techniques, and procedures. However, the content is somewhat lengthy and could be condensed to improve its value density.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-24T22:33:23.073917"
     }
   ]
 }
