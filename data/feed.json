@@ -1,7 +1,55 @@
 {
-  "updated_at": "2026-03-31T23:00:00.068922",
+  "updated_at": "2026-04-01T01:00:00.064322",
   "total_items": 100,
   "items": [
+    {
+      "id": 1398,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/cisco-source-code-stolen-in-trivy-linked-dev-environment-breach/",
+      "title": "Cisco source code stolen in Trivy-linked dev environment breach",
+      "summary": "Cisco suffered a cyberattack due to the Trivy supply chain breach, resulting in the theft of its source code and that of its customers, with potential continued fallout from related supply chain attacks.",
+      "ideas": [
+        "Cisco breached through Trivy supply chain attack",
+        "Source code stolen from Cisco and its customers",
+        "Attack involved malicious GitHub Action plugin",
+        "Multiple AWS keys stolen for unauthorized activities",
+        "Over 300 GitHub repositories cloned during the incident",
+        "Threat actors linked to TeamPCP group",
+        "Breach has significant implications for cybersecurity"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides high-value insights into a significant cybersecurity breach at Cisco, detailing the attack vector, the theft of source code, and the potential fallout. It also offers context about the Trivy supply chain attack and the involvement of the TeamPCP threat group. The content is dense with information, including specific details about the breach and its consequences, making it highly relevant to the theme of CyberSecurity. However, the presence of promotional links and unrelated content at the end slightly detracts from the overall value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-01T10:34:30.173481"
+    },
+    {
+      "id": 1397,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Mar/31/supply-chain-attack-on-axios/",
+      "title": "Supply Chain Attack on Axios Pulls Malicious Dependency from npm",
+      "summary": "Missing GitHub releases can be a red flag for malicious npm package updates.",
+      "ideas": [
+        "Axios versions 1.14.1 and 0.30.4 included malicious plain-crypto-js dependency",
+        "plain-crypto-js steals credentials and installs a remote access trojan",
+        "Attack likely originated from a leaked long-lived npm token",
+        "Adopt trusted publishing to limit npm releases to verified CI workflows",
+        "Absence of a GitHub release may indicate a malicious npm package",
+        "LiteLLM suffered a similar supply‑chain attack recently"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post delivers concrete, timely information about a supply‑chain breach affecting a widely used npm package, explains the malicious dependency’s behavior, and offers a practical heuristic (missing GitHub release) for spotting similar threats, all within a brief format. No clickbait or padding is present, and the content aligns strongly with cybersecurity themes, giving high value density for its length.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-04-01T10:32:06.712495"
+    },
     {
       "id": 1396,
       "source_id": 4,
@@ -2428,56 +2476,6 @@
       "source_type": "newsletter",
       "source_name": "tl;dr sec",
       "published_at": "2026-03-27T04:34:19.031039"
-    },
-    {
-      "id": 1298,
-      "source_id": 15,
-      "original_url": "https://pentesterlab.com/blog/freshrss-bcrypt-truncation-auth-bypass",
-      "title": "How \"Strengthening Crypto\" Broke Authentication: FreshRSS and bcrypt's 72-Byte Limit",
-      "summary": "Changing a nonce to SHA‑256 can exceed bcrypt’s input limit, unintentionally breaking authentication.",
-      "ideas": [
-        "Replacing SHA‑1 with SHA‑256 increased nonce length to 64 characters.",
-        "bcrypt processes only the first 72 bytes of input, truncating longer strings.",
-        "Concatenating a long nonce with the bcrypt hash caused password verification to ignore the password portion.",
-        "The “strengthen crypto” commit unintentionally introduced an authentication bypass (CVE‑2025‑68402).",
-        "Security changes must consider downstream effects on existing cryptographic primitives."
-      ],
-      "labels": [
-        "CyberSecurity"
-      ],
-      "rating": 82,
-      "rating_reason": "The piece delivers concrete, actionable insight into bcrypt’s 72‑byte truncation limit and how a well‑intentioned crypto upgrade caused an auth bypass (CVE‑2025‑68402). It provides a real‑world example and a cautionary lesson for developers, with no filler or promotional content. The content is concise yet dense, aligning strongly with cybersecurity themes.",
-      "source_type": "newsletter",
-      "source_name": "tl;dr sec",
-      "published_at": "2026-03-27T04:32:19.622705"
-    },
-    {
-      "id": 1297,
-      "source_id": 4,
-      "original_url": "https://www.aikido.dev/blog/teampcp-deploys-worm-npm-trivy-compromise",
-      "title": "TeamPCP deploys CanisterWorm on NPM following Trivy compromise",
-      "summary": "CanisterWorm is a self‑propagating NPM supply‑chain worm that uses an ICP canister for decentralized C2 and persists via a user‑level systemd service.",
-      "ideas": [
-        "CanisterWorm uses three-stage architecture: Node.js loader, Python backdoor, ICP canister C2.",
-        "Worm self‑propagates by enumerating npm packages and publishing malicious versions within seconds.",
-        "Persistence via user‑level systemd service that restarts automatically without root.",
-        "C2 dead‑drop hosted on Internet Computer canister provides decentralized, censorship‑resistant payload delivery.",
-        "Attackers can rotate payloads remotely by updating the canister URL.",
-        "Malware evades sandbox detection with delayed beaconing and long poll intervals.",
-        "Postinstall script silently fails on non‑Linux or non‑systemd environments.",
-        "Malicious binaries masquerade as PostgreSQL tools (pgmon, pglog) to blend in.",
-        "Worm preserves original README files to avoid suspicion.",
-        "Embedded base64 payload decodes to Python script written to user’s local share directory."
-      ],
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "rating": 80,
-      "rating_reason": "The article delivers multiple novel technical insights about a new NPM supply‑chain worm, offering actionable detection and mitigation details, which aligns strongly with cybersecurity. While the surrounding marketing material adds padding, the core content’s high density of value instances outweighs this. Overall it provides substantial practical knowledge for security professionals.",
-      "source_type": "nitter",
-      "source_name": "Nicolas Krassas",
-      "published_at": "2026-03-26T22:34:08.403280"
     }
   ]
 }
