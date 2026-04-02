@@ -1009,6 +1009,99 @@ body {
     display: none;
 }
 
+/* Mobile Filter Bar - hidden on desktop */
+.mobile-filters {
+    display: none;
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 3px 0;
+}
+
+.filter-row-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.filter-row-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    min-width: 42px;
+}
+
+.filter-pills,
+.filter-pills-scroll {
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;
+}
+
+.filter-pill {
+    padding: 4px 10px;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+    min-height: 32px;
+}
+
+.filter-pill:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+}
+
+.filter-pill.active {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
+}
+
+.pill-count {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* Inline Article Labels */
+.article-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.article-label {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(94, 163, 208, 0.12);
+    color: var(--color-accent);
+}
+
+.label-cybersecurity { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+.label-ai { background: rgba(168, 85, 247, 0.12); color: #a855f7; }
+.label-tech { background: rgba(59, 130, 246, 0.12); color: #3b82f6; }
+.label-philosophy { background: rgba(234, 179, 8, 0.12); color: #eab308; }
+.label-sysadmin { background: rgba(34, 197, 94, 0.12); color: #22c55e; }
+.label-productivity { background: rgba(249, 115, 22, 0.12); color: #f97316; }
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     :root {
@@ -1016,27 +1109,20 @@ body {
         --spacing-2xl: 1.5rem;
     }
 
-    /* Show mobile menu */
-    .mobile-menu-toggle {
-        display: flex;
-    }
+    /* Hide sidebar and hamburger on mobile — replaced by filter bar */
+    .mobile-menu-toggle { display: none; }
+    .sidebar { display: none; }
+    .sidebar-overlay { display: none; }
 
-    /* Sidebar slides in from left */
-    .sidebar {
-        transform: translateX(-100%);
-        width: 85%;
-        max-width: 320px;
-        box-shadow: var(--shadow-lg);
-        pointer-events: none;
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-        pointer-events: auto;
-    }
-
-    .sidebar-overlay {
+    /* Show mobile filter bar */
+    .mobile-filters {
         display: block;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--spacing-xs) var(--spacing-md);
     }
 
     /* Remove sidebar margin on mobile */
@@ -1044,11 +1130,12 @@ body {
         margin-left: 0;
     }
 
-    /* Header adjustments */
+    /* Header adjustments — no longer sticky, filter bar takes over */
     .content-header {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
         flex-wrap: wrap;
         min-height: auto;
+        position: static;
     }
 
     .header-left {
@@ -1056,13 +1143,14 @@ body {
         min-width: 0;
     }
 
-    .feed-title {
-        font-size: 1.1rem;
-    }
+    .feed-title { display: none; }
 
     .feed-count {
         font-size: 0.8rem;
     }
+
+    /* Hide desktop sort pills on mobile (moved to filter bar) */
+    .header-right .sort-pills { display: none; }
 
     .search-toggle {
         display: flex;
@@ -1252,10 +1340,3 @@ body {
     gap: var(--spacing-sm);
 }
 
-
-/* Mobile: sidebar content needs higher z-index when open so overlay doesn't block clicks */
-@media (max-width: 768px) {
-    .sidebar.open {
-        z-index: 1001;
-    }
-}

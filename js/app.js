@@ -9,9 +9,10 @@ class FeedSieve {
     constructor() {
         this.items = [];
         this.filteredItems = [];
-        this.currentFilter = 'today';
-        this.currentSource = null;
-        this.currentCategory = null;
+        this.timeFilter = 'today';
+        this.typeFilter = null;
+        this.categoryFilter = null;
+        this.sourceFilter = null;
         this.searchQuery = '';
         this.sortBy = 'date';
         this.sources = {};
@@ -22,6 +23,7 @@ class FeedSieve {
 
     async init() {
         this.bindEvents();
+        this.bindMobileFilters();
         this.setupMobileMenu();
         this.setupBackToTop();
         this.setupPullToRefresh();
@@ -209,6 +211,7 @@ class FeedSieve {
             this.updateCounts();
             this.renderSourceLists();
             this.renderCategoriesList();
+            this.renderMobileFilters();
             this.applyFilters();
             this.updateLastUpdated(data.updated_at);
         } catch (error) {
@@ -248,6 +251,88 @@ class FeedSieve {
                 this.categories[label]++;
             });
         });
+    }
+
+    renderMobileFilters() {
+        const catContainer = document.getElementById('mobile-category-pills');
+        if (!catContainer) return;
+
+        const cats = Object.keys(this.categories).sort((a, b) =>
+            this.categories[b] - this.categories[a]
+        );
+
+        catContainer.innerHTML = cats.map(cat =>
+            `<button class="filter-pill" data-filter="category" data-category="${cat}">${cat} <span class="pill-count">${this.categories[cat]}</span></button>`
+        ).join('');
+
+        // Bind category pill clicks
+        catContainer.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                const cat = e.currentTarget.dataset.category;
+                if (this.categoryFilter === cat) {
+                    // Toggle off
+                    this.categoryFilter = null;
+                    e.currentTarget.classList.remove('active');
+                } else {
+                    // Activate this, deactivate others in row
+                    catContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    this.categoryFilter = cat;
+                }
+                this.sourceFilter = null;
+                this.applyFilters();
+            });
+        });
+    }
+
+    bindMobileFilters() {
+        // Time pills
+        const timePills = document.getElementById('mobile-time-pills');
+        if (timePills) {
+            timePills.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    timePills.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    this.timeFilter = e.currentTarget.dataset.filter;
+                    this.sourceFilter = null;
+                    this.applyFilters();
+                });
+            });
+        }
+
+        // Type pills
+        const typePills = document.getElementById('mobile-type-pills');
+        if (typePills) {
+            typePills.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    const type = e.currentTarget.dataset.filter;
+                    if (this.typeFilter === type) {
+                        this.typeFilter = null;
+                        e.currentTarget.classList.remove('active');
+                    } else {
+                        typePills.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                        e.currentTarget.classList.add('active');
+                        this.typeFilter = type;
+                    }
+                    this.sourceFilter = null;
+                    this.applyFilters();
+                });
+            });
+        }
+
+        // Sort pills in mobile filter bar
+        const mobileSortPills = document.getElementById('mobile-sort-pills');
+        if (mobileSortPills) {
+            mobileSortPills.querySelectorAll('.sort-pill').forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    // Sync both desktop and mobile sort pills
+                    document.querySelectorAll('.sort-pill').forEach(p => p.classList.remove('active'));
+                    document.querySelectorAll(`.sort-pill[data-sort="${e.currentTarget.dataset.sort}"]`).forEach(p => p.classList.add('active'));
+                    this.sortBy = e.currentTarget.dataset.sort;
+                    this.applyFilters();
+                });
+            });
+        }
     }
 
     renderCategoriesList() {
@@ -318,13 +403,13 @@ class FeedSieve {
         });
     }
 
+    // Sidebar handlers (desktop — exclusive behavior)
     handleParentClick(e) {
         e.stopPropagation();
         const btn = e.currentTarget;
         const filter = btn.dataset.filter;
         const group = btn.closest('.nav-group');
 
-        // Toggle expand/collapse
         if (group) {
             group.classList.toggle('expanded');
             const toggle = btn.querySelector('.nav-toggle');
@@ -333,10 +418,10 @@ class FeedSieve {
             }
         }
 
-        // Also filter by this type
         this.setActiveNav(btn);
-        this.currentFilter = filter;
-        this.currentSource = null;
+        this.typeFilter = filter;
+        this.categoryFilter = null;
+        this.sourceFilter = null;
         this.updateFeedTitle(filter);
         this.applyFilters();
     }
@@ -348,27 +433,13 @@ class FeedSieve {
         const sourceType = btn.dataset.sourceType;
 
         this.setActiveNav(btn);
-        this.currentFilter = 'source';
-        this.currentSource = { id: sourceId, type: sourceType };
-        this.currentCategory = null;
+        this.typeFilter = null;
+        this.categoryFilter = null;
+        this.sourceFilter = { id: sourceId, type: sourceType };
 
         const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
         document.getElementById('feed-title').textContent = sourceName;
         this.applyFilters();
-
-        // Auto-close sidebar on mobile when source is selected
-        if (window.innerWidth <= 768) {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            const menuToggle = document.getElementById('mobile-menu-toggle');
-
-            if (sidebar && overlay && menuToggle) {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
     }
 
     handleCategoryClick(e) {
@@ -376,9 +447,9 @@ class FeedSieve {
         const category = btn.dataset.category;
 
         this.setActiveNav(btn);
-        this.currentFilter = 'category';
-        this.currentCategory = category;
-        this.currentSource = null;
+        this.typeFilter = null;
+        this.categoryFilter = category;
+        this.sourceFilter = null;
 
         document.getElementById('feed-title').textContent = category;
         this.applyFilters();
@@ -389,9 +460,10 @@ class FeedSieve {
         const filter = btn.dataset.filter;
 
         this.setActiveNav(btn);
-        this.currentFilter = filter;
-        this.currentSource = null;
-        this.currentCategory = null;
+        this.timeFilter = filter;
+        this.typeFilter = null;
+        this.categoryFilter = null;
+        this.sourceFilter = null;
         this.updateFeedTitle(filter);
         this.applyFilters();
     }
@@ -433,28 +505,23 @@ class FeedSieve {
         this.filteredItems = this.items.filter(item => {
             const itemDate = item.published_at || item.processed_at;
 
-            // Time-based filters
-            if (this.currentFilter === 'today') {
-                if (!this.isToday(itemDate)) return false;
-            } else if (this.currentFilter === 'week') {
-                if (!this.isThisWeek(itemDate)) return false;
+            // Time filter (always active)
+            if (this.timeFilter === 'today' && !this.isToday(itemDate)) return false;
+            if (this.timeFilter === 'week' && !this.isThisWeek(itemDate)) return false;
+
+            // Type filter (optional)
+            if (this.typeFilter) {
+                if ((item.source_type || 'rss') !== this.typeFilter) return false;
             }
 
-            // Type filter
-            if (['rss', 'youtube', 'newsletter', 'nitter'].includes(this.currentFilter)) {
-                const itemType = item.source_type || 'rss';
-                if (itemType !== this.currentFilter) return false;
+            // Category filter (optional)
+            if (this.categoryFilter) {
+                if (!(item.labels || []).includes(this.categoryFilter)) return false;
             }
 
-            // Source filter
-            if (this.currentFilter === 'source' && this.currentSource) {
-                if (String(item.source_id) !== String(this.currentSource.id)) return false;
-            }
-
-            // Category filter
-            if (this.currentFilter === 'category' && this.currentCategory) {
-                const labels = item.labels || [];
-                if (!labels.includes(this.currentCategory)) return false;
+            // Source filter (sidebar desktop only)
+            if (this.sourceFilter) {
+                if (String(item.source_id) !== String(this.sourceFilter.id)) return false;
             }
 
             // Search filter
@@ -504,6 +571,9 @@ class FeedSieve {
         Object.keys(counts).forEach(key => {
             const el = document.getElementById(`count-${key}`);
             if (el) el.textContent = counts[key];
+            // Also update mobile pill counts
+            const mEl = document.getElementById(`m-count-${key}`);
+            if (mEl) mEl.textContent = counts[key];
         });
     }
 
@@ -766,6 +836,11 @@ class FeedSieve {
                 </div>
                 <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
                 ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
+                ${(item.labels || []).length > 0 ? `
+                    <div class="article-labels">
+                        ${(item.labels || []).map(label => `<span class="article-label label-${label.toLowerCase()}">${this.escapeHtml(label)}</span>`).join('')}
+                    </div>
+                ` : ''}
                 <div class="article-footer">
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
                         Read Original →
