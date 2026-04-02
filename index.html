@@ -6,7 +6,7 @@
     <meta name="description" content="FeedSieve - AI-curated content from RSS feeds, YouTube channels, and newsletters">
     <title>FeedSieve - AI-Curated Content</title>
     <link rel="stylesheet" href="css/style.1766840000.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📰</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%236C63FF%22/><stop offset=%22100%25%22 stop-color=%22%2300D4AA%22/></linearGradient></defs><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%231a1a2e%22/><path d=%22M16 18h32l-10 16v12l-12 0V34Z%22 fill=%22url(%23g)%22 opacity=%220.9%22/><circle cx=%2224%22 cy=%2216%22 r=%222%22 fill=%22%2300D4AA%22 opacity=%220.6%22/><circle cx=%2240%22 cy=%2214%22 r=%221.5%22 fill=%22%236C63FF%22 opacity=%220.5%22/><circle cx=%2232%22 cy=%2212%22 r=%221.5%22 fill=%22%2300D4AA%22 opacity=%220.4%22/></svg>">
 </head>
 <body>
     <div class="app-container">
@@ -113,8 +113,20 @@
                 <div class="header-left">
                     <h2 class="feed-title" id="feed-title">Today</h2>
                     <span class="feed-count" id="feed-count">0 articles</span>
+                    <button class="refresh-btn" id="refresh-btn" aria-label="Refresh feed" title="Refresh feed">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                    </button>
                 </div>
-                <div class="header-right">
+                <button class="search-toggle" id="search-toggle" aria-label="Toggle search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <div class="header-right" id="header-right">
                     <div class="search-box">
                         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -122,11 +134,9 @@
                         </svg>
                         <input type="text" id="search-input" class="search-input" placeholder="Search articles...">
                     </div>
-                    <div class="sort-dropdown">
-                        <select id="sort-select" class="sort-select">
-                            <option value="date">Latest First</option>
-                            <option value="rating">Best Rated</option>
-                        </select>
+                    <div class="sort-pills" id="sort-pills">
+                        <button class="sort-pill active" data-sort="date">Latest</button>
+                        <button class="sort-pill" data-sort="rating">Best Rated</button>
                     </div>
                 </div>
             </header>

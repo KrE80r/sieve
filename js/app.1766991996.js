@@ -23,6 +23,8 @@ class FeedSieve {
     async init() {
         this.bindEvents();
         this.setupMobileMenu();
+        this.setupBackToTop();
+        this.setupPullToRefresh();
         await this.loadFeed();
     }
 
@@ -73,6 +75,79 @@ class FeedSieve {
         });
     }
 
+    setupPullToRefresh() {
+        // Refresh button
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => this.refreshFeed());
+        }
+
+        // Pull-to-refresh on article list
+        const list = document.getElementById('article-list');
+        if (!list) return;
+
+        const indicator = document.createElement('div');
+        indicator.className = 'pull-indicator';
+        indicator.textContent = 'Release to refresh';
+        list.parentNode.insertBefore(indicator, list);
+
+        let startY = 0, pulling = false;
+
+        list.addEventListener('touchstart', (e) => {
+            if (window.scrollY === 0) {
+                startY = e.touches[0].clientY;
+                pulling = true;
+            }
+        }, { passive: true });
+
+        list.addEventListener('touchmove', (e) => {
+            if (!pulling) return;
+            const delta = e.touches[0].clientY - startY;
+            if (delta > 0 && window.scrollY === 0) {
+                indicator.style.height = Math.min(delta * 0.5, 60) + 'px';
+            }
+        }, { passive: true });
+
+        list.addEventListener('touchend', () => {
+            if (!pulling) return;
+            const h = parseInt(indicator.style.height) || 0;
+            if (h > 40) {
+                indicator.classList.add('active');
+                indicator.textContent = 'Refreshing...';
+                this.refreshFeed().then(() => {
+                    indicator.classList.remove('active');
+                    indicator.style.height = '0';
+                    indicator.textContent = 'Release to refresh';
+                });
+            } else {
+                indicator.style.height = '0';
+            }
+            pulling = false;
+        }, { passive: true });
+    }
+
+    async refreshFeed() {
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) refreshBtn.classList.add('spinning');
+        await this.loadFeed();
+        if (refreshBtn) refreshBtn.classList.remove('spinning');
+    }
+
+    setupBackToTop() {
+        const btn = document.createElement('button');
+        btn.className = 'back-to-top';
+        btn.setAttribute('aria-label', 'Back to top');
+        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        window.addEventListener('scroll', () => {
+            const threshold = window.innerHeight * 2;
+            btn.classList.toggle('visible', window.scrollY > threshold);
+        }, { passive: true });
+    }
+
     bindEvents() {
         // Timeline and type filter buttons
         document.querySelectorAll('.nav-item:not(.nav-parent):not(.nav-child)').forEach(btn => {
@@ -87,18 +162,37 @@ class FeedSieve {
         // Search
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
+            let searchTimeout;
             searchInput.addEventListener('input', (e) => {
-                this.searchQuery = e.target.value.toLowerCase();
-                this.applyFilters();
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    this.searchQuery = e.target.value.toLowerCase();
+                    this.applyFilters();
+                }, 200);
             });
         }
 
-        // Sort
-        const sortSelect = document.getElementById('sort-select');
-        if (sortSelect) {
-            sortSelect.addEventListener('change', (e) => {
-                this.sortBy = e.target.value;
+        // Sort pills
+        document.querySelectorAll('.sort-pill').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                document.querySelectorAll('.sort-pill').forEach(p => p.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+                this.sortBy = e.currentTarget.dataset.sort;
                 this.applyFilters();
+            });
+        });
+
+        // Search toggle (mobile)
+        const searchToggle = document.getElementById('search-toggle');
+        const headerRight = document.getElementById('header-right');
+        if (searchToggle && headerRight) {
+            searchToggle.addEventListener('click', () => {
+                headerRight.classList.toggle('expanded');
+                searchToggle.classList.toggle('active');
+                if (headerRight.classList.contains('expanded')) {
+                    const input = document.getElementById('search-input');
+                    if (input) input.focus();
+                }
             });
         }
     }
@@ -492,10 +586,27 @@ class FeedSieve {
     }
 
     showModal(item) {
+        const itemIndex = this.filteredItems.findIndex(i => i.id === item.id);
+        this._showModalAtIndex(itemIndex !== -1 ? itemIndex : 0);
+    }
+
+    _showModalAtIndex(index) {
+        // Remove existing modal if navigating
+        const existing = document.querySelector('.modal-overlay');
+        if (existing) {
+            existing.remove();
+        }
+
+        const item = this.filteredItems[index];
+        if (!item) return;
+
+        this.currentModalIndex = index;
         const url = item.original_url || item.url || '#';
         const ideas = item.ideas || [];
         const rating = item.rating || null;
         const ratingHtml = rating ? this.createRatingBadgeHtml(rating, 'modal-rating') : '';
+        const hasPrev = index > 0;
+        const hasNext = index < this.filteredItems.length - 1;
 
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
@@ -503,21 +614,27 @@ class FeedSieve {
             <div class="modal-content">
                 <button class="modal-close">&times;</button>
                 ${ratingHtml}
-                <div class="modal-header">
-                    <span class="source-badge ${item.source_type || 'rss'}">${item.source_type || 'rss'}</span>
-                    <span class="source-name">${this.escapeHtml(item.source_name || '')}</span>
-                </div>
-                <h2 class="modal-title">${this.escapeHtml(item.title)}</h2>
-                ${item.summary ? `<div class="modal-summary">${this.escapeHtml(item.summary)}</div>` : ''}
-                ${ideas.length > 0 ? `
-                    <div class="modal-ideas">
-                        <h4>Key Ideas</h4>
-                        <div class="modal-ideas-chips">
-                            ${ideas.map(idea => `<span class="modal-idea-chip">${this.escapeHtml(idea)}</span>`).join('')}
-                        </div>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <span class="source-badge ${item.source_type || 'rss'}">${item.source_type || 'rss'}</span>
+                        <span class="source-name">${this.escapeHtml(item.source_name || '')}</span>
                     </div>
-                ` : ''}
+                    <h2 class="modal-title">${this.escapeHtml(item.title)}</h2>
+                    ${item.summary ? `<div class="modal-summary">${this.escapeHtml(item.summary)}</div>` : ''}
+                    ${ideas.length > 0 ? `
+                        <div class="modal-ideas">
+                            <h4>Key Ideas</h4>
+                            <div class="modal-ideas-chips">
+                                ${ideas.map(idea => `<span class="modal-idea-chip">${this.escapeHtml(idea)}</span>`).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
                 <div class="modal-footer">
+                    <div class="modal-nav">
+                        <button class="modal-nav-btn" data-dir="prev" ${!hasPrev ? 'disabled style="opacity:0.3;pointer-events:none"' : ''}>&#8592;</button>
+                        <button class="modal-nav-btn" data-dir="next" ${!hasNext ? 'disabled style="opacity:0.3;pointer-events:none"' : ''}>&#8594;</button>
+                    </div>
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
                         Read Original →
                     </a>
@@ -528,27 +645,104 @@ class FeedSieve {
         document.body.appendChild(modal);
         document.body.style.overflow = 'hidden';
 
-        // Close handlers
-        modal.querySelector('.modal-close').addEventListener('click', () => {
+        // Mark as read
+        this.markAsRead(item.id);
+
+        // Push history state (only on first open, not on nav)
+        if (!existing) {
+            history.pushState({ modal: true }, '');
+        }
+
+        const closeModal = () => {
+            if (!document.body.contains(modal)) return;
             modal.remove();
             document.body.style.overflow = '';
-        });
+            this.currentModalIndex = null;
+            document.removeEventListener('keydown', onKeydown);
+            window.removeEventListener('popstate', onPopState);
+        };
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-                document.body.style.overflow = '';
-            }
-        });
-
-        const closeOnEsc = (e) => {
-            if (e.key === 'Escape') {
-                modal.remove();
-                document.body.style.overflow = '';
-                document.removeEventListener('keydown', closeOnEsc);
+        const navigateModal = (dir) => {
+            const newIndex = this.currentModalIndex + (dir === 'next' ? 1 : -1);
+            if (newIndex >= 0 && newIndex < this.filteredItems.length) {
+                document.removeEventListener('keydown', onKeydown);
+                window.removeEventListener('popstate', onPopState);
+                this._showModalAtIndex(newIndex);
             }
         };
-        document.addEventListener('keydown', closeOnEsc);
+
+        const onPopState = () => closeModal();
+        window.addEventListener('popstate', onPopState);
+
+        // Close handlers
+        modal.querySelector('.modal-close').addEventListener('click', () => history.back());
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) history.back();
+        });
+
+        // Nav buttons
+        modal.querySelectorAll('.modal-nav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateModal(btn.dataset.dir);
+            });
+        });
+
+        // Keyboard: Escape to close, j/k or arrows for nav
+        const onKeydown = (e) => {
+            if (e.key === 'Escape') {
+                history.back();
+            } else if (e.key === 'ArrowLeft' || e.key === 'k') {
+                navigateModal('prev');
+            } else if (e.key === 'ArrowRight' || e.key === 'j') {
+                navigateModal('next');
+            }
+        };
+        document.addEventListener('keydown', onKeydown);
+
+        // Swipe-to-dismiss (vertical) and swipe nav (horizontal)
+        const content = modal.querySelector('.modal-content');
+        let startX = 0, startY = 0, deltaX = 0, deltaY = 0, swiping = null;
+
+        content.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            deltaX = 0;
+            deltaY = 0;
+            swiping = null;
+        }, { passive: true });
+
+        content.addEventListener('touchmove', (e) => {
+            deltaX = e.touches[0].clientX - startX;
+            deltaY = e.touches[0].clientY - startY;
+
+            // Lock direction after 10px of movement
+            if (!swiping && (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10)) {
+                swiping = Math.abs(deltaX) > Math.abs(deltaY) ? 'horizontal' : 'vertical';
+            }
+
+            // Vertical swipe-to-dismiss (only when scrolled to top)
+            if (swiping === 'vertical' && deltaY > 0 && content.scrollTop <= 0) {
+                content.style.transform = `translateY(${deltaY}px)`;
+                content.style.transition = 'none';
+            }
+        }, { passive: true });
+
+        content.addEventListener('touchend', () => {
+            if (swiping === 'vertical' && deltaY > 100 && content.scrollTop <= 0) {
+                history.back();
+            } else if (swiping === 'vertical') {
+                content.style.transform = '';
+                content.style.transition = '';
+            }
+
+            if (swiping === 'horizontal') {
+                if (deltaX < -80) navigateModal('next');
+                else if (deltaX > 80) navigateModal('prev');
+            }
+
+            swiping = null;
+        }, { passive: true });
     }
 
     createArticle(item) {
