@@ -661,13 +661,21 @@ class FeedSieve {
         const hasPrev = index > 0;
         const hasNext = index < this.filteredItems.length - 1;
 
-        const modal = document.createElement('div');
-        modal.className = 'modal-overlay';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <button class="modal-close">&times;</button>
-                ${ratingHtml}
-                <div class="modal-body">
+        const isDigest = (item.source_type === 'digest') && item.content;
+
+        // Build modal body — digest items show full HTML content, others show summary + ideas
+        let modalBodyHtml;
+        if (isDigest) {
+            modalBodyHtml = `
+                    <div class="modal-header">
+                        <span class="source-badge ${item.source_type || 'rss'}">${item.source_type || 'rss'}</span>
+                        <span class="source-name">${this.escapeHtml(item.source_name || '')}</span>
+                    </div>
+                    <h2 class="modal-title">${this.escapeHtml(item.title)}</h2>
+                    ${item.summary ? `<div class="modal-summary">${this.escapeHtml(item.summary)}</div>` : ''}
+                    <div class="modal-digest-content">${item.content}</div>`;
+        } else {
+            modalBodyHtml = `
                     <div class="modal-header">
                         <span class="source-badge ${item.source_type || 'rss'}">${item.source_type || 'rss'}</span>
                         <span class="source-name">${this.escapeHtml(item.source_name || '')}</span>
@@ -681,7 +689,17 @@ class FeedSieve {
                                 ${ideas.map(idea => `<span class="modal-idea-chip">${this.escapeHtml(idea)}</span>`).join('')}
                             </div>
                         </div>
-                    ` : ''}
+                    ` : ''}`;
+        }
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content${isDigest ? ' modal-content-digest' : ''}">
+                <button class="modal-close">&times;</button>
+                ${ratingHtml}
+                <div class="modal-body">
+                    ${modalBodyHtml}
                 </div>
                 <div class="modal-footer">
                     <div class="modal-nav">
@@ -689,7 +707,7 @@ class FeedSieve {
                         <button class="modal-nav-btn" data-dir="next" ${!hasNext ? 'disabled style="opacity:0.3;pointer-events:none"' : ''}>&#8594;</button>
                     </div>
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
-                        Read Original →
+                        ${isDigest ? 'View on web →' : 'Read Original →'}
                     </a>
                 </div>
             </div>
