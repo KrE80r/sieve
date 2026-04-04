@@ -352,7 +352,7 @@ class FeedSieve {
     }
 
     renderSourceLists() {
-        const types = ['rss', 'youtube', 'newsletter', 'nitter', 'github'];
+        const types = ['rss', 'youtube', 'newsletter', 'nitter', 'github', 'digest'];
 
         types.forEach(type => {
             const container = document.getElementById(`sources-${type}`);
@@ -538,7 +538,8 @@ class FeedSieve {
             youtube: 0,
             newsletter: 0,
             nitter: 0,
-            github: 0
+            github: 0,
+            digest: 0
         };
 
         this.items.forEach(item => {
