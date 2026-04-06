@@ -1,7 +1,135 @@
 {
-  "updated_at": "2026-04-06T05:00:00.418760",
-  "total_items": 695,
+  "updated_at": "2026-04-06T07:00:00.420592",
+  "total_items": 700,
   "items": [
+    {
+      "id": 1632,
+      "source_id": 4,
+      "original_url": "https://blog.barrack.ai/gddrhammer-geforge-gpu-rowhammer-gddr6/",
+      "title": "GDDRHammer and GeForge: GPU Rowhammer Now Achieves Full System Compromise | Barrack AI",
+      "summary": "GPU Rowhammer attacks can now achieve full system compromise via bit flips in GDDR6 memory, bypassing IOMMU through driver exploits.",
+      "ideas": [
+        "GDDRHammer exploits CUDA memory allocator flaws to corrupt GPU page tables via Rowhammer.",
+        "GeForge targets page directories for broader control over memory mapping.",
+        "GPUBreach bypasses IOMMU by chaining bit flips with NVIDIA driver vulnerabilities.",
+        "RTX 3060 and RTX A6000 are confirmed vulnerable; newer architectures show resistance.",
+        "GDDR6X, Ada Lovelace, and GDDR7 GPUs show no observed bit flips.",
+        "IOMMU alone cannot stop GPUBreach due to software-side exploitation.",
+        "ECC activation mitigates single-bit flips but costs VRAM and performance.",
+        "NVIDIA has not issued new patches or CVEs for these 2026 attacks.",
+        "25 GDDR6 GPUs were tested; most showed vulnerability to bit flips.",
+        "On-die ECC in HBM GPUs likely masks single-bit Rowhammer effects."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers multiple novel, high-impact insights about GPU Rowhammer attacks with technical depth and specificity. It details three distinct exploits (GDDRHammer, GeForge, GPUBreach), explains their mechanisms, provides test results across GPUs, and discusses real-world mitigations. The content is rich in expert insight, original research summaries, and actionable data, all within a focused, dense format. Minimal padding and strong relevance to cybersecurity and AI infrastructure.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-06T15:38:12.186459"
+    },
+    {
+      "id": 1631,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/traffic-violation-scams-switch-to-qr-codes-in-new-phishing-texts/",
+      "title": "Traffic violation scams switch to QR codes in new phishing texts",
+      "summary": "Scammers are using fake traffic violation texts with QR codes to phishing sites that demand a $6.99 payment while stealing personal and financial information, targeting residents across the U.S.",
+      "ideas": [
+        "Scammers use QR codes in phishing texts for traffic violations",
+        "Phishing sites impersonate state DMVs or agencies",
+        "QR codes lead to CAPTCHA-protected sites to evade security software",
+        "Scams aim to steal personal and financial information",
+        "State agencies do not use texts for payment requests"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "This article provides high-value information about a new phishing scam using QR codes to steal personal and financial data. It delivers multiple novel insights, including the specifics of the scam, how it works, and the risks involved. The content is well-researched, with examples and screenshots, making it a valuable resource for readers. However, it does not offer particularly new or groundbreaking information in the field of cybersecurity, which prevents it from being rated as exceptional.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-06T15:37:03.626366"
+    },
+    {
+      "id": 1630,
+      "source_id": 4,
+      "original_url": "https://iss4cf0ng.github.io/2026/04/05/2026-4-5-WannaCryProtocol/",
+      "title": "[Studying] Inside WannaCry: Exploit, Worming, and TOR Communication Explained | ISSAC/iss4cf0ng's blog",
+      "summary": "WannaCry's worming mechanism combines EternalBlue's SMBv1 integer overflow with DoublePulsar's kernel-mode backdoor to enable automated lateral movement, while TOR-based C2 communication provides anonymized command infrastructure that evades direct takedown.",
+      "ideas": [
+        "TOR proxy binds to 127.0.0.1:9050 for anonymized C2 communication",
+        "DoublePulsar uses MID 0x41/0x51 handshake for covert backdoor detection",
+        "EternalBlue exploits SMBv1 FEA integer overflow in srv.sys kernel driver",
+        "Worming tool scans port 445 and auto-infects via exploit-or-backdoor logic",
+        "DLL payload extracted from resources and injected through DoublePulsar RUN command",
+        "Kernel implant resides filelessly in memory, wiped on reboot without persistence",
+        "Complete kill chain: SMB scan → DoublePulsar check → EternalBlue → payload injection",
+        "s.wnry contains unencrypted TOR client, c.wnry stores onion domains and bitcoin addresses"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This technical analysis delivers substantial value through detailed reverse engineering of WannaCry's complete kill chain. The author provides novel technical insights including: the specific TOR proxy binding mechanism (127.0.0.1:9050), DoublePulsar's MID-based handshake protocol (0x41/0x51), and the complete DLL injection pipeline with Ghidra disassembly. The flowcharts and hex-to-decimal conversions demonstrate genuine hands-on analysis rather than rehashed public information. Minor padding exists in the SMB protocol primer and meme image, but the core technical content is dense and actionable for security researchers. Strong thematic alignment with cybersecurity and malware analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-06T15:36:16.612980"
+    },
+    {
+      "id": 1629,
+      "source_id": 4,
+      "original_url": "https://blog.talosintelligence.com/qilin-edr-killer/",
+      "title": "Qilin EDR killer infection chain",
+      "summary": "The Qilin EDR killer uses advanced in-memory execution, syscall hijacking, and kernel-level manipulation to silently disable over 300 EDR solutions.",
+      "ideas": [
+        "Malicious msimg32.dll is side-loaded to execute EDR-killing payload via DllMain.",
+        "Loader creates slot-policy table to classify ntdll syscall stubs by function.",
+        "Custom exception handler is installed by patching ntdll's .mrdata section.",
+        "Breakpoint exceptions are handled to evade basic sandbox detection.",
+        "Single-step exceptions trigger obfuscated control flow using SEH/VEH.",
+        "Syscall recovery uses clean neighboring stubs to bypass hooked APIs.",
+        "Loader resolves LdrProtectMrdata via CALL rel32 scanning, not by name.",
+        "Geo-fencing excludes post-Soviet regions to avoid detection.",
+        "Two helper drivers enable physical memory access and process termination.",
+        "EDR killer unregisters monitoring callbacks before terminating EDR processes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers high-density technical insights into a sophisticated EDR evasion and killing chain used in Qilin ransomware attacks. It presents novel, actionable knowledge including SEH/VEH-based obfuscation, syscall recovery via neighboring stubs (Halo's Gate), kernel object manipulation, and stealthy API resolution—all supported by detailed analysis, diagrams, and pseudo-code. The depth aligns strongly with cybersecurity and reverse engineering themes, offering rare, expert-level understanding of modern offensive techniques.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-06T15:36:06.111054"
+    },
+    {
+      "id": 1628,
+      "source_id": 4,
+      "original_url": "https://github.com/j3h4ck/PoisonKiller",
+      "title": "Skip to content",
+      "summary": "A POC for a kernel-mode process killer using a signed Microsoft driver to terminate any process, including PPL-protected EDR services, with a valid Microsoft signature and no blocklisting.",
+      "ideas": [
+        "Kernel-mode process killer POC",
+        "Signed Microsoft driver for process termination",
+        "Bypassing PPL-protected EDR services",
+        "Using IOCTL interface for process killing",
+        "Loading and running the driver",
+        "IOCs for the driver and process killer"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a novel and insightful proof-of-concept (POC) for a kernel-mode process killer that can terminate any process, including PPL-protected EDR services like CrowdStrike Falcon. It includes technical details, reverse engineering writeup, and driver internals, making it a valuable resource for researchers and red teamers. However, the content is somewhat specialized and may not be directly applicable to a broad audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-06T15:35:08.252956"
+    },
     {
       "id": 1627,
       "source_id": 22,
