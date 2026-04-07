@@ -1,7 +1,114 @@
 {
-  "updated_at": "2026-04-07T06:00:10.179918",
-  "total_items": 712,
+  "updated_at": "2026-04-07T07:00:00.440071",
+  "total_items": 716,
   "items": [
+    {
+      "id": 1657,
+      "source_id": 4,
+      "original_url": "https://www.schneier.com/blog/archives/2026/04/new-mexicos-meta-ruling-and-encryption.html",
+      "title": "New Mexico's Meta Ruling and Encryption - Schneier on Security",
+      "summary": "Holding tech companies liable for security features like encryption because bad actors use them creates dangerous incentives against user protection.",
+      "ideas": [
+        "End-to-end encryption protects billions from surveillance and abuse.",
+        "Using encryption as evidence of negligence undermines security for all.",
+        "Design liability could deter companies from adding privacy features.",
+        "Internal risk discussions may stop if used as legal evidence.",
+        "The ruling threatens encryption under the guise of child protection.",
+        "Bad actors using tools doesn't make the tools liable."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers 6 distinct, high-value insights about the legal threat to encryption from the New Mexico ruling, with strong thematic relevance to cybersecurity and tech policy. It efficiently highlights novel legal implications, chilling effects on corporate security practices, and the flawed logic of design liability, all from a trusted expert source. No padding or penalties apply.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-07T15:36:22.333134"
+    },
+    {
+      "id": 1656,
+      "source_id": 4,
+      "original_url": "https://blog.zsec.uk/audi-carplay-2026/",
+      "title": "Enabling Car Play and Android Auto for free on Audi 2026",
+      "summary": "You can unlock CarPlay and Android Auto on compatible Audi MMI systems for free using the M.I.B. toolkit by modifying firmware via SD card, avoiding costly dealer activations.",
+      "ideas": [
+        "M.I.B. is a free open-source toolkit to unlock hidden car infotainment features.",
+        "Audi models with MIB1 High or MIB2 High units can enable CarPlay/Android Auto for free.",
+        "Dealer activation fees for CarPlay can be bypassed using M.I.B. firmware patches.",
+        "SD card must be FAT32 formatted with 4096-byte allocation units for successful flashing.",
+        "External power must be connected to prevent bricking during firmware modification.",
+        "Firmware version strings reveal unit type, region, brand, and update level.",
+        "M.I.B. supports MHI2 and MHI2Q units but not MIB3 or entry-level variants.",
+        "Autorun can be enabled by renaming _Swdlautorun.txt to Swdlautorun.txt on the SD card.",
+        "Red Engineering Menu access varies by model and is needed for version checks.",
+        "Data-capable USB ports are required; charging-only ports won't support phone integration."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers high-value, actionable technical knowledge for enabling CarPlay and Android Auto on Audi vehicles using open-source tools. It provides detailed, step-by-step guidance with specific firmware insights, compatibility tables, and risk warnings, drawing from multiple authoritative sources. The density of practical information is strong, though slightly reduced by minor promotional links and navigation elements. Strong thematic alignment with CyberSecurity and Tech.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-07T15:36:16.062609"
+    },
+    {
+      "id": 1655,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/04/dprk-linked-hackers-use-github-as-c2-in.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "North Korean hackers are exploiting GitHub as a stealthy C2 channel using native Windows tools and scheduled‑task persistence.",
+      "ideas": [
+        "DPRK-linked hackers use GitHub repositories with hard‑coded tokens as command‑and‑control servers.",
+        "Attack chain starts with malicious LNK files delivering a decoy PDF and PowerShell script.",
+        "PowerShell script evades analysis by checking for VM, debugger, and forensic tool processes.",
+        "Persistence achieved via scheduled task launching the PowerShell payload every 30 minutes in hidden window.",
+        "Threat actors leverage native Windows tools (LolBins) to minimize detection and avoid dropped PE files.",
+        "Similar campaigns use Dropbox C2 and HWP OLE dropper to deliver RokRAT via DLL side‑loading.",
+        "Indicators include GitHub accounts “motoralis”, “God0808RAMA”, and hidden folder C:\\windirr for staging payloads."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides multiple concrete security insights—GitHub C2 with hard‑coded token, LNK‑based delivery, PowerShell evasion checks, scheduled‑task persistence, and native Windows tool usage—offering actionable knowledge for defenders. It stays focused on cybersecurity without clickbait or excessive promotion, yielding good value density for its medium length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-07T15:36:08.249146"
+    },
+    {
+      "id": 1654,
+      "source_id": 4,
+      "original_url": "https://blog.ahmadz.ai/automated-deepagents-langchain-pipeline-for-zero-days/",
+      "title": "Building an Automated Pipeline with LangChain DeepAgents to Find Zero-Days in Kernel Drivers. It Found One in ASUS. | Rehman's Blog",
+      "summary": "The author built an automated zero-day discovery pipeline using LangChain DeepAgents that found a real ASUS kernel driver vulnerability, with the key insight being the 'free until LLM' cost optimization strategy—using free tools (triage, Ghidra, Semgrep) to filter candidates before expensive LLM analysis.",
+      "ideas": [
+        "SHA256 deduplication prevents analyzing identical drivers under different filenames",
+        "Dangerous BYOVD APIs include MmMapIoSpace, MmAllocateContiguousMemory, IoAllocateMdl, __readmsr",
+        "METHOD_NEITHER IOCTLs without ProbeForRead indicate likely memory corruption vulnerabilities",
+        "LangChain DeepAgents with triage_drivers and batch_analyze_candidates tools automate driver analysis",
+        "Ghidra Jython script traces DriverEntry to dispatch table to find IOCTL handler decompilation",
+        "Cost optimization: keep everything before LLM free by using Semgrep as zero-cost filter",
+        "Pipeline scales from 12,000 drivers to 7,463 unique candidates via PE header triage",
+        "Claude 3.7 can generate working PoC exploit code from Ghidra output and vulnerability report",
+        "LLM reports need manual verification to eliminate hallucinations before disclosure",
+        "Gemini traces data flow from IOCTL user-buffer to dangerous sinks with mathematical precision",
+        "DeepZero pipeline open-sourced at github.com/416rehman/deepzero for community use",
+        "Windows 10/11 compatibility declaration enables prioritization of modern driver candidates"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is exceptional technical content that delivers high-value security research methodology. The author provides a complete, working pipeline architecture with specific tool integrations (Ghidra headless scripting, Semgrep rules, LangChain DeepAgents, Gemini 2.5), cost optimization strategies, dangerous API patterns for BYOVD detection, and proof of concept via a discovered ASUS zero-day. The value density is high—every section contains actionable technical details. The content avoids fluff and includes concrete specifics like the deduplication technique (SHA256), token costs ($2-3/driver), and the LLM agent tool definitions. No penalties apply; this is original security research with open-sourced tooling that significantly advances the reader's knowledge of automated vulnerability discovery.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-07T15:32:41.876689"
+    },
     {
       "id": 1653,
       "source_id": 7,
