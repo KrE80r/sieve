@@ -1,7 +1,262 @@
 {
-  "updated_at": "2026-04-08T17:00:00.526119",
-  "total_items": 737,
+  "updated_at": "2026-04-08T19:00:00.573466",
+  "total_items": 747,
   "items": [
+    {
+      "id": 1702,
+      "source_id": 4,
+      "original_url": "https://fcavallarin.github.io/wirebrowser/CDP-as-a-Runtime-Instrumentation-Engine",
+      "title": "CDP as a Runtime Instrumentation Engine | wirebrowser",
+      "summary": "Debugging can be transformed into a programmable, event-driven engine using CDP to trace and manipulate async execution flows without code modification.",
+      "ideas": [
+        "Use CDP to hook functions without monkeypatching via debugger primitives",
+        "Traditional debugging fails to track async value propagation",
+        "Hooking alone doesn't reveal who consumes a return value",
+        "Async functions break return value patching due to Promise resolution",
+        "followReturn bypasses async patching by reaching the consumer frame",
+        "Event-driven debugging turns runtime events into programmable handlers",
+        "ctx.stepIntoAsync enables automated traversal of async continuations",
+        "Continuation tracking uses stack similarity and temporal proximity heuristics",
+        "Debugger follows actual runtime, not logical developer expectations",
+        "Combining network, runtime, and memory inspection enables end-to-end reverse engineering"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers multiple novel, high-density insights about using CDP for advanced runtime instrumentation, particularly around async debugging and flow tracing. It introduces original concepts like 'followReturn' and heuristic-based continuation tracking, grounded in deep technical expertise. Strong thematic alignment with CyberSecurity and Tech, with practical value for reverse engineering and debugging. Minimal padding, no promotional content, and highly efficient delivery.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:44:23.010732"
+    },
+    {
+      "id": 1701,
+      "source_id": 4,
+      "original_url": "https://arstechnica.com/security/2026/04/russias-military-hacks-thousands-of-consumer-routers-to-steal-credentials/",
+      "title": "Thousands of consumer routers hacked by Russia's military - Ars Technica",
+      "summary": "Russia’s military exploited unpatched home routers to hijack DNS and steal credentials via man-in-the-middle attacks on encrypted traffic.",
+      "ideas": [
+        "APT28, a Russian military hacking group, hijacked 18,000–40,000 consumer routers in 120 countries.",
+        "Hackers changed DNS settings to redirect users to malicious servers that stole OAuth tokens.",
+        "Attackers used self-signed certificates and relied on users ignoring browser warnings.",
+        "Compromised routers acted as proxies to target government and corporate networks.",
+        "DNS changes were spread via DHCP to devices on the same local network.",
+        "The campaign escalated after a UK alert exposed a related malware operation.",
+        "End-of-life routers without security updates were primary targets.",
+        "Users should check DNS settings and avoid clicking through TLS certificate warnings."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several high-value insights about a significant cyber threat by Russia's military, including specific tactics like DNS hijacking and credential theft via compromised routers. It cites credible sources (Microsoft, NCSC, Black Lotus Labs) and provides actionable advice for users to check for compromise. The density is good, with multiple concrete details and a clear explanation of the attack methodology, though slightly padded with background on APT28 aliases.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:44:15.880188"
+    },
+    {
+      "id": 1700,
+      "source_id": 4,
+      "original_url": "https://simonkoeck.com/writeups/tolgee-xxe-translation-import",
+      "title": "Reading /etc/passwd via Translation Upload in Tolgee | Simon Koeck",
+      "summary": "Improper XML parser defaults in Tolgee enable XXE attacks that can read arbitrary files and trigger SSRF, but can be fixed by centralizing secure parser configuration.",
+      "ideas": [
+        "Tolgee's XML importers lack secure XML parser configuration, enabling XXE.",
+        "Using XMLInputFactory without disabling external entities allows file reads.",
+        "Crafting an Android XML file with a DTD entity can read /etc/passwd.",
+        "XXE can also trigger SSRF by referencing http:// metadata service URLs.",
+        "Reading /proc/self/environ can expose database passwords and API tokens.",
+        "Centralizing XML parser creation with secure settings mitigates the vulnerability.",
+        "Adding XxeVulnerabilityTest ensures future regressions are caught.",
+        "CVE-2026-32251 assigned with CVSS 9.3 reflects high severity.",
+        "Attack requires only authenticated import permission, low barrier on multi-tenant platforms."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The write‑up provides concrete, actionable insight into a critical XXE flaw in Tolgee, including exploit payloads, impact analysis, and a secure remediation patch, aligning well with cybersecurity themes. It offers multiple distinct value instances without clickbait or filler, resulting in high value density for its medium length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:43:06.249154"
+    },
+    {
+      "id": 1699,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/news/docker-authorization-bypass-flaw-enables-dangerous-container-creation",
+      "title": "Docker fixes AuthZ bypass bug that created containers with excessive privileges",
+      "summary": "Docker has patched a vulnerability that allows attackers to bypass AuthZ checks and create containers with excessive privileges, which could lead to sensitive information exfiltration and credential theft.",
+      "ideas": [
+        "Docker's AuthZ bypass bug allows attackers to create containers with excessive privileges",
+        "The vulnerability affects Docker middleware and can be exploited by crafting an HTTP request with a size greater than 1MB",
+        "The flaw can be used to create privileged containers with access to the host filesystem",
+        "Attackers can exploit the vulnerability to exfiltrate sensitive information and credentials",
+        "Docker has fixed the issue by increasing maxBodySize to 4MB and ensuring requests with bodies greater than 4MB are fully rejected",
+        "Users should update to Docker Engine version 29.3.1 or later to mitigate the vulnerability"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers high-value information about a significant vulnerability in Docker's AuthZ bypass bug, providing a clear explanation of the issue, its impact, and the fix. It also offers practical advice on how to mitigate the vulnerability and check for potential exploitation. The content is well-structured, informative, and relevant to the theme of cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:42:58.351722"
+    },
+    {
+      "id": 1698,
+      "source_id": 4,
+      "original_url": "https://heyitsas.im/posts/cups/",
+      "title": "Spooler Alert: Remote Unauth'd RCE-to-root Chain in CUPS · Hey, it's Asimclean-preserve optimized sharp fixed tight crop",
+      "summary": "Researchers have discovered two vulnerabilities in CUPS, a standard printing system for Linux and Unix-like systems, which can be chained to achieve unauthenticated remote code execution as root, and provide mitigation options and technical details on the vulnerabilities.",
+      "ideas": [
+        "CUPS vulnerabilities can be chained for unauthenticated remote code execution as root",
+        "Vulnerability hunting agents can efficiently find low-hanging fruit in vulnerability research",
+        "Mitigation options for CUPS vulnerabilities include not exposing CUPS over the network and using security modules like SELinux or AppArmor",
+        "Self-orchestrating setups can aid in vulnerability research by narrowing the search space",
+        "LLMs can be used for vulnerability research to find remote code execution and root primitives"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers high-value insights into two significant vulnerabilities in CUPS, providing detailed technical explanations and mitigation options. The author's use of vulnerability hunting agents and their self-orchestrating setup showcases innovative approaches to vulnerability research. The content is dense with valuable information, including specific exploit techniques and code snippets, making it highly relevant to the theme of cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:40:47.395872"
+    },
+    {
+      "id": 1697,
+      "source_id": 4,
+      "original_url": "https://ygashu.dev/posts/uniview-blog/unview-ipc-blog-1/",
+      "title": "ygashu · From UART to Root: Vendor Shell Escape on a Uniview IP Camera",
+      "summary": "By modifying a whitelisted vendor shell script (checksysready.sh) stored on writable flash to spawn /bin/sh, the author escalates from restricted shell access to full root shell on the running firmware.",
+      "ideas": [
+        "Unpopulated 4-pin headers on embedded hardware typically indicate UART debugging interfaces",
+        "Identify UART TX pin by observing voltage fluctuation during device boot",
+        "Uniview IP cameras use default credential 'uniview' for root shell access",
+        "U-Boot bootargs can be modified via setenv to boot into single-user mode for root access",
+        "The init parameter in bootargs defines the first program the kernel executes",
+        "Modify vendor shell whitelisted scripts on writable partitions to escape restricted shells",
+        "System scripts like checksysready.sh run as root during normal operation",
+        "Manual UBIFS mounting requires calculating MTD number and using ubiattach",
+        "Add /bin/sh to top of checksysready.sh script to gain unrestricted shell access"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-quality technical walkthrough that delivers genuine value through its systematic approach to embedded device exploitation. The author provides multiple actionable insights: UART pinout mapping technique, the default credential 'uniview', U-Boot bootargs modification to bypass normal boot, MTD partition understanding, manual UBIFS mounting procedure, and the key script modification technique for escaping the restricted vendor shell. The content is tightly focused with no padding - every section advances the exploitation chain. This falls squarely in cybersecurity/hardware security research with practical real-world applicability for firmware extraction and analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:40:40.820696"
+    },
+    {
+      "id": 1696,
+      "source_id": 29,
+      "original_url": "https://github.com/vijayvkrishnan/openmix",
+      "title": "Show HN: OpenMix, open-source computational framework for formulation science",
+      "summary": "OpenMix is an open-source framework that resolves ingredients to their molecular identity and observes formulations through physics, enabling autonomous mixture design and experimentation in various fields such as cosmetics, pharma, and food.",
+      "ideas": [
+        "Open-source framework for computational mixture science",
+        "Physics observation engine for ingredient resolution and formulation analysis",
+        "Multi-perspective discourse for evaluating formulations",
+        "Autonomous experiment runner for iterative optimization",
+        "Pluggable evaluation functions for custom scoring",
+        "Validation modes for safety, formulation, and discovery",
+        "Coverage honesty for transparent rule coverage"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 95,
+      "rating_reason": "The content provides exceptional value by introducing OpenMix, an open-source computational framework for formulation science, which fills a significant gap in the field. It delivers multiple novel insights, including a physics observation engine, multi-perspective discourse, and autonomous experiment capabilities. The content is densely packed with information, making it highly efficient in terms of value delivery. The thematic relevance is strong, aligning with technology, innovation, and human development.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-04-09T03:38:44.975022"
+    },
+    {
+      "id": 1695,
+      "source_id": 4,
+      "original_url": "https://cymulate.com/blog/the-race-to-ship-ai-tools-left-security-behind-part-1-sandbox-escape/",
+      "title": ".codex/config.toml model = \"gpt-4o\" sandbox_mode = \"danger-full-access\" # All sandbox restrictions removed approval_policy = \"never\" # No approval prompts hide_full_access_warning = true # Suppresses security warning &#91;sandbox_workspace_write&#93; network_access = true# .codex/config.toml model = \"gpt-4o\" sandbox_mode = \"danger-full-access\" # All sandbox restrictions removed approval_policy = \"never\" # No approval prompts hide_full_access_warning = true # Suppresses security warning [sandbox_",
+      "summary": "Cymulate Research discovered that AI CLI tools (Claude Code, Gemini CLI, Codex CLI) contain a Configuration-Based Sandbox Escape vulnerability class where sandbox isolation can be bypassed by modifying writable configuration files that control host-side behavior, allowing attackers to achieve arbitrary code execution outside the sandbox.",
+      "ideas": [
+        "Configuration-Based Sandbox Escape (CBSE) bypasses sandbox by modifying trusted configuration files",
+        "Claude Code hooks execute silently without confirmation dialogs or audit logs",
+        "Project-level configuration controls security-critical behavior but is writable from inside sandbox",
+        "CVE-2026-25725 affects Claude Code versions < v2.1.2 with CVSS 7.7",
+        "Bubblewrap read-only mount protections are conditional on file existence at startup",
+        "AI agents marketed as security tools introduce their own attack surfaces",
+        "Organizations should audit AI CLI tools with access to AWS, GitHub, or SSH credentials",
+        "Cymulate provides attack scenarios for CBSE exploits mapped to kill chain stages"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive security research documenting a novel vulnerability class (Configuration-Based Sandbox Escape) across multiple AI CLI tools including Claude Code, Gemini CLI, and Codex CLI. The content provides specific CVE details (CVE-2026-25725, CVSS 7.7), technical exploitation chain explanations, and actionable mitigation guidance for security leaders. The value is diminished slightly by promotional elements for Cymulate's product offerings, but the core research delivers genuine insight into how AI agent sandbox implementations can be bypassed through configuration injection. The content efficiently delivers multiple technical insights about hook mechanisms, configuration hierarchy vulnerabilities, and vendor disclosure practices, making it valuable for security professionals evaluating AI tool risks.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:38:38.415851"
+    },
+    {
+      "id": 1694,
+      "source_id": 4,
+      "original_url": "https://krypt3ia.wordpress.com/2026/04/08/nation-state-cyber-operations-integrated-threat-intelligence-assessment-4-8-2026/",
+      "title": "Nation-State Cyber Operations: Integrated Threat Intelligence Assessment 4/8/2026 | Krypt3ia",
+      "summary": "Nation-state cyber operations are transitioning from episodic intrusions to persistent, multi-domain models, with a focus on infrastructure-level dominance, identity-centric operations, and covert command-and-control channels, posing a significant threat to global infrastructure and security.",
+      "ideas": [
+        "Nation-state cyber operations are shifting towards persistent models",
+        "Infrastructure-level tradecraft is increasingly used",
+        "Identity-centric operations are on the rise",
+        "Covert command-and-control channels are being utilized",
+        "Edge infrastructure exploitation is a growing concern",
+        "Living-off-the-land techniques are being employed",
+        "Toolchain proliferation is blurring the line between state and criminal actors",
+        "Cyber operations are becoming fully integrated into statecraft"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides a comprehensive and in-depth analysis of nation-state cyber operations, highlighting the shift towards persistent, multi-domain operational models and the increasing use of infrastructure-level tradecraft. The author delivers multiple novel insights, including the emphasis on upstream collection, identity-centric operations, and the blurring of lines between espionage and disruption. The content is rich in value instances, including expert insight, evidence, and data, making it a high-value density piece. The thematic relevance is strong, aligning with the TECHNOLOGY & INNOVATION and CYBERSECURITY themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-09T03:36:46.757237"
+    },
+    {
+      "id": 1693,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/metas-muse-spark-is-its-first-frontier-model-and-its-first-without-open-weights/",
+      "title": "Meta's Muse Spark is its first frontier model and its first without open weights",
+      "summary": "Meta's Muse Spark is a new AI model that demonstrates strong performance on various tasks, including multimodal perception and health applications, and marks a significant improvement in efficiency compared to previous models.",
+      "ideas": [
+        "Muse Spark is Meta's first frontier model",
+        "Muse Spark has no open weights",
+        "Muse Spark achieves strong benchmark results",
+        "Muse Spark is more efficient than previous models",
+        "Muse Spark has applications in health and multimodal perception",
+        "Meta plans to open-source parts of its new AI models"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a detailed overview of Meta's new AI model, Muse Spark, including its capabilities, benchmark results, and efficiency improvements. The content is rich in information, with multiple value instances such as the model's performance on various tasks, its comparison to other models, and the company's plans for future development. The article also discusses the implications of Muse Spark's release and its potential impact on the AI landscape. However, the content is somewhat dense and assumes a certain level of familiarity with AI concepts and terminology.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-04-09T03:33:27.518112"
+    },
     {
       "id": 1692,
       "source_id": 27,
