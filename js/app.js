@@ -709,6 +709,13 @@ class FeedSieve {
                         <button class="modal-nav-btn" data-dir="prev" ${!hasPrev ? 'disabled style="opacity:0.3;pointer-events:none"' : ''}>&#8592;</button>
                         <button class="modal-nav-btn" data-dir="next" ${!hasNext ? 'disabled style="opacity:0.3;pointer-events:none"' : ''}>&#8594;</button>
                     </div>
+                    <button class="modal-unread-btn" data-item-id="${item.id}" title="Mark as unread">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="8" cy="8" r="6"/>
+                            <circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/>
+                        </svg>
+                        Unread
+                    </button>
                     <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link">
                         ${isDigest ? 'View on web →' : 'Read Original →'}
                     </a>
@@ -761,6 +768,27 @@ class FeedSieve {
                 navigateModal(btn.dataset.dir);
             });
         });
+
+        // Mark unread button
+        const unreadBtn = modal.querySelector('.modal-unread-btn');
+        if (unreadBtn) {
+            unreadBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const itemId = unreadBtn.dataset.itemId;
+                this.markAsUnread(itemId);
+                unreadBtn.classList.add('active');
+                unreadBtn.textContent = 'Marked unread';
+                setTimeout(() => {
+                    unreadBtn.classList.remove('active');
+                    unreadBtn.innerHTML = `
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="8" cy="8" r="6"/>
+                            <circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/>
+                        </svg>
+                        Unread`;
+                }, 1500);
+            });
+        }
 
         // Keyboard: Escape to close, j/k or arrows for nav
         const onKeydown = (e) => {
