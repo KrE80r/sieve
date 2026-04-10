@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FeedSieve - AI-curated content from RSS feeds, YouTube channels, and newsletters">
     <title>FeedSieve - AI-Curated Content</title>
-    <link rel="stylesheet" href="css/style.1775825789.css">
+    <link rel="stylesheet" href="css/style.1775827985.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%236C63FF%22/><stop offset=%22100%25%22 stop-color=%22%2300D4AA%22/></linearGradient></defs><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%231a1a2e%22/><path d=%22M16 18h32l-10 16v12l-12 0V34Z%22 fill=%22url(%23g)%22 opacity=%220.9%22/><circle cx=%2224%22 cy=%2216%22 r=%222%22 fill=%22%2300D4AA%22 opacity=%220.6%22/><circle cx=%2240%22 cy=%2214%22 r=%221.5%22 fill=%22%236C63FF%22 opacity=%220.5%22/><circle cx=%2232%22 cy=%2212%22 r=%221.5%22 fill=%22%2300D4AA%22 opacity=%220.4%22/></svg>">
 </head>
 <body>
@@ -178,7 +178,26 @@
                     </div>
                 </div>
                 <div class="filter-row filter-row-scroll">
+                    <div id="active-source-chip" class="active-source-chip hidden">
+                        <span class="active-source-chip-label"></span>
+                        <button class="active-source-chip-clear" aria-label="Clear source filter">&times;</button>
+                    </div>
                     <div class="filter-pills-scroll" id="mobile-category-pills"></div>
+                    <button class="source-filter-btn" id="source-filter-btn" aria-label="Filter by source" aria-haspopup="dialog" aria-expanded="false">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                        </svg>
+                        <span class="source-filter-badge hidden"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Source Picker Bottom Sheet -->
+            <div class="source-sheet-overlay hidden" id="source-sheet-overlay">
+                <div class="source-sheet" id="source-sheet" role="dialog" aria-modal="true" aria-labelledby="source-sheet-title">
+                    <div class="source-sheet-handle"></div>
+                    <h3 class="source-sheet-title" id="source-sheet-title">Filter by Source</h3>
+                    <div class="source-sheet-list" id="source-sheet-list"></div>
                 </div>
             </div>
 
@@ -195,6 +214,6 @@
         </main>
     </div>
 
-    <script src="js/app.1775825789.js"></script>
+    <script src="js/app.1775827985.js"></script>
 </body>
 </html>

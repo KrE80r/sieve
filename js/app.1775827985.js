@@ -24,6 +24,7 @@ class FeedSieve {
     async init() {
         this.bindEvents();
         this.bindMobileFilters();
+        this.bindSourceSheet();
         this.setupMobileMenu();
         this.setupBackToTop();
         this.setupPullToRefresh();
@@ -280,6 +281,7 @@ class FeedSieve {
                     this.categoryFilter = cat;
                 }
                 this.sourceFilter = null;
+                this.updateSourceChip(null);
                 this.applyFilters();
             });
         });
@@ -295,6 +297,7 @@ class FeedSieve {
                     e.currentTarget.classList.add('active');
                     this.timeFilter = e.currentTarget.dataset.filter;
                     this.sourceFilter = null;
+                    this.updateSourceChip(null);
                     this.applyFilters();
                 });
             });
@@ -312,6 +315,160 @@ class FeedSieve {
                     this.applyFilters();
                 });
             });
+        }
+    }
+
+    bindSourceSheet() {
+        const btn = document.getElementById('source-filter-btn');
+        const overlay = document.getElementById('source-sheet-overlay');
+        const sheet = document.getElementById('source-sheet');
+        const listEl = document.getElementById('source-sheet-list');
+        const chipClear = document.querySelector('.active-source-chip-clear');
+        const handle = sheet?.querySelector('.source-sheet-handle');
+
+        if (!btn || !overlay || !listEl) return;
+
+        const typeIcons = {
+            rss: '📡', youtube: '🎬', newsletter: '📧',
+            nitter: '🐦', github: '🐙', digest: '📰'
+        };
+        const typeNames = {
+            rss: 'RSS Feeds', youtube: 'YouTube', newsletter: 'Newsletters',
+            nitter: 'Twitter/X', github: 'GitHub', digest: 'Digests'
+        };
+
+        let onKeydown = null;
+
+        const openSheet = () => {
+            if (document.querySelector('.modal-overlay')) return; // don't open over article modal
+
+            const types = ['rss', 'youtube', 'newsletter', 'nitter', 'github', 'digest'];
+            let html = '';
+
+            types.forEach(type => {
+                const typeSources = this.sources[type] || {};
+                const sourceIds = Object.keys(typeSources);
+                if (sourceIds.length === 0) return;
+
+                html += `<div class="source-sheet-group">
+                    <div class="source-sheet-group-header">
+                        <span class="group-icon">${typeIcons[type]}</span>
+                        ${typeNames[type]}
+                    </div>`;
+
+                sourceIds
+                    .sort((a, b) => typeSources[b].count - typeSources[a].count)
+                    .forEach(sourceId => {
+                        const isActive = this.sourceFilter &&
+                            this.sourceFilter.id === sourceId &&
+                            this.sourceFilter.type === type;
+                        html += `<button class="source-sheet-item${isActive ? ' active' : ''}"
+                            data-source-id="${sourceId}" data-source-type="${type}">
+                            <span>${this.escapeHtml(typeSources[sourceId].name)}</span>
+                            <span class="source-sheet-item-count">${typeSources[sourceId].count}</span>
+                        </button>`;
+                    });
+
+                html += `</div>`;
+            });
+
+            if (!html) {
+                html = '<p style="color:var(--color-text-muted);text-align:center;padding:var(--spacing-lg)">No sources available</p>';
+            }
+
+            listEl.innerHTML = html;
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            btn.setAttribute('aria-expanded', 'true');
+
+            // Focus first item for keyboard accessibility
+            const firstItem = listEl.querySelector('.source-sheet-item');
+            if (firstItem) firstItem.focus();
+
+            // Escape key to close
+            onKeydown = (e) => { if (e.key === 'Escape') closeSheet(); };
+            document.addEventListener('keydown', onKeydown);
+        };
+
+        const closeSheet = () => {
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+            btn.setAttribute('aria-expanded', 'false');
+            btn.focus();
+            if (onKeydown) {
+                document.removeEventListener('keydown', onKeydown);
+                onKeydown = null;
+            }
+        };
+
+        btn.addEventListener('click', openSheet);
+
+        // Event delegation for source items (bound once, not per-open)
+        listEl.addEventListener('click', (e) => {
+            const item = e.target.closest('.source-sheet-item');
+            if (!item) return;
+
+            const sourceId = item.dataset.sourceId;
+            const sourceType = item.dataset.sourceType;
+            const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
+
+            this.typeFilter = null;
+            this.categoryFilter = null;
+            this.sourceFilter = { id: sourceId, type: sourceType };
+
+            // Clear category pills active state
+            const catContainer = document.getElementById('mobile-category-pills');
+            if (catContainer) catContainer.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+
+            document.getElementById('feed-title').textContent = sourceName;
+            this.applyFilters();
+            closeSheet();
+            this.updateSourceChip(sourceName);
+        });
+
+        // Close on overlay tap (outside sheet)
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeSheet();
+        });
+
+        // Swipe-to-dismiss only from handle area (not the scrollable list)
+        if (handle) {
+            let handleStartY = 0;
+            handle.addEventListener('touchstart', (e) => {
+                handleStartY = e.touches[0].clientY;
+            }, { passive: true });
+            handle.addEventListener('touchend', (e) => {
+                const dy = e.changedTouches[0].clientY - handleStartY;
+                if (dy > 60) closeSheet();
+            }, { passive: true });
+        }
+
+        // Chip clear
+        if (chipClear) {
+            chipClear.addEventListener('click', () => {
+                this.sourceFilter = null;
+                this.updateSourceChip(null);
+                this.updateFeedTitle(this.timeFilter);
+                this.applyFilters();
+            });
+        }
+    }
+
+    updateSourceChip(sourceName) {
+        const chip = document.getElementById('active-source-chip');
+        const chipLabel = chip?.querySelector('.active-source-chip-label');
+        const btn = document.getElementById('source-filter-btn');
+        const badge = btn?.querySelector('.source-filter-badge');
+
+        if (sourceName) {
+            if (chipLabel) chipLabel.textContent = sourceName;
+            chip?.classList.remove('hidden');
+            btn?.classList.add('active');
+            badge?.classList.remove('hidden');
+        } else {
+            chip?.classList.add('hidden');
+            btn?.classList.remove('active');
+            badge?.classList.add('hidden');
         }
     }
 
@@ -403,6 +560,7 @@ class FeedSieve {
         this.categoryFilter = null;
         this.sourceFilter = null;
         this.updateFeedTitle(filter);
+        this.updateSourceChip(null);
         this.applyFilters();
     }
 
@@ -419,6 +577,7 @@ class FeedSieve {
 
         const sourceName = this.sources[sourceType]?.[sourceId]?.name || 'Source';
         document.getElementById('feed-title').textContent = sourceName;
+        this.updateSourceChip(sourceName);
         this.applyFilters();
     }
 
@@ -432,6 +591,7 @@ class FeedSieve {
         this.sourceFilter = null;
 
         document.getElementById('feed-title').textContent = category;
+        this.updateSourceChip(null);
         this.applyFilters();
     }
 
@@ -445,6 +605,7 @@ class FeedSieve {
         this.categoryFilter = null;
         this.sourceFilter = null;
         this.updateFeedTitle(filter);
+        this.updateSourceChip(null);
         this.applyFilters();
     }
 
