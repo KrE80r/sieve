@@ -1,7 +1,290 @@
 {
-  "updated_at": "2026-04-13T17:00:00.465080",
-  "total_items": 725,
+  "updated_at": "2026-04-13T19:00:00.420095",
+  "total_items": 736,
   "items": [
+    {
+      "id": 1813,
+      "source_id": 4,
+      "original_url": "https://beelzebub.ai/blog/catching-cloudflare-warp-leaking-real-ips-through-tor/",
+      "title": "https://beelzebub.ai/blog/catching-cloudflare-warp-leaking-real-ips-through-tor/",
+      "summary": "Cloudflare WARP's managed Gateway tier injects HTTP attribution headers that survive intact through Tor, defeating Tor anonymity by leaking real IPs and persisting a WARP Tag ID that can correlate anonymous and residential sessions.",
+      "ideas": [
+        "Undocumented Cf-Warp-Tag-Id header persists across different source IPs, enabling cross-session correlation",
+        "WARP Gateway operates at HTTP layer while Tor operates at TCP layer, creating an architectural mismatch that leaks headers",
+        "Managed WARP (Zero Trust) adds headers while consumer WARP (1.1.1.1 app) does not, an undocumented distinction",
+        "Cf-Connecting-Ip cannot be spoofed as it's set server-side by Cloudflare on inbound connection",
+        "Six Tor exit nodes across four countries did not prevent real IP leakage through WARP headers",
+        "Attacker sent a real software developer resume (2019-2020) through the honeypot, indicating scraped job board data",
+        "The xdash-client/1.0 custom HTTP client has a unique JA4H fingerprint for detection",
+        "A planted AWS canary credential serves as a tripwire without triggering alerts",
+        "Detection rule: header_present Cf-Warp-Tag-Id with destination_not_cloudflare flags WARP leakage",
+        "Phase 1 established baseline by connecting directly from VPS without Cloudflare headers",
+        "WARP Tag b87b4e0d linked a Finnish Hetzner VPS to French residential IPv6 two hours apart",
+        "Tor relays only see encrypted TCP and cannot inspect or strip HTTP headers inside the payload",
+        "Attack pattern maps to MITRE ATT&CK T1090 proxy manipulation technique"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This is original cybersecurity research documenting a real privacy vulnerability with substantial defensive value. The article provides concrete evidence of WARP leaking real IPs through Tor via undocumented headers, including actual IPs, timestamps, threat actor behavior patterns, and practical detection signatures. Key value instances include: the undocumented Cf-Warp-Tag-Id persistence linking anonymous VPS to residential IP, the architectural explanation of why HTTP-layer proxies defeat TCP-layer anonymizers, the real resume PII captured showing actual attacker content, the planted canary credential system, and the actionable Sigma/KQL detection rules. While slightly promotional for the Beelzebub honeypot product, the technical content is substantive and directly applicable to defenders. This extends prior SANS ISC research with cross-IP correlation and non-Cloudflare destination evidence.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:46:31.833587"
+    },
+    {
+      "id": 1812,
+      "source_id": 4,
+      "original_url": "https://jivasecurity.com/writeups/dolibarr-remote-code-execution-cve-2026-22666",
+      "title": "Dolibarr 23.0.0: dol_eval() Whitelist Bypass → RCE — Jiva Security",
+      "summary": "A misplaced if-block in Dolibarr's eval sandbox caused the 'secure' whitelist mode to skip critical blacklist checks, enabling RCE through PHP variable function syntax and class instantiation.",
+      "ideas": [
+        "Whitelist mode accidentally skipped $forbiddenphpstrings checks due to control flow error",
+        "SplFileObject instantiation bypassed blacklist via unenforced whitelist class check",
+        "ORM model classes allowed database exfiltration without SQL injection",
+        "PHP variable function syntax ('exec')('id') bypassed whitelist regex entirely",
+        "disable_functions bypass achieved via exec through string literal invocation",
+        "Computed extrafields feature provided persistent eval injection point",
+        "Regex pattern /([\\s\\w\\'\\]\\\"]+)\\(/ failed to capture parenthesized string expressions",
+        "fetchNoCompute whitelist inclusion enabled arbitrary record loading"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is an exceptional security research write-up that delivers multiple novel insights with high density. The author provides: (1) a precise technical analysis of a logic flaw where whitelist mode accidentally skips critical blacklist checks, (2) a creative exploitation chain using SplFileObject instantiation bypass, (3) ORM-based data exfiltration without SQL injection, (4) a sophisticated regex bypass using PHP's variable function syntax with string literals, and (5) a working RCE proof-of-concept despite disable_functions hardening. The content demonstrates deep PHP internals knowledge, systematic vulnerability research methodology, and clear technical communication. Minor density reduction from narrative framing and screenshots, but the insight-per-word ratio remains high. Strong thematic relevance to cybersecurity and software engineering.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:44:50.006691"
+    },
+    {
+      "id": 1811,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/adobe-rolls-out-emergency-fix-for-acrobat-reader-zero-day-flaw/",
+      "title": "Adobe rolls out emergency fix for Acrobat, Reader zero-day flaw",
+      "summary": "Adobe has released an emergency security update for Acrobat Reader to fix a zero-day vulnerability that allows malicious PDF files to bypass sandbox restrictions and invoke privileged JavaScript APIs, potentially leading to arbitrary code execution.",
+      "ideas": [
+        "Adobe Acrobat and Reader have a zero-day flaw",
+        "The flaw allows malicious PDF files to bypass sandbox restrictions",
+        "The vulnerability can lead to arbitrary code execution",
+        "No user interaction is required beyond opening the malicious PDF",
+        "Adobe has released an emergency security update to fix the issue"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers high-value information about a critical zero-day flaw in Adobe Acrobat and Reader, providing details on the vulnerability, its exploitation, and the available fix. It aligns strongly with the CyberSecurity theme, offering actionable advice and referencing specific security updates. The content is dense and efficiently conveys important security information, making it worth the reader's time.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:42:47.280285"
+    },
+    {
+      "id": 1810,
+      "source_id": 4,
+      "original_url": "https://hardenedlinux.org/blog/2026-04-13-stealthy-rce-on-hardened-linux-noexec--userland-execution-poc/",
+      "title": "Stealthy RCE on Hardened Linux: noexec + Userland Execution PoC",
+      "summary": "Userland ELF execution bypasses kernel noexec protections by parsing and mapping binaries in-process, making filesystem-based security controls ineffective once arbitrary code execution is achieved.",
+      "ideas": [
+        "Userland ELF loading replaces process image without execve syscall",
+        "noexec mount flags are bypassable via mmap/memfd_create in exploited process",
+        "W^X protections circumvented through SIGSEGV handler flipping page permissions",
+        "SELinux/AppArmor exec hooks skipped by avoiding kernel execution path",
+        "memfd_create enables zero-filesfootprint payload delivery",
+        "Original process name preserved in /proc for stealth against ps/top",
+        "ASLR defeat via format-string infoleak enables reliable ROP chaining",
+        "PaX/GRsecurity TPE+RBAC is only effective mitigation against this class",
+        "Seccomp filters on memfd_create and suspicious mmap patterns can help",
+        "Arbitrary code execution renders filesystem-centric hardening theater"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-quality technical deep-dive with genuine offensive security research value. The content delivers multiple novel insights: a working PoC for bypassing noexec mounts via userland ELF loading, W^X circumvention through signal handler manipulation, and MAC policy evasion techniques. The threat model diagram and explicit code flows provide actionable understanding. Minor penalties for some underground posturing and 'expensive theater' rhetoric that slightly oversells the critique of standard hardening. Strong thematic relevance to cybersecurity and systems thinking. The accompanying open-source repository adds practical resource value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:42:21.673286"
+    },
+    {
+      "id": 1809,
+      "source_id": 4,
+      "original_url": "https://medium.com/@krishnakaanthreddyy1510/why-ai-powered-socs-are-the-next-attack-surface-11693e55c80c",
+      "title": "I tested corpus poisoning and prompt injection against a RAG-based SOC assistant - empirical results from 15 benchmark scenarios.",
+      "summary": "AI‑augmented SOCs introduce new attack surfaces, but semantic anomaly detection and proper pipeline controls can mitigate them.",
+      "ideas": [
+        "RAG‑based SOC assistants can be compromised via corpus poisoning with few malicious documents",
+        "Indirect prompt injection can achieve 100% success against undefended RAG pipelines",
+        "Multi‑agent SOC architectures are vulnerable to AI‑to‑AI prompt injection attacks",
+        "Semantic anomaly scoring, provenance tracking, and response consistency can detect these attacks",
+        "Vendors should disclose document ingestion controls and adversarial testing for AI SOC tools",
+        "RedSOC framework provides open‑source benchmarking for adversarial evaluation of SOC RAG pipelines",
+        "AI augmentation reduces analyst workload but creates a new attack surface"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple concrete value instances: novel attack scenarios (corpus poisoning, indirect prompt injection, multi‑agent trust exploitation), practical detection techniques, actionable vendor questions, and an open‑source RedSOC framework. It aligns strongly with cybersecurity and AI themes and provides evidence (100% detection rate) without clickbait or padding, yielding high value density for its ~900‑word length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:40:35.800957"
+    },
+    {
+      "id": 1808,
+      "source_id": 4,
+      "original_url": "https://github.com/SalahEldinFikri/Kalim_Backdoor",
+      "title": "https://github.com/SalahEldinFikri/Kalim_Backdoor",
+      "summary": "Kalim backdoor establishes persistence via a malicious startup shortcut and communicates with its C2 server to enable remote command execution and data exfiltration.",
+      "ideas": [
+        "Kalim is a 64-bit DLL backdoor linked to the MuddyWater threat group.",
+        "It drops a copy as update.exe in AppData\\Roaming\\Updates.",
+        "Uses COM objects to create a persistent startup shortcut named MicrosoftUpdateSerice.lnk.",
+        "Communicates with C2 domain moodleuni[.]com for command and data exfiltration.",
+        "Employs encrypted HTTP POST requests for stealthy C2 communication.",
+        "Spawns hidden CMD via pipes for interactive remote shell access.",
+        "Uses job objects and shared memory to manage shell execution state.",
+        "Collects system fingerprints before transmitting data to the C2 server.",
+        "Implements modular design for dynamic command execution or upload.",
+        "Yara rule included detects Kalim via PDB path and key strings.",
+        "IOCs provided include SHA256, domain, IP, and filename for detection.",
+        "Mapped to MITRE ATT&CK techniques like Startup Folder and COM Abuse."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers high-value technical insights on the Kalim backdoor malware with strong thematic relevance to cybersecurity and malware analysis. It includes novel technical details, IOCs, a Yara rule, and MITRE ATT&CK mapping—providing actionable intelligence for security professionals. The analysis is dense, well-structured, and free of fluff or promotional content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:39:31.620767"
+    },
+    {
+      "id": 1807,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/google-now-offers-ultra-subscribers-video-generation-with-veo-3-1-lite-at-no-extra-credit-cost/",
+      "title": "Google now offers Ultra subscribers video generation with Veo 3.1 Lite at no extra credit cost",
+      "summary": "Google’s Veo 3.1 Lite lets Ultra subscribers generate videos for free, cutting costs while keeping speed.",
+      "ideas": [
+        "Google introduces Veo 3.1 Lite for Ultra subscribers at zero credit cost",
+        "Veo 3.1 Lite costs less than half of Veo 3.1 Fast while maintaining speed",
+        "Lite model replaces Fast‑LowerPriority on May 10, keeping Fast model available",
+        "Ultra users can experiment more without depleting credits",
+        "Google dominates Western AI video market after OpenAI discontinued Sora",
+        "Google’s compute advantage offsets competition from Chinese video models"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete details about Google’s new Veo 3.1 Lite model—zero‑credit cost, pricing advantage, rollout date, and its strategic impact on the AI video market—providing several actionable insights for AI users. With 5‑6 distinct value points in under 500 words, the value density is high and there are no clickbait, padding, or promotional penalties. It aligns strongly with AI and technology themes.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-04-14T03:35:16.077228"
+    },
+    {
+      "id": 1806,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/new-ai-model-generates-45-minute-lip-synced-video-from-one-photo-and-runs-in-real-time/",
+      "title": "New AI model generates 45-minute lip-synced video from one photo and runs in real time",
+      "summary": "LPM 1.0 is an AI model that generates real-time video from a single image, enabling applications in education, gaming, and customer service, but also raises concerns about potential misuse for fraud and impersonation.",
+      "ideas": [
+        "LPM 1.0 generates real-time video from a single image",
+        "Multi-granularity identity conditioning for detailed facial expressions",
+        "Supports offline video generation from existing audio",
+        "Potential applications in education, gaming, and customer service",
+        "Raises concerns about potential misuse for fraud and impersonation"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a detailed overview of LPM 1.0, an AI model that generates real-time video from a single image, including lip-synced speech and facial expressions. The content is rich in technical insights, thematic relevance, and potential applications, making it highly valuable for readers interested in AI and technology. However, the presence of ads and promotional content slightly reduces the overall score.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-04-14T03:35:08.789544"
+    },
+    {
+      "id": 1805,
+      "source_id": 4,
+      "original_url": "https://cloudedjudgement.substack.com/p/clouded-judgement-41026-long-live",
+      "title": "Clouded Judgement 4.10.26 - Long Live the Harness (Wrapper?) !",
+      "summary": "Stanford's Meta-Harness research proves the orchestration layer (harness) around AI models creates 6x performance differences on fixed models, challenging the assumption that wrappers were valueless while quantifying the 15-point cost of over-compressing execution traces.",
+      "ideas": [
+        "Harness optimization around fixed models creates 6x performance gaps on benchmarks",
+        "AI agents writing better orchestration code for other AI systems beats human engineers",
+        "Full execution traces outperform compressed summaries by 15 points",
+        "Generic harnesses fine-tune to 6x better with domain-specific optimization",
+        "Anthropic's Managed Agents at $0.08/hour signals compute runtime pricing approaching",
+        "Build foundational infrastructure (buy), build orchestration intelligence (domain-specific)",
+        "Killer harness enables data collection, enabling post-trained models, enabling pre-trained models",
+        "App companies training their own models contradicts wrapper-ascommodity narrative"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This newsletter delivers substantial value through Stanford's Meta-Harness research with a specific 6x performance gap finding, quantified compression costs (15 points worse for summaries), and a strategic build vs. buy framework for AI orchestration. The content connects research findings to practical founder implications (killer harness → data → post-trained → pre-trained model trajectory) and analyzes Anthropic's platform strategy with specific pricing. Market data section provides useful benchmarks for investors but is standard industry data. High thematic relevance to AI and tech strategy with actionable insights for builders.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:35:02.471136"
+    },
+    {
+      "id": 1804,
+      "source_id": 4,
+      "original_url": "https://zeropath.com/blog/ragflow-rce-unpatched-vulnerability",
+      "title": "https://zeropath.com/blog/ragflow-rce-unpatched-vulnerability",
+      "summary": "A currently unpatched vulnerability in RAGFlow 0.24 allows low-privilege authenticated users to execute arbitrary code, and the article provides a detailed walkthrough of the discovery, exploitation, and mitigation of this vulnerability.",
+      "ideas": [
+        "RAGFlow 0.24 has an unpatched vulnerability allowing low-privilege users to execute arbitrary code",
+        "The vulnerability is due to the use of eval() to convert a string representation of a dictionary to an actual dictionary",
+        "The vulnerability can be exploited by corrupting the tag_feas property of a chunk in an Infinity-backed RAGFlow instance",
+        "Mitigation includes applying an unofficial patch, reducing exposure, and monitoring closely for suspicious activity",
+        "Using eval() to convert a string representation of a dictionary to an actual dictionary is bad practice in production code"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by detailing a currently unpatched vulnerability in RAGFlow, allowing low-privilege authenticated users to execute arbitrary code. The article delivers multiple novel insights efficiently, including a step-by-step guide on how the vulnerability was discovered and exploited, and offers practical advice on mitigation. The content is highly relevant to the theme of cybersecurity and demonstrates strong expertise in the field.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-14T03:33:07.645958"
+    },
+    {
+      "id": 1803,
+      "source_id": 10,
+      "original_url": "https://www.youtube.com/watch?v=nt7dWOEFUB4",
+      "title": "\"But OpenClaw is expensive...\"",
+      "summary": "Offload OpenClaw processes to local models on Nvidia RTX GPUs or DJX Spark to reduce costs and increase security, using a hybrid architecture approach that combines cloud and local models.",
+      "ideas": [
+        "Use local models to reduce OpenClaw costs",
+        "Offload non-critical tasks to local models",
+        "Hybrid architecture combines cloud and local models",
+        "Nvidia RTX GPUs and DJX Spark support local models",
+        "LM Studio simplifies local model setup",
+        "Experiment, productionize, and scale to transition to local models",
+        "Classify tasks to determine suitability for local models",
+        "Local models increase privacy and security",
+        "Match model to hardware for optimal performance"
+      ],
+      "labels": [],
+      "rating": 85,
+      "rating_reason": "This content provides high value to the reader by offering a detailed solution to a specific problem, namely reducing the cost of using OpenClaw by offloading some processes to local models running on Nvidia's RTX GPUs or DJX Spark. The author presents a clear and well-structured approach, including a hybrid architecture that combines the use of cloud and local models. The content is rich in practical knowledge, including step-by-step instructions and real-world examples, making it highly relevant to the theme of TECHNOLOGY & INNOVATION. However, the content is slightly promotional due to the sponsorship by Nvidia, which reduces the score.",
+      "source_type": "youtube",
+      "source_name": "Matthew Berman",
+      "published_at": "2026-04-14T03:32:07.111338"
+    },
     {
       "id": 1802,
       "source_id": 27,
