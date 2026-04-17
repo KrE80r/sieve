@@ -1,7 +1,112 @@
 {
-  "updated_at": "2026-04-17T05:00:00.382126",
-  "total_items": 720,
+  "updated_at": "2026-04-17T07:00:00.737306",
+  "total_items": 724,
   "items": [
+    {
+      "id": 1886,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/2026/04/16/anthropic_mcp_design_flaw/",
+      "title": "MCP 'design flaw' puts 200k servers at risk: Researcher • The Register",
+      "summary": "A fundamental design flaw in Anthropic's MCP protocol enables remote code execution across thousands of AI systems due to unchecked STDIO command handling.",
+      "ideas": [
+        "MCP's STDIO implementation allows arbitrary OS command execution if an STDIO server is spawned",
+        "Unauthenticated command injection can fully compromise AI frameworks with public UIs",
+        "Hardening bypass lets attackers run blocked commands via arguments of allowed ones",
+        "Zero-click prompt injection affects AI IDEs when user input shapes MCP config",
+        "Malicious MCP entries in marketplaces can silently compromise developer machines",
+        "Anthropic refused to patch the root protocol flaw, calling it 'expected behavior'",
+        "One protocol-level change could have secured millions of downstream MCP users",
+        "Researchers disclosed 10+ CVEs across 30+ responsible disclosure processes"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers substantial value by exposing a critical security flaw in Anthropic's MCP protocol affecting 200k servers, with detailed attack vectors and real-world impact. It includes evidence like CVEs, responsible disclosure attempts, and specific bypass techniques, demonstrating high thematic relevance to cybersecurity and AI. Minimal padding and strong technical depth justify a good score, though slightly reduced for not offering mitigation steps.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-17T15:36:05.983752"
+    },
+    {
+      "id": 1885,
+      "source_id": 4,
+      "original_url": "https://www.morado.io/blog-posts/python-implant-analysis-rats-ransomware-reconnaissance",
+      "title": "Python Implant Analysis - Deploying Commodity RATs and Ransomware Reconnaissance",
+      "summary": "Python‑based implants use Telegram C2, extensive evasion, and modular RAT deployment, demanding targeted detection.",
+      "ideas": [
+        "Malware hides its executable using Windows file attribute flags",
+        "Sleeps for 200 seconds to evade short sandbox analysis",
+        "Retrieves ransomware whitelist from Pastebin to avoid infecting certain machines",
+        "Enforces single-instance execution via hidden lock file in .google directory",
+        "Sends detailed connection beacon to attacker via Telegram bot",
+        "Modifies Windows Defender settings to create exclusions and evade detection",
+        "Implements comprehensive anti-analysis checks for virtual environments and analysis tools",
+        "Uses PyInstaller‑packed Python binaries, simplifying decompilation and analysis",
+        "Deploys additional RATs (RemcosRAT, QuasarRAT, Formbook) as modular payloads",
+        "Operates as an Initial Access Broker tool targeting high‑value enterprises"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The report offers multiple concrete insights—code snippets, evasion techniques, C2 via Telegram, and strategic context—providing actionable knowledge for security analysts. It aligns strongly with cybersecurity themes and contains about ten distinct value instances, giving good density despite some promotional padding, which incurs a modest penalty. Overall it delivers solid, practical value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-17T15:34:49.377907"
+    },
+    {
+      "id": 1884,
+      "source_id": 4,
+      "original_url": "https://eclipsesec.com/posts/DSCourier/",
+      "title": "DSCourier: Weaponizing DSC via WinGet COM API for Evasive Execution",
+      "summary": "Researchers have found a way to use the WinGet COM API for evasive code execution, bypassing detection by not using winget.exe, and instead leveraging Microsoft-signed processes for arbitrary code execution.",
+      "ideas": [
+        "WinGet can be used as a proxy for PowerShell execution",
+        "Invoking WinGet's configuration engine via COM API bypasses winget.exe detection",
+        "Arbitrary code execution is possible inside Microsoft-signed processes",
+        "DSCourier tool leverages this technique for evasive execution",
+        "Detection strategies must focus on WindowsPackageManagerServer.exe and ConfigurationRemotingServer.exe",
+        "Disabling WinGet or its configuration can prevent such exploits"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by detailing a novel technique for evasive execution using the WinGet COM API, bypassing traditional detection methods focused on winget.exe. The authors deliver high-density insights, including code examples, process trees, and detection strategies, making this a highly informative and relevant piece for those interested in cybersecurity and Windows internals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-17T15:34:42.072451"
+    },
+    {
+      "id": 1883,
+      "source_id": 4,
+      "original_url": "https://breachcache.com/cases/worldleaks-extortion/",
+      "title": "World Leaks: RDP Access Leads to Custom Exfiltration and Personalized Extortion / breachcache",
+      "summary": "A threat actor gained RDP access via targeted wordlist brute force, disabled defenses using privacy.sexy TrustedInstaller escalation, deployed Cobalt Strike and custom RustyRocket exfiltration tool using 6,900+ Cloudflare IPs, then extorted the victim from $200K down to $85K with personalized notes.",
+      "ideas": [
+        "RDP brute force used company-specific targeted wordlist rather than generic wordlists",
+        "privacy.sexy exploits TrustedInstaller SID to create scheduled tasks with elevated permissions",
+        "Veeam backup port 9401 included in scan config indicates routine targeting of backup infrastructure",
+        "lactenin.exe is Go-based malware with sci-fi themed variable names masquerading as Edge Update",
+        "Cracked Cobalt Strike distributed through Pwn3rs Telegram channel with self-signed certificate",
+        "RustyRocket (agent.exe) is World Leaks custom exfiltration platform with three operating modes",
+        "Type 7 logon indicates session reconnect rather than new RDP session",
+        "Extortion notes used dual templates for leadership vs regular employees",
+        "Veeam console accessed to identify virtualized backup infrastructure including VMware and Hyper-V",
+        "Failed SSH attempts to Linux file server suggest Linux systems outside initial scope"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional threat intelligence content providing detailed technical analysis of a real-world intrusion with specific IOCs, malware analysis, and attack timeline. Contains 12+ distinct value instances including detailed privacy.sexy TrustedInstaller escalation technique, specific SoftPerfect Network Scanner config showing Veeam port targeting, RustyRocket exfiltration platform analysis, cracked Cobalt Strike distribution chain via Pwn3rs Telegram channel, and detailed extortion methodology with negotiation results. The content is highly actionable for security defenders with file hashes, C2 IPs, timestamps, and defensive recommendations throughout.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-17T15:32:24.884628"
+    },
     {
       "id": 1882,
       "source_id": 4,
