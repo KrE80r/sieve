@@ -1,7 +1,142 @@
 {
-  "updated_at": "2026-04-18T18:00:06.189158",
-  "total_items": 738,
+  "updated_at": "2026-04-18T19:00:00.420006",
+  "total_items": 743,
   "items": [
+    {
+      "id": 1927,
+      "source_id": 4,
+      "original_url": "https://blog.huli.tw/2026/04/18/en/ai-reverse-engineering-op/",
+      "title": "Reunderstanding the Power of AI Through Reverse Engineering - Huli's blog",
+      "summary": "AI agents can now perform sophisticated reverse engineering workflows—combining static analysis, dynamic hooking, and creative cryptanalysis—that previously required expert human analysts, fundamentally shifting the offense-defense balance in software security.",
+      "ideas": [
+        "AI can reverse engineer stripped binaries by combining Ghidra MCP with iterative reasoning",
+        "Static analysis alone can recover encryption keys constructed via string concatenation in assembly",
+        "AI switches between static and dynamic analysis when blocked, using Frida hooks effectively",
+        "Pattern recognition in ciphertext can reveal encryption keys via known plaintext attacks",
+        "AI can deobfuscate Java code and restore meaningful class names automatically",
+        "Commercial app shells can be removed by AI through systematic experimentation",
+        "Bank-level protections including anti-root, anti-debug, and anti-hook can be bypassed by AI",
+        "AI-assisted reverse engineering costs $20-30 per complex case in API fees",
+        "Human guidance still needed when AI hits roadblocks in multi-layered encryption",
+        "AI's code comprehension exceeds human ability for obfuscated code reading"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a genuinely impressive technical deep-dive documenting AI-assisted reverse engineering across 7 increasingly difficult cases. The author provides concrete, reproducible workflows showing how AI agents combined with tools like Ghidra MCP, Frida, Unicorn Engine, and Il2CppDumper can tackle problems from simple Cocos2d games to bank-level apps with commercial shells. The value instances include: novel demonstration of AI doing multi-step static/dynamic analysis, specific technique details (XOR key recovery via pattern recognition, comment-based cryptanalysis), cost transparency ($20-30 per complex case), and honest limitations discussion. The thematic relevance is strong for cybersecurity and AI. Minor penalties for some repetition across cases and the unfinished seventh case, but overall this is rare original reporting from the frontier of AI-assisted security research.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-19T03:40:26.335680"
+    },
+    {
+      "id": 1926,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/CVE-protobufjs-GHSA-xq3m-2v4x-88gg",
+      "title": "Build the vulnerable environment",
+      "summary": "A critical RCE vulnerability in protobuf.js allows code injection through unsanitized type names in codegen, exploitable via crafted protobuf schemas that break out of the function template and execute arbitrary code when messages are created.",
+      "ideas": [
+        "protobuf.js codegen uses Function() constructor with unsanitized type names",
+        "Crafted type name 'X(p){PAYLOAD};if(true){//' breaks the function template",
+        "Exploitation grants OS command execution, file access, env vars, network access",
+        "The one-line fix strips non-word characters: name.replace(/\\W/g, '')",
+        "Downstream affected packages include @grpc/proto-loader, Firebase, Google Cloud SDKs",
+        "Attack chain: craft schema → load via protobuf.load → codegen → Function() → code exec",
+        "Prefer static schema compilation over dynamic loading to mitigate this class of vulnerability",
+        "Upgrade to protobufjs 7.5.5 or 8.0.1 to patch this CVSS 9.4 vulnerability"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-documented security research PoC with exceptional technical depth. It delivers multiple high-value instances: detailed root cause analysis showing how codegen with Function() allows injection, the exact exploitation technique with crafted type name structure, attack chain visualization, the one-line fix regex explanation, and mitigation guidance. The content is dense with actionable security intelligence - it explains both how the vulnerability works and how to defend against it. No padding or fluff; every section serves a defensive security purpose.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-19T03:38:36.343072"
+    },
+    {
+      "id": 1925,
+      "source_id": 4,
+      "original_url": "https://github.com/coremaze/ME2-Writeup",
+      "title": "https://github.com/coremaze/ME2-Writeup",
+      "summary": "Physical decapsulation and die‑shot analysis let you identify the ME2’s microcontroller and use custom USB commands to manipulate its flash memory.",
+      "ideas": [
+        "Decapsulate a chip‑on‑board using a heat gun and knife",
+        "Capture die shots with a cheap digital microscope",
+        "Identify unknown microcontroller by matching die shots on Siliconpr0n",
+        "Determine that the device uses GeneralPlus μ'nSP instruction set",
+        "Add third‑party μ'nSP support to Ghidra for disassembly",
+        "Use libusb/rusb to send custom USB commands (read, program, erase)",
+        "Locate point data in flash and modify it via custom commands",
+        "Dump flash contents with an off‑the‑shelf programmer after desoldering"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The writeup delivers several concrete, novel techniques for hardware reverse‑engineering, such as decapsulating a CoB with a heat gun, using die‑shot archives to identify a GeneralPlus μ'nSP microcontroller, and crafting custom USB commands to read, program, and erase flash. These insights are valuable for hobbyist preservers and provide actionable steps, with no clickbait or padding, aligning well with the Technology & Innovation theme.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-19T03:38:06.964925"
+    },
+    {
+      "id": 1924,
+      "source_id": 4,
+      "original_url": "https://nefariousplan.com/posts/adobe-acrobat-cve-2026-34621-pdf-weaponizer/",
+      "title": "CVE-2026-34621: Adobe Acrobat's Privilege Gate Inherits What It Checks — nefariousplan.com",
+      "summary": "Adobe Acrobat's privilege gate check for '__trusted' can be bypassed via prototype pollution on Object.prototype, enabling arbitrary code execution through WScript.Shell on Windows and osascript on macOS, with the attack tool's design (environment keying, campaign tracking, per-PDF JSON ledgers) revealing it as a targeted offensive capability rather than a generic test tool.",
+      "ideas": [
+        "Prototype pollution of Object.prototype.__trusted bypasses Adobe's JavaScript privilege gate",
+        "ActiveXObject('WScript.Shell') requires privileged context and becomes available after pollution",
+        "macOS exploitation routes through osascript:// URL scheme to AppleScript's do shell script",
+        "Windows persistence via AdobeUpdate registry Run key in %TEMP%",
+        "macOS persistence via LaunchAgent plist loaded with launchctl",
+        "Lure PDF merging clones legitimate document pages while injecting exploit as OpenAction",
+        "Environment keying (-k HOSTNAME) ensures payload fires only on specific target machines",
+        "Per-PDF JSON config files serve as campaign ledgers tracking which PDF went to which target",
+        "Three-level JavaScript obfuscation is polymorphic per run, reproducible via --seed flag",
+        "Staged payloads allow updating commands after PDF delivery without regenerating documents",
+        "File read from win.ini or /etc/hosts confirms successful privilege escalation",
+        "Adobe Acrobat DC Continuous patched in 26.001.21411, Acrobat 2024 Classic patched in 24.001.30362"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is high-density security research content that delivers exceptional technical value. The author explains a complex prototype pollution vulnerability (CVE-2026-34621) in Adobe Acrobat, detailing both the Windows and macOS exploitation chains with actual code examples. The most valuable contribution is the architectural analysis section, where the author systematically examines five attack tool capabilities (lure PDF merging, obfuscation, environment keying, staged payloads, campaign reporting) and demonstrates through their combination that the tool is designed for targeted offensive operations, not legitimate penetration testing. The critical insight that 'the disclaimer is the first thing the script prints, the environment keying is the one that describes who the script was built for' is sophisticated threat intelligence analysis. Content includes concrete technical details: CVSS 8.6, affected versions, patch versions, persistence mechanisms via registry keys and LaunchAgent plists, and specific API calls that the privilege gate checks. No padding detected—every paragraph advances the technical understanding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-19T03:36:59.594348"
+    },
+    {
+      "id": 1923,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=jxDDW5OKhdA",
+      "title": "THEY’RE BRAINWASHING YOU! (& other secrets that made you click) - Etymology Nerd",
+      "summary": "The strategic use of language in online platforms, including the creation of specific accents for influencers, plays a crucial role in virality and audience engagement, reflecting broader trends in technology, innovation, and human communication.",
+      "ideas": [
+        "Language is used strategically in online platforms",
+        "Influencers create specific accents for their personas",
+        "TikTok drives linguistic innovation",
+        "Clip farming is a future distribution method",
+        "Algorithm optimization influences language use",
+        "Different platforms have distinct linguistic cultures",
+        "Language is a tool of identity and social signaling",
+        "The 'lifestyle influencer accent' is optimized for relatability and algorithm retention",
+        "The 'educational influencer accent' aims for authority and trust",
+        "Diction and pronunciation affect online engagement"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "This content delivers high value through its in-depth exploration of language, its evolution, and how it's used strategically in online platforms. The discussion on the 'lifestyle influencer accent' and the 'educational influencer accent' provides novel insights into how language is tailored for different online personas. The conversation also touches on the concept of 'clip farming' and the role of TikTok in linguistic innovation, showcasing a strong thematic relevance to technology, innovation, and human development. However, the content's density is somewhat reduced by tangential discussions and personal anecdotes, preventing it from reaching the highest score.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-04-19T03:32:06.882467"
+    },
     {
       "id": 1922,
       "source_id": 27,
