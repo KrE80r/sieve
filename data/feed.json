@@ -1,7 +1,38 @@
 {
-  "updated_at": "2026-04-25T06:00:00.565138",
-  "total_items": 719,
+  "updated_at": "2026-04-25T07:00:00.350479",
+  "total_items": 720,
   "items": [
+    {
+      "id": 2050,
+      "source_id": 4,
+      "original_url": "https://www.elastic.co/security-labs/claude-code-cowork-monitoring-otel-elastic",
+      "title": "Claude Code/Cowork monitoring at scale with Otel & Elastic — Elastic Security Labs",
+      "summary": "Elastic's InfoSec team built a production monitoring pipeline for Claude Code and Cowork using OpenTelemetry, with two deployment options (self-managed EDOT gateway or Elastic Cloud mOTLP), custom Elasticsearch mappings to enable numeric aggregations, and ingest pipelines to parse JSON tool parameters into searchable flattened fields.",
+      "ideas": [
+        "Claude Code exports 5 OTel event types: api_request, tool_result, tool_decision, user_prompt, api_error",
+        "EDOT OTel Gateway provides native Elastic data stream routing for self-managed deployments",
+        "mOTLP endpoint handles auto-scaling ingestion without requiring collector infrastructure",
+        "Set data_stream.dataset resource attribute to route logs to correct streams",
+        "Custom mappings convert keyword fields to numeric types for SUM/AVG aggregations",
+        "flattened type handles JSON tool parameters without creating unbounded mapped fields",
+        "Index template composes standard OTel templates plus custom mappings via composed_of",
+        "Ingest pipeline parses JSON strings into objects for structured querying",
+        "Claude Code managed settings support MDM, admin console, and file-based deployment",
+        "Cowork OTel export is configured centrally in Anthropic admin portal",
+        "OTel gateway endpoint must be allowlisted for Cowork sandbox network access",
+        "Customer Zero philosophy: InfoSec team uses Elastic products as first demanding user"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "AI"
+      ],
+      "rating": 81,
+      "rating_reason": "This is a high-quality technical deep-dive that provides substantial practical value for security teams implementing AI agent monitoring. The content delivers 10+ concrete value instances including complete OTel collector configuration YAML, custom Elasticsearch component templates for numeric field mappings, ingest pipeline definitions for parsing JSON tool parameters, two distinct architectural approaches with configuration examples, and lesser-known details like managed settings delivery mechanisms and the `flattened` type approach for JSON payloads. The content is highly focused, technically dense, and well-structured with no padding or fluff. It scores slightly below 'exceptional' because the security use cases section is cut off and some content is necessarily Elastic-specific (though this is appropriate for the source). The thematic relevance is strong, covering cybersecurity monitoring, observability infrastructure, and emerging AI security challenges.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-25T15:36:19.651725"
+    },
     {
       "id": 2049,
       "source_id": 7,
