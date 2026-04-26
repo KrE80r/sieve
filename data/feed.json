@@ -1,7 +1,359 @@
 {
-  "updated_at": "2026-04-26T05:00:00.440696",
-  "total_items": 723,
+  "updated_at": "2026-04-26T07:00:00.552149",
+  "total_items": 735,
   "items": [
+    {
+      "id": 2088,
+      "source_id": 4,
+      "original_url": "https://github.com/nandrzej/vlnr",
+      "title": ".env LLM_API_KEY=<your-key> GITHUB_TOKEN=<optional — for higher-rate repo metadata>",
+      "summary": "vlnr is an agentic security pipeline that uses tiered LLMs to discover, scan, triage, and validate vulnerabilities in PyPI packages, with Docker sandboxing for safe PoC execution and a scoring formula combining static analysis confidence with LLM semantic reasoning.",
+      "ideas": [
+        "Agentic loop with Plan-Act-Observe cycle for autonomous security research",
+        "Tiered LLM routing: Qwen 397B for PoC generation, Gemma 31B for triage, Qwen 4B for metadata",
+        "Vulnerability priority formula: P = (0.4 × Cs + 0.6 × Cl) × Er combines static and LLM confidence",
+        "Reverse-dependency centrality identifies high-impact packages most dangerous to ecosystem",
+        "OpenVEX output format provides machine-readable exploitability status",
+        "AST-based taint tracking maps source-sink paths with bypass detection",
+        "SSRF detection via OpenGrep rules targeting urllib/httpx/aiohttp sinks",
+        "PoC success rate of 98-99% with Qwen 3.5 397B for exploit generation",
+        "State persistence to JSON enables resumable agent sessions across runs",
+        "Docker SDK for transient container isolation during vulnerability validation",
+        "vcrpy cassettes enable reproducible testing without live LLM calls",
+        "LLM intent classification fills gaps left by heuristic package scoring",
+        "~25% fewer false positives via tiered LLM filtering of Bandit/Semgrep noise",
+        "Budget-aware iteration stops when token budget exhausted or no productive actions remain",
+        "Auto-trigger generate_poc when triage plausibility ≥ 0.7, immediately followed by validate_poc"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 81,
+      "rating_reason": "This README delivers substantial technical value through detailed architecture documentation, a tiered LLM strategy for security research, specific CWE detection methods, and a vulnerability priority scoring formula. The content is dense with actionable configuration examples, CLI usage patterns, and a well-documented agentic loop. The CWE coverage table provides concrete sink detection methods that practitioners can reference. No padding detected—every section serves a purpose for the target audience of security researchers and supply chain defenders.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:43:41.548125"
+    },
+    {
+      "id": 2087,
+      "source_id": 4,
+      "original_url": "https://github.com/0xSteph/pentest-ai",
+      "title": "https://github.com/0xSteph/pentest-ai",
+      "summary": "An open-source, autonomous pentesting framework uses AI agents to perform end-to-end security assessments with verified exploits and built-in reporting.",
+      "ideas": [
+        "Autonomous pentesting via AI agents that chain vulnerabilities into attack paths",
+        "Every finding includes a non-destructive proof of concept for validation",
+        "Integrates with Claude, OpenAI, or Ollama for LLM-driven decision making",
+        "Runs locally with no cloud dependency, ensuring data privacy",
+        "YAML playbooks encode pentest methodologies for reuse and sharing",
+        "Diff mode enables automated retesting to track fixed and new issues",
+        "Native CI/CD support with SARIF output and build failure on high-severity findings",
+        "Built-in OWASP LLM Top 10 testing for AI feature red teaming",
+        "Scope enforcement prevents out-of-bounds testing during engagements",
+        "35+ MCP tools enable LLM assistants to run full pentests via natural language"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The content presents a highly innovative, autonomous penetration testing tool that delivers multiple novel insights: real-time exploit chaining, authenticated scanning, PoC validation, and seamless LLM integration via MCP. It offers practical value with actionable setup instructions, CI/CD integration, and YAML-based playbooks, all while being MIT-licensed and offline-capable. Minor deduction for promotional tone around 'the most autonomous pentesting AI,' but overall exceptional density and relevance to cybersecurity and AI.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:42:12.315074"
+    },
+    {
+      "id": 2086,
+      "source_id": 4,
+      "original_url": "https://github.com/Houseofmvps/ultraship",
+      "title": "Claude Code plugin",
+      "summary": "A comprehensive AI-augmented development toolkit automates code quality, security, SEO, and deployment workflows with zero dependencies and enterprise-grade tooling.",
+      "ideas": [
+        "39 expert-level skills for building and shipping software with AI assistance",
+        "36 standalone Node.js tools for auditing, validation, and generation",
+        "/ship command produces a pre-deploy scorecard across SEO, security, code quality, and bundle size",
+        "Penetration testing with zero false positives and proof-of-concept for each finding",
+        "SEO scanner checks 63 rules including AI visibility and answer engine optimization",
+        "Persistent memory via MEMORY.md ensures context continuity across sessions",
+        "Sprint workflow chains planning, building, testing, reviewing, shipping, and retrospectives",
+        "Safety guardrails block destructive commands like rm -rf and git push --force",
+        "Real API integrations with GSC, GA4, and Bing Webmaster for data-driven SEO",
+        "Automated architecture diagrams and onboarding guides from code analysis"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers high-density value with 10+ distinct, actionable insights about a sophisticated developer toolset. It details 39 skills, 36 tools, and structured workflows with technical precision, offering rare depth on AI-augmented development, security hardening, and SEO for AI visibility. Thematic alignment with AI, Tech, and Productivity is strong. Minor penalty for promotional tone, but value outweighs bias.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:40:20.487203"
+    },
+    {
+      "id": 2085,
+      "source_id": 4,
+      "original_url": "https://github.com/416rehman/DeepZero",
+      "title": "run a pipeline against a target directory or file",
+      "summary": "DeepZero lets you define, run, and resume AI‑enhanced vulnerability pipelines using declarative YAML and extensible processors.",
+      "ideas": [
+        "Define pipelines via YAML with ingest, map, bulk_map, reduce stages",
+        "DeepZero provides resumable, parallel execution with ThreadPoolExecutor",
+        "Built-in processors include file discovery, metadata filter, generic LLM, semgrep scanner",
+        "Custom processors can be created by subclassing base classes and implementing process()",
+        "CLI commands allow running, resuming, cleaning, validating pipelines, and starting REST API",
+        "Environment variable expansion supports ${VAR} and default values in YAML",
+        "LLM integration uses Jinja2 templates and LiteLLM for AI analysis",
+        "Reduce stage can select top N samples based on numeric metrics",
+        "BulkMap stage batches samples to external processes for efficiency",
+        "Work directory stores per-sample state enabling automatic resume after interruption"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers multiple concrete value instances—detailed processor types, CLI usage, YAML configuration, custom processor guide, and LLM integration—providing actionable knowledge for security and AI pipeline development. Content aligns well with CyberSecurity, AI, and Tech themes and lacks clickbait or padding, resulting in strong value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:40:13.244233"
+    },
+    {
+      "id": 2084,
+      "source_id": 4,
+      "original_url": "https://github.com/Manavarya09/design-extract",
+      "title": "Use directly (no install needed)",
+      "summary": "designlang extracts not just visual styles but structural, behavioral, and semantic design language from live websites, enabling AI agents and developers to faithfully replicate or analyze complex UIs across platforms.",
+      "ideas": [
+        "Extracts layout systems: grids, flex patterns, container widths, and gap values",
+        "Captures responsive behavior across 4 breakpoints with change logs",
+        "Programmatically detects hover, focus, and active state transitions",
+        "Syncs live site styles to local token files automatically",
+        "Compares multiple brands' design systems in a matrix report",
+        "Generates working Next.js clones from any live website",
+        "Scores design systems across 7 quality dimensions including accessibility",
+        "Watches sites for design changes and alerts on drift",
+        "Applies extracted tokens directly into existing projects by framework",
+        "Extracts auth-protected pages using cookies and headers",
+        "Classifies motion language: durations, easings, and animation types",
+        "Detects and exports SVG icons with color palettes and styles",
+        "Extracts font sources and generates @font-face CSS rules",
+        "Fingerprints brand voice: tone, CTA verbs, and heading style",
+        "Generates AI-ready prompt packs for v0, Cursor, and Claude",
+        "Exports design tokens to iOS, Android, Flutter, and WordPress",
+        "Serves extracted design as MCP server for AI agent tooling"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers exceptional value with over 15 distinct, high-density insights about a powerful design extraction tool. It thoroughly explains novel capabilities like layout system extraction, multi-breakpoint responsive capture, interaction state detection, and MCP server integration—each representing rare, actionable knowledge. The thematic relevance to AI, Tech, and Productivity is strong, with practical applications for developers and designers. No significant penalties apply; the depth and specificity suggest genuine expertise.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:38:26.979735"
+    },
+    {
+      "id": 2083,
+      "source_id": 4,
+      "original_url": "https://github.com/SnailSploit/Claude-Red",
+      "title": "https://github.com/SnailSploit/Claude-Red",
+      "summary": "Claude-Red is a library of offensive security skills that can be used to prime the Claude AI system with expert-level methodology for various attack surfaces.",
+      "ideas": [
+        "Offensive security skills for Claude AI",
+        "Web application security skills",
+        "Infrastructure and binary exploitation skills",
+        "AI-powered red team operations",
+        "Expert-level methodology for security professionals"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a comprehensive library of 38 offensive security skills for the Claude skills system, covering various topics such as web application security, infrastructure, and binary exploitation. The skills are well-structured and include expert-level methodology, making it a valuable resource for security professionals. However, the content is highly technical and may not be accessible to non-experts.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:38:06.648182"
+    },
+    {
+      "id": 2082,
+      "source_id": 4,
+      "original_url": "https://github.com/getagentseal/agentseal",
+      "title": "OpenAI",
+      "summary": "AgentSeal enables comprehensive, local security testing for AI agents against prompt injection, supply chain attacks, and MCP poisoning without requiring API keys.",
+      "ideas": [
+        "Scan AI agent configurations locally for malicious patterns and data exfiltration",
+        "Test system prompts against 225+ adversarial attacks using deterministic canary probes",
+        "Audit MCP servers for tool description poisoning via pattern and semantic analysis",
+        "Monitor agent files in real time and quarantine threats automatically",
+        "Use Ollama for free, local LLM security testing without API keys",
+        "Validate agent security via Python/TypeScript APIs with trust scoring",
+        "Detect supply chain attacks from npm/pip installs modifying agent configs",
+        "Access a public registry of 6,600+ MCP servers with trust scores"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers high-value, actionable insights on AI agent security with a robust open-source toolkit. It provides 5+ distinct value instances: a local security scanner (guard), prompt red-teaming with 225+ probes, MCP server auditing, real-time monitoring (shield), and a public registry of 6,600+ servers. The density is strong, with practical tools, code examples, and clear use cases, though slightly reduced by minor promotional elements around Pro features.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:36:41.769566"
+    },
+    {
+      "id": 2081,
+      "source_id": 4,
+      "original_url": "https://github.com/codewithvamp/Burp-Pentest-Coverage-Tracker",
+      "title": "https://github.com/codewithvamp/Burp-Pentest-Coverage-Tracker",
+      "summary": "This Burp Suite extension enables penetration testers to systematically track which endpoints and parameters have been tested, improving assessment completeness and reporting accuracy.",
+      "ideas": [
+        "Track endpoint testing coverage in real time during pentests",
+        "Monitor which parameters are tested using Burp tools",
+        "Identify untested attack surfaces via dedicated dashboard",
+        "Correlate Proxy, Repeater, Intruder, and Scanner activity for audit trails",
+        "Extract API endpoints from JavaScript files automatically",
+        "Export coverage data to CSV for reporting",
+        "Search and filter endpoints for efficient navigation",
+        "Send untested endpoints directly to Repeater or Intruder",
+        "Visualize testing progress with coverage statistics",
+        "Demonstrate testing depth to management with clear metrics"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The content introduces a Burp Suite extension that delivers high practical value for penetration testers with features like real-time coverage tracking, parameter monitoring, and CSV export. It addresses a genuine pain point in security testing—ensuring comprehensive attack surface coverage—with actionable functionality and clear use cases. The tool is well-scoped, technically sound, and aligns strongly with cybersecurity and testing workflows, though it lacks independent validation or user testimonials that could enhance credibility.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:34:53.744601"
+    },
+    {
+      "id": 2080,
+      "source_id": 4,
+      "original_url": "https://github.com/NeoTheCapt/RedteamAgent",
+      "title": "or:",
+      "summary": "An autonomous AI-powered red team simulation agent that works with various AI CLI tools to provide a comprehensive penetration testing environment with multiple features and tools.",
+      "ideas": [
+        "Autonomous red team simulation",
+        "AI-powered penetration testing",
+        "5-phase methodology",
+        "Multi-CLI support",
+        "Containerized tools",
+        "Intelligence collection",
+        "OSINT agent",
+        "Report writer",
+        "Unattended hardening",
+        "Resume support"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by delivering a comprehensive overview of an autonomous AI-powered red team simulation agent, including its features, architecture, and usage. The content is densely packed with novel ideas, practical knowledge, and useful resources, making it highly relevant to the themes of TECHNOLOGY & INNOVATION, CYBERSECURITY, and TECH. The agent's ability to transform any workspace into a full penetration testing environment, its 5-phase methodology, and its support for multiple AI CLI tools are particularly noteworthy.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:34:40.657611"
+    },
+    {
+      "id": 2079,
+      "source_id": 4,
+      "original_url": "https://github.com/calesthio/OpenMontage",
+      "title": ".env — every key is optional, add what you have # Image + video gateway: FAL_KEY=your-key # FLUX images + Google Veo, Kling, MiniMax video + Recraft images # Free stock media: PEXELS_API_KEY=your-key ...",
+      "summary": "OpenMontage lets you generate full videos from text prompts using free AI tools and minimal setup.",
+      "ideas": [
+        "OpenMontage automates video production from plain-language prompts using AI agents.",
+        "It can create image-based videos or real-footage documentaries with free stock sources.",
+        "Setup requires Python, FFmpeg, Node.js, and an AI coding assistant.",
+        "No paid API keys needed; free keys give functional video generation.",
+        "Cost per video can be as low as $0.15 using free providers.",
+        "Prompt examples show how to generate explainer, documentary, or stylized videos.",
+        "System selects providers based on a 7‑dimensional scoring matrix.",
+        "Agents run self‑review checks like ffprobe validation and subtitle verification.",
+        "Adding optional API keys expands toolset (e.g., FLUX, Runway, HeyGen).",
+        "Supports Remotion (React) and HyperFrames (HTML/GSAP) rendering pipelines."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content offers concrete, actionable guidance for building AI‑driven video pipelines, including setup steps, free‑key usage, cost examples, and ready‑to‑use prompts, delivering multiple practical value instances. While some UI navigation text is filler, the core material is dense with useful insights for developers and creators, aligning well with AI, tech, and productivity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:33:28.027359"
+    },
+    {
+      "id": 2078,
+      "source_id": 4,
+      "original_url": "https://github.com/ktol1/RedTeam-Agent",
+      "title": "Windows PowerShell",
+      "summary": "RedTeam-Agent is an AI-powered autonomous red team framework that automates security audits and penetration testing using a skill-first terminal workflow.",
+      "ideas": [
+        "AI-powered autonomous red teaming",
+        "Skill-first terminal workflow",
+        "Automated setup of 15+ tools",
+        "AI-driven workflow for security audits",
+        "Token optimization for output filtering",
+        "AD coverage using BloodHound and impacket",
+        "Multi-client support for various platforms"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a comprehensive overview of the RedTeam-Agent framework, including its key features, installation instructions, and example prompts. It delivers high value density by efficiently conveying complex information about AI-powered autonomous red teaming, with a strong thematic relevance to cybersecurity and penetration testing. However, some sections feel like a manual or documentation, which slightly reduces the overall score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:33:19.721474"
+    },
+    {
+      "id": 2077,
+      "source_id": 4,
+      "original_url": "https://github.com/F2u0a0d3/goodboy-framework",
+      "title": "https://github.com/F2u0a0d3/goodboy-framework",
+      "summary": "A comprehensive, hands-on Windows malware development and analysis course covering 15 stages of techniques from both red team and blue team perspectives, with empirical evasion data and production-grade code.",
+      "ideas": [
+        "Basic Loader Development",
+        "XOR Cryptanalysis",
+        "API Hashing",
+        "APC Injection",
+        "Variant Analysis",
+        "Direct and Indirect Syscalls",
+        "Anti-Debug Techniques",
+        "Sandbox Detection",
+        "Persistence Methods",
+        "Module Stomping",
+        "Sleep Obfuscation",
+        "Combined Loader Techniques",
+        "C2 Agent Development",
+        "Empirical Evasion Data Analysis"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "This content provides exceptional value through its comprehensive and hands-on approach to teaching Windows malware development and analysis. The 15-stage course covers a wide range of topics, from basic loaders to advanced techniques like API hashing and anti-debugging, all from both red team and blue team perspectives. The inclusion of empirical evasion data, production-grade code, and a focus on the 'arms race' between attackers and defenders adds significant depth and realism. The content is densely packed with valuable insights, making it highly efficient in terms of value per minute.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-26T15:32:06.411219"
+    },
     {
       "id": 2076,
       "source_id": 4,
