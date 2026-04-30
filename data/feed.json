@@ -1,7 +1,83 @@
 {
-  "updated_at": "2026-04-29T23:00:00.961878",
-  "total_items": 800,
+  "updated_at": "2026-04-30T01:00:00.620730",
+  "total_items": 803,
   "items": [
+    {
+      "id": 2200,
+      "source_id": 29,
+      "original_url": "https://arcadedb.com/blog/arcadedb-jepsen-tests-34-pass/",
+      "title": "Show HN: Distributed-correctness tests using Jepsen tooling pass on ArcadeDB",
+      "summary": "ArcadeDB passes 34 rigorous Jepsen tests, proving linearizable consistency and ACID compliance under network partitions, crashes, and clock skew via formal verification.",
+      "ideas": [
+        "34/34 Jepsen tests passed on ArcadeDB's Raft-based HA cluster",
+        "Zero linearizability violations or lost writes under real fault injection",
+        "Follower reads achieve linearizability via ReadIndex round-trip",
+        "Read-your-writes guaranteed with commit-index bookmarks, lower cost",
+        "Elle checker confirmed no G0, G1a, G1b, G2 anomalies",
+        "Bank test proved ACID balance conservation under all faults",
+        "Set test verified no acknowledged writes are ever lost",
+        "Clock skew up to ±60s handled without consistency breaks"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers 8 distinct, high-value insights about distributed database correctness, Jepsen testing, and linearizable read implementations. It presents original in-house testing of 34 Jepsen runs with full transparency about methodology and limitations. The depth on follower read consistency models and transaction isolation is exceptional, aligning strongly with AI, Tech, and CyberSecurity themes. Minimal padding and no promotional fluff.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-04-30T09:40:18.490597"
+    },
+    {
+      "id": 2199,
+      "source_id": 4,
+      "original_url": "https://snyk.io/blog/thymeleaf-injection/",
+      "title": "https://snyk.io/blog/thymeleaf-injection/",
+      "summary": "The CVE-2026-40478 Thymeleaf vulnerability (CVSS 9.1) only affects code that misuses the framework by passing user input directly to the expression engine; the standard pattern where templates stay static and user input flows through the model is safe, but patching to 3.1.4 or later is still recommended.",
+      "ideas": [
+        "The tab character bypasses Thymeleaf sandbox because pre-check looks for 'new ' with space, but SpEL accepts tab as whitespace",
+        "Safe Thymeleaf usage: user input goes into model, template stays static and Thymeleaf renders it as data, not expression",
+        "Unsafe pattern 1: building template strings with user input like '<p th:text=\"'+ ${userInput} +'\">''",
+        "Unsafe pattern 2: dynamic view resolution where user input influences what Thymeleaf parses",
+        "The blocklist only blocked java.* classes but missed Spring classes like FileSystemResource",
+        "Patches are Thymeleaf 3.1.4 or Spring Boot 3.5.14/4.0.6",
+        "This CVE requires existing code misuse - if your code doesn't pass user input to expression engine, you're not affected",
+        "The exploit can write a JSP file to disk and potentially achieve RCE"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This security analysis delivers high value by providing both technical depth (the tab character bypass mechanics, incomplete blocklist) and crucial context that reframes the alarming 9.1 CVSS score. It offers practical code examples showing safe vs unsafe Thymeleaf patterns, the actual exploit payload, and clear remediation steps (patch to 3.1.4 or update Spring Boot). The key insight that this CVE only affects code already misusing Thymeleaf is valuable context often missing from vulnerability reporting. Links to working code examples and EndorLabs' detailed analysis further extend the value. Minor deduction: content truncates mid-sentence at the end.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-04-30T09:32:43.459005"
+    },
+    {
+      "id": 2198,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Apr/29/llm/",
+      "title": "LLM 0.32a0 is a major backwards-compatible refactor",
+      "summary": "LLM 0.32a0 introduces significant improvements, including the ability to represent model inputs as a sequence of messages and model responses as a stream of differently typed parts, enhancing the library's flexibility and usability.",
+      "ideas": [
+        "LLM 0.32a0 introduces a new way to represent model inputs as a sequence of messages",
+        "Model responses can now be composed of a stream of differently typed parts",
+        "The new alpha release includes builder functions for creating messages",
+        "The library now supports streaming results back from a prompt",
+        "The new mechanism for streaming different token types allows for more flexible and efficient processing of model outputs"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides a detailed explanation of the new features and improvements in LLM 0.32a0, including the ability to represent model inputs as a sequence of messages and model responses as a stream of differently typed parts. The author also provides code examples and explanations of how these new features can be used, making it a valuable resource for developers working with LLMs. The content is well-structured, easy to follow, and demonstrates a high level of expertise in the subject matter.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-04-30T09:32:06.278546"
+    },
     {
       "id": 2197,
       "source_id": 4,
