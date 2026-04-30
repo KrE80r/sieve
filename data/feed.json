@@ -1,7 +1,236 @@
 {
-  "updated_at": "2026-04-30T18:00:06.850726",
-  "total_items": 804,
+  "updated_at": "2026-04-30T19:00:00.530533",
+  "total_items": 813,
   "items": [
+    {
+      "id": 2230,
+      "source_id": 4,
+      "original_url": "https://arstechnica.com/security/2026/04/open-source-package-with-1-million-monthly-downloads-stole-user-credentials/",
+      "title": "Open source package with 1 million monthly downloads stole user credentials - Ars Technica",
+      "summary": "Attackers compromised element-data by exploiting a GitHub action vulnerability in a pull request, allowing them to steal signing keys and push malicious version 0.23.3 that steals credentials; users must check versions, update to 0.23.4, delete cache files, check for marker file, and rotate all exposed credentials.",
+      "ideas": [
+        "GitHub actions can be exploited via malicious pull requests to run arbitrary bash scripts in developer accounts",
+        "The malicious element-data v0.23.3 steals warehouse credentials, cloud keys, API tokens, and SSH keys",
+        "Check for compromise by looking for marker file at /tmp/.trinny-security-update (Mac/Linux) or %TEMP%\\.trinny-security-update (Windows)",
+        "Upgrade to safe version 0.23.4 and rotate all credentials accessible from the environment where it ran",
+        "CI/CD runners are especially vulnerable since they typically have broad secrets mounted at runtime",
+        "Use the zizmor tool to audit GitHub actions for exploitable workflow vulnerabilities",
+        "Open source supply chain attacks have become increasingly common over the past decade"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article delivers substantial cybersecurity value through a real-world supply chain attack incident. It provides specific technical details about the attack vector (GitHub action exploitation via malicious pull request), exact credentials targeted (warehouse credentials, cloud keys, API tokens, SSH keys), and concrete remediation steps including specific detection commands and marker file locations. The expert quote from HD Moore adds domain authority, and the mention of the zizmor tool gives practitioners a practical resource. The content is dense with actionable information—users learn exactly how to check their version, remove the malicious package, detect if it executed, and which credentials to rotate. High thematic relevance for security professionals and developers using open-source packages.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-01T03:50:28.568641"
+    },
+    {
+      "id": 2229,
+      "source_id": 4,
+      "original_url": "https://kasparovabi.github.io/security-research/2026-04-omi-disclosure.html",
+      "title": "https://kasparovabi.github.io/security-research/2026-04-omi-disclosure.html",
+      "summary": "A wearable AI device marketed as secure contains critical, unpatched vulnerabilities—including remote code execution and hardcoded secrets—while the vendor ignores coordinated disclosure and contradicts its own security claims.",
+      "ideas": [
+        "Remote code execution via eval() on Redis data in Python backend",
+        "Authentication bypass using ADMIN_KEY prefix matching",
+        "Hardcoded production encryption key in public repository",
+        "Admin bypass via LOCAL_DEVELOPMENT flag returning UID '123'",
+        "SSRF in webhook URLs with no private IP validation",
+        "Path traversal in file upload from unsanitized filename",
+        "OAuth CSRF due to unvalidated state parameter",
+        "Unauthenticated access to shared user conversations",
+        "Missing CORS allows any origin to make authenticated requests",
+        "WebSocket transcription endpoint has rate limiting disabled",
+        "Container runs as root with no USER directive in Dockerfile",
+        "Agent proxy uses unencrypted HTTP to communicate with VMs",
+        "Hardcoded admin token in new TypeScript panel during disclosure",
+        "BYOK stores API key fingerprints with unsalted SHA-256",
+        "BYOK middleware doesn't apply to WebSockets, enabling silent bypass",
+        "API keys hashed with unsalted SHA-256 instead of memory-hard KDF",
+        "Internal exceptions exposed to clients via HTTPException detail"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 94,
+      "rating_reason": "The content delivers 17 distinct security vulnerabilities with precise technical details, including novel findings like a CVSS 10.0 RCE and hardcoded admin tokens. It exposes critical gaps between marketing claims and code, with evidence of ignored disclosures and introduced flaws during the review window. High value density and strong thematic relevance to cybersecurity, especially in open-source and healthcare-adjacent tech.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-01T03:50:12.596618"
+    },
+    {
+      "id": 2228,
+      "source_id": 4,
+      "original_url": "https://www.synacktiv.com/publications/bypassing-windows-authentication-reflection-mitigations-for-system-shells-part.html",
+      "title": "Bypassing Windows authentication reflection mitigations for SYSTEM",
+      "summary": "Unicode characters in Kerberos SPNs can bypass Windows authentication checks, enabling SYSTEM shells.",
+      "ideas": [
+        "Kerberos authentication reflection can be forced using Unicode characters in SPN",
+        "Adding SPN \"DNS/SRV1.AD.LOCAL\" to allowed server names bypasses SMB checks",
+        "Windows SMB service does not normalize Unicode in SPN, allowing spoofed tickets",
+        "LCMapStringEx with specific flags makes \"SRV1\" and \"SⓇV1\" sort keys equal",
+        "DNS record collision prevents adding Unicode SPN directly; need different sort key",
+        "Modified krbrelayx.py can relay AP-REQ even with mismatched target name",
+        "Using PetitPotam with Unicode target achieves SYSTEM shell",
+        "Kerberos reflection via DHCPv6 poisoning requires full DNS control",
+        "Windows 11 24H2 and Server 2025 allow SMB shares on arbitrary ports",
+        "Technique bypasses CVE-2025-33073 mitigation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers multiple novel, actionable insights on bypassing Windows Kerberos authentication using Unicode SPN tricks, complete code examples, and deep analysis of Windows internals, aligning strongly with cybersecurity. It contains no clickbait or padding, providing high thematic relevance and dense value for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-01T03:47:29.264694"
+    },
+    {
+      "id": 2227,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/microsoft/april-kb5083769-windows-11-update-causes-backup-software-failures/",
+      "title": "April KB5083769 Windows 11 update causes backup software failures",
+      "summary": "KB5083769 update causes VSS timeout failures in backup software, fix by uninstalling the update.",
+      "ideas": [
+        "KB5083769 update breaks VSS‑based backup apps on Windows 11 24H2/25H2",
+        "Affected products include Acronis, Macrium, NinjaOne, and UrBackup",
+        "Failure caused by VSS service timeout during snapshot creation",
+        "Workaround: uninstall KB5083769 and pause Windows updates",
+        "Microsoft released OOB fixes for server restart loops and BitLocker prompts",
+        "VSS is essential for backup and system restore operations",
+        "Issue first reported by MVP Susan Bradley"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable information about a specific Windows update breaking VSS backup tools, lists affected software, explains the technical cause, and offers a clear workaround, providing several genuine value instances in a short piece. It stays on-topic with minimal padding and aligns with cybersecurity, tech, and sysadmin themes, earning a solid score but not exceptional novelty.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-01T03:42:50.524673"
+    },
+    {
+      "id": 2226,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/anthropics-new-benchmark-claims-claude-can-match-human-experts-in-bioinformatics/",
+      "title": "Anthropic's new benchmark claims Claude can match human experts in bioinformatics",
+      "summary": "Claude matches human experts on many bioinformatics tasks, but its success is inconsistent and limited on harder problems.",
+      "ideas": [
+        "BioMysteryBench uses 99 expert‑written, objectively verifiable bioinformatics questions.",
+        "Benchmark requires validation notebooks, ensuring answers are based on real data signals.",
+        "Claude Mythos Preview achieves 82.6% accuracy on human‑solvable bio tasks.",
+        "On expert‑unsolvable tasks Claude reaches about 30% success rate.",
+        "Model performance is binary: either all attempts correct or none, indicating luck.",
+        "Claude leverages broad knowledge and layered methods to converge on answers.",
+        "CompBioBench independently confirms similar Claude performance on bio tasks.",
+        "BioMysteryBench dataset is publicly available on Hugging Face."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete value instances: it introduces a novel benchmark (BioMysteryBench) with objective validation, explains its design to avoid subjective bias, reports detailed performance numbers for Claude models, analyzes consistency issues, and notes independent confirmation and dataset availability. These insights are relevant to AI research and bioinformatics, giving readers actionable knowledge without excessive hype or padding. No major penalties apply, resulting in a good‑to‑excellent score.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-05-01T03:42:13.483892"
+    },
+    {
+      "id": 2225,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/sonicwall-urges-immediate-patching-of-firewall-vulnerabilities/",
+      "title": "SonicWall Urges Immediate Patching of Firewall Vulnerabilities",
+      "summary": "SonicWall urges immediate patching of high and medium severity vulnerabilities in its firewalls that could allow attackers to bypass security controls, access restricted services, and crash firewalls.",
+      "ideas": [
+        "SonicWall firewalls have high and medium severity vulnerabilities",
+        "Vulnerabilities can be exploited to bypass access controls",
+        "Path traversal weakness can interact with restricted services",
+        "Remote attackers can crash vulnerable firewalls",
+        "Patching is necessary to maintain security posture",
+        "Temporary mitigation involves restricting management access"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers high-value information about recently discovered vulnerabilities in SonicWall firewalls, providing specific details on the vulnerabilities, their potential impact, and the necessary patches. It aligns strongly with the CyberSecurity theme, offering practical knowledge and expert insight. The density of valuable information is high, with multiple actionable points for readers, including the urgency of patching and temporary mitigation strategies.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-01T03:42:06.266346"
+    },
+    {
+      "id": 2224,
+      "source_id": 15,
+      "original_url": "https://www.magonia.io/research/why-a-decade-of-writing-detection-logic-makes-the-mythos-exploit-numbers-less-scary",
+      "title": "Why a Decade of Writing Detection Logic Makes the Mythos Exploit Numbers Less Scary",
+      "summary": "The impact of AI-powered systems finding vulnerabilities at an unprecedented rate is less catastrophic for defenders due to the nature of detection logic and adversary tactics.",
+      "ideas": [
+        "Detecting behaviors is more effective than individual IoCs and exploits",
+        "Adversaries often don't need zero days to be effective",
+        "Detection logic doesn't map 1:1 with exploits",
+        "New exploits have always exceeded defenders' ability to write detections"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The content delivers valuable insights into why the increasing number of exploits found by AI-powered systems may not be as catastrophic for defenders as headlines suggest. It highlights the importance of detecting behaviors over individual IoCs and exploits, and notes that adversaries often don't need zero days to be effective. The content also explains that detection logic doesn't map 1:1 with exploits, providing a nuanced view of the situation. The only penalty applied is for the content being somewhat brief and lacking extensive examples or data to support its claims.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-01T03:36:31.380498"
+    },
+    {
+      "id": 2223,
+      "source_id": 15,
+      "original_url": "https://securitylabs.datadoghq.com/articles/dependency-cooldowns",
+      "title": "The case for dependency cooldowns in a post-axios world",
+      "summary": "Delaying automatic dependency updates with cooldowns reduces the risk of silently pulling in malicious code.",
+      "ideas": [
+        "Half of organizations install a new dependency within a day of release",
+        "^ and ~ version ranges automatically trust future potentially malicious code",
+        "Dependency cooldowns delay automatic updates to mitigate supply‑chain risk",
+        "Yarn, pnpm, npm, and Dependabot now support dependency cooldowns"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The snippet provides concrete, actionable insights about supply‑chain risk: a striking statistic from Datadog’s report, a clear warning about ^/~ version ranges trusting future code, and the practical recommendation that major package managers now support dependency cooldowns. It’s concise, on‑topic, and free of clickbait or padding, though it only offers a few ideas, limiting its overall depth.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-01T03:34:37.499076"
+    },
+    {
+      "id": 2222,
+      "source_id": 15,
+      "original_url": "https://unit42.paloaltonetworks.com/autonomous-ai-cloud-attacks",
+      "title": "Can AI Attack the Cloud? Lessons From Building an Autonomous Cloud Offensive Multi-Agent System",
+      "summary": "Researchers built an autonomous AI system called Zealot to test its offensive capabilities against cloud environments, demonstrating the potential for AI to autonomously exploit vulnerabilities in misconfigured cloud settings.",
+      "ideas": [
+        "AI can be used for autonomous cloud penetration testing",
+        "Multi-agent systems can enhance AI offensive capabilities",
+        "Cloud environments are vulnerable to AI-powered attacks if misconfigured",
+        "LangGraph can be utilized in building autonomous offensive AI systems",
+        "Autonomous AI systems can share attack state for coordinated attacks"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This content delivers high value by discussing an autonomous cloud offensive multi-agent system called Zealot, which uses AI for penetration testing. The system's architecture and capabilities are well-explained, providing novel insights into AI's potential for cloud security threats. The content is dense with technical information and aligns strongly with the CyberSecurity and AI themes.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-01T03:34:31.282865"
+    },
     {
       "id": 2221,
       "source_id": 27,
