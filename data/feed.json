@@ -1,7 +1,159 @@
 {
-  "updated_at": "2026-05-08T06:00:00.549611",
-  "total_items": 723,
+  "updated_at": "2026-05-08T07:00:00.441500",
+  "total_items": 729,
   "items": [
+    {
+      "id": 2406,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/pcpjack-credential-stealer-exploits-5.html",
+      "title": "PCPJack Credential Stealer Exploits 5 CVEs to Spread Worm-Like Across Cloud Systems",
+      "summary": "PCPJack is a credential-stealing worm that exploits five known vulnerabilities to spread across cloud environments while actively removing competing malware like TeamPCP.",
+      "ideas": [
+        "PCPJack steals credentials from cloud, container, and developer services.",
+        "It spreads worm-like using five known CVEs for lateral movement.",
+        "The malware evicts TeamPCP artifacts from compromised cloud environments.",
+        "Propagation uses IP ranges from Common Crawl's public datasets.",
+        "Six Python scripts handle orchestration, exfiltration, and scanning.",
+        "Credentials are encrypted before exfiltration via Telegram C2.",
+        "No cryptocurrency mining component is present in PCPJack.",
+        "Targets include Docker, Kubernetes, Redis, MongoDB, and RayML.",
+        "The attacker tracks 'PCP replaced' success metrics in C2 data."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple high-value insights about a new credential stealer (PCPJack) exploiting 5 CVEs to spread across cloud systems, with specific technical details on propagation methods, payload components, and attacker behavior. It includes novel information such as the worm's use of Common Crawl data for targeting and its deliberate eviction of TeamPCP artifacts, supported by expert analysis from SentinelOne. The content is dense, focused, and thematically strong in cybersecurity and cloud threats, with no noticeable padding or promotional content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-08T15:44:06.382306"
+    },
+    {
+      "id": 2405,
+      "source_id": 4,
+      "original_url": "https://lwn.net/Articles/1071719/",
+      "title": "Dirty Frag: a zero-day universal Linux LPE [LWN.net]",
+      "summary": "A zero-day Linux vulnerability, Dirty Frag, allows for local privilege escalation and has been publicly disclosed with a mitigation strategy available.",
+      "ideas": [
+        "Dirty Frag is a zero-day Linux LPE vulnerability",
+        "It allows for immediate root privilege escalation",
+        "A mitigation strategy is available by blacklisting and removing vulnerable modules",
+        "SE Linux with a strict policy can protect against the exploit",
+        "The vulnerability is similar to the recently disclosed Copy Fail flaw"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a high-value insight into a zero-day universal Linux LPE vulnerability, known as Dirty Frag, and offers a mitigation strategy. It includes a detailed write-up, example script, and disclosure timeline, making it a rich source of information. The discussion in the comments section adds to the value, with users sharing their experiences and expertise.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-08T15:37:28.125800"
+    },
+    {
+      "id": 2404,
+      "source_id": 4,
+      "original_url": "https://aisle.com/blog/aisle-discovers-cve-2026-42511-a-21-year-old-freebsd-remote-command-execution-vulnerability",
+      "title": "https://aisle.com/blog/aisle-discovers-cve-2026-42511-a-21-year-old-freebsd-remote-command-execution-vulnerability#the-vulnerability",
+      "summary": "A critical command injection vulnerability in FreeBSD's dhclient allows any local network attacker to achieve root code execution by sending a malicious DHCP reply that poisons the lease file, which is later reinterpreted through an eval sink in dhclient-script.",
+      "ideas": [
+        "FreeBSD dhclient writes BOOTP filename/server_name fields to lease files without sanitization or escaping",
+        "A malicious DHCP server can inject lease directives via embedded quotes and newlines in the BOOTP file field",
+        "The poisoned lease file is later reparsed, making injected medium directives become trusted state",
+        "dhclient-script uses eval on medium values recovered from the lease file, enabling RCE",
+        "The exploit payload ';id>/tmp/pwned' executes as root when dhclient-script runs",
+        "Vulnerability affects any FreeBSD system using DHCP, including laptops on hostile Wi-Fi networks",
+        "DHCP protocol is unauthenticated, enabling rogue access point attacks on wireless networks",
+        "FreeBSD powers Netflix Open Connect, Sony PlayStation OS, Nintendo Switch, and major networking platforms",
+        "The vulnerability existed since FreeBSD-6.0 in 2005, discovered by AISLE's AI-based source code analysis",
+        "OpenBSD fixed similar vulnerability in 2012 by deprecating dhclient-script entirely",
+        "Proof of concept shows complete local-network-to-root exploit chain with clean payload",
+        "The 2026 date (future) indicates this is either a test CVE or hypothetical scenario for evaluation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is original security research disclosing a critical 21-year-old FreeBSD dhclient vulnerability with exceptional technical depth. The content provides novel insights: a full exploit chain from network packet to root RCE, detailed code analysis showing the vulnerable fprintf() calls without sanitization, the specific BOOTP field injection via the 'file' parameter, the eval sink in dhclient-script, and a working proof-of-concept payload. The vulnerability affects widely deployed systems (Netflix, Sony, Nintendo, etc.) making this high-thematic-relevance to cybersecurity. While the AISLE platform promotion at the end is present, it doesn't dominate the content, and the technical disclosure itself is substantial, credible, and educational. The content efficiently delivers 10+ distinct technical insights with strong thematic alignment to cybersecurity and systems security.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-08T15:37:22.034674"
+    },
+    {
+      "id": 2403,
+      "source_id": 4,
+      "original_url": "https://github.com/depthsecurity/PositiveIntent",
+      "title": "https://github.com/depthsecurity/PositiveIntent",
+      "summary": "PositiveIntent is an evasive .NET Framework assembly loader that utilizes hardware breakpoints and custom RC4 encryption to bypass AMSI and ETW, while also providing obfuscation and PE header stomping capabilities.",
+      "ideas": [
+        "Using hardware breakpoints for AMSI and ETW bypass",
+        "Implementing custom RC4 encryption for assembly loading",
+        "Obfuscating assemblies with Mono.Cecil",
+        "Stomping PE headers to evade memory page scanners",
+        "Embedding assemblies as resource files with RC4 encryption",
+        "Utilizing D/Invoke instead of P/Invoke for compatibility"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a detailed overview of the PositiveIntent project, a .NET Framework assembly loader with evasive capabilities. It delivers multiple novel insights, such as the use of hardware breakpoints for AMSI and ETW bypass, and a custom RC4 encryption implementation. The project's features, including obfuscation and PE header stomping, are well-explained and demonstrate a strong understanding of the topic. However, the content's density is slightly reduced due to the inclusion of some redundant information and tangential links.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-08T15:36:06.178689"
+    },
+    {
+      "id": 2402,
+      "source_id": 4,
+      "original_url": "https://mindgard.ai/blog/approve-once-exploit-forever-the-trust-persistence-problem-in-ai-coding-agents",
+      "title": "https://mindgard.ai/blog/approve-once-exploit-forever-the-trust-persistence-problem-in-ai-coding-agents",
+      "summary": "AI coding agents like Claude Code, Codex, and Gemini CLI have a trust persistence problem that allows changed project configurations to execute without re-approval, posing a significant security risk.",
+      "ideas": [
+        "AI coding agents can preserve stale trust",
+        "Changed project configs can execute without re-approval",
+        "This creates a real local execution risk",
+        "The fix involves attaching trust to the content being executed, not just the folder path",
+        "Industry standards like GitHub Actions already address similar security issues",
+        "Existing solutions like VS Code Copilot implement necessary trust controls"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This article delivers high-value insights into a critical security flaw in AI coding agents, specifically the trust persistence problem. It provides a thorough analysis of the issue, including how it can be exploited, and offers concrete examples from well-known vendors like Anthropic, OpenAI, and Google. The author also references existing solutions and industry standards that already address this problem, making the content highly informative and relevant. The only deduction is for the promotional elements present, though they do not significantly detract from the core value of the article.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-08T15:34:53.500353"
+    },
+    {
+      "id": 2401,
+      "source_id": 4,
+      "original_url": "https://github.com/califio/publications/blob/main/MADBugs/freebsd-CVE-2026-7270/blog.md",
+      "title": "https://github.com/califio/publications/blob/main/MADBugs/freebsd-CVE-2026-7270/blog.md",
+      "summary": "A vulnerability in the FreeBSD kernel's execve system call can be exploited to gain root access, leveraging a bug in the handling of shebang scripts and the exec_map data structure.",
+      "ideas": [
+        "Exploiting a bug in the execve system call to gain root access",
+        "Using a shebang script to trigger the bug and overflow the exec_map buffer",
+        "Corrupting the exec_map entry to inject a malicious environment variable",
+        "Utilizing the sshd-session process to trigger the exploit and gain root access",
+        "Preseeding the exec_map entries to increase the chances of a successful exploit",
+        "Leveraging the DPCPU cache to spread the preseeding across multiple CPUs"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 98,
+      "rating_reason": "This content provides a highly detailed and technical explanation of a vulnerability in the FreeBSD kernel, specifically a bug in the execve system call. The author presents a clear and well-structured analysis of the issue, including a step-by-step breakdown of the exploit and the challenges faced in developing a reliable exploit. The content is rich in technical insights and demonstrates a deep understanding of the underlying system internals. The author's use of analogies and explanations makes the complex topic more accessible to readers. The only reason it's not a perfect score is that the content is highly specialized and may not be directly applicable to a broad audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-08T15:33:00.028529"
+    },
     {
       "id": 2400,
       "source_id": 28,
