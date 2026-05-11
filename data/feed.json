@@ -1,7 +1,252 @@
 {
-  "updated_at": "2026-05-11T11:00:00.368145",
-  "total_items": 722,
+  "updated_at": "2026-05-11T13:00:00.372373",
+  "total_items": 732,
   "items": [
+    {
+      "id": 2481,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/fake-openai-privacy-filter-repo-hits-1.html",
+      "title": "Fake OpenAI Privacy Filter Repo Hits #1 on Hugging Face, Draws 244K Downloads",
+      "summary": "A malicious Hugging Face repository impersonating OpenAI's Privacy Filter used typosquatting and a multi-stage attack chain to deliver a Rust-based information stealer, reaching #1 trending with 244K downloads before detection.",
+      "ideas": [
+        "Typosquatting copies model cards verbatim to appear legitimate on Hugging Face",
+        "loader.py uses JSON Keeper as dead drop resolver for dynamic payload switching",
+        "Malware disables SSL verification then decodes Base64 URL for command execution",
+        "PowerShell downloads batch script from api.eth-fastscan domain for second-stage execution",
+        "Batch script elevates privileges via UAC prompt and configures Defender exclusions",
+        "Scheduled task launches stealer as one-shot SYSTEM-context launcher with no persistence",
+        "Stealer harvests Discord, crypto wallets, browser data, and system metadata",
+        "Evasion techniques include debugger detection, VM detection, AMSI/ETW disabling",
+        "Download counts and likes were artificially inflated to build false trust",
+        "Six additional repositories with identical attack pattern discovered (anthfu repos)"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 84,
+      "rating_reason": "This is exceptional cybersecurity reporting with high value density. It delivers 10+ distinct insights including a detailed technical breakdown of the typosquatting attack, the complete multi-stage malware execution chain (loader.py → PowerShell → batch script → scheduled task → stealer), specific IOCs (domains, file hashes, repo names), and evidence of artificial download inflation (244K downloads, 667 likes in 18 hours). The HiddenLayer research attribution adds credibility, and the discovery of six additional malicious repositories extends the impact. No padding, no promotional elements—just a thorough technical analysis of a real supply chain attack targeting the AI/ML ecosystem.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:47:56.820435"
+    },
+    {
+      "id": 2480,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/05/11/taiwans-train-cyber-trauma-reveals-a-global-system-thats-coming-off-the-tracks/5237248",
+      "title": "Taiwan's train cyber-trauma reveals a global system that’s coming off the tracks",
+      "summary": "Outdated critical infrastructure like TETRA radios remains vulnerable to cheap, accessible tools, exposing systemic cybersecurity failures worldwide.",
+      "ideas": [
+        "A student hacked Taiwan's bullet train system using a low-cost SDR device.",
+        "TETRA radio systems used globally lack modern security against replay attacks.",
+        "Software-defined radios like HackRF make sophisticated radio attacks accessible and affordable.",
+        "Replay attacks are a solved problem but ignored in legacy infrastructure.",
+        "Banning SDR tools is impractical—they're general-purpose computers with legitimate uses.",
+        "Critical infrastructure resilience is undermined by outdated tech and underfunded upgrades."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several high-value insights about critical infrastructure vulnerabilities, specifically the outdated TETRA radio system and the ease with which it was exploited via a replay attack using affordable SDR tools like HackRF. It connects a real-world incident in Taiwan to global cybersecurity implications, highlighting a known but dangerously ignored flaw. The piece is well-written and informative but slightly padded with tangential analogies and humor, slightly reducing its density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:46:06.493101"
+    },
+    {
+      "id": 2479,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/191964/security/u-s-cisa-adds-a-flaw-in-berriai-litellm-to-its-known-exploited-vulnerabilities-catalog.html",
+      "title": "U.S. CISA adds a flaw in BerriAI LiteLLM to its Known Exploited Vulnerabilities catalog",
+      "summary": "A critical vulnerability in BerriAI LiteLLM has been added to the U.S. CISA's Known Exploited Vulnerabilities catalog, and users are advised to upgrade or apply mitigation strategies to protect against potential attacks.",
+      "ideas": [
+        "CVE-2026-42208 is a critical vulnerability in BerriAI LiteLLM",
+        "The vulnerability allows for SQL injection attacks",
+        "Attackers can exploit the vulnerability to access and modify database data",
+        "The vulnerability has been added to the U.S. CISA's Known Exploited Vulnerabilities catalog",
+        "Users are advised to upgrade to a patched version or apply mitigation strategies"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a clear and concise report on a critical vulnerability in BerriAI LiteLLM, tracked as CVE-2026-42208, which has been added to the U.S. CISA's Known Exploited Vulnerabilities catalog. The article delivers practical information on the vulnerability, its exploitation, and mitigation strategies, making it a valuable resource for security professionals and organizations. However, the content's density and thematic relevance are somewhat reduced by the presence of peripheral information and links to other articles.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:44:35.261329"
+    },
+    {
+      "id": 2478,
+      "source_id": 4,
+      "original_url": "https://threatroad.substack.com/p/bleeding-llama",
+      "title": "Bleeding Llama - by Alex Levberg - Threat Road",
+      "summary": "Unauthenticated attackers can exploit Ollama’s local‑LLM API to steal data and execute code unless proper network and update controls are enforced.",
+      "ideas": [
+        "CVE-2026-7482 (Bleeding Llama) allows unauthenticated heap read via crafted GGUF file.",
+        "Attack exfiltrates data through model artifact push, exposing env vars, API keys, prompts.",
+        "Ollama 0.17.1 fixes the bug but changelog omitted the fix.",
+        "Two Windows updater vulnerabilities enable arbitrary code execution via startup folder.",
+        "Disable AutoUpdate and restrict network access to mitigate unpatched Windows update chain.",
+        "Exposing Ollama API externally turns local LLM into unauthenticated admin panel.",
+        "Deploy shared Ollama behind authenticated reverse proxy; never expose port 11434 publicly."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers multiple concrete value instances: detailed CVE disclosures, clear attack chains, and actionable mitigation steps, all directly relevant to cybersecurity and AI deployment. It avoids clickbait, padding, and off‑topic content, providing expert insight into real‑world risks. The density of practical advice relative to its moderate length justifies a strong but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:43:54.784916"
+    },
+    {
+      "id": 2477,
+      "source_id": 4,
+      "original_url": "https://raelize.com/blog/ai-fi-giving-claude-code-glitch-skills-for-bypassing-secure-boot/",
+      "title": "AI-FI: Giving Claude Code Glitch Skills for Bypassing Secure Boot",
+      "summary": "Researchers used Claude Code to successfully bypass Secure Boot on an ESP32 SoC via a Fault Injection attack, demonstrating the potential of AI in hardware vulnerability exploitation.",
+      "ideas": [
+        "AI-driven Fault Injection attacks can bypass Secure Boot on certain hardware",
+        "Claude Code can be used for complex hardware interactions and vulnerability exploitation",
+        "ESP32 SoC's Secure Boot can be vulnerable to Fault Injection attacks under specific conditions",
+        "AI can significantly accelerate the discovery and exploitation of hardware vulnerabilities",
+        "The use of AI in security research can lead to more efficient vulnerability discovery"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content delivers high value due to its unique demonstration of an AI-driven Fault Injection attack on an ESP32 SoC's Secure Boot, showcasing the potential of AI in discovering and exploiting hardware vulnerabilities. The detailed setup, methodology, and results provide significant insights into the capabilities and limitations of such attacks. However, the content's technical depth and specificity may limit its accessibility to a broader audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:43:47.029690"
+    },
+    {
+      "id": 2476,
+      "source_id": 4,
+      "original_url": "https://trustsig.eu/blog/wasm-vm",
+      "title": "https://trustsig.eu/blog/wasm-vm",
+      "summary": "Building a Wasm-in-Wasm virtualizer with JIT decrypted paged memory to protect code from decompilation and memory scraping, using a custom instruction set architecture and a sliding window XOR cipher for lazy decryption.",
+      "ideas": [
+        "Building a custom instruction set architecture for a Wasm-in-Wasm virtualizer",
+        "Using a sliding window XOR cipher for lazy decryption of bytecode",
+        "Implementing a stack machine under the hood for the virtual machine",
+        "Defining virtual opcodes using a strict Rust enum",
+        "Provisioning static execution arrays for the stack and registers",
+        "Interfacing with host memory APIs using foreign function interfaces",
+        "Building a fetch-decode-execute loop with state tracking and lazy decryption"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers exceptional value by providing a detailed, step-by-step guide on building a Wasm-in-Wasm virtualizer with JIT decrypted paged memory. The author shares novel insights, practical knowledge, and useful resources, making it a high-density, high-value content. The thematic relevance to TECHNOLOGY & INNOVATION, specifically WebAssembly and virtualization, is strong.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:39:05.105090"
+    },
+    {
+      "id": 2475,
+      "source_id": 29,
+      "original_url": "https://lowdefy.com/articles/lowdefy-agents/",
+      "title": "Show HN: AI Agents in 30 Lines of YAML: Lowdefy v5.3",
+      "summary": "Lowdefy v5.3 introduces AI agents that can be integrated into apps using 30 lines of YAML, enabling developers to create custom chatbots and automate tasks with ease.",
+      "ideas": [
+        "Integrating AI agents into Lowdefy apps",
+        "Using YAML for agent configuration",
+        "Customizing agent behavior with code examples",
+        "Utilizing MCP servers for tool integration",
+        "Implementing sub-agents for complex tasks",
+        "Exposing page state to agents",
+        "Routing across multiple AI providers",
+        "Reacting to agent lifecycle events",
+        "Displaying source citations and tool approvals"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content is highly valuable due to its in-depth explanation of how to integrate AI agents into a Lowdefy app, providing numerous code examples and use cases. The author efficiently delivers insights on the capabilities and customization of these agents, making it a worthwhile read for developers interested in AI and app development. The content is rich in practical knowledge, expert insights, and useful resources, aligning well with the themes of Technology & Innovation and Business & Strategy.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-05-11T21:36:04.984191"
+    },
+    {
+      "id": 2474,
+      "source_id": 29,
+      "original_url": "https://github.com/hodgesmr/calgacus-mlx",
+      "title": "Show HN: LLM Steganography to hide text inside another plausible text",
+      "summary": "The Calgacus protocol enables the hiding of meaningful text inside another plausible text of comparable length using LLM Steganography, allowing for secure and efficient information exchange.",
+      "ideas": [
+        "LLM Steganography for secure text hiding",
+        "Calgacus protocol implementation",
+        "Using language models for steganography",
+        "Shared secret keyfile for encoding and decoding",
+        "Importance of cover prompt and secret prefix for stegotext quality",
+        "Tuning keyfile for optimal results"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value through its detailed explanation of LLM Steganography, a novel method for hiding text inside another plausible text. The author delivers multiple insights efficiently, including a step-by-step guide on how to implement the Calgacus protocol. The content is rich in practical knowledge, useful resources, and expert insight, making it highly relevant to the themes of TECHNOLOGY & INNOVATION and CREATIVITY & CULTURE.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-05-11T21:35:03.026812"
+    },
+    {
+      "id": 2473,
+      "source_id": 4,
+      "original_url": "https://detect.fyi/unmanaged-powershell-execution-hunting-beyond-powershell-exe-1356689fb88f",
+      "title": "Unmanaged PowerShell Execution: Hunting Beyond powershell.exe",
+      "summary": "Attackers use unmanaged PowerShell execution to evade detections, but defenders can detect this activity by monitoring DLL loads and named pipe activity, providing a way to stay ahead of these threats.",
+      "ideas": [
+        "Unmanaged PowerShell execution bypasses traditional detections",
+        "PowerShdll and SharpPick enable PowerShell to run outside powershell.exe",
+        "Monitoring DLL loads and named pipes can detect unmanaged execution",
+        "Elastic and Sysmon can be used for hunting unmanaged PowerShell activity",
+        "Sigma rules are available for detecting PowerShell DLL loads and named pipes"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into unmanaged PowerShell execution, a technique used by attackers to evade traditional detections. It offers practical knowledge on how to detect and hunt this activity using Elastic and Sysmon, including specific queries and Sigma rules. The content is well-structured, informative, and relevant to the theme of cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-11T21:33:14.441051"
+    },
+    {
+      "id": 2472,
+      "source_id": 27,
+      "original_url": "https://github.com/OpenTalker/SadTalker",
+      "title": "OpenTalker/SadTalker",
+      "summary": "SadTalker is a CVPR 2023 research project that generates realistic talking head videos from a single portrait image and audio by learning 3D motion coefficients, offering multiple deployment options from research prototypes to production-ready WebUI interfaces.",
+      "ideas": [
+        "Realistic talking head generation from single image + audio",
+        "3D motion coefficient learning for animation",
+        "WebUI, CLI, and Colab deployment options",
+        "Integration with stable-diffusion-webui",
+        "Production-ready with multiple platform support"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "SadTalker is a CVPR 2023 published research project that provides a genuinely novel approach to audio-driven talking head generation using 3D motion coefficients. The project scores highly across all evaluation criteria: it solves a significant real-world problem (video generation from single image + audio), has clear technical novelty from peer-reviewed research, offers multiple production-ready interfaces (WebUI, CLI, Colab, HuggingFace), and features comprehensive documentation including installation guides for multiple platforms, best practices, and troubleshooting. No automatic penalties apply—this is not a simple wrapper, list, or template collection but rather a well-documented research project with 13.8k stars and contributions from academic and industry researchers. Minor considerations include potential misuse concerns (deepfake technology), but the project includes appropriate disclaimers and legal compliance guidance.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-05-11T21:33:08.253030"
+    },
     {
       "id": 2471,
       "source_id": 29,
