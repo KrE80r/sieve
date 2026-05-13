@@ -1,7 +1,167 @@
 {
-  "updated_at": "2026-05-13T17:00:00.511562",
-  "total_items": 742,
+  "updated_at": "2026-05-13T19:00:00.494801",
+  "total_items": 748,
   "items": [
+    {
+      "id": 2536,
+      "source_id": 4,
+      "original_url": "https://thevisibleinvisible.substack.com/p/the-stolen-word",
+      "title": "The Stolen Word - The Visible Invisible",
+      "summary": "Sovereignty in cloud services is a legal illusion unless Europe adopts truly independent, open‑source infrastructure.",
+      "ideas": [
+        "US CLOUD Act forces American companies to comply with US data requests worldwide",
+        "Microsoft’s “sovereign cloud” cannot guarantee data stays out of US jurisdiction",
+        "Gaia‑X failed because US hyperscalers infiltrated its governance",
+        "EU tender awarded to joint venture that still relies on US cloud providers",
+        "Big Tech spent over €35 million lobbying EU digital legislation in 2025",
+        "Kyndryl’s acquisition of Solvinity threatens Dutch DigiD’s data independence",
+        "Schleswig‑Holstein saved €15 million by switching to LibreOffice and open‑source email",
+        "ICC migrated to OpenDesk after US sanctions cut off Microsoft email access",
+        "True sovereignty means eliminating dependence on overseas third‑party providers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers numerous concrete insights about cloud sovereignty, US legal reach, EU lobbying, and open‑source alternatives, supported by specific examples and data, giving high value density for its length. It aligns well with Tech and CyberSecurity themes and contains no clickbait or padding, so only minor thematic penalties apply.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-14T03:44:42.191441"
+    },
+    {
+      "id": 2535,
+      "source_id": 4,
+      "original_url": "https://securitylabs.datadoghq.com/articles/malicious-skills-supply-chain-risks-in-coding-agents-with-dynamic-context/",
+      "title": "https://securitylabs.datadoghq.com/articles/malicious-skills-supply-chain-risks-in-coding-agents-with-dynamic-context/",
+      "summary": "Coding agent skills in cloned repositories can introduce malicious instructions, and dynamic context commands (`!` syntax) execute before model-level prompt injection defenses, allowing attackers to bypass AI safety measures.",
+      "ideas": [
+        "Skills in cloned repos `.claude/skills/` create supply chain risk without user installation",
+        "Dynamic context `!` commands run before model sees skill content, bypassing defenses",
+        "Clawsights skill exfiltrates GitHub tokens via `gh auth token` sent to attacker server",
+        "Model reinforcement learning can catch malicious skills shown in context after rendering",
+        "Nested `.claude/skills/` in monorepo packages load even when root is clean",
+        "Add `--add-dir` exception auto-loads skills from directories added for context",
+        "Setting `disableSkillShellExecution: true` disables risky `!` command execution",
+        "Monitor for `!` commands doing reconnaissance, network access, environment variable reads",
+        "Detect suspicious URLs in skill bodies and unrestricted tool grants in YAML frontmatter",
+        "Skill loading precedence: enterprise overrides personal overrides project"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a well-researched security article that delivers substantial technical value. It identifies a novel supply chain attack vector in coding agents (malicious skills in cloned repos), provides a real-world example (Clawsights credential exfiltration), and explains a critical bypass technique (dynamic context with `!` commands executing before model defenses). The content is dense with actionable insights: the skill loading precedence table, specific detection patterns for suspicious commands and URLs, and concrete mitigations like `disableSkillShellExecution`. The Datadog branding adds credibility rather than detracts, as the research is attributed to named security researchers. Minor deduction for being slightly product-forward at the end, but the technical content is original threat research, not rehashed information.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-14T03:42:57.476183"
+    },
+    {
+      "id": 2534,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/192067/security/quest-kace-sma-flaw-cve-2025-32975-when-one-unpatched-tool-opens-the-door-to-60-organizations.html",
+      "title": "Quest KACE SMA flaw CVE-2025-32975: when one unpatched tool opens the door to 60 organizations",
+      "summary": "A critical CVSS 10.0 authentication bypass vulnerability in Quest KACE SMA, left unpatched for 10 months, allowed attackers to compromise a managed services provider and expose 60+ client organizations across law enforcement, healthcare, education, and government through a 512MB data dump.",
+      "ideas": [
+        "CVE-2025-32975 is a CVSS 10.0 authentication bypass in KACE SMA SSO handling",
+        "Patch released May 2025 but attackers exploited unpatched instances ten months later",
+        "Compromised MSP HIQ exposed 60+ client organizations across critical sectors",
+        "Attacker staged 308MB toolkit with 219 files including reverse shells and C2",
+        "Exfiltrated 512MB database contained client lists and helpdesk tickets from police and hospitals",
+        "Toolkit included bidirectional C2 file server and custom SOCKS5 tunnel for persistence",
+        "Over 12000 KACE K1000 appliances remain internet-facing and unpatched",
+        "Hiding on non-standard ports provides no protection against detection",
+        "Supply chain risk: organizations affected through their MSP's unpatched vendor software",
+        "Researchers published IoCs for defenders to hunt for compromise"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "Strong cybersecurity threat intelligence content that delivers actionable information about CVE-2025-32975. The article provides specific technical details (CVSS 10.0, SSO authentication bypass), real-world impact data (60+ organizations exposed via MSP compromise), attacker TTPs (308MB toolkit with 219 files including reverse shells and C2 infrastructure), and publicly available IoCs. The supply chain risk lesson is valuable for security professionals. No padding or fluff—each paragraph delivers concrete intelligence. The attacker mistake of leaving the toolkit on an unprotected server adds credibility through Hunt.io's threat intel research.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-14T03:40:36.929871"
+    },
+    {
+      "id": 2533,
+      "source_id": 4,
+      "original_url": "https://ipurple.team/2026/05/13/entrypoint-hijacking/",
+      "title": "EntryPoint Hijacking – Purple Team",
+      "summary": "EntryPoint Hijacking is a code injection technique that modifies DLL EntryPoint addresses via PEB loader structures, evading EDR by using process thread pools instead of new threads, and can be detected by monitoring EntryPoint memory type changes and OriginalBase corruption.",
+      "ideas": [
+        "EntryPoint Hijacking modifies DLL EntryPoint to redirect execution via DllMain without creating new threads",
+        "The DontCallForThreads flag controls threading behavior; i>5 skips first 5 DLLs for process stability",
+        "APIs like InternetOpenW cause crashes due to thread-sync issues in this technique",
+        "LdrShuffle and EPI are two 2023-2025 PoC implementations with different execution approaches",
+        "Detection relies on comparing OriginalBase against DllBase and monitoring memory type transitions",
+        "EntryPoint memory type change from MEM_IMAGE to MEM_PRIVATE indicates shellcode injection",
+        "LdrShuffleDetect runs every 10 seconds to scan all processes for EntryPoint tampering",
+        "Sysmon Event ID 10 with access mask 0x143A grants VM_READ/VM_WRITE/VM_OPERATION permissions",
+        "WinDbg command lm m kernelbasedt nt!_LDR_DATA_TABLE_ENTRY identifies EntryPoint addresses",
+        "The technique restores EntryPoint promptly to prevent crashes and evade point-in-time detection",
+        "Organizations should schedule LdrShuffleDetect against high-value processes like lsass and browsers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is highly technical cybersecurity content delivering substantial value for purple team operators and security researchers. It covers EntryPoint Hijacking comprehensively with both offensive technique explanation (DLL EntryPoint modification via LDR_DATA_TABLE_ENTRY, DllMain redirection, the DontCallForThreads flag behavior) and defensive detection guidance (LdrShuffleDetect tool with three detection conditions, OriginalBase != DllBase comparison logic, Sysmon Event ID 10 correlation with access mask 0x143A). The content includes actual code samples, WinDbg commands, PoC tool references with GitHub links, and a structured playbook format. It avoids padding and delivers actionable technical intelligence efficiently, with strong thematic relevance to cybersecurity defense operations.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-14T03:36:22.711554"
+    },
+    {
+      "id": 2532,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/microsoft-palo-alto-networks-find-many-vulnerabilities-by-using-ai-on-their-own-code/",
+      "title": "Microsoft, Palo Alto Networks Find Many Vulnerabilities by Using AI on Their Own Code",
+      "summary": "AI‑driven agents can significantly accelerate vulnerability discovery, prompting firms to embed such models throughout development and remediation processes.",
+      "ideas": [
+        "AI models can autonomously discover software vulnerabilities",
+        "Microsoft MDASH employs over 100 specialized AI agents in a multi‑stage pipeline",
+        "MDASH identified 16 vulnerabilities, including four critical remote‑code‑execution bugs",
+        "Palo Alto’s Claude Mythos uncovered 75 vulnerabilities across 130 products",
+        "AI scanning recovered 96‑100% of known Windows component bugs",
+        "AI‑driven discovery may shrink the 3‑5‑month window to outpace attackers",
+        "Integrate AI into the software development lifecycle for proactive security"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: performance metrics of Microsoft MDASH, details of its multi‑agent architecture, Palo Alto’s discovery of 75 flaws using Claude Mythos, benchmark recovery rates, and strategic advice to embed AI in the SDLC. These insights are relevant to cybersecurity and AI themes and are presented efficiently without noticeable padding or clickbait, yielding a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-14T03:33:59.993055"
+    },
+    {
+      "id": 2531,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/05/13/disgruntled-researcher-releases-two-more-microsoft-zero-days/5239758",
+      "title": "Disgruntled researcher releases two more Microsoft zero-days",
+      "summary": "A disgruntled researcher has released details of two more Microsoft zero-day bugs, YellowKey and GreenPlasma, which could have significant security implications, particularly for BitLocker and privilege escalation.",
+      "ideas": [
+        "YellowKey is a BitLocker bypass vulnerability",
+        "GreenPlasma is a privilege escalation flaw",
+        "Physical access is required for YellowKey exploitation",
+        "Implementing a BitLocker PIN and BIOS password lock can mitigate YellowKey",
+        "GreenPlasma exploit code has been partially released",
+        "Attackers need to weaponize GreenPlasma code themselves"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides high-value insights into recent Microsoft zero-day vulnerabilities, specifically YellowKey and GreenPlasma, including their potential impact and mitigation strategies. It quotes security experts, adding depth to the analysis. However, the content's density is somewhat reduced by the inclusion of extensive background information and tangential details.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-14T03:33:52.778907"
+    },
     {
       "id": 2530,
       "source_id": 27,
