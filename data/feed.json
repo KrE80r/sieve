@@ -1,7 +1,190 @@
 {
-  "updated_at": "2026-05-15T06:00:00.614600",
-  "total_items": 728,
+  "updated_at": "2026-05-15T07:00:00.393020",
+  "total_items": 735,
   "items": [
+    {
+      "id": 2575,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/stealer-backdoor-found-in-3-node-ipc.html",
+      "title": "Stealer Backdoor Found in 3 Node-IPC Versions Targeting Developer Secrets",
+      "summary": "Three malicious versions of the popular node-ipc npm package contain an obfuscated stealer that harvests 90 categories of developer/cloud credentials via IIFE injection and advanced DNS-based exfiltration, with version 12.0.1 being specifically targeted via SHA-256 hash fingerprinting.",
+      "ideas": [
+        "node-ipc versions 9.1.6, 9.2.3, and 12.0.1 contain an obfuscated stealer/backdoor confirmed by Socket and StepSecurity",
+        "The malware targets 90 credential categories including AWS, GCP, Azure, SSH keys, Kubernetes tokens, GitHub CLI, and Claude AI",
+        "Attack uses IIFE appended to node-ipc.cjs rather than npm lifecycle hooks, firing on every require('node-ipc')",
+        "Version 12.0.1 performs SHA-256 fingerprint check against hard-coded hash - it only executes on targeted systems",
+        "9.x versions lack this gate and execute the full payload on any system loading them",
+        "Malware compresses stolen data into GZIP archive and exfiltrates to sh.azurestaticprovider.net domain",
+        "Secondary exfiltration uses DNS TXT records after overriding DNS resolver to 1.1.1.1 or 8.8.8.8",
+        "Direct-to-C2 DNS technique bypasses corporate DNS logging and security controls",
+        "Malware forks into detached background child processes for persistent exfiltration",
+        "Compromised account 'atiertant' has no prior publish history and is not the original author 'riaevangelist'",
+        "21-month gap since last update suggests either credential compromise or deliberate maintainer addition for this attack"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a high-value cybersecurity article delivering specific, actionable threat intelligence about a supply chain attack. It provides concrete IOCs (three malicious package versions, C2 domain, 90 credential categories targeted), technical details on the attack mechanism (IIFE vs lifecycle hooks, SHA-256 fingerprinting), and sophisticated anti-detection techniques (DNS exfiltration via Google resolvers, process forking). The content is well-sourced from Socket and StepSecurity with named researchers. While it's a news article rather than deep original research, it efficiently delivers rare insider knowledge about an active threat that developers and security teams can immediately act on. No padding, no fluff - pure threat intel value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:43:17.528868"
+    },
+    {
+      "id": 2574,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/brief/two-vulnerabilities-found-in-popular-wordpress-plugin-avada-builder",
+      "title": "Two vulnerabilities found in popular WordPress plugin Avada Builder",
+      "summary": "Avada Builder’s critical file‑read and unauthenticated SQL‑injection flaws are fixed in version 3.15.3; update immediately.",
+      "ideas": [
+        "Arbitrary file‑read CVE‑2026‑4782 in Avada Builder requires subscriber‑level access",
+        "Unauthenticated high‑severity SQL injection CVE‑2026‑4798 can extract password hashes",
+        "Patches released April/May 2026; upgrade to version 3.15.3 or later",
+        "Researcher Rafie Muhammad earned a $4,500 bounty via Wordfence program",
+        "Over one million sites use Avada Builder, making the flaws widely impactful"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete security information: two specific CVEs, their impact, required access, and patched version, plus bounty details—five clear value instances in under 500 words, giving high value density and strong CyberSecurity relevance. No clickbait or padding is present, so the score reflects solid, actionable content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:38:04.361750"
+    },
+    {
+      "id": 2573,
+      "source_id": 4,
+      "original_url": "https://github.com/HKUDS/OpenSpace",
+      "title": "Interactive mode",
+      "summary": "OpenSpace is a self-evolving engine that enables AI agents to learn, adapt, and evolve from real-world experience, making them smarter, more cost-efficient, and economically viable.",
+      "ideas": [
+        "Self-evolving skills for AI agents",
+        "Collective agent intelligence through shared evolution",
+        "Token efficiency through skill reuse and improvement",
+        "Cloud community for skill sharing and collaboration",
+        "Autonomous system development with OpenSpace",
+        "Economic value of OpenSpace through GDPVal benchmark"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "The content provides a comprehensive overview of OpenSpace, a self-evolving engine for AI agents, with multiple novel insights and practical applications. It efficiently delivers its insights, with a high value density, and strongly aligns with the themes of technology, innovation, and artificial intelligence. The content includes evidence and data to support its claims, such as the GDPVal economic benchmark, and provides a clear explanation of the problem, the solution, and the benefits of using OpenSpace.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:37:57.735178"
+    },
+    {
+      "id": 2572,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/stealer-backdoor-found-in-3-node-ipc.html?m=1",
+      "title": "Stealer Backdoor Found in 3 Node-IPC Versions Targeting Developer Secrets",
+      "summary": "Malicious versions of node-ipc contain a sophisticated stealer backdoor that exfiltrates developer secrets using stealthy DNS and cryptographic techniques.",
+      "ideas": [
+        "node-ipc versions 9.1.6, 9.2.3, and 12.0.1 contain obfuscated stealer malware",
+        "Malware collects 90 types of developer and cloud secrets including AWS, Azure, and SSH keys",
+        "Payload is triggered via IIFE on require(), not npm lifecycle hooks",
+        "Exfiltration occurs through HTTPS POST and DNS TXT record encoding",
+        "Attacker uses SHA-256 fingerprint check to target specific systems",
+        "Malware overrides DNS resolver to bypass local security controls",
+        "Forks into detached child process to persist beyond parent Node.js process"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers high-value, timely information about a critical supply chain attack in the Node.js ecosystem, with specific details on malicious versions, attack behavior, and exfiltration techniques. It cites multiple reputable sources (Socket, StepSecurity) and includes novel technical insights like the use of IIFE instead of npm hooks, DNS-based exfiltration, and conditional execution via SHA-256 fingerprinting. The content is dense with actionable intelligence for developers and security teams, though slightly padded with promotional banners and navigation elements. No major penalties apply beyond minor UI clutter.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:36:19.208933"
+    },
+    {
+      "id": 2571,
+      "source_id": 4,
+      "original_url": "https://memn0ps.github.io/doublepulsar-a-user-defined-reflective-loader-in-the-crystal-palace-and-tradecraft-garden-era/",
+      "title": "DoublePulsar: A User-Defined Reflective Loader in the Crystal Palace and Tradecraft Garden Era :: memN0ps",
+      "summary": "Custom reflective loaders like DoublePulsar and frameworks like Crystal Palace enable sophisticated memory evasion by giving operators full control over how implants load and hide in process memory.",
+      "ideas": [
+        "Reflective DLL injection allows DLLs to load in memory without Windows loader involvement.",
+        "sRDI separates loader from DLL, enabling shellcode conversion without DLL modification.",
+        "DoublePulsar is a Rust-based UDRL with memory hiding, encryption, and call spoofing.",
+        "UDRLs give Cobalt Strike operators full control over Beacon's memory loading behavior.",
+        "Crystal Palace uses PICOs and linker scripts to modularize evasion tradecraft development.",
+        "Module stomping, NtContinue, and .pdata manipulation enhance evasion against EDRs.",
+        "Detection requires behavioral analysis, YARA rules, and MITRE ATT&CK mapping beyond signatures."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers 7+ high-quality insights on advanced offensive security techniques, particularly around reflective loading and evasion tradecraft in Cobalt Strike. It provides novel architectural comparisons between monolithic UDRLs and modular Crystal Palace/PICO approaches, includes actionable detection strategies, and maintains strong thematic relevance to CyberSecurity and Tech. The depth of technical detail, original analysis, and clear structure results in high value density despite its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:36:12.979194"
+    },
+    {
+      "id": 2570,
+      "source_id": 4,
+      "original_url": "https://github.com/ConardLi/garden-skills",
+      "title": "Install all four skills (latest) npx skills add ConardLi/garden-skills # Install just one skill (latest) npx skills add ConardLi/garden-skills -s web-design-engineer # Install globally (~/.skills) ins...",
+      "summary": "Garden Skills is a curated collection of production-ready agent skills for AI coding agents, providing features like web video presentation, web design engineering, image generation, and local knowledge retrieval, with multiple installation methods and compatibility with various agents.",
+      "ideas": [
+        "Agent skills for AI coding agents",
+        "Web video presentation skill",
+        "Web design engineering skill",
+        "Image generation skill",
+        "Local knowledge retrieval skill",
+        "Multiple installation methods",
+        "Compatibility with various agents"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a comprehensive overview of the Garden Skills project, including its purpose, features, and installation instructions. It delivers high value density with multiple novel insights, such as the concept of skills, their compatibility with various agents, and the different installation methods. The content is well-structured, making it easy to follow and understand. However, some sections may be considered slightly padded due to the extensive list of features and installation options.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:34:45.301955"
+    },
+    {
+      "id": 2569,
+      "source_id": 4,
+      "original_url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "title": "https://github.com/esengine/DeepSeek-Reasonix",
+      "summary": "Reasonix maximizes cost efficiency in AI coding agents by engineering every layer around DeepSeek's prefix-cache stability, enabling long-running sessions with 99%+ cache hit rates.",
+      "ideas": [
+        "DeepSeek-only design ensures byte-stable prefix caching for low token costs",
+        "99.82% cache hit rate possible over long coding sessions",
+        "Four mechanisms in Pillar 1 maintain cache stability across operations",
+        "Tool-call repair fixes malformed tool invocations without re-prompting",
+        "Cost control built into the agent loop, not an afterthought",
+        "Persistent per-workspace sessions with live token and cost meters",
+        "Skills are Markdown playbooks the model can invoke autonomously",
+        "Configurable web search with Mojeek or self-hosted SearXNG",
+        "Open-source MIT framework with community-driven development",
+        "Desktop client bundles Node runtime; same loop as CLI"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "The content presents a highly specialized, DeepSeek-native AI coding agent with a strong focus on cache efficiency, cost control, and terminal-first design. It delivers multiple novel insights around prefix-cache stability, tool-call repair, and persistent agent sessions, supported by real-world benchmarks and transparent architecture. While the GitHub README format limits narrative flow, the density of technical value, clear documentation, and community-driven development justify a high score. Minor penalty for being a project page rather than an explanatory article.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-15T15:34:13.269559"
+    },
     {
       "id": 2568,
       "source_id": 4,
