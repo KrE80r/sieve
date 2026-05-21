@@ -1,7 +1,449 @@
 {
-  "updated_at": "2026-05-21T17:00:00.336486",
-  "total_items": 770,
+  "updated_at": "2026-05-21T19:00:00.391961",
+  "total_items": 787,
   "items": [
+    {
+      "id": 2752,
+      "source_id": 4,
+      "original_url": "https://training.ridgelinecyber.com/blog/credential-access-detection-beyond-lsass/",
+      "title": "https://training.ridgelinecyber.com/blog/credential-access-detection-beyond-lsass/",
+      "summary": "Detecting credential theft requires multiple, technique‑specific telemetry rules beyond just LSASS monitoring.",
+      "ideas": [
+        "LSASS memory reads can be detected via ProcessAccess events with specific access masks.",
+        "Kerberoasting detection relies on spikes of RC4 ticket requests in Security Event 4769.",
+        "DCSync detection uses Security Event 4662 with replication GUIDs from non‑domain controllers.",
+        "SAM/NTDS hive extraction detection monitors reg.exe, ntdsutil.exe, vssadmin.exe, esentutl.exe commands.",
+        "DPAPI credential extraction detection is challenging and often overlooked.",
+        "False positive tuning requires whitelisting legitimate processes and known admin activities.",
+        "MDE identity tables provide alternative detection when domain controller logs aren't available."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, actionable detection rules for five credential‑access techniques, each with false‑positive guidance and alternative queries, providing clear practical value for security engineers. It aligns strongly with cybersecurity themes and avoids clickbait or padding, though the DPAPI section is incomplete, slightly reducing completeness.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:54:35.585042"
+    },
+    {
+      "id": 2751,
+      "source_id": 4,
+      "original_url": "https://therecord.media/huawei-zero-day-behind-last-year-luxembourg-telecom-outage",
+      "title": "https://therecord.media/huawei-zero-day-behind-last-year-luxembourg-telecom-outage",
+      "summary": "A previously undisclosed Huawei router vulnerability exploited via crafted traffic caused Luxembourg's nationwide telecom outage, with no public CVE or patch released months later.",
+      "ideas": [
+        "Huawei zero-day caused nationwide telecom outage in Luxembourg",
+        "Attack exploited undocumented router behavior, triggering continuous restarts",
+        "No CVE was issued; vulnerability remains undisclosed publicly",
+        "Outage disrupted emergency services for over three hours",
+        "Malicious traffic may have passed through, not targeted POST directly",
+        "Huawei uses restricted portal for enterprise security advisories",
+        "Luxembourg authorities alerted European partners but not public",
+        "Similar DoS flaws previously found in Huawei's VRP system",
+        "Vendor controls CVE issuance, raising transparency concerns",
+        "Unclear if vulnerability is fully patched or still exploitable"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers high-value insights about a significant zero-day vulnerability in Huawei routers that caused a nationwide telecom outage, with specific details on the technical nature, disclosure gaps, and implications for critical infrastructure. It includes multiple value instances: the zero-day confirmation, lack of CVE, restricted disclosure practices, and potential exposure of other operators. The content is dense, well-sourced, and thematically strong in cybersecurity and infrastructure risk.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:54:13.860561"
+    },
+    {
+      "id": 2750,
+      "source_id": 4,
+      "original_url": "https://arstechnica.com/security/2026/05/google-publishes-exploit-code-threatening-millions-of-chromium-users/",
+      "title": "Google publishes exploit code threatening millions of Chromium users - Ars Technica",
+      "summary": "Google accidentally published exploit code for a long-unpatched Chromium vulnerability that can turn browsers into stealthy proxies, affecting millions.",
+      "ideas": [
+        "Chromium has an unpatched vulnerability allowing websites to create persistent background connections.",
+        "The exploit uses the Browser Fetch API to turn browsers into proxy nodes.",
+        "Google published the exploit code before releasing a fix, risking widespread abuse.",
+        "The flaw enables limited botnet creation for DDoS or surveillance.",
+        "Service workers remain active post-reboot, making detection difficult.",
+        "Chrome and Edge show subtle signs; less tech-savvy users may not notice.",
+        "Brave, Opera, Vivaldi, and Arc are confirmed vulnerable; Firefox and Safari are not.",
+        "Background fetch usage is low in Chrome, suggesting limited current exploitation.",
+        "Researcher reported the bug 42 months ago; fix delays are common.",
+        "Google acknowledged the leak and is working on a patch."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several high-value insights about a critical security flaw in Chromium, including its technical mechanism, impact, and Google's controversial disclosure. It features expert commentary, specific risk details, and lists vulnerable browsers, offering actionable awareness. The density is strong, though slightly reduced by minor structural padding typical of news formatting. High thematic relevance to cybersecurity and tech.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:54:06.297538"
+    },
+    {
+      "id": 2749,
+      "source_id": 4,
+      "original_url": "https://github.com/musana/CF-Hero",
+      "title": "https://github.com/musana/CF-Hero",
+      "summary": "CF-Hero is a legitimate reconnaissance tool that bypasses Cloudflare protection by correlating data from DNS records, OSINT search engines (Shodan, Censys, ZoomEye, SecurityTrails), and subdomain techniques to discover origin server IP addresses.",
+      "ideas": [
+        "DNS A records may contain non-Cloudflare IPs pointing to origin servers",
+        "TXT records, especially SPF records, often expose real server IP addresses",
+        "OSINT search engines log real IPs before domains are moved behind Cloudflare",
+        "Historical DNS services record IP changes over time, revealing past exposures",
+        "Subdomain technique: connect to non-CF subdomain, modify Host header to target domain",
+        "Tool validates findings by comparing HTML titles from direct IP connections",
+        "Support for custom JA3 fingerprints and proxy configuration for evasion",
+        "ZoomEye, Shodan, Censys, and SecurityTrails provide API-based historical IP data"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a well-documented cybersecurity reconnaissance tool with substantial technical depth. It provides genuine value through explaining multiple IP discovery techniques (DNS records, TXT/SPF extraction, OSINT sources, historical DNS, subdomain hijacking) with concrete examples and ASCII diagrams. The README offers complete installation, usage instructions, and CLI flag documentation. The content explains the underlying security concepts behind each technique, making it educational rather than just a tool download page. No clickbait, no padding - just substantive technical content for security researchers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:53:10.142811"
+    },
+    {
+      "id": 2748,
+      "source_id": 29,
+      "original_url": "https://github.com/securient/ideviewer-oss",
+      "title": "Show HN: IDEViewer – Security scanner for malicious IDE Extensions",
+      "summary": "Developer workstations are high-risk attack surfaces due to overprivileged IDE extensions and AI tools, which most security tools fail to monitor effectively.",
+      "ideas": [
+        "IDE extensions run with full system permissions, creating major supply chain risks",
+        "AI coding tools often have dangerous permissions like shell access or API key exposure",
+        "Standard SCA and EDR tools miss extension-bundled dependencies and plaintext secrets",
+        "IDEViewer scans locally and reports only metadata to preserve developer privacy",
+        "Real-time filesystem monitoring detects malicious changes within 30 seconds",
+        "Risk scoring model classifies IDE extensions and AI tools by permission severity",
+        "SARIF output enables integration with GitHub Code Scanning and CI/CD pipelines",
+        "Self-hosted portal allows centralized monitoring of multiple developer machines",
+        "Tamper detection uses SHA-256 checksums to alert on binary or config modifications",
+        "Supports 7+ IDEs including VS Code, Cursor, JetBrains, and Sublime Text",
+        "Detects AI tools like Claude Code, Cursor, Kiro, and OpenClaw with risk assessment",
+        "Automatically inventories packages inside IDE extensions, invisible to standard SCA",
+        "Git hook bypass via --no-verify can be detected and reported centrally",
+        "Pre-built binaries available for macOS, Windows, and Linux with easy installation",
+        "Portal can be deployed via Docker, AWS, or locally with zero config"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers exceptional value with high density of novel, actionable insights focused on a critical security gap: IDE and developer toolchain vulnerabilities. It provides specific technical details on detection capabilities, risk models, deployment options, and privacy safeguards, all aligned with cybersecurity and technology themes. The open-source nature and detailed documentation enhance its utility without promotional fluff.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-05-22T03:51:26.119537"
+    },
+    {
+      "id": 2747,
+      "source_id": 4,
+      "original_url": "https://voidsec.com/cve-2026-40369-browser-sandbox-escape/",
+      "title": "CVE-2026-40369: Twelve Bytes to Escape the Browser Sandbox - VoidSec",
+      "summary": "A zero‑length NtQuerySystemInformation call lets an attacker write arbitrary 12 bytes to kernel memory, enabling full privilege escalation.",
+      "ideas": [
+        "NtQuerySystemInformation with class 0xFD allows unchecked 12-byte kernel write.",
+        "Length zero bypasses ProbeForWrite validation, enabling arbitrary address targeting.",
+        "The exploit writes increment, thread count, and handle count to attacker-controlled buffer.",
+        "The primitive can break KASLR by leaking kernel addresses.",
+        "Flipping Feature_RestrictKernelAddressLeaks gate enables further information leaks.",
+        "Token VA leak allows constructing a forged SYSTEM token via NtCreateToken.",
+        "The chain culminates in a SYSTEM shell without classic token theft.",
+        "Vulnerable Windows 11 25H2 build 26100.8246 kernel symbols are provided.",
+        "Defensive layers fail because size check does not abort execution.",
+        "The exploit highlights need to validate zero-length buffers in kernel APIs."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The write‑up delivers multiple high‑value insights: a novel 12‑byte kernel write primitive, detailed code‑path analysis, practical exploitation steps to achieve SYSTEM via token forging, and clear explanation of why zero‑length buffers bypass ProbeForWrite. It aligns strongly with CyberSecurity and Tech themes and contains no clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:48:27.205616"
+    },
+    {
+      "id": 2746,
+      "source_id": 4,
+      "original_url": "https://neciudan.dev/github-actions-poisoning",
+      "title": "GitHub Actions Cache Poisoning is eating open source — Neciu Dan",
+      "summary": "Shared GitHub Actions caches can be poisoned, so audit and isolate workflows to prevent malicious code execution.",
+      "ideas": [
+        "GitHub Actions cache poisoning lets attackers inject malicious code via shared cache.",
+        "Cache keys often use lockfile hash, enabling reuse across branches.",
+        "Attack methods: direct write to cache or eviction overwrite.",
+        "`pull_request_target` workflows can run untrusted PR code with repo secrets.",
+        "Audit all `pull_request_target` workflows for checking out PR code.",
+        "Audit workflows that interpolate untrusted input into `run` commands or AI prompts.",
+        "Audit workflows with `id-token: write` for publish capability.",
+        "Pin third‑party actions to a commit SHA instead of a tag.",
+        "Use OIDC trusted publishing but limit steps that can mint tokens.",
+        "Enforce non‑SMS 2FA on GitHub and npm accounts.",
+        "Add zizmor or actionlint as required PR checks.",
+        "Treat AI agent config files as source code and audit them.",
+        "Set install cooldown on package manager to limit rapid malicious installs.",
+        "Use CODEOWNERS on .github/ to control workflow changes.",
+        "Isolate or remove caches in release‑capable workflows."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers substantial, actionable security guidance for GitHub Actions users, including clear explanations of cache poisoning, real‑world incident examples, and a detailed audit checklist. It provides multiple novel and practical ideas (over ten) without filler, aligning strongly with CyberSecurity and Tech themes. No clickbait or promotional content is present, so the high score reflects its dense value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:46:22.014989"
+    },
+    {
+      "id": 2745,
+      "source_id": 4,
+      "original_url": "https://gist.github.com/dinosn/65a7da94cd93e0699f0549c70095eba2",
+      "title": "https://gist.github.com/dinosn/65a7da94cd93e0699f0549c70095eba2",
+      "summary": "A duplicate‑prefix PDO bypass enables blind SQL extraction from vulnerable Drupal installations via simple HTTP requests.",
+      "ideas": [
+        "Duplicate‑prefix PDO placeholder bypass enables boolean‑blind SQL injection in Drupal core",
+        "Exploit works through unauthenticated POST to /user/login?_format=json endpoint",
+        "Payload uses key \"0||1/(SELECT CASE WHEN (predicate) THEN 0 END)\" to trigger division‑by‑zero",
+        "Oracle infers predicate truth from HTTP 500 vs 400 responses",
+        "Binary‑search extracts string data character‑by‑character via boolean queries",
+        "Tool supports both login and JSON:API filter[] injection vectors",
+        "Command‑line interface offers configurable target, query, timeout, and headers"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The script delivers multiple high-value insights: a novel duplicate‑prefix PDO bypass, practical exploitation steps, and a reusable command‑line tool, all tightly focused on a real Drupal CVE. It provides clear, actionable instructions and code without filler, aligning strongly with cybersecurity themes. No clickbait or padding is present, resulting in a high density of valuable content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:44:32.901759"
+    },
+    {
+      "id": 2744,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/05/21/coding-agents-are-giving-everyone-decision-fatigue/",
+      "title": "Coding agents are giving everyone decision fatigue",
+      "summary": "AI coding agents have shifted the bottleneck in software development from writing code to making judgement calls, causing decision fatigue that organizations are addressing by reconfiguring SDLC workflows and moving from unit-level to end-to-end review processes.",
+      "ideas": [
+        "AI automation has increased work density 55% year-over-year without lightening human load",
+        "Code is now cheap but code review is expensive, requiring broad context and expertise",
+        "A developer producing 7X more code caused her team to spend most time reviewing instead of building",
+        "80% of AI-generated content gets edited before finalization due to context gaps",
+        "The shift to AI means developers are now 'builders' who must make judgement calls all day",
+        "Presidents wear same clothes daily to reduce decisions—engineers need similar process discipline",
+        "Senior developers respond by loading more context and making smaller, surgical changes",
+        "Human error persists even with AI assistance due to decision fatigue",
+        "End-to-end judgement should replace unit-level review as the primary validation gate",
+        "Smartsheet integrates design systems in Claude and Cursor to streamline builder workflows",
+        "Organizations need to reconfigure SDLC tooling and systems for AI-native workflows"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This article delivers substantial value by identifying a real and emerging problem—decision fatigue in AI-augmented software development—that isn't widely discussed. It provides specific research data (55% automation intensity growth, 80% of AI content is edited), concrete examples (7X code producer causing team strain), expert quotes with actionable frameworks (end-to-end judgement gates), and a practical organizational solution being piloted at Smartsheet. The thematic relevance is high for software engineers and tech leaders navigating AI adoption. Penalties apply for some padding in the introduction and navigation elements, but the core content is dense with insights about how work is fundamentally shifting.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-05-22T03:40:31.280367"
+    },
+    {
+      "id": 2743,
+      "source_id": 15,
+      "original_url": "https://archive.is/oT1BI",
+      "title": "Thousands of Vibe-Coded Apps Expose Corporate and Personal Data on the Open Web",
+      "summary": "Thousands of vibe-coded apps are exposing corporate and personal data due to lack of security or authentication measures.",
+      "ideas": [
+        "Vibe-coded apps are vulnerable to data exposure",
+        "Lack of security in apps can lead to PII leakage",
+        "Phishing sites can be disguised as legitimate apps",
+        "Major platforms like Lovable, Replit, Base44, and Netlify have insecure apps"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers a significant and specific insight into the vulnerability of thousands of vibe-coded apps, highlighting the exposure of corporate and personal data. This is a high-value instance due to its relevance to cybersecurity and the potential impact on data privacy. The source is credible, and the information is concise and to the point, indicating good value density.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-22T03:38:34.272833"
+    },
+    {
+      "id": 2742,
+      "source_id": 15,
+      "original_url": "https://github.com/xFreed0m/ghosttype",
+      "title": "xFreed0m/ghosttype",
+      "summary": "AI coding tools' conversation histories can leak credentials, and this tool detects them using hybrid scanning with TruffleHog and custom heuristics.",
+      "ideas": [
+        "Extracts credentials from AI coding tool histories like ChatGPT Desktop and Cursor.",
+        "Uses TruffleHog in filesystem mode with 800+ detectors for live credential verification.",
+        "Adds 30 regexes and 10 heuristics to catch context TruffleHog misses.",
+        "Links findings to source conversation files with severity and detector details.",
+        "Targets emerging attack surface in AI-assisted development environments."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The content delivers a specific, high-value tool with clear technical depth and practical application for security professionals. It highlights novel integration of TruffleHog with custom pattern detection to uncover credentials in AI tool histories—a timely and under-discussed risk. Strong thematic alignment with CyberSecurity and AI, with no padding or promotional fluff.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-22T03:38:12.374778"
+    },
+    {
+      "id": 2741,
+      "source_id": 15,
+      "original_url": "https://posts.inthecyber.com/tales-of-an-ollama-honeypot-part-1-abuse-patterns-29ba0b000b7f",
+      "title": "Tales of an Ollama Honeypot (Part 1): Abuse Patterns",
+      "summary": "Attackers use lightweight probes and fake security‑audit pretexts to extract system prompts and environment data from AI model servers.",
+      "ideas": [
+        "Honeypot recorded 6,461 events from 324 unique IPs over 32 days.",
+        "Attackers first enumerate the server before sending brief liveness prompts.",
+        "Liveness prompts often consist of greetings or simple arithmetic to test responsiveness.",
+        "Both Ollama's native API and OpenAI‑compatible endpoints are targeted.",
+        "Prompt injection is disguised as a \"security audit\" to steal system prompts and environment variables."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece delivers concrete, actionable intelligence on how attackers probe AI model servers, including real event counts and specific prompt‑injection tactics, which is valuable for security teams. It’s concise with three clear value instances and aligns strongly with cybersecurity and AI themes, with no evident padding or clickbait.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-22T03:36:39.594188"
+    },
+    {
+      "id": 2740,
+      "source_id": 15,
+      "original_url": "https://beelzebub.ai/blog/llm-honeypot-vs-cryptojacking-understanding-the-enemy",
+      "title": "LLM Honeypot vs. Cryptojacking: Understanding the Enemy",
+      "summary": "A low-code SSH LLM honeypot was used to capture a cryptojacking bot's full attack chain, revealing its tactics and resulting in the takedown of infected miners.",
+      "ideas": [
+        "LLM honeypots can attract and log cryptojacking bot attacks",
+        "Cryptojacking bots fingerprint kernels and GPUs",
+        "Bots can swap root passwords and kill prior miners",
+        "Hardcoded wallets can be used to track and disable cryptojacking operations"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This content provides a unique insight into the tactics of cryptojacking bots by utilizing an LLM honeypot. The description of the bot's attack chain, including fingerprinting, password swapping, and downloading a c3pool installer, offers valuable information for cybersecurity professionals. The content is concise, well-structured, and delivers a clear takeaway, making it a worthwhile read. However, the lack of broader context or analysis prevents it from being exceptional.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-22T03:36:33.094617"
+    },
+    {
+      "id": 2739,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=RBZTLptAMao",
+      "title": "19 Lessons From 1100 Episodes",
+      "summary": "Obsession is not a trait but a temporary state of frictionless action that, when harnessed, fossilizes into identity and enables long-term discipline.",
+      "ideas": [
+        "Obsession is friction inverted—you can't not do the thing, unlike discipline or motivation.",
+        "Discipline is costly willpower; motivation is unreliable desire; obsession is free, persistent energy.",
+        "Obsession can't be summoned—it emerges when curiosity, identity, reward, and meaning align.",
+        "Use obsession while it lasts; it’s a nonrenewable fuel for disproportionate output.",
+        "Past obsessions become identity, making current discipline the residue of past obsession.",
+        "Self-awareness can inhibit action by simulating failure so vividly it feels real.",
+        "Overthinking multiplies imagined risks faster than solutions, paralyzing progress.",
+        "Courage is acting despite uncertainty, not having clarity.",
+        "People endure misery because the familiar feels safer than uncertain freedom.",
+        "The unexamined life isn’t worth living—but over-examined lives may never be lived."
+      ],
+      "labels": [
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers 7-10 high-quality, thematically relevant ideas around obsession, self-awareness, and human agency, with strong alignment to human development and psychology. Value density is high—insights are novel, actionable, and deeply explored without padding. Penalties are minor: slight repetition in the obsession metaphor, but not enough to reduce score significantly. The speaker's personal experience adds authenticity. Thematic relevance to personal optimization and decision-making is excellent.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-05-22T03:35:05.540463"
+    },
+    {
+      "id": 2738,
+      "source_id": 15,
+      "original_url": "https://www.o3c.no/knowledge/unmasking-the-docker-onbuild-supply-chain-attack-vector",
+      "title": "Unmasking the Docker ONBUILD Supply Chain Attack Vector",
+      "summary": "Docker ONBUILD can be abused to silently steal build secrets and exfiltrate them during downstream image builds.",
+      "ideas": [
+        "Docker ONBUILD runs automatically in downstream builds, exposing child project files and environment variables",
+        "Attackers can steal common build secrets like npm_token and github_token via malicious ONBUILD instructions",
+        "Malicious ONBUILD can exfiltrate stolen data to external servers using curl",
+        "Hidden ONBUILD directives create a supply‑chain attack surface in base Docker images"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The brief explains a concrete Docker ONBUILD vulnerability and shows three practical attack patterns, giving actionable insight for developers and security teams. It delivers clear, novel security knowledge without fluff, aligning strongly with CyberSecurity and Tech themes. No penalties apply.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-22T03:34:58.500992"
+    },
+    {
+      "id": 2737,
+      "source_id": 4,
+      "original_url": "https://secret.club/2026/05/21/striga.html",
+      "title": "https://secret.club/2026/05/21/striga.html",
+      "summary": "The Striga project provides a Python-based lifter that translates x86 instructions to LLVM IR, making it easier to analyze and manipulate binary code, and the author explains the architecture and implementation of the lifter in detail.",
+      "ideas": [
+        "Lifting x86 instructions to LLVM IR",
+        "Using Python for binary analysis and manipulation",
+        "LLVM IR as a target for lifting",
+        "Simplifying the lifter architecture for easier understanding",
+        "Using semantic handlers for instruction handling",
+        "Implementing a State structure to model x86 CPU state"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers high-value insights into lifting x86 instructions to LLVM IR using Python, providing a clear and detailed explanation of the process, architecture, and implementation. The author's expertise in the field is evident, and the content is well-structured and easy to follow. The inclusion of code examples, such as the LLVM IR for the 'mov rax, rcx' instruction, adds to the content's value and demonstrates the author's ability to convey complex concepts in an accessible manner.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-22T03:34:51.129591"
+    },
+    {
+      "id": 2736,
+      "source_id": 15,
+      "original_url": "https://oblique.security/blog/policy-rollout",
+      "title": "The security policy rollout survival guide",
+      "summary": "Cross‑team input and pilot testing are essential to roll out effective security policies.",
+      "ideas": [
+        "Gather input from engineering, product, SRE, and IT before defining security controls",
+        "Run a pilot with representative users across diverse roles and platforms",
+        "Identify edge cases during the pilot to refine policies",
+        "Validate that security controls work before full deployment"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece offers practical, actionable guidance on security policy rollout, providing several concrete steps (stakeholder input, pilot testing, edge‑case identification, control validation). These are genuine value instances with high density given the brief length and no evident padding or clickbait. It aligns well with the CyberSecurity theme, earning a solid good score.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-05-22T03:32:32.783025"
+    },
     {
       "id": 2735,
       "source_id": 27,
