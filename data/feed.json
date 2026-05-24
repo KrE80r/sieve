@@ -1,7 +1,187 @@
 {
-  "updated_at": "2026-05-24T05:00:00.427380",
-  "total_items": 778,
+  "updated_at": "2026-05-24T07:00:00.391900",
+  "total_items": 785,
   "items": [
+    {
+      "id": 2811,
+      "source_id": 4,
+      "original_url": "https://blog.bushidotoken.net/2026/05/uk-cybercrime-journal-inside-cl0p.html",
+      "title": "UK Cybercrime Journal: Inside the Cl0p attack on South Staffs Water",
+      "summary": "A detailed post-mortem of the Cl0p ransomware attack on South Staffs Water revealing that adversaries needed only a phishing email and unpatched systems to exfiltrate terabytes of data over nearly two years while the outsourced SOC remained blind to 95% of the network.",
+      "ideas": [
+        "Cl0p ransomware group maintained undetected access to South Staffs Water for nearly 2 years via phishing email",
+        "The ICO fined South Staffs Water £963,900 in May 2026 for the 2022 breach affecting 633,887 individuals",
+        "Outsourced SOC was blind to 95% of the network allowing prolonged dwell time",
+        "Attackers used Get2Loader malware and SDBBOT backdoor for initial access and persistence",
+        "Domain controllers left unpatched against ZeroLogon CVE-2020-1472 critical vulnerability",
+        "Organization was still running Windows Server 2003 after extended support ended",
+        "No vulnerability scans conducted over 18-month window during breach",
+        "Critical infrastructure operators must audit third-party SOC providers for complete network visibility",
+        "Active directory and domain controllers require prioritized patching for vulnerabilities like ZeroLogon",
+        "ZeroLogon enables fast lateral movement and escalation to Domain Admin access for ransomware operators"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-researched case study on a critical infrastructure attack with substantial technical depth. The article provides concrete data points (4.1TB exfiltrated, 633,887 victims, £963,900 fine, 95% network blindness) alongside specific TTPs (Get2Loader, SDBBOT, ZeroLogon CVE-2020-1472) and actionable defensive recommendations. The content demonstrates genuine cybersecurity expertise and links to primary ICO documentation and CTI resources, making it highly relevant for security professionals. No padding, no clickbait, and the analysis goes beyond surface-level reporting to provide meaningful insight into systemic failures.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:38:44.316341"
+    },
+    {
+      "id": 2810,
+      "source_id": 4,
+      "original_url": "https://blog.redteam-pentesting.de/2021/inside-a-pbx/",
+      "title": "RedTeam Pentesting - Blog - Inside a PBX - Discovering a Firmware Backdoor",
+      "summary": "A hidden backdoor in Auerswald PBX firmware allows authentication bypass via a hardcoded village name as a username and dynamically generated password.",
+      "ideas": [
+        "A hidden backdoor in Auerswald PBX firmware uses 'Schandelah' as a hardcoded username.",
+        "The password for the backdoor is dynamically generated using system-specific data and hardcoded strings.",
+        "Firmware was unpacked from gzip to u-boot image to ext2 filesystem for analysis.",
+        "Ghidra was used to reverse engineer the webserver binary and trace authentication logic.",
+        "Hardcoded backdoors can exist in commercial devices under obscure, undocumented usernames.",
+        "Manufacturers may embed service backdoors without proper security disclosure or controls.",
+        "Reverse engineering firmware can reveal undocumented entry points in embedded systems."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers multiple novel, high-value insights about a real-world firmware backdoor in a widely used PBX system, with detailed technical methodology. It includes original research, step-by-step reverse engineering using Ghidra, and specific code analysis, all aligned with cybersecurity and firmware security themes. The density is high, with no padding or promotional content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:36:07.186899"
+    },
+    {
+      "id": 2809,
+      "source_id": 4,
+      "original_url": "https://www.airs.com/blog/archives/38",
+      "title": "Linkers part 1 – Airs – Ian Lance Taylor",
+      "summary": "The linker is a crucial step in the software development process that converts object files into executables and shared libraries, and its primary goal is to be fast and efficient.",
+      "ideas": [
+        "Linkers convert object files into executables and shared libraries",
+        "The primary goal of a linker is to be fast and efficient",
+        "The author has written multiple linkers, including one for the AMOS operating system and another for ELF",
+        "Linkers have evolved over time to support shared libraries and other features",
+        "The author plans to write a new linker, called gold, which will be an ELF linker"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a clear and detailed introduction to linkers, including the author's personal experience with writing linkers and a technical explanation of the linking process. The text is well-structured, easy to follow, and free of unnecessary padding or promotional content. The author's goal of educating readers about linkers is well-achieved, making this content highly valuable for those interested in programming and software development.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:34:41.655750"
+    },
+    {
+      "id": 2808,
+      "source_id": 4,
+      "original_url": "https://blog.impalabs.com/2111_attacking-samsung-rkp.html",
+      "title": "Attacking Samsung RKP  - Impalabs Blog",
+      "summary": "Security researchers documented three vulnerabilities in Samsung's RKP hypervisor, including improper address validation allowing EL2 memory remapping (CVE-2021-25415), and provided detailed exploitation techniques alongside Samsung's patch responses.",
+      "ideas": [
+        "Samsung RKP hypervisor enforces kernel integrity by running at EL2 privilege level above kernel EL1",
+        "Stage 2 address translation allows hypervisor to override kernel page table permissions",
+        "RKP uses memlists and sparsemaps to track DRAM regions, protected ranges, and page allocations",
+        "Vulnerability CVE-2021-25415 allows remapping hypervisor memory as writable via improper address validation",
+        "RKP prevents kernel credential changes by checking task credentials before sensitive operations",
+        "Double mapping prevention stops kernel text from being made writable",
+        "Samsung patches added proper address validation to prevent EL2 memory attribution changes from EL1",
+        "Exploitation requires targeting specific RKP control structures to remap protected memory",
+        "Page allocator and dynamic/static heaps serve different purposes in RKP memory management",
+        "Security hypervisors on mobile devices prevent kernel exploitation even after privilege escalation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical security research content from Impalabs documenting three original vulnerabilities (CVE-2021-25415 and two others) in Samsung's RKP hypervisor. The value density is extremely high: it provides detailed CVE information, ARM virtualization architecture explanations, RKP implementation internals (memlists, sparsemaps, allocators), three distinct exploitation techniques with proof-of-concept approaches, and patch analysis. Each section builds on prior knowledge to deliver actionable security research. The content is clearly targeted at security researchers and kernel developers, with appropriate technical depth. No padding, no fluff—just dense, expert-level mobile security research that advances the field. The combination of vulnerability disclosure, exploitation methodology, and vendor patch analysis makes this highly valuable to the security community.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:33:14.857533"
+    },
+    {
+      "id": 2807,
+      "source_id": 4,
+      "original_url": "https://blog.quarkslab.com/digging-into-linux-namespaces-part-1.html",
+      "title": "Digging into Linux namespaces - part 1 - Quarkslab's blog",
+      "summary": "Linux namespaces let processes see isolated system resources, enabling lightweight container isolation.",
+      "ideas": [
+        "Linux namespaces provide per-process isolated views of system resources.",
+        "Namespaces are created via clone() or unshare() syscalls with specific flags.",
+        "Seven namespace types exist: PID, NET, MNT, UTS, IPC, USER, CGROUP.",
+        "PID namespaces enable nested process trees with separate PID numbering.",
+        "Unshare creates a new namespace but does not move the calling process into it.",
+        "Kernel structs upid and pid store namespace-aware process identifiers.",
+        "Containers use namespaces for lightweight isolation versus full virtual machines."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers solid technical insight into Linux namespaces, covering concepts, syscall usage, types, PID namespace mechanics, and kernel structures, providing actionable knowledge for developers and sysadmins. It contains six distinct value instances with minimal padding and no clickbait, aligning well with Tech and Sysadmin themes, and touches on security isolation, earning a strong but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:32:41.658273"
+    },
+    {
+      "id": 2806,
+      "source_id": 4,
+      "original_url": "https://projectzero.google/2021/12/this-shouldnt-have-happened.html",
+      "title": "This shouldn't have happened: A vulnerability postmortem - Project Zero",
+      "summary": "A buffer overflow bug in the NSS library can lead to memory corruption, and was discovered using a combination of stack coverage and object isolation techniques.",
+      "ideas": [
+        "Buffer overflow bugs can be difficult to detect using traditional fuzzing techniques",
+        "Stack coverage and object isolation can be effective methods for detecting complex bugs",
+        "End-to-end testing is crucial for ensuring that components work together correctly",
+        "Size limits in fuzzing should be carefully considered to avoid missing potential bugs",
+        "Memory corruption can have serious security implications"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides a detailed and insightful analysis of a vulnerability in the Network Security Services (NSS) library, specifically a buffer overflow bug that can lead to memory corruption. The author, Tavis Ormandy, explains how the bug was discovered using a combination of stack coverage and object isolation techniques, and discusses why it was missed by previous fuzzing efforts. The content is well-structured, easy to follow, and provides a clear explanation of the bug and its implications. The author also reflects on the lessons learned from this experience, including the importance of end-to-end testing and careful consideration of size limits in fuzzing.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:32:34.613007"
+    },
+    {
+      "id": 2805,
+      "source_id": 4,
+      "original_url": "https://blog.scrt.ch/2021/11/15/tpm-sniffing/",
+      "title": "TPM sniffing – SCRT Team Blog",
+      "summary": "BitLocker's TPM-only configuration is vulnerable to hardware attacks where a $49 FPGA sniffer can capture the Volume Master Key from the LPC bus during boot, enabling full disk decryption without user authentication.",
+      "ideas": [
+        "BitLocker with TPM-only config sends VMK in plaintext over LPC bus during boot",
+        "TPM chips use LPC, I2C, or SPI buses at 25MHz making bus sniffing practical",
+        "Debug pads often exist on motherboards providing easier probing points than chip pins",
+        "iCEstick40 FPGA with modified firmware can capture TPM traffic at address 0x00000024",
+        "dislocker --vmk option accepts VMK directly for BitLocker decryption",
+        "Attack cost under $50 using consumer-grade FPGA hardware",
+        "Organizations relying on TPM-only BitLocker are vulnerable to this hardware attack",
+        "Stolen laptops can be fully decrypted by sniffing TPM communication without user interaction"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical content that provides a comprehensive, step-by-step walkthrough of a hardware security attack. The authors demonstrate TPM sniffing as a viable attack against BitLocker with TPM-only configurations, covering hardware identification, debug pad discovery, signal tracing, FPGA-based sniffing, and disk decryption. The value density is high—every section provides concrete technical details including specific chip models (ST33TPM12LPC), pinouts, equipment costs ($49 FPGA), and actual commands for data acquisition and decryption. The writing is focused and practical, with real-world troubleshooting (finding schematics, continuity testing, soldering bridges) that security professionals can apply. The conclusion effectively communicates the attack's accessibility: 'easier than expected especially considering it was our first hardware attack.' No padding or fluff—pure technical methodology with appropriate credit to prior researchers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-24T15:32:27.937910"
+    },
     {
       "id": 2804,
       "source_id": 4,
