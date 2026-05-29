@@ -1,7 +1,204 @@
 {
-  "updated_at": "2026-05-28T23:00:00.375940",
-  "total_items": 761,
+  "updated_at": "2026-05-29T01:00:00.496795",
+  "total_items": 769,
   "items": [
+    {
+      "id": 2908,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/critical-gogs-rce-vulnerability-lets.html",
+      "title": "Critical Gogs RCE Vulnerability Lets Any Authenticated User Execute Arbitrary Code",
+      "summary": "Gogs contains an unpatched critical RCE vulnerability (CVSS 9.4) exploitable by any authenticated user through malicious branch names that inject --exec flags into git rebase during merge operations, with mitigations available via app.ini configuration.",
+      "ideas": [
+        "Gogs has an unpatched RCE vulnerability (CVSS 9.4) from git rebase argument injection",
+        "Attackers inject --exec flag via malicious branch names during 'Rebase before merging' operations",
+        "Exploit requires no admin privileges—just an account and repo creation on default-configured instances",
+        "Disable registration (DISABLE_REGISTRATION=true) and repo creation (MAX_CREATION_LIMIT=0) as mitigations",
+        "Metasploit module available for automating the exploit against Linux and Windows targets",
+        "Estimated 1,141 internet-facing Gogs instances are potentially vulnerable",
+        "Successful exploitation allows cross-tenant access to private repositories on shared servers",
+        "Vulnerability tracked by Rapid7, reported March 2026, remains unpatched"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 83,
+      "rating_reason": "This is high-value cybersecurity content delivering a critical vulnerability disclosure with substantial technical depth. The article provides novel information about a CVSS 9.4 RCE flaw in Gogs, explains the precise exploit mechanism (argument injection via --exec flag in git rebase), outlines attack scenarios and scope, offers practical mitigations, and provides a Metasploit module reference. The content density is high with actionable intelligence for security professionals, including specific configuration changes (app.ini settings), affected platform count, and exploit artifact details. No significant penalties apply—this is original reporting with technical expertise, not padding or rehashed content. Score slightly reduced from 90+ because while technically excellent, it's bounded to a specific vulnerability rather than broader strategic insight.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:38:16.400794"
+    },
+    {
+      "id": 2907,
+      "source_id": 4,
+      "original_url": "https://yeethsecurity.com/blog/2026-05-25-Glassworm-Solana",
+      "title": "A Deeper Look at GLASSWORM's Solana Variant — Yeeth Security",
+      "summary": "GLASSWORM hides C2 domains in Solana memos and uses in‑memory dropper techniques to evade detection.",
+      "ideas": [
+        "GLASSWORM uses Base64-encoded in-memory dropper delivered via VSIX extensions.",
+        "Dynamic import via data:text/javascript bypasses disk-based scanners.",
+        "Extension name serves as AES-256-CBC decryption key for second stage.",
+        "Solana memo transactions host C2 domain, evading DNS takedowns.",
+        "Payload selects OS and downloads installer via PowerShell or curl.",
+        "Installer writes hidden Run registry key and uses VBS wrapper for stealth.",
+        "Hash-verified update loop allows hot-swapping binaries without changing dropper.",
+        "Final Go backdoor uses JSON poll and WebSocket control channel.",
+        "Campaign ID and Solana account embedded in binary for tracking.",
+        "Detect by scanning for large Base64 arrays and Solana memo lookups."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers extensive technical insight into GLASSWORM’s Solana‑based C2, including novel use of blockchain memos and detailed code analysis, providing actionable detection tips. It offers multiple concrete value instances—code snippets, decryption keys, network behavior, and update mechanisms—without clickbait or promotional fluff. The content aligns strongly with cybersecurity themes, though the navigation boilerplate adds minor padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:36:41.509284"
+    },
+    {
+      "id": 2906,
+      "source_id": 4,
+      "original_url": "https://blog.lexfo.fr/drupal-postgresql-sqli-to-rce.html",
+      "title": "Lexfo's security blog - Drupal PostgreSQL SQL Injection: From SELECT-Only to RCE",
+      "summary": "A SELECT-only PostgreSQL SQL injection can escalate to RCE by using large object functions (lo_create/lo_put/lo_export) for arbitrary file write, then injecting session_preload_libraries into postgresql.auto.conf to load a malicious shared object loaded by PostgreSQL's own backend.",
+      "ideas": [
+        "SELECT-only SQLi avoids stacked queries but remains dangerous via superuser function side effects",
+        "PHP PDO only consumes alphanumeric and underscore after colon, leaving injected SQL as literal",
+        "lo_create() allocates a PostgreSQL large object that can receive arbitrary binary data",
+        "lo_put() writes binary chunks to large objects within a SELECT expression context",
+        "lo_export() writes large objects to arbitrary server-side paths writable by PostgreSQL",
+        "session_preload_libraries GUC loads shared libraries per-backend on startup, allowing arbitrary code execution",
+        "postgresql.auto.conf written via large objects enables configuration injection",
+        "pg_reload_conf() sends SIGHUP to postmaster, applying new configuration to subsequent backends",
+        "The attack works across PostgreSQL 12.20 through 18.4 with minimal version differences",
+        "Shared library .so file written to PostgreSQL data directory enables native code execution",
+        "This escalation path applies to any PostgreSQL SQL injection with superuser privileges, not just Drupal"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is exceptional technical security research content that delivers multiple novel insights efficiently. It provides a complete attack chain from SELECT-only SQL injection to RCE in PostgreSQL, including detailed source code analysis of the Drupal vulnerability, the PDO placeholder parsing behavior that enables injection, the large-object file write primitive via lo_create/lo_put/lo_export, and the session_preload_libraries configuration injection technique. The content is densely packed with expert-level PostgreSQL internals knowledge, source code citations, version compatibility data across PostgreSQL 12-18, and working proof-of-concept primitives. Strong thematic relevance to cybersecurity. No padding, no fluff, no promotional content - pure security research value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:36:30.820395"
+    },
+    {
+      "id": 2905,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/gitea-vulnerability-exposed-30000-deployments-to-attacks/",
+      "title": "Gitea Vulnerability Exposed 30,000 Deployments to Attacks",
+      "summary": "Unauthenticated attackers can pull private Gitea container images, so immediate patching to version 1.26.2 is essential.",
+      "ideas": [
+        "CVE-2026-27771 lets anyone pull private Gitea container images anonymously",
+        "~34,000 Gitea instances exposed, about 93% vulnerable",
+        "~4,000 production systems on cloud/VPS are at risk",
+        "Patch by upgrading to Gitea 1.26.2 or enforce registry authentication",
+        "Forgejo and other forks inherit the same vulnerability"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides concrete value: a newly disclosed CVE, impact statistics, and clear remediation steps, all relevant to cybersecurity professionals. It offers practical advice and data without clickbait, though the surrounding boilerplate adds minor padding. The content aligns well with the CyberSecurity theme.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:36:07.702638"
+    },
+    {
+      "id": 2904,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/192809/security/a-fake-uk-visa-site-left-100000-passports-wide-open-then-sent-lawyers-instead-of-a-fix.html",
+      "title": "A Fake UK Visa Site Left 100,000 Passports Wide Open. Then Sent Lawyers Instead of a Fix.",
+      "summary": "A third-party UK visa application site exposed over 100,000 passports and selfies on a public Amazon server, highlighting severe security and privacy risks, especially considering the site is not an official government service.",
+      "ideas": [
+        "Data breaches can occur through third-party services",
+        "Publicly exposed data can include sensitive information like passports and selfies",
+        "Companies may prioritize legal responses over fixing security issues",
+        "Identity theft risks are heightened by such exposures",
+        "Official government services are safer for sensitive applications"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers a significant and timely warning about a data breach affecting 100,000 passports due to a third-party UK visa site's security lapse. It provides concrete evidence, explains the risks, and criticizes the company's response. However, the article could be more concise and focused solely on the breach and its implications, reducing the amount of peripheral information.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:35:21.222583"
+    },
+    {
+      "id": 2903,
+      "source_id": 4,
+      "original_url": "https://github.com/bI8d0/DriverSentinel",
+      "title": "Clone the repository git clone https://github.com/bI8d0/DriverSentinel.git cd DriverSentinel # Install dependencies go mod download # Build go run .\\build.go # Run .\\build\\driversentinel.exe -common",
+      "summary": "DriverSentinel is a Go-developed security tool that detects malicious and vulnerable Windows drivers by comparing them against the LOLDrivers.io database, providing detailed reports and remediation guides.",
+      "ideas": [
+        "Vulnerable driver detection using SHA256 hash and filename matching",
+        "Automatic updates with LOLDrivers.io database synchronization",
+        "High-performance scanning with in-memory indices",
+        "Real-time progress visualization",
+        "Category-based detection for malicious and vulnerable drivers",
+        "Multiple scan modes, including specific path and common Windows locations",
+        "Detailed reports with exploitation commands and remediation guides"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The content provides a comprehensive overview of DriverSentinel, a security tool for detecting malicious and vulnerable drivers on Windows systems. It delivers high value density with detailed explanations, usage examples, and detection logic. The tool's features, such as smart scanning, automatic updates, and real-time progress, demonstrate strong thematic relevance to cybersecurity and software development.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:33:22.819292"
+    },
+    {
+      "id": 2902,
+      "source_id": 4,
+      "original_url": "https://www.loldrivers.io/",
+      "title": "LOLDrivers",
+      "summary": "LOLDrivers is a curated list of Windows drivers used by adversaries to bypass security controls, providing resources for detection and mitigation.",
+      "ideas": [
+        "Use of Windows drivers by adversaries to bypass security controls",
+        "Importance of tracking and mitigating vulnerable drivers",
+        "Utilization of API access for retrieving driver information",
+        "Implementation of SIEM queries for detecting malicious drivers",
+        "Leveraging GitHub repositories for collaborative threat intelligence"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a comprehensive list of Windows drivers used by adversaries to bypass security controls, along with their SHA256 hashes and categories. It also offers various tools and resources for detecting and mitigating these threats, such as API access, SIEM queries, and a GitHub repository. The content is well-structured, informative, and relevant to the theme of cybersecurity, specifically vulnerability management and threat detection.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:32:38.576708"
+    },
+    {
+      "id": 2901,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/new-btmob-android-malware-enables-full-device-takeover/",
+      "title": "New BTMOB Android Malware Enables Full Device Takeover",
+      "summary": "The BTMOB Android malware enables full device takeover and is distributed via phishing attacks, posing a significant threat to Android users worldwide.",
+      "ideas": [
+        "BTMOB Android malware enables full device takeover",
+        "Malware distributed via phishing attacks",
+        "Abuses Android Accessibility Services to elevate privileges",
+        "Exfiltrates sensitive data and captures screenshots",
+        "Takes remote control of the device",
+        "Sold as a malicious kit with an APK builder interface",
+        "Promoted via social media and a Telegram channel"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a detailed analysis of the BTMOB Android malware, including its capabilities, distribution methods, and potential impact. It also offers insights into the malware's evolution and the threat it poses to Android users. The article is well-researched and provides valuable information for cybersecurity professionals. However, it may not offer novel ideas for experts in the field, but it is a solid piece of journalism.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-29T09:32:06.220650"
+    },
     {
       "id": 2900,
       "source_id": 28,
