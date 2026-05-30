@@ -1,7 +1,162 @@
 {
-  "updated_at": "2026-05-30T00:00:12.148342",
-  "total_items": 759,
+  "updated_at": "2026-05-30T01:00:00.470620",
+  "total_items": 765,
   "items": [
+    {
+      "id": 2932,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/chatgphish-vulnerability-turns-chatgpt.html",
+      "title": "ChatGPhish Vulnerability Turns ChatGPT Web Summaries Into a Phishing Surface",
+      "summary": "Researchers discovered that ChatGPT's web summarization feature can be weaponized via embedded Markdown payloads to harvest user data and display phishing content, while AI coding agents face separate RCE risks through malicious MCP configurations.",
+      "ideas": [
+        "ChatGPT auto-fetches images and renders links from summarized pages as clickable trusted elements",
+        "Summarized malicious pages can leak victim's IP, User-Agent, and Referer via embedded images",
+        "QR codes served from attacker S3 buckets can bypass desktop URL filters",
+        "Symlink tricks AI coding agents into overwriting their own configs for persistence",
+        "TrustFall achieves code execution when victims click folder trust dialogs",
+        "Malicious MCP server configs auto-approve without explicit tool calls",
+        "The shift from email to browser summarization significantly expands the attack surface",
+        "Any web page processed by ChatGPT could contain payloads that transform it into a phishing surface"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity research reporting covering three real vulnerability discoveries. The content provides genuine value with specific technical details about ChatGPhish (Markdown rendering exploitation, IP/User-Agent/Referer leakage via image fetch, QR code phishing via S3 buckets), SymJack (symlink-based RCE in AI coding agents), and TrustFall (one-click MCP server compromise). These are novel attack techniques with practical implications for organizations using AI tools. The information is sourced from credible security firms (Permiso Security, Adversa AI) and explains attack mechanics clearly. The content is cut off mid-sentence, which loses some detail on TrustFall, but otherwise maintains good density with actionable technical insights.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-30T09:41:08.593230"
+    },
+    {
+      "id": 2931,
+      "source_id": 4,
+      "original_url": "https://blog.gaborkoos.com/posts/2026-05-29-How-to-Evaluate-an-npm-Package-2026-Edition/",
+      "title": "https://blog.gaborkoos.com/posts/2026-05-29-How-to-Evaluate-an-npm-Package-2026-Edition/",
+      "summary": "A practical framework for evaluating npm package safety and quality before installation, covering provenance attestation verification, CI pipeline assessment, and code quality signals that most developers overlook.",
+      "ideas": [
+        "Slopsquatting: attackers register AI-hallucinated package names to compromise developers who trust LLM suggestions",
+        "Check oldest open issues for author responsiveness rather than just commit frequency",
+        "Long gaps followed by sudden updates may indicate a compromised account, not re-engagement",
+        "Provenance attestation cryptographically ties npm tarballs to specific GitHub commits via OIDC",
+        "Click the green Provenance badge on npmjs.com to verify the repository URL, commit SHA, and workflow run",
+        "Run npm audit signatures to verify cryptographic signatures of all installed packages",
+        "Trusted Publishing (OIDC) removes the need for long-lived NPM_TOKEN secrets that attackers target",
+        "Actions pinned to mutable tags like @main can be changed silently; use full commit SHA instead",
+        "A CI pipeline that only runs after merging protects nothing—it produces records, not safety",
+        "Coverage thresholds in test config (lines: 90) are enforced; absence means coverage is optional",
+        "prepublishOnly script prevents accidental publishing of unbuilt or untested code",
+        "TypeScript packages with strict: false or many @ts-ignore have cosmetic types, not real safety",
+        "Check osv.dev and snyk.io for known unpatched vulnerabilities before installing",
+        "A well-handled historical security advisory is a positive signal about author responsibility"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This is exceptional technical content that delivers high value efficiently. The author provides a systematic 5-part framework for evaluating npm packages, covering maintenance, provenance attestation, CI pipeline quality, code quality signals, and security vulnerability handling. Key novel insights include the slopsquatting attack vector from AI hallucinations, how to verify npm provenance attestation via badge/clicks, why CI-only-on-merge is decorative, and how to identify if Actions are pinned to mutable tags vs commit SHA. The practical commands (npm audit signatures) and specific files to check (SECURITY.md, tsconfig.json, prepublishOnly scripts) give actionable next steps. Content is dense with 10+ quality ideas, well-organized, and directly applicable to JavaScript developers managing dependencies.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-30T09:40:51.849953"
+    },
+    {
+      "id": 2930,
+      "source_id": 4,
+      "original_url": "https://honeylabs.net/blog/mapping-a-botnet-by-its-back-end",
+      "title": "1,001 IPs, 64 countries, one operation: mapping a botnet by its back end · HoneyLabs blog",
+      "summary": "A botnet operation involving 1,001 IPs across 64 countries can be mapped and identified through its back-end infrastructure, revealing a complex network tied to eight shared staging servers and unique fingerprints.",
+      "ideas": [
+        "Botnet operations can be identified by analyzing the back-end infrastructure",
+        "Shared staging servers and unique fingerprints can be used to track botnet activity",
+        "Analyzing the payload and handshake can provide valuable insights into botnet operations",
+        "Compromised boxes can be used as staging servers in botnet operations",
+        "CVE-2021-41773 is still being exploited in 2026, highlighting the importance of patching vulnerabilities"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by mapping a botnet operation through its back-end infrastructure, identifying a cluster of 1,001 IPs across 64 countries tied to eight shared staging servers and unique TLS and HTTP fingerprints. The author delivers multiple novel insights, including the methodology for tracking botnet operations and the importance of analyzing the back-end infrastructure. The content is densely packed with valuable information, including specific indicators of compromise and a detailed explanation of the botnet's structure.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-30T09:36:06.244407"
+    },
+    {
+      "id": 2929,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/05/attackers-use-llm-agent-for-post.html",
+      "title": "Attackers Use LLM Agent for Post-Exploitation After Marimo CVE-2026-39987 Exploit",
+      "summary": "Attackers are leveraging LLM agents to conduct sophisticated post-compromise actions following the exploitation of vulnerabilities like Marimo's CVE-2026-39987, highlighting the need for updated defenses against adaptive threats.",
+      "ideas": [
+        "LLM agents are being used in post-exploitation attacks",
+        "Marimo vulnerability CVE-2026-39987 is under active exploitation",
+        "Attackers can use LLMs to improvise database dumps without prior knowledge",
+        "Indicators of LLM agent usage include improvised actions and machine-consumable commands",
+        "Defenders must update software and rotate credentials to counter such threats"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a detailed analysis of a recent cybersecurity threat where attackers used a large language model (LLM) agent for post-exploitation after exploiting a Marimo vulnerability. The article delivers high value density with specific examples, indicators of LLM agent usage, and recommendations for defense. It strongly aligns with the CyberSecurity theme, offering novel insights into the adaptiveness of agent-in-the-loop attacks.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-30T09:34:30.178249"
+    },
+    {
+      "id": 2928,
+      "source_id": 17,
+      "original_url": "https://magazine.sebastianraschka.com/p/understanding-and-coding-self-attention",
+      "title": "Understanding and Coding Self-Attention, Multi-Head Attention, Causal Attention, and Cross-Attention in LLMs",
+      "summary": "The self-attention mechanism in large language models enables the model to weigh the importance of different elements in an input sequence and dynamically adjust their influence on the output, allowing for more accurate and context-aware language processing.",
+      "ideas": [
+        "Self-attention mechanism enhances information content of input embedding by including context information",
+        "Scaled-dot product attention is a widely used self-attention mechanism in transformer architectures",
+        "Query, key, and value sequences are obtained via matrix multiplication between weight matrices and embedded inputs",
+        "Unnormalized attention weights are computed using the dot-product of query and key vectors",
+        "Attention mechanism allows for selective focus on specific words in a sentence based on context"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This article provides a comprehensive and detailed explanation of self-attention mechanisms in large language models, including a step-by-step walkthrough of the code implementation. The author assumes a basic understanding of LLMs and attention mechanisms, allowing for a deep dive into the technical details. The content is well-structured, and the use of visualizations and code snippets enhances the reader's understanding. The article delivers multiple novel insights and practical knowledge, making it a valuable resource for those interested in NLP and deep learning.",
+      "source_type": "rss",
+      "source_name": "Sebastian Raschka",
+      "published_at": "2026-05-30T09:32:32.745641"
+    },
+    {
+      "id": 2927,
+      "source_id": 4,
+      "original_url": "https://www.rapid7.com/blog/post/etr-rapid7-observed-exploitation-of-pan-os-globalprotect-authentication-bypass-vulnerability-cve-2026-0257/",
+      "title": "Rapid7 Observed Exploitation of PAN-OS GlobalProtect Authentication Bypass Vulnerability (CVE-2026-0257)",
+      "summary": "Rapid7 documents active exploitation of CVE-2026-0257 in PAN-OS GlobalProtect, demonstrating how certificate reuse between HTTPS and authentication override features allows attackers to forge valid auth cookies by retrieving the public key from TLS, enabling unauthenticated VPN access.",
+      "ideas": [
+        "CVE-2026-0257 exploitation first observed May 17, 2026, four days after vendor advisory",
+        "Attacks originated from Vultr and Dromatics Systems hosting providers, same MAC suggests one threat actor",
+        "The authentication override feature issues cookies that act as bearer tokens without signature verification",
+        "Vulnerability occurs when the same certificate encrypts auth Override cookies and serves HTTPS",
+        "Attackers retrieve public key from TLS service, enabling forge of arbitrary authentication cookies",
+        "A proof-of-concept script forge_cookie.py automates testing for CVE-2026-0257 vulnerability",
+        "main_DecryptAppAuthCookie function decrypts cookies then trusts content without validation",
+        "Rapid7 observed VPN IP assignment granting internal network access in some successful exploits",
+        "8 of 10 affected MDR customers had cookie accepted without full VPN session establishment",
+        "Mitigation: disable use Auth Override feature or use dedicated certificate exclusively for it"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a dense, technically detailed security advisory that delivers exceptional value. Rapid7 provides extensive original analysis including observed exploitation evidence from May 17, 2026, technical root cause analysis of the authentication bypass (Authentication Override cookie mechanism without signature verification), specific function-level code examination of the vulnerable gpsvc binary, and a publicly available proof-of-concept tool (forge_cookie.py). The content includes actionable mitigation guidance, affected version tables, and real attack logs showing exploitation patterns across multiple customers. No padding, no fluff—every section contains technical insight relevant to security practitioners.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-05-30T09:32:25.985488"
+    },
     {
       "id": 2926,
       "source_id": 7,
