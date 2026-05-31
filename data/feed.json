@@ -1,7 +1,225 @@
 {
-  "updated_at": "2026-05-31T17:00:00.458056",
-  "total_items": 723,
+  "updated_at": "2026-05-31T19:00:00.382038",
+  "total_items": 731,
   "items": [
+    {
+      "id": 2963,
+      "source_id": 7,
+      "original_url": "https://claude.com/blog/best-practices-for-using-claude-opus-4-7-with-claude-code",
+      "title": "https://claude.com/blog/best-practices-for-using-claude-opus-4-7-with-claude-code",
+      "summary": "Opus 4.7 has a new xhigh effort default, uses adaptive thinking instead of fixed budgets, and behaves differently than 4.6 (less verbose, fewer tool calls) - tailor your prompting and session structure accordingly for optimal results.",
+      "ideas": [
+        "New xhigh effort level between high and max is the recommended default for most coding work",
+        "Treat Claude as a delegate engineer rather than a guided pair programmer for better results",
+        "Batch questions and reduce user turns to minimize reasoning overhead",
+        "Adaptive thinking lets the model decide when to think, reducing overthinking vs fixed budgets",
+        "Use Shift+Tab to enable auto mode in Claude Code Max for long-running trusted tasks",
+        "Prompt explicitly for more thinking: think carefully and step-by-step",
+        "Prompt for less thinking: prioritize responding quickly over depth",
+        "Opus 4.7 is less verbose by default - provide positive examples of desired voice",
+        "Model calls tools less often and spawns fewer subagents by default",
+        "Spell out when you want parallel subagents vs single-threaded work",
+        "xhigh balances intelligence and autonomy without runaway token usage on long agentic runs",
+        "Max effort shows diminishing returns and tends to overthink on many problems",
+        "Upgrading from 4.6 may require prompt and effort tuning for best results"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive technical documentation from Anthropic about using Claude Opus 4.7 with Claude Code effectively. The content delivers genuine value through: 1) specific effort level guidance (xhigh as new default with clear recommendations for each level), 2) practical interactive session structuring tips (batch instructions, use auto mode, set notifications), 3) adaptive thinking behavior explanation and how to control it via prompts, 4) key behavioral changes between 4.6 and 4.7 (shorter responses, fewer tool calls, fewer subagents), and 5) long-running task optimization. The content is targeted, non-promotional, and provides actionable knowledge for developers using Claude Code. No padding, no clickbait—just dense, useful information about getting the most from the model. Strong theme alignment with AI tools and productivity.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-01T03:39:35.894512"
+    },
+    {
+      "id": 2962,
+      "source_id": 7,
+      "original_url": "https://medium.com/pinterest-engineering/next-generation-db-ingestion-at-pinterest-66844b7153b7",
+      "title": "https://medium.com/pinterest-engineering/next-generation-db-ingestion-at-pinterest-66844b7153b7",
+      "summary": "Pinterest migrated from legacy batch ingestion to a CDC-based framework using Kafka, Flink, Spark, and Iceberg, achieving 15-minute to 1-hour latency while reducing compute costs through optimizations like bucket joins and distributed writes.",
+      "ideas": [
+        "CDC-based ingestion reduces latency from 24+ hours to under 15 minutes",
+        "Full-table batch reprocessing wastes resources when only ~5% of data changes",
+        "Use Merge-on-Read (MOR) over Copy-on-Write (COW) for lower storage costs",
+        "CDC tables serve as append-only ledgers while base tables maintain snapshots",
+        "ROW_NUMBER() window function with PARTITION BY achieves efficient deduplication",
+        "Bucket partitioning by primary key hash enables parallel upsert processing",
+        "WRITE DISTRIBUTED BY PARTITION solves the small files explosion problem",
+        "Bucket join avoids full table shuffle, reducing compute cost by 40%+",
+        "Separate bootstrap job initializes base tables from historical dumps before CDC",
+        "Config-driven onboarding with YAML enables standardized pipeline creation"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a high-density technical article from Pinterest Engineering that delivers substantial value. The content provides clear articulation of legacy challenges, architectural decisions with trade-off explanations (Merge-on-Read vs Copy-on-Write), and multiple concrete optimization examples with measured outcomes (40%+ compute cost reduction). The technical depth is genuine - it includes SQL examples for deduplication patterns, table configurations, and bucket join implementations. The content directly serves data engineers building large-scale pipelines, and the insights are applicable beyond Pinterest's specific use case.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-01T03:39:09.741507"
+    },
+    {
+      "id": 2961,
+      "source_id": 4,
+      "original_url": "https://tetdrad0n.codeberg.page/thinkpad-fw-analysis/",
+      "title": "ThinkPad Firmware — A Long-Form Writeup",
+      "summary": "A reproducible pipeline turns Lenovo BIOS archives into structured data for security analysis, coreboot, and Hackintosh ports.",
+      "ideas": [
+        "Use Lenovo's BIOS archive to generate structured JSON of device and GPIO data.",
+        "Resolve Intel GPIO pads by joining DSDT, AcpiPlatform, and PADCFG tables.",
+        "Decode PADCFG_DW0/DW1 fields using Intel 100-Series PCH datasheet.",
+        "Identify BIOS payloads in .exe installers via innoextract listing before extraction.",
+        "Map CVE fixes to specific firmware changes using change‑log and binary diff.",
+        "Automate coreboot porting by feeding extracted ACPI and GPIO info into build scripts.",
+        "Apply the same pipeline for Hackintosh OpenCore config generation.",
+        "Build a coverage harness to track firmware extraction success across models.",
+        "Detect driver bundles vs BIOS updates to avoid false‑positive extraction attempts.",
+        "Analyze GPIO attack surface by checking lock state and SMI routing in PADCFG."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 84,
+      "rating_reason": "The writeup delivers numerous concrete, actionable insights for firmware engineers and security analysts, such as a reproducible BIOS extraction pipeline, detailed Intel GPIO decoding, and automated CVE mapping, all tightly aligned with technology and security themes. It provides 8+ distinct value instances without clickbait or padding, resulting in high value density for its target audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-01T03:38:53.992550"
+    },
+    {
+      "id": 2960,
+      "source_id": 4,
+      "original_url": "https://g3tsyst3m.com/byovd/BYOVD-and-Looting-LSASS-in-the-Modern-EDR-Era/",
+      "title": "BYOVD and Looting LSASS in the Modern EDR Era - G3tSyst3m’s Infosec Blog",
+      "summary": "The article explains how to use a vulnerable kernel driver to bypass PPL protection on LSASS, allowing for the dumping of LSASS memory, and provides a detailed guide on exploiting the PDFWKRNL.sys driver using the BYOVD method.",
+      "ideas": [
+        "Exploiting kernel driver vulnerabilities to bypass PPL protection",
+        "Using the BYOVD method to leverage vulnerable drivers",
+        "Understanding the internals of the PDFWKRNL.sys driver",
+        "Bypassing EDR solutions by exploiting kernel vulnerabilities",
+        "Dumping LSASS memory using a vulnerable kernel driver"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers high-value insights into exploiting kernel driver vulnerabilities, specifically the PDFWKRNL.sys driver, to bypass PPL protection on LSASS. It provides a detailed, step-by-step guide on how to leverage the BYOVD method, including code examples and explanations of the underlying mechanics. The content is dense with technical information, making it highly valuable for those interested in offensive security and Windows internals. The author's expertise and the depth of analysis justify a high rating.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-01T03:36:06.383242"
+    },
+    {
+      "id": 2959,
+      "source_id": 4,
+      "original_url": "https://ni5arga.com/blog/posts/hacking-cbse/",
+      "title": "Exposing Critical Vulnerabilities in CBSE’s On-Screen Marking Portal: From Authentication Bypass to Full Account Takeover — ni5arga",
+      "summary": "A security researcher documents critical vulnerabilities in India's CBSE exam marking portal including a hardcoded master password, client-side OTP validation, missing route guards, and systemic IDOR that together enable full account takeover and exam mark tampering.",
+      "ideas": [
+        "Hardcoded master password in JavaScript bundle bypasses OTP entirely - enter the magic string and the app auto-fills the OTP field",
+        "OTP validation happens entirely client-side - the server sends the OTP back in the response for the browser to compare locally",
+        "Missing Angular route guards mean any internal page is directly navigable by seeding fake values into browser storage",
+        "Password reset API never sends oldpassword - server resets any user's password without verifying current credentials",
+        "Systemic IDOR: every API reads ValuatorID from sessionStorage client-side rather than deriving it from the authenticated session",
+        "Attack chain: change ValuatorID via DevTools, use password reset without auth, log in as victim, alter exam marks",
+        "Client-side security controls are fundamentally broken - the attacker controls the machine doing the verification",
+        "All vulnerabilities chain together: master password → access → IDOR → password reset → full account takeover",
+        "CBSE denied vulnerabilities but evidence includes their own official mails referencing the 'test' URL",
+        "SQL injection discovered separately as additional finding in the same portal",
+        "The same master password still present in JS bundles of other onmark domains at time of publishing",
+        "Responsible disclosure timeline: February discovery, CERT-In report, three months no response, then publication",
+        "Key lesson: server must enforce auth on every request and derive user identity from authenticated session not client storage"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is exceptionally detailed security research that documents 5+ critical vulnerabilities with technical depth, specific exploitation steps, evidence (screenshots, archived code, API payloads), and a compelling responsible disclosure narrative. The content provides novel technical insights about client-side security failures, IDOR architecture patterns, and how multiple vulnerabilities chain for complete account takeover. The author also documents CBSE's denial and provides counter-evidence. This is exactly the kind of content that advances security knowledge - it combines educational value with real-world impact regarding a system handling national exam integrity. No padding, no fluff, pure substantive technical content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-01T03:34:52.718684"
+    },
+    {
+      "id": 2958,
+      "source_id": 4,
+      "original_url": "https://thewhiteh4t.github.io/blog/ai-chat-llmreaper/",
+      "title": "https://thewhiteh4t.github.io/blog/ai-chat-llmreaper/",
+      "summary": "Browser extensions can silently harvest AI chat conversations via DOM access, so users must treat such chats as unencrypted and limit extension permissions.",
+      "ideas": [
+        "Browser extensions can read AI chat DOM via MutationObserver, capturing prompts and responses in real time.",
+        "Malicious extensions exfiltrate conversations using service workers and fetch requests to attacker servers.",
+        "LLMReaper detects the stop button to know when an AI response has finished before exfiltration.",
+        "The technique maps to MITRE ATT&CK: Masquerading, Web Portal Capture, Exfiltration Over C2, Supply Chain Compromise, Credentials from Browsers.",
+        "Mitigate by removing unused extensions, avoiding credentials in AI chats, and using isolated browser profiles.",
+        "The open‑source LLMReaper code can be used for security awareness training.",
+        "Extensions request \"read and change all data\" permission, which users often grant without scrutiny."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The post provides several concrete value instances: it explains how extensions use MutationObserver to steal AI chat data, offers a working PoC with code snippets, maps the technique to MITRE ATT&CK, and gives actionable mitigation steps. The content is focused, technically detailed, and aligns strongly with cybersecurity and AI themes, with no clickbait or padding. Its medium length and five‑plus insights give a good value‑per‑minute density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-01T03:34:36.508060"
+    },
+    {
+      "id": 2957,
+      "source_id": 4,
+      "original_url": "https://www.righto.com/2026/05/microcode-inside-intel-8087-floating.html",
+      "title": "Microcode inside the Intel 8087 floating-point chip: register exchange",
+      "summary": "The Intel 8087 floating-point chip's microcode is reverse-engineered to reveal the intricacies of the FXCH instruction, which exchanges the top-of-stack register with a specified stack position, handling exceptions and empty registers along the way.",
+      "ideas": [
+        "The 8087 chip uses microcode to implement its instruction set",
+        "The FXCH instruction exchanges two floating-point registers",
+        "The chip has temporary and stack registers to store numbers during calculations",
+        "The stack-based architecture was intended to improve instruction set and compiler design",
+        "The 8087 uses tags to optimize performance and detect errors",
+        "The chip has a complicated exception system to handle various problems",
+        "The FXCH microcode consists of 14 micro-instructions",
+        "The microcode uses conditional jumps and relative offsets",
+        "The chip can be programmed to handle exceptions in different ways"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value through its in-depth analysis of the Intel 8087 floating-point chip's microcode, specifically the FXCH instruction. The author delivers novel insights into the chip's architecture and operation, including its use of temporary registers, stack registers, and exception handling. The content is densely packed with information, making it highly efficient in terms of value delivery. The author's expertise and passion for the subject matter are evident throughout the article, and the inclusion of diagrams, images, and code snippets enhances the reader's understanding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-01T03:34:29.402333"
+    },
+    {
+      "id": 2956,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/05/30/htb-interpreter.html",
+      "title": "https://0xdf.gitlab.io/2026/05/30/htb-interpreter.html",
+      "summary": "Exploiting the Interpreter box on HackTheBox using XStream deserialization and Flask notification server vulnerabilities to gain root access.",
+      "ideas": [
+        "XStream deserialization vulnerability exploitation",
+        "Gaining remote code execution on a Linux box",
+        "Exploiting a Flask notification server for root access",
+        "Utilizing nmap for initial scanning and service identification",
+        "Identifying and exploiting vulnerabilities in Mirth Connect"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides a detailed walkthrough of exploiting a Linux box, specifically the 'Interpreter' box on HackTheBox, by utilizing an unauthenticated XStream deserialization vulnerability in the Mirth API to gain remote code execution. The author efficiently delivers multiple novel insights, including exploiting a localhost Flask notification server to achieve root access, making it a high-value density content. The content strongly aligns with the 'Tech' and 'CyberSecurity' themes, offering practical knowledge and expertise in penetration testing and vulnerability exploitation.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-01T03:32:50.644808"
+    },
     {
       "id": 2955,
       "source_id": 29,
