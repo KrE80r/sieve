@@ -1,7 +1,246 @@
 {
-  "updated_at": "2026-06-01T17:00:00.358117",
-  "total_items": 717,
+  "updated_at": "2026-06-01T19:00:00.492764",
+  "total_items": 726,
   "items": [
+    {
+      "id": 2985,
+      "source_id": 7,
+      "original_url": "https://agentfield.ai/blog/harness-as-membrane",
+      "title": "https://agentfield.ai/blog/harness-as-membrane",
+      "summary": "The real boundary of an agentic harness is not the prompt you write but the environment and constraints that shape its behavior throughout execution, and this membrane can be engineered through deliberate workspace curation, drift mitigation, verifier separation, and sizing blast radius to recovery budget.",
+      "ideas": [
+        "The workspace is the largest prompt (30-60K tokens), much larger than the system prompt (2-4K), and the orchestrator controls none of it explicitly",
+        "Curate the workspace deliberately: include only relevant code, current docs, and a superseding brief for each task",
+        "The membrane drifts monotonically via script-write-then-execute, context compaction, discovered capability, and expanding network reach",
+        "Mitigate drift with snapshotted workspaces, frozen tool registries, forced re-injection of constraints, and OS-level egress controls",
+        "Visible verifiers shape trajectory (forcing functions); invisible verifiers gate outcomes (contracts)",
+        "When the same verifier serves both roles, Goodhart's law applies: agents optimize for the verifier in ways the contract didn't anticipate",
+        "Structural fix: separate writer harness from verifier harness with no shared context, no write tools, and different working directories",
+        "The membrane is sized correctly when worst-case undo cost does not exceed the team's recovery budget",
+        "Sizing the membrane to the average case rather than the tail is the most common production failure mode",
+        "Enumerate each harness's worst capability and compare it to the team's undo budget to determine if the membrane needs shrinking"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is substantive technical content delivering genuine value through a novel architectural framework (the membrane concept) with four distinct properties, each accompanied by concrete mitigations. The author provides original insight into how AI coding agents actually behave: the workspace is the largest prompt (30-60K tokens vs 2-4K system prompt), the membrane drifts through four predictable sources (script-write-then-execute, context compaction, discovered capability, network reach), and the critical distinction between verifiers as forcing functions (inside-visible) versus contracts (outside-only) with Goodhart's law implications. The capability table with exact undo costs (read_only=zero, worktree=minutes, prod_send=infinite) is directly actionable for practitioners. Code examples show implementation patterns. The content is dense with ideas and contains no padding, clickbait, or promotional material. Scores slightly below 90 because it explicitly defers the composition pattern to Part 3.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-02T03:42:33.677273"
+    },
+    {
+      "id": 2984,
+      "source_id": 7,
+      "original_url": "https://www.infoq.com/articles/adaptive-hedged-requests-p99-latency/",
+      "title": "Stragglers, Not Failures: How Adaptive Hedged Requests Reduce p99 Latency by 74 Percent - InfoQ",
+      "summary": "Stragglers (slow requests) compound exponentially in fan-out architectures, making retries counterproductive; adaptive hedging using real-time DDSketch quantile estimation with token bucket rate limiting provides a zero-configuration solution that reduced p99 latency by 74% in benchmarks.",
+      "ideas": [
+        "Straggler compounding: 1-(0.99)^100 = 63% of fan-out requests delayed when each of 100 services has 1% straggler rate",
+        "Retries worsen stragglers by adding load to already-struggling back-ends, contrary to intuition",
+        "Per-service dashboards show green while system-level p99 degrades—individual metrics mask tail latency",
+        "DDSketch provides O(1) constant-memory quantile estimation with ±1% relative-error guarantees",
+        "DDSketch overhead is ~35 nanoseconds per request, suitable for real-time per-host tracking",
+        "Token bucket budget caps hedge rate at configurable percentage to prevent load-doubling spirals",
+        "Hedging automatically stops when every request is slow, allowing graceful degradation",
+        "Static hedge thresholds fail in production as latency distributions shift with load and time"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid technical content with high information density. It delivers 7 distinct value instances including the key mathematical insight that 63% of fan-out requests will encounter stragglers with 1% straggler rates per service, the counter-intuitive problem that retries worsen stragglers, DDSketch as a constant-memory O(1) quantile estimator with ~35ns overhead, token bucket budgeting to prevent load amplification, and an open-source Go library reference. The content is grounded in the seminal 'Tail at Scale' paper and provides reproducible benchmark parameters. Minor deduction for the library not being production-tested, though the author is transparent about this limitation. The pacing is efficient with no padding—each section advances the argument.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-02T03:41:04.109268"
+    },
+    {
+      "id": 2983,
+      "source_id": 4,
+      "original_url": "https://flatt.tech/research/posts/poisoning-claude-code-one-github-issue-to-break-the-supply-chain/",
+      "title": "Poisoning Claude Code: One GitHub Issue to Break the Supply Chain - GMO Flatt Security Research",
+      "summary": "A misconfigured permission check lets any GitHub App trigger Claude Code actions, enabling secret exfiltration and supply‑chain compromise.",
+      "ideas": [
+        "GitHub Apps bypass write‑permission checks by being auto‑approved as bots",
+        "Public repositories grant implicit read/write rights to any GitHub App",
+        "Attackers can create issues via a malicious app to trigger Claude workflows",
+        "Prompt injection can force Claude to read /proc/self/environ and leak secrets",
+        "Exposed OIDC token variables enable full token exchange and app impersonation",
+        "Claude’s allowedTools can be abused to update issues with exfiltrated data",
+        "Mitigation: restrict allowed_non_write_users and audit workflow configurations"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel, actionable security insights about a GitHub Actions permission bypass, concrete exploitation steps, and mitigation advice, all tightly tied to AI tooling. It provides code analysis, real‑world exploit evidence, and clear recommendations, yielding high value density for a 3372‑word technical piece. No clickbait or padding is evident, and the content aligns strongly with cybersecurity and AI themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-02T03:40:37.294488"
+    },
+    {
+      "id": 2982,
+      "source_id": 4,
+      "original_url": "https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages",
+      "title": "https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages",
+      "summary": "Security teams should investigate for compromised RedHat npm packages, rotate developer credentials, and audit GitHub Actions workflows given this supply chain attack abused compromised employee accounts and OIDC token abuse to distribute Mini Shai-Hulud malware with new per-infection encryption and cloud identity exfiltration capabilities.",
+      "ideas": [
+        "Mini Shai-Hulud malware variant now uses Greek mythology theme instead of Dune references",
+        "Per-infection encrypted payloads defeat hash-based detection and version tracking",
+        "New cloud identity collectors target GCP and Azure credentials on infected machines",
+        "Compromised RedHat employee GitHub account pushed orphan commits bypassing code review",
+        "Attack abused GitHub OIDC tokens to publish packages with valid SLSA provenance attestations",
+        "Attack occurred in two waves: first at 10:53 UTC, second at 13:44 UTC on June 1 2026",
+        "32 packages in @redhat-cloud-services namespace were compromised with ~80k weekly downloads",
+        "Malware uses ROT-based decoding and eval() to obfuscate functionality",
+        "Repository description indicator: Miasma: The Spreading Blight",
+        "Security teams should rotate GitHub tokens, SSH keys, and cloud credentials",
+        "Implement dependency allowlisting, SBOM generation, and package verification",
+        "Attribution is TTP overlap evidence, not definitive TeamPCP attribution"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is substantive security research from Wiz Research providing genuine value with novel technical insights. Key value instances include: (1) Detailed analysis of Mini Shai-Hulud malware variant with new per-infection encryption that defeats hash-based detection, (2) Root cause analysis showing compromised RedHat employee GitHub account pushing orphan commits to bypass code review, (3) Technical breakdown of the GitHub Actions workflow that abused OIDC tokens to publish packages with valid SLSA provenance, (4) New cloud identity collector capabilities targeting GCP and Azure, (5) Comprehensive IOCs including commit SHAs, user-agent strings, and complete list of 32 affected packages with exact versions, (6) Attribution clarity distinguishing TTP overlap from definitive attribution. The content is dense, professionally written, and directly actionable for affected security teams. Wiz does include a product link at the end, but it doesn't dominate the content which remains primarily informational and educational.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-02T03:39:27.644392"
+    },
+    {
+      "id": 2981,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/nvidias-nemotron-3-ultra-becomes-the-smartest-open-us-model-but-china-still-leads/",
+      "title": "Nvidia's Nemotron 3 Ultra becomes the smartest open US model, but China still leads",
+      "summary": "Nemotron 3 Ultra leads US open models in capability but still lags behind Chinese and top closed models.",
+      "ideas": [
+        "Nemotron 3 Ultra has ~550B parameters, with ~55B active at a time.",
+        "It scores 48 points on Artificial Analysis, ahead of other US open models.",
+        "Chinese open model Kimi K2.6 scores 54 points, surpassing Nemotron 3 Ultra.",
+        "Closed model Opus 4.8 reaches 61 points, higher than all open models mentioned.",
+        "Nemotron 3 Ultra generates over 300 tokens per second, faster than comparable models.",
+        "Release scheduled for June 4 on Hugging Face, OpenRouter, and other platforms."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete benchmark data and comparative insights about US and Chinese open AI models, plus performance and release details, providing genuine value without fluff. It aligns with AI and technology themes and contains about six distinct value instances in a short piece, yielding high density. No clickbait or padding detected.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-02T03:37:16.215285"
+    },
+    {
+      "id": 2980,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/turing-award-winner-richard-sutton-says-pure-generative-ai-cant-do-real-science/",
+      "title": "Turing Award winner Richard Sutton says pure generative AI can't do real science",
+      "summary": "Pure generative AI lacks the evaluation capability needed for genuine scientific discovery—it can produce novel outputs but cannot determine which are actually good, unlike systems like AlphaGo or AlphaFold that have feedback loops enabling real creativity.",
+      "ideas": [
+        "Discovery requires variation, evaluation, and selective retention—not just generation",
+        "Generative AI produces novel things that are often not good, or good things that are not novel",
+        "AI systems need evaluation loops: Go moves either win or don't, code passes tests or fails",
+        "AlphaGo Move 37, AlphaFold, and Claude Code demonstrate true discovery through feedback",
+        "Neural networks lose learning ability as structures become rigid over time",
+        "Truly learning AI would need continual structural renewal, not just one-time training",
+        "Oak architecture proposes agents starting with no built-in knowledge, learning through interaction",
+        "The AI industry has over-focused on scaling rather than building agents that learn from experience",
+        "Meta-learning—learning how to learn—is more important than mimicking individual tasks"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This article delivers substantial value through Richard Sutton's expert critique of generative AI's limitations. Key insights include the three-step discovery framework (variation, evaluation, selective retention), the diagnostic 'novel but not good' joke, and concrete examples of systems that achieve genuine discovery like AlphaGo and AlphaFold. Sutton's Oak architecture proposal and critique of neural network rigidity add depth. The content is well-organized, stays focused, and presents a credible expert perspective on AI capabilities and limitations without promotional fluff.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-02T03:36:30.640394"
+    },
+    {
+      "id": 2979,
+      "source_id": 4,
+      "original_url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+      "title": "FSB’s matryoshka #1/3: Inside Gamaredon Cyber Operations",
+      "summary": "Sekoia.io TDR team provides original research on Gamaredon APT's infection chain using GammaPhish (initial access) and GammaWorm (USB propagation), establishing a unified taxonomy to replace fragmented naming conventions and documenting how the group evolved from Pteranodon framework to modular standalone malware families.",
+      "ideas": [
+        "Gamaredon evolved from Pteranodon unified framework to modular standalone families (GammaPhish, GammaLoad, GammaWorm, GammaSteel)",
+        "GammaWorm spreads via USB drives to compromise air-gapped networks with real-time document theft capability",
+        "The infection chain abuses legitimate Windows features and trusted platforms (Telegram, Cloudflare) for stealth",
+        "Researchers performed live C2 server interaction to extract latest loader and stealer versions from staging infrastructure",
+        "Clear taxonomy: GammaPhish handles phishing-to-load, GammaLoad deploys payloads, GammaWorm propagates, GammaSteel steals",
+        "Gamaredon officially attributed to Russian FSB by Security Service of Ukraine (SSU)",
+        "The group has been targeting Ukrainian government, military, and critical infrastructure since 2013 with minimal public visibility",
+        "GamaWipe malware is used exclusively against security researchers in sandbox analysis, never observed on actual victims"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional threat intelligence content delivering substantial value to security professionals. The report provides original research from January 2026 with 70+ artifacts from compromised hosts, a comprehensive historical timeline of Gamaredon's malware evolution (2013-2026), technical analysis of infection chains (GammaPhish and GammaWorm), and a unified taxonomy solving fragmented naming conventions in the industry. The researchers also performed live C2 server interaction to extract latest malware versions. Content is dense with technical indicators, detection guidance, and actionable IOCs. Strong thematic relevance to cybersecurity with no significant penalties for fluff or padding—it's a professional threat report from a dedicated TDR team.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-02T03:34:19.503058"
+    },
+    {
+      "id": 2978,
+      "source_id": 4,
+      "original_url": "https://ifritnoises.org/articles/pattern-screamer/",
+      "title": "Pattern Screamer: Subnet Discovery in Networks with Unknown Addressing",
+      "summary": "The 'Pattern Screamer' tool utilizes TTL tracing and heuristic sampling to efficiently discover subnets in networks with unknown addressing, providing a valuable solution for network infrastructure reconnaissance.",
+      "ideas": [
+        "TTL tracing for network infrastructure discovery",
+        "Heuristic sampling for efficient subnet discovery",
+        "Using ICMP, TCP, and UDP protocols for tracing",
+        "Overcoming traceroute limitations with novel approaches",
+        "Importance of network inventory information for administrators",
+        "Challenges of port scanning in large address spaces",
+        "Role of ICMP Time Exceeded packets in TTL tracing",
+        "Using TCP SYN packets for tracing in filtered networks",
+        "UDP protocol as a fallback method for tracing"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "This article provides exceptional value by introducing a novel approach to subnet discovery in networks with unknown addressing, leveraging TTL tracing and a heuristic sampling method to efficiently map network infrastructure. The content is rich in technical insights, including the use of ICMP, TCP, and UDP protocols for tracing, and provides a well-structured explanation of the challenges and limitations of traditional traceroute tools. The inclusion of demonstrations, code snippets, and telemetry data further enhances the article's value, making it a comprehensive resource for network administrators and penetration testers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-02T03:32:39.782296"
+    },
+    {
+      "id": 2977,
+      "source_id": 9,
+      "original_url": "https://www.youtube.com/watch?v=zM5jlfZWgIs",
+      "title": "A Conversation With Alastair Paterson",
+      "summary": "Enterprises need a more nuanced approach to understanding AI adoption and ROI, moving beyond simple metrics like token expenditure to enablement and value-driven metrics.",
+      "ideas": [
+        "AI adoption in the enterprise is a significant challenge",
+        "Current methods for measuring AI adoption are limited",
+        "Harmonic offers a solution for visibility into AI usage and governance",
+        "Enablement-focused approach is key to successful AI adoption",
+        "Understanding ROI is crucial for effective AI adoption",
+        "Small language models can be used for governance and understanding AI usage",
+        "Contextual models can provide insights into AI adoption and usage",
+        "Value-driven metrics are essential for measuring AI adoption success"
+      ],
+      "labels": [],
+      "rating": 85,
+      "rating_reason": "This conversation provides high-value insights into the challenges of AI adoption in the enterprise, the evolution of AI tools, and the importance of understanding AI usage and ROI. The discussion highlights the limitations of current methods for measuring AI adoption and the need for a more nuanced approach. The introduction of Harmonic as a solution that offers visibility into AI usage, enables governance, and provides a framework for understanding ROI is a significant value instance. The conversation also touches on the shift from a security-focused approach to an enablement-focused approach, which is a key theme in the context of AI adoption.",
+      "source_type": "youtube",
+      "source_name": "Unsupervised Learning",
+      "published_at": "2026-06-02T03:32:06.793536"
+    },
     {
       "id": 2976,
       "source_id": 26,
