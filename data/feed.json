@@ -1,7 +1,219 @@
 {
-  "updated_at": "2026-06-02T18:00:05.589514",
-  "total_items": 719,
+  "updated_at": "2026-06-02T19:00:00.356515",
+  "total_items": 727,
   "items": [
+    {
+      "id": 3008,
+      "source_id": 4,
+      "original_url": "https://github.com/Unclecheng-li/VulnClaw/blob/main/README_EN.md",
+      "title": "Install from PyPI (recommended)",
+      "summary": "AI can automate end‑to‑end penetration testing through natural‑language commands and configurable LLM back‑ends.",
+      "ideas": [
+        "AI agents can drive full penetration tests from natural language prompts",
+        "VulnClaw supports eight LLM providers for flexible model selection",
+        "Autonomous multi‑round pentest loops generate auto‑reports",
+        "TUI workbench visualizes target scope, safety boundaries, and diagnostics",
+        "Persistent mode runs cyclic scans preserving findings across cycles",
+        "Built‑in Python execution enables on‑the‑fly PoC script generation",
+        "Web UI offers browser‑based interface, defaulting to localhost for security",
+        "Configuration commands set provider, base URL, model, and API key"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The README delivers concrete, actionable guidance for installing, configuring, and using an AI‑driven pentesting tool, offering multiple practical insights and resources. It aligns strongly with cybersecurity and AI themes and provides several distinct value instances without noticeable clickbait or padding. The dense technical content justifies a good‑to‑excellent score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:43:17.427519"
+    },
+    {
+      "id": 3007,
+      "source_id": 4,
+      "original_url": "https://github.com/wildlifechorus/condenseit",
+      "title": "Copy config for your domain cp scripts/nginx/digest.example.com.conf scripts/nginx/your.domain.conf # Edit the file: replace \"digest.example.com\" with your domain # Set VPS connection details in your ...",
+      "summary": "CondenseIt learns your reading preferences through explicit and implicit signals and ranks articles using a hybrid classical‑AI scoring system.",
+      "ideas": [
+        "CondenseIt aggregates RSS, YouTube, Reddit, and other sources, summarizing with local or cloud LLMs.",
+        "Ranking engine uses explicit star ratings and implicit actions to build a preference profile.",
+        "Implicit signals (read, save, dismiss) are weighted lower than explicit ratings.",
+        "Preference scores decay over time, keeping recent tastes dominant.",
+        "Topic synonym groups propagate weight across related terms automatically.",
+        "Optional AI layers add semantic embedding similarity, topic enrichment, and LLM reranking.",
+        "Local deployment requires Python, uv, Ollama, Node.js, and simple commands.",
+        "Remote deployment uses a VPS, nginx, and scripts to bootstrap and deploy.",
+        "Docker image provides a pre‑built environment for quick setup.",
+        "Admin UI allows live editing of sources, schedule, and ranking weights without restart."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The document delivers extensive practical knowledge for self‑hosting an AI news digest, including detailed setup steps, configuration options, and a sophisticated ranking engine that combines explicit ratings, implicit signals, and optional AI layers. It provides novel insights into preference learning, signal weighting, and synonym handling, all directly relevant to AI and software development. No clickbait or padding is evident, resulting in a high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:42:42.847822"
+    },
+    {
+      "id": 3006,
+      "source_id": 4,
+      "original_url": "https://unit42.paloaltonetworks.com/flutterbridge-new-fluttershell-backdoor/",
+      "title": "Operation FlutterBridge: macOS Malvertising Campaign Spreads New FlutterShell Backdoor",
+      "summary": "FlutterShell leverages the Flutter framework and WebView to deliver a dynamic, signed macOS backdoor via large‑scale malvertising, evading traditional defenses.",
+      "ideas": [
+        "FlutterShell is a macOS backdoor built with the Flutter framework.",
+        "It uses a WebView JavaScript‑to‑native bridge to load malicious logic remotely.",
+        "Attackers distribute it through Google Ads using shell companies to bypass vetting.",
+        "The malware masquerades as legitimate desktop apps like podcast players and PDF viewers.",
+        "All samples are signed with valid Apple Developer IDs and pass notarization.",
+        "Variants can exfiltrate data using AI summarization services before sending to attackers.",
+        "Static analysis is hard due to Flutter’s Dart compilation and object pool design.",
+        "Researchers used a custom “blutter” tool to disassemble Dart binaries.",
+        "The campaign builds on earlier JSCoreRunner activity, expanding from adware to full backdoor.",
+        "Mitigations include WildFire, URL Filtering, DNS Security, Cortex XDR, and XSIAM."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides multiple novel insights and practical analysis of a new macOS backdoor, including its Flutter-based architecture, evasion techniques, and ad‑network abuse, offering actionable detection guidance. It aligns strongly with cybersecurity themes, contains no clickbait or padding, and delivers high‑density technical value for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:38:33.502697"
+    },
+    {
+      "id": 3005,
+      "source_id": 4,
+      "original_url": "https://blog.exodusintel.com/2026/06/01/adobe-acrobat-reader-escript-api-use-after-free-remote-code-execution/",
+      "title": "Adobe Acrobat Reader Escript.api Use-After-Free Remote Code Execution - Exodus Intelligence",
+      "summary": "A use-after-free vulnerability in Adobe Acrobat Reader's Escript.api allows exploitation via __defineGetter__() on non-configurable properties, causing C++ stack exhaustion that desynchronizes the event scope stack from reference counting cleanup, leaving dangling pointers to freed objects.",
+      "ideas": [
+        "__defineGetter__() can install getters on non-configurable built-in object properties",
+        "C++ stack exhaustion occurs without triggering JavaScript engine recursion limits",
+        "Event scope stack and reference counting are independent bookkeeping systems that must stay synchronized",
+        "scoped_cleanup_chain() decrements reference counters but event scope stack entries persist on exceptions",
+        "The vulnerability leaves dangling pointers in the scope stack pointing to garbage-collected objects",
+        "link_entry_t structures manage scoped objects in a LIFO chain with state-dependent cleanup",
+        "Reverse-engineered scoped_obj_t structures are 0x48 bytes with root_object, referenceCounter, link_head, and num_links fields",
+        "push_event_scope_and_resolve() installs exception handlers that accumulate without proper cleanup on stack overflow"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-quality technical vulnerability analysis from Exodus Intelligence providing deep reverse-engineering insights into a use-after-free vulnerability in Adobe Acrobat Reader's Escript.api module. The content delivers substantial value through detailed explanation of the exploitation mechanism involving __defineGetter__() and C++ stack exhaustion, technical analysis of the event scope stack vs reference counting desynchronization, and disassembly-level code walkthroughs with function offsets. The content is dense, focused, and contains no padding - every section advances understanding of the vulnerability. Strong alignment with the CyberSecurity theme as original security research.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:38:24.885028"
+    },
+    {
+      "id": 3004,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/CVE-2024-21182",
+      "title": "from inside a host with the WebLogic thin client, or adapt validate.sh:",
+      "summary": "A self‑contained Docker lab lets you safely reproduce and validate the unauthenticated WebLogic JNDI‑injection RCE vulnerability (CVE‑2024‑21182).",
+      "ideas": [
+        "CVE-2024-21182 enables unauthenticated JNDI injection over T3/IIOP leading to remote code execution.",
+        "The vulnerability bypasses the CVE-2023-21839 patch via AggregatableOpaqueReference and MessageDestinationReference.",
+        "A Docker lab using vulhub/weblogic:12.2.1.3 reproduces the exploit with a one‑command validate.sh.",
+        "Exploit works because JDK 1.8.0_151 trusts remote codebases; modern JDKs need a classpath gadget.",
+        "Mitigation includes applying Oracle October 2024 CPU, restricting port 7001, and disabling trustURLCodebase.",
+        "Detection can monitor outbound LDAP/RMI/DNS from WebLogic JVM and unexpected child processes.",
+        "The PoC client builds malicious reference, binds it, then triggers server‑side lookup to execute payload.",
+        "Validation script prints PASS/FAIL and shows executed command output inside the container."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The README delivers concrete, actionable security knowledge: a reproducible Docker lab, step‑by‑step exploit instructions, detailed root‑cause analysis, and mitigation guidance, totaling more than five distinct value instances for its ~800‑word length. It stays focused on cybersecurity without clickbait or padding, earning a solid good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:37:17.654073"
+    },
+    {
+      "id": 3003,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/exclusive-how-one-line-of-code-put-billions-of-microsoft-android-app-downloads-at-risk/",
+      "title": "Exclusive: How One Line of Code Put Billions of Microsoft Android App Downloads at Risk",
+      "summary": "A simple debug flag left in the production code of six Microsoft Android apps exposed billions of downloads to potential security risks, allowing unauthorized access to Microsoft account tokens.",
+      "ideas": [
+        "Debug flag left in production code",
+        "Security flaw in Microsoft Android apps",
+        "Billions of downloads at risk",
+        "Unauthorized access to Microsoft account tokens",
+        "Potential for data breaches and identity theft",
+        "Importance of secure coding practices"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers high value by revealing a significant security flaw in Microsoft's Android apps, affecting billions of downloads. It provides a clear explanation of the issue, its potential impact, and how it was discovered. The content is well-structured, informative, and aligned with the CyberSecurity theme. The presence of specific details, such as the CVE numbers and the patches issued by Microsoft, adds to the article's credibility and usefulness.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:34:06.412703"
+    },
+    {
+      "id": 3002,
+      "source_id": 4,
+      "original_url": "https://hackread.com/hackers-abuse-meta-ai-bot-hijack-instagram-accounts/",
+      "title": "Hackers Abused Meta’s AI Support Bot to Hijack Major Instagram Accounts",
+      "summary": "Meta's AI support assistant had a critical logic flaw that allowed hackers to hijack high-profile Instagram accounts by tricking the bot into sending password reset codes to attacker-controlled emails and accepting AI-generated fake selfie verification videos, bypassing 2FA entirely.",
+      "ideas": [
+        "Meta AI support bot contained a logic flaw that trusted data in wrong order",
+        "Attackers used VPN with nearby location to avoid security flagging",
+        "Bot sent verification codes to attacker email when asked to add new email",
+        "AI-generated fake selfie videos successfully bypassed identity verification",
+        "Attack bypassed 2FA and sent no alerts to legitimate account owners",
+        "Short Instagram handles like 'hey' and 'jowo' worth ~$1 million were stolen",
+        "Step-by-step attack videos went viral in blackhat Telegram groups",
+        "Affected accounts included Sephora, US Space Force chief, Obama White House archive",
+        "Meta patched the vulnerability and is working to restore compromised accounts"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This cybersecurity news article delivers solid technical depth about a real vulnerability in Meta's AI support assistant. It provides a detailed attack methodology (VPN + location spoofing + AI logic exploitation + fake selfie videos to bypass 2FA), concrete examples of compromised accounts (Sephora, US Space Force chief, Obama White House archive), and a specific technical insight about the AI's 'logic flaw that forced it to trust data in the wrong order.' The content is well-focused, not padded, and provides actionable information for security-conscious readers. The only limitation is it's a news summary rather than original deep-dive analysis, but within that scope it delivers efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-03T03:33:13.820539"
+    },
+    {
+      "id": 3001,
+      "source_id": 19,
+      "original_url": "https://www.interconnects.ai/p/farewell-ai2",
+      "title": "Farewell Ai2",
+      "summary": "The author reflects on their time at Ai2, sharing their personal growth, accomplishments, and the importance of open science in AI research, while also discussing the broader implications of AI and the need for public scientists.",
+      "ideas": [
+        "Importance of open science in AI research",
+        "Need for public scientists to build trust and provide clarity",
+        "Value of personal growth and development in career",
+        "Challenges of working in industry research",
+        "Role of relationships and networking in career success",
+        "Impact of AI on society and the need for responsible development",
+        "Need for diverse and vibrant open model ecosystem",
+        "Importance of institutions in supporting AI research and development"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a personal and reflective account of the author's time at Ai2, highlighting their growth, accomplishments, and the importance of open science in AI research. The author shares valuable insights into their experiences, the challenges they faced, and the lessons they learned, making the content informative and engaging. The text also touches on the broader implications of AI research and the need for public scientists to build trust and provide clarity in the evolution of frontier models.",
+      "source_type": "rss",
+      "source_name": "Interconnects AI",
+      "published_at": "2026-06-03T03:32:43.870921"
+    },
     {
       "id": 3000,
       "source_id": 27,
