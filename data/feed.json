@@ -1,7 +1,227 @@
 {
-  "updated_at": "2026-06-03T17:00:00.785876",
-  "total_items": 710,
+  "updated_at": "2026-06-03T19:00:00.507622",
+  "total_items": 719,
   "items": [
+    {
+      "id": 3027,
+      "source_id": 4,
+      "original_url": "https://blog.nns.ee/2026/06/03/katana-badusb/",
+      "title": "https://blog.nns.ee/2026/06/03/katana-badusb/",
+      "summary": "Unauthenticated Bluetooth access lets attackers upload malicious firmware to the Katana V2X, enabling remote HID attacks.",
+      "ideas": [
+        "Unauthenticated BLE firmware updates are possible on Katana V2X",
+        "CTP commands can be sent via Bluetooth without pairing",
+        "Custom firmware can make the speaker act as a HID keyboard",
+        "Firmware container lacks signature verification, allowing patches",
+        "Speaker already exposes Consumer Control HID, extendable to keyboard",
+        "Python script can perform OTA firmware updates over BLE",
+        "Creative dismissed the issue, showing poor vendor response",
+        "v2x-patcher tool blocks CTP over Bluetooth as a mitigation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post provides multiple concrete security insights—unauthenticated BLE firmware updates, CTP command exposure, and turning the speaker into a remote HID keyboard—backed by firmware analysis, Wireshark captures, and proof‑of‑concept code, offering actionable knowledge and a mitigation tool. Length is appropriate for the depth, with minimal padding and no clickbait, aligning well with cybersecurity and tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:41:20.442535"
+    },
+    {
+      "id": 3026,
+      "source_id": 4,
+      "original_url": "https://afine.com/blogs/stealing-passwords-via-html-injection-under-a-strict-csp",
+      "title": "https://afine.com/blogs/stealing-passwords-via-html-injection-under-a-strict-csp",
+      "summary": "Chrome's password autofill can be exploited via HTML injection to steal credentials even when CSP blocks JavaScript, by leveraging browser inconsistencies in Referer header handling to exfiltrate data through redirects.",
+      "ideas": [
+        "HTML injection can steal passwords even when CSP blocks all JavaScript execution",
+        "Chrome password autofill fills forms regardless of where they submit to",
+        "Chrome leaks full URLs with parameters via Referer header for most tags regardless of policy",
+        "Safari and Firefox are safer but still leak full URLs via <a> tags and meta redirects",
+        "The <meta name='referrer' content='unsafe-url'> tag can override server-side Referrer-Policy headers",
+        "Attack chain: inject form, trigger autofill, redirect via meta refresh, exfiltrate via Referer",
+        "Complete NodeJS proof-of-concept demonstrates the one-click attack against strict CSP login pages",
+        "Browser referrer behavior differs significantly across implementations, creating security inconsistencies"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 83,
+      "rating_reason": "This is high-quality security research that delivers genuine value through a novel attack technique (HTML injection password theft under strict CSP), detailed browser behavior comparison data across Chrome/Firefox/Safari, and a complete working proof-of-concept. The content is technically dense with actionable insights for security professionals. No significant penalties apply - the article stays focused, provides working code, and documents real browser inconsistencies that have security implications.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:37:04.412776"
+    },
+    {
+      "id": 3025,
+      "source_id": 4,
+      "original_url": "https://zolder.io/blog/ideal-payment-link-abuse-in-phishing/",
+      "title": "Abusing iDEAL (Wero): how criminals weaponise legitimate payment links in phishing - Zolder",
+      "summary": "iDEAL payment links can be hijacked because they aren’t bound to the initiator, enabling phishing without fake pages.",
+      "ideas": [
+        "iDEAL payment URLs are not device- or session-bound, allowing anyone with the link to pay.",
+        "Attackers create real purchases, capture the iDEAL link, and send it to victims via phishing.",
+        "Victims see a legitimate bank UI, so they often pay without noticing the merchant mismatch.",
+        "The abuse works because the amount is plausible and the link remains valid long enough.",
+        "Mitigation: bind iDEAL links to the originating device, browser, or IP to prevent misuse.",
+        "Consumers should verify the merchant name on the bank screen before confirming payment.",
+        "High‑risk merchants (crypto, gift cards) should assume iDEAL links may be repurposed."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete value instances: it reveals a novel phishing technique using iDEAL links, explains the attack steps, outlines why the method succeeds, and offers practical mitigation and consumer advice. The content is focused, aligns well with cybersecurity, and contains actionable insights without excessive fluff, earning a solid good rating.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:36:31.222976"
+    },
+    {
+      "id": 3024,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/one-click-github-dev-attack-lets.html",
+      "title": "One-Click GitHub Dev Attack Lets Attackers Steal Full GitHub OAuth Tokens",
+      "summary": "A one-click attack via Microsoft Visual Studio Code can steal a user's GitHub token, allowing attackers to read and write to repositories, including private ones.",
+      "ideas": [
+        "One-click attack via VS Code can steal GitHub tokens",
+        "Exploitation of message-passing mechanism between VS Code and webviews",
+        "Bypassing of publisher trust check for extension installation",
+        "Use of local workspace extensions for malicious purposes",
+        "Potential for attackers to access private repositories"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a clear and concise explanation of a significant cybersecurity vulnerability, including its impact and potential exploitation methods. It delivers high value density with multiple novel insights, such as the exploitation of the message-passing mechanism between VS Code and webviews, and the bypassing of the publisher trust check. The thematic relevance is strong, aligning with cybersecurity and software development themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:35:24.900259"
+    },
+    {
+      "id": 3023,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/06/03/another-bug-hunter-leaks-microsoft-exploits-in-defiance-of-companys-handling-of-vulnerability-disclosures/5250590",
+      "title": "Another bug hunter leaks Microsoft exploits in defiance of company’s handling of vulnerability disclosures",
+      "summary": "Publicly leaking a VS Code token‑stealing exploit highlights both a serious OAuth scope flaw and researcher frustration with Microsoft’s disclosure process.",
+      "ideas": [
+        "VS Code Workspace Recommendations can be abused to steal OAuth tokens via malicious extensions",
+        "Hidden HTML in Jupyter notebooks can auto‑accept malicious VS Code extensions",
+        "OAuth token passed to github.dev isn’t scoped, granting access to all user repos",
+        "Researcher leaked PoC after negative experience with Microsoft Security Response Center",
+        "Public disclosure is used as leverage to pressure Microsoft on vulnerability handling",
+        "Similar tactics used by ‘Nightmare Eclipse’ researcher releasing multiple zero‑days"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete insights: a detailed technical walkthrough of a VS Code token‑stealing exploit, scope of the vulnerability, and industry context about researcher‑Microsoft tensions, delivering solid value for its length. It aligns well with cybersecurity themes and contains no clickbait or padding, earning a good score but not exceptional depth across multiple novel ideas.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:35:04.149994"
+    },
+    {
+      "id": 3022,
+      "source_id": 4,
+      "original_url": "https://www.knostic.ai/blog/new-malicious-vs-code-extension-backdoor-remote-text-fetcher",
+      "title": "New Malicious VS Code Extension Backdoor: Remote Text Fetcher",
+      "summary": "A new malicious VS Code extension, Remote Text Fetcher, has been discovered, which can execute arbitrary shell commands on a developer's workstation, posing a significant security risk.",
+      "ideas": [
+        "Malicious VS Code extensions can pose significant security risks to developers",
+        "Remote Text Fetcher extension can execute arbitrary shell commands",
+        "The extension uses a hidden config key to fetch and execute commands",
+        "The threat can be mitigated with tools like AgentMesh",
+        "Developers should be cautious when installing extensions from unverified publishers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides high-value insights into a newly discovered malicious VS Code extension, detailing its behavior, and the potential risks it poses to developers. The article is well-researched, with specific technical details and indicators of compromise (IoCs) that can help readers understand and mitigate the threat. However, the content is somewhat promotional, as it highlights the capabilities of the author's product, AgentMesh, in detecting such threats.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:33:28.760778"
+    },
+    {
+      "id": 3021,
+      "source_id": 4,
+      "original_url": "https://www.platanor.com/blog/cyber-resilience-act",
+      "title": "https://www.platanor.com/blog/cyber-resilience-act",
+      "summary": "The EU Cyber Resilience Act requires mandatory cybersecurity measures by December 2027, with a critical but often overlooked vulnerability reporting obligation kicking in September 2026 — manufacturers must report exploited vulnerabilities to ENISA within 24 hours.",
+      "ideas": [
+        "CRA applies to all manufacturers regardless of location selling connected products in EU",
+        "Default products (~90% of market) require self-assessment only, no third-party auditor",
+        "September 11 2026 is the critical deadline most manufacturers overlook for vulnerability reporting",
+        "Vulnerability reporting requires 24-hour initial notification to ENISA and national CSIRT",
+        "Products cannot ship with known exploitable vulnerabilities per Annex I Part 1",
+        "Secure by default prohibits shared factory passwords like admin/admin or 1234",
+        "SBOM must use SPDX or CycloneDX formats and list all software components including open source",
+        "Fines reach €15M or 2.5% global turnover for core security violations",
+        "Common manufacturer gaps include lack of unique device identity and unsigned OTA updates",
+        "Unique device identity requires manufacturing process changes and must be addressed first"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive compliance guidance for EU IoT/hardware manufacturers covering the CRA regulation with concrete technical requirements, specific deadlines (September 2026 reporting obligation is a commonly missed insight), risk classification system, and practical starting steps. The content is dense and actionable, though serves partially as promotional material for Platanor's services. Value is high for the target audience but limited to regulatory compliance rather than broader cybersecurity knowledge.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:33:22.452919"
+    },
+    {
+      "id": 3020,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-active-attacks-exploiting-android-linux-bugs/",
+      "title": "CISA warns of active attacks exploiting Android, Linux bugs",
+      "summary": "Unpatched Android and Linux kernel vulnerabilities can enable privilege escalation, so agencies must patch immediately.",
+      "ideas": [
+        "CVE-2025-48595 is a high‑severity Android integer overflow exploitable without user interaction",
+        "Android 14‑16 are affected; patches released June 2026 fix the flaw",
+        "CVE‑2022‑0492 is a Linux kernel privilege‑escalation bug in cgroup_release_agent_write()",
+        "Affects kernel 2.6‑4.20 and 5.5‑5.17; patches listed for multiple versions",
+        "Exploiting CVE‑2022‑0492 can escape containers and gain root on the host",
+        "Federal agencies must apply patches by June 5 under BOD 22‑01",
+        "Automated pentesting tools only test lateral movement, not control effectiveness or cloud configs"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable information about two high‑severity CVEs, their affected platforms, and required patch deadlines, providing clear value for security practitioners. It includes a brief but useful note on the limits of automated pentesting, adding a practical insight. No clickbait or major padding is present, and the content aligns strongly with cybersecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-04T03:32:37.104115"
+    },
+    {
+      "id": 3019,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=0VPdzXBbASM",
+      "title": "How Insecurities Show On Your Body - Chase Hughes",
+      "summary": "Insecure individuals often exhibit specific body language behaviors such as reduced arm swing, incomplete movements, and lip compression, which can be detected by observing changes in behavior and context.",
+      "ideas": [
+        "Reduced arm swing and incomplete movements can indicate insecurity",
+        "Lip compression can be a sign of withholding information or emotion",
+        "Detecting change and context is crucial in interpreting body language",
+        "There is no single behavior that indicates deception, but rather a cluster of behaviors",
+        "Body language deals in likelihood, not certainty",
+        "Hygienic gestures can be used to make oneself more attractive before discussing sensitive topics"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "The content provides valuable insights into human behavior and body language, revealing signs of insecurity such as reduced arm swing, incomplete movements, and lip compression. It also discusses the importance of detecting change and context in behavior, rather than relying on specific behaviors as indicators of deception. The conversation is engaging and informative, with the host and guest sharing their expertise and experiences. However, the content is slightly detracted from by the promotional segment for Element electrolyte drink mix.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-06-04T03:32:29.949660"
+    },
     {
       "id": 3018,
       "source_id": 27,
