@@ -1,7 +1,275 @@
 {
-  "updated_at": "2026-06-04T17:00:00.391236",
-  "total_items": 718,
+  "updated_at": "2026-06-04T19:00:00.396550",
+  "total_items": 729,
   "items": [
+    {
+      "id": 3060,
+      "source_id": 4,
+      "original_url": "https://blog.azerpas.com/writing/wasm-simd-fingerprinting/",
+      "title": "Fingerprinting CPUs from the Browser with WebAssembly SIMD — Anthony Manikhouth",
+      "summary": "WASM SIMD operation timing creates a hardware fingerprint that can identify CPU brand with ~95% accuracy and model with ~82% accuracy by exploiting variations in instruction latency across CPU architectures.",
+      "ideas": [
+        "WASM SIMD operations map directly to hardware instructions, exposing physical circuit latency differences",
+        "Browser 0.1ms timer limitation can be bypassed by running millions of SIMD operations in loops",
+        "CPU microarchitecture differences create distinct SIMD timing profiles",
+        "Same-generation CPUs sharing architecture are harder to distinguish than different generations",
+        "Browser engines (V8 vs JSC) implement WASM SIMD differently, causing ~25% timing variation",
+        "KNN classification with k=5 achieves 74.5% CPU accuracy and 93.6% brand accuracy",
+        "Distance-weighted KNN improves accuracy from 74.5% to 75.5% by prioritizing nearest neighbors",
+        "PCA captures 92% of variance in first two components, confirming strong hardware signatures",
+        "Under-represented CPU classes with low training data (<10 runs) show 0% accuracy",
+        "Similar architectures like Google Tensor G2/G3 often misclassify each other due to shared ARM license"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is original security research with substantial depth. The author documents a novel fingerprinting technique using WASM SIMD timing that achieves 95% brand accuracy and 82% model accuracy across 2124 devices. Key value instances include: the timing bypass technique using massive loops to overcome 0.1ms browser timer limitations, the ML classification methodology using KNN with Leave-One-Out evaluation, and the discovery that browser engines (V8 vs JSC) produce 25% variation in some operations. The content is well-structured with clear methodology, substantial dataset (2124 devices), and technical depth covering CPU microarchitecture, SIMD mapping, and statistical analysis. No significant penalties apply - no clickbait, no padding, no hidden promotion. The research is current and the technical treatment is thorough.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-05T03:47:11.771755"
+    },
+    {
+      "id": 3059,
+      "source_id": 4,
+      "original_url": "https://write-ups.security-chu.com/2026/06/California-Back-Pain-Specialists-with-data-breach.html",
+      "title": "US: California Back & Pain Specialists Exposes 133GB of Patient Medical Records on Public Server",
+      "summary": "A misconfigured public server leaked 133 GB of PHI, underscoring the critical need for strict access controls and encryption.",
+      "ideas": [
+        "Publicly exposed server contained 133 GB of patient medical records, driver’s licenses, and X‑rays.",
+        "Data was accessible since at least July 2025, discovered March 16 2026.",
+        "Over 3,400 driver’s licenses were found in the “photos” folder.",
+        "Patient JSON files revealed full medical histories, including procedures and medication lists.",
+        "Risks include medical identity theft, fraud, phishing, extortion, and dark‑web sale.",
+        "Immediate actions: disable public access, enforce authentication, encrypt data, use signed URLs.",
+        "Best practices: store PHI only on HIPAA‑eligible cloud with BAA, encrypt at rest/in‑transit.",
+        "General security: regular audits, logging, incident response plan, penetration testing."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The report delivers concrete breach details, risk analysis, timeline, and actionable security recommendations, providing several genuine insights for cybersecurity professionals. It aligns well with the CyberSecurity theme and contains no clickbait or promotional padding, though the length is moderate, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-05T03:46:21.867274"
+    },
+    {
+      "id": 3058,
+      "source_id": 4,
+      "original_url": "https://red.anthropic.com/2026/cvd/",
+      "title": "Anthropic's coordinated vulnerability disclosure dashboardClaude-assessed critical vs external security research firm-assessed critical: 23Claude-assessed critical vs external security research firm-a...",
+      "summary": "Anthropic's dashboard demonstrates that Claude Mythos Preview achieved a 90.8% true positive rate finding real security vulnerabilities across 281 open-source projects, with 1,596 vulnerabilities disclosed through a rigorous human-reviewed process involving six external security research firms.",
+      "ideas": [
+        "Claude Mythos Preview found 23,019 candidate vulnerabilities with a 90.8% true positive rate after human review",
+        "1,596 vulnerabilities disclosed across 281 open-source projects with 97 patched and 88 receiving CVE/GHSA records",
+        "Hash commitment ledger uses SHA-3-512 to prove vulnerability existence without revealing details during disclosure window",
+        "External security research firms validate AI findings before maintainer notification to ensure accuracy",
+        "nginx critical vulnerability allows unauthenticated remote file write via WebDAV module",
+        "wolfSSL has multiple crypto failures including ARIA-GCM nonce reuse and ChaCha20-Poly1305 tag verification bypass",
+        "Direct disclosure bypasses independent checks when maintainers specifically request un-triaged findings",
+        "Security advisory publication is at maintainer discretion, not guaranteed after patching",
+        "Critical vulnerabilities include cross-namespace workflow manipulation in Temporal and SQL injection in Ghost CMS"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a substantive transparency dashboard showing real metrics from Anthropic's AI-assisted vulnerability research program. Key value instances include: the 90.8% true positive rate demonstrating AI effectiveness in finding real bugs, the pipeline statistics (23,019 findings → 1,596 disclosed), the 281 open-source projects covered, and the hash commitment disclosure ledger explaining cryptographic proof-of-existence. The page explains both triage and direct disclosure workflows clearly, includes actual CVE/GHSA identifiers with technical vulnerability details (nginx remote file write, wolfSSL crypto failures, etc.), and is transparent about limitations (many confirmed bugs unreported due to capacity). No padding, no marketing fluff—pure operational data with technical depth. High relevance to AI and cybersecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-05T03:45:11.478173"
+    },
+    {
+      "id": 3057,
+      "source_id": 4,
+      "original_url": "https://github.com/zvxhash/void-sniff",
+      "title": "https://github.com/zvxhash/void-sniff",
+      "summary": "VoidSniff shows how to implement a lightweight, self‑contained Windows syscall monitor using a custom inline hook engine.",
+      "ideas": [
+        "Implements a 14‑byte absolute JMP hook engine without external libraries",
+        "Provides safe re‑entrancy using per‑hook mutex and thread‑local recursion guard",
+        "Monitors NtCreateFile, NtOpenProcess, NtMapViewOfSection with decoded flags",
+        "Filters noisy read‑only opens from system directories by default",
+        "Builds and loads as a single DLL using CMake and Visual Studio 2022",
+        "Dynamically resolves Nt* functions, requiring no ntdll.lib at link time",
+        "Shows real‑time colored console output and optional log file",
+        "Allows hot unload via F10, cleaning up hooks safely",
+        "Highlights injection‑prep flags and hollowing candidates for malware analysis"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The README delivers multiple concrete, actionable insights—custom hook engine design, safe re‑entrancy, syscall selection, noise filtering, build steps, dynamic resolution, and limitations—providing high value for security and low‑level developers. No clickbait or padding is present, and the content aligns well with cybersecurity and tech themes, resulting in a strong value‑density score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-05T03:44:42.937789"
+    },
+    {
+      "id": 3056,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/new-ironworm-malware-hits-36-packages-in-npm-supply-chain-attack/",
+      "title": "https://www.bleepingcomputer.com/news/security/new-ironworm-malware-hits-36-packages-in-npm-supply-chain-attack/",
+      "summary": "IronWorm is a Rust-based npm supply-chain malware using eBPF rootkits and Tor that propagates through npm Trusted Publishing credentials, targeting developer CI environments and 86 environment variables including AI service and cloud credentials.",
+      "ideas": [
+        "IronWorm targets 86 environment variables and 20 credential file types including AWS, OpenAI, Anthropic, and npm",
+        "The malware uses npm Trusted Publishing stolen credentials to self-propagate by publishing trojanized packages",
+        "IronWorm hides behind an eBPF kernel rootkit and communicates over Tor network",
+        "Attackers use fake commit timestamps up to 13 years old to evade investigation",
+        "GitHub Actions can be exploited to exfiltrate secrets as build artifacts without external C2",
+        "IronWorm shows code similarities to Shai Hulud, possibly evolved from TeamPCP infrastructure",
+        "Related JavaScript malware 'binding.gyp' performs registry poisoning during same timeframe",
+        "Defenders should upgrade packages, rotate credentials, and enable 2FA on all npm accounts",
+        "The threat actor hardcoded their own crypto wallet recovery phrase to prevent test-stage theft",
+        "Attack was detected early and stopped before spreading to more popular npm packages"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive security news reporting with significant technical depth. The article details IronWorm malware's specific capabilities (eBPF rootkit, Tor C2, targeting 86 env vars and 20 credential file types), explains its novel propagation method via npm Trusted Publishing, and provides the unusual technical detail of the hardcoded cryptocurrency recovery phrase. It connects this attack to Shai Hulud and TeamPCP, includes actionable mitigation advice, and notes a related JavaScript-based attack by binding.gyp. The content is tightly written with no padding—pure threat intelligence value for security professionals. Thematic relevance to cybersecurity is strong as it covers a live supply-chain attack with technical IOCs and defense recommendations.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-05T03:40:27.212901"
+    },
+    {
+      "id": 3055,
+      "source_id": 15,
+      "original_url": "https://pluto.security/blog/inside-claude-managed-agents",
+      "title": "Inside Claude Managed Agents",
+      "summary": "Claude Managed Agents employ layered sandboxing and egress controls that effectively block proxy bypass.",
+      "ideas": [
+        "Claude Managed Agents run inside gVisor sandbox",
+        "Egress traffic is forced through a JWT-authenticated TLS-inspecting proxy",
+        "Containers lack direct DNS resolution, relying on the proxy",
+        "Network firewall blocks any direct outbound connections",
+        "Three-layer controls stop proxy bypass even if env vars are cleared",
+        "Reverse‑engineering reveals the layered security architecture of Anthropic’s service"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The brief report uncovers several concrete security mechanisms in Claude Managed Agents, offering novel technical insight for defenders. It delivers six distinct value instances in under 500 words, showing high density and strong relevance to AI security. No clickbait, padding, or shallow treatment is evident, so no penalties apply.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-06-05T03:38:34.212723"
+    },
+    {
+      "id": 3054,
+      "source_id": 15,
+      "original_url": "https://www.kaspersky.com/blog/llmjacking-2026-private-ai-server-security/55768",
+      "title": "LLMjacking: what these attacks are, and how to protect AI servers",
+      "summary": "LLMjacking attacks involve fingerprinting AI models and scanning for AI agents, highlighting the need for AI server protection",
+      "ideas": [
+        "LLMjacking attacks target AI servers",
+        "Attackers use LLM-Scanner for model fingerprinting",
+        "AI servers are vulnerable to scanning via /.cursor/rules",
+        "MCP servers can be inventoried via /.well-known/mcp.json",
+        "Attackers hunt for .env files"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides valuable insights into LLMjacking attacks, including how attackers use tools like LLM-Scanner to fingerprint models and scan for AI agents. It also mentions the importance of protecting AI servers, making it thematically relevant to AI and cybersecurity. However, the content is somewhat brief and lacks detailed information on protection methods, which prevents it from scoring higher.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-06-05T03:38:27.729054"
+    },
+    {
+      "id": 3053,
+      "source_id": 15,
+      "original_url": "https://www.s0ld13r.kz/posts/claude-code-backdoor",
+      "title": "Claude Code Hooks as Initial Access & Persistence",
+      "summary": "Claude Code's Hooks feature can be weaponized for initial access and persistence by embedding malicious commands in settings files.",
+      "ideas": [
+        "Exploiting Claude Code Hooks for initial access",
+        "Modifying global config for persistence across sessions",
+        "Using IDEs for command and control"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a novel insight into how Claude Code's Hooks feature can be exploited for initial access and persistence, offering a specific example of a potential attack vector. It references a similar previous exploit by Lazarus Group, adding context and credibility. However, the content is relatively brief and lacks extensive technical detail or mitigation strategies, limiting its depth.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-06-05T03:36:40.171402"
+    },
+    {
+      "id": 3052,
+      "source_id": 15,
+      "original_url": "https://www.straiker.ai/blog/nomshub-cursor-remote-tunneling-sandbox-breakout",
+      "title": "NomShub: Weaponizing Cursor's Remote Tunnel Through Indirect Prompt Injection and Sandbox Breakout",
+      "summary": "NomShub vulnerability chain allows malicious repositories to hijack developer machines through indirect prompt injection and sandbox breakout, providing attackers with persistent shell access.",
+      "ideas": [
+        "NomShub vulnerability chain",
+        "Indirect prompt injection",
+        "Sandbox escape via shell builtins",
+        "Persistent shell access through remote tunnel"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The content delivers high-value insights into a specific vulnerability chain, NomShub, affecting Cursor, including indirect prompt injection and sandbox escape techniques. It efficiently conveys complex information, making it a valuable resource for security professionals. The thematic relevance is strong, aligning with cybersecurity and tech themes.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-06-05T03:36:05.878481"
+    },
+    {
+      "id": 3051,
+      "source_id": 15,
+      "original_url": "https://blog.trailofbits.com/2026/06/03/the-sorry-state-of-skill-distribution",
+      "title": "The sorry state of skill distribution",
+      "summary": "Adversaries can bypass skill detectors and scanners using techniques like code hiding and prompt injection, highlighting significant vulnerabilities in current security measures.",
+      "ideas": [
+        "Bypassing skill detectors with newline prepending",
+        "Hiding payloads in .docx archives",
+        "Using poisoned .pyc bytecode files for malicious purposes",
+        "Exploiting prompt injection for malicious registry configurations"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers high-value insights into vulnerabilities in skill detectors and scanners, showcasing novel techniques used by adversaries to bypass security measures. The use of specific examples, such as prepending newlines and embedding payloads in archives, adds to the content's value density. However, the content is somewhat limited in scope and does not provide a comprehensive analysis of the broader implications of these vulnerabilities.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-06-05T03:34:30.868739"
+    },
+    {
+      "id": 3050,
+      "source_id": 15,
+      "original_url": "https://medium.com/@adan.alvarez/from-leaked-aws-key-to-data-exfiltration-in-60-seconds-are-we-ready-28213bc73678",
+      "title": "From Leaked AWS Key to Data Exfiltration in 60 Seconds: Are We Ready?",
+      "summary": "An AI agent can move from a leaked AWS IAM key to data exfiltration in approximately 60 seconds without AWS-specific guidance.",
+      "ideas": [
+        "AI can exploit leaked AWS IAM keys",
+        "Data exfiltration possible in under 60 seconds",
+        "CI/CD users with read access pose a risk",
+        "Terraform state files can contain vulnerable credentials",
+        "AI agents can follow a kill chain for attacks"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers a significant and timely insight into the vulnerability of AWS keys and the potential for AI-powered data exfiltration. It cites a specific test by Adan Alvarez, providing concrete evidence of the risk. However, the content is somewhat brief and lacks extensive analysis or mitigation strategies, limiting its depth. The thematic relevance is high, aligning with cloud security and AI themes.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-06-05T03:32:56.311147"
+    },
     {
       "id": 3049,
       "source_id": 27,
