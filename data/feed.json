@@ -1,7 +1,174 @@
 {
-  "updated_at": "2026-06-05T17:00:00.443428",
-  "total_items": 723,
+  "updated_at": "2026-06-05T19:00:00.450406",
+  "total_items": 729,
   "items": [
+    {
+      "id": 3082,
+      "source_id": 4,
+      "original_url": "https://swarm.ptsecurity.com/the-click-that-shouldnt-have-worked-rce-via-clickjacking-in-internet-explorer/",
+      "title": "The Click that shouldn’t have worked: RCE via clickjacking in Internet Explorer",
+      "summary": "IE’s WebBrowser control can be abused via localhost to bypass MOTW and achieve remote code execution with minimal user interaction.",
+      "ideas": [
+        "WebBrowser control remains vulnerable despite IE end-of-life.",
+        "ActiveX objects can be instantiated via CLSID or ProgID in IE.",
+        "Security zones give localhost elevated privileges over internet zones.",
+        "Using file:// URLs, attackers can open local files from a web page.",
+        "Edge can be launched from IE to auto-download files without MOTW.",
+        "Combining IE and Edge enables one‑click RCE via WScript.Shell.",
+        "NTLM tokens can be leaked by opening .css files from localhost.",
+        "Bug VULN‑138925 allows auto‑download and execution of local HTML files.",
+        "Bug VULN‑139365 reveals NTLM token leakage from any site."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several novel, actionable insights about legacy IE/WebBrowser vulnerabilities, including privileged localhost behavior, an RCE chain using Edge auto‑download, and NTLM token leakage, supported by code examples and disclosed bug IDs. It stays focused, avoids clickbait, and aligns strongly with cybersecurity and technical themes, yielding high value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T03:41:29.097116"
+    },
+    {
+      "id": 3081,
+      "source_id": 4,
+      "original_url": "https://github.com/Division-36/Z-Jail",
+      "title": "Run a static binary with all protections",
+      "summary": "Z-Jail implements a 7-layer defense-in-depth sandbox using namespaces, pivot_root, capability dropping, no_new_privs, seccomp-BPF whitelist, and BLAKE2b audit hashing to safely execute untrusted native code with ~8ms latency in a ~130 KiB zero-dependency binary.",
+      "ideas": [
+        "Seven independent security layers ordered so later layers cannot be undone by earlier ones",
+        "15-syscall whitelist via seccomp-BPF: read, write, openat, close, lseek, brk, mmap, munmap, execve, exit_group, rt_sigaction, rt_sigprocmask, getrandom, clock_gettime, fstat",
+        "pivot_root is strictly stronger than chroot—cannot escape even with CLONE_NEWNS from inside sandbox",
+        "mmap argument restriction: MAP_SHARED blocked (flags & 4 == 0), only MAP_PRIVATE|MAP_ANONYMOUS (0x22) allowed",
+        "Truthimatics verdict engine uses weighted observations where any single observation >50% decides outcome",
+        "All capabilities dropped via capset then securebits locked irreversibly via prctl with SECBIT_KEEP_CAPS_LOCKED",
+        "Namespace isolation via clone(): mount, pid, net, ipc, and uts namespaces",
+        "BLAKE2b-256 content fingerprint computed by parent after child execution for tamper detection",
+        "No external dependencies—just standard C toolchain, ~130 KiB PIE binary",
+        "Mean sandbox latency ~8ms: clone+namespaces 3ms, pivot_root 2ms, seccomp+caps 1ms, execve 1ms",
+        "17 test scenarios cover: mmap attacks, ptrace, socket, chroot escape, mount replay, fork bombs, signal injection",
+        "Exit codes 101-105 indicate specific setup failures: rlimit, seccomp install, execve, pivot_root, capability drop",
+        "Binary built with -fstack-protector-strong, -D_FORTIFY_SOURCE=2, full RELRO, -z now",
+        "Performance: ~4 MiB peak RSS, ~900 lines of core code, 17 test scenarios in ~5 seconds",
+        "Threat model explicitly scopes: kernel zero-days, hardware side channels, and cgroup starvation out of scope",
+        "Requires Linux kernel >= 5.4, GCC >= 11, and CAP_SYS_ADMIN for namespace creation",
+        "Audit JSON schema (z-jail.audit/v1) records verdict, duration, content_fingerprint, and sandbox config"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical documentation for a security sandboxing tool. The content delivers substantial value through its detailed 7-layer security architecture explanation, complete syscall whitelist table (15 syscalls with numbers and restrictions), comprehensive comparison with 5 other solutions, 17 test scenarios with specific attack vectors tested, and thorough threat model. The content density is high with no padding—every section provides actionable technical detail. The benchmark data (8ms latency, ~130 KiB binary size, 900 LOC) gives concrete metrics. Thematic relevance is strong with direct alignment to cybersecurity and systems security. No penalties apply—this is not clickbait, not promotional, and not fluff.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T03:38:51.704257"
+    },
+    {
+      "id": 3080,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/cheatsheets/ai",
+      "title": "https://0xdf.gitlab.io/cheatsheets/ai",
+      "summary": "The AI ecosystem layers are: labs train models, models are downloadable or private weights, clients (web UIs, IDEs, terminals) connect users to models, and harnesses are specialized workflows built on top—this framework clarifies distinctions that even tech media conflates.",
+      "ideas": [
+        "LLMs predict plausible text continuations by learning statistical language patterns from training data",
+        "Token-based pricing means input and output tokens have separate cost rates",
+        "Models miscount 'strawberry' letters because they see tokens, not individual characters",
+        "Context windows truncate conversations, causing AI to forget earlier details",
+        "Reasoning/thinking mode uses extra tokens to work through problems before answering",
+        "MCP is Anthropic's open standard enabling any client to use any tool server",
+        "Frontier labs (Anthropic, OpenAI, Google) keep weights private; open weight labs publish them",
+        "Open weight is not open source—training data and code remain private even when weights are public",
+        "Harnesses are specialized clients with specific workflows rather than blank-slate chat interfaces",
+        "Tool calling follows a loop: model outputs call → client executes → result feeds back to model",
+        "Perplexity uses its own Sonar model plus calls other models via API for optimal results"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This cheatsheet delivers exceptional value by clarifying the AI ecosystem's layered structure—distinguishing between models, labs, clients, and harnesses in a way even tech media gets wrong. It provides 8+ distinct insights including token mechanics (explaining the 'strawberry' counting failure), context window limitations, reasoning model modes, frontier vs open-weight vs open-source distinctions, and MCP as an open standard. The content is dense, well-organized with a quick-reference table, and uses current examples (Claude 4.8, GPT-5.5, DeepSeek V3/R1). Technical users gain a clear mental model for navigating the AI landscape.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T03:37:50.340361"
+    },
+    {
+      "id": 3079,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/193203/security/cisco-sd-wan-has-a-new-root-level-problem-and-theres-no-fix-yet.html",
+      "title": "Cisco SD-WAN Has a New Root-Level Problem, and There's No Fix Yet - Security Affairs",
+      "summary": "Cisco SD‑WAN Manager has a root‑level command‑injection flaw with no patch, requiring immediate detection and interim mitigation steps.",
+      "ideas": [
+        "CVE-2026-20245 allows authenticated attackers to gain root via file upload command injection.",
+        "Exploitation requires netadmin credentials, which can be obtained via other SD‑WAN vulnerabilities.",
+        "No patch is available; Cisco advises running `request admin-tech` before upgrading.",
+        "Detect compromise by checking `/var/log/scripts.log` for `vconfd_script_upload_tenant_list.sh` entries.",
+        "If compromised, applying the update alone won’t clean the system; contact Cisco TAC.",
+        "The flaw is listed in CISA’s Known Exploited Vulnerabilities catalog alongside other SD‑WAN bugs."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: a newly disclosed high‑severity CVE, practical mitigation steps, specific detection guidance, and context linking to related vulnerabilities and CISA’s KEV catalog. It stays focused on cybersecurity without padding or clickbait, yielding good density for its medium length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T03:36:06.832302"
+    },
+    {
+      "id": 3078,
+      "source_id": 4,
+      "original_url": "https://blog.quarkslab.com/from-prompt-to-pwned-chaining-llm-and-web-bugs-to-admin.html",
+      "title": "From prompt to pwned: chaining LLM and web bugs to Admin - Quarkslab's blog",
+      "summary": "A real red team engagement demonstrates how chaining insecure output handling in an LLM with JWT misconfigurations and an IDOR vulnerability enables complete admin account takeover through XSS-based session hijacking.",
+      "ideas": [
+        "LLM output should be treated as untrusted and sanitized before rendering",
+        "Markdown rendering of LLM responses enables data exfiltration via image tags",
+        "Missing Content Security Policy allows JavaScript injection from LLM output",
+        "JWT cookies without HttpOnly flag can be stolen via XSS",
+        "Predictable conversation URLs with no ownership checks create IDOR vulnerabilities",
+        "Vulnerability chaining amplifies impact beyond what individual bugs suggest",
+        "Unbounded consumption vulnerabilities enable extensive LLM behavior analysis"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a high-value technical security article that demonstrates a real attack chain combining LLM vulnerabilities (insecure output handling, unbounded consumption) with web vulnerabilities (missing CSP/HttpOnly, IDOR) to achieve admin account takeover. The content provides novel attack methodology, concrete exploitation techniques (XSS via markdown rendering, JWT exfiltration, IDOR delivery vector), practical tool references (Spikee, Garak, PyRIT), and actionable remediation advice. The density is excellent - approximately 1200 words containing 7-8 distinct technical insights with supporting figures. The 'get in touch' CTA at the end is minimal and doesn't diminish the substantial technical value. This is exactly the kind of deep security research that helps professionals understand real-world exploitation chains.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T03:35:21.021048"
+    },
+    {
+      "id": 3077,
+      "source_id": 4,
+      "original_url": "https://blog.includesecurity.com/2026/06/the-smart-tv-in-your-livingroom-is-a-node-in-the-aiscraping-economy/",
+      "title": "The Smart TV in Your LivingRoom Is a Node in the AIScraping Economy - Include Security Research Blog",
+      "summary": "Smart TVs can be turned into residential proxy nodes by Bright Data's SDK, potentially compromising user privacy and security as part of a larger AI data scraping economy.",
+      "ideas": [
+        "Bright Data's SDK turns devices into residential proxies",
+        "Smart TVs are ideal for this due to constant power and high-speed internet",
+        "The SDK operates without strong authentication or encryption",
+        "User consent is often obscured in app permissions",
+        "Residential proxies are used for web scraping in AI training",
+        "Security risks include data harvesting and potential for malware distribution",
+        "Bright Data's network includes hundreds of millions of devices",
+        "Partner apps and services may not clearly disclose their relationship with Bright Data"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This article delivers high-value insights into the operation of Bright Data's residential proxy network, particularly how it utilizes smart TVs as nodes. The content is dense with technical details, including the SDK's functionality, its integration into various apps, and the security implications. The author provides a thorough analysis, making this a valuable resource for those interested in cybersecurity, AI, and data privacy. The only deduction is for the complexity and length of the content, which may deter some readers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T03:33:25.567787"
+    },
     {
       "id": 3076,
       "source_id": 27,
