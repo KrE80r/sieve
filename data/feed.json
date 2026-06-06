@@ -1,7 +1,165 @@
 {
-  "updated_at": "2026-06-06T06:00:04.960459",
-  "total_items": 706,
+  "updated_at": "2026-06-06T07:00:00.440098",
+  "total_items": 712,
   "items": [
+    {
+      "id": 3089,
+      "source_id": 7,
+      "original_url": "https://howborisusesclaudecode.com/",
+      "title": "How Boris Uses Claude Code",
+      "summary": "Parallel Claude sessions, disciplined planning, and verification loops dramatically boost coding efficiency and quality.",
+      "ideas": [
+        "Run multiple Claude instances in parallel using separate git checkouts to avoid conflicts.",
+        "Use background (&) and --teleport flags to switch between local and web Claude sessions.",
+        "Prefer Opus 4.5 model for better tool use despite larger size, reducing steering effort.",
+        "Maintain a shared CLAUDE.md file documenting mistakes to improve future Claude behavior.",
+        "Tag @.claude in PRs to auto‑update CLAUDE.md via GitHub Action for compounding knowledge.",
+        "Start sessions in Plan mode, refine plan, then switch to auto‑accept for one‑shot implementation.",
+        "Define slash commands in .claude/commands/ for frequent workflows, embedding inline Bash.",
+        "Create subagents (e.g., code‑simplifier, verify‑app) to automate common PR tasks.",
+        "Use PostToolUse hooks to auto‑format generated code and prevent CI failures.",
+        "Pre‑allow safe permissions via /permissions to avoid repetitive prompts.",
+        "Integrate Claude with Slack, BigQuery, and Sentry through MCP for autonomous tool use.",
+        "Handle long‑running tasks with background agents, stop hooks, or permission‑mode flags.",
+        "Implement verification loops; give Claude feedback to 2‑3× improve result quality.",
+        "Use git worktrees for parallel Claude sessions, enabling quick context switching.",
+        "Record every correction in CLAUDE.md and iterate to reduce Claude’s mistake rate."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "The guide delivers numerous concrete, actionable tips for using Claude Code, offering novel workflow patterns, command examples, and verification strategies that directly improve productivity for developers. It aligns strongly with AI, technology, and productivity themes and contains no clickbait or promotional fluff, resulting in high value density.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-06T15:40:13.276258"
+    },
+    {
+      "id": 3088,
+      "source_id": 4,
+      "original_url": "https://hackread.com/miasma-malware-red-hat-packages-github-account/",
+      "title": "Miasma Malware Hits 32 Red Hat Packages via Compromised GitHub Account",
+      "summary": "Compromised GitHub credentials let attackers inject malicious npm packages that steal cloud keys and self‑propagate via OIDC tokens.",
+      "ideas": [
+        "Attackers compromised a Red Hat employee's GitHub account to push malicious commits to npm packages.",
+        "Malicious packages included hidden preinstall scripts that steal cloud service keys and SSH credentials.",
+        "The malware uses short-lived OIDC tokens to authenticate with npm's publishing endpoint.",
+        "Compromised packages were signed with valid SLSA provenance, evading security scanners.",
+        "The worm automatically republishes other packages the infected identity can modify, self‑propagating.",
+        "Recommended mitigations: check lockfiles, disable install scripts via ignore‑scripts, rotate exposed credentials."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete value instances: it explains how a compromised GitHub account was used to inject malicious preinstall scripts, details the credential‑stealing behavior and OIDC token abuse, describes how valid SLSA provenance fooled scanners, and offers actionable mitigation steps. It aligns strongly with the CyberSecurity theme and offers practical insight without clickbait or filler, resulting in good value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T15:36:06.929030"
+    },
+    {
+      "id": 3087,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/chinese-apt-deploys-new-malware-to-keep-access-to-hacked-networks/",
+      "title": "Chinese APT deploys new malware to keep access to hacked networks",
+      "summary": "Chinese APT group UNC5221 has been using new malware, including Plenet and AgentPSD, to maintain access to hacked networks, highlighting the need for advanced threat detection and breach simulation tests.",
+      "ideas": [
+        "Chinese APT group UNC5221 uses Brickstorm backdoor and new malware",
+        "Plenet is a cross-platform backdoor with interactive shell access",
+        "AgentPSD is a Python-based reverse shell utility",
+        "UNC5221 targets Microsoft 365 environments and MSPs",
+        "Breach and attack simulation tests can detect threats",
+        "Living-off-the-land techniques are used by sophisticated threat actors"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides high-value insights into the tactics and techniques used by the Chinese APT group UNC5221, including the deployment of new malware such as Plenet and AgentPSD. The content delivers a high density of valuable information, including specific details about the group's activities, the malware used, and the targeted industries. The article also highlights the importance of breach and attack simulation tests to detect threats. However, the score is not perfect due to some minor penalties for promotional content at the end of the article.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T15:35:08.608328"
+    },
+    {
+      "id": 3086,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/ironworm-and-new-miasma-worm-variant.html",
+      "title": "https://thehackernews.com/2026/06/ironworm-and-new-miasma-worm-variant.html",
+      "summary": "Two sophisticated npm supply chain attacks are active: IronWorm is a Rust-based stealer with eBPF rootkit capabilities that self-propagates via GitHub, while a new Miasma worm variant uses a novel 'Phantom Gyp' technique with binding.gyp to bypass security tooling.",
+      "ideas": [
+        "IronWorm is a Rust-based info-stealer that uses eBPF kernel rootkits to hide from detection",
+        "IronWorm targets 86 environment variables including credentials for AI APIs, AWS, Docker, Kubernetes, and npm",
+        "IronWorm self-propagates by publishing trojanized packages to npm and making malicious GitHub commits under 'claude' author name",
+        "IronWorm abuses npm's Trusted Publishing flow to obtain tokens for pushing poisoned versions in CI environments",
+        "Miasma worm variant has compromised 57 npm packages across 286+ malicious versions",
+        "The 'Phantom Gyp' technique uses a 157-byte binding.gyp file to trigger code execution during npm install, bypassing install-script security checks",
+        "Attackers use stolen credentials to swap GitHub Actions workflows for ones that harvest secrets as build artifacts",
+        "IronWorm's cryptocurrency wallet-stealing skips the threat actor's own wallet address 0x7e28D9889f414B06c19a22A9Bd316f0AC279a4d6",
+        "Attribution traced to npm account asteroiddao, GitHub org asteroid-dao, and user ocrybit",
+        "eBPF process-hiding in IronWorm fails when kernel lockdown is enabled"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a substantive cybersecurity news article reporting on two active npm supply chain attacks with significant technical depth. It provides detailed analysis of IronWorm (Rust-based stealer with eBPF rootkit, Tor C2, GitHub Actions abuse) and a Miasma worm variant using a novel 'Phantom Gyp' technique. The article includes specific IoCs (86 environment variables targeted, package names, attacker infrastructure), attribution to security researchers (JFrog, Endor Labs, StepSecurity), and technical explanations of attack mechanics. The density of actionable threat intelligence is high, making this valuable for security professionals. Slight deduction for being a news summary rather than original deep-dive research, though the information quality is strong.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T15:35:02.271968"
+    },
+    {
+      "id": 3085,
+      "source_id": 4,
+      "original_url": "https://github.com/KatrielMoses/voidaccess",
+      "title": "https://github.com/KatrielMoses/voidaccess",
+      "summary": "VoidAccess is a self-hosted OSINT platform that automates dark web threat intelligence investigations through a 13-step pipeline, providing entity extraction, relationship mapping, and structured export capabilities.",
+      "ideas": [
+        "Automated OSINT platform for dark web threat intelligence",
+        "13-step autonomous pipeline for investigation",
+        "Entity extraction and relationship mapping",
+        "Support for multiple LLM providers",
+        "Integration with various enrichment sources",
+        "Self-hosted solution for security and cost-effectiveness"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The content provides exceptional value by offering a comprehensive, self-hosted OSINT platform for dark web threat intelligence. It delivers multiple novel insights, including a 13-step autonomous pipeline for threat investigation, entity extraction, and relationship mapping. The content is highly relevant to the themes of TECHNOLOGY & INNOVATION, particularly cybersecurity and software development. The platform's ability to automate the entire investigation workflow, support various LLM providers, and integrate with multiple enrichment sources makes it a valuable resource for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-06T15:34:35.625020"
+    },
+    {
+      "id": 3084,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Jun/6/micropython-in-a-sandbox/",
+      "title": "Running Python code in a sandbox with MicroPython and WASM",
+      "summary": "The author has developed a Python library called micropython-wasm that allows running Python code in a WebAssembly sandbox, providing a secure way to execute untrusted code.",
+      "ideas": [
+        "Using MicroPython in WebAssembly for sandboxing",
+        "Creating a Python library for sandboxing",
+        "Utilizing WebAssembly for secure code execution",
+        "Implementing memory and CPU limits in sandboxing",
+        "Exposing host functions to sandboxed code",
+        "Building a sandbox with persistent interpreter state"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "This content delivers exceptional value by providing a novel approach to running Python code in a sandbox using MicroPython and WebAssembly. The author shares their experimentation process, code examples, and a working prototype, making it a rich source of information for developers. The content is well-structured, easy to follow, and aligns strongly with the themes of TECHNOLOGY & INNOVATION and TECH.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-06-06T15:32:34.166008"
+    },
     {
       "id": 3083,
       "source_id": 29,
