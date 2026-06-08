@@ -1,7 +1,283 @@
 {
-  "updated_at": "2026-06-08T17:00:00.467999",
-  "total_items": 703,
+  "updated_at": "2026-06-08T19:00:00.384458",
+  "total_items": 713,
   "items": [
+    {
+      "id": 3146,
+      "source_id": 7,
+      "original_url": "https://mikefisher.substack.com/p/from-metrics-to-meaning",
+      "title": "From Metrics to Meaning - by Mike Fisher",
+      "summary": "Metrics become actionable when framed as a concise narrative using the three‑sentence Story Frame.",
+      "ideas": [
+        "Numbers alone fail to inspire; narratives drive action.",
+        "Stories trigger oxytocin, increasing trust and willingness to act.",
+        "Bruner's two cognitive modes: paradigmatic (data) vs narrative (meaning).",
+        "Retention curve shapes map to specific story arcs: onboarding, value, renewal.",
+        "Apply StoryBrand: hero = customer, villain = friction, guide = product/team.",
+        "Use the Story Frame: Before, Reveal, So What.",
+        "Leaders must craft the 'So What' to assign responsibility and next steps.",
+        "Data without story can miss critical patterns, as in Challenger disaster.",
+        "Honest negative data stories build trust better than only positive narratives.",
+        "Practice by picking one metric and writing the three‑sentence story before a review."
+      ],
+      "labels": [
+        "Productivity",
+        "Philosophy"
+      ],
+      "rating": 80,
+      "rating_reason": "The article offers several concrete value instances—neuroscience evidence, a practical Story Frame, mapping metric shapes to narrative arcs, and historical examples—providing actionable insight for leaders. It stays focused, avoids clickbait, and aligns with productivity and philosophical aspects of meaning, yielding good density for its length.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-09T03:46:45.657671"
+    },
+    {
+      "id": 3145,
+      "source_id": 7,
+      "original_url": "https://addyo.substack.com/p/loop-engineering",
+      "title": "Loop Engineering - by Addy Osmani - Elevate",
+      "summary": "Loop engineering is a paradigm shift where you design autonomous systems that prompt coding agents (using automations, worktrees, skills, connectors, and sub-agents) rather than manually prompting them yourself, with external memory as the persistent spine.",
+      "ideas": [
+        "Loop engineering replaces manual prompting with designed systems that autonomously prompt agents",
+        "A loop needs five building blocks: automations, worktrees, skills, plugins/connectors, and sub-agents",
+        "The sixth element is external memory (markdown or issue tracker) because models forget between runs",
+        "Git worktrees provide isolation so parallel agents don't collide on the same files",
+        "Skills capture project intent and conventions outside the model context to prevent repeated guessing",
+        "MCP-based connectors let agents interact with real tools like issue trackers, databases, and Slack",
+        "Sub-agents should split the maker from the checker because models are too lenient grading their own work",
+        "Claude Code's /goal uses a separate model to verify completion rather than the one that did the work",
+        "A morning triage loop can run automated discovery, draft fixes in isolation, and open PRs autonomously",
+        "Token costs can vary wildly in loops and must be monitored carefully",
+        "Orchestration tax means your review bandwidth remains the ceiling on how many agents you can run"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a substantive, well-structured article that introduces a genuinely novel paradigm (loop engineering) and provides a complete framework with five building blocks plus memory. The author, Addy Osmani, has direct hands-on experience with both Claude Code and Codex, and the content reflects this through specific implementation details, practical examples, and grounded caveats about token costs and verification limitations. Value density is high: the five components are clearly explained, the maker/checker pattern is justified with reasoning, the memory architecture insight ('the model forgets, the repo doesn't') is memorable, and a complete working loop example ties it together. No padding, no clickbait, no hidden promotion—just dense, actionable information about a shift in how developers will work with AI agents. The thematic relevance to AI, Tech, and Productivity is strong.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-09T03:46:37.001206"
+    },
+    {
+      "id": 3144,
+      "source_id": 4,
+      "original_url": "https://blog.exodusintel.com/2026/06/08/off-by-exploiting-a-use-after-free-in-the-linux-kernel/",
+      "title": "Off By !: Exploiting a Use-after-Free in the Linux Kernel - Exodus Intelligence",
+      "summary": "A use-after-free vulnerability in nftables' catchall element handling causes the chain reference counter to remain zero after an abort, enabling local privilege escalation from unprivileged user to root.",
+      "ideas": [
+        "nftables uses generation masks to enable atomic transactional rule updates",
+        "The nft_map_catchall_activate() function incorrectly skips deactivated catchall elements",
+        "If a subsequent transaction fails, the abort process fails to reactivate the catchall element",
+        "The chain reference counter remains zero while valid references still exist",
+        "A chain with zero reference counter can be deleted, creating a use-after-free",
+        "The vulnerability affects Debian Bookworm, Trixie, Ubuntu 22.04 and 24.04 LTS",
+        "Pipapo sets use NFT_SET_MAP flag and support catchall elements for wildcard matching",
+        "Catchall elements are stored in a separate generic list, not the backend data structure",
+        "The nft_delset() function calls nft_map_deactivate() before deactivating the set itself",
+        "Local privilege escalation from unprivileged user to root is achievable via this bug"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical security research content. It provides deep kernel internals knowledge about a real use-after-free vulnerability (CVE-2026-23111) in nftables, including original vulnerability analysis, code-level examination of the bug in the abort process, and practical exploitation for privilege escalation. The content delivers multiple novel insights: the specific flaw in nft_map_catchall_activate() skipping deactivated elements, the generation mask mechanism enabling the race condition, and the transaction batching vulnerability. The preliminary section efficiently teaches nftables architecture, and the code analysis section provides expert-level detail with actual kernel source references. No padding or fluff—pure technical content for security researchers and kernel developers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-09T03:46:14.583500"
+    },
+    {
+      "id": 3143,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/the-hardest-fork.html",
+      "title": "The Hardest Fork",
+      "summary": "Open source software consumption is fundamentally broken and vulnerable to a new category of AI-driven threats that current coordinated disclosure systems cannot handle at scale, requiring both a unified disclosure channel (Plan A) and backup mitigations (Plan B).",
+      "ideas": [
+        "Mythos represents a new category of threat like Move 37, not just a better scanner",
+        "Open source consumption model is fundamentally broken with no incremental fix possible",
+        "AI has supercharged supply chain attacks making rushed patches dangerous",
+        "Government regulation can't govern open source globally - focus must be on consumption",
+        "Glasswing achieves only 6% upstream upstreaming - coordinated disclosure doesn't scale",
+        "One trusted coordinated group is needed, not multiple competing vulnerability reporters",
+        "Maintainers are buried in low-quality automated scanner noise",
+        "Critical open source is often maintained by one or two people with no SLAs",
+        "Plan B is essential for vulnerabilities that will never get patched",
+        "US policy focuses on consumption where it can actually have impact"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive expert analysis from someone with deep credibility in open source security (founder of OpenSSF, Sigstore, Chainguard). The content provides multiple novel insights: comparing AI vulnerability discovery to Move 37, explaining why current coordinated disclosure can't scale (Glasswing's 6% upstream rate), the structural limits of government regulation over open source, and the broken consumption model. The density is high with minimal padding - every paragraph advances the thesis. Two penalties: the title 'The Hardest Fork' is somewhat vague without reading, and the piece ends mid-sentence suggesting incomplete delivery. Despite these issues, the strategic framework (Plan A/B) and insider perspective on what's actually needed make this high-value content for anyone in software security.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-09T03:42:20.477503"
+    },
+    {
+      "id": 3142,
+      "source_id": 4,
+      "original_url": "https://www.iru.com/blog/sstar-agent",
+      "title": "Inside SStar Agent, a cross-platform RAT with an unfinished macOS toolkit",
+      "summary": "Security researchers documented SStar Agent, a Go-based cross-platform RAT delivered via poisoned npm package tw-style-utils, featuring Windows-keylogging and macOS-surveillance variants with shared C2 infrastructure at api.otter-stack.com.",
+      "ideas": [
+        "Go-based RAT named SStar Agent with embedded error messages",
+        "C2 domain api.otter-stack.com registered April 22 2026",
+        "Poisoned npm package tw-style-utils v0.7.1 with XOR 0x2a obfuscation",
+        "Fake Web3 job interview repo as lure for npm package attack",
+        "Payload executes at build time bypassing npm install --ignore-scripts",
+        "Shared deployment hash IobO0YELAu4CJ2oG4iC4W38OxsOtTk8a across all samples",
+        "Windows variant implements keylogging clipboard monitoring and screen capture",
+        "macOS variants stub out keylogging clipboard and screen capture",
+        "macOS persistence via LaunchAgent plist with RunAtLoad KeepAlive",
+        "Windows persistence via Startup folder as GoogleUpdateService.exe",
+        "Agent exfiltrates Chrome extensions filesystem tree and system metadata",
+        "C2 serves payloads at /d/{hash}/agent?os=&arch= pattern",
+        "macOS installs to ~/.local/share/wpnuersvc-agent/WpnUserSvc",
+        "Linux variant disguised as packagekit-update.service systemd unit",
+        "ML model scored samples 100/100 on suspicion heuristics for manual review"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is substantive original threat intelligence research that delivers significant value to security professionals. The analysis covers a newly discovered RAT with detailed technical specifics: the poisoned npm package delivery mechanism (tw-style-utils v0.7.1), C2 infrastructure (api.otter-stack.com), cross-platform behavioral differences (Windows fully implements keylogging/clipboard/screen capture while macOS stubs these out), persistence mechanisms for both platforms, and actionable IOCs including deployment hashes and file paths. The content is dense with technical detail, shows original analysis from recovered samples, and provides genuine security intelligence rather than surface-level coverage. The Iru branding is present but the technical content is substantial and not padded. Thematic relevance to cybersecurity is high as this directly serves defenders with specific detection opportunities.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-09T03:40:30.833385"
+    },
+    {
+      "id": 3141,
+      "source_id": 4,
+      "original_url": "https://haltingproblems.com/analysis/hades-cluster-pypi-startup-hook-compromise/",
+      "title": "https://haltingproblems.com/analysis/hades-cluster-pypi-startup-hook-compromise/",
+      "summary": "A critical PyPI supply chain attack exploits Python startup hooks (*-setup.pth files) to automatically execute malware that bootstraps the Bun runtime and steals developer credentials including cloud tokens and GitHub secrets.",
+      "ideas": [
+        "Python *.pth files execute automatically on interpreter startup without explicit import",
+        "Attackers compromised 19 legitimate scientific research and deep-learning packages",
+        "Malware drops hades-setup.pth files that trigger execution on any Python startup",
+        "The attack bootstraps the Bun runtime for credential theft operations",
+        "Stolen credentials are exfiltrated to GitHub repositories themed 'Hades - The End for the Damned'",
+        "Decoy traffic to Anthropic AI servers masks the actual exfiltration channel",
+        "37 malicious wheel files were uploaded across the compromised packages",
+        "Credential targets include PyPI tokens, npm tokens, GitHub tokens, AWS/GCP/Azure, SSH keys, and CI/CD secrets",
+        "Affected packages include bramin, okite, dynamo-release, coolbox, and 15 others with specific malicious versions",
+        "Impact classification matrix distinguishes confirmed compromise from presumed exposed scenarios",
+        "A Python detection script is provided to scan repositories and logs for IOCs",
+        "Telemetry selectors include 'hades-setup.pth', 'tartarean', 'cerberus', 'charon', 'thanatos', 'stygian'",
+        "Campaign is linked to the Miasma/Mini Shai-Hulud malware family"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional security threat intelligence content. It provides novel technical insight into Python startup hook abuse, complete IOCs with specific malicious package versions, a practical detection Python script ready for immediate use, and a structured impact determination matrix. The content is dense with actionable information for security practitioners—every section delivers value. No padding, no fluff, just technical depth covering the attack mechanism, affected packages, credential theft scope, and remediation guidance. Slight deduction from perfect score because it primarily synthesizes Socket's research rather than providing original analysis, but the structured presentation and detection tooling make it highly valuable.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-09T03:38:26.975054"
+    },
+    {
+      "id": 3140,
+      "source_id": 4,
+      "original_url": "https://www.schneier.com/blog/archives/2026/06/critical-zcash-vulnerability-found-and-fixed.html",
+      "title": "Critical Zcash Vulnerability Found and Fixed - Schneier on Security",
+      "summary": "A critical vulnerability in Zcash's Orchard privacy pool has been discovered and fixed, highlighting the potential risks and fragility of blockchain technology.",
+      "ideas": [
+        "Zcash vulnerability found in Orchard privacy pool",
+        "Vulnerability allows for fraudulent transactions",
+        "Fix has been implemented",
+        "Blockchain technology is inherently fragile",
+        "Zero-knowledge proofs can be exploited"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a clear and concise explanation of a critical vulnerability found in Zcash's Orchard privacy pool, along with the fact that it has been fixed. The author, Bruce Schneier, offers insightful commentary on the implications of this vulnerability, including the potential for exploitation and the inherent fragility of blockchain technology. The article is well-structured, easy to follow, and delivers valuable information efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-09T03:36:33.589975"
+    },
+    {
+      "id": 3139,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/frontier-radar-3-how-agentic-ai-is-turning-tokens-into-a-business-metric/",
+      "title": "Frontier Radar #3: How agentic AI is turning tokens into a business metric",
+      "summary": "Token usage is becoming a nuanced business metric, with pricing and value tied to performance class and outcome rather than raw counts.",
+      "ideas": [
+        "Agentic AI workflows consume many tokens, making flat-rate pricing unsustainable",
+        "Providers are shifting to usage‑based token billing, e.g., GitHub AI Credits",
+        "Token price varies by speed, specialization, and economic value, not just compute",
+        "Cheap models can become expensive due to higher token consumption and retries",
+        "Token segmentation creates premium, free, and middle tiers like smartphone markets",
+        "High token costs can be justified when they enable high‑value outcomes like security scans",
+        "AI productivity is hard to measure; costs are visible while benefits remain vague"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete insights about the emerging token economy, pricing shifts, and economic implications of agentic AI, providing actionable context for providers and users. It includes multiple value instances (pricing model changes, token segmentation, cost‑vs‑benefit analysis, real‑world case studies) with minimal fluff, aligning well with AI, tech, and productivity themes. No clickbait or overt promotion is present, supporting a solid above‑average score.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-09T03:36:12.719790"
+    },
+    {
+      "id": 3138,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/critical-unifi-os-bug-lets-hackers-gain-root-without-authentication/",
+      "title": "Critical UniFi OS bug lets hackers gain root without authentication",
+      "summary": "A critical UniFi OS bug allows hackers to gain root access without authentication by chaining three already fixed vulnerabilities, emphasizing the need for immediate patches and vigilance.",
+      "ideas": [
+        "UniFi OS bug allows root access without authentication",
+        "Three vulnerabilities can be chained for remote code execution",
+        "CVE-2026-34908 is an improper access control flaw",
+        "CVE-2026-34909 is a path traversal vulnerability",
+        "CVE-2026-34910 is a command injection flaw",
+        "Free detection script available for defenders",
+        "Immediate patching and vigilance are necessary"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value information about a critical UniFi OS bug that allows hackers to gain root access without authentication. It delivers multiple novel insights, including the specifics of the vulnerabilities (CVE-2026-34908, CVE-2026-34909, and CVE-2026-34910) and how they can be chained for remote code execution. The content is dense with practical knowledge, including a free detection script to help defenders discover vulnerable instances and advice on how to identify previous exploitation. The article is well-researched and aligns strongly with the CyberSecurity theme.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-09T03:34:39.295862"
+    },
+    {
+      "id": 3137,
+      "source_id": 20,
+      "original_url": "https://www.thealgorithmicbridge.com/p/how-to-prepare-for-the-next-5-years",
+      "title": "How to Prepare for the Next 5 Years",
+      "summary": "To prepare for the next 5 years, focus on developing evergreen skills and aggressively experimenting with AI-native tools, using the barbell strategy to balance safety and upside potential.",
+      "ideas": [
+        "Develop evergreen skills like writing, reasoning, and persuasion",
+        "Experiment with AI-native tools to gain hands-on experience",
+        "Apply the barbell strategy to balance safety and upside potential",
+        "Avoid passive familiarity with AI and focus on building capability",
+        "Stay adaptable and update your approach as new information arrives"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a valuable framework for preparing for the next 5 years, focusing on developing evergreen skills and aggressively experimenting with AI-native tools. It applies Nassim Taleb's barbell strategy to navigate uncertainty, offering a clear and actionable approach. However, the content is somewhat promotional and requires a subscription to access the full post, which slightly reduces its value.",
+      "source_type": "rss",
+      "source_name": "The Algorithmic Bridge",
+      "published_at": "2026-06-09T03:33:15.466249"
+    },
     {
       "id": 3136,
       "source_id": 27,
