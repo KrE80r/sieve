@@ -1,7 +1,119 @@
 {
-  "updated_at": "2026-06-10T05:00:00.398014",
-  "total_items": 708,
+  "updated_at": "2026-06-10T07:00:00.386152",
+  "total_items": 712,
   "items": [
+    {
+      "id": 3184,
+      "source_id": 4,
+      "original_url": "https://github.com/0hardik1/kubesplaining",
+      "title": "On a jumphost with cluster credentials: kubesplaining download --output-file snapshot.json # Move snapshot.json to your laptop / audit machine, then: kubesplaining scan --input-file snapshot.json",
+      "summary": "Kubesplaining is a Kubernetes security CLI that maps multi-hop RBAC privilege escalation paths from any non-system subject to cluster takeover sinks (cluster-admin, system:masters, node-escape, kube-system-secrets), providing actionable remediation per finding.",
+      "ideas": [
+        "Kubesplaining builds BFS-based escalation graphs from subjects to 4 cluster takeover sinks",
+        "It detects privilege escalation paths other scanners miss by showing full hop chains",
+        "The tool provides per-finding remediation with kubectl patch and policy YAML",
+        "45 rules across 8 modules: rbac, podsec, network, admission, secrets, serviceaccount, privesc, leastprivilege",
+        "Snapshot diff enables CI delta gates to fail pipelines on new high-severity findings",
+        "Output formats include HTML, JSON, CSV, and SARIF for various integration paths",
+        "The collector and analyzer are decoupled for offline air-gapped analysis",
+        "Read-only cluster access is sufficient; no agents or CRDs required",
+        "Detection covers cluster-admin, system:masters, node-escape, and kube-system-secrets as sinks",
+        "Sample finding shows ServiceAccount reaching cluster-admin in 2 hops via pod creation",
+        "Risk categories tag findings: privilege_escalation, data_exfiltration, lateral_movement, infrastructure_modification, defense_evasion",
+        "Installation options: go install, pre-built binaries, Docker, or from-clone with make scan"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a comprehensive GitHub README for kubesplaining, a Kubernetes security assessment tool. It delivers substantial value through its detailed comparison table showing unique capabilities (multi-hop RBAC privesc graph, per-finding remediation, CI delta gates), complete rule catalog (45 rules across 8 modules), architecture explanation with a 4-stage pipeline diagram, and sample JSON findings with actual escalation paths. The content covers installation methods, offline analysis workflows, and practical use cases for pentesting and CI. The main weaknesses are it's documentation for a tool rather than standalone insight, and some sections like the navigation header add visual bulk without informational value. However, for the target audience of Kubernetes security practitioners, this provides genuine utility with actionable technical details.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-10T15:38:21.934103"
+    },
+    {
+      "id": 3183,
+      "source_id": 4,
+      "original_url": "https://github.com/anysearch-ai/anysearch-mcp-server",
+      "title": "https://github.com/anysearch-ai/anysearch-mcp-server",
+      "summary": "You can quickly integrate AnySearch MCP Server into AI agents using various transports and optional API keys for higher rate limits.",
+      "ideas": [
+        "AnySearch MCP Server supports real-time general web and vertical domain searches via natural language",
+        "Parallel batch search allows up to five independent queries in a single call",
+        "URL content extraction returns full page markdown, truncated at 50,000 characters",
+        "Anonymous access works without API key but with lower rate limits",
+        "Configuration supports Streamable HTTP, stdio, and SSE transports with proxy tools",
+        "Use mcp-remote or supergateway as proxy for agents lacking native transport",
+        "API key priority hierarchy: CLI flag, env var, .env file, then anonymous",
+        "get_sub_domains endpoint provides valid subdomains and parameter schemas before domain searches"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers concrete, actionable setup instructions and detailed API usage for the AnySearch MCP server, providing multiple practical knowledge instances (installation steps, transport options, API key handling, tool parameters). It aligns with AI and technology themes. Minor padding from UI navigation text slightly reduces density, but overall value density is strong for a technical audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-10T15:32:58.491892"
+    },
+    {
+      "id": 3182,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Jun/9/claude-fable-5/",
+      "title": "Initial impressions of Claude Fable 5",
+      "summary": "Claude Fable 5 demonstrates exceptional knowledge depth and coding capability, successfully implementing real library features (PauseChain exceptions, tool call APIs) that the author had planned, though at significant cost ($99+ in one day).",
+      "ideas": [
+        "Claude Fable 5 has 1M token context, 128K max output, costs $10/M input tokens",
+        "Fable 5 matches Mythos 5 capabilities but with stricter safety guardrails",
+        "New Claude API fallback option auto-switches models when requests get rejected",
+        "Fable 5 demonstrates significantly deeper knowledge than Opus 4.8 in benchmarks",
+        "Larger model size correlates with more knowledge baked into weights",
+        "Claude.ai provides full container environments with package installation support",
+        "Fable successfully upgraded micropython-wasm to full Python via WASM builds",
+        "Fable implemented PauseChain exception for pausing agent tool chains",
+        "Tool implementations can now access llm_tool_call object for current invocation",
+        "All tool calls now guaranteed unique tool_call_id via synthesized ULIDs",
+        "Async sibling tool calls run to completion before pause exceptions propagate",
+        "Fable generated a working 13.9MB cpython_wasm wheel file as output",
+        "Real development sessions can cost $99+ per day with Fable on complex tasks"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a substantive, first-hand technical evaluation from a recognized AI developer (Simon Willison). The content provides 7+ distinct value instances including specific model specifications, a knowledge comparison between Opus 4.8 and Fable 5, the new fallback API mechanism, a detailed micropython-wasm upgrade example with working wheel output, and five concrete LLM library features implemented by Fable with PR numbers. The author honestly notes the model's limitations (slow, expensive) while demonstrating genuine productivity gains. Content density is high with concrete examples, real code outputs, and actual cost data. Slight deduction for being somewhat self-focused (mostly using Fable on the author's own projects) rather than broader exploration, but this is a minor concern given the technical depth.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-06-10T15:32:45.247922"
+    },
+    {
+      "id": 3181,
+      "source_id": 4,
+      "original_url": "https://starlabs.sg/blog/2026/06-old-wine-in-a-new-bottle-a-decade-old-lxd-group-root-re-armed/",
+      "title": "https://starlabs.sg/blog/2026/06-old-wine-in-a-new-bottle-a-decade-old-lxd-group-root-re-armed/",
+      "summary": "A default Ubuntu Server install silently places the first user in the lxd group, which is root-equivalent by design, allowing for password-free installation of LXD and subsequent privilege escalation to host root without entering the sudo password.",
+      "ideas": [
+        "lxd-group membership is root-equivalent by design",
+        "Ubuntu Server installer adds the first user to the lxd group by default",
+        "lxd-installer socket allows password-free installation of LXD",
+        "Privileged container can be used to bind-mount the host's filesystem and gain root access",
+        "Vulnerability has been known for a decade but was re-armed by changes in Ubuntu Server"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides a detailed and insightful analysis of a decade-old vulnerability in Ubuntu Server, specifically the lxd-group root re-armed issue. The author presents a clear and well-structured explanation of the problem, including its history, the changes that led to its re-emergence, and the steps to exploit it. The content is rich in technical details, making it a valuable resource for security professionals and researchers. The author's use of specific examples, code snippets, and references to relevant discussions and documentation adds to the content's credibility and usefulness.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-10T15:32:06.796454"
+    },
     {
       "id": 3180,
       "source_id": 7,
