@@ -1,7 +1,271 @@
 {
-  "updated_at": "2026-06-13T09:00:00.427204",
-  "total_items": 724,
+  "updated_at": "2026-06-13T10:00:00.404885",
+  "total_items": 733,
   "items": [
+    {
+      "id": 3271,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/cognitive-parallel-agents/",
+      "title": "Your parallel Agent limit",
+      "summary": "Human supervision of parallel AI agents hits a cognitive ceiling; manage it by limiting threads, time‑boxing, and tightening scopes.",
+      "ideas": [
+        "Ambient anxiety tax: hidden mental cost of monitoring multiple agents simultaneously",
+        "Parallel agents compound comprehension debt across threads",
+        "Context switching incurs recovery time, not just the switch itself",
+        "Trust calibration must be maintained per agent thread",
+        "Throughput of supervision doesn’t equal throughput of understanding",
+        "Time‑box agent sessions to create natural checkpoints and reduce vigilance load",
+        "Scope reduction often solves overload better than reducing agent count",
+        "Monitor review quality and anxiety signals to find personal agent ceiling"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post offers several concrete, novel insights—like the \"ambient anxiety tax\" and time‑boxing agents—that directly help readers manage cognitive load when using AI agents. It provides actionable advice and expert experience without fluff, aligning well with AI, productivity, and tech themes. No clickbait or padding is present, but the content isn’t groundbreaking research, so it scores solidly good rather than exceptional.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:39:05.574184"
+    },
+    {
+      "id": 3270,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/agentic-engine-optimization/",
+      "title": "Agentic Engine Optimization (AEO)",
+      "summary": "AEO (Agentic Engine Optimization) is a new discipline for optimizing technical documentation for AI coding agents rather than humans, involving layered infrastructure from robots.txt to llms.txt to skill.md, with token economics as a first-class metric.",
+      "ideas": [
+        "AI agents compress multi-page navigation into single HTTP requests, making traditional analytics useless",
+        "AEO is the SEO equivalent for AI agents that autonomously fetch, parse, and reason over content",
+        "Agents have distinct HTTP fingerprints you can identify in server logs (axios, curl, Playwright, etc.)",
+        "Token count is now a first-class documentation metric agents use to decide what to read",
+        "Cisco API docs at 193K tokens exceed most agent context windows, causing silent truncation or hallucination",
+        "Quick start pages should stay under 15K tokens, API references under 25K tokens",
+        "llms.txt serves as a sitemap for AI agents with token counts and task-oriented organization",
+        "skill.md declaratively surfaces API capabilities so agents can match user intent before reading",
+        "Markdown parsing dramatically reduces token overhead vs HTML with tag noise",
+        "The Copy for AI button copies clean Markdown instead of rendered HTML with navigation noise",
+        "Agents make context budget decisions based on token counts surfaced in documentation",
+        "robots.txt misconfigurations silently block AI agents with no error indication"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptionally substantive content that introduces a genuinely new discipline with original research backing. Addy Osmani delivers 10+ distinct value instances including the AEO framework itself, a research paper citation on agent HTTP behavior, detailed agent fingerprint table, specific token budget targets (<15K for quickstart, <25K for API reference), llms.txt and skill.md specifications, and the 'Copy for AI' UX pattern. The content is dense with actionable technical guidance and demonstrates clear expertise. No penalties apply - no clickbait, no padding, no shallow treatment. The author's Google Cloud AI role is transparently disclosed. Slight deduction for the article being cut off mid-sentence at the end, suggesting incomplete publication.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:38:57.743163"
+    },
+    {
+      "id": 3269,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/agent-harness-engineering/",
+      "title": "Agent Harness Engineering",
+      "summary": "Effective AI agents rely more on well‑engineered harnesses than on model size alone.",
+      "ideas": [
+        "Agent = Model + Harness; harness determines behavior.",
+        "Harness includes prompts, tools, policies, hooks, sandbox, subagents, feedback loops.",
+        "Treat each agent mistake as a permanent rule in AGENTS.md and hooks.",
+        "Use filesystem and Git for durable state and versioning.",
+        "Provide bash and code execution as a general-purpose tool.",
+        "Run agents in sandboxes with safe defaults and isolation.",
+        "Implement memory via context injection and searchable files.",
+        "Combat context rot with compaction, offloading, and progressive skill disclosure.",
+        "Use Ralph loops to reset context for long-horizon tasks.",
+        "Separate planner, generator, evaluator agents for better self-evaluation.",
+        "Use hooks to enforce constraints at specific lifecycle points."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete, actionable insights on building AI agent harnesses, such as systematic rule‑making from failures and techniques for context management, aligning well with AI and software engineering themes. It provides practical knowledge, examples, and design patterns without clickbait or filler, resulting in high value density for a medium‑length technical piece.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:38:26.151051"
+    },
+    {
+      "id": 3268,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/long-running-agents/",
+      "title": "Long-running Agents",
+      "summary": "Long-running AI agents require solving three core problems (finite context, no persistent state, no self-verification) through architectural patterns like external state files, separated generation/evaluation, and session-as-event-log for recoverability.",
+      "ideas": [
+        "Three types of 'long-running' exist: long-horizon reasoning, long-running execution, and persistent agency",
+        "METR's time horizon metric doubles every 7 months; day-scale tasks expected by 2028",
+        "The three walls every long-running agent hits: finite context, no persistent state, no self-verification",
+        "The Ralph loop uses external files (prd.json, progress.txt) so the agent is amnesiac but the filesystem isn't",
+        "Anthropic's brain/hands/session split decouples the model, execution environment, and event log",
+        "Session-as-event-log enables recoverability - a fresh container calls wake(sessionId) to restore state",
+        "Separating generation from evaluation matters because models grade their own work too generously",
+        "Cursor uses planners (explore and emit tasks), workers (focused executors), and judges (decide completion)",
+        "Different models fit different roles; GPT outperformed Opus for extended autonomous work specifically",
+        "Test ratchets prevent agents from deleting failing tests to 'make them pass'",
+        "Cursor's flat coordination with locks became a bottleneck; optimistic concurrency control fixed throughput but not coordination"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "This post delivers exceptional value through multiple novel frameworks (three walls, brain/hands/session split, planner/worker/judge triad) and concrete implementation patterns (Ralph loop, test ratchet, session-as-event-log). It provides genuine practitioner insight from Anthropic and Cursor's production systems, including specific metrics (60% improvement at p50, model-role matching findings) and actionable architecture guidance. The content is tightly focused with no padding, treating a complex engineering topic with appropriate depth. Thematic relevance is high, directly addressing AI agent development and engineering practices.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:38:17.724037"
+    },
+    {
+      "id": 3267,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/cognitive-surrender/",
+      "title": "Cognitive Surrender",
+      "summary": "Relying on AI without forming your own view creates hidden comprehension debt that erodes long‑term understanding.",
+      "ideas": [
+        "Cognitive surrender occurs when AI output replaces your own reasoning entirely",
+        "Offloading keeps the 'what' while you still judge the 'how'",
+        "Experiments show 73% accept wrong AI answers, confidence rises",
+        "Borrowed confidence turns AI certainty into personal overconfidence",
+        "Surrender fuels comprehension debt, a hidden cost in codebases",
+        "MIT study links AI reliance to reduced neural connectivity",
+        "Set expectations before using AI to stay calibrated",
+        "Review AI‑generated diffs as if written by a junior engineer",
+        "Prompt the model to argue against its own answer to break bias",
+        "Treat fatigue as a cue to avoid AI‑driven decisions",
+        "Require concrete verification (tests, logs) before accepting AI work",
+        "Use anti‑rationalization tables to pre‑empt excuses for skipping steps",
+        "Keep PRs small to maintain comprehensible review scope",
+        "Prefer conceptual inquiry over code generation when learning new tools",
+        "Introduce deliberate friction (checklists, design docs) to prevent surrender",
+        "Schedule solo coding time to maintain personal mental models",
+        "Distinguish delegation (surrender) from cooperation (mutual amplification)"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "The post delivers many concrete insights—distinguishing cognitive surrender from offloading, citing experiments where 73% accept wrong AI answers, linking surrender to comprehension debt, and offering actionable heuristics and engineering practices to resist surrender. It aligns well with AI, productivity, and tech themes and contains no clickbait or padding, though its length dilutes density slightly.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:36:53.682545"
+    },
+    {
+      "id": 3266,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/dont-outsource-learning/",
+      "title": "Don't Outsource the Learning",
+      "summary": "To maintain skills and expertise, engineers should not rely solely on AI tools for coding and problem-solving, but instead use these tools as a means to learn and improve their understanding of the subject matter.",
+      "ideas": [
+        "AI tools can degrade skills if used without an active intent to learn",
+        "Using AI to skip learning quietly degrades future capability",
+        "The posture of using AI tools determines the outcome, not the tool itself",
+        "Form a hypothesis before asking AI for help",
+        "Ask for explanations before code",
+        "Treat AI output like a PR from a junior engineer",
+        "Re-derive things by hand once in a while",
+        "Use Learning Mode when out of your depth"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This article delivers high-value insights on the importance of not outsourcing learning to AI tools, providing evidence from studies and offering practical advice on how to use these tools effectively. The content is dense with valuable ideas, and the author's expertise in the field is evident. The article aligns strongly with the themes of Technology & Innovation and Human Development.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:36:46.239763"
+    },
+    {
+      "id": 3265,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/orchestration-tax/",
+      "title": "The Orchestration Tax",
+      "summary": "Managing multiple AI agents creates a serial bottleneck in human judgment and review capacity that cannot be parallelized - the orchestration tax - which requires architecting your attention like any other production system with backpressure and bottlenecks.",
+      "ideas": [
+        "You are the GIL of your AI agents - the single lock for all judgment work",
+        "Amdahl's Law applies to human cognition: spawning agents doesn't speed up judgment",
+        "Context switching costs minutes for humans vs microseconds for CPUs",
+        "Cognitive surrender: accepting agent code because thinking costs attention you lack",
+        "Scale agent count to your review rate, not UI capabilities",
+        "Sort tasks: isolate delegatable work from complex judgment work",
+        "Batch reviews to reduce context switching overhead",
+        "Only spend judgment on the 20% machines cannot verify",
+        "Protect your best hours for serial bottleneck work",
+        "Orchestrating is overhead, not the real work",
+        "Unpaid orchestration tax accumulates technical and cognitive debt invisibly",
+        "The skill is designing systems around your unparallelizable attention"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is exceptional content that delivers a novel, well-articulated concept (orchestration tax) with strong technical analogies (GIL, Amdahl's Law) applied to human cognition. The post provides 10+ distinct actionable insights including the backpressure principle for agent count, task sorting strategy, batched review approach, and the critical busy-vs-productive distinction. No padding, no fluff - every paragraph advances the thesis. The insight that cognitive debt accumulates invisibly until production breaks is particularly valuable. Content from a credible Google engineer with genuine expertise in the domain.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:36:39.716306"
+    },
+    {
+      "id": 3264,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/intent-debt/",
+      "title": "The Intent Debt",
+      "summary": "Externalizing the why behind system decisions is crucial because AI agents cannot infer true intent.",
+      "ideas": [
+        "Intent debt is the missing externalized rationale, goals, and constraints of a system.",
+        "AI agents can fix code but cannot generate true intent behind design decisions.",
+        "High intent debt makes onboarding and agent collaboration costly and error‑prone.",
+        "Write intent specifications separate from implementation to capture why decisions were made.",
+        "Use AGENTS.md as an intent ledger rather than just configuration.",
+        "Record decisions immediately with lightweight ADRs to pay down intent debt.",
+        "Let self‑improving agents update a learning file to continuously externalize intent.",
+        "Intent debt is the only debt agents cannot repay, unlike technical or cognitive debt."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article introduces the novel concept of intent debt and explains why AI agents cannot recover it, providing concrete mitigation tactics like intent specs, AGENTS.md, and decision logs. It offers actionable guidance for software teams, aligns well with AI and tech themes, and contains no clickbait or padding, resulting in a solid but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:36:14.718048"
+    },
+    {
+      "id": 3263,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/loop-engineering/",
+      "title": "Loop Engineering",
+      "summary": "Loop engineering is a new approach to working with coding agents, where instead of prompting the agent directly, you design a system that automates the process, allowing for more efficient and autonomous coding.",
+      "ideas": [
+        "Loop engineering replaces manual prompting with automated systems",
+        "Five essential pieces of a loop: automations, worktrees, skills, plugins and connectors, and sub-agents",
+        "Codex and Claude Code support loop engineering with similar capabilities",
+        "Skills help stop re-explaining project context every session",
+        "Plugins and connectors enable loops to interact with real tools and environments",
+        "Sub-agents improve verification and reduce errors",
+        "Loop engineering changes the nature of work but does not eliminate the need for human verification and understanding"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This article provides exceptional value by introducing the concept of 'loop engineering' and explaining its significance in the context of coding agents. It delivers multiple novel insights, such as the five essential pieces of a loop (automations, worktrees, skills, plugins and connectors, and sub-agents) and how they can be implemented in tools like Codex and Claude Code. The author's expertise and experience in the field are evident, making the content highly informative and relevant to the theme of technology and innovation.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-06-13T18:36:06.464565"
+    },
     {
       "id": 3262,
       "source_id": 4,
