@@ -1,7 +1,169 @@
 {
-  "updated_at": "2026-06-13T17:00:00.384320",
-  "total_items": 743,
+  "updated_at": "2026-06-13T19:00:00.405144",
+  "total_items": 749,
   "items": [
+    {
+      "id": 3287,
+      "source_id": 4,
+      "original_url": "https://finalpatch.github.io/xeen/index.html",
+      "title": "https://finalpatch.github.io/xeen/index.html",
+      "summary": "A 30-year-old crash bug in World of Xeen's MT-32 driver is caused by an uninitialized BX register in the fade-out routine that corrupts the driver's own code, plus a transposition of MIDI channel numbers for percussion and sound effects.",
+      "ideas": [
+        "Self-modifying code can turn a bounded compare instruction into an unbounded store",
+        "The fade-out routine never initializes BX before using it as a volume table index",
+        "A single decremented byte at offset 071A transforms cmp into add [bx+di], ax",
+        "DOSBox-X's hardware write-breakpoint caught the wild write live",
+        "The bug only manifests on idle ticks when the timer fires without loading BX",
+        "MIDI channels B8 and B9 are transposed throughout the driver code",
+        "Sound effects should use channel B9, percussion should use channel B8",
+        "The 1993 Darkside build introduced this as a regression from the 1992 Clouds build",
+        "The fix is 10 bytes, all length-preserving to preserve archive integrity",
+        "The ROLMUS driver is XOR-obfuscated inside the game's .CC archive"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "This is exceptional technical content that delivers multiple novel insights: the discovery of self-modifying code caused by an uninitialized register, the specific mechanism by which a single decremented byte transforms a bounded compare into an unbounded store, the systematic debugging methodology (spin detectors, shadow stacks, hardware write-breakpoints), and the secondary bug involving transposed MIDI channel numbers. The author demonstrates genuine reverse-engineering expertise and provides a complete 10-byte fix with historical context showing this is a 1993 regression. High value density with substantive technical depth throughout.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-14T03:37:13.819378"
+    },
+    {
+      "id": 3286,
+      "source_id": 4,
+      "original_url": "https://github.com/OpenStrap/edge",
+      "title": "https://github.com/OpenStrap/edge",
+      "summary": "A Flutter app that reverse-engineers WHOOP 4.0's Bluetooth protocol to extract fitness data, with detailed technical documentation of the GATT service, batch acknowledgment token mechanism, and crash-safe SQLite storage design.",
+      "ideas": [
+        "WHOOP 4.0 uses custom GATT service with UUID prefix 61080001 for BLE communication",
+        "Batch token acknowledgment requires echoing bytes 13-21 with write-that-waits, not fire-and-forget",
+        "Bands ship with unset RTC clocks requiring explicit time sync before reliable data capture",
+        "Five-packet intro sequence initiates history drain from band flash memory",
+        "MTU must be negotiated to 247 bytes for optimal throughput",
+        "Sequence numbers for live commands and sync acknowledgements must use separate ranges",
+        "Raw records table uses frame hex as primary key with INSERT OR IGNORE for retry safety",
+        "Background sync uses WorkManager (Android) and BGTask (iOS) without foreground services",
+        "AppState ChangeNotifier serves as single source of truth for all UI components",
+        "Data uploads are one-directional: server confirmation triggers local deletion",
+        "Sync stops when band detects live streaming (record within 15 seconds of now)",
+        "Dangerous commands like flash erase are guarded; optical LEDs are wrist-gated only",
+        "WHOOP firmware updates from official app may break reverse-engineered protocol support",
+        "Self-hosted backend option preserves data ownership without trusting third parties"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This README delivers exceptional technical value through detailed reverse-engineering knowledge of the WHOOP 4.0 Bluetooth GATT protocol, including the critical batch token acknowledgment mechanism (inner[13:21] echo pattern), database design with raw_records using INSERT OR IGNORE for crash safety, and a sophisticated background sync architecture using WorkManager/BGTask. The content explains the architecture pattern (AppState as single source of truth), data flow pipeline, and provides running instructions with honest limitations stated throughout. The author demonstrates genuine expertise while being transparent about approximations versus WHOOP's proprietary calculations. No padding, no fluff—just dense technical content covering BLE protocol details, database schema rationale, and self-hosting options. Aligns strongly with Tech (Flutter, Bluetooth) and Sysadmin (background services, self-hosting) themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-14T03:36:51.428187"
+    },
+    {
+      "id": 3285,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/microsofts-skillopt-boosts-gpt-5-5-by-using-nothing-but-a-trained-markdown-file/",
+      "title": "Microsoft's SkillOpt boosts GPT-5.5 by using nothing but a trained Markdown file",
+      "summary": "SkillOpt trains AI skill documents as optimizable external states using a second model that proposes limited edits, validates them against held-out data, and retains only improvements—achieving 23-point gains on GPT-5.5 with just 1-4 accepted edits across 4 epochs.",
+      "ideas": [
+        "Skill documents can be trained like neural network weights using a frozen target model and optimizer model architecture",
+        "Bounded edit budgets prevent skill drift; without them, optimization becomes unstable",
+        "Rejection buffer provides negative examples that prevent repeating failed edit attempts",
+        "Slow update mechanism at epoch end preserves stable edit directions, worth 20+ points on SpreadsheetBench",
+        "Skills trained on larger models transfer to smaller models in the same family",
+        "Cross-environment transfer: skills trained in Codex work unchanged in Claude Code",
+        "Final skills are compact (300-2000 tokens) with only 1-4 accepted edits producing improvements",
+        "Smaller models benefit more because they lack procedural knowledge that well-trained skills supply directly",
+        "Reliable automatic scoring is required for validation; open-ended tasks need human or model-based judgments",
+        "SkillOpt keeps the model frozen and changes only the readable text file, unlike weight-modifying approaches"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid research journalism that delivers genuine value through its novel framing of treating skill documents as trainable states (like model weights), concrete benchmark results (23-point improvement on GPT-5.5), technical architecture details with validation gates and slow updates, transferability findings across models and environments, and insightful ablation studies. The content is well-structured with clear explanations of how the optimizer model works. It appropriately contextualizes SkillOpt against related approaches like OpenClaw-RL and MetaClaw. Minor扣分 for the slightly clickbaity title and 'GPT-5.5' reference (likely fictional model name for anonymization), but the technical content is substantive and actionable. The examples of learned rules (checking worksheet structure, logging visited locations) provide concrete illustrations of what optimization produces.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-14T03:35:17.586914"
+    },
+    {
+      "id": 3284,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/new-ai-model-called-count-anything-does-exactly-what-it-says-and-thats-harder-than-it-sounds/",
+      "title": "New AI model called \"Count Anything\" does exactly what it says, and that's harder than it sounds",
+      "summary": "Researchers have developed an AI model called 'Count Anything' that can accurately count objects in images across various domains, including everyday photos, satellite imagery, and medical scans.",
+      "ideas": [
+        "Count Anything AI model",
+        "Object counting in images",
+        "Combining region-based and pixel-based counters",
+        "Merging predictions to avoid double counting",
+        "Using a custom-built dataset for training",
+        "Applications in medical scans, satellite imagery, and everyday photos"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a detailed explanation of the 'Count Anything' AI model, its capabilities, and its potential applications. It also discusses the challenges of object counting in images and how the model addresses these challenges. The article is well-researched, informative, and provides valuable insights into the field of AI and computer vision. However, it may be slightly technical for non-experts and lacks a clear conclusion or summary of the main points.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-14T03:32:38.894190"
+    },
+    {
+      "id": 3283,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/06/13/htb-variatype.html",
+      "title": "https://0xdf.gitlab.io/2026/06/13/htb-variatype.html",
+      "summary": "Chaining low‑level bugs from an exposed Git repo to Flask, fontTools, FontForge, and a sudo installer yields root on VariaType.",
+      "ideas": [
+        "Use nmap http‑git script to discover exposed .git repositories",
+        "Brute‑force subdomains with ffuf and -ac to filter default responses",
+        "Decode Flask session cookie with flask‑unsign to reveal flash messages",
+        "Exploit fontTools variable‑font generation arbitrary file write to drop a webshell",
+        "Leverage outdated FontForge binary for command injection via malicious archive filenames",
+        "Abuse sudo‑allowed plugin installer using vulnerable setuptools path traversal to write root SSH key",
+        "Combine these steps to achieve root access on the HTB machine"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The write‑up delivers multiple concrete, actionable insights—exposed .git detection, subdomain brute‑forcing, Flask cookie decoding, fontTools arbitrary write, FontForge command injection, and sudo‑installer path traversal—each backed by real commands and explanations, giving high value density for security practitioners. It stays focused, contains no clickbait or padding, and aligns strongly with CyberSecurity and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-14T03:32:13.983280"
+    },
+    {
+      "id": 3282,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=7q9g3khJdAE",
+      "title": "How The Partner You Choose Reveals Your Self-Worth - Quinlan Walther",
+      "summary": "The partner you choose can reveal your level of self-worth, and building 'selfrust' through curiosity, capacity, compassion, and commitment is crucial for personal growth and fulfilling relationships.",
+      "ideas": [
+        "Partner choice reflects self-worth",
+        "Selfrust for personal growth",
+        "Curiosity in self-awareness",
+        "Emotional capacity in relationships",
+        "Compassion for oneself",
+        "Commitment to personal goals",
+        "Uncertainty as a source of emotional issues",
+        "Familiarity masquerading as resonance in relationships",
+        "Trauma influencing adult relationships",
+        "Mistaking anxiety for chemistry in love"
+      ],
+      "labels": [],
+      "rating": 85,
+      "rating_reason": "This content delivers high value through its in-depth discussion on self-worth, relationships, and personal growth. It explores how our choices in partners can reflect our self-worth and introduces the concept of 'selfrust' as a means to build a fulfilling life. The conversation is rich in insights, providing a comprehensive understanding of the importance of self-awareness, emotional flexibility, and personal commitment. The themes of human development, particularly in the areas of personal optimization and relationships, are strongly aligned with the content's focus.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-06-14T03:32:06.568827"
+    },
     {
       "id": 3281,
       "source_id": 27,
