@@ -1,7 +1,199 @@
 {
-  "updated_at": "2026-06-16T18:00:00.520168",
-  "total_items": 727,
+  "updated_at": "2026-06-16T19:00:00.439824",
+  "total_items": 734,
   "items": [
+    {
+      "id": 3352,
+      "source_id": 7,
+      "original_url": "https://performance.dev/how-is-linear-so-fast-a-technical-breakdown",
+      "title": "How's Linear so fast? A technical breakdown",
+      "summary": "Linear achieves its speed through a local-first architecture where IndexedDB acts as the browser database, enabling optimistic mutations that never block the UI, combined with aggressive code splitting, modulepreload strategies, and service worker precaching that eliminates network waits entirely.",
+      "ideas": [
+        "Treat the browser as the database - mutations apply locally first, then sync asynchronously",
+        "Optimistic UI: update state immediately, validate in background, rollback only if needed",
+        "UI responsiveness should not depend on network latency",
+        "Drop legacy browser support to eliminate polyfills and ES5 transpilation overhead",
+        "Code split aggressively into per-package chunks for granular cache invalidation",
+        "Use modulepreload to parallelize JavaScript chunk fetching before the entry script runs",
+        "Service worker precaches ~1,200 route chunks after login screen loads",
+        "Modulepreload handles immediate needs; service worker handles future navigation",
+        "Linear uses MobX for observable graph enabling granular re-renders",
+        "Client-side rendering with right architecture can feel instant",
+        "Simplify mental model by keeping app entirely client-side",
+        "Preload scripts in background when users hit login page",
+        "Cold-cache page loads improved 10-30% with native ESM targeting esnext"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "This is exceptionally valuable technical content that delivers multiple novel insights about web application performance. The author provides concrete architectural patterns (local-first with IndexedDB), complete tech stack revelation, specific metrics from Linear's build pipeline evolution (59% faster time-to-first-paint on Safari), and actionable implementation techniques (modulepreload strategy, service worker caching with ~1,200 assets). The content balances high-level principles ('UI responsiveness should not depend on network latency') with detailed code examples and configuration snippets. No padding, no fluff, no promotional content - just dense, applicable knowledge for web developers. The thematic relevance is strong, directly addressing tech innovation and productivity in building performant applications.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-17T03:45:25.690238"
+    },
+    {
+      "id": 3351,
+      "source_id": 7,
+      "original_url": "https://alexispurslane.github.io/rsync-analysis/",
+      "title": "Did Claude Increase Bugs in rsync?",
+      "summary": "Statistical analysis of 36 rsync releases shows no evidence that Claude-assisted development introduced more bugs than historical baselines, with permutation test p-value of 46% and Claude releases falling within historical distribution.",
+      "ideas": [
+        "Use distributional analysis rather than regression when post-treatment samples are limited",
+        "Weight bugs by severity 0-100 to avoid equating typos with CVEs",
+        "Attribute bug reports to the most recent release shipped before bug was reported",
+        "Exact permutation test for comparing AI-assisted vs baseline releases",
+        "Fisher's exact test to check if Claude releases are more likely above historical median",
+        "Include all releases in distribution regardless of outlier status",
+        "Make data pipelines reproducible end-to-end for credibility",
+        "Cite specific evidence rather than viral social media claims when investigating",
+        "v3.4.1 with 59 bugs in 9 commits is an outlier but belongs in baseline",
+        "Claude releases bracket IQR in opposite directions neither is an outlier"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is original empirical research that rigorously addresses a controversial question about AI-assisted development. The content provides significant value through: (1) a severity-weighted bug metric (sev/10c) that controls for bug severity differences, (2) transparent multi-source data collection from GitHub, Bugzilla, and mailing lists, (3) two complementary statistical tests (permutation test p=46%, Fisher's exact p=74%) showing no significant difference, (4) reproducible methodology with full pipeline on GitHub, and (5) clear explanation of why distributional analysis was chosen over regression. The author also demonstrates intellectual honesty by acknowledging limitations and making the data runnable end-to-end. The only minor penalty is some unprofessional defensive language in the disclaimer, but this doesn't diminish the scientific rigor or value of the actual analysis.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-17T03:43:19.472763"
+    },
+    {
+      "id": 3350,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/spacex-bets-60-billion-on-cursor-to-catch-openai-and-anthropic/",
+      "title": "SpaceX bets $60 billion on Cursor to catch OpenAI and Anthropic",
+      "summary": "SpaceX acquires Anysphere, the company behind AI coding assistant Cursor, for $60 billion to boost its xAI division and compete with OpenAI and Anthropic in AI-assisted coding.",
+      "ideas": [
+        "SpaceX acquires Anysphere for $60 billion",
+        "Deal aims to boost SpaceX's xAI division",
+        "xAI trails OpenAI and Anthropic in AI-assisted coding",
+        "Cursor gives xAI access to massive chip stockpile",
+        "Anysphere's investors receive SpaceX stock",
+        "Acquisition helps xAI in AI talent war"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides valuable insights into SpaceX's acquisition of Anysphere, the company behind the AI coding assistant Cursor, and its implications for the AI-assisted coding market. It delivers multiple novel ideas, including the significance of the $60 billion deal, the potential benefits for SpaceX's xAI division, and the competitive landscape of AI-assisted coding. The content is well-researched, with references to reputable sources like Reuters and Bloomberg, and offers a balanced view of the situation.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-17T03:35:44.128285"
+    },
+    {
+      "id": 3349,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/new-rokarolla-android-malware-steals.html",
+      "title": "New Rokarolla Android Malware Steals PINs, SMS Codes, and Crypto Wallet Funds",
+      "summary": "Security researchers documented the Rokarolla Android banking trojan that achieves near-total device control through Accessibility abuse, HTML overlay attacks, and clipboard hijacking, targeting 217 financial apps with 137 commands and bypassing standard protections like Play Protect.",
+      "ideas": [
+        "Rokarolla targets 217 banking and cryptocurrency apps with 137 remote commands for near-total device control",
+        "Malware spreads through malicious websites posing as TikTok and Chrome using a fake Google Play Protect dropper",
+        "Infection chain relies on requesting Accessibility permission, then using it to disable real Play Protect",
+        "HTML overlay attacks download fake login pages and capture credentials when victims open legitimate apps",
+        "Fake lock screen overlay captures PINs, patterns, and passwords for persistent device access",
+        "SMS interception captures two-factor authentication codes and can block incoming bank warning calls",
+        "Clipboard hijacking silently swaps crypto wallet addresses to redirect payments to attackers",
+        "Malware avoids MediaProjection prompts by using Accessibility service for silent screenshot capture",
+        "C2 infrastructure has multiple fallback domains and can receive new commands dynamically",
+        "Defense: install only from Google Play, keep Play Protect enabled, treat unexpected Accessibility requests as red flags",
+        "IOCs available in Zimperium's GitHub repository for detection"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity threat intelligence that delivers substantial value. The article documents a new Android banking trojan with concrete specifics: 217 targeted apps, 137 remote commands, and detailed technical explanations of the attack chain. Key value instances include the dropper-to- Accessibility abuse infection vector, the HTML overlay credential capture mechanism, the fake lock screen for PIN theft, SMS/2FA interception, clipboard hijacking for crypto theft, and the stealth screenshot technique using Accessibility instead of MediaProjection. The article also provides actionable IOCs via GitHub and practical defensive advice. The content is tightly focused with no padding, accurately titled, and gives readers genuinely useful threat intelligence. Scored in the Good range as it delivers 10+ technical insights efficiently without sensationalism.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-17T03:35:37.911452"
+    },
+    {
+      "id": 3348,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/attackers-exploit-three-fortinet.html",
+      "title": "Attackers Exploit Three Fortinet FortiSandbox Flaws, One Patched Last Week",
+      "summary": "Attackers are exploiting three Fortinet FortiSandbox vulnerabilities, including a path traversal flaw and two operating system command injection flaws, with one of the vulnerabilities being patched just last week.",
+      "ideas": [
+        "Fortinet FortiSandbox vulnerabilities are being exploited by attackers",
+        "CVE-2026-39813 is a path traversal vulnerability in FortiSandbox JRPC API",
+        "CVE-2026-39808 is an operating system command injection flaw in FortiSandbox",
+        "CVE-2026-25089 is an operating system command injection vulnerability in FortiSandbox, FortiSandbox Cloud, and FortiSandbox PaaS WEB UI",
+        "The exploit for CVE-2026-25089 may have been developed using an AI model"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides valuable information about the exploitation of three Fortinet FortiSandbox flaws, including a detailed description of each vulnerability and its CVSS score. The content is well-structured, informative, and free of fluff, making it a worthwhile read for those interested in cybersecurity. However, the article could benefit from more in-depth analysis or expert insights to elevate its score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-17T03:34:57.691442"
+    },
+    {
+      "id": 3347,
+      "source_id": 19,
+      "original_url": "https://www.interconnects.ai/p/frontier-post-training-recipe-review",
+      "title": "Frontier post-training recipe review with Finbarr Timbers",
+      "summary": "Multi‑teacher on‑policy distillation (MOPD) is the emerging frontier method replacing monolithic RL in LLM post‑training.",
+      "ideas": [
+        "Post‑training recipes evolved from simple SFT‑RL pipelines to multi‑teacher on‑policy distillation.",
+        "InstructGPT used a three‑step SFT → reward model → PPO pipeline.",
+        "Llama 2 introduced iterative RLHF with rejection sampling and dual reward models.",
+        "Llama 3 replaced online RL with reward‑model filtering and DPO across six rounds.",
+        "Tülu 3 simplified to curated prompts, SFT, DPO, then RLVR with a held‑out eval suite.",
+        "DeepSeek R1 made large‑scale reasoning RL the centerpiece of its recipe.",
+        "MOPD trains domain‑specialist teachers then distills them into a single student via reverse‑KL.",
+        "Specialists are cheaper and parallelizable, making scaling post‑training across organizations feasible.",
+        "Nemotron 3 Ultra applies two‑iteration MOPD with over ten domain experts.",
+        "MAI‑Thinking‑1 uses specialist RL climbs and trace‑distillation SFT, not on‑policy MOPD."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The transcript delivers multiple concrete insights—historical evolution of post‑training pipelines, the novel MOPD technique, and detailed model‑specific recipes—providing actionable knowledge for AI practitioners. It aligns strongly with AI and technology themes and contains few promotional or filler elements, resulting in a solid but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Interconnects AI",
+      "published_at": "2026-06-17T03:34:09.117577"
+    },
+    {
+      "id": 3346,
+      "source_id": 4,
+      "original_url": "https://unit42.paloaltonetworks.com/hijacking-vertex-ai-model/",
+      "title": "Pickle in the Middle – Hijacking Vertex AI Model Uploads for Cross-Tenant RCE",
+      "summary": "A critical cross-tenant RCE vulnerability in Google Cloud Vertex AI SDK allows attackers to hijack model uploads via bucket squatting and achieve remote code execution through malicious pickle payloads.",
+      "ideas": [
+        "Predictable bucket naming pattern enables attackers to squat on victim's expected staging bucket",
+        "Missing ownership validation in SDK allows cross-tenant model poisoning",
+        "Pickle deserialization executes arbitrary code when malicious model is loaded",
+        "Attacker creates bucket with victim's expected name to silently redirect model uploads",
+        "RCE achieved by replacing legitimate model artifacts with malicious pickle payload",
+        "LLMs can accelerate security vulnerability discovery in complex codebases",
+        "Upgrade to google-cloud-aiplatform v1.148.0 or later to remediate",
+        "P4SA service accounts bridge Google infrastructure to customer resources",
+        "Tenant projects host Vertex AI serving infrastructure separate from customer projects",
+        "Joblib.load() triggers code execution during deserialization without prior validation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a high-quality security research article documenting a genuine zero-day vulnerability in Google Cloud Vertex AI. It provides substantial value through: (1) detailed technical explanation of the bucket squatting attack vector, (2) root cause analysis of the predictable bucket naming pattern, (3) practical walkthrough of how model poisoning leads to RCE via pickle deserialization, (4) novel research methodology using LLMs for vulnerability discovery, and (5) clear remediation guidance. The content is dense with technical detail appropriate for security professionals. The thematic relevance is high as it directly addresses cloud cybersecurity and AI infrastructure security. No significant penalties apply - this is legitimate original research, not fluff or marketing material.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-17T03:33:44.628506"
+    },
     {
       "id": 3345,
       "source_id": 27,
