@@ -1,7 +1,291 @@
 {
-  "updated_at": "2026-06-22T17:00:00.378414",
-  "total_items": 712,
+  "updated_at": "2026-06-22T19:00:00.472427",
+  "total_items": 723,
   "items": [
+    {
+      "id": 3499,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/attackers-exploit-gravity-smtp-plugin-flaw-to-harvest-valuable-wordpress-data/",
+      "title": "Attackers Exploit Gravity SMTP Plugin Flaw to Harvest Valuable WordPress Data",
+      "summary": "An unauthenticated Gravity SMTP endpoint exposes sensitive site data, so update the plugin and rotate credentials promptly.",
+      "ideas": [
+        "Gravity SMTP versions before 2.1.5 expose internal data via unauthenticated REST endpoint",
+        "Endpoint returns JSON system report with PHP, WordPress version, plugins, API keys, tokens",
+        "CVE-2026-4020 has CVSS 5.3 and has been exploited since early May",
+        "Defiant observed over 17 million exploit attempts targeting this flaw",
+        "Attackers can harvest credentials to send email and conduct further reconnaissance",
+        "Update to version 2.1.5 and rotate any exposed API keys or OAuth tokens",
+        "Check server logs for requests to the vulnerable endpoint as exploitation leaves few traces"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: it details the CVE-2026-4020 flaw, explains the unauthenticated REST endpoint that leaks system data, reports observed exploit volume, and gives clear mitigation steps. It aligns strongly with cybersecurity themes and offers actionable advice without clickbait or padding, resulting in solid but not exceptional value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:46:53.374458"
+    },
+    {
+      "id": 3498,
+      "source_id": 4,
+      "original_url": "https://sibouzitoun.tech/articles/sindrkit/",
+      "title": "SindriKit: Offensive Development Deserves Better Architecture",
+      "summary": "Decoupling technique logic from execution mechanics via dependency injection makes offensive payloads adaptable without rewrites.",
+      "ideas": [
+        "Offensive tooling couples technique logic with execution mechanics, causing maintenance pain",
+        "Dependency injection separates technique from execution profile, enabling independent evolution",
+        "SindriKit uses a context object to orchestrate payload lifecycle stages",
+        "Swapping execution profiles (mem_api, mod_api) requires only two lines of code",
+        "A unified status system provides detailed debug info, toggleable for production",
+        "Integration involves adding SindriKit as a subdirectory and linking its libraries",
+        "Native syscall resolution is injected as a separate, replaceable module",
+        "Framework offers composable loading with minimal boilerplate",
+        "Architecture eliminates the two‑codebase problem of clean vs opsec builds",
+        "Design absorbs EDR detection changes, reducing the need to rewrite capabilities"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete, novel insights on applying dependency injection to offensive tooling, includes actionable code examples, and links to a usable open‑source project, giving high thematic relevance to CyberSecurity and Tech. Minor padding with decorative GIFs does not outweigh the substantive engineering guidance, so the score remains strong but not exceptional.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:46:07.975621"
+    },
+    {
+      "id": 3497,
+      "source_id": 4,
+      "original_url": "https://dfir.ch/posts/fantastic_passwords_linux/",
+      "title": "https://dfir.ch/posts/fantastic_passwords_linux/",
+      "summary": "Security professionals gain comprehensive knowledge of Linux credential theft vectors and specific hardening configurations to defend against each attack method, illustrated through real incident investigation findings.",
+      "ideas": [
+        "HISTCONTROL=ignorespace prevents commands with secrets from being logged to bash history",
+        "root can read process environment variables from /proc/<pid>/environ while processes run",
+        "truffleproc automates credential extraction from process memory via GDB ptrace",
+        "kernel.yama.ptrace_scope=1 restricts ptrace-based memory dumping system-wide",
+        "pspy snoops processes via inotify API without requiring root privileges",
+        "Backdoored login portals can intercept credentials via JavaScript fetch before submission",
+        "Edge appliances should be patched like Tier-0 assets with emergency patching priority",
+        "3snake hooks sshd/sudo via ptrace to extract passwords from memory during auth",
+        "pam_tty_audit.so logs all keystrokes to audit.log for selected users",
+        "Enforce PasswordAuthentication no in sshd_config to prevent sshd password interception",
+        "Alert on PTRACE_ATTACH to critical binaries like sshd, sudo, su, and passwd",
+        "Certificate-based authentication with client credentials flow enables cloud tenant access",
+        "OpenScape XML configs expose Tenant ID and client ID needed for Azure auth",
+        "3snake spawns child processes that attach to auth daemons - detect via unusual process trees"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is exceptionally valuable DFIR content that systematically documents Linux credential harvesting techniques with real-world incident context. The author provides 6 distinct attack vectors (Bash history, process memory extraction, pspy snooping, backdoor login prompts, 3snake, PAM abuse), each with detailed defense hardening recommendations. The standout value instance is the Siemens/OpenScape/Azure compromise scenario showing how a single bash history entry cascaded into full cloud tenant access via certificate-based auth. Content density is high with actionable defensive measures for each technique, including specific configurations like HISTCONTROL=ignorespace and kernel.yama.ptrace_scope settings. The author demonstrates genuine DFIR expertise from field experience rather than rehashing documented techniques.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:44:23.859256"
+    },
+    {
+      "id": 3496,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/29-year-old-squid-proxy-bug-squidbleed.html",
+      "title": "29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests",
+      "summary": "A heap over-read vulnerability (Squidbleed/CVE-2026-47729) in Squid's FTP parser allows attackers with proxy access to leak other users' cleartext HTTP requests by exploiting a strchr loop that walks past null terminators into reused freed memory buffers.",
+      "ideas": [
+        "Squidbleed vulnerability allows proxy users to read other users' cleartext HTTP requests including credentials",
+        "Bug traces to a 1997 FTP directory-listing parser change for NetWare server compatibility",
+        "The strchr loop treats NUL terminator as searchable character, causing buffer over-read",
+        "Squid reuses freed memory without zeroing, so HTTP requests remain readable in freed buffers",
+        "Attack requires proxy access, an FTP server attacker controls, and traffic to be readable by Squid",
+        "CVSS 6.5 rated moderate due to requiring low-privilege proxy access and only confidentiality impact",
+        "Fix is null-terminator check before strchr calls, merged to Squid 7 in May 2026",
+        "Turning off FTP is cleaner remediation as Chromium dropped FTP and most networks don't use it",
+        "AI (Anthropic's Claude) assisted in discovering the buried parser bug",
+        "Distribution packages may ship different builds - verify fix directly in FtpGateway.cc"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity journalism with high value density. The article delivers 10 distinct technical insights including the specific CVE (CVE-2026-47729), the root cause traced to a 1997 FTP-parsing change, detailed exploitation mechanics (the strchr null-terminator bug), the memory reuse vulnerability allowing HTTP request leakage, specific CVSS scoring (6.5), proof-of-concept availability, and practical remediation steps including turning off FTP. The technical depth is genuine rather than superficial - it explains the actual vulnerable code pattern and why it fails. No padding, no clickbait, no hidden promotion.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:39:53.350273"
+    },
+    {
+      "id": 3495,
+      "source_id": 4,
+      "original_url": "https://github.com/akustikrausch/airplay2-sender-cpp",
+      "title": "https://github.com/akustikrausch/airplay2-sender-cpp",
+      "summary": "Precise protocol steps and encryption details enable a functional C++ AirPlay 2 sender.",
+      "ideas": [
+        "AirPlay 2 sender in C++ streams lossless ALAC over encrypted RAOP/RTSP to Apple devices.",
+        "Protocol requires seven steps in precise order; any mistake leads to silent or dropped sessions.",
+        "Encrypted RTSP control channel uses ChaCha20-Poly1305 with specific framing and nonce format.",
+        "Audio key = 32 bytes of pairing secret; transient pairing must clamp to 32 bytes.",
+        "ALAC format is mandatory; specific frame header structure must be used for realtime streaming.",
+        "Keep‑alive relies on encrypted event channel; respond with minimal RTSP 200 OK headers.",
+        "Crypto core is Qt‑free, offering SRP, X25519, Ed25519, ChaCha20‑Poly1305, HKDF, TLV8, bplist.",
+        "Implementation lacks receiver authentication, allowing LAN‑side MITM attacks on untrusted networks.",
+        "Apache‑2.0 license includes explicit patent grant, easing commercial use of reverse‑engineered protocol code.",
+        "Repository provides reusable crypto library and state‑machine sender for easy integration into C++ projects."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The README delivers numerous concrete, actionable insights on implementing AirPlay 2 sending in C++, including detailed protocol steps, encryption handling, and reusable crypto components, aligning strongly with tech themes. It provides practical knowledge, expert reverse‑engineering details, and security considerations, with minimal clickbait or padding, yielding high value density for developers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:38:42.009007"
+    },
+    {
+      "id": 3494,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/five-eyes-intelligence-alliance-says-frontier-ai-models-could-reshape-offensive-cyber-ops-in-months/",
+      "title": "Five Eyes intelligence alliance says frontier AI models could reshape offensive cyber ops in months",
+      "summary": "Frontier AI models could soon give attackers rapid, sophisticated cyber capabilities, prompting urgent security action.",
+      "ideas": [
+        "Five Eyes warns frontier AI models could enable offensive cyber operations within months.",
+        "AI lowers barriers for malicious actors, increasing attack speed and complexity.",
+        "US blocked foreign nationals from accessing Anthropic's Fable 5 and Mythos 5 models.",
+        "NSA has early access to Anthropic models and collaborates on offensive cyber ops.",
+        "Cyber risk should be treated as a core business risk, not just a technical issue."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete insights—timeline for AI‑enabled cyber attacks, policy actions blocking model access, and NSA collaboration—providing genuine value for security‑focused readers. It aligns with AI and cybersecurity themes and is concise, so density is high. No clickbait or padding detected, so no penalties applied.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-23T03:36:41.947410"
+    },
+    {
+      "id": 3493,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/getty-images-strikes-multi-year-deal-to-put-licensed-photos-in-chatgpt-search/",
+      "title": "Getty Images strikes multi-year deal to put licensed photos in ChatGPT search",
+      "summary": "Getty’s licensing deal integrates its image catalog into ChatGPT, enhancing AI search and boosting Getty’s market value.",
+      "ideas": [
+        "Getty Images signed a multi-year licensing deal with OpenAI for ChatGPT image search.",
+        "Licensed Getty photos will appear in ChatGPT’s search and discovery features.",
+        "Getty’s stock surged ~200% in pre‑market trading after the announcement.",
+        "CEO Craig Peters says licensed content makes AI search more useful and trustworthy.",
+        "Getty previously opposed AI image generators, then built its own and sued Stability AI.",
+        "Getty is awaiting approval of its $3.7 billion acquisition of Shutterstock."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete value instances—deal announcement, stock reaction, CEO insight, Getty's AI history, and pending acquisition—within a brief format, giving high value density and clear relevance to AI and technology themes. No clickbait, padding, or shallow treatment is evident, so no penalties apply.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-23T03:36:07.087938"
+    },
+    {
+      "id": 3492,
+      "source_id": 4,
+      "original_url": "https://www.malwarebytes.com/blog/news/2026/06/thousands-of-d-link-routers-under-control-of-arystinger-botnet",
+      "title": "https://www.malwarebytes.com/blog/news/2026/06/thousands-of-d-link-routers-under-control-of-arystinger-botnet",
+      "summary": "Legacy D‑Link routers can be silently co‑opted into a large‑scale scanning and proxy botnet, so they must be secured or replaced.",
+      "ideas": [
+        "AryStinger botnet hijacks thousands of legacy D-Link routers and NAS devices.",
+        "Infected routers become “Executors” for large‑scale network scanning and proxy tasks.",
+        "Botnet can tamper with DNS, redirect traffic to phishing or malware sites.",
+        "Compromised devices expose private data and can be used for illicit activities.",
+        "Signs of infection include slower connectivity, DNS failures, and unusual outbound traffic.",
+        "Mitigation: update firmware, change admin password, disable remote WAN management.",
+        "Use WPA2/WPA3 encryption and disable unused services like UPnP.",
+        "Replace end‑of‑life routers as they no longer receive security patches."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete value instances: it reveals a new botnet targeting legacy D‑Link routers, explains its capabilities (scanning, proxy, DNS tampering), outlines real risks to users, lists subtle infection indicators, and provides actionable mitigation steps. The content aligns strongly with cybersecurity and offers practical advice without clickbait or excessive padding, resulting in good value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:34:55.077949"
+    },
+    {
+      "id": 3491,
+      "source_id": 19,
+      "original_url": "https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open",
+      "title": "GLM-5.2 is the step change for open agents",
+      "summary": "GLM‑5.2 demonstrates that open‑weight models can now match closed‑lab performance, reshaping economics and regulation.",
+      "ideas": [
+        "GLM-5.2 marks first open-weight model that feels right for coding agents",
+        "Benchmarks show GLM-5.2 surpasses Claude Fable and Gemini in agent tasks",
+        "Open‑closed performance gap narrowed to ~6‑9 months between Opus 4.5 and GLM‑5.2",
+        "Chinese labs can upload model weights to HuggingFace within hours",
+        "GLM-5.2 creates pricing pressure on Anthropic and boosts open model economy",
+        "Using GLM-5.2 with Fireworks API requires clearing context after image inputs",
+        "New paper on open RL recipes for terminal agents provides practical guidance",
+        "Potential US regulation could ban advanced open models, affecting future deployment"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article offers multiple genuine insights—benchmark evidence, timeline analysis of open‑closed gaps, economic impact, regulatory considerations, and practical tips—while staying on‑topic for AI and tech. Minor self‑promotion is present but does not dominate, so only a small penalty is applied. Overall high thematic relevance and solid value density merit a good score.",
+      "source_type": "rss",
+      "source_name": "Interconnects AI",
+      "published_at": "2026-06-23T03:33:03.553189"
+    },
+    {
+      "id": 3490,
+      "source_id": 4,
+      "original_url": "https://whiteknightlabs.com/2026/06/15/harnessing-the-power-of-cobalt-strike-profiles-for-edr-evasion-part-3/",
+      "title": "https://whiteknightlabs.com/2026/06/15/harnessing-the-power-of-cobalt-strike-profiles-for-edr-evasion-part-3/",
+      "summary": "The latest Cobalt Strike 4.13 release introduces features like Drip Loading and Check-in Delay that enhance detection evasion techniques, which can be combined with the updated Sleep Mask implementation for improved stealth in Beacon operations.",
+      "ideas": [
+        "Drip Loading allocates smaller chunks of memory to evade EDR detection",
+        "Check-in Delay breaks event correlation detection heuristics",
+        "Updated Sleep Mask implementation mitigates drawbacks of VirtualAlloc",
+        "Combining Drip Loading with Sleep Mask and BeaconGate enhances evasion capabilities",
+        "Cobalt Strike 4.13 introduces impactful changes for stealth and flexibility"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides high-value insights into harnessing the power of Cobalt Strike profiles for EDR evasion, specifically focusing on Drip Loading, Check-in Delay, and the updated Sleep Mask implementation. The author delivers novel ideas, practical knowledge, and useful resources, making the content highly relevant to the theme of CyberSecurity. The density of value is high, with multiple quality ideas presented in a moderately sized article.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-23T03:32:55.511206"
+    },
+    {
+      "id": 3489,
+      "source_id": 11,
+      "original_url": "https://www.youtube.com/watch?v=DzbqeO_diOQ",
+      "title": "PLANS For Fable 5: Rebuilding My /Plan Skill for Mythos Class Models",
+      "summary": "Rebuilding a plan meta skill for Mythos class models requires a structured approach, emphasizing the importance of planning in engineering and templating skills for AI agents to achieve optimal performance.",
+      "ideas": [
+        "Planning is a crucial skill in engineering",
+        "Templating engineering skills for AI agents improves performance",
+        "Property-based engineering enhances plan templates",
+        "Mythos class models unlock new levels of planning ability",
+        "Investing in planning upfront reduces reviewing time",
+        "Agents should be taught how to engineer, not just perform tasks",
+        "Using HTML and images in plans improves clarity",
+        "Validation and testing sections are essential in plans"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "The content provides a detailed and in-depth look at rebuilding a plan meta skill for Mythos class models, emphasizing the importance of planning in engineering and the need for a structured approach. It delivers multiple novel insights, such as the concept of 'property-based engineering' and the importance of templating engineering skills for AI agents. The content is dense with valuable information, including specific examples and explanations of how to enhance plan templates for better performance. However, the content could be improved with more concise language and fewer tangents.",
+      "source_type": "youtube",
+      "source_name": "IndyDevDan",
+      "published_at": "2026-06-23T03:32:06.570813"
+    },
     {
       "id": 3488,
       "source_id": 26,
