@@ -1,7 +1,115 @@
 {
-  "updated_at": "2026-06-26T18:00:00.599754",
-  "total_items": 695,
+  "updated_at": "2026-06-26T19:00:00.545099",
+  "total_items": 699,
   "items": [
+    {
+      "id": 3566,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/microsoft-warns-of-photo-zip-phishing.html",
+      "title": "Microsoft Warns of Photo ZIP Phishing Campaign Targeting Hotels with Node.js Implant",
+      "summary": "A sophisticated phishing campaign is using Calendly and Google redirects to bypass email authentication, then delivering a Node.js-based RAT (TonRAT) that uses TON blockchain for C2 domain resolution against hotel front desk systems.",
+      "ideas": [
+        "Authentication laundering bypasses SPF/DKIM/DMARC using Calendly email notifications and Google redirects",
+        "TonRAT resolves C2 domains through TON blockchain API, making static blocklists ineffective",
+        "Phishing uses photo-themed ZIP files with LNK shortcuts posing as images to execute PowerShell",
+        "Malware uses BigInt arithmetic to decode hidden download URLs and drops legitimate Node.js v24.13.0 runtime",
+        "Persistence requires removing both RunOnce entry and Node.js Run key, plus runtime files in AppData\\Local\\Nodejs",
+        "C2 beaconing occurs over non-standard ports: 8443, 8445, 8453, 5555, 56001-56003",
+        "Attack chain uses Cloudflare-fronted .cfd domains behind Turnstile challenges for anti-analysis",
+        "Lures delivered in Japanese, Danish, Dutch using hotel complaint themes routed through Calendly"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "Rich cybersecurity threat intelligence with multiple distinct technical insights. The article delivers significant value through: 1) A novel 'authentication laundering' attack chain using Calendly and Google redirects to bypass email authentication, 2) Specific IOCs including file names (IMG-<numbers>.png.lnk, PHOTO-<numbers>.png.lnk), C2 ports (8443, 8445, 8453, 5555, 56001-56003), and .cfd domains, 3) Technical analysis of TonRAT using TON blockchain API for C2 resolution making blocklists ineffective, 4) Full remediation guidance requiring removal of both RunOnce entry and Node.js Run key persistence paths, and 5) BigInt arithmetic obfuscation technique for decoding download URLs. Content is well-sourced (SOC Prime, ITOCHU, Microsoft) and provides actionable defensive information for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-27T03:43:20.216273"
+    },
+    {
+      "id": 3565,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/new-linux-pedit-cow-exploit-enables.html",
+      "title": "New Linux pedit COW Exploit Enables Root Access by Poisoning Cached Binaries",
+      "summary": "The pedit COW vulnerability allows unprivileged Linux users to gain root by poisoning cached setuid binaries in memory through a kernel tc traffic-control flaw, bypassing file-integrity checks.",
+      "ideas": [
+        "act_pedit checks writable range before final offsets are known, causing out-of-bounds writes to shared page cache",
+        "The exploit poisons the in-memory cached copy of /bin/su without modifying the file on disk",
+        "Unprivileged user namespaces provide CAP_NET_ADMIN needed to trigger the bug from inside a namespace",
+        "File-integrity checks return clean because only memory cache is modified, not disk files",
+        "Affected: RHEL 8/9/10, Debian 11/12/13, Ubuntu 18.04 through 26.04",
+        "Mitigation: Block act_pedit module with 'install act_pedit /bin/true' in modprobe.d",
+        "Mitigation: Disable unprivileged namespaces with sysctl kernel.unprivileged_userns_clone=0",
+        "Vulnerability follows the 'Dirty' exploit pattern: kernel writes to page it doesn't exclusively own",
+        "The fix was posted publicly on netdev mailing list weeks before CVE was assigned",
+        "PoC exploit appeared within one day of CVE assignment on June 16",
+        "Dropping page cache clears poisoned memory but cannot recover already-opened root shells",
+        "Ubuntu 26.04 blocks the attack path via AppArmor restrictions on user namespaces"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity journalism delivering high-value technical content efficiently. The article explains CVE-2026-46331 (pedit COW) with clear technical depth on the vulnerability mechanism, affected systems (RHEL 8/9/10, Debian 11-13, Ubuntu 18.04-26.04), practical mitigations (module blocking and namespace disabling), and contextualizes it within the 'Dirty' exploit family. No padding or fluff detected. The content provides actionable intelligence that security professionals can use immediately, making it worth the reading time investment.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-27T03:40:08.699171"
+    },
+    {
+      "id": 3564,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/in-other-news-chinese-mythos-like-ai-tata-electronics-breach-snyk-layoffs/",
+      "title": "In Other News: Chinese Mythos-Like AI, Tata Electronics Breach, Snyk Layoffs",
+      "summary": "Recent cybersecurity news includes breaches, AI threats, and industry developments that highlight the evolving threat landscape and the need for advanced security measures.",
+      "ideas": [
+        "Russia used Cellebrite to hack an activist's iPhone",
+        "Tata Electronics breach exposed Apple and Tesla secrets",
+        "Five Eyes issued an urgent AI threat warning",
+        "macOS Gaslight malware linked to North Korea",
+        "CISA prepares for a massive recruitment push",
+        "Chinese company developed a Mythos-like AI system",
+        "Snyk layoffs as part of an organizational restructuring",
+        "Android developer identity verification framework to launch",
+        "White House intervened to restrict the rollout of OpenAI model"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a comprehensive roundup of recent cybersecurity news, including breaches, AI threats, and industry developments. It delivers multiple novel insights efficiently, with a high value density and strong thematic relevance to cybersecurity. However, some sections feel like a list of news headlines rather than in-depth analysis, which prevents it from scoring higher.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-27T03:34:25.808930"
+    },
+    {
+      "id": 3563,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/chinese-speaking-apt-deploys-new.html",
+      "title": "Chinese-Speaking APT Deploys New TinyRCT Backdoor in Southeast Asia Campaign",
+      "summary": "A Chinese-speaking APT has been linked to a new custom backdoor called TinyRCT, used in cyber attacks targeting government entities and critical infrastructure in Southeast Asia, highlighting the evolving threat landscape and the need for enhanced cybersecurity measures.",
+      "ideas": [
+        "Chinese-speaking APT deploying new backdoor",
+        "TinyRCT backdoor capabilities",
+        "Threat actor's TTPs",
+        "Southeast Asia campaign",
+        "Government and critical infrastructure targets",
+        "Custom backdoor deployment",
+        "AppDomainManager injection attack"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a detailed analysis of a Chinese-speaking APT's deployment of a new backdoor called TinyRCT, including its capabilities, delivery methods, and the threat actor's tactics, techniques, and procedures (TTPs). The article is well-researched, informative, and offers valuable insights into the threat landscape, making it a high-value resource for cybersecurity professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-27T03:33:00.421156"
+    },
     {
       "id": 3562,
       "source_id": 7,
