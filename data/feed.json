@@ -1,7 +1,157 @@
 {
-  "updated_at": "2026-06-27T18:00:07.203220",
-  "total_items": 690,
+  "updated_at": "2026-06-27T19:00:00.361884",
+  "total_items": 696,
   "items": [
+    {
+      "id": 3578,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/06/27/htb-wingdata.html",
+      "title": "https://0xdf.gitlab.io/2026/06/27/htb-wingdata.html",
+      "summary": "A detailed walkthrough exploiting CVE-2025-47812 (null-byte injection in Wing FTP) for RCE, then leveraging password reuse and CVE-2025-4517 (tarfile extraction filter bypass) to escalate to root.",
+      "ideas": [
+        "Wing FTP anonymous access is enabled by default and can be leveraged",
+        "CVE-2025-47812 allows null-byte injection to smuggle Lua code into session files",
+        "Wing FTP stores salted password hashes in account files that can be cracked",
+        "Password reuse between cracked hashes enables lateral movement",
+        "Sudo permissions on Python backup scripts can enable privilege escalation",
+        "Python tarfile module data filter has path-validation bypass vulnerability",
+        "CVE-2025-4517 allows arbitrary file write via tar archive symlink manipulation",
+        "ffuf subdomain enumeration using Host header fuzzing reveals hidden services",
+        "Nmap TTL analysis helps identify target OS without direct enumeration",
+        "HTTP response headers reveal tech stack and software versions",
+        "Creating symlinks in tar archives can write files outside extraction directory"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a high-quality technical walkthrough of a HackTheBox machine that delivers exceptional value to cybersecurity practitioners. The content documents exploitation of CVE-2025-47812 (null-byte injection in Wing FTP Server allowing Lua code injection into session files for RCE) and CVE-2025-4517 (Python tarfile extraction filter path validation bypass for privilege escalation). It provides detailed command outputs, practical enumeration techniques (nmap scanning, ffuf subdomain discovery, feroxbuster directory enumeration), and a complete attack chain from initial access through root. The content is densely packed with technical details, specific CVEs, actual exploitation commands, and privilege escalation techniques involving password cracking and tarfile abuse. No padding or fluff - pure technical documentation with strong thematic relevance to cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T03:43:12.861106"
+    },
+    {
+      "id": 3577,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/bytedances-illada-is-a-diffusion-language-model-that-keeps-up-with-qwen2-5/",
+      "title": "ByteDance's \"iLLaDA\" is a diffusion language model that keeps up with Qwen2.5",
+      "summary": "ByteDance's iLLaDA diffusion language model demonstrates competitive performance with Qwen2.5, especially in tasks where it was trained from scratch, showing the potential of diffusion models to keep up with autoregressive models.",
+      "ideas": [
+        "Diffusion language models can refine text in parallel across multiple passes",
+        "iLLaDA matches Qwen2.5 at the base level but falls behind after fine-tuning",
+        "Diffusion models like iLLaDA and DiffusionGemma offer faster generation but may lack in quality compared to autoregressive models",
+        "Training from scratch can lead to better performance in certain benchmarks for diffusion models",
+        "The gap between diffusion and autoregressive models narrows with advancements in training methods and model size"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a detailed comparison of ByteDance's iLLaDA diffusion language model with other models like Qwen2.5 and Dream 7B, offering insights into their performance and training methods. It delivers multiple novel ideas, such as the potential of diffusion models to match or surpass autoregressive models in certain tasks, and the importance of considering both quality and speed in model development. The content is well-structured, informative, and free of significant penalties like clickbait or hidden promotion.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-28T03:38:53.546221"
+    },
+    {
+      "id": 3576,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/the-companies-most-likely-to-automate-your-job-are-now-funding-a-1-billion-program-to-retrain-you/",
+      "title": "The companies most likely to automate your job are now funding a $1 billion program to retrain you",
+      "summary": "A new initiative called 'Raise Us' has been launched to retrain American workers for an AI-driven economy, backed by major corporations and governors, aiming to raise $1 billion for retraining and continuing education programs.",
+      "ideas": [
+        "Raise Us initiative to retrain American workers",
+        "Major corporations backing the initiative",
+        "Pilot projects in four states",
+        "Four pillars defining the organization's work",
+        "Questions about independence due to corporate funding",
+        "Potential impact on job markets and AI-driven economy"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a well-structured and informative overview of the 'Raise Us' initiative, a $1 billion program aimed at retraining American workers for an AI-driven economy. It highlights the involvement of major corporations and governors, raising questions about independence and the potential impact on job markets. The content delivers multiple novel insights, including the funding structure, pilot projects, and the organization's four pillars. However, the article's length and the presence of ads slightly reduce its value density.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-28T03:37:18.693808"
+    },
+    {
+      "id": 3575,
+      "source_id": 4,
+      "original_url": "https://blog.cr0hn.com/slow-json-stream-new-low-bandwidth-dos-attack/",
+      "title": "Slow JSON Stream: 64 connections at 1 B/s takes down PHP/Laravel in under 2 minutes",
+      "summary": "A low‑bandwidth, chunked‑JSON body attack can exhaust server workers, but simple timeout settings can block it.",
+      "ideas": [
+        "Slow JSON Stream attacks HTTP body readers by sending 1 B/s JSON chunks without closing token.",
+        "Uses Transfer-Encoding: chunked to avoid Content-Length, keeping connection alive indefinitely.",
+        "64 concurrent 1 B/s connections can crash PHP/Laravel in under 2 minutes.",
+        "90 % of tested frameworks are vulnerable by default.",
+        "Body‑reader timeouts are often unset or set to minutes, unlike header timeouts.",
+        "R.U.D.Y. declares Content‑Length; Slow JSON Stream does not, making it harder to detect.",
+        "Set client_body_timeout, limit_req, or MinRate=100 B/s in nginx/Apache to mitigate.",
+        "Go‑fiber and FastAPI streaming resist by discarding bodies after 4 KB or streaming parse.",
+        "CVSS scores range 6.5–8.6 depending on deployment scope.",
+        "One‑line configuration changes can mitigate the attack if body timeout is set."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article introduces a novel, practical attack (Slow JSON Stream) with clear technical details, extensive testing across 41 targets, and concrete mitigation steps, providing multiple actionable insights. It stays focused on cybersecurity without clickbait or filler, though its length adds some non‑essential navigation text. Overall high thematic relevance and strong value density merit a good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T03:34:41.180806"
+    },
+    {
+      "id": 3574,
+      "source_id": 4,
+      "original_url": "https://lyra.horse/blog/2026/06/reddit-spam-internals/",
+      "title": "A peek into Reddit's anti-spam internals Ʊ lyra's epic blog",
+      "summary": "Reddit's anti-spam system uses a combination of automated filters and human moderation to remove spam posts, with internal removal reasons sometimes being visible to moderators",
+      "ideas": [
+        "Reddit's anti-spam system uses automated filters and human moderation",
+        "Internal removal reasons are sometimes visible to moderators",
+        "Reddit's source code provides insight into anti-spam practices",
+        "Domain removals are a type of anti-spam measure",
+        "Spammit analyzes posts and gives a percentage rating",
+        "Bans and shadowbans are used to remove spam posts and users"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a unique and insightful look into Reddit's anti-spam internals, with the author sharing their personal experience of accidentally gaining access to internal removal reasons. The post is well-researched, with code snippets and examples that support the author's claims. The content is also well-organized and easy to follow, making it a valuable resource for those interested in Reddit's moderation practices.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T03:34:33.944535"
+    },
+    {
+      "id": 3573,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/194360/intelligence/new-fbi-alert-russian-intelligence-uses-signal-recovery-keys-to-access-messages.html",
+      "title": "New FBI Alert: Russian Intelligence Uses Signal Recovery Keys to Access Messages",
+      "summary": "Russian intelligence is targeting Signal users, particularly those in government, security, and journalism, by phishing for Backup Recovery Keys to access message history and take over accounts.",
+      "ideas": [
+        "Russian intelligence targets Signal users with phishing campaigns",
+        "Backup Recovery Keys can be used to access message history",
+        "Generating a new Backup Recovery Key can mitigate the risk",
+        "Signal's encryption remains unbroken, but account security is vulnerable",
+        "Users should treat in-app support messages as hostile"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a high-value alert from the FBI about Russian intelligence using Signal Recovery Keys to access messages, offering specific details on the phishing campaign and guidance on mitigation. It demonstrates strong thematic relevance to cybersecurity and intelligence, delivering novel insights efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T03:33:04.390827"
+    },
     {
       "id": 3572,
       "source_id": 4,
