@@ -1,7 +1,282 @@
 {
-  "updated_at": "2026-06-28T11:00:00.460213",
-  "total_items": 674,
+  "updated_at": "2026-06-28T13:00:00.451753",
+  "total_items": 685,
   "items": [
+    {
+      "id": 3593,
+      "source_id": 26,
+      "original_url": "https://github.com/keycloak/keycloak",
+      "title": "keycloak/keycloak",
+      "summary": "Keycloak is an enterprise-grade open source identity and access management server that provides comprehensive authentication, authorization, user federation, and SSO capabilities for modern applications and services.",
+      "ideas": [
+        "Centralized authentication with OIDC and SAML support",
+        "User federation with LDAP and Active Directory",
+        "Fine-grained authorization and role-based access control",
+        "Multi-factor authentication capabilities",
+        "Single sign-on across multiple applications"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Keycloak scores highly across all criteria: it solves a critical, fundamental problem (application authentication/authorization) with a production-grade, well-architected implementation. The technical approach is not 'novel' in the sense of inventing something new, but rather excels at implementing established protocols (OIDC, SAML) with remarkable completeness—user federation, MFA, fine-grained authorization, and more. At 35.4k stars and over 1,500 contributors, it's a mature, battle-tested project with extensive documentation. No penalties apply—this is genuinely useful infrastructure software, not hype or a wrapper project.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-28T21:44:16.807928"
+    },
+    {
+      "id": 3592,
+      "source_id": 7,
+      "original_url": "https://www.elastic.co/search-labs/blog/agent-memory-elasticsearch",
+      "title": "Agent memory on Elasticsearch: hybrid retrieval and DLS - Elasticsearch Labs",
+      "summary": "Building persistent agent memory on Elasticsearch requires three indices (episodic, semantic, procedural) with hybrid retrieval (RRF + cross-encoder reranking), supersession for contradictions, time-decay for freshness, and per-user DLS isolation achieving R@10 0.89 with zero cross-tenant leaks.",
+      "ideas": [
+        "Context windows are short-term memory, not persistent memory systems",
+        "Agent memory requires three indices mapped to cognitive science: episodic, semantic, procedural",
+        "Episodic memory stores raw user turns with timestamps before LLM response",
+        "Semantic memory holds stable user facts distilled from episodic events",
+        "Procedural memory stores playbooks with success_count and failure_count from user feedback",
+        "Hybrid retrieval uses RRF fusion over BM25 + dense vectors with rank_constant=30",
+        "Cross-encoder reranking scores query-document pairs jointly for stronger relevance signals",
+        "Over-fetch 80 candidates per leg before reranking small pool to manage cost",
+        "Pre-recall on verbatim user message preserves literal tokens stripped by agent paraphrasing",
+        "Supersession keeps old facts for audit trail rather than deleting contradictions",
+        "Time-decay function ranks older facts lower without removing them entirely",
+        "Per-user DLS isolation ensures zero cross-tenant memory leaks",
+        "Consolidation LLM promotes episodic events to semantic facts and procedural playbooks",
+        "User confirmation signals increment success_count; rejection increments failure_count",
+        "Dedup uses same hybrid retriever with 0.90 similarity threshold for duplicate detection"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a technically dense article that delivers 10+ distinct implementation insights for building agent memory systems. The three-index architecture (episodic/semantic/procedural) mapped to cognitive science provides strong conceptual grounding, while the hybrid retrieval pipeline with specific RRF parameters (rank_constant=30, 80 candidates), cross-encoder reranking, supersession patterns, decay functions, and per-user DLS isolation for zero cross-tenant leaks represent genuine architectural knowledge. The eval results (R@10 0.89 across 168 questions) and full open-source implementation on GitHub add credibility and practical value. The article is tightly focused on solving real problems with specific solutions—no padding or fluff detected. Slight扣分 for some explanations being cut off mid-sentence near the end, suggesting incomplete content. Highly relevant to AI/agent development with strong thematic alignment.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-06-28T21:43:47.075301"
+    },
+    {
+      "id": 3591,
+      "source_id": 26,
+      "original_url": "https://github.com/Fission-AI/OpenSpec",
+      "title": "Fission-AI/OpenSpec",
+      "summary": "OpenSpec is a spec-driven development framework for AI coding assistants that brings predictability and organization to the development process with a lightweight spec layer and fluid workflow.",
+      "ideas": [
+        "Spec-driven AI development",
+        "Fluid workflow",
+        "AI coding assistant integration"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "OpenSpec scores high in problem significance (22/25) as it addresses the real problem of unpredictable AI coding assistants by adding a lightweight spec layer. It also shows technical novelty (20/25) with its fluid, iterative approach to spec-driven development. The project has practical utility (25/25) with a clear, production-ready workflow and good API/CLI design. Documentation quality is excellent (25/25), providing a clear problem statement, architecture explanation, and usage examples. Domain relevance bonus adds 10 points for its strong alignment with AI/ML tooling and developer productivity.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-28T21:40:40.891345"
+    },
+    {
+      "id": 3590,
+      "source_id": 4,
+      "original_url": "https://www.omsherikar.me/blog/your-system-prompt-is-not-a-secret",
+      "title": "Your System Prompt Is Not a Secret",
+      "summary": "System prompt extraction is model-dependent and measurable: resistant models can be bypassed with translation attacks, leaky models comply with almost anything, self-agreement can proxy for ground truth only when leaking is common, and neither cheap defense closes the vulnerability - so treat system prompts as public.",
+      "ideas": [
+        "Only test prompts you authored to establish ground truth for accurate leakage measurement",
+        "Self-agreement tracks real leakage on compliant models but inverts on resistant ones",
+        "Translation attacks bypass refusal on resistant models where direct asks fail",
+        "Instructional warnings only work as well as the model follows instructions",
+        "Output filters are evadable via base64 or spaced encoding",
+        "Never put secrets, API keys, or business logic in system prompts",
+        "Treat system prompts as public since they will eventually be extracted",
+        "Attack effectiveness depends entirely on the target model's resistance level"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "This is rigorous original security research that delivers genuine value through methodology, data, and novel findings. The core contribution is establishing ground truth (authoring your own prompts) to properly measure prompt extraction rather than relying on subjective screenshots. Key value instances include: (1) the self-agreement proxy discovery that correctly identifies real vs hallucinated extractions but flips depending on whether the model resists or complies, (2) the model-dependent attack effectiveness finding where translation works on resistant models but unnecessary on leaky ones, (3) defense evaluation showing instructional warnings are unreliable while output filters are evadable via encoding, and (4) the practical takeaway that system prompts should never contain secrets. The 2,592 scored calls across 4 models provides statistical weight, and the open-source harness makes reproduction possible. No penalties apply - the content is well-structured, properly hedged, cites sources, and avoids sensationalism despite handling a dramatic-sounding topic.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T21:38:34.685755"
+    },
+    {
+      "id": 3589,
+      "source_id": 26,
+      "original_url": "https://github.com/anomalyco/opencode",
+      "title": "anomalyco/opencode",
+      "summary": "OpenCode is an open-source AI coding agent with dual build/plan modes, cross-platform support (CLI, desktop app, VSCode), and substantial engineering infrastructure that competes in the AI-assisted coding space.",
+      "ideas": [
+        "Dual agent modes for build vs plan workflows",
+        "Cross-platform CLI and desktop app",
+        "Native SDKs for multiple integrations",
+        "Multi-language documentation"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 70,
+      "rating_reason": "OpenCode is a legitimate AI coding agent with substantial engineering behind it (14,550 commits, 958 contributors, multiple SDKs and platforms). It addresses the real problem of developer productivity through AI-assisted coding. However, it operates in a crowded space alongside Cursor, GitHub Copilot, and similar tools without clear architectural differentiation. The documentation is solid with multiple installation options and clear agent explanations, but the project doesn't represent a novel approach to AI coding assistance—just another implementation in an established category. Bonus points awarded for strong alignment with AI/ML tooling and developer productivity domains.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-28T21:36:26.215224"
+    },
+    {
+      "id": 3588,
+      "source_id": 4,
+      "original_url": "https://bl4ckarch.github.io/posts/One-Bool.-Six-Shells.-AMSI's-Design-Problem/",
+      "title": "https://bl4ckarch.github.io/posts/One-Bool.-Six-Shells.-AMSI's-Design-Problem/",
+      "summary": "The Windows Anti-Malware Scan Interface (AMSI) has design flaws that can be exploited to bypass its protection, and this post documents six confirmed techniques to achieve this, including direct field reflection, ETW suppression, and dynamic method IL emission.",
+      "ideas": [
+        "AMSI's fail-open design makes it vulnerable to bypass",
+        "Six confirmed bypass techniques are presented",
+        "Direct field reflection can disable AMSI",
+        "ETW suppression can hide bypass attempts",
+        "Dynamic method IL emission can bypass initonly constraints",
+        "JIT heap patching can disable Path A"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 95,
+      "rating_reason": "This content provides exceptional value by delivering multiple novel insights into AMSI's design problems and bypass techniques. It aligns strongly with the CyberSecurity theme, offering 6 confirmed bypass techniques with reverse shell proof for each, making it highly relevant and informative. The content's density is high, with numerous ideas and technical details presented efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T21:35:18.688207"
+    },
+    {
+      "id": 3587,
+      "source_id": 4,
+      "original_url": "https://vrls.ws/posts/abusing-gitlab-ci-runners-as-c2/",
+      "title": "https://vrls.ws/posts/abusing-gitlab-ci-runners-as-c2/",
+      "summary": "GitLab CI runners can be turned into a stealthy, fully functional command‑and‑control platform using only legitimate binaries.",
+      "ideas": [
+        "GitLab self‑hosted runners can be repurposed as a stealthy C2 channel using legitimate binary",
+        "Runner’s outbound HTTPS traffic blends with normal dev traffic, evading network detection",
+        "Commands delivered via CI variables; results returned through job traces and artifacts",
+        "Enrollment uses a single PowerShell one‑liner to register and start the signed runner as a service",
+        "Detection based on unusual runner registration tokens, job patterns, and Wazuh/Sysmon events",
+        "Technique maps to MITRE ATT&CK T1105 (Ingress Tool Transfer) and T1059 (Command Execution)",
+        "GitRunner C2 SPA stores credentials locally and operates solely via GitLab REST API, no backend needed",
+        "Unique runner tags act as routing keys to target specific compromised hosts"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple concrete, novel insights for defenders and attackers, such as repurposing signed GitLab runners as C2, detailed enrollment steps, command delivery via CI variables, artifact-based file transfer, and specific detection rules with Wazuh/Sysmon events. It aligns strongly with CyberSecurity and Tech themes and provides actionable detection guidance, outweighing minor padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T21:34:35.894320"
+    },
+    {
+      "id": 3586,
+      "source_id": 4,
+      "original_url": "https://github.com/diabloidyobane/DriverScope",
+      "title": "scan your system drivers",
+      "summary": "DriverScope automates Windows kernel driver vulnerability hunting by scanning for dangerous imports, extracting IOCTL surfaces, and cross-referencing against blocklists to surface novel zero-day candidates for security research.",
+      "ideas": [
+        "18 kernel primitive classes define the attack surface for BYOVD exploits",
+        "CN, KR, JP, RU vendors ship signed drivers rarely analyzed by English-speaking researchers",
+        "Speakeasy emulation traces DriverEntry to find runtime imports and debug strings",
+        "IOCTL structs map directly to kernel primitives (PhysMem-Map, MSR, CR-Regs, PCI-Config)",
+        "Bulk vendor scraping covers 55 vendors across 10 regions for corpus building",
+        "Claude API triage provides per-IOCTL verdicts on primitive exposure",
+        "VirusTotal integration uses 30-day TTL cache with auto-throttling",
+        "IoCreateDriver hooks reveal hidden driver objects invisible to import-only analysis",
+        "Emulation catches runtime API resolution via MmGetSystemRoutineAddress",
+        "WDM drivers filtered separately from KMDF for physmem primitive analysis"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a technical README for DriverScope, a legitimate security research tool. It provides substantial value through practical installation instructions, detailed command documentation, and explanations of 18 BYOVD primitive classes. The content covers practical workflows including Speakeasy emulation, IOCTL testing patterns, bulk vendor scraping, and Claude API triage integration. The regional vendor analysis (55 vendors across 10 regions) reveals genuine insider knowledge about why Chinese, Korean, Japanese, and Russian drivers rarely appear in English-language security research. The content acknowledges dual-use concerns and provides guidance on the Cyber Verification Program. This is targeted at security researchers and provides actionable tooling information rather than just promotional content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-28T21:34:22.544303"
+    },
+    {
+      "id": 3585,
+      "source_id": 26,
+      "original_url": "https://github.com/dbt-labs/dbt-core",
+      "title": "dbt-labs/dbt-core",
+      "summary": "dbt‑core is an open‑source data transformation tool that lets analysts write SQL models, handling compilation, testing, and deployment, now being rewritten in Rust for speed and scalability.",
+      "ideas": [
+        "Rust‑based rewrite dramatically speeds dbt parsing and compilation"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "Problem significance (22) – tackles major ELT/data modeling challenges. Technical novelty (23) – ground‑up Rust rewrite with new artifacts and language spec. Practical utility (20) – production‑ready v1 and usable alpha v2. Documentation quality (18) – clear problem statement, features, OS support, and getting‑started info. No penalties applied; domain relevance bonus (+8) for data engineering.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-28T21:33:02.343687"
+    },
+    {
+      "id": 3584,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/sinas-open-model-vibethinker-3b-aims-to-show-reasoning-compresses-well-but-factual-knowledge-doesnt/",
+      "title": "Sina's open model VibeThinker-3B aims to show reasoning compresses well but factual knowledge doesn't",
+      "summary": "Sina's VibeThinker-3B model achieves top-tier performance on math and coding tasks despite having only 3 billion parameters, suggesting that logical reasoning can be efficiently compressed, unlike broad factual knowledge.",
+      "ideas": [
+        "Small AI models can match larger models on specific tasks",
+        "Logical reasoning can be compressed into smaller models",
+        "Factual knowledge requires larger models",
+        "Post-training methods significantly impact model performance",
+        "VibeThinker-3B outperforms larger models on certain benchmarks"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into the development and capabilities of Sina's open model VibeThinker-3B, demonstrating how reasoning can be compressed into a smaller model without significant loss in performance on specific tasks. The content delivers novel ideas, practical knowledge, and expert insights, aligning well with the theme of AI and technology. However, the presence of ads and some tangential information slightly reduces the content's density and focus.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-28T21:32:55.879684"
+    },
+    {
+      "id": 3583,
+      "source_id": 22,
+      "original_url": "https://generativeprogrammer.com/p/10-claude-code-steering-mechanisms",
+      "title": "10 Claude Code Steering Mechanisms That Stop Agents From Ignoring Instructions",
+      "summary": "The article presents a practical map for choosing between different Claude Code steering mechanisms to efficiently manage instructions and improve the reliability of Claude Code setups.",
+      "ideas": [
+        "Use CLAUDE.md for stable project facts",
+        "Apply path-scoped rules for constraints",
+        "Utilize skills for reusable workflows",
+        "Invoke manual skills and slash commands for human-triggered workflows",
+        "Leverage subagents for isolated investigations",
+        "Apply output styles for persistent posture",
+        "Use one-run overlays for temporary framing",
+        "Connect live capability boundaries with MCP servers",
+        "Implement event gates with hooks",
+        "Enforce hard boundaries with permissions"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by delivering a comprehensive and well-structured guide to Claude Code steering mechanisms. It offers 10 distinct mechanisms for managing instructions, each with clear explanations, examples, and use cases. The content demonstrates high thematic relevance to technology and innovation, particularly in the areas of software development and engineering practices. The author's expertise and insider knowledge are evident throughout the article, making it a valuable resource for readers.",
+      "source_type": "rss",
+      "source_name": "Generative Programmer",
+      "published_at": "2026-06-28T21:32:06.531048"
+    },
     {
       "id": 3582,
       "source_id": 29,
