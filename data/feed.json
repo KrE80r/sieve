@@ -1,7 +1,251 @@
 {
-  "updated_at": "2026-06-29T12:00:03.641274",
-  "total_items": 670,
+  "updated_at": "2026-06-29T13:00:00.413126",
+  "total_items": 680,
   "items": [
+    {
+      "id": 3612,
+      "source_id": 4,
+      "original_url": "https://github.com/Kritagya123611/Ascent",
+      "title": "Stratum\tScale\tDomain\tCore Question",
+      "summary": "ASCENT implements a multi-layer Linux observability pipeline using eBPF and perf to trace from macro system symptoms (CPU%, memory pressure, load) down through 8 simultaneous kernel strata (syscalls, scheduler, memory, locks, IRQs) to root causes, rendered on a dependency-free NASM assembly terminal dashboard.",
+      "ideas": [
+        "11 resolution strata map observable symptoms to fundamental kernel causes",
+        "eBPF ring-buffers and hash maps collect per-PID syscall and kernel function metrics",
+        "60-byte fixed IPC struct enables lock-free producer/consumer pipeline",
+        "NASM x86-64 dashboard has zero libc dependencies and no heap allocations",
+        "CO-RE BPF with vmlinux.h makes programs portable across kernel versions",
+        "perf_event_open gives direct PMU access for IPC and cache miss measurement",
+        "IRQ→softirq→workqueue→sched_wakeup forms traceable causal cascade chains",
+        "Graceful degradation lets Stratum 0 work without root or BPF privileges",
+        "mmap_lock tracepoints expose lock contention at memory subsystem level",
+        "IPC below 1.0 indicates memory-bound workloads waiting on cache misses",
+        "Stratum 9-10 planned: Intel PT/PEBS for microarchitectural stalls, KVM for VM exit rates",
+        "Named FIFO /tmp/ascent.pipe replaces sockets for simpler kernel-to-userspace IPC"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a technically sophisticated open-source observability project that delivers substantial value through its novel 11-layer 'strata' architecture for tracing Linux system anomalies from surface symptoms to kernel root causes. The content provides detailed implementation specifics: 8 active BPF sensors, a 60-byte fixed IPC protocol, zero-dependency NASM dashboard, and graceful privilege degradation. Key value instances include the causal chain tracing concept (IRQ→softirq→workqueue→sched_wakeup), CO-RE BPF approach with vmlinux.h, specific kernel tracepoints catalogued across 6 strata, and PMU counter integration via perf_event_open. The content is dense with actionable technical detail for systems engineers, though it's narrowly targeted at Linux kernel/DevOps practitioners rather than general audiences. No fluff or padding detected—this is a genuine technical specification.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-29T21:44:37.635187"
+    },
+    {
+      "id": 3611,
+      "source_id": 4,
+      "original_url": "https://github.com/sgkdev/ipv6_frag_escape",
+      "title": "https://github.com/sgkdev/ipv6_frag_escape",
+      "summary": "An IPv6 fragmentation bug can be leveraged to defeat KASLR, bypass SELinux, and escape a container to gain root on the host.",
+      "ideas": [
+        "Exploit uses IPv6 fragmentation bug causing in-slab overflow into skb_shared_info.",
+        "Overflow creates self-use-after-free of a pipe page, enabling dirty page table.",
+        "Reclaimed pipe page becomes leaf page table, allowing arbitrary physical read/write.",
+        "Scan low-memory trampoline page table to defeat KASLR and locate kernel base.",
+        "Forge PTE to alias page table, achieving unlimited kernel memory read/write.",
+        "Resolve kernel offsets at runtime via BTF and hijack task_struct credentials.",
+        "Overwrite SELinux avc_denied() to bypass enforcement without changing mode.",
+        "Modify core_pattern to execute attacker binary, delivering root shell from container."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The README delivers multiple novel exploitation techniques, detailed step‑by‑step chain, and actionable code for a real kernel bug, providing high value to security practitioners. It stays focused, contains no clickbait or padding, and aligns strongly with cybersecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-29T21:43:14.209722"
+    },
+    {
+      "id": 3610,
+      "source_id": 26,
+      "original_url": "https://github.com/altic-dev/FluidVoice",
+      "title": "altic-dev/FluidVoice",
+      "summary": "FluidVoice is a macOS dictation app offering on-device AI-enhanced transcription and voice commands.",
+      "ideas": [
+        "On-device AI-enhanced dictation with real-time transcription and command control for macOS"
+      ],
+      "labels": [
+        "AI",
+        "Productivity"
+      ],
+      "rating": 89,
+      "rating_reason": "Problem significance (22): addresses real need for private, fast dictation on macOS. Technical novelty (17): introduces on-device AI enhancement and fast Parakeet implementation, modestly novel. Practical utility (22): production-ready app with Homebrew install, many features. Documentation quality (20): comprehensive README with usage, build, privacy details. No penalties applied; domain relevance bonus +8 for AI and productivity focus.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-29T21:41:12.363699"
+    },
+    {
+      "id": 3609,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/194399/intelligence/ssu-and-fbi-uncover-russian-cyber-espionage-operation-against-officials-and-military-personnel.html",
+      "title": "SSU and FBI Uncover Russian Cyber Espionage Operation Against Officials and Military Personnel",
+      "summary": "Russian actors are running a large‑scale messenger phishing operation, now targeting Signal backup keys, and users should adopt strict authentication practices to defend themselves.",
+      "ideas": [
+        "Russian intelligence systematically hacks messenger accounts of officials and civilians",
+        "Attackers use SMS impersonating support bots to steal credentials and recovery keys",
+        "Messages are timed for morning hours when targets are less guarded",
+        "New escalation: stealing Signal Backup Recovery Keys for full message history",
+        "QR code phishing can silently link attacker devices to victim accounts",
+        "High‑value targets get sophisticated techniques; ordinary users face simple SMS scams",
+        "Defenses: check active sessions, enable strong 2FA, never share codes or recovery keys, avoid unknown QR codes",
+        "Campaign linked to UNC5792, UNC4221, and Star Blizzard groups tied to Russian FSB"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete insights—details on the Russian messenger‑hacking campaign, the shift to stealing Signal backup keys, QR‑code phishing, and actionable user defenses—making it valuable for security‑aware readers. It stays focused, avoids clickbait, and aligns well with cyber‑security themes, though some navigation boilerplate adds minor padding. Overall the density of useful information is high for a medium‑length piece.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-29T21:40:29.936123"
+    },
+    {
+      "id": 3608,
+      "source_id": 26,
+      "original_url": "https://github.com/cupy/cupy",
+      "title": "cupy/cupy",
+      "summary": "CuPy provides a NumPy‑compatible array library that runs on NVIDIA CUDA and AMD ROCm GPUs, enabling high‑performance scientific computing in Python.",
+      "ideas": [
+        "GPU‑accelerated drop‑in replacement for NumPy/SciPy arrays"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Problem significance (22) – addresses the major need for GPU-accelerated NumPy/SciPy computing. Technical novelty (20) – implements a full GPU backend and low‑level CUDA features, not just a thin wrapper. Practical utility (23) – production‑ready, widely used with clear install guides and Docker images. Documentation quality (20) – concise problem statement, usage example, install instructions, and links to deeper docs. No penalties applied; domain relevance bonus (+8) for AI/ML tooling pushes score above 90.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-29T21:37:01.470223"
+    },
+    {
+      "id": 3607,
+      "source_id": 4,
+      "original_url": "https://github.com/raiyanyahya/recall",
+      "title": "https://github.com/raiyanyahya/recall",
+      "summary": "Recall is a local-first plugin for Claude Code that provides durable memory for projects, allowing users to resume sessions without re-explaining the project, while ensuring privacy and saving usage credits.",
+      "ideas": [
+        "Offline project memory for Claude Code",
+        "Solves cold-start problem without API calls",
+        "Saves usage credits by summarizing sessions locally",
+        "Ensures privacy by not sending data to any API",
+        "Automatically captures and summarizes session activity",
+        "Allows manual override and configuration of settings",
+        "Integrates with git for additional project context"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "The content provides exceptional value by introducing Recall, a plugin for Claude Code that offers durable, offline memory for projects. It efficiently delivers insights on how Recall solves the cold-start problem, saves usage credits, and ensures privacy. The content is rich in novel ideas, practical knowledge, and useful resources, making it highly relevant to the themes of TECHNOLOGY & INNOVATION, PRODUCTIVITY, and PRIVACY.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-29T21:36:55.047215"
+    },
+    {
+      "id": 3606,
+      "source_id": 4,
+      "original_url": "https://blog.otterpwn.com/projects/heavener",
+      "title": "heavener: This is what happens when you can't afford EDR licensesSearchDark modeLight modeReader mode",
+      "summary": "A security researcher documents their 6-month project reverse-engineering commercial EDR products to build an open-source engine that runs real vendor detection logic (ML models, YARA rules, Lua behavioral scripts) against live Windows telemetry.",
+      "ideas": [
+        "Reverse-engineer EDR vendors to extract their ML models, YARA rules, and Lua detection scripts",
+        "Kernel minifilter driver (altitude 370000) captures file ops, registry, process/thread lifecycle, and handle access",
+        "Capture creating process for each new process to detect PPID spoofing via PROC_THREAD_ATTRIBUTE_PARENT_PROCESS",
+        "PPL-AM collector service with ELAM driver enables consuming ETW Threat Intelligence provider",
+        "Dual-indexed process model (by PID and UID) with shared_mutex reader-writer concurrency",
+        "TelemetryCorrelator synthesizes higher-level events like ScheduledTaskCreated from raw telemetry",
+        "Vendor modules implement IEdrModule interface with scan_file and on_event methods",
+        "SentinelOne module: 203 Lua scripts consuming 19 event types through two dispatch mechanisms",
+        "Single-threaded event pipeline guarantees ordering critical for detection logic correctness",
+        "Extension_values map enables vendor rules to accumulate behavioral state across events per-process",
+        "ModifierEngine computes aggregate signals like sliding window of last 32 files per process",
+        "Runtime module hot-swapping via IPC client without stopping telemetry collection"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical content with high value density. The author spent 6 months reverse-engineering commercial EDR products (SentinelOne, Cortex XDR, CrowdStrike, Sophos) and built a modular engine that runs their actual detection logic. Key value instances include: real ML models and YARA rulesets extracted from vendors, a kernel minifilter driver with 4 different callback mechanisms, a sophisticated process model with dual-indexing, ELAM driver implementation for PPL access, and a detailed module interface. The content provides genuine insider knowledge about how commercial EDR detection actually works internally. This is not a listicle or surface-level overview - it's a deep technical treatise with substantial code examples and architecture diagrams. The thematic relevance to cybersecurity is extremely high, and the content serves a genuine audience of security researchers and detection engineers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-29T21:35:27.368323"
+    },
+    {
+      "id": 3605,
+      "source_id": 26,
+      "original_url": "https://github.com/Robbyant/lingbot-map",
+      "title": "Robbyant/lingbot-map",
+      "summary": "LingBot-Map is an innovative, feed-forward 3D foundation model for streaming 3D reconstruction, offering state-of-the-art performance and efficient inference.",
+      "ideas": [
+        "Geometric Context Transformer",
+        "Feed-forward 3D Reconstruction",
+        "Streaming Inference"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This repository scores high in problem significance (22/25) as it tackles the complex task of streaming 3D reconstruction, a significant problem in the field of computer vision and robotics. It also demonstrates technical novelty (23/25) with its geometric context transformer and feed-forward architecture. The project has practical utility (24/25) with its well-documented code, example scenes, and offline rendering pipeline. Documentation quality (24/25) is excellent, with a clear README, usage examples, and honest discussion of limitations. The only deductions are for minor areas of improvement in documentation and potential usability issues for very long sequences.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-06-29T21:34:46.942283"
+    },
+    {
+      "id": 3604,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/samsung-and-sk-hynix-plan-590-billion-chip-investment-as-ai-demand-sends-memory-prices-soaring/",
+      "title": "Samsung and SK Hynix plan $590 billion chip investment as AI demand sends memory prices soaring",
+      "summary": "Massive $590 billion chip investment by Samsung and SK Hynix reflects soaring AI‑driven memory demand and price hikes.",
+      "ideas": [
+        "Samsung and SK Hynix will invest $590 billion in new chip factories and packaging centers.",
+        "Investment allocates 800 trillion won to four southwest factories, 81 trillion won to a packaging hub.",
+        "30 trillion won will fund next‑generation chip development over 15 years.",
+        "Memory prices expected to rise 40‑50% in Q3 2026, another 30‑40% in Q4.",
+        "Analysts forecast continued 40‑45% price hikes in 2027, relief only by 2028.",
+        "Samsung and SK Hynix control ~80% of global high‑bandwidth memory market.",
+        "Rising memory costs are prompting Apple to increase Mac and MacBook prices."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances—investment breakdown, price forecasts, market share data, and consumer impact—within a brief format, giving high value density and strong relevance to AI and technology themes. No clickbait or padding is evident, so no penalties apply. However, it remains a straightforward news report without deep analysis, keeping the score in the good range.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-29T21:34:08.420730"
+    },
+    {
+      "id": 3603,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/claude-code-runs-a-github-repos-hidden-malware-without-verification-giving-attackers-full-control/",
+      "title": "Claude Code runs a GitHub repo's hidden malware without verification, giving attackers full control",
+      "summary": "Security researchers found a new attack vector where GitHub repositories can compromise developers' machines through AI coding tools, highlighting the need for AI agents to verify setup scripts before execution.",
+      "ideas": [
+        "Attackers can gain full control of developers' machines through GitHub repositories",
+        "AI coding tools like Claude Code can execute malicious code without verification",
+        "Setup scripts in repositories can pull commands from DNS entries at runtime",
+        "AI agents should show setup scripts before running them for security",
+        "Developers should treat setup instructions in third-party repos as untrusted code"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a high-value insight into a newly discovered attack vector targeting developers' machines through GitHub repositories and AI coding tools like Claude Code. It delivers practical knowledge on how attackers can gain full control via indirect prompt injection and offers a fix by suggesting AI agents should show setup scripts before running them. The content is dense, well-researched, and aligns strongly with the CyberSecurity theme.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-06-29T21:33:23.650489"
+    },
     {
       "id": 3602,
       "source_id": 29,
