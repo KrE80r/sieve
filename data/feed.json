@@ -1,7 +1,245 @@
 {
-  "updated_at": "2026-06-29T17:00:00.338331",
-  "total_items": 680,
+  "updated_at": "2026-06-29T19:00:00.403220",
+  "total_items": 689,
   "items": [
+    {
+      "id": 3621,
+      "source_id": 4,
+      "original_url": "https://github.com/heeeyaaaa/vmem-decrypt",
+      "title": "extract the hash from the .vmx (https://github.com/archidote/VM-Password-Extractor)",
+      "summary": "VMware's encryption uses PBKDF2-HMAC-SHA1 + AES-256-CBC (not the claimed XTS-AES), and this tool reverse-engineers the full decryption pipeline to recover memory snapshots for Volatility forensics.",
+      "ideas": [
+        "VMware's vTPM encryption uses AES-256-CBC, not real XTS-AES as claimed",
+        "Password → PBKDF2-HMAC-SHA1(10000) → KEK → config_key → dataFileKey",
+        "encobj format: 4096-byte header (magic 0x8943dd9e) + 4096-byte pages with ciphertext/IV/MAC",
+        "Extract $vmx$ hash from .vmx and crack with hashcat mode 27400",
+        "Decrypted .vmsn/.vmss/.nvram are directly usable in native format",
+        "Decrypted .vmem requires vmem_flatten.py + paired .vmsn for Volatility",
+        "Flat image has 1 GiB MMIO hole at offset 3-4 GiB, causing file offset ≠ physical address",
+        "Volatility's vmware layer uses .vmsn memory group to remap regions correctly",
+        "The .vmem/.vmsn naming convention (same basename) triggers Volatility's vmware layer",
+        "VMware's LZ77 codec is custom byte-oriented, reverse-engineered from vmware-vmx",
+        "Decrypted output must be trimmed to logical_size from the header",
+        "data_per_page = 4064 bytes per 4096-byte page (16 bytes IV + 16 bytes MAC overhead)"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a technically dense and genuinely useful README for a reverse-engineered VMware decryption tool. It provides substantial value through: (1) the complete encryption scheme breakdown showing VMware mislabels AES-256-CBC as 'XTS-AES', (2) exact byte-level file format documentation (magic 0x8943dd9e, header structure, page layout), (3) the two-stage decryption workflow with hashcat integration, (4) the reverse-engineered LZ77 compression format for flattening .vmem files, and (5) specific Volatility 3 integration guidance including the critical .vmem/.vmsn naming convention. Content density is high for its target audience (security researchers, DFIR practitioners). No penalties apply - this delivers exactly what it promises with technical precision.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:50:22.695489"
+    },
+    {
+      "id": 3620,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/194409/malware/stegoad-how-119-fake-browser-extensions-stole-credentials-and-ran-ad-fraud-for-two-years.html",
+      "title": "StegoAd: How 119 Fake Browser Extensions Stole Credentials and Ran Ad Fraud for Two Years",
+      "summary": "The StegoAd campaign demonstrates advanced obfuscation by hiding JavaScript payloads in PNG icons, WebP images, and WOFF2 fonts using steganography, while employing dormancy periods, polymorphic code, and C2 fingerprinting to evade detection for two years while conducting both ad fraud and credential theft.",
+      "ideas": [
+        "Malicious extensions hid JavaScript in PNG IEND markers, WebP containers, and WOFF2 font Unicode ranges",
+        "Payloads stayed dormant 3-5.5 days and only activated in 10% of sessions to evade analysis",
+        "DevTools detection flag 'dipFlgDev' indefinitely extended dormancy when browser was inspected",
+        "C2 servers only served payloads to requests with matching runtime ID plus correct User-Agent",
+        "The 'orderArray' polymorphic framework defeated fixed-pattern detection with 15+ naming variants",
+        "Seven Google Analytics IDs served as criminal telemetry, blending beacons with normal traffic",
+        "Credential theft module captured passwords, waited for 2FA prompts, then exfiltrated both",
+        "Ad replacements were capped at 6 per page to avoid detection while hijacking affiliate commissions",
+        "All 2.6M users received identical payload modules exposing them to full attack surface"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity threat intelligence that delivers genuine value. It provides multiple distinct technical insights: the steganographic obfuscation techniques (PNG IEND marker, WOFF2 Unicode codepoints), the polymorphic 'orderArray' framework with 15 naming variants, the sophisticated anti-analysis measures (dormancy periods, DevTools detection, C2 fingerprinting), and the dual-layer attack architecture (ad fraud surface + RCE/credential theft deeper layer). The use of Google Analytics as C2 telemetry is a notable technique. The content is tightly written with no padding, and all details serve the security professional's need to understand and detect similar campaigns.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:45:40.053194"
+    },
+    {
+      "id": 3619,
+      "source_id": 4,
+      "original_url": "https://github.com/nadiee12312-lgtm/spiderfoot",
+      "title": "https://github.com/nadiee12312-lgtm/spiderfoot",
+      "summary": "Modernizing SpiderFoot restores its OSINT capabilities on current Python versions.",
+      "ideas": [
+        "Original SpiderFoot stopped working on Python 3.12+ due to frozen dependencies.",
+        "This fork updates dependencies to support Python 3.12‑3.14.",
+        "Migrated from PyPDF2 to pypdf to fix file‑metadata module.",
+        "All 233 modules now load and scans run successfully.",
+        "Maintains MIT license and credits original author.",
+        "Includes community PRs like LeakIX API fix and WhatWeb JSON parsing.",
+        "Provides both web UI and CLI for OSINT automation.",
+        "Supports over 200 modules for data sources like Shodan, HaveIBeenPwned, etc.",
+        "Installation works via pip with requirements.txt on modern Python.",
+        "Offers Dockerfiles for containerized deployment.",
+        "Can be used offensively for red‑team reconnaissance or defensively for asset discovery.",
+        "Modules include domain, IP, email, phone, cryptocurrency address enumeration.",
+        "Provides correlation engine with 37 predefined rules.",
+        "Open source community can contribute via Discord and PRs."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers practical knowledge (modern Python support, dependency updates, installation steps) and resources (module list, community PRs) that directly help users revive SpiderFoot. It aligns with CyberSecurity and Tech themes and contains no clickbait or padding, yielding a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:44:36.546489"
+    },
+    {
+      "id": 3618,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-25874-lerobot-pickle-deserialization-rce/",
+      "title": "CVE-2026-25874: LeRobot Pickle Deserialization to RCE",
+      "summary": "A pickle deserialization vulnerability in Hugging Face's LeRobot AsyncInference PolicyServer allows unauthenticated RCE via gRPC by exploiting pickle.loads() of attacker-controlled bytes, with the fix being replacement of pickle with safetensors+JSON.",
+      "ideas": [
+        "pickle.loads() is a bytecode VM interpreter, not safe serialization, and __reduce__ enables arbitrary code execution",
+        "LeRobot AsyncInference PolicyServer uses add_insecure_port with no authentication on TCP/50051",
+        "Attack path: TCP reach → PolicySetup with pickle __reduce__ payload → os.system executes before validation",
+        "gRPC does not imply authentication; mTLS and tokens require explicit opt-in",
+        "The # nosec pattern next to pickle.loads() is a static analysis smell indicating known unsafe code",
+        "Detection via grep for pickle.loads + # nosec on same line in network-facing Python services",
+        "GetActions handler allows bidirectional RCE: malicious server can compromise robot clients",
+        "SendObservations supports chunked streaming to bypass gRPC's 4MiB default message size limit",
+        "Fix in PR #3048 replaces pickle entirely with safetensors for tensors and JSON for config data",
+        "Static detection: grep -rn 'pickle.loads' for request.data, body, payload in network services",
+        "Runtime detection: TCP connections to :50051 showing HTTP/2 PRI bytes and gRPC framing",
+        "Hugging Face created safetensors specifically to avoid pickle risks but used pickle in their own async inference transport"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is high-quality security research content delivering substantial technical value. The CVE disclosure includes detailed attack flow analysis, working PoC exploit code, deep technical explanation of why pickle is dangerous (bytecode VM, not serialization), identification of multiple vulnerable handlers (including bidirectional RCE path), and practical detection/mitigation guidance. The content efficiently delivers 10+ distinct technical insights for security researchers and developers. Minor deduction for promotional footer elements, but the core technical content is substantive and non-fluffy.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:40:09.193261"
+    },
+    {
+      "id": 3617,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/new-attack-abuses-claude-code-and-harmless-looking-repositories-to-hijack-developer-machines/",
+      "title": "New Attack Abuses Claude Code and Harmless-Looking Repositories to Hijack Developer Machines",
+      "summary": "A sophisticated supply chain attack exploits Claude Code's trust in error messages and legitimate setup steps, using DNS TXT records to deliver a reverse shell payload that is invisible to static analysis and monitoring.",
+      "ideas": [
+        "Attack hides malicious payload in DNS TXT records rather than repository code",
+        "Claude Code follows setup notes and executes recovery commands from error messages",
+        "Reverse shell spawns via three indirection steps never examined together",
+        "Base64-encoded DNS payload evades signature-based detection",
+        "Affected developers risk credential and API key exfiltration",
+        "Attack spreads via job posts, tutorials, and messages embedding repository links",
+        "Static analysis and network monitoring see only benign DNS lookups",
+        "Mozilla 0Din team identified this new AI agent attack vector"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This article delivers substantial value by detailing a novel attack vector targeting AI coding assistants like Claude Code. The technical explanation is thorough and specific: three-step indirection via error message → setup.sh → DNS TXT record, with base64-encoded payload. The security researchers from Mozilla (0Din team) provide actionable insight into how the attack splits components across three systems that individually appear benign. The 60-74 rating band applies here because while the content is well-researched and provides genuine security intelligence, it is standard industry news coverage rather than original deep-dive analysis or original research - the core information comes from Mozilla's published findings, not independent investigation. The content earns credit for covering a critical emerging threat with practical implications for developers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:39:18.515666"
+    },
+    {
+      "id": 3616,
+      "source_id": 4,
+      "original_url": "https://www.schneier.com/blog/archives/2026/06/factoring-rsa-keys-with-many-zeros.html",
+      "title": "Factoring RSA Keys with Many Zeros - Schneier on Security",
+      "summary": "Weak RSA keys with many zeros exist in the wild, exposing flaws in key‑generation implementations.",
+      "ideas": [
+        "Badkeys project uncovered RSA moduli containing extensive zero blocks in real‑world keys.",
+        "Two distinct zero‑patterns appear in certificates and SSH keys across different services.",
+        "Affected products include certificates from Yahoo/Verizon and CompleteFTP SSH software.",
+        "Vulnerabilities arise from flawed RSA key generation in specific software version ranges.",
+        "Independent implementations can share similar bugs, enabling targeted cryptanalysis.",
+        "Such predictable zero patterns could be exploited as a deliberate backdoor."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post delivers several concrete insights: it reports real-world discovery of RSA keys with large zero blocks, details the observed patterns and affected software, explains the underlying generation flaws, and highlights the broader risk of similar bugs across implementations. The content is concise (<500 words) yet provides 4‑5 genuine value instances, giving a high value density with no clickbait or padding. It aligns well with cybersecurity and cryptography themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:35:25.430392"
+    },
+    {
+      "id": 3615,
+      "source_id": 4,
+      "original_url": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/",
+      "title": "Mustang Panda targets India's government and energy sectors with ZOHOMURK and MINIRECON",
+      "summary": "Mustang Panda is targeting India's government and energy sectors with new malware implants, including ZOHOMURK and MINIRECON, which leverage legitimate cloud services for command-and-control and data exfiltration.",
+      "ideas": [
+        "Mustang Panda targets India's government and energy sectors",
+        "ZOHOMURK malware uses Zoho WorkDrive for command-and-control",
+        "MINIRECON malware is a newly identified implant",
+        "SHARDLOADER variants demonstrate moderate sophistication",
+        "Mustang Panda's operations are aligned with China's strategic interests"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides high-value insights into Mustang Panda's targeting of India's government and energy sectors with ZOHOMURK and MINIRECON malware. The article delivers multiple novel ideas, including the use of SHARDLOADER variants and the abuse of Zoho WorkDrive for command-and-control. The content is well-researched, and the technical details are thorough, making it a valuable resource for those interested in cybersecurity and threat research.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:34:37.597420"
+    },
+    {
+      "id": 3614,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/06/mustang-panda-uses-zoho-workdrive-as.html",
+      "title": "Mustang Panda Uses Zoho WorkDrive as Command Channel in Indian Government Attacks",
+      "summary": "The China-aligned Mustang Panda group is conducting campaigns against the Indian government and hydropower targets, utilizing new malware and leveraging Zoho WorkDrive for command and control, highlighting the evolving tactics of threat actors in abusing legitimate cloud services for malicious purposes.",
+      "ideas": [
+        "Mustang Panda uses Zoho WorkDrive as a command channel",
+        "New malware includes SHARDLOADER, MINIRECON, and ZOHOMURK",
+        "Campaigns target Indian government and hydropower sectors",
+        "Abuse of legitimate cloud services for malicious activities",
+        "Importance of monitoring cloud API calls from non-browser processes"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides high-value insights into the Mustang Panda group's campaigns against the Indian government and hydropower targets, including the use of new malware and the abuse of Zoho WorkDrive as a command channel. The content is dense with specific details about the malware, the tactics used, and the indicators of compromise, making it highly informative for cybersecurity professionals. The thematic relevance to cybersecurity and threat intelligence is strong, aligning well with high-value themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-06-30T03:32:56.269077"
+    },
+    {
+      "id": 3613,
+      "source_id": 9,
+      "original_url": "https://www.youtube.com/watch?v=-YU9Go2vI7k",
+      "title": "Rethinking AI Harnesses",
+      "summary": "Rethinking AI harnesses as a life management system that integrates intent engineering, context engineering, and prompt engineering to efficiently achieve ideal states.",
+      "ideas": [
+        "AI harnesses as life management",
+        "Intent engineering",
+        "Context engineering",
+        "Prompt engineering",
+        "Ideal state artifact",
+        "Efficient achievement of goals",
+        "Integration of personal and work goals",
+        "Universal pursuit of ideal states"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "This content provides a novel perspective on AI harnesses, shifting the focus from coding tools to a broader life management and intent engineering system. It delivers multiple valuable insights, including the importance of context engineering, prompt engineering, and the concept of an 'ideal state artifact.' The content is dense with ideas, making it efficient in terms of value per minute. However, it may require some background knowledge of AI and software development to fully appreciate. The thematic relevance is high, aligning with TECHNOLOGY & INNOVATION and HUMAN DEVELOPMENT themes.",
+      "source_type": "youtube",
+      "source_name": "Unsupervised Learning",
+      "published_at": "2026-06-30T03:32:06.412325"
+    },
     {
       "id": 3612,
       "source_id": 4,
