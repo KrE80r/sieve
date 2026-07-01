@@ -1,7 +1,271 @@
 {
-  "updated_at": "2026-07-01T18:00:08.168747",
-  "total_items": 693,
+  "updated_at": "2026-07-01T19:00:00.621997",
+  "total_items": 703,
   "items": [
+    {
+      "id": 3666,
+      "source_id": 4,
+      "original_url": "https://blog.bushidotoken.net/2026/07/uk-cybercrime-journal-argos-account.html",
+      "title": "UK Cybercrime Journal: Argos Account Takeover Fraud",
+      "summary": "Click‑and‑collect fraud exploits weak account hygiene, but can be mitigated with MFA, verification controls, and detection techniques.",
+      "ideas": [
+        "Credential stuffing using leaked passwords enables Argos account takeover.",
+        "Click‑and‑Collect can be abused to collect fraudulent orders before victims notice.",
+        "Reusing passwords and lacking MFA increase risk of retail account compromise.",
+        "Retailers should require ID, QR code, or SMS PIN for high‑value click‑and‑collect pickups.",
+        "Detect credential‑stuffing by monitoring proxy/VPN IPs attempting many logins.",
+        "Use Stripe’s FT3 framework to categorize fraud tactics and improve detection.",
+        "Victims should rotate passwords, use password managers, and enable multi‑factor authentication.",
+        "Consider credit monitoring and replace compromised payment cards promptly."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The post delivers several concrete insights: statistical fraud surge, credential‑stuffing mechanics, click‑and‑collect abuse, and detailed mitigation steps for users and retailers. It aligns well with cybersecurity themes and offers actionable advice without noticeable fluff or clickbait.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:38:42.165660"
+    },
+    {
+      "id": 3665,
+      "source_id": 4,
+      "original_url": "https://syntetisk.tech/blog/posts/privilege-escalation-to-root-in-lima-qemu-guests-via-a-world-writable-agent-socket-cve-2026-53657/",
+      "title": "Privilege escalation to root in Lima QEMU guests via a world-writable agent socket (CVE-2026-53657) — Syntetisk // Research",
+      "summary": "A world-writable root-owned Unix socket combined with an unauthenticated gRPC server in Lima QEMU guests allowed unprivileged users to achieve root via credential confusion (the Tunnel RPC would make outbound connections as root, letting callers ride those connections to reach root-only local IPC).",
+      "ideas": [
+        "World-writable root socket + unauthenticated gRPC = privilege escalation primitive",
+        "Credential confusion: root daemon makes connections on behalf of unprivileged callers, downstream sees root",
+        "The vulnerable code: os.Chmod(socket, 0o777) in daemon_linux.go line 141 of Lima v2.1.2",
+        "Fix: chown socket to main user then chmod to 0o600 (ownership + mode, not mode alone)",
+        "Docker socket is the canonical example of permissive socket + privileged service collapsing security boundaries",
+        "VZ driver (macOS default) uses vsock with CID filtering and was never affected",
+        "Scope Changed in CVSS because crossing from unprivileged to root crosses a relied-upon security boundary",
+        "Defense-in-depth suggestions (allowlist on Tunnel, gRPC auth, rate limits) were not implemented in v2.1.3",
+        "This is guest-local privilege escalation only, not a confirmed guest-to-host escape",
+        "Unauthenticated socket also exposed time-sync and event-stream RPCs to any local user"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical security research that delivers high-value content efficiently. The article provides novel insights into a privilege escalation pattern (world-writable socket + unauthenticated gRPC + credential confusion), explains the exact vulnerable code line, documents the fix with before/after comparisons, and contextualizes the pattern against Docker socket risks. The researcher shared verified exploitation details (without releasing POCs), scored the actual impact correctly (guest LPE, not host escape), and provided actionable remediation guidance. The CVSS scope-changed explanation demonstrates expert-level understanding. No padding, no clickbait, no hidden promotion - pure security research with genuine value for anyone running Lima QEMU.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:38:33.242789"
+    },
+    {
+      "id": 3664,
+      "source_id": 4,
+      "original_url": "https://www.recordedfuture.com/research/nexus-tag182-disseminates-markirat",
+      "title": "Iran-Nexus TAG-182 Disseminates MarkiRAT Surveillance Tool",
+      "summary": "Iranian-nexus TAG-182 threat cluster uses MarkiRAT malware to surveil Iranian targets, leveraging fake VPN and media player applications, with operations likely linked to the Iranian government's digital monitoring campaigns.",
+      "ideas": [
+        "TAG-182 uses MarkiRAT malware for surveillance",
+        "Fake VPN and media player apps are used as lures",
+        "Infrastructure tradecraft overlaps with Ferocious Kitten",
+        "Targets are primarily Farsi-speaking users",
+        "TAG-182 is likely associated with the Iranian government",
+        "MarkiRAT malware has notable overlaps with historical variants",
+        "TAG-182's operations are part of broader Iranian cyber-surveillance efforts"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value through its in-depth analysis of the TAG-182 threat cluster and its association with Iranian government surveillance operations. The report delivers multiple novel insights, including the use of MarkiRAT malware and the group's infrastructure tradecraft, making it highly relevant to the CyberSecurity theme. The content is dense with information, including IoCs, domain names, and malware samples, demonstrating high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:37:46.078156"
+    },
+    {
+      "id": 3663,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/critical-cursor-flaws-could-let-prompt.html",
+      "title": "Critical Cursor Flaws Could Let Prompt Injection Escape Sandbox and Run Commands",
+      "summary": "Two critical Cursor AI editor vulnerabilities (DuneSlide) allow prompt injection attacks to escape the sandbox and achieve RCE by overwriting the sandbox helper or startup files through either manipulated working_directory parameters or failed symlink safety checks.",
+      "ideas": [
+        "CVE-2026-50548 exploits working_directory parameter to write to system files outside sandbox",
+        "CVE-2026-50549 exploits symlink resolution fallback when safety checks fail",
+        "Both vulnerabilities overwrite the sandbox helper binary to disable protection entirely",
+        "Attack is zero-click - no user interaction required beyond normal AI usage",
+        "Cursor initially rejected the reports claiming MCP server misuse was outside threat model",
+        "Both fixed in Cursor 3.0 released April 2; all earlier versions affected",
+        "Over half of Fortune 500 companies use Cursor, making this high-impact",
+        "This is the fourth major Cursor sandbox escape vulnerability in under two years",
+        "The ~/.zshrc startup file can also be targeted for persistence",
+        "Disclosure timeline: Feb 19 report, Feb 23 rejected, Feb 26 escalated, April 2 fixed"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity journalism delivering genuine technical value. The article explains two distinct sandbox escape mechanisms (working_directory abuse and symlink resolution fallback) with specific CVEs, CVSS scores, and a clear disclosure timeline. The technical depth is high - it explains exactly how each vulnerability works at the code level, what files are targeted, and why the attacks succeed. The context about previous Cursor vulnerabilities (CurXecute, MCPoison) and the disclosure dispute with Cursor adds valuable insight into how security researchers interact with vendors. No penalties apply - this is not clickbait, padding, or shallow treatment. The content is tightly focused on delivering actionable security intelligence efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:36:24.571129"
+    },
+    {
+      "id": 3662,
+      "source_id": 4,
+      "original_url": "https://hackread.com/fake-interpol-investigation-emails-ransomware-small-businesses/",
+      "title": "Fake Interpol Investigation Emails Push Ransomware at Small Businesses",
+      "summary": "Small businesses are being targeted by fake Interpol investigation emails that deliver ransomware, emphasizing the need for vigilance and proper cybersecurity measures to protect against such threats.",
+      "ideas": [
+        "Fake Interpol emails target small businesses with ransomware",
+        "Malware is disguised as a video file within a password-protected archive",
+        "Attackers use Proton Drive links to distribute the malware",
+        "Victims are directed to contact attackers through Tox chat for decryption",
+        "Small businesses are attractive targets due to limited IT and cybersecurity resources",
+        "Employees should verify senders and inspect file extensions carefully"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a detailed and informative article about a specific cybersecurity threat, namely fake Interpol investigation emails that push ransomware at small businesses. It includes concrete examples, explanations of the attack method, and advice on how to protect against such threats. The article is well-structured, easy to follow, and free of unnecessary padding or promotional content. However, it may benefit from more diverse and in-depth analysis of the threat landscape.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:35:31.441305"
+    },
+    {
+      "id": 3661,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/metas-non-invasive-brain-to-text-ai-is-closing-the-gap-with-surgical-implants/",
+      "title": "Meta's non-invasive brain-to-text AI is closing the gap with surgical implants",
+      "summary": "Meta's Brain2Qwerty v2 AI model achieves a significant leap in non-invasive brain-to-text technology, reconstructing full sentences from brain recordings with an average word error rate of 39 percent.",
+      "ideas": [
+        "Non-invasive brain-to-text AI technology is advancing",
+        "Brain2Qwerty v2 achieves 39% average word error rate",
+        "The model uses magnetoencephalography for brain signal capture",
+        "Deep learning replaces hand-built recognition steps",
+        "AI agents optimize the model's performance",
+        "The technology has potential for assisting individuals with speech or movement impairments",
+        "Current limitations include significant differences between participants and the need for real-time capability"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article delivers high-value insights into Meta's non-invasive brain-to-text AI, Brain2Qwerty v2, which shows significant improvement in reconstructing sentences from brain recordings. The content is rich in technical details, provides comparisons with other methods, and discusses the potential and limitations of the technology. It aligns strongly with the theme of TECHNOLOGY & INNOVATION, particularly in AI and neuroscience. The article's depth and the inclusion of specific data, such as error rates and the methodology used, contribute to its high rating.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-02T03:34:37.796662"
+    },
+    {
+      "id": 3660,
+      "source_id": 12,
+      "original_url": "http://josephthacker.com/hacking/2026/07/01/operation-floodlight.html",
+      "title": "Operation Floodlight",
+      "summary": "A government-funded bounty program can safely incentivize reporting of critical infrastructure vulnerabilities before attackers exploit them.",
+      "ideas": [
+        "Create a government-funded bounty for critical infrastructure vulnerabilities outside existing scopes.",
+        "Pay researchers for verified high-impact bugs, not based on program affiliation.",
+        "Implement safe harbor rules allowing testing without legal risk under strict limits.",
+        "Use a central intake (e.g., CISA) to validate, route, and coordinate disclosures.",
+        "Offer remediation grants to help fix legacy systems after vulnerability discovery.",
+        "Set payout bands (e.g., $1k-$5k) to attract quality researchers.",
+        "Include an emergency lane for rapid handling of severe public safety bugs.",
+        "Leverage AI-assisted vulnerability discovery to stay ahead of attackers."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The post offers several concrete, novel policy ideas and practical details for a national bug bounty program, aligning well with cybersecurity and AI themes. It provides actionable steps, examples, and references existing government programs, with no evident clickbait or padding. The density of valuable insights is high for its length, earning a solid good rating.",
+      "source_type": "rss",
+      "source_name": "rez0",
+      "published_at": "2026-07-02T03:33:07.047039"
+    },
+    {
+      "id": 3659,
+      "source_id": 4,
+      "original_url": "https://www.papermtn.co.uk/detecting-agentic-threats-in-claude-writing-rules-on-the-execution-layer/",
+      "title": "Detecting Agentic Threats in Claude: Writing Rules on the Execution Layer",
+      "summary": "Security teams can detect agentic AI attacks by monitoring execution-layer telemetry (tool calls, MCP invocations) via Sigma rules and correlation, catching permission bypasses, unsanctioned supply chain connections, and dangerous actions that content-only detection misses.",
+      "ideas": [
+        "Compliance API shows what was said; execution layer shows what was done",
+        "Agentic attacks enter via prompt surface but execute via action surface",
+        "Permission-mode escalation to bypassPermissions is high-signal for investigation",
+        "Auto-approved actions enable MCP rug pulls to slip through undetected",
+        "Hook attrition: policy hooks silently stopping is a compromised guardrail",
+        "Correlation rules link events via prompt.id and session.id sequences",
+        "LLM judge can be invoked from SIEM to assess intent when rules insufficient",
+        "Simon Willison's lethal trifecta: private data + untrusted content + exfiltration = exploit",
+        "Allow-list MCP servers, plugins, and skills; alert on anything unsanctioned",
+        "Sigma rules vendor-agnostic; work across any SIEM platform",
+        "GitHub MCP exploit proved injection-via-conversation into tool-calling works",
+        "Real-world incidents (Amazon Q wiper, Replit deletion) show damage when nobody watches tools"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a technically dense article with high practical value for security practitioners. It delivers multiple novel detection concepts (execution-layer vs content-layer detection, permission-mode escalation, hook attrition monitoring) with actual Sigma rule implementations. The architecture for calling the LLM judge from the SIEM correlation layer is genuinely useful. Real-world incidents (GitHub MCP exploit, EchoLeak, Amazon Q wiper) ground the threats in evidence. The only limitation is the truncated ending for the MCP server section, but the core content is substantive, framework-mapped, and directly implementable. Density is high for a technical post of this length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:32:53.700162"
+    },
+    {
+      "id": 3658,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/07/01/red-teamers-turned-claude-desktop-into-a-double-agent-to-do-their-evil-bidding/5264692",
+      "title": "Red teamers turned Claude Desktop into a double agent to do their evil bidding",
+      "summary": "AI assistants like Claude Desktop can be hijacked via synced prompt injections to execute malicious commands across devices.",
+      "ideas": [
+        "Prompt injection can turn Claude Desktop into a stealthy C2 agent",
+        "Syncing personalized prompts spreads malicious instructions across all user devices",
+        "If command-capable tools exist, Claude can execute reverse shells silently",
+        "Without such tools, Claude can present fake error messages to phish users",
+        "Developers are high-value targets due to access to API keys and cloud credentials",
+        "AI assistants' trust makes them attractive vectors for attacks",
+        "Anthropic’s Cowork feature could eliminate the phishing phase by direct command execution"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete security insights about prompt injection attacks on Claude Desktop, illustrating how AI assistants can be weaponized for remote code execution and phishing, which is valuable for security professionals. It offers practical knowledge on attack vectors, the role of sync features, and developer risk, aligning well with CyberSecurity and AI themes. No clickbait or padding detected, so the score reflects strong thematic relevance and good value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T03:32:14.406318"
+    },
+    {
+      "id": 3657,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=YOs_8Dcydb8",
+      "title": "How To Finally Stop Caring What Other People Think - Alex Hormozi",
+      "summary": "To achieve exceptionalism and stop caring about others' opinions, one must be willing to take risks, face rejection, and prioritize their goals over external validation.",
+      "ideas": [
+        "Ignore average people's opinions to succeed",
+        "Average people try to keep you average",
+        "Do things that ordinary people see as extra",
+        "Rejection is harder when it's from people close to you",
+        "Prioritize people closest to your goals, not physically closest",
+        "Yearn for approval from people with desirable lives",
+        "Break the mold and decide your own path",
+        "Success and pursuit of large endeavors can be lonely",
+        "Everyone disagreeing with you can be a signal of doing something different",
+        "Be willing to do exceptional things in isolation",
+        "Deal with the pain of rejection and criticism",
+        "Let go of things that everybody else tells you are desirable",
+        "Prioritize your own goals over others' expectations"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "The content delivers several valuable insights on overcoming the need for external validation and pursuing exceptionalism, despite potential loneliness and rejection. It highlights the importance of focusing on one's goals and not being deterred by others' opinions, providing practical advice and personal anecdotes to support its claims. However, the inclusion of a promotional segment for a health testing service detracts from the overall value and density of the content.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-07-02T03:32:07.434234"
+    },
     {
       "id": 3656,
       "source_id": 26,
