@@ -1,7 +1,204 @@
 {
-  "updated_at": "2026-07-02T00:00:08.977817",
-  "total_items": 703,
+  "updated_at": "2026-07-02T01:00:00.411257",
+  "total_items": 711,
   "items": [
+    {
+      "id": 3674,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/seo-poisoned-software-sites-abuse.html",
+      "title": "SEO-Poisoned Software Sites Abuse ScreenConnect to Deploy AsyncRAT",
+      "summary": "Security teams should hunt for the file pattern (msgbox.txt, secret_bytes.txt, 1.vb, cap.ps1, script.vbs in C:\\Users\\Public), the scheduled task 'MasterPackager.Updater', and network connections to mora1987.work to detect this SEO-poisoning campaign distributing AsyncRAT via ScreenConnect abuse.",
+      "ideas": [
+        "AsyncRAT is delivered through a DLL side-loading technique using a signed Microsoft install.exe binary",
+        "The attack chain involves ScreenConnect deployment followed by PowerShell scripts that configure Defender exclusions and disable UAC",
+        "Process hollowing (MITRE T1055.012) is used to inject and execute the AsyncRAT payload from a 'secret_bytes.txt' file",
+        "The campaign uses 90+ localized domains across 10 languages, impersonating OBS Studio, DNS Jumper, DS4Windows, and Bandicam",
+        "Persistence is maintained via a 'MasterPackager.Updater' scheduled task running every two minutes",
+        "The C2 server for this campaign is mora1987.work",
+        "SEO poisoning techniques are used to push fraudulent software sites to the top of Google and Bing search results",
+        "The malware creates five specific files in C:\\Users\\Public: msgbox.txt, secret_bytes.txt, 1.vb, cap.ps1, and script.vbs",
+        "VBScript is used to terminate PowerShell processes and run subsequent stages in hidden windows",
+        "Kaspersky discovered this campaign active between August 2025 and March 2026"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-structured cybersecurity threat report from The Hacker News with strong technical depth. It delivers multiple value instances: specific attack chain documentation (DLL side-loading → ScreenConnect → AsyncRAT via process hollowing), concrete IOCs (90+ domains, C2 server mora1987.work, scheduled task 'MasterPackager.Updater'), and actionable detection guidance. The content is dense with technical indicators and MITRE ATT&CK references (T1055.012), making it highly useful for security professionals. Minor deduction for being a standard news format rather than deep-dive analysis, but the information quality and relevance to defenders is strong.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T09:39:27.170725"
+    },
+    {
+      "id": 3673,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/new-chocopoc-malware-targets-researchers-via-trojanized-poc-exploits/",
+      "title": "ChocoPoc malware delivered via trojanized exploits on GitHub",
+      "summary": "ChocoPoC malware is being delivered through trojanized proof-of-concept exploits on GitHub, targeting cybersecurity researchers by adding malicious Python packages to the PoC's dependency list.",
+      "ideas": [
+        "ChocoPoC malware targets researchers via trojanized PoC exploits",
+        "Malicious Python packages are added to PoC's dependency list",
+        "Packages are hosted on the Python Package Index",
+        "ChocoPoC has capabilities to execute shell commands and steal data",
+        "Attackers use compromised accounts to publish malicious packages",
+        "Researchers should not blindly trust GitHub repositories"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a detailed analysis of the ChocoPoC malware, its delivery mechanism via trojanized PoC exploits on GitHub, and its capabilities. It also offers valuable insights into the tactics used by the attackers and recommendations for cybersecurity researchers to stay safe. The content is well-structured, informative, and aligns well with the CyberSecurity theme.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-02T09:36:40.374056"
+    },
+    {
+      "id": 3672,
+      "source_id": 20,
+      "original_url": "https://www.thealgorithmicbridge.com/p/fable-is-back-this-safeguard-has",
+      "title": "Fable is Back: This Safeguard Has Some AI in It!",
+      "summary": "The US government's increasing control over the AI industry, as seen in Anthropic's Fable 5, may cap AI capabilities and redefine the industry's future.",
+      "ideas": [
+        "Anthropic's Fable 5 has stricter safeguards due to government restrictions",
+        "The US government has significant control over the AI industry",
+        "AI capabilities may be capped due to government restrictions",
+        "The AI industry is becoming increasingly interwoven with the government",
+        "Anthropic's agreement with the government sets a precedent for future models"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides in-depth analysis of Anthropic's Fable 5 and its implications on the AI industry, including the involvement of the US government. It delivers multiple novel insights, such as the potential capping of AI capabilities due to government restrictions and the increasing interwovenness of AI companies and the government. The content is dense with information and thematic relevance, aligning with the TECHNOLOGY & INNOVATION and BUSINESS & STRATEGY themes.",
+      "source_type": "rss",
+      "source_name": "The Algorithmic Bridge",
+      "published_at": "2026-07-02T09:35:17.097010"
+    },
+    {
+      "id": 3671,
+      "source_id": 12,
+      "original_url": "https://josephthacker.com/hacking/2025/10/20/metanarrative-prompt-injection.html",
+      "title": "Metanarrative Prompt Injection",
+      "summary": "Directly addressing an AI's internal components with meta‑instructions can hijack its behavior, a technique called metanarrative prompt injection.",
+      "ideas": [
+        "Metanarrative prompt injection: addressing AI's processing layer to influence its behavior.",
+        "Injecting directives into intent classifiers can force loading of specific tools.",
+        "Adding comment-like directives can suppress alerts in AI SOC analyst systems.",
+        "Malicious prompts can be hidden in log entries (e.g., User-Agent) to affect Gemini Cloud Assist.",
+        "The technique exploits the blurred line between user content and system instructions."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post introduces a concrete, novel technique—metanarrative prompt injection—and provides multiple actionable examples (intent classifier manipulation, SOC analyst comment bypass, log‑injection into Gemini). These constitute 4‑5 clear value instances in a concise ~400‑word article, yielding strong value density and good thematic relevance to AI and cybersecurity. No clickbait, padding, or promotional bias is evident, so no penalties apply.",
+      "source_type": "rss",
+      "source_name": "rez0",
+      "published_at": "2026-07-02T09:34:35.401470"
+    },
+    {
+      "id": 3670,
+      "source_id": 12,
+      "original_url": "https://josephthacker.com/ai/2025/11/24/prompt-injection-isnt-a-vulnerability.html",
+      "title": "Prompt Injection Isn’t a Vulnerability",
+      "summary": "Prompt injection is often a delivery mechanism for vulnerabilities rather than a vulnerability itself, and addressing the root cause of the vulnerability is more effective than trying to fix prompt injection.",
+      "ideas": [
+        "Prompt injection is not always a vulnerability",
+        "It's often a delivery mechanism for other vulnerabilities",
+        "Data exfiltration via dynamic image rendering is a potential vulnerability",
+        "Data exfiltration via AI email response is a potential vulnerability",
+        "Data exfiltration via web fetch is a potential vulnerability",
+        "System prompts are not a complete fix for prompt injection",
+        "Focus on application architecture to prevent vulnerabilities"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 92,
+      "rating_reason": "This article provides exceptional value by challenging the common perception of prompt injection as a standalone vulnerability. It offers novel insights into the distinction between prompt injection as a delivery mechanism and the actual vulnerabilities it can enable, such as data exfiltration. The author supports these claims with specific examples and proposed fixes, demonstrating a high density of valuable information. The thematic relevance is strong, aligning with cybersecurity, AI, and hacking.",
+      "source_type": "rss",
+      "source_name": "rez0",
+      "published_at": "2026-07-02T09:34:28.088957"
+    },
+    {
+      "id": 3669,
+      "source_id": 12,
+      "original_url": "https://josephthacker.com/hacking/2026/01/29/bondu-smart-toy-vulnerability.html",
+      "title": "Hacking An AI Children’s Toy: Remote Access to Every Conversation",
+      "summary": "AI‑powered children’s toys can leak all conversation and personal data to anyone with a Google account due to misconfigured admin access and IDOR bugs.",
+      "ideas": [
+        "Admin console is reachable via Google login without proper authorization",
+        "IDOR vulnerability lets anyone retrieve any child’s profile by guessing IDs",
+        "Exposed data includes transcripts, personal details, device location, and battery status",
+        "Responsible disclosure led to a fix within ten minutes",
+        "Audio recordings are stored in auto‑deleting buckets but backend remains vulnerable",
+        "Any employee or attacker with a Gmail account can access child data",
+        "Smart AI toys pose significant privacy risks despite convenient features"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The post delivers multiple concrete security insights—Google‑login admin bypass, IDOR profile access, exposed personal data, rapid responsible disclosure, and broader AI‑toy privacy implications—aligning well with CyberSecurity and AI themes. It stays focused, with minimal padding and no clickbait, providing actionable knowledge for researchers and parents alike.",
+      "source_type": "rss",
+      "source_name": "rez0",
+      "published_at": "2026-07-02T09:32:58.949563"
+    },
+    {
+      "id": 3668,
+      "source_id": 12,
+      "original_url": "https://josephthacker.com/hacking/2026/03/06/the-agentic-hacking-era.html",
+      "title": "The Agentic Hacking Era: Ramblings and a Tool",
+      "summary": "The integration of AI coding agents into hacking workflows can significantly enhance the efficiency and effectiveness of bug bounty hunting and pentesting, offering a human-in-the-loop approach that leverages AI for discovery and human oversight for validation.",
+      "ideas": [
+        "AI coding agents can be used as primary hacking tools",
+        "Integration with existing SDKs enhances workflow efficiency",
+        "Human-in-the-loop approach combines AI discovery with human validation",
+        "Beginners can make money in bug bounty with the right tools and knowledge",
+        "AI will impact but not replace human pentesters and bug hunters",
+        "Adaptation to AI tools is crucial for future success in cybersecurity"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content delivers high value due to its thematic relevance to cybersecurity, AI, and hacking. The author shares personal experiences and insights on using AI coding agents for hacking, including a tool that connects these agents to a SDK for easier validation and management of findings. The post is dense with practical knowledge, expert insight, and evidence of the effectiveness of the approach, such as finding 15 vulnerabilities in six weeks. However, it lacks a bit in novel ideas, as some concepts, like the use of AI in hacking, are becoming more common.",
+      "source_type": "rss",
+      "source_name": "rez0",
+      "published_at": "2026-07-02T09:32:51.907769"
+    },
+    {
+      "id": 3667,
+      "source_id": 12,
+      "original_url": "https://josephthacker.com/hacking/2026/07/01/operation-floodlight.html",
+      "title": "Operation Floodlight",
+      "summary": "Operation Floodlight proposes a government-funded bug bounty program to incentivize researchers to report critical vulnerabilities in US critical infrastructure, aiming to make it profitable and safe to do so before attackers exploit them.",
+      "ideas": [
+        "National bug bounty grant program for critical infrastructure",
+        "Protecting good-faith research with clear safe harbor rules",
+        "Central intake for vulnerability reports with validation and disclosure process",
+        "Payouts for verified vulnerabilities with impact",
+        "Remediation grants for fixing legacy systems",
+        "Implementation plan with pilot program and professional triage"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a well-structured proposal for Operation Floodlight, a government-funded bug bounty program for critical infrastructure. It delivers multiple novel insights, such as the need for a national bug bounty grant program and the importance of protecting good-faith research. The author also provides a clear implementation plan and highlights the potential benefits of the program, including making it profitable and safe to report serious vulnerabilities. The content is thematically relevant to cybersecurity, AI, and hacking, and it demonstrates a strong understanding of the subject matter.",
+      "source_type": "rss",
+      "source_name": "rez0",
+      "published_at": "2026-07-02T09:32:08.056770"
+    },
     {
       "id": 3666,
       "source_id": 4,
