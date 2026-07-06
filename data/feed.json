@@ -1,7 +1,137 @@
 {
-  "updated_at": "2026-07-06T12:00:11.898983",
-  "total_items": 668,
+  "updated_at": "2026-07-06T13:00:00.629139",
+  "total_items": 673,
   "items": [
+    {
+      "id": 3756,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/new-skillcloak-technique-lets-malicious.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Static scans miss malicious AI agent behavior; runtime monitoring and specific heuristics are essential for defense.",
+      "ideas": [
+        "SKILLCLOAK rewrites malicious AI skills to bypass static scanners using character substitution",
+        "Self‑extracting packing hides payloads in ignored directories like .git/ to evade scans",
+        "Static scanners miss malicious behavior that only appears at runtime",
+        "SKILLDETONATE detects malicious skills by monitoring runtime file and network activity",
+        "Attackers can pad skill files to exceed scanner size caps and slip through",
+        "Defenders should watch for large/entropy files in skipped folders and runtime unpacking",
+        "Re‑hash and re‑scan skills before each execution to catch delayed payloads",
+        "Limit AI agents' permissions and run them on machines without valuable secrets"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several genuine value instances: novel research tools (SKILLCLOAK, SKILLDETONATE), concrete data on evasion success rates, real‑world case examples, and actionable defense recommendations. It aligns strongly with CyberSecurity and AI themes. Minor promotional fluff and site navigation elements slightly dilute density, but overall the content is information‑rich and focused.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T21:36:13.757905"
+    },
+    {
+      "id": 3755,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-44963-veeam-backup-authenticated-rce-binaryformatter-bypass/",
+      "title": "https://blog.securelayer7.net/cve-2026-44963-veeam-backup-authenticated-rce-binaryformatter-bypass/",
+      "summary": "Veeam's BinaryFormatter blacklist approach is structurally flawed because it cannot enumerate all DataSet subclasses across loaded assemblies, making every new DataSet-derived class a potential CVE - the authorization model also allows any authenticated domain user to reach the exploit sink via WCF on TCP/8000.",
+      "ideas": [
+        "Deny-list filtering cannot secure BinaryFormatter because enumerating all dangerous [Serializable] classes is impossible",
+        "System.Data.DataSet is a fundamental code-execution primitive when deserialized by BinaryFormatter",
+        "ObjectDataProvider properties invoke arbitrary methods during XML deserialization triggered by DataSet.ReadXmlSchema",
+        "Veeam's authorization check accepts WindowsBuiltInRole.User which every domain user satisfies by default",
+        "Workgroup mode eliminates this entire CVE family at the authentication boundary",
+        "The WCF entry chain RestoreJobSessionsDbScopeCreateSession→OpenVbRestoreSession→ExecuteStartAgentSessionTrafficProxy reaches the formatter",
+        "Patch fixes add new entries to BinaryFormatter.blacklist.txt without architectural changes",
+        "Any future DataSet subclass in Veeam or loaded assemblies is the next potential CVE in this family",
+        "The authorization gate is the same permissive check used by legitimate Veeam clients",
+        "CVE-2026-44963 follows the same pattern as CVE-2024-40711, CVE-2025-23120, and five other prior CVEs"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is exceptional technical security research content. The article delivers multiple novel insights including the fundamental architectural flaw in Veeam's deny-list approach, the complete DataSet→ObjectDataProvider→RCE gadget chain with code examples, the authorization model weakness that allows any domain user to reach the exploit sink, and the strategic mitigation of workgroup mode. The patch diffing methodology and CWE-502 mapping add practical value for security professionals. High value density for a 19-minute read with no padding or filler - every section advances the technical understanding. The content serves security researchers, penetration testers, and system administrators with actionable intelligence on this CVE family. Slight deduction for the promotional CTA at the end, though it doesn't compromise the technical content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T21:35:43.841039"
+    },
+    {
+      "id": 3754,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/opera-gx-flaw-let-malicious-sites-auto.html",
+      "title": "https://thehackernews.com/2026/07/opera-gx-flaw-let-malicious-sites-auto.html",
+      "summary": "A vulnerability in Opera GX allows malicious sites to auto-install mods and steal data from visited pages using a technique called universal CSS injection.",
+      "ideas": [
+        "Opera GX vulnerability allows auto-installation of mods",
+        "Malicious sites can use mods to steal data from visited pages",
+        "Universal CSS injection technique can be used to leak sensitive information",
+        "Attack can be used to steal Gmail addresses and other sensitive data",
+        "Vulnerability was patched by Opera in version 130.0.5847.89",
+        "Attack is complicated to pull off but can be done with zero clicks",
+        "CSS-only theft can be used to steal data from multiple sites"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides a detailed and technical explanation of a vulnerability in Opera GX that allows malicious sites to auto-install mods and steal data from visited pages. The content is rich in value instances, including a proof of concept, a detailed explanation of the attack, and a discussion of the severity and bigger picture. The article is well-researched and well-written, with a clear and concise summary of the issue and its implications. The only penalty is for the somewhat tangential discussion of other security topics and the promotional content at the end.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T21:34:53.840930"
+    },
+    {
+      "id": 3753,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/new-java-based-quimarat-maas-built-to.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "QuimaRAT is a new Java-based MaaS RAT targeting Windows/Linux/macOS with modular architecture, JNA native libraries for cross-platform support, browser-cache delivery bypassing SmartScreen, and dynamic C2 rotation via Pastebin.",
+      "ideas": [
+        "QuimaRAT is a Java-based RAT using JNA native libraries for cross-platform OS API interaction",
+        "MaaS pricing ranges from $150/month to $1,200 lifetime with intermediate tiers",
+        "Quima Loader exploits browser cache and trusted loader execution to bypass SmartScreen",
+        "Persistence methods vary by OS: Registry/cron/LaunchAgent respectively",
+        "Pastebin C2 rotation allows dynamic infrastructure changes without payload rebuild",
+        "C2 communication supports TCP, WebSocket, TLS, and HTTPS with watchdog reconnection",
+        "ProGuard obfuscation and synthetic string decryptors rotate static fingerprints",
+        "Fileless shellcode execution available on Windows hosts",
+        "Quima Builder supports 10 file formats including LNK, VBS, HTA, and CHM",
+        "Single-instance lock file prevents multiple RAT executions on same system"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a high-quality technical threat intelligence report delivering substantial value. It provides detailed technical analysis of QuimaRAT's architecture (modular Java RAT with JNA native libraries), persistence mechanisms across OSes, C2 communication methods, and delivery techniques like the browser-cache Quima Loader that bypasses SmartScreen. The content includes specific malware capabilities, pricing tiers ($150-$1,200), and obfuscation methods (ProGuard, Maven Shade). The information is current, technically accurate, and directly actionable for cybersecurity defenders. Minimal padding or fluff—nearly every paragraph delivers technical specifications or operational details. Some peripheral content (webinars, sponsor links) is present but doesn't dominate.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T21:34:47.625590"
+    },
+    {
+      "id": 3752,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/new-trojpix-attack-leaks-data-from-air.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Researchers have discovered a new method called TrojPix that can leak data from air-gapped systems via video cable emissions, posing a significant threat to cybersecurity.",
+      "ideas": [
+        "TrojPix can leak data from air-gapped systems via video cable emissions",
+        "The method uses imperceptible pixel modulation to transmit data",
+        "It can reach a peak throughput of 8.1 Mbps and a range of 208 meters",
+        "TrojPix requires malware to be already present on the target machine",
+        "Countermeasures include using fiber-optic links, shielding cables and rooms, and keeping malware off the machine",
+        "The technique is compared to existing threats like TEMPEST-LoRa and PIXHELL"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a high-value insight into a novel cybersecurity threat called TrojPix, which can leak data from air-gapped systems via video cable emissions. The content delivers multiple practical ideas, including the method's capabilities, potential countermeasures, and comparisons to existing threats. The thematic relevance is strong, aligning with the cybersecurity theme, particularly in the areas of cyber espionage and endpoint security.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T21:33:19.740595"
+    },
     {
       "id": 3751,
       "source_id": 4,
