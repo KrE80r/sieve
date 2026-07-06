@@ -1,7 +1,81 @@
 {
-  "updated_at": "2026-07-06T00:00:10.960329",
-  "total_items": 686,
+  "updated_at": "2026-07-06T01:00:00.807625",
+  "total_items": 689,
   "items": [
+    {
+      "id": 3750,
+      "source_id": 4,
+      "original_url": "https://www.synacktiv.com/en/publications/exploring-cross-domain-cross-forest-rbcd-part-2",
+      "title": "use C$",
+      "summary": "Detailed technical analysis of recursive Kerberos delegation attacks across multi-domain and cross-forest Active Directory environments, including protocol exchange analysis, attack implementations in Impacket, and the discovery that branch-aware algorithms are not triggered when traversing foreign forests at the end of trust chains.",
+      "ideas": [
+        "S4U2Self with U2U enables SPN-less RBCD attacks by bypassing KDC_ERR_S_PRINCIPAL_UNKNOWN errors",
+        "Recursive S4U2Self traverses only the impersonated user's domain and the attacker's domain in multi-domain setups",
+        "TGS-REQ requests with krbtgt SPNs bridge domain gaps in multi-domain S4U2Self delegation chains",
+        "Branch-aware S4U2Proxy is triggered only when the first trusted domain belongs to a different forest",
+        "Cross-domain S4U2Proxy from a foreign forest does not use the branch-aware algorithm",
+        "A Referral TGT obtained mid-chain serves as the TGT for final S4U2Proxy requests",
+        "Cross-forest RBCD allows impersonating any user within your own forest on remote forest resources",
+        "S4U2Proxy follows trust chains using krbtgt SPNs for target domains until reaching the resource's domain",
+        "Local privilege escalation is achievable by combining cross-domain delegation with machine account TGTs",
+        "Recursive delegation implementations have been added to Impacket for cross-domain and cross-forest scenarios"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is exceptional technical content that delivers substantial value to security professionals. It documents novel findings about Kerberos delegation behavior across multi-domain and cross-forest environments, including the discovery that branch-aware S4U2Proxy is not triggered when traversing foreign forests at the end of a trust chain. The article provides detailed protocol analysis with Wireshark evidence, concrete attack scenarios with Impacket commands, and working implementations. The information density is high with minimal padding - every section advances understanding of complex delegation mechanics. While highly specialized (targeting red teamers and AD security researchers), it provides actionable intelligence and tooling that significantly advances the field's understanding of RBCD attacks.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T09:37:14.310912"
+    },
+    {
+      "id": 3749,
+      "source_id": 4,
+      "original_url": "https://github.com/CodeXTF2/GeoLocation_BOF",
+      "title": "https://github.com/CodeXTF2/GeoLocation_BOF",
+      "summary": "A Cobalt Strike BOF that retrieves Windows geolocation coordinates without fork and run, using the WinRT Geolocator API and falling back to the legacy ILocation API.",
+      "ideas": [
+        "Using WinRT Geolocator API for geolocation",
+        "Falling back to legacy ILocation API",
+        "Modifying registry keys for location access",
+        "Temporarily changing lfsvc service start type",
+        "Restoring changes after execution"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a unique and valuable solution for obtaining Windows geolocation data using a Cobalt Strike BOF. It efficiently delivers insights into the implementation, usage, and limitations of the tool. The code is well-structured, and the documentation is clear and concise. However, the content may be considered niche and primarily relevant to those familiar with Cobalt Strike and Windows geolocation services.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T09:32:46.953076"
+    },
+    {
+      "id": 3748,
+      "source_id": 4,
+      "original_url": "https://runtimewire.com/article/youtube-s-ai-can-be-tricked-into-leaking-private-video-titles-researcher-says",
+      "title": "YouTube's AI can be tricked into leaking private video titles, researcher says",
+      "summary": "AI‑driven creator tools can be hijacked via comment‑based prompt injection to exfiltrate private video data.",
+      "ideas": [
+        "YouTube Ask Studio can be manipulated via comment injection to execute attacker commands.",
+        "Injected comment can cause AI to generate a markdown link leaking private video titles.",
+        "Attack requires creator to click the malicious link displayed by the AI response.",
+        "Google classified the issue as social engineering, rejecting it as a bug.",
+        "Prompt injection is a recognized AI security problem per Google’s security blog.",
+        "Mitigations include markdown sanitization, URL redaction, and user confirmation."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete value instances: a novel prompt‑injection exploit in YouTube's Ask Studio, practical steps of the attack chain, evidence from Google security policies, and mitigation suggestions. It aligns well with AI and cybersecurity themes and offers actionable insight for developers and creators. Minor filler (ads, extension promos) slightly reduces density but does not merit a penalty.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-06T09:32:07.277744"
+    },
     {
       "id": 3747,
       "source_id": 29,
