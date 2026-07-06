@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # FeedSieve publishes near the top of the hour and currently uses [skip ci].
-    - cron: "10 * * * *"
+    # Fallback for missed push events; FeedSieve publishes near the top of the hour.
+    - cron: "20 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://sieve.nazmy.io/
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -47,4 +47,24 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+
+      - name: Wait before deploy retry
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+
+      - name: Retry deploy to GitHub Pages
+        id: deployment_retry_1
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+
+      - name: Wait before final deploy retry
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry_1.outcome == 'failure'
+        run: sleep 120
+
+      - name: Final retry deploy to GitHub Pages
+        id: deployment_retry_2
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry_1.outcome == 'failure'
         uses: actions/deploy-pages@v5
