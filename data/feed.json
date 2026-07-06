@@ -1,7 +1,162 @@
 {
-  "updated_at": "2026-07-06T17:00:00.490036",
-  "total_items": 673,
+  "updated_at": "2026-07-06T19:00:00.545374",
+  "total_items": 679,
   "items": [
+    {
+      "id": 3762,
+      "source_id": 4,
+      "original_url": "https://tma.ifip.org/2026/wp-content/uploads/sites/15/2026/06/tma2026-final17.pdf",
+      "title": "IP addresses",
+      "summary": "Researchers developed Scan-179 to perform an Internet-wide scan of BGP routers on TCP port 179, identifying 141,313 exposed interface IPs belonging to 20,432 routers across 4,194 ASes, with 1,127 classified as border routers representing significant security risk due to information leakage, implementation vulnerabilities, and control-plane resource exhaustion.",
+      "ideas": [
+        "Scan-179 tool scans all IPv4 addresses for TCP port 179 and captures full packet responses",
+        "141,313 exposed IPs belong to 20,432 routers across 4,194 Autonomous Systems",
+        "1,127 routers classified as border routers pose higher security risk than internal routers",
+        "BGP OPEN messages leak sensitive metadata: AS numbers, BGP Identifiers, vendor capabilities",
+        "CVE-2022-40302 and CVE-2022-43681 allowed DoS via malformed BGP OPEN messages",
+        "Five protection mechanisms exist: ACL, GTSM, TCP MD5, TCP-AO, and protocol validation",
+        "TTL Security Mechanism (GTSM) prevents unauthorized peer connections via hop-count validation",
+        "Control-plane resource exhaustion occurs from repeated TCP connections before session completion",
+        "Router fingerprinting is possible using BGP OPEN metadata like capabilities and identifiers",
+        "Private ASN ranges (64511 shown in example) indicate internal or test router configurations",
+        "ASPA (Autonomous System Provider Authorization) secures routing but doesn't address exposed ports",
+        "MANRS+ working group can use this data to audit BGP session protection compliance",
+        "Exposed routers allow adversaries to map Internet topology without credentials",
+        "TCP RST responses indicate routers actively denying connections versus silent drops",
+        "SNMPv3 dataset analysis reveals vendor distribution among exposed routers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a high-quality academic paper delivering substantial value through original research methodology (Scan-179 tool), comprehensive Internet-wide scanning findings (141,313 exposed IPs across 4,194 ASes), and detailed characterization of router types and criticality. The paper provides novel insights into an underexplored security problem with practical implications for network operators and policymakers. It balances technical depth with actionable takeaways, including specific CVE references, a taxonomy of risks, and 5 existing protection mechanisms. The open-source tool availability adds reproducibility value. Minor limitation: as an academic paper, it has dense technical exposition that may not suit casual readers, but for its target audience (security researchers, network operators), it delivers exceptional value efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-07T03:38:35.023087"
+    },
+    {
+      "id": 3761,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/north-korean-hackers-target-open-source-developers-in-supply-chain-attacks/",
+      "title": "North Korean Hackers Target Open Source Developers in Supply Chain Attacks",
+      "summary": "North Korean hackers are conducting a supply chain attack called PolinRider, compromising over 100 open source packages to deliver malware to developers.",
+      "ideas": [
+        "PolinRider campaign targets open source developers",
+        "North Korean hackers use JavaScript loaders",
+        "Compromise of maintainer accounts for repository tampering",
+        "Use of Git history rewriting to hide malicious changes",
+        "Blockchain and public RPC infrastructure for payload retrieval",
+        "Over 100 legitimate open source packages compromised"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides high-value insights into the PolinRider campaign, a supply chain attack targeting open source developers by North Korean hackers, delivering a backdoor and information stealer. It offers specific details on the tactics, techniques, and procedures (TTPs) used, including the compromise of maintainer accounts and the use of JavaScript loaders. The content is dense with valuable information, including the number of compromised packages and repositories, making it a significant resource for those concerned about cybersecurity and supply chain security.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-07T03:36:52.400588"
+    },
+    {
+      "id": 3760,
+      "source_id": 4,
+      "original_url": "https://swarm.ptsecurity.com/hack-the-elephant-one-bite-at-a-time-nul-byte-sql-injection-in-pdo_firebird-and-null-pointer-dereference-in-pdo-pgsql/",
+      "title": "Hack the Elephant One Bite at a Time: NUL byte SQL Injection in pdo_firebird and NULL Pointer Dereference in PDO via pdo_pgsql",
+      "summary": "Improper handling of NUL bytes in PDO’s firebird driver lets attackers bypass quoting and inject SQL.",
+      "ideas": [
+        "PDO drivers can mishandle NUL bytes, causing SQL injection in pdo_firebird.",
+        "strncat() stops at NUL, truncating literals during statement reconstruction.",
+        "PDO::quote escapes input correctly, but later preprocessing drops the terminating quote.",
+        "PDO drivers differ in emulation settings, affecting how queries are prepared.",
+        "ODBC provides a vendor‑neutral layer between PHP extensions and DBMS.",
+        "libpq integer overflow can cause denial‑of‑service in PostgreSQL clients.",
+        "Firebird client can disclose data via out‑of‑bounds reads on XSQLDA fields.",
+        "mysqlnd outperforms libmysqlclient, offering better speed and lower memory use."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides multiple concrete value instances: detailed vulnerability analysis (CVE-2025-14179), low‑level bug explanation (strncat misuse), code demos of quoting behavior, architecture overview of PDO and driver layers, and references to related security issues. It aligns with CyberSecurity and Tech themes and lacks clickbait or padding, yielding a strong but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-07T03:36:13.491285"
+    },
+    {
+      "id": 3759,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/brief/confidential-computings-remote-attestation-protocol-may-have-fundamental-flaw",
+      "title": "Confidential computing's remote attestation protocol may have fundamental flaw",
+      "summary": "Confidential computing's remote attestation protocol has a fundamental flaw that makes it vulnerable to diversion attacks, potentially compromising the security of cloud-based systems.",
+      "ideas": [
+        "Remote attestation protocol is vulnerable to diversion attacks",
+        "Attested TLS protocol is susceptible to relay attacks",
+        "Flaw affects real-world implementations like Meta's Private Processing",
+        "Vulnerability assigned a high severity rating",
+        "IETF's SEAT working group is incorporating formal verification",
+        "Core issue of trusting hardware manufacturer remains"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a novel insight into a potential flaw in confidential computing's remote attestation protocol, specifically its vulnerability to diversion attacks. This is a significant finding with implications for cloud security and digital sovereignty. The content is well-researched, citing a recent report and including technical details about the vulnerability. However, the article could benefit from more in-depth analysis and expert commentary to elevate its score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-07T03:34:33.213214"
+    },
+    {
+      "id": 3758,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/07/06/when-the-sensor-starts-thinking-snortml-agentic-ai-and-the-evolving-architecture-of-intrusion-detection/",
+      "title": "When the sensor starts thinking: SnortML, agentic AI, and the evolving architecture of intrusion detection​​​​‌﻿‍﻿​‍​‍‌‍﻿﻿‌﻿​‍‌‍‍‌‌‍‌﻿‌‍‍‌‌‍﻿‍​‍​‍​﻿‍‍​‍​‍‌﻿​﻿‌‍​‌‌‍﻿‍‌‍‍‌‌﻿‌​‌﻿‍‌​‍﻿‍‌‍‍‌‌‍﻿﻿​‍​‍​‍﻿​​‍...",
+      "summary": "The integration of machine learning and agentic AI is revolutionizing intrusion detection, enabling more effective and efficient network defense by leveraging probabilistic output and automated reasoning chains.",
+      "ideas": [
+        "Signature-based detection has limitations in catching novel exploits",
+        "SnortML integrates machine learning for improved detection",
+        "Agentic AI enhances security operations through automated reasoning",
+        "SnortML's probabilistic output aids in confidence scoring",
+        "Agentic AI requires accurate sensor layer data for effective operation",
+        "Machine learning models can be trained for specific vulnerability classes",
+        "Contextual understanding is crucial for effective intrusion detection"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by discussing the evolution of intrusion detection, specifically the integration of machine learning through SnortML and the role of agentic AI in security operations. It delivers multiple novel insights, including the limitations of signature-based detection, the capabilities of SnortML, and the potential of agentic AI to transform network defense. The content is densely packed with useful information, including technical details about SnortML's architecture and the benefits of agentic AI. The author's expertise in the field is evident, making this a high-value resource for readers.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-07-07T03:33:51.742871"
+    },
+    {
+      "id": 3757,
+      "source_id": 11,
+      "original_url": "https://www.youtube.com/watch?v=WAFUMBLOjHo",
+      "title": "SEE CMUX SOLVE Multi-Agent Orchestration (Claude Code and Pi Agent)",
+      "summary": "The content explores the use of CMUX for multi-agent orchestration, providing solutions to common problems such as programmatic access and quick agent launch, and offering a mental model for understanding the tool.",
+      "ideas": [
+        "Multi-agent orchestration is crucial for scaling compute and impact",
+        "CMUX provides programmatic access to agents",
+        "Quick agent launch is essential for agentic speed",
+        "Monitoring and improving agents requires visibility",
+        "CMUX offers a mental model for understanding and controlling agent orchestration",
+        "Agent engineering differs from vibe coding in its focus on monitoring and improvement",
+        "CMUX allows for customization and extensibility in agent orchestration",
+        "Orchestrating fleets of agents is possible with CMUX"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "This content provides high-value insights into multi-agent orchestration, particularly with the CMUX tool. It delivers practical knowledge on how to solve common problems in agent orchestration, such as programmatic access and quick launch. The content is dense with useful information, including specific examples and a mental model for understanding CMUX. However, it assumes some background knowledge of agent engineering and related tools, which might limit its accessibility to a broader audience.",
+      "source_type": "youtube",
+      "source_name": "IndyDevDan",
+      "published_at": "2026-07-07T03:32:57.546233"
+    },
     {
       "id": 3756,
       "source_id": 4,
