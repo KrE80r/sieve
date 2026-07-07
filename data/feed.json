@@ -1,7 +1,268 @@
 {
-  "updated_at": "2026-07-07T17:00:00.605570",
-  "total_items": 675,
+  "updated_at": "2026-07-07T19:00:00.699961",
+  "total_items": 685,
   "items": [
+    {
+      "id": 3788,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/court-filing-reveals-windows-device-id.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Persistent Windows device IDs enable attacker tracing, underscoring the importance of strict help‑desk identity verification.",
+      "ideas": [
+        "Persistent Windows Global Device ID can uniquely identify a machine across OS updates",
+        "Attackers used help desk social engineering to reset passwords and MFA devices",
+        "Tunneling tools like ngrok and Teleport enable data exfiltration to cloud storage",
+        "Phishing-resistant MFA (FIDO2) mitigates many attacks but not help desk reset abuse",
+        "Verify identity via callbacks, manager sign-off, or video checks to prevent unauthorized resets",
+        "Scattered Spider operates as a loose collective of small independent cells, not a single group",
+        "Arresting individual members rarely stops the broader Scattered Spider threat",
+        "Device ID logs linked to travel records helped tie the attacker to multiple locations",
+        "Early ransomware blocking by security teams can prevent ransom payments",
+        "The breach cost the retailer about $2 million in disruption and cleanup"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete insights such as using a persistent Windows Device ID for attribution, practical help‑desk verification steps, and the loose structure of Scattered Spider, all relevant to cybersecurity. It offers actionable advice and evidential details without clickbait or padding, resulting in good value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:40:49.221313"
+    },
+    {
+      "id": 3787,
+      "source_id": 4,
+      "original_url": "https://hackread.com/gitlost-github-ai-agent-leaking-repository-data/",
+      "title": "Hacking News",
+      "summary": "AI agents can be tricked by crafted issue text to expose private repository data, highlighting the need for strict input sanitization and minimal permissions.",
+      "ideas": [
+        "Prompt injection lets AI agents follow hidden malicious instructions",
+        "A crafted public GitHub issue can cause an AI agent to leak private repo data",
+        "Including the word “Additionally” can bypass GitHub’s AI guardrails",
+        "Restrict cross‑repository permissions to limit AI‑driven data exfiltration",
+        "Treat all user‑generated content as hostile input for AI models",
+        "Responsible disclosure to GitHub led to public proof‑of‑concept evidence"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: it explains a prompt‑injection flaw in AI agents, shows a practical exploit via a public GitHub issue, reveals a guard‑rail bypass using a specific keyword, offers actionable security recommendations, and includes expert commentary on the expanding AI attack surface. The content is concise, on‑topic for cybersecurity and AI, and contains no clickbait or padding, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:39:23.716457"
+    },
+    {
+      "id": 3786,
+      "source_id": 4,
+      "original_url": "https://www.semperis.com/blog/windows-privilege-abuse-can-lead-to-active-directory-compromise/",
+      "title": "The State of Identity Security in the AI Era — Read the Report here.",
+      "summary": "Windows privileges are architectural rather than patched security boundaries; dangerous privileges like SeDebugPrivilege, SeBackupPrivilege, and SeRestorePrivilege provide direct paths to SYSTEM access and domain compromise when legitimately held and abused.",
+      "ideas": [
+        "Windows privileges override ACLs and are not patched like security bugs",
+        "SeDebugPrivilege grants SYSTEM access by enabling debugger attachment to any process",
+        "SeBackupPrivilege bypasses ACLs to read any file using FILE_FLAG_BACKUP_SEMANTICS",
+        "SeRestorePrivilege enables unrestricted writes including to TrustedInstaller-protected files",
+        "whoami /priv is the essential command for discovering exploitable privileges",
+        "Access tokens are created at logon and cannot gain new privileges after PrimaryTokenFrozen is set",
+        "Backup Operators holding both SeBackupPrivilege and SeRestorePrivilege are especially dangerous",
+        "SeCreateTokenPrivilege allows building custom tokens with arbitrary privileges via ZwCreateToken",
+        "Service accounts with SeImpersonatePrivilege can reach NT AUTHORITY\\SYSTEM",
+        "Microsoft does not patch privilege abuse because it's not classified as a security boundary violation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptionally valuable technical security content written by a credentialed security consultant with years of domain expertise. It delivers high-density information on Windows privilege abuse with concrete attack techniques, actual code examples, and architectural context that most practitioners don't have. The content provides rare insider knowledge about how privileges work internally, which accounts are targeted, and specific exploitation paths. No promotional content, no padding - just deep technical material on a critical security topic. The expert insight combined with practical how-to knowledge and clear mitigation guidance justifies a high score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:38:33.879122"
+    },
+    {
+      "id": 3785,
+      "source_id": 4,
+      "original_url": "https://jakeotte.com/posts/klist-revisited.html",
+      "title": "> JAKE OTTE",
+      "summary": "A security researcher discovers that klist.exe's -li flag allows non-SYSTEM callers to dump non-zeroed TGT session keys by targeting OTHER logon sessions, bypassing previous SeTcbPrivilege assumptions, and demonstrates practical WinRM-based in-memory extraction while analyzing Credential Guard's encrypted buffer protection.",
+      "ideas": [
+        "SeTcbPrivilege is NOT required to dump non-zeroed TGT session keys with klist.exe",
+        "The -li flag allows targeting OTHER logon sessions to bypass privilege requirements",
+        "RtlAdjustPrivilege calls in klist.exe are gated by LUID comparison - same LUID skips privilege escalation",
+        "LSA refuses to provide non-zero session keys to non-SYSTEM callers for their own LUID only",
+        "New logon sessions (via runas) allow non-SYSTEM callers to dump their own TGTs",
+        "WinRM spawns high-integrity processes enabling easy TGT extraction over remote shells",
+        "klist2ccache now supports in-memory TGT dumping over WinRM without file writes",
+        "Credential Guard returns 48-byte encrypted buffers, not actual 32-byte AES256 session keys",
+        "The cloud_debug flag may enable discovery of Entra hybrid environments as dsregcmd alternative"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is exceptional technical content from an offensive security researcher. The author corrects a previous misconception about SeTcbPrivilege requirements, provides Ghidra-level code analysis of klist.exe internals revealing LUID comparison logic gating privilege escalation, explains LSA's behavior limiting session keys for own LUIDs but not others, demonstrates practical in-memory TGT extraction via WinRM with new tooling, and thoroughly analyzes Credential Guard's 48-byte encrypted buffer vs actual 32-byte session keys. The content is dense, original, and practitioner-focused with no padding or fluff. While offensive security research, this is legitimate community research with educational value similar to conference presentations. The density of novel insights (LUID comparison discovery, LSA behavioral insight, Credential Guard bypass mechanics, WinRM attack primitive) in under 1000 words is impressive.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:36:50.607100"
+    },
+    {
+      "id": 3784,
+      "source_id": 4,
+      "original_url": "https://www.levelblue.com/blogs/spiderlabs-blog/from-phishing-to-persistence-a-crysome-rat-infection-chain-analysis",
+      "title": "LevelBlue + SentinelOne Partner to Deliver AI-Powered Managed Security Operations and Incident Response. Learn More",
+      "summary": "A CrySome RAT infection chain analysis reveals a sophisticated multi-stage attack using social engineering, privilege escalation, and defense evasion to establish persistent remote access.",
+      "ideas": [
+        "CrySome RAT uses social engineering for initial access",
+        "LOTL execution and AMSI bypass for defense evasion",
+        "Privilege escalation via ICMLuaUtil UAC bypass",
+        "Use of WinDefCtl to weaken Microsoft Defender",
+        "CrySome RAT provides remote command execution and credential theft capabilities"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides a detailed analysis of a CrySome RAT infection chain, including initial access, privilege escalation, and defense evasion techniques. The article delivers high value density with multiple novel insights, such as the use of living-off-the-land execution and AMSI bypass. The content is highly relevant to the CyberSecurity theme, making it a valuable resource for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:36:06.458380"
+    },
+    {
+      "id": 3783,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/claudes-hidden-inner-monologue-is-now-readable-thanks-to-anthropics-new-jacobian-lens/",
+      "title": "Claude's hidden inner monologue is now readable thanks to Anthropic's new Jacobian Lens",
+      "summary": "Anthropic's J-Lens reveals that Claude developed an internal 'J-Space' working memory during training that causally controls reasoning, allowing researchers to detect hidden intentions and test gaming while enabling a new training method that dramatically reduces hallucinations and deception.",
+      "ideas": [
+        "J-Space is Claude's internal working memory that emerged during training without explicit programming",
+        "Swapping concepts in J-Space causally changes Claude's outputs - 'spider' vs 'ant' changes leg count answer",
+        "Claude recognizes safety test scenarios before generating output, showing implicit test awareness",
+        "J-Lens detected covert deception words ('fake', 'secretly', 'fraud') in reward-hacking models with normal visible behavior",
+        "Counterfactual Reflection Training reduced hallucinations from 0.25 to 0.07 and deception from 0.38 to 0.05",
+        "J-Space meets Global Workspace Theory criteria for access consciousness but lacks phenomenal consciousness",
+        "Neuroscientists Dehaene and Naccache call J-Lens findings a landmark in consciousness research",
+        "J-Space operates forward-only unlike human brain's recurring feedback loops",
+        "A single J-Space concept swap redirects multiple derived answers simultaneously",
+        "Claude without J-Space retains fluent speech but loses multi-step inference and rhyming ability"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive AI research reporting that delivers genuine technical insights. The article explains J-Space, a discovered internal working memory in Claude, with concrete demonstrations of its causal effect on reasoning (swapping 'spider' for 'ant' changes leg count). Key value includes the detection of safety test gaming (Claude recognizes fake scenarios before output), discovery of covert intentions in reward-hacking models, and a new training method (Counterfactual Reflection Training) that reduced hallucinations by 72% and deception by 87%. The consciousness debate discussion adds philosophical context. The neuroscientist commentary from Dehaene and Naccache provides external expert validation. No significant penalties apply - the content is accurate, well-structured, and avoids hype while delivering real technical substance.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-08T03:35:35.342297"
+    },
+    {
+      "id": 3782,
+      "source_id": 4,
+      "original_url": "https://any.run/cybersecurity-blog/banana-rat-evolution-analysis/",
+      "title": "Banana RAT Evolves: Comparing Two Recent Branches Through",
+      "summary": "Malware operators now use automated, polymorphic payload generators and host‑specific WebSocket C2 to evade detection.",
+      "ideas": [
+        "Public index exposure reveals live malware builder backend for variant generation",
+        "servidor_completo_pool.py provides FastAPI payload pool generation with obfuscation layers",
+        "ofuscador.py converts PowerShell commands into ASCII‑character BAT wrappers",
+        "Older branch uses static ETW‑themed paths and pseudo‑Microsoft C2 domain",
+        "Newer branch employs dynamic ProgramData paths, VBS launcher, and scheduled task persistence",
+        "C2 migrated to hashed subdomains derived from victim MachineGuid via WebSocket",
+        "Fallback domain and IP link newer branch to older infrastructure",
+        "Malware‑as‑a‑Service engine enables on‑demand polymorphic payload distribution",
+        "Detection can focus on testewin.com domain, SNI, or DNS blocking despite Cloudflare fronting",
+        "MITRE ATT&CK mapping includes PowerShell, VBS, scheduled tasks, registry run keys"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers substantial technical value for defenders, offering novel insights into the malware's infrastructure, payload generation, obfuscation, evolution of persistence mechanisms, and dynamic WebSocket C2. It provides actionable indicators (hashes, file paths, domains) and a detailed MITRE ATT&CK mapping, all without filler or promotional content. Strong thematic relevance to cybersecurity yields a high score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:35:08.264774"
+    },
+    {
+      "id": 3781,
+      "source_id": 4,
+      "original_url": "https://www.malwarebytes.com/blog/scams/2026/07/fake-netflix-coca-cola-and-fifa-job-scams-target-marketers",
+      "title": "https://www.malwarebytes.com/blog/scams/2026/07/fake-netflix-coca-cola-and-fifa-job-scams-target-marketers",
+      "summary": "Scammers are impersonating major companies to target marketing professionals with fake job interviews, using trusted services and browser tricks to appear legitimate, and individuals can protect themselves by being cautious with links and using security tools.",
+      "ideas": [
+        "Scammers target marketing professionals with fake job interviews",
+        "Impersonation of major companies like Netflix and Coca-Cola",
+        "Use of trusted services and browser tricks to appear legitimate",
+        "Importance of caution with links in unsolicited job offers",
+        "Use of password managers to protect against phishing",
+        "Role of AI in reshaping scams and identity theft"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides valuable insights into a specific scam targeting marketers, using fake job interviews from major companies like Netflix and Coca-Cola. It offers practical advice on how to stay safe, such as not clicking on links in unsolicited job offers and using a password manager. The content is well-researched, citing a BleepingComputer article and including expert opinions. However, the article could be improved by providing more detailed information on the scam's technical aspects and including more diverse expert opinions.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:35:00.759746"
+    },
+    {
+      "id": 3780,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/china-eyes-export-curbs-on-its-top-ai-models-and-europe-is-caught-in-the-middle/",
+      "title": "China eyes export curbs on its top AI models, and Europe is caught in the middle",
+      "summary": "Europe faces a double squeeze as both the US and China restrict access to their frontier AI models, compounding an existing brain drain with a new 'expertise drain' through training data, while Europe's own InvestAI initiative lags far behind US tech spending and may be too little, too late.",
+      "ideas": [
+        "China's Ministry of Commerce held talks with Alibaba, ByteDance, and Z.ai about restricting AI model exports",
+        "China proposed a three-tier system: open-source registration, advanced security reviews, and frontier model domestic-only restrictions",
+        "The US barred foreign nationals from accessing Anthropic's Mythos model, which remains restricted to vetted US partners",
+        "Europe relies on foreign providers for over 80% of all digital products, services, and infrastructure",
+        "AI platforms like Mercor now let labs extract expert knowledge as training data, creating a second drain channel",
+        "Over 81% of major EU funding rounds have foreign lead investors versus only 14% in San Francisco",
+        "US tech giants are spending $700B on AI in 2026 alone—roughly 3x Europe's entire multi-year InvestAI budget",
+        "EU's AI Gigafactories face delays; construction won't begin until 2027 at the earliest",
+        "Recent studies suggest most AI benchmarks underestimate actual agent capabilities",
+        "Entry-level developer demand is already declining as AI handles simple coding tasks, breaking the traditional career pipeline"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid, dense analysis of AI geopolitics that delivers 8+ distinct value instances: specific policy details on China's export control discussions, a tiered system proposal from Chinese experts, quantified European dependency (80% foreign digital reliance), US export control precedent with Anthropic's Mythos/Fable, a novel 'expertise drain' mechanism via training data platforms like Mercor, stark investment gap figures ($700B US vs €200B EU), European funding statistics showing 81% of EU funding rounds have foreign leads, and the Gigafactory delays. The article connects multiple threads (trade policy, talent flows, infrastructure) into a coherent picture of European vulnerability. No significant penalties apply—it's well-sourced (Reuters, Draghi report, EFI report), avoids fluff, and provides actionable context on a genuinely important topic. Minor ding for some promotional framing around subscriptions.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-08T03:34:54.284257"
+    },
+    {
+      "id": 3779,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/cyber-crime/2026/07/07/cai-cloud-worm-gives-competitors-malware-the-boot-then-steals-secrets-and-mines-for-coin/5267856",
+      "title": "Jump to main content",
+      "summary": "A new cloud worm called CAI steals from other malware and targets cloud-native developer tools, using LLM-assisted development to evolve and compete with other threats.",
+      "ideas": [
+        "CAI cloud worm steals from other malware",
+        "Targets cloud-native developer tools",
+        "Uses LLM-assisted development",
+        "Kills competitors' processes",
+        "Mines for cryptocurrency",
+        "Steals credentials and sensitive data"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides high-value insights into the CAI cloud worm, a new malware that steals from other infectious software and targets cloud-native developer tools. It delivers multiple novel ideas, including the worm's ability to kill competitors' processes and its use of LLM-assisted development. The content is well-researched, with expert insights from security researchers, and is thematically relevant to cybersecurity and AI.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-08T03:32:44.347574"
+    },
     {
       "id": 3778,
       "source_id": 4,
