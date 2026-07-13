@@ -1,7 +1,81 @@
 {
-  "updated_at": "2026-07-13T06:00:11.523444",
-  "total_items": 649,
+  "updated_at": "2026-07-13T07:00:01.165418",
+  "total_items": 652,
   "items": [
+    {
+      "id": 3908,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-20230-cisco-unified-cm-rce/",
+      "title": "CVE-2026-20230: Cisco Unified CM WebDialer SSRF RCE",
+      "summary": "A pre-authentication SSRF vulnerability in Cisco Unified CM's WebDialer service can be exploited to gain root access to the system, allowing attackers to control voice traffic, voicemail, and other sensitive functions.",
+      "ideas": [
+        "CVE-2026-20230 is a pre-auth SSRF in Cisco Unified CM's WebDialer",
+        "The vulnerability can be exploited to gain root access to the system",
+        "The attack chain involves four steps: hostname enumeration, SSRF, installing a rogue Axis service, and dropping a JSP webshell",
+        "The vulnerability is critical due to the potential for unauthorized access to sensitive voice and data systems",
+        "Defenders should apply the Cisco advisory patch to mitigate the vulnerability"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "This content provides a highly detailed and technical analysis of a critical vulnerability in Cisco Unified CM, including a step-by-step breakdown of the attack chain and exploitation process. The author demonstrates a deep understanding of the underlying technology and provides actionable information for defenders. The content is well-structured, easy to follow, and includes relevant code snippets and captions to support the explanation. The only drawback is the assumption of prior knowledge in certain areas, which might make it challenging for non-experts to fully appreciate the content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-13T15:34:06.662761"
+    },
+    {
+      "id": 3907,
+      "source_id": 4,
+      "original_url": "https://zwclose.github.io/2026/07/08/rtsper2.html",
+      "title": "Vulnerabilities of Realtek SD card reader driver, part2",
+      "summary": "A security researcher demonstrates how to exploit Realtek SD card reader driver vulnerabilities to achieve arbitrary physical memory writes from user mode by chaining together PCI device programming, SCSI vendor commands, and DMA controller manipulation.",
+      "ideas": [
+        "DMA allows devices to access physical memory bypassing CPU and OS protections",
+        "Realtek SD card reader exposes CSR registers via vendor-specific SCSI command 0xF0/0x10/0xD",
+        "PCIe BARs map device registers to physical memory regions accessible via MmMapIoSpace",
+        "Card reader CSR registers at offsets 0x0, 0x4, 0x8, 0xC control command buffer and DMA transfers",
+        "SCSI commands require an SD card to be inserted for successful execution",
+        "Device instruction format is 4 bytes encoding operation, register code, value, and bitmask",
+        "Command buffer routines exposed via SCSI commands 0xF0/0x10/0xE0 with subcommands 0x41-0x44",
+        "BugChecker enables kernel-level debugging without screenshots possible",
+        "Realtek's open-source Linux driver provides register documentation hints",
+        "DMA transfers are invisible to EDRs and Windows kernel itself",
+        "RtsPer.sys driver couples SCSI command execution with automatic DMA initiation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-quality technical security research post that provides substantial value. The author Nicolas Krassas demonstrates a DMA memory access vulnerability in Realtek's SD card reader driver, explaining the complete exploitation chain from PCI device programming through SCSI commands to arbitrary physical memory writes. Key value includes: detailed explanation of PCIe BARs and memory-mapped I/O, the WriteCSR function for CSR register manipulation, SCSI command execution mechanics, command buffer programming at device-instruction level, specific register offsets (0x0, 0x4, 0x8, 0xC) and their purposes, real C code wrappers for exploitation (RtsAddInstr), and insight into the difficulty of reverse engineering undocumented hardware. The content is dense with technical detail appropriate for security researchers. Minor deduction: the post appears truncated mid-sentence at the end, potentially missing the full PoC walkthrough.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-13T15:33:05.558801"
+    },
+    {
+      "id": 3906,
+      "source_id": 4,
+      "original_url": "https://ipurple.team/2026/07/13/amsi-provider/",
+      "title": "AMSI Provider",
+      "summary": "Threat actors can abuse AMSI by registering a fake provider to execute malicious code when a specific string is inserted into a PowerShell console, allowing for persistence on a Windows system.",
+      "ideas": [
+        "AMSI can be abused for persistence by registering a fake provider",
+        "Threat actors need elevated permissions to register a fake AMSI provider",
+        "The fake provider can execute malicious code when a specific string is inserted into a PowerShell console",
+        "Detection can be done by monitoring the Providers registry key for non-legitimate entries",
+        "Unsigned DLLs loaded in PowerShell can be detected using Sysmon rules"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides a detailed explanation of how threat actors can abuse the Antimalware Scan Interface (AMSI) to establish persistence on a Windows system. It includes a proof-of-concept implementation in C++ and discusses detection methods, making it a valuable resource for security professionals. The content is well-structured, informative, and aligned with the CyberSecurity theme.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-13T15:32:23.316432"
+    },
     {
       "id": 3905,
       "source_id": 29,
