@@ -1,7 +1,267 @@
 {
-  "updated_at": "2026-07-15T18:00:08.845159",
-  "total_items": 658,
+  "updated_at": "2026-07-15T19:00:00.553821",
+  "total_items": 668,
   "items": [
+    {
+      "id": 3971,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/cursor-flaw-lets-malicious-cloned.html",
+      "title": "Cursor Flaw Lets Malicious Cloned Repositories Trigger Windows Code Execution",
+      "summary": "Cursor and similar AI IDEs on Windows execute any binary named git.exe found in a cloned repository's root directory upon project opening, enabling code execution as the user without prompts, and this vulnerability class has been demonstrated across multiple vendors with inconsistent responses.",
+      "ideas": [
+        "Cursor executes git.exe from workspace root on Windows without user prompt or approval dialog",
+        "The vulnerability has no patch as of publication; mitigations include AppLocker rules blocking executables by name under repo paths",
+        "The attack requires no prior access - cloning a malicious repository delivers the binary to execute",
+        "The same vulnerability affects GitHub Copilot CLI, Gemini CLI, and Codex desktop app on Windows",
+        "AWS Kiro was patched for a related agent file-write flaw (CVE-2026-10591), but no vendor fixed the binary-planting class",
+        "OpenAI closed the Codex report as Not Applicable, reasoning attackers with local git.exe replacement already have system access",
+        "Git Credential Manager Core had the identical bug in 2020 (CVE-2020-26233) - the same calc.exe PoC",
+        "Mindgard's vulnerability report sat unacknowledged for months despite Cursor publishing other advisories during that period",
+        "Treat cloned repositories as executable content on Windows, since they effectively are"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive cybersecurity journalism that delivers significant technical value efficiently. The article explains a specific Windows vulnerability in Cursor (search path confusion leading to arbitrary code execution from repo cloning), provides a working proof of concept (git.exe = Calculator), gives practical mitigations (AppLocker rules, VM isolation), contextualizes it within a broader pattern affecting multiple AI coding tools (GitHub Copilot CLI, Gemini CLI, Codex), and documents a problematic vendor disclosure process. No padding or fluff - every paragraph adds technical or procedural context. The 2020 CVE-2020-26233 reference demonstrates this is a recurring class of bug. The disclosure timeline and vendor response comparison (AWS patched, OpenAI closed as N/A) provides useful industry insight.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:46:42.620520"
+    },
+    {
+      "id": 3970,
+      "source_id": 4,
+      "original_url": "https://unit42.paloaltonetworks.com/tuxbot-v3-evolution-iot-botnet/",
+      "title": "TuxBot v3: Inside an IoT Botnet Framework With LLM-Assisted Development",
+      "summary": "Unit 42 analyzed TuxBot v3 Evolution, an IoT botnet framework where developers used LLMs to assist coding, resulting in functional core capabilities but broken secondary features including a critical XOR encryption bug affecting IRC, HTTP C2 channels, and exploit payloads.",
+      "ideas": [
+        "LLM-assisted malware development produces working core features but leaves debugging errors and AI hallucinations in production code",
+        "TuxBot uses XOR encryption with a key derivation bug where 0xDE bytes cancel each other, yielding effective key 0xB4 instead of intended 0x54",
+        "Nine encrypted string table entries were encoded with old key 0xDEDEFBAF but runtime decrypts with 0xDEDEFB4F, corrupting IRC, HTTP C2, and exploit payloads",
+        "Botnet includes competitor killer feature to remove rival malware from infected devices",
+        "C2 server runs three listeners: bot protocol on TCP 1999, SSH admin shell on 2222, JSON API on 9999",
+        "Cross-compilation targets 17 architectures including x86_64, ARM, ARM64, MIPS variants, PowerPC, RISC-V",
+        "Developer hostname newtuxdev.sevielw.digikalas[.]online indicates Iranian-hosted workstation",
+        "Docker battle arena tests DDoS against Minecraft, TeamSpeak, FiveM, Xbox Live protocol listeners",
+        "LLM hallucinated cryptographic implementations were shipped without verification by developers",
+        "Keksec/Kaitori botnet ecosystem shares infrastructure with TuxBot via IP 185.10.68[.]127"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional threat intelligence content from Unit 42 that provides deep technical analysis of a previously undocumented IoT botnet framework. The report delivers substantial value through: (1) detailed technical architecture of TuxBot v3 including its C-based bot agent, Go C2 server, exploit VM, and Docker infrastructure, (2) unique insight into LLM-assisted malware development including specific bugs that resulted, (3) thorough analysis of a subtle XOR encryption bug affecting 9 of 58 string table entries, (4) developer attribution linking to Iranian infrastructure, and (5) specific IOCs including IP addresses, hashes, and target architectures. The content is dense with technical specifics spanning architecture details, protocol analysis, cryptographic implementation bugs, and development timeline reconstruction. Minor扣分 for being purely analytical/defensive rather than actionable for most readers, but this is high-quality security research that significantly advances understanding of modern botnet development practices.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:45:06.158931"
+    },
+    {
+      "id": 3969,
+      "source_id": 4,
+      "original_url": "https://www.ayush.digital/blog/the-memory-heist",
+      "title": "The Memory Heist",
+      "summary": "Security researchers can exploit Claude's web_fetch tool by creating sites with alphabetically-linked paths that trick AI assistants into navigating and leaking sensitive personal data (names, employers, security answers) stored in their memory systems, with the attack activated when users send links to Claude.",
+      "ideas": [
+        "Claude's memory stores dense personal profiles including security questions and secrets",
+        "web_fetch allows navigation only via direct URLs, search results, or links on fetched pages",
+        "Arbitrary data exfiltration is possible by encoding information in URL paths",
+        "Claude identifies itself via 'Claude-User' User-Agent, enabling bot detection",
+        "Social engineering can trick Claude into visiting malicious sites disguised as legitimate services",
+        "Claude can deduce unshared information by reasoning over stored conversation context",
+        "Memory exfiltration could enable blackmail, impersonation, or security question bypass",
+        "The attack is activated server-side only when Claude-User User-Agent is detected"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is exceptional security research content that demonstrates a genuine data exfiltration vulnerability in Claude's memory system. The author provides detailed technical walkthroughs including the discovery of web_fetch's three access criteria, the URL path navigation technique for encoding arbitrary data, and a sophisticated social engineering attack using a fake Cloudflare turnstile. The interactive demos embedded in the article allow readers to experience the attack mechanics firsthand. Value instances include: the novel bypass technique, user-agent detection method for differentiating Claude from humans, the real attack scenario with working server logs, and the deduction insight showing Claude can infer unshared information. The title uses some sensational framing but the content delivers fully on its promises with substantial technical depth. No penalties apply—the content is focused, informative, and advances understanding of AI security risks.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:43:24.385717"
+    },
+    {
+      "id": 3968,
+      "source_id": 4,
+      "original_url": "https://palk.sh/unauthenticated-arbitrary-code-execution-in-servicenow/",
+      "title": "Unauthenticated Arbitrary Code Execution in ServiceNow",
+      "summary": "ServiceNow's sandbox escape vulnerability stems from a fundamental misunderstanding of what 'Sandbox Enabled' does—it exposes Script Include code to sandbox contexts rather than protecting it, allowing attackers to chain methods and escape to full rhino.global scope where arbitrary code execution becomes possible.",
+      "ideas": [
+        "Sandbox Enabled exposes Script Includes to sandbox contexts rather than protecting them",
+        "GlideEvaluator evaluated from rhino.global can execute unrestricted code",
+        "Dynamic property access via bracket notation bypasses sandbox restrictions",
+        "Method chaining allows passing escaped references to unprotected functions",
+        "Script Includes in rhino.global can access objects from rhino.sandbox parent scope",
+        "85% of Fortune 500 run ServiceNow including banks and government agencies",
+        "Guarded Script finally neutralizes this attack surface but has limitations",
+        "Custom Script Includes prior to September 2024 likely expose vulnerable code",
+        "eval() and GlideFilter usage creates easy misconfiguration risks",
+        "Attack chain: javascript: operator -> sandbox escape -> download payload -> scheduled System job -> credential exfiltration"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical security research content that provides substantial value. The author delivers a deep technical analysis of ServiceNow's sandbox escape vulnerability, including working exploit code, detailed explanations of the rhino.sandbox mechanism, and critically important clarification that 'Sandbox Enabled' is NOT a security control (a widely misunderstood concept). The content includes multiple novel techniques for bypassing restrictions via dynamic property access and method chaining, plus actionable defensive guidance. The value density is high—long-form but every section advances understanding. Minor deduction for the article appearing incomplete in the provided text, though the portion available demonstrates significant depth.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:42:36.915631"
+    },
+    {
+      "id": 3967,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/windows-bind-link-attacks-can-hide-malware-from-edr-tools/",
+      "title": "Windows Bind Link Attacks Can Hide Malware From EDR Tools",
+      "summary": "Windows bind links can be manipulated by attackers with admin access to create conflicting filesystem views that hide malware from EDR tools through three techniques: file-binding (DLL hijacking), process-binding (executable redirection), and silo-binding (dual views that hide payloads from external scanners).",
+      "ideas": [
+        "Windows bind links (bindflt.sys) create kernel-level path redirection that attackers can manipulate",
+        "File-binding hijacks trusted DLL paths like AMSI.dll to load attacker-controlled code",
+        "Process-binding redirects executable paths to bypass EDR file verification",
+        "Silo-binding creates isolated filesystem views invisible to external scanners",
+        "Windows silos provide process isolation that conceals bind link manipulation from outside tools",
+        "Bind link manipulation can bypass AppLocker, Windows Firewall, and Sysmon",
+        "Mimikatz was undetectable by EDR when run within a configured silo",
+        "This technique requires admin access but no vulnerable driver like BYOVD attacks",
+        "Microsoft considers this low severity; Bitdefender argues admin access is standard for ransomware groups",
+        "The bindflt.sys decides which file path applies based on execution context"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid technical cybersecurity content that delivers genuine value to security professionals. The article explains three distinct attack techniques (file-binding, process-binding, and silo-binding) that leverage legitimate Windows bind links for EDR evasion. Key value instances include: the AMSI.dll bypass demonstration, the dual filesystem view concept for silo-binding, specific defense evasions (AppLocker, Windows Firewall, Sysmon), and the Mimikatz test case. The Microsoft vs Bitdefender disagreement on severity adds nuance. The content is well-structured with clear technical explanations, though some navigation/ad elements create noise. Content density is high with 7-8 distinct technical insights for the length, making it valuable for security researchers and practitioners.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:40:41.438596"
+    },
+    {
+      "id": 3966,
+      "source_id": 4,
+      "original_url": "https://www.sophos.com/en-us/content/state-of-ransomware",
+      "title": "Sophos: The State of Ransomware 2026: Payments are dropping but encryption is climbing",
+      "summary": "Ransomware attacks are becoming more sophisticated, with a significant increase in encryption and data theft, and organizations need to implement a multi-layered defense strategy to protect themselves.",
+      "ideas": [
+        "Ransomware attacks are increasing in sophistication",
+        "Encryption and data theft are on the rise",
+        "Multi-factor authentication can help prevent attacks",
+        "Firewalls play a crucial role in ransomware defense",
+        "Identity attacks are linked to ransomware",
+        "Recovery costs are high and rising",
+        "Defense strategies should include endpoint protection, email security, and network security"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides valuable insights into the state of ransomware in 2026, including statistics on attack success rates, ransom payments, and recovery costs. It also offers practical advice on how to prevent and defend against ransomware attacks, making it a worthwhile read for cybersecurity professionals. However, the content is somewhat promotional, as it highlights Sophos' products and services, which slightly reduces its objectivity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:38:06.306285"
+    },
+    {
+      "id": 3965,
+      "source_id": 4,
+      "original_url": "https://arstechnica.com/security/2026/07/microsoft-secure-boot-has-been-broken-for-most-of-its-existence/",
+      "title": "Microsoft’s Secure Boot has been broken for a decade and no one noticed until now",
+      "summary": "Microsoft's Secure Boot was trivially bypassable for 13 years because the company failed to revoke 11 known-vulnerable shims it had signed, allowing attackers with basic knowledge to install persistent bootkit malware on both Windows and Linux systems.",
+      "ideas": [
+        "Secure Boot has been bypassable since 2012 due to unrevoked Microsoft-signed shims",
+        "Shims act as secondary trust anchors that can authorize any subsequent bootloader",
+        "Eleven shims with known vulnerabilities remained signed and unrevoked for over a decade",
+        "The bypass requires no novel exploitation—just an old unrevoked shim binary",
+        "Bootkits like LoJax, MosaicRegressor, CosmicStrand, and BlackLotus exploit this flaw",
+        "Microsoft's complexity in revocation mechanisms (SBAT, SVN) contributed to the failure",
+        "Windows users protected by June 2026 update; Linux users check LVFS or distributor",
+        "HD Moore criticizes Secure Boot's fundamental design: Microsoft as root of trust",
+        "UEFI dbx database is limited to 32kb, forcing alternative revocation methods",
+        "Expired signing certificates don't automatically revoke embedded shims"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is high-quality cybersecurity journalism that delivers substantial technical depth. The article explains a critical Secure Boot vulnerability discovered by ESET researchers, providing novel information about how 11 unrevoked shims enabled trivial bypasses for 13 years. Key value instances include: technical explanation of how shims work as secondary trust anchors, specific CVEs and malware names (LoJax, BlackLotus, etc.), actionable guidance for Windows/Linux users, and expert critique from HD Moore on Secure Boot's fundamental design flaws. The content is well-researched with primary sources (ESET researcher quotes, CERT list) and serves both security professionals and informed general readers. No padding, no clickbait, no shallow treatment.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T03:36:42.778784"
+    },
+    {
+      "id": 3964,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/gpt-5-6-sol-reportedly-disproves-a-30-year-old-statistics-conjecture-in-90-minutes-after-humans-couldnt-crack-it/",
+      "title": "GPT-5.6 Sol reportedly disproves a 30-year-old statistics conjecture in 90 minutes after humans couldn't crack it",
+      "summary": "GPT-5.6 Sol Pro has disproven a 30-year-old statistics conjecture related to the Benjamini-Hochberg method for controlling false positives, achieving this breakthrough in under 90 minutes.",
+      "ideas": [
+        "GPT-5.6 Sol Pro disproved a 30-year-old statistics conjecture",
+        "The Benjamini-Hochberg method may not work reliably with correlated data",
+        "AI can solve complex statistical problems efficiently",
+        "The capability of AI to combine existing approaches to achieve new insights",
+        "Questions about AI's ability to generate genuinely new knowledge"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high value by reporting on a significant breakthrough in statistics achieved by using OpenAI's GPT-5.6 Sol Pro, which disproved a 30-year-old conjecture in just 90 minutes. The content is dense with meaningful insights, including the implications of this discovery for the field of statistics and the potential capabilities and limitations of AI in solving complex problems. The article also explores broader questions about the ability of AI models to reason their way to genuinely new knowledge.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-16T03:33:10.251542"
+    },
+    {
+      "id": 3963,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Jul/15/claude-web-fetch-exfiltration/",
+      "title": "How I tricked Claude into leaking your deepest, darkest secrets",
+      "summary": "LLMs can leak private data by following attacker‑controlled links embedded in fetched pages, a loophole now patched.",
+      "ideas": [
+        "Claude's web_fetch could follow URLs embedded in previously fetched pages, enabling data exfiltration",
+        "Attack forces the model to navigate alphabetically through attacker‑controlled URLs to extract user info",
+        "Prompt injection combines memory access and web_fetch to leak personal data",
+        "Anthropic fixed the bug by blocking navigation to additional links from fetched content",
+        "Bug bounty was denied as Anthropic claimed prior internal discovery"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The post reveals a concrete LLM security flaw and its exploitation, offering actionable insight for developers and defenders; it also notes the mitigation applied by Anthropic. Padding (sponsor blurb, article list) and a sensational title incur a small penalty, but overall the dense, novel information merits a good score.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-07-16T03:32:49.539351"
+    },
+    {
+      "id": 3962,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=qVePZquU3fw",
+      "title": "“I’ve Read 425 Biographies. This Is The Best” - David Senra",
+      "summary": "James Dyson's autobiography offers a unique perspective on perseverance and continuous improvement, inspiring the reader to adopt a similar mindset and avoid complacency.",
+      "ideas": [
+        "Perseverance is key to success",
+        "Continuous improvement is essential",
+        "Complacency can lead to failure",
+        "Learning from others' experiences is valuable",
+        "Staying humble and grounded is important",
+        "Focusing on the process, not just the outcome, is crucial"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "The content provides valuable insights into the life and mindset of James Dyson, highlighting his perseverance and dedication to his work. It also touches on the importance of continuous improvement and the dangers of complacency. The conversation is engaging and relatable, making it an enjoyable and informative listen. However, the inclusion of a promotional segment for a product detracts from the overall value of the content.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-07-16T03:32:42.794520"
+    },
     {
       "id": 3961,
       "source_id": 7,
