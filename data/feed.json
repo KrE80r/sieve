@@ -1,7 +1,192 @@
 {
-  "updated_at": "2026-07-16T05:00:00.652549",
-  "total_items": 646,
+  "updated_at": "2026-07-16T07:00:00.608354",
+  "total_items": 652,
   "items": [
+    {
+      "id": 3983,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/earning-judgment/",
+      "title": "Earning taste and judgment",
+      "summary": "AI will automate routine coding, so developers must deliberately cultivate judgment and taste to stay valuable.",
+      "ideas": [
+        "AI agents will automate repetitive coding reps, eroding the traditional junior‑to‑senior learning path.",
+        "Junior developers face higher unemployment; senior roles with judgment will grow.",
+        "Accepting AI‑generated code blindly drops accuracy ~15 points while confidence rises.",
+        "Build taste by reading more code than you write and hunting for hidden bugs.",
+        "Keep a “wrong log” of AI mistakes to spot recurring patterns.",
+        "Intentionally do hard‑way projects (e.g., manual parser) to protect deep learning.",
+        "Deep‑dive end‑to‑end on a system and push it to failure to gain depth.",
+        "Separate specification writing from verification to sharpen clear thinking.",
+        "Create evaluation frameworks with rubrics to test AI‑generated PRs.",
+        "Calibrate AI autonomy per task, high for cheap reversible work, low for critical tasks.",
+        "Focus on the “last mile” – edge cases, architecture, taste – where humans add value.",
+        "Solve the hard version of problems; easy versions are already automated.",
+        "Build public work on hard problems to grow reputation and opportunities.",
+        "Be a T‑shaped generalist: deep in few areas, broad literacy elsewhere."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The essay provides multiple concrete value instances—data on graduate unemployment, a study on AI‑generated code acceptance, seven actionable practices for building judgment, and nuanced analysis of job market trends—without noticeable clickbait or padding. It aligns well with AI, productivity, and tech themes, delivering dense, actionable insight for developers facing automation.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-07-16T15:44:50.528945"
+    },
+    {
+      "id": 3982,
+      "source_id": 32,
+      "original_url": "https://addyosmani.com/blog/own-the-outer-loop/",
+      "title": "Own the Outer Loop",
+      "summary": "As AI agents increasingly handle the inner execution loop, engineers must embrace accountability by owning the outer loop—maintaining answerability through evidence, verdict, and explicit ownership boundaries that transform 'developer' into 'engineer.'",
+      "ideas": [
+        "Agents have leverage, creating obligations for human accountability over their outputs",
+        "Quality produces evidence; Verdict is the human decision to ship, block, or redirect",
+        "Answerability means guaranteeing you can explain why a decision was made",
+        "The model is the engine; the harness (tools, memory, sandboxes) is the car enabling safe work",
+        "Factory = loops at scale; humans own decisions at the boundary, agents ship work inside",
+        "42% of committed code is AI-generated (Sonar 2026), with growth expected to continue",
+        "Generation speed has outpaced verification, creating a dangerous trust-verification gap",
+        "Cognitive surrender: 75% accepted wrong AI answers while feeling more confident (Wharton)",
+        "Cognitive debt: AI-assisted engineers scored 17 points lower on comprehension (Anthropic RCT)",
+        "Orchestration tax: human cognitive bandwidth doesn't parallelize like agent fleets",
+        "Humans need to be in constraints, sampling, audit, and ownership loops—not the inner loop",
+        "Alpha = highest-value moves; Decay = fading patterns; Taste = sensing shifts early",
+        "Taste drives success when creation becomes cheap—operationalize it consciously",
+        "Skills provide leverage; accountability turns leverage into trust",
+        "The half-life of an edge is one release; the half-life of a signature is a career",
+        "Only humans can choose, inherit consequence, and stand behind shipped work",
+        "Brownfield systems are dangerous because behavior lives in scars, not code",
+        "Everyone is a developer; engineers embrace stricter discipline with accountability",
+        "Increasing human alpha: choosing what to do, defining constraints, judging evidence"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 87,
+      "rating_reason": "This is exceptionally dense, high-value content from a credible source that delivers multiple novel insights efficiently. The core thesis (engineers must 'own the outer loop' of accountability as AI agents scale) is reinforced through well-defined concepts (Quality, Verdict, Answerability), supported by concrete data (42% AI-generated commits, 75% acceptance rate of wrong AI outputs, 17-point comprehension gap), and grounded in actionable frameworks (human loops, cognitive costs, alpha/decay/taste). The content maintains strong thematic relevance to AI's impact on engineering and human judgment. Minor deduction for the content appearing truncated at the end, suggesting it was cut off mid-thought, though what remains is complete enough to stand on its own.",
+      "source_type": "rss",
+      "source_name": "Addy Osmani",
+      "published_at": "2026-07-16T15:44:39.740402"
+    },
+    {
+      "id": 3981,
+      "source_id": 4,
+      "original_url": "https://www.elastic.co/security-labs/telepuz-maas-malware-clickfix",
+      "title": "TELEPUZ: a modular MaaS malware spreading via CLICKFIX-VIDAR chains — Elastic Security Labs",
+      "summary": "TELEPUZ is an emerging modular malware family spreading via CLICKFIX-VIDAR chains, featuring sophisticated evasion techniques including indirect syscalls, AMSI/ETW patching, NTDLL unhooking, and two UAC bypass methods, with code artifacts suggesting it may be offered as Malware-as-a-Service.",
+      "ideas": [
+        "TELEPUZ uses import hashing with custom FNV1 and ROR27 algorithms to resolve Windows API imports dynamically",
+        "The malware patches AMSI by overwriting AmsiScanBuffer with mov eax,0x80070057;retn to force E_INVALIDARG returns",
+        "ETW is disabled by patching EtwEventWrite, NtTraceEvent, and NtTraceEventControl with xor eax,eax;retn",
+        "Indirect syscalls execute from patched standard library .text sections after mapping fresh ntdll.dll copies",
+        "COM elevation moniker technique bypasses UAC by creating elevated COM objects via CLSID_CMSTPLUA",
+        "Alternative UAC bypass uses AppInfo ALPC and DebugObjects to attach to auto-elevated computerdefault.exe",
+        "Session IDs combine hardware serial, computer name, and OS install date via dual hashing algorithms",
+        "Mutex name 'cfgmgr_mtx' serves as a simple indicator of prior infection on the system",
+        "Hardcoded CIS country LCIDs prevent execution in former Soviet states including Ukraine and Belarus",
+        "Hardware sandbox checks verify minimum 2 CPUs, 2GB RAM, and sufficient disk space before executing",
+        "Parent process verification ensures malware only runs when launched by rundll32.exe or svchost.exe",
+        "Third-party DllNotification callbacks are removed by iterating registered callback linked lists",
+        "ThreadHideFromDebugger flag and NtClose with 0xDEADBEEF trigger debugger crashes to evade analysis",
+        "BeFrugal browser extension may be exploited for affiliate commission fraud via TELEPUZ infrastructure"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is high-quality technical malware analysis from Elastic Security Labs with substantial value density. The content provides novel technical details on a new modular malware family, including functional Python code for the import hashing and session ID generation algorithms, two documented UAC bypass techniques with full implementations, and detailed analysis of evasion methods like indirect syscalls, AMSI/ETW patching, and NTDLL unhooking. The linked IDA script for string decryption and working code samples for the UAC bypasses represent genuine practical resources for security researchers. The 13-minute read time is justified by the depth of reverse engineering detail. No penalties apply—this is original research from a credible source, not promotional or padded content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T15:42:48.022285"
+    },
+    {
+      "id": 3980,
+      "source_id": 4,
+      "original_url": "https://github.com/Sahir619/fable-method",
+      "title": "GitHub - Sahir619/fable-method: The Fable Workflow: how Claude Fable 5 worked, distilled into skills any model can run, with the eval that keeps it honest. Think / act / prove.",
+      "summary": "The Fable Method is a workflow that captures the structure of good agentic work, enabling models to perform tasks more effectively and honestly, through a think-act-prove approach.",
+      "ideas": [
+        "Classify tasks before starting work",
+        "Define done with a named verification",
+        "Gather evidence in parallel from primary sources",
+        "Commit to one recommendation",
+        "Change the smallest correct thing",
+        "Verify by observation",
+        "Report outcomes first with honest caveats",
+        "Use a loop of think-act-prove to structure work",
+        "Avoid common pitfalls like silently fixing correct code",
+        "Use adversarial verification to test finished work"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value through its detailed explanation of the Fable Method, a workflow designed to improve the performance of AI models. The method is thoroughly tested and evaluated, with results and case studies provided to support its effectiveness. The content is dense with valuable insights, including the importance of structuring work, verifying outcomes, and avoiding common pitfalls. The author's use of specific examples, such as the 'headline trap,' helps to illustrate key concepts and make the method more accessible to readers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T15:34:38.386716"
+    },
+    {
+      "id": 3979,
+      "source_id": 4,
+      "original_url": "https://github.com/oversecured/Samsung_Vulnerabilities",
+      "title": "GitHub - oversecured/Samsung_Vulnerabilities: 176 vulnerabilities in Samsung preinstalled Android apps",
+      "summary": "Oversecured discovered 176 vulnerabilities in Samsung's preinstalled Android apps, including intent redirection, arbitrary code execution, and data leakage, and worked with Samsung to fix them.",
+      "ideas": [
+        "Intent redirection with system privilege",
+        "Arbitrary code execution",
+        "Data leakage",
+        "Improper privilege management",
+        "Bypassing system permissions",
+        "Universal-XSS",
+        "SQL injection",
+        "Directory listing with system privilege",
+        "Overwriting arbitrary files"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This content provides exceptional value by detailing 176 vulnerabilities found in Samsung's preinstalled Android apps, including intent redirection, arbitrary code execution, and data leakage. The content is densely packed with valuable information, including a list of vulnerabilities, their descriptions, and the rewards received for discovering them. The author's collaboration with Samsung to fix these vulnerabilities demonstrates a strong commitment to improving mobile security. The content is well-structured, easy to follow, and free of fluff, making it an exemplary example of high-value content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T15:32:56.114749"
+    },
+    {
+      "id": 3978,
+      "source_id": 4,
+      "original_url": "https://github.com/Encod3d-Sec/ClaudeBrain",
+      "title": "GitHub - Encod3d-Sec/ClaudeBrain: Karpathy LLM based claude harness for PenetrationTesting / Bugbounty using obsidian",
+      "summary": "Integrating an AI‑augmented knowledge base with deterministic automation can streamline and de‑duplicate penetration‑testing work.",
+      "ideas": [
+        "Wiki‑first methodology centralizes 500+ markdown technique pages for semantic search",
+        "Hunt skills automate specific vulnerability classes like XSS, SQLi, RCE, and cloud attacks",
+        "Deterministic hooks trigger scripts at key Claude Code lifecycle events",
+        "State‑first engagement model tracks scope, loot, and coverage per target",
+        "Research loop enables automated CVE discovery on binaries and libraries",
+        "Client‑data boundary isolates sensitive findings in git‑ignored target folders",
+        "Quickstart script bootstraps environment, indexes wiki, and registers MCP servers",
+        "Optional plugins extend functionality with planning, debugging, and Burp Suite integration"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers concrete value for security professionals by detailing a comprehensive AI‑driven pentest workflow, including a 500‑page technique wiki, per‑vulnerability hunt skills, deterministic automation hooks, and a state‑first engagement model. It aligns strongly with CyberSecurity and AI themes and provides actionable setup steps, but the length and UI boilerplate reduce density slightly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T15:32:13.366157"
+    },
     {
       "id": 3977,
       "source_id": 4,
