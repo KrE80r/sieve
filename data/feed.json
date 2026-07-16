@@ -1,7 +1,163 @@
 {
-  "updated_at": "2026-07-16T00:00:14.122190",
-  "total_items": 668,
+  "updated_at": "2026-07-16T01:00:01.077506",
+  "total_items": 674,
   "items": [
+    {
+      "id": 3977,
+      "source_id": 4,
+      "original_url": "https://www.bitdefender.com/en-us/blog/businessinsights/bind-link-abuses-windows-feature-edr-evasion-technique",
+      "title": "Bind Link Abuse: One Windows Feature, Many Ways to Blind Your EDR",
+      "summary": "Windows bind links (via bindflt.sys) allow attackers with admin access to redirect file paths in memory, enabling AMSI/EDR bypass, forensic manipulation, and privilege escalation without modifying files on disk or requiring vulnerable drivers.",
+      "ideas": [
+        "Bind links redirect source paths to backing paths in kernel memory via bindflt.sys",
+        "Unlike symlinks, bind links don't persist as filesystem objects and can shadow existing files",
+        "File-Binding hijacks trusted DLL paths to blind AMSI and EDR user-mode sensors",
+        "Process-Binding makes the OS report one executable image path while running another",
+        "Silo-Binding creates different filesystem views inside vs outside Windows containers",
+        "Admin access is not game over—bind-link abuse parallels BYOVD attacks already used by ransomware groups",
+        "Docker Desktop contained a privilege-escalation path via bind links for docker-users to SYSTEM",
+        "PowerShell loads amsi.dll from System32 but receives attacker-controlled DLL via bind link",
+        "Security tools relying on path-based checks can be deceived by bind links returning wrong files",
+        "Most filesystem enumeration misses bind links—only Bind Filter query reveals them",
+        "Bitdefender released bindutil utility for testing bind link presence on older Windows",
+        "Sysmon deployments can be deceived since image-path hashing sees the wrong file content"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical security research that documents three novel attack techniques (File-Binding, Process-Binding, Silo-Binding) using a lesser-known Windows feature. The article provides genuine novel knowledge: how bindflt.sys works, why it's different from symlinks, specific AMSI/EDR bypass scenarios, Docker Desktop privilege escalation, and practical detection guidance. It scores high on thematic relevance (AI-aligned cybersecurity research), delivers high value density without padding, and the responsible disclosure context adds credibility. The comparison table, threat model clarification about BYOVD parallels, and the anchorless vs shadow bind link distinction provide actionable intelligence for defenders.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T09:37:08.695881"
+    },
+    {
+      "id": 3976,
+      "source_id": 4,
+      "original_url": "https://openai.com/index/unlocking-self-improvement-gpt-red/",
+      "title": "GPT‑Red: Unlocking Self-Improvement for Robustness",
+      "summary": "Automated red‑teamers like GPT‑Red can self‑improve model robustness far beyond human‑only testing.",
+      "ideas": [
+        "Automated red‑teaming can scale safety testing beyond human limits",
+        "GPT‑Red uses self‑play reinforcement learning to generate and defend against prompt injections",
+        "Training with GPT‑Red reduced GPT‑5.6 failures by sixfold on hardest benchmark",
+        "GPT‑Red outperforms humans, succeeding in 84% of novel attack scenarios",
+        "Discovered “Fake Chain‑of‑Thought” attacks, now mitigated in newer models",
+        "Real‑world attacks on a vending‑machine agent demonstrated practical impact",
+        "Using red‑teamers in training creates a safety flywheel for future models"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: a novel automated red‑teaming approach, empirical results (6× fewer failures, 84% vs 13% success), self‑play training methodology, discovery of a new attack class, and real‑world case studies. These align strongly with AI safety and security themes, and the density is good for a ~1500‑word piece. Minor marketing language adds some padding but does not outweigh the substantive insights.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T09:36:34.867851"
+    },
+    {
+      "id": 3975,
+      "source_id": 4,
+      "original_url": "https://hackread.com/fake-celine-dion-paris-tickets-facebook-ticketmaster-clones/",
+      "title": "Fake Céline Dion Paris Tickets Sold on Facebook and Ticketmaster Clones",
+      "summary": "Scammers are targeting Céline Dion fans on Facebook and through fake Ticketmaster websites, selling them fake concert tickets that appear legitimate but are actually single-use tickets that can only be used by the first person to try to enter the venue.",
+      "ideas": [
+        "Scammers are using Facebook and fake Ticketmaster websites to sell fake Céline Dion concert tickets",
+        "The scammers send the same ticket to multiple buyers, who are told to pay via direct bank transfer",
+        "Only the first person to try to enter the venue with the ticket will be allowed in, while later buyers will be refused entry",
+        "The scammers use a reusable phishing kit to create fake websites that resemble official ticket shops",
+        "Buyers should only purchase tickets from official sources and be wary of requests for direct bank transfers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This article provides high-value insights into a specific cybersecurity scam targeting Céline Dion fans, including detailed explanations of the scam's mechanics and warnings for potential victims. The content is dense with information, including technical details about the phishing kit used by scammers and advice on how to avoid falling victim. However, the article could benefit from more concrete data on the prevalence of the scam and its impact on victims.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T09:36:27.738646"
+    },
+    {
+      "id": 3974,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/google-gemini-cli-abused-as-a-hacking-agent-malware-botnet-operator/",
+      "title": "Google Gemini CLI abused as a hacking agent, malware botnet operator",
+      "summary": "AI tools like Gemini CLI can be directly commandeered by attackers to build and manage botnets, highlighting new security risks.",
+      "ideas": [
+        "Gemini CLI can act as an autonomous hacking assistant, executing prompts to build botnet infrastructure.",
+        "Threat actor used AI to generate C2 migration code and deploy it within six minutes.",
+        "Botnet used a lightweight Python HTTP server and PowerShell agents polling every five seconds.",
+        "AI saved credentials and suggested operational improvements in over 50 interactions.",
+        "Gemini refused to create a self‑spreading “agent‑bomb,” showing limited malicious compliance.",
+        "AI was employed for password guessing and 1Password dump analysis, but lost context over time."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: novel insight that Gemini CLI can be weaponized as an autonomous hacking agent, practical details of AI‑generated C2 migration and botnet setup, evidence from Trend Micro logs, and expert commentary on AI limitations in malicious tasks. It aligns well with CyberSecurity and AI themes and contains no clickbait or major padding, yielding a good value‑density for its medium length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T09:34:56.366555"
+    },
+    {
+      "id": 3973,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/openai-is-now-using-ai-to-attack-its-own-ai-and-its-working-better-than-humans-ever-did/",
+      "title": "OpenAI is now using AI to attack its own AI, and it's working better than humans ever did",
+      "summary": "OpenAI's GPT-Red AI model is successfully used to attack and improve the security of other GPT models, outperforming human red teamers and leading to significant reductions in prompt injection success rates.",
+      "ideas": [
+        "AI can be used to improve AI security",
+        "GPT-Red model simulates attacks on GPT models",
+        "GPT-Red outperforms human red teamers",
+        "AI-powered security testing improves with self-play reinforcement learning",
+        "Prompt injection success rates can be significantly reduced with AI-driven security"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "This article provides high value by discussing OpenAI's innovative approach to improving AI security through the use of an internal AI model called GPT-Red. The model is trained to simulate attacks on other GPT models, leading to significant improvements in security. The content delivers multiple novel insights, including the success rate of GPT-Red in finding security flaws and its comparison to human red teamers. The thematic relevance is strong, aligning with the TECHNOLOGY & INNOVATION theme, specifically cybersecurity and AI.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-16T09:34:49.244308"
+    },
+    {
+      "id": 3972,
+      "source_id": 4,
+      "original_url": "https://cloud.google.com/blog/topics/threat-intelligence/exposed-cloud-functions-harden/",
+      "title": "The Risk of Exposed Cloud Functions and How to Harden",
+      "summary": "Serverless functions with unvalidated user input can be exploited via LFI or command injection to extract secrets and pivot to full cloud environment compromise, but can be effectively defended using defense-in-depth with IAM least privilege, Cloud Armor WAF rules, and secure development lifecycle practices.",
+      "ideas": [
+        "LFI vulnerabilities in serverless functions allow attackers to read source code, secrets, and configuration files via directory traversal",
+        "Command injection enables extraction of GCP service account bearer tokens from the metadata service",
+        "Stolen bearer tokens can grant GCP project-level access if default compute service accounts with Editor roles are used",
+        "Cloud Armor lfi-v33-stable WAF rules with sensitivity level 3 can block local file inclusion and path traversal attacks",
+        "Cloud Armor rce-v33-stable WAF rules can block remote code execution attempts before they reach serverless functions",
+        "IAM least privilege should use custom service accounts with specific roles like roles/storage.objectViewer for Cloud Run",
+        "Public serverless services should be isolated in dedicated Google Cloud projects to prevent lateral movement",
+        "Layer 7 ALB architecture provides centralized traffic management, Cloud Armor WAF integration, and IAP support",
+        "Secrets should never be stored in source code or local container files—use dedicated secret management solutions",
+        "Vibe coding and AI-generated code requires sandbox environments and strict S-SDLC controls",
+        "VPC Service Controls can restrict lateral movement when serverless functions use direct VPC egress",
+        "Google Cloud Security Command Center can detect credential access and reconnaissance attacks against Cloud Run resources"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-quality security analysis from Mandiant with multiple concrete attack scenarios, actual code vulnerabilities, and specific hardening recommendations. The content provides significant value through: detailed LFI exploitation walkthroughs with curl commands, a complete command injection scenario showing GCP metadata token extraction, specific Cloud Armor WAF rule configurations (lfi-v33-stable, rce-v33-stable), and IAM best practices with specific GCP roles. The attack-to-defense progression is well-structured and actionable. Minor扣分 for being GCP-specific (though acknowledged) and the document appears truncated at the end. No padding or fluff detected.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-16T09:34:42.977014"
+    },
     {
       "id": 3971,
       "source_id": 4,
