@@ -1,7 +1,202 @@
 {
-  "updated_at": "2026-07-17T17:00:00.630919",
-  "total_items": 659,
+  "updated_at": "2026-07-17T19:00:00.512212",
+  "total_items": 666,
   "items": [
+    {
+      "id": 4026,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/eu-orders-google-to-open-android-mic.html",
+      "title": "E.U. Orders Google to Open Android Mic, Camera and Screen to Rival AI Assistants",
+      "summary": "EU's Digital Markets Act compels Google to grant rival AI assistants deep Android sensor access, reshaping security and competition.",
+      "ideas": [
+        "EU orders Google to let rival AI assistants access Android mic, camera, screen, and sensors.",
+        "Implementation required in Android 18 by Aug 1, 2027, with a certification program.",
+        "Five Android features need certification; six remain unrestricted for third‑party apps.",
+        "Certified assistants can read/write Gmail, Calendar, Drive, Maps, YouTube, SMS, and make calls.",
+        "Third‑party assistants require per‑use consent, unlike Google’s services with reduced prompts.",
+        "Google must create a Qualified AI Assistant Programme with neutral certification authorities.",
+        "Anonymised EU search data will be shared with rivals under strict aggregation and privacy rules.",
+        "Google argues the measures threaten device security by granting extensive permissions to external apps.",
+        "Hotword detection for third parties delayed to Android 19, available from Aug 2028.",
+        "Developers must prepare for assistants that can automate UI interactions on their apps."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple concrete insights about EU regulatory requirements, certification details, and security implications, offering genuine value for cybersecurity and AI professionals. It includes 10 distinct value instances without clickbait or excessive padding, aligning well with CyberSecurity, AI, and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:38:39.837781"
+    },
+    {
+      "id": 4025,
+      "source_id": 4,
+      "original_url": "https://blog.doubleword.ai/what-happens-when-you-checkpoint-a-cuda-process",
+      "title": "Reverse-engineering NVIDIA's cuda-checkpoint for faster cold starts",
+      "summary": "Understanding and optimizing cuda-checkpoint’s internals can dramatically speed GPU process cold‑starts.",
+      "ideas": [
+        "cuda-checkpoint freezes CUDA process, serializes GPU state to host memory.",
+        "Checkpoint creates large anonymous mapping equal to device memory size.",
+        "Driver uses ordinary RM ioctls for checkpoint, no special ioctl.",
+        "Checkpoint time dominated by MAP_POPULATE zeroing of staging buffer.",
+        "Enabling Transparent Huge Pages reduces staging zeroing time dramatically.",
+        "LD_PRELOAD can intercept mmap to supply pre‑zeroed buffer, avoiding allocation overhead.",
+        "Restore copies memory back faster (~8 GiB/s) than checkpoint (~3 GiB/s).",
+        "Checkpoint buffer can be edited via /proc/$P/mem to modify device state.",
+        "Lock/unlock act as quiescence barriers for in‑flight kernels.",
+        "Performance scales linearly with device memory size during checkpoint and restore."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete value instances: it reveals the inner workings of cuda-checkpoint, shows how to inspect and modify the checkpoint buffer, presents benchmark data, and offers practical optimizations like Transparent Huge Pages and LD_PRELOAD interception. These insights are novel and actionable for developers working with CUDA, aligning well with technology and productivity themes. No clickbait or padding detected, so the score reflects strong but not exceptional value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:36:54.755711"
+    },
+    {
+      "id": 4024,
+      "source_id": 4,
+      "original_url": "https://www.elastic.co/security-labs/contagious-interview-malware-svg-steganography",
+      "title": "Contagious Interview malware in SVG images: DPRK campaign — Elastic Security Labs",
+      "summary": "DPRK hackers are using fake coding interview challenges with trojanized Next.js e-commerce templates containing steganography-hidden malware in SVG flag images, achieving zero antivirus detections while deploying a four-stage payload that steals browser credentials, crypto wallets, files, and establishes a Socket.IO RAT.",
+      "ideas": [
+        "Steganography hides Base64 malware payloads in SVG flag image HTML comments",
+        "Seven trojanized e-commerce repositories have zero AV vendor detections",
+        "Malware reassembles payloads by parsing SVG comments in alphabetical order",
+        "Custom Base64 decoder function evades simple detection methods like atob()",
+        "Payload executes on every server start via npm run dev and npm start hooks",
+        "Four-stage malware: credential stealer, file stealer, Socket.IO RAT, clipboard stealer",
+        "Targeted cryptocurrency wallets include prioritized retry mechanism for top 8",
+        "File stealer excludes AI tooling paths (.claude, .cursor, .gemini, .windsurf)",
+        "macOS keychain database exfiltrated via dedicated module",
+        "Malware uses Obfuscator.io with string array extraction anti-analysis techniques",
+        "C2 infrastructure overlaps with NTT Security's OTTERCOOKIE December 2024 findings",
+        "Developers who pushed repos to GitHub unknowingly distributed the malware",
+        "Attribution shows convergence between BEAVERTAIL and OTTERCOOKIE malware families"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is exceptional threat intelligence content with significant value for security professionals. It documents a novel infection chain (zero AV detections) with extensive technical analysis including working JavaScript code samples showing the steganography technique, a comprehensive list of 7 trojanized repositories as IOCs, 25 targeted cryptocurrency wallet extensions, and detailed file exfiltration patterns including deliberately excluded paths (AI tooling like .claude, .cursor). The attribution to OTTERCOOKIE with supporting code similarity evidence adds credibility. The practical takeaway about developers as attack vectors provides actionable defensive guidance. Minor deduction for the truncated ending, but the content density remains high.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:36:40.140021"
+    },
+    {
+      "id": 4023,
+      "source_id": 4,
+      "original_url": "https://www.recordedfuture.com/blog/tracking-advanced-persistent-threats",
+      "title": "Tracking advanced persistent threat groups with real-time intelligence",
+      "summary": "Organizations can effectively counter Advanced Persistent Threats by shifting from reactive internal monitoring to proactive threat intelligence, leveraging real-time data from the open, deep, and dark web to track adversary infrastructure and anticipate their next move.",
+      "ideas": [
+        "APTs are sophisticated, long-term cyber campaigns",
+        "Traditional security tools often fail against APTs",
+        "Minimizing breakout time is crucial for effective APT detection",
+        "Proactive threat intelligence is necessary to counter APTs",
+        "Real-time threat intelligence can help track adversary infrastructure",
+        "Generative AI improves APT detection by analyzing complex threat data",
+        "Understanding the APT attack lifecycle is critical for defense",
+        "Living-off-the-Land tactics make APTs hard to detect"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content provides high-value insights into Advanced Persistent Threats (APTs), including their characteristics, attack lifecycle, and the limitations of traditional security tools. It offers a clear and well-structured explanation of how real-time threat intelligence can help organizations detect and counter APTs. The content is rich in ideas, including the importance of minimizing breakout time, the need for proactive threat intelligence, and the role of generative AI in improving APT detection.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:36:06.494539"
+    },
+    {
+      "id": 4022,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/north-korea-linked-hackers-hide.html",
+      "title": "Fake Coding Tests Deliver OtterCookie-Aligned Malware Hidden in SVG Flag Images",
+      "summary": "Embedding malicious code in SVG flag images lets attackers silently compromise developers and launch supply‑chain attacks.",
+      "ideas": [
+        "Threat actors embed Base64 payloads in SVG flag image comments to bypass detection.",
+        "Fake job postings and coding challenges lure developers into running malicious repositories.",
+        "Malware delivers four-stage payload: credential stealer, crypto wallet thief, file stealer, Socket.IO RAT.",
+        "Payload assembles from fragments across multiple SVG files via serverValidation.js on boot.",
+        "OtterCookie now includes modules for browser, wallet, file, clipboard stealing, and remote control.",
+        "Stolen data includes AI coding extensions like .claude, .cursor, .gemini, showing AI asset targeting.",
+        "Compromising one developer can enable supply chain attacks against downstream organizations."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: a novel SVG steganography technique, detailed description of a four‑stage malware payload, insight into social‑engineering via fake coding tests, and specifics on stolen AI tool extensions, all relevant to cybersecurity. Content length and number of insights give a good value‑density score, with only minor promotional fluff that does not detract significantly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:34:46.097572"
+    },
+    {
+      "id": 4021,
+      "source_id": 4,
+      "original_url": "https://davidcarliez.github.io/blog/windows-appresolver-lpe-to-system/",
+      "title": "Windows AppResolver LPE: From AppContainer to SYSTEM",
+      "summary": "A zero-capability AppContainer can bypass missing authorization checks in Windows.Internal.AppResolver.AppResolverActivationArgsFactory to create protected protocol associations, enabling UAC bypass via fodhelper.exe and SYSTEM shell via service token manipulation.",
+      "ideas": [
+        "Private AppResolver API accepts zero-capability AppContainer callers before patch",
+        "Binary diff shows 67 to 253 byte increase with capability checks added",
+        "Protected UserChoice keys require valid hash, not just registry write",
+        "fodhelper.exe auto-elevation resolves ms-settings: to attacker handler",
+        "AppContainer with no capability SIDs has TOKEN_INTEGRITY=0x1000",
+        "CheckCapabilityForClientOfObject_nothrow guards applicationDefaults and shellExperience",
+        "Protected association creates valid ProgID+hash pair in UserChoice key",
+        "SYSTEM shell achieved via demand-start service with token session migration",
+        "WTSGetActiveConsoleSessionId plus CreateProcessAsUserW places shell in user session",
+        "Source-only PoC repository with build.ps1 and run.ps1 scripts",
+        "Runtime comparison table proves E_ACCESSDENIED on patched build",
+        "No race conditions or heap grooming required - deterministic exploit"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical security research content. The author provides a complete end-to-end exploit chain with binary diff evidence, runtime comparison data, and working source code. Key value instances include: detailed explanation of the private AppResolver API (not public documentation), the exact binary diff showing 67→253 byte patch, the AppContainer capability bypass technique, the protected association hash manipulation, the fodhelper.exe UAC bypass chain, and the SYSTEM shell via session-migrated service token. The content is highly focused, technically dense, and provides genuine insider knowledge about non-public Windows APIs. No padding, no fluff - just technical depth. The attribution note about CVE mismatch is intellectually honest. Labels: CyberSecurity, Tech, Sysadmin.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:34:31.505614"
+    },
+    {
+      "id": 4020,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/inside-the-search-for-clean-residential-proxies-for-carding/",
+      "title": "Inside the Search for \"Clean\" Residential Proxies for Carding",
+      "summary": "Carders are becoming more selective in their use of residential proxies, seeking 'clean' IPs that can bypass fraud controls, and combining them with antidetect browsers and other techniques to create convincing digital identities.",
+      "ideas": [
+        "Residential proxies are no longer viewed as a reliable bypass on their own",
+        "Carders are seeking 'clean' IPs that can bypass fraud controls",
+        "Proxies are being combined with antidetect browsers and other techniques",
+        "Defenders should treat residential traffic as context, not evidence of legitimacy",
+        "Carders are trying to construct a coherent digital identity, not just conceal their IP",
+        "Proxy reputation is dynamic and influenced by every other customer using the same infrastructure"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into the current state of residential proxies in carding circles, highlighting their evolving role in identity simulation stacks and the increasing selectivity of carders. The content is dense with information, featuring analysis of 2,889 unique underground posts and discussions on the challenges carders face in obtaining 'clean' residential IPs. The article also offers practical advice for defenders on how to treat residential traffic and identify patterns that proxies cannot conceal.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-18T03:33:25.249280"
+    },
     {
       "id": 4019,
       "source_id": 4,
