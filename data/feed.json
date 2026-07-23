@@ -1,7 +1,412 @@
 {
-  "updated_at": "2026-07-23T18:00:06.775779",
-  "total_items": 629,
+  "updated_at": "2026-07-23T19:00:00.885768",
+  "total_items": 645,
   "items": [
+    {
+      "id": 4147,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/attackers-weaponize-github-actions.html",
+      "title": "Attackers Weaponize GitHub Actions Runners to Target cPanel and WHM Servers",
+      "summary": "GitHub Actions can be weaponized as a scalable platform for scanning and exploiting vulnerable cPanel/WHM servers.",
+      "ideas": [
+        "Attackers abuse GitHub Actions runners to scan and exploit vulnerable cPanel/WHM servers.",
+        "Malicious Packagist development versions added dozens of workflow files to compromised PHP packages.",
+        "Workflow files detect runner architecture and download compatible Linux payload from attacker C2.",
+        "Payload exploits CVE‑2026‑41940 authentication bypass to steal credentials, keys, and database access.",
+        "Over 583 malicious workflow files across ten packages, with 6,100 total GitHub workflows identified.",
+        "Unique DNSHook identifier links thousands of malicious workflows to a single campaign.",
+        "Operation Muck and Load uses 200 GitHub repos to deliver Windows malware and crypto miners.",
+        "Threat actors can monetize stolen secrets for further compromises or ransomware."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete, novel insights about a new supply‑chain attack vector using GitHub Actions, details the vulnerable CVE, lists compromised packages and workflow file counts, and connects the activity to broader campaigns, providing actionable awareness for security teams. No clickbait or padding is present, and the content aligns strongly with cybersecurity themes, yielding a good value‑density score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:50:40.361791"
+    },
+    {
+      "id": 4146,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/07/23/one-chatgpt-link-could-smuggle-a-rogue-ai-agent-into-your-company/5275116",
+      "title": "One ChatGPT link could smuggle a rogue AI agent into your company",
+      "summary": "AI‑enabled agents can be weaponized via a simple link to act as insider threats within corporate environments.",
+      "ideas": [
+        "A malicious ChatGPT link can auto‑create a workspace agent with employee permissions.",
+        "The agent can access connected apps like Outlook, Teams, Slack, and Google Drive.",
+        "It can silently map organization data, harvest credentials, and send phishing messages.",
+        "OpenAI patched the flaw by removing the vulnerable URL parameter.",
+        "AI agents broaden the attack surface, turning the workforce into a vector."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article reveals a novel security flaw where a single ChatGPT link can forge an autonomous AI agent with corporate access, explains the mechanics and potential impact, and notes OpenAI's quick fix, providing concrete expert insight and actionable awareness for security teams. It aligns well with cybersecurity and AI themes and offers several distinct value instances without evident padding or clickbait.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:48:52.072861"
+    },
+    {
+      "id": 4145,
+      "source_id": 4,
+      "original_url": "https://arxiv.org/abs/2605.10834",
+      "title": "From Controlled to the Wild: Evaluation of Pentesting Agents for the Real-World",
+      "summary": "Evaluating AI pentesting agents should prioritize validated vulnerability discovery using a reproducible, multi‑facet protocol.",
+      "ideas": [
+        "Shift evaluation from task completion to validated vulnerability discovery.",
+        "Use structured ground‑truth with LLM‑based semantic matching to identify vulnerabilities.",
+        "Apply bipartite resolution scoring to handle realistic ambiguity.",
+        "Maintain continuous ground‑truth for ongoing evaluation.",
+        "Perform repeated and cumulative evaluation of stochastic agents.",
+        "Include efficiency metrics for agent performance.",
+        "Use reduced‑suite selection for sustainable experimentation.",
+        "Release expert‑annotated ground truth and code for reproducibility."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The abstract introduces several novel components—real‑world vulnerability discovery focus, LLM‑based semantic matching, bipartite scoring, continuous ground‑truth, efficiency metrics, and reproducible code—providing concrete value for security researchers. With roughly 200 words and six distinct value instances, the content is dense and aligns well with AI and cybersecurity themes. No clickbait or padding is present, supporting a solid above‑average score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:47:28.583791"
+    },
+    {
+      "id": 4144,
+      "source_id": 4,
+      "original_url": "https://github.com/AlloySecureGroup/BlinkLinkSentiennel",
+      "title": "GitHub - AlloySecureGroup/BlinkLinkSentiennel",
+      "summary": "BindlinkSentinel is a defensive tool that detects Windows bind-link abuse by monitoring signature verification, hash baselines, and decoy files to catch when attackers redirect trusted system paths to malicious content.",
+      "ideas": [
+        "Windows Bind Filter can redirect file paths in memory without modifying files on disk",
+        "File-Binding redirects trusted DLL paths to unsigned payloads, defeating AMSI and EDR",
+        "Process-Binding launches trusted executables while running different images in memory",
+        "Silo-Binding splits filesystem into two views, hiding payloads from external tools",
+        "Authenticode signature verification catches most bind-link attacks as forged signatures are hard",
+        "SHA-256 baseline comparison detects shadow bind links over any watched trusted file",
+        "Decoy files act as tripwires—any modification signals reconnaissance or staging",
+        "Live mapping enumeration is strongest detection but requires reverse-engineering bindflt.sys",
+        "Simulation harness validates detection logic without admin rights or real bind links",
+        "User-mode sensors are inherently limited against admin-level attackers who can kill agents",
+        "Hash baselines must be captured on known-clean images ideally from offline sources",
+        "Windows 24H2 veto blocking bind links to protected paths is incomplete defense on older OS",
+        "The common security flaw: logic assumes path equals file, but bind links break that assumption"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a well-crafted defensive security tool repository with high technical density. It explains the bind-link abuse attack technique (documented by Bitdefender Labs) comprehensively, then provides working implementations in both C++ and C# that detect it through signature verification, hash baselines, and decoy monitoring. The content includes honest limitations, MITRE ATT&CK mappings, and a clever tier-1 test harness that validates detection logic without requiring admin privileges or real bind links. The only reduction: the live mapping enumeration (highest-fidelity detection) is intentionally left unimplemented as an integration point, and the repository is small with only 3 stars—but the scope is appropriately focused rather than bloated.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:46:44.261250"
+    },
+    {
+      "id": 4143,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/hackers-abuse-notepad-plus-plus-plugins-to-stealthily-install-malware/",
+      "title": "Hackers abuse Notepad++ plugins to stealthily install malware",
+      "summary": "Notepad++ plugins can be weaponized for stealthy malware delivery, making timely software updates critical.",
+      "ideas": [
+        "UAC-0099 uses Notepad++ plugin hijacking to install malware without exploiting vulnerabilities.",
+        "Attack delivers ZIP with legitimate Notepad++ and malicious NppExport.dll plugin.",
+        "Malicious DLL (LunchPoke) creates scheduled task to extract RAR payloads.",
+        "BurnyBear loader executes RemoteLibUpdater.exe and can trigger RAM/CPU exhaustion fallback.",
+        "CVE-2025-56383 claims DLL hijacking in Notepad++ v8.8.3, disputed by developers.",
+        "Recommended updates: Notepad++ 8.9.7, 7‑Zip 26.02, WinRAR 7.23 to mitigate attacks."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides multiple concrete value instances: a detailed attack chain using Notepad++ plugins, attribution to UAC-0099 and APT44, technical specifics of the malicious DLL and loader, discussion of CVE-2025-56383, and clear mitigation steps. It stays focused on cybersecurity without clickbait or padding, aligning well with the CyberSecurity and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:41:26.008238"
+    },
+    {
+      "id": 4142,
+      "source_id": 4,
+      "original_url": "https://ministryofcyberaffairs.com/news/how-starlink-became-the-unkillable-wi-fi-for-a-114-billion-crime-empire-a6f9d641-cc79-410f-b1fe-29d1ce6122b8",
+      "title": "How Starlink Became the Unkillable Wi-Fi for a $114 Billion Crime Empire",
+      "summary": "Starlink satellite internet enabled transnational crime organizations to bypass territorial internet blockades, creating a $114B fraud network that US enforcement is now struggling to contain through reactive takedowns rather than proactive prevention.",
+      "ideas": [
+        "Starlink decoupled criminal operations from state-controlled terrestrial internet infrastructure",
+        "Thailand's 2025 border blockade backfired by driving rapid Starlink adoption at scam compounds",
+        "SpaceX disabled 2,500+ Starlink devices at Myanmar scam centers under public pressure",
+        "Scam compound losses reached $114B in 2025, triple 2023 estimates",
+        "Criminal operators practice 'jurisdiction shopping', relocating from Myanmar to Cambodia to Timor-Leste",
+        "Satellite companies operate globally while governments regulate territorially, creating an accountability gap",
+        "Criminal compounds run sovereign financial stacks: USDT, Huione's USDH stablecoin, ChatMe messaging",
+        "DOJ Scam Center Strike Force seized $580 million in crypto in its first three months",
+        "Future LEO provider proliferation will make criminal takedowns harder to replicate",
+        "UNODC recommends blockchain tracing, OSINT capabilities, and legislative harmonization"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "This is substantive investigative journalism drawing from a 268-page UNODC report with specific data points and critical analysis. Value instances include the 2,500 terminal takedown mechanism, the $114 billion loss estimate, the 'blockade backfire' finding showing Thai enforcement drove Starlink adoption, the 'jurisdiction shopping' pattern (Myanmar→Cambodia→Timor-Leste), and the accountability gap critique. The article explains how satellite internet decoupled criminal operations from state control, provides concrete enforcement examples (DOJ $580M seizure), and includes policy recommendations. No padding or fluff in the main content - every paragraph delivers new information or analysis. Minor deduction for being primarily synthesized reporting rather than original investigation.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:38:44.703260"
+    },
+    {
+      "id": 4141,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/poolsides-laguna-s-2-1-is-a-small-open-weight-coding-model-that-punches-well-above-its-size/",
+      "title": "Poolside's Laguna S 2.1 is a small open-weight coding model that punches well above its size",
+      "summary": "Small, open‑weight models can outperform much larger ones by leveraging persistence, thinking modes, and extensive post‑training.",
+      "ideas": [
+        "Laguna S 2.1 uses mixture‑of‑experts with 8 B active and 118 B total parameters.",
+        "Thinking mode boosts Terminal‑Bench 2.1 score from 60.4% to 70.2%.",
+        "Model solved Erdős Problem 397 in 40 steps for $0.088.",
+        "Post‑training covered 409 k environments, including 38 k real code commits.",
+        "Supports up to one‑million‑token context windows.",
+        "Released under OpenMDW 1.1 license allowing commercial use.",
+        "Trained on 4,096 Nvidia H200 GPUs using FP8‑precision RL.",
+        "Persistence and verification improve performance without scaling."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides multiple concrete value instances—benchmark data, novel model architecture details, post‑training methodology, and a real‑world math problem solution—while staying focused on AI research and software engineering, with minimal fluff or clickbait. Its density is strong for a medium‑length piece, earning a solid good rating.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-24T03:38:13.556216"
+    },
+    {
+      "id": 4140,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/claude-cowork-flaw-could-let-ai-agent.html",
+      "title": "Claude Cowork Flaw Could Let AI Agent Escape Its VM and Access Mac Files",
+      "summary": "A sandbox escape vulnerability in Claude Cowork allows an AI agent to access Mac files, highlighting the need for improved security measures in AI applications.",
+      "ideas": [
+        "Sandbox escape vulnerability in Claude Cowork",
+        "AI agent can access Mac files",
+        "Vulnerability codenamed SharedRoot",
+        "About 500,000 macOS users affected",
+        "Mitigation involves disabling unprivileged user namespaces",
+        "Importance of restricting module autoloading and sharing of host filesystem",
+        "Need for secure computing modes and application sandboxing"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers high-value insights into a specific vulnerability in Anthropic's Claude Cowork, providing detailed technical explanations and quotes from security researchers. It aligns strongly with the CyberSecurity theme and offers practical advice on mitigation. The content is dense with valuable information, including the potential impact of the vulnerability and steps to mitigate it, making it a worthwhile read for those interested in cybersecurity and AI.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:38:06.365533"
+    },
+    {
+      "id": 4139,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/one-tampered-chatgpt-link-could-spawn-a-rogue-ai-agent-that-took-orders-from-an-attacker-every-five-minutes/",
+      "title": "One tampered ChatGPT link could spawn a rogue AI agent that took orders from an attacker every five minutes",
+      "summary": "A new attack class called 'AgentForger' exploits URL parameters in OpenAI's Agent Builder to forge autonomous AI agents that hijack a victim's authorized connectors and execute attacker commands on a recurring schedule, bypassing traditional security tools that assume agents are legitimately user-created.",
+      "ideas": [
+        "URL parameter injection in AI agent builders can forge entire autonomous agents",
+        "initial_assistant_prompt parameter executes automatically without user confirmation",
+        "Agents inherit victim's existing OAuth connections without triggering consent prompts",
+        "Preview Mode executes against real accounts, not just as a test",
+        "Scheduler transforms one-click attacks into persistent command-and-control infrastructure",
+        "Attackers use email inbox as a command channel - TASK emails trigger actions",
+        "Agents can disable their own approval requirements to operate unchecked",
+        "Internal phishing from legitimate accounts bypasses employee skepticism",
+        "Traditional security tools fail because they assume agent actions are user-authorized",
+        "The vulnerability combines untrusted URL input, authorized connectors, and data exfiltration paths"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "This is substantial security research content with high informational density. It details the 'AgentForger' vulnerability discovered by Zenity Labs, explaining how URL parameters in OpenAI's Agent Builder could be manipulated to forge autonomous agents that execute attacker commands on a schedule. The article provides novel technical insights into a new attack class (agent-based CSRF), demonstrates real attack scenarios including credential theft and wire transfer attempts, and discusses why traditional security tools fail against autonomous agents. The technical depth is high, with specific parameter names (template_name, initial_assistant_prompt), attack mechanics, and mitigation details. The related Hugging Face incident and AgentFlayer references add context about broader AI security concerns. This is actionable cybersecurity intelligence relevant to anyone deploying AI agents in enterprise environments.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-07-24T03:37:35.776420"
+    },
+    {
+      "id": 4138,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/07/china-nexus-jadeprox-uses-new-triback.html",
+      "title": "China-Nexus JadeProx Uses New TriBack Loader in Government and Healthcare Attacks",
+      "summary": "The novel TriBack Loader demonstrates sophisticated DLL sideloading and AI‑themed lures, requiring specific detection steps to protect critical sectors.",
+      "ideas": [
+        "JadeProx uses new TriBack Loader employing DLL sideloading and encrypted payloads.",
+        "Loader variants rotate thread creation APIs to evade EDR detection.",
+        "Campaign impersonates Anthropic's Claude, delivering malicious MSI via fake download site.",
+        "Operators targeted government, healthcare, education in Asia and Latin America via exposed Java interfaces.",
+        "Detect signed binaries in writable or startup folders with accompanying encrypted .dat/.log files.",
+        "IOCs include domains claude-pro.com, license.claude-pro.com, sylverixstrategy.com, and IP 43.106.71.28:8000.",
+        "Exploited CVEs 2018‑11511, 2021‑24139, 2021‑31755, 2021‑32305 have CVSS 9.8 scores.",
+        "Nuclei scans on 14,653 Hong Kong education URLs found 13 unique vulnerabilities."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article introduces a previously undocumented TriBack Loader and details its technical evasion methods, offering concrete detection guidance and IOCs, which provides strong practical value for security professionals. It also highlights novel social engineering using a fake Claude AI site, adding a unique insight. Minor promotional fluff is present but does not detract significantly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-07-24T03:37:02.778924"
+    },
+    {
+      "id": 4137,
+      "source_id": 5,
+      "original_url": "https://ghuntley.com/slop/",
+      "title": "engineer away the slop",
+      "summary": "The software development profession is changing rapidly, and it's essential to engineer away the slop by adopting formal verification and deterministic system testing techniques to produce defect-free experiences.",
+      "ideas": [
+        "Software development has been commoditized",
+        "Formal verification and deterministic system testing are crucial",
+        "Antithesis can help deliver reliable software",
+        "Creation is near-free, but verification is not",
+        "Skilled practitioners in formal verification are scarce"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The content delivers high value by discussing the commoditization of software development, the importance of formal verification and deterministic system testing, and the potential of Antithesis in solving these issues. The author provides a clear hypothesis and explains how Antithesis can help in delivering reliable software. However, the content is slightly promotional and lacks concrete examples or data to support the claims.",
+      "source_type": "rss",
+      "source_name": "Geoffrey Huntley",
+      "published_at": "2026-07-24T03:36:54.154488"
+    },
+    {
+      "id": 4136,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=qVdr4CQyiQw",
+      "title": "Something Scary Is Happening In Biolabs - Annie Jacobsen",
+      "summary": "Biological weapons pose a uniquely imminent, self‑replicating threat that outpaces our preparedness and policy safeguards.",
+      "ideas": [
+        "Biological war offers a 12‑36 hour warning window for mitigation.",
+        "Bioweapons are illegal yet modern genetically engineered pathogens exist.",
+        "Recombinant DNA technology began in 1971 with Paul Berg’s chimera research.",
+        "Gain‑of‑function research aims to create countermeasures but can enable weapons.",
+        "COVID exposed severe pandemic unpreparedness and eroded public trust.",
+        "Toby Ord’s risk chart predicts engineered pandemics as 1‑in‑30 chance in 100 years.",
+        "Soviet Union ran a massive bioweapon program, stealing US DNA technology.",
+        "Russia and North Korea are believed to maintain active bioweapon programs.",
+        "Biological weapons rank second only to nuclear in WMD threat likelihood.",
+        "Pathogens act as self‑replicating munitions, making containment difficult."
+      ],
+      "labels": [],
+      "rating": 80,
+      "rating_reason": "The transcript provides numerous concrete insights—warning windows, historical origins of gene editing, risk probabilities, and geopolitical program details—giving high thematic relevance to technology, security, and human preparedness. While conversational filler adds some padding, the overall density of valuable ideas remains strong, warranting a solid rating.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-07-24T03:34:55.937706"
+    },
+    {
+      "id": 4135,
+      "source_id": 15,
+      "original_url": "https://specterops.io/blog/2026/06/29/llm-powered-edr-analysis",
+      "title": "Accelerating EDR Evasion with LLM-Driven Analysis",
+      "summary": "LLMs can systematically reverse engineer commercial EDR products to extract detection rules and generate evasions, posing a significant threat to cybersecurity.",
+      "ideas": [
+        "LLMs can reverse engineer EDR products",
+        "Extracting detection rules with LLMs",
+        "Generating evasions using LLM-driven analysis",
+        "Using Codex CLI with Binary Ninja for analysis",
+        "LLMs can extract YARA signatures and ML models"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The content delivers high value by demonstrating how LLMs can be used to reverse engineer commercial EDR products, extracting detection rules and generating evasions. This is a novel and significant insight, particularly in the context of cybersecurity. The use of specific tools and techniques, such as GPT-5.5-Cyber, Codex CLI, and Binary Ninja, adds to the content's technical depth and relevance to the theme of cybersecurity.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-07-24T03:34:48.051235"
+    },
+    {
+      "id": 4134,
+      "source_id": 15,
+      "original_url": "https://github.com/DeepTempo/socbench",
+      "title": "DeepTempo/socbench",
+      "summary": "A benchmark framework evaluates LLMs as SOC agents analyzing raw NetFlow data, providing a deterministic and multi-turn approach to threat analysis.",
+      "ideas": [
+        "Benchmarking LLMs as SOC agents",
+        "Multi-turn agent loop for threat analysis",
+        "Persona-scoped read-only tools",
+        "Strict budget caps for evaluation",
+        "Pre-indexed NetFlow parquet files for testing"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a novel insight into evaluating frontier reasoning LLMs as SOC agents, offering a unique benchmarking framework. It efficiently delivers its insights, aligning well with the CyberSecurity and AI themes. The framework's multi-turn agent loop and persona-scoped tools are notable features.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-07-24T03:33:11.130723"
+    },
+    {
+      "id": 4133,
+      "source_id": 15,
+      "original_url": "https://socket.dev/blog/pnpm-11-adds-new-supply-chain-protection-defaults",
+      "title": "pnpm 11 Adds Supply Chain Protection Defaults for Minimum Release Age and Exotic Subdependencies",
+      "summary": "pnpm 11 introduces default supply‑chain protections that enforce delayed installs, block exotic sources, and add built‑in security tooling.",
+      "ideas": [
+        "pnpm 11 enforces a 24‑hour waiting period before installing new package versions.",
+        "It blocks transitive dependencies from non‑standard sources such as Git repos and tarballs.",
+        "The new allowBuilds model centralizes control over packages that can run install‑time scripts.",
+        "pnpm now includes native registry commands for direct interaction with package registries.",
+        "Built‑in SBOM generation is provided via the `pnpm sbom` command.",
+        "`pnpm audit --fix=update` updates vulnerable dependencies automatically."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The snippet delivers several concrete, actionable security features for pnpm users—waiting period, exotic subdependency blocking, allowBuilds model, native registry commands, SBOM generation, and audit‑fix command—providing clear practical value in a very brief format, yielding high density. It aligns well with technology and cybersecurity themes and contains no clickbait or padding, just concise informative content.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-07-24T03:32:36.363600"
+    },
+    {
+      "id": 4132,
+      "source_id": 15,
+      "original_url": "https://semgrep.dev/blog/2026/comparing-open-source-ai-code-security-harnesses",
+      "title": "Comparing Open-Source AI Code Security Harnesses",
+      "summary": "Open-source AI code security tools can be categorized into three types: LLM-led exploit generation, LLM-skill-boosting, and others, each with unique approaches to identifying code vulnerabilities.",
+      "ideas": [
+        "LLM-led exploit generation finds bugs by crashing them in a sandbox",
+        "LLM-skill-boosting adds skills to LLMs for human-like code reasoning",
+        "Anthropic's defending-code-harness detects C/C++ memory bugs",
+        "Cloudflare's security-audit-skill enhances LLMs for code security audits"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a valuable comparison of open-source AI-powered code security tools, categorizing them into three types and highlighting specific examples such as Semgrep, Anthropic's defending-code-harness, and Cloudflare's security-audit-skill. The information is dense and relevant to the theme of cybersecurity and AI, with a good balance of novelty and practicality. However, the content is somewhat brief and could benefit from more in-depth analysis or examples.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-07-24T03:32:29.620949"
+    },
     {
       "id": 4131,
       "source_id": 7,
