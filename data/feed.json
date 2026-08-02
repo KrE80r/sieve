@@ -1,7 +1,131 @@
 {
-  "updated_at": "2026-08-02T06:00:07.337672",
-  "total_items": 641,
+  "updated_at": "2026-08-02T07:00:00.621840",
+  "total_items": 646,
   "items": [
+    {
+      "id": 4344,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html",
+      "title": "Coldcard Hardware Wallet Flaw Linked to $70 Million Bitcoin Theft in 41 Minutes",
+      "summary": "A firmware flaw in Coldcard hardware wallets allowed an attacker to drain 1,196 Bitcoin addresses in 41 minutes, resulting in a $70 million theft, due to a deterministic pseudorandom number generator used instead of a hardware random number generator.",
+      "ideas": [
+        "Coldcard hardware wallet flaw linked to $70 million Bitcoin theft",
+        "Firmware integration error caused deterministic PRNG use",
+        "Attacker can reproduce candidate output streams offline",
+        "Coinkite shipped emergency firmware but installing it does not repair existing seeds",
+        "Owners with exposed seeds must generate a new one on patched firmware",
+        "Weak PRNG flaw in older software wallets tied to $5 million drained"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into a significant cybersecurity vulnerability in Coldcard hardware wallets, leading to a $70 million Bitcoin theft. It delivers multiple novel ideas, including the cause of the flaw, its impact, and mitigation strategies. The content is dense with information, making it highly efficient in terms of value per minute. However, it may require some background knowledge in cybersecurity and Bitcoin to fully appreciate.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-02T15:34:45.925994"
+    },
+    {
+      "id": 4343,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/08/01/htb-kobold.html",
+      "title": "HTB: Kobold",
+      "summary": "Combining service misconfigurations and Docker abuse can give full root control on a vulnerable host.",
+      "ideas": [
+        "Unauthenticated RCE in MCPJam arises from binding to all interfaces",
+        "PrivateBin template LFI lets you write a PHP webshell",
+        "Leaked DB password from Docker container grants Arcane panel access",
+        "Mounting host filesystem in a Docker container enables dropping a root SSH key",
+        "ffuf subdomain brute‑force uncovers mcp.kobold.htb and bin.kobold.htb",
+        "Nmap reveals open ports 22,80,443,3552 and suggests Ubuntu 24.04",
+        "Nginx redirects force HTTPS, useful for enumeration"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The write‑up delivers multiple concrete exploitation techniques (RCE, LFI, Docker abuse) with command examples, providing actionable knowledge for penetration testers. It stays focused on the HTB machine without filler or promotion, aligning well with cybersecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-02T15:34:13.857270"
+    },
+    {
+      "id": 4342,
+      "source_id": 4,
+      "original_url": "https://www.bbc.co.uk/news/articles/cn0nqpy1rk4o",
+      "title": "Teen hackers tell BBC how police are helping them use their skills for good",
+      "summary": "The Cyber Choices program helps teenage hackers use their skills for good by providing them with positive encouragement, professional training, and qualifications, thereby diverting them away from cyber-crime.",
+      "ideas": [
+        "Cyber Choices program diverts teenage hackers away from cyber-crime",
+        "Early intervention is crucial in preventing young offenders from committing serious cyber-attacks",
+        "Many young hackers are neurodiverse and require specialized guidance",
+        "Cyber-crime is becoming a more significant problem among teenagers",
+        "Authorities are working to provide alternative paths for young hackers to use their skills positively"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This article provides valuable insights into the Cyber Choices program, which aims to divert teenage hackers away from cyber-crime. It offers a unique perspective on the challenges faced by authorities in dealing with young offenders and the importance of early intervention. The content is well-researched, and the inclusion of personal stories, such as Lucas's, adds depth to the narrative. However, the article could benefit from more detailed information on the program's success rates and the long-term impact on participants.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-02T15:34:06.252681"
+    },
+    {
+      "id": 4341,
+      "source_id": 4,
+      "original_url": "https://0xdbgman.github.io/posts/inside-the-falcon-how-crowdstrike-catches-you/",
+      "title": "Inside the Falcon How CrowdStrike Catches You",
+      "summary": "Reverse-engineered analysis of CrowdStrike Falcon's kernel sensor showing the six callback sources, process creation/temination blocking mechanics via CreateInfo+64 NTSTATUS writes, event structure with transaction flags for doppelgänging detection, and specific early-boot/sensor-disabled bypass conditions.",
+      "ideas": [
+        "Process blocking occurs by writing negative NTSTATUS to CreateInfo+64 (CreationStatus field)",
+        "CS_IsSensorEnabled and g_DetectionEngine null checks allow early-boot processes to bypass detection entirely",
+        "PID 4 (System process) is explicitly skipped with STATUS_NOT_FOUND (0xC0000225) short-circuit",
+        "Transaction file flag bit 1 at offset +520 detects process doppelgänging via IoGetTransactionParameterBlock",
+        "Event creation allocates exactly 552 bytes, with vtable selectors 8/9 for signing and reputation lookups",
+        "Minifilter driver FLTMGR.SYS hooks file system Create/Delete operations via FltRegisterFilter",
+        "WFP engine with 53 imports to NETIO.SYS provides full network filtering and DNS inspection",
+        "cspcm4.sys is CrowdStrike's pinned code module for anti-tamper and sensor code integrity",
+        "CS_BuildCreationEvent wires event as COM-like object with 4 interface pointers and type ID 0x80002F3",
+        "Lazy/cached pattern for image path and command line: computed once, cached, reused across telemetry",
+        "FILE_OBJECT flag bytes at offsets 75/77 track write-access and delete-pending states",
+        "Token reference walks rundown-protected structure to resolve user SID and integrity level"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Exceptional reverse-engineering content that reveals CrowdStrike Falcon's internal architecture at a granular level. The author provides specific function names, memory offsets, vtable structures, and the 552-byte event layout - information that is genuinely gatekept. Value instances include: process-kill mechanism via NTSTATUS at CreateInfo+64, transactional file system doppelgänging detection flags, early-boot bypass conditions (CS_IsSensorEnabled, g_DetectionEngine null checks), PID 4 System process short-circuit, and the complete CS_BuildCreationEvent structure layout. This is practical, actionable security research for red teamers and defenders alike. Minor deduction for truncation - Section 3 ends mid-word at 'CmRegis'.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-02T15:33:05.844475"
+    },
+    {
+      "id": 4340,
+      "source_id": 4,
+      "original_url": "https://ministryofcyberaffairs.com/news/chatgpt-disrupted-a-cambodia-based-operation-using-ai-for-human-trafficking-cybercrime-dbd22162-1525-4b05-9e93-2c8289d98125",
+      "title": "ChatGPT disrupted a Cambodia-based operation using AI for Human Trafficking & Cybercrime",
+      "summary": "ChatGPT disrupted a Cambodia-based operation that used AI for human trafficking and cybercrime, highlighting the increasing diversification of scam networks and the blurring of boundaries between online fraud, organized crime, and human trafficking.",
+      "ideas": [
+        "ChatGPT was used for social engineering and operations in a Cambodia-based scam",
+        "Scam networks are now highly diversified, operating multiple fraud schemes",
+        "Boundaries between online fraud, organized crime, and human trafficking are blurring",
+        "AI can be used as a force-multiplier for social engineering",
+        "OpenAI disrupted the operation and shared threat signals with industry partners",
+        "Human trafficking indicators were found in the operation's content"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into a Cambodia-based operation using AI for human trafficking and cybercrime, detailing how ChatGPT was weaponized for social engineering and operations. The content is rich in thematic relevance, particularly in cybersecurity, AI, and human trafficking, with multiple novel ideas and evidence of expert insight. However, the score is not a perfect 100 due to some minor penalties for excessive introductory content and the presence of tangential links to other articles.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-02T15:32:32.932566"
+    },
     {
       "id": 4339,
       "source_id": 7,
