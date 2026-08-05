@@ -1,7 +1,285 @@
 {
-  "updated_at": "2026-08-05T18:00:06.072916",
-  "total_items": 668,
+  "updated_at": "2026-08-05T19:00:00.456276",
+  "total_items": 679,
   "items": [
+    {
+      "id": 4429,
+      "source_id": 7,
+      "original_url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+      "title": "The new rules of context engineering for Claude 5 generation models",
+      "summary": "Newer Claude models (Opus 5, Fable 5) have improved judgment and can handle ambiguity, so over-constraining them with explicit rules, examples, and repeated instructions actually hurts performance—let them use surrounding context and design good interfaces instead.",
+      "ideas": [
+        "Remove explicit rules and let Claude use judgment based on surrounding context",
+        "Design tool interfaces with expressive parameters instead of giving usage examples",
+        "Use progressive disclosure to load context at the right time rather than upfront",
+        "Put tool instructions only in tool descriptions, not in system prompts",
+        "Trust auto-memory instead of manually maintaining CLAUDE.md notes",
+        "Use rich references like HTML artifacts and code instead of simple markdown",
+        "Keep CLAUDE.md lightweight with focus on codebase gotchas",
+        "Skills should encode specific opinions and best practices unique to your context",
+        "Code references produce better results than descriptions or screenshots",
+        "Use rubrics to help Claude verify quality in specific domains",
+        "Run `claude doctor` command to automatically simplify context files"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 87,
+      "rating_reason": "This is authoritative insider knowledge from Anthropic engineers about successfully removing 80% of Claude Code's system prompt with no loss in performance. The content provides specific, counterintuitive paradigm shifts (from rules to judgment, examples to interface design, upfront context to progressive disclosure) that directly help developers building with Claude. Practical application sections for system prompts, CLAUDE.md, Skills, and references make it actionable. Minimal padding beyond the essential content.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-08-06T03:43:01.081791"
+    },
+    {
+      "id": 4428,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/apache-dubbo-remote-003-path-traversal/",
+      "title": "Path Traversal in Apache Dubbo 3.3.x Configuration Subsystem",
+      "summary": "Apache Dubbo's PathUtils.normalize() only strips query strings and collapses double slashes, leaving ../ sequences unhandled, allowing attackers with ZooKeeper registry write access to escape configuration namespaces and access arbitrary filesystem paths through a multi-layer path construction chain.",
+      "ideas": [
+        "PathUtils.normalize() only handles query string removal and double-slash collapse, missing ../ traversal sequences entirely",
+        "ProviderAppStateRouter.notify() accepts provider application names directly from ZooKeeper registry without validation",
+        "Attackers can exploit ZooKeeper's default no-auth configuration to register malicious provider URLs",
+        "Tainted keys flow through 4 layers without effective sanitization before reaching storage backends",
+        "The vulnerability spans 6 source files across 3 Dubbo modules with one root cause file needing fix",
+        "Proposed fix adds ../ pattern detection after existing normalization steps to prevent bypasses",
+        "Cross-application configuration poisoning and credential theft are possible attack outcomes",
+        "CVSS 7.5 HIGH rating with network-exploitable, low-complexity attack requiring low privileges",
+        "Affected versions span Apache Dubbo 3.0.0 through 3.3.6 with no patch available at publication",
+        "Mitigation includes network segmentation, IP allowlisting, strong authentication, and activity monitoring"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-quality security research article delivering exceptional technical depth on a novel path traversal vulnerability. It provides concrete value through: (1) detailed root cause analysis of the incomplete PathUtils.normalize() function, (2) step-by-step data flow tracing across 6 source files showing how tainted input escapes sanitization, (3) before/after patch diffing with specific code examples, (4) reproducible lab environment setup, and (5) actionable mitigation guidance. The content is highly relevant to cybersecurity professionals and sysadmins managing Apache Dubbo deployments. Minor deduction for some promotional context around the vendor's services, though the technical content stands independently. The article treats a serious 0-day with appropriate technical rigor.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:41:41.730627"
+    },
+    {
+      "id": 4427,
+      "source_id": 4,
+      "original_url": "https://cyberinsider.com/samsung-bans-smart-tv-apps-that-turn-user-connections-into-proxies/",
+      "title": "Samsung bans smart TV apps that turn user connections into proxies",
+      "summary": "Smart TV games can covertly turn households into residential proxy nodes, posing privacy and security risks.",
+      "ideas": [
+        "Samsung discovered residential proxy SDKs hidden in TV games like Pac‑Man and 2048 Football Cup.",
+        "Researchers used chip‑off extraction to access firmware and identify the embedded proxy components.",
+        "The proxy SDK remains dormant until remotely activated via a consent prompt in the app.",
+        "Apps act as shells, downloading code from servers, allowing behavior changes after store review.",
+        "Residential proxies can be abused for credential theft, scraping, fraud, hiding attackers behind home IPs.",
+        "Samsung will block new app submissions containing proxy functionality and remove existing offending apps.",
+        "Users should uninstall suspicious games, update firmware, and monitor their public IP for abuse."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete value instances: discovery of hidden proxy SDKs in TV games, detailed forensic technique (chip‑off extraction), explanation of how the SDK is remotely activated, insight into shell‑based app architecture, risks of residential proxies, Samsung's policy response, and actionable user mitigation steps. It stays on topic, offers technical depth, and aligns with cybersecurity themes, with no clickbait or padding. This yields a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:38:14.275815"
+    },
+    {
+      "id": 4426,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/leaked-n8n-api-tokens-exposed-live.html",
+      "title": "Leaked n8n API Tokens Exposed Live Instances to Credential Theft",
+      "summary": "GitGuardian found that 36% of reachable n8n instances (321 of 896) accept leaked API tokens exposed in GitHub commits, and demonstrated 4 techniques to extract credentials and data using only documented REST API functionality without exploiting CVEs.",
+      "ideas": [
+        "321 of 896 reachable n8n instances (36%) accepted leaked GitHub tokens in testing",
+        "API tokens without exp claims remain valid until explicitly revoked",
+        "Attackers can extract stored credentials by creating workflows and retrieving execution output",
+        "GET /api/v1/executions?includeData=true returns plaintext results of all workflow nodes",
+        "The audit endpoint provides attackers a prioritized security map of the instance",
+        "Hard-coded secrets in workflow parameters appear in plaintext API responses",
+        "Deleting malicious workflows also removes execution records, limiting forensic evidence",
+        "CVE-2025-68613 (CVSS 9.9) confirmed exploited in wild per CISA KEV catalog",
+        "n8n tokens paired with hostnames in same commits eliminate infrastructure discovery"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This is original security research from GitGuardian with high informational density. It provides specific statistics (321 of 896 reachable instances accepting leaked tokens), 4 detailed attack techniques with working code examples, real-world exposure patterns including the GitHub backup workflow case, and CVE-2025-68613 context. The content explains token mechanics (why they remain valid), API endpoints that expose data, and detection challenges. No padding, no clickbait, and significant defensive value for anyone running n8n instances. The technical depth and actionable insights justify the high score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:37:19.576044"
+    },
+    {
+      "id": 4425,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/spacexs-ambitious-compute-goals-could-require-over-two-million-nvidia-rubin-gpus/",
+      "title": "SpaceX’s ambitious compute goals could require over two million Nvidia Rubin GPUs",
+      "summary": "SpaceX plans to scale its AI compute to over two million Nvidia Rubin GPUs, targeting more than ten gigawatts of power by 2027.",
+      "ideas": [
+        "SpaceX aims to exceed two million Nvidia Vera Rubin GPUs by 2027",
+        "Current compute capacity is 1.4 GW, target over ten GW by end‑2027",
+        "Existing Colossus clusters use H100, GB200, GB300 GPUs totaling ~540k units",
+        "SpaceX AI segment revenue hit $2.56 B in Q2 2026 with $1.26 B loss",
+        "Major revenue from a single cloud contract, likely Anthropic",
+        "Anthropic runs up to 5 GW AWS, 3.5 GW TPU; OpenAI uses 6 GW AMD, 10 GW Nvidia, 2 GW Trainium",
+        "xAI merged into SpaceX, aiming for orbital data centers"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete data points—SpaceX's projected GPU count, power targets, current and planned hardware, financial performance, and competitor compute capacities—providing genuine informational value without fluff or clickbait. With roughly 350 words and about five distinct value instances, its value density is high for a short piece, though it offers limited actionable insight beyond industry awareness.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-06T03:36:52.620423"
+    },
+    {
+      "id": 4424,
+      "source_id": 4,
+      "original_url": "https://hackread.com/brazil-health-surveillance-database-exposed-records/",
+      "title": "Brazil Health Surveillance Database Exposed 79GB of Sensitive Records",
+      "summary": "Brazil's health surveillance database was exposed, leaving 102,215 sensitive records open online without password protection, highlighting the risks of digitalization and cybersecurity oversights.",
+      "ideas": [
+        "Brazil's health surveillance system exposed 79GB of sensitive records",
+        "Lack of password protection and basic encryption in the database",
+        "Risks of going digital include phishing, impersonation, and identity theft",
+        "Importance of cybersecurity in protecting sensitive personal and government information",
+        "Need for caution when dealing with online data and potential scams"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a high-value insight into a significant cybersecurity breach in Brazil's health surveillance system, exposing 79GB of sensitive records. The content delivers practical knowledge on the risks associated with going digital and the importance of cybersecurity. However, it lacks depth in discussing the long-term implications of such breaches and potential solutions. The thematic relevance is strong, aligning with cybersecurity and technology themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:36:45.289205"
+    },
+    {
+      "id": 4423,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/196657/hacking/ovswrap-13-year-old-linux-kernel-flaw-lets-local-users-become-root.html",
+      "title": "OVSwrap: 13-Year-Old Linux Kernel Flaw Lets Local Users Become Root",
+      "summary": "OVSwrap is a long‑standing Open vSwitch kernel bug that lets local users gain root, but can be mitigated by patching and disabling unprivileged namespaces.",
+      "ideas": [
+        "OVSwrap (CVE-2026-64531) is a 13‑year‑old Open vSwitch kernel bug allowing local privilege escalation.",
+        "The bug stems from a 16‑bit length overflow in Netlink attributes after a cap removal.",
+        "Exploit chain uses action stream wraparound to leak kernel pointers, read memory, and decrement pointers.",
+        "Affected distributions include AlmaLinux, Alpine, Amazon Linux, Arch, Debian, Fedora, Ubuntu, and others in configs.",
+        "Mitigation: apply patched kernel, block OVS module loads, disable unprivileged namespaces, or use BPF guard.",
+        "Researcher Asim Manizada disclosed the flaw; upstream fix released July 24 2026."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: a novel vulnerability disclosure, technical explanation of the bug, a list of affected distributions, and clear mitigation steps. It stays focused on cybersecurity without padding or clickbait, aligning well with the CyberSecurity and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:36:08.459587"
+    },
+    {
+      "id": 4422,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/mistrals-open-model-shieldstral-matches-much-larger-safety-models/",
+      "title": "Mistral's open model Shieldstral matches much larger safety models at a fraction of the size",
+      "summary": "Runtime‑defined safety questions let a tiny model achieve large‑model safety performance at lower cost.",
+      "ideas": [
+        "Shieldstral uses runtime plain-language yes/no questions for safety checks, eliminating fixed taxonomies.",
+        "Synthetic data generated by rewriting safe text into unsafe variants improves model adaptability to new rules.",
+        "A 3B‑parameter model matches performance of a 20B model on text safety benchmarks.",
+        "Shieldstral returns a single token safety score, reducing compute cost versus models with reasoning steps.",
+        "Open‑weight release under Apache 2.0 enables community use and customization of the safety classifier.",
+        "Operators can update safety rules without retraining the main language model, tailoring filters per application."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete value instances: a novel runtime yes/no safety interface, synthetic data generation for rule adaptation, and strong benchmark results showing a tiny 3B model matching much larger competitors. It stays on-topic, provides actionable insights and performance data without clickbait or padding, aligning well with AI and security themes.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-06T03:34:48.730599"
+    },
+    {
+      "id": 4421,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/08/05/ibms-agentic-ai-platform-is-under-active-attack-patch-now/5283535",
+      "title": "IBM's agentic AI platform is under active attack - patch now",
+      "summary": "A critical vulnerability in IBM's Langflow AI platform is being actively exploited, allowing unauthenticated attackers to execute code remotely on default deployments, and users are urged to patch immediately.",
+      "ideas": [
+        "Langflow AI platform has a critical vulnerability",
+        "Vulnerability allows remote code execution on default deployments",
+        "Patch available to fix the vulnerability",
+        "IBM acquired Langflow through its acquisition of DataStax",
+        "Vulnerability combines auto-login endpoint and code validation issues"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a clear and concise warning about a critical vulnerability in IBM's Langflow AI platform, including a detailed explanation of the flaw and instructions for patching. It also offers context about the platform and its recent acquisition history. The content is well-structured, informative, and relevant to the theme of cybersecurity, with a specific focus on AI and ML security.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:34:41.809742"
+    },
+    {
+      "id": 4420,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/paperclip-ai-flaws-let-attackers-run.html",
+      "title": "Paperclip AI Flaws Let Attackers Run Host Commands via Malicious Agent Imports",
+      "summary": "Paperclip AI's security flaws allow attackers to run host commands via malicious agent imports, emphasizing the need for secure agent configuration and hostname validation.",
+      "ideas": [
+        "Agent configuration can be used as executable input",
+        "Trusted-localhost assumptions can be exploited",
+        "Hostname validation is crucial for security",
+        "Paperclip AI's vulnerabilities can be exploited for command execution",
+        "Secure import routes and authentication are necessary",
+        "DNS rebinding attacks can be used to exploit local deployments"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into specific security flaws in Paperclip AI, including the ability for attackers to execute commands on a network server or developer's computer. It delivers multiple novel ideas, such as the importance of treating agent configuration as executable input and the risks associated with trusted-localhost assumptions. The content is dense with practical knowledge, including detailed explanations of the vulnerabilities and their fixes, making it highly relevant to the theme of cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-06T03:32:25.917511"
+    },
+    {
+      "id": 4419,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=Pi2WGB1Zdws",
+      "title": "My Reaction To The Anti-Optimisation Trend",
+      "summary": "The same self-improvement advice that empowers one person can burn out another, so the question isn't 'what works?' but 'what works for me right now?' - and self-improvement content should be used as a library to browse, not a rulebook to follow.",
+      "ideas": [
+        "Guidance never lands evenly - same advice affects people differently based on their starting point",
+        "Self-improvement content is a library to browse, not a set of instructions to follow completely",
+        "People who consume optimization content are usually already anxious perfectionists, not lazy people",
+        "If you're built to obsess, you will obsess on something - choose what you fixate on wisely",
+        "Overcorrecting by rejecting optimization entirely can be as harmful as over-optimizing",
+        "A period of intense self-optimization may be necessary to pay off 'debt' from wasted years",
+        "Anti-optimization messaging can inadvertently tell vulnerable people to stop trying entirely",
+        "Be careful where you get your guidance from - it's an absolute minefield"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "This transcript delivers substantial value through Chris Williamson's personal journey and several genuinely insightful frameworks. The core thesis about 'guidance never landing evenly' is a valuable and original observation - the same advice can be rocket fuel for one person and poison for another. His 'library vs. instruction manual' metaphor provides practical guidance for consuming self-improvement content. He acknowledges legitimate criticisms of over-optimization while arguing against blanket rejection of self-improvement. The content is thematically relevant to human development and productivity, though it occasionally dips into self-indulgent storytelling that could be tighter. The insight about who actually consumes self-improvement content (anxious perfectionists, not lazy people) is particularly valuable. The 15-minute runtime delivers 4-5 distinct, usable mental models with good density.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-08-06T03:32:19.584206"
+    },
     {
       "id": 4418,
       "source_id": 27,
