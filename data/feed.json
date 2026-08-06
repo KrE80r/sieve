@@ -1,7 +1,188 @@
 {
-  "updated_at": "2026-08-06T18:00:09.634027",
-  "total_items": 681,
+  "updated_at": "2026-08-06T19:00:00.439492",
+  "total_items": 688,
   "items": [
+    {
+      "id": 4454,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/critical-paperclip-flaw-allowed-admin-access-code-execution/",
+      "title": "Critical Paperclip Flaw Allowed Admin Access, Code Execution",
+      "summary": "Oasis Security discovered a CVSS 10 authorization bypass in Paperclip AI management platform that allowed attackers to self-register, gain board-level API access, and execute arbitrary code by importing a crafted company file.",
+      "ideas": [
+        "CVE-2026-41679 is a CVSS 10 critical flaw in Paperclip AI management platform",
+        "Missing authorization check enabled self-registration without email verification",
+        "Attackers could self-approve CLI authorization challenges to get board API tokens",
+        "Company import route only required board-level access, not instance-admin privileges",
+        "Crafted .paperclip.yaml files could specify agents with host-level execution adapters",
+        "Exploitation exposes service account permissions including secrets and internal service access",
+        "DNS rebinding flaw allowed code execution on developer machines via browser-based attacks",
+        "AI agents represent a new class of enterprise identity with distributed credential delegation",
+        "Fixes included authorization checks on import preview and execution flows"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity reporting delivering a critical vulnerability disclosure with significant technical depth. The article explains a complete attack chain (CVE-2026-41679, CVSS 10) showing how an authorization bypass allowed self-registration → CLI challenge approval → board-level API access → company import with arbitrary code execution. It covers three distinct vulnerabilities with their fixes and includes relevant context about AI agents as enterprise identity. No padding or fluff - every paragraph delivers technical value. Docked points for heavy advertising intrusion that interrupts reading flow.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:40:38.335952"
+    },
+    {
+      "id": 4453,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/cryptojs-weak-rng-behind-57-million-in.html",
+      "title": "CryptoJS Weak RNG Behind $5.7 Million in Drains Affects Five Crypto Wallet Apps",
+      "summary": "CryptoJS's WordArray.random() function uses a weak Math.random()-seeded generator that reduces effective entropy to ~2^39, making crypto wallet recovery phrases enumerable and enabling theft of $5.7 million from five named wallet apps; users with affected phrases must generate new ones as updates don't fix existing compromised seeds.",
+      "ideas": [
+        "CryptoJS WordArray.random() reduces 128-bit entropy to ~2^39, making recovery phrases enumerable",
+        "Five wallets affected: RRWallet, Bexo Wallet, NanChat, Bitcoin Libre, and Milo",
+        "Documented theft: $3.14M (May 27) and $2.55M (May 30-July 13), totaling ~$5.7M",
+        "The library fixed this in 3.2.0-3.2.1 but reverted the fix in 3.3.0 due to breaking changes",
+        "Version 4.0.0 permanently restored native cryptographic randomness",
+        "Affected users must generate new recovery phrases—package updates don't fix compromised seeds",
+        "Coinspect reproduced the attack by enumerating outputs, converting to BIP39 phrases, and checking addresses",
+        "A React Native fork (ferrumnet/bip39) replaced native crypto randomness with vulnerable CryptoJS",
+        "GHSA-rg76-677x-56q9 rated Critical with CVSS 9.0",
+        "NanChat users with wallets before v1.3.0 should treat phrases as compromised and migrate",
+        "The ferrumnet/bip39 fork is one infection vector, not the only one",
+        "Coinspect withheld technical details for two months while notifying vendors"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This is high-value technical security journalism. It delivers concrete value instances: the specific vulnerability (CryptoJS.lib.WordArray.random() reducing entropy from 2^128 to ~2^39), five named affected wallets with fix versions, $5.7 million in documented losses across specific dates and addresses, technical explanation of the attack reproduction, and actionable user guidance. The article explains why the vulnerability persisted (fix was reverted in 3.3.0 due to breaking changes), provides the CVE/GHSA identifier, CVSS score, and includes a public checker tool. No clickbait, no padding, no fluff—pure security intelligence delivered efficiently. Minor deduction for typical news site structure (some navigation elements) that doesn't affect content value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:38:48.978506"
+    },
+    {
+      "id": 4452,
+      "source_id": 4,
+      "original_url": "https://www.privacyguides.org/news/2026/08/05/apples-private-relay-leaks-your-real-ip-address-in-safari/",
+      "title": "Apple's Private Relay Leaks Your Real IP Address in Safari",
+      "summary": "Apple's Private Relay, designed to hide IP addresses, has been found to leak real IP addresses in Safari and other browsers due to flaws in DNS prefetching, WebAuthn, and WebTransport features.",
+      "ideas": [
+        "Private Relay leaks real IP addresses",
+        "DNS prefetching bypasses proxy",
+        "WebAuthn allows outside requests",
+        "WebTransport opens direct connections",
+        "WebKit requirement affects all iOS browsers",
+        "VPNs are not affected by these leaks"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into significant privacy leaks in Apple's Private Relay feature, affecting not just Safari but all browsers using WebKit, including those on the Tor network. The content efficiently delivers novel ideas, such as the leaks via DNS prefetching, WebAuthn, and WebTransport, showcasing strong thematic relevance to cybersecurity and privacy. The article is well-researched, citing specific examples and timelines of reported issues to Apple, highlighting the importance of prompt action on privacy concerns.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:38:06.078573"
+    },
+    {
+      "id": 4451,
+      "source_id": 4,
+      "original_url": "https://github.com/mverschu/SOCKSRelayd/",
+      "title": "GitHub - mverschu/SOCKSRelayd: SOCKS-focused NTLM relay with persistent session packages and a long-lived SessionBank that owns authenticated TCP connections.",
+      "summary": "SOCKSRelayd lets NTLM relay sessions survive shell exits by storing state in a persistent background bank.",
+      "ideas": [
+        "SOCKSRelayd persists NTLM relay sessions beyond shell termination via a background SessionBank.",
+        "Session packages are stored on disk, allowing reuse after tool restart.",
+        "The tool separates live TCP connections from NTLM spoof packages for durability.",
+        "Provides multiple operation modes, including daemon-only and foreground processes.",
+        "Supports SOCKS and optional HTTP relay listeners with configurable ports.",
+        "Includes keepalive intervals to maintain SMB sessions.",
+        "Offers commands to list, start, stop SOCKS listeners and manage packages.",
+        "Limitation: NTLM Type 3 messages are challenge-bound; dead TCP sessions cannot be recreated."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers several concrete value instances: a novel persistent SessionBank design, practical installation and usage instructions, detailed flag explanations, and insight into NTLM Type 3 limitations. It aligns well with cybersecurity and tech themes and contains no clickbait or padding, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:36:52.861283"
+    },
+    {
+      "id": 4450,
+      "source_id": 4,
+      "original_url": "https://github.com/SpecterOps/pass-the-passkey",
+      "title": "GitHub - SpecterOps/pass-the-passkey: Pass-the-Passkey Family of Attacks",
+      "summary": "The Pass-the-Passkey family of attacks targets WebAuthn and FIDO2 authentication mechanisms in Windows, and this repository offers tools and resources for security researchers to assess the security of these systems.",
+      "ideas": [
+        "Passkey Injector for tampering with passkey authentication flow",
+        "SharpPasskeys Tool for displaying passkey authentication prompts",
+        "WebAuthn Hook for intercepting WebAuthn assertion requests",
+        "DSInternals Passkey UI for interacting with Windows WebAuthn API",
+        "DSInternals.Passkeys PowerShell Module for registering passkeys",
+        "Passkey Raider for testing passkey authentication flows",
+        "passkeys.tools for analyzing passkey implementations"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This GitHub repository provides a comprehensive collection of tools and resources for assessing the security of passkey-based authentication systems, including the Passkey Injector, SharpPasskeys Tool, and WebAuthn Hook. The content is highly relevant to the CyberSecurity theme and delivers multiple novel insights into the Pass-the-Passkey family of attacks. The repository's focus on educational purposes and the warning about unauthorized use of the techniques described demonstrate a responsible approach to security research.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:35:23.513119"
+    },
+    {
+      "id": 4449,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/over-4400-rockwell-plcs-exposed-online.html",
+      "title": "Over 4,400 Rockwell PLCs Exposed Online, 22 Found in Water Attack Cities",
+      "summary": "Over 4,400 Rockwell PLCs are exposed online, with 22 found in cities affected by recent water utility cyberattacks, highlighting the need for improved security measures for industrial control systems.",
+      "ideas": [
+        "Rockwell PLCs are exposed online",
+        "22 PLCs found in water attack cities",
+        "CVE-2017-16740 vulnerability affects MicroLogix 1400 Series B and C",
+        "Firmware updates are crucial for security",
+        "Public exposure of PLCs is a significant risk",
+        "Mobile carrier networks are used by most exposed controllers",
+        "Strong authentication and logging are recommended"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides high-value insights into the exposure of over 4,400 Rockwell PLCs online, with 22 found in cities hit by recent water utility cyberattacks. It delivers practical knowledge on how to secure these devices and mentions specific vulnerabilities like CVE-2017-16740. The content is dense with valuable information, including statistics from Forescout and Censys, making it a worthwhile read for those interested in cybersecurity and industrial security.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:34:43.831962"
+    },
+    {
+      "id": 4448,
+      "source_id": 4,
+      "original_url": "https://ginomaihuiri.github.io/lockbit-string-deobfuscation",
+      "title": "LockBit String Deobfuscation: Reversing Affine Cipher DLL Loading with Ghidra",
+      "summary": "LockBit ransomware uses a sophisticated string obfuscation technique involving an affine cipher and dynamic API resolution to evade detection, as dissected in the mw_stack_strings function analysis.",
+      "ideas": [
+        "LockBit uses encrypted DLL names stored on the stack",
+        "Affine cipher is used for string decryption",
+        "Dynamic API resolution evades static signature detection",
+        "mw_stack_strings function loads 11 DLLs with encrypted names",
+        "Python script replicates the affine transformation for decryption",
+        "Each string block has its unique key and multiplier",
+        "The technique combines stack strings, affine cipher, and dynamic API resolution"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "This content provides exceptional value through its detailed analysis of LockBit's string obfuscation technique, specifically focusing on the mw_stack_strings function. It delivers novel insights into how the malware employs an affine cipher for encryption and dynamic API resolution to evade detection. The inclusion of a Python script to replicate the decryption process adds significant practical value. The content is densely packed with information, making it highly efficient in terms of value delivery. The thematic relevance is strong, aligning with cybersecurity, reverse engineering, and malware analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-07T03:32:45.881422"
+    },
     {
       "id": 4447,
       "source_id": 4,
