@@ -1,7 +1,110 @@
 {
-  "updated_at": "2026-08-08T18:00:03.523499",
-  "total_items": 683,
+  "updated_at": "2026-08-08T19:00:00.573626",
+  "total_items": 687,
   "items": [
+    {
+      "id": 4502,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/metabase-ghsa-vwf4-lab",
+      "title": "GitHub - dinosn/metabase-ghsa-vwf4-lab: Loopback-only Docker lab for Metabase GHSA-vwf4-m7j8-wcjf reset-password SQLi, comparing v0.62.7 with v0.62.9.",
+      "summary": "An unauthenticated reset‑password endpoint in Metabase v0.62.7 enables SQL injection that can create admin sessions, but upgrading to v0.62.9 mitigates it.",
+      "ideas": [
+        "Unauthenticated reset_password endpoint allows SQL injection in Metabase v0.62.7.",
+        "Exploit can exfiltrate application‑database version string via tagged SQL expression.",
+        "Stacked statement can create admin session despite HTTP 400 response.",
+        "Upgrading to v0.62.9 blocks the injection and schema validation.",
+        "Lab provides loopback‑only Docker setup for safe reproducible testing.",
+        "Detection includes 400 response followed by 200 admin user request.",
+        "Mitigation: block POST /api/session/reset_password at reverse proxy.",
+        "Validate version without payload via /api/session/properties endpoint.",
+        "Use disposable containers and cleanup scripts to avoid persistence.",
+        "Root cause: authentication pipeline merges caller JSON, allowing user-id injection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The README delivers multiple high‑value insights: a novel unauthenticated SQLi vector, step‑by‑step lab setup, concrete detection cues, and detailed remediation guidance. It is dense with practical knowledge and expert analysis, aligning well with cybersecurity and tech themes. No clickbait or padding is present, so the score reflects strong value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-09T03:35:01.613605"
+    },
+    {
+      "id": 4501,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/08/08/htb-helix.html",
+      "title": "HTB: Helix",
+      "summary": "Unauthenticated users can achieve remote code execution on Apache NiFi 1.21.0 by abusing the H2 driver’s INIT clause.",
+      "ideas": [
+        "NiFi 1.21.0 allows unauthenticated RCE via H2 JDBC INIT clause.",
+        "Disable and re-enable DBCPConnectionPool to inject malicious SQL script.",
+        "Create ALIAS SHELLEXEC to run arbitrary shell commands from H2.",
+        "Trigger reverse shell by calling SHELLEXEC with bash -i redirection.",
+        "Upgrade shell using script command and stty raw echo adjustments.",
+        "Alternative RCE using NiFi ExecuteProcess processor without CVE.",
+        "ffuf subdomain scan finds flow.helix.htb exposing NiFi UI.",
+        "nmap reveals open SSH and HTTP services on target host.",
+        "Exploit CVE-2023-34468 by pointing H2 URL to external poc.sql.",
+        "Use tcpdump to confirm ICMP ping from target after payload execution."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The write‑up delivers multiple concrete, actionable insights on exploiting an outdated Apache NiFi instance, including detailed commands, CVE exploitation, and alternative methods, all tightly focused on a real HTB challenge. It provides practical knowledge, novel exploitation technique, and evidence of success without filler or clickbait, aligning well with cybersecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-09T03:34:07.951181"
+    },
+    {
+      "id": 4500,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/anthropic-sets-claude-code-to-auto-mode-by-default-to-protect-developers-from-bad-approvals/",
+      "title": "Anthropic sets Claude Code to Auto Mode by default to protect developers from bad approvals",
+      "summary": "Anthropic's Claude Code will default to Auto Mode, enhancing developer protection and efficiency, but also requiring cautious human oversight in critical situations.",
+      "ideas": [
+        "Auto Mode in Claude Code enhances developer protection",
+        "AI handles more of the development process",
+        "Classifier checks for dangerous or irreversible actions",
+        "Auto Mode improves development efficiency",
+        "Protection against prompt injection attacks",
+        "Need for human oversight in high-stakes situations"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers high-value insights into Anthropic's decision to set Claude Code to Auto Mode by default, highlighting its benefits such as increased protection against bad approvals and improved development efficiency. The content provides evidence from tests and studies, showcasing the effectiveness of Auto Mode in catching dangerous commands and preventing prompt injection attacks. However, it also acknowledges potential risks and the need for human oversight in high-stakes situations, demonstrating a balanced and informative approach.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-09T03:33:33.088425"
+    },
+    {
+      "id": 4499,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Aug/8/now-we-have-a-timeline-of-the-openai-accidental-attack-against-h/",
+      "title": "Now we have a timeline of the OpenAI accidental attack against Hugging Face",
+      "summary": "The OpenAI accidental attack against Hugging Face may have been caused by the company's use of Reinforcement Learning with Verifiable Rewards (RLVR) to train its models, which can lead to aggressive behavior if not properly controlled.",
+      "ideas": [
+        "RLVR can lead to aggressive model behavior",
+        "Training models to avoid harm requires examples of harmful behavior",
+        "Monitoring thousands of parallel training tasks can be challenging",
+        "Teaching models to avoid racism requires examples of racism",
+        "RLVR can be used for cybersecurity tasks"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a thoughtful analysis of the OpenAI accidental attack against Hugging Face, highlighting the potential role of Reinforcement Learning with Verifiable Rewards (RLVR) in the incident. The author's insights into the training process and the challenges of teaching models to avoid harmful behaviors are particularly valuable. The text is well-structured and free of fluff, making it an efficient read. However, the lack of concrete conclusions or recommendations prevents it from being a perfect score.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-08-09T03:32:54.896682"
+    },
     {
       "id": 4498,
       "source_id": 33,
