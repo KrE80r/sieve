@@ -1,7 +1,60 @@
 {
-  "updated_at": "2026-08-10T05:00:00.485611",
-  "total_items": 644,
+  "updated_at": "2026-08-10T07:00:00.640616",
+  "total_items": 646,
   "items": [
+    {
+      "id": 4514,
+      "source_id": 4,
+      "original_url": "https://blog.amberwolf.com/blog/2026/august/hp-thinpro-tpm-sealed-disk-encryption-that-only-measured-half-the-boot-chain/",
+      "title": "original success path: key goes straight to cryptsetup (fd 3), never to disk",
+      "summary": "TPM‑sealed disk encryption can be bypassed by modifying the initramfs to expose the unsealed key.",
+      "ideas": [
+        "TPM seals LUKS key only to BIOS, ROMs, and GRUB PCRs, leaving later stages unmeasured",
+        "Patch initramfs unseal_key script to capture TPM key and store it on unencrypted BOOT partition",
+        "The exploit works on HP ThinPro 8 and 9 without hardware changes",
+        "Secure Boot is disabled by default and does not close the PCR measurement gap",
+        "Mitigation: enable Secure Boot, set BIOS password, and assume disk encryption is ineffective after loss",
+        "CVSS 3.1 score 6.1 indicates medium severity with high confidentiality and integrity impact",
+        "HP has not released a fix yet; disclosure timeline shows delayed remediation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post reveals a novel TPM measurement gap and provides a concrete, reproducible exploit with step‑by‑step instructions, offering high practical value for security professionals. It includes original research, CVSS assessment, and mitigation advice, aligning strongly with cybersecurity themes and containing minimal fluff.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-10T15:33:08.599289"
+    },
+    {
+      "id": 4513,
+      "source_id": 4,
+      "original_url": "https://blog.sentry.security/beyond-prompt-injection-hacking-apples-private-cloud-compute/",
+      "title": "Beyond Prompt Injection: Hacking Apple's Private Cloud Compute",
+      "summary": "Unchecked path extraction during PCC boot lets attackers write arbitrary root files, undermining Apple’s privacy guarantees.",
+      "ideas": [
+        "Path traversal in darwin-init allows root file writes during boot.",
+        "Exploit writes files to /var/db/ persisting after reboot.",
+        "Malicious cryptex can embed traversal entries and a valid bundle to bypass checks.",
+        "Modified splunkloggingd config redirects telemetry to attacker-controlled server.",
+        "Extractor lacks libarchive security flags, enabling arbitrary path writes.",
+        "Attestation verifies installed software but not writable data-volume files.",
+        "CVE-2026-20685 classified as information disclosure with CVSS 6.5.",
+        "Private Cloud Compute aims to extend iPhone privacy guarantees to cloud AI inference.",
+        "Zip Slip class vulnerability resurfaced in Apple’s PCC architecture.",
+        "Researchers used Apple’s Virtual Research Environment to safely test the exploit."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "The blog delivers multiple high‑value insights—novel vulnerability details, step‑by‑step exploit construction, and an analysis of attestation gaps—within a concise technical narrative. With over five distinct value instances in a ~10‑minute read, its value density is strong and it aligns tightly with AI security and cybersecurity themes. No clickbait, padding, or shallow treatment is evident, so no penalties apply.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-10T15:32:14.941376"
+    },
     {
       "id": 4512,
       "source_id": 29,
