@@ -1,7 +1,104 @@
 {
-  "updated_at": "2026-08-11T06:00:03.683597",
-  "total_items": 644,
+  "updated_at": "2026-08-11T07:00:00.530417",
+  "total_items": 648,
   "items": [
+    {
+      "id": 4532,
+      "source_id": 4,
+      "original_url": "https://unit42.paloaltonetworks.com/aeternum-blockchain-c2-analysis/",
+      "title": "The Permanent Threat: Analyzing Aeternum’s Blockchain-Based C2 Operations and Communications",
+      "summary": "Aeternum is a C++ botnet loader that uses the public Polygon blockchain as its C2 infrastructure, allowing threat actors to write encrypted commands directly to smart contracts that infected devices retrieve via JSON-RPC, with weak PBKDF2HMAC/AES-GCM encryption that can be decrypted using the contract address as the key.",
+      "ideas": [
+        "Aeternum botnet uses Polygon blockchain smart contracts for decentralized C2, eliminating traditional server takedowns",
+        "Malware queries Polygon RPC endpoints using contract method 0xb68d1809 to retrieve encrypted C2 commands",
+        "XOR deobfuscation pattern is \\x00\\x00\\x00[ENC bytes]\\x00[KEY bytes]\\x00\\x00\\x00 for extracting payloads",
+        "PBKDF2HMAC with self-salting password violates NIST SP 800-132 cryptographic standards",
+        "Contract address plus hex payload can decrypt C2 commands using a custom Python script",
+        "Malicious DLL connects to Telegram bot API for C2 using hard-coded bot token and chat_id",
+        "Aeternum downloads legitimate putty.exe and malicious DotNetZip.dll from GitHub repositories",
+        "Second sample chains XWorm RAT, XMRig miner, and data exfiltration via blockchain command",
+        "PyInstaller-packed Python script uses ChaCha20, AES-CTR, and AES-CBC multi-layer decryption",
+        "Decrypted blockchain payload contained Pastebin URL with XMRig configuration data"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is high-quality threat research from Palo Alto Networks Unit 42 analyzing the novel Aeternum botnet that uses the Polygon blockchain for C2 communications. The content delivers substantial technical value: blockchain-based C2 mechanics, XOR deobfuscation patterns with decryption scripts, JSON-RPC analysis methodology, NIST SP 800-132 cryptographic flaw identification, multi-stage malware analysis (XWorm + XMRig), and actionable IoCs including SHA256 hashes and Telegram bot tokens. The research is technical, actionable, and covers three distinct malware cases with evidence-based analysis. No significant penalties apply - this is professional threat research, not marketing material or fluff.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-11T15:41:26.898822"
+    },
+    {
+      "id": 4531,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/china-linked-hackers-deploy-new.html",
+      "title": "China-Linked Hackers Deploy New StormEncryptor Ransomware, Likely via N-central Flaw",
+      "summary": "China-linked hackers have deployed a new ransomware strain called StormEncryptor, likely exploiting a vulnerability in N-able N-central, highlighting the need for immediate patching to prevent attacks.",
+      "ideas": [
+        "StormEncryptor ransomware deployed by China-linked hackers",
+        "Exploitation of N-central flaw for initial access",
+        "Use of zero-days and N-day vulnerabilities for high-velocity attacks",
+        "Storm-1175 threat actor's tactics and techniques",
+        "Importance of patching vulnerabilities promptly",
+        "Ransomware deployment within days of initial access"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides high-value insights into the newly discovered StormEncryptor ransomware and its deployment by the China-linked threat actor Storm-1175. It delivers practical knowledge on the vulnerability exploited, specifically the N-central flaw, and offers evidence of the threat actor's tactics, techniques, and procedures. The content is dense with meaningful information, including the use of zero-days and N-day vulnerabilities, making it a valuable resource for cybersecurity professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-11T15:39:45.864639"
+    },
+    {
+      "id": 4530,
+      "source_id": 4,
+      "original_url": "https://github.com/agiwhitelist/auteur",
+      "title": "GitHub - agiwhitelist/auteur: The Claude Code skill that directs a website like a film. Commit-sheet, generated assets, build, and an executable anti-slop linter that gates every ship.",
+      "summary": "The auteur project is a Claude Code skill that enables the creation of cinematic websites through a director's pipeline, leveraging generated assets and an anti-slop linter to ensure high-quality outputs.",
+      "ideas": [
+        "Director's pipeline for website creation",
+        "Generated assets for website building",
+        "Anti-slop linter for quality control",
+        "Commit-sheet for art direction",
+        "WebGL context for website rendering",
+        "GSAP/Lenis scroll for smooth scrolling",
+        "Motionqa gate for performance optimization"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides a comprehensive overview of the auteur GitHub project, a Claude Code skill for directing websites like films. It delivers multiple novel insights into the project's features, such as its director's pipeline, generated assets, and anti-slop linter. The content is well-structured, informative, and aligns strongly with the Technology & Innovation theme. However, some sections may be considered slightly technical or overwhelming for non-experts.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-11T15:38:50.762580"
+    },
+    {
+      "id": 4529,
+      "source_id": 29,
+      "original_url": "https://david-g-3654.github.io/insidedb/",
+      "title": "Show HN: Insidedb, an interactive, animated explainer of database internals",
+      "summary": "Database internals can be understood through interactive explanations of indexing, query planning, write-ahead logging, and MVCC, enhancing the efficiency and reliability of database operations.",
+      "ideas": [
+        "B-tree indexing keeps data sorted and shallow for efficient lookups",
+        "Query planning estimates costs to choose between sequential and index scans",
+        "Write-ahead logging ensures database survival during crashes",
+        "MVCC allows readers and writers to operate concurrently without blocking"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This interactive explainer provides exceptional value by clearly illustrating complex database internals such as B-tree indexing, query planning, write-ahead logging, and MVCC. The content is highly engaging, well-structured, and efficiently delivers multiple novel insights. It strongly aligns with the Tech and AI themes, making it highly relevant and useful for readers.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-08-11T15:36:50.145689"
+    },
     {
       "id": 4528,
       "source_id": 28,
