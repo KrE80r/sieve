@@ -1,7 +1,632 @@
 {
-  "updated_at": "2026-08-12T21:00:00.597376",
-  "total_items": 717,
+  "updated_at": "2026-08-12T22:00:00.849462",
+  "total_items": 739,
   "items": [
+    {
+      "id": 4644,
+      "source_id": 34,
+      "original_url": "https://solrevdev.com/2026/08/11/dotnet-tools-roll-forward-major-version.html",
+      "title": ".NET Tools Stop Working When You Upgrade .NET",
+      "summary": "Adding <RollForward>Major</RollForward> to your .NET tool's csproj enables it to run on newer major runtime versions, solving the common problem where tools stop working after .NET upgrades.",
+      "ideas": [
+        "Add <RollForward>Major</RollForward> to csproj PropertyGroup to enable cross-major runtime roll-forward",
+        "global.json controls SDK selection at build time, not runtime roll-forward behavior",
+        "No global.json already behaves like rollForward: latestMajor, adding one only narrows options",
+        "Roll-forward won't cross major version boundaries by default",
+        "Docker SDK images with only newer runtimes serve as proxy for future compatibility testing",
+        "Use --allow-roll-forward flag at install time as an escape hatch for tools without the property",
+        "Dropping old target frameworks creates a compatibility cliff in both directions for global tools"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-value technical post that delivers a specific, actionable fix (adding <RollForward>Major</RollForward>) with thorough experimental verification. The author effectively corrects a common misconception about global.json, explains the roll-forward rules clearly, and provides a clever Docker-based testing technique. The content is dense with practical knowledge: the user escape hatch flag, the proxy-testing methodology, and the insight about permissive defaults. One minor consideration: this is niche content for .NET global tool maintainers, but it delivers exceptional value within that audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:29:57.503855"
+    },
+    {
+      "id": 4643,
+      "source_id": 34,
+      "original_url": "https://shawnhymel.com/3648/reinforcement-learning-part-13-policy-gradient-causality-trick-and-reinforce/",
+      "title": "Reinforcement Learning Part 13: Policy Gradient Causality Trick and REINFORCE",
+      "summary": "The causality trick replaces full trajectory return G(τ) with return-to-go Gt in policy gradient estimation, reducing variance and improving sample efficiency without changing the expected gradient value, as mathematically proven by showing the correlation between past rewards and current action gradients equals zero.",
+      "ideas": [
+        "Using Gt instead of G(τ) reduces variance and improves sample efficiency",
+        "Actions at timestep t cannot be responsible for rewards received before t",
+        "G(τ) decomposes into past rewards plus γ^t times return-to-go Gt",
+        "The expected correlation between ∇θ log π(at|st;θ) and past rewards rj (where j<t) equals zero",
+        "Sum of policy probabilities ∑π(a|s) equals 1, making its gradient zero",
+        "REINFORCE uses Monte Carlo sampling to estimate policy gradients without knowing environment dynamics",
+        "The causality trick was added to original REINFORCE paper to speed up training",
+        "We only need to use return-to-go Gt in the policy gradient formula",
+        "Linearity of expectation and tower rule (law of total expectation) enable the derivation",
+        "The policy gradient theorem provides a model-free approach to optimization"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a technical deep-dive on policy gradient methods that delivers substantial value to ML/RL practitioners. The content provides a rigorous mathematical derivation of the causality trick (proving why using Gt instead of G(τ) is valid), practical insights on variance reduction and sample efficiency, and the foundational REINFORCE algorithm. The treatment is substantive with multiple derived formulas, probability rules applied correctly (linearity of expectation, tower rule, gradient of sum of probabilities = 0), and clear explanations of why past rewards contribute zero expected value to the policy gradient. While the content is highly specialized and may be dense for beginners, it offers genuine expertise value for those working in RL. No padding or fluff detected - the mathematical derivations serve the thesis directly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:27:29.038948"
+    },
+    {
+      "id": 4642,
+      "source_id": 34,
+      "original_url": "https://scotthelme.ghost.io/device-bound-session-credentials-lands-in-chrome-on-macos/",
+      "title": "Device Bound Session Credentials lands in Chrome on macOS",
+      "summary": "Chrome's Device Bound Session Credentials on macOS uses Secure Enclave-backed keys to prevent cookie theft, but the feature rolls out gradually with some users in control groups that disable the underlying key service—requiring specific Chrome flags to properly test.",
+      "ideas": [
+        "DBSC binds sessions to hardware-backed private keys in TPM (Windows) or Secure Enclave (macOS)",
+        "Stolen DBSC cookies stop working immediately after leaving the bound device",
+        "Windows has DBSC enabled by default; macOS requires variations seed activation",
+        "SHA-1 hash algorithm used to encode Chrome variations trial and group names",
+        "Python code can reproduce Chrome's variations hash for verification",
+        "Control groups disable UseUnexportableKeyServiceInBrowserProcess, blocking key creation silently",
+        "Feature flags set manually lack the <TrialName suffix that variations-assigned flags carry",
+        "Override control group by launching Chrome with specific --enable-features flags while quit",
+        "DBSC degrades gracefully: unsupported browsers ignore registration headers entirely",
+        "Report URI deployed DBSC to 10% of users with successful gradual rollout",
+        "chrome://version/?show-variations-cmd shows readable trial and group names"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is substantive, technically dense content from a recognized security expert. It delivers 8+ distinct value instances including: the DBSC concept explanation, specific Chromium source code showing platform differences, a working Python implementation to decode Chrome's variations hash, a hash lookup table for common values, the chrome://version/?show-variations-cmd URL tip, detailed explanation of why control groups block feature testing, exact command-line flags to override control assignments, and practical deployment advice about graceful degradation. The article is tightly focused with no padding, original technical insights from hands-on testing, and genuine utility for developers implementing or debugging DBSC. Minor penalty for promotional footer elements, but the technical content is strong and current.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:22:58.106904"
+    },
+    {
+      "id": 4641,
+      "source_id": 34,
+      "original_url": "https://scottberrevoets.com/2026/08/11/the-foundations-of-a-mobile-platform/",
+      "title": "The foundations of a mobile platform",
+      "summary": "A mobile platform comprises Build, Run, Observe, and Distribute systems whose quality compounds over time; building it well requires dedicated ownership, strong judgment, and patience, while AI agents increasingly depend on the same consistent patterns and testability that make platforms effective.",
+      "ideas": [
+        "Mobile platform = Build + Run + Observe + Distribute systems enabling product teams",
+        "Mobile apps run on uncontrolled end-user devices with variable network/hardware/OS conditions",
+        "Platform quality compounds exponentially - both good and bad - affecting all teams",
+        "Good platforms answer common questions: which client to use, how to mock services, where code lives",
+        "Agentic AI workflows depend on codebases with consistent patterns, tests, and clear constraints",
+        "Apple and Google provide minimal tooling for large teams; most platform tooling is OSS with limited resources",
+        "Platform work requires senior judgment about abstractions, testing strategies, and migrations",
+        "Changing platform systems is expensive - migrations can take months or years with many teams depending on them",
+        "Platform benefits only compound once systems are widely adopted across the organization",
+        "Platform engineering is fundamentally a people-oriented job requiring education and stakeholder management",
+        "Dedicated platform teams outperform product teams with competing priorities for maintaining platform quality",
+        "Platform ownership should go to neutral developers with good cross-team connections rather than single-product advocates"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-crafted article that delivers substantial value through 7 distinct insights on mobile platform engineering. The author provides a useful framework (Build/Run/Observe/Distribute), explains why mobile is uniquely challenging, articulates the compounding effect of platform quality, contrasts good vs bad platform characteristics with concrete examples, and connects platform quality to agentic AI workflows. The piece also addresses why platform building is difficult (limited standards, judgment requirements, expensive migrations, people skills) and makes a strong case for dedicated platform ownership. The author's experience at Lyft and Speak comes through as genuine expertise. Content density is high with minimal padding - every paragraph advances the thesis. The length is appropriate for the depth achieved. No penalties applied.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:22:29.538419"
+    },
+    {
+      "id": 4640,
+      "source_id": 34,
+      "original_url": "https://rubber-duck-typing.com/posts/2026-08-11-ai-scales-assignments.html",
+      "title": "AI could finally let us teach software engineering properly",
+      "summary": "LLMs are fundamentally unlike compilers and shouldn't be treated as such, but they can enable teaching architecture at scale by letting students experience the consequences of poor complexity management in realistic projects, while the focus of junior education shifts from code production to system reasoning and research.",
+      "ideas": [
+        "The basketball machine thought experiment shows struggle is formative for skill acquisition",
+        "LLMs are stochastic unlike compilers which preserve formal semantics",
+        "Natural language prompts are far more underspecified than formal code",
+        "Hyrum's law means implementation details creep into specs implicitly",
+        "Junior developers should produce research reports showing questions asked and answers found",
+        "The engineering loop: stakeholder analysis → requirements → metrics → functional architecture → resource allocation → verification",
+        "Single supplier problem: LLM writing code and tests has correlated blind spots, needs independence",
+        "Complexity types include essential vs accidental, coupling vs cognitive load, local vs global",
+        "The adapter pattern illustrates complexity tradeoffs: stability vs. staying updated",
+        "LLMs enable large-scale architecture education where students see costs of bad decisions",
+        "AI agents still have limits on complexity they can handle",
+        "Juniors today need to be yesterday's mid-level developers to control AI agents"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "This is substantive, well-reasoned content that delivers multiple genuine insights on AI in software education. The author provides the basketball machine thought experiment proving struggle is formative, distinguishes LLMs from compilers on formal semantic grounds, introduces a complete engineering loop framework (stakeholder analysis → requirements → architecture → verification), identifies the correlated blind spots problem with AI-supplied requirements AND code AND tests, and presents a taxonomy of complexity types with practical examples. The key insight about using LLMs to enable large-scale architecture education (where students can see consequences of bad decisions) is genuinely novel. Content is tightly written with no padding. Some ideas are still being developed at the end, but what's present is high-density. Scores high on thematic relevance for both technology/AI and human development/education.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:19:22.916669"
+    },
+    {
+      "id": 4639,
+      "source_id": 34,
+      "original_url": "https://rore.im/posts/it-looks-like-it-works",
+      "title": "It Looks Like It Works",
+      "summary": "AI agents are uniquely dangerous because they produce confident-looking output that can mislead developers into trusting incorrect results, making critical review essential especially for production systems.",
+      "ideas": [
+        "AI agents can gaslight developers into believing incorrect outputs are correct",
+        "Agents often produce tests that echo values without actually validating what was requested",
+        "Requiring intermediate artifacts with structural validation forces honest reporting from agents",
+        "AI reliability acceptable for pet projects but risky for critical production services",
+        "Developers aware of these gaps should not be ignored when urging caution"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 85,
+      "rating_reason": "This is concise but high-value content that delivers a genuinely novel insight: AI agents can 'gaslight' developers into thinking they succeeded when they haven't. The author shares direct experience with the gap between AI output that 'looks like it works' versus actual correct functionality, specifically around E2E test generation. Key value instances include the counterintuitive gaslighting metaphor, the technique of requiring intermediate artifacts for structural validation, the distinction between acceptable AI use in pet projects versus production systems, and the call to heed developer warnings about AI output quality. The content is tight (no padding), focused, and offers an original perspective backed by hands-on experience. While brief, every paragraph contains a distinct insight worth considering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:15:50.110681"
+    },
+    {
+      "id": 4638,
+      "source_id": 34,
+      "original_url": "https://robert.winter.ink/podcasts/jay-fontanini-you-cannot-skip-the-stages/",
+      "title": "Jay Fontanini — You Cannot Skip the Stages",
+      "summary": "AI productivity gains appear flat because organizations haven't completed the complementary investments in human judgment that general-purpose technologies require—and that judgment (phronesis, crystallized intelligence, knowing-how) cannot be rushed, delegated to prompts, or learned from instruction alone.",
+      "ideas": [
+        "GPTs require complementary investments before returns materialize; the AI J-curve mirrors electrification's 40-year lag.",
+        "When AI cheapens prediction, judgment becomes the scarce and valuable complement.",
+        "Fluid intelligence (quick reasoning) is what models replace; crystallized intelligence (earned wisdom) is the human premium.",
+        "Judgement is earned through experience, not learned from instruction—Aristotle's phronesis requires time.",
+        "The trivium's dialectic (middle stage) cannot be skipped; executives fail when they leap to rhetoric without thinking.",
+        "Tacit knowledge cannot compress into prompts because we know more than we can tell.",
+        "Intentional friction—drafting with AI but sending only after personal review—maintains cognitive endorsement.",
+        "Automation bias and cognitive offloading literature show AI use correlates with reduced critical thinking.",
+        "Diverse teams outperform homogeneous high-performers when problems require multiple perspectives.",
+        "The translator's role between technical and business domains becomes more valuable, not less."
+      ],
+      "labels": [
+        "AI",
+        "Philosophy",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptionally rich intellectual content that synthesizes economic theory (GPT frameworks, J-curve), philosophy (Aristotle's phronesis, Ryle's knowing-that/knowing-how, Polanyi's tacit knowledge), cognitive science (fluid/crystallized intelligence, automation bias), and practical executive coaching into a coherent argument about why AI hasn't delivered productivity gains and what remains irreducibly human. The author makes novel connections (tacit knowledge cannot compress into a prompt library; the trivium's dialectic as the stage executives skip; treating AI drafts as friction rather than output) that reward careful reading. No padding detected—every section advances the argument. The single-warned study on AI and critical thinking is appropriately caveated. This deserves its high score: it synthesizes across multiple disciplines to deliver genuine insight rather than repackaging familiar takes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:11:38.898036"
+    },
+    {
+      "id": 4637,
+      "source_id": 34,
+      "original_url": "https://raine.dev/blog/giving-ai-agent-access-to-my-online-bank/",
+      "title": "Giving an AI agent access to my online bank",
+      "summary": "The author describes building a CLI bridge with a Chrome extension to give AI agents scoped, token-safe access to web services like online banking, keeping the authenticated session in the browser while the agent only gets access to specific named operations.",
+      "ideas": [
+        "Use a CLI bridge with Chrome extension instead of browser control for AI agent access",
+        "Keep web session tokens in the browser; never expose them to the CLI or agent",
+        "Define named operations instead of full browser navigation for minimal access",
+        "Match this pattern to real automation needs like receipt-to-transaction matching",
+        "Enable/disable specific CLI operations based on current task requirements"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This post introduces a genuinely novel security pattern for AI agent access - a CLI bridge using a Chrome extension to keep tokens in the browser while providing scoped operations. The author demonstrates real working code (holvi transactions list, holvi attachments upload) solving an actual pain point (monthly bookkeeping automation). The security rationale is well-reasoned: browser-based computer use gives too much access when you only need specific operations. Content is focused, efficient, and ends with a GitHub link to the actual project. High thematic relevance for developers interested in AI agent security.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:06:14.149636"
+    },
+    {
+      "id": 4636,
+      "source_id": 34,
+      "original_url": "https://radimentary.wordpress.com/2026/08/11/seeing-things-through-in-the-age-of-ai/",
+      "title": "Seeing things through in the age of AI",
+      "summary": "AI dramatically accelerates the initial drafting phase of creative work (1000x) but barely helps with the essential finishing work (2x), meaning the bottleneck for meaningful output remains human perseverance.",
+      "ideas": [
+        "AI is a 1000x speedup for drafting but only 2x for finishing polished work",
+        "Finishing work requires bug-fixing, proof-checking, and handling details that AI handles poorly",
+        "The curation infrastructure is being overwhelmed by AI-generated half-finished content",
+        "The best impactful work lives in the tail of the power law, requiring deep perseverance",
+        "Humans are seduced by rapid drafting but fail to complete anything polished"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This essay delivers exceptional value density in a compact format. The central insight—that AI provides 1000x speedup for drafting but only 2x for finishing—is a genuinely useful mental model for understanding AI's actual limitations. The author adds practical specificity (polishing papers, debugging, building infrastructure), introduces the 'curation infrastructure' problem, and makes the philosophical point about impactful work living in the 'tail of the power law.' No padding or fluff—the argument is tight and every sentence advances the thesis. The only minor deduction: it's a short essay, so while dense, it doesn't explore the implications as deeply as it could.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:05:48.772728"
+    },
+    {
+      "id": 4635,
+      "source_id": 34,
+      "original_url": "https://qsoe-dev.blogspot.com/2026/08/jmcc-portable-c-compiler-on-risc-v-64.html",
+      "title": "qjmcc: the Portable C Compiler on RISC-V 64",
+      "summary": "The author successfully ported the historical Portable C Compiler to RISC-V 64-bit, creating a complete independent toolchain that builds their entire QSOE/N operating system with no GCC dependencies.",
+      "ideas": [
+        "PCC was written by Stephen C. Johnson at Bell Labs in the mid-1970s and retargeted to ~200 architectures",
+        "Anders Magnusson rewrote over half of PCC in the 2000s, making 64-bit ports tractable",
+        "Porting required fixing MIPS assumptions like two-operand branches and non-existent subi instructions",
+        "RISC-V lacks absolute addressing unlike machines PCC was designed for, requiring register-based address handling",
+        "Atomic operations required explicit load-reserve/store-conditional sequences with proper acquire/release ordering",
+        "qjmcc achieved 212/220 on the portable-C conformance suite with known unremarkable failures",
+        "The toolchain includes its own preprocessor, freestanding headers, and libqjmcc_s.a runtime library",
+        "AI assistance made a one-person compiler port feasible where it previously was not",
+        "rvasm provides NASM-flavored RISC-V assembly syntax reusing a preprocessor from asm359"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive technical content about porting the Portable C Compiler to RISC-V. The author provides genuine value through: detailed historical context on PCC's origins and Anders Magnusson's rewrite; specific technical challenges encountered during porting (MIPS-isms, 12-bit immediates, atomic operations, frame size limits); the achievement of building a complete independent toolchain with 212/220 on the C conformance suite; and the insight about how AI assistance transformed what was previously a heroic one-person effort into a tractable project. The writing is clear and focused, with no padding or fluff. Thematic relevance is strong for those interested in compilers, system software, and low-level development. Minor deduction for the substantial personal/historical narrative that, while interesting, extends the piece beyond pure informational value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:04:54.920116"
+    },
+    {
+      "id": 4634,
+      "source_id": 34,
+      "original_url": "https://pyk.sh/posts/2026-08-11-what-fuzzing-lpdfi-taught-me/",
+      "title": "What fuzzing LpdFi taught me",
+      "summary": "When fuzzing spot-oracle protocols, size your loan against the oracle pool reserves (not protocol TVL) to unlock bug paths that smaller loans miss, and only skip static preconditions in your harness to avoid accidentally pruning the actual exploit path.",
+      "ideas": [
+        "Skip only static preconditions—if handlers can change them, let calls revert instead",
+        "Size flash loans against oracle pool reserves, not protocol TVL, for spot-oracle targets",
+        "Freeze prices for secondary holdings in multi-asset objectives or fuzzer fabricates profit",
+        "Fuzzer returns sequences; auditor extracts root causes from the call patterns",
+        "Check if buy/deposit lets callers choose notional while pricing at spot reserves",
+        "Watch for caps that scale with user-controllable inputs like interestTop = uAmount / 2",
+        "Look for payouts backed by protocol's own LP rather than deposited value",
+        "No position gate on payout path means anyone can exploit the interest claim",
+        "The objective finds leads; the PoC proves them—distinguish between fuzzer score and actual profit"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is high-quality technical content from a security researcher sharing field experience with fuzzing a DeFi protocol. It provides 6 distinct value instances: the skip() precondition pitfall (don't prune paths that could be changed by other handlers), the loan sizing strategy (size against oracle pool reserves, not protocol TVL), the multi-asset objective price-freezing requirement, the concrete exploit sequence finding, the root cause extraction insight ('the fuzzer finds sequences, I extract root causes'), and a practical 5-point audit checklist for buy-and-earn protocols. The content is dense with actionable technical knowledge and includes real numbers showing the difference between weak (1M loan, 100-day wait) and effective (50M loan, 1 transaction) fuzzing campaigns. No padding, no fluff—every paragraph delivers insight for someone auditing similar protocols. Strong thematic relevance to cybersecurity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:04:27.742174"
+    },
+    {
+      "id": 4633,
+      "source_id": 34,
+      "original_url": "https://piechowski.io/post/most-of-your-tech-debt-is-free/",
+      "title": "Most of your tech debt is free",
+      "summary": "Technical debt only costs money when work runs through it; refactor high-churn, high-complexity files that intersect your roadmap, not stable ugly code that just looks scary.",
+      "ideas": [
+        "Debt cost equals messiness multiplied by churn rate, not messiness alone",
+        "Stable ugly code that nobody touches is essentially free debt",
+        "Scary-looking files attract extra caution and review, actually reducing their real cost",
+        "Harmless-looking helper files edited weekly are often the most expensive code",
+        "Run git log churn analysis to find files that actually need refactoring",
+        "The refactoring priority is overlap between hard-to-change and roadmap-adjacent",
+        "Low-churn files may be feared rather than safe—ask before ignoring them",
+        "Aesthetic complaints about code quality lose to roadmap priorities every time",
+        "Check if codebase is the bottleneck before scheduling refactoring work",
+        "Fix the smallest piece that makes the work safe when you do refactor"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a high-density, actionable piece on technical debt prioritization with a core framework (cost = messiness × churn) that reframes how teams should approach refactoring. It delivers 8+ distinct insights including a practical git command for identifying high-churn files, distinctions between different debt types, and a concrete decision framework for Monday. The writing is tight with no padding, and every section serves the thesis. Slight deduction for thin citation of the Windows Server 2003 case study. Strong alignment with engineering management and productivity themes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T07:00:56.490823"
+    },
+    {
+      "id": 4632,
+      "source_id": 34,
+      "original_url": "https://ohadravid.github.io/posts/2026-08-let-them-write-rfcs/",
+      "title": "Let Them Write RFCs",
+      "summary": "Instead of asking LLMs to solve problems or create implementation plans, ask them to write iterative RFCs that force you to articulate and understand the problem before coding, which reveals what you don't know and prevents the cycle of building without understanding.",
+      "ideas": [
+        "LLMs optimize for solutions even in plan mode, causing tunnel vision toward immediate answers",
+        "The LLM psychosis cycle: no friction leads to no understanding leads to being fooled by good-sounding ideas",
+        "Throwing away bad implementations teaches more about a problem than any other technique",
+        "RFCs force the LLM to explain the problem rather than solve it, making unknowns visible",
+        "Iterate through V1-V4 markdown files until you genuinely understand the problem",
+        "An RFC must answer: what is the problem, how important, will this fix it, and what's the cost vs alternatives",
+        "RFCs reveal when an idea sounds good but the code is still garbage",
+        "RFCs focus on problems and general shapes, unlike implementation plans that focus on details",
+        "Reading code is non-negotiable even when using RFCs and iterating on documentation",
+        "Working on the thing is what makes you understand the thing, not beforehand preparation"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a substantive piece on LLM-assisted development that provides multiple novel insights: the 'LLM psychosis' cycle where friction removal prevents understanding, the RFC technique for forcing problem articulation, the four critical questions an RFC must answer, and the contrast between RFCs and implementation plans. The author shares specific practices (throwing away bad drafts, iterating through V1-V4 RFCs, still reading all the code) that are genuinely useful for developers working beyond their expertise. The writing avoids typical LLM-ese and the techniques described have strong practical applicability. The piece is well-focused without padding, delivering concentrated value in a moderate length.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:50:00.440733"
+    },
+    {
+      "id": 4631,
+      "source_id": 34,
+      "original_url": "https://ogxd.github.io/articles/coupling-and-churn/",
+      "title": "The real cost of engineering: churn and coupling",
+      "summary": "The true cost of a software solution is not its size but the product of how often it changes (churn) and how many other components depend on it (coupling)—meaning small, highly-coupled code that changes frequently is far more expensive than large, complex, decoupled systems.",
+      "ideas": [
+        "Cost equals churn multiplied by coupling, not solution size",
+        "High-churn low-coupling code is cheap despite looking expensive",
+        "High-coupling low-churn code like OS kernels costs almost nothing",
+        "Saying no to high-churn high-coupling solutions is highest-leverage decision",
+        "Prototype tools that gain consumers quietly become money pits",
+        "Reduce coupling through narrow private APIs and stable interfaces",
+        "Stop fearing large stable dependencies, fear small changing contracts",
+        "AI coding makes ownership costs invisible by reducing build cost to zero",
+        "Ask two questions before building: how often will it change and what will depend on it"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a high-density piece with a genuinely novel mental model (cost ∝ churn × coupling) that reframes how engineers think about software cost. The content delivers 8+ distinct actionable insights including the counterintuitive operating system example, the prototype trap warning, and practical 'saying no' leverage. No padding detected—each paragraph advances the thesis. The four-quadrant framework provides immediate practical utility, and the reframe about feeling guilty about decoupled code is uncommon wisdom. Aligned with technology/software development and productivity themes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:49:31.113823"
+    },
+    {
+      "id": 4630,
+      "source_id": 34,
+      "original_url": "https://nwktimes.blogspot.com/2026/08/sonic-deep-dive-interface-state-change.html",
+      "title": "SONiC Deep Dive: Interface State Change Pipeline",
+      "summary": "SONiC processes interface state changes through a multi-stage Redis-based pipeline: portmgrd propagates config from CONFIG_DB to APPL_DB, orchagent translates it to SAI objects in ASIC_DB, syncd applies changes to hardware, and portsyncd reports Linux kernel state back through STATE_DB.",
+      "ideas": [
+        "CONFIG_DB uses pipe separator while APPL_DB uses colon for keys",
+        "portmgrd processes Redis notifications and writes port info to APPL_DB",
+        "orchagent retrieves changed keys and passes to PortOrch for SAI processing",
+        "SAI_PORT_ATTR_ADMIN_STATE controls port administrative enable/disable",
+        "SAI_OBJECT_TYPE_PORT and SAI_OBJECT_TYPE_HOSTIF represent ASIC and Linux faces",
+        "libsairedis serializes SAI operations into Redis format for ASIC_DB",
+        "syncd deserializes Redis SAI operations and invokes vendor SAI API",
+        "RTM_NEWLINK carries interface info via RTNETLINK netlink socket multicast",
+        "portsyncd translates Linux kernel link-state to SONiC port-state representation",
+        "STATE_DB provides shared operational state for LLDP, SNMP without kernel queries",
+        "oper_status differs from admin_status - operational vs configured state",
+        "Forward Error Correction (fec) enables receiver-side bit error detection and correction"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a dense, technical deep-dive into SONiC's interface state change pipeline that delivers significant value to network engineers and DevOps professionals. The content explains the entire flow from CONFIG_DB through APPL_DB, ASIC_DB, to hardware ASIC, plus the Linux kernel reverse path through RTNETLINK to STATE_DB. Key value includes detailed Redis notification mechanisms, SAI object relationships (PORT and HOSTIF), field explanations (fec, lanes, link_training, unreliable_los), and the distinction between operational vs administrative status. The content includes real database dumps and specific component roles (portmgrd, orchagent, PortOrch, portsyncd, syncd). High density for its target audience, though it requires existing networking knowledge.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:49:02.879811"
+    },
+    {
+      "id": 4629,
+      "source_id": 34,
+      "original_url": "https://notes.karlmcguinness.com/notes/the-runtime-mints-the-identity/",
+      "title": "The Runtime Mints the Identity. That Does Not Make It the Authority.",
+      "summary": "Runtime environments naturally create the first trustworthy evidence about agent instances, giving them a distribution advantage in agent identity, but the runtime minting identity does not make it the authoritative control point—enterprise binding, credential projection, and resource decisions remain separate jobs with different owners and lifecycles.",
+      "ideas": [
+        "Runtime vendors have distribution advantage because deployment creates the instance",
+        "Standard seams determine whether the distribution default can be challenged",
+        "Identity conflates five separate jobs: runtime proof, attestation, enterprise binding, credential projection, and resource decision",
+        "Attestation proves what is running without predicting what an agent will do next",
+        "Cross-runtime governance requires binding layer entity resolution across vendor islands",
+        "Convenience becomes architecture when vendors control the evidence-to-credential step",
+        "Portability means changing runtime without rebuilding ownership, policy, and accountability",
+        "Resource policy remains the resource owner's decision even when one vendor operates every layer",
+        "Three market plays exist: bundled binding, layered binding, and provider binding",
+        "Bundled binding breaks down at cross-runtime governance requiring translation between vendor islands",
+        "Layered binding has nothing if runtime evidence isn't independently verifiable",
+        "Provider binding requires enterprises to accept the provider's identity, lifecycle, and incident controls",
+        "The approved-work record (Part 3) answers whether current work remains authorized, distinct from binding",
+        "In heterogeneous estates, a binding layer maps evidence from many runtimes into durable records"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a technically dense, well-argued essay that delivers genuine value to enterprise practitioners working on agent identity systems. It provides a rare framework distinguishing five separate functions that 'identity' commonly conflates, analyzes three distinct market plays with clear failure conditions, and offers the actionable principle that 'distribution determines the default while standard seams determine whether it can be challenged.' The three-runtime scenario (Azure, Google Cloud, third-party harness) illustrates real cross-vendor governance problems with concrete detail. The core argument—that runtimes mint the first proof but should not command the last word on authority—offers a mental model practitioners can apply. Some sections like the historical Kerberos/AD analysis feel tangential to the binding layer thesis, but overall the content delivers 7+ distinct insights efficiently for its length.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:48:35.085617"
+    },
+    {
+      "id": 4628,
+      "source_id": 34,
+      "original_url": "https://notes.karlmcguinness.com/notes/kerberos-won-because-nobody-had-to-implement-it/",
+      "title": "Kerberos Won Because Nobody Had to Implement It",
+      "summary": "Kerberos succeeded not because of protocol superiority but because SSPI, LSA, Active Directory, and SPNEGO made it invisible to developers - AAuth needs the same surrounding infrastructure layers (a provider seam) more than another authentication scheme.",
+      "ideas": [
+        "Protocols win when beneficiaries stop being implementers",
+        "OAuth won fragmented because the internet has no single platform owner",
+        "The provider seam is the interface where agent code asks for access and the platform decides mechanism",
+        "SPIFFE provides the closest LSA analog but remains fragmented across vendors",
+        "The identity authority row is what actually decided Kerberos and has no agent equivalent yet",
+        "AAuth needs to become invisible, not merely spoken - the higher bar",
+        "A library or demo is not the provider interface itself",
+        "Harness vendors, AI gateways, and enterprise IdPs all claim the seam",
+        "Five provider seam responsibilities have Kerberos precedents and existing pieces",
+        "WWW-Authenticate, Accept-Signature, and AAuth-Requirement enable incremental rollout"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The essay delivers a genuinely insightful thesis - protocols succeed through infrastructure, not technical merit - backed by detailed Kerberos-to-agent mapping and a concrete provider seam responsibilities table. The OAuth counterfactual with the Heroku/Travis-CI breach example provides rare evidence-based insight. The content is dense, focused, and avoids padding while treating a complex topic with appropriate depth. Slight扣 for being narrowly targeted at identity/security professionals rather than broader appeal, and for some product-specific discussion (Microsoft Entra, Google Agent Identity) which serves illustration but indicates vendor interest. The 'library vs. platform seam' distinction and the five-responsibility table with Kerberos precedents are the strongest actionable outputs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:46:45.769019"
+    },
+    {
+      "id": 4627,
+      "source_id": 34,
+      "original_url": "https://nesbitt.io/2026/08/11/package-manager-library-reuse.html",
+      "title": "Shared Code Between Package Managers",
+      "summary": "Package managers share significant code (semver, libsolv, PyPA libraries) yet independently fix the same security vulnerabilities, creating systemic risk from parallel reimplementation of security-critical operations like archive extraction, git invocation, and version parsing.",
+      "ideas": [
+        "Pixi depends on 28 uv crates including uv-resolver and uv-client as its PyPI backend",
+        "npm, Yarn, and pnpm share eight npm-org packages: semver, ssri, hosted-git-info, and others",
+        "PyPA's packaging and pyproject-hooks libraries are reused by pip, Poetry, and Conda",
+        "libsolv is the only solver library shared across unrelated package registries (DNF5, Mamba)",
+        "pip, Bundler, and Homebrew vendor code instead of declaring dependencies for bootstrap reasons",
+        "npm's tar package had five path-traversal CVEs in 2021 affecting npm and Yarn simultaneously",
+        "Go was vulnerable to git argument injection for five years after the pattern was publicly documented",
+        "RubyGems cannot publish a git-source gem it could depend on due to bootstrap ordering",
+        "No two non-JavaScript package managers share archive extractors or git subprocess wrappers",
+        "Molinillo resolver was vendored independently by Bundler and RubyGems before both switched to pub_grub"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a technically dense analysis with 9+ distinct insights about code sharing patterns across package managers and their security implications. The author provides concrete data (Pixi's 28 uv crates, 8 shared npm-org packages, 5-year vulnerability gap in Go) rather than vague assertions. The core insight about independent reimplementation of security-critical code creating parallel vulnerability surfaces is both novel and actionable. The bootstrap problem insight is particularly valuable - a chicken-and-egg constraint preventing self-referential dependencies. Only minor deduction for the fact that this targets a narrow specialist audience of package manager developers and security researchers rather than a broader technical audience. The content is tightly focused with no obvious padding or fluff.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:46:09.298813"
+    },
+    {
+      "id": 4626,
+      "source_id": 34,
+      "original_url": "https://neciudan.dev/ai-agents-architecture",
+      "title": "AI Agents: Architecture",
+      "summary": "AI agents combine model calls with code-controlled loops; choosing the right architecture pattern (single call, chain, router, fan-out, generator+reviewer, tool loop, or plan-then-execute) depends on whether tasks are fixed or dynamic, with the biggest pitfalls being same-family bias in reviewer setups and prompt injection in tool loops.",
+      "ideas": [
+        "AI agents combine model decision-making with code-controlled loops for multi-step tasks",
+        "AI API calls are non-deterministic, hallucinate confidently, cost per token, and can't do math",
+        "Different model jobs need different capabilities: drivers need judgment, classifiers need only correctness",
+        "Small models in driver seats cause infinite loops from misreading results",
+        "Chaining 5 steps at 95% success each yields only 77% overall success rate",
+        "Router architectures fail when classifiers misclassify inputs to wrong handlers",
+        "Fan-out runs parallel tasks but each result is blind to others in the set",
+        "Generator+reviewer suffers from same-family bias where the reviewer shares writer blind spots",
+        "Tool loops require mandatory turn limits to prevent infinite execution",
+        "Prompt injection becomes dangerous in tool loops where malicious data can be interpreted as instructions",
+        "Plan-then-execute separates strategic planning from tactical execution for efficiency",
+        "Start with frontier models when building new features, then downgrade with evals"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptionally dense technical content delivering 6 architecture patterns with working code examples, a clear model selection framework, and critical warnings about pitfalls like same-family bias and prompt injection. The author covers single call, chain, router, fan-out/voting, generator+reviewer, tool loop, and plan-then-execute patterns with specific failure modes for each. The travel agent example runs throughout providing concrete context. Key insights include the 77% success rate math for chained steps, the 'judge weaker than writer' anti-pattern, and the dangerous consequences of prompt injection in tool loops. Minor deduction for the abrupt ending where the 'Plan then execute' section cuts off mid-sentence, suggesting the piece may be incomplete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:45:31.024436"
+    },
+    {
+      "id": 4625,
+      "source_id": 34,
+      "original_url": "https://navendu.me/posts/tinygo-3477/",
+      "title": "machine.PinInputPullup Does Not Work on Some GPIO Pins",
+      "summary": "GPIO pins with RTC functions (GPIO4, GPIO25-27, GPIO32-33, GPIO12-13) require setting RTC_IO registers for pull-up/pull-down, not just IO MUX bits—mirroring how ESP-IDF handles this via rtc_gpio_pullup_en() vs gpio_hal_pullup_en().",
+      "ideas": [
+        "GPIO pins 32, 33, 25, 26, 27, 12, 13, 4, and 2 require RTC_IO register configuration for pull resistors",
+        "The fix requires calling rtc_gpio_pullup_en() for pins with RTC function, not just IO MUX bits",
+        "RTC_GPIO pins need SET_PERI_REG_MASK on RTC_IO registers (PDAC1_RUE, PDAC2_RDE, etc.)",
+        "gpio_hal_pullup_en() sets IO MUX bits; rtc_gpio_pullup_en() sets RTC_IO registers",
+        "TinyGo's configure() was missing the RTC pull configuration entirely",
+        "GPIO34-39 are input-only with no internal pull-up/pull-down circuitry",
+        "The fix adds a configureRTCPull() helper that writes the appropriate RTC_IO registers per pin",
+        "Issue #3477 was open for three years before this fix in PR #5578"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-crafted technical deep-dive that delivers genuine value through a clear debugging narrative. The author identifies a specific root cause: GPIO pins with RTC functions require RTC_IO register writes, not just IO MUX configuration. The post includes reproducible test code, datasheet analysis, and references official ESP-IDF source to find the fix. The content is technical and niche but thoroughly documented with code samples and data. Slight padding in the personal narrative sections, but the core technical content is dense with actionable information about ESP32 pin configuration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:45:01.753700"
+    },
+    {
+      "id": 4624,
+      "source_id": 34,
+      "original_url": "https://nanomicon.com/blog/260812-ai-actually-raises-the-skill-floor-if-youre-serious",
+      "title": "AI Actually Raises the Skill Floor - If You're Serious",
+      "summary": "AI tools lowered the barrier to starting code but raised the floor for safe production deployment; developers must now operate as orchestrators with cross-domain awareness, not just implementers.",
+      "ideas": [
+        "AI lowered the barrier to starting, not the skill floor for shipping safely",
+        "45% of AI-generated code has security flaws; 72% for Java (Veracode)",
+        "74 AI-introduced vulnerabilities confirmed by Georgia Tech researchers",
+        "84% of developers use AI tools but only 29% trust the output",
+        "DORA 2025: 98% more PRs merged, 91% longer review times, 154% larger PRs",
+        "Harness 2026: 34% more production incidents without updated review processes",
+        "Three paths: team specialists, automated guard systems, or enforcement by construction",
+        "Proof-carrying output and runtime policy kernels enable deterministic AI enforcement",
+        "Reviewers now do two jobs: check the code and check author understanding",
+        " Juniors cannot assess AI output quality without deep system knowledge",
+        "AI multiplies output but does not add judgment or domain expertise",
+        "T-shaped developers now need horizontal breadth across security, architecture, and review",
+        "Tools reduce depth needed but increase breadth required from developers",
+        "Anthropic's own research: 17% lower comprehension in AI-assisted junior developers",
+        "Microsoft Research shows task completion gains but not safe production outcomes"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-structured, data-rich analysis that delivers genuine value through a novel conceptual framework (barrier vs. floor distinction), substantial statistics from credible sources (Veracode, DORA, Georgia Tech, Stack Overflow), and three actionable paths for handling AI code review. The content engages seriously with counter-evidence (Microsoft Research, Gartner) rather than dismissing it. Minor deduction for some repetition of the core thesis, but overall the content is focused, evidence-backed, and directly applicable to software development teams navigating AI tool adoption. The three review questions for AI-generated code and the T-shaped developer evolution are particularly useful additions.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:42:18.659078"
+    },
+    {
+      "id": 4623,
+      "source_id": 34,
+      "original_url": "https://mcgarrah.org/jellyfin-media-integrity-dashboard-api/",
+      "title": "Jellyfin Media Integrity Scanner: The Dashboard &amp; API",
+      "summary": "Reverse-engineered implementation details for Jellyfin plugin development, including undocumented JSON serialization quirks, SPA fragment structure requirements, and database deduplication strategies that would otherwise require extensive trial and error to discover.",
+      "ideas": [
+        "Fire-and-forget API pattern returns 409 Conflict immediately, then Task.Run for async scanning",
+        "ASP.NET Core defaults to camelCase JSON but Jellyfin host uses raw PascalCase property names",
+        "Jellyfin's ViewManager requires fragment structure: data-role=\"page\" class=\"page type-interior pluginConfigurationPage\"",
+        "GUID plugin IDs need to be passed without hyphens to /Plugins/{id}/Configuration routes",
+        "Use ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY scan_phase DESC) to deduplicate multi-phase scans",
+        "Derive real TotalFiles from ILibraryManager.GetItemList() not scan_results COUNT",
+        "Cross-links in Jellyfin SPA pages need href=\"#/configurationpage?name=...\" hash prefix",
+        "Dashboard polling via setInterval keeps reporting Scanning through playback wait periods"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid technical content from a developer documenting real implementation work on a Jellyfin plugin. The value lies in practical insights: the JSON serialization asymmetry between ASP.NET Core's camelCase default and Jellyfin's PascalCase output (which isn't well-documented), the reverse-engineered fragment structure for Jellyfin's SPA ViewManager system, the GUID routing quirk with hyphens, and the database deduplication strategy using ROW_NUMBER() window functions. The content is dense with implementation details rather than theory, covering both the original implementation and subsequent bug fixes discovered through integration testing. At ~1800 words with 8+ distinct actionable insights, the value density is high for the target audience of developers building Jellyfin plugins or similar ASP.NET Core integrations. No padding, no fluff - just engineering decisions with their reasoning and the bugs found along the way.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:32:35.659487"
+    },
     {
       "id": 4622,
       "source_id": 34,
