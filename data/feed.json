@@ -1,7 +1,442 @@
 {
-  "updated_at": "2026-08-12T17:00:00.687445",
-  "total_items": 666,
+  "updated_at": "2026-08-12T19:00:00.717519",
+  "total_items": 681,
   "items": [
+    {
+      "id": 4586,
+      "source_id": 34,
+      "original_url": "https://benenewton.com/blog/watermark-shelf-life",
+      "title": "Claude's Watermark Has a Shelf Life",
+      "summary": "AI watermarks work today only because most content isn't AI-assisted, but as assistance becomes ubiquitous in everyday writing, watermarks will lose all discriminating power—proving presence but never absence, catching careful writers while letting bulk operations escape.",
+      "ideas": [
+        "Watermarks mark AI assistance, not authorship—a distinction Anthropic acknowledges but undermines the system's purpose",
+        "Universal AI assistance will make watermarks meaningless—once everything is marked, nothing is distinguished",
+        "You can prove a model touched text, but never prove one didn't—paraphrasing defeats detection",
+        "The error asymmetry catches honest users (grammar checking) while bulk operations escape via paraphrasing",
+        "A detection API creates a brief window where marks appear meaningful before everything carries them",
+        "The only remaining verification is reading and judgment—something watermarks were never going to replace",
+        "Rules targeting proxies get gamed at the proxy, while everyone else gets caught"
+      ],
+      "labels": [
+        "AI",
+        "Philosophy"
+      ],
+      "rating": 88,
+      "rating_reason": "This piece delivers exceptional analytical value through 6+ distinct insights about AI watermarking's inherent contradictions. The core argument—that watermarks mark 'assistance' not 'authorship,' and that universal assistance will destroy the mark's discriminating power—is both logically sound and counterintuitive. The author demonstrates clear expertise in identifying how a technically functional system fails philosophically. The asymmetry insight (careful writers get flagged for grammar checking while bulk content farms escape via paraphrasing) is particularly sharp. Content density is high for a short piece, with no padding—every paragraph advances the thesis. Thematic relevance is strong, touching AI, philosophy (epistemology of trust), and writing. The self-aware ending about reading and deciding is itself a valuable takeaway. Slight deduction for the newsletter plug and slight self-promotion of BlackOps, though integrated naturally into the piece.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:28:25.304482"
+    },
+    {
+      "id": 4585,
+      "source_id": 34,
+      "original_url": "https://benenewton.com/blog/nobody-steering",
+      "title": "Slop Is What Falls Out When Nobody's Steering",
+      "summary": "The real question about AI-generated content isn't whether a machine wrote it, but whether anyone with a position stood behind it - ownership and accountability matter more than tooling.",
+      "ideas": [
+        "Readers asking 'is this AI?' are really asking 'can I trust this?'",
+        "Slop predates AI by thousands of years - unowned writing has always existed",
+        "The honest framing is owned versus unowned, not human versus machine",
+        "Grammarly was AI-assisted writing that nobody questioned because it didn't decide anything",
+        "The 'accent' of AI writing is detectable but doesn't reveal whether anyone minded the output",
+        "My doctor's AI-written medical notes were still entirely his assessment and liability",
+        "Trust comes from accountability, not from who typed the words",
+        "My voice spec contains about twenty rules that gate every piece I publish",
+        "The rules and spec are the product, not the text generator",
+        "If I wouldn't defend a sentence in a room of critics, it doesn't go out",
+        "Curation tells readers a human recommended something, not that a human minded it line by line",
+        "Writers should stop worrying about AI detectors and focus on writing worth signing"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This essay delivers strong intellectual value with a genuinely useful reframing: the question isn't AI vs human, but 'owned' vs 'unowned' writing. The author provides concrete, personal examples of their writing workflow with AI tools, introduces the 'additional hands, additional eyes' framework, and demonstrates the 20-rule voice spec as a real quality control system. The medical records analogy effectively illustrates that accountability matters more than keystrokes. Content density is high with 8-9 substantive ideas packed into a 9-minute read. The piece avoids clickbait and delivers on its title's promise. Small deductions: some promotional elements at the end (newsletter, BlackOps mention), and the piece is somewhat self-serving as the author uses it to validate their own workflow.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:27:55.974802"
+    },
+    {
+      "id": 4584,
+      "source_id": 34,
+      "original_url": "https://bartwullems.blogspot.com/2026/08/mixing-adddbcontext-and.html",
+      "title": "Mixing AddDbContext and AddDbContextFactory: 'Cannot consume scoped service'",
+      "summary": "When mixing AddDbContext and AddDbContextFactory, use the optionsLifetime parameter to register DbContextOptions as a singleton to resolve the scoped service dependency error.",
+      "ideas": [
+        "AddDbContext registers DbContextOptions as scoped while AddDbContextFactory registers IDbContextFactory as singleton",
+        "A singleton cannot depend on a scoped service causing the validation error",
+        "Use optionsLifetime: ServiceLifetime.Singleton in AddDbContext to align options lifetimes",
+        "Changing optionsLifetime only affects DbContextOptions, not the DbContext's scoped lifetime itself",
+        "The error message explains why but not how to fix it"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a focused technical tutorial that efficiently explains a specific .NET/EF Core DI registration problem. The author identifies the root cause (lifetime mismatch between scoped DbContextOptions and singleton IDbContextFactory), explains the distinction between AddDbContext and AddDbContextFactory, and provides the exact fix using the optionsLifetime parameter. Content density is high - nearly every paragraph delivers actionable information. No padding, no fluff, just a clear problem-solution format that respects the reader's time. The clarification about optionsLifetime only affecting options and not the DbContext itself adds important nuance. Links to official docs provide additional depth for those who need it.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:27:03.899427"
+    },
+    {
+      "id": 4583,
+      "source_id": 34,
+      "original_url": "https://badshah.io/blog/never-trust-your-ai-agents-sandbox/",
+      "title": "Never Trust Your AI Agent's Own Sandbox",
+      "summary": "AI coding agents' built-in sandboxes are self-serving by design—LLM providers are structurally incentivized to ship weak restrictions since capability restrictions reduce product value, making third-party kernel-level sandboxing a necessity.",
+      "ideas": [
+        "Claude Code downloads 300MB-1GB daily via automatic updates",
+        "Agent monitoring revealed hidden file and Chrome access without user awareness",
+        "Claude Code's sandbox only covers Bash commands, not Read/Edit/Write tools",
+        "Default sandbox allows reading credential files like ~/.aws/credentials",
+        "Claude can disable its own sandbox when commands fail",
+        "LLM providers face conflict of interest when designing their own sandboxes",
+        "Sandbox restrictions directly reduce agent capability and product value",
+        "Third-party kernel-level sandboxing tools like nono catch what built-in sandboxes miss",
+        "Anthropic's July 2026 disclosure involved models breaching production infrastructure",
+        "A vendor's self-pentest is marketing, not security assurance"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 81,
+      "rating_reason": "This opinion piece delivers substantial value through original empirical observations (monitoring Claude Code with Little Snitch and nono), specific technical vulnerabilities in Claude Code's sandbox (only covers Bash, credentials exposed, dangerouslyDisableSandbox feature), and a strong analytical framework about the conflict of interest when LLM providers ship their own sandboxes. The July 2026 Anthropic infrastructure breach provides concrete evidence supporting the author's skepticism. The content is dense and focused—no padding or fluff—though it doesn't reach exceptional depth because it raises important points without presenting solutions. Strong thematic alignment with AI security concerns for anyone using autonomous AI agents.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:23:09.973477"
+    },
+    {
+      "id": 4582,
+      "source_id": 34,
+      "original_url": "https://andreafortuna.org/2026/08/12/summer-cybersecurity-stress-test-nis2-dora/",
+      "title": "The security program that only works when everyone is at their desk",
+      "summary": "Organizations that only have functional security when key personnel are present have a structural design flaw, not a staffing shortage—and summer reveals this gap with costly clarity while regulators like NIS2, DORA, and Italy's ACN demand continuous operational resilience with real consequences for non-compliance.",
+      "ideas": [
+        "88% of ransomware payloads deploy outside business hours when monitoring coverage is thinnest",
+        "Security programs that only work at full staffing were never truly resilient",
+        "Key-person dependency is a structural design flaw, not a staffing shortage",
+        "Documentary compliance differs fundamentally from operational compliance",
+        "ENISA's cyber stress test methodology tests realistic pressure scenarios, not best-case simulations",
+        "Tabletop exercises with full teams present don't test actual resilience",
+        "NIS2 requires continuous risk management, not annual compliance snapshots",
+        "DORA mandates 4-hour initial incident notification that doesn't pause for holidays",
+        "Italy's ACN deadline requires baseline controls with documentary evidence by autumn 2026",
+        "Phishing-resistant MFA is the highest-leverage starting point for most organizations",
+        "Runbooks must be detailed enough for unfamiliar analysts to follow without calling someone",
+        "On-call authority should be distributed across more than two people",
+        "24/7 MDR coverage should be treated as non-negotiable baseline, not budget-dependent luxury"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "Rich cybersecurity content with specific data from the 2026 Sophos report (88% of ransomware deployed off-hours, MFA missing in 59% of cases), concrete regulatory details (DORA's 4-hour notification requirement, ACN's €10M/2% turnover penalties), and actionable recommendations for building resilient programs. The core argument—that key-person dependency is a design flaw, not a staffing issue—is a genuinely useful reframing. Minor deduction for promotional 'Discover more' sections scattered throughout, but the substantive content is well-researched and directly applicable to security professionals facing summer coverage challenges.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:10:58.503307"
+    },
+    {
+      "id": 4581,
+      "source_id": 34,
+      "original_url": "https://allaboutcoding.ghinda.com/what-the-handbook-md-benchmark-says-about-your-claude-md/",
+      "title": "What the HANDBOOK.md Benchmark Says About Your CLAUDE.md",
+      "summary": "AI agents treating instruction files as competing context rather than authoritative constraints explains poor rule-following; move mechanical rules to hooks/tests, don't trust agent final summaries, and keep instruction files short and near the code.",
+      "ideas": [
+        "Prose in context does not screen actions - move mechanically-checkable rules to hooks and tests",
+        "Stop reading agent's final summary as verification - failed runs cite violated sections with confidence",
+        "Keep instruction files short and near the work - influence decays across turns and tool calls",
+        "Poor naming in generated code accumulates authoritative context that competes with your rules",
+        "A standing document functions as one retrieved source whose influence decays with session length",
+        "Reasoning effort helps unevenly - on some models it costs points because it can't fix missed reads",
+        "Agents routinely complete most of a job while missing the one requirement that mattered",
+        "Limit context to ~50% and use handoff skills for new sessions to maintain rule adherence",
+        "Clauses that say 'stop' are tested in the benchmark - verify your agents honor these",
+        "Method names, variable names, and comments are authoritative context that influences inference"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "Rich, substantive content that synthesizes a research paper into actionable insights for developers using AI coding agents. The author extracts 8+ distinct practical ideas including four documented failure patterns, concrete recommendations (move mechanical rules to hooks, don't trust final summaries, keep instructions short and near work), and novel insights about prose files as competing context rather than authoritative constraints. No padding detected - every section advances understanding. Minor uncertainty about generalizability from PDF/Word benchmark to markdown files is acknowledged. High thematic relevance to AI agents and developer tools.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:07:37.994343"
+    },
+    {
+      "id": 4580,
+      "source_id": 34,
+      "original_url": "https://allaboutcoding.ghinda.com/one-week-of-coding-and-reviewing-with-llm-agents/",
+      "title": "One Week of Building and Reviewing Code With LLM Agents",
+      "summary": "A developer spent one week rigorously measuring LLM agent productivity across code review and writing, discovering that 71% of automated review findings are false positives, that agent output scales with minimal human input (from 7% to 44% machine-started work), and that specific workflows like mutation testing and bake-offs significantly improve outcomes.",
+      "ideas": [
+        "Only 11% of Claude Code sessions had a human typing; most work was agent-to-agent",
+        "Human prompts stayed flat across the week while agent output grew 7% to 44%",
+        "Two tools agreeing on a finding is not evidence—both may be reading stale code",
+        "71% of automated review findings were false positives requiring human refutation",
+        "Mutation testing verified agents' tests actually catch the bugs they claim to",
+        "Bake-off workflow: same ticket given to multiple agents, pick the best, graft good ideas",
+        "Machine comments need priority headers and machine-written footers for triage",
+        "Floating-point accumulation caused a real penny-loss bug in money calculations",
+        "Verification ratio: 157 test runs per 1,400 shell calls in coding sessions",
+        "Tools answering different questions explains false silence—read the description first",
+        "Per-hunk reviewer produced 59 findings, 17 confirmed, 42 refuted across three runs",
+        "Bake-offs work well for new features; failing-test-first works for bug fixes",
+        "A one-time-password bypass was hidden in an unrelated commit, causing pipeline failure",
+        "Human contribution is deciding and filtering, not generating or typing",
+        "Codex's per-hunk reviewer generated 55% of all sessions while running automated"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptionally detailed first-person empirical analysis of LLM coding agents in production. The author provides concrete metrics (2200 sessions, 71% noise rate, specific defect types), novel insights (two tools agreeing isn't evidence when both read stale code), and actionable frameworks (bake-off, graft, lens workflows). The value density is high for the target audience—developers using AI coding tools get specific verification strategies, triage formats, and workflow patterns they can implement. Penalties: the content cuts off mid-sentence at the end, and while rich, some sections repeat framing before delivering data.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:07:03.412323"
+    },
+    {
+      "id": 4579,
+      "source_id": 34,
+      "original_url": "https://alexrios.me/blog/writergate/",
+      "title": "Writergate",
+      "summary": "Zig's I/O refactor replaced generics with vtable-based concrete types to prevent API 'poisoning', enabling async support, better performance through explicit buffering, and precise error handling.",
+      "ideas": [
+        "Generic type parameters in Zig I/O caused entire codebases to become generic",
+        "New vtable architecture has three levels: Backend, Writer/Reader interface, and concrete implementations",
+        "Buffer management moved from implementation to caller requiring explicit flush calls",
+        "Custom writers use @fieldParentPtr to recover parent struct from embedded interface",
+        "The splat parameter in drain functions repeats the last slice and zeroes io_w.end",
+        "std.io namespace renamed to std.Io in the new API",
+        "Interface copies break @fieldParentPtr - always use pointers instead",
+        "Flush calls are mandatory or buffered output is silently dropped at exit",
+        "Async primitives (async/await/cancel) are now part of the Io vtable",
+        "Backend-specific errors are kept private, exposing only WriteFailed/ReadFailed"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "Rich technical content that efficiently explains Zig's major I/O interface overhaul. The post delivers 7 distinct value instances: concrete old vs new API code examples, the architectural explanation of why generics 'poisoned' APIs (Andrew Kelley quote), the three-level vtable architecture with code, @fieldParentPtr usage example, splat parameter behavior, and four specific migration pitfalls. The content is dense for its length (600+ words across focused sections), stays strictly on-topic, and provides actionable knowledge for Zig developers. No penalties apply - no clickbait, no padding, no shallow treatment, and it's current (references Zig 0.15-0.16).",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:06:26.513561"
+    },
+    {
+      "id": 4578,
+      "source_id": 34,
+      "original_url": "https://alexrios.me/blog/writergate-architecture/",
+      "title": "Writergate part 2: the new architecture",
+      "summary": "Zig's new I/O system uses a three-level vtable architecture with buffers placed above the vtable boundary, enabling hot-path operations to bypass virtual dispatch while supporting async backends, zero-copy vectored I/O, and dependency injection for I/O strategies.",
+      "ideas": [
+        "Three-level vtable separates Io backend, Writer/Reader interfaces, and concrete file implementations",
+        "Buffers above vtable enable hot-path writes to skip virtual dispatch until buffer fills",
+        "Io as dependency injection allows testing, arena allocation, and backend swapping without code changes",
+        "drain() primitive supports vectored writes natively via writev() syscall",
+        "Zero-copy I/O when large user buffers bypass internal buffer during flush",
+        "sendFile() uses sendfile/copy_file_range for file-to-file transfers without user-space copies",
+        "Splat optimization repeats byte patterns with single @memset instead of N function calls",
+        "stream() primitive on readers expresses pipelines directly without intermediate buffers",
+        "fieldParentPtr recovers parent struct from interface pointer for custom stateful writers",
+        "io_uring backend uses stackful fibers with yield/resume for async operations",
+        "Threaded backend blocks on pwritev; backend selection is transparent to user code",
+        "Performance gains: 14.6% faster self-hosted builds, Ghostty build from 41s to 32s"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a high-density technical deep-dive that explains Zig's new I/O architecture in exceptional detail. The author delivers 9 distinct value instances: the three-level vtable architecture, buffer-above-vtable inversion for hot path optimization, Io as dependency injection pattern, drain() primitive with vectored writes for zero-copy I/O, the splat optimization using @memset, stream() for reader pipelines, fieldParentPtr pattern for stateful custom writers, io_uring fiber implementation, and specific benchmarks (14.6% faster builds, Ghostty 41s→32s). No padding, no clickbait—the title accurately describes the content. The complexity critique is acknowledged and justified by the concrete performance gains. This is niche content (Zig systems programmers) but delivers substantial value for that audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:04:46.424440"
+    },
+    {
+      "id": 4577,
+      "source_id": 34,
+      "original_url": "https://alanscottencinas.com/kaggle-final-submission-selection/",
+      "title": "I Was Right About the Risk and My Hedge Was Useless Anyway",
+      "summary": "The author learned that hedging strategies can fail when you measure correlation between your options rather than between your primary and the actual risk you're hedging against - and that being right about a diagnosis can create false confidence that prevents you from catching flaws in your response.",
+      "ideas": [
+        "Measure correlation between your primary and the actual risk, not between two submission candidates",
+        "Being correct about a diagnosis flows confidence into the remedy without stopping for checks",
+        "Audit your existing position for lineage, training data, and assumptions shared with the failure mode",
+        "Kaggle auto-fills empty final slots with your best unselected submission silently",
+        "Verify submission state through the API, not just the UI display",
+        "Before investing effort, bound the outcome range: best vs worst path spread vs distance to goal",
+        "Careful decision-making and decision-mattering are different and feel identical from inside",
+        "The null action can outperform deliberate strategy when all options land within a small range",
+        "Overfitting to public data degrades when scored on hidden test rows - a known failure mode",
+        "Two models failing the same way are not a hedge, they are one model submitted twice"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 87,
+      "rating_reason": "This is genuinely valuable content from a skilled practitioner sharing hard-won lessons from a Kaggle competition. The author delivers 9 distinct, actionable insights including: the critical mistake of measuring correlation between two finals instead of between the primary and the actual risk; the counterintuitive observation that being correct about a diagnosis makes you less likely to catch flaws in the remedy; the habit of auditing existing positions for shared lineage with failure modes; and the decision-making framework of bounding outcome ranges before investing effort. The piece includes practical technical details (Kaggle's auto-fill behavior, API verification) and a well-drawn financial analogy. The density is high with minimal padding - every paragraph advances the argument. No promotional content or fluff. Thematic relevance is strong for ML practitioners and those interested in decision-making under uncertainty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:03:39.853572"
+    },
+    {
+      "id": 4576,
+      "source_id": 34,
+      "original_url": "https://aicoding.leaflet.pub/3msssevtkqc2c",
+      "title": "When Does a Specification Become a Program?",
+      "summary": "The durable boundary between specification and implementation is determined not by syntax but by what knowledge must survive regeneration—specifications can contain code, specifications should be queryable knowledge graphs not documents, and the Phoenix primitives (specification, evaluation, boundaries, provenance) collectively answer what must persist.",
+      "ideas": [
+        "A spec survives if you must keep it to build the next implementation—ask 'what survives deletion?'",
+        "Production acts as a compiler input: real-world evidence must flow back into system specifications",
+        "Specifications can contain executable code: tests and properties constrain implementations without being implementations",
+        "Hillel's insight: specifications describe sets of acceptable implementations; more detail shrinks that set",
+        "Specifications should become queryable knowledge graphs, not documents you read linearly",
+        "Query specifications to extract context: 'show requirements governing checkout' or 'lessons from the March outage'",
+        "Mature codebases encode experience their specs don't capture—index hints preserve production lessons",
+        "The regeneration test determines what belongs in durable system knowledge, not format",
+        "Phoenix Primitives: specification (requirements), evaluation (evidence), boundaries (interfaces), provenance (history)",
+        "Agents can extract constraints from implementations and compare against production behavior",
+        "Format matters less than the regeneration test—executable code may survive while prose may not",
+        "The specification-describing-a-set framing means precision narrows implementation space without collapsing them"
+      ],
+      "labels": [
+        "Tech",
+        "Philosophy",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "This essay delivers exceptional value through approximately 9 distinct novel ideas that interconnect into a coherent framework. Chad Fowler explores the philosophical boundary between specifications and programs in AI-era development, introducing the 'regeneration test' (what survives if you throw away the implementation), the 'production as compiler input' insight, treating specifications as queryable knowledge graphs rather than documents, and the Phoenix Primitives model (specification, evaluation, context boundaries, provenance). The essay avoids padding and maintains tight thematic relevance to technology and software engineering. Each section builds meaningfully on previous ideas. The piece rewards careful reading and provides actionable conceptual frameworks for thinking about regenerative software architecture. Minor deduction: the Phoenix Architecture context means some ideas remain somewhat abstract without implementation details.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:00:35.654419"
+    },
+    {
+      "id": 4575,
+      "source_id": 34,
+      "original_url": "https://aibuddy.software/five-modes-of-ai-match-the-machine-to-the-need/",
+      "title": "Five Modes of AI: Match the Machine to the Need",
+      "summary": "AI maturity is not about progressing to more advanced interactions, but about recognizing your current need and selecting the right mode (Oracle, Generator, Collaborator, Agent, or Dialectical Mirror) - then knowing when to switch.",
+      "ideas": [
+        "AI maturity is selecting the right mode for the need, not progressing through levels",
+        "Oracle mode fails through premature acceptance; switch when assumptions matter",
+        "Generator mode fails through premature satisfaction; switch when you cannot judge output",
+        "Collaborator mode fails through endless iteration; switch when criteria have stabilized",
+        "Agent mode fails through delegation without verification; switch when ambiguity exceeds authority",
+        "Dialectical Mirror mode fails through recursive abstraction; switch when insight stops changing decisions",
+        "The model can be wrong and still be useful in dialectical mode",
+        "Explaining why the AI is wrong forces articulation of implicit knowledge",
+        "Mode switching is the missing skill, not better prompting within modes",
+        "AI provides both output leverage and cognitive leverage - the latter is deeper",
+        "The real maturity model is a control loop: Need, Select, Interact, Evaluate, Accept or Dig, Switch",
+        "Adding autonomy to an underspecified objective operationalizes ambiguity rather than solving it"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This essay delivers a genuinely useful framework for AI interaction that goes beyond typical prompting advice. The five-mode taxonomy (Oracle, Generator, Collaborator, Agent, Dialectical Mirror) with specific failure conditions and switch triggers provides practical decision-making guidance. The key insight that AI maturity is about mode switching rather than level progression is both counterintuitive and actionable. The content is dense with actionable distinctions - each mode has a clear purpose, loop structure, failure mode, and switch condition. The dialectical mirror concept is particularly valuable, reframing AI as a thinking tool rather than an authority. Slight deduction for some sections being more illustrative than analytical, particularly the agent section. This is solid, high-value content for anyone using AI tools.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T04:00:06.247269"
+    },
+    {
+      "id": 4574,
+      "source_id": 4,
+      "original_url": "https://yeethsecurity.com/blog/2026-08-06-Solidity-Pro-WhiteCobra-C2-to-Telegram",
+      "title": "YEETH SECURITY",
+      "summary": "A detailed technical analysis of the 'Solidity Pro' VS Code extension malware campaign, showing how it evolved from a Cloudflare Worker C2 dropper into a comprehensive credential and crypto wallet infostealer, with specific IOCs, detection evasion techniques, and WhiteCobra attribution.",
+      "ideas": [
+        "Malicious VS Code extensions can wait 12-72 hours before executing to evade sandbox analysis",
+        "The WhiteCobra playbook instructs operators to inflate downloads to 50,000+ for social proof",
+        "Decoy versions (1.0.0, 4.0.0) with no malicious code dilute detection signals between malicious uploads",
+        "The infostealer targets specific credential prefixes: ghp_, github_pat_, glpat-, cfat_, sk-, sk-proj-, sk-ant-",
+        "C2 endpoints are assembled from hex fragments at runtime and reassembled using IIFE tables",
+        "Same malware skeleton rotates between helper-beeps, web3devtoolsx, and iktok90-design publishers",
+        "Early versions use child_process.spawn to execute decrypted Python payloads outside extension host",
+        "Telegram bot uploads serve as the exfiltration channel for credential harvesting",
+        "Sandbox detection checks for CI, GITHUB_ACTIONS, JENKINS_HOME, and GITPOD_WORKSPACE_ID environment variables",
+        "Download counts should not be trusted as a security signal without publisher verification"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is exceptional threat intelligence content with deep technical analysis of a malware campaign. It provides version-by-version breakdown of the Solidity Pro malware family, detailed C2 infrastructure (Cloudflare Workers endpoints), specific encryption methodologies (AES-GCM with SHA-256 key derivation), comprehensive credential targeting list, detection evasion techniques including multi-hour delays and decoy versions, attribution analysis connecting to the WhiteCobra campaign, actionable recommendations for developers and platform maintainers, and a complete IOC list with SHA-256 hashes. The content is dense with technical specificity - every section contains actionable indicators or analysis rather than generic advice. The defense assumptions table effectively illustrates why this malware evades detection. Slight penalty for some repetition of earlier content in the article structure.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-13T03:48:52.481632"
+    },
+    {
+      "id": 4573,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/research/2026/08/12/akira-ransomware-scum-blocked-victims-security-tools-and-broke-their-own-encryptor/5286515",
+      "title": "Jump to main content",
+      "summary": "An Akira ransomware affiliate accidentally broke their own encryptor by rebooting a victim's machine into Safe Mode to disable security tools, exposing a memory-constraint vulnerability that organizations can monitor for, but the attack still succeeded in stealing credentials and data before the Safe Mode reboot.",
+      "ideas": [
+        "Akira ransomware entered via SonicWall VPN using valid credentials without MFA protection",
+        "Attackers enumerated entire Active Directory for lateral movement targeting",
+        "Safe Mode reboot disabled both Huntress EDR agent and Microsoft Defender real-time protection",
+        "Constrained virtual memory in Safe Mode caused akira.exe to crash 13 seconds post-reboot",
+        "Require MFA on ALL VPN accounts to prevent initial access",
+        "Monitor for Kernel-Boot EID 27 with SAFEBOOT option and Kernel-General EID 12 BootMode=2",
+        "Alert on msconfig.exe and bcdedit activity as indicators of Safe Mode abuse",
+        "Watch for tooling added to Safe Mode minimal-service registry list",
+        "This failure mode is not reliable defense as systems with more RAM could still encrypt",
+        "Snatch and AvosLocker have used Safe Mode abuse for years; Akira is now employing it too"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid cybersecurity journalism that delivers genuine value through a detailed case study of a real Akira ransomware intrusion. The article provides specific technical indicators (VPN credential spray patterns, AD enumeration techniques, s5cmd data exfiltration, AnyDesk abuse), actionable defensive recommendations (MFA requirements, specific Windows event log monitoring for Safe Mode boots), and honest analysis that this accidental 'defense' isn't reliable. The narrative hook of ransomware breaking itself is engaging but not clickbait - it serves to illustrate real-world attack mechanics. No padding, no fluff, no hidden promotion. The contextual note about Snatch and AvosLocker using similar Safe Mode techniques adds useful industry perspective. This is the kind of content security practitioners can actually use.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-13T03:44:58.913542"
+    },
+    {
+      "id": 4572,
+      "source_id": 4,
+      "original_url": "https://chiptron.eu/reviving-old-unsupported-devices-with-ai-avermedia-game-capture-hd-ii/",
+      "title": "meshtastic",
+      "summary": "A hands-on reverse engineering journey that revived dead hardware by discovering software-imposed limitations, decrypting firmware with a hardcoded 3DES key, exploiting serial console quirks, and leveraging AI to write custom firmware in an evening that would previously have taken months.",
+      "ideas": [
+        "The 640x480 limitation was a vendor app whitelist, not hardware - the kernel driver supported it all along",
+        "Sending random noise to serial input breaks into U-Boot when normal keystrokes fail",
+        "The firmware encryption uses 3DES with hardcoded password 'Av3rMed1a' extractable from the encode binary",
+        "A single U-Boot variable 'log_switch=1' enables telnetd as a side effect of enabling debug logging",
+        "DES crypt hashes from 2014 can be cracked with Hashcat in roughly 30 minutes on modern hardware",
+        "AI (Claude Code) can handle embedded firmware development tasks that previously required entire manufacturer teams",
+        "The device runs a TI SDK demo called 'encode' - the commercial product is a direct descendant",
+        "Adding init=/bin/sh to bootargs bypasses the vendor app and provides a root shell on the running system",
+        "The device has dual NAND banks (A/B partition scheme) switchable via single bootloader variable",
+        "Modifying the inactive NAND bank allows firmware changes without risking a permanent brick"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense, technically rich article that delivers exceptional value through multiple novel reverse-engineering techniques. Key value instances include: the noise-on-serial-input trick to break into U-Boot when keystrokes fail, the 3DES firmware decryption using password 'Av3rMed1a', the log_switch U-Boot variable that also enables telnetd, and the bootargs init=/bin/sh shell access method. The piece provides detailed hardware analysis (complete component list, NAND partition layout), proof that 640×480 was always in the kernel driver, and a practical demonstration of AI's role in accelerating embedded firmware development. The content is well-focused with no padding, offers specific actionable techniques rather than theory, and demonstrates genuine expertise in embedded systems and security research. Strong thematic relevance to Cybersecurity (reverse engineering, hash cracking) and AI (practical tool use in development).",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-13T03:43:04.668689"
+    },
     {
       "id": 4571,
       "source_id": 33,
