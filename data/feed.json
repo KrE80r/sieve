@@ -1,7 +1,516 @@
 {
-  "updated_at": "2026-08-12T20:00:00.676306",
-  "total_items": 699,
+  "updated_at": "2026-08-12T21:00:00.597376",
+  "total_items": 717,
   "items": [
+    {
+      "id": 4622,
+      "source_id": 34,
+      "original_url": "https://matduggan.com/otel-isnt-going-well-and-i-made-a-spreadsheet-about-it/",
+      "title": "OTel Isn't Going Well (And I Made A Spreadsheet About It)",
+      "summary": "OpenTelemetry's slow progress stems from a three-way crash: overcommitted stability requirements, insufficient maintainer benches, and massive scope across languages—creating a situation where even good ideas take years to reach end users, and the author proposes a time-bound beta tier as a practical solution.",
+      "ideas": [
+        "OpenTelemetry has three-way crash: stability gate + small maintainer bench + massive scope",
+        "C++ OTel has 86.1% single-merger concentration, Ruby 78.7%—both unhealthy",
+        "Prometheus has 31 distinct mergers vs Python's 4 in same period",
+        "semconv PRs can take 277+ days due to permanent commitment concerns",
+        "Experimental features are inaccessible to 99% of users despite existing",
+        "Proposed: time-bound beta tier between Experimental and Stable",
+        "Core vs contrib split exists for languages but creates collector complexity",
+        "Approve Public API check requires extra maintainer, creating bottleneck",
+        "PHP and Ruby OTel SDKs severely understaffed with only 2-5 mergers total",
+        "Envoy shows healthy distribution with good author-merger-issue-closer balance"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is substantive, original technical analysis with real data. The author provides spreadsheet evidence of maintainer concentration across OTel SDKs (C++ at 86.1% single-merger concentration vs Prometheus at 14.4%), explains the 'three-way crash' problem (stability gate + small bench + massive scope), and offers a concrete proposal for a time-bound beta tier. The content is dense with actionable insights: the core/contrib split explanation, the OTEP→Spec→SemanticConventions→SDKs workflow, and specific PR examples with metrics. No padding, no clickbait—just honest assessment backed by data. Highly valuable for engineers evaluating OTel adoption or understanding open-source sustainability challenges.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:28:28.490715"
+    },
+    {
+      "id": 4621,
+      "source_id": 34,
+      "original_url": "https://mariochavez.io/desarrollo/2026/08/11/merging-the-sources-into-one-digest/",
+      "title": "Merging the Sources Into One Digest",
+      "summary": "The key architectural insight is that in AI agent systems, judgment logic (dedup rules, categorization, synthesis) should live in agent skills, not in library code—Ruby orchestrates but the agent with its skills does the work, and exact arithmetic requires a deterministic tool, not model math.",
+      "ideas": [
+        "Judgment logic belongs in agent skills, not library code—Ruby should only orchestrate",
+        "Reset inherited skills by assigning @skills directly, not via the macro which accumulates",
+        "Dedupe on two axes: cross-source (same message in multiple accounts) and cross-group (message in strongest category only)",
+        "For exact arithmetic, give the agent a deterministic compute_totals tool instead of relying on model math",
+        "Crashes should be loud at the contract layer (malformed digest.json) but graceful at the source layer",
+        "The JSON contract lives in the skill, not the code—single source of truth for all downstream consumers",
+        "Synthesis cannot recover fields the extraction agent never captured—fix extraction skills, not synthesis",
+        "Structured output validation uses ruby_llm-schema applied to chat.with_schema, not Nexo itself",
+        "Extraction quality limits synthesis quality—no amount of synthesis skill fixes a missing field",
+        "The workflow sequences stages and records what happened but reads no files, parses no JSON, decides nothing"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a technically dense article that delivers genuine architectural insight about AI agent design patterns. The core value is the principle that judgment belongs in agent skills, not library code, illustrated with specific implementation details: the two-axis dedup logic, the skill inheritance reset technique using @skills directly, and the critical seam for fixing model arithmetic with a deterministic tool. The 'crash loudly vs recover gracefully' distinction for different failure types is a nuanced design principle. The content is well-focused and wastes no space on padding—every section serves the thesis. One minor note: this is Part 7 of a series, so it assumes prior context, but the content stands on its own for its target audience of developers building similar systems. The practical 'what will trip you up' section adds actionable value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:24:32.289179"
+    },
+    {
+      "id": 4620,
+      "source_id": 34,
+      "original_url": "https://leocavalcante.dev/en/o-proximo-salto-do-desenvolvimento-com-ia-da-assistencia-a-orquestracao/",
+      "title": "The next leap in AI software development: from assistance to orchestration",
+      "summary": "The next wave of AI in software development shifts from writing code to orchestrating supervised tasks across the delivery lifecycle, making context engineering, verification evidence, and qualified human review the scarce resources rather than code generation itself.",
+      "ideas": [
+        "Supervision in AI coding has shifted from following every character to defining context, boundaries, and acceptance criteria",
+        "Context engineering (selecting and maintaining the right context) will become more important than prompt engineering",
+        "A repository prepared for agents needs explicit documentation of conventions, commands, sensitive areas, and agent permissions",
+        "AI can increase code production but without control systems also increases changes nobody managed to understand",
+        "Productivity depends on task type, domain knowledge, context quality, and the cost of reviewing outputs",
+        "Multi-agent systems should come after mastering single-agent execution, not before",
+        "Qualified attention—understanding domains, setting boundaries, reviewing evidence—becomes the scarce resource when code is cheap",
+        "Teams should measure accepted changes, not activity: delivery time, failures, rollbacks, and review rework"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a well-researched, dense essay that delivers 6+ distinct insights about the evolving role of AI in software development. The author grounds claims with specific data (Stack Overflow surveys, Anthropic analysis of 400K sessions, Microsoft/METR studies) and offers practical frameworks like context engineering vs prompt engineering, and the distinction between delegation and autonomy. The piece successfully challenges common hype (multi-agent systems, 'vibe coding') while offering actionable preparation steps. The writing is tight with no apparent padding, and each section advances the argument. The main limitation is it's not general-audience accessible—it assumes developer familiarity. Given the depth, originality of framing (tickets as units of work, review as the product), and density of actionable insights, this scores in the high Good range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:18:57.879018"
+    },
+    {
+      "id": 4619,
+      "source_id": 34,
+      "original_url": "https://kylepiira.com/2026/08/11/what-should-a-self-improving-ai-optimize-for/",
+      "title": "The Feedback Loop for Superintelligence",
+      "summary": "The author proposes using economic feedback loops—where AI systems optimize for revenue and humans signal value through purchasing decisions—as an alternative to fixed benchmarks for aligning potentially self-improving AI, while identifying critical dependencies on democratic institutions and robust regulation.",
+      "ideas": [
+        "AI agents could recursively improve their own successors using evaluation-based selection",
+        "Fixed evaluation suites require humans to enumerate every capability in advance, creating a bottleneck",
+        "Economic success (revenue) could serve as a proxy for producing things people value",
+        "Market transactions generate automatic reward signals without requiring explicit benchmarks",
+        "AI corporations could act as generators while humanity functions as the discriminator",
+        "UBI funded by AI company taxes maintains human purchasing power as the feedback signal",
+        "Regulations, fines, and taxation become components of the AI's reward landscape",
+        "AI corporations could lobby to reduce taxes, potentially breaking the feedback loop",
+        "Democratic institutions must remain grounded in citizens to prevent optimizer capture"
+      ],
+      "labels": [
+        "AI",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a thoughtful speculative piece that proposes using market economics as an objective function for potentially self-improving AI systems. The author presents several genuinely novel ideas: the GAN-like relationship between AI corporations and human consumers, the integration of UBI into the feedback loop to maintain purchasing power, and the insight that regulations become part of the AI's reward landscape rather than external constraints. The content addresses a real and important problem in AI alignment—how to create an objective that doesn't require enumerating all human values in advance. While the piece is speculative and doesn't provide empirical evidence, it engages seriously with the tensions and risks, including the critical danger of political capture by AI corporations. The value density is high for its length, with 9 substantive ideas covering the technical, economic, and political dimensions of the problem.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:15:29.723654"
+    },
+    {
+      "id": 4618,
+      "source_id": 34,
+      "original_url": "https://kpwags.com/notes/ai-made-writing-code-easier-it-made-being-an-engineer-harder/",
+      "title": "AI Made Writing Code Easier. It Made Being an Engineer Harder",
+      "summary": "AI is shifting engineering from a craft of building to a role of reviewing AI output, creating cognitive debt when code lacks documented reasoning, making fundamentals and debugging skills MORE valuable rather than less.",
+      "ideas": [
+        "AI transforms engineers from builders to reviewers of AI-generated code",
+        "Reviewing AI code is harder than writing it yourself due to lost context",
+        "Cognitive debt accumulates when AI code has no documented reasoning",
+        "Technical fundamentals become more critical as AI handles implementation",
+        "Professional identity crisis emerges when the craft of coding is automated",
+        "Someone must be the adult in the room when AI code breaks at 2 AM"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This essay delivers genuine value through original insights on a timely topic. The author introduces the concept of 'cognitive debt' when AI writes code without documented reasoning, and articulates the counterintuitive insight that reviewing AI-generated code is often harder than writing it yourself because you lose the context and decision-making trail. The 'builder to reviewer' framing captures a real professional identity shift that deserves attention. While the essay is relatively short and reflective rather than exhaustive, it addresses an important dimension of AI in software engineering that often gets overlooked in productivity-focused discourse. No penalties apply - no clickbait, padding, or hidden promotion.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:14:32.745095"
+    },
+    {
+      "id": 4617,
+      "source_id": 34,
+      "original_url": "https://kore-nordmann.de/blog/innovation_tokens.html",
+      "title": "Innovation Tokens",
+      "summary": "Innovation token cost is measured by your team's existing knowledge, not market consensus - a technology is 'boring' when your team deeply understands it, regardless of industry opinion.",
+      "ideas": [
+        "Innovation tokens should be measured by team familiarity, not market novelty",
+        "CouchDB was exotic by market standards but boring for this team due to deep expertise",
+        "A technology costs a token when your team doesn't know its failure modes",
+        "Mainstream technology your team hasn't operated is still a spent token",
+        "Choose technology your team already knows cold, not what everyone uses",
+        "Early-stage products should spend tokens on domain, not backend infrastructure",
+        "The safest choice sometimes looks daring from outside"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This post delivers a genuine refinement to McKinley's innovation token concept with a concrete case study. The author explains why CouchDB was the 'boring' choice for their team despite appearing exotic to the market, because they had deep expertise in it. The key insight - that boring is not a property of technology but of fit between technology and team - is both novel and actionable. The content cuts both directions: exotic tech can be safe if you know it, and popular tech can be costly if you don't. High density for its length with no padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:12:03.472672"
+    },
+    {
+      "id": 4616,
+      "source_id": 34,
+      "original_url": "https://keithbrown.com/plagiarism/",
+      "title": "Plagiarism",
+      "summary": "The history of content manipulation follows a 20-year repeating pattern where shortcuts work temporarily until detection catches up, and the only durable strategy is building content for humans rather than gaming signals.",
+      "ideas": [
+        "AI watermarks use green/red token lists to create statistical fingerprints invisible to humans.",
+        "Spamdexing appeared in 1996; content farms peaked ~2008; AI slop dominates 2023+.",
+        "Demand Media scaled to 1M items/month before Google Panda destroyed its traffic.",
+        "Google took a revenue hit shipping Panda but did it anyway for user trust.",
+        "This is a structural problem where polishing tactics never fixes the underlying issue.",
+        "Volume shows up immediately on dashboards; quality compounds quietly over a year.",
+        "Content built for humans, not algorithmic signals, survives every enforcement wave.",
+        "When digital creation cost drops to zero, human connection value scales to infinity.",
+        "Building for the person reading it beats optimizing for green tokens."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This essay delivers exceptional value density for its length by identifying a 20-year historical pattern and applying it to the current AI watermarking situation. The technical explanation of green/red token watermarking is genuinely informative, while the Demand Media case study (340K articles, eventual sale for a fraction) provides concrete evidence. The structural insight that 'polishing the tactic never fixes it' and the dashboard framing about quality's slower payoff are both novel insights. Matt Cutts's quote about Google taking a revenue hit is valuable insider knowledge. The piece is tightly focused, well-argued, and avoids padding. No penalties apply. Strong thematic relevance across AI, technology, and business strategy.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:11:01.163220"
+    },
+    {
+      "id": 4615,
+      "source_id": 34,
+      "original_url": "https://k33g.org/p/20260811-docker-agent-08-coding-agent",
+      "title": "A mini code agent with Docker Agent - Part 8: a local agent to learn Rust",
+      "summary": "A practical guide to building a local Rust learning companion using Docker Agent, with specific configurations for context management, LSP integration, and RAG that enable small models to effectively help learn programming.",
+      "ideas": [
+        "Use middle-out truncation (max_tool_result_tokens) to preserve tool output context while capping size",
+        "Limit LSP to 6 essential tools (lsp_document_symbols, lsp_workspace_symbols, lsp_references, lsp_definition, lsp_hover, lsp_diagnostics) to reduce token costs",
+        "Set compaction_threshold to 0.8 to give summarization room to work effectively",
+        "Declare context_size explicitly so compaction budgets calculate correctly",
+        "Use only one command (/rust) and natural language for everything else to save context",
+        "Add working_dir for LSP or rust-analyzer fails silently",
+        "Run cargo check after every edit and cargo clippy separately for complementary diagnostics",
+        "Set max_old_tool_call_tokens to reclaim space from historical tool calls without touching recent ones",
+        "Use allow_list to restrict filesystem access to workspace only",
+        "Deploy in sandbox (sbx) for security when agent can be clever"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a genuinely valuable technical deep-dive that delivers multiple novel insights for developers building local code agents. The author shares specific configurations (context window management with exact token caps, LSP tool selection to reduce token costs from 47%, compaction thresholds) that reflect hard-won practical experience with small language models. The complete AGENTS.md and agent.yaml files serve as usable reference implementations. Thematic relevance is high: AI, productivity, and technology domains all intersect here. The content is dense with actionable knowledge - context management strategies alone constitute 3-4 distinct value instances. Minor deduction: some terminal UI descriptions are brief and require imagination to fully grasp.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:08:22.092246"
+    },
+    {
+      "id": 4614,
+      "source_id": 34,
+      "original_url": "https://junueno.dev/en/agent-sns-react-two-stage-gate-en",
+      "title": "Letting an AI agent hit 'like' scared me more than letting it post",
+      "summary": "When delegating social media operations to AI agents, the critical risk boundary isn't reversibility but whether the action 'flies at someone else' - requiring distinct architectural treatment including two-stage approval, mechanical exclusion filtering, identity verification, idempotency guarantees, and read-only scouting.",
+      "ideas": [
+        "Posting is your garden; reacting is knocking on others' doors - different risk direction",
+        "Split posting and reacting into separate lineages with independent gates to prevent risk leakage",
+        "Two-stage approval: design approval first, then execution approval for one pinned action",
+        "Bulk approval is banned - only approve target + action type + body text uniquely",
+        "A reply arriving is not approval - only explicit yes counts",
+        "Mechanical exclusion: politics, religion, health, minors, bots with stacked relevance requirement",
+        "Verify target identity via handle, display name, pinned tweet, parent thread before reacting",
+        "Use idempotency markers and read-back verification to prevent double-execution crashes",
+        "During scouting phase, allow only screen-reading tools - no clicking or typing",
+        "Draw the safety line at 'does it fly at someone else' not 'is it undoable'",
+        "Document when you haven't built something yet - 'not yet collected' saves future time"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a genuinely insightful technical piece from a senior engineer sharing hard-won lessons from designing AI agent safety systems. The core value is the architectural framework for handling 'reactive' AI operations (likes, follows, replies) which operate under different risk profiles than posting. Key value instances include: the posting vs. reacting risk asymmetry concept, two-stage approval with granular pinning (target + action type + body text), the 'reply arrived ≠ approval' insight, mechanical exclusion lists with stacking relevance requirements, identity verification protocols, idempotency reconciliation patterns, and read-only scouting constraints. The content is dense with actionable engineering patterns - no padding or fluff. Slightly docked from higher tiers because it's a design doc rather than implemented system with measured results, and the novelty of some insights could be debated. However, the thinking is rigorous, the warnings come from experience, and the principles transfer well to other AI agent scenarios.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:07:53.412705"
+    },
+    {
+      "id": 4613,
+      "source_id": 34,
+      "original_url": "https://june.kim/local-replay-auditability/",
+      "title": "Local Replay Auditability: Verification That Returns a Check",
+      "summary": "Local replay auditability returns executable checks rather than Booleans, enabling later verification without trusting the original agent or reconstructing its trajectory; an experiment on Verus #2219 shows external comparators corrected opposite errors that self-attested models made in different directions.",
+      "ideas": [
+        "Return a Check (callable) instead of just a Boolean verdict",
+        "Boolean verdicts dissolve after the run; checks persist with their claim",
+        "Upstream dependency changes require rerunning checks to detect staleness",
+        "Self-attestation allows models to grade their own interpretation",
+        "External checks must terminate in reality or named humans, not model say-so",
+        "The Hypothesis Graph binds hypotheses to kill conditions and check outcomes",
+        "Deterministic replay uses pinned inputs; artifact replay verifies recorded outputs",
+        "Verus #2219: ghost-erased uninhabited types cause opposite verdicts at identical tokens",
+        "More search does not correct opposite errors; an external answer key does",
+        "Fable over-rejected valid divergence; Sonnet stayed narrow under self-attestation",
+        "Both models matched the merged fix on all 8 probes with external comparator",
+        "The gate's coverage is both its lever and its limit",
+        "Returning a trial frees later agents from trusting earlier verdicts",
+        "Five open questions remain: reviewer time, patch change rate, check source independence, hypothesis preservation, human attestation alternatives",
+        "Replay can still test wrong properties; pinned artifacts and independent execution improve evidence"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-structured technical paper introducing a novel verification concept with a concrete experimental case study. The core innovation—returning executable checks instead of Boolean verdicts—is genuinely original and addresses a real problem in AI-assisted coding. The paper provides strong evidence through the Verus #2219 experiment, demonstrating that external comparators help models converge on correct solutions while self-attestation leads to opposite errors. Value density is high: 12+ distinct ideas delivered efficiently across ~1500 words. No padding, no promotion, no clickbait—the links to archived datasets (Zenodo) support reproducibility. Slight deduction for the paper being narrowly focused on a single mechanism witness rather than broad applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:07:19.734457"
+    },
+    {
+      "id": 4612,
+      "source_id": 34,
+      "original_url": "https://joshua.hu/4-jsoup-vulnerabilities",
+      "title": "4 jsoup vulnerabilities",
+      "summary": "Security researcher documents 4 potential jsoup vulnerabilities: two mutation-XSS bypasses via MathML/SVG namespace confusion, a charset-based byte smuggling XSS via ISO-2022-JP/KR encoding, and an O(n²) namespace handling DoS vulnerability—three were disputed by the vendor as non-default configurations while one was acknowledged as a parser correctness issue.",
+      "ideas": [
+        "HTML sanitizer mutation-XSS occurs when jsoup serializes MathML content as opaque text that browsers re-parse as live markup",
+        "SVG foreign content breakout at <s> element causes <style> to become raw text element, bypassing sanitization",
+        "ISO-2022-JP charset encoding causes certain kanji to encode as < > / = bytes, smuggling HTML past the cleaner",
+        "jsoup's O(n²) namespace handling in XmlTreeBuilder can cause DoS via deeply nested XML with per-level xmlns declarations",
+        "Vendor disputes mutation-XSS reports by arguing custom Safelists with raw-text elements represent application-defined security policy",
+        "The quadratic blowup issue was acknowledged as parser correctness but not treated as a security boundary violation",
+        "Bytes encoded as ISO-2022-JP then decoded as UTF-8 can reconstruct HTML markup that was never present in the input",
+        "The <s> trigger element for SVG bypass doesn't even need to be on the Safelist to work",
+        "jsoup's built-in Safelists are unaffected by the reported mutation-XSS issues according to the maintainer",
+        "Namespace-aware Safelists are documented as a planned improvement in jsoup's roadmap"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a well-researched technical security disclosure with four distinct vulnerability analyses, each containing detailed proof-of-concept code, clear explanations of the attack vectors, and documented vendor responses. The content demonstrates deep knowledge of HTML parsing differentials (mutation-XSS), character encoding edge cases, and algorithmic complexity issues. Each vulnerability includes working exploits, timing benchmarks, and references to relevant specifications. The main deduction is that the vendor disputed 3 of 4 reports as non-vulnerabilities based on non-default configuration arguments, which somewhat limits the practical impact. However, the technical analysis quality is high, and the fourth issue (quadratic blowup) was accepted as a parser correctness issue with a fix reference.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T06:06:46.838226"
+    },
+    {
+      "id": 4611,
+      "source_id": 34,
+      "original_url": "https://imti.co/on-prem-gpus-kubernetes/",
+      "title": "On-Prem GPUs in a Boring Kubernetes Cluster",
+      "summary": "Adding NVIDIA GPUs to a Kubernetes cluster is now achievable with one Helm install via the GPU Operator, making self-hosted AI inference economically viable by eliminating both the manual configuration burden and the high cloud GPU margins.",
+      "ideas": [
+        "Cloud GPU rental costs exceed purchase price within months for sustained AI workloads",
+        "NVIDIA GPU Operator automates the entire GPU stack as containers, replacing 6 pages of manual steps",
+        "k3s requires explicit containerd path configuration when installing the GPU Operator via Helm",
+        "GPUs are requested like CPU/memory via nvidia.com/gpu resource limits in pod specs",
+        "Time-slicing oversubscribes one physical GPU as multiple schedulable replicas via ConfigMap",
+        "MIG provides hardware-isolated GPU partitions on data-center cards for true multi-tenancy",
+        "Owned GPUs enable continuous self-hosted inference and embedding generation without API meters",
+        "GPU Operator includes DCGM exporter for Prometheus metrics on utilization and memory",
+        "Driver conflicts between host-installed and operator-managed drivers cause common failures",
+        "GeForce consumer cards are not licensed for data-center use per NVIDIA terms"
+      ],
+      "labels": [
+        "Sysadmin",
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is substantive technical content with high value density. The author delivers 10+ distinct practical insights: the economic case for owned GPUs, the stark contrast between 2020's 6-page manual process and today's operator-based approach, complete working manifests for Helm install and Ollama deployment, detailed time-slicing configuration, and a troubleshooting guide covering 4 common failure modes. The content is tightly focused—no padding, no fluff—serving a clear thesis: adding GPUs to Kubernetes is now practical thanks to the GPU Operator. The YAML manifests are production-ready, the k3s-specific nuances are clearly explained, and the licensing clarification (GeForce vs data-center) addresses a common point of confusion. This is exactly the kind of deep technical content that justifies reading time.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:55:26.898843"
+    },
+    {
+      "id": 4610,
+      "source_id": 34,
+      "original_url": "https://ilmanzo.github.io/post/measuring-test-coverage-on-dlopen-libraries/",
+      "title": "How much code are you testing ? (5)",
+      "summary": "A production-ready event-driven JIT instrumentation strategy using eBPF uretprobes on dlopen() that achieves 0% steady-state overhead while dynamically attaching coverage probes to runtime-loaded libraries.",
+      "ideas": [
+        "Attach uretprobe on dlopen to detect runtime library loading without polling /proc/<pid>/maps",
+        "Write special 0xFFFFFFFF token to ring buffer when dlopen succeeds, triggering event-driven library discovery",
+        "Polling /proc/<pid>/maps doesn't scale: 5000 binaries means 500,000 reads per second",
+        "Use architecture-specific register access (ctx->ax on x86_64, ctx->regs[0] on ARM64) to read dlopen return value",
+        "The cilium/ebpf v0.21.0 execute-bit check blocks uprobe attachment on non-executable shared libraries",
+        "When .symtab parsing fails on stripped binaries, fall back to .dynsym which is always present",
+        "Gate all diagnostic output behind FUNKOVERAGE_DEBUG to maintain CI/CD compatibility",
+        "Grant CAP_SYS_RESOURCE alongside other capabilities to handle kernel memory accounting edge cases",
+        "Protect shared slice access with mutex to prevent race between dlopen handler and Stop()",
+        "Serialize compiled filter patterns to .filter.json to reapply same logic at runtime",
+        "Add capacity warnings when kernel-side dedup map fills up instead of silently dropping calls",
+        "libstdc++.so.6 regex couldn't match due to \\b after + (not a word character)",
+        "Union .symtab and .dynsym instead of picking one—dlopen lives only in .dynsym on glibc",
+        "dlopen moved from libdl.so.2 to libc.so.6 in glibc 2.34—verify symbol presence before attaching",
+        "bpf_printk in uretprobes fires system-wide, not per-process, silently degrading performance",
+        "Forked worker processes inherit watched bit via sched_process_fork tracepoint"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 89,
+      "rating_reason": "Exceptional technical content that delivers a complete solution to a real problem. The article provides novel eBPF/JIT instrumentation architecture for dynamic library coverage tracking, with detailed C/Go/eBPF code examples, scalability analysis explaining why polling fails at scale, and six real-world bug fixes encountered during production deployment. Battle-tested results on Nginx/OpenSSL demonstrate 14,301 functions tracked with 772 captured calls. No padding, no fluff—every section advances the technical narrative.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:54:59.446695"
+    },
+    {
+      "id": 4609,
+      "source_id": 34,
+      "original_url": "https://ikouchiha47.github.io/2026/08/12/concurrency-and-gc.html",
+      "title": "A Quick rundown on concurrency and gc",
+      "summary": "The design choice of who controls task switching (language runtime vs OS kernel) fundamentally determines whether a language uses cooperative or preemptive scheduling, which directly controls whether GC pauses one thread or the entire process.",
+      "ideas": [
+        "CSP enables local reasoning about each process in isolation by eliminating shared mutable state",
+        "Go goroutines don't implicitly join—go f() returns immediately without waiting",
+        "GMP scheduler uses per-P local run queues to avoid global queue contention scaling problems",
+        "Go ≤1.10's cooperative preemption failed because tight loops without function calls never yielded",
+        "SIGURG was chosen for async preemption because it's ignored by debuggers, safe to receive spuriously, and not claimed by libc",
+        "A spinning goroutine without function calls could hang stop-the-world GC indefinitely in Go ≤1.10",
+        "Go's GC is concurrent mark-and-sweep, non-generational, and non-compacting by design",
+        "The tri-color invariant (no white-to-black references) is what the write barrier preserves",
+        "Go uses a hybrid Yuasa/Dijkstra write barrier that shades both overwritten and inserted pointers",
+        "Non-compacting GC avoids needing to handle objects moving mid-flight, reducing complexity"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "This is exceptional technical content that traces real source code (Go's runtime) to explain concurrency models and GC behavior. It provides multiple novel insights: CSP's formal origins and why it enables local reasoning about processes; the specific reason cooperative preemption failed (7.8% regression); the four-criteria SIGURG selection rationale; and the tri-color invariant and hybrid write barrier mechanics. The content is densely packed with direct source citations (proc.go, preempt.go, signal_unix.go, mgc.go, mbarrier.go) and checkpoint questions that reinforce learning. The connection between scheduling decisions and GC pause behavior—how 'who controls the switch' determines whether a crash is contained or catastrophic—is a genuinely valuable insight. No padding, no fluff, pure systems-level expertise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:53:09.560197"
+    },
+    {
+      "id": 4608,
+      "source_id": 34,
+      "original_url": "https://hitesh.in/2026/stack-that-catches-ai-mistakes/",
+      "title": "Pick the stack that catches your AI's mistakes",
+      "summary": "When using AI coding assistants, optimize your tech stack for machine verifiability and language popularity, not token efficiency—the real cost is review time on confident-but-wrong output, which niche languages make worse.",
+      "ideas": [
+        "Token savings from terse languages vanish on real engineering tasks",
+        "The hidden cost of AI coding is human review time, not token count",
+        "Niche languages worsen AI mistakes in two ways: less training data and fewer engineers who can spot errors",
+        "Languages should now be chosen for machine verifiability, not human writeability",
+        "Static types, compilers, and exhaustive matching catch agent mistakes cheapest",
+        "Boring, popular languages let AI agents guess least because that's what they trained on",
+        "Three CTO priorities: ignore token cost, buy verifiability, default to boring",
+        "The AI era reverses polyglot programming toward stack consolidation"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This article delivers genuine strategic value through Dan Luu's research finding (token efficiency advantages vanish on real tasks), a useful distinction between visible costs (tokens) versus invisible costs (review time), and a practical framework for stack selection centered on machine verifiability. The author synthesizes multiple insights into three actionable CTO recommendations and makes a strong case for boring/popular stacks in the AI era. Content density is high with 6+ distinct ideas packed into ~750 words. Minor promotional mention at the end is contextual rather than intrusive. Strong thematic alignment with AI, software engineering, and productivity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:48:03.563970"
+    },
+    {
+      "id": 4607,
+      "source_id": 34,
+      "original_url": "https://hiraditya.github.io/posts/how-is-this-not-sycl/",
+      "title": "How Is This Not SYCL?",
+      "summary": "The type system limitation in both SYCL and Kokkos regarding device placement isn't a design failure but a C++ constraint: execution space is a property of lexical context (resolved by macros), not function types, so libraries must emit runtime aborts instead of compile-time errors even when they have static proof of illegal memory access.",
+      "ideas": [
+        "SYCL achieves single-source heterogeneous compilation via dual-pass compilation creating fat binaries",
+        "SYCL address spaces describe memory regions within a device, not which device holds data",
+        "Two float* pointers from different GPUs have identical types in SYCL, enabling silent cross-device bugs",
+        "Kokkos View::operator() uses KOKKOS_IF_ON_HOST/KOKKOS_IF_ON_DEVICE macros to detect execution context",
+        "Kokkos View assignment across incompatible spaces emits runtime abort despite compile-time proof of illegality",
+        "static_assert would reject correct programs because View accessors are instantiated in both host and device passes",
+        "Buffer/accessor model trades type safety for invisible transfers that only profilers reveal",
+        "C++ function signatures cannot carry 'where this code runs' as a type parameter",
+        "peer access silently runs cross-device memory operations slowly across interconnect",
+        "The C++ type system was never asked to carry device identity as a value property"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 84,
+      "rating_reason": "This is genuinely expert technical content that delivers rare insight into why C++ type systems hit fundamental limits in heterogeneous programming. The author demonstrates real SYCL production experience, provides specific code examples of the multi-GPU bug SYCL allows, and shows with actual Kokkos source code that even memory_space-typed Views resort to runtime aborts despite having compile-time knowledge of illegal access. The 'why it stops there' explanation — that execution space isn't part of a function's type, forcing library authors to use macros like KOKKOS_IF_ON_HOST that expand differently across compilation passes — is the kind of deep understanding rarely found outside academic papers. The 17-minute read time is justified by depth, not padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:47:06.994681"
+    },
+    {
+      "id": 4606,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/08/11/nixpkgs-multiverse-is-audacitymaxxing",
+      "title": "nixpkgs-multiverse is audacitymaxxing",
+      "summary": "nixpkgs-multiverse allows access to every historical version of every package in Nixpkgs by storing them at unique paths derived from their build inputs, solving the package pinning problem that traditional distributions cannot address.",
+      "ideas": [
+        "Nixpkgs-multiverse provides access to all 304,484 historical package versions ever shipped",
+        "Traditional distributions pick one package version due to shared FHS filesystem constraints",
+        "Nix solves FHS limitations by storing packages at unique paths including build-input hashes",
+        "246 distinct CPython versions can coexist with separate transitive dependencies",
+        "Package versioning solves devenv.sh issue #16 without separate nixpkgs pins",
+        "The technical implementation is surprisingly simple: 5MB JSON and 200 lines of Nix",
+        "daysBehind feature allows querying package sets from N days before any anchor date",
+        "Every package set carries provenance metadata for interrogation rather than guessing",
+        "The audacity is conceptual, not technical - bold premise over clever tricks"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is dense, technical content about an innovative Nix project that delivers genuine value. The author explains a novel concept (accessing all historical package versions) with concrete numbers (31,783 packages, 304,484 version pairs), technical details (5MB JSON, 200 lines Nix), and practical use cases (solving devenv.sh pinning issue). The 'intensional model' explanation and FHS comparison provide context, while the REPL examples make it actionable. Content is well-paced at 4 minutes with minimal padding. Slight deduction for being highly niche to Nix users, but within that audience this delivers exceptional value with its fresh angle on an old problem.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:38:29.325606"
+    },
+    {
+      "id": 4605,
+      "source_id": 34,
+      "original_url": "https://florianjensen.com/2026/08/10/connecting-the-midea-portasplit-to-home-assistant/",
+      "title": "Connecting the Midea PortaSplit to Home Assistant",
+      "summary": "A technical walkthrough for integrating Midea PortaSplit AC units with Home Assistant using the midea-ac-py integration, including credential extraction commands and a fix for power monitoring accuracy.",
+      "ideas": [
+        "Install Midea Smart AC integration via HACS before configuring in Home Assistant",
+        "Use msmart-ng Python tool to extract device credentials from the PortaSplit",
+        "Use the provided bash command to parse credential output into labeled fields",
+        "Test credentials with msmart-ng query before adding to Home Assistant",
+        "Manually configure the device in Home Assistant with Host, Port, ID, Token, and Key",
+        "Change power sensor format from BCD to Binary for accurate PortaSplit readings",
+        "Enable additional energy sensors for power consumption tracking",
+        "Home Assistant communicates locally with the device, bypassing cloud dependency"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a dense, practical tutorial that delivers high value for its length. It provides specific commands, a complete step-by-step workflow, and a non-obvious fix for power monitoring (BCD vs Binary). The credential extraction command is particularly useful. No padding, no fluff - just actionable instructions for a specific use case. The local integration preference and energy dashboard integration add practical context.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T05:31:40.491217"
+    },
     {
       "id": 4604,
       "source_id": 34,
