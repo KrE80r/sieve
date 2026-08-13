@@ -1,7 +1,137 @@
 {
-  "updated_at": "2026-08-13T04:00:00.735912",
-  "total_items": 742,
+  "updated_at": "2026-08-13T05:00:00.722989",
+  "total_items": 746,
   "items": [
+    {
+      "id": 4673,
+      "source_id": 35,
+      "original_url": "https://franken-whisper.com/",
+      "title": "franken_whisper: Whisper and speaker diarization, in your browser tab",
+      "summary": "A complete browser-based speech transcription and speaker diarization system rebuilt in pure Rust and compiled to WebAssembly, achieving competitive performance while keeping audio entirely local.",
+      "ideas": [
+        "Whisper and Sortformer rebuilt entirely in Rust compiled to WebAssembly",
+        "809M parameter model runs in browser with no server required",
+        "FastEnhancer-S denoiser uses GRUs and attention for noise detection",
+        "Complex ratio masks preserve phase while removing noise",
+        "2.99x faster than whisper.cpp on native CPU with matching settings",
+        "Four-speaker diarization with 70% confidence threshold per segment",
+        "Model weights SHA-256 verified and cached in browser storage",
+        "Threaded WebAssembly engine achieves 1.56x real-time on 8 workers",
+        "Projection fusion projects speaker timeline onto transcript segments",
+        "CLI designed for agents with NDJSON streaming and SQLite storage",
+        "Privacy enforced by Content Security Policy rather than just policy",
+        "Quantized blocks stay resident, dequantize per row in kernels",
+        "Same Rust code runs in CLI and browser via shared module",
+        "Audio processed in one-minute chunks with carried state for speed",
+        "Turn timeline shows per-speaker confidence and overlap detection"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is exceptional technical content about a genuinely novel engineering project. It delivers multiple significant insights: a complete 809M+123M parameter pipeline rebuilt in pure Rust and compiled to WebAssembly, running entirely in-browser with no server; detailed technical architecture of each pipeline stage (ggml parser, log-mel frontend, encoder/decoder, Sortformer, projection fusion); the FastEnhancer-S denoiser implementation with GRUs for temporal memory and attention for harmonic detection; real performance benchmarks (2.99x faster than whisper.cpp, 1.56x real-time with threaded wasm) with evidence ledgers; and agent-first CLI design. The content is dense, technically substantive, and explains implementation details rather than just describing features. No promotional fluff detected despite being project documentation.",
+      "source_type": "rss",
+      "source_name": "Awareness links",
+      "published_at": "2026-08-13T13:46:19.253962"
+    },
+    {
+      "id": 4672,
+      "source_id": 35,
+      "original_url": "https://frankentts.com",
+      "title": "FrankenTTS — The Monster Voice Engine",
+      "summary": "A browser-based voice cloning engine written entirely in Rust and compiled to WebAssembly achieves near-real-time performance by using int8 quantization, persistent worker threads, and a persistent kernel team, with full verification against the PyTorch oracle at every layer.",
+      "ideas": [
+        "Codec language models generate speech as discrete tokens, unlike spectrogram + vocoder pipelines",
+        "The microdecoder runs 15 sequential passes per frame, accounting for most weight traffic",
+        "WebAssembly has no memory mapping, no BLAS, and a hard 4GB ceiling - solved with 6 fixes",
+        "Int8 W8A8 with exact i32 accumulation halves bytes without changing argmax results",
+        "Six persistent worker partitions run bit-identically to serial execution across all threads",
+        "Complex ratio mask denoising achieves 65dB vs classical methods' 25dB noise floor removal",
+        "The denoiser uses GRUs for temporal memory and attention across frequency bands",
+        "Voice cloning produces a 1024-float x-vector that fits inside a share URL fragment",
+        "The causal codec enables streaming audio before sentence generation completes",
+        "Full-precision f32 route stays in tree as kill switch; optimizations revert if output drifts",
+        "Cross-origin isolation headers unlock SharedArrayBuffer for the worker thread team",
+        "The talker's 28 layers all verify argmax-exact against captured PyTorch activations"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical content that delivers substantial value through its deep technical exposition of a Rust-based TTS engine. The content provides 10+ distinct technical insights including: the codec language model architecture vs traditional TTS, specific WebAssembly constraints and their solutions (6 fixes for 2GB model in browser), int8 quantization approach with exact i32 accumulation, 28-layer verification against PyTorch oracle, FastEnhancer denoising with complex ratio masks achieving 65dB noise removal vs classical methods' 25dB, and the microdecoder nested loop being the dominant cost. The content is dense, precise, and aimed squarely at engineers interested in ML inference optimization, browser-based ML, and Rust. No padding, no fluff, no promotional overreach - just architecture, benchmarks, and implementation details.",
+      "source_type": "rss",
+      "source_name": "Awareness links",
+      "published_at": "2026-08-13T13:44:44.289241"
+    },
+    {
+      "id": 4671,
+      "source_id": 35,
+      "original_url": "https://franken-whisper.com",
+      "title": "franken_whisper: Whisper and speaker diarization, in your browser tab",
+      "summary": "franken_whisper implements Whisper large-v3-turbo and NVIDIA's Sortformer speaker diarization entirely in pure Rust compiled to WebAssembly, delivering full transcription with speaker attribution in-browser without any server, with a FastEnhancer-S denoiser that prevents hallucinations and SHA-256 receipt-verified model weights.",
+      "ideas": [
+        "Pure Rust implementation of Whisper avoids PyTorch/Python dependencies entirely",
+        "WebAssembly compilation enables in-browser transcription with no server required",
+        "Block-resident tensor dequantization reduces memory usage by over half",
+        "FastEnhancer-S denoiser prevents Whisper hallucinations by cleaning audio first",
+        "Complex ratio masks correct phase as well as amplitude during denoising",
+        "GRU layers carry temporal context to distinguish steady noise from speech",
+        "Projection fusion attributes transcript segments to dominant speakers",
+        "Receipt verification authenticates model weights against conversion manifests",
+        "2.99x faster than whisper.cpp at matched greedy decode settings",
+        "Threaded WASM engine achieves 1.6x real-time transcription on M-series Chrome",
+        "Speaker diarization runs at 80ms resolution with four-speaker lanes",
+        "Same Rust code compiles to CLI and WebAssembly with one shared engine",
+        "Privacy enforced by CSP connect-src 'self' rather than policy promises"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical documentation for an open-source project that rebuilds Whisper and NVIDIA's Sortformer speaker diarizer entirely in Rust compiled to WebAssembly. The content provides substantial novel technical knowledge: the architectural approach of sharing code between CLI and browser, the FastEnhancer-S denoiser that prevents Whisper hallucinations (complex ratio masks, GRUs for temporal context), the projection fusion for speaker attribution, and the receipt-verification system for model authenticity. Performance claims are documented with methodologies in linked ledgers. The privacy guarantees through CSP enforcement and the efficiency gains (2.99x faster than whisper.cpp, memory-efficient block-resident tensor loading) represent genuine technical innovation. The content is dense with architectural details and measured outcomes, targeting developers and researchers who want to understand or use this tooling.",
+      "source_type": "rss",
+      "source_name": "Awareness links",
+      "published_at": "2026-08-13T13:44:06.888523"
+    },
+    {
+      "id": 4670,
+      "source_id": 35,
+      "original_url": "https://franken-ocr.com",
+      "title": "franken_ocr: a 3-billion-parameter OCR model in your browser tab",
+      "summary": "A deep technical walkthrough of porting a 3B-parameter OCR model to browser-based WebAssembly, including specific solutions for wasm memory constraints, a calibrated int4 quantization recipe that reduced character error by 10.9%, and architectural details of how SAM-ViT-B, CLIP, and a DeepSeek-V2 MoE decoder work together in a single forward pass.",
+      "ideas": [
+        "256 visual tokens in one forward pass convert page pixels directly to Markdown output",
+        "Int4 quantization targets expert MLPs within MoE layers, not uniform weight distribution",
+        "Vision tower stays bf16 because all downstream tokens depend on its 256 outputs",
+        "Wasm staging planner cuts the model blob at tensor boundaries into ≤1 GiB segments",
+        "Incremental SHA-256 verifies downloads chunk-by-chunk without JavaScript-side buffering",
+        "Importance-weighted clip search improved character error rate by measured 10.9%",
+        "Router stays bf16 because drifted gate selection produces wrong experts, not just rounded values",
+        "Two wasm modules ship: serial simd128 and shared-memory with atomics, picked by allow-list",
+        "Crash breadcrumbs post stage names synchronously to storage for OOM kill debugging",
+        "Vision weights hydrate per block while embeddings stay int8-resident with on-access dequantization",
+        "Cross-origin-isolated Chrome detection required before enabling 8-worker thread pool",
+        "AWQ-style scale fold into down_proj on int4 tensors after importance-weighted clipping",
+        "Browser's 3.00 GB artifact differs from native's 4.16 GB version via wasm-only quantization",
+        "lm_head and embeddings use int8 per-channel where measurement confirmed safety",
+        "Concurrent cache write and verification tees each fetch chunk through digest and storage simultaneously"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional technical content that delivers substantial value through detailed architecture explanations, novel optimization techniques, and concrete performance data. The author explains how they solved five critical browser-wasm limitations (address space, memory management, 2GB allocation caps, ArrayBuffer constraints, thread configuration) with specific technical solutions. The quantization recipe with importance-weighted clip search that achieved a measured 10.9% character error reduction is genuine proprietary insight. Content density is high—every section contains implementation details that would be valuable to developers working in this space. The only minor consideration is that interactive demo elements serve as engagement hooks, but the surrounding technical content is substantive enough that this doesn't constitute padding. The technical depth justifies the length, and a developer working on similar wasm/ML projects would find multiple actionable insights.",
+      "source_type": "rss",
+      "source_name": "Awareness links",
+      "published_at": "2026-08-13T13:42:45.819237"
+    },
     {
       "id": 4669,
       "source_id": 34,
