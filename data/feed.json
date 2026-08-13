@@ -1,7 +1,168 @@
 {
-  "updated_at": "2026-08-12T23:00:00.579844",
-  "total_items": 754,
+  "updated_at": "2026-08-13T00:00:15.378937",
+  "total_items": 760,
   "items": [
+    {
+      "id": 4665,
+      "source_id": 34,
+      "original_url": "https://www.sandordargo.com/blog/2026/08/12/cpp26-indirect",
+      "title": "C++26: std::indirect",
+      "summary": "std::indirect is a C++26 vocabulary type that provides value semantics (deep copies, const propagation, comparison) for heap-allocated objects, fixing unique_ptr's shortcomings while eliminating Rule of Five boilerplate for composite classes.",
+      "ideas": [
+        "unique_ptr::operator*() const returns non-const, breaking const-correctness",
+        "std::indirect::operator*() const returns const T&, enforcing const propagation",
+        "Copying std::indirect deep-copies the owned object without boilerplate",
+        "std::indirect supports == and <=> by comparing owned objects, not pointers",
+        "An indirect always owns an object except after being moved from",
+        "Use std::optional<std::indirect<T>> for nullable indirect semantics",
+        "std::indirect replaces unique_ptr in PIMPL implementations",
+        "Recursive types like Node{indirect<Node> next} work without special handling"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is solid technical content that delivers genuine value to C++ developers. The author clearly explains a new C++26 feature (std::indirect) by contrasting it with the well-known limitations of unique_ptr. Key value instances include: the const propagation problem with unique_ptr demonstrated with concrete code, how std::indirect solves it, deep copy semantics without boilerplate, value-based comparison, the valueless_after_move() state, and practical use cases (PIMPL, recursive types, large members). The content is dense with working code examples and precise technical explanation. The self-promotion at the end is minor and doesn't diminish the technical content. The 5-minute read delivers 5-6 distinct actionable insights about a feature developers will actually use.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T08:36:51.190356"
+    },
+    {
+      "id": 4664,
+      "source_id": 34,
+      "original_url": "https://www.ryanmcdonough.co.uk/book-human-accountable-for-the-loop/",
+      "title": "Book: Human Accountable for The Loop",
+      "summary": "Organizations need to move beyond 'human in the loop' theater to ensure workflows remain connected to people with actual information, authority, and ability to explain, control, and correct AI actions.",
+      "ideas": [
+        "Humans named AI owners often lack meaningful control - accountability theater",
+        "Human review only safeguards when the person has info, time, authority, and ability to act",
+        "AI is moving beyond generating content to taking autonomous actions as part of workflows",
+        "The HAL framework asks eight questions about who owns outcomes, what was delegated, what must not happen",
+        "Distinguish between: advise, prepare, decide, execute - these are different forms of authority often bundled",
+        "Approval should attach to specific configurations, not permanently to a product name",
+        "Gaps in accountability often appear at organizational joins where teams assume others are responsible",
+        "Organizations must notice when the case for keeping a system changes and be willing to pause it"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a substantive piece that delivers genuine value through its identification of the accountability gap in AI systems and provides a practical 8-question framework (HAL) for assessing where control, authority, and responsibility actually reside. The author distinguishes between 'human in the loop' as performative theater versus meaningful oversight, explains why AI autonomy creates new governance challenges, and identifies how gaps emerge at organizational boundaries where teams assume others are responsible. The content is dense with actionable insights rather than padding, and directly addresses a real governance problem affecting organizations deploying AI. While it's promoting a book, the excerpt itself provides substantial standalone value for anyone involved in AI governance, risk management, or deployment decisions. The thematic relevance to AI, technology governance, and organizational ethics is high.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T08:36:27.282937"
+    },
+    {
+      "id": 4663,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/third-party-cloud-access/",
+      "title": "Your Cloud Isn’t Compromised. Your Vendor Is. Now What?",
+      "summary": "When a vendor is compromised, their credentials inside your environment remain technically valid and appear as normal vendor activity - authority persists after trust fails, and this gap has no automatic remediation because revocation requires someone to remember to act on a timeline nobody's tracking.",
+      "ideas": [
+        "Security boundaries and authority boundaries are different boundaries that can fail on different timelines",
+        "Third-party cloud access is designed to survive vendor compromise - that's the point of granting standing access",
+        "Compromised third-party credentials look like normal vendor activity, not anomalies your baseline detects",
+        "Vendor remediation statements only address their environment, not credentials they hold in client environments",
+        "Authority persists by default; revocation requires deliberate action nobody's tracking",
+        "Most organizations cannot produce an accurate list of who can authenticate into their cloud, on whose authority",
+        "Identity has become the real infrastructure boundary, with a meaningful share held by third parties",
+        "The dangerous credential may be the one already authorized, not the one an attacker stole",
+        "Framework #169 names the Authority Persistence Boundary - the gap between trust failing and authority becoming invalid",
+        "Zero trust principles need extension beyond your own perimeter to vendor-held authority relationships"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptionally substantive content that introduces a genuinely novel concept (Authority Persistence Boundary - Framework #169) and uses a real incident to illustrate a structural gap most organizations miss: security boundaries and authority boundaries fail on different timelines. The content delivers multiple high-value insights: the distinction between vendor remediation and client-side credential safety, the insight that compromised third-party credentials look like normal vendor behavior (not anomalous), and the uncomfortable reality that most organizations can't produce an accurate list of external identities with access to their infrastructure. The thinking is precise, the frameworks are interconnected, and the practical implications are actionable. Minor deduction for promotional framing (architect's playbook downloads, 'work with me' sections) but the content itself is educationally substantive rather than thinly veiled marketing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T08:34:03.273793"
+    },
+    {
+      "id": 4662,
+      "source_id": 34,
+      "original_url": "https://www.probableodyssey.blog/tech/ai-coding-and-review-fatigue/",
+      "title": "AI Coding and Review Fatigue",
+      "summary": "AI coding tools create hidden cognitive costs that often exceed the time saved writing code, making explicit AI guidelines essential for sustainable development.",
+      "ideas": [
+        "AI coding saves 1 minute but requires 1.5 minutes reviewing, creating a net productivity deficit",
+        "Developers lose contextual understanding when they don't write code themselves, creating cognitive debt",
+        "AI tools amplify judgment rather than replace decision-making—use them as teaching aids, not code factories",
+        "Never let AI modify tests, change API contracts, or add dependencies without explicit approval",
+        "AI should explain why code works rather than just providing snippets to copy-paste",
+        "Maintain PLAN.md and TODO.md as shared artifacts between developer and AI",
+        "Default AI to discussing approaches and trade-offs rather than implementing features",
+        "When AI reviews slip, developers get sent down wrong paths, grinding progress to a halt",
+        "Quality over quantity in engineering leads to better long-term system sustainability",
+        "AI is excellent for monotonous boilerplate and logging statements"
+      ],
+      "labels": [],
+      "rating": 82,
+      "rating_reason": "The author delivers a compelling, well-reasoned personal account with a surprising empirical observation (1:1.5 time ratio for AI writing vs reviewing) and provides a comprehensive, reusable AGENTS.md framework with specific rules and principles. The content is dense with actionable insights and practical guidelines. The thematic relevance is high for developers working with AI tools, addressing real workflow concerns. Minor deduction for some personal tangents and context-specific framing that may limit universal applicability, but the core ideas transfer well. References to Ankur Sethi's work on manual retyping adds credibility. The conclusion philosophy about quality over quantity is a valuable capstone.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T08:32:59.389544"
+    },
+    {
+      "id": 4661,
+      "source_id": 34,
+      "original_url": "https://www.nmajor.com/writing/second-deployment-is-smaller/",
+      "title": "The second deployment is smaller. Start there.",
+      "summary": "The highest-volume AI deployment is also the highest-exposure one where errors cost the most, so smart companies start with smaller, narrower AI jobs to learn failure modes cheaply before scaling.",
+      "ideas": [
+        "Start AI deployment with the smaller, lower-stakes job rather than the high-volume one",
+        "Johnson & Johnson found 10-15% of 9,000 AI use cases produced 80% of the value",
+        "Amazon's Just Walk Out worked for 3 items but failed for 90-item weekly shops",
+        "Taco Bell slowed their voice AI rollout to learn what it got wrong while that was cheap",
+        "High volume equals high exposure—busiest channels have the most costly errors",
+        "Narrower AI jobs work after you learn which mistakes the technology makes",
+        "Overestimating AI capability makes you a cautionary tale in 2026",
+        "AI should replace touch-tone systems, not complex human conversations"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a well-constructed analysis with four distinct corporate case studies (Kinney Drugs, Johnson & Johnson, Amazon, Taco Bell) that all illustrate the same core principle: high-volume AI deployments are also high-exposure deployments where errors are most costly. The author provides actionable strategic insight—that companies should start with narrower AI deployments to learn what the technology gets wrong cheaply before scaling. The content is tight (4 minutes reading), well-argued, and offers genuine strategic value rather than generic AI advice. Strong thematic relevance to business strategy and technology implementation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T08:31:54.319176"
+    },
+    {
+      "id": 4660,
+      "source_id": 34,
+      "original_url": "https://www.michaelbromley.co.uk/blog/zooming-out/",
+      "title": "Zooming Out",
+      "summary": "In AI-assisted development, the key skill is 'zooming out' - the ability to see the broader codebase and avoid local maximums by checking for existing solutions and identifying when a problem represents a specific case of a broader issue that can be solved more generically.",
+      "ideas": [
+        "AI generates low-quality software without oversight because it solves only immediate problems without seeing the wider codebase",
+        "Local maximum: AI solution looks optimal in isolation but misses the global optimum visible only by zooming out",
+        "AI has no diffidence - it won't hesitate to make stupid choices that a human developer would avoid from fear",
+        "Project-level markdown files fail because they either cover too little or degrade context windows when comprehensive",
+        "First zooming-out principle: check if a problem has already been solved elsewhere in the project before re-inventing",
+        "Second zooming-out principle: define the problem at one level of abstraction higher to reveal broader solutions",
+        "The Vendure order code example: 'limit length' becomes 'control over generation' revealing the Strategy Pattern",
+        "Strategy Pattern in Vendure was designed to encourage zooming out to broader abstractions",
+        "Vibe coding has reset decades of software engineering practices - we'll rediscover these principles over coming years",
+        "To zoom out really means to be aware of abstractions and the overall shape of the project"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Productivity"
+      ],
+      "rating": 84,
+      "rating_reason": "This essay delivers genuine value through the 'zooming out' framework for AI-assisted development. The author provides two actionable principles (checking for existing solutions and identifying broader abstractions) illustrated with a concrete Vendure case study. The 'local maximum' concept as applied to AI code generation is a useful mental model, and the observation that vibe coding has reset software engineering practices suggests we need to rediscover fundamental principles. The content is well-focused with no padding, delivering 8 quality ideas in approximately 1,100 words. The thematic relevance to modern software development in the AI era is strong, and the insights are genuinely useful rather than obvious or recycled. Minor deduction for the slightly grandiose framing around 'recording for posterity' which is more personal reflection than informational value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T08:30:36.133903"
+    },
     {
       "id": 4659,
       "source_id": 34,
