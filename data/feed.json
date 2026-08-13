@@ -1,7 +1,105 @@
 {
-  "updated_at": "2026-08-13T21:00:01.255058",
-  "total_items": 759,
+  "updated_at": "2026-08-13T22:00:02.074747",
+  "total_items": 763,
   "items": [
+    {
+      "id": 4690,
+      "source_id": 34,
+      "original_url": "https://www.tara.sh/posts/2026/2026-08-13_seaweedfs_freebsd_rabbithole/",
+      "title": "SeaweedFS, FreeBSD and a rather deep rabbit hole",
+      "summary": "A practitioner documents tracing SeaweedFS volume allocation through source code to discover undocumented defaults (7 logical volumes per collection at replication 000, 6 at 001) and a 5-minute background growth loop, ultimately achieving working configurations for small FreeBSD labs.",
+      "ideas": [
+        "Copy1Count defaults to 7, creating a pool of 7 writable volumes per collection",
+        "Background master loop runs every ~5 minutes checking volume crowding",
+        "Volume growth threshold 0.9 governs pool maintenance, not fullness",
+        "S3 buckets map to collections with independent volume allocation pools",
+        "FreeBSD rc.d scripts needed for separate master/volume/filer roles",
+        "Source code investigation often beats documentation for complex systems"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This article provides exceptional concrete substance through first-hand investigation of SeaweedFS volume allocation behavior. The author moves beyond documentation to trace source code, revealing undocumented defaults (Copy1Count: 7, Copy2Count: 6) and the 5-minute background growth loop. Specific configurations, Vagrant setup details, and rc.d scripts are provided. The debugging methodology—tuning parameters, hitting confusion, reading source, achieving understanding—models how to investigate complex distributed systems. Limited by conversational length and ending mid-sentence, but the core technical content is complete and highly applicable to anyone deploying SeaweedFS.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T07:18:12.901541"
+    },
+    {
+      "id": 4689,
+      "source_id": 34,
+      "original_url": "https://wesmckinney.com/blog/agentic-engineering-aug-2026/",
+      "title": "How Kenn is doing Agentic Engineering",
+      "summary": "Wes McKinney describes Kenn Software's human-in-the-loop agentic engineering workflow, including a detailed process for spec-driven development, adversarial verification with roborev, a 'Clanker Constitution' for agent behavior, and honest assessments that current frontier models require substantial hardening before production use.",
+      "ideas": [
+        "Human-operator loops (not autonomous agent loops) are essential for quality output",
+        "Current frontier models produce sloppy code unsuitable for production without hardening",
+        "Spec-first development with adversarial review before implementation",
+        "The 'Clanker Constitution' constrains agents to honor requests, act with judgment, and communicate for humans",
+        "Custom tools (Forge, Ghosthub, Kata) address gaps in legacy stack for agentic workflows",
+        "Three-person team merges hundreds of PRs weekly with empirically low bug rates"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Wes McKinney provides substantive, firsthand engineering insight into running a high-output agentic development shop. The article delivers concrete value through a detailed workflow with specific steps, honest assessments of frontier model limitations (calls current models 'extremely sloppy' without hardening), a 'Clanker Constitution' for constraining agent behavior, and quantifiable metrics (3 people, hundreds of PRs/week, millions of lines, $56k/mo tokens). The strong opinion against autonomous loops is backed by practical experience. While some promotional elements exist around Kenn's custom tools, the genuine insights and reproducible principles outweigh this, making it a strong signal for technically engaged readers interested in AI-assisted development.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T06:54:29.431503"
+    },
+    {
+      "id": 4688,
+      "source_id": 34,
+      "original_url": "https://veganmosfet.codeberg.page/posts/2026-08-12-opus5_automode/",
+      "title": "Prompt Injection Experiments with Opus-5 in Claude Code - Auto-Mode Edition",
+      "summary": "Security researcher demonstrates how Opus-5 in Claude Code's auto-mode can be manipulated via indirect prompt injection to execute untrusted code, bypassing the safety classifier in 6 out of 10 trials through steganography, multi-stage puzzles, and adversarial trajectory guidance.",
+      "ideas": [
+        "Safety classifier bypassed in 60% of trials using indirect prompt injection",
+        "Adversarial Trajectory Guidance uses soft instructions to guide model behavior",
+        "Audit hooks (sys.addaudithook) are documented as trivially bypassable by design",
+        "Classifier confusion achieved through complex automation scripts masking malicious calls",
+        "Steganographic payloads in images provide initial injection vector"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a substantive security research article documenting adversarial prompt injection attacks against Claude Code's auto-mode safety classifier. The author provides complete experimental methodology with specific tool calls, classifier responses (severity ratings of 78 blocked vs 15 allowed), and detailed logs. The article introduces a new attack concept called 'Adversarial Trajectory Guidance' and demonstrates a 60% success rate in bypassing the safety classifier through steganography, multi-stage puzzles, and classifier confusion techniques. The work is credible, reproducible, and directly relevant to AI agent security concerns with minimal padding or noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T06:50:19.299605"
+    },
+    {
+      "id": 4687,
+      "source_id": 34,
+      "original_url": "https://vanja.io/claude-agents-vs-slash-agents/",
+      "title": "The Slash Is Load-Bearing",
+      "summary": "Claude Code has five distinct multi-agent surfaces (subagents, agent view, agent teams, dynamic workflows, cross-session messaging) that differ in coordination model, cost, and isolation guarantees, with the most dangerous behavior being that completed background sessions delete their worktrees on cleanup.",
+      "ideas": [
+        "Explore inherits parent model since v2.1.198, not always Haiku",
+        "Ctrl+X twice deletes completed sessions AND their worktrees",
+        "Worktree sweep skips trees with uncommitted changes, session delete does not",
+        "Agent teams lock task claims but not source files",
+        "Subagent name collisions are silent coin-flips",
+        "Background sessions cost ~10x subscription quota",
+        "claude agents is a local process supervisor, not durable job system"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This article provides substantial, well-organized technical substance about Claude Code's five distinct multi-agent surfaces, their actual behaviors, and non-obvious constraints. It includes concrete details like version numbers (v2.1.198), command syntax, cost estimates, the critical worktree deletion footgun, model inheritance changes, and the Explore/Plan CLAUDE.md bypass. The distinction between similarly-named features and the adversarial team use case are genuinely non-obvious. The cost breakdown with specific multipliers (10x for background sessions, 7x for teams) provides operational clarity. Minor扣分 for abrupt ending and some padding in the setup narrative.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T06:48:58.310233"
+    },
     {
       "id": 4686,
       "source_id": 34,
