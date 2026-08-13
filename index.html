@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FeedSieve - AI-curated content from RSS feeds, YouTube channels, and newsletters">
     <title>FeedSieve - AI-Curated Content</title>
-    <link rel="stylesheet" href="css/style.1786533186.css">
+    <link rel="stylesheet" href="css/style.1786624925.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%236C63FF%22/><stop offset=%22100%25%22 stop-color=%22%2300D4AA%22/></linearGradient></defs><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%231a1a2e%22/><path d=%22M16 18h32l-10 16v12l-12 0V34Z%22 fill=%22url(%23g)%22 opacity=%220.9%22/><circle cx=%2224%22 cy=%2216%22 r=%222%22 fill=%22%2300D4AA%22 opacity=%220.6%22/><circle cx=%2240%22 cy=%2214%22 r=%221.5%22 fill=%22%236C63FF%22 opacity=%220.5%22/><circle cx=%2232%22 cy=%2212%22 r=%221.5%22 fill=%22%2300D4AA%22 opacity=%220.4%22/></svg>">
 </head>
 <body>
@@ -22,10 +22,13 @@
                 <button class="sieve-view active" type="button" data-sieve-view="articles" aria-pressed="true">
                     Articles
                 </button>
-                <button class="sieve-view" type="button" data-sieve-view="updates" aria-pressed="false">
-                    Updates
-                    <span class="sieve-view-count hidden" id="updates-view-count"></span>
+                <button class="sieve-view" type="button" data-sieve-view="developments" aria-pressed="false">
+                    Developments
                 </button>
+            </div>
+            <div class="developments-schedule developments-schedule-desktop" aria-label="Developments release schedule">
+                <span class="developments-schedule-icon" aria-hidden="true">◷</span>
+                <span><strong>Next Developments release</strong><br><span data-developments-schedule-time>At the next scheduled release</span></span>
             </div>
             <nav class="sidebar-nav" id="sidebar-nav">
                 <!-- Time-based section -->
@@ -136,23 +139,30 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="content-header">
+                <div class="mobile-brand" aria-label="FeedSieve">
+                    <span class="mobile-brand-icon" aria-hidden="true">📰</span>
+                    <span>FeedSieve</span>
+                </div>
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-                <div class="mobile-sieve-views" role="group" aria-label="Sieve views">
-                    <button class="sieve-view active" type="button" data-sieve-view="articles" aria-pressed="true">
+                <div class="mobile-sieve-views" role="tablist" aria-label="Sieve views">
+                    <button class="sieve-view active" type="button" role="tab" data-sieve-view="articles" aria-selected="true" aria-pressed="true">
                         Articles
                     </button>
-                    <button class="sieve-view" type="button" data-sieve-view="updates" aria-pressed="false">
-                        Updates
+                    <button class="sieve-view" type="button" role="tab" data-sieve-view="developments" aria-selected="false" aria-pressed="false">
+                        Developments
                     </button>
+                </div>
+                <div class="developments-schedule developments-schedule-mobile" aria-label="Developments release schedule">
+                    <span class="developments-schedule-icon" aria-hidden="true">◷</span>
+                    <span><strong>Next Developments release</strong> · <span data-developments-schedule-time>next scheduled release</span></span>
                 </div>
                 <div class="header-left">
                     <h2 class="feed-title" id="feed-title">Today</h2>
                     <span class="feed-count" id="feed-count">0 articles</span>
-                    <span class="awareness-next-update hidden" id="awareness-next-update"></span>
                     <button class="refresh-btn" id="refresh-btn" aria-label="Refresh feed" title="Refresh feed">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="23 4 23 10 17 10"></polyline>
@@ -219,11 +229,11 @@
                 </div>
             </div>
 
-            <section class="awareness-view hidden" id="awareness-view" aria-label="Finite updates">
+            <section class="awareness-view hidden" id="awareness-view" aria-label="Finite developments">
                 <div class="awareness-loading" id="awareness-loading" aria-live="polite" aria-busy="true">
                     <div class="awareness-skeleton"></div>
                     <div class="awareness-skeleton"></div>
-                    <span>Loading the latest sealed update…</span>
+                    <span>Loading the latest sealed developments…</span>
                 </div>
                 <div class="awareness-coverage hidden" id="awareness-coverage" role="status"></div>
                 <div class="development-list" id="development-list"></div>
@@ -244,6 +254,6 @@
     </div>
 
     <script src="js/app.1786533186.js"></script>
-    <script src="js/awareness.1786533186.js"></script>
+    <script src="js/awareness.1786624925.js"></script>
 </body>
 </html>
