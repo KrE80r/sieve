@@ -1,7 +1,123 @@
 {
-  "updated_at": "2026-08-13T20:00:00.806417",
-  "total_items": 754,
+  "updated_at": "2026-08-13T21:00:01.255058",
+  "total_items": 759,
   "items": [
+    {
+      "id": 4686,
+      "source_id": 34,
+      "original_url": "https://mensfeld.pl/2026/08/ruby-rails-performance-roundup-backlog/",
+      "title": "Ruby and Rails Performance Roundup: The Backlog Edition",
+      "summary": "Comprehensive roundup of Ruby and Rails performance PRs covering JIT optimizations, GC improvements, string/array fast paths, and Rails framework enhancements with specific benchmark measurements and author attributions.",
+      "ideas": [
+        "Per-Ractor GC reduces multi-Ractor wall time scaling from 10.17x to 3.32x",
+        "duparray compilation eliminates 1M object allocations for include? calls",
+        "JSON::ResumableParser fix achieves 378x speedup by deferring bignum decode",
+        "BigMath.erf algorithm replacement cuts 19-minute computation to 5 seconds",
+        "File.read single-pass reads eliminate 96% memory retention on small files"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Dense technical curation of 40+ Ruby/Rails performance optimizations with specific benchmarks, named contributors, and mechanism explanations. Each entry includes before/after numbers with methodology caveats. Strong substance: JIT fast paths (YJIT/ZJIT polymorphic optimizations), GC improvements (per-Ractor GC scales 3.32x vs 10.17x), duparray allocation fix (2 objects vs 1M for 1M calls), JSON parser quadratic-to-linear fix (378x). The compilation format delivers high value per minute for Ruby practitioners, though it lacks original analysis—this is curated findings rather than investigative work.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T05:51:41.966565"
+    },
+    {
+      "id": 4685,
+      "source_id": 34,
+      "original_url": "https://martinhicks.dev/articles/parity-suite-300-release-notes",
+      "title": "Parity Suite 3.0.0: measuring the wrong thing",
+      "summary": "The author explains why the old single-metric scoring was fundamentally flawed and how the new Coverage/Divergence split with letter grades provides more honest conformance measurement for DynamoDB emulators.",
+      "ideas": [
+        "Skipped tests hiding in pass-rate scoring caused a 8.4pp gain without any engine changes",
+        "Coverage and Divergence are measured over the full suite so neither metric can hide in the other",
+        "AWS DynamoDB vector index documentation contradicts itself on readiness state, Backfilling status, and when IndexStatus becomes ACTIVE",
+        "Letter grades cap coverage impact at one-third of unimplemented features added to divergence before banding",
+        "GSI write costs: moving an item to a new GSI key costs 2 units, overwriting unchanged costs 0"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive technical piece about DynamoDB emulator conformance testing methodology by the author of the suite. Provides concrete evidence of the old scoring flaw (8.4-point gain with zero engine changes), explains the replacement dual-metric system (Coverage/Divergence) with specific thresholds and test counts, and includes original findings like DynamoDB vector index documentation being wrong in three ways. High signal-to-noise ratio with transparent disclosure of the author's own engine being on the board. The measurement improvements are well-argued with specific examples, and the breaking API changes are documented explicitly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T05:50:27.376791"
+    },
+    {
+      "id": 4684,
+      "source_id": 34,
+      "original_url": "https://martinhicks.dev/articles/dynamodb-vector-search-docs-get-wrong",
+      "title": "When a DynamoDB vector index is actually ready",
+      "summary": "DynamoDB vector index documentation contradicts itself in three places about backfill behavior and readiness signals; empirically the index goes straight from CREATING to ACTIVE with Backfilling vanishing, and ACTIVE status arrives before searches actually work.",
+      "ideas": [
+        "Backfilling field vanishes at ACTIVE rather than settling to false",
+        "ACTIVE status precedes search plane readiness by a small window",
+        "Wait for successful search with expected count rather than polling DescribeTable",
+        "F32 embedding precision loss: 16777217 becomes 16777216 in projections",
+        "DynamoDB Local silently drops VectorIndexes on CreateTable",
+        "Vector capacity reports 1024 byte floor regardless of actual vector size",
+        "Index added to populated table took ~17 minutes to become searchable"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "High-value technical content from a practitioner who empirically tested DynamoDB vector search against real AWS. Documents three specific documentation contradictions with evidence: backfill behavior (error vs incomplete results), the non-existent middle state machine for Backfilling, and ACTIVE status arriving before the search plane is ready. Provides working code for proper readiness detection and additional findings about f32 precision loss, capacity reporting, and emulator gaps. The conformance suite with linked evidence and scheduled runs adds credibility. Strong relevance to anyone implementing DynamoDB vector search.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T05:49:29.121446"
+    },
+    {
+      "id": 4683,
+      "source_id": 34,
+      "original_url": "https://marlonribunal.com/demo-for-parameter-sniffing-and-memory-grant-feedback/",
+      "title": "Demo for Parameter Sniffing and Memory Grant Feedback",
+      "summary": "Parameter sniffing causes two distinct problems—wrong plan shape causing excessive logical reads, and wrong memory grant causing spills or reserved-but-unused memory—requiring different detection approaches and different fixes.",
+      "ideas": [
+        "Query last_grant_kb > last_used_grant_kb * 2 to detect wasted memory grants",
+        "Memory Grant Feedback does not fix bad plan shape, only memory estimates",
+        "TOP N Sort hides memory grant issues by scaling grant to returned rows only",
+        "RESOURCE_SEMAPHORE waits from greedy grants can stall unrelated queries",
+        "Sniffing big and running small causes wasted memory without duration symptoms"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong technical article that clearly distinguishes between two distinct parameter sniffing failure modes: bad plan shape (detected via logical reads) and bad memory grant (detected via last_grant_kb vs last_used_grant_kb vs last_ideal_grant_kb). Provides reproducible demo setup with WideWorldImporters, concrete memory values (1 MB for small customer, 127.31 MB for large customer), diagnostic queries, and an actionable comparison table. Notable insight that Memory Grant Feedback does not fix plan shape problems. Includes honest trade-off discussion about OPTION (RECOMPILE) CPU costs. Limited by incomplete code distribution (GitHub repo mentioned but not linked) and truncated ending.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T05:49:01.602573"
+    },
+    {
+      "id": 4682,
+      "source_id": 34,
+      "original_url": "https://llbbl.blog/2026/08/12/pnpm-made-the-safe-thing.html",
+      "title": "https://llbbl.blog/2026/08/12/pnpm-made-the-safe-thing.html",
+      "summary": "pnpm 11 introduces a new default security feature that delays the installation of newly published packages to protect against supply chain attacks",
+      "ideas": [
+        "pnpm 11's minimumReleaseAge setting delays package installation by 24 hours",
+        "Similar features exist in npm, Yarn, and Bun, but are not always default",
+        "Automated actions should be blocked, not permitted with a warning"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "The article provides a detailed explanation of pnpm 11's new default security features, including the minimumReleaseAge setting, which protects against supply chain attacks by delaying the installation of newly published packages. The author also discusses similar features in other package managers, such as npm and Yarn, and highlights the importance of making the safe thing the default. The article is well-structured, informative, and provides concrete examples of how these features work.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T05:44:05.960454"
+    },
     {
       "id": 4681,
       "source_id": 34,
