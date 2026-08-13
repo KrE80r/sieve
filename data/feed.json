@@ -1,7 +1,113 @@
 {
-  "updated_at": "2026-08-13T00:00:15.378937",
-  "total_items": 760,
+  "updated_at": "2026-08-13T01:00:01.165113",
+  "total_items": 764,
   "items": [
+    {
+      "id": 4669,
+      "source_id": 34,
+      "original_url": "https://zaferbalkan.com/ditjson/",
+      "title": "Reading an offline ntds.dit with one binary",
+      "summary": "Acquiring ntds.dit triggers detectable telemetry, but reading it offline produces zero observable artifacts on the target—understanding this asymmetry is essential for both red-team operators and blue-team detection engineers.",
+      "ideas": [
+        "ntds.dit is an ESE database with three tables: datatable (objects), link_table (relationships), and sd_table (security descriptors)",
+        "sAMAccountType values are globally consistent (0x30000000=user, 0x30000001=machine, 0x10000000=group), unlike objectClass references",
+        "The encryption chain requires boot key from SYSTEM hive → decrypts PEK list → decrypts each hash → removes DES layer keyed on RID",
+        "Windows Server 2012 R2 and earlier use RC4 (PEK v2); Server 2016+ use AES-CBC (PEK v3, CRYPTED_HASHW16)",
+        "T1003.003 covers file-based ntds.dit extraction; T1003.006 (DCSync) uses directory replication protocol with no file written",
+        "ESENT application-log events raised by the database engine are harder to evade than process-name detection",
+        "Process creation rules catch ntdsutil IFM; file creation rules catch ntds.dit outside %SystemRoot%\\NTDS; ESENT rules catch defragmentation",
+        "A tripwire regex for 'ntdsutil' catches only the careless operator, not the deliberate one using renamed binaries or VSS paths",
+        "A file appearing outside the live directory path is not a lead to investigate—it is an incident to declare",
+        "Tools worth knowing: secretsdump.py (Impacket), ntdsxtract (two-stage CSV), DIT Explorer (visual), DSInternals (full read/write), ntdissector (JSON via dissect.esedb), NtdsAudit (CSV+pwdump)"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a dense, technically authoritative piece that delivers exceptional value for cybersecurity professionals. The author provides a complete technical framework covering ESE database internals, the full encryption chain (boot key → PEK → NT hash), MITRE ATT&CK mappings (T1003.003, T1003.006), specific Wazuh/Sysmon detection rules in working XML, a fair comparison of 6+ competing tools, and the core insight about acquisition/analysis asymmetry. The content has no padding, no promotion, and treats ditjson as one option among alternatives rather than overselling it. The 21-minute read time is justified by genuine depth: the sAMAccountType hex values, ESENT application-log detection, DCSync distinction, and boot key extraction from four registry keys (JD, Skek1, GBG, Data) are all substantive technical details that practitioners need but rarely find consolidated in one place.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T09:57:06.428893"
+    },
+    {
+      "id": 4668,
+      "source_id": 34,
+      "original_url": "https://zackmdavis.net/blog/2026/Aug/session-management-message-authentication-and-the-tragedy-of-the-secret-key/",
+      "title": "Session Management, Message Authentication, and the Tragedy of the SECRET_KEY",
+      "summary": "A leaked SECRET_KEY combined with unsafe pickle serialization enables attackers to forge session cookies and achieve remote code execution, turning configuration mistakes into full server compromise.",
+      "ideas": [
+        "Cookie-backed sessions store data in the cookie itself; database-backed sessions store an ID for lookup",
+        "Rails 3 uses signed cookies (readable but unverifiable) while Rails 4 uses encrypted cookies",
+        "Signed cookies let anyone read the session data but only the server can forge valid signatures",
+        "Publishing SECRET_KEY to GitHub allows attackers to forge valid session cookies",
+        "Pickle serialization can execute arbitrary code when deserializing attacker-controlled data",
+        "The __reduce__ method in Python Pickle defines code execution instructions during unpickling",
+        "Leaking one secret key can lead to complete server compromise through the attack chain shown",
+        "The default Rails secret_token files were historically not in .gitignore by default"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "Rich technical content with high practical value. The author explains cookie-backed vs database-backed sessions, demonstrates the critical difference between Rails 4 encrypted cookies and Rails 3 signed cookies, and most importantly shows a complete attack chain: how a leaked SECRET_KEY combined with Pickle serialization enables arbitrary code execution. The live exploit demonstration with working Python code that achieves SSH access to the victim server provides exceptional educational value. Slight penalty for the informal 'dead metaphor' framing, but the technical substance is strong and the lessons about never committing secret keys remain highly relevant.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T09:56:26.393213"
+    },
+    {
+      "id": 4667,
+      "source_id": 34,
+      "original_url": "https://www.solberg.is/every-database-error-is-a-value",
+      "title": "Every database error in this blog is a value",
+      "summary": "Database constraint errors should be treated as values that travel the full stack: skip pre-flight checks, let the database enforce uniqueness, and map constraint violations to typed error tags with payloads that survive wire serialization.",
+      "ideas": [
+        "Three-outcome model: declare failures you handle, return happy path, panic on everything else",
+        "Storage-faithful typing: match database schema exactly (epoch seconds, 0|1 booleans)",
+        "The insert is the check: skip pre-flight SELECT, let DB enforce uniqueness to avoid race conditions",
+        "Type narrowing: SELECT queries provably cannot produce UniqueViolation errors",
+        "Error tags survive wire serialization using devalue, preserving typed errors end-to-end",
+        "CLI error catalog requires compile-time exhaustive handler coverage",
+        "Optimistic concurrency uses revision guard with same check-and-write pattern",
+        "Temporal.PlainDate as deliberate exception with unconditional marshalling plugin",
+        "Result type can go all the way upstream when wire serialization preserves it"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is substantive technical content with high information density. The author shares 9 distinct value instances including the three-outcome error model, storage-faithful typing, the 'insert is the check' anti-race pattern, type-narrowed error unions per query shape, and a wire protocol preserving error tags. The content is focused, not padded, and addresses a real engineering itch with original patterns. The author shows intellectual honesty by addressing the Effect comparison. The libraries (better-result, db-result, result-rpc) appear to be real implementations, not theoretical constructs. This is targeted at TypeScript developers working with databases—niche but deeply valuable to that audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T09:50:29.330214"
+    },
+    {
+      "id": 4666,
+      "source_id": 34,
+      "original_url": "https://www.scrivano.org/posts/2026-08-11-sharing-erofs-superblocks-across-container-mounts/",
+      "title": "Sharing EROFS superblocks across container mounts",
+      "summary": "EROFS mounts of the same container image create duplicate superblocks and inode caches, wasting memory proportionally to container count, but a new superblock_share mount option lets the kernel recognize and reuse existing superblocks for the same backing file, reducing 20 mounts from 37MB to 284KB of slab memory.",
+      "ideas": [
+        "EROFS mounts backed by the same file create separate superblocks and duplicate inode caches",
+        "Twenty mounts of a 177MB Fedora image wastes ~37MB of slab memory via duplicate inodes",
+        "Userspace daemon approach fails because file descriptors are lost on daemon restart",
+        "superblock_share mount option reuses existing superblocks for same backing file",
+        "With superblock_share: 20 mounts use 1 superblock instead of 20, and 284KB instead of 37MB",
+        "superblock_share requires opt-in because shared superblocks cannot be remounted with different options",
+        "composefs will enable superblock_share by default since it doesn't need MS_REMOUNT"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a well-executed technical deep-dive from a domain expert (Giuseppe Scrivano, who works on container-libs) presenting original measurements and a kernel solution for a real infrastructure problem. The content delivers 5 distinct value instances: (1) concrete measurement showing 37MB memory waste from 20 duplicate mounts, (2) analysis of why the userspace daemon workaround fails, (3) the superblock_share mount option design and behavior, (4) performance comparison showing 99% memory reduction (284KB vs 37MB), and (5) rationale for why sharing is opt-in. No padding, no fluff—just precise technical explanation with reproducible methodology. The narrow audience (kernel/container engineers) actually increases relevance for that audience rather than penalizing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-13T09:46:28.558661"
+    },
     {
       "id": 4665,
       "source_id": 34,
