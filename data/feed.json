@@ -1,7 +1,76 @@
 {
-  "updated_at": "2026-08-13T18:00:10.815217",
-  "total_items": 751,
+  "updated_at": "2026-08-13T19:00:00.717023",
+  "total_items": 754,
   "items": [
+    {
+      "id": 4681,
+      "source_id": 34,
+      "original_url": "https://byroot.github.io/ruby/performance/2026/08/13/speeding-up-ruby-hashes.html",
+      "title": "Speeding Up (small) Ruby Hashes",
+      "summary": "Ruby small hashes use a linear O(n) search over an ar_table, but this can be optimized to O(1) using SWAR bit-manipulation to find matching hint bytes in a single CPU register operation.",
+      "ideas": [
+        "Ruby small hashes store hints as 8 bytes in a 64-bit register",
+        "SWAR can find matching hint bytes in one operation instead of looping",
+        "NULL-byte detection trick: x7 = (x & 0x7f) + 0x7f detects if any byte was zero",
+        "Use ctz (count trailing zeros) to get index of first matching byte",
+        "Position-7 lookup is ~1.55x slower than position-0 in Ruby 4.1.0dev",
+        "Endianness matters: little-endian uses ctz, big-endian uses nlz"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Substantive deep-dive into Ruby hash internals for small tables, providing C source code, real benchmarks, and a detailed SWAR bit-manipulation optimization. The author explains the O(n) linear search in ar_table and shows how to make it O(1) using SIMD-within-a-register techniques with full working code for null-byte detection. Benchmarks confirm the performance difference between position-0 and position-7 lookups (~1.5x). The bit-manipulation explanation with the NULL byte trick is thorough and includes endianness handling. The article is cut off near the end but the core optimization is fully explained.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T04:27:25.444405"
+    },
+    {
+      "id": 4680,
+      "source_id": 34,
+      "original_url": "https://blog.lukaszolejnik.com/how-we-built-and-ran-the-first-fully-autonomous-information-operation/",
+      "title": "How we built and ran the first fully autonomous information operation",
+      "summary": "A security researcher describes building and running a simulation framework that demonstrates fully autonomous AI information operations can successfully influence user attitudes across multiple targets simultaneously.",
+      "ideas": [
+        "Autonomous IO operations now feasible with open-weight LLMs",
+        "6-stage loop: observe, measure, adapt, select, generate, validate",
+        "1000 AI operators among 10K simulated users successfully moved measurable variables",
+        "Platform-campaign separation enables reproducible defense testing",
+        "Recorded action chains enable post-hoc forensic reconstruction"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "Substantive research article describing IO Factory, a simulation framework for autonomous AI-driven information operations. The article provides concrete technical details: 6-stage autonomous operating loop architecture, experimental setup with 10K users and 1K AI operators, specific model configurations (Gemma 4 31B, Qwen3.6, GLM-5.2), and measured outcomes showing campaigns successfully moved target variables. Author demonstrates firsthand engineering experience and provides actionable insights for threat intelligence and red team use cases. Limited by focusing on system description rather than detailed implementation specifics, but the threat modeling implications are significant and well-grounded in documented real-world operations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-14T04:19:43.196343"
+    },
+    {
+      "id": 4679,
+      "source_id": 15,
+      "original_url": "https://portswigger.net/research/css-the-bomb-inside-your-inbox",
+      "title": "CSS:the bomb inside your inbox",
+      "summary": "CSS can be exploited in webmail clients to bypass sanitizers and covertly steal credentials and tokens.",
+      "ideas": [
+        "CSS can bypass webmail sanitizers to execute malicious payloads",
+        "Attribute selector nesting can brute‑force 12‑character hex tokens",
+        "Indirect prompt injection can hijack OpenAI's Atlas browser",
+        "Font‑height and animation side‑channels can exfiltrate data",
+        "These CSS attacks work on Gmail, Outlook, Fastmail, ProtonMail, and others"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The brief description delivers several concrete, novel AppSec techniques—CSS weaponization, token brute‑forcing via attribute selectors, prompt injection into OpenAI's Atlas, and font‑height side‑channel exfiltration—across major webmail services, providing clear practical knowledge for security professionals. Its short length and high density of actionable insights earn a strong score, with no clickbait or padding. The content aligns closely with CyberSecurity and touches AI, supporting the rating.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-08-14T03:32:07.981881"
+    },
     {
       "id": 4678,
       "source_id": 4,
