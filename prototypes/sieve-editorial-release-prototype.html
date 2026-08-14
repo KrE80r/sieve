@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Throwaway Sieve prototype for a calm, visually crafted X-derived briefing">
+    <title>Sieve editorial release prototype</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23141414%22/><path d=%22M16 18h32l-10 16v12H26V34Z%22 fill=%22%235ea3d0%22/></svg>">
+    <!--
+      PROTOTYPE — not production code.
+      Question: what should one sealed X-derived Sieve release look like when
+      source identity, meaningful media, and sustained reading all matter?
+      Three structural variants are switchable with ?variant=A|B|C.
+      Run: python3 -m http.server 8765 --directory /home/krkr/sieve
+    -->
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0f0f0f;
+            --surface: #181818;
+            --surface-raised: #1d1d1d;
+            --sidebar: #141414;
+            --border: #2b2b2b;
+            --border-soft: #232323;
+            --text: #ededeb;
+            --text-2: #c3c3be;
+            --muted: #8d8d87;
+            --faint: #676762;
+            --accent: #68a9d2;
+            --accent-soft: rgba(104, 169, 210, 0.11);
+            --green: #76c48c;
+            --amber: #e7b35a;
+            --danger: #de8a83;
+            --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --reading: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+            --sidebar-width: 274px;
+            --switcher-height: 72px;
+            --radius: 12px;
+            --shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            background: var(--bg);
+        }
+
+        body {
+            min-width: 0;
+            min-height: 100vh;
+            margin: 0;
+            padding-bottom: var(--switcher-height);
+            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, a { -webkit-tap-highlight-color: transparent; }
+        button { font: inherit; }
+
+        a {
+            color: inherit;
+            text-decoration-color: rgba(104, 169, 210, 0.55);
+            text-underline-offset: 0.18em;
+        }
+
+        a:hover { color: var(--accent); }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .app-shell {
+            display: flex;
+            min-height: calc(100vh - var(--switcher-height));
+        }
+
+        .sidebar {
+            position: fixed;
+            inset: 0 auto var(--switcher-height) 0;
+            z-index: 20;
+            display: flex;
+            width: var(--sidebar-width);
+            flex-direction: column;
+            border-right: 1px solid var(--border);
+            background: var(--sidebar);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-height: 76px;
+            padding: 1.25rem 1.15rem;
+            border-bottom: 1px solid var(--border);
+            font-weight: 760;
+            letter-spacing: -0.025em;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 30px;
+            height: 30px;
+            place-items: center;
+            border: 1px solid rgba(104, 169, 210, 0.35);
+            border-radius: 8px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .prototype-label {
+            margin-left: auto;
+            padding: 0.18rem 0.42rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: 0.57rem;
+            font-weight: 750;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .primary-nav {
+            display: grid;
+            gap: 0.35rem;
+            padding: 1rem 0.75rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.72rem;
+            min-height: 44px;
+            padding: 0.65rem 0.75rem;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--muted);
+            text-align: left;
+        }
+
+        .nav-item.active {
+            background: rgba(104, 169, 210, 0.10);
+            color: var(--text);
+        }
+
+        .nav-icon {
+            width: 18px;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .release-sidebar {
+            margin: 0.25rem 1rem 0;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.016);
+        }
+
+        .release-sidebar small,
+        .sidebar-principle small {
+            display: block;
+            color: var(--muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .release-sidebar strong {
+            display: block;
+            margin-top: 0.35rem;
+            color: var(--text-2);
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .sidebar-principle {
+            margin-top: auto;
+            padding: 1.2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.75rem;
+            line-height: 1.55;
+        }
+
+        .sidebar-principle p { margin: 0.45rem 0 0; }
+
+        .main {
+            width: calc(100% - var(--sidebar-width));
+            margin-left: var(--sidebar-width);
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            min-height: 62px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 15, 15, 0.93);
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-title {
+            display: flex;
+            align-items: baseline;
+            gap: 0.7rem;
+        }
+
+        .topbar-title strong { font-size: 0.92rem; }
+        .topbar-title span, .topbar-schedule { color: var(--muted); font-size: 0.75rem; }
+
+        .mobile-brand,
+        .mobile-tabs { display: none; }
+
+        .variant-root {
+            min-height: 100vh;
+            padding: 2.5rem 1.5rem 5rem;
+        }
+
+        .edition-kicker,
+        .story-kicker {
+            color: var(--accent);
+            font-size: 0.67rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .edition-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem 1rem;
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+
+        .edition-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 3px rgba(118, 196, 140, 0.09);
+        }
+
+        .story-source {
+            margin-top: 0.65rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.55;
+        }
+
+        .story-source strong {
+            color: var(--text-2);
+            font-weight: 680;
+        }
+
+        .story-copy {
+            color: var(--text-2);
+            font-family: var(--reading);
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+
+        .story-copy p { margin: 0 0 0.95rem; }
+        .story-copy p:last-child { margin-bottom: 0; }
+
+        .story-copy strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .why-it-matters {
+            margin-top: 1rem;
+            padding-left: 0.9rem;
+            border-left: 2px solid rgba(104, 169, 210, 0.5);
+            color: var(--text-2);
+            font-family: var(--reading);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .why-it-matters b {
+            color: var(--accent);
+            font-family: var(--sans);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .source-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.45rem 0.8rem;
+            margin-top: 1.15rem;
+            color: var(--muted);
+            font-size: 0.74rem;
+        }
+
+        .source-links a {
+            color: var(--text-2);
+            text-decoration: none;
+        }
+
+        .source-links a::after {
+            content: " ↗";
+            color: var(--faint);
+        }
+
+        .evidence-state {
+            display: inline-flex;
+            min-height: 23px;
+            align-items: center;
+            padding: 0.1rem 0.45rem;
+            border: 1px solid rgba(118, 196, 140, 0.24);
+            border-radius: 999px;
+            background: rgba(118, 196, 140, 0.06);
+            color: var(--green);
+            font-size: 0.64rem;
+            font-weight: 750;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .evidence-state.reported {
+            border-color: rgba(231, 179, 90, 0.26);
+            background: rgba(231, 179, 90, 0.06);
+            color: var(--amber);
+        }
+
+        figure { margin: 0; }
+
+        .evidence-media {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #101010;
+        }
+
+        .evidence-media img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: contain;
+            background: #101010;
+        }
+
+        .evidence-media figcaption {
+            padding: 0.65rem 0.75rem;
+            border-top: 1px solid var(--border-soft);
+            color: var(--muted);
+            font-size: 0.68rem;
+            line-height: 1.5;
+        }
+
+        .video-still {
+            position: relative;
+        }
+
+        .video-still::after {
+            position: absolute;
+            top: 0.65rem;
+            right: 0.65rem;
+            content: "Source video still";
+            padding: 0.25rem 0.45rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 999px;
+            background: rgba(12, 12, 12, 0.76);
+            color: #f4f4f2;
+            font-family: var(--sans);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .fact-visual {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #121212;
+        }
+
+        .fact {
+            min-height: 118px;
+            padding: 1rem;
+        }
+
+        .fact + .fact { border-left: 1px solid var(--border); }
+
+        .fact strong {
+            display: block;
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: clamp(1.35rem, 3vw, 2.15rem);
+            font-weight: 720;
+            letter-spacing: -0.04em;
+        }
+
+        .fact span {
+            display: block;
+            margin-top: 0.45rem;
+            color: var(--muted);
+            font-size: 0.72rem;
+            line-height: 1.45;
+        }
+
+        .seen-toggle {
+            display: inline-flex;
+            min-height: 34px;
+            align-items: center;
+            margin-left: auto;
+            padding: 0.35rem 0.55rem;
+            border: 0;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .seen-toggle:hover { background: var(--accent-soft); color: var(--accent); }
+
+        .development.seen { opacity: 0.47; }
+        .development.seen:hover,
+        .development.seen:focus-within { opacity: 0.72; }
+
+        .edition-end {
+            display: grid;
+            place-items: center;
+            gap: 0.35rem;
+            padding: 2rem 1rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .edition-end::before {
+            content: "";
+            width: 46px;
+            height: 1px;
+            margin-bottom: 0.65rem;
+            background: var(--border);
+        }
+
+        .edition-end strong { color: var(--text-2); font-size: 0.88rem; }
+        .edition-end span { font-size: 0.74rem; }
+
+        /* Variant A — Editorial sheet */
+        .editorial-wrap {
+            width: min(100%, 970px);
+            margin: 0 auto;
+        }
+
+        .editorial-masthead {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1.5rem;
+            align-items: end;
+            margin-bottom: 1.4rem;
+        }
+
+        .editorial-masthead h1 {
+            max-width: 760px;
+            margin: 0.45rem 0 0.55rem;
+            font-family: var(--reading);
+            font-size: clamp(2rem, 4vw, 3.45rem);
+            font-weight: 580;
+            line-height: 1.03;
+            letter-spacing: -0.045em;
+        }
+
+        .edition-progress {
+            min-width: 116px;
+            padding-bottom: 0.4rem;
+            color: var(--muted);
+            font-size: 0.72rem;
+            text-align: right;
+        }
+
+        .edition-progress strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--text-2);
+            font-size: 1.25rem;
+            font-weight: 630;
+        }
+
+        .editorial-sheet {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .dispatch {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+            gap: clamp(1.5rem, 4vw, 3rem);
+            padding: clamp(1.5rem, 4.2vw, 3rem);
+            transition: opacity 160ms ease;
+        }
+
+        .dispatch + .dispatch { border-top: 1px solid var(--border); }
+        .dispatch.no-visual { grid-template-columns: minmax(0, 680px); }
+        .dispatch:nth-child(even):not(.no-visual) .dispatch-visual { order: -1; }
+
+        .dispatch h2 {
+            max-width: 700px;
+            margin: 0.45rem 0 0;
+            font-family: var(--reading);
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            font-weight: 620;
+            line-height: 1.13;
+            letter-spacing: -0.032em;
+        }
+
+        .dispatch-copy { align-self: center; }
+        .dispatch .story-copy { margin-top: 1.2rem; }
+        .dispatch-visual { align-self: center; }
+
+        .dispatch-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        /* Variant B — Evidence ledger */
+        .ledger-wrap {
+            width: min(100%, 1160px);
+            margin: 0 auto;
+        }
+
+        .ledger-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ledger-header h1 {
+            margin: 0.35rem 0 0;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.04;
+            letter-spacing: -0.045em;
+        }
+
+        .ledger-layout {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: start;
+        }
+
+        .ledger-index {
+            position: sticky;
+            top: 86px;
+            padding: 0.85rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ledger-index h2 {
+            margin: 0 0 0.8rem;
+            color: var(--muted);
+            font-size: 0.65rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .ledger-index a {
+            display: grid;
+            grid-template-columns: 1.5rem 1fr;
+            gap: 0.45rem;
+            padding: 0.55rem 0;
+            border-top: 1px solid var(--border-soft);
+            color: var(--muted);
+            font-size: 0.72rem;
+            line-height: 1.35;
+            text-decoration: none;
+        }
+
+        .ledger-index a span:first-child { color: var(--faint); font-variant-numeric: tabular-nums; }
+        .ledger-index a:hover { color: var(--text-2); }
+
+        .ledger-stories {
+            position: relative;
+            border-left: 1px solid var(--border);
+            padding-left: clamp(1.5rem, 4vw, 3.5rem);
+        }
+
+        .ledger-entry {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(190px, 300px);
+            gap: 2rem;
+            padding: 0 0 3rem;
+            transition: opacity 160ms ease;
+        }
+
+        .ledger-entry + .ledger-entry {
+            padding-top: 2.7rem;
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .ledger-entry.no-visual { grid-template-columns: minmax(0, 680px); }
+
+        .ledger-number {
+            position: absolute;
+            left: calc(clamp(1.5rem, 4vw, 3.5rem) * -1 - 17px);
+            display: grid;
+            width: 33px;
+            height: 33px;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: var(--bg);
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .ledger-entry h2 {
+            margin: 0.4rem 0 0;
+            font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+        }
+
+        .ledger-entry .story-copy { margin-top: 1rem; font-size: 0.98rem; }
+        .ledger-entry .evidence-media img { max-height: 350px; }
+
+        .ledger-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Variant C — Reading room */
+        .reader-wrap {
+            width: min(100%, 760px);
+            margin: 0 auto;
+        }
+
+        .reader-page {
+            padding: clamp(1.4rem, 5vw, 4.5rem);
+            border: 1px solid var(--border-soft);
+            background: #161615;
+        }
+
+        .reader-masthead {
+            padding-bottom: 2.2rem;
+            border-bottom: 3px double var(--border);
+            text-align: center;
+        }
+
+        .reader-masthead h1 {
+            margin: 0.7rem auto 0.65rem;
+            font-family: var(--reading);
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
+            font-weight: 500;
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+        }
+
+        .reader-masthead .edition-meta { justify-content: center; }
+
+        .reader-story {
+            padding: clamp(2.2rem, 6vw, 4rem) 0;
+            transition: opacity 160ms ease;
+        }
+
+        .reader-story + .reader-story { border-top: 1px solid var(--border); }
+
+        .reader-story h2 {
+            margin: 0.55rem 0 0;
+            font-family: var(--reading);
+            font-size: clamp(1.75rem, 4.6vw, 2.65rem);
+            font-weight: 550;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        .reader-story .story-source { margin: 0.8rem 0 1.4rem; }
+        .reader-story .story-copy { font-size: 1.08rem; line-height: 1.82; }
+        .reader-story .story-copy > p:first-child::first-letter {
+            float: left;
+            margin: 0.12rem 0.36rem 0 0;
+            color: var(--accent);
+            font-family: var(--reading);
+            font-size: 3.15rem;
+            line-height: 0.82;
+        }
+
+        .reader-story .evidence-media,
+        .reader-story .fact-visual { margin: 1.65rem 0; }
+
+        .reader-story .evidence-media img { max-height: 570px; }
+
+        .reader-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Prototype switcher */
+        .prototype-switcher {
+            position: fixed;
+            inset: auto 0 0;
+            z-index: 100;
+            display: flex;
+            min-height: var(--switcher-height);
+            align-items: center;
+            justify-content: center;
+            padding: 0.65rem 1rem;
+            border-top: 1px solid #3b3b3b;
+            background: rgba(16, 16, 16, 0.97);
+            backdrop-filter: blur(16px);
+        }
+
+        .switcher-pill {
+            display: grid;
+            width: min(100%, 520px);
+            grid-template-columns: 44px minmax(0, 1fr) 44px;
+            overflow: hidden;
+            border: 1px solid #404040;
+            border-radius: 999px;
+            background: #202020;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        .switcher-pill button {
+            min-height: 44px;
+            border: 0;
+            background: transparent;
+            color: var(--text-2);
+            cursor: pointer;
+        }
+
+        .switcher-pill button:hover { background: rgba(255, 255, 255, 0.05); color: white; }
+
+        .switcher-label {
+            display: grid;
+            place-items: center;
+            padding: 0.35rem 0.75rem;
+            border-right: 1px solid #383838;
+            border-left: 1px solid #383838;
+            text-align: center;
+        }
+
+        .switcher-label strong { font-size: 0.75rem; }
+        .switcher-label span { margin-top: 0.08rem; color: var(--muted); font-size: 0.61rem; }
+
+        @media (max-width: 980px) {
+            .dispatch { grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr); }
+            .ledger-layout { grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; }
+            .ledger-entry { grid-template-columns: minmax(0, 1fr) 220px; gap: 1.3rem; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --switcher-height: 68px; }
+
+            .sidebar { display: none; }
+            .main { width: 100%; margin-left: 0; }
+            .topbar { display: none; }
+
+            .mobile-brand {
+                display: flex;
+                min-height: 54px;
+                align-items: center;
+                gap: 0.6rem;
+                padding: 0.65rem 1rem;
+                border-bottom: 1px solid var(--border);
+                background: var(--sidebar);
+                font-weight: 740;
+            }
+
+            .mobile-brand .brand-mark { width: 26px; height: 26px; }
+
+            .mobile-tabs {
+                position: sticky;
+                top: 0;
+                z-index: 15;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                border-bottom: 1px solid var(--border);
+                background: rgba(15, 15, 15, 0.95);
+                backdrop-filter: blur(12px);
+            }
+
+            .mobile-tabs button {
+                min-height: 48px;
+                border: 0;
+                border-bottom: 2px solid transparent;
+                background: transparent;
+                color: var(--muted);
+            }
+
+            .mobile-tabs button.active {
+                border-bottom-color: var(--accent);
+                color: var(--text);
+            }
+
+            .variant-root { padding: 1.5rem 0.8rem 4rem; }
+
+            .editorial-masthead {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                padding: 0 0.35rem;
+            }
+
+            .edition-progress { display: none; }
+
+            .dispatch,
+            .dispatch:nth-child(even):not(.no-visual) {
+                grid-template-columns: 1fr;
+                gap: 1.35rem;
+                padding: 1.35rem 1.15rem;
+            }
+
+            .dispatch:nth-child(even):not(.no-visual) .dispatch-visual { order: initial; }
+            .dispatch-visual { width: 100%; }
+            .dispatch .evidence-media img { max-height: 390px; }
+
+            .ledger-header { display: block; padding: 0 0.25rem 1rem; }
+            .ledger-header .edition-meta { margin-top: 0.75rem; }
+            .ledger-layout { grid-template-columns: 1fr; }
+            .ledger-index { position: static; display: flex; gap: 0.5rem; overflow-x: auto; border-top: 0; }
+            .ledger-index h2 { display: none; }
+            .ledger-index a {
+                min-width: 180px;
+                padding: 0.6rem;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+            }
+
+            .ledger-stories { padding-left: 1.3rem; }
+            .ledger-entry,
+            .ledger-entry.no-visual { grid-template-columns: 1fr; gap: 1.25rem; padding-bottom: 2.4rem; }
+            .ledger-number { left: -2.35rem; }
+            .ledger-entry .evidence-media img { max-height: 420px; }
+
+            .reader-wrap { width: 100%; }
+            .reader-page { padding: 1.4rem 1.15rem; }
+            .reader-story .story-copy { font-size: 1.02rem; }
+        }
+
+        @media (max-width: 480px) {
+            .variant-root { padding-right: 0; padding-left: 0; }
+            .editorial-masthead,
+            .ledger-header { padding-right: 1rem; padding-left: 1rem; }
+            .editorial-sheet,
+            .reader-page { border-right: 0; border-left: 0; border-radius: 0; }
+            .ledger-layout { padding: 0 1rem; }
+            .fact-visual { grid-template-columns: 1fr; }
+            .fact + .fact { border-top: 1px solid var(--border); border-left: 0; }
+            .source-links { gap: 0.65rem; }
+            .seen-toggle { margin-left: 0; }
+            .dispatch-footer,
+            .ledger-footer,
+            .reader-footer { flex-wrap: wrap; }
+            .switcher-label span { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition: none !important; }
+        }
+    </style>
+</head>
+<body data-variant="A">
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Sieve navigation">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">▽</span>
+                <span>Sieve</span>
+                <span class="prototype-label">Prototype</span>
+            </div>
+            <nav class="primary-nav" aria-label="Primary views">
+                <button class="nav-item" type="button">
+                    <span class="nav-icon" aria-hidden="true">▤</span>
+                    <span>Articles</span>
+                </button>
+                <button class="nav-item active" type="button" aria-current="page">
+                    <span class="nav-icon" aria-hidden="true">◫</span>
+                    <span>Developments</span>
+                </button>
+            </nav>
+            <section class="release-sidebar" aria-label="Next release">
+                <small>Next sealed release</small>
+                <strong>Today at 18:00<br>Australia/Adelaide</strong>
+            </section>
+            <section class="sidebar-principle">
+                <small>This view has an end</small>
+                <p>Five developments collected through 12:56. Reloading will not reveal new material.</p>
+            </section>
+        </aside>
+
+        <main class="main">
+            <div class="mobile-brand">
+                <span class="brand-mark" aria-hidden="true">▽</span>
+                <span>Sieve</span>
+                <span class="prototype-label">Prototype</span>
+            </div>
+            <div class="mobile-tabs" role="tablist" aria-label="Sieve views">
+                <button type="button" role="tab" aria-selected="false">Articles</button>
+                <button class="active" type="button" role="tab" aria-selected="true">Developments</button>
+            </div>
+            <header class="topbar">
+                <div class="topbar-title"><strong>Developments</strong><span>Five-item sealed release</span></div>
+                <div class="topbar-schedule">Next release today at 18:00</div>
+            </header>
+            <div class="variant-root" id="variant-root"></div>
+        </main>
+    </div>
+
+    <div class="prototype-switcher" role="group" aria-label="Prototype variants">
+        <div class="switcher-pill">
+            <button type="button" id="previous-variant" aria-label="Previous prototype variant">←</button>
+            <div class="switcher-label" aria-live="polite">
+                <strong id="variant-name">A — Editorial sheet</strong>
+                <span>Use the arrows or keyboard ← →</span>
+            </div>
+            <button type="button" id="next-variant" aria-label="Next prototype variant">→</button>
+        </div>
+    </div>
+
+    <script>
+        const variants = {
+            A: 'Editorial sheet',
+            B: 'Evidence ledger',
+            C: 'Reading room'
+        };
+
+        const developments = [
+            {
+                id: 'gemini-flash',
+                time: '11:42',
+                topic: 'AI models',
+                kind: 'Official release + analysis',
+                title: 'Gemini 3.7 Flash improves coding scores; its launch pricing expires in December',
+                source: '<strong>Google DeepMind (@GoogleDeepMind)</strong> · official announcement<br><strong>Simon Willison (@simonw)</strong> · pricing observation',
+                copy: [
+                    '<strong>Google DeepMind released Gemini 3.7 Flash</strong>, reporting gains in debugging, issue resolution, web-layout generation and business workflows. Access is rolling out through Antigravity, Google AI Studio, Android Studio and Gemini Spark.',
+                    'Simon Willison separately notes that the introductory API price is scheduled to double on 31 December 2026, and questions the practical value of a five-month introductory window given the current model-release pace.'
+                ],
+                why: 'The release combines a concrete capability increase with an unusually short-lived pricing decision. The benchmark remains vendor-reported.',
+                state: 'Source-backed',
+                stateClass: '',
+                visual: {
+                    type: 'image',
+                    className: '',
+                    url: 'https://pbs.twimg.com/media/HPnf_udXYAAEPky.png',
+                    alt: 'Google chart comparing production-code quality: Gemini 3.7 Flash 43.6 percent, Gemini 3.6 Flash 34.4 percent, Claude Sonnet 5 42.7 percent, and GPT-5.6 Terra 41.3 percent.',
+                    caption: 'Google’s FrontierCode 1.1 Main comparison. Useful evidence, but still a vendor-selected benchmark.'
+                },
+                links: [
+                    ['Official announcement', 'https://x.com/GoogleDeepMind/status/2087948368957894859'],
+                    ['Simon’s pricing note', 'https://x.com/simonw/status/2087964264275587565']
+                ]
+            },
+            {
+                id: 'grapevine',
+                time: '11:58',
+                topic: 'Coding agents',
+                kind: 'Project release · clustered thread',
+                title: 'Grapevine gives parallel Claude Code sessions a shared collision warning',
+                source: '<strong>Dan McAteer (@daniel_mac8)</strong> · project author',
+                copy: [
+                    'Dan McAteer released an experimental open-source Claude Code plugin for coordinating concurrent sessions. Its local graph represents sessions as nodes and touched files as edges.',
+                    'When two sessions touch the same file, Grapevine creates an advisory inbox note. Claude then decides whether the collision warrants direct inter-session communication.'
+                ],
+                why: 'It addresses a concrete parallel-agent coordination problem without introducing a central orchestrator.',
+                state: 'Source-backed',
+                stateClass: '',
+                visual: null,
+                links: [
+                    ['Launch post', 'https://x.com/daniel_mac8/status/2086130857098563600'],
+                    ['Technical continuation', 'https://x.com/daniel_mac8/status/2086130860059681250']
+                ]
+            },
+            {
+                id: 'deepseek-flash',
+                time: '12:13',
+                topic: 'Model reliability',
+                kind: 'Practitioner report · clustered thread',
+                title: 'One DeepSeek Flash trial found speed—but repeated agent-behaviour failures',
+                source: '<strong>Josh (@jjpcodes)</strong> · practitioner report',
+                copy: [
+                    'In one trial, DeepSeek Flash reportedly generated false user messages, terminated its own subagents and entered a repeated reasoning loop. Josh says the false-message behaviour occurred twice.',
+                    'A later coding attempt ran quickly but failed to complete a relatively simple animated-terminal task, producing commentary instead of the requested implementation.'
+                ],
+                why: 'This is an early reliability warning supported by screenshots, not a benchmark or a general verdict on the model.',
+                state: 'Reported',
+                stateClass: 'reported',
+                visual: {
+                    type: 'image',
+                    className: '',
+                    url: 'https://pbs.twimg.com/media/HPOGKxdXEAA7tEn.jpg',
+                    alt: 'Terminal screenshot showing a generated user-like instruction to stop waiting for scouts, kill them, and answer directly, followed by subagent deletion activity.',
+                    caption: 'The source screenshot carries the reported failure itself; it is included as evidence rather than decoration.'
+                },
+                links: [
+                    ['Initial report', 'https://x.com/jjpcodes/status/2086159257435619704'],
+                    ['Repeated occurrence', 'https://x.com/jjpcodes/status/2086165549109666191'],
+                    ['Coding follow-up', 'https://x.com/jjpcodes/status/2086192991673167956']
+                ]
+            },
+            {
+                id: 'frankentts',
+                time: '12:31',
+                topic: 'Local AI',
+                kind: 'Project performance update',
+                title: 'FrankenTTS crossed the real-time threshold on an M4 Mac mini',
+                source: '<strong>Jeffrey Emanuel (@doodlestein)</strong> · project author',
+                copy: [
+                    'Jeffrey Emanuel reports improving FrankenTTS from roughly eight times slower than real time to approximately <strong>1.05× real time</strong> on an M4 Mac mini.',
+                    'The command-line tool supports voice enrolment. Its roughly 2 GB model artifact is downloaded and SHA-verified once, after which synthesis can run locally without a server or GPU.'
+                ],
+                why: 'The speed change moves the project from an experiment toward practical local speech generation.',
+                state: 'Source-backed',
+                stateClass: '',
+                visual: {
+                    type: 'facts',
+                    facts: [
+                        ['8× slower → 1.05×', 'reported synthesis speed on an M4 Mac mini'],
+                        ['≈ 2 GB · one pull', 'SHA-verified model artifact, then local operation']
+                    ]
+                },
+                links: [
+                    ['Performance update', 'https://x.com/doodlestein/status/2086293103569141958']
+                ]
+            },
+            {
+                id: 'openinspect',
+                time: '12:48',
+                topic: 'Developer tools',
+                kind: 'In brief · product update',
+                title: 'OpenInspect made session loading near-instant',
+                source: '<strong>cole murray (@colemurray)</strong> · project author',
+                copy: [
+                    'Cole Murray reports reducing session-loading time from roughly one second to near-instant. The previous path established a WebSocket, secure communications and then fetched events before showing the session.'
+                ],
+                why: 'A tangible latency improvement with a before-and-after demonstration; the post does not provide deeper implementation detail.',
+                state: 'Reported',
+                stateClass: 'reported',
+                visual: {
+                    type: 'image',
+                    className: 'video-still',
+                    url: 'https://pbs.twimg.com/amplify_video_thumb/2086232296781488129/img/dGeiq0E_Wmfvm5wG.jpg',
+                    alt: 'Mobile OpenInspect session showing completed integration tests, type checks, GitHub checks, and agent work in progress.',
+                    caption: 'A still from the source demonstration. No autoplay and no gallery.'
+                },
+                links: [
+                    ['Update and demonstration', 'https://x.com/colemurray/status/2086237161628762371']
+                ]
+            }
+        ];
+
+        const seen = new Set();
+
+        function visualMarkup(item) {
+            if (!item.visual) return '';
+            if (item.visual.type === 'facts') {
+                return `<div class="fact-visual" aria-label="Key facts">${item.visual.facts.map(([value, label]) => `
+                    <div class="fact"><strong>${value}</strong><span>${label}</span></div>
+                `).join('')}</div>`;
+            }
+            return `
+                <figure class="evidence-media ${item.visual.className || ''}">
+                    <img src="${item.visual.url}" alt="${item.visual.alt}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                    <figcaption>${item.visual.caption}</figcaption>
+                </figure>`;
+        }
+
+        function linksMarkup(item) {
+            return item.links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" data-source-link="${item.id}">${label}</a>`).join('');
+        }
+
+        function copyMarkup(item) {
+            return item.copy.map(paragraph => `<p>${paragraph}</p>`).join('');
+        }
+
+        function seenButton(item) {
+            const isSeen = seen.has(item.id);
+            return `<button class="seen-toggle" type="button" data-seen-toggle="${item.id}" aria-label="${isSeen ? 'Mark unseen' : 'Mark seen'}">${isSeen ? 'Mark unseen' : 'Mark seen'}</button>`;
+        }
+
+        function mastheadMeta() {
+            return `
+                <div class="edition-meta">
+                    <span><i class="status-dot" aria-hidden="true"></i>Complete through 12:56</span>
+                    <span>5 developments</span>
+                    <span>Next release 18:00</span>
+                </div>`;
+        }
+
+        function renderEditorialSheet() {
+            return `
+                <div class="editorial-wrap">
+                    <header class="editorial-masthead">
+                        <div>
+                            <div class="edition-kicker">Friday · 13:00 sealed release</div>
+                            <h1>What changed since this morning</h1>
+                            ${mastheadMeta()}
+                        </div>
+                        <div class="edition-progress"><strong data-progress>0 / 5</strong>marked seen</div>
+                    </header>
+                    <article class="editorial-sheet" aria-label="13:00 developments release">
+                        ${developments.map(item => `
+                            <section class="dispatch development ${item.visual ? '' : 'no-visual'} ${seen.has(item.id) ? 'seen' : ''}" id="a-${item.id}" data-development-id="${item.id}">
+                                <div class="dispatch-copy">
+                                    <div class="story-kicker">${item.time} · ${item.topic} · ${item.kind}</div>
+                                    <h2>${item.title}</h2>
+                                    <div class="story-source">${item.source}</div>
+                                    <div class="story-copy">${copyMarkup(item)}</div>
+                                    <div class="why-it-matters"><b>Why it matters</b><br>${item.why}</div>
+                                    <div class="dispatch-footer source-links">
+                                        <span class="evidence-state ${item.stateClass}">${item.state}</span>
+                                        ${linksMarkup(item)}
+                                        ${seenButton(item)}
+                                    </div>
+                                </div>
+                                ${item.visual ? `<div class="dispatch-visual">${visualMarkup(item)}</div>` : ''}
+                            </section>
+                        `).join('')}
+                        <footer class="edition-end">
+                            <strong>You’re caught up with this release</strong>
+                            <span>There is nothing more to load. Next sealed release: 18:00.</span>
+                        </footer>
+                    </article>
+                </div>`;
+        }
+
+        function renderEvidenceLedger() {
+            return `
+                <div class="ledger-wrap">
+                    <header class="ledger-header">
+                        <div>
+                            <div class="edition-kicker">13:00 · Evidence ledger</div>
+                            <h1>Five developments,<br>each with its source</h1>
+                        </div>
+                        ${mastheadMeta()}
+                    </header>
+                    <div class="ledger-layout">
+                        <nav class="ledger-index" aria-label="This release">
+                            <h2>This release</h2>
+                            ${developments.map((item, index) => `<a href="#b-${item.id}"><span>${String(index + 1).padStart(2, '0')}</span><span>${item.title}</span></a>`).join('')}
+                        </nav>
+                        <article class="ledger-stories" aria-label="13:00 developments release">
+                            ${developments.map((item, index) => `
+                                <section class="ledger-entry development ${item.visual ? '' : 'no-visual'} ${seen.has(item.id) ? 'seen' : ''}" id="b-${item.id}" data-development-id="${item.id}">
+                                    <span class="ledger-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+                                    <div>
+                                        <div class="story-kicker">${item.time} · ${item.topic}</div>
+                                        <h2>${item.title}</h2>
+                                        <div class="story-source">${item.source}</div>
+                                        <div class="story-copy">${copyMarkup(item)}</div>
+                                        <div class="why-it-matters"><b>Significance</b><br>${item.why}</div>
+                                        <div class="ledger-footer source-links">
+                                            <span class="evidence-state ${item.stateClass}">${item.state}</span>
+                                            ${linksMarkup(item)}
+                                            ${seenButton(item)}
+                                        </div>
+                                    </div>
+                                    ${item.visual ? `<div>${visualMarkup(item)}</div>` : ''}
+                                </section>
+                            `).join('')}
+                            <footer class="edition-end">
+                                <strong>End of the 13:00 ledger</strong>
+                                <span><span data-progress>0 / 5</span> marked seen · next release 18:00</span>
+                            </footer>
+                        </article>
+                    </div>
+                </div>`;
+        }
+
+        function renderReadingRoom() {
+            return `
+                <div class="reader-wrap">
+                    <article class="reader-page" aria-label="13:00 developments reading room">
+                        <header class="reader-masthead">
+                            <div class="edition-kicker">Sieve · Friday 13:00 edition</div>
+                            <h1>The afternoon<br>briefing</h1>
+                            ${mastheadMeta()}
+                        </header>
+                        ${developments.map(item => `
+                            <section class="reader-story development ${seen.has(item.id) ? 'seen' : ''}" id="c-${item.id}" data-development-id="${item.id}">
+                                <div class="story-kicker">${item.time} · ${item.kind}</div>
+                                <h2>${item.title}</h2>
+                                <div class="story-source">${item.source}</div>
+                                <div class="story-copy">${copyMarkup(item)}</div>
+                                ${item.visual ? visualMarkup(item) : ''}
+                                <div class="why-it-matters"><b>Why this made the briefing</b><br>${item.why}</div>
+                                <div class="reader-footer source-links">
+                                    <span class="evidence-state ${item.stateClass}">${item.state}</span>
+                                    ${linksMarkup(item)}
+                                    ${seenButton(item)}
+                                </div>
+                            </section>
+                        `).join('')}
+                        <footer class="edition-end">
+                            <strong>End of the afternoon briefing</strong>
+                            <span>You’ve reached the deliberate stopping point · next release 18:00</span>
+                        </footer>
+                    </article>
+                </div>`;
+        }
+
+        function currentVariant() {
+            const value = new URLSearchParams(window.location.search).get('variant');
+            return Object.hasOwn(variants, value) ? value : 'A';
+        }
+
+        function render() {
+            const variant = currentVariant();
+            document.body.dataset.variant = variant;
+            document.getElementById('variant-name').textContent = `${variant} — ${variants[variant]}`;
+            const renderers = { A: renderEditorialSheet, B: renderEvidenceLedger, C: renderReadingRoom };
+            document.getElementById('variant-root').innerHTML = renderers[variant]();
+            bindInteractions();
+            updateSeenState();
+        }
+
+        function setVariant(direction) {
+            const keys = Object.keys(variants);
+            const index = keys.indexOf(currentVariant());
+            const next = keys[(index + direction + keys.length) % keys.length];
+            const url = new URL(window.location.href);
+            url.searchParams.set('variant', next);
+            history.replaceState(null, '', url);
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            render();
+        }
+
+        function bindInteractions() {
+            document.querySelectorAll('[data-seen-toggle]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.seenToggle;
+                    if (seen.has(id)) seen.delete(id);
+                    else seen.add(id);
+                    updateSeenState();
+                });
+            });
+            document.querySelectorAll('[data-source-link]').forEach(link => {
+                link.addEventListener('click', () => {
+                    seen.add(link.dataset.sourceLink);
+                    updateSeenState();
+                });
+            });
+        }
+
+        function updateSeenState() {
+            developments.forEach(item => {
+                const isSeen = seen.has(item.id);
+                document.querySelectorAll(`[data-development-id="${item.id}"]`).forEach(element => element.classList.toggle('seen', isSeen));
+                document.querySelectorAll(`[data-seen-toggle="${item.id}"]`).forEach(button => {
+                    button.textContent = isSeen ? 'Mark unseen' : 'Mark seen';
+                    button.setAttribute('aria-label', isSeen ? 'Mark unseen' : 'Mark seen');
+                });
+            });
+            document.querySelectorAll('[data-progress]').forEach(element => {
+                element.textContent = `${seen.size} / ${developments.length}`;
+            });
+        }
+
+        document.getElementById('previous-variant').addEventListener('click', () => setVariant(-1));
+        document.getElementById('next-variant').addEventListener('click', () => setVariant(1));
+        window.addEventListener('popstate', render);
+        window.addEventListener('keydown', event => {
+            const target = event.target;
+            if (target.matches('input, textarea, [contenteditable="true"]')) return;
+            if (event.key === 'ArrowLeft') setVariant(-1);
+            if (event.key === 'ArrowRight') setVariant(1);
+        });
+
+        render();
+    </script>
+</body>
+</html>
