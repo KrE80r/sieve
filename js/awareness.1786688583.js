@@ -108,12 +108,16 @@ class AwarenessView {
     }
 
     validatePayload(payload) {
-        if (!payload || ![1, 2].includes(payload.schema_version) || !Array.isArray(payload.developments)) {
+        if (payload?.schema_version === 1) {
+            this.attributionUpgradePending = true;
+            throw new Error('An attributed editorial release is required');
+        }
+        if (!payload || payload.schema_version !== 2 || !Array.isArray(payload.developments)) {
             throw new Error('Invalid awareness payload');
         }
         const now = Date.now();
         const developments = payload.developments
-            .map(item => this.validateDevelopment(item, payload.schema_version))
+            .map(item => this.validateDevelopment(item))
             .filter(Boolean)
             .filter(item => new Date(item.expires_at).getTime() > now)
             .sort((a, b) => {
@@ -132,7 +136,7 @@ class AwarenessView {
         };
     }
 
-    validateDevelopment(item, schemaVersion = 2) {
+    validateDevelopment(item) {
         if (!item || !/^[a-f0-9]{32}$/.test(item.id || '')) return null;
         if (!['reported', 'source_backed'].includes(item.evidence_state)) return null;
         if (!this.validDate(item.occurred_at) || !this.validDate(item.expires_at)) return null;
@@ -143,21 +147,6 @@ class AwarenessView {
         const interests = Array.isArray(item.interest_slugs)
             ? item.interest_slugs.filter(value => /^[a-z0-9_]{2,50}$/.test(value))
             : [];
-        if (schemaVersion === 1) {
-            if (typeof item.summary !== 'string' || !item.summary.trim()) return null;
-            const [title, remaining] = this.splitSummary(item.summary);
-            return {
-                ...item,
-                title,
-                detail: remaining ? [remaining] : [],
-                why_it_matters: '',
-                sources: [],
-                external_links: links,
-                interest_slugs: interests,
-                legacy: true
-            };
-        }
-
         const title = this.editorialText(item.title, 240);
         const detail = Array.isArray(item.detail)
             ? item.detail.slice(0, 3).map(value => this.editorialText(value, 1400)).filter(Boolean)
@@ -176,15 +165,15 @@ class AwarenessView {
             why_it_matters: why,
             sources,
             external_links: links,
-            interest_slugs: interests,
-            legacy: false
+            interest_slugs: interests
         };
     }
 
     editorialText(value, maximum) {
         if (typeof value !== 'string') return '';
         const text = value.trim().replace(/\s+/g, ' ');
-        if (!text || text.length > maximum || /\bthe (author|poster|user|post|account)\b/i.test(text)) {
+        const genericActor = /(?:\bthe (?:author|poster|user|post|account|developer|researcher|company|team|maintainer|vendor)\b|(?:^|[.!?]\s+)(?:(?:a|an)\s+)?(?:developer|researcher|company|team|maintainer|vendor)\b)/i;
+        if (!text || text.length > maximum || genericActor.test(text)) {
             return '';
         }
         return text;
@@ -345,9 +334,7 @@ class AwarenessView {
                         ${topics.map(topic => `<span class="development-topic">${this.escapeHtml(topic)}</span>`).join('')}
                     </div>
                     <h3 class="development-title" id="${titleId}">${this.escapeHtml(item.title)}</h3>
-                    ${sources
-                        ? `<div class="development-sources" aria-label="Sources">${sources}</div>`
-                        : '<div class="development-sources legacy">From selected lists</div>'}
+                    <div class="development-sources" aria-label="Sources">${sources}</div>
                 </div>
                 ${visualMarkup}
                 <div class="development-story-body">
@@ -546,7 +533,9 @@ class AwarenessView {
         loading?.classList.add('hidden');
         loading?.setAttribute('aria-busy', 'false');
         const coverage = document.getElementById('awareness-coverage');
-        coverage.textContent = 'The latest scheduled developments could not be loaded. Sieve will try again at the next scheduled release.';
+        coverage.textContent = this.attributionUpgradePending
+            ? 'The previous anonymous release has been withheld. Named sources and full editorial detail will appear with the next sealed release.'
+            : 'The latest scheduled developments could not be loaded. Sieve will try again at the next scheduled release.';
         coverage.classList.remove('hidden');
         document.getElementById('development-list').innerHTML = '';
         const end = document.getElementById('awareness-end');
@@ -556,11 +545,6 @@ class AwarenessView {
         `;
         end.classList.remove('hidden');
         this.updateHeader();
-    }
-
-    splitSummary(summary) {
-        const match = summary.trim().match(/^(.+?[.!?])(?:\s+([\s\S]+))?$/);
-        return match ? [match[1], match[2] || ''] : [summary.trim(), ''];
     }
 
     topicLabel(slug) {

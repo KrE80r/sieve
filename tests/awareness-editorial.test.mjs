@@ -202,9 +202,23 @@ test('validates schema v2 attribution and rejects mismatched or unsafe source UR
             media: []
         }]
     }), 2);
+    const genericActor = view.validateDevelopment(development({
+        title: 'Developer releases three open-source AI tools'
+    }));
 
     assert.equal(valid.sources[0].author_name, 'EvalOps');
     assert.equal(valid.sources[0].author_username, 'evalopsdev');
     assert.equal(valid.sources[0].media[0].preview_url, 'https://pbs.twimg.com/media/ghostlight.jpg:small');
     assert.equal(mismatched, null);
+    assert.equal(genericActor, null);
+});
+
+test('withholds legacy anonymous releases instead of rendering a summary fallback', () => {
+    const view = loadView();
+
+    assert.throws(
+        () => view.validatePayload({ schema_version: 1, developments: [] }),
+        /attributed editorial release/i
+    );
+    assert.equal(view.attributionUpgradePending, true);
 });
