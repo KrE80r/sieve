@@ -49,6 +49,10 @@ function loadView() {
         window: {
             starts_at: '2026-08-12T03:30:00+00:00',
             ends_at: '2026-08-14T03:30:00+00:00'
+        },
+        coverage: {
+            state: 'complete',
+            message: ''
         }
     };
     view.nextReleaseLabel = () => 'today at 18:00';
@@ -103,6 +107,20 @@ test('renders the sealed batch as an editorial release masthead', () => {
     assert.match(markup, /Complete through 13:00/);
     assert.match(markup, /2 developments/);
     assert.match(markup, /Next release today at 18:00/);
+});
+
+test('does not call an incomplete release complete in the masthead', () => {
+    const view = loadView();
+    view.payload.coverage = {
+        state: 'incomplete',
+        message: 'This update may be incomplete.'
+    };
+    view.developments = [development()];
+
+    const markup = view.mastheadMarkup();
+
+    assert.match(markup, /Coverage incomplete through 13:00/);
+    assert.doesNotMatch(markup, /Complete through 13:00/);
 });
 
 test('renders a development as a long-form editorial dispatch with meaningful evidence media', () => {

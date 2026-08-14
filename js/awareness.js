@@ -293,6 +293,13 @@ class AwarenessView {
         const edition = scheduled
             ? `${this.formatEditionDay(scheduled)} · ${through} sealed release`
             : 'Sealed developments release';
+        const coverageIncomplete = this.payload?.coverage?.state !== 'complete';
+        const coverageClass = coverageIncomplete
+            ? 'awareness-incomplete'
+            : 'awareness-complete';
+        const coverageLabel = coverageIncomplete
+            ? 'Coverage incomplete through'
+            : 'Complete through';
 
         return `
             <header class="awareness-masthead">
@@ -300,7 +307,7 @@ class AwarenessView {
                     <p class="awareness-edition-label">${this.escapeHtml(edition)}</p>
                     <h2>${this.escapeHtml(heading)}</h2>
                     <div class="awareness-release-meta">
-                        ${through ? `<span class="awareness-complete">Complete through ${this.escapeHtml(through)}</span>` : ''}
+                        ${through ? `<span class="${coverageClass}">${coverageLabel} ${this.escapeHtml(through)}</span>` : ''}
                         <span>${count} development${count === 1 ? '' : 's'}</span>
                         <span>Next release ${this.escapeHtml(next)}</span>
                     </div>
