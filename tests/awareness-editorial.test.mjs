@@ -60,7 +60,25 @@ function development(overrides = {}) {
         id: '0123456789abcdef0123456789abcdef',
         occurred_at: '2026-08-14T01:42:00+00:00',
         expires_at: '2026-08-16T01:42:00+00:00',
-        summary: 'Ghostlight provides persistent Chromium sessions streamed from Linux to a native macOS client. Sessions reconnect over WebRTC so browser work can continue after the client disconnects.',
+        title: 'Ghostlight keeps remote Chromium sessions alive across client disconnects',
+        detail: [
+            'EvalOps released Ghostlight for persistent Chromium sessions streamed from Linux to a native macOS client.',
+            'EvalOps says sessions reconnect over WebRTC so browser work can continue after the client disconnects.'
+        ],
+        why_it_matters: 'It removes a practical interruption point for long-running browser and agent work.',
+        sources: [{
+            author_name: 'EvalOps',
+            author_username: 'evalopsdev',
+            url: 'https://x.com/evalopsdev/status/2087000000000000000',
+            role: 'source',
+            media: [{
+                type: 'photo',
+                url: 'https://pbs.twimg.com/media/ghostlight.jpg',
+                preview_url: 'https://pbs.twimg.com/media/ghostlight.jpg:small',
+                width: 1200,
+                height: 800
+            }]
+        }],
         evidence_state: 'source_backed',
         interest_slugs: ['ai', 'linux'],
         external_links: [{
@@ -95,36 +113,98 @@ test('renders a development as a long-form editorial dispatch with meaningful ev
     assert.match(markup, /class="development-dispatch/);
     assert.match(markup, /class="development-dispatch-copy"/);
     assert.match(markup, /class="development-visual"/);
-    assert.match(markup, /alt="Ghostlight persistent browser sessions"/);
-    assert.match(markup, /Sessions reconnect over WebRTC/);
+    assert.match(markup, /Media attached by EvalOps/);
+    assert.match(markup, /sessions reconnect over WebRTC/i);
     assert.match(markup, /class="development-source-link"/);
+    assert.match(markup, /EvalOps/);
+    assert.match(markup, /@evalopsdev/);
+    assert.match(markup, /href="https:\/\/x\.com\/evalopsdev\/status\/2087000000000000000"/);
+    assert.match(markup, /Why it matters/);
     assert.match(markup, /Source-backed/);
     assert.match(markup, /Mark seen/);
     assert.doesNotMatch(markup, /class="development-card/);
 });
 
-test('keeps source summaries as compact prose instead of promoting a full sentence to a headline', () => {
+test('renders a real editorial headline followed by attributed detail paragraphs', () => {
     const view = loadView();
 
     const markup = view.cardMarkup(development());
 
-    assert.match(markup, /<p class="development-summary">/);
-    assert.match(markup, /<strong class="development-lead"[^>]*>Ghostlight provides persistent Chromium sessions streamed from Linux to a native macOS client\.<\/strong>/);
-    assert.match(markup, /<span class="development-detail">Sessions reconnect over WebRTC so browser work can continue after the client disconnects\.<\/span>/);
-    assert.doesNotMatch(markup, /<h3>/);
+    assert.match(markup, /<h3 class="development-title"[^>]*>Ghostlight keeps remote Chromium sessions alive across client disconnects<\/h3>/);
+    assert.match(markup, /<p>EvalOps released Ghostlight/);
+    assert.match(markup, /<p>EvalOps says sessions reconnect/);
+    assert.doesNotMatch(markup, /the author/i);
     assert.ok(
-        markup.indexOf('development-summary') < markup.indexOf('development-provenance'),
-        'the evidence label should not interrupt the summary'
+        markup.indexOf('development-sources') < markup.indexOf('development-story-copy'),
+        'attribution should be visible before the editorial detail'
     );
+});
+
+test('labels a quoted source before the commentator and links both actual posts', () => {
+    const view = loadView();
+    const item = development({
+        sources: [
+            {
+                author_name: 'Project Atlas',
+                author_username: 'atlas',
+                url: 'https://x.com/atlas/status/2087000000000000001',
+                role: 'quoted_source',
+                media: []
+            },
+            {
+                author_name: 'Analyst Name',
+                author_username: 'analyst',
+                url: 'https://x.com/analyst/status/2087000000000000002',
+                role: 'commentary',
+                media: []
+            }
+        ]
+    });
+
+    const markup = view.cardMarkup(item);
+
+    assert.ok(markup.indexOf('Project Atlas') < markup.indexOf('Analyst Name'));
+    assert.match(markup, /Quoted source/);
+    assert.match(markup, /Commentary/);
+    assert.match(markup, /x\.com\/atlas\/status\/2087000000000000001/);
+    assert.match(markup, /x\.com\/analyst\/status\/2087000000000000002/);
 });
 
 test('keeps text-only developments editorial without inventing decorative media', () => {
     const view = loadView();
     view.seen['0123456789abcdef0123456789abcdef'] = true;
 
-    const markup = view.cardMarkup(development({ external_links: [] }));
+    const markup = view.cardMarkup(development({
+        sources: [{
+            author_name: 'EvalOps',
+            author_username: 'evalopsdev',
+            url: 'https://x.com/evalopsdev/status/2087000000000000000',
+            role: 'source',
+            media: []
+        }],
+        external_links: []
+    }));
 
     assert.match(markup, /development-dispatch no-visual seen/);
     assert.doesNotMatch(markup, /<img/);
     assert.match(markup, /Mark unseen/);
+});
+
+test('validates schema v2 attribution and rejects mismatched or unsafe source URLs', () => {
+    const view = loadView();
+    const valid = view.validateDevelopment(development(), 2);
+    const mismatched = view.validateDevelopment(development({
+        sources: [{
+            author_name: 'EvalOps',
+            author_username: 'evalopsdev',
+            url: 'https://x.com/imposter/status/2087000000000000000',
+            role: 'source',
+            media: []
+        }]
+    }), 2);
+
+    assert.equal(valid.sources[0].author_name, 'EvalOps');
+    assert.equal(valid.sources[0].author_username, 'evalopsdev');
+    assert.equal(valid.sources[0].media[0].preview_url, 'https://pbs.twimg.com/media/ghostlight.jpg:small');
+    assert.equal(mismatched, null);
 });
