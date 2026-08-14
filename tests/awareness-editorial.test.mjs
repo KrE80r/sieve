@@ -103,6 +103,21 @@ test('renders a development as a long-form editorial dispatch with meaningful ev
     assert.doesNotMatch(markup, /class="development-card/);
 });
 
+test('keeps source summaries as compact prose instead of promoting a full sentence to a headline', () => {
+    const view = loadView();
+
+    const markup = view.cardMarkup(development());
+
+    assert.match(markup, /<p class="development-summary">/);
+    assert.match(markup, /<strong class="development-lead"[^>]*>Ghostlight provides persistent Chromium sessions streamed from Linux to a native macOS client\.<\/strong>/);
+    assert.match(markup, /<span class="development-detail">Sessions reconnect over WebRTC so browser work can continue after the client disconnects\.<\/span>/);
+    assert.doesNotMatch(markup, /<h3>/);
+    assert.ok(
+        markup.indexOf('development-summary') < markup.indexOf('development-provenance'),
+        'the evidence label should not interrupt the summary'
+    );
+});
+
 test('keeps text-only developments editorial without inventing decorative media', () => {
     const view = loadView();
     view.seen['0123456789abcdef0123456789abcdef'] = true;
