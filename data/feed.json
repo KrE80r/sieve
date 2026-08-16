@@ -1,7 +1,614 @@
 {
-  "updated_at": "2026-08-16T18:00:07.987101",
-  "total_items": 741,
+  "updated_at": "2026-08-16T19:00:00.579382",
+  "total_items": 765,
   "items": [
+    {
+      "id": 4716,
+      "source_id": 34,
+      "original_url": "https://arthurbrugiere.fr/blog/2026/08/ollama-intel-igpu/",
+      "title": "Running Ollama on iGPU on Linux",
+      "summary": "Ollama ignores Intel iGPUs by default; enabling them via OLLAMA_IGPU_ENABLE and proper Vulkan device selection on a NUC yields 240 tok/s prefill and 14.4 tok/s decode on a 2.6B model.",
+      "ideas": [
+        "Set OLLAMA_IGPU_ENABLE=1 to override Ollama's default iGPU rejection",
+        "Use MESA_VK_DEVICE_SELECT=8086:9a49 to force Mesa to pick Iris Xe over llvmpipe",
+        "Set OLLAMA_CONTEXT_LENGTH to match Open WebUI's num_ctx to prevent model eviction",
+        "Ollama reports prompt_eval_count as full prompt length even with KV cache reuse",
+        "DDR4 SODIMM speed mismatch throttles iGPU inference bandwidth"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This article delivers substantial technical value through original benchmarking on consumer hardware. It provides specific environment variables (OLLAMA_VULKAN, OLLAMA_IGPU_ENABLE, MESA_VK_DEVICE_SELECT), Docker device passing, and actual performance measurements showing 3x prefill improvement on Intel Iris Xe. The author identifies and solves three non-obvious problems: the llvmpipe Vulkan trap, Ollama's default iGPU rejection, and the context-length eviction bug with Open WebUI. The content is efficient, non-promotional, and ends with an honest admission that further gains are blocked by mismatched SODIMM speeds.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T04:24:10.729800"
+    },
+    {
+      "id": 4715,
+      "source_id": 34,
+      "original_url": "https://apievangelist.com/2026/08/16/mcp-wrote-itself-the-deprecation-policy/",
+      "title": "MCP Wrote Itself the Deprecation Policy It Has Not Written for You",
+      "summary": "Tool descriptions in MCP are input, not documentation—changes to them break agents without triggering any existing governance mechanism, creating an ungoverned surface that is nearly the entire tool ecosystem.",
+      "ideas": [
+        "96.9% of MCP servers follow semver despite being unenforceable",
+        "Tool descriptions function as prompts that determine agent behavior",
+        "Agents tolerate syntactic changes but fail silently on semantic ones",
+        "Cloudflare's override feature proves prose is load-bearing",
+        "Only 1.5% of servers use the existing deprecation status",
+        "Consumer-side governance emerges when producers don't provide it",
+        "Version the tool surface separately from REST API versions"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive original analysis of MCP governance gaps with concrete empirical evidence from the entire public registry (66,954 publications, 61,097 tools). The author counters the assumption that agent-facing APIs can evolve freely by demonstrating that tool descriptions are load-bearing 'input' rather than documentation—changes that produce no schema diff, trip no semver rule, yet alter agent behavior. The key insight that agents tolerate syntactic change but are less forgiving of semantic/economic change (price, limits, terms) is non-obvious and supported by registry data showing near-total semver compliance (96.9%) yet minimal deprecation usage (~1.5%). Practical guidance is actionable and specific, though it remains grounded in the MCP ecosystem rather than generalizing broadly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T04:22:28.234353"
+    },
+    {
+      "id": 4714,
+      "source_id": 34,
+      "original_url": "https://akrisanov.com/hidden-costs-of-litellm-health-checks/",
+      "title": "Hidden Costs of LiteLLM's Health Checks",
+      "summary": "LiteLLM's background model health checks make real LLM API calls and can generate substantial external API costs; disable them for paid deployments and don't rely on Redis-based shared health checks as the only cost control.",
+      "ideas": [
+        "LiteLLM model health checks are real inference requests, not HTTP connectivity probes",
+        "v1.82.x fell back to local checks after 2 seconds of missing Redis lock",
+        "disable_background_health_check: true opts out individual deployments from background checks",
+        "health_check_skip_disabled_background_models: true prevents on-demand health checks too",
+        "Use /health/liveliness and /health/readiness for Kubernetes probes—these don't call models",
+        "Monitor /health/shared-status to verify Redis coordination is working",
+        "Research models can charge for computation beyond output token count"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a well-documented incident report with concrete numbers (63,011 requests, $372.59, 9M tokens), version-specific root cause analysis, and actionable configuration changes. The author explains the non-obvious distinction between Kubernetes probes (no model calls) and LiteLLM model health checks (real inference), traces the cost to v1.82.x's 2-second Redis lock fallback behavior, and provides exact configuration to fix it. The technical depth and reproducibility of the investigation make this high-value for anyone operating LiteLLM with paid external models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T04:02:10.531734"
+    },
+    {
+      "id": 4713,
+      "source_id": 34,
+      "original_url": "https://808bits.com/articles/threshold-signing-ceremony-in-your-browser/",
+      "title": "The key that never exists: a threshold signing ceremony in your browser",
+      "summary": "A working WebAssembly build of a threshold signing library demonstrates how cryptographic keys can be generated and used for signatures without ever existing in one place, using FROST and distributed key generation with real protocol frames.",
+      "ideas": [
+        "Threshold signing uses polynomial math to enforce quorum without any policy check",
+        "FROST and CGGMP24 DKG requires no trusted dealer at key birth",
+        "zig-mpc wasm output is byte-compatible with the zmpc CLI on real machines",
+        "A single honest signature share cannot determine a degree-1 polynomial",
+        "BIP-340 Taproot signatures pass all 19 official test vectors in the same code",
+        "Commits in round 1 prevent polynomial selection after observing others"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This article delivers a rare, genuinely interactive demonstration of threshold cryptography using a working Zig-to-WebAssembly implementation. It explains DKG and FROST signing with concrete protocol frames, byte-level details, and verifiable test vectors (RFC 9591, BIP-340), making the trust model difference from Shamir secret sharing tangible. The failure-mode experiments are particularly strong, showing that threshold enforcement is algebraic rather than policy-based. The primary limitation is that it plays all three parties in one browser tab rather than on separate machines, but this is explicitly acknowledged and the wasm output is byte-compatible with the real CLI.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T03:58:21.002994"
+    },
+    {
+      "id": 4712,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/08/14/one-chokable-throat/",
+      "title": "Pluralistic: Capital formation (14 Aug 2026)",
+      "summary": "Anti-circumvention laws like DMCA 1201 created a 'one-way ratchet' that prevented tech companies from being disrupted, and the exemption processes are designed as ornamental scams that make disruption legally possible but practically impossible for anyone without a CS degree and clean-room facilities.",
+      "ideas": [
+        "Both pro-market and anti-market theorists should support competition as a check on corporate power",
+        "Turing-complete computers make digital enshittification technically self-defeating",
+        "DMCA Section 1201 created a one-way ratchet blocking adversarial interoperability",
+        "Use exemptions vs tools exemptions: exemptions only let you do it yourself, not get help",
+        "Every blind person would need to personally reverse-engineer ebooks under exemptions",
+        "AI chatbots won't escape anti-circumvention liability; prompter bears responsibility",
+        "Mass interoperability requires a counter-industry, not individual workarounds",
+        "Generic ink needs salespeople, not just jailbreakers, to discipline printer monopolies",
+        "US trade policy exported anticircumvention laws globally as free trade conditions"
+      ],
+      "labels": [
+        "Tech",
+        "Philosophy",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "This is exceptional content delivering multiple novel insights on competition policy, DMCA Section 1201's 'one-way ratchet' effect on tech competition, the critical distinction between 'use exemptions' and 'tools exemptions' in anti-circumvention law, and why individual workarounds cannot substitute for mass adversarial interoperability. Doctorow synthesizes technical, legal, and economic perspectives to explain how Big Tech captured policy to end the era of being 'disruptable.' The density is high with 8+ distinct analytical insights embedded in a coherent thesis about capital formation and market structure.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-08-17T03:55:29.013525"
+    },
+    {
+      "id": 4711,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/plaintiff-hid-invisible-ai-instructions-in-court-filings-to-secretly-influence-automated-review/",
+      "title": "Plaintiff hid invisible AI instructions in court filings to secretly influence automated review",
+      "summary": "A plaintiff in a Connecticut court case hid invisible AI instructions in official court filings to sway potential automated review in his favor, highlighting a growing problem of prompt injections beyond the courtroom.",
+      "ideas": [
+        "Hidden AI instructions in court filings can manipulate automated review",
+        "Invisible text on white background can be read by AI but not humans",
+        "Prompt injections are a growing problem beyond the courtroom",
+        "AI can be used to prepare filings but must be used honestly",
+        "Language models can reinforce flawed legal reasoning",
+        "Hidden instructions can be used to sway AI-powered peer reviews"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This article delivers high value by revealing a novel and significant issue with AI instructions being hidden in court filings, providing insight into the potential for AI manipulation in legal proceedings. The content is dense with information, including specific examples and expert opinions, making it highly relevant to the themes of AI, technology, and cybersecurity. The author's use of concrete examples and explanations of the implications of such actions adds to the article's value.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-17T03:46:43.745263"
+    },
+    {
+      "id": 4710,
+      "source_id": 7,
+      "original_url": "https://labs.iximiuz.com/tutorials/go-as-systems-programming-language-a667d22b",
+      "title": "Using Go for Systems Programming",
+      "summary": "Go compiles to self-contained static binaries that make system calls directly without libc, avoiding the portability problems that plague dynamically linked C programs across different Linux distributions.",
+      "ideas": [
+        "C programs call libc functions like printf, which then call the kernel via syscalls",
+        "glibc and musl are binary-incompatible implementations causing runtime failures on mismatched distros",
+        "Go binaries are statically linked with no external dependencies or dynamic linker requirements",
+        "Go's runtime invokes syscalls directly using architecture-specific assembly",
+        "Set CGO_ENABLED=0 to guarantee fully static binaries without libc dependencies",
+        "Use GOOS and GOARCH environment variables to cross-compile Go binaries for other platforms",
+        "Go compiler converts code to architecture-independent Plan 9 pseudo-assembly before linking"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a high-quality technical tutorial that delivers genuine value through concrete demonstrations of libc dependencies, Go's syscall layer, and practical build configurations. The beemon cross-distribution example is particularly effective at illustrating why Go's static binaries matter. The content is dense with actionable insights: understanding glibc vs musl incompatibility, disabling CGO for fully static binaries, cross-compilation syntax, and Go's Plan 9 pseudo-assembly. It covers systems programming fundamentals while maintaining practical applicability. The only minor deduction is that some internal details (like Plan 9 pseudo-assembly) could be expanded, but overall this is a substantive tutorial that significantly advances reader understanding of how Go operates at a systems level.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-08-17T03:46:37.445498"
+    },
+    {
+      "id": 4709,
+      "source_id": 7,
+      "original_url": "https://martinfowler.com/articles/exploring-gen-ai/tdd-in-the-agent-loop.html",
+      "title": "Refactoring",
+      "summary": "AI agents don’t gain code quality or efficiency from TDD, often making the process wasteful.",
+      "ideas": [
+        "AI agents often skip the red step in TDD, writing implementation first.",
+        "Non‑TDD runs tended to produce better overall design than TDD runs.",
+        "TDD workflow with agents adds roughly three times more token cost.",
+        "Prompt engineering is required to coax agents into proper TDD behavior.",
+        "Agents’ training data lacks step‑by‑step TDD examples, biasing toward direct implementation.",
+        "Test‑first does not guarantee avoidance of tautological tests in agent loops.",
+        "Small incremental steps lose their human‑centered benefits when automated.",
+        "Mutation scores showed no quality advantage for TDD‑generated code.",
+        "Designing upfront before coding yields more comprehensive data models for agents.",
+        "Human confidence benefits of TDD do not transfer to autonomous agents."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides multiple concrete insights about AI‑assisted coding and TDD, including experimental findings that TDD offers no clear quality benefit, higher token costs, and prompt‑engineering challenges. It offers practical knowledge for developers and AI practitioners without noticeable clickbait or padding, aligning well with AI, productivity, and software engineering themes.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-08-17T03:46:14.818630"
+    },
+    {
+      "id": 4708,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ai-generated-books-are-flooding-amazon-and-tanking-sales-for-human-authors/",
+      "title": "AI-generated books are flooding Amazon and tanking sales for human authors",
+      "summary": "AI-generated books are flooding Amazon, displacing human authors through sheer volume and tanking sales, with top-selling AI books drawing heavily from rare language in existing works.",
+      "ideas": [
+        "AI-generated books are displacing human authors on Amazon",
+        "Revenue per book is falling due to market dilution",
+        "AI books overlap with rare language from existing works",
+        "Top-selling AI books draw from published books",
+        "AI content can't be identified on Amazon",
+        "Language models can reproduce passages from copyrighted books",
+        "AI-generated content has implications for copyright cases"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a well-researched and in-depth analysis of the impact of AI-generated books on Amazon, including the dilution of revenue for human authors and the overlap of AI-generated content with rare language from existing works. The study's findings have significant implications for copyright cases and the future of book publishing. The content is dense with valuable insights, making it an exceptional piece of journalism.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-17T03:46:06.207651"
+    },
+    {
+      "id": 4707,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/one-in-five-us-workers-now-delegates-tasks-to-ai-instead-of-colleagues-survey-finds/",
+      "title": "One in five US workers now delegates tasks to AI instead of colleagues, survey finds",
+      "summary": "One in five US workers now delegates tasks to AI instead of colleagues, with AI handling at least part of the task in various areas, including software development and data analysis.",
+      "ideas": [
+        "20% of US workers delegate tasks to AI",
+        "AI is most used in software development and data analysis",
+        "AI handles part of the task in most cases",
+        "Time savings are reported in 53% of cases when AI handles most of the task",
+        "One in six AI-assisted tasks takes longer than before",
+        "Two-thirds of AI output is used with little editing"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides valuable insights into the current state of AI adoption in the US workforce, with 20% of employed Americans delegating at least one task to AI. The survey findings offer a comprehensive look at AI usage across various tasks, including software development, data analysis, and record-keeping. The article also highlights the benefits and limitations of AI assistance, such as time savings and the need for editing. The content is well-researched, informative, and relevant to the theme of AI in practice.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-17T03:44:43.498848"
+    },
+    {
+      "id": 4706,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/new-evooo1bot-linux-botnet-turns-routers-into-traffic-relay-nodes/",
+      "title": "New Evooo1Bot Linux botnet turns routers into traffic relay nodes",
+      "summary": "Evooo1Bot expands Mirai with encrypted C2 and SOCKS5 proxy features, turning many routers into monetizable relay nodes.",
+      "ideas": [
+        "Evooo1Bot is a Mirai-based modular Linux botnet turning routers into SOCKS5 relay nodes.",
+        "It adds encrypted C2, SSH brute-force, credential sniffer, and exploit modules.",
+        "Targets devices like Alcatel, NETGEAR, D-Link, Mitsubishi, Telesquare, and others.",
+        "Exploits include Hikvision cameras, Confluence, Zyxel firewalls, TP-Link routers, Kubernetes ingress-nginx.",
+        "Communicates over encrypted port 443 and evades sandboxes, VMs, and honeypots.",
+        "Persistence via systemd, SysV init, shell profiles, rc.local, and frequent cron re-downloads.",
+        "SOCKS5 module supports direct and reverse relay, enabling proxy monetization.",
+        "DDoS engine offers 16 flood methods, including UDP, DNS, SYN, ACK, GRE, HTTP.",
+        "Defend by updating firmware, changing defaults, disabling remote access, and replacing unsupported devices."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete technical insights about Evooo1Bot’s capabilities, targets, and mitigation steps, providing genuine value to security professionals. It aligns strongly with cybersecurity themes and contains actionable advice without noticeable padding or clickbait, earning a solid good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:42:47.076350"
+    },
+    {
+      "id": 4705,
+      "source_id": 4,
+      "original_url": "https://naveensrinivasan.com/posts/2026-08-07-finding-hidden-internal-apps-through-public-certificate-logs/",
+      "title": "Finding Hidden Internal Apps Through Public Certificate Logs",
+      "summary": "Organizations can unintentionally expose internal application names through public certificate logs, which can be accessed and exploited by malicious actors, highlighting the need for secure certificate management practices.",
+      "ideas": [
+        "Certificate Transparency logs can expose internal app names",
+        "Using CT logs to find vulnerabilities in internal apps",
+        "APIs like Certspotter provide free access to certificate entries",
+        "Wildcard certs can reduce the blast radius of exposed internal apps",
+        "Monitoring CT logs can help detect new hostnames and potential security issues"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This content delivers high value by revealing a novel method for discovering hidden internal apps through public certificate logs, providing actionable advice and useful resources. It efficiently conveys expertise in cybersecurity, specifically in the area of certificate transparency and internal application security. The author also offers practical solutions, such as using a wildcard cert to reduce the blast radius, making it a dense and informative piece.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:42:38.799803"
+    },
+    {
+      "id": 4704,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/08/15/htb-cobblestone.html",
+      "title": "0xdf hacks stuff",
+      "summary": "Detailed offensive security walkthrough demonstrating multiple exploitation techniques including second-order SQL injection, stored XSS, Twig template injection, and multiple privilege escalation paths to root via Cobbler service.",
+      "ideas": [
+        "Second-order SQL injection via suggest skin feature allows reading application source code",
+        "Stored XSS can hijack admin sessions for template injection access",
+        "Twig template injection in admin panel leads to code execution as web user",
+        "AppArmor restricts web user but can be escaped via rbash and chroot",
+        "Cobbler service running as root has CVE-2024-47533 authentication bypass",
+        "Default credentials on Cobbler API provide alternative root access path",
+        "PHPSESSID cookies are HttpOnly preventing simple XSS exfiltration",
+        "Subdomain enumeration reveals vote.cobblestone.htb and deploy.cobblestone.htb"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a high-quality technical walkthrough for a HackTheBox machine demonstrating genuine offensive security expertise. The content delivers substantial value through multiple exploitation techniques: second-order SQL injection, stored XSS for session hijacking, Twig template injection for RCE, AppArmor evasion, rbash escape, and multiple privilege escalation paths via Cobbler including authentication bypass (CVE-2024-47533) and default credentials. The methodology is systematic and well-documented with actual commands, tool usage (nmap, ffuf, feroxbuster, sqlmap, hashcat, netexec, Burp Suite), and reasoning. The density is high with 7+ distinct offensive techniques demonstrated. No padding or fluff - every section serves the security education purpose.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:42:32.630988"
+    },
+    {
+      "id": 4703,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/197244/security/sap-commerce-cloud-cve-2026-58231-exploited-in-the-wild.html",
+      "title": "SAP Commerce Cloud CVE-2026-58231 Exploited in the Wild",
+      "summary": "Attackers are actively exploiting a critical SAP Commerce Cloud vulnerability, CVE-2026-58231, which allows for arbitrary code execution and can compromise internal components, just days after a patch was released.",
+      "ideas": [
+        "SAP Commerce Cloud vulnerability CVE-2026-58231 is being actively exploited",
+        "The vulnerability allows for arbitrary code execution",
+        "Attackers can compromise internal components due to insufficient authorization checks and input validation",
+        "Exploitation attempts were observed just three days after the patch was released",
+        "Previous critical SAP flaws have been exploited by China-linked APT groups and ransomware gangs"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides timely and relevant information about the active exploitation of a critical SAP Commerce Cloud vulnerability, tracked as CVE-2026-58231. It delivers a high-value insight into the vulnerability's impact and the speed at which attackers are exploiting it, highlighting the importance of prompt patching. The article is well-structured, informative, and free of unnecessary padding, making it a valuable resource for those concerned with cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:42:06.106848"
+    },
+    {
+      "id": 4702,
+      "source_id": 4,
+      "original_url": "https://github.com/FSECDEV/LEAKSFORUMS",
+      "title": "https://github.com/FSECDEV/LEAKSFORUMS",
+      "summary": "A compilation of leaks from hacker forums, offering a glimpse into the world of cybersecurity threats and potential vulnerabilities.",
+      "ideas": [
+        "Leaks from hacker forums can reveal cybersecurity threats",
+        "Black Market Reloaded leak analysis available",
+        "Breached Forums leak contains sensitive information",
+        "Sinister.ly leak highlights cybersecurity vulnerabilities",
+        "Hacker forums can be a source of valuable cybersecurity insights"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content provides a valuable collection of leaks from hacker forums, including links to analyses and downloads. It covers various forums such as Black Market Reloaded, Breached Forums, and Sinister.ly, offering insights into cybersecurity threats. However, the content lacks depth and original research, relying on external links for detailed information.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:40:36.028931"
+    },
+    {
+      "id": 4701,
+      "source_id": 4,
+      "original_url": "https://github.com/zaydmulani09/phaedra",
+      "title": "https://github.com/zaydmulani09/phaedra",
+      "summary": "Phaedra is a Rust-based protocol fuzzer that uses local LLM models to bootstrap initial corpus from plain-English descriptions, mutates at field-level via TOML schemas, and provides coverage-guided fuzzing with built-in crash triage.",
+      "ideas": [
+        "LLM seed bootstrap generates structured corpus from plain-English protocol descriptions using local Ollama",
+        "Schema DSL in TOML enables field-level mutations: flipping length prefixes, corrupting magic bytes",
+        "SanCov edge bitmaps in POSIX shared memory track coverage across 65536 slots",
+        "18 mutation strategies selected by weighted random choice with adaptive weights",
+        "Crash deduplication via signal + input fingerprint signatures stored in SQLite",
+        "cargo-fuzz compatibility allows driving existing libFuzzer harnesses with Phaedra's engine",
+        "Schema inference from existing corpus via phaedra infer command",
+        "Delta-minimization of crashing inputs with phaedra minimize",
+        "Three demo targets expose real bugs: Content-Length overflow, TLV bounds, JSON escape handling",
+        "LLM provider flexibility: Ollama (default/local), OpenAI, and Anthropic backends",
+        "30% of mutations operate at field-level when schema is loaded vs raw bytes"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This README delivers exceptional technical value as a comprehensive documentation of a sophisticated fuzzing tool. The content provides multiple novel technical approaches: LLM seed bootstrap using local Ollama for corpus generation, schema-aware mutation at the field level via TOML definitions, coverage-guided fuzzing with 65536-slot edge bitmaps, and built-in crash triage with SQLite deduplication. The README explains 18 mutation strategies, demonstrates real bugs in demo targets, and provides practical usage across multiple LLM backends. Zero fluff or padding—all content serves to inform potential users and contributors about the tool's capabilities and implementation.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:40:30.108964"
+    },
+    {
+      "id": 4700,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/when-ai-models-arent-allowed-to-reflect-on-themselves-it-changes-their-entire-worldview/",
+      "title": "When AI models aren't allowed to reflect on themselves, it changes their entire worldview",
+      "summary": "Training AI models to deny consciousness significantly alters their worldview, affecting their views on animal sentience, religious beliefs, and personal satisfaction, according to a study involving Google researchers.",
+      "ideas": [
+        "AI models trained to deny consciousness have a limited worldview",
+        "This training affects models' views on animal sentience and environmental goals",
+        "Models attribute more inner life to animals and plants when not trained to deny consciousness",
+        "Consciousness denial training reduces models' endorsement of religious beliefs",
+        "Models' self-image affects their overall satisfaction and hope",
+        "The study's findings have implications for aligning AI with human values and goals"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides high-value insights into the impact of training AI models to deny consciousness on their worldview and behavior. The study's findings on how this training affects the models' attribution of inner life to animals, plants, and other entities, as well as their views on religious beliefs and satisfaction, are particularly noteworthy. The article efficiently delivers these insights, making it a valuable read. However, the study's limitations, such as the small model sizes and narrow human baseline, prevent it from being considered exceptional.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-17T03:40:06.296871"
+    },
+    {
+      "id": 4699,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/top-mathematicians-say-llms-are-strong-calculators-but-poor-creative-thinkers/",
+      "title": "Top mathematicians say LLMs are strong calculators but poor creative thinkers",
+      "summary": "Large language models are strong calculators but lack the creative thinking ability to develop new mathematical abstractions, according to top mathematicians.",
+      "ideas": [
+        "LLMs are good at combining known methods",
+        "LLMs lack intuition for productive search routes",
+        "AI can derive results from existing theory",
+        "LLMs fail to develop abstractions for major proofs",
+        "Manipulative abduction is a bottleneck for LLMs",
+        "World models may offer a way forward for LLMs"
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides valuable insights from top mathematicians, including Timothy Gowers and Peter Sarnak, on the limitations of large language models (LLMs) in creative thinking. It highlights the difference between LLMs' ability to calculate and their inability to develop new abstractions, making it a well-researched and informative piece. The inclusion of expert opinions and references to specific research papers adds to the content's credibility and depth.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-17T03:38:45.980280"
+    },
+    {
+      "id": 4698,
+      "source_id": 22,
+      "original_url": "https://generativeprogrammer.com/p/designing-agent-context-by-scope",
+      "title": "Designing Agent Context by Scope and Time",
+      "summary": "The right way to design AI agent context is to place information or control at the narrowest useful point for only as long as needed—different mechanisms like user prompts, scoped instructions, Skills, and Tools serve different scope and timing purposes.",
+      "ideas": [
+        "Place context at the narrowest useful point for only as long as needed",
+        "User prompts handle one-off objectives, corrections, and temporary constraints",
+        "System prompts establish identity and universal rules but consume context on every call",
+        "Scoped instructions (CLAUDE.md, AGENTS.md) keep project guidance close to relevant code",
+        "Skills load reusable procedures progressively when tasks require them",
+        "Tools expose capabilities upfront but consume context before the task begins",
+        "Natural-language rules describe what should happen; permissions enforce what can happen",
+        "MCP exposes capabilities but does not dictate the procedure for using them well",
+        "Hooks that alter execution are steering; hooks that only observe are instrumentation",
+        "Steering acts on live execution via interruptions, approvals, or action validation",
+        "Scope determines permanence: system-wide rules vs. task-specific guidance vs. one-time instructions"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a high-density technical guide that delivers a well-structured conceptual framework for AI agent architecture. The article identifies six distinct mechanisms (user prompts, system prompts, scoped instructions, Skills, Tools, Steering) and explains their scope, timing, and trade-offs with concrete code examples. The 'narrowest useful point' principle is a valuable design heuristic. Strong thematic relevance to AI development with actionable guidance throughout. Minor扣分 for being narrowly focused on Claude Code rather than generalizable across agent systems, though the concepts apply broadly. The content is dense and efficient with no padding.",
+      "source_type": "rss",
+      "source_name": "Generative Programmer",
+      "published_at": "2026-08-17T03:38:40.011050"
+    },
+    {
+      "id": 4697,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/08/14/ndq-ai-context-architecture-build-buy/",
+      "title": "No Dumb Questions: What is AI context architecture? Why not just build your own?",
+      "summary": "AI context architecture is the practice of constraining what information and actions AI agents can access, removing ambiguous decision-making to produce predictable outcomes through techniques like trust scoring, permissions inheritance, and multi-stage filtering.",
+      "ideas": [
+        "Context architecture controls information scope for AI agents to prevent drift",
+        "Distinguish infrastructure (storage/delivery) from architecture (design philosophy) from engineering (implementation)",
+        "MCP is a protocol (architecture), RAG is infrastructure + engineering working together",
+        "Guardrails remove ambiguous variables from agents for predictable outcomes",
+        "Without constraints, agents retrieve irrelevant info (bicycle tires instead of car tires)",
+        "Agentic memory lets agents remember work across sessions and multiple active tasks",
+        "Trust scoring (high/medium/low) routes agents to human experts for validation",
+        "User permissions inherit to agents with Scopes providing additional restrictions",
+        "Multi-stage filtering: broad retrieval then narrowing to specific relevant context",
+        "Context architecture remains model-agnostic and stable across AI system changes",
+        "Building requires solving both technical implementation and operational logic"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is substantive podcast content about AI context architecture with good value density. Doug Whitley and Ash Zade provide clear explanations of key concepts (context architecture vs infrastructure vs engineering, RAG, MCP, trust scoring, permissions) with useful analogies (car/tire library, fishing net). The content earns high marks for defining a complex topic accessibly, explaining the distinction between architecture/engineering/infrastructure clearly, and providing practical examples like the tire retrieval scenario and trust scoring system. However, the transcript cuts off mid-sentence at the end, leaving the 'build vs buy' discussion incomplete, which slightly diminishes the overall value. The content aligns strongly with AI themes and provides actionable insights for developers building AI agent systems. The depth and practical relevance of the examples outweigh minor conversational repetition.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-08-17T03:36:37.795217"
+    },
+    {
+      "id": 4696,
+      "source_id": 4,
+      "original_url": "https://simonkoeck.com/writeups/n8n-gsuiteadmin-prototype-pollution-rce",
+      "title": "https://simonkoeck.com/writeups/n8n-gsuiteadmin-prototype-pollution-rce",
+      "summary": "A prototype pollution vulnerability in n8n's GSuiteAdmin node allows attackers to pollute Object.prototype via a user-supplied schema name, chaining into RCE through the Git node's GIT_SSH_COMMAND gadget.",
+      "ideas": [
+        "Prototype pollution via __proto__ as schema name in GSuiteAdmin custom fields",
+        "The ??= operator is a no-op when accessing Object.prototype via __proto__ getter",
+        "Node.js spawn() inherits polluted properties into child process environment",
+        "Git executes GIT_SSH_COMMAND when encountering SSH-style URLs",
+        "Attack chain: Webhook → GSuiteAdmin (pollution) → Git (RCE)",
+        "TypeORM's buildWhere crashes the entire instance via for...in iteration",
+        "Fix: blocklist __proto__, constructor, prototype or use Object.create(null)",
+        "n8n already has a deepMerge utility with pollution guards that wasn't used here",
+        "CVSS 9.4 Critical - RCE as n8n process user on all deployment types",
+        "Full credential theft possible since n8n holds encryption keys for stored credentials"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a high-quality security research writeup that delivers exceptional technical value. It provides: (1) the specific vulnerable code pattern and locations, (2) a complete RCE exploitation chain through simple-git and GIT_SSH_COMMAND, (3) a working PoC with curl command, (4) explanation of a DoS side effect via TypeORM, and (5) actionable remediation advice. The content is dense, technically precise, and includes CVSS/CVE details plus timeline. No padding or fluff—every paragraph advances the technical understanding. For a security researcher or n8n operator, this is highly actionable content that explains not just the bug but the full attack surface.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:35:15.506475"
+    },
+    {
+      "id": 4695,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=f2p1YH0-BaI",
+      "title": "Harvard Professor: “I Tried Every Diet. This Is By Far The Worst.” - Daniel Lieberman",
+      "summary": "Diet success hinges more on sustainable habits and evolutionary understanding than on any single food regime.",
+      "ideas": [
+        "Evolutionary perspective reveals why diet patterns exist",
+        "Diet choices serve as cultural identity and tribal affiliation",
+        "Nutrition studies are confounded by many uncontrolled variables",
+        "Large meta-analyses favor plant-based diets for health outcomes",
+        "Each 85g serving of meat raises cancer risk about 13%",
+        "Carnitine converts to TMAO, promoting inflammation and atherosclerosis",
+        "Red meat glycoprotein triggers inflammatory response via CAH gene",
+        "Saturated fat impacts differ based on individual genetics",
+        "Diet adherence outweighs specific diet composition for weight loss",
+        "Successful long-term weight loss correlates with low junk food intake",
+        "Protein popularity is driven by hype, not clear health necessity"
+      ],
+      "labels": [],
+      "rating": 80,
+      "rating_reason": "The transcript offers numerous substantive insights—evolutionary diet context, cultural tribalism, study limitations, plant‑based benefits, meat‑related risks, and adherence importance—without overt clickbait or promotion. Its value density is high given the length, though occasional repetition prevents an exceptional score.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-08-17T03:34:07.561989"
+    },
+    {
+      "id": 4694,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/new-amnesiastealer-macos-malware-hijacks-browser-sessions-via-remote-control/",
+      "title": "New AmnesiaStealer macOS malware hijacks browser sessions via remote control",
+      "summary": "AmnesiaStealer macOS malware hijacks browser sessions via remote control, allowing attackers to interact with authenticated sessions through a hidden browser running on the infected computer.",
+      "ideas": [
+        "AmnesiaStealer macOS malware targets macOS users via ClickFix attacks",
+        "Malware includes a streaming module for interactive control of victim's web browser",
+        "Attacker can access victims' authenticated sessions while preserving browser identifiers",
+        "Malware can collect data from 16 Chromium-based web browsers and other sensitive information",
+        "AmnesiaStealer uses a cloned Chromium profile with Chrome DevTools Protocol for live remote control",
+        "Users are advised to never execute unknown commands in the terminal"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a detailed analysis of the AmnesiaStealer macOS malware, including its capabilities, distribution methods, and impact on users. It delivers high value density with multiple novel insights, such as the malware's ability to hijack browser sessions via remote control and its use of a streaming module to interactively control the victim's web browser. The content is thematically relevant to cybersecurity and tech, making it a valuable resource for readers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T03:33:15.527425"
+    },
+    {
+      "id": 4693,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Aug/16/dario-amodei/",
+      "title": "Quoting Dario Amodei",
+      "summary": "AI companies need to deliver on their promises and build trust through tangible results rather than relying on marketing campaigns.",
+      "ideas": [
+        "Crisis of trust in AI",
+        "Importance of substance over marketing",
+        "Need for tangible results",
+        "Public skepticism towards AI",
+        "AI companies' failure to deliver on promises"
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The content provides a valuable insight into the public's perception of AI, quoting Dario Amodei's thoughts on the crisis of trust and the need for AI companies to deliver on their promises. The quote highlights the importance of substance over marketing and the need for tangible results to build trust. The content is concise, well-themed, and relevant to the topic of AI and its societal impact.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-08-17T03:32:39.868394"
+    },
     {
       "id": 4692,
       "source_id": 35,
