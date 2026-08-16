@@ -1,7 +1,107 @@
 {
-  "updated_at": "2026-08-16T19:00:00.579382",
-  "total_items": 765,
+  "updated_at": "2026-08-16T20:00:00.376064",
+  "total_items": 769,
   "items": [
+    {
+      "id": 4720,
+      "source_id": 34,
+      "original_url": "https://blog.veladan.org/2026/08/15/qwen3-8-27b-thinking-depth.html",
+      "title": "Qwen3.8-27B: The Thinking Dial, Measured",
+      "summary": "Quality plateaus at 'low' reasoning effort (91.0) matching xhigh (90.8), but xhigh costs 4x the wall-clock time (186m vs 48m), making low the sweet spot for agentic work while 'off' remains useful for simple direct tasks.",
+      "ideas": [
+        "Quality plateaus at low reasoning effort, not xhigh",
+        "xhigh default costs 4x latency for zero quality gain",
+        "Thinking-off excels at pattern recognition, fails on multi-step extraction",
+        "CLI-40 shows 10x latency spread between low and xhigh",
+        "Voice agent TTFT dominated by reasoning token generation",
+        "Recommended config: NVFP4, 256K context, low reasoning, temp 0.6"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 87,
+      "rating_reason": "Original benchmark measurements with clear methodology, reproducible hardware setup, and six test suites across four reasoning configurations. The core finding—that quality plateaus at 'low' reasoning effort while xhigh (the default) costs 4x latency—is non-obvious, well-supported by data, and directly actionable for agentic deployments. Limitations are stated transparently. Strong practical value for anyone running Qwen3.8-27B or similar reasoning models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T05:17:53.640150"
+    },
+    {
+      "id": 4719,
+      "source_id": 34,
+      "original_url": "https://blog.veladan.org/2026/08/14/qwen3-8-27b-fp8-benchmarks.html",
+      "title": "Qwen3.8-27B-FP8: First Benchmarks on RTX PRO 6000 Blackwell",
+      "summary": "Qwen3.8-27B-FP8 on RTX PRO 6000 Blackwell shows strong generational gains over 3.6, but official temperature 1.0 sampling costs 12 points on agentic benchmarks versus 0.6, NVFP4 quantization is quality-neutral versus FP8, and 1M token YaRN context costs 12 points on hard reasoning suites while running 30-50% slower.",
+      "ideas": [
+        "Temperature 1.0 drops HermesAgent 12 points vs 0.6",
+        "NVFP4 quantization matches FP8 within run noise",
+        "YaRN 1M context costs 12 points on BugFind vs 262K",
+        "1M context runs 30-50% slower on long-output tasks",
+        "CLI-40 is the persistent weak suite at 73/72",
+        "RTX PRO 6000 holds ~1.8M KV tokens on 96GB",
+        "BugFind improved most: 90 to 96 (generation effect)"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "First benchmarks on new Blackwell hardware with rigorous methodology isolating generation jumps, sampling temperatures, quantization formats, and context window effects. Contains original measurements with per-suite breakdowns, honest caveats (CLI-40 weakness, stopped runs), and actionable insights like the 12-point HermesAgent drop at temperature 1.0 versus 0.6, plus quantified NVFP4 vs FP8 parity and YaRN quality/speed costs. References specific vLLM recipes, hardware specs, and KV cache measurements. The sampling calibration insight is non-obvious and directly applicable to agentic deployments.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T05:17:24.968358"
+    },
+    {
+      "id": 4718,
+      "source_id": 34,
+      "original_url": "https://blog.pixelmelt.dev/training-a-reinforcement-learning-model-to-play-bonk-io/",
+      "title": "Training a Reinforcement Learning Model to Play Bonk.io",
+      "summary": "A practitioner reverse-engineered Bonk.io's obfuscated Box2D physics engine to create a training environment, ported it to Rust for speed, and trained a PPO agent that ranks 5th among 522 tracked players using league-based opponent training.",
+      "ideas": [
+        "Deterministic lockstep networking means the physics engine is shipped to every client",
+        "Porting floating-point code requires mirroring expression order and rounding to 7 decimals",
+        "League training with dedicated exploiters prevents the agent from settling into exploitable strategies",
+        "Small neural networks may train faster on CPU than GPU due to overhead",
+        "Physics engines that rebuild world each frame are pure functions ideal for extraction"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides substantial technical depth on training an RL agent in a game environment. Key strengths include: reverse engineering an obfuscated physics engine to achieve bit-identical simulation, porting to Rust with LLM assistance while preserving floating-point behavior, building a high-throughput training harness (512 parallel instances, custom CUDA kernels), and using league-based training with exploiters. The concrete details on input representation (385 floats, 7-frame history), the deterministic physics extraction approach, and the final result (5th out of 522 players) provide strong evidence of a well-executed project. Limited by being a single project case study without broader generalization.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T05:09:39.080021"
+    },
+    {
+      "id": 4717,
+      "source_id": 34,
+      "original_url": "https://blog.desigeek.com/post/2026/08/llm-inference-stack-part2-below-python/",
+      "title": "The Stack Below the Stack (Part 2): Below Python",
+      "summary": "The GPU executes via SIMT warps of 32 threads, kernels launch with 20-200μs overhead (making 1000+ launches per token expensive), and FlashAttention eliminates the N² memory bottleneck by computing softmax online with running max/sum—while fused kernels hide type contracts that escape hatches like torch.compile cannot touch.",
+      "ideas": [
+        "SIMT warp divergence serializes branches across all 32 lanes unlike CPU branch misprediction",
+        "FlashAttention drops attention intermediates from N² to N memory growth via online softmax",
+        "Kernel launch overhead exceeds compute budget at 1000+ launches per token in transformers",
+        "torch.compile cannot see inside hand-written CUDA kernels to catch dtype mismatches",
+        "Memory bandwidth hierarchy: HBM(4.8TB/s)→NVLink(900GB/s)→InfiniBand(50-100GB/s)→PCIe(64GB/s)",
+        "Online softmax uses running max and sum to avoid materializing full N×N attention matrix",
+        "Shared memory race conditions cause nondeterministic bugs visible only under timing shifts",
+        "Tensor cores deliver ~989 BF16 teraflops vs negligible CUDA core throughput for matmul"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "Exceptional technical depth covering GPU SIMT execution model, kernel fusion mechanics, FlashAttention's online softmax algorithm with concrete memory calculations (N²×b bytes showing 2GB per layer dropping to near-nothing), and the memory hierarchy bandwidth cliff from HBM through NVLink to InfiniBand. The article explains exactly why `--enforce-eager` and `torch.compile` couldn't reach the dtype bug inside hand-written kernels, provides specific hardware specs (H200's 989 BF16 teraflops, NVLink's 900 GB/s), and connects warp scheduling to race conditions that cause production nondeterminism. The F1/train analogy is apt rather than padding, and the N+1 query analogy for kernel launch overhead is concrete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T04:52:32.962167"
+    },
     {
       "id": 4716,
       "source_id": 34,
