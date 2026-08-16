@@ -1,7 +1,126 @@
 {
-  "updated_at": "2026-08-16T22:00:00.330860",
-  "total_items": 772,
+  "updated_at": "2026-08-16T23:00:00.288633",
+  "total_items": 777,
   "items": [
+    {
+      "id": 4728,
+      "source_id": 34,
+      "original_url": "https://julesblom.com/writing/hoistable-svg-defs-ii",
+      "title": "Hoistable SVG Defs, Take Two: Impersonating the DOM",
+      "summary": "A deep dive into React's commit phase showing how to use a fake DOM container that impersonates the DOM interface to eavesdrop on the reconciler, enabling zero-duplication defs hoisting without the previous approach's useEffect abuse.",
+      "ideas": [
+        "react-dom only needs nodeType, createElement, appendChild, removeChild, and ownerDocument from a portal container",
+        "Refs bypass react-dom's attribute pipeline, enabling prop smuggling to fake elements",
+        "useSyncExternalStore subscribes to the Fiber tree through the commit-phase channel",
+        "The reconciler calls appendChild on portal containers for every mount and removeChild for every unmount",
+        "Fake DOM elements can store arbitrary data via setProps that wouldn't survive the stringification pipeline"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This article provides exceptional technical substance about React internals, documenting through proxy experimentation exactly which DOM interface methods react-dom calls on portal containers. The author presents a complete, working implementation of React Aria's fake-document pattern for deduplicating SVG defs, with clear code, architecture diagrams, and a useful comparison to the previous Take One approach. It explains non-obvious mechanisms (how refs bypass the attribute pipeline, the role of useSyncExternalStore in subscribing to reconciler commits) and acknowledges trade-offs like the double-render pass. The content is advanced, well-supported, and directly applicable to developers working with React's internal APIs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T08:28:21.852775"
+    },
+    {
+      "id": 4727,
+      "source_id": 34,
+      "original_url": "https://jakegoldsborough.com/blog/2026/weekly-summary-33/",
+      "title": "Agent assisted Changelog - 33/52",
+      "summary": "A technical changelog documenting Replaybook (agent incident benchmarking on real NixOS VMs), Agents of Empires (agent build races), and Lemma (language-agnostic compiler), with key lessons about verification correctness, benchmark design, and the principle of keeping evaluators outside evaluated systems.",
+      "ideas": [
+        "BRPOP removes jobs rather than inspecting them, breaking naive queue verification",
+        "Price per durable repair is the correct unit, not per token or attempt",
+        "Health checks don't prove recovery; durable state proves recovery",
+        "Evaluator must stay outside the guest to avoid contamination",
+        "Bounded post-match drain handles arena-caused agent interruptions",
+        "crates.io rate-limited 404s can be mistaken for name availability",
+        "App roles cannot write migrations granting ownership of tables they don't own"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive practitioner's account of building AI agent evaluation infrastructure with concrete numbers (132 trials, 122/131 repairs, $6.68 spend), non-obvious verification insights (BRPOP removes jobs, health ≠ recovery, count ≠ identity), and honest failure analysis. The article explains real mechanisms for distinguishing model time from tool time, preserving partial trajectories, and the 'evaluator outside the thing being evaluated' pattern. Strong because it contains reproducible technical findings and real gotchas rather than predictions or summaries.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T08:02:26.124461"
+    },
+    {
+      "id": 4726,
+      "source_id": 34,
+      "original_url": "https://hiraditya.github.io/posts/provenance-is-not-correctness/",
+      "title": "Provenance Is Not Correctness",
+      "summary": "AI watermarks exploit entropy to embed signals, but source code is too low-entropy and semantically load-bearing for watermarks to work reliably while remaining safe, making provenance tracking ineffective where it matters most and creating institutional risk as policy builds on weak signals.",
+      "ideas": [
+        "Green-list watermarks bias token selection via additive logit bias under a secret-keyed PRNG partition",
+        "Non-distortionary watermarks preserve distribution but alter which code patterns get selected",
+        "Source code has high-stakes single-token differences (CWE-121, CWE-835, signedness)",
+        "Low-entropy positions force watermarks to either corrupt output or skip marking entirely",
+        "Code formatters (gofmt, rustfmt) trivially strip watermarks while preserving semantics",
+        "Key holder asymmetry: originator can enumerate generated code, others cannot",
+        "Thompson's Trojan horse shows provenance and correctness are orthogonal concerns",
+        "Detection false negatives on code create false confidence in provenance audits"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides substantive technical analysis of AI watermarking's failure on source code, with concrete mechanism explanations (pseudocode for green-list watermarks), specific CWE examples showing single-token semantic differences, entropy arguments, and a well-grounded synthesis. It combines first-principles reasoning with evidence from the literature on detection rates, distinguishing itself from shallow AI commentary through rigorous technical depth and the Thompson reference connecting to foundational security insights.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T07:42:16.408860"
+    },
+    {
+      "id": 4725,
+      "source_id": 34,
+      "original_url": "https://haseebmajid.dev/posts/2026-08-16-how-i-migrated-from-authentik-to-pocket-id-with-tinyauth-on-nixos/",
+      "title": "How I Migrated From Authentik to Pocket ID With TinyAuth on NixOS",
+      "summary": "A home lab operator walks through replacing Authentik with Pocket ID and TinyAuth on NixOS, including complete NixOS service configs, Traefik forward-auth setup, and a Terranix/OpenTofu pipeline that declaratively provisions OIDC clients and pushes their secrets to OpenBao.",
+      "ideas": [
+        "Use Unix socket auth for Postgres to avoid embedding passwords in connection strings",
+        "Terranix can generate Terraform from Nix to manage OIDC clients declaratively",
+        "mkTraefikService helper abstracts router/service/tls boilerplate per subdomain",
+        "OpenTofu apply can push secrets directly to OpenBao KV after client creation",
+        "TinyAuth Remote-Groups header enables basic group-based access control in Traefik"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense, concrete case study of migrating a home lab auth stack from Authentik to lighter alternatives on NixOS. The article provides complete working NixOS configurations for Pocket ID and TinyAuth, Traefik middleware setup, and crucially a Terranix-based pattern for declarative OIDC client provisioning with automatic secret injection into OpenBao. The author honestly discusses trade-offs and the appendix links to actual configs. The novelty is moderate—these tools are known in NixOS circles—but the specific integration pattern (NixOS services + Terranix IaC + OpenBao for secrets) is well-executed and directly applicable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T07:37:52.674049"
+    },
+    {
+      "id": 4724,
+      "source_id": 34,
+      "original_url": "https://harrisonsec.com/blog/nat64-vpn-raw-socket-address-substitution/",
+      "title": "Your VPN Is Fine. iOS Swapped the Address.",
+      "summary": "On IPv6-only cellular networks, iOS synthesizes NAT64 addresses for IPv4 VPN literals via getaddrinfo(), routing traffic outside the tunnel where it dies silently; the HTTP stack passes literals through while the streaming path resolves them, producing a failure fingerprint that normal checks miss entirely.",
+      "ideas": [
+        "getaddrinfo() on IPv4 VPN literals returns carrier NAT64 prefix + IPv4 in hex, breaking VPN routes",
+        "rvictl -s <UDID> + tcpdump on rvi0 reveals the synthesized destination where normal tools show silence",
+        "ETIMEDOUT on Apple platforms means both 'never connected' and 'connected with no reply'",
+        "The fix must scope raw IPv4 preservation to private/CGNAT ranges only, not all literals",
+        "Confirm capture works on a known-good path before trusting its silence on a broken path"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a field note detailing a non-obvious NAT64/DNS64 interaction with VPN routing on iOS cellular connections. The article provides substantial concrete substance: a packet capture recipe using rvictl, hex address synthesis explanation with working examples, a flowchart of the two code paths, and an actual fix with proper scoping rationale (keep raw IPv4 only for private/CGNAT ranges). The symptom fingerprint for recognition is clearly articulated, the ETIMEDOUT error code analysis exposes a known macOS/iOS diagnostic trap, and the fix explanation demonstrates why a naive solution would break legitimate public hosts. While the upstream fix existed, the diagnostic methodology—recognizing that silence on the broken path means something only after confirming the instrument can see working paths—is valuable practitioner knowledge. The writing is tight and technical with no padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T07:33:21.835296"
+    },
     {
       "id": 4723,
       "source_id": 34,
