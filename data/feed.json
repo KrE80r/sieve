@@ -1,7 +1,221 @@
 {
-  "updated_at": "2026-08-17T12:02:14.328916",
-  "total_items": 731,
+  "updated_at": "2026-08-17T13:00:00.712404",
+  "total_items": 741,
   "items": [
+    {
+      "id": 4777,
+      "source_id": 34,
+      "original_url": "https://www.benjoffe.com/fast-day-of-week",
+      "title": "A faster way to calculate the Day of the Week",
+      "summary": "A three‑instruction multiply‑add‑shift sequence can compute the weekday in near‑optimal latency, delivering near‑single‑cycle performance on modern CPUs.",
+      "ideas": [
+        "3‑instruction mul‑add‑shift computes weekday in ~1 cycle on x86",
+        "Full‑range 64‑bit version extends to all 32‑bit inputs using constant M and rotation Z",
+        "Restricted‑range algorithm uses M = (1<<32)/7 + 1 = 613566757 and Z = 0x94920000",
+        "Neri’s full‑range method adds (rd>=0?4:0) before multiplication to avoid overflow"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents original, low‑level multiplication‑based algorithms for weekday calculation, complete with concrete assembly sequences, benchmark data, and clear trade‑off analysis, making it highly relevant to performance‑critical programming; however, its niche focus on date‑library optimisation adds some non‑essential sections that slightly dilute its broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T22:24:26.890431"
+    },
+    {
+      "id": 4776,
+      "source_id": 34,
+      "original_url": "https://text.marvinborner.de/2026-08-11-17.html",
+      "title": "A Dual View on Syntax",
+      "summary": "The core insight is that λ‑terms can be modeled as networks of polarized wires where continuations and variables are merely labeled connections, eliminating named variables and enabling systematic alternative encodings.",
+      "ideas": [
+        "Variables are just wiring connections; they can be omitted.",
+        "Continuations appear as explicit labeled wires linking term components.",
+        "Constructors are split into producing and consuming sides, dictating wire direction."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a concrete, non‑trivial re‑encoding of λ‑calculus by treating continuations and variables as labeled wires, introducing a polarity model that clarifies how constructors connect, and provides a systematic method for generating alternative syntactic views, including a counting formula; however, the discussion is highly abstract and assumes advanced PL knowledge, leaving some steps informal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T22:18:27.584298"
+    },
+    {
+      "id": 4775,
+      "source_id": 34,
+      "original_url": "https://samlaf.github.io/programming/your-terminal-has-been-editing-everything-you-type.html",
+      "title": "Your terminal has been editing everything you type",
+      "summary": "The terminal’s line discipline silently edits your input by translating carriage returns, echoing, and handling control characters, all configurable via stty flags.",
+      "ideas": [
+        "stty -echo disables echo; input is still delivered because the kernel echoes it back.",
+        "Ctrl‑S and Ctrl‑Q are software flow‑control flags that pause and resume output.",
+        "stty -icrnl turns off the conversion of Return’s \\r to \\n, exposing the raw byte.",
+        "Ctrl‑C is just a character defined in the cchars table; rebinding it changes signal handling."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, low‑level insight into how the terminal line discipline rewrites keystrokes, using clear demos and reproducible stty experiments. It offers original mechanisms and firsthand engineering observations that are directly useful to programmers and sysadmin readers. Minor padding and some historical context add noise, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T22:14:36.554243"
+    },
+    {
+      "id": 4774,
+      "source_id": 34,
+      "original_url": "https://marekfiser.com/blog/double-double-arithmetic",
+      "title": "Double-double: 31 digits of precision without leaving the FPU",
+      "summary": "Double‑double representation stores a number as the unevaluated sum of two doubles, achieving about 31 decimal digits of precision without heap allocation or external libraries.",
+      "ideas": [
+        "Represent value as sum of two doubles, giving ~31 decimal digits without heap allocation."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, original mechanisms for double‑double arithmetic, demonstrates error‑free transformations, benchmarks performance against MPFR, and clearly outlines both the achievable precision and the practical limits, satisfying strong relevance and substantive depth while acknowledging where the technique falls short.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T22:04:35.374762"
+    },
+    {
+      "id": 4773,
+      "source_id": 34,
+      "original_url": "https://ibnuhx.com/blog/notes-on-good-api-design/",
+      "title": "Notes on good API design",
+      "summary": "Design APIs with predictable, boring endpoints, protect existing users from breaking changes, and use idempotency and pagination techniques to ensure reliable, scalable usage.",
+      "ideas": [
+        "Use idempotency keys on mutable operations to prevent duplicate side effects.",
+        "Prefer cursor pagination over offset pagination for scalable listings.",
+        "Never break existing API consumers; additive changes are safe.",
+        "Provide long‑lived API keys alongside OAuth for easy script access.",
+        "Expose rate‑limit headers and Retry-After to protect resources."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, well‑explained mechanisms such as idempotency keys, cursor pagination, and versioning strategies that directly benefit technical readers. It stays relevant to programming and API design, but some advice is familiar and lacks groundbreaking novelty, keeping it from exceptional status. The content is dense with actionable guidance, though occasional generic statements add minor noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T21:57:06.289858"
+    },
+    {
+      "id": 4772,
+      "source_id": 34,
+      "original_url": "https://evcurvefuturist.com/2026/08/electric-vehicles-tip-of-the-spear/",
+      "title": "The Electric Vehicle &#8211; Tip of the Spear",
+      "summary": "EV adoption signals a broader industrial shift where falling‑cost technologies converge to transform energy, manufacturing, and autonomy.",
+      "ideas": [
+        "Lithium‑ion battery pack price fell >90% from 2010‑2025.",
+        "Utility‑scale solar electricity cost dropped ~90% from 2010‑2025.",
+        "Autonomous systems could decouple economic output from human labour."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete cost data (90% battery and solar cost declines) and explains how these intersect with AI, autonomy, and manufacturing, delivering technically substantive insight. It remains relevant to AI and industrial transformation but stays at a high‑level abstraction without detailed implementation guidance. The speculative discussion of autonomous labour replaces some technical depth with narrative extrapolation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T21:53:06.086937"
+    },
+    {
+      "id": 4771,
+      "source_id": 34,
+      "original_url": "https://besok.github.io/posts/what-zig-felt-like-coming-from-rust/",
+      "title": "What Zig felt like, coming from Rust",
+      "summary": "Zig’s manual allocator model forces explicit memory management, revealing practical trade‑offs compared to Rust’s automatic ownership.",
+      "ideas": [
+        "Zig’s flat file structure avoids deep folder hierarchies.",
+        "CLI‑only tooling replaces IDE support, prompting command‑line workflow.",
+        "Memory leaks manifest via forgotten deinit or error‑path omissions.",
+        "Double‑free bugs arise from shared ownership across function boundaries.",
+        "TestAllocator catches leaks but requires explicit test design.",
+        "Functional patterns disappear, replaced by mutation and in‑place updates."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides detailed, hands‑on comparisons of Zig and Rust, covering build workflows, allocator usage, and memory‑leak patterns. Its focus on language mechanics makes it highly relevant to systems programming, though it offers limited insight into large‑scale project organization.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T21:44:33.535438"
+    },
+    {
+      "id": 4770,
+      "source_id": 34,
+      "original_url": "https://adlternative.github.io/posts/ai/understanding-is-the-bottleneck/",
+      "title": "Understanding Is the Bottleneck: Why Agent-Generated Code Needs Structured Summaries",
+      "summary": "Structured JSON summaries derived from git diff provide a reliable, machine‑consumable map of AI‑generated changes for efficient code‑review triage.",
+      "ideas": [
+        "JSON schema derived from git diff captures all changed files and their summaries for triage."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article introduces a concrete, verifiable JSON schema derived from git diff that captures all changed files and their summaries, solving the verification problem for AI‑generated code changes. It explains how this structured data enables efficient triage and can be integrated into MR review pipelines. The proposal is highly relevant to AI‑assisted development and offers practical tooling insights. Its main limitation is reliance on git metadata and the need for broader tooling adoption.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T21:38:22.815408"
+    },
+    {
+      "id": 4769,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/08/17/great-sousas-ghost/",
+      "title": "Pluralistic: Jennifer Jenkins' 'Music Copyright, Creativity, and Culture' (17 Aug 2026)",
+      "summary": "Music copyright is a historically fluid system now facing AI-driven challenges, best understood through Jenkins' open-access textbook.",
+      "ideas": [
+        "Music copyright law is historically contingent, not natural, and constantly evolving.",
+        "AI introduces new challenges in music copyright and compensation.",
+        "Court cases like Ed Sheeran, Katy Perry, and Pharrell illustrate copyright incoherence.",
+        "Jenkins' textbook blends economic, cultural, and legal history of music.",
+        "Open-access download makes the book freely available to creators and scholars.",
+        "Graphic novel THEFT! offers an engaging visual history of music law."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece offers several genuine value instances: it highlights the contingent nature of music copyright, points to AI-driven copyright challenges, cites specific court cases that illustrate systemic flaws, and provides free access to a comprehensive textbook and an engaging graphic novel. The content is thematically aligned with technology, AI, and cultural/legal analysis, and its density is respectable for its length. No major clickbait or padding penalties apply.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-08-17T21:36:13.137573"
+    },
+    {
+      "id": 4768,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/critical-sap-commerce-cloud-vulnerability-exploited-3-days-after-disclosure/",
+      "title": "Critical SAP Commerce Cloud Vulnerability Exploited 3 Days After Disclosure",
+      "summary": "Hackers started exploiting a critical SAP Commerce Cloud vulnerability just three days after its public disclosure, confirming rapid real-world weaponization.",
+      "ideas": [
+        "CVE-2026-58231 enables arbitrary code execution via insufficient auth checks",
+        "SAP patched the flaw on August 11; exploitation observed by August 14",
+        "PoC exploit became publicly available on August 15 after initial exploitation reports",
+        "The vulnerability has a CVSS score of 10, indicating critical severity",
+        "Only one prior SAP Commerce Cloud flaw is listed in CISA’s KEV catalog"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete insights—such as the CVE details, exploitation timeline, CVSS score, and CISA KEV listing—that are valuable for security professionals. It does include promotional padding like newsletter sign‑ups and ads, which slightly reduces its value density. Its strong relevance to vulnerability reporting earns it a solid score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T21:34:48.889789"
+    },
     {
       "id": 4767,
       "source_id": 31,
