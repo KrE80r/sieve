@@ -1,7 +1,111 @@
 {
-  "updated_at": "2026-08-17T06:00:05.838639",
-  "total_items": 734,
+  "updated_at": "2026-08-17T07:00:00.405391",
+  "total_items": 738,
   "items": [
+    {
+      "id": 4766,
+      "source_id": 4,
+      "original_url": "https://www.akamai.com/blog/security-research/bring-your-own-edr-turn-commercial-edr-trojan-horse",
+      "title": "Akamai acquires LayerX, delivering end-to-end security and real-time AI usage control to any browser. Get details",
+      "summary": "Trusted EDR software with elevated privileges and weak hardening can be inverted into a Trojan horse, allowing attackers to bypass Protected Process Light protections and execute unsigned code without kernel vulnerabilities.",
+      "ideas": [
+        "BYOEDR: trusted EDR software can be turned into a Trojan horse against the host",
+        "SentinelOne's exposed COM Dump method allows dumping any PPL process with admin rights",
+        "PPL bypass achieved without kernel exploits or vulnerable signed drivers",
+        "Chaining PPLSystem COM secret extraction enables full code execution in PPL processes",
+        "PE_TO_SHELLCODE requires fixing entry point protection, missing sections, and relocation writes",
+        "Custom Python tool modifies PE section permissions and adds overlay sections as RWX",
+        "EDR self-defense mechanisms can be inverted to render host files inaccessible",
+        "Management telemetry relies on user-configurable DNS lookups that can be isolated",
+        "Only admin privileges (not kernel) are needed to dump PPL processes via SentinelHelper",
+        "Dump function lacked proper caller path validation unlike other SentinelOne COM methods"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "High-quality original security research presented at DEF CON 34 detailing a novel 'Bring Your Own EDR' attack technique. Delivers multiple novel technical insights: abusing SentinelOne's exposed COM interface to dump PPL-protected processes, chaining with PPLSystem to achieve code execution, and solving five distinct technical challenges for shellcode injection. Dense technical content with actual code, debugging output, and reproducible techniques. Strongly aligned with cybersecurity/vulnerability research themes. Minor penalty for truncation at the end, cutting off some details.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T15:34:23.575526"
+    },
+    {
+      "id": 4765,
+      "source_id": 4,
+      "original_url": "https://minanagehsalalma.github.io/CVE-2026-6837-zyxel-export-cgi-command-injection/",
+      "title": "August 16, 2026",
+      "summary": "A post-auth command injection in Zyxel's export-cgi PKCS#12 path is reproducible entirely through firmware emulation, with quote-breaking payloads returning root command output in-band over HTTP.",
+      "ideas": [
+        "Double quote in password field closes intended string, making rest become shell syntax",
+        "Quote-breaking curl payload returns uid=0 root output in HTTP response body",
+        "Disassembly shows direct system() call with snprintf-built user-controlled string",
+        "Semicolon-only payloads insufficient; quote-breaking is the reliable trigger",
+        "18 Zyxel AP models (NWA/WAX series) affected by CVE-2026-6837",
+        "Full AArch64 firmware emulation via QEMU user-mode eliminates hardware dependency",
+        "Firmware extraction uses dumpimage, fdtget, ubireader_extract_images, unsquashfs pipeline",
+        "Bubblewrap provides bind-mounted runtime view for rehosted userland services",
+        "SysV IPC seeding and fake UAM sockets required for clean web request handling",
+        "Target certificate must exist under device certificate store before exploitation",
+        "Remediation requires structured arguments instead of shell string assembly",
+        "Responsible disclosure spanned April 7 report to August 4 advisory publication"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a high-quality, original CVE writeup with substantial technical depth. It delivers 10+ genuine value instances including a specific PoC with HTTP response proof, disassembly of the vulnerable code path (bl snprintf → bl system), the full emulation methodology using QEMU user-mode AArch64 and bubblewrap, and a complete list of 18 affected Zyxel AP models. The novel contribution is the full hardware-free reproduction approach via firmware rehosting with IPC seeding. Density is high—every section delivers technical content with minimal padding. No penalties apply; this is legitimate security research, not clickbait or promotion.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T15:33:03.498726"
+    },
+    {
+      "id": 4764,
+      "source_id": 4,
+      "original_url": "https://arstechnica.com/security/2026/08/vulnerability-giving-attackers-full-control-of-macs-is-under-active-exploitation/",
+      "title": "https://arstechnica.com/security/2026/08/vulnerability-giving-attackers-full-control-of-macs-is-under-active-exploitation/",
+      "summary": "Attackers are actively exploiting a macOS screen‑sharing bug that grants full remote root control, and users should disable the feature and apply Apple’s patch immediately.",
+      "ideas": [
+        "Remote attackers can gain full root control via a screen‑sharing bug.",
+        "CVE‑2026‑65400 has been observed in active exploitation worldwide.",
+        "Apple patched the vulnerability for macOS Tahoe, Sequoia, and Sonoma.",
+        "Users should disable screen sharing and block port 5900 to mitigate risk.",
+        "Attackers currently using the flaw to install Monero miners.",
+        "The bug stems from a flaw in macOS screen‑sharing state‑management logic."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article reveals that CVE‑2026‑65400 is already being used to gain full root access, provides a clear technical explanation of the state‑management flaw, and outlines concrete mitigations. These insights are supported by reports from the Dutch NCSC and Black Hat conference details, adding credible evidence and expert context. No clickbait or padding is present, so the content earns a strong score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-17T15:32:17.144569"
+    },
+    {
+      "id": 4763,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Aug/16/markdown-svg-upgrades/",
+      "title": "Markdown SVG upgrades",
+      "summary": "A browser tool lets you render markdown‑embedded SVGs and export them as PNG, JPEG, or MP4 directly.",
+      "ideas": [
+        "Browser tool renders Markdown with embedded SVG instantly",
+        "Export rendered SVG as PNG or JPEG for non‑SVG platforms",
+        "MP4 tab converts animated SVGs to video via ffmpeg.wasm",
+        "Bookmarkable URLs embed Gist links for easy sharing",
+        "Copy or download rendered images and videos from the browser"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The post introduces a practical, browser‑based markdown‑svg renderer that lets users paste markdown, view rendered SVG, and export PNG/JPEG, adding real utility. It also offers a novel MP4 conversion using ffmpeg.wasm, which is a useful, actionable feature for sharing animated SVGs. The content is concise, contains multiple actionable insights, and aligns with tech/productivity themes without clickbait or padding.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-08-17T15:32:06.881633"
+    },
     {
       "id": 4762,
       "source_id": 35,
