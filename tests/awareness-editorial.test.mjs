@@ -15,6 +15,7 @@ function escapeHtml(value) {
 }
 
 function loadView() {
+    const timers = [];
     const document = {
         addEventListener() {},
         createElement() {
@@ -36,7 +37,13 @@ function loadView() {
         Intl,
         localStorage: { getItem: () => null, setItem() {} },
         URL,
-        window: {}
+        window: {
+            setTimeout(callback, delay) {
+                timers.push({ callback, delay });
+                return timers.length;
+            },
+            clearTimeout() {}
+        }
     });
     vm.runInContext(`${source}\n;globalThis.AwarenessViewForTest = AwarenessView;`, context);
 
@@ -56,6 +63,8 @@ function loadView() {
         }
     };
     view.nextReleaseLabel = () => 'today at 18:00';
+    view.expiryTimer = null;
+    view.timers = timers;
     return view;
 }
 
@@ -239,4 +248,23 @@ test('withholds legacy anonymous releases instead of rendering a summary fallbac
         /attributed editorial release/i
     );
     assert.equal(view.attributionUpgradePending, true);
+});
+
+test('removes a development at its exact expiry without waiting for another release', () => {
+    const view = loadView();
+    let now = Date.parse('2026-08-16T01:41:59.000Z');
+    let renders = 0;
+    view.currentTime = () => now;
+    view.developments = [development()];
+    view.render = () => { renders += 1; };
+    view.pruneSeenState = () => {};
+
+    view.scheduleExpiryCleanup();
+
+    assert.equal(view.timers.length, 1);
+    assert.equal(view.timers[0].delay, 1000);
+    now = Date.parse('2026-08-16T01:42:00.000Z');
+    view.timers[0].callback();
+    assert.equal(view.developments.length, 0);
+    assert.equal(renders, 1);
 });
