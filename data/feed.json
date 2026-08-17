@@ -1,7 +1,126 @@
 {
-  "updated_at": "2026-08-17T01:00:00.344078",
-  "total_items": 788,
+  "updated_at": "2026-08-17T02:00:00.490592",
+  "total_items": 793,
   "items": [
+    {
+      "id": 4744,
+      "source_id": 34,
+      "original_url": "https://www.abgeo.dev/blog/http-query-method/",
+      "title": "A New Way to Query HTTP APIs with a Body",
+      "summary": "The QUERY HTTP method provides a safe, idempotent way to send request bodies for API queries, enabling proper caching and retry semantics.",
+      "ideas": [
+        "QUERY is safe and idempotent, enabling caching and automatic retries.",
+        "Allows request bodies for complex queries, bypassing URL length limits.",
+        "Node.js, OpenAPI 3.2, and Go support QUERY; nginx pending.",
+        "Browser CORS requires explicit method listing, unlike same‑origin calls."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, novel technical detail on a new safe HTTP method. It explains semantics, caching and retry benefits, provides example implementations, and outlines adoption status and browser constraints.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T11:26:13.339260"
+    },
+    {
+      "id": 4743,
+      "source_id": 34,
+      "original_url": "https://thefrontierlab.ai/strix-halo-nine-models-kv-cache-split/",
+      "title": "Quantized KV Cache Helps Six of My Nine Models and Actively Hurts the Two Newest Ones",
+      "summary": "Quantizing the KV cache speeds up most LLMs, but harms models with linear/latent attention where the cache is already tiny.",
+      "ideas": [
+        "KV‑cache q4_0/q8_0 improves generation speed for six out of nine tested models.",
+        "Models with sparse or linear attention (Ling 3.0 Flash, DeepSeek V4 Flash) lose up to 37% prompt speed when the cache is quantized.",
+        "Cache size per token depends on head count and dimension; smaller caches make quantization overhead dominate.",
+        "Different weight quantizations (IQ2_XXS vs Q2_K) can reverse expected decode‑speed trade‑offs due to unpacking cost."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides original benchmark data and detailed analysis of KV‑cache quantization across nine LLMs on a specific GPU, explaining why newer attention designs suffer. It includes concrete tables, build hashes, and hardware settings, enabling readers to apply the findings to their own inference stacks. Minor noise comes from a few models run on a different binary, but the overall evidence is solid and highly relevant to AI inference engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T11:04:59.333398"
+    },
+    {
+      "id": 4742,
+      "source_id": 34,
+      "original_url": "https://szha.ai/blog/compute-optimal-is-not-cluster-optimal/",
+      "title": "Compute-Optimal Is Not Cluster-Optimal",
+      "summary": "A FLOPs-only scaling law misses that MFU depends on architecture, so compute-optimal MoE designs can be cluster-infeasible or 1.7× slower on the wall-clock axis; co-optimizing the loss law with measured MFU/goodput surfaces picks a different, interior sparsity optimum.",
+      "ideas": [
+        "Loss-per-FLOP and loss-per-GPU-hour can disagree by 1.70×–2.66× on MoE sparsity/expert-split axes.",
+        "At ~0.96 sparsity, recipes require more than the cluster can deliver on 4 p6-B200 nodes / 5 days.",
+        "Co-optimization under deliverable-FLOPs beats boundary pick by 0.031 nats in the worked example.",
+        "Optimal sparsity sits on a 0.915–0.963 plateau and does not sharpen with compute.",
+        "Fine-grained experts (G=8) drop to ~8% MFU vs 13–20% for G=2 on Megatron-Core stacks.",
+        "ScalePlan performance model holds <15% MFU error and matches measured top-5/top-10 rankings."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Original research presentation by a domain expert introducing MOSAIC, a framework that fuses scaling-law selection with cluster-aware systems constraints. The article delivers dense, specific empirical substance: 150-run MoE fit, concrete wall-clock/FLOP multipliers (1.70× on sparsity, 2.66× on expert split), a worked feasibility example on p6-B200 nodes, <15% MFU prediction error, and validation from staged real runs showing the ordering flip. Limitations are honestly enumerated, the open-source performance model (ScalePlan) is named, and the causal mechanisms (why fine-grained experts suffer on this stack, why deliverable-FLOPs introduces an interior optimum) are explained rather than asserted.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T10:58:57.725651"
+    },
+    {
+      "id": 4741,
+      "source_id": 34,
+      "original_url": "https://sleepingrobots.com/dreams/qwen38-mtp-strix-halo/",
+      "title": "Qwen 3.8 27B on Strix Halo: 18 t/s With MTP, Nearly 2x the Baseline",
+      "summary": "Running Qwen 3.8 27B with MTP on a Strix Halo GPU achieves 18 tokens/s using radv Vulkan, draft‑n‑max 2, and cache‑preserving settings.",
+      "ideas": [
+        "MTP draft‑n‑max 2 yields 18 t/s, outperforming n‑max 5 on Qwen 3.8 with Q6_K quant.",
+        "Vulkan radv driver gives faster prompt processing than amdvlk, reducing latency.",
+        "Enabling \"preserve_thinking\" keeps KV prefix cache across turns, improving multi‑turn speed.",
+        "No custom builds needed; llama‑vulkan‑radv toolbox supports Qwen 3.8 MTP out‑of‑the‑box."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete benchmark data, detailed configuration commands, and nuanced analysis of MTP draft‑n‑max settings and Vulkan driver choices for Qwen 3.8 on AMD hardware. It provides reproducible insights (e.g., why n‑max 2 outperforms n‑max 5) and practical tips (preserve_thinking flag, froggeric’s template) that are directly actionable for technically capable readers. The content is focused, low on hype, and adds novel, hardware‑specific knowledge beyond generic model announcements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T10:46:28.956982"
+    },
+    {
+      "id": 4740,
+      "source_id": 34,
+      "original_url": "https://rivassec.com/claude-synthid-text-watermark-attack-surface.html",
+      "title": "When the Output Carries the Signal: Claude, SynthID-Text, and the New Detection Attack Surface",
+      "summary": "Enterprise watermark detectors inherit security-critical requirements and expose multiple bypass, forgery, oracle probing, and calibration poisoning attack paths that must be modeled before integrating detection output into compliance or security workflows.",
+      "ideas": [
+        "Base rates matter: 0.1% FPR produces 10k false positives per 10M documents",
+        "Detector output becomes a control plane once automated, inheriting bypass and abuse paths",
+        "Oracle attacks formulate as constrained optimization using detector confidence as fitness",
+        "Character-level perturbations can shift token IDs and disturb keyed scores",
+        "Watermark radioactivity: training on watermarked outputs creates weakly watermarked models",
+        "Calibration poisoning: adversaries can shift decision boundaries through crafted submissions",
+        "No single token proves anything; detection requires statistical aggregation over passages",
+        "SynthID-Text embeds signal via keyed candidate scoring before token sampling"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This article provides substantial, technically grounded threat modeling of AI watermark detection systems. It explains SynthID-Text's logits-processor mechanism with a concrete diagram, quantifies base-rate failure scenarios (e.g., 10k false positives across 10M documents at 0.1% FPR), formalizes the oracle attack as constrained optimization, and catalogs nine distinct threat classes including calibration poisoning and detector-as-side-channel. The security perspective on treating detection output as a control plane is non-obvious and practically valuable. Limitations include the speculative nature of undisclosed Anthropic configuration and that some claims rest on public SynthID-Text rather than Claude-specific implementation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-17T10:33:18.484150"
+    },
     {
       "id": 4739,
       "source_id": 34,
