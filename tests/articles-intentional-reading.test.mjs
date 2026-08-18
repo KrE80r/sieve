@@ -4,6 +4,7 @@ import test from 'node:test';
 import vm from 'node:vm';
 
 const source = readFileSync(new URL('../js/app.js', import.meta.url), 'utf8');
+const styles = readFileSync(new URL('../css/style.css', import.meta.url), 'utf8');
 
 function loadApp(initialStorage = {}) {
     const storage = new Map(Object.entries(initialStorage));
@@ -98,6 +99,8 @@ test('renders deliberate article cards with optional source imagery and only use
     const { app } = loadApp();
     const markup = app.createArticle(article(7, {
         image_url: 'https://images.example.com/article.jpg',
+        image_width: 1200,
+        image_height: 630,
         image_alt: 'A useful diagram from the source article'
     }));
 
@@ -105,6 +108,8 @@ test('renders deliberate article cards with optional source imagery and only use
     assert.doesNotMatch(markup, /class="article-score"/);
     assert.match(markup, /class="article-source-visual"/);
     assert.match(markup, /A useful diagram from the source article/);
+    assert.match(markup, /width="1200" height="630"/);
+    assert.match(markup, /loading="lazy" decoding="async" fetchpriority="low"/);
     assert.match(markup, /Why it earned a place:/);
     assert.match(markup, />Read original ↗<\/a>/);
     assert.match(markup, /aria-label="Mark as unread"/);
@@ -113,6 +118,16 @@ test('renders deliberate article cards with optional source imagery and only use
     assert.doesNotMatch(markup, />Save<\/button>/);
     assert.doesNotMatch(markup, />Skip<\/button>/);
     assert.doesNotMatch(markup, /No decision needed/);
+    assert.doesNotMatch(markup, /<figcaption/);
+    assert.ok(markup.indexOf('article-title') < markup.indexOf('article-source-visual'));
+    assert.ok(markup.indexOf('article-source-visual') < markup.indexOf('article-preview'));
+});
+
+test('shows worthwhile images without cropping them on desktop or mobile', () => {
+    assert.match(styles, /\.article-source-visual img\s*{[^}]*object-fit:\s*contain;/s);
+    assert.match(styles, /\.article-source-visual img\s*{[^}]*max-height:\s*360px;/s);
+    assert.match(styles, /@media \(max-width: 768px\)[\s\S]*\.article-source-visual img\s*{[^}]*max-height:\s*260px;/);
+    assert.doesNotMatch(styles, /\.article-source-visual img\s*{[^}]*object-fit:\s*cover;/s);
 });
 
 test('keeps the score circle color-coded across the existing rating bands', () => {
@@ -135,6 +150,19 @@ test('does not invent a visual when the feed has no source image', () => {
     assert.match(markup, /article-card-grid no-visual/);
     assert.doesNotMatch(markup, /article-source-visual/);
     assert.doesNotMatch(markup, /<img/);
+
+    const insecureMarkup = app.createArticle(article(9, {
+        image_url: 'http://images.example.com/insecure.jpg',
+        image_width: 1200,
+        image_height: 630
+    }));
+    assert.doesNotMatch(insecureMarkup, /<img/);
+});
+
+test('removes a source image cleanly when the remote asset fails at render time', () => {
+    assert.match(source, /setupArticleImageFallbacks\(list\)/);
+    assert.match(source, /addEventListener\('error'/);
+    assert.match(source, /visual\.remove\(\)/);
 });
 
 test('records visibility for the next visit without moving the boundary during the current session', () => {
