@@ -130,6 +130,11 @@ test('shows worthwhile images without cropping them on desktop or mobile', () =>
     assert.doesNotMatch(styles, /\.article-source-visual img\s*{[^}]*object-fit:\s*cover;/s);
 });
 
+test('keeps image and no-image article cards on the same outer width', () => {
+    assert.match(styles, /\.article-item\s*{[^}]*max-width:\s*920px;/s);
+    assert.doesNotMatch(styles, /\.article-item\.no-visual\s*{[^}]*max-width:/s);
+});
+
 test('keeps the score circle color-coded across the existing rating bands', () => {
     const { app } = loadApp();
 
