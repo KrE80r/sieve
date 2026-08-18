@@ -465,7 +465,7 @@ Rejected:
 
 ## 11. Current implementation evidence — 18 August 2026
 
-- Flutter formatting and static analysis are clean; all 89 unit, widget, lifecycle,
+- Flutter formatting and static analysis are clean; all 90 unit, widget, lifecycle,
   migration, security-boundary, accessibility, and golden tests pass locally.
 - The existing Sieve website regression suite remains green with all 19 tests passing.
 - GitHub Actions independently reproduced formatting, analysis, all Flutter tests, debug
