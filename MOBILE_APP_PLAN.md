@@ -261,6 +261,7 @@ actions whose value survives the remote feed.
 | Selected source + remote rename | Preserve the stable source identity and adopt its current display name. |
 | Selected source + disappearance | Keep the now-empty selection visible until the reader clears or broadens it. Do not substitute another source. |
 | Filters + tab switch or valid refresh | Preserve the window and source for the current session. A true cold launch alone resets to `Today · All sources`. |
+| Destination switch or repeated tap | Preserve each destination's reading position. Tapping the already-selected destination is a no-op; only an intentional filter change or a genuinely new Developments edition starts at the top. |
 | Same Developments edition + tab switch | Preserve its reading position. |
 | New Developments edition + old scroll position | Treat the new batch as a new document and begin at its top. Never land halfway through it. |
 | Browser handoff + seen state | Mark an Article seen only after Android accepts the URL for the external browser. A failed handoff leaves it unread. |
