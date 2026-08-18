@@ -28,6 +28,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Test static site
+        run: node --test tests/*.test.mjs
+
       - name: Prepare static site
         run: |
           mkdir -p _site
