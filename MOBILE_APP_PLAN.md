@@ -446,6 +446,11 @@ Rejected:
 - Flutter formatting and static analysis are clean; all 78 unit, widget, lifecycle,
   security-boundary, accessibility, and golden tests pass.
 - The existing Sieve website regression suite remains green with all 18 tests passing.
+- GitHub Actions independently reproduced formatting, analysis, all Flutter tests, debug
+  and release APK builds, and release-signature verification in mobile run
+  [`32115572207`](https://github.com/KrE80r/sieve-mobile/actions/runs/32115572207).
+  Pages run [`32114484450`](https://github.com/KrE80r/sieve/actions/runs/32114484450)
+  passed the 18-test gate and deployed successfully.
 - The private release APK builds with the durable local key and verifies with APK
   Signature Scheme v2 as `CN=Sieve Private Android, O=Sieve, C=AU`. The current artifact
   is `52,103,765` bytes with SHA-256
