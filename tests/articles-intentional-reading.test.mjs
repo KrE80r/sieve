@@ -99,6 +99,8 @@ test('renders deliberate article cards with optional source imagery and open, sa
     }));
 
     assert.match(markup, /data-decision="saved"/);
+    assert.match(markup, /class="article-rating-badge rating-good">88<\/div>/);
+    assert.doesNotMatch(markup, /class="article-score"/);
     assert.match(markup, /class="article-source-visual"/);
     assert.match(markup, /A useful diagram from the source article/);
     assert.match(markup, /Why it earned a place:/);
@@ -107,6 +109,18 @@ test('renders deliberate article cards with optional source imagery and open, sa
     assert.match(markup, />Save<\/button>/);
     assert.match(markup, /data-article-decision="skipped"/);
     assert.match(markup, />Skip<\/button>/);
+});
+
+test('keeps the score circle color-coded across the existing rating bands', () => {
+    const { app } = loadApp();
+
+    const good = app.createArticle(article(10, { rating: 85 }));
+    const great = app.createArticle(article(11, { rating: 92 }));
+    const excellent = app.createArticle(article(12, { rating: 97 }));
+
+    assert.match(good, /article-rating-badge rating-good">85/);
+    assert.match(great, /article-rating-badge rating-great">92/);
+    assert.match(excellent, /article-rating-badge rating-excellent">97/);
 });
 
 test('does not invent a visual when the feed has no source image', () => {
