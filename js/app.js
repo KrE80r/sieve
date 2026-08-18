@@ -19,6 +19,10 @@ class FeedSieve {
         this.categories = {};
         this.expandedGroups = new Set();
         this.lastUpdated = null;
+        this.previouslySeenIds = this.loadSeenArticleIds();
+        this.sessionSeenIds = new Set();
+        this.reviewItems = [];
+        this.articleSeenObserver = null;
         this.init();
     }
 
@@ -729,17 +733,21 @@ class FeedSieve {
         const feedCount = document.getElementById('feed-count');
 
         if (!document.body.classList.contains('awareness-active')) {
-            feedCount.textContent = `${this.filteredItems.length} article${this.filteredItems.length !== 1 ? 's' : ''}`;
+            feedCount.textContent = `${this.filteredItems.length} selected article${this.filteredItems.length !== 1 ? 's' : ''}`;
         }
 
         if (this.filteredItems.length === 0) {
+            if (this.articleSeenObserver) this.articleSeenObserver.disconnect();
+            this.reviewItems = [];
             list.innerHTML = '';
             noResults.classList.remove('hidden');
             return;
         }
 
         noResults.classList.add('hidden');
-        list.innerHTML = this.filteredItems.map(item => this.createArticle(item)).join('');
+        const review = this.buildArticleReview();
+        this.reviewItems = review.items;
+        list.innerHTML = this.articleReviewMarkup(review);
 
         // Apply read state from localStorage
         list.querySelectorAll('.article-item').forEach(article => {
@@ -754,6 +762,7 @@ class FeedSieve {
             article.addEventListener('click', (e) => {
                 if (e.target.closest('.read-link')) return;
                 if (e.target.closest('.mark-unread-btn')) return;
+                if (e.target.closest('.article-decision-btn')) return;
 
                 const itemId = parseInt(article.dataset.itemId);
                 const item = this.items.find(i => i.id === itemId);
@@ -781,6 +790,143 @@ class FeedSieve {
                 this.markAsRead(itemId);
             });
         });
+
+        list.querySelectorAll('.article-decision-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const article = e.currentTarget.closest('.article-item');
+                const decision = this.toggleArticleDecision(article.dataset.itemId, e.currentTarget.dataset.articleDecision);
+                this.applyArticleDecisionState(article, decision);
+            });
+        });
+
+        this.observeArticleVisibility(list);
+    }
+
+    buildArticleReview() {
+        const newItems = [];
+        const seenItems = [];
+
+        this.filteredItems.forEach(item => {
+            const target = this.previouslySeenIds.has(String(item.id)) ? seenItems : newItems;
+            target.push(item);
+        });
+
+        return { newItems, seenItems, items: [...newItems, ...seenItems] };
+    }
+
+    articleReviewMarkup(review) {
+        const total = review.items.length;
+        const noun = total === 1 ? 'thing' : 'things';
+        const newCount = review.newItems.length;
+        const seenCount = review.seenItems.length;
+        const newLabel = `${newCount} not seen here before`;
+        const seenLabel = seenCount > 0 ? `<span>${seenCount} previously seen</span>` : '';
+        const historyDivider = seenCount > 0
+            ? '<div class="article-history-divider" role="separator"><span>Previously seen below</span></div>'
+            : '';
+
+        return `
+            <header class="article-review-intro">
+                <span class="article-review-eyebrow">Finite article review</span>
+                <h1>${total} ${noun} worth a deliberate look</h1>
+                <p>Open, save, skip, or leave anything undecided. The inventory stays visible and has a real stopping point.</p>
+                <div class="article-review-meta">
+                    <span><i class="article-review-status-dot" aria-hidden="true"></i>${newLabel}</span>
+                    ${seenLabel}
+                    <span>${total} selected in this view</span>
+                </div>
+            </header>
+            ${review.newItems.map(item => this.createArticle(item)).join('')}
+            ${historyDivider}
+            ${review.seenItems.map(item => this.createArticle(item)).join('')}
+            <footer class="article-review-end" role="status">
+                <span class="article-review-end-mark" aria-hidden="true">✓</span>
+                <strong>You reached the end of this review</strong>
+                <p>Nothing else loads after the final item. There are no replacement cards or “more like this” stream.</p>
+            </footer>
+        `;
+    }
+
+    loadSeenArticleIds() {
+        try {
+            const stored = JSON.parse(localStorage.getItem('sieve_seen_articles_v1') || '[]');
+            return new Set(Array.isArray(stored) ? stored.map(String) : []);
+        } catch {
+            return new Set();
+        }
+    }
+
+    recordArticleSeen(itemId) {
+        const id = String(itemId);
+        if (this.previouslySeenIds.has(id) || this.sessionSeenIds.has(id)) return;
+
+        this.sessionSeenIds.add(id);
+        try {
+            const seenIds = [...this.previouslySeenIds, ...this.sessionSeenIds].slice(-2000);
+            localStorage.setItem('sieve_seen_articles_v1', JSON.stringify(seenIds));
+        } catch {
+            // Reading remains fully usable when browser storage is unavailable.
+        }
+    }
+
+    observeArticleVisibility(list) {
+        if (this.articleSeenObserver) this.articleSeenObserver.disconnect();
+        if (typeof window.IntersectionObserver !== 'function') return;
+
+        this.articleSeenObserver = new window.IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting || entry.intersectionRatio < 0.35) return;
+                this.recordArticleSeen(entry.target.dataset.itemId);
+                this.articleSeenObserver.unobserve(entry.target);
+            });
+        }, { threshold: [0.35] });
+
+        list.querySelectorAll('.article-item').forEach(article => {
+            const id = String(article.dataset.itemId);
+            if (!this.previouslySeenIds.has(id) && !this.sessionSeenIds.has(id)) {
+                this.articleSeenObserver.observe(article);
+            }
+        });
+    }
+
+    getArticleDecision(itemId) {
+        try {
+            const decision = localStorage.getItem('article_decision_' + itemId);
+            return decision === 'saved' || decision === 'skipped' ? decision : '';
+        } catch {
+            return '';
+        }
+    }
+
+    toggleArticleDecision(itemId, requestedDecision) {
+        const current = this.getArticleDecision(itemId);
+        const next = current === requestedDecision ? '' : requestedDecision;
+
+        try {
+            if (next) localStorage.setItem('article_decision_' + itemId, next);
+            else localStorage.removeItem('article_decision_' + itemId);
+        } catch {
+            // Decisions stay optional when browser storage is unavailable.
+        }
+
+        return next;
+    }
+
+    applyArticleDecisionState(article, decision) {
+        article.dataset.decision = decision;
+        article.querySelectorAll('.article-decision-btn').forEach(btn => {
+            const active = btn.dataset.articleDecision === decision;
+            btn.classList.toggle('active', active);
+            btn.setAttribute('aria-pressed', String(active));
+        });
+
+        const state = article.querySelector('.article-decision-state');
+        if (state) {
+            state.textContent = decision === 'saved'
+                ? 'Saved for later'
+                : decision === 'skipped' ? 'Intentionally skipped' : 'No decision needed';
+        }
     }
 
     isRead(itemId) {
@@ -789,6 +935,7 @@ class FeedSieve {
 
     markAsRead(itemId) {
         localStorage.setItem('read_' + itemId, 'true');
+        this.recordArticleSeen(itemId);
         const article = document.querySelector(`[data-item-id="${itemId}"]`);
         if (article) {
             article.classList.add('read');
@@ -804,7 +951,8 @@ class FeedSieve {
     }
 
     showModal(item) {
-        const itemIndex = this.filteredItems.findIndex(i => i.id === item.id);
+        const modalItems = this.reviewItems.length > 0 ? this.reviewItems : this.filteredItems;
+        const itemIndex = modalItems.findIndex(i => i.id === item.id);
         this._showModalAtIndex(itemIndex !== -1 ? itemIndex : 0);
     }
 
@@ -815,7 +963,8 @@ class FeedSieve {
             existing.remove();
         }
 
-        const item = this.filteredItems[index];
+        const modalItems = this.reviewItems.length > 0 ? this.reviewItems : this.filteredItems;
+        const item = modalItems[index];
         if (!item) return;
 
         this.currentModalIndex = index;
@@ -824,7 +973,7 @@ class FeedSieve {
         const rating = item.rating || null;
         const ratingHtml = rating ? this.createRatingBadgeHtml(rating, 'modal-rating') : '';
         const hasPrev = index > 0;
-        const hasNext = index < this.filteredItems.length - 1;
+        const hasNext = index < modalItems.length - 1;
 
         const isDigest = (item.source_type === 'digest') && item.content;
 
@@ -910,7 +1059,7 @@ class FeedSieve {
 
         const navigateModal = (dir) => {
             const newIndex = this.currentModalIndex + (dir === 'next' ? 1 : -1);
-            if (newIndex >= 0 && newIndex < this.filteredItems.length) {
+            if (newIndex >= 0 && newIndex < modalItems.length) {
                 document.removeEventListener('keydown', onKeydown);
                 window.removeEventListener('popstate', onPopState);
                 this._showModalAtIndex(newIndex);
@@ -1128,40 +1277,58 @@ class FeedSieve {
         const sourceName = item.source_name || '';
         const date = this.formatDate(item.published_at || item.processed_at);
         const url = item.original_url || item.url || '#';
-        const summaryPreview = item.summary ? this.truncate(item.summary, 150) : '';
-        const ideas = item.ideas || [];
-        const ideasHtml = ideas.length > 0 ? this.renderIdeasChips(ideas.slice(0, 3)) : '';
+        const summaryPreview = item.summary ? this.truncate(item.summary, 320) : '';
+        const ratingReason = item.rating_reason ? this.truncate(item.rating_reason, 260) : '';
         const rating = item.rating || null;
-        const ratingBadgeHtml = rating ? this.createRatingBadgeHtml(rating, 'rating-badge') : '';
+        const decision = this.getArticleDecision(item.id);
+        const decisionLabel = decision === 'saved'
+            ? 'Saved for later'
+            : decision === 'skipped' ? 'Intentionally skipped' : 'No decision needed';
+        const imageUrl = this.sourceImageUrl(item);
+        const imageMarkup = imageUrl ? `
+                    <figure class="article-source-visual">
+                        <img src="${this.escapeHtml(imageUrl)}" alt="${this.escapeHtml(item.image_alt || '')}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                        <figcaption>Image from source article</figcaption>
+                    </figure>` : '';
 
         return `
-            <article class="article-item" data-item-id="${item.id}">
-                <div class="article-header">
-                    <div class="article-meta">
-                        ${sourceName ? `<span class="source-name">${this.escapeHtml(sourceName)}</span>` : ''}
-                        <span class="article-date">${date}</span>
+            <article class="article-item ${imageUrl ? 'has-visual' : 'no-visual'}" data-item-id="${item.id}" data-decision="${decision}">
+                <div class="article-card-grid ${imageUrl ? 'has-visual' : 'no-visual'}">
+                    <div class="article-card-copy">
+                        <div class="article-overline">
+                            ${rating ? `<span class="article-score">${rating} score</span>` : ''}
+                            ${sourceName ? `<span>${this.escapeHtml(sourceName)}</span>` : ''}
+                            <span>${date}</span>
+                        </div>
+                        <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
+                        ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
+                        ${ratingReason ? `<div class="article-reading-angle"><strong>Why it earned a place:</strong> ${this.escapeHtml(ratingReason)}</div>` : ''}
+                        ${(item.labels || []).length > 0 ? `
+                            <div class="article-labels">
+                                ${(item.labels || []).map(label => `<span class="article-label label-${label.toLowerCase()}">${this.escapeHtml(label)}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        <div class="article-footer" aria-label="Decision for ${this.escapeHtml(item.title)}">
+                            <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="read-link" onclick="event.stopPropagation()">Open source ↗</a>
+                            <button class="article-decision-btn ${decision === 'saved' ? 'active' : ''}" type="button" data-article-decision="saved" aria-pressed="${decision === 'saved'}">Save</button>
+                            <button class="article-decision-btn article-skip-btn ${decision === 'skipped' ? 'active' : ''}" type="button" data-article-decision="skipped" aria-pressed="${decision === 'skipped'}">Skip</button>
+                            <span class="article-decision-state">${decisionLabel}</span>
+                            <button class="mark-unread-btn" data-item-id="${item.id}" title="Mark as unread" aria-label="Mark as unread">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="8" cy="8" r="6"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    ${ratingBadgeHtml}
-                </div>
-                <h3 class="article-title">${this.escapeHtml(item.title)}</h3>
-                ${summaryPreview ? `<p class="article-preview">${this.escapeHtml(summaryPreview)}</p>` : ''}
-                ${(item.labels || []).length > 0 ? `
-                    <div class="article-labels">
-                        ${(item.labels || []).map(label => `<span class="article-label label-${label.toLowerCase()}">${this.escapeHtml(label)}</span>`).join('')}
-                    </div>
-                ` : ''}
-                <div class="article-footer">
-                    <a href="${this.escapeHtml(url)}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">
-                        Read Original →
-                    </a>
-                    <button class="mark-unread-btn" data-item-id="${item.id}" title="Mark as unread">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="8" cy="8" r="6"/>
-                        </svg>
-                    </button>
+                    ${imageMarkup}
                 </div>
             </article>
         `;
+    }
+
+    sourceImageUrl(item) {
+        const candidate = item.image_url || item.preview_image_url || item.thumbnail_url || item.og_image || '';
+        return /^https?:\/\//i.test(candidate) ? candidate : '';
     }
 
     createRatingBadgeHtml(rating, className) {
