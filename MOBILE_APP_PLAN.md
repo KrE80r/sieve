@@ -473,11 +473,11 @@ Rejected:
   [`32115572207`](https://github.com/KrE80r/sieve-mobile/actions/runs/32115572207).
   Pages run [`32114484450`](https://github.com/KrE80r/sieve/actions/runs/32114484450)
   passed the 18-test gate and deployed successfully.
-- The private `1.1.0` release APK builds with version code `2`, uses the durable local key,
+- The private `1.1.0` release APK builds with version code `4`, uses the durable local key,
   and verifies with APK Signature Scheme v2 as
   `CN=Sieve Private Android, O=Sieve, C=AU`. The current artifact is `52,262,969` bytes
   with SHA-256
-  `f267277e78619215346fa45ebed35284d8c5361a1954716717379f5b64a090d2`.
+  `0f56ce00b5fd4f892a6f78bffa73ec53cf2209daea0d14578ccb0ccd49eb2d0a`.
 - Earlier Android 11 emulator evidence at 1080×2280 and 440 dpi proved first-install
   offline honesty, cached offline restart, independent Read Later persistence, process
   restart, same-key update, timezone change and restoration, and the defined two-step
