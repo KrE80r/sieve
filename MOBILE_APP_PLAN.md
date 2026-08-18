@@ -29,7 +29,7 @@ The app has exactly three destinations:
    imagery when the producer has it.
 2. **Developments** — sealed, chronological X-list editions with attribution, coverage
    state, meaningful media, the next scheduled release, and the existing 24-hour expiry.
-3. **Read Later** — a small, temporary, device-local queue of online bookmarks for Sieve
+3. **Read Later** — a small, finite, device-local queue of online bookmarks for Sieve
    Articles only.
 
 Non-negotiable exclusions:
@@ -50,16 +50,17 @@ publicly distributed product.
 
 ## 3. Approved Read Later contract
 
-Recommended v1 rule: **seven slots, seven days**.
+Approved v1 rule: **seven slots, no automatic expiry**.
 
 - Saving copies the article title, source, summary, score, image reference, original URL,
   and save time into a self-contained local record.
 - Those saved fields are a point-in-time capture and are never silently rewritten from a
   later Article snapshot. The image URL is best-effort; the local metadata and original
-  URL are the durable seven-day promise.
+  URL are the device-local promise until explicit removal.
 - The saved record does not depend on the article remaining in FeedSieve or retaining the
   same remote identifier.
-- A saved item expires seven days after saving. `Done` removes it immediately.
+- A saved item remains until `Remove`, app uninstall, or app-data clearing. `Remove` is
+  reversible for a few seconds with `Undo`.
 - When all seven slots are occupied, the app does not create an eighth item; the reader
   must finish or remove one first.
 - Uninstalling the app or clearing its data removes the queue.
@@ -68,8 +69,9 @@ Recommended v1 rule: **seven slots, seven days**.
 - Read Later is an online bookmark: opening it requires connectivity and hands the URL to
   Android's default browser. The app never caches the source article body.
 
-This is the main strategic safeguard against Read Later becoming the bookmark graveyard
-that Sieve is intended to avoid.
+The seven-slot capacity is the strategic safeguard against Read Later becoming the
+bookmark graveyard that Sieve is intended to avoid. The app never silently evicts an
+intentional save.
 
 ## 4. Architecture
 
@@ -173,7 +175,7 @@ Use separate records rather than coupling saved content to active-feed rows:
 - `active_articles`: current accepted Articles snapshot;
 - `article_state`: seen/unread state for active articles;
 - `developments`: current accepted edition and published expiry;
-- `read_later`: self-contained saved snapshots with local expiry;
+- `read_later`: self-contained saved snapshots without automatic expiry;
 - `content_state`: accepted revisions, ETags, generated times, last success, and errors.
 
 All stored timestamps are UTC epoch milliseconds. Display conversion happens only at the
@@ -184,7 +186,8 @@ Cleanup rules are independent and unambiguous:
 - Replace `active_articles` only after accepting a complete newer snapshot.
 - Delete active articles absent from that accepted snapshot; this never deletes a
   `read_later` snapshot.
-- Delete a Read Later item only on `Done`, its seven-day deadline, or app-data removal.
+- Delete a Read Later item only on explicit `Remove` or app-data removal. A database
+  migration preserves saves made under the earlier seven-day contract.
 - Delete Developments exactly at the producer-published `expires_at`, online or offline.
 - Bound and age out image cache entries separately from content state.
 
@@ -282,11 +285,12 @@ actions whose value survives the remote feed.
 | New Developments edition + old scroll position | Treat the new batch as a new document and begin at its top. Never land halfway through it. |
 | Browser handoff + seen state | Mark an Article seen only after Android accepts the URL for the external browser. A failed handoff leaves it unread. |
 | Seen state + Article ordering | Dim the Article in place without removing or reordering it. `Mark unread` restores it without moving it. |
-| Read Later + remote Article cleanup | Keep the self-contained local entry and original URL until `Done` or its seven-day local expiry. |
-| Read Later + duplicate/full queue | Never duplicate, evict, or create an eighth item. Expired entries free their slots before the next save. |
-| Read Later original + active Article | A successful browser handoff marks the matching active Article seen; the queue entry remains until `Done` or expiry. |
-| Failed refresh + valid local copy | Keep the last verified content and show a quiet, non-interactive status on that remote-content view. No retry button or notification. |
-| Failed refresh + no valid local copy | Say that no verified review is available. Do not present failure as a healthy empty review; keep the local Read Later destination usable. |
+| Read Later + remote Article cleanup | Keep the self-contained local entry and original URL until explicit `Remove`. |
+| Read Later + duplicate/full queue | Never duplicate, evict, or create an eighth item. The reader removes one before saving another. |
+| Read Later original + active Article | A successful browser handoff marks the matching active Article seen; the queue entry remains until explicit `Remove`. |
+| Pull refresh + recent/in-flight check | Articles and Developments expose the standard pull gesture. Debounce a fully verified check for 30 seconds, ignore an overlapping pull, show no count or reward animation, and never expose the gesture in local Read Later. |
+| Failed refresh + valid local copy | Keep the last verified content and show a quiet status on that remote-content view. A later pull may try once; there is no automatic retry, retry button, or notification. |
+| Failed refresh + no valid local copy | Say that no verified review is available. Do not present failure as a healthy empty review; keep the local Read Later destination usable and allow the same quiet pull check. |
 | Article/Development expiry + foreground/background | Filter on every load, render, and resume. A foreground timer improves immediacy but is never the authority. |
 | Process death + local state | Reset tabs, filters, order, picker queries, and scroll. Persist only the bounded Read Later queue and seen/unread state for still-active Articles. |
 | Failed image + readable content | Keep reserved geometry and show a quiet unavailable state; title, summary, score, reason, and actions remain usable. |
@@ -325,7 +329,7 @@ Failure here stops implementation for design correction; it is not deferred to a
 
 ### Phase 0 — Prove the native visual foundation
 
-1. Confirm the seven-slot/seven-day Read Later rule and inspect the target phone's Android
+1. Confirm the seven-slot persistent Read Later rule and inspect the target phone's Android
    version, density, text scale, and refresh rate.
 2. Establish the reusable Flutter visual foundation against current Sieve JSON/fixtures,
    including the full visual and interaction contract in section 7.
@@ -354,7 +358,8 @@ Checkpoint: do not build production persistence against an unfrozen payload.
 2. Add CI for formatting, static analysis, unit tests, Android debug/release builds, and
    secret-safe signing.
 3. Implement last-known-good parsing, schema gates, ETag requests, deterministic
-   reconciliation, expiry timers, migrations, and launch/resume refresh.
+   reconciliation, producer-expiry timers, migrations, launch/resume refresh, and the
+   debounced manual pull check.
 4. Inspect the manifest to prove there is no notification, share/import, foreground
    service, WebView, or unnecessary permission.
 
@@ -369,8 +374,8 @@ data untouched.
 2. **Developments:** render the current editorial release shape with real attribution,
    chronology, coverage honesty, meaningful media, 24-hour expiry, and the next scheduled
    release visible only inside the Developments view.
-3. **Read Later:** deliver the seven visible slots, expiry information, local preview
-   metadata, `Read article`, and `Done`; no archive or organizational features.
+3. **Read Later:** deliver the seven visible slots, local preview metadata, `Read article`,
+   explicit `Remove`, and short `Undo`; no expiry, archive, or organizational features.
 
 Opening an original sends the validated HTTPS URL to Android's default browser as an
 external application. The app never renders arbitrary source HTML itself.
@@ -387,7 +392,7 @@ external application. The app never renders arbitrary source HTML itself.
 4. Install the signed private APK for the user and use it as the primary Sieve reader for
    a bounded trial. No store listing or third-party distribution work is included.
 
-Release only if the app remains finite, quiet, and self-cleaning and is materially better
+Release only if the app remains finite, quiet, and disciplined and is materially better
 to use than the website. Pause if it encourages more frequent checking, the queue becomes
 a backlog, or its visual and interaction quality does not justify the native surface.
 
@@ -398,8 +403,11 @@ a backlog, or its visual and interaction quality does not justify the native sur
 - Reject older revision; no-op identical revision.
 - Reject valid JSON with incomplete item count without deleting local rows.
 - Active article removal does not remove its independent Read Later snapshot.
-- Read Later expiry does not remove an article still active remotely.
-- Seven-slot enforcement, seven-day expiry, and `Done` cleanup.
+- Read Later persists after remote cleanup and large clock jumps until explicit removal.
+- Seven-slot enforcement, no silent expiry or eviction, `Remove`, short `Undo`, and
+  legacy database migration without saved-item loss.
+- Pull refresh on both remote views, 30-second debounce, one in-flight check, quiet
+  updated/unchanged/failure feedback, and no pull gesture on Read Later.
 - Unknown Articles or Developments schema keeps the last known good data.
 - Developments expire while online, offline, after restart, and while the app is open.
 - Image missing/failure/privacy-header and bounded-cache tests.
@@ -417,13 +425,15 @@ Accepted:
 - remove WorkManager/background warming from v1;
 - make producer-published `expires_at` authoritative;
 - fail soft on unknown schemas and stale payloads;
-- make Read Later self-contained, age-bounded, and count-bounded;
+- make Read Later self-contained and count-bounded;
 - state the offline promise honestly;
 - defer tablet scope unless it becomes real.
 - define Android Back as secondary destination to Articles, then exit from Articles;
 - classify rotation as a session-preserving layout change rather than a cold launch;
-- freeze Read Later metadata as a point-in-time capture and prove that live expiry frees a
-  full-queue slot without another save attempt.
+- freeze Read Later metadata as a point-in-time capture and require explicit removal
+  before a full-queue slot becomes available;
+- allow a narrow pull-to-refresh gesture only for remote content, without counts,
+  automatic retries, overlapping requests, or a reward animation.
 
 Accepted with a different implementation:
 
@@ -450,25 +460,30 @@ Rejected:
   pending-edition state would add clutter and manual refresh reward.
 - Adding share-out in v1. It is not inherently harmful, but it does not strengthen the
   bounded reading job enough to justify another action yet.
+- Automatically expiring Read Later entries. The seven-slot capacity already prevents
+  unbounded accumulation; silent time-based deletion works against intentional saving.
 
 ## 11. Current implementation evidence — 18 August 2026
 
-- Flutter formatting and static analysis are clean; all 78 unit, widget, lifecycle,
-  security-boundary, accessibility, and golden tests pass.
-- The existing Sieve website regression suite remains green with all 18 tests passing.
+- Flutter formatting and static analysis are clean; all 89 unit, widget, lifecycle,
+  migration, security-boundary, accessibility, and golden tests pass locally.
+- The existing Sieve website regression suite remains green with all 19 tests passing.
 - GitHub Actions independently reproduced formatting, analysis, all Flutter tests, debug
   and release APK builds, and release-signature verification in mobile run
   [`32115572207`](https://github.com/KrE80r/sieve-mobile/actions/runs/32115572207).
   Pages run [`32114484450`](https://github.com/KrE80r/sieve/actions/runs/32114484450)
   passed the 18-test gate and deployed successfully.
-- The private release APK builds with the durable local key and verifies with APK
-  Signature Scheme v2 as `CN=Sieve Private Android, O=Sieve, C=AU`. The current artifact
-  is `52,103,765` bytes with SHA-256
-  `eb67ec66425af042d95a7304088341402005aea2bce035ddd53c0e7080253636`.
-- An Android 11 emulator at 1080×2280 and 440 dpi has proved first-install offline honesty,
-  cached offline restart, independent Read Later persistence, process restart, a
-  state-preserving same-key v1→v2 upgrade, timezone change and restoration, an eight-day
-  clock jump with local expiry, and the defined two-step Android Back behavior.
+- The private `1.1.0` release APK builds with version code `2`, uses the durable local key,
+  and verifies with APK Signature Scheme v2 as
+  `CN=Sieve Private Android, O=Sieve, C=AU`. The current artifact is `52,262,969` bytes
+  with SHA-256
+  `f267277e78619215346fa45ebed35284d8c5361a1954716717379f5b64a090d2`.
+- Earlier Android 11 emulator evidence at 1080×2280 and 440 dpi proved first-install
+  offline honesty, cached offline restart, independent Read Later persistence, process
+  restart, same-key update, timezone change and restoration, and the defined two-step
+  Android Back behavior. The current v1-to-v2 SQLite integration test proves legacy
+  seven-day saves migrate without loss; installed-device upgrade remains part of the
+  physical-phone acceptance gate.
 - Emulator evidence is not physical-phone acceptance. Real-device typography, edge and
   control scrolling, browser handoff, frame pacing, lifecycle, and final APK installation
   remain the release gate.
@@ -485,7 +500,8 @@ Rejected:
   bookmark manager.
 - **Flutter choice:** green for the explicitly private Android APK, conditional on the
   physical-device visual and smoothness gate.
-- **Product decisions:** resolved, including seven Read Later slots for seven days.
+- **Product decisions:** resolved, including seven persistent Read Later slots and calm,
+  debounced pull checks on remote content only.
 - **Remaining acceptance gate:** verify touch, typography, scrolling, lifecycle, and the
   final signed APK on the user's physical phone rather than treating emulator proof as
   device acceptance.
