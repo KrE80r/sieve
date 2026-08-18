@@ -2,7 +2,8 @@
 
 Status: implemented through an emulator-verified private profile APK after local system
 inspection, TDD, and an independent Claude technical and product red-team review.
-Physical-phone visual, touch, and release-signing acceptance remains open.
+Physical-phone visual, touch, performance, and signed-APK installation acceptance remains
+open.
 
 ## 1. Decision and recommendation
 
@@ -53,6 +54,9 @@ Recommended v1 rule: **seven slots, seven days**.
 
 - Saving copies the article title, source, summary, score, image reference, original URL,
   and save time into a self-contained local record.
+- Those saved fields are a point-in-time capture and are never silently rewritten from a
+  later Article snapshot. The image URL is best-effort; the local metadata and original
+  URL are the durable seven-day promise.
 - The saved record does not depend on the article remaining in FeedSieve or retaining the
   same remote identifier.
 - A saved item expires seven days after saving. `Done` removes it immediately.
@@ -262,6 +266,8 @@ actions whose value survives the remote feed.
 | Selected source + disappearance | Keep the now-empty selection visible until the reader clears or broadens it. Do not substitute another source. |
 | Filters + tab switch or valid refresh | Preserve the window and source for the current session. A true cold launch alone resets to `Today · All sources`. |
 | Destination switch or repeated tap | Preserve each destination's reading position. Tapping the already-selected destination is a no-op; only an intentional filter change or a genuinely new Developments edition starts at the top. |
+| Android Back + secondary destination | Return to Articles while preserving its filters and reading position. Back on Articles exits; Back never rewinds a filter choice. |
+| Rotation + current session | Treat rotation as a layout change, not a cold launch. Preserve the active destination, Article facets, and each destination's reading position. |
 | Same Developments edition + tab switch | Preserve its reading position. |
 | New Developments edition + old scroll position | Treat the new batch as a new document and begin at its top. Never land halfway through it. |
 | Browser handoff + seen state | Mark an Article seen only after Android accepts the URL for the external browser. A failed handoff leaves it unread. |
@@ -404,6 +410,10 @@ Accepted:
 - make Read Later self-contained, age-bounded, and count-bounded;
 - state the offline promise honestly;
 - defer tablet scope unless it becomes real.
+- define Android Back as secondary destination to Articles, then exit from Articles;
+- classify rotation as a session-preserving layout change rather than a cold launch;
+- freeze Read Later metadata as a point-in-time capture and prove that live expiry frees a
+  full-queue slot without another save attempt.
 
 Accepted with a different implementation:
 
@@ -423,8 +433,32 @@ Rejected:
 - Requiring a PWA comparison after the user explicitly selected a private APK and made
   native-quality presentation and touch behavior part of the product value. Web
   feasibility remains true, but is no longer the decision being made.
+- Silently broadening an empty `Today` review. The explicit empty state and deliberate
+  recovery actions preserve filter truth; automatic broadening would contradict it.
+- Holding a sealed Developments edition behind a manual "new edition available" action.
+  A newly accepted edition is the current finite document and starts at its top; adding a
+  pending-edition state would add clutter and manual refresh reward.
+- Adding share-out in v1. It is not inherently harmful, but it does not strengthen the
+  bounded reading job enough to justify another action yet.
 
-## 11. Go/no-go summary
+## 11. Current implementation evidence — 18 August 2026
+
+- Flutter formatting and static analysis are clean; all 78 unit, widget, lifecycle,
+  security-boundary, accessibility, and golden tests pass.
+- The existing Sieve website regression suite remains green with all 18 tests passing.
+- The private release APK builds with the durable local key and verifies with APK
+  Signature Scheme v2 as `CN=Sieve Private Android, O=Sieve, C=AU`. The current artifact
+  is `52,103,765` bytes with SHA-256
+  `eb67ec66425af042d95a7304088341402005aea2bce035ddd53c0e7080253636`.
+- An Android 11 emulator at 1080×2280 and 440 dpi has proved first-install offline honesty,
+  cached offline restart, independent Read Later persistence, process restart, a
+  state-preserving same-key v1→v2 upgrade, timezone change and restoration, an eight-day
+  clock jump with local expiry, and the defined two-step Android Back behavior.
+- Emulator evidence is not physical-phone acceptance. Real-device typography, edge and
+  control scrolling, browser handoff, frame pacing, lifecycle, and final APK installation
+  remain the release gate.
+
+## 12. Go/no-go summary
 
 - **Technical feasibility:** green after the contract safeguards above.
 - **Backend compatibility:** green; static GitHub Pages is sufficient.
