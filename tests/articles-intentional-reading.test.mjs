@@ -88,27 +88,31 @@ test('renders a known inventory, a real history boundary, and an honest terminal
     assert.match(markup, /Previously seen below/);
     assert.match(markup, /You reached the end of this review/);
     assert.match(markup, /Nothing else loads after the final item/);
+    assert.match(markup, /Open a source when it earns your attention/);
     assert.doesNotMatch(markup, /\d+ of \d+ considered/);
+    assert.doesNotMatch(markup, /\bSave\b/);
+    assert.doesNotMatch(markup, /\bSkip\b/);
 });
 
-test('renders deliberate article cards with optional source imagery and open, save, and skip actions', () => {
-    const { app } = loadApp({ article_decision_7: 'saved' });
+test('renders deliberate article cards with optional source imagery and only useful actions', () => {
+    const { app } = loadApp();
     const markup = app.createArticle(article(7, {
         image_url: 'https://images.example.com/article.jpg',
         image_alt: 'A useful diagram from the source article'
     }));
 
-    assert.match(markup, /data-decision="saved"/);
     assert.match(markup, /class="article-rating-badge rating-good">88<\/div>/);
     assert.doesNotMatch(markup, /class="article-score"/);
     assert.match(markup, /class="article-source-visual"/);
     assert.match(markup, /A useful diagram from the source article/);
     assert.match(markup, /Why it earned a place:/);
-    assert.match(markup, />Open source ↗<\/a>/);
-    assert.match(markup, /data-article-decision="saved"/);
-    assert.match(markup, />Save<\/button>/);
-    assert.match(markup, /data-article-decision="skipped"/);
-    assert.match(markup, />Skip<\/button>/);
+    assert.match(markup, />Read original ↗<\/a>/);
+    assert.match(markup, /aria-label="Mark as unread"/);
+    assert.doesNotMatch(markup, /data-decision=/);
+    assert.doesNotMatch(markup, /article-decision-btn/);
+    assert.doesNotMatch(markup, />Save<\/button>/);
+    assert.doesNotMatch(markup, />Skip<\/button>/);
+    assert.doesNotMatch(markup, /No decision needed/);
 });
 
 test('keeps the score circle color-coded across the existing rating bands', () => {
@@ -131,15 +135,6 @@ test('does not invent a visual when the feed has no source image', () => {
     assert.match(markup, /article-card-grid no-visual/);
     assert.doesNotMatch(markup, /article-source-visual/);
     assert.doesNotMatch(markup, /<img/);
-});
-
-test('persists optional decisions and clears a repeated choice', () => {
-    const { app, storage } = loadApp();
-
-    assert.equal(app.toggleArticleDecision(9, 'saved'), 'saved');
-    assert.equal(storage.get('article_decision_9'), 'saved');
-    assert.equal(app.toggleArticleDecision(9, 'saved'), '');
-    assert.equal(storage.has('article_decision_9'), false);
 });
 
 test('records visibility for the next visit without moving the boundary during the current session', () => {
