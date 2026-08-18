@@ -37,7 +37,7 @@ Non-negotiable exclusions:
 - no notifications, notification permission, badge, reminder, or foreground service;
 - no infinite scroll, auto-next, streak, recommendation, engagement ranking, or refresh
   reward;
-- no feed/source management, URL import, Android share target, folders, tags, boards,
+- no feed/source management, URL import, Android share target, folders, user-created tags, boards,
   permanent archive, or cross-device synchronization;
 - no analytics SDK or behavioural tracking;
 - no saving Developments in v1;
@@ -226,26 +226,35 @@ Every production slice must meet this contract on the user's physical phone.
 - No automatic scroll, snap-to-card, forced pagination, horizontal content carousel, or
   gesture that hides the finite end of the list.
 
-### Article review filters
+### Article review filters and order
 
-Time and source are independent facets over one finite Article review. The app must not
-repeat the website behavior where choosing a new time window silently clears the selected
-source.
+Time, source, and topic are independent narrowing facets over one finite Article review.
+The app must not repeat the website behavior where choosing one facet silently clears
+another. Sort is a separate ordering choice and never changes review membership.
 
-- The visible controls are `Today`, `Last 7 days`, or `All active`, plus `All sources` or
-  one explicit source. `Last 7 days` is a rolling window and is named literally rather
-  than ambiguously labelled "This week".
-- Changing the window preserves the source; changing the source preserves the window.
-  Counts in the source picker are scoped to the current window, and counts in the window
-  picker are scoped to the current source.
+- The visible narrowing controls are `Today`, `Last 7 days`, or `All active`; `All
+  sources` or one explicit source; and `All topics` or one producer-supplied Article
+  topic. `Last 7 days` is a rolling window and is named literally rather than ambiguously
+  labelled "This week".
+- Topic is single-select. It presents the existing producer labels as human-facing
+  reading topics, not user-managed tags, and does not offer multi-select AND/OR logic.
+  Untagged Articles remain in `All topics` and are not assigned a synthetic topic.
+- Changing any narrowing facet preserves the other two and the current order. Counts in
+  each picker are scoped to the current selections in the other two facets. Topic counts
+  may overlap because one Article can belong to more than one topic; they are never
+  presented as a partition of the total.
+- Article order is either `Latest` (the default, by `admitted_at` descending) or `Best
+  Rated` (by rating descending). Both use `admitted_at` descending and then stable
+  `article_id` ascending tie-breaks. Sort is visually distinct from the narrowing facets
+  and carries no count.
 - Any filter change returns the Articles review to its beginning. Switching destinations
   and returning preserves both the filter and that destination's scroll position.
 - A valid remote refresh or warm resume preserves the current combination. If it now
-  yields zero articles, the app keeps both choices visible and presents explicit actions
-  to clear the source or broaden the window. It never resets a filter merely to avoid an
-  empty state.
-- A true cold launch starts at `Today · All sources`. This prevents an old narrow source
-  choice from silently hiding a later Sieve edition.
+  yields zero articles, the app keeps every choice visible and presents explicit actions
+  to clear the source, clear the topic, or broaden the window. It never resets a filter
+  merely to avoid an empty state.
+- A true cold launch starts at `Today · All sources · All topics · Latest`. This prevents
+  an old narrow choice from silently hiding a later Sieve edition.
 - The source sheet may search source names locally, but that query is picker navigation,
   not another persistent content filter.
 - Developments has no author/source filter: provenance remains visible, but the sealed
@@ -260,14 +269,15 @@ actions whose value survives the remote feed.
 
 | Features that meet | Required behavior |
 | --- | --- |
-| Time window + source | They remain independent facets. Changing either one never clears the other. Picker counts are scoped to the facet already selected. |
-| Filters + zero results | Keep both selections visible. Offer explicit `Clear source` and/or `Show all active` actions; never silently broaden the result. |
+| Time window + source + topic | They remain independent facets. Changing one never clears the others. Each picker count is scoped to the other two selected facets. |
+| Narrowing facets + sort | Sort changes order only and preserves all three facets. Changing any facet preserves sort. Any deliberate change returns Articles to the top. |
+| Filters + zero results | Keep every selection visible. Offer explicit `Clear source`, `Clear topic`, and/or `Show all active` actions; never silently broaden the result. |
 | Selected source + remote rename | Preserve the stable source identity and adopt its current display name. |
 | Selected source + disappearance | Keep the now-empty selection visible until the reader clears or broadens it. Do not substitute another source. |
-| Filters + tab switch or valid refresh | Preserve the window and source for the current session. A true cold launch alone resets to `Today · All sources`. |
+| Filters + tab switch or valid refresh | Preserve the window, source, topic, and order for the current session. A true cold launch alone resets to `Today · All sources · All topics · Latest`. |
 | Destination switch or repeated tap | Preserve each destination's reading position. Tapping the already-selected destination is a no-op; only an intentional filter change or a genuinely new Developments edition starts at the top. |
 | Android Back + secondary destination | Return to Articles while preserving its filters and reading position. Back on Articles exits; Back never rewinds a filter choice. |
-| Rotation + current session | Treat rotation as a layout change, not a cold launch. Preserve the active destination, Article facets, and each destination's reading position. |
+| Rotation + current session | Treat rotation as a layout change, not a cold launch. Preserve the active destination, Article facets, order, and each destination's reading position. |
 | Same Developments edition + tab switch | Preserve its reading position. |
 | New Developments edition + old scroll position | Treat the new batch as a new document and begin at its top. Never land halfway through it. |
 | Browser handoff + seen state | Mark an Article seen only after Android accepts the URL for the external browser. A failed handoff leaves it unread. |
@@ -278,7 +288,7 @@ actions whose value survives the remote feed.
 | Failed refresh + valid local copy | Keep the last verified content and show a quiet, non-interactive status on that remote-content view. No retry button or notification. |
 | Failed refresh + no valid local copy | Say that no verified review is available. Do not present failure as a healthy empty review; keep the local Read Later destination usable. |
 | Article/Development expiry + foreground/background | Filter on every load, render, and resume. A foreground timer improves immediacy but is never the authority. |
-| Process death + local state | Reset tabs, filters, picker queries, and scroll. Persist only the bounded Read Later queue and seen/unread state for still-active Articles. |
+| Process death + local state | Reset tabs, filters, order, picker queries, and scroll. Persist only the bounded Read Later queue and seen/unread state for still-active Articles. |
 | Failed image + readable content | Keep reserved geometry and show a quiet unavailable state; title, summary, score, reason, and actions remain usable. |
 
 ### Smoothness and performance
