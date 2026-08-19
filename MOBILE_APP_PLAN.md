@@ -1,9 +1,9 @@
 # Sieve Mobile App Development Plan
 
-Status: implemented through an emulator-verified private profile APK after local system
-inspection, TDD, and an independent Claude technical and product red-team review.
-Physical-phone visual, touch, performance, and signed-APK installation acceptance remains
-open.
+Status: implemented and accepted as a private Android APK after local system inspection,
+TDD, an independent Claude technical and product red-team review, emulator verification,
+and installation on the user's physical phone. Formal profile-mode trace capture is deferred
+for this private v1 unless the user reports a repeatable performance problem.
 
 ## 1. Decision and recommendation
 
@@ -303,11 +303,10 @@ actions whose value survives the remote feed.
   and use a byte-bounded cache. Image work must not block the UI isolate.
 - Avoid expensive clipping, opacity layers, physical shadows, and blur inside the moving
   list. Animate only motivated transform/opacity changes.
-- Profile in Flutter profile mode on the actual phone, at its real refresh rate. Steady
-  drag and fling must remain within the device frame budget with no repeatable janky
-  sequence; a debug-build impression is not acceptance evidence.
-- Capture repeatable scroll traces for image-heavy, text-only, long-title, and mixed lists
-  after each vertical slice, not only before release.
+- Judge the private v1 on hands-on use of the signed APK at the phone's real refresh rate.
+  Steady drag and fling must have no repeatable janky sequence. If one appears, reproduce it
+  in Flutter profile mode and capture a trace for the relevant image-heavy, text-only,
+  long-title, or mixed list; a debug-build impression is not diagnosis evidence.
 
 ### Visual acceptance gate
 
@@ -333,8 +332,9 @@ Failure here stops implementation for design correction; it is not deferred to a
    version, density, text scale, and refresh rate.
 2. Establish the reusable Flutter visual foundation against current Sieve JSON/fixtures,
    including the full visual and interaction contract in section 7.
-3. Install a signed development APK on the actual phone and profile touch, scroll, image
+3. Install a signed development APK on the actual phone and evaluate touch, scroll, image
    loading, typography, navigation, and the full Articles → Read Later → browser flow.
+   Capture a profile trace if hands-on use reveals repeatable jank.
 4. Freeze the approved design tokens and component states before producer-contract work.
 
 Stop here for correction if the APK is not already smooth, coherent, and visibly worthy
@@ -485,11 +485,12 @@ Rejected:
   offline honesty, cached offline restart, independent Read Later persistence, process
   restart, same-key update, timezone change and restoration, and the defined two-step
   Android Back behavior. The current v1-to-v2 SQLite integration test proves legacy
-  seven-day saves migrate without loss; installed-device upgrade remains part of the
-  physical-phone acceptance gate.
-- Emulator evidence is not physical-phone acceptance. Real-device typography, edge and
-  control scrolling, browser handoff, frame pacing, lifecycle, and final APK installation
-  remain the release gate.
+  seven-day saves migrate without loss; the signed private APK is installed and accepted on
+  the physical phone.
+- The user confirms the app is installed on the physical phone and accepts the current
+  private v1 without a further profiling gate. Earlier hands-on use confirmed browsing,
+  Read Later, opening originals, card sizing, and scrolling feel. Formal frame traces remain
+  a diagnostic tool if a repeatable performance problem appears, not a release blocker.
 
 ## 12. Go/no-go summary
 
@@ -505,6 +506,5 @@ Rejected:
   physical-device visual and smoothness gate.
 - **Product decisions:** resolved, including seven persistent Read Later slots and calm,
   debounced pull checks on remote content only.
-- **Remaining acceptance gate:** verify touch, typography, scrolling, lifecycle, and the
-  final signed APK on the user's physical phone rather than treating emulator proof as
-  device acceptance.
+- **Remaining acceptance gate:** none for the accepted private v1. Reopen device profiling
+  only if hands-on use reveals a repeatable visual, touch, lifecycle, or frame-pacing issue.
