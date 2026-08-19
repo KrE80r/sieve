@@ -463,9 +463,9 @@ Rejected:
 - Automatically expiring Read Later entries. The seven-slot capacity already prevents
   unbounded accumulation; silent time-based deletion works against intentional saving.
 
-## 11. Current implementation evidence — 18 August 2026
+## 11. Current implementation evidence — 19 August 2026
 
-- Flutter formatting and static analysis are clean; all 90 unit, widget, lifecycle,
+- Flutter formatting and static analysis are clean; all 91 unit, widget, lifecycle,
   migration, security-boundary, accessibility, and golden tests pass locally.
 - The existing Sieve website regression suite remains green with all 19 tests passing.
 - GitHub Actions independently reproduced formatting, analysis, all Flutter tests, debug
@@ -477,7 +477,10 @@ Rejected:
   and verifies with APK Signature Scheme v2 as
   `CN=Sieve Private Android, O=Sieve, C=AU`. The current artifact is `52,262,969` bytes
   with SHA-256
-  `0f56ce00b5fd4f892a6f78bffa73ec53cf2209daea0d14578ccb0ccd49eb2d0a`.
+  `4351d446454e807ab888368efc00fa069b893be55764cd2697d79693a40a9590`.
+- The live Articles and Developments endpoints were revalidated with HTTP 200, ETag, and
+  gzip delivery. Articles schema v1 was complete at sequence 17 with all 760 declared
+  items; Developments schema v2 contained all 11 declared developments.
 - Earlier Android 11 emulator evidence at 1080×2280 and 440 dpi proved first-install
   offline honesty, cached offline restart, independent Read Later persistence, process
   restart, same-key update, timezone change and restoration, and the defined two-step
