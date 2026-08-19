@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sieve — curated articles and finite developments without the noise">
     <title>Sieve</title>
-    <link rel="stylesheet" href="css/style.1787044314.css">
+    <link rel="stylesheet" href="css/style.1787103033.css">
     <meta name="theme-color" content="#0B0C0D">
     <link rel="icon" type="image/svg+xml" href="assets/sieve-favicon.svg">
     <link rel="apple-touch-icon" href="assets/sieve-touch-icon.png?v=terminus-1">
@@ -195,30 +195,37 @@
 
             <!-- Mobile Filter Bar (hidden on desktop) -->
             <div class="mobile-filters" id="mobile-filters">
-                <div class="filter-row">
-                    <div class="filter-pills" id="mobile-time-pills">
-                        <button class="filter-pill active" data-filter="today">Today <span class="pill-count" id="m-count-today">0</span></button>
-                        <button class="filter-pill" data-filter="week">Week <span class="pill-count" id="m-count-week">0</span></button>
-                        <button class="filter-pill" data-filter="all">All <span class="pill-count" id="m-count-all">0</span></button>
-                    </div>
-                    <div class="filter-row-spacer"></div>
+                <div class="mobile-filter-grid">
+                    <label class="mobile-filter-control mobile-select-control">
+                        <span class="mobile-filter-label">Window</span>
+                        <select class="mobile-filter-select" id="mobile-time-select" aria-label="Filter by time window">
+                            <option value="today">Today</option>
+                            <option value="week">This week</option>
+                            <option value="all">All</option>
+                        </select>
+                    </label>
+                    <label class="mobile-filter-control mobile-select-control">
+                        <span class="mobile-filter-label">Topic</span>
+                        <select class="mobile-filter-select" id="mobile-category-select" aria-label="Filter by topic">
+                            <option value="">All topics</option>
+                        </select>
+                    </label>
+                    <button class="mobile-filter-control source-filter-btn" id="source-filter-btn" aria-label="Filter by source, currently all sources" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="mobile-filter-label">Source</span>
+                        <span class="source-filter-value">
+                            <span class="source-filter-label">All sources</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="mobile-order-row">
+                    <span class="mobile-filter-label">Order</span>
                     <div class="sort-pills" id="mobile-sort-pills">
                         <button class="sort-pill active" data-sort="date">Latest</button>
-                        <button class="sort-pill" data-sort="rating">Top</button>
+                        <button class="sort-pill" data-sort="rating">Best rated</button>
                     </div>
-                </div>
-                <div class="filter-row filter-row-scroll">
-                    <div id="active-source-chip" class="active-source-chip hidden">
-                        <span class="active-source-chip-label"></span>
-                        <button class="active-source-chip-clear" aria-label="Clear source filter">&times;</button>
-                    </div>
-                    <div class="filter-pills-scroll" id="mobile-category-pills"></div>
-                    <button class="source-filter-btn" id="source-filter-btn" aria-label="Filter by source" aria-haspopup="dialog" aria-expanded="false">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
-                        </svg>
-                        <span class="source-filter-badge hidden"></span>
-                    </button>
                 </div>
             </div>
 
@@ -255,7 +262,7 @@
         </main>
     </div>
 
-    <script src="js/app.1787018268.js"></script>
+    <script src="js/app.1787103033.js"></script>
     <script src="js/awareness.1787006916.js?v=1787006916"></script>
 </body>
 </html>
