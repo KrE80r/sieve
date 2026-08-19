@@ -1,7 +1,151 @@
 {
-  "updated_at": "2026-08-18T23:00:00.185582+00:00",
-  "total_items": 765,
+  "updated_at": "2026-08-19T01:00:00.198530+00:00",
+  "total_items": 770,
   "items": [
+    {
+      "id": 4819,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/clop-created-custom-web-shell-for-windchill-data-theft-attacks/",
+      "title": "Clop created custom web shell for Windchill data theft attacks",
+      "summary": "A tailored Clop web shell abuses Windchill APIs to steal data and must be patched while rotating credentials to stop credential-based post‑exploitation.",
+      "ideas": [
+        "Custom Java web shell exploits CVE-2026-12569 in Windchill servers.",
+        "Uses Windchill-specific APIs to decrypt LDAP manager passwords.",
+        "Communicates via eight‑character X‑windchill‑req header with commands S, L, D, G, R, J, O, E.",
+        "Enumerates vaults and files, then can delete or execute additional Java code.",
+        "Requires immediate patching and rotation of Windchill credentials to mitigate.",
+        "Blue Report shows prevention drops sharply once valid credentials are obtained."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel technical insights: a custom Clop web shell exploiting CVE-2026-12569, detailed use of Windchill-specific APIs to decrypt credentials, a command set for enumeration and data theft, and actionable mitigation steps such as patching and credential rotation. It also cites original research from ReliaQuest and BleepingComputer, and references the Blue Report data on prevention drop to 37%. No clickbait, padding, or promotional content is present, resulting in high value density and strong CyberSecurity relevance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-19T09:34:02.398611",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2022/10/28/hand-sifting-data.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 4818,
+      "source_id": 4,
+      "original_url": "https://github.com/farvend/Relocation-Based-Predicate",
+      "title": "https://github.com/farvend/Relocation-Based-Predicate",
+      "summary": "By exploiting the Windows PE loader’s relocation process, you can embed runtime‑only opaque predicates that static analysis tools cannot see.",
+      "ideas": [
+        "PE relocations can modify code bytes at load time, creating runtime‑only predicates.",
+        "IMAGE_REL_BASED_DIR64 can safely overlap a 32‑bit immediate operand.",
+        "Setting the linker base to 0x10000 guarantees a non‑negative ASLR delta.",
+        "The loader applies relocations to any section, even read‑only code.",
+        "Relocation‑based predicates evade symbolic execution unlike standard opaque predicates.",
+        "IDA does not visually mark bytes changed by these relocations.",
+        "The technique leverages ASLR randomness instead of fighting it."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers several concrete, novel insights about using PE relocations to create opaque predicates, including a clever 64‑bit relocation trick for 32‑bit operands and practical assembly examples. It provides actionable knowledge for reverse engineers without clickbait or padding, aligning well with security and low‑level programming themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-19T09:33:43.652577",
+      "image_url": "https://opengraph.githubassets.com/a9025cb4c6ce918cd37f8ef5154b3902cf290c47c3141ee9ee1eec21ced0d16c/farvend/Relocation-Based-Predicate",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Contribute to farvend/Relocation-Based-Predicate development by creating an account on GitHub."
+    },
+    {
+      "id": 4817,
+      "source_id": 4,
+      "original_url": "https://minanagehsalalma.github.io/CVE-2026-6837-zyxel-export-cgi-command-injection/?1=",
+      "title": "August 16, 2026",
+      "summary": "A pre-authenticated shell command injection in Zyxel AP certificate export can be reproduced entirely in user-space emulation, with the vulnerability rooted in unquoted string assembly passed to system().",
+      "ideas": [
+        "CVE-2026-6837 is a post-auth command injection in Zyxel AP export-cgi PKCS#12 path",
+        "Shell command built via snprintf then passed to system() with unescaped user input",
+        "Quote-breaking payload (x\") is required; semicolon-only payloads do not reproduce",
+        "18 Zyxel AP models are affected according to vendor's August 4 advisory",
+        "Full AArch64 user-space emulation enables analysis without physical hardware",
+        "QEMU user-mode plus bubblewrap provides safe bind-mounted runtime view",
+        "SysV IPC and fake UAM sockets must be seeded before HTTP handling works",
+        "Vulnerability requires an existing certificate object in the device store",
+        "Clean fix avoids shell entirely; structured args into non-shell exec path",
+        "Disclosure timeline spans April 7 report to August 4 advisory publication"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "Genuinely substantive security research writeup covering CVE-2026-6837 with multiple high-value elements: an original full AArch64 user-space emulation methodology, concrete PoC payload construction, exact disassembly of the vulnerable sink (snprintf → system()), the complete affected model list, and a disclosure timeline. The technical depth (assembly addresses, command template, why semicolon-only payloads fail while quote-breaking succeeds) demonstrates real expertise rather than rehashed content. The odd future-dated title ('August 16, 2026') slightly undermines presentation but the substance is strong.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-19T09:33:35.660424",
+      "image_url": "https://minanagehsalalma.github.io/CVE-2026-6837-zyxel-export-cgi-command-injection/images/og-card.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "CVE-2026-6837 Zyxel export-cgi command injection article preview"
+    },
+    {
+      "id": 4816,
+      "source_id": 4,
+      "original_url": "https://ricardojoserf.github.io/trickdump/",
+      "title": "Ricardo J. Ruiz Fernández",
+      "summary": "Stealth LSASS dumping can be achieved without creating a minidump by using three NT‑API‑based utilities and optional ntdll overwriting.",
+      "ideas": [
+        "Dump LSASS memory without generating a minidump file by using three separate JSON‑producing programs.",
+        "Obtain SeDebugPrivilege via NtOpenProcessToken and NtAdjustPrivilegeToken to access LSASS.",
+        "Use NtQueryVirtualMemory and NtReadVirtualMemory to extract memory regions directly.",
+        "Bypass API hooking by overwriting the .text section of ntdll.dll via disk, KnownDlls, or debug process methods.",
+        "Three language ports (C/C++, Python, Go) provide flexibility and optional zip password protection.",
+        "The technique avoids a valid minidump on disk or network, reducing detection likelihood.",
+        "Limitations include failure when PPL is enabled, unreadable PEB, or non‑64‑bit binaries."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post delivers concrete, actionable techniques for stealthily dumping LSASS memory, including detailed steps, code repositories, and multi-language implementations, offering multiple novel insights for penetration testers. It stays focused, contains no clickbait or padding, and aligns well with cybersecurity and technical tool development themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-19T09:32:40.074123"
+    },
+    {
+      "id": 4815,
+      "source_id": 4,
+      "original_url": "https://github.com/PatchRequest/BusyWork",
+      "title": "https://github.com/PatchRequest/BusyWork",
+      "summary": "Replacing sleep with varied, data‑dependent work breaks behavioral detection patterns in EDR systems.",
+      "ideas": [
+        "Sleep replaced by random, varied tasks to avoid pattern matching.",
+        "Eight task categories: compute, memory, filesystem, registry, WinAPI, network, crypto, COM.",
+        "Parameters randomized by ±30% jitter per call.",
+        "Data flow integration lets busywork process surrounding program variables.",
+        "Scratch buffer chains tasks, creating inter‑task data dependency.",
+        "Intensity defines task count, iterations, buffer size, and call depth.",
+        "Benchmarks show wide min/max variance, especially at higher intensities."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The content provides a thorough technical overview of a Rust library that replaces sleep with varied, data‑dependent workloads to evade EDR and anti‑cheat detection. It details eight task categories, jitter randomization, scratch‑buffer chaining, and benchmark variance, delivering several novel, actionable ideas. Because it aligns with cybersecurity and technology themes and contains no clickbait or padding, it merits a high value score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-19T09:32:32.531196",
+      "image_url": "https://opengraph.githubassets.com/cff10ca52879247c222ec8eae8866376aeb411f7d01e6b48d9408cf343d08f2f/PatchRequest/BusyWork",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Sleep replacement that executes real, varied work to break behavioral pattern matching by EDR and anti-cheat systems - PatchRequest/BusyWork"
+    },
     {
       "id": 4814,
       "source_id": 33,
