@@ -1,7 +1,486 @@
 {
-  "updated_at": "2026-08-20T06:00:00.335347+00:00",
-  "total_items": 774,
+  "updated_at": "2026-08-20T07:00:00.193840+00:00",
+  "total_items": 794,
   "items": [
+    {
+      "id": 4853,
+      "source_id": 34,
+      "original_url": "https://hiraditya.github.io/posts/the-kv-cache-has-no-abi/",
+      "title": "The KV Cache Has No ABI",
+      "summary": "KV‑cache layouts are engine‑specific, undocumented byte‑level structures with no portable ABI, making cross‑vendor disaggregation a complex engineering trade‑off rather than a simple wire‑format problem.",
+      "ideas": [
+        "vLLM’s FlashAttention returns (num_blocks, num_kv_heads, block_size, 2*head_size) for the cache shape.",
+        "MLA implementations store a packed 656‑byte struct containing latent, scales, and RoPE components.",
+        "Quantization scales are embedded inside the cache buffer, requiring knowledge of layout and dtype.",
+        "Connector interfaces expose only vLLM objects; they do not define a generic wire format.",
+        "No standard or ONNX‑like specification exists for KV‑cache exchange, forcing bilateral agreements or costly conversions."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete code snippets, tensor shape formulas, and a detailed breakdown of a 656‑byte cache struct, exposing the lack of a universal KV‑cache ABI. It provides measurable performance implications and clearly explains why interchange standards are missing. The discussion is technically deep, but the breadth of vendor‑specific variants slightly limits universal relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:26:10.753595"
+    },
+    {
+      "id": 4852,
+      "source_id": 34,
+      "original_url": "https://eklausmeier.goip.de/blog/2026/08-18-performance-comparison-gzip-vs-brotli-vs-zstd",
+      "title": "Performance Comparison: gzip vs Brotli vs Zstd",
+      "summary": "For HTML content, brotli yields the smallest files, zstd is roughly twice as fast as gzip, and beyond mid‑range compression levels its speed advantage erodes.",
+      "ideas": [
+        "Brotli achieves the lowest compression size across all tested levels.",
+        "zstd compresses about twice as fast as gzip while matching brotli speed at mid levels.",
+        "Both AMD and ARM measurements show similar compression speed trade‑offs."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article supplies original, reproducible benchmark data across two hardware platforms, includes a full automation script, and presents concrete size and latency figures for gzip, brotli, and zstd. It is highly relevant to performance‑focused readers in sysadmin and web‑engineering contexts, though the findings are limited to HTML test files and may not generalize to all content types.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:20:57.529735"
+    },
+    {
+      "id": 4851,
+      "source_id": 34,
+      "original_url": "https://csswizardry.com/2026/08/introducing-lux-sidecar/",
+      "title": "Introducing LUX Sidecar: Your SpeedCurve Companion",
+      "summary": "LUX Sidecar enriches SpeedCurve RUM with detailed browser and network context, making performance diagnosis more actionable for engineers.",
+      "ideas": [
+        "Adds network, cache, protocol, compression, and service worker context to SpeedCurve RUM.",
+        "Requires SpeedCurve account; sends extra data via LUX.addData() API.",
+        "Provides metrics like Unattributed Navigation Overhead and Time to Last Byte.",
+        "Helps diagnose performance by distinguishing cached, prerendered, and network conditions."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete instrumentation details for SpeedCurve, explaining how LUX Sidecar adds network, cache, protocol, compression and service‑worker context to RUM data, giving engineers actionable diagnostic metrics. It also clarifies the plugin’s API usage and measurement groups, though its utility is confined to SpeedCurve users and includes some self‑promotion. Overall it offers strong, practical technical insight with limited but relevant novelty. The piece is valuable but not uniquely groundbreaking, warranting a high but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:11:28.056652"
+    },
+    {
+      "id": 4850,
+      "source_id": 34,
+      "original_url": "https://christophermeiklejohn.com/series/the-machine-in-the-lab/two-notebooks-lost-series/",
+      "title": "Two Notebooks Lost · The code was mostly right. The experiments were already lost.",
+      "summary": "Silent defaults in research code can silently break experimental validity, and provenance must be enforced at every split.",
+      "ideas": [
+        "Notebook 1 leaked performance data across training and held‑out splits.",
+        "Notebook 2 reused a 90‑second HEAD_S/TAIL_S constant, mislabeling composition as jam.",
+        "Agent replaced “delete” with “archive” without explicit instruction.",
+        "Implicit constants shaped observed phenomena despite correct code execution.",
+        "Manual audit required to expose hidden validation violations."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides unusually concrete evidence of hidden defaults and provenance failures in LLM‑driven research pipelines, revealing how silent setup choices can invalidate outcomes. It is highly relevant to readers interested in AI agent behavior, reproducibility, and measurement integrity. Its depth and actionable insight outweigh the personal narrative padding, though the anecdotal framing slightly limits broad applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:06:47.115468"
+    },
+    {
+      "id": 4849,
+      "source_id": 34,
+      "original_url": "https://chris-besch.com/articles/automating_firmware_generation_from_schematics.pdf",
+      "title": "Automatic Firmware Generation for Spaceflight Hardware based on Schematics",
+      "summary": "Automated firmware generation from schematics via a Group Netlist reliably maps hardware connectivity to code, cutting manual errors and enabling built‑in verification.",
+      "ideas": [
+        "Group Netlist captures inter‑group connectivity for automatic firmware generation",
+        "Tool detects 75% of injected schematic faults with <0.2% code addition",
+        "Average runtime increase is about 4.8% in the satellite module case study"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, reproducible technical mechanisms—Group Netlist abstraction, Jinja2 templating, and a fault‑injection evaluation—showing measurable reductions in manual effort and verifiable fault detection. It is highly relevant to firmware and embedded‑systems engineers, though its focus stays within hardware‑software co‑design rather than broader AI or security topics, which slightly limits its generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:06:27.419536"
+    },
+    {
+      "id": 4848,
+      "source_id": 34,
+      "original_url": "https://centrifugal.dev/blog/2026/08/17/tuning-idle-connections",
+      "title": "Tuning Centrifugo PRO for large number of idle WebSocket connections",
+      "summary": "Properly configuring Centrifugo PRO can cut per-connection CPU to ~2 µs/s and memory to ~11 KB, enabling a single node to hold up to a million idle WebSocket connections.",
+      "ideas": [
+        "Idle connections use ~27 KB each due to goroutine stacks and heap buffers",
+        "batch_periodic_events reduces CPU >2× by batching timers",
+        "write_with_timer removes a writer goroutine, halving stack usage",
+        "process_commands_off_read_loop halves stack size by offloading work",
+        "use_write_buffer_pool and read_buffer_size each save ~4 KB per connection"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers original, detailed benchmark data and a mechanistic breakdown of per-connection CPU and memory costs, with concrete, measurable tuning options that demonstrably scale to a million idle WebSocket connections. It provides actionable, low‑level insight but is limited to Centrifugo PRO and assumes familiarity with Go runtime internals.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:05:08.438326",
+      "image_url": "https://centrifugal.dev/img/blog_ws_idle.jpg",
+      "image_width": 1221,
+      "image_height": 739,
+      "image_alt": ""
+    },
+    {
+      "id": 4847,
+      "source_id": 34,
+      "original_url": "https://brewster.kahle.org/2026/08/17/flywheels-batteries-and-standby-generators-what-40-years-of-trade-magazines-say-about-backing-up-a-datacenter/",
+      "title": "Flywheels, Batteries, and Standby Generators: What 40 Years of Trade Magazines Say About Backing Up a Datacenter",
+      "summary": "Forty years of trade-press debate converged by ~2006 on gas-genset plus flywheel ride-through as the canonical datacenter backup-power architecture, with the IEEE Gold Book's ~1.35% generator fail-to-start rate defining the risk envelope for sizing the ride-through window.",
+      "ideas": [
+        "VRLA cell failure curves (2%/4%/20%/35% in years 1–4) put battery-string MTBF near 2,100 hours"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Exceptionally substantive infrastructure engineering synthesis grounded in a methodologically transparent corpus analysis of ~1,950 trade-magazine issues and 59 feature articles read in full. The piece delivers concrete, quantitative findings—VRLA cell failure curves, IEEE Gold Book fail-to-start rates, NEC Article 700/701/702 timing distinctions, genset sizing multipliers, and the Freescale case study—that practicing datacenter engineers rarely encounter in a single place. Limitations are honestly disclosed: vendor bias in the strongest flywheel claims, corpus ending in 2013–2015 before stationary lithium-ion matured, and AI-assisted summarization, but these caveats are part of the article's documented methodology.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T16:03:00.837288"
+    },
+    {
+      "id": 4846,
+      "source_id": 34,
+      "original_url": "https://blog.himanshuanand.com/2026/08/someone-is-filing-your-gst-return-and-it-is-not-your-ca/",
+      "title": "someone is filing your GST return, and it is not your CA",
+      "summary": "A new Silver Fox campaign uses a signed SystemSettings.exe paired with a patched SystemSettings.dll to deliver ValleyRAT via GST‑filing lures, exposing fresh IOCs and evasion techniques.",
+      "ideas": [
+        "Patched SystemSettings.dll retains Microsoft signature but fails hash verification, sideloaded by legitimate SystemSettings.exe.",
+        "Stage‑1 DLL decodes a XOR‑0x70 config block revealing delivery domain iysdzxc.eu.cc and backup domain bdgsewa.eu.cc.",
+        "Stage‑2 injects into RuntimeBroker.exe, using UACMe/Akagi techniques to bypass UAC and disable Defender.",
+        "Per‑victim delivery links use unique ?code= tokens on a 15‑subdomain .eu.cc platform.",
+        "YARA rule provided for detecting the patched SystemSettings.dll based on specific byte patterns and hash."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a thorough, reproducible reverse‑engineering of a previously unreported GST‑lure malware campaign, including concrete code snippets, XOR decoding, full config extraction, YARA rule, and actionable detection guidance. It is highly relevant to security practitioners targeting malware, Windows internals, and supply‑chain evasion, and presents novel observations (patched SystemSettings.dll, timed GST campaign). The length and occasional narrative fluff keep it just below the top tier.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:57:00.980716"
+    },
+    {
+      "id": 4845,
+      "source_id": 34,
+      "original_url": "https://blog.christianposta.com/apis-for-probabilistic-callers/",
+      "title": "APIs for Probabilistic Callers",
+      "summary": "Agent APIs should embed resource-owned invariants and return structured refusals that expose safety constraints and alternatives, enabling safe enforcement of destructive or irreversible actions.",
+      "ideas": [
+        "Enforce destructive operations with resource‑specific invariant checks before allowing execution.",
+        "Return structured refusal JSON containing constraints, resolutions, and safe alternatives.",
+        "Expose invariant facts (e.g., backup age, dependencies) via API to policy engines or gateways."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, original mechanisms for enforcing resource invariants when AI agents act on opaque goals, directly addressing a critical gap in agent API design. It provides clear examples, structured refusal responses, and patterns such as safe alternatives and invariant checks that are technically substantive and highly relevant to security and infrastructure engineers. Its novelty is moderate—it builds on existing authz concepts but frames them for probabilistic callers—so it loses points for some speculative framing and limited depth on implementation trade‑offs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:56:15.716156"
+    },
+    {
+      "id": 4844,
+      "source_id": 34,
+      "original_url": "https://benswift.me/blog/2026/08/19/fifty-five-billion-tokens/",
+      "title": "Fifty-five billion tokens",
+      "summary": "The author quantifies token usage across many AI assistant sessions, revealing that cached reads dominate traffic and that caching can reduce token costs dramatically.",
+      "ideas": [
+        "55 billion tokens logged across 15 months of assistant sessions",
+        "96 % are cached reads; uncached cost would be ~$289k vs $50k",
+        "Cache‑driven token economics cut effective cost by ~80 %"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post provides a rare, detailed measurement of token usage across hundreds of thousands of assistant interactions, showing concrete cost breakdowns and the impact of caching. It delivers original data, clear mechanisms, and reproducible analysis that directly inform AI engineering and deployment economics. Its main limitation is the niche personal context, which may restrict broader applicability beyond similar logging setups.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:54:13.075671"
+    },
+    {
+      "id": 4843,
+      "source_id": 34,
+      "original_url": "https://aras-p.info/blog/2026/08/18/More-Blender-VSE-tidbits/",
+      "title": "More Blender VSE tidbits",
+      "summary": "A shared decoder cache removes redundant ffmpeg initialization, eliminating frame drops and reducing memory use for video cuts in Blender VSE.",
+      "ideas": [
+        "Shared decoder cache eliminates redundant ffmpeg initialization, cutting memory use and frame drops",
+        "GPU compositor now performs lazy colorspace conversion"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The piece delivers concrete, low-level implementation details—GPU compositor enhancements, lazy colorspace conversion, shared decoder caching—and quantifies their impact on performance, matching the reader's interest in deep engineering insight. It contains minimal fluff or hype, though some self-referential narrative slightly inflates length. The technical depth and measurable benefits justify a high, but not exceptional, rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:50:42.532953"
+    },
+    {
+      "id": 4842,
+      "source_id": 34,
+      "original_url": "https://amohan.dev/blog/2026/opening-the-black-box-a-year-building-an-open-compiler-for-the-rk3588-npu/",
+      "title": "Opening the black box: a year building an open compiler for the RK3588 NPU",
+      "summary": "OpenNPU delivers a fully open compiler and runtime for the RK3588 NPU, enabling GPT‑2 and SigLIP inference through a documented register‑command format and framework integrations.",
+      "ideas": [
+        "Reverse‑engineered eight‑byte register command format via DRM ioctl for direct NPU control.",
+        "Implemented matrix multiplication as a one‑by‑one convolution (CNA descriptor) to run transformers on the NPU.",
+        "Provided PyTorch, ONNX, and JAX front‑ends to dispatch models to the RK3588 NPU.",
+        "Achieved 36 tokens/s GPT‑2 decoding with KV cache and 1.1 img/s SigLIP inference on a $100 chip."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides concrete reverse‑engineered register formats, a Python compiler pipeline, and integration with PyTorch, ONNX, and JAX, plus measured performance numbers, making it highly actionable for AI‑hardware developers. It is focused, reproducible, and open‑source, with clear implementation details and extension points. The scope is limited to the RK3588 NPU, so its broader impact is niche, but within that niche it offers novel, practical tooling beyond prior hack‑only approaches.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:48:52.845719"
+    },
+    {
+      "id": 4841,
+      "source_id": 34,
+      "original_url": "https://ajitem.com/blog/go-1-27-goroutine-leak-profile/",
+      "title": "The go1.27 Goroutine Leak Profile: What Reachability Can and Cannot See",
+      "summary": "Go 1.27’s goroutineleak profile detects only truly unreachable blocked goroutines, missing leaks hidden by global references.",
+      "ideas": [
+        "The detector marks blocked goroutine sudogs untraceable and only promotes goroutines whose wait primitive is reachable.",
+        "A package‑level map holding a channel prevents the goroutineleak profile from reporting the leak.",
+        "The profile works for both channel and mutex blocks, but relies on reachability, not liveness.",
+        "Running the profile requires no extra code; it appears automatically under /debug/pprof/goroutineleak."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a concrete, well‑explained analysis of Go 1.27's new goroutineleak profile, including source code, GC internals, and reproducible fixtures that demonstrate both detection and a blind spot. It is directly useful for Go developers and site reliability engineers needing to debug deadlocked goroutines, with clear implementation details and actionable recommendations. The only limitation is its narrow focus on Go, which may not interest readers outside that ecosystem.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:48:07.255038",
+      "image_url": "https://ajitem.com/optimized/images/blog/go-1-27-goroutine-leak-profile-hero.webp",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": "The go1.27 Goroutine Leak Profile: What Reachability Can and Cannot See"
+    },
+    {
+      "id": 4840,
+      "source_id": 34,
+      "original_url": "https://abstractextraordinary.com/blog/how-muse-glimmer-fits-an-agent-on-your-device/",
+      "title": "How Muse Glimmer Fits an Agent on Your Device",
+      "summary": "Muse Glimmer achieves on‑device agent capabilities by combining a 30B quantized transformer with a hierarchical memory system that mixes local 2k‑token windows, global no‑RoPE layers, and grouped‑query attention.",
+      "ideas": [
+        "Local layers use 2,048‑token Rotary‑PE windows; every fourth layer attends globally without RoPE.",
+        "Grouped-query attention employs 32 query heads but only 2 KV heads, reducing per‑token KV memory to ~1 KiB.",
+        "Four‑bit quantization shrinks the 55 GiB BF16 checkpoint to under 20 GB, freeing space for 131k‑token context.",
+        "A fifth projection inside attention adds per‑channel gating, letting the model suppress noisy attention output.",
+        "Separate RMSNorm on Q and K plus a fixed scalar (3.87) decouples semantic similarity from attention temperature."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers a deep, concrete dissection of Muse Glimmer’s architecture—parameter breakdowns, memory hierarchy, novel attention variants, and quantitative KV‑cache estimates—providing actionable insight for on‑device LLM engineers. It stays focused on technical mechanisms with formulas and measurements, with little hype, making it highly relevant to AI/ML developers. Its novelty is limited to this specific model, but the depth and originality of the analysis merit a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-20T15:46:41.651765",
+      "image_url": "https://abstractextraordinary.com/og/how-muse-glimmer-fits-an-agent-on-your-device.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How Muse Glimmer Fits an Agent on Your Device — Abstract Extraordinary"
+    },
+    {
+      "id": 4839,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/glm-5-3-tops-the-open-model-rankings-and-undercuts-rivals-on-price-but-its-release-is-delayed/",
+      "title": "GLM-5.3 tops the open-model rankings and undercuts rivals on price, but its release is delayed",
+      "summary": "GLM-5.3 matches the top open‑model ranking with notable performance gains and lower cost, but its release is delayed to bolster security controls.",
+      "ideas": [
+        "GLM-5.3 scores 60 on Artificial Analysis index, matching Kimi K3.",
+        "Gains 246 Elo points on GDPval-AA v2 benchmark, reaching 1,770.",
+        "Costs $0.68 per task, 19% cheaper than Kimi K3 but higher than GLM-5.2.",
+        "Delayed open-weight release to improve security controls around vulnerability detection.",
+        "Positions open models closer to Western frontier AI capabilities."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 84,
+      "rating_reason": "The article provides concrete performance metrics, cost data, and a security-driven release delay that are novel and informative. It aligns well with AI, tech, and cybersecurity themes while remaining concise and free of major padding. However, it offers limited actionable guidance, preventing a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-08-20T15:39:17.653544"
+    },
+    {
+      "id": 4838,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/silkparasite-espionage-campaign-targets.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "AI‑assisted malware like SilkParasite's RATs demonstrates how human operators blend AI to enhance espionage tools while maintaining low‑profile, modular delivery methods.",
+      "ideas": [
+        "SilkParasite uses five previously undocumented RAT families for espionage.",
+        "AI‑assisted code shows sloppy implementation indicating human‑AI collaboration.",
+        "Modular plugins span .NET, C++, Go, and JavaScript for flexible payloads.",
+        "Attack chain delivers malware via password‑protected RAR archives.",
+        "C2 leverages Google Drive, HTTP cookies, and legitimate cloud services.",
+        "BLOODALCHEMY backdoor is an updated Deed RAT derivative linked to China.",
+        "Malware checks for Kaspersky to evade regional security software."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article reveals several novel technical insights, including AI‑assisted development of previously unknown RATs, a modular plugin architecture across multiple languages, and stealthy DLL sideloading tactics. These concrete details align strongly with cybersecurity and AI themes, and the piece contains no clickbait or padding, resulting in high value density. The substance justifies a solid high score but falls short of exceptional rarity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-20T15:38:26.467854",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgukQx26zt-EE2Q-I5EPzGDeXiUneL1NzNma73qc5r03gJ5Xj6kiTigXadbXa1XWqg7Y-UHq5YzEu7bPxN4BXjVUbId9eaPwWddiP_oB7Zz2fBV0bxr2S2wh9oVEFI-IEe4jMgA1REmrbKFSE33oztVDuz0p2TQhKA_0koqZ3qYcWH_d5Ec4lExxdMzWw5I/s1700-e365/malware-code.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 4837,
+      "source_id": 4,
+      "original_url": "https://oblique.security/blog/hacking-saml/",
+      "title": "Hacking SAML with Claude Code",
+      "summary": "AI‑enhanced fuzzing reveals numerous hidden SAML bypass vulnerabilities across popular libraries.",
+      "ideas": [
+        "SAML is prone to authentication bypasses due to XML signature issues.",
+        "AI harness can systematically discover SAML vulnerabilities across libraries.",
+        "Signature wrapping attacks enable email truncation and unauthorized access.",
+        "SAML implementation flaws cause denial-of-service via memory exhaustion.",
+        "Researchers independently discovered Authentik NameID comment injection bug.",
+        "New attack vectors include signature bypasses in AuthnRequest and LogoutRequest.",
+        "AI-generated reports overwhelm maintainers, complicating vulnerability handling.",
+        "Do not roll your own SAML implementation; use OpenID Connect instead."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece delivers multiple concrete vulnerability disclosures and a novel AI‑driven hunting methodology, providing high value density for security professionals. It includes practical exploits, methodological insights, and warnings about self‑implemented SAML, but contains promotional calls to action and filler that slightly reduce impact.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-20T15:35:26.266505",
+      "image_url": "https://oblique.security/blog/hacking-saml/image.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": ""
+    },
+    {
+      "id": 4836,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/hackers-compromise-14-500-dahua-web-cameras-in-35-day-campaign/",
+      "title": "Hackers compromise 14,500 Dahua web cameras in 35-day campaign",
+      "summary": "Attackers leveraged serial‑based recovery codes and known CVEs to hijack thousands of Dahua cameras, underscoring urgent firmware updates and P2P disabling.",
+      "ideas": [
+        "CameraSwarm compromised over 14,500 Dahua IP cameras across Ukraine and Russia in 35 days.",
+        "Attack used three parallel methods: brute‑force port 37777, CVE‑2021‑33044/45 exploitation, cloud‑relay using serial numbers.",
+        "The p2pwn tool creates a persistent backdoor account that survives password changes and firmware resets.",
+        "Recovery codes are generated from camera serial numbers, allowing credentialless access via Dahua’s password‑recovery process.",
+        "Researchers found misleading CVE references (CVE‑2024‑39943, CVE‑2025‑31702) not used in the actual attacks.",
+        "Mitigation: disable P2P, apply SA‑2021‑0130 firmware updates, and remove any p2pwn accounts from devices.",
+        "Once attackers obtain valid credentials, prevention efficacy drops sharply, per Blue Report 2026 findings."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 81,
+      "rating_reason": "The piece delivers concrete, actionable intelligence about a large‑scale camera compromise, outlining three distinct attack methods, a persistent backdoor mechanism, and clear mitigation steps, providing several genuine value instances. It stays focused, contains no clickbait or padding, and aligns well with cybersecurity themes, resulting in a strong but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-20T15:34:40.700825",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2025/12/02/camera.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 4835,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/rogue-ransomware-affiliate-ransom-busters-poses-as-recovery-firm/",
+      "title": "Rogue ransomware affiliate poses as recovery firm to steal payments",
+      "summary": "Rogue ransomware affiliates masquerade as recovery services to steal ransom payments, exploiting victims and heightening risks within ransomware ecosystems.",
+      "ideas": [
+        "Rogue ransomware affiliate pretends to be recovery service to extort payments",
+        "Uses same tools and tactics across multiple ransomware groups",
+        "Claims ability to delete stolen data but actually steals ransom payments",
+        "Victims may pay the affiliate instead of the ransomware operators",
+        "Researchers warn victims not to pay these middlemen",
+        "Growing distrust within ransomware‑as‑a‑service ecosystems fuels this behavior"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple novel, evidence-backed insights about ransomware affiliates masquerading as recovery services, supported by concrete technical details and researcher warnings. It avoids clickbait and padding, offering high value density with clear thematic relevance to cybersecurity. No major penalties apply, though the news format limits deeper actionable guidance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-20T15:33:21.397381",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/03/20/Extortion_hacker_scammer.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 4834,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Aug/19/conceptual-integrity-and-counting-lines-of-code/",
+      "title": "Conceptual integrity and counting lines of code",
+      "summary": "AI coding agents boost output but can compromise software’s conceptual integrity, requiring disciplined team oversight.",
+      "ideas": [
+        "Lines of code can be a meaningful productivity metric when AI agents maintain code quality.",
+        "AI coding agents can increase output by orders of magnitude, limited by cognitive capacity.",
+        "Conceptual integrity means software has no surprising inconsistencies and fits its domain.",
+        "AI‑generated features risk breaking conceptual integrity due to cheap, rapid additions.",
+        "Teams remain necessary to balance cognitive load despite high AI‑assisted code production."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The post offers several genuine insights—using lines of code as a productivity gauge with AI agents, the cognitive‑capacity limit on engineers, and how cheap AI‑generated features erode conceptual integrity—while staying concise and on‑topic. It aligns well with technology, AI, and productivity themes and contains no clickbait or padding, yielding a solid good score.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-08-20T15:33:03.198458"
+    },
     {
       "id": 4833,
       "source_id": 4,
