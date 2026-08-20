@@ -1,7 +1,253 @@
 {
-  "updated_at": "2026-08-20T19:00:00.176669+00:00",
-  "total_items": 842,
+  "updated_at": "2026-08-20T20:00:00.190495+00:00",
+  "total_items": 851,
   "items": [
+    {
+      "id": 4910,
+      "source_id": 34,
+      "original_url": "https://www.thomas-witt.com/blog/blog-subagent-model-pin/",
+      "title": "How I stopped my Claude Code subagents from secretly running on Fable instead of Sonnet",
+      "summary": "Enforce explicit model selection in subagent dispatches to prevent unintended use of expensive frontier models.",
+      "ideas": [
+        "PreToolUse hook blocks dispatches lacking explicit model for pinned agents",
+        "Front‑matter model pins are ignored; explicit model flags are required"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article explains the hidden layer order that lets pinned subagents fall back to the session model and provides a complete, reproducible hook implementation to enforce explicit model selection. It delivers concrete shell scripts, JSON configuration, and a clear mechanism, giving the reader a ready‑to‑use guardrail against costly model misuse. The solution is technically deep and directly relevant to developers using Claude Code, though it relies on current internals that may change in future releases. The piece remains valuable but assumes familiarity with Claude Code's internal dispatch system.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T05:00:18.470962",
+      "image_url": "https://www.thomas-witt.com/assets/images/posts/2026-08-15-claude_code_subagent_model_precedence.jpeg",
+      "image_width": 680,
+      "image_height": 372,
+      "image_alt": ""
+    },
+    {
+      "id": 4909,
+      "source_id": 34,
+      "original_url": "https://www.kylereddoch.me/blog/the-model-is-not-the-security-boundary-how-to-secure-ai-workflows/",
+      "title": "The Model Is Not the Security Boundary: How to Secure AI Workflows",
+      "summary": "Security must enforce authorization outside the model by using distinct, least‑privilege identities and explicit controls at each workflow step.",
+      "ideas": [
+        "Model alone is not the security boundary; surrounding controls grant authority.",
+        "Map full workflow to identify read, recommend, draft, act stages.",
+        "Use distinct, least‑privilege identities for AI agents.",
+        "Enforce authorization in code, not in system prompts.",
+        "Treat prompt injection as an access‑control failure.",
+        "Allowlist tools, validate inputs, limit execution scope."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, actionable guidance on securing AI workflows by mapping full data flows, enforcing least‑privilege identities, and treating prompt injection as an access‑control problem. Its strengths are the detailed tables, clear distinction between read, recommend, draft, act stages, and emphasis on external authorization rather than prompt tricks. However, it occasionally assumes mature tooling and does not address all edge cases of multi‑tenant isolation, limiting its universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:52:59.362565",
+      "image_url": "https://www.kylereddoch.me/assets/og-images/the-model-is-not-the-security-boundary-how-to-secure-ai-workflows-preview.jpeg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The Model Is Not the Security Boundary: How to Secure AI Workflows"
+    },
+    {
+      "id": 4908,
+      "source_id": 34,
+      "original_url": "https://victordelpuerto.com/posts/seven-ways-a-check-goes-green/",
+      "title": "Seven ways a check goes green without checking",
+      "summary": "Verification checks pass silently when the expected value comes from the subject itself, when the check operates at a coarser unit than the defect, when nothing invokes it, when a newer guard subsumes it, when the test exercises a stand-in for the production path, when keys are coincidental, or when 'done' is reported before completion.",
+      "ideas": [
+        "Ask what input would make this check red; if the answer is vague, the check is decorative.",
+        "Expectation values derived from the subject under test produce identity comparisons that cannot fail.",
+        "Column-level equality checks hide per-cell corruption when aggregates still match.",
+        "Verifier scripts with zero call sites are inert regardless of how green they run.",
+        "Older guards can be silently subsumed by newer ones with no deciding vector left.",
+        "Patching ssl.create_default_context leaves urlopen untouched due to import-time aliasing.",
+        "Smoke tests that delete an API key but reload env from disk are not actually hermetic.",
+        "Positional reads in spreadsheets break when empty columns shift indices by one.",
+        "Agents that spawn children can mark the parent complete without ever consolidating.",
+        "Mutation testing checks whether any test notices; it does not check which control noticed.",
+        "A check must report what it examined in counts, not only a pass/fail verdict."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "An original taxonomy of seven structural failure modes for verification checks, each grounded in concrete, reproducible cases drawn from 24 real bugs across pricing tools, CAD linters, PDF assemblers, geotechnical calculators, CI gates, and an agent orchestrator. The diagnostic framing ('what input would have to change for this check to come back red?') and the three-axis categorization (comparison, reach, population) are genuinely useful mental models. Includes specific technical mechanisms such as Python's import-time alias binding defeating ssl.create_default_context patches, and honest reflection that most bugs were caught downstream rather than by verification. No padding, no hype; exceptionally dense value per minute.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:45:14.515847",
+      "image_url": "https://victordelpuerto.com/posts/seven-ways-a-check-goes-green/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 4907,
+      "source_id": 34,
+      "original_url": "https://slaptijack.com/articles/ghostty-tmux-and-ssh-a-terminal-workflow-that-survives-context-switching.html",
+      "title": "Ghostty, tmux, And SSH: A Terminal Workflow That Survives Context Switching",
+      "summary": "Separate concerns across layers—Ghostty for local rendering, SSH for transport, and tmux for durable remote sessions—and use named sessions with explicit SSH config to survive context switches.",
+      "ideas": [
+        "Explicit Host, User, IdentityFile entries in ~/.ssh/config",
+        "Name tmux sessions after work that is costly to lose",
+        "Detach with Ctrl‑b d, then reattach; test reconnection on a non‑critical host",
+        "Record decisions, uncertainties, and next steps outside tmux scrollback"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, reproducible guidance on combining Ghostty, tmux, and SSH to make remote sessions durable, with explicit config snippets, naming conventions, and reconnection tests. It is highly relevant to developers and sysadmins seeking a reliable workflow, though it stays within established terminal tools without introducing breakthrough novelty. The content is focused and low on noise, but its practical value is bounded by the assumption that readers already know these tools.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:38:28.140287"
+    },
+    {
+      "id": 4906,
+      "source_id": 34,
+      "original_url": "https://simedw.com/2026/08/20/midi-autocomplete/",
+      "title": "Training a 125M-parameter Model to Autocomplete Piano",
+      "summary": "A first-hand engineering walkthrough of building a real-time on-device piano autocomplete transformer, distilling hard-won lessons about MIDI tokenization, scheduled sampling, and DPO with noisy LLM-judge preferences.",
+      "ideas": [
+        "Note-on/note-off tokenization drifts badly on small real-time models; folding duration into a single note token avoids drift.",
+        "Sum-of-field embeddings with one shared backbone pass beats multi-step autoregressive decoding per attribute.",
+        "Baking sustain pedal into note duration during preprocessing simplifies the modeling objective.",
+        "Scheduled sampling raises validation loss but substantially improves rollout musical quality.",
+        "Pairwise LLM judging with mirrored position bias is more reliable than absolute scalar ratings.",
+        "Filtering preference pairs to a noisy-judge consensus set outperforms using every judged pair for DPO.",
+        "Clean, focused data beats 5x larger noisy data for music continuation training.",
+        "INT8 quantized Core ML transformer runs ~108 notes/sec on iPhone 15 for 125M model."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptionally substantive first-hand ML engineering account with concrete, verifiable details throughout. The tokenization journey (note-on/note-off drift, grammar-masked tokens, single-token-per-note with summed field embeddings and a nested decoder) is genuinely non-obvious and well-supported. Empirical ablations on scheduled sampling, DPO β values, and a consensus-filter for noisy Gemini pairwise preferences are presented with actual numbers. Honest reporting of what didn't work (note-on drift, Mirostat, absolute scalar ratings, born-again networks) adds credibility. Minor deductions for personal blog framing and self-promotion of RollTab, but the technical content fully stands on its own.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:38:14.188130",
+      "image_url": "https://simedw.com/2026/08/20/midi-autocomplete/images/rolltab_phone.jpg",
+      "image_width": 1024,
+      "image_height": 522,
+      "image_alt": "Training a 125M-parameter Model to Autocomplete Piano"
+    },
+    {
+      "id": 4905,
+      "source_id": 34,
+      "original_url": "https://purplesyringa.moe/blog/./duplicatehandle-works-on-sockets-mostly/",
+      "title": "DuplicateHandle works on sockets, mostly",
+      "summary": "DuplicateHandle can be used to duplicate Windows SOCKET handles safely on modern systems, bypassing WSADuplicateSocketW limitations.",
+      "ideas": [
+        "DuplicateHandle works for SOCKETs on modern Windows without breaking Winsock2.",
+        "WSADuplicateSocketW injects the kernel handle into the target via dwProviderReserved.",
+        "Non‑IFS LSPs are deprecated; current sockets behave as IFS handles.",
+        "Lazy init retrieves missing context via IOCTL_AFD_GET_CONTEXT after duplication.",
+        "When using DuplicateHandle, close the socket with closesocket to free Winsock2 bookkeeping."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides original Windows‑specific experiments, trace logs, and clear code showing how DuplicateHandle can safely duplicate SOCKETs and how WSADuplicateSocketW works internally. It offers concrete guidance for IPC and handle‑stealing scenarios, relevant to low‑level Windows programming, with no hype or filler. The depth and reproducible evidence make it highly valuable for technically capable readers interested in OS internals and systems programming.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:33:10.169667",
+      "image_url": "https://purplesyringa.moe/blog/duplicatehandle-works-on-sockets-mostly/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 4904,
+      "source_id": 34,
+      "original_url": "https://predictandprofit.io/blog/2026-08-20-visualizing-trade-timestamps-against-dst-transitions-the-chart-that-revealed-the-bug",
+      "title": "Visualizing Trade Timestamps Against DST Transitions: The Chart That Revealed the Bug",
+      "summary": "A one‑hour DST offset in timestamp bucketing silently produced massive losses, which only became visible after overlaying trade outcomes on DST windows in a chart.",
+      "ideas": [
+        "DST offset bug caused eight months of systematic trading losses",
+        "Chart overlaid wins/losses with DST windows to expose clustered losses",
+        "Fix required three lines of code and a test confirming correct offset",
+        "Visual debugging reveals temporal patterns logs miss, accelerating diagnosis"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete code, a reproducible experiment, quantified results, and a test that prove a DST offset bug caused systematic trading losses, and it explains why visual debugging is essential. It shows clear technical mechanisms and practical fixes, though its focus is narrow and not directly AI‑centric, limiting broader relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:33:01.217194",
+      "image_url": "https://predictandprofit.io/images/seo-open-graph.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 4903,
+      "source_id": 34,
+      "original_url": "https://pinglin.tw/blog/the-cluster-you-do-not-watch/",
+      "title": "The Cluster You Do Not Watch",
+      "summary": "A precise alert‑to‑action loop lets an autonomous agent inspect metrics and logs, propose changes via pull requests, and only act on verified checks, making dashboards unnecessary.",
+      "ideas": [
+        "Agent reads all metrics/logs but never writes directly; changes only via PR.",
+        "Checks must be proven capable of failure by intentional mutation before trust.",
+        "Alert thresholds derived from measured distributions, not vendor defaults.",
+        "Dashboard curation limited to panels that influence human action."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents concrete, original mechanisms for autonomous monitoring—an alert-to-action ring, read‑only agents that propose PR changes, and verification practices that force checks to fail intentionally. It delivers highly relevant technical insight for AI‑ops and infrastructure engineers, though it includes some high‑level framing and context‑specific examples that marginally limit universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:32:21.287432",
+      "image_url": "https://pinglin.tw/blog/the-cluster-you-do-not-watch/header_light.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "An operations loop drawn as a ring around a central AI operator: alerting into chat, into an agent, into a pull request, through CI, into a reconciler, and back around."
+    },
+    {
+      "id": 4902,
+      "source_id": 34,
+      "original_url": "https://ospfranco.com/concurrent-engines-crash/",
+      "title": "React Native Bridgeless, race conditions with concurrent JS runtimes",
+      "summary": "React Native's bridgeless mode lets two runtime generations coexist during reload, turning process-global module state into a race condition; the fix is per-generation lifetime flags and capturing invoker/liveness at construction rather than at callback time.",
+      "ideas": [
+        "Bridgeless overlaps old and new runtime generations for several seconds during reload.",
+        "Process-global pointers to 'current runtime' become racy in bridgeless native modules.",
+        "Capture invoker and liveness at construction; check at run time, not resolution time.",
+        "invalidate() signals an instance dying, not the whole module being torn down.",
+        "Shared native registries need real locks once two generations can exist concurrently.",
+        "Teardown must actively interrupt in-flight work, not just wait for it to finish."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "Firsthand incident analysis from the op-sqlite maintainer about a real crash triggered by React Native's bridgeless architecture, with a concrete race-condition walkthrough, code showing the broken global state, and the actual fix. The investigation is methodical, the diagrams clearly show the overlap window between old and new runtime generations, and the generic lessons (capture generation identity at construction; invalidate refers to an instance, not the module) generalize well beyond React Native. Minimal noise, strong evidence, and high practical value for anyone writing TurboModule/JSI native code.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-21T04:30:28.951684",
+      "image_url": "https://ospfranco.com/assets/oscar.jpg",
+      "image_width": 1024,
+      "image_height": 768,
+      "image_alt": ""
+    },
     {
       "id": 4901,
       "source_id": 34,
