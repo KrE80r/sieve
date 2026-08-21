@@ -1,7 +1,217 @@
 {
-  "updated_at": "2026-08-21T19:00:00.217682+00:00",
-  "total_items": 830,
+  "updated_at": "2026-08-21T20:00:00.182478+00:00",
+  "total_items": 838,
   "items": [
+    {
+      "id": 4949,
+      "source_id": 34,
+      "original_url": "https://zerotistic.blog/posts/find-my-people-linux/",
+      "title": "Reverse-engineering Find My People to stalk my ex a friend, cause I can",
+      "summary": "A Linux client can fully participate in Apple's Find My People encrypted-location flow by emulating an IDS device: registering through GrandSlam, obtaining an IDS auth certificate via authenticateDS, subscribing to com.apple.private.ids on private APNs, decrypting pair-ec envelopes with ECDH+HKDF using the LastPawn-MessageKeys salt, and triggering the sharing device to push the FMF location key on demand.",
+      "ideas": [
+        "Friends initClient requires a specific token, FMF host, anisette headers, and X-MMe-Nas-Qualify NAC blob",
+        "authenticateDS needs a PKCS#10 CSR with 2048-bit RSA, SHA-1 signature, common name = SHA-1 of IDS profile ID, gzip+XML plist",
+        "FMF is registered as an alloy multiplexer with six subservices under com.apple.private.alloy.fmd",
+        "Subscribe to parent com.apple.private.ids or Find My pushes never arrive, even with subservices registered",
+        "pair-ec envelope decrypts via ECDH on registered P-256 prekey, ECDSA verify, HKDF-SHA-256 with salt LastPawn-MessageKeys",
+        "IDS signatures concatenate nonce, bag key, query, gzipped body, push token each prefixed by a 4-byte length",
+        "Existing share keys are pushed on demand, not only at share creation, by re-issuing initClient as a new device",
+        "Apple's signed IDS bag uses roots missing from certifi; fingerprint-pin Apple Root CA and G3 from Apple PKI"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "Exceptional first-hand reverse-engineering of Apple's Find My People path on Linux: the article walks through the full chain (initClient, IDS device registration via GrandSlam/PET/authenticateDS, alloy/FMF service registration, private APNs subscription, pair-ec envelope decryption with ECDH+HKDF and the LastPawn-MessageKeys salt, and triggering key delivery on existing shares) with concrete request bodies, exact cryptographic parameters (PKCS#10/SHA-1 CSR, RSA-2048, NGM v13 P-256 prekeys, Key Transparency v5), real error codes (6001, 5051), and reproducible implementation notes. The author is candid about what they couldn't isolate and includes an explicit scope warning. Some chat screenshots and a few unfinished sentences near the end are minor bloat, but they don't dilute the technical density.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T05:06:17.958230",
+      "image_url": "https://zerotistic.blog/og/find-my-people-linux.png?v=13cf0f60a261",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Reverse-engineering Find My People to stalk my ex a friend, cause I can"
+    },
+    {
+      "id": 4948,
+      "source_id": 34,
+      "original_url": "https://www.perdian.de/blog/2026/das-zweite-deliverable-warum-ich-ki-anders-nutze-als-manch-ein-kollege/",
+      "title": "Das zweite Deliverable - Warum ich KI anders nutze als manch ein Kollege",
+      "summary": "AI should assist but not replace the engineer’s responsibility to understand and verify technical decisions.",
+      "ideas": [
+        "Manually verify AI‑generated Terraform configs; hallucinations can occur",
+        "Understanding mechanisms matters more than speed of artifact creation"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete, first‑hand experience with AI‑assisted cloud architecture, illustrating manual verification of generated Terraform code and the importance of understanding mechanisms over speed. It is highly relevant for engineers who want to retain control and avoid blind reliance on AI outputs. However, the strong personal narrative and limited generalizability prevent it from reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T05:00:24.871758"
+    },
+    {
+      "id": 4947,
+      "source_id": 34,
+      "original_url": "https://walac.github.io/jumplabels/",
+      "title": "What every kernel programmer should know about Jump Labels",
+      "summary": "Jump labels let kernel code safely rewrite branch instructions at runtime by swapping 1‑byte INT3 and atomic NOP/jmp patches via a private text_poke mapping.",
+      "ideas": [
+        "Static keys replace conditional branches with NOPs or explicit jumps.",
+        "Patch uses a single‑byte INT3 followed by atomic byte replacement.",
+        "SMP enable/disable requires IPI batch coordination to avoid torn fetches.",
+        "text_poke creates a temporary writable mapping of read‑only kernel text.",
+        "Modules need special add/del functions to manage live static keys."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers deep, architecture‑specific implementation details, concrete assembly listings, and a step‑by‑step walkthrough of SMP‑safe text patching that most readers would find rare and valuable. It balances technical depth with clear exposition, making complex mechanisms understandable without unnecessary hype. The only limitation is its focus on x86_64 and assumption of kernel internals knowledge, which may reduce relevance for other architectures. Overall it provides exceptional hands‑on insight for kernel developers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:50:22.865868"
+    },
+    {
+      "id": 4946,
+      "source_id": 34,
+      "original_url": "https://thefrontierlab.ai/strix-halo-mtp-fleet-sweep/",
+      "title": "Speculative Decoding Across My Fleet: Gains From +200% to -80%, and No Single Setting Fits Every Model",
+      "summary": "Optimal speculative decoding depth and mechanism vary per model, and using model‑specific settings can dramatically increase generation speed for code workloads while offering minimal gains for prose.",
+      "ideas": [
+        "Qwen 3.8 27B decode speed rises from 10.5 to 31.6 t/s (+200%) with depth‑5.",
+        "Acceptance declines with draft depth; optimal depth varies per model.",
+        "DeepSeek V4 Flash + DSpark sidecar yields +97% code speed gain.",
+        "MTP mechanisms differ: integrated MTP, separate draft model, sidecar drafter.",
+        "Ling model slows fivefold and hangs when using MTP, needing caution.",
+        "Code workload gains far exceed prose gains for most models."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete benchmarks showing up to 200% speed gains and identifies model‑specific optimal draft depths, making it directly applicable to engineers. It also reveals pitfalls, such as Ling’s instability with MTP. Limited by a single‑evening measurement and lack of cross‑hardware replication, so results may vary.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:44:27.841301",
+      "image_url": "https://thefrontierlab.ai/content/images/2026/05/frontier-lab-publication-cover.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 4945,
+      "source_id": 34,
+      "original_url": "https://sigh.dev/posts/making-react-testing-library-faster/",
+      "title": "Making React Testing Library Tests 43% Faster",
+      "summary": "Three concrete jsdom optimizations - a shared label-to-control index, a DOMSelector fast-path fix for the wrapper/implementation object mismatch, and an event-dispatch path that records targets during build - cut Sentry's React Testing Library test time by 43%.",
+      "ideas": [
+        "jsdom walked the entire DOM per input to compute labels; cache once per root instead.",
+        "DOMSelector's fast path compared wrapper vs implementation objects, never matched, always fell back.",
+        "Event dispatch should record effective target during path build, then read directly.",
+        "Skip event listener state setup when nothing is listening for that event type.",
+        "AI microbenchmark wins often vanish when measured against real production test files.",
+        "Large labeled forms with many getByRole queries benefit most from these jsdom changes.",
+        "userEvent fires a parade of pointer, mouse, focus, input, click events per interaction."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "Firsthand engineering writeup that identifies three specific performance bugs in jsdom and dom-accessibility-api with concrete benchmarks, root-cause explanations, and upstream merges. The author pairs the technical investigation with an honest case study of using Codex/Sol for performance work, demonstrating where AI suggestions failed (the 81% microbenchmark that vanished in real tests) versus succeeded. The fixes are well-explained, the methodology of validating AI output against real production code is itself instructive, and the article acknowledges limits of generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:39:02.802643",
+      "image_url": "https://sigh.dev/og-image/posts/making-react-testing-library-faster.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Making React Testing Library Tests 43% Faster"
+    },
+    {
+      "id": 4944,
+      "source_id": 34,
+      "original_url": "https://ramimac.me/arrayref-dprk",
+      "title": "Rust Supply Chain Attack on arrayref: Significant Overlap with DPRK Campaigns",
+      "summary": "Attackers hijacked Rust crates via a malicious proc‑macro1 dependency, using a build‑script backdoor to download and execute a DPRK‑linked payload across platforms.",
+      "ideas": [
+        "Malicious arrayref@0.3.10 adds proc‑macro1 dependency that runs a malicious build script.",
+        "Build script reconstructs a C2 URL, disables TLS, and drops a platform‑specific payload to /tmp/rust‑setup.",
+        "Payload beacons to /49890878, exfiltrates host info and enumerates saved browser logins.",
+        "It supports commands kill, minicfg, startup, runscript and uses a DGA for fallback C2.",
+        "Attack overlaps with DPRK’s Mastra campaign via shared C2 patterns and Hostwinds infrastructure.",
+        "Remediation requires rotating all credentials and rebuilding workstations that compiled the affected crate."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Score based on strong technical relevance and depth, yet tempered by promotional noise and modest novelty. The piece delivers specific mechanisms and remediation guidance that a practitioner can act on.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:35:11.602952"
+    },
+    {
+      "id": 4943,
+      "source_id": 34,
+      "original_url": "https://predragtasevski.com/posts/sovereign-cloud-is-not-the-same-as-a-cloud-that-answers-the-phone-why-we-are-leaving-scaleway/",
+      "title": "Sovereign Cloud Is Not the Same as a Cloud That Answers the Phone: Why We Are Leaving Scaleway",
+      "summary": "A 19-day Scaleway abuse-lockout incident demonstrates that hypervisor-initiated shutdowns leave specific forensic signatures (clean poweroff, progressive nf_conntrack saturation, gradual outbound throttling) and that cloud 'sovereignty' claims do not imply operational escalation paths.",
+      "ideas": [
+        "nf_conntrack saturation produced 34,000+ drops over 23 hours before a hypervisor-initiated clean shutdown",
+        "Abuse-induced shutdowns may show as graceful poweroff in journal logs, not crashes",
+        "Outbound traffic can be throttled upstream hours before final poweroff, leaving kernel traces",
+        "Test provider escalation authority before incidents; that latency is your real RTO",
+        "Demand self-service serial console or rescue boot as a procurement requirement",
+        "Keep a warm secondary provider; Hetzner failover prevented an extinction event",
+        "Restore intervals still cost data; the four-day backup gap cost GDPR/NIS2 work",
+        "Initial CrowdSec/Wazuh analysis can be wrong; on-disk forensics overturned the published root cause"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Firsthand incident post-mortem with strong technical substance: a detailed forensic timeline reconstructed from journal logs, nf_conntrack saturation metrics, Wazuh/CrowdSec data, and kernel messages, plus an honest self-correction of an earlier wrong root cause. The piece delivers concrete, non-obvious findings about hypervisor-initiated shutdowns, progressive outbound traffic strangling by upstream systems, and the operational consequences of abuse-handling architectures that lack escalation paths. Value-per-minute is high despite some narrative framing around the Airbus/Scaleway sovereignty angle.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:34:33.837735"
+    },
+    {
+      "id": 4942,
+      "source_id": 34,
+      "original_url": "https://predictandprofit.io/blog/2026-08-21-probability-calibration-for-binary-markets-why-98-confidence-should-scare-you",
+      "title": "Probability Calibration for Binary Markets: Why 98% Confidence Should Scare You",
+      "summary": "Miscalibrated high‑confidence forecasts in binary markets cause systematic losses, and calibration metrics such as reliability diagrams and Brier scores reveal this gap.",
+      "ideas": [
+        "98% confidence predictions win only ~60% of the time",
+        "Brier score 0.2858 worse than baseline 0.2439",
+        "Reliability diagram shows points below diagonal indicating overconfidence",
+        "Underdispersion pushes probabilities to extremes, reducing dispersion",
+        "NOAA calibrated models outperform custom ensemble"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, reproducible guidance on binary prediction‑market calibration—code for reliability diagrams, Brier‑score calculations, and practical diagnostics that expose overconfidence and financial loss. It contains valuable technical insight but is mixed with promotional content and some fluff, preventing it from reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:34:17.910637",
+      "image_url": "https://predictandprofit.io/images/seo-open-graph.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
     {
       "id": 4941,
       "source_id": 34,
@@ -39,7 +249,11 @@
       "rating_reason": "The article delivers concrete, hard‑won technical fixes for Kiro’s shell execution layer in WSL2, explaining the underlying path mangling, exit‑code, and permission issues with clear mechanisms and actionable configuration snippets. It provides reproducible experiment steps, kernel‑level details, and firsthand implementation insights that directly address the reader’s technical pain points. Some limitation remains due to the still‑misleading tool name and occasional vague residual errors, preventing a perfect score.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-08-22T04:26:19.491230"
+      "published_at": "2026-08-22T04:26:19.491230",
+      "image_url": "https://mcgarrah.org/assets/images/og/kiro-ide-wsl2-integration.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 4939,
