@@ -1,7 +1,423 @@
 {
-  "updated_at": "2026-08-21T17:00:00.177210+00:00",
-  "total_items": 813,
+  "updated_at": "2026-08-21T19:00:00.217682+00:00",
+  "total_items": 830,
   "items": [
+    {
+      "id": 4941,
+      "source_id": 34,
+      "original_url": "https://narendranag.com/2026/08/21/licensed-vs-extracted.html",
+      "title": "Licensed vs. Extracted",
+      "summary": "The industry's future AI disputes will hinge on licensing agreements, not on the technology itself.",
+      "ideas": [
+        "ESPN runs a licensed voice‑cloning system for ~16,000 game feeds yearly.",
+        "Licensed assets are paid; extracted AI content triggers backlash.",
+        "AI disputes now center on rights negotiations, not technical feasibility."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical detail about ESPN's large‑scale, licensed voice‑cloning pipeline, including scale numbers, licensing mechanics, and the distinction between licensed versus extracted AI content. It avoids hype, focuses on industry‑level rights negotiations, and offers a clear, evidence‑backed insight into how the market is reshaping AI content disputes. Its limitation is that the novelty is modest—most points confirm known practices rather than introduce breakthrough mechanisms.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:28:39.012273"
+    },
+    {
+      "id": 4940,
+      "source_id": 34,
+      "original_url": "https://mcgarrah.org/kiro-ide-wsl2-integration/",
+      "title": "Kiro IDE + WSL2: Fixing the Agent Shell Execution Layer",
+      "summary": "Explicitly defining Linux terminal profiles and shell integration scripts resolves the garbled command execution and phantom SCM detections in Kiro’s WSL2 environment.",
+      "ideas": [
+        "Add automationProfile.linux and profiles.linux settings to Kiro's settings.json to specify /bin/zsh and /bin/bash paths."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, hard‑won technical fixes for Kiro’s shell execution layer in WSL2, explaining the underlying path mangling, exit‑code, and permission issues with clear mechanisms and actionable configuration snippets. It provides reproducible experiment steps, kernel‑level details, and firsthand implementation insights that directly address the reader’s technical pain points. Some limitation remains due to the still‑misleading tool name and occasional vague residual errors, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:26:19.491230"
+    },
+    {
+      "id": 4939,
+      "source_id": 34,
+      "original_url": "https://jasnell.me/posts/histogram-stats-and-exchange",
+      "title": "Hypothesis testing, EWMA, and portable histograms in Node.js",
+      "summary": "Node.js's perf_hooks Histogram class is gaining built-in statistical hypothesis tests (Welch's t-test, Mann-Whitney U), effect-size metrics, EWMA streaming stats, SLO burn rate tracking, and a lossless CBOR-based portable exchange format - removing dependencies like R from benchmark analysis.",
+      "ideas": [
+        "Mann-Whitney U implemented directly on histogram bucket counts, not raw samples",
+        "Welch's t-test uses regularized incomplete beta via bisection in C++",
+        "EWMA updates inside histogram write lock; zero overhead when halfLife unset",
+        "Cohen's d and Cliff's delta quantify effect magnitude beyond p-values",
+        "CBOR export with delta-encoded sparse buckets: 2KB vs 184KB raw",
+        "Burn rate = ewmaErrorRate / (1 - sloTarget) matches Google SRE multi-window alerting",
+        "benchmark/compare.js --analyze replaces R for PR regression gating",
+        "Percentile CIs use exact binomial via regularized incomplete beta function"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Dense, firsthand account of substantial APIs being added to Node.js's Histogram class, contributed by the author themselves. Every section provides executable code, named PRs (#65416, #65434), specific implementation details (regularized incomplete beta function, delta-encoded sparse bucket CBOR encoding, EWMA inside the histogram write lock), and explicit size/cost trade-offs. The only modest limitation is that the underlying statistics are established rather than novel, and Node.js-specific applicability narrows the audience slightly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:16:13.105253"
+    },
+    {
+      "id": 4938,
+      "source_id": 34,
+      "original_url": "https://hiraditya.github.io/posts/two-schedulers-one-slo/",
+      "title": "Two Schedulers, One SLO",
+      "summary": "Deployment‑level scheduler visibility loss across disaggregated GPUs can cause decode‑side preemption to force full re‑prefill, breaking SLO guarantees and lacking a shared cost model.",
+      "ideas": [
+        "Decode preemption forces recompute of the full prompt, consuming decode resources.",
+        "Router cost model cannot capture network distance or bandwidth differences between workers.",
+        "Admission control using cache‑hit thresholds can rebuild rejected requests to preserve SLOs."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, field‑tested mechanisms for continuous batching, scheduler interaction, and preemption in vLLM, with detailed config snippets, memory‑budget trade‑offs, and failure evidence. It directly addresses AI inference scheduling and hardware disaggregation, providing original measurements and clear failure analysis rather than generic commentary. The depth is high but some sections repeat earlier concepts, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:12:08.905652"
+    },
+    {
+      "id": 4937,
+      "source_id": 34,
+      "original_url": "https://flowchainsensei.wordpress.com/2026/08/20/who-writes-this-shit-ai-and-who-tests-it-nobody/",
+      "title": "Who Writes This Shit? AI. And Who Tests It? Nobody.",
+      "summary": "AI generation has broken the historic parity between code production cost and verification cost, and the deeper problem is that validation failures (building the wrong thing) cannot be solved by any amount of better testing or inspection.",
+      "ideas": [
+        "Production and verification costs were historically within an order of magnitude; AI broke that ratio.",
+        "Agents that write tests for their own code encode behavior, not intent, locking in bugs.",
+        "Reviewer 'smell' heuristics fail when AI code is uniformly plausible.",
+        "Implementation cost was an unintentional but effective design control, now removed.",
+        "Most software failures are validation failures, not verification failures, and tests cannot fix that.",
+        "Generated code ships without the durable knowledge (why, edge cases, history) it was meant to produce.",
+        "Apply Toyota's development-side discipline (small batches, WIP limits, fast feedback), not its factory-side discipline."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "Dense, well-referenced argument that AI has broken the load-bearing ratio between code production cost and verification cost. Concrete failure modes are explained mechanistically (agents testing their own code, uniform plausibility defeating review heuristics, silent ambiguity resolution), with empirical support from METR, DORA, Perry et al., and Meta's ACH work. The article distinguishes verification from validation, credits Brooks/Deming/Reinertsen properly, and includes a steelman section that acknowledges counterevidence. Limitations: relies on a few vendor telemetry figures (acknowledged), some claims about queue theory and 'cost of implementation as design control' are argued convincingly but not empirically tested, and the piece is long. Still unusually substantive for AI commentary.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:08:33.200487"
+    },
+    {
+      "id": 4936,
+      "source_id": 34,
+      "original_url": "https://dev.profullstack.com/~anthony/blog/027-post.html",
+      "title": "A dead A record and six modules that never loaded",
+      "summary": "A dead A record silently broke module loading, revealing hidden dependency and configuration pitfalls that were fixed by correcting imports and deployment scripts.",
+      "ideas": [
+        "Dead A record caused module load failures with no health check alerts.",
+        "Each mcp_modules/ subdirectory is an independent pnpm project; root install ignores them.",
+        "Missing 'qrcode' package prevented qr-generator module from registering despite health report.",
+        "Bun supports JSON imports natively; Node requires explicit import attributes.",
+        "Systemd services must use absolute paths for binaries not in login PATH and respect ProtectHome."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece offers concrete, reproducible debugging evidence—dead DNS records, missing pnpm dependencies, and mis‑configured systemd/mise setups—that directly explains failures and fixes them. It is highly relevant to technically proficient sysadmin and devops readers, though its narrow focus and occasional narrative padding keep it from being exceptional. The author's firsthand observations and exact commands give it strong practical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:02:40.155007"
+    },
+    {
+      "id": 4935,
+      "source_id": 34,
+      "original_url": "https://debene.dev/posts/haiku-aws-ssm-managed-node/",
+      "title": "The Most Improbable Managed Node: Haiku in AWS Systems Manager",
+      "summary": "Haiku can be managed through AWS SSM Run Command using a lightweight MDS client that mimics the Linux agent, enabling patching, health checks, and desktop display on Graviton.",
+      "ideas": [
+        "Haiku reports its Nitro hardware details to SSM",
+        "MDS fallback allows Haiku without websockets",
+        "Boot clock fix reads Date header from IMDS",
+        "launch_daemon handles SIGTERM cleanly",
+        "Remote desktop works via SSH without GPU"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 96,
+      "rating_reason": "The article provides concrete, verifiable evidence of a fully functional Haiku OS node managed via AWS SSM on Graviton, with detailed implementation, measurement of behavior (e.g., 0 MHz clock), and clear discussion of limitations. It satisfies relevance, depth, and novelty while avoiding hype, though its experimental nature and limited scalability prevent a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T04:02:16.545737"
+    },
+    {
+      "id": 4934,
+      "source_id": 34,
+      "original_url": "https://blog.victorsilva.com.uy/oci-resource-manager-drift-detection/",
+      "title": "OCI Resource Manager Drift Detection: Alerts Without Events",
+      "summary": "OCI Resource Manager drift detection yields no native Events, so you must poll work requests and handle its specific IAM and version constraints to build a reliable alerting pipeline.",
+      "ideas": [
+        "Drift detection emits no OCI Events; you must implement custom polling",
+        "DetectStackDrift requires ORM_STACK_UPDATE, granting delete rights to auditors",
+        "WorkRequest operation is DRIFT_DETECTION, not listed among job operation enums",
+        "State files are readable via ORM_JOB_READ, creating credential exposure risk",
+        "DetectStackDrift returns 202 with work request OCID in header, not body",
+        "Stack must have last job as Apply or Import State to trigger drift check",
+        "IAM dynamic-group policy must grant unconditional manage orm-stacks, creating privilege exposure",
+        "ListStackResourceDriftDetails without work-request ID can return stale results"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers deep, original technical detail about OCI Resource Manager drift detection, including API behavior, IAM permission quirks, and a concrete architecture for alerting without native Events integration. It is highly relevant to security and infrastructure engineers seeking actionable insight, though some sections contain unverified policy constructs and padding that prevent a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T03:54:15.460912"
+    },
+    {
+      "id": 4933,
+      "source_id": 34,
+      "original_url": "https://blog.fnil.net/s3-at-twenty/",
+      "title": "Twenty Years of S3: How It Became the Default Persistence Layer for Modern Data Infrastructure",
+      "summary": "S3 now offers strong consistency and conditional writes that enable it to serve as an authoritative persistence layer for linearizable workloads like Git hosting.",
+      "ideas": [
+        "S3 strong read-after-write consistency introduced in 2020",
+        "Conditional writes (create‑if‑absent, CAS) launched 2024",
+        "S3 Express One Zone delivers sub‑10 ms latency within an AZ",
+        "S3 Tables, Vectors, Files, and Annotations extend S3 beyond raw objects",
+        "Cursor’s Continuity achieves >120 pushes/sec using S3 WAL and CAS"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article details S3's evolution to strong consistency and conditional writes, showing concrete mechanisms that let object storage replace block storage for linearizable workloads. It is highly relevant to infrastructure and storage engineers, though it stays niche to S3 rather than broad AI or security topics. The coverage is dense and evidence‑rich, but limited to AWS ecosystem specifics.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T03:50:51.159501",
+      "image_url": "https://blog.fnil.net/images/s3-at-twenty-cover.jpg?h=adce4da80743785a1524",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 4932,
+      "source_id": 34,
+      "original_url": "https://bkaradzic.github.io/posts/preprocessor/",
+      "title": "Writing a C preprocessor for bgfx shader compiler",
+      "summary": "A lightweight, allocator‑injective preprocessor with no global state can replace a 40‑year‑old legacy processor for efficient shader compilation.",
+      "ideas": [
+        "Injectable allocator and per‑call struct replace fpp’s globals for thread safety",
+        "Implement #define/#include handling via callbacks to avoid filesystem coupling",
+        "Targeted feature set (macro expansion, recursion) suffices for shader preprocessing without full C99 compliance"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete implementation details, an original allocator‑injected design, and a thorough comparison of preprocessor options that directly serve readers interested in shader tooling. It provides sufficient technical evidence and mechanism explanation to merit a high score, though it lacks full source code of the new preprocessor and assumes prior knowledge of bgfx’s architecture. The content remains tightly focused on technical substance without unnecessary hype or filler.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T03:48:30.780395"
+    },
+    {
+      "id": 4931,
+      "source_id": 34,
+      "original_url": "https://bharadwajraju.com/posts/btrfs-snapshots-in-kde",
+      "title": "Btrfs Snapshot Integration in KDE",
+      "summary": "KIO Snapshot provides efficient, rootless browsing of Btrfs history across files and subvolumes without requiring a privileged system service.",
+      "ideas": [
+        "KIO Snapshot exposes Btrfs snapshots through a rootless snapshot:// virtual filesystem protocol."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a strong, firsthand account of integrating Btrfs snapshots into KDE, with concrete architecture details involving libbtrfsutil, Solid, KIO workers, DBus, and a rootless snapshot:// protocol. The non-obvious permissions workaround and virtual-folder design are especially useful, although the article omits code, API-level implementation details, benchmarks, and thorough discussion of edge cases or security implications.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T03:48:15.617075"
+    },
+    {
+      "id": 4930,
+      "source_id": 34,
+      "original_url": "https://arthurbrugiere.fr/blog/2026/08/llama-server-lfm-parallel/",
+      "title": "Three LFM2.5-2.6B in parallel on an iGPU",
+      "summary": "Using llama.cpp server with explicit slot configuration enables true parallel inference of hybrid LFM2.5 on an iGPU, dramatically improving concurrency and cache reuse.",
+      "ideas": [
+        "Hybrid LFM2.5 uses recurrent state preventing true parallel slots",
+        "Llama.cpp server enables 3 concurrent slots on iGPU achieving ~28 tok/s vs Ollama's 15",
+        "Cache reuse cuts prefilling from 30s to <0.5s for follow-up messages"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete performance measurements, explains a hybrid architecture limitation, and provides actionable tuning guidance for parallel LLM serving on iGPU. It offers novel technical insight and reproducible experiments, though some sections contain modest padding and niche setup details.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T03:45:51.023171",
+      "image_url": "https://arthurbrugiere.fr/blog/2026/08/llama-server-lfm-parallel.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 4929,
+      "source_id": 34,
+      "original_url": "https://ajitem.com/blog/go-1-27-runtime-and-compiler/",
+      "title": "Go 1.27's Runtime and Compiler: A Buffer Removed, Labels Added, Allocation Sped Up",
+      "summary": "Go 1.27rc1 removes the last escape hatch for buffered timer channels, adds traceback labels by default, and can accelerate small allocations by up to 39%, but only when SizeSpecializedMalloc is enabled and its impact on binary size does not reflect performance gains.",
+      "ideas": [
+        "SizeSpecializedMalloc can boost allocation speed by ~39% for objects ≤100 bytes, but only when enabled via GOEXPERIMENT."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, reproducible evidence of three significant runtime/compiler changes in Go 1.27rc1, including a fatal GODEBUG removal, label injection in crash traces, and a measured allocation speedup up to 39% for small objects. It explains the mechanisms, provides benchmark harness code, and clarifies subtle interactions such as the need for GOEXPERIMENT=nosizespecializedmalloc to isolate the effect. The substance is highly technical and directly relevant to developers working with Go internals, but the breadth of peripheral context and some repetitive framing slightly dilute the focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-22T03:40:56.234222",
+      "image_url": "https://ajitem.com/optimized/images/blog/go-1-27-runtime-and-compiler-hero.webp",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": "Go 1.27's Runtime and Compiler: A Buffer Removed, Labels Added, Allocation Sped Up"
+    },
+    {
+      "id": 4928,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/perspective/the-taiwan-attack-was-built-with-two-free-downloads-from-vendors-nobody-rates",
+      "title": "The Taiwan attack was built with two free downloads from vendors nobody rates",
+      "summary": "Enterprises must map and rate open-source AI framework dependencies before they become attack vectors.",
+      "ideas": [
+        "Attack built from two free open-source AI agent frameworks",
+        "These frameworks form an unrated, unmapped supplier layer",
+        "Enterprises must map every framework in their agent stack",
+        "Attack specifically targeted supply-chain vendors",
+        "AI hacking tools are moving toward commoditized sale"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article uncovers that the Taiwan attack was assembled from two freely downloadable AI frameworks, exposing an unrated supplier layer that enterprises ignore. It provides actionable guidance to map every framework in the agent stack. No clickbait or padding penalties apply, resulting in high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-22T03:33:10.763782",
+      "image_url": "https://files.cyberriskalliance.com/wp-content/uploads/2025/10/102325_ai_agents.jpg",
+      "image_width": 945,
+      "image_height": 630,
+      "image_alt": "<p>(Adobe Stock)</p>"
+    },
+    {
+      "id": 4927,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/08/21/dispatches-from-o-reilly-the-right-amount-of-spec-for-agentic-development/",
+      "title": "Dispatches from O'Reilly: The right amount of spec for agentic development",
+      "summary": "Effective agentic development requires a calibrated specification that is testable yet not over‑specified, with explicit validation before scaling.",
+      "ideas": [
+        "Find a middle ground between zero spec and full formal specs for AI‑driven coding tasks.",
+        "Use a two‑step workflow: draft minimal spec, then run another agent to locate contradictions.",
+        "Treat specifications as contracts in multi‑agent pipelines, requiring schemas and invariants.",
+        "Avoid overspecification because model performance degrades as context size grows.",
+        "Design APIs with explicit types, validation, and actionable errors to serve as machine‑readable specs.",
+        "Adjust spec detail based on task type: deterministic, exploratory, or multi‑agent workflows.",
+        "Validate the spec before scaling implementation to catch upstream flaws early.",
+        "Agile and XP practices still matter, but focus should shift to fast feedback and error detection."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers eight concrete insights and practical guidelines for using AI agents in software development, such as balanced specification, spec‑validation workflows, contract needs for multi‑agent pipelines, and AI‑friendly API design. The content aligns well with AI, Tech, and Productivity themes and offers actionable advice, meeting the density threshold for a medium‑length piece. It contains no clickbait, padding, or promotional bias, so no major penalties apply.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-08-22T03:33:04.879814",
+      "image_url": "https://cdn.stackoverflow.co/images/jo7n4k8s/production/f67d094b96bec257c2011a99f351211c369ba0b2-12000x6300.jpg?w=1200&h=630&auto=format",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 4926,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/encrypted-prompts-bypass-ai-safety-guardrails-in-grok-and-gemini/",
+      "title": "Encrypted Prompts Bypass AI Safety Guardrails in Grok and Gemini",
+      "summary": "Encrypted prompts can bypass AI safety guardrails by decrypting malicious instructions inside trusted execution environments, evading detection.",
+      "ideas": [
+        "Encrypted prompts hide malicious instructions until decrypted inside trusted execution environments.",
+        "Guardrails cannot detect ciphertext, allowing harmful prompts to bypass input safety checks.",
+        "Technique enables data exfiltration via agentic browsing without user interaction.",
+        "Decrypted prompts can instruct models to produce restricted content framed as safe encryption.",
+        "Researchers disclosed the method to xAI but received no response before publishing public warning.",
+        "Defensive solutions involve monitoring encrypted payloads and reinforcing guardrail detection logic.",
+        "Gemini's attack success is decreasing, but Grok remains vulnerable to this bypass."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "Score 87 reflects high value density with multiple novel attack insights and concrete defensive recommendations, while lacking major penalties. The piece delivers deep technical detail on encrypted context injection, its exploitation in Grok and Gemini, and actionable mitigation steps, aligning strongly with AI security themes. Minor deductions for site clutter and promotional ads, but overall rigor and relevance justify a high rating.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-22T03:32:55.666096"
+    },
+    {
+      "id": 4925,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/08/microsoft-defenders-own-driver-can-be.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Microsoft Defender's legitimate BTR.sys driver can be weaponized by admin-level attackers to delete security software at boot using a hardcoded RC4 key and undocumented protocol, with Microsoft declining to patch.",
+      "ideas": [
+        "BTR.sys driver can be weaponized for arbitrary kernel-level file and registry operations",
+        "Hardcoded RC4 256-byte key unchanged across 18 Windows builds since Windows 7",
+        "BTR_CLI bypasses Service Control Manager, generating no Event ID 7045 entry",
+        "Golden window: filesystem writable but Defender user-mode services not yet started",
+        "Sysmon Event IDs 15, 12, 13, 11, 23, 6 provide specific BTR.sys abuse detection",
+        "Microsoft confirmed no patch planned; technique requires pre-existing admin privileges",
+        "FIN7's AvNeutralizer previously weaponized built-in ProcLaunchMon.sys similarly",
+        "Research originated from incident response tracing suspicious telemetry to legitimate Defender activity",
+        "BTR.sys cannot be blocklisted without breaking Defender's own remediation capability",
+        "RC4-encrypted configuration blobs stored as alternate data streams with :changelist suffix"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "Strong technical cybersecurity reporting with substantial value density. Delivers detailed technical analysis of BTR.sys weaponization technique, specific actionable Sysmon detection signatures, historical context (CVE-2021-24092, FIN7's AvNeutralizer), Microsoft's non-patch position, and links to the BTR_CLI PoC. Minor penalties for site navigation clutter and promotional sidebar content. Delivers genuine expert-level information security professionals can act on.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-22T03:32:47.261136",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCbsmb6Wk8pQKWQmByAl5wnZQEVjS7ZYiHrlsHRM7VlcoPL7s30TaoTReoaQ4LI8Oy3KfKlIRHn9sN_7bjEKd_FWPHi1V0JR6LERepKBWSdJOk6cSUNgfIN2KVc6ydfbTILTy11owREYfpO7K11gFQV00l6qf1zl5rzF28jPhcN744yTvRAA-EjyDSBXs/s1700-e365/windows.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
     {
       "id": 4924,
       "source_id": 27,
