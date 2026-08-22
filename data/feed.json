@@ -1,7 +1,182 @@
 {
-  "updated_at": "2026-08-22T17:00:00.174482+00:00",
-  "total_items": 848,
+  "updated_at": "2026-08-22T19:00:00.184216+00:00",
+  "total_items": 854,
   "items": [
+    {
+      "id": 4980,
+      "source_id": 29,
+      "original_url": "https://github.com/Parthuss/stash",
+      "title": "Show HN: Stash, turn your Instagram saves into notes Claude finds on its own",
+      "summary": "Stash automatically converts saved Instagram posts into searchable AI‑generated notes, enabling richer personal knowledge retrieval.",
+      "ideas": [
+        "Uses Groq Whisper and vision models to transcribe Instagram saved posts into structured markdown notes",
+        "Architecture includes Cloudflare Worker queue, D1 database, and local daemon for asynchronous processing",
+        "Hybrid search combines FTS5 keyword and vector similarity via sqlite‑vec for efficient retrieval",
+        "Frame gate filters transcript frames to extract only relevant visual moments, limited to five frames",
+        "Vision API constraints: max three images per request and optimal 512px resolution",
+        "Setup requires ffmpeg, yt‑dlp, optional Instagram cookies, and a Groq API key",
+        "iOS Shortcut sends captures to Cloudflare Worker for background processing on the phone",
+        "Notes are stored as markdown with YAML frontmatter and indexed locally via SQLite‑vec",
+        "MCP integration lets Claude Code search and retrieve these notes across any project",
+        "Marking notes as used prevents the vault from becoming a graveyard of unused entries"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "The content delivers many concrete, actionable insights—pipeline design, hybrid search, vision frame limits, and MCP integration—giving high value density and strong alignment with AI and productivity themes; no major penalties apply.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-08-23T03:37:19.450833",
+      "image_url": "https://opengraph.githubassets.com/9650b8b0c8c20b61f8192e4a691c57caed93eee3ccc9483f884f34f0795784c3/Parthuss/stash",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Turn the Instagram posts you save into notes Claude finds on its own. - Parthuss/stash"
+    },
+    {
+      "id": 4979,
+      "source_id": 7,
+      "original_url": "https://earendil.com/posts/compaction-in-pi/",
+      "title": "https://earendil.com/posts/compaction-in-pi/",
+      "summary": "Summarizing older dialogue via compaction frees token space while preserving the essential state of a coding session.",
+      "ideas": [
+        "LLMs have limited context windows; exceeding them triggers request errors.",
+        "Compaction creates a summary of older conversation turns to free token space.",
+        "Pi keeps recent messages unchanged and discards older content beyond a token budget.",
+        "A dedicated summarization prompt with sections for goal, progress, and decisions is used.",
+        "Compaction breaks existing prompt cache but restores caching for subsequent requests.",
+        "Developers can replace Pi's compaction with custom prompts or extensions.",
+        "A separate LLM model can handle summarization, lowering overall cost."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete insights on how LLM‑based coding agents manage context limits, explains Pi's compaction mechanism, prompt design, and caching trade‑offs, and shows how to customize it—providing practical knowledge for developers. It stays focused, contains no clickbait or filler, and aligns strongly with AI and tech themes.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-08-23T03:36:58.725758",
+      "image_url": "https://earendil.com/static/og/posts/compaction-in-pi.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How Compaction Works in Pi — Earendil"
+    },
+    {
+      "id": 4978,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/named-pipes-under-attack-securing-windows-interprocess-communication/",
+      "title": "Named Pipes Under Attack: Securing Windows Interprocess Communication",
+      "summary": "Named pipes must be treated as exposed, privileged interfaces requiring strict identity verification, explicit access controls, and per-command authorization to prevent untrusted local processes from abusing privileged services.",
+      "ideas": [
+        "Treat named pipes as exposed local interfaces requiring verification.",
+        "Explicitly restrict pipe DACL to minimal authorized identities.",
+        "Separate authentication from per-command authorization.",
+        "Avoid broad commands; use narrow allowlists to prevent confused deputy.",
+        "Verify client identity via PID or executable hash in addition to DACL.",
+        "Impersonate client only when necessary and validate success.",
+        "Apply timeouts, size limits, and rate limiting to prevent abuse."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers multiple concrete security insights—treating pipes as exposed interfaces, explicit DACL restrictions, separate authentication and per-command authorization, and preventing confused deputy attacks—giving high value density. Minor promotional cues (sponsor mention, call-to-action) slightly reduce impact but do not undermine substance. It aligns strongly with CyberSecurity and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-23T03:33:07.634393",
+      "image_url": "https://www.bleepstatic.com/content/posts/2026/08/18/0_named-pipe-header-image.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 4977,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/hackers-infect-android-car-head-units-with-proxy-botnet-malware/",
+      "title": "Hackers infect Android car head units with proxy botnet malware",
+      "summary": "Android car infotainment systems can be hijacked into proxy botnets, enabling ad‑fraud without affecting vehicle control.",
+      "ideas": [
+        "First documented malware infection chain specifically targeting Android car head units.",
+        "Attack uses legitimate DoFun update app (TWCore) as a supply‑chain vector.",
+        "JarService decrypts and launches a second‑stage loader that contacts an MQTT C2 server.",
+        "Payload reports device specs and supports nine commands, including proxy and click‑fraud functions.",
+        "Operators load a reverse‑proxy module called “zhima” to turn head units into residential proxy nodes.",
+        "Threat actor MoYu, previously linked to BadBox botnet, is credited with the campaign.",
+        "Malware does not interfere with vehicle control systems but monetizes through proxy and ad fraud.",
+        "Kaspersky notified DoFun, which claimed to have resolved the vulnerability."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: it documents a novel threat (first malware targeting Android car head units), provides technical details (malware name, command list, C2 infrastructure), cites Kaspersky research and attribution, and highlights the monetization model (proxy botnet, ad fraud). The information is concise and relevant to cybersecurity professionals, with minimal padding or clickbait, earning a strong score in both value density and thematic relevance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-23T03:33:00.464104",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/08/21/car.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 4976,
+      "source_id": 4,
+      "original_url": "https://ricardojoserf.github.io/crystalpotato/",
+      "title": "Ricardo J. Ruiz Fernández",
+      "summary": "Using Crystal to build a native, low‑footprint privilege escalation tool enables advanced evasion techniques like indirect syscalls and hidden imports.",
+      "ideas": [
+        "CrystalPotato ports GodPotato to native Crystal binary for lower forensic footprint.",
+        "Crystal produces a single PE executable with no runtime dependencies.",
+        "Compile‑time macros XOR‑obfuscate strings, removing plaintext from the binary.",
+        "Indirect syscalls via Exception Directory hide calls from EDR heuristics.",
+        "Dynamic API resolution walks the PEB and uses DJB2 hashes to hide imports.",
+        "RTTI names are sanitized to meaningless identifiers to thwart analyst clues.",
+        "Default silent mode outputs only command results unless debug flags are used.",
+        "Supports command execution, reverse shell, and local admin creation after token capture.",
+        "Escalation chain uses OXID Resolver RPC hook and named pipe impersonation.",
+        "Build with crystal command for static release, producing a self‑contained executable."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple novel and practical insights into offensive malware development, such as indirect syscalls, dynamic API resolution, and compile‑time string obfuscation, all directly applicable to red‑team work. It stays focused, contains no clickbait or padding, and aligns strongly with cybersecurity themes, giving high value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-23T03:32:33.163262"
+    },
+    {
+      "id": 4975,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Aug/22/llm/",
+      "title": "llm 0.33",
+      "summary": "llm 0.33 adds practical command‑line enhancements enabling safer AI agent deployment and flexible template composition.",
+      "ideas": [
+        "Upgraded to OpenAI Python 3.x and switched HTTP client to httpx2.",
+        "Embedding methods now accept --key for per-call API keys.",
+        "Template repeat (‑t/--template) lets combine multiple templates sequentially.",
+        "Reasoning‑summary option offers auto, concise, detailed reasoning outputs.",
+        "Isolated ephemeral runtime enables safer AI agent deployment.",
+        "Responses API integration supports configurable model behavior."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The post delivers multiple concrete technical insights—library upgrade, embed key support, template repeatability, reasoning_summary option—with clear usage examples, showing high value density for AI/tech readers and no major clickbait or padding issues. It aligns strongly with AI and Tech themes, warranting a score in the low‑80s.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-08-23T03:32:22.221634"
+    },
     {
       "id": 4974,
       "source_id": 34,
