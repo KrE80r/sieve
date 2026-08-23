@@ -1,7 +1,127 @@
 {
-  "updated_at": "2026-08-23T17:00:00.167907+00:00",
-  "total_items": 849,
+  "updated_at": "2026-08-23T19:00:00.179836+00:00",
+  "total_items": 853,
   "items": [
+    {
+      "id": 5011,
+      "source_id": 29,
+      "original_url": "https://github.com/infomaniac777/ringdl2/blob/master/README.md",
+      "title": "Show HN: Ringdl2 – A lightweight Linux downloader in Rust using io_uring",
+      "summary": "Ringdl2 achieves dramatically lower memory and CPU overhead by using io_uring, O_DIRECT, and a pinned memory pool to bypass traditional buffering during HTTPS downloads.",
+      "ideas": [
+        "Unified io_uring interface merges network reads and disk writes in a single ring buffer.",
+        "Pinned memory pool registered with kernel minimizes page cache inflation.",
+        "O_DIRECT bypasses page cache, writing directly to storage device.",
+        "In-place TLS decryption and compaction satisfy O_DIRECT alignment constraints.",
+        "Write pool provides natural backpressure, throttling server via TCP flow control.",
+        "Benchmarks show 99.5% less page cache growth and 55% lower user CPU usage.",
+        "Minor page faults drop 82% while major faults reduce by 90%.",
+        "Architecture requires Linux 5.1+ and modern filesystems like ext4, XFS, Btrfs.",
+        "Memory trade‑off: higher resident set (~260 MB) vs minimal page cache usage.",
+        "Roadmap aims to extend features for a complete aria2c alternative."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 94,
+      "rating_reason": "The piece delivers multiple novel architectural insights (e.g., unified io_uring I/O, pinned memory pool, in-place TLS decryption) and backs them with rigorous benchmark data showing dramatic reductions in page cache usage and CPU time. It also discusses important trade-offs and a clear roadmap, aligning strongly with technology and systems themes without any padding or clickbait.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-08-24T03:36:51.891393",
+      "image_url": "https://opengraph.githubassets.com/c5a94c7f8364299f99d8513fbac92442543c97b7d779f6e373c1bf6824bb7021/infomaniac777/ringdl2",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "ringdl2 is a lightweight, single-threaded Linux downloader built in Rust that leverages modern io_uring, O_DIRECT, and unbuffered streaming TLS to minimize total RAM usage and total CPU usage witho..."
+    },
+    {
+      "id": 5010,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/gitlab-cve-2026-19478-lab",
+      "title": "https://github.com/dinosn/gitlab-cve-2026-19478-lab",
+      "summary": "Unauthenticated attackers can invoke any zero‑argument Ruby method on GitLab GraphQL objects, enabling unauthorized project deletion.",
+      "ideas": [
+        "Exploits @gl_introduced to call arbitrary 0‑argument Ruby methods on GraphQL objects",
+        "Fallback resolver incorrectly allows public_send to execute methods without resolver",
+        "Safe detection script uses harmless to_param to confirm vulnerability",
+        "Destructive script creates a disposable project then deletes it via the exploit",
+        "PoC also demonstrates sibling CVE‑2026‑19650 multiplex query‑swap vulnerability",
+        "Remediation requires upgrading GitLab or blocking the @gl_introduced directive",
+        "Affected versions include GitLab CE/EE 18.2–18.11.10, 19.0.0–19.2.3"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The repository delivers multiple high‑value insights: a novel vulnerability explanation, reproducible PoC scripts, detection and destructive‑impact demonstrations, and clear remediation steps, with no clickbait or padding. Its dense, technical content targets security researchers and provides actionable knowledge, making it highly useful but narrowly scoped to experts. Therefore it merits a strong score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-24T03:32:52.261940",
+      "image_url": "https://opengraph.githubassets.com/ed0caa0817a0f0ac45e6b44cef5911be9427d04233c0c2f3b0ecc22b4f4e40fd/dinosn/gitlab-cve-2026-19478-lab",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Reproducible A/B lab + safe PoC for GitLab CVE-2026-19478 / CVE-2026-19650 (GraphQL @gl_introduced) - dinosn/gitlab-cve-2026-19478-lab"
+    },
+    {
+      "id": 5009,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/toxicpanda-android-malware-uses-vpn-permissions-to-block-google-play/",
+      "title": "ToxicPanda Android malware uses VPN permissions to block Google Play",
+      "summary": "ToxicPanda exploits VPN and Wireless ADB to silently hijack Android devices and evade security checks.",
+      "ideas": [
+        "ToxicPanda requests VPN permissions to block Google Play communications",
+        "Malware uses Accessibility Service to enable Wireless ADB and gain shell access",
+        "Supports 167 remote commands and phishing overlays targeting 349 financial apps",
+        "Includes PIN‑harvesting module that spoofs lock screen and captures credentials",
+        "AutoBoot command bypasses OEM power management to maintain persistence",
+        "Zimperium published IoCs on GitHub for detection",
+        "Wireless ADB abuse is a growing trend among Android malware"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: novel insight on VPN‑based blocking, practical details on ADB abuse, actionable IoC resources, and expert analysis from Zimperium. Its focus on emerging Android malware techniques aligns strongly with cybersecurity themes and contains minimal padding. Overall density is high for its length, with no clickbait or promotional bias.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-24T03:32:38.005198",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/08/20/toxicpanda.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 5008,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/CVE-2026-10053-lab",
+      "title": "https://github.com/dinosn/CVE-2026-10053-lab",
+      "summary": "The lab proves that GitLab's npm package‑registry path traversal permits arbitrary file writes, and the patch successfully blocks this attack.",
+      "ideas": [
+        "CVE-2026-53 allows authenticated arbitrary file write via npm package‑registry path traversal in GitLab.",
+        "The vulnerability occurs before the :store phase where attacker‑controlled filename is written verbatim.",
+        "Docker‑compose lab reproduces vulnerable (19.2.1) and patched (19.2.2) GitLab instances.",
+        "Exploit writes file at traversed path and verifies it with on‑disk SHA‑1 oracle.",
+        "Patch adds :protect_from_path_traversal! before :store, blocking the traversal attack.",
+        "RCE is not achieved because written files are 0644 and need an executable‑bit primitive.",
+        "rce_gate_demo.sh shows exec‑bit gate behavior by manually setting executable permission."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The README delivers multiple concrete value instances: a reproducible lab, detailed exploitation steps, insight into the root cause and fix, and a demonstration of exec‑bit gating, all tightly scoped to cybersecurity. The content is concise, free of fluff, and aligns strongly with CyberSecurity and Tech themes, resulting in high value density without penalties.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-24T03:32:30.928170",
+      "image_url": "https://opengraph.githubassets.com/9406a5ae810fb6c1fca0556cf484b392953687110adab1ea43b6513c4a018924/dinosn/CVE-2026-10053-lab",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Reproducible lab for CVE-2026-10053 (GitLab npm package-registry path traversal -&gt; arbitrary file write as git). Vulnerable 19.2.1 vs patched 19.2.2, deterministic oracle. - dinosn/CVE-2026-1005..."
+    },
     {
       "id": 5007,
       "source_id": 34,
