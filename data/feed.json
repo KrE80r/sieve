@@ -1,7 +1,271 @@
 {
-  "updated_at": "2026-08-26T13:00:00.172693+00:00",
-  "total_items": 901,
+  "updated_at": "2026-08-26T14:00:00.165204+00:00",
+  "total_items": 912,
   "items": [
+    {
+      "id": 5124,
+      "source_id": 34,
+      "original_url": "https://www.yagiz.co/eliminating-branches-in-cpp-loops",
+      "title": "Eliminating branches in C++ loops",
+      "summary": "Branches can be removed by using wraparound subtract/compare, compile‑time lookup tables, or SIMD‑style SWAR operations, allowing fully branchless validation of byte ranges.",
+      "ideas": [
+        "Subtract a constant and compare against a limit to test a single interval in one unsigned compare.",
+        "Generate a 256‑byte compile‑time lookup table for complex character classes like hex digits.",
+        "Process eight bytes at a time with SWAR using splat constants and mask accumulation.",
+        "Use NEON intrinsics to subtract 'a' from a 16‑byte vector and OR propagate lane overflows.",
+        "Fall back to a scalar tail after processing full blocks to avoid missing bytes."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, low‑level techniques—wraparound comparison, compile‑time lookup tables, SWAR, and NEON vectorization—to eliminate branches in C++ loops, providing measurable performance insight. It is highly relevant to programmers focused on performance‑critical code, though it assumes familiarity with low‑level C++ and offers limited empirical benchmark data, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T23:08:17.889271",
+      "image_url": "https://www.yagiz.co/eliminating-branches-in-cpp-loops/opengraph-image.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Eliminating branches in C++ loops"
+    },
+    {
+      "id": 5123,
+      "source_id": 34,
+      "original_url": "https://www.jerriepelser.com/posts/lossless-json-round-tripping-with-json-extensiondata/",
+      "title": "Lossless JSON round-tripping in C# with JsonExtensionData",
+      "summary": "Use a [JsonExtensionData] dictionary to retain unmapped JSON properties during C# serialization round‑trips.",
+      "ideas": [
+        "JsonExtensionData captures unmapped JSON properties into a dictionary.",
+        "Extension data is serialized after declared fields, preserving all unknown members.",
+        "Explicitly declare DateTimeOffset to avoid encoding issues with special characters."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article explains a concrete problem of JSON round‑tripping and provides a clear solution using JsonExtensionData, including code samples and trade‑offs. It offers original, reproducible evidence and addresses serialization nuances such as date handling, which adds practical value. However, the approach appends extension data after known fields and may require encoder adjustments, limiting its perfection.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:58:47.947647",
+      "image_url": "https://www.jerriepelser.com/og-image/lossless-json-round-tripping-with-json-extensiondata.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5122,
+      "source_id": 34,
+      "original_url": "https://www.bamsoftware.com/software/exepack/",
+      "title": "exepack 1.5.0",
+      "summary": "A custom 283‑byte decompression stub adds skip_len handling, register restoration, and expansion support while correcting A20‑bug and overlap issues in EXEPACK unpacking.",
+      "ideas": [
+        "Custom 283-byte stub handles skip_len, restores registers, and supports expansion.",
+        "Decompression processes commands backwards using copy‑fill and move to avoid overlap."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers detailed, original analysis of EXEPACK header variants, decompression stub behavior, and bug fixes, with concrete code-level insights that enable reverse‑engineering of packed DOS executables. It includes practical mechanisms, error handling, and clear limits that are rarely documented. While highly relevant to technical readers, its niche focus restricts broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:52:54.295192"
+    },
+    {
+      "id": 5121,
+      "source_id": 34,
+      "original_url": "https://wisplu.com/blog/en/api-returns-200-does-nothing/",
+      "title": "An API that returns 200 and does nothing is worse than one that returns an error",
+      "summary": "A 200 response that silently does nothing can embed false knowledge more dangerously than a clear error, so verification must check actual outcomes, not just HTTP status.",
+      "ideas": [
+        "200 responses can silently embed false assumptions, unlike explicit errors.",
+        "dev.to tags are immutable; the API silently ignores update requests.",
+        "Whitespace‑sensitive _redirects can cause silent redirect failures.",
+        "cp -R with an existing directory nests assets, breaking URLs."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece delivers several concrete, non‑obvious engineering failures—silent 200 responses, immutable tags, whitespace‑sensitive redirects, and cp‑R pitfalls—illustrating how false facts can propagate and cause downstream errors. It is highly relevant to developers focused on API design, debugging, and infrastructure reliability, though its learning value is somewhat limited by the narrow scope of observed bugs and occasional self‑referential framing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:50:10.949371",
+      "image_url": "https://wisplu.com/og/en/api-returns-200-does-nothing.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5120,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/isolation-costs",
+      "title": "What Isolation Actually Costs",
+      "summary": "Isolation in containers carries negligible performance cost; the real expense stems from Docker's layered packaging and idle daemon footprint.",
+      "ideas": [
+        "Capability mode reduces median runtime by <1% vs unrestricted jail.",
+        "Cold start of jail ~0.17 s.",
+        "nginx:alpine image 26 MB vs nginx:latest 63 MB.",
+        "Docker image pulls incur metered counters and 144 MB idle daemon."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article supplies original benchmark measurements showing near‑zero isolation overhead between Docker containers and FreeBSD jails, highlighting hidden costs in Docker's ecosystem. It is highly relevant to sysadmin and infrastructure engineers seeking concrete performance data on container design. However, the findings are tied to a specific FreeBSD version and hardware, limiting direct generalizability to newer container runtimes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:48:56.368393"
+    },
+    {
+      "id": 5119,
+      "source_id": 34,
+      "original_url": "https://thewatershed.markpesce.com/the-pit-crew/",
+      "title": "The Pit Crew",
+      "summary": "AI can efficiently boost model performance by renting brief tuning sessions, turning slow models into reliable night‑shift workers.",
+      "ideas": [
+        "Qwen3.8‑27B speed improved 20% after optimization tuning.",
+        "Hermes struggles with eight‑hour unattended tasks.",
+        "External AI agents can safely modify configuration files.",
+        "Renting AI for short‑term optimization yields owned, lasting gains."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, reproducible technical steps — 20% speed gain on Qwen3.8‑27B and a clear workflow for safe configuration changes — while exposing a practical limitation of Hermes for long‑horizon tasks. It balances depth with narrative, but occasional metaphorical padding slightly weakens focus. The substance remains valuable for AI engineers seeking actionable insights.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:45:19.085313",
+      "image_url": "https://storage.ghost.io/c/00/c7/00c7626c-a7bb-4209-9ffe-0ecae73f1677/content/images/size/w1200/2026/08/the-watershed-fullsize-TEXT-8.jpg",
+      "image_width": 1200,
+      "image_height": 734,
+      "image_alt": ""
+    },
+    {
+      "id": 5118,
+      "source_id": 34,
+      "original_url": "https://tadas-s.github.io//information-security/2026/08/24/uab-nevda-elpako-authentication-vulnerability/",
+      "title": "Elpako (by Nevda) digital signature platform authentication vulnerability",
+      "summary": "An unrestricted local signing API in Elpako allows any website to obtain a valid ECDSA signature from a citizen’s ID card, enabling impersonation attacks.",
+      "ideas": [
+        "Elpako's local /Signing/Sign endpoint signs arbitrary data without origin verification.",
+        "Absence of CORS or Origin checks lets a malicious site proxy signing requests.",
+        "Mitigation: bind the signature to the Origin or enforce a trusted‑site whitelist.",
+        "The Linux package runs as root via init.d, lacking systemd confinement."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete, reproducible vulnerability in the Elpako digital‑signature platform, including source code, a live demo, and a clear attack vector that exploits an unrestricted signing API. It offers practical mitigation advice and contextual comparisons to a similar Estonian e‑ID flaw, making it valuable for security engineers and auditors. The focus is narrow to a specific product, limiting broader impact, but the technical depth and evidence are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:42:55.285049"
+    },
+    {
+      "id": 5117,
+      "source_id": 34,
+      "original_url": "https://shrikar.com/writing/finetune-embeddinggemma-insurance-retrieval/",
+      "title": "Fine-tuning EmbeddingGemma for insurance retrieval in 10 minutes for $0.65",
+      "summary": "A single epoch of contrastive fine‑tuning on 21k insurance Q&A pairs lifts EmbeddingGemma's NDCG@10 from 0.73 to 0.82 for under $1 of GPU cost.",
+      "ideas": [
+        "Use in‑batch MultipleNegativesRankingLoss with batch size 128 (via GradCache) for strong negative signal.",
+        "Construct a retrieval benchmark directly from raw (question, answer) pairs, grouping duplicate questions.",
+        "Apply EmbeddingGemma's query and document prompts consistently during training and evaluation.",
+        "One 10‑minute L40S run ($0.65) improves top‑10 miss rate from 8.8% to 2.9%."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a reproducible, cost‑effective recipe for fine‑tuning a small embedding model on domain data, complete with code, metric definitions, and a benchmark harness. It is directly relevant to RAG/LLM engineers and provides concrete evidence of performance gains, though the novelty is incremental rather than breakthrough.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:40:56.298301"
+    },
+    {
+      "id": 5116,
+      "source_id": 34,
+      "original_url": "https://seanblanchfield.com/2026/08/ai-sovereignty",
+      "title": "Five Shades of AI Sovereignty",
+      "summary": "AI sovereignty hinges on controlling data, infrastructure, and inference pathways, as exemplified by token inefficiencies, platform envelopment, and state‑driven access restrictions.",
+      "ideas": [
+        "Token cost for Irish language inputs can be twice that of English, degrading low‑resource language usability",
+        "Enterprise AI exhaust can be monetized by vendors, enabling platform envelopment and loss of competitive moats",
+        "Export controls can abruptly disable foreign frontier models, exposing national economic vulnerability",
+        "Open‑source Chinese LLMs provide cost‑effective alternatives but carry ideological alignment risks",
+        "EU data directives allow free commercial reuse, enabling foreign firms to capture value without reinvestment"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers original, concrete mechanisms—token cost disparities for minority languages, reverse information paradox, platform envelopment, and geopolitical kill‑switches—backed by measurable data and firsthand policy experience. It stays tightly relevant to AI engineering and security while avoiding hype, providing verifiable insights a technically savvy reader can act on. Its breadth is offset only by occasional dense political context that offers limited direct technical depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:38:10.704643",
+      "image_url": "https://seanblanchfield.com/images/2026/07/ai-sovereignty.jpg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 5115,
+      "source_id": 34,
+      "original_url": "https://rtnpro.com/post/2026-08-26-preview-environments-promote-to-prod/",
+      "title": "Preview Environments That Actually Promote to Prod",
+      "summary": "Build preview environments as GitOps clones of the base environment rather than parallel universes, and make prod promotion a reviewable Kargo-generated git commit on image.tag so the exact validated image promotes.",
+      "ideas": [
+        "No webhook receiver: preview reliability equals CI webhook handler reliability"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Substantive, evidence-dense platform engineering writeup with concrete Argo CD ApplicationSet, Kargo Warehouse/Stage, and ExternalSecret configurations, plus real implementation gotchas (quote() for 7-char hex tags parsed as integers). The author explicitly retracts earlier claims for what isn't built yet, which is unusual honesty that sharpens trust. Excellent value-per-minute for readers running Kubernetes-based GitOps platforms, though bounded to that ecosystem and dependent on understanding Argo CD/Kargo primitives.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:36:28.150899",
+      "image_url": "https://rtnpro.com/post/2026-08-26-preview-environments-promote-to-prod/featured.webp",
+      "image_width": 1792,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5114,
+      "source_id": 34,
+      "original_url": "https://ryoppippi.com/blog/2026-08-25-nix-secure-enclave-key-ja/",
+      "title": "nix-secure-enclave-keyを作った",
+      "summary": "It enables declarative, reproducible Secure Enclave‑backed SSH and Git signing key management via Nix, eliminating manual Secure Enclave interactions.",
+      "ideas": [
+        "sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none generates an enclave identity for SSH/Git signing.",
+        "Nix module creates a stub in ~/.ssh and manages the identity declaratively across machines.",
+        "Identity enables GitHub SSH auth and commit signing without exposing the private key.",
+        "DOTFILES sync works per‑machine, preserving unique enclave keys while sharing configuration."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible mechanisms for Secure Enclave‑backed SSH and Git signing key management via Nix, including the exact sc_auth command, declarative Nix module, and cross‑machine synchronization. It solves real pain points of GUI‑only tools like Secretive, offering automation and full integration with dotfiles. Limitations are macOS‑specific reliance on Secure Enclave and occasional need for manual scope updates.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-26T22:36:26.501878"
+    },
     {
       "id": 5113,
       "source_id": 34,
