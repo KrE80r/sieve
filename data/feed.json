@@ -1,7 +1,101 @@
 {
-  "updated_at": "2026-08-27T06:00:00.344582+00:00",
-  "total_items": 903,
+  "updated_at": "2026-08-27T07:00:00.207942+00:00",
+  "total_items": 906,
   "items": [
+    {
+      "id": 5135,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/197901/hacking/cisa-red-team-fully-compromised-two-critical-infrastructure-orgs.html",
+      "title": "CISA Red Team Fully Compromised Two Critical Infrastructure Orgs",
+      "summary": "CISA’s red‑team tests showed that robust detection and proper cloud controls can stop full domain compromise in critical infrastructure.",
+      "ideas": [
+        "CISA red team fully compromised two critical infrastructure organizations.",
+        "Organization A missed detection due to default credentials and misconfigured AD CS template.",
+        "SOC in Organization A overwhelmed by false positives, allowing breach to persist.",
+        "Organization B detected initial compromise quickly and contained the attack.",
+        "Both entities lacked Conditional Access for workload identities, enabling cloud exploitation.",
+        "Plaintext passwords and exposed AWS IAM keys created additional persistent threats.",
+        "Red team leveraged Golden Ticket and DCSync to impersonate domain users.",
+        "Recommendations include hardening ADCS, enabling Conditional Access, and treating SCCM as Tier 0.",
+        "Techniques mapped to MITRE ATT&CK identifiers for better context."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple concrete insights about real-world red‑team compromises of critical infrastructure, including specific attack vectors, detection failures, and actionable mitigation steps. It aligns strongly with cybersecurity themes and provides high value density despite minor promotional clutter. Therefore it merits a high score near the top of the scale.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-27T15:34:07.201293",
+      "image_url": "https://securityaffairs.com/wp-content/uploads/2020/07/CISA.jpeg",
+      "image_width": 700,
+      "image_height": 368,
+      "image_alt": ""
+    },
+    {
+      "id": 5134,
+      "source_id": 4,
+      "original_url": "https://sibouzitoun.tech/articles/mmmapiospace-returns-null-tracing-the-real-kernel-mechanism-through-ntoskrnlexe/",
+      "title": "Welcome Articles Labs CTF",
+      "summary": "Windows blocks non‑cached mapping of certain active page‑table pages through strict MiFillSystemPtes validation.",
+      "ideas": [
+        "Driver crashes due to dereferencing NULL from MmMapIoSpace without checking return.",
+        "MmMapIoSpace returns NULL only for physical address 0x2000, not 0x1000.",
+        "PFN entries show usage metric differences leading to mapping failure.",
+        "Cache aliasing hypothesis disproved; both pages marked Cached yet behave differently.",
+        "MmMapIoSpaceEx returns NULL via MiFillSystemPtes error STATUS_CONFLICTING_ADDRESSES.",
+        "MiFillSystemPtes checks partition ID, live page‑table region, and valid frame.",
+        "PFN 2 passes early checks but fails final MiGetPageTablePfnBuddyRaw verification.",
+        "MiGetPageTablePfnBuddyRaw recombines bitfields to compute page‑table buddy pointer.",
+        "Null‑check omission in driver causes SYSTEM_SERVICE_EXCEPTION bugcheck.",
+        "Reverse engineering reveals kernel protects non‑cached mappings of active page tables."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides ten concrete technical insights into why MmMapIoSpace returns NULL for specific physical pages, including driver bugs, PFN metadata differences, cache aliasing disproval, and deep kernel checks in MiFillSystemPtes and MiGetPageTablePfnBuddyRaw. It is highly relevant to cybersecurity and low‑level Windows development, dense with value, and contains no clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-27T15:32:37.558913",
+      "image_url": "https://sibouzitoun.tech/pixels/mmapio.png",
+      "image_width": 1000,
+      "image_height": 1000,
+      "image_alt": ""
+    },
+    {
+      "id": 5133,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/batik-1.19-security-lab",
+      "title": "https://github.com/dinosn/batik-1.19-security-lab",
+      "summary": "Batik 1.19 contains several exploitable external‑resource and scripting vulnerabilities, detailed with PoCs and fixes.",
+      "ideas": [
+        "SSRF via HTTP redirect bypass in same‑host policy",
+        "SSRF via xml:base forged origin in SVGColorProfileElementBridge",
+        "Window.getURL/postURL lack resource‑security checks",
+        "Host‑only origin comparison ignores scheme and port",
+        "Relaxed external‑resource loading permits SSRF and file read",
+        "Zero‑host coalescing lets attackers read local files",
+        "TrueType font injection leads to SVG XSS",
+        "Java‑archive <script> enables code execution under relaxed policies",
+        "tref element renders external text for non‑blind disclosure"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "The piece delivers multiple novel, actionable insights—SSRF bypasses, null‑host coalescing, resource‑gate bypasses, and Java‑archive code execution—supported by reproducible PoCs and clear remediation steps. It demonstrates high value density with nine distinct, well‑explained vulnerabilities, fully aligning with cybersecurity themes. No detectable clickbait or padding reduces the score only for minor padding but does not affect overall quality.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-27T15:32:19.326158",
+      "image_url": "https://opengraph.githubassets.com/4ccdad26567f1fd293cdedf97410082a5ef2726646b700b7c21bdb0d53ceb2bc/dinosn/batik-1.19-security-lab",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Reproducible PoC lab for Apache Batik 1.19 external-resource/scripting security issues - dinosn/batik-1.19-security-lab"
+    },
     {
       "id": 5132,
       "source_id": 4,
