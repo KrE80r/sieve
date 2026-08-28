@@ -1,7 +1,323 @@
 {
-  "updated_at": "2026-08-28T00:00:00.440243+00:00",
-  "total_items": 936,
+  "updated_at": "2026-08-28T01:00:00.172009+00:00",
+  "total_items": 949,
   "items": [
+    {
+      "id": 5178,
+      "source_id": 34,
+      "original_url": "https://www.workingsoftware.dev/ai-build-cost-why-token-prices-fall-and-your-bill-doubles/",
+      "title": "AI Build Cost: Why Token Prices Fall and Your Bill Doubles",
+      "summary": "Architectural choices such as model routing, context budgeting, and concurrency limits, not token price declines, primarily drive rising AI build costs.",
+      "ideas": [
+        "Token prices fell 88% since 2023 while build costs roughly doubled.",
+        "Parallel agents and retries can increase token consumption 7‑fold per task.",
+        "Define task classes and map them to model tiers to control cost.",
+        "Treat context size per request like a dependency list and budget it."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The post delivers concrete measurements, original analysis, and a clear list of six architecture-level cost decisions with an ADR example, directly addressing AI build cost mechanisms. It is highly relevant to technically capable readers interested in AI engineering and software architecture, though the opening narrative includes some self‑reference and modest padding that prevents an exceptional rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T10:20:29.108489"
+    },
+    {
+      "id": 5177,
+      "source_id": 34,
+      "original_url": "https://www.reidatcheson.com/dense%20linear%20algebra/linear%20algebra/openmp/tbb/2026/08/24/tbb-omp-mkl.html",
+      "title": "Achieving Performance Parity Between the oneTBB and OpenMP oneMKL Backends",
+      "summary": "oneTBB one M KL can match OpenMP one M KL within ~1% on large DGEMM and full-bandwidth DGEMV by combining NUMA-constrained task_arena instances, intra-node over-decomposition, and a coordinated packing mode that explicitly trades composability for reuse.",
+      "ideas": [
+        "oneTBB one M KL loses 33.7% on DGEMM because it selects the no-copy microkernel, not due to scheduler overhead.",
+        "NUMA-constrained tbb::task_arena with intra-node over-decomposition matches OpenMP DGEMV bandwidth within ~2%.",
+        "Transient panel cycling via OpenBLAS microkernels recovers OpenMP DGEMM performance with only 247.5 MiB packed storage.",
+        "Panel widths of 720–1,440 columns are the sweet spot for shared packing inside oneTBB.",
+        "Distributed first-touch page placement yields a 3.81× GEMV speedup, mandatory on multi-socket systems.",
+        "Three-tier model: Composable / Locality-Aware / Coordinated governs oneTBB one M KL usage patterns."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 95,
+      "rating_reason": "Exceptional, deeply technical investigation combining original benchmarking, profiling, and source-level prototypes on a real 88-core/4-NUMA system. The article diagnoses the root cause of oneTBB oneMKL's DGEMM deficit (no-copy kernel selection, not scheduler overhead), demonstrates recovery within 0.7% of OpenMP via NUMA-constrained task_arena and transient OpenBLAS microkernels, and codifies a three-tier operational model. Every claim is backed by reproducible tables, perf samples, and code excerpts. Highly valuable for HPC, BLAS users, and systems engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T10:18:23.822073"
+    },
+    {
+      "id": 5176,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/inference-engine-boundary/",
+      "title": "The Sandbox Held. The Parser Didn’t.",
+      "summary": "The security boundary is determined by the parser that interprets model output, not by the container isolating the model.",
+      "ideas": [
+        "Parser executing model-generated arguments via eval bypasses container isolation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers a clear, concrete explanation of how parsing, not container isolation, defines the security boundary for LLM inference, with specific details on CVE-2025-9141 and the eval() flaw. It provides original technical mechanism, reproducible insight, and highlights the need to separate generation from interpretation. Minor promotional padding and architectural fluff slightly dilute depth, but the core content remains highly valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T10:18:10.241078",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/08/inference-engine-boundary-featured.jpg",
+      "image_width": 1024,
+      "image_height": 559,
+      "image_alt": "inference engine boundary — model tokens flowing through a privileged parser into host execution"
+    },
+    {
+      "id": 5175,
+      "source_id": 34,
+      "original_url": "https://timur.hu/blog/2026/the-gcn-outcast-radeon-hd-7870-xt",
+      "title": "The GCN outcast - Radeon HD 7870 XT",
+      "summary": "A harvested Tahiti LE chip's disabled memory channels were not reflected in TCP channel-steering registers, causing GPU hangs; the fix programs TCP_ADDR_CONFIG and TCP_CHAN_STEER to skip disabled TCCs.",
+      "ideas": [
+        "Disabled TCCs on harvested GCN chips must be masked in TCP_ADDR_CONFIG and TCP_CHAN_STEER registers.",
+        "Booting to runlevel 3 or using software rendering isolates GPU hangs to compute blocks.",
+        "umr can dump and patch GPU MMIO registers for live diagnosis.",
+        "vkrunner with simple compute shaders is effective for isolating GPU hang triggers.",
+        "local_size_x > 64 triggers the 7870 XT hang due to disabled memory channel access.",
+        "Optimal configuration keeps channel order but skips TCCs 2, 5, 8, 11 yielding ~78 fps in Tomb Raider."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "Firsthand, deeply substantive investigation of a real bug in the AMD amdgpu kernel driver that prevented the Radeon HD 7870 XT from working on Linux. Includes reproducible diagnostic steps, actual register dumps via umr, a clear mechanism explanation (TCP/TCC channel-steering registers not honoring disabled memory channels on the harvested Tahiti LE chip), performance benchmarks, and confirmation that the fix was merged and backported. Minimal noise, original evidence, expert practitioner insight throughout.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T10:10:39.042626"
+    },
+    {
+      "id": 5174,
+      "source_id": 34,
+      "original_url": "https://reinforcedknowledge.com/posts/open-instruct-qwen35-checkpoint-resume/",
+      "title": "The missing runtime state: why training can diverge after resuming",
+      "summary": "Training resumption can diverge due to hidden runtime state such as CUDA atomic ordering, Triton autotune caches, and DDP bucket topology, all of which must be made deterministic for exact continuation.",
+      "ideas": [
+        "CUDA atomicAdd in causal-conv backward introduces nondeterministic FP32 rounding.",
+        "Freezing Triton autotune results eliminates per‑process kernel variance.",
+        "DDP reducer bucket layout must be pre‑initialized to match the original run.",
+        "Enabling deterministic convolution backward (workspace reduction) restores exact gradients."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a detailed, reproducible investigation of deterministic resume failures in distributed LLM training, including concrete measurements, CUDA atomic nondeterminism, Triton autotune cache effects, and DDP bucket layout mismatches, and offers exact fixes. The depth and actionable debugging steps are highly valuable for ML engineers, though the content is narrowly scoped to a specific model and PyTorch version, limiting broader novelty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T10:02:44.565503"
+    },
+    {
+      "id": 5173,
+      "source_id": 34,
+      "original_url": "https://paolino.me/rubyllm-2-0-providers-and-protocols/",
+      "title": "RubyLLM 2.0: Providers, Protocols, and Provider Gems",
+      "summary": "Separating providers from protocols enables reusable provider gems and automatic model‑catalog routing.",
+      "ideas": [
+        "Provider and protocol concepts allow independent routing and small provider gems."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, well‑documented design details for separating providers from protocols, includes code snippets for routing and provider gem creation, and explains how RubyLLM 2.0 handles model catalogs and streaming. This directly serves technically capable readers interested in AI implementation and infrastructure, though some promotional framing slightly limits its purity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T10:00:43.053374",
+      "image_url": "https://paolino.me/assets/images/og/posts/rubyllm-2-0-providers-and-protocols.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "RubyLLM 2.0: Providers, Protocols, and Provider Gems"
+    },
+    {
+      "id": 5172,
+      "source_id": 34,
+      "original_url": "https://luc.lino-framework.org/blog/2026/0822.html",
+      "title": "Saturday, August 22, 2026",
+      "summary": "An unrestricted eval() in Lino's comment parser enables low‑privilege authenticated users to execute arbitrary Python code.",
+      "ideas": [
+        "Unrestricted eval() in Lino comment parser enables server‑side code execution."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a precise, reproducible CVE with full exploit chain, code locations, CVSS score, and mitigation steps, offering high technical depth. It lacks broader impact beyond Lino but still provides concrete, actionable insight. The presentation is clean without hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T09:54:31.583731"
+    },
+    {
+      "id": 5171,
+      "source_id": 34,
+      "original_url": "https://kevin.md/my-pcb-has-a-compiler.md",
+      "title": "⚡ When the Compiler Is a PCB Factory",
+      "summary": "The key insight is that the PCB factory behaved like a compiler that silently altered board semantics, and the real failure stemmed from unchecked flash wait‑state timing in the firmware.",
+      "ideas": [
+        "Factory changed D4 rotation from -90° to 0°, breaking electrical connections",
+        "Firmware relied on 1‑cycle delays; flash wait states made them 1.5‑3× slower, outputting solid white",
+        "Hashing and confirming factory‑generated Gerbers prevents silent PCB semantic changes"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, firsthand evidence of a firmware timing bug causing PCB failures, explains the compiler‑like PCB workflow, and offers a clear lesson on verification. Its novelty and depth merit a high score, but the broad audience appeal is limited by niche hardware focus and some generic AI commentary, keeping it from exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T09:52:40.747157",
+      "image_url": "https://www.kevin.md/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5170,
+      "source_id": 34,
+      "original_url": "https://cocomelonc.github.io/malware/2026/08/25/malware-tricks-64.html",
+      "title": "Malware development trick 64: PE file bloating and overlay data. Simple C example",
+      "summary": "Malware can inflate PE size either by adding an initialized section or appending an overlay, leaving distinct structural traces that defenders can inspect.",
+      "ideas": [
+        "Initialized .bloat section creates a real PE section with raw data",
+        "Overlay is added after the last section and is not part of the PE headers",
+        "Overlay size equals file size minus maximum section end offset",
+        "Both methods increase hash and file size without altering program behavior"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article supplies concrete C source, compile commands, and step‑by‑step measurements (section size, overlay detection, entropy) that directly illustrate PE padding techniques. It is highly relevant to security researchers seeking practical implementation details. Limitations include a narrow focus on a toy example and lack of discussion on real‑world impact beyond demonstration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T09:46:12.071437",
+      "image_url": "https://cocomelonc.github.io/assets/images/220/2026-08-26_13-48.png",
+      "image_width": 1866,
+      "image_height": 1113,
+      "image_alt": ""
+    },
+    {
+      "id": 5169,
+      "source_id": 34,
+      "original_url": "https://caseywest.com/the-code-generation-percentage-your-org-shouldnt-be-measuring/",
+      "title": "The Code-Generation Percentage Your Org Shouldn't Be Measuring",
+      "summary": "AI code generation inflates output but shifts bottlenecks downstream, causing longer review times, more bugs, and higher incident rates.",
+      "ideas": [
+        "AI adoption increased authoring output by 210% but PR review time rose 441%.",
+        "Bugs per PR rose 54% and incidents roughly tripled under high AI usage.",
+        "Reverting/churn rate is an instrumentable metric for code quality.",
+        "Incident rate per change links AI usage to production problems."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers original evidence, detailed benchmarks, and a clear mechanistic explanation of how AI code generation metrics mislead, but it leans on vendor data and includes speculative framing, limiting its certainty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T09:44:27.090053"
+    },
+    {
+      "id": 5168,
+      "source_id": 34,
+      "original_url": "https://boschko.ca/g1-ble-rce/",
+      "title": "UniBLEed: Unauthenticated Root RCE on Any Unitree G1 Humanoid Robot Within Bluetooth Range",
+      "summary": "Unauthenticated BLE writes combined with a cloud key‑leak and buffer overflow give wormable root RCE on any Unitree G1 robot.",
+      "ideas": [
+        "BLE GATT characteristic 0xFFE2 allows unauthenticated writes, enabling code execution.",
+        "Unitree cloud API returns a robot's AES key without verifying account‑to‑device ownership.",
+        "Chatbot knowledge‑base path traversal writes arbitrary files to a whitelist directory.",
+        "A 1050‑byte BSS overflow in btgatt‑server corrupts the event loop to call system() as root.",
+        "The full chain is wormable: a compromised robot can infect nearby units via BLE."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "The article provides a very detailed, original vulnerability disclosure on the Unitree G1 robot, including concrete exploit steps, code‑level details, and CVE references. It is highly relevant to cybersecurity and IoT/robotics security, offering reproducible chains (BLE write, cloud key leak, path traversal, buffer overflow) that are novel and practically valuable. Some personal narrative and hype distract a bit, but the technical substance outweighs the noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T09:42:55.396512",
+      "image_url": "https://storage.ghost.io/c/29/6a/296af8dc-aee9-49ab-b451-8f11e2049940/content/images/2026/08/unibleed_1200x628-1-.png",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
+    {
+      "id": 5167,
+      "source_id": 34,
+      "original_url": "https://blog.cani.ne.jp/2026/08/27/steal-these-status-lines.html",
+      "title": "Steal These Status Lines",
+      "summary": "Unified status-line scripts can display model info, context usage, cost, and rate limits across Claude Code and Cursor CLI on macOS and Linux.",
+      "ideas": [
+        "Use GNU stat on Linux, BSD stat fallback for macOS",
+        "Cache API usage for 60 seconds to avoid repeated calls",
+        "Handle token retrieval from auth.json or macOS Keychain",
+        "Merge statusLine JSON without overwriting other config settings",
+        "Draw RGB gradient bars using bash color functions"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, cross-platform scripting details for status-line integration in Claude Code and Cursor CLI, covering token handling, stat differences, caching, and color bar rendering. It offers non‑obvious implementation insights that a technically capable reader can apply directly. Limitations include niche relevance to these specific tools and some padding in explanatory sections.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-28T09:40:39.394647"
+    },
+    {
+      "id": 5166,
+      "source_id": 29,
+      "original_url": "https://iq-routing.com",
+      "title": "Show HN: IQ Routing – route every call to the cheapest model that holds quality",
+      "summary": "Routes each LLM call to the cheapest model that preserves quality, potentially reducing costs by up to 80%.",
+      "ideas": [
+        "Route every call to cheapest model while maintaining quality.",
+        "Can reduce LLM spend by 40‑80% measured on live traffic.",
+        "Router classifies difficulty and selects optimal model per step.",
+        "Provides per-step cost tracking, budgets, and audit logs.",
+        "Includes semantic caching to avoid duplicate charges.",
+        "Dashboard displays spend, cache hit rate, latency, and per-model costs.",
+        "Before/after example shows 58% cost reduction in a LangChain loop.",
+        "Supports BYOK integration with OpenAI, Anthropic, Google endpoints.",
+        "Offers free tier, team, and enterprise plans with usage limits.",
+        "Claims sub-11 ms cache-hit latency and instant routing."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The piece delivers multiple high‑value insights: it explains a novel routing mechanism that can cut LLM spend by 40‑80%, provides concrete before/after cost breakdowns, and details caching, dashboards, and budgeting features. It avoids major penalties like clickbait or padding, though some sections are repetitive. Overall it offers dense, actionable information aligned with AI and tech themes.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-08-28T09:35:01.529239",
+      "image_url": "https://iq-routing.com/opengraph-image",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "IQ Routing"
+    },
     {
       "id": 5165,
       "source_id": 4,
