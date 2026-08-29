@@ -1,7 +1,346 @@
 {
-  "updated_at": "2026-08-29T17:00:00.188299+00:00",
-  "total_items": 931,
+  "updated_at": "2026-08-29T19:00:00.173358+00:00",
+  "total_items": 944,
   "items": [
+    {
+      "id": 5230,
+      "source_id": 34,
+      "original_url": "https://pwning.systems/posts/llm-memory-program-analysis/",
+      "title": "I accidentally turned LLM memory into program analysis",
+      "summary": "Using a Datalog engine with provenance tracking, retraction support, and temporal validity as an LLM's memory substrate yields better maintenance of long-running investigation state than vector retrieval, with empirical wins on knowledge-update benchmarks.",
+      "ideas": [
+        "Datalog rules + provenance give automatic invalidation of stale LLM conclusions when inputs change."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional technical work with original insight, a working implementation (Lemmalog), and rigorous empirical evaluation. The author draws a non-obvious analogy between Datalog-style program analysis and LLM memory state management, then substantiates it with benchmarks on LongMemEval showing Lemmalog tops the field on the Knowledge Update category (0.579 vs PropMem's 0.528) while reducing context size ~38x. The article is concrete throughout: it describes retractions with provenance, temporal validity intervals, incremental evaluation, an MCP server integration, and honest limitations (still behind PropMem overall, small sample sizes per category). The truncation near the end is minor given the substantial content provided.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T04:22:14.804102",
+      "image_url": "https://pwning.systems/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5229,
+      "source_id": 34,
+      "original_url": "https://philippkuhnhardt.de/blog/modularity-is-awesome-when-working-with-agents/",
+      "title": "Modularity is awesome when working with agents",
+      "summary": "Modular interfaces and dependency inversion let AI agents generate manageable, testable code while mitigating key debt types.",
+      "ideas": [
+        "Expose service interface, hide implementation details",
+        "Modularity reduces technical, cognitive, intent debt",
+        "Modules fit in LLM context window for cheap LLMs"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The post delivers concrete, implementable patterns for modular design that directly address technical, cognitive, and intent debt in AI‑assisted development, with clear code examples and measurable benefits. It is highly relevant to engineers using coding agents and AI tooling, though it stops short of providing a complete solution and assumes prior architectural knowledge. The value per minute is high, but the piece also contains promotional framing and modest claims that temper its universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T04:20:42.797222"
+    },
+    {
+      "id": 5228,
+      "source_id": 34,
+      "original_url": "https://mysticmind.dev/fisher-on-sqlite-part-1-the-document-store/",
+      "title": "Fisher on SQLite, Part 1: The document store",
+      "summary": "Fisher stores documents as raw JSON with virtual generated columns, enabling efficient indexing and in‑place patches.",
+      "ideas": [
+        "Documents stored as raw JSON with virtual generated columns for indexing.",
+        "Ids can be Guid v7, string, int via Hi‑Lo, or custom.",
+        "json1 functions enable efficient in‑place patching without loading.",
+        "Generated columns maintain indexability without back‑filling.",
+        "Foreign key enforcement works across document tables within a transaction."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article supplies concrete code, schema design, and performance measurements for embedding SQLite via Fisher, covering id strategies, generated columns, json1‑based patching, and foreign key enforcement. It explains mechanisms and trade‑offs with practical examples that directly aid engineers building embedded data stores. However, its relevance is narrowed to .NET/Fisher users and presumes SQLite expertise, limiting its general audience appeal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T04:16:13.323901",
+      "image_url": "https://mysticmind.dev/images/blog/fisher-on-sqlite-cover.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fisher on SQLite, Part 1: The document store"
+    },
+    {
+      "id": 5227,
+      "source_id": 34,
+      "original_url": "https://milanjovanovic.tech/blog/your-aspnetcore-endpoints-dont-have-a-timeout",
+      "title": "Your ASP.NET Core Endpoints Don't Have a Timeout",
+      "summary": "Configure endpoint‑specific request timeouts in ASP.NET Core by propagating HttpContext.RequestAborted through all async calls and using the WithRequestTimeout method with named policies.",
+      "ideas": [
+        "Use AddRequestTimeouts and WithRequestTimeout for per‑endpoint deadlines.",
+        "Propagate HttpContext.RequestAborted token through EF Core and HTTP calls.",
+        "Timeout only triggers when cancellation reaches middleware, not in debugger.",
+        "Enable DisableRequestTimeout for streaming or long‑running responses."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete code samples, explains how the timeout middleware works, details token propagation, and outlines per‑endpoint policies, giving practitioners actionable insight. It warns about debugger quirks and streaming endpoints, highlighting common pitfalls. While not groundbreaking, it provides deep, verified technical guidance that a competent reader can immediately apply. However, it lacks novel theory or extensive empirical data, limiting it to the upper‑mid range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T04:14:26.056914",
+      "image_url": "https://milanjovanovic.tech/blog-covers/mnw_209.png",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Request Timeouts in ASP.NET Core"
+    },
+    {
+      "id": 5226,
+      "source_id": 34,
+      "original_url": "https://lifeofpenguin.blogspot.com/2026/08/plan-9-emoji.html",
+      "title": "Plan 9: Emoji",
+      "summary": "The piece dissects five low‑level rendering bugs in Plan 9’s emoji/font system and shows how each was diagnosed and resolved, revealing critical reliability and safety issues in font handling.",
+      "ideas": [
+        "Assertion failure in compilesub crashes the server on unknown glyphs.",
+        "blit() lacks bounds checks, causing heap corruption with malformed glyph extents.",
+        "Hint interpreter can recurse infinitely, leading to stack overflow without a depth limit.",
+        "Operand‑stack bounds not checked, causing abort instead of graceful error handling.",
+        "maxp.maxStackElements trusted literally; a safe default of 512 prevents under‑allocation."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers highly concrete, original technical substance: it enumerates five distinct, low‑level bugs in Plan 9’s font‑handling code, explains the exact failure mechanisms, and details precise fixes. It is directly relevant to systems programmers and security‑focused readers, offering non‑obvious operational insights rather than superficial commentary. The main limitation is its niche focus on Plan 9 internals, which may limit broader applicability, but the depth and specificity merit a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T04:11:11.505325"
+    },
+    {
+      "id": 5225,
+      "source_id": 34,
+      "original_url": "https://infinitelimit.ai/posts/2026-08-27-amdahls-law/",
+      "title": "Amdahl’s Law: The Speedup You Cannot Exceed",
+      "summary": "The speedup of a whole workload is bounded by the fraction of original wall time that the improved component occupies, so even large component improvements yield modest overall gains.",
+      "ideas": [
+        "Speedup capped by unaffected fraction: Smax = 1/(1‑f).",
+        "5× faster component speeds up whole workload only ~1.3×."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete formulas, a clear worked example, and a backward analysis method that explain why speedup is limited by the unaffected fraction of execution time. It ties Amdahl’s law to AI model FLOPs utilization and discusses the assumptions and limitations, delivering substantive technical insight without excessive fluff.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T04:04:29.613865"
+    },
+    {
+      "id": 5224,
+      "source_id": 34,
+      "original_url": "https://erichartford.com/qwen3-8-flash-next-on-8-3090s",
+      "title": "Qwen3.8-Flash-Next on 8 3090s",
+      "summary": "A measured, profile-driven campaign that took Qwen3.8-Flash-Next from 409.7 to 1,199.8 tok/s at native 262K context on 8x RTX 3090s by re-enabling P2P DMA, removing a silently corrupting KV quant, restoring prefix caching for hybrid models, fixing CUDA-graph sizing under MTP, and adding a byte-exact pinned-RAM KV tier using align-mode boundaries.",
+      "ideas": [
+        "GeForce P2P DMA disabled caps 8-way TP throughput by 30%+ via RAM-bounced all-reduce",
+        "TurboQuant KV made 6B-active Flash-Next answer the wrong turn fluently — bf16 main KV is mandatory",
+        "vLLM silently disables prefix caching for hybrid linear-attention models, killing long agent traces",
+        "FP8 weights on SM86 work via Marlin W8A16; EP keeps 128-aligned block scales exact",
+        "Hybrid linear-attention KV offload requires the engine's align-mode boundary snapshot — naive copies garble state",
+        "CUDA graph capture must be ≥3× max_num_seqs when MTP speculation runs at k=2",
+        "Pin 51GB n-gram tables in /dev/shm and gather 16 rows per token via UVA under CUDA graph",
+        "Spec-decoding benchmarks on synthetic repeated tokens collapse acceptance to ~0% — always use natural text",
+        "Raising GPU mem-utilization to 0.96 fixed a 27-slot scheduling ceiling at 32 concurrent requests",
+        "SlimServe profiles enforce policies via registry tests, so prefix caching and bf16 KV cannot silently regress"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "Firsthand inference-engineering write-up with measured, reproducible findings on deploying a frontier hybrid-attention MoE on GeForce 3090s. Packed with non-obvious mechanisms (TurboQuant KV silently producing wrong-turn answers; vLLM silently disabling prefix caching for hybrid models; CUDA-graph capture-size trap under MTP; align-mode boundary snapshots required for linear-attention state offload; FP8-on-SM86 via Marlin W8A16 with EP required for block-scale tiling). SlimServe/SovereignStack promotion is present but the technical receipts stand on their own.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T03:59:06.052323",
+      "image_url": "https://erichartford.com/api/og/post?og=eyJhdXRob3IiOiJFcmljJTIwSGFydGZvcmQiLCJpc0RlZmF1bHRNb2RlRGFyayI6dHJ1ZSwicmVhZFRpbWUiOjEzLCJjb21tZW50cyI6MCwicmVhY3Rpb25zIjowLCJkb21haW4iOiJlcmljaGFydGZvcmQuY29tIiwidGl0bGUiOiJRd2VuMy44LUZsYXNoLU5leHQlMjBvbiUyMDglMjAzMDkwcyIsInBob3RvIjoiaHR0cHM6Ly9jZG4uaGFzaG5vZGUuY29tL3Jlcy9oYXNobm9kZS9pbWFnZS91cGxvYWQvdjE2Nzk4OTIwMzc5OTkvOGU0MTUzNjQtMDUwYS00OTdiLTlmNjYtYzA5NmU4MDE4MGQ0LmpwZWciLCJsb2dvIjpudWxsLCJmYXZpY29uIjpudWxsLCJwdWJsaXNoZWRBdCI6IjIwMjYtMDgtMjlUMDg6MjI6NTcuNDMzWiIsInVwZGF0ZWRBdCI6IjIwMjYtMDgtMjlUMDg6MjQ6MjMuMjY3WiJ9",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5223,
+      "source_id": 34,
+      "original_url": "https://dmpdump.github.io/posts/stager_targeting_russia/",
+      "title": "Stager Targeting Russian Organization",
+      "summary": "A thorough breakdown of a Russian‑targeted LNK stager that side‑loads calibre.exe, decrypts its config, and authenticates to a C2 using RSA beacons and HMAC verification.",
+      "ideas": [
+        "Side‑loads malicious calibre‑launcher.dll via legitimate calibre.exe.",
+        "Decrypts embedded configuration using AES‑CTR with hard‑coded key/IV.",
+        "Builds RSA‑encrypted beacon sent as a Cookie:SESSION header.",
+        "Authenticates C2 with a derived HMAC‑SHA256 key challenge.",
+        "Uses WinHTTP with WPAD/IE proxy discovery for C2 communication."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers a detailed, reproducible analysis of a Windows LNK‑based stager, including concrete file hashes, command‑line arguments, decryption of embedded configuration, C2 protocol (RSA beacon, HMAC‑based authentication, proxy discovery), and unique side‑loading of calibre.exe. This provides actionable intelligence for detection and defense, directly aligning with cyber‑security and RE interests. The only limitation is that it focuses on a single sample, so broader applicability is modest.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T03:56:52.374239"
+    },
+    {
+      "id": 5222,
+      "source_id": 34,
+      "original_url": "https://blog.sebastiansastre.co/posts/the-green-build-and-the-hermeneutic-gap/",
+      "title": "The Green Build and the Hermeneutic Gap",
+      "summary": "Safety in production hinges on proving how a release will fail, not just that it passes internal checks.",
+      "ideas": [
+        "Passing tests alone do not guarantee safe deployment; evidence of failure scenarios is essential.",
+        "System design, not who writes code, determines long‑term value and resilience.",
+        "Explicitly define falsifiable criteria to validate releases before tagging."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, non‑obvious guidance on moving from faith‑based merges to evidence‑backed release safety, linking design ownership to accountability. It offers valuable mechanisms such as falsification questions and explicit failure‑mode testing, though its abstract language and scattered structure slightly dilute immediacy. Overall it provides high‑value, technically dense insight for senior engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T03:52:25.371266",
+      "image_url": "https://blog.sebastiansastre.co/img/the-green-build-and-the-hermeneutic-gap.jpg",
+      "image_width": 1200,
+      "image_height": 669,
+      "image_alt": ""
+    },
+    {
+      "id": 5221,
+      "source_id": 34,
+      "original_url": "https://blog.melashri.net/posts/rocm-abogen/",
+      "title": "Running abogen audio generation on ROCm",
+      "summary": "Using AMD's newer ROCm packaging enables an integrated Radeon 680M (gfx1035) to run Abogen with Kokoro TTS efficiently within a Python virtual environment.",
+      "ideas": [
+        "Install ROCm-enabled PyTorch via pip with torch[device-gfx1035] for integrated Radeon 680M.",
+        "Check kernel driver and group membership (render, video) before testing GPU access.",
+        "Run MIOpen smoke test to validate convolution path before full Abogen execution.",
+        "Use virtual env to keep ROCm components isolated and avoid system-wide SDK installation."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides detailed, reproducible steps for running abogen on ROCm with an integrated Radeon 680M GPU, including environment isolation, specific package installation commands, and validation tests. It delivers concrete mechanisms and code snippets that enable direct implementation. Its main limitation is the absence of performance measurements, leaving the practical speed benefit unquantified. Nevertheless, the depth and novelty of the setup outweigh this gap.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T03:51:17.279976"
+    },
+    {
+      "id": 5220,
+      "source_id": 34,
+      "original_url": "https://blog.davep.org/2026/08/29/rogallo-v2-0-0.html",
+      "title": "Rogallo v2.0.0",
+      "summary": "Rogallo v2.0.0 adds a native client‑certificate manager, rewrites the side panel as a tabbed interface, and boosts performance to handle 1,000‑link pages efficiently.",
+      "ideas": [
+        "Added client certificate manager supporting create, import, export, associations.",
+        "Side panel redesigned as tabbed interface; old toggle commands removed.",
+        "Performance improved to render pages with up to 1,000 links quickly."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, implemented details on a new client‑certificate manager, a redesigned tabbed side‑panel, CLI protocol‑guessing enhancements, and performance fixes for large Gemini pages—substance that is directly useful and non‑obvious. The improvements are significant for developers working with Gemini clients, though the novelty is moderate and most changes are incremental rather than revolutionary. The piece remains focused and free of hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-30T03:48:56.491912",
+      "image_url": "https://blog.davep.org/static/images/auto_covers/posts-2026-08-2026-08-29-rogallo-v2-0-0.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5219,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/198041/intelligence/philippine-nuclear-and-naval-targets-hit-by-suspected-chinese-operator.html",
+      "title": "Philippine Nuclear and Naval Targets Hit by Suspected Chinese Operator",
+      "summary": "Even well‑known, unpatched software vulnerabilities can expose critical national assets, so prompt patching and vigilant monitoring are essential.",
+      "ideas": [
+        "Attackers exploited ownCloud CVE‑2023‑49105 authentication bypass via empty signing secret.",
+        "Exploitation used custom Python scripts for per‑account WebDAV file retrieval.",
+        "Low‑and‑slow data exfiltration evades volume‑based alerts.",
+        "WordPress LiteSpeed Cache CVE‑2024‑28000 allowed admin creation without authentication.",
+        "XML‑RPC password spraying with rockyou.txt cracked admin credentials.",
+        "Stolen data included nuclear component databases, personnel records, and credential dumps.",
+        "Upgrade ownCloud to version 10.13.3+ and enforce non‑empty signing keys.",
+        "Monitor WebDAV PROPFIND requests for suspicious enumeration patterns.",
+        "Update LiteSpeed Cache, disable unnecessary XML‑RPC, enforce MFA for admins.",
+        "Separate malicious payloads on same server may belong to unrelated actors."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides concrete technical details about exploiting known ownCloud and WordPress flaws, offering actionable mitigation steps and evidence from the breach, which delivers substantial practical value. It aligns strongly with cybersecurity themes and includes multiple distinct insights, though repeated site navigation adds minor padding. Overall the content is informative and dense enough to merit a good rating.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-30T03:32:43.653759",
+      "image_url": "https://securityaffairs.com/wp-content/uploads/2026/08/image-88.png",
+      "image_width": 1519,
+      "image_height": 744,
+      "image_alt": ""
+    },
+    {
+      "id": 5218,
+      "source_id": 22,
+      "original_url": "https://generativeprogrammer.com/p/latency-patterns-for-faster-ai-applications",
+      "title": "Latency Patterns for Faster AI Applications",
+      "summary": "Optimizing AI response latency requires applying distributed‑system patterns—colocation, replication, partitioning, caching, work reduction, and concurrency—to every stage of the request path.",
+      "ideas": [
+        "Measure latency across entire critical path, not just isolated component.",
+        "Colocate frequently interacting components to shorten network and IPC distances.",
+        "Replicate read‑heavy data to nearer replicas, respecting staleness constraints.",
+        "Partition data by stable keys so related work stays within one shard.",
+        "Cache repeated reads or computations to shortcut the original path.",
+        "Reduce work by using better algorithms, indexes, or data structures.",
+        "Send only required subset of data to avoid processing unused information.",
+        "Reuse established connections or parsed schemas to skip repeated setup.",
+        "Combine multiple similar requests into a single call where safe.",
+        "Run independent tasks concurrently to overlap execution and reduce wait time.",
+        "Stream partial results for progressive response, improving time‑to‑first‑useful.",
+        "Apply concurrency budgets to limit parallel work and protect shared resources.",
+        "Use hedged requests to mitigate straggler impact by sending duplicate calls.",
+        "Apply these patterns to AI orchestration, retrieval, and tool interactions."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers many concrete, novel latency‑optimization patterns with clear explanations and practical AI use‑case mappings, giving readers actionable techniques. It avoids clickbait or filler and aligns strongly with Technology, AI, and Systems topics, though its length slightly stretches the evaluation window.",
+      "source_type": "rss",
+      "source_name": "Generative Programmer",
+      "published_at": "2026-08-30T03:32:35.099712",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!cU9p!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F305a0a82-3c54-439b-99df-82ad34e99348_3200x1800.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
     {
       "id": 5217,
       "source_id": 7,
