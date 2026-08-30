@@ -1,7 +1,70 @@
 {
-  "updated_at": "2026-08-30T06:00:00.541162+00:00",
-  "total_items": 929,
+  "updated_at": "2026-08-30T07:00:00.274183+00:00",
+  "total_items": 931,
   "items": [
+    {
+      "id": 5239,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/cve-2026-23989-opencloud-lab",
+      "title": "https://github.com/dinosn/cve-2026-23989-opencloud-lab",
+      "summary": "A simple prefix‑check flaw lets public links read sibling files, but using proper path resolution fixes the issue.",
+      "ideas": [
+        "Vulnerability arises from using strings.HasPrefix for path containment in Reva.",
+        "Public link token can access sibling paths sharing the same prefix.",
+        "Exploit uses the /archiver endpoint to retrieve out-of-scope files via resource ID.",
+        "Fix replaces prefix check with filepath.Rel to prevent path traversal.",
+        "Docker-compose lab reproduces CVE on vulnerable version and confirms fix on patched version.",
+        "Remediation includes upgrading OpenCloud or disabling public links.",
+        "Resource IDs are exposed in various OCIS responses, enabling low-complexity attacks.",
+        "Bug affects OpenCloud ≤4.0.2 and OCIS rolling ≤5.0.1."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The README provides concrete, actionable knowledge on reproducing a serious access‑control bug, explains the root cause, and offers a verified fix, delivering multiple practical insights for security practitioners. The content is well‑aligned with cybersecurity and tech themes and lacks clickbait or filler, though some boilerplate GitHub navigation adds minor padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-30T15:34:31.586304",
+      "image_url": "https://opengraph.githubassets.com/86e21a6b69cb7ea7d63f2547b97ffec9f6921579ef93f30d2111894be5bd8427/dinosn/cve-2026-23989-opencloud-lab",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Reproduction lab (A/B Docker) for CVE-2026-23989 — OpenCloud / ownCloud Infinite Scale public-link scope-validation bypass in Reva - dinosn/cve-2026-23989-opencloud-lab"
+    },
+    {
+      "id": 5238,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/givewp-cve-2026-82222-rce-lab",
+      "title": "https://github.com/dinosn/givewp-cve-2026-82222-rce-lab",
+      "summary": "The lab proves the GiveWP 4.16.5.1 RCE and shows how version 4.16.7.2 mitigates it.",
+      "ideas": [
+        "CVE-2026-82222 enables unauthenticated RCE via serialized object injection in GiveWP 4.16.5.1",
+        "Exploit persists a PHP object graph in GiveWP session and triggers system() through a POP chain",
+        "PoC creates marker file /tmp/CVE-2026-82222-RCE-GETBAG as www-data",
+        "GiveWP 4.16.7.2 blocks the HTTP carrier and terminal gadget, preventing the exploit",
+        "Lab uses Docker Compose with verified plugin ZIPs for isolated testing",
+        "Verification downloads plugins, checks hashes, builds labs, and confirms marker presence or absence",
+        "POP chain traverses TCPDF destructor, Symfony Session iterator, and ProviderForwarder __call()",
+        "Patch adds contract checks rejecting non‑provider strings, breaking the exploit",
+        "Recommended validation: clone site, run marker‑only verifier, ensure marker absence",
+        "Remediation: update plugin, clear caches, review accounts and metadata for injection artifacts"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The repository delivers extensive, actionable security research: a reproducible RCE proof-of-concept, detailed exploit chain analysis, mitigation verification, and step‑by‑step Docker lab instructions, providing many concrete insights for security engineers. No clickbait or filler is present, and the content aligns strongly with cyber‑security and technical themes, yielding high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-30T15:34:07.816818",
+      "image_url": "https://opengraph.githubassets.com/940a6c4a6fa15425c4e5f7bf27e1014daebf2deef73ec29d0d20ca521f831498/dinosn/givewp-cve-2026-82222-rce-lab",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Authorized Docker lab and clean PoC for validating CVE-2026-82222 RCE in GiveWP 4.16.5.1 and the 4.16.7.2 fix. - dinosn/givewp-cve-2026-82222-rce-lab"
+    },
     {
       "id": 5237,
       "source_id": 10,
