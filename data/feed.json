@@ -1,7 +1,63 @@
 {
-  "updated_at": "2026-08-31T12:00:00.440192+00:00",
-  "total_items": 934,
+  "updated_at": "2026-08-31T13:00:00.320984+00:00",
+  "total_items": 936,
   "items": [
+    {
+      "id": 5266,
+      "source_id": 7,
+      "original_url": "https://nari-labs.com/blog/qwen3-tts-speed-cost-frontier/",
+      "title": "NEW POST: PUSHING THE SPEED-COST FRONTIER FOR QWEN3-TTS",
+      "summary": "Unified scheduling and GPU‑graph techniques enable sub‑50 ms latency for Qwen3‑TTS at high throughput and low cost.",
+      "ideas": [
+        "Define real‑time TTS as low audible TTFA, zero underruns, capacity, intelligible output.",
+        "Remove leading silence to improve TTFA by ~80 ms.",
+        "Tune codec frame accumulation to balance latency and batching efficiency.",
+        "Expose Talker, Code Predictor, and Codec as independent schedulable tasks.",
+        "Prioritize urgent requests before first audio, then schedule by playback deadline.",
+        "Capture Code Predictor loop as a single CUDA graph using a Triton kernel.",
+        "Implement state‑cached incremental decoding for the Codec to avoid reprocessing history.",
+        "Use dynamic batch‑size CUDA graphs and minimize CPU‑GPU synchronization for efficiency.",
+        "Achieve 10 RPS and sub‑50 ms p95 TTFA on a single H100 SXM at ~$2 per million characters.",
+        "Open‑source the implementation and benchmark methodology for reproducibility."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post delivers multiple concrete, novel optimizations for real‑time TTS (scheduler unification, CUDA‑graph Code Predictor, state‑cached Codec) plus detailed benchmark data and cost analysis, providing clear actionable knowledge for AI engineers. It stays focused, avoids clickbait, and aligns with AI/Tech themes; only minor marketing fluff appears at the end, which does not detract significantly.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-08-31T21:33:12.489383",
+      "image_url": "https://nari-labs.com/blog/qwen3-tts-speed-cost-frontier/assets/image.png",
+      "image_width": 2560,
+      "image_height": 1440,
+      "image_alt": "Benchmark chart comparing p95 audible TTFA across serving engines as RPS increases"
+    },
+    {
+      "id": 5265,
+      "source_id": 4,
+      "original_url": "https://www.mannulinux.org/2026/08/Privilege-escalation-from-IIS-AppPool-to-NT-AuthoritySYSTEM-via-AD-CS-RPC-endpoint.html",
+      "title": "Privilege escalation from IIS AppPool to NT Authority/SYSTEM via AD CS RPC endpoint",
+      "summary": "By abusing IIS AppPool's automatic machine‑account translation to AD CS, an attacker can obtain a machine‑account certificate and forge a Kerberos ticket to gain full Administrator access.",
+      "ideas": [
+        "IIS AppPool identity silently elevates to the host's machine account when accessing network resources.",
+        "Submitting a CSR to AD CS RPC from the compromised IIS server causes a machine‑account certificate issuance.",
+        "Combine the issued certificate with its private key to create a PFX usable for Kerberos authentication.",
+        "Use Rubeus with the PFX to request a machine‑account TGT from the domain KDC.",
+        "Leverage S4U2Self with the machine TGT to obtain a CIFS ticket impersonating the Administrator.",
+        "Injected CIFS service ticket grants full file‑system access as Administrator on the target host.",
+        "The entire attack chain works without public exploits, relying on built‑in Windows behavior."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The post delivers several concrete, actionable insights into a novel privilege‑escalation technique, including step‑by‑step commands, a PowerShell script, and a GitHub ASPX payload, which are valuable for penetration testers. It aligns tightly with cybersecurity and technical exploitation themes. Minor padding (emojis, thank‑you notes) slightly reduces density but does not detract from overall usefulness.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-31T21:33:05.114051"
+    },
     {
       "id": 5264,
       "source_id": 1,
