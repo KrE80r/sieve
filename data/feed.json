@@ -1,7 +1,375 @@
 {
-  "updated_at": "2026-08-31T00:00:04.272309+00:00",
-  "total_items": 938,
+  "updated_at": "2026-08-31T01:00:00.262559+00:00",
+  "total_items": 953,
   "items": [
+    {
+      "id": 5261,
+      "source_id": 34,
+      "original_url": "https://sleepingrobots.com/dreams/engramhalo-qwen38-flash-next-strix-halo/",
+      "title": "EngramHalo.cpp: Qwen 3.8 Flash Next at 38 t/s on Strix Halo",
+      "summary": "EngramHalo.cpp nearly doubles Qwen 3.8 Flash Next decode speed on Strix Halo hardware using targeted kernel patches and MTP speculative decoding.",
+      "ideas": [
+        "EngramHalo achieves 38.5 tok/s at 3.4K context, nearly doubling baseline."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete implementation details, benchmark numbers, and clear mechanisms for performance gains on AMD hardware, making it highly relevant to AI/LLM engineers. It explains kernel patches, QSA sparse gather, and MTP speculative decoding with measurable evidence, but acknowledges a regression at very large context depths and requires specific ROCm configuration, limiting universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:22:52.207265"
+    },
+    {
+      "id": 5260,
+      "source_id": 34,
+      "original_url": "https://sleepingrobots.com/dreams/qwen38-flash-next-strix-halo/",
+      "title": "Running Qwen 3.8 Flash Next on Strix Halo: 125B at 20 t/s",
+      "summary": "Enables 125 B Qwen 3.8 Flash Next inference at ~20 tokens / s on a 128 GB AMD Strix Halo by using the AtomicChat quant, fixing hipCUB, and configuring llama.cpp correctly.",
+      "ideas": [
+        "Enable hipCUB (GGML_CUDA_USE_CUB=ON) to avoid a 3‑4× decode slowdown after ~1 K tokens.",
+        "Use AtomicChat AD‑4.27 bpw quant to keep active weights < 55 GB, fitting 128 GB unified memory.",
+        "Disable --no-mmap and enable --fit off; the 38 GB n‑gram table must be memory‑mapped from SSD.",
+        "Set --reasoning-budget 8192 to prevent agents from exhausting the token budget on internal thinking."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a highly concrete, reproducible guide for running a 125 B MoE LLM on AMD ROCm hardware, including detailed hardware specs, quantization choices, a critical hipCUB performance fix, benchmark data, and exact build and runtime flags. The information is directly applicable to AI inference engineering and contains original measurements, but its niche focus on a specific GPU platform keeps it from being universally exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:22:48.947434"
+    },
+    {
+      "id": 5259,
+      "source_id": 34,
+      "original_url": "https://schwarztech.net/reviews/afterglow",
+      "title": "Afterglow",
+      "summary": "Afterglow lets users run original After Dark screen‑saver modules as a native macOS screen saver on modern macOS.",
+      "ideas": [
+        "Free app runs classic After Dark modules via 68k emulator.",
+        "Imports modules from ZIP, StuffIt, etc., without ROMs.",
+        "Installs as native screen saver with optional CRT effect.",
+        "Only 68k modules work; audio effects are unsupported."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical details about how Afterglow emulates 68k After Dark modules, explains import mechanisms, and demonstrates its integration as a system screen saver. It is relevant to engineers interested in software preservation and macOS internals, though its appeal is niche and limited to nostalgia. No unsupported hype or fluff is present, making the review both substantive and trustworthy.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:20:54.680217"
+    },
+    {
+      "id": 5258,
+      "source_id": 34,
+      "original_url": "https://rajnandan.com/posts/introducing-ken/",
+      "title": "ken: Ken Thompson's Working Method, Installed in Your Coding Agent",
+      "summary": "A coding-agent ruleset is most effective when the evidence that triggers a rule sits at the edit site itself, and least effective when the needed signal lives in another function the agent never opens.",
+      "ideas": [
+        "Agent rules fire when evidence (e.g., fix-comment trail) is visible at the edit site, but fail when evidence is elsewhere.",
+        "Commonly cited Ken Thompson quotes like 'when in doubt, use brute force' are ATTRIBUTED, not verified primary sources.",
+        "Adding rules can make agent sessions slower and more expensive while still producing better long-term maintainability.",
+        "headless single-shot agent sessions consistently fail to inspect caller lists when fixing symptoms in named sites.",
+        "Provenance tiers (PRIMARY/WITNESS/ATTRIBUTED) for design rules improve trust over unsourced aphorisms.",
+        "Project-helper reuse already happens reliably on small codebases without explicit rules.",
+        "Agent self-reported ceilings (e.g. 'sync handlers') are a workable substitute for hidden technical debt.",
+        "Rewrite-on-rot rule needs a countable heuristic (fix-comment count >= 3) rather than an aspiration to work."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Exceptional empirical substance: 24 headless sessions across four benchmark tickets with concrete code diffs, scoring tables, timing/cost data ($8.19 spend, 191s vs 372s medians), and honest negative results (the 'debug the model not the symptom' rule failed 0/3 in headless single-shot mode). Includes rigorous provenance work classifying Thompson quotes as PRIMARY/WITNESS/ATTRIBUTED, and openly reports that the famous '1000 lines' and 'when in doubt use brute force' attributions lack located primary sources. Limitations: article is truncated at the end, and it is self-promotion of the author's own plugin, though methodology transparency and acknowledgment of failures partially offset that.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:18:16.689922"
+    },
+    {
+      "id": 5257,
+      "source_id": 34,
+      "original_url": "https://opscode.io/posts/interface-naming-blog/",
+      "title": "Linux Predictable Interface Names Are Only as Stable as Your PCI Bus",
+      "summary": "Predictable interface names are derived from PCI topology and firmware, so they can change; using MAC‑based matching or pinning the naming scheme yields stable network configuration.",
+      "ideas": [
+        "enp names encode PCI bus/device/function and change with enumeration order.",
+        "eno/ens names come from firmware and survive bus renumbering but not firmware changes.",
+        "Netplan silently ignores unmatched interfaces; use MAC addresses to ensure configuration applies.",
+        "Pin the systemd naming scheme (e.g., net.naming-scheme=v249) to avoid breaks after distro upgrades."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives a thorough, hands‑on explanation of how Linux predictable network interface names are derived and why they can change, including concrete udev commands, .link policies, and systemd version impacts. It presents actionable fixes (MAC‑based matching, pinning naming scheme) backed by real‑world incident details, which is valuable for sysadmins and engineers. It is not groundbreaking research, but the depth and reproducible steps make it highly useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:16:28.604217",
+      "image_url": "https://opscode.io/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5256,
+      "source_id": 34,
+      "original_url": "https://nitely.github.io/2026/08/30/fast-unicode-utf-8-validation.html",
+      "title": "Fast unicode (UTF-8) validation with autovectorization",
+      "summary": "A branchless, autovectorizable UTF‑8 validator that skips ASCII blocks using a four‑byte sliding window attains order‑of‑magnitude speedups over traditional validators.",
+      "ideas": [
+        "UTF‑8 validation uses a four‑byte sliding window and autovectorization for speed.",
+        "ASCII‑only fast‑path skips whole blocks when only ASCII bytes are present.",
+        "Benchmark shows >80 GB/s for pure ASCII and ~20 GB/s on mixed text versus slower baselines."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article details a concrete, autovectorizable UTF-8 validator with a correctness proof, benchmarks, and trade‑off discussion, offering measurable performance insights directly relevant to systems programming. It avoids generic hype and focuses on algorithmic specifics and implementation details. Its main limitation is that the chosen 256‑byte block size is optimized for particular workloads and may not be universally optimal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:14:23.372658"
+    },
+    {
+      "id": 5255,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/qwen38-flash-next-evo-x2-rocm-test/",
+      "title": "Qwen3.8-Flash-Next 125B on EVO-X2 gfx1151: tg128 23.26, 128K context ceiling",
+      "summary": "It shows how to get a 125B Qwen model running on a Windows ROCm setup, revealing critical memory‑pinning issues and performance limits.",
+      "ideas": [
+        "Pinned memory shortage on Windows ROCm can be avoided by disabling GGML_CUDA_NO_PINNED and using MMAP.",
+        "Official ROCm Windows binaries miss hipblas.dll; install ROCm 7.14 via pip to supply required libraries.",
+        "Generation speed drops sharply beyond 128K context because VRAM is fully allocated, not due to model limits.",
+        "Adding a small background process can cut throughput by >4× when system RAM is near exhaustion."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a deep, reproducible walkthrough of building and running a 125B Qwen model on Windows ROCm, including exact build steps, environment variables, memory‑pinning work‑arounds, missing DLL fixes, and extensive performance measurements across context sizes. These concrete findings are valuable for practitioners dealing with large LLMs on AMD GPUs, though the coverage is limited to a niche hardware‑software stack and some observations remain tied to a specific driver version.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:06:51.601401",
+      "image_url": "https://lilting.ch/og/images/tags/qwen.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Qwen3.8-Flash-Next 125B on EVO-X2 gfx1151: tg128 23.26, 128K context ceiling | lilting channel"
+    },
+    {
+      "id": 5254,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/anthropic-model-hardware-standard-mhs/",
+      "title": "Anthropic's Model Hardware Standard took a laser relock from 58% to 99.3%",
+      "summary": "Anthropic’s MHS enables AI agents to control lab hardware with far higher reliability and speed than previous scripts.",
+      "ideas": [
+        "Laser relock success rose from 58% to 99.3% and cycle time dropped from 150 s to ~6 s.",
+        "MHS driver enforces per‑device safety limits and converts natural‑language tags into reference files.",
+        "Multi‑stage conditional branching by Claude replaces linear scripts, allowing adaptive hardware control."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete experimental results (e.g., laser‑relock success rising from 58% to 99.3% and runtime cut from 150 s to ~6 s) and explains the MHS driver’s mechanisms, safety limits, and multi‑stage conditional branching used by Claude. These insights are directly relevant to AI‑agent hardware control and provide verifiable technical value, though some promotional framing and lack of public specs temper the score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T10:06:40.866251",
+      "image_url": "https://lilting.ch/og/images/hero/ogp.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Anthropic's Model Hardware Standard took a laser relock from 58% to 99.3% | lilting channel"
+    },
+    {
+      "id": 5253,
+      "source_id": 34,
+      "original_url": "https://inselnova.com/chronicle/2026-08-30-tick-engine-lazy-resources/",
+      "title": "The tick engine behind Inselnova: one loop, no resource writes",
+      "summary": "IsleNova uses a one-second tick loop and on-demand resource computation from snapshots to avoid any scheduled database writes.",
+      "ideas": [
+        "Compute resources on-demand from snapshot plus elapsed hours.",
+        "Single second tick processes only due events, eliminating per-player work.",
+        "Absolute timestamps enable crash recovery and prevent stale state bugs."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, original engineering details about a single-tick loop, on-demand resource calculation, and absolute timestamps that eliminate periodic writes and stale-state bugs. It provides measurable performance benefits and clear implementation guidance for building persistent, low-overhead game backends. While highly technical, it remains focused on mechanisms rather than hype, earning a strong but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T09:59:14.773883",
+      "image_url": "https://inselnova.com/images/devlog/045-tick-engine-lazy-resources.webp",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5252,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/deepsec/",
+      "title": "A deep dive into DeepSec",
+      "summary": "DeepSec employs a staged pattern‑scan plus AI review pipeline with resumable state to detect and revalidate security findings across repository surfaces.",
+      "ideas": [
+        "DeepSec’s pipeline separates pattern scan from AI investigation and supports incremental runs.",
+        "Matchers identify entry points before costly AI analysis, controlling expense and coverage."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete technical details about DeepSec’s staged scanning pipeline, command‑line workflow, and limitations around cost, coverage, and credential handling, making it highly relevant for engineers seeking practical AI‑assisted security tooling. It explains mechanisms, reproducible state, and actionable steps while warning about false positives and API expenses, though it includes modest promotional context. The depth of explanation and utility outweigh these minor distractions, justifying a strong but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T09:55:03.183346",
+      "image_url": "https://flaviocopes.com/images/deepsec/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for A deep dive into DeepSec"
+    },
+    {
+      "id": 5251,
+      "source_id": 34,
+      "original_url": "https://ericswpark.com/blog/2026/2026-08-29-cloudflare-fail2ban/",
+      "title": "Setting up fail2ban to work with Cloudflare",
+      "summary": "Configure fail2ban to ban IPs via Cloudflare API by using a custom action plugin and Cloudflare firewall rules, while handling Cloudflare-sourced IPs behind a Tailscale‑backed server.",
+      "ideas": [
+        "Use Cloudflare API to ban IPs from fail2ban via custom action plugin."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The post gives concrete, reproducible steps for wiring fail2ban to Cloudflare’s API and IP ranges, including nginx real_ip handling, Cloudflare firewall policy setup, and a custom action plugin that posts to the Cloudflare rules API. It solves a specific visibility issue with Tailscale IPs and provides exact config lines and command examples. The main limitation is reliance on static Cloudflare IP ranges and the absence of an automated update mechanism, making it somewhat brittle. Nonetheless, it delivers high‑value, actionable technical knowledge for sysadmins.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T09:54:12.295865",
+      "image_url": "https://ericswpark.com/blog/2026/2026-08-29-cloudflare-fail2ban/opengraph.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5250,
+      "source_id": 34,
+      "original_url": "https://coldtake.dev/blog/domain-driven-agents",
+      "title": "Domain-Driven Agents",
+      "summary": "It shows how to embed DDD manifests and glossaries into repositories to guide LLM agents, turning vague LLM suggestions into reproducible, context‑aware code changes.",
+      "ideas": [
+        "Use .workflow.json to declare bounded contexts, glossaries, and integration patterns.",
+        "Generate CONTEXT-MAP.md from all repos to create a reproducible edge map.",
+        "Implement reusable skills and sub‑agents to file and resolve DDD issues automatically."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, original mechanisms for integrating LLMs with Domain-Driven Design in legacy codebases, including reproducible manifests, context maps, and skill-based workflows. It provides clear technical value per minute with minimal filler, though some promotional language and future‑post promises slightly dilute the core contribution. The depth of DDD explanation and operational detail makes it highly relevant to AI‑driven software engineering readers. Limitations are marginal, mainly the essay‑like framing and occasional self‑reference.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-08-31T09:48:44.393569"
+    },
+    {
+      "id": 5249,
+      "source_id": 4,
+      "original_url": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+      "title": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+      "summary": "Leverage the ChatGPT web UI for planning while Codex securely executes code via a read‑only OAuth‑protected bridge.",
+      "ideas": [
+        "Use ChatGPT web UI as planning and review brain, keeping execution in Codex.",
+        "Bridge uses read‑only MCP with OAuth 2.1, preventing write access.",
+        "No API keys needed; relies on official web UI and secure tunnel.",
+        "One‑paste install automates environment checks, cloning, building, and skill setup.",
+        "Security model isolates workspace, blocks path traversal, and denies sensitive files.",
+        "Public endpoint requires OAuth token; unauthorized access returns 401/403.",
+        "Pairing uses short‑lived one‑time code with rate limiting.",
+        "Optional stable hostname via Cloudflare named tunnel.",
+        "Control plane exchanges tiny state messages; data plane provides read‑only tools.",
+        "Project automatically updates daily from GitHub."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers concrete, actionable instructions, a novel architecture (ChatGPT as planning brain with a read‑only MCP bridge), and detailed security model, providing clear value for developers. It contains multiple practical knowledge points and resources without clickbait or filler, aligning well with AI and tech themes. The density of insights relative to length is strong, earning a solid good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-31T09:34:07.296685",
+      "image_url": "https://opengraph.githubassets.com/38b68979bea1f200afa2e8174046efddb50553a3b1926c4d1b6f937a948eac7f/XiaoDuoYa/codex-with-chatgpt",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "ChatGPT thinks. Codex works. Use ChatGPT as the planning brain while keeping the Codex harness. - XiaoDuoYa/codex-with-chatgpt"
+    },
+    {
+      "id": 5248,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/198107/uncategorized/hackers-are-probing-papercut-servers-and-47-still-have-no-patch.html",
+      "title": "Hackers Are Probing PaperCut Servers, and 47% Still Have No Patch",
+      "summary": "Many organizations still run unpatched PaperCut servers vulnerable to remote code execution, and defenders need to detect specific forensic artifacts and apply immediate network restrictions while awaiting patches.",
+      "ideas": [
+        "Two active CVEs (CVE-2026-81578, CVE-2026-82078) enable remote code execution on PaperCut servers",
+        "47% of tracked PaperCut installations remain unpatched, many in schools, hospitals, offices",
+        "Exploit chain uses authorization bypass and unsafe Java class loading to achieve SYSTEM-level code execution",
+        "Huntress reproduced the exploit, seeing only reconnaissance commands such as whoami",
+        "Persistent forensic artifact includes a Derby log entry \"memory:pwn\" flagging high-confidence compromise",
+        "Defenders should preserve logs, check pc-app.exe, and search for unexpected .class files immediately",
+        "Mitigate by blocking public internet access and using VPN until patch"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers multiple concrete insights: it details two active CVEs, shows 47% unpatched installations, and describes forensic artifacts and mitigation steps. It avoids major fluff or clickbait, providing high value density and strong cybersecurity relevance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-31T09:33:21.767718"
+    },
+    {
+      "id": 5247,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/chrome-web-store-extensions-caught-stealing-crypto-browser-data/",
+      "title": "Chrome Web Store extensions caught stealing crypto, browser data",
+      "summary": "Malicious browser extensions can silently hijack crypto wallets and steal credentials, so users must remove them and secure their assets.",
+      "ideas": [
+        "Malicious Chrome/Edge extensions can inject modules to steal crypto and browser data.",
+        "Attackers hijack \"Connect Wallet\" and \"Swap\" buttons to drain EVM, Solana, Tron wallets.",
+        "Extensions can replace Ledger/Trezor sites with phishing pages to capture seed phrases.",
+        "Malware removes CSP headers and injects scripts via hidden HTML elements.",
+        "Stolen credentials include sessions, tokens, and balances from major exchanges and MetaMask.",
+        "Users should change passwords and move crypto to new wallets after infection.",
+        "Full list of compromised extension IDs provided for detection and removal."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete value instances: it reveals a widespread malicious extension campaign, details specific theft techniques, lists compromised extension IDs, and gives actionable remediation steps. It aligns strongly with CyberSecurity and provides useful, actionable information without clickbait or excessive padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-08-31T09:33:05.119346",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2023/11/28/Google_Chrome.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
     {
       "id": 5246,
       "source_id": 28,
@@ -13015,11 +13383,7 @@
       "rating_reason": "The article delivers concrete benchmark data, detailed configuration commands, and nuanced analysis of MTP draft‑n‑max settings and Vulkan driver choices for Qwen 3.8 on AMD hardware. It provides reproducible insights (e.g., why n‑max 2 outperforms n‑max 5) and practical tips (preserve_thinking flag, froggeric’s template) that are directly actionable for technically capable readers. The content is focused, low on hype, and adds novel, hardware‑specific knowledge beyond generic model announcements.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-08-17T10:46:28.956982",
-      "image_url": "https://sleepingrobots.com/og.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "Qwen 3.8 27B on Strix Halo: 18 t/s With MTP, Nearly 2x the Baseline"
+      "published_at": "2026-08-17T10:46:28.956982"
     },
     {
       "id": 4740,
