@@ -1,7 +1,229 @@
 {
-  "updated_at": "2026-08-31T17:00:00.191207+00:00",
-  "total_items": 936,
+  "updated_at": "2026-08-31T19:00:00.192530+00:00",
+  "total_items": 945,
   "items": [
+    {
+      "id": 5275,
+      "source_id": 34,
+      "original_url": "https://pgj11.com/posts/Analysis-of-Bincrypter-and-gsocket-gs-netcat/",
+      "title": "Analysis of Bincrypter and gsocket (gs-netcat): Artifacts extracted from a real compromise",
+      "summary": "The write‑up decodes a bincrypter‑obfuscated shell script that embeds an AES‑encrypted gs‑netcat binary and explains the execution logic and extraction techniques.",
+      "ideas": [
+        "Bincrypter packs the payload in a three‑line shell script using junk and eval separator tricks.",
+        "gs‑netcat (gs‑netcat 1.4.42beta5) is delivered as an AES‑256‑CBC encrypted ELF appended to the script.",
+        "The script selects execution paths based on $0, $BASH_SOURCE, or $BASH_EXECUTION_STRING to handle executed vs sourced use.",
+        "Provided tools (Bincrypter‑Extract, Gsocket‑Config‑Extract) and YARA rules enable automated detection of similar implants."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "The article gives a concrete, first‑hand analysis of a real Linux compromise, showing how a bincrypter‑obfuscated script hides a gs‑netcat payload and detailing the decryption routine, environment detection, and execution paths. It includes reproducible code snippets, base64 blobs, and publicly released extraction tools and YARA rules, providing actionable insight for malware reverse‑engineering. The only limitation is its focus on a single sample, which narrows broader applicability, but the depth of technical detail makes it highly valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T04:24:40.718415"
+    },
+    {
+      "id": 5274,
+      "source_id": 34,
+      "original_url": "https://people.kernel.org/monsieuricon/creepy-crawlies",
+      "title": "Creepy crawlies",
+      "summary": "AI crawlers now consume about 20% of git.kernel.org's capacity by rendering commits as HTML, and even strong proof‑of‑work challenges only partially block them.",
+      "ideas": [
+        "14 CPU cores continuously render commits for scrapers across 5 nodes.",
+        "Scrapers generate billions of URLs, many duplicates, to fetch the same commits.",
+        "Anubis proof‑of‑work with difficulty 5 still solved by bots, letting ~33% traffic through.",
+        "Legitimate traffic is only ~2% of git.kernel.org requests; rest are scrapers.",
+        "Shallow clones from many CI nodes cause spikes that can overwhelm the system."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, measurable evidence of AI crawlers consuming significant compute resources, details the Anubis proof‑of‑work mechanism, and explains URL explosion tactics, showing deep technical insight. It remains highly relevant to AI systems and infrastructure operations, though its findings are narrow to the kernel.org ecosystem and lack broader general applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T04:24:28.327393",
+      "image_url": "https://kaoti.ca/graphs/fig6-cpu-crawl-vs-clone.png",
+      "image_width": 1520,
+      "image_height": 832,
+      "image_alt": ""
+    },
+    {
+      "id": 5273,
+      "source_id": 34,
+      "original_url": "https://keithhayden.net/generation-as-narrative-prototyping-ai-fiction-wrtining/",
+      "title": "Mapping the Wild Country of AI Fiction",
+      "summary": "AI-generated drafts serve as disposable maps that reveal story structure, enabling authors to iteratively shape long-form fiction.",
+      "ideas": [
+        "Narrative prototyping uses AI to create provisional story shapes for insight.",
+        "Generated text acts as a map, not the final manuscript.",
+        "Throwaway AI drafts expose story requirements early.",
+        "The method parallels software prototyping and Lorem Ipsum usage."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The piece introduces a novel concept—narrative prototyping—detailing how AI-generated drafts function as maps rather than final products. It offers concrete experiments, parallels to software prototyping, and clear practical insights for writers. However, it leans on stylistic flourishes and occasional repetition, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T04:13:10.767464",
+      "image_url": "https://storage.ghost.io/c/18/bf/18bf29db-1cec-4857-a9dc-e2e94a86d2bf/content/images/size/w1200/2026/08/Mapping-the-Wild-Country-of-AI-Fiction-cover.jpg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 5272,
+      "source_id": 34,
+      "original_url": "https://jonno.nz/posts/how-many-days-of-ai-does-new-zealand-have/",
+      "title": "How Many Days of AI Does New Zealand Have?",
+      "summary": "New Zealand must build a national compute reserve tied to additional renewable power to secure sovereign AI inference during supply disruptions.",
+      "ideas": [
+        "New Zealand currently has ~45 days of diesel reserve, highlighting analog fuel-stock concepts.",
+        "2035 AI data-centre demand could require 350‑700 MW of firm power.",
+        "National compute utility should own strategic accelerator hardware and scheduler.",
+        "REANNZ currently operates only 48 GPUs, insufficient for frontier inference.",
+        "Every strategic megawatt must be coupled with additional generation capacity."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers detailed, data-driven analysis of New Zealand's compute and energy constraints, proposes a concrete sovereign compute utility, and uses the fuel reserve analogy to expose critical infrastructure gaps. Its substance is strong, with concrete numbers, mechanisms, and implementation ideas, but it remains aspirational about fully realized national reserves and lacks current inventory details, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T04:11:02.268875",
+      "image_url": "https://jonno.nz/og/how-many-days-of-ai-does-new-zealand-have.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How Many Days of AI Does New Zealand Have?"
+    },
+    {
+      "id": 5271,
+      "source_id": 34,
+      "original_url": "https://blog.nil.im/?86=",
+      "title": "Building a MorphOS cross-compiler using pkgsrc",
+      "summary": "Using pkgsrc with pre‑imported GCC patches provides the only public MorphOS cross‑compiler that works around broken baserel support.",
+      "ideas": [
+        "Imported GCC patches into pkgsrc enable a usable MorphOS cross‑compiler.",
+        "Accept MorphOS SDK and LAH licenses via mk.conf to build the compiler.",
+        "Verify the compiler with a simple \"Hello world\" test program."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The post delivers concrete, reproducible steps for building a MorphOS cross‑compiler via pkgsrc, includes necessary license acceptances and a simple test, and solves a real adoption barrier; however, depth is moderate and lacks extensive technical theory.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T03:53:06.641803"
+    },
+    {
+      "id": 5270,
+      "source_id": 34,
+      "original_url": "https://aligrithm.com/market-making-with-competitors-you-cant-see/",
+      "title": "5.50 Market Making With Competitors You Can't See",
+      "summary": "Optimal market making must continuously adjust quote depths in response to a competitor's evolving inventory, a dynamic captured by a matrix ODE that outperforms reinforcement‑learning approaches.",
+      "ideas": [
+        "Closed‑form matrix ODE yields optimal depths, beats PPO by 14%.",
+        "Competitor inventory shifts quotes; missed fills become future liability.",
+        "Fill rate depends on depth gap, not absolute depth."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a closed‑form matrix‑ODE solution for market making that explicitly incorporates a competitor's inventory, derives concrete depth formulas, and shows a 14% performance gain over PPO on extensive simulations. It provides verifiable mechanisms, quantitative results, and practical insights, making it highly relevant for technically skilled readers. Its applicability is narrower to those versed in micro‑structure and inventory modeling, and the generalization beyond the symmetric parameter setting is not proven. Nevertheless, it avoids filler and presents strong, evidence‑based substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T03:45:01.277489",
+      "image_url": "https://storage.ghost.io/c/27/cb/27cb0fc8-2c77-4434-af9e-d5d32a916994/content/images/size/w1200/2026/08/article_459-feature.png",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 5269,
+      "source_id": 34,
+      "original_url": "https://alfy.blog/2026/08/31/cross-origin-storage.html",
+      "title": "I wanted the browser to just ship jQuery. Cross-Origin Storage came for rescue",
+      "summary": "Cross-Origin Storage enables sites to share identical resources via hash‑based storage, preserving privacy while reducing duplicate downloads.",
+      "ideas": [
+        "Share files across sites using cryptographic hash as key",
+        "Public hash list prevents tracking by limiting shareability",
+        "Browser may GREASE‑respond with NotFoundError to protect privacy"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article explains a concrete, hash‑based sharing mechanism, its privacy‑preserving details, and practical API usage, directly serving developers interested in web infrastructure and security. It provides original implementation insight but remains a draft proposal without standard status, limiting its breadth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T03:44:20.963852"
+    },
+    {
+      "id": 5268,
+      "source_id": 34,
+      "original_url": "https://0xcc.io/posts/omarchy-root-creds/",
+      "title": "Omarchy: Any User Process Can Escalate to Root",
+      "summary": "Any user process in Omarchy can escalate to root through the default Docker group permission, and the issue is fixed by upgrading to version 4.0.1.",
+      "ideas": [
+        "Docker group grants root‑level socket access to all user processes",
+        "User can read /etc/shadow via docker run without sudo",
+        "Default config was opt‑out, not opt‑in, creating hidden risk",
+        "Patch released in Omarchy 4.0.1 removes Docker group membership",
+        "Podman provides a rootless container alternative"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article details a concrete privilege‑escalation flaw in Omarchy's default Docker setup, showing how any user process can obtain root via the Docker socket, includes a reproducible PoC, explains the security‑defaults mistake, and provides a clear remediation path. It is highly relevant to Linux security practitioners and offers valuable, non‑obvious insight. The main limitation is the inclusion of broader AI and philosophical commentary that does not affect the core technical finding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-01T03:41:49.204266"
+    },
+    {
+      "id": 5267,
+      "source_id": 7,
+      "original_url": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
+      "title": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
+      "summary": "Immutable Rust data structures and bit‑packing can halve DNS cache memory use while boosting speed.",
+      "ideas": [
+        "Replace mutable Vec with Box<[T]> to eliminate unused capacity fields.",
+        "Use Box<str> instead of String to drop 8‑byte capacity overhead.",
+        "Combine multiple booleans into a single bitflag to reduce padding.",
+        "Store DNS sections in one list with u16 offsets, cutting pointer overhead.",
+        "Employ a custom allocator to track per‑entry memory allocations.",
+        "Optimizations cut per‑entry size >50%, freeing ~100 TB RAM across fleet.",
+        "Insert throughput rose 43% and lookup latency fell 19% after changes."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable memory‑optimization techniques for a high‑scale DNS cache, backed by real performance data, providing several novel and practical insights. It aligns well with technology themes and offers high value density for its length, with no clickbait or filler.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-09-01T03:35:12.754155",
+      "image_url": "https://blog.cloudflare.com/_emdash/api/media/file/01M1185AQ3B90700DKB48C2HHM.png",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
     {
       "id": 5266,
       "source_id": 7,
