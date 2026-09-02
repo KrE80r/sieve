@@ -1,17 +1,17 @@
 {
   "schema_version": 2,
-  "batch_id": "fa6a09311c98e083d895ae66448f8976",
-  "published_at": "2026-09-02T03:32:00.000377+00:00",
-  "scheduled_for": "2026-09-02T03:30:00+00:00",
-  "next_update_at": "2026-09-02T08:30:00+00:00",
+  "batch_id": "54338298ba12e576d8084afa3a092eed",
+  "published_at": "2026-09-02T08:32:00.000560+00:00",
+  "scheduled_for": "2026-09-02T08:30:00+00:00",
+  "next_update_at": "2026-09-02T20:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-09-01T03:30:00+00:00",
-    "ends_at": "2026-09-02T03:30:00+00:00"
+    "starts_at": "2026-09-01T08:30:00+00:00",
+    "ends_at": "2026-09-02T08:30:00+00:00"
   },
   "coverage": {
-    "state": "complete",
-    "message": "All configured lists were collected and processed for this update."
+    "state": "incomplete",
+    "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
   "total_developments": 19,
   "developments": [
@@ -260,19 +260,34 @@
     {
       "id": "372686c19bc5faed0f92a19a180bf4ef",
       "occurred_at": "2026-09-01T18:15:46+00:00",
-      "updated_at": null,
+      "updated_at": "2026-09-02T08:32:00.000560+00:00",
       "expires_at": "2026-09-02T18:15:46+00:00",
-      "title": "Anthropic restricts mid‑conversation model switches for new organizations",
+      "title": "Anthropic restricts mid-conversation model switching for new organizations",
       "detail": [
-        "Anthropic announced that new organizations cannot switch models mid‑conversation; attempting to do so results in an error and loss of reasoning state. The change is currently limited to newly created accounts while existing users retain the previous behavior."
+        "Anthropic announced that newly created organizations can no longer switch models in the middle of a conversation; attempting a switch triggers an error and discards the model's reasoning state.",
+        "The restriction currently applies only to new accounts, while existing users retain the previous ability to change models mid-conversation."
       ],
-      "why_it_matters": "The restriction forces developers to commit to a single model per session, impacting workflows that rely on dynamic model selection and potentially increasing latency or complexity for multi‑model applications.",
+      "why_it_matters": "New users are forced to commit to a single model per session, limiting the ability to adapt model behavior on the fly and potentially increasing complexity, latency, or costs for workflows that rely on dynamic model selection and preserved reasoning continuity.",
       "sources": [
         {
           "author_name": "Armin Ronacher ⇌",
           "author_username": "mitsuhiko",
           "url": "https://x.com/mitsuhiko/status/2094851724750242110",
           "role": "source",
+          "media": []
+        },
+        {
+          "author_name": "Mario Zechner",
+          "author_username": "badlogicgames",
+          "url": "https://x.com/badlogicgames/status/2095050964352815360",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "Mario Zechner",
+          "author_username": "badlogicgames",
+          "url": "https://x.com/badlogicgames/status/2095054181535039789",
+          "role": "commentary",
           "media": []
         }
       ],
