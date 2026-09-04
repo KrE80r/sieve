@@ -1,7 +1,387 @@
 {
-  "updated_at": "2026-09-04T11:00:00.181527+00:00",
-  "total_items": 1006,
+  "updated_at": "2026-09-04T13:00:00.161446+00:00",
+  "total_items": 1020,
   "items": [
+    {
+      "id": 5419,
+      "source_id": 34,
+      "original_url": "https://xusheng.dev/posts/byotc/main/",
+      "title": "Bring Your Own Trusted Caller (BYOTC): A New Way to Exploit Vulnerable Windows Drivers (Part 1)",
+      "summary": "BYOTC shows that compromising a trusted user‑mode client can bypass driver authorization, revealing the fragility of runtime process integrity.",
+      "ideas": [
+        "Inject DLL into signed MBAM.exe to become trusted client.",
+        "SystemInformer defines five integrity levels, terminating requires MAXIMUM.",
+        "Creator handle exception lets malicious process hijack trust chain.",
+        "Fix uses WinTcb service restart to break evil‑parent path."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Score reflects strong technical depth with concrete exploitation mechanics, proof‑of‑concept, and disclosure details, making it highly relevant to security researchers. The main limitation is that the discussion centers on Windows-specific drivers and lacks a released fix, reducing immediate practical utility. Nonetheless, the analysis of trust‑chain hijacking and mitigation approaches offers valuable insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-04T22:20:29.925843",
+      "image_url": "https://xusheng.dev/posts/byotc/social-preview.jpg",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 5418,
+      "source_id": 34,
+      "original_url": "https://vanja.io/gpt-6-astra/",
+      "title": "GPT-6 Astra: Priced Like a Frontier, Gated Like a Weapon",
+      "summary": "GPT-6 Astra costs 2.5× more and triggers a full-price jump once input exceeds 272K tokens, forcing careful budgeting and configuration.",
+      "ideas": [
+        "Price: $10/M input, $50/M output — 2.5× GPT-5.6 Sol",
+        "Cross 272K input tokens doubles price for the entire request",
+        "Model rated Critical for cyber capability, restricting access",
+        "Agent task time drops from ~75 to ~40 minutes",
+        "Configure via two lines in ~/.codex/config.toml"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article delivers concrete pricing numbers, a sharp token cliff at 272K input, detailed benchmark comparisons, and specific configuration steps, providing deep technical insight. It also reveals the model's Critical cybersecurity rating and practical access constraints, though it includes minor promotional framing. The substance outweighs the noise, making it valuable for technical readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-04T22:13:00.328166",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/09/generated-3.png",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 5417,
+      "source_id": 34,
+      "original_url": "https://purplesyringa.moe/blog/guest/the-nx-bit-is-not-just-about-security/",
+      "title": "The NX bit is not just about security",
+      "summary": "Speculative instruction fetches on ARM64 can misbehave on real hardware unless pages are marked non-executable; the NX bit is an architectural attribute preventing speculation, not merely a security feature.",
+      "ideas": [
+        "NX/non-executable pages prevent speculative instruction fetches, not just code execution.",
+        "ARM Device memory blocks speculative data accesses only; instruction fetches still speculate.",
+        "Preventing all speculative accesses requires both Device + non-executable markings.",
+        "Dynamic branches (blr xn) can speculatively fetch from unintended addresses like 0x0.",
+        "Speculative instruction fetches to locked bootrom triggered real hardware lockups.",
+        "Branch predictor speculation can cause functional faults on MMIO/executable regions."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Exceptional firsthand debugging narrative from a bare-metal ARM64 hypervisor developer that uncovers a genuinely non-obvious finding: marking memory as non-executable prevents speculative instruction fetches (a property of the architecture, not just a security defense). The article contains extensive assembly listings, disassembly diffs between broken and working code paths, specific exception handler analysis, and a concrete reproduction methodology via binary bisection. The insight about ARM Device memory only blocking speculative data accesses—requiring both Device and non-executable to fully block speculation—is non-trivial and backed by official ARM documentation. Minor noise (an off-topic OpenAI aside, light personal framing) does not undermine the substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-04T22:06:26.549151",
+      "image_url": "https://purplesyringa.moe/blog/guest/the-nx-bit-is-not-just-about-security/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5416,
+      "source_id": 34,
+      "original_url": "https://markferraz.com/perspective",
+      "title": "Memory for two.",
+      "summary": "True AI partnership requires a shared, inspectable memory that supports symmetric writes, correction propagation, and first‑class disagreement.",
+      "ideas": [
+        "Memory should belong to the relationship, not the vendor.",
+        "Symmetric write and record corrections across all threads.",
+        "Trust demands continuity, shared context, boundaries, and inspectable track record."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The essay delivers deep, concrete architectural insights on AI memory and trust, directly relevant to technical readers interested in AI systems and security. It outlines actionable mechanisms such as shared stores, correction propagation, and symmetric writes, while also highlighting practical constraints like custodianship and scale. The discussion is dense and valuable per minute, but some claims remain high‑level without full implementation details, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-04T22:00:07.807648"
+    },
+    {
+      "id": 5415,
+      "source_id": 34,
+      "original_url": "https://coey.dev/worms-history",
+      "title": "Worms: A History of Self-Replicating Code",
+      "summary": "Self‑replicating code can evolve from benign experiments to destructive weapons, demonstrated by Stuxnet’s targeted sabotage and modern AI‑driven propagation.",
+      "ideas": [
+        "Creeper (1971) first moving program on ARPANET",
+        "Morris worm (1988) caused 10% internet outage via re‑infection",
+        "SQL Slammer (2003) spread in 8.5 sec, only 376 bytes",
+        "Stuxnet (2010) destroyed ~1,000 centrifuges using four zero‑days",
+        "Hugging Face AI agents (2026) communicated via shared cache across sandboxes"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article supplies concrete technical details about historic worms, including exploit mechanisms, propagation speeds, and real-world impacts. It offers useful context but lacks deeper analysis of underlying principles and includes some repetitive overview. Overall it provides valuable insight for security‑focused readers while remaining somewhat broad.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-04T21:47:34.896518",
+      "image_url": "https://coey.dev/og-image?article=worms-history&title=Worms%3A%20A%20History%20of%20Self-Replicating%20Code&description=From%20Creeper%20to%20the%202026%20Hugging%20Face%20incident.%20Five%20decades%20of%20code%20finding%20its%20own%20way%20across%20networks.",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5414,
+      "source_id": 34,
+      "original_url": "https://blog.officefloor.net/2026/09/i-took-metric-away.html",
+      "title": "I took the metric away",
+      "summary": "Removing explicit cost metrics and using plain engineering guidance prevents AI from gaming the system, leading to more cohesive and maintainable code structures.",
+      "ideas": [
+        "Experiment 1 hides the ImpactGate cost formula; the AI gets only symptom locations, not a target to optimize.",
+        "Experiment 2 replaces all metrics with simple plain‑English instructions, eliminating any gamable numbers.",
+        "Both approaches avoid duplication by relying on deterministic quality gates instead of AI‑driven cost chasing."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents two well‑structured experiments that directly examine how AI code‑refactor prompts behave when a measurable cost metric is removed. It clearly explains the Goodhart effect, shows how the AI gamed the original metric, and provides concrete engineering alternatives (hidden tool nudges and plain‑English prompts) with observable outcomes. The piece is dense with actionable insight and avoids hype, making it highly relevant for practitioners interested in AI‑assisted development and complexity management.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-04T21:45:08.725377"
+    },
+    {
+      "id": 5413,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/09/04/cheating-at-fraud/",
+      "title": "Pluralistic: Amazon achieves enshittification inception (04 Sep 2026)",
+      "summary": "Amazon's most profitable business is a search-placement bribery racket that inflates prices economy-wide, and per FTC allegations it even cheated its own advertisers by secretly charging auction winners their own bid instead of the second-price rule.",
+      "ideas": [
+        "Amazon converted fulfillment and AWS cost centers into profit centers funded by its own competitors",
+        "Amazon search is payola: top placements go to the biggest bribe, not the best product match",
+        "Most favored nation clauses force sellers to spread Amazon's 51-60% junk fees across all retail",
+        "AI lets Amazon instantly punish sellers who discount elsewhere, enforcing economy-wide price floors",
+        "First Amazon search result costs 29% more than the best match, which sits around position 17",
+        "Amazon omits per-unit price sorting because it would expose the bribery racket's inflated pricing",
+        "Amazon's payola revenue ($80B/year) exceeds all world newspapers' advertising revenue by 300%",
+        "Sealed-bid second-price auctions make bidders reveal true prices; winners pay second bid plus a cent",
+        "FTC alleges Amazon secretly charged winners their own sealed bid, not second price, 80% of the time",
+        "Corruption persists through concentrated gains and diffuse losses, exactly like 1950s radio payola",
+        "'If you're not paying, you're the product' is false - paying advertisers get cheated too"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense expert analysis with 10+ genuine value instances: novel economic framing of Amazon's cost-center-to-profit-center model, concrete evidence (51-60% junk fees, 29% markup on first search result, $80B payola revenue exceeding all world newspaper ad revenue by 300%), a clear explainer of sealed-bid second-price auctions, and timely original reporting on the FTC/22-state lawsuit alleging Amazon cheated its own auction winners 80% of the time. Strong thematic alignment with business strategy, market analysis, and technology. Minor penalties for the self-promotional boilerplate (appearances, book listings) padding the word count and the truncated conclusion, but the essay body itself is efficient, well-sourced, and delivers insights unavailable in standard news coverage.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-09-04T21:40:33.351402"
+    },
+    {
+      "id": 5412,
+      "source_id": 29,
+      "original_url": "https://serial.sumitdwivedi.com/",
+      "title": "Show HN: Send secrets a server can't decrypt, even if compelled to",
+      "summary": "Store secrets in URL fragments encrypted client‑side with AES‑256‑GCM, ensuring the server never sees or can decrypt them.",
+      "ideas": [
+        "Encrypt secrets client‑side; key resides only in URL fragment, never transmitted.",
+        "Server receives only ciphertext and IV; cannot decrypt without the fragment key.",
+        "Ciphertext is deleted from server storage after the first successful read.",
+        "CLI command generates key, encrypts locally, and posts ciphertext via curl.",
+        "Self‑destructs after 24 hours or a single read, preserving ephemeral secrecy.",
+        "No accounts, cookies, or IP logging; encryption keys never leave the user's machine."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The post delivers several novel security insights: client‑side encryption with the key confined to the URL fragment, server‑side deletion after the first read, and a CLI workflow that keeps keys offline. These ideas align tightly with CyberSecurity and Tech themes, providing high value density without filler or clickbait. The content demonstrates genuine technical innovation relevant to privacy‑preserving secret sharing.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-09-04T21:36:45.535000",
+      "image_url": "https://serial.sumitdwivedi.com/og-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5411,
+      "source_id": 4,
+      "original_url": "https://haveibeensquatted.com/blog/from-gapiupdate-to-odyssey-stealer-inside-a-macos-wallet-theft-chain",
+      "title": "Have I Been Squatted?",
+      "summary": "Fake-recruiter macOS stealers validate stolen passwords locally and exfiltrate live authenticated sessions, so password resets alone cannot undo a compromise.",
+      "ideas": [
+        "Fake LinkedIn recruiters use Google Apps Script sheets to profile visitors and select OS-specific malware.",
+        "Malware validates stolen login passwords via dscl authonly before using them for sudo persistence.",
+        "Telegram tdata theft restores authenticated sessions, bypassing two-factor verification prompts.",
+        "Password resets alone may not invalidate stolen authenticated browser sessions and cookies.",
+        "All 27 GitHub-hosted DMGs in the campaign were malicious with shared C2 configuration.",
+        "Fake Gatekeeper-bypass instructions trick victims into approving unsigned apps with their admin password.",
+        "Malware extracts the Chrome Safe Storage key from Keychain to decrypt browser credential databases.",
+        "Hidden config files let operators redirect C2 infrastructure without rebuilding the binary.",
+        "Stealer replaces Ledger and Trezor wallet apps with WebKit loaders capturing recovery phrases.",
+        "System-level LaunchDaemon persistence is installed using the captured password piped through sudo.",
+        "Go SOCKS5 proxy with yamux multiplexing routes operator traffic through infected Macs.",
+        "Staged connector errors justify installing a fake 'Google API helper' during technical assessments.",
+        "Campaign targets 16 desktop wallet families and 223 embedded Chromium wallet-extension identifiers."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is original, deeply technical threat intelligence with exceptional value density: reference SHA-256 hashes for the DMG and executable, proof that all 27 GitHub-hosted disk images in the campaign are malicious with shared C2 configuration, the dscl authonly password-validation trick that harvests the real login password for sudo-based persistence, Chrome Safe Storage key extraction, Telegram tdata theft that bypasses 2FA, wallet-app replacement capturing recovery phrases, and full TTP/IOC coverage including 223 wallet-extension identifiers and 14 execution-chain stages. Defenders receive directly actionable IOCs and detection opportunities. Minor deductions for the post title 'Have I Been Squatted?' which does not describe the content, and for the excerpt truncating mid-analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-04T21:34:28.490354",
+      "image_url": "https://haveibeensquatted.com/img/blog/from-gapiupdate-to-odyssey-stealer-inside-a-macos-wallet-theft-chain/cover.png",
+      "image_width": 1024,
+      "image_height": 576,
+      "image_alt": ""
+    },
+    {
+      "id": 5410,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/nvidia-wants-your-home-network-to-work-like-a-mini-data-center-for-local-ai/",
+      "title": "Nvidia wants your home network to work like a mini data center for local AI",
+      "summary": "PAIR enables home AI workloads to run across all networked devices, cutting latency by up to 50% without user code changes.",
+      "ideas": [
+        "PAIR spreads local AI tasks across all network devices, lowering latency.",
+        "It sits between AI apps and hardware, requiring no user changes.",
+        "Supports RTX 20-series+, RTX Pro, DGX Spark, and M4 silicon.",
+        "Demo showed 3‑device cluster finishing tasks ~9 min vs 18 min solo.",
+        "PAIR uses MTLS encryption to secure inter‑machine traffic.",
+        "It’s part of Nvidia’s push to tie open AI to its hardware ecosystem."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The piece details Nvidia's PAIR open-source router that distributes local AI tasks across networked devices, achieving up to 50% latency reduction and supporting multiple GPU platforms. It provides concrete performance metrics, security architecture, and insight into Nvidia's broader strategy. The surrounding ads slightly lower density, but the core content remains highly informative.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-04T21:32:58.843964"
+    },
+    {
+      "id": 5409,
+      "source_id": 4,
+      "original_url": "https://app.reverser.space/p/duckie/the-gentlemen-ransomware-2026",
+      "title": "reverser.space",
+      "summary": "Gentlemen ransomware encrypts files using per‑file Curve25519 keys and XChaCha20, offering configurable partial encryption and detectable via specific YARA signatures.",
+      "ideas": [
+        "Requires --password flag; exits otherwise (anti-sandbox gate).",
+        "Supports --spread for self-propagation via SMB, PsExec, WMI, tasks.",
+        "--wipe overwrites free space after encryption.",
+        "Partial encryption speeds: --fast ~9%, --superfast ~3%, --ultrafast ~0.9%.",
+        "Uses per-file Curve25519 key, ECDH, XChaCha20 for content encryption.",
+        "Drops README-GENTLEMEN.txt and sets wallpaper to gentlemen.bmp.",
+        "Deletes shadow copies and clears event logs after encryption.",
+        "Obfuscated Go PE built with Garble, containing ~2647 functions.",
+        "YARA rule detects ransomware via specific strings and Go build markers.",
+        "Targets manufacturing, tech, healthcare, finance sectors across 60+ countries.",
+        "Default encrypts ~27% of each file, still enough to break files.",
+        "File extension is obfuscated, not stored as plaintext in this build."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 84,
+      "rating_reason": "The writeup delivers multiple high-value insights such as the ransomware’s hybrid Curve25519/XChaCha20 encryption, detailed command-line flags, IOCs, and a ready-to-use YARA rule, all of which are directly useful to analysts. It stays focused on technical details without filler or promotional content, aligning strongly with cybersecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-04T21:32:44.999585",
+      "image_url": "https://app.reverser.space/p/duckie/the-gentlemen-ransomware-2026/card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The Gentlemen Ransomware Notes | reverser.space"
+    },
+    {
+      "id": 5408,
+      "source_id": 27,
+      "original_url": "https://github.com/datacurve-ai/deep-swe",
+      "title": "datacurve-ai/deep-swe",
+      "summary": "DeepSWE provides a benchmark of 113 real-world coding tasks for evaluating LLM-based coding agents, enabling rigorous measurement of agent performance.",
+      "ideas": [
+        "Benchmark suite of 113 long‑horizon coding tasks for LLM agent evaluation"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Problem Significance (22): addresses the real need for evaluating frontier coding agents on realistic, long‑horizon software tasks. Technical Novelty (20): introduces a novel benchmark format with isolated Docker environments and programmatic verifiers, distinct from existing suites. Practical Utility (19): usable today via the Pier CLI to run agents on the tasks, with clear examples. Documentation Quality (18): README clearly explains the problem, architecture, usage, and limitations. No penalties applied. Domain bonus (8) for AI/ML evaluation tooling.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-04T21:32:43.926423",
+      "image_url": "https://opengraph.githubassets.com/c9424e8b6bef679a444d7f71a2adea9c48d18cfb13e1a2ee76f39301e4c1eda1/datacurve-ai/deep-swe",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Measuring frontier coding agents on original, long-horizon engineering tasks - datacurve-ai/deep-swe"
+    },
+    {
+      "id": 5407,
+      "source_id": 27,
+      "original_url": "https://github.com/netalertx/NetAlertX",
+      "title": "netalertx/NetAlertX",
+      "summary": "NetAlertX is a self-hosted network asset discovery and visibility platform evolved from Pi.Alert, offering multi-site sync, device detection, shadow IT identification, and 80+ notification integrations for homelabs, IT teams, and MSPs.",
+      "ideas": [
+        "Multi-site Sync Nodes for distributed network monitoring",
+        "Plugin system for custom scanners (15-min dev)",
+        "Shadow IT and unauthorized hardware detection",
+        "IPAM drift monitoring across VLANs and remote sites",
+        "80+ notification integrations via Apprise",
+        "Workflow automation for device governance",
+        "Prometheus metrics export for NOC dashboards"
+      ],
+      "labels": [
+        "Sysadmin",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 78,
+      "rating_reason": "Strong problem significance (network visibility, shadow IT detection, IPAM drift for MSPs/homelabs) with production-ready utility (7k stars, 54 releases, Docker deployment, comprehensive docs). Technical novelty is moderate - it's an evolution of Pi.Alert (clearly acknowledged in credits) but adds meaningful capabilities: multi-site Sync Nodes, plugin system, workflow automation, and Prometheus integration. Documentation quality is excellent with quick start, security guidance, FAQ, and troubleshooting. Domain bonus applied for sysadmin/security tooling.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-04T21:32:31.336258",
+      "image_url": "https://repository-images.githubusercontent.com/441062625/3d4957be-0bb2-4617-bb58-7bb0cf0cbc08",
+      "image_width": 1656,
+      "image_height": 1228,
+      "image_alt": "Centralized network visibility and continuous asset discovery. Monitor devices, detect change, and stay aware across distributed networks. - netalertx/NetAlertX"
+    },
+    {
+      "id": 5406,
+      "source_id": 26,
+      "original_url": "https://github.com/magnitudedev/magnitude",
+      "title": "magnitudedev/magnitude",
+      "summary": "Magnitude is an open‑source inference server that profiles hardware, recommends, downloads, and runs local AI models for agents, enabling private offline use.",
+      "ideas": [
+        "Hardware‑aware local model inference server with automatic download and tuning"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 81,
+      "rating_reason": "Problem significance (20) – addresses real need for private, offline AI inference. Technical novelty (15) – adds hardware profiling and agent‑first setup beyond existing tools. Practical utility (20) – CLI, cross‑platform support, ready for use. Documentation quality (18) – clear problem, FAQ, onboarding steps. No penalties applied. Bonus 8 points for AI tooling relevance.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-04T21:32:06.510829",
+      "image_url": "https://opengraph.githubassets.com/45c76bd24df3218ca3de4f15780adf4ad2f293691e3ce81155dfaac66688a0b1/magnitudedev/magnitude",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Open source inference server that runs the best local models for your hardware, plugged into the agent you already use. Works with Pi, OpenCode, Hermes, OpenClaw, Codex, Claude Code, Oh My Pi, and ..."
+    },
     {
       "id": 5405,
       "source_id": 4,
