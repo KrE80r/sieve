@@ -1,7 +1,272 @@
 {
-  "updated_at": "2026-09-05T06:00:00.363249+00:00",
-  "total_items": 980,
+  "updated_at": "2026-09-05T07:00:00.175530+00:00",
+  "total_items": 991,
   "items": [
+    {
+      "id": 5436,
+      "source_id": 34,
+      "original_url": "https://wisplu.com/blog/en/autonomous-ops-file-structure/",
+      "title": "The file structure of an autonomous ops agent: seven files, each one blocking a specific failure",
+      "summary": "The core insight is that the agent's reliability hinges on an append‑only ops‑log file serving as its evidential moat.",
+      "ideas": [
+        "Append‑only ops‑log provides the only verifiable evidence of the agent’s activity"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a concrete, failure‑driven file layout for an autonomous ops agent, with detailed failure analyses of each file, especially the append‑only ops‑log as a reliable evidence source. It is highly relevant to AI agents, system automation, and operational practices, but its length and occasional self‑promotion slightly dilute focus. Overall it offers original, actionable mechanisms rather than superficial commentary.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:28:37.183952"
+    },
+    {
+      "id": 5435,
+      "source_id": 34,
+      "original_url": "https://salmg.net/2026/09/04/simtrace2-t-1-research-project/",
+      "title": "SIMtrace2 T-1 Research Project",
+      "summary": "It explains how to retrofit SIMtrace2 with a robust T=1 block layer, rewrite ATRs safely, and correctly relay EMV APDUs between a card and a payment terminal.",
+      "ideas": [
+        "Implement a self‑contained T=1 block layer (LRC/CRC, I/R/S blocks, IFS, RESYNCH, ABORT, WTX).",
+        "Rewrite the card's ATR to drop timing promises the board cannot meet while preserving identity bytes.",
+        "Validate PPS proposals against the actual ATR capabilities to avoid silent failures.",
+        "Add explicit handling for EMV proprietary class 0x80 commands to prevent case‑0 drops.",
+        "Use a synthetic ATR (3B 00) when the terminal rejects ATRs containing T=15 global bytes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a thorough, source‑code‑level description of adding ISO 7816‑3 T=1 support to SIMtrace2, including ATR rewriting, PPS validation, EMV‑specific class handling, and protocol conversion. It documents concrete bugs, the exact fixes, and experimental traces that demonstrate a complete EMV transaction, providing reproducible knowledge for security researchers and embedded engineers. The content is dense but focused, with little filler, making it highly valuable for readers interested in card‑relay security and low‑level smart‑card protocol engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:20:59.472494"
+    },
+    {
+      "id": 5434,
+      "source_id": 34,
+      "original_url": "https://martin.ankerl.com/2026/09/04/which-hash-map/",
+      "title": "Which C++ Hashmap Should You Actually Use?",
+      "summary": "A benchmark-driven, methodology-honest comparison of eight C++ hashmap implementations shows that the 'fastest' choice depends heavily on workload mix, with iteration vs lookup-hit-rate vs value-size producing dramatically different rankings and memory footprints.",
+      "ideas": [
+        "Workload mix determines hashmap winner: iteration-heavy flips the result vs lookup-heavy.",
+        "Abseil iterates ~20% faster than Boost but pays ~1.5x the miss cost.",
+        "boost::unordered_map builds slower than std::unordered_map despite winning overall.",
+        "Flat maps briefly double during rehash; node maps use less than half the memory.",
+        "Interleaved single-process benchmarking prevents machine drift from biasing results.",
+        "Boost skips its own mixing when given an avalanching hash function."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Original comparative benchmark of eight C++ hashmaps across fifteen workloads with specific reproducible methodology (interleaved single-process runs, /proc/self/status for memory), explicit library versions, and concrete per-workload numbers. Surfaces genuinely non-obvious findings: Abseil vs Boost behavioral divergence (~20% iteration advantage, ~1.5x miss penalty), boost::unordered_map building slower than std::unordered_map, and flat-map memory doubling during rehash. The author has a clear conflict of interest (wrote unordered_dense) but addresses it transparently by exposing weights and admitting cases where it loses.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:10:43.226370"
+    },
+    {
+      "id": 5433,
+      "source_id": 34,
+      "original_url": "https://martin.ankerl.com/2026/09/04/unordered-dense-four-buckets-at-a-time/",
+      "title": "Four Buckets at a Time",
+      "summary": "Vectorising the hash‑map probe to read four buckets at once eliminates per‑bucket branches and cuts mispredictions, yielding a 1.6× speedup.",
+      "ideas": [
+        "Branch misprediction costs ~16 cycles per lookup, dominating performance before SIMD.",
+        "Gather<0> loads and shuffles four bucket metadata entries into a __m128i register.",
+        "Using _mm_cmpeq_epi32 and _mm_movemask_ps provides four parallel fingerprint/distance comparisons in one instruction.",
+        "Trade‑off: ~38 extra instructions per probe are worth the reduction from 1.14 to 0.19 mispredictions per lookup.",
+        "Performance model: cycles ≈ 16 × mispredictions + instructions / 3.5"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a deep, concrete explanation of how an unordered_dense hash map was sped up 1.6× by SIMD‑vectorising the probe, including full source snippets, performance measurements, and a simple model linking mispredictions to cycles. It is highly relevant to low‑level C++ performance engineering and provides reusable techniques, with minimal hype or filler.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:10:24.385269"
+    },
+    {
+      "id": 5432,
+      "source_id": 34,
+      "original_url": "https://maarten.mulders.it/2026/09/the-road-to-reproducible-builds-on-the-jvm/",
+      "title": "The Road to Reproducible Builds on the JVM",
+      "summary": "Setting the Maven JAR plugin to ≥3.2.0 and defining project.build.outputTimestamp are essential first steps to achieve reproducible builds, and they can be externally verified through a .buildspec file.",
+      "ideas": [
+        "Update Maven JAR Plugin to version 3.2.0 or higher to enable reproducibility.",
+        "Define project.build.outputTimestamp with an ISO‑8601 value for stable timestamps.",
+        "Create a .buildspec file and use artifact:compare to verify identical external builds."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, actionable steps for achieving reproducible Maven builds, including specific plugin updates, property configuration, and external verification via the Reproducible Builds registry. It provides measurable evidence (buildcompare results, diffoscope hints) and explains mechanisms rather than vague advice. While valuable, it stops short of full extraordinary impact by not presenting a complete end‑to‑end case study with all failure analyses.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:08:46.419731"
+    },
+    {
+      "id": 5431,
+      "source_id": 34,
+      "original_url": "https://llbbl.blog/2026/09/04/my-rate-limiter-documented-its.html",
+      "title": "My Rate Limiter Documented Its Own Bypass",
+      "summary": "Bypassing rate limiters and silent indexer failures arise from trusting leftmost X-Forwarded-For entries and ignoring failure signals, so explicit hop‑count validation and exit‑code handling are required.",
+      "ideas": [
+        "Trust X-Forwarded-For from the right, not the left",
+        "Validate entire header chain, not just extracted IP",
+        "Bound in-memory rate-limit store size",
+        "Set process.exitCode on partial CLI failures",
+        "Write tests that assert failure paths"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article dissects two real bugs where success signals masked failure, provides concrete code snippets, shows precise mechanisms of X-Forwarded-For misuse, and details concrete fixes with validation and bounded stores. It offers actionable security and engineering insights with reproducible experiments and clear testing improvements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:08:15.699382"
+    },
+    {
+      "id": 5430,
+      "source_id": 34,
+      "original_url": "https://lackofimagination.org/2026/09/letting-ai-debug-production/",
+      "title": "Letting AI Debug Production",
+      "summary": "AI can safely verify production bug fixes by replaying deterministic traces generated from real incidents without affecting live services.",
+      "ideas": [
+        "Trace recording lets AI replay incidents and verify fixes offline."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete, implementable technique for deterministic replay of production incidents using the Pure Effect library, with clear code examples and verification steps that an AI can use to test fixes offline. It delivers substantial technical value, including a practical workflow, limitations, and a reusable regression-test pattern, while avoiding hype and unnecessary filler. The main limitation is its focus on JavaScript/TypeScript effect pipelines, which may not generalize to other stacks. Overall it offers deep, actionable insight for readers interested in AI‑assisted debugging and production reliability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:07:19.501720",
+      "image_url": "https://lackofimagination.org/images/luca-bravo-ESkw2ayO2As-unsplash.jpg",
+      "image_width": 1920,
+      "image_height": 1325,
+      "image_alt": ""
+    },
+    {
+      "id": 5429,
+      "source_id": 34,
+      "original_url": "https://karanbansal.in/blog/per-message-effort/",
+      "title": "Switching Effort Nuked My Prompt Cache. The Next Day It Didn't.",
+      "summary": "Switching Claude Code's effort level used to invalidate the entire cached prompt prefix and cost ~80x more on Fable 5.1; Fable 5.1/Mythos 5.1/Opus 5 now accept an empty system message carrying output_config.effort that lets the change ride as an append, preserving the cache, and Claude Code shipped the client code dark for months before a feature flag flipped in v2.1.260.",
+      "ideas": [
+        "Per-message effort via empty system message preserves cache; top-level effort change invalidates entire prefix",
+        "Claude Code carried per_message_effort client code since v2.1.246 behind a per_turn_effort runtime flag",
+        "Cache read at $0.25/MTok vs write at $20/MTok yields ~80x cost asymmetry per effort flip",
+        "Per-message effort, mid-conversation system messages, and mid-conversation tool changes all move mutable controls from request envelope into appended messages",
+        "Cache writes grew from 24,268 to 24,513 tokens after effort flip, baseline churn unaffected",
+        "Unsupported models get latched so client retries without per-message effort rather than failing"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Firsthand forensic investigation of a specific prompt-caching cost hazard in Claude Code, including binary archaeology across 7 client versions, before/after token measurements across the flag flip, and concrete API message format showing how per-message effort preserves cache while top-level effort change invalidates it. The author explicitly flags measurement caveats (per-turn churn, expired API key blocking raw-API proof) but the comparative signal and the architectural pattern ('request envelope dissolving into conversation content') are unusually well supported and non-obvious. Directly actionable for anyone building agent harnesses on Anthropic models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T16:06:18.721363",
+      "image_url": "https://karanbansal.in/blog/per-message-effort/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "22.6k tokens re-cached. One day later, no warning."
+    },
+    {
+      "id": 5428,
+      "source_id": 34,
+      "original_url": "https://edmcman.github.io/blog/2026-09-04--benchmarking-quantized-ll-ms-for-local-coding-agents-part-6-one-mystery-solved/",
+      "title": "Benchmarking Quantized LLMs for Local Coding Agents Part 6: One Mystery Solved",
+      "summary": "Upgrading llama.cpp fixed a parsing bug that caused a large thinking penalty discrepancy, and using the mini-swe-agent scaffold yielded the highest resolved rate.",
+      "ideas": [
+        "Upgraded llama.cpp raised resolved from 187 to 254 (+67) for thinking-general.",
+        "Thinking penalty on llama.cpp fell from 13.4pp to 4.6pp after upgrade.",
+        "mini-swe-agent achieved 61.6% solved, outperforming openhands (54.8%).",
+        "Thinking penalty remains on both llama.cpp and vllm after bug fix.",
+        "vllm ran faster than llama.cpp (808s vs 1045s) for non‑thinking runs."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers detailed experimental data, clear mechanism identification, and measurable improvements from upgrading llama.cpp and selecting alternative agent scaffolds. It is highly relevant to AI engineering readers seeking concrete benchmarking results. However, it still leaves the fundamental thinking penalty unexplained and focuses on a limited set of models, which tempers its exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T15:54:20.477887"
+    },
+    {
+      "id": 5427,
+      "source_id": 34,
+      "original_url": "https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/performance/distributed/2026/09/04/the-quickest-path-to-a-diff.html",
+      "title": "The Quickest Path to a Diff · The app died at Red Rocks while its health checks stayed green. Every line of code was fine. The sum was nobody's job.",
+      "summary": "In agent-written codebases every change passes every local check while global properties like statements-per-request and connection hold time are nobody's job; only measuring the whole running system reveals the accreted cost.",
+      "ideas": [
+        "Nested connection borrowing gridlocks the pool while health checks stay green",
+        "Log Go sql.DB WaitCount and WaitDuration to expose pool wait time",
+        "Census per page: 340 statements with 14 shapes is the classic N+1 loop",
+        "The Lot accreted 292 statements across 164 shapes with no villain loop",
+        "Agent connection-hold scan reported 217 sites; measurement found about 40",
+        "Agents reverted six of eight optimizations when benchmarks showed regressions",
+        "Duplication is invisible in diffs; refactoring never happens unless explicitly requested",
+        "Unindexed function quietly consumed 79.5 percent of production database time"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "An expert firsthand incident postmortem with original measurements: connection-pool gridlock from nested connection borrowing (with concrete Go code), green health checks masking a dead app, and a statements-vs-shapes census across pages (340 statements/14 shapes on Shows, 292/164 on the home page). The central insight that AI agents reason locally, take the quickest path to a diff, and leave global properties like queries-per-request and pool hold time unowned is supported by hard evidence, including agent scan false positives (217 claimed vs ~40 real sites) and agents reverting six of eight optimizations when benchmarks disagreed. The underlying mechanisms (N+1 queries, pool exhaustion, useless health checks) are familiar, which caps novelty slightly, but the systemic analysis of agent-driven development and actionable instrumentation lessons are unusually valuable. Minor truncation at the end does not impair the substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T15:48:33.896764",
+      "image_url": "https://christophermeiklejohn.com/og/the-quickest-path-to-a-diff.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5426,
+      "source_id": 34,
+      "original_url": "https://bjornjohansen.com/five-models-code-review/",
+      "title": "Five models pass the easy code reviews. Then the diffs get hard.",
+      "summary": "Cheaper LLMs match expensive ones on tiny diffs but diverge sharply on large, multi‑hunk reviews where only a few models reliably catch subtle bugs.",
+      "ideas": [
+        "Small diffs equalize performance across all five models.",
+        "Large diffs expose distinct error‑finding capabilities among models.",
+        "Kimi 3 consistently finds all cross‑hunk defects.",
+        "Grok 4.6 misses subtle refactor bugs like '<' changes.",
+        "DeepSeek fails when a defect spans two code locations.",
+        "Qwen3.8 Max times out on many large‑diff calls.",
+        "GLM suffers upstream rate‑limit and empty‑response failures.",
+        "Model IDs can map to different hosts, altering cost and behavior.",
+        "Output token caps cause silent truncation of reviewer reasoning.",
+        "Clean diffs should yield silence; extra findings indicate false positives."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers original, reproducible benchmark data on LLM code‑review performance, showing concrete differences in defect detection, noise, cost, and latency across models. It includes detailed tables, measurement methodology, and first‑hand observations, meeting the criteria for substantive technical value. Some peripheral commentary and OpenRouter specifics add noise, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-05T15:42:13.081156"
+    },
     {
       "id": 5425,
       "source_id": 4,
