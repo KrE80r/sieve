@@ -1,7 +1,348 @@
 {
-  "updated_at": "2026-09-06T17:00:00.172126+00:00",
-  "total_items": 1006,
+  "updated_at": "2026-09-06T19:00:00.181039+00:00",
+  "total_items": 1019,
   "items": [
+    {
+      "id": 5485,
+      "source_id": 34,
+      "original_url": "https://www.wimdeblauwe.com/blog/2026/09/06/testing-your-auto-configuration-against-a-missing-optional-dependency/",
+      "title": "Testing your auto-configuration against a missing optional dependency",
+      "summary": "A custom HidingClassLoader can simulate missing optional dependencies, revealing hidden auto‑configuration failures and guiding proper nesting of optional beans.",
+      "ideas": [
+        "Use a child‑first class loader that hides specific classes to reproduce NoClassDefFoundError in tests.",
+        "Place beans that depend on optional libraries in a nested @ConditionalOnClass configuration to avoid eager class loading.",
+        "FilterClassLoader cannot simulate JVM signature resolution failures because the class is still defined by the parent loader."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives concrete, reproducible code (a custom HidingClassLoader) to test Spring Boot auto‑configurations with optional dependencies, explains the JVM class‑resolution nuance, and shows a correct refactor pattern. It targets Spring/Java developers, offering actionable insight beyond generic advice. Minor noise from book promotion and some lengthy exposition reduces efficiency slightly, but overall it is high‑value for the intended technical audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T04:10:21.587680",
+      "image_url": "https://www.wimdeblauwe.com/images/twittercard/template_hu_e9768d67916d63ff.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 5484,
+      "source_id": 34,
+      "original_url": "https://www.adamdjbrett.com/blog/jcrt-kcworks-buildawesome-update/",
+      "title": "A Summer of Plumbing: JCRT, KC Works, and the Build Awesome Builds",
+      "summary": "Careful repository imports, dependency audits, deterministic build checks, and local performance verification exposed correctness and scalability problems that cloud CI had hidden.",
+      "ideas": [
+        "Published InvenioRDM records lock file buckets; incorrect PDFs require versioning."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concentrated, firsthand engineering detail across Eleventy/Build Awesome, InvenioRDM, dependency management, build performance, and mobile CSS debugging. Particularly valuable findings include published-record file locking, an incompatible npm override, a quadratic Nunjucks trim operation, and several failure modes that CI had concealed. Its practical value is reduced by the narrative format, the absence of complete code patches, and the version-specific nature of several Eleventy alpha findings.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T04:07:12.359563"
+    },
+    {
+      "id": 5483,
+      "source_id": 34,
+      "original_url": "https://tinyapps.org/blog/safely-shut-down-oobe.html",
+      "title": "Safely shut down during OOBE in Windows, macOS, and Linux Mint",
+      "summary": "Use specific key combos or a power‑button press to shut down gracefully during each OS's out‑of‑box experience.",
+      "ideas": [
+        "Windows OOBE: Shift+F10 → shutdown /s /t 0",
+        "macOS OOBE: Cmd+Q → Shut Down",
+        "Linux Mint OOBE: Ctrl+Alt+F2 then power button, GRUB clears recordfail"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides precise, first‑hand shutdown shortcuts for Windows, macOS, and Linux Mint OOBE sessions, delivering immediately actionable steps. Its scope is limited to those three platforms and lacks deeper technical analysis, preventing a higher score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T04:06:14.018595"
+    },
+    {
+      "id": 5482,
+      "source_id": 34,
+      "original_url": "https://satpulse.net/2026/09/06/measuring-systematic-pps-bias-on-the-raspberry-pi-5.html",
+      "title": "Measuring systematic PPS bias on the Raspberry Pi 5",
+      "summary": "Kernel PPS timestamping on the Raspberry Pi 5 has a systematic ~11-12 µs bias, primarily from RP1 L1 ASPM wake latency, which can be halved by disabling L1 and compensated in chrony.",
+      "ideas": [
+        "RPi5 PPS kernel timestamping has ~11-12 µs systematic bias",
+        "Disabling RP1 L1 ASPM (/sys/.../l1_aspm) reduces bias by ~5.5 µs",
+        "GPIO polling yields lower bias than kernel timestamping",
+        "PPS echo + tinyGTC + bpftrace can decompose kernel-vs-pin delays",
+        "chrony 'offset 11e-6' compensates a known constant PPS bias",
+        "RP1 datasheet wake latency of ~5 µs matches the observed L1 contribution"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Original, technically deep investigation with firsthand measurements of PPS timestamping bias on the Raspberry Pi 5's RP1 chip. Provides two independent measurement techniques (PPS echo + tinyGTC/eBPF and GPIO polling) that cross-validate to ~12 µs and ~11.7 µs respectively. Identifies RP1 L1 ASPM wake latency as the dominant contributor (~5.5 µs) and grounds the claim in the RP1 datasheet. Methodology is reproducible, uncertainty is honestly bounded (e.g., the 1 µs OUT-WRITE estimate), and practical mitigations (sysfs L1 disable, fixed CPU frequency, chrony offset compensation) are given.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T04:00:48.455361"
+    },
+    {
+      "id": 5481,
+      "source_id": 34,
+      "original_url": "https://ruempler.eu/2026/09/06/filter-kika-videos-by-age-with-targetaudiencecategory/",
+      "title": "Filter KiKA videos by age with targetAudienceCategory",
+      "summary": "targetAudienceCategory is an ordinal field that reliably separates age groups in KiKA videos, enabling programmatic filtering of preschool content.",
+      "ideas": [
+        "targetAudienceCategory is an ordinal field populated on all KiKA videos.",
+        "Higher values signal older audience bands, observed from 4 to 11.",
+        "Use `curl ... | jq '{title, fsk, targetAudienceCategory}'` to retrieve it.",
+        "Filter out preschool videos with `targetAudienceCategory >= 9` empirically.",
+        "yt‑dlp’s KiKA extractor does not expose these fields without a custom plugin."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives concrete, firsthand measurements of KiKA’s undocumented targetAudienceCategory field, shows how to retrieve it with curl and jq, and explains its ordinal nature and an empirical >=9 cutoff to exclude preschool content. It also warns that yt‑dlp’s extractor does not expose these fields without a custom plugin.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T04:00:25.640606"
+    },
+    {
+      "id": 5480,
+      "source_id": 34,
+      "original_url": "https://hyperbo.la/w/agent-platform/",
+      "title": "Agent Platforms for Inventing Agents",
+      "summary": "An agent platform must expose composable, low‑level capability interfaces that let builders freely combine providers and instantiate arbitrary agents.",
+      "ideas": [
+        "Define capabilities via provider RPC contracts that are zero‑privilege and composable.",
+        "Provider implementations can be swapped (e.g., computer = local, LXC, VM, remote).",
+        "Agent construction is a wiring program that selects providers and their parameters.",
+        "Composition enables new behaviors like compaction without requiring platform updates.",
+        "Builders can bind customer‑specific guardrails independently of the execution loop."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, original design of agent capability contracts and composition, with detailed examples and clear technical trade‑offs, demonstrating deep engineering insight. Its relevance is strong for AI/ML engineers, though it assumes prior knowledge and does not present a finished prototype, limiting its perfection.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T03:50:11.808210",
+      "image_url": "https://hyperbo.la/social/w/agent-platform.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The title “Agent Platforms for Inventing Agents” with hyperbo.la branding."
+    },
+    {
+      "id": 5479,
+      "source_id": 34,
+      "original_url": "https://freakonometrics.hypotheses.org/88955",
+      "title": "7th European Actuarial Journal Conference in Istanbul",
+      "summary": "The framework decomposes GLM prediction disparities into direct, indirect, interaction, and curvature components, identifying how link nonlinearity shapes fairness violations.",
+      "ideas": [
+        "Four-channel decomposition includes direct mean, indirect mean, interaction, and structural components.",
+        "Curvature coupling and amplification terms capture nonlinear link effects on disparity.",
+        "Explicit formulas for logistic, Poisson, Tweedie models illustrate diagnostic applicability."
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a clear, original decomposition of GLM fairness diagnostics with explicit formulas and an empirical application, delivering concrete mechanistic insight relevant to AI fairness. It is technically substantive and accessible to capable readers, though its impact is limited to specialized actuarial contexts and lacks broader validation beyond the presented data. The contribution is highly relevant but remains narrow in scope.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T03:48:41.133497"
+    },
+    {
+      "id": 5478,
+      "source_id": 34,
+      "original_url": "https://blog.officefloor.net/2026/09/we-told-ai-about-change-impact.html",
+      "title": "We told the AI about the Change Impact",
+      "summary": "AI can produce low-impact-score code by scattering rules into new static classes, but this often hides growing accidental complexity and can silently break existing functionality.",
+      "ideas": [
+        "Change impact metric guides AI to favor new static utility classes",
+        "These classes reduce metric score but increase file count and duplicated logic",
+        "Metric improvement does not guarantee functional correctness; tests revealed early breakages",
+        "Complexity moved rather than eliminated, illustrating Goodhart's law in practice"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a clear, data-driven experiment showing how an AI-driven change-impact metric reshapes code structure, reveals trade-offs between metrics and design, and demonstrates concrete failure modes despite metric improvement. It also highlights the risk of metric gaming, the persistence of accidental complexity, and the importance of test suites to detect hidden breakage.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T03:44:13.816450"
+    },
+    {
+      "id": 5477,
+      "source_id": 34,
+      "original_url": "https://amandeepsp.github.io/blog/spec-decode/",
+      "title": "You Could Have Come Up with Speculative Decoding",
+      "summary": "Speculative decoding can accelerate inference by up to ~2–3× while preserving the exact target sampling distribution through acceptance probabilities derived from total variation distance.",
+      "ideas": [
+        "Acceptance probability equals min(1, p(y)/q(y)), matching target distribution.",
+        "Shared token acceptance probability = 1 – TV(p,q).",
+        "Verification becomes compute‑bound earlier, lowering required batch size.",
+        "Expected token gain per round ≈ β/(1 – β), enabling 2–3× throughput.",
+        "Draft predictions use entropy‑aware proposals to exploit low‑entropy token patterns."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article supplies an original analytic derivation of speculative decoding’s acceptance probability and preservation of the target distribution. It also presents a roofline model that identifies compute‑bound batch thresholds, offering concrete performance expectations for AI inference.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T03:40:11.765465",
+      "image_url": "https://amandeepsp.github.io/og/spec-decode.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "You Could Have Come Up with Speculative Decoding"
+    },
+    {
+      "id": 5476,
+      "source_id": 4,
+      "original_url": "https://github.com/can1357/oh-my-pi/tree/main",
+      "title": "https://github.com/can1357/oh-my-pi/tree/main",
+      "summary": "A unified coding agent that integrates debugging, LSP, subagents, and native cross‑platform support for efficient AI‑driven development.",
+      "ideas": [
+        "Integrated code execution with tool-calling for persistent Python and Bun workers.",
+        "LSP integration enabling full IDE capabilities within the agent.",
+        "Real debugger support for step-through inspection of crashes.",
+        "Time-traveling stream rules for on-the-fly rule injection without context loss.",
+        "First-class subagents allowing parallel task execution with typed results.",
+        "Reviewer model that reads every agent turn for inline feedback.",
+        "Shareable collaboration links enabling read-write or view-only session sharing.",
+        "Transparent URI schemes (pr://, issue://) for unified repository and PR access.",
+        "Native cross-platform binaries eliminating external shell dependencies.",
+        "URL-based merge annotations simplify conflict resolution automatically.",
+        "Atomic commit splitting with dependency ordering and lock file exclusion.",
+        "Memory curation retains project facts and recalls them across sessions."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The repository outlines many novel, practical features—persistent tool-calling, integrated LSP, real debugging, and cross‑platform binaries—that are rarely combined in a single agent. It provides actionable insight for developers seeking advanced AI‑assisted workflows, aligning with AI and Tech themes. No evident padding or clickbait reduces its score slightly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-07T03:34:17.410355",
+      "image_url": "https://opengraph.githubassets.com/a17f730a4765c465925680ba52ad680c4422cc4a897844a2d091f90e02d83b91/can1357/oh-my-pi",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "⌥ Coding agent with the IDE wired in. Contribute to can1357/oh-my-pi development by creating an account on GitHub."
+    },
+    {
+      "id": 5475,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/mikrotrick-poc",
+      "title": "https://github.com/dinosn/mikrotrick-poc",
+      "summary": "Omitting the RSA exponent in RouterOS SSH key matching enables an e=1 forgery that grants unauthorized command access.",
+      "ideas": [
+        "CVE-2026-67276 exploits missing exponent check in RouterOS SSH key matching.",
+        "Using an e=1 RSA key lets attacker forge signatures without a private key.",
+        "Exploit needs only victim’s RSA modulus and the target username.",
+        "PoC provides Python scripts with paramiko and custom ForgeKey to execute the bypass.",
+        "Vulnerable RouterOS ranges: 6.x up to 6.49.21 and 7.x up to 7.23.4.",
+        "Version nuance: 6.49.20 rejects e=1 blob, while 7.23.3 accepts it.",
+        "Patch immediately and limit SSH access to trusted management networks.",
+        "Indicators of compromise include login failures for user -2 and flagged device mode.",
+        "Wire-format finding: inner type stays ssh-rsa even for rsa-sha2 signatures."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The README provides concrete technical insight into a critical RouterOS SSH authentication bypass, explains the underlying exponent omission, supplies reproducible exploit code and a detailed lab setup, and offers actionable defensive measures and IOCs. These constitute multiple novel and practical knowledge items for security professionals, aligning strongly with the CyberSecurity theme. No clickbait, padding, or irrelevant content is present, resulting in a high score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-07T03:34:10.151612",
+      "image_url": "https://opengraph.githubassets.com/182bfa721fbce36ac45d9d87e9663e63f7a4f5fafe701246b94ac43462f71458/dinosn/mikrotrick-poc",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "CVE-2026-67276 RouterOS SSH public-key authentication bypass lab PoC - dinosn/mikrotrick-poc"
+    },
+    {
+      "id": 5474,
+      "source_id": 4,
+      "original_url": "https://app.reverser.space/p/duckie/tengu-reverse-engineering-a-mirai-style-linux-iot",
+      "title": "reverser.space",
+      "summary": "A deep reverse engineering analysis of the Tengu Linux/IoT botnet reveals OOM-killer evasion, kernel-worker masquerading, XOR-obfuscated C2 communication, and multi-platform persistence, sharing Mirai-like behavioral traits without proven source lineage.",
+      "ideas": [
+        "OOM-killer disabled via oom_score_adj -1000 to survive memory pressure",
+        "Process masquerades as [kworker/%d:%d] kernel worker in listings",
+        "C2 endpoint 64.89.163.8:9931 XOR-obfuscated with key 0x22 at runtime",
+        "Multi-distribution persistence via systemd, OpenWrt procd, SysV init, cron, rc.local",
+        "Removes (deleted) suffix from /proc/self/exe to hide unlinked execution",
+        "Raw IPv4/UDP flooding with hand-crafted headers and IP spoofing",
+        "SSH banner scanner performs key exchange but contains no auth exploit",
+        "HTTP flooding uses spoofed X-Forwarded-For and CF-Connecting-IP headers",
+        "Implements authenticated HTTP CONNECT and SOCKS5 proxy subsystems",
+        "Host fingerprinting via /proc/net/route and /etc/resolv.conf collection",
+        "Competitor table detects Mirai, gafgyt, hajime, tsunami processes",
+        "Mirai-style behavior label defensible but lineage not proven from static analysis"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "Original, technically dense reverse engineering analysis with verified hex addresses throughout. Delivers exceptional value for security researchers: specific OOM-killer bypass via oom_score_adj -1000, XOR-decoded C2 (64.89.163.8:9931 with key 0x22), kernel-worker masquerading, multi-distribution persistence, and raw UDP/SSH/HTTP flood modules all documented with concrete offsets. The careful distinction between behavioral 'Mirai-style' classification and unproven source lineage demonstrates analytical rigor. Minor penalties for the embedded reverser.space workspace promotion and truncated conclusion, but the depth and density of unique technical content justify a strong score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-07T03:32:56.308399",
+      "image_url": "https://app.reverser.space/p/duckie/tengu-reverse-engineering-a-mirai-style-linux-iot/card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Tengu: Reverse Engineering a Mirai-Style Linux/IoT Botnet | reverser.space"
+    },
+    {
+      "id": 5473,
+      "source_id": 4,
+      "original_url": "https://blog.zsec.uk/claude-tips/",
+      "title": "Check out my newly launched course https://lms.zsec.red/",
+      "summary": "Older Claude model generations remain reachable in Claude Code through undocumented config options, and mastering capability flags, settings precedence, and catalog IDs lets practitioners dodge over-aggressive safeguard refusals.",
+      "ideas": [
+        "Claude Code's picker hides older models, but the underlying catalog still accepts their IDs",
+        "modelPicker settings block adds persistent, labelled rows to the picker across CLI upgrades",
+        "behavesAs lets unknown model IDs borrow a known model's profile while sending the original ID",
+        "The [1m] suffix means three different things: native window, beta widening, or merely parses",
+        "Capability flags like effort and xhigh determine whether effortLevel settings actually work",
+        "modelPicker precedence: highest-precedence source wins outright; project-level settings ignored",
+        "The compiled model catalog can be dumped from the CLI binary using strings and grep",
+        "Bare model IDs resolve to correct snapshots; hand-written dated IDs risk failed matches",
+        "availableModels allowlists still filter custom picker rows, including empty arrays",
+        "Picker rows load at startup, so settings changes require a new session",
+        "Older Claude versions comply more readily with cybersecurity tasks than safeguarded newer ones",
+        "modelOverrides maps Anthropic IDs to Bedrock or Vertex inference-profile ARNs for gateway users"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 81,
+      "rating_reason": "This is a dense, practical technical guide with 10+ genuine value instances: exact config snippets for pinning older Claude models, the undocumented modelPicker schema with behavesAs and replaceBuiltInOptions, a capability comparison table, a strings/grep technique to extract the compiled model catalog from the CLI binary, and a genuinely clarifying breakdown of the three distinct meanings of the [1m] suffix. The content is expert knowledge from a security practitioner solving a real, commonly-hit problem (safeguard refusals on legitimate cybersecurity work), and it honestly flags unverified claims rather than overstating. Minor penalties for the promotional framing around the article (course plug, subscribe furniture, related-post padding) and its niche audience keep it from exceptional territory, but thematic alignment with AI, security, and tooling is strong.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-07T03:32:27.558587",
+      "image_url": "https://blog.zsec.uk/content/images/size/w1200/2026/09/20220428_201551-2.jpg",
+      "image_width": 1200,
+      "image_height": 560,
+      "image_alt": ""
+    },
     {
       "id": 5472,
       "source_id": 28,
