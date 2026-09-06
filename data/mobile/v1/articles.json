@@ -1,11 +1,213 @@
 {
   "schema_version": 1,
-  "sequence": 397,
-  "revision": "sha256:c90073bec694684328fdcf65077bd358d6ba22461d26ab507a4feda01b6a4123",
-  "generated_at": "2026-09-06T05:00:00.245351+00:00",
+  "sequence": 398,
+  "revision": "sha256:1b63337d2577a82aae0b17382189bd6cb7714c645333cd2f10cf4f79bb3d4e45",
+  "generated_at": "2026-09-06T07:00:00.201366+00:00",
   "complete": true,
-  "total_items": 990,
+  "total_items": 1000,
   "items": [
+    {
+      "article_id": "article:5466",
+      "original_url": "https://kim-em.github.io/blog/2026-9-5-certified-graph-isomorphism-in-lean/",
+      "title": "Certified graph isomorphism in Lean",
+      "summary": "HexGraphIso is a verified Lean reimplementation of nauty's dense graph isomorphism mode that proves the algorithm correct (including its search pruning) and exposes a tactic that solves isomorphism and non-isomorphism goals, with measurable but accepted performance cost.",
+      "rating": 88,
+      "rating_reason": "Original first-person engineering work describing a verified Lean reimplementation of McKay's nauty algorithm, with real benchmarks (5-12x slower for canonical labelling, 5000x for kernel-checked non-isomorphism proofs) on specified hardware. The article includes substantial Lean source code demonstrating both the tactic interface and a non-trivial reduction of Latin square isotopy to colored graph isomorphism. Substance is exceptional and directly verifiable, but the audience is narrow (Lean users / formal verification researchers) and the verified implementation is clearly slower than the unverified C original.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:52:50.354629+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:52:50.354629+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5465",
+      "original_url": "https://kabir.au/blog/uncovering-a-live-watering-hole-attack",
+      "title": "Uncovering a Live Watering Hole Attack",
+      "summary": "A live watering hole campaign poisoned CDN-served jQuery to exploit an unauthenticated localhost Sub-Store zero-day and a setuid proxy sidecar, compromising Windows, macOS, Linux, and iPhones with concrete IOCs and remediation guidance.",
+      "rating": 90,
+      "rating_reason": "Original first-response analysis of a live CDN-poisoning watering hole campaign, with exact defanged IOCs, reconstructed protocol tables, and a novel privilege-escalation mechanism (setuid mihomo sidecar with SKIP_SAFE_PATH_CHECK writing sudo rules into /etc/sudoers.d). The Sub-Store zero-day details (unauthenticated 127.0.0.1:38324/api/preview/sub, Script Operator compiled via new Function in a Node worker) and per-platform payload/C2 specifics give directly actionable defensive value, including affected versions and remediation. Deductions for the AI-assisted drafting disclosure (some verification risk), explicit gaps where chain stages were unrecovered, and a badly truncated ending that cuts off the Rinit/mobile analysis mid-sentence.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:52:32.706214+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:52:32.706214+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5464",
+      "original_url": "https://jdx.dev/posts/2026-09-05-introducing-packslip/",
+      "title": "Introducing packslip",
+      "summary": "packslip is a signed, vendor-published JSON manifest embedded in a Sigstore bundle that describes how to download, install, and consume binaries alongside their completions and agent skills, integrated into mise as a tier-1 backend.",
+      "rating": 88,
+      "rating_reason": "Original specification work by the mise author that addresses real ecosystem problems (vendor binary distribution, signature verification, versioning of completions and agent skills) with concrete technical solutions. The article includes the full manifest JSON schema, a working GitHub Actions workflow showing Sigstore-based signing via workflow OIDC identity, comparison data against existing aqua/github backends, and an honest discussion of trust model limitations. Some operational details are deferred to docs, and the content is naturally advocacy from the creator, but the substance is substantive rather than promotional.",
+      "labels": [
+        "Tech",
+        "AI",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:50:49.158115+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:50:49.158115+00:00",
+      "image": {
+        "url": "https://jdx.dev/social/background_hu_6b12a5106f87c62a.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Introducing packslip — jdx.dev"
+      }
+    },
+    {
+      "article_id": "article:5463",
+      "original_url": "https://intertwingly.net/blog/2026/09/05/Campfire-Measured.html",
+      "title": "Campfire, Measured",
+      "summary": "A rigorous, self-critical benchmarking effort shows that a single process-global pool mutex and GC scheduler-lock contention, not scheduling design, capped a threaded Ruby server — fixed by sharded pools, epoll-integrated green threads, and jemalloc.",
+      "rating": 93,
+      "rating_reason": "This is expert firsthand performance engineering with unusually strong evidence: published benchmark lanes including ones that favor Rails, a 70-line mutex repro with measured collapse (190k→58k req/s, 6.97→1.49 cores), quantified GC scheduler-lock contention, and commit-referenced fixes. It delivers several non-obvious, transferable mechanisms — the refused-GC-ask storm, the flat-mutex-vs-scheduler discriminator, kernel readiness sets replacing nio4r's O(n) selector, and jemalloc gains — plus honest methodology lessons like stale-build measurement failures. Limitations are modest: the Spinel/Roundhouse runtime is niche, the headline Rails-versus-binary framing requires the fragment-cache caveat, and some context depends on prior posts.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:48:59.840747+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:48:59.840747+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5462",
+      "original_url": "https://druce.ai/2026/02/ageent-reliability-engineering",
+      "title": "Agent Reliability Engineering Playbook",
+      "summary": "A practitioner's playbook for making unattended LLM agent pipelines production-reliable through observability manifests, structured-output contracts, deterministic gates, calibrated narrow LLM judges, and pass^k metrics tied to evals.",
+      "rating": 85,
+      "rating_reason": "Dense, practical field guide for building reliable unattended LLM agent pipelines, with concrete patterns: pass^k vs pass@k reliability framing (with the 0.95^10 ≈ 60% math), bronze/silver/gold grounding, JSON Schema contracts with additionalProperties: false, separated-context judges, bounded critic-optimizer loops, and verification-asymmetry-driven prompt optimization. Substantive and non-obvious throughout, though content is visibly truncated at the end, contains some repetition (pass^k block appears twice), and a few claims (e.g. 50% context rule) are heuristic rather than empirically grounded.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:46:25.123541+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:46:25.123541+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5461",
+      "original_url": "https://deadlovelll.github.io/2026-09-05-one-line-that-slows-every-attribute-access/",
+      "title": "The line that makes every attribute access 50% slower",
+      "summary": "Since CPython 3.11 attribute access uses a fixed-offset inline values array, and any read of __dict__ (including via vars() or copy.copy()) permanently materializes a real dict that makes every subsequent attribute access about 50% slower — so __slots__ is the real protective fix.",
+      "rating": 93,
+      "rating_reason": "Original pyperf benchmarks with error bounds, adaptive-bytecode disassembly, and CPython source excerpts show that the classic attribute-hoisting explanation has been wrong since 3.11, and that a single __dict__ read (directly or via vars()/copy.copy()) permanently demotes an object to unspecialized dict access roughly 50% slower. The investigation is rigorous: control benchmarks isolate the attribute cost, the split-table rejection explains why no hint specialization applies, __slots__ assumptions are tested and corrected, and free-threaded builds are analyzed down to atomic loads and per-object mutexes. Practical applicability is honestly bounded to hot inner loops, but the invisible materialization footgun is genuinely actionable and non-obvious. This is expert firsthand runtime-internals work with exceptional evidence quality and near-zero noise.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:44:34.045574+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:44:34.045574+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5460",
+      "original_url": "https://charanvasu.com/posts/migrating-redis-cluster-cross-cloud/",
+      "title": "Migrating a Redis Cluster Across Clouds Without Chaos",
+      "summary": "Control read routing by mapping Redis slots to locally‑available connection pools to keep reads within the same cloud and avoid cross‑region latency.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, low‑level details on Redis cluster topology, Jedis slot mapping, and a cloud‑aware read routing technique that directly addresses cross‑cloud latency and SLA constraints. It provides original evidence, clear mechanisms, and practical trade‑offs, making it highly relevant to engineers focused on infrastructure and database operations. The main limitation is its narrow scope to Redis migrations and occasional reliance on internal implementation details that may not generalize.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:42:56.371698+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:42:56.371698+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5459",
+      "original_url": "https://blog.cani.ne.jp/2026/09/05/the-overlay-was-fine.html",
+      "title": "The Overlay Was Fine",
+      "summary": "A detailed solution for private‑subnet collisions in WireGuard using an alias subnet, nftables prefix mapping, and split‑horizon DNS.",
+      "rating": 88,
+      "rating_reason": "The article provides concrete, reproducible configurations and debugging steps for handling private‑subnet collisions in WireGuard VPNs, including nftables prefix‑map NAT, OpenWrt fw4 chain‑append tricks, and split‑horizon DNS via dnsdist. It delivers deep technical insight and real‑world observations, though the topic is niche and assumes familiarity with the surrounding tools.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-06T15:40:43.883794+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:40:43.883794+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5458",
+      "original_url": "https://thehackernews.com/2026/09/unpatched-magento-and-adobe-commerce.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "An actively exploited Magento zero-day (StyleSmuggler) breaches patched and unpatched stores within hours via a two-stage PHP-log poisoning chain that drops a Rust implant disguised as a kernel thread, requiring GraphQL shutdown, proc_open restrictions, and full credential rotation until Adobe patches.",
+      "rating": 88,
+      "rating_reason": "Exceptionally detailed cybersecurity reporting with genuine technical depth. Delivers concrete IOCs (specific hashes, IPs, domains, process/file paths), a multi-source technical breakdown of the two-stage StyleSmuggler exploit chain, actionable mitigations (proc_open disabling, noexec mounts, GraphQL shutdown, composer patches), and rare incident-response lessons from Disrex Group's real breach handling. Strong thematic relevance to cybersecurity. Minor concern: article date appears to be from 2026 (likely test data), but substance is unaffected.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-06T15:33:16.105965+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:33:16.105965+00:00",
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjghsT_skiIfdOHK2B0WWDfWnSK0G5Ih7BqsX98tKrY4TH7I77oLEmnldtVHuUMEQaIiZZBSPJGI2t8Me7h9kDtE4YGZ9-5NypnAu2-yFFrXsWYkR6OJPlbqkZDEHBAXCmRjWm6Mk4h0Ni48JT0nrDWMYygztjoi4HuHPbe2y-2jreFVkzrxO8r4IhHIEU/s1700-nu-rw-lo-l85-e365/adobe-exploit.jpg",
+        "width": 900,
+        "height": 470,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5457",
+      "original_url": "https://cert.pl/en/posts/2026/09/vulnerabilities-in-mikrotik-routeros-actively-exploited/",
+      "title": "Critical vulnerabilities in MikroTik RouterOS are being actively exploited. Immediate update recommended",
+      "summary": "Critical RouterOS flaws can be exploited for unauthenticated full control, but applying the latest patches and checking for the \"Flagged\" marker mitigates the risk.",
+      "rating": 82,
+      "rating_reason": "The advisory provides concrete, actionable security information: detailed CVE descriptions, mitigation steps, and compromise indicators, delivering real value to network administrators. It also reveals novel research methodology using LLMs, adding an AI insight. The content is concise and on‑topic with minimal padding, resulting in good value density.",
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-06T15:32:08.181758+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-06T15:32:08.181758+00:00",
+      "image": null
+    },
     {
       "article_id": "article:5456",
       "original_url": "https://xusheng.dev/posts/reversing/windows_age_api_dob/main/",
