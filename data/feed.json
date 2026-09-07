@@ -1,7 +1,157 @@
 {
-  "updated_at": "2026-09-07T06:00:00.366003+00:00",
-  "total_items": 995,
+  "updated_at": "2026-09-07T07:00:00.361372+00:00",
+  "total_items": 1001,
   "items": [
+    {
+      "id": 5491,
+      "source_id": 34,
+      "original_url": "https://victordelpuerto.com/posts/every-audit-deleted-the-one-before-it/",
+      "title": "Every audit deleted the audit before it",
+      "summary": "An audit pipeline was silently deleting the labels it was supposed to accumulate because two producers wrote the same field with incompatible skip rules; the fix introduces explicit provenance precedence and idempotence testing against real data.",
+      "ideas": [
+        "Two producers writing the same field with non-matching skip rules means the first runner silently wins.",
+        "Outcome writes should follow provenance precedence: manual > specialized > auto > none.",
+        "Test pipeline idempotence on data, not logic — run twice and diff the real log.",
+        "A rule documented in one place but enforced in another will fail silently.",
+        "Silent deletion is invisible by construction: the row survives, only the value changes.",
+        "Diffing routine backups, not just restoring from them, surfaces silent data loss.",
+        "Cold external review caught defects the author missed after a day of focused work.",
+        "Recomputation is a delete-and-rewrite; treat it that way in pipeline design."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional engineering postmortem with concrete evidence: specific code, exact counts (794 fires, 32 seconds), a clean precedence rule (manual > specialized > auto > none), and an idempotence test ('run twice and diff') that is broadly applicable. The meta-recursion — the fix carried the same shape of defect, caught only by a cold reviewer — adds unusual depth. Noise is minimal; caveats about false-positive rates and self-admitted luck in discovery preserve trust.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T15:56:27.082422",
+      "image_url": "https://victordelpuerto.com/posts/every-audit-deleted-the-one-before-it/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5490,
+      "source_id": 34,
+      "original_url": "https://smolnero.com/posts/between-the-graph-and-the-silicon-inside-the-apple-neural-engine-compiler",
+      "title": "Between the Graph and the Silicon: Inside the Apple Neural Engine Compiler",
+      "summary": "The ANE compiler fuses conv+bias+ReLU into a single hardware operation and uses aggressive fusion, legalization, and memory‑budget scheduling to map neural‑network graphs onto Apple silicon.",
+      "ideas": [
+        "Bias and ReLU can be absorbed into the convolution backend operation on ANE."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers rare, concrete reverse‑engineering details of Apple's NN Engine compiler, showing specific fusions, legalization constraints, and memory‑budget scheduling that are directly actionable for AI‑engine developers. It contains measured evidence and clear mechanisms rather than generic hype, though occasional high‑level narrative slightly dilutes focus. The depth and specificity make it highly valuable to a technically capable reader seeking implementation‑level insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T15:53:19.943712",
+      "image_url": "https://hcti.io/v1/image/01a077be-9307-7827-bff9-fedc479ba98f",
+      "image_width": 1188,
+      "image_height": 670,
+      "image_alt": "Between the Graph and the Silicon: Inside the Apple Neural Engine Compiler - smolnero"
+    },
+    {
+      "id": 5489,
+      "source_id": 34,
+      "original_url": "https://nv1t.github.io/blog/stabbed-not-erased-reviving-a-verschenkenkiste-harddrive/",
+      "title": "Stabbed, Not Erased: Reviving a Verschenkenkiste Harddrive",
+      "summary": "A physically destroyed PCB does not erase data; moving the ROM chip’s contents to a donor board restores full access to the untouched platters.",
+      "ideas": [
+        "Stabbed PCB can be replaced with donor board; ROM chip swap preserves adaptive data.",
+        "SOIC8 clip + cheap USB programmer enables ROM dump without soldering.",
+        "Full image can be taken with zero bad sectors, confirming data integrity."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post provides concrete, first-hand engineering details—diagnosing blunt-force PCB damage, moving the ROM chip, using a SOIC8 clip, and achieving a clean image with zero bad sectors—delivering high-value, technical insight. It remains relevant to data recovery practitioners while avoiding hype, though it stops short of deeper firmware analysis. Overall it qualifies as strong, original substance for a technically capable reader.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T15:51:47.272673"
+    },
+    {
+      "id": 5488,
+      "source_id": 34,
+      "original_url": "https://jawuil.dev/en/blog/the-harness-is-not-intelligence-what-is-actually-improving-in-ai-agents/",
+      "title": "The Harness Is Not Intelligence: What Is Actually Improving in AI Agents?",
+      "summary": "Recent agent progress is largely about improving reliability and harness mechanisms rather than dramatic capability jumps.",
+      "ideas": [
+        "Model capability gains are now subtle reliability improvements, not qualitative leaps.",
+        "Harness differences can produce dramatically different outcomes even with identical models.",
+        "Consistent constraint enforcement often fails despite explicit instructions, revealing model unreliability.",
+        "Improvements in agents come from layered tooling and retry mechanisms, not just better models."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete examples—such as the inconsistent handling of 'alert()' versus a modal and the failure to enforce explicit constraints—that illustrate how harness design, context, and tooling shape agent outcomes. It clearly separates model capability from system reliability and shows that many recent gains stem from better harness mechanisms rather than substantive model leaps. It also识别 the risk of unfalsifiable blame‑shifting when attributing failures solely to the harness. While the discussion is nuanced, it repeats some ideas without fresh measurement, limiting its exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T15:47:03.215241"
+    },
+    {
+      "id": 5487,
+      "source_id": 34,
+      "original_url": "https://automation.baldacchino.net/wordpress-vulnerability-scanning/",
+      "title": "Keeping WordPress Secure",
+      "summary": "A systematic, Docker‑based WPScan workflow that automatically detects and reports WordPress vulnerabilities and outdated components, enabling proactive patching without manual oversight.",
+      "ideas": [
+        "Automated WPScan Docker script checks vulnerabilities weekly",
+        "Conditional email alerts only when vulnerabilities or outdated components are found",
+        "Identifies specific outdated plugins (WooCommerce, WP ULike) with associated CVEs",
+        "Locks wp-admin access to LAN via Nginx Proxy Manager for reduced attack surface"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "The article delivers concrete, firsthand technical mechanisms for automated WordPress security scanning, including Docker commands, JSON parsing, scheduling, and conditional alerts, with clear evidence of vulnerabilities and mitigation steps. It avoids fluff and focuses on actionable implementation details, though its depth assumes prior WordPress and Linux knowledge. It provides strong practical value but is narrowly scoped to WordPress hardening rather than broader AI or infrastructure topics, slightly limiting universal relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-07T15:36:35.559849"
+    },
+    {
+      "id": 5486,
+      "source_id": 4,
+      "original_url": "https://tantosec.com/blog/2026/09/telerik-padding-oracle-to-shell/",
+      "title": "1300 182 686",
+      "summary": "A padding‑oracle vulnerability in Telerik UI can be exploited to achieve unauthenticated remote code execution, but upgrading and proper key configuration mitigate the risk.",
+      "ideas": [
+        "Telerik UI before 2026.2.708 vulnerable to unauthenticated RCE via padding oracle chain.",
+        "AES‑CBC padding oracle can be exploited by manipulating ciphertext and observing error messages.",
+        "PKCS#7 padding adds a full block when message length is a multiple of the block size.",
+        "CBC mode lacks built‑in integrity, requiring a MAC to prevent tampering.",
+        "Recover plaintext by brute‑forcing byte values until valid padding is observed.",
+        "Forged ciphertext can be created without the encryption key using recovered intermediates.",
+        "Mitigate by upgrading to Telerik 2026.2.708 or later and configuring a custom encryption key.",
+        "Enabling customErrors forces timing analysis, increasing attack complexity.",
+        "Deriving encryption keys from ASP.NET_SessionId is insecure; use a server‑side secret.",
+        "Rare false positives occur when padding appears valid due to lucky byte values."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers substantial technical value with multiple concrete insights on padding‑oracle attacks, step‑by‑step decryption/forging methodology, and specific mitigation guidance for Telerik UI. It aligns strongly with CyberSecurity and Tech themes and contains no clickbait or promotional fluff, resulting in high value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-07T15:32:09.253606",
+      "image_url": "https://tantosec.com/blog/2026/09/telerik-padding-oracle-to-shell/cover.webp",
+      "image_width": 1536,
+      "image_height": 865,
+      "image_alt": ""
+    },
     {
       "id": 5485,
       "source_id": 34,
