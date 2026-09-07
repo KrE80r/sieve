@@ -1,7 +1,461 @@
 {
-  "updated_at": "2026-09-07T18:00:00.585937+00:00",
-  "total_items": 1009,
+  "updated_at": "2026-09-07T19:00:00.195805+00:00",
+  "total_items": 1026,
   "items": [
+    {
+      "id": 5516,
+      "source_id": 34,
+      "original_url": "https://www.ksred.com/the-model-said-done/",
+      "title": "The model said done",
+      "summary": "Use a receipt‑based stop hook that stamps HEAD only after real tests pass, guaranteeing AI agent work is verified before commit.",
+      "ideas": [
+        "Vouch stamps HEAD only after configured checks succeed",
+        "Receipt ties run strings and config digest to HEAD",
+        "Free tier allows two checks; Indie removes limits",
+        "Hooks integrate with Cursor, Claude Code, Codex, and pre‑push"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete, technically detailed solution (Vouch receipt‑based stop hook) for ensuring AI agent outputs are validated before a commit, with clear implementation steps, identified pitfalls, and acknowledged limitations, directly relevant to AI‑assisted coding workflows. However, it includes promotional newsletter plugs and some repetitive framing that slightly dilute the core value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T04:13:24.592121",
+      "image_url": "https://storage.ghost.io/c/fb/88/fb88ff1e-662f-4ede-8aee-f8b9fe245e6c/content/images/2026/09/ksred_Dan_Mumford_style_detailed_vector_illustration._A_steel_6354b50e-d1a9-41eb-9f0f-30583891d9a9_2--1-.png",
+      "image_width": 1024,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5515,
+      "source_id": 34,
+      "original_url": "https://scotthelme.ghost.io/no-hacking-required-manchester-airports-group-data-breach/",
+      "title": "No Hacking Required: The Manchester Airports Group Data Breach",
+      "summary": "Three unrotated Iterable API keys sat in MAG's client-side JavaScript bundles for over four years, giving attackers read, export, and destructive access to roughly 8.8 million customer records — verifiable by retrieving the same chunks from the Internet Archive.",
+      "ideas": [
+        "JavaScript bundles (not HTML) often hide API keys and config in content-hashed chunk files",
+        "Wayback CDX API can recover historical JS bundles via matchType=domain and id_ modifier",
+        "Iterable API keys exposed client-side granted access to /api/export/data.csv and bulk delete routes",
+        "The exposed key class could be inferred from OpenAPI x-iterable-api-key-types extension",
+        "Stolen-data authenticity was confirmed by itblInternal.* fields only Iterable could derive",
+        "Long-lived unrotated keys in shipping JS create integrity/availability risk, not just confidentiality"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "Exceptional firsthand security investigation that combines multiple non-obvious techniques: pulling historical JavaScript bundles from the Wayback Machine's CDX API, correlating exposed API keys with breach claims, using Iterable's own OpenAPI spec to classify key types, and verifying stolen-data authenticity through the author's own leaked record. The article delivers reproducible methodology, a precise four-year exposure timeline across three sites, and a rare analysis covering confidentiality, integrity, and availability exposure. Mild penalty for being truncated at the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T04:06:46.495451",
+      "image_url": "https://storage.ghost.io/c/ee/88/ee889f88-37ef-43e5-9180-f9b88ee6261d/content/images/size/w1200/2026/09/mag.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 5514,
+      "source_id": 34,
+      "original_url": "https://nathanpeck.com/i-asked-it-to-stop-talking-down-to-me/",
+      "title": "I asked it to stop talking down to me",
+      "summary": "Building reliable systems demands embracing obscure knowledge, making failures legible, and recognizing the limits of abstraction and specification.",
+      "ideas": [
+        "LLMs often optimize for average comprehension, effectively talking down to users.",
+        "Obscure references encode crucial lessons about abstraction, specification, and maintainability.",
+        "Compressing complex historical causal chains can create misleading narratives."
+      ],
+      "labels": [
+        "AI",
+        "Philosophy"
+      ],
+      "rating": 87,
+      "rating_reason": "The piece delivers concrete, technically rich analysis of how LLMs can patronize users, using an intricate multi‑section essay that maps abstraction, specification, and maintenance failures to real‑world engineering lessons. It provides original insight, reproducible reasoning, and firsthand critique of errors, meeting the criteria for strong value. Limitations include occasional padding, some speculative historical compression, and a few unsubstantiated claims that temper its perfection.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T04:03:04.766013",
+      "image_url": "https://nathanpeck.com/i-asked-it-to-stop-talking-down-to-me/cover.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 5513,
+      "source_id": 34,
+      "original_url": "https://matheuzsecurity.github.io/hacking/fileless-loader-bypassing-elastic-memfd/",
+      "title": "Fileless ELF Execution via O_TMPFILE",
+      "summary": "O_TMPFILE combined with execveat(AT_EMPTY_PATH) enables true fileless ELF execution that evades typical EDR detection based on memfd_create artifacts.",
+      "ideas": [
+        "Open an anonymous inode with O_TMPFILE in a real filesystem, write ELF payload, then execveat it via a read‑only dup of /proc/self/fd.",
+        "Reopen the O_TMPFILE fd read‑only to avoid ETXTBSY before execveat.",
+        "Use prctl(PR_SET_NAME) and unlink /proc/self/exe to hide the loader before exec.",
+        "The resulting process appears as \"/tmp/#<inode> (deleted)\" in telemetry, bypassing memfd‑based signatures."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible method for executing ELF binaries without a filesystem entry using O_TMPFILE and execveat(AT_EMPTY_PATH), complete with code snippets, syscall traces, and a working loader. It offers novel evasion insight not covered in existing public matrices, making it highly relevant to Linux security and red‑team work. Minor noise comes from brief promotional references, but the core technical content is solid and actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T04:02:26.227615",
+      "image_url": "https://i.imgur.com/n4kkDlE.jpeg",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5512,
+      "source_id": 34,
+      "original_url": "https://jonamiki.com/posts/g13-configurator-linux/",
+      "title": "Linux driver and configuration app for the Logitech G13",
+      "summary": "A user-space Linux driver and GUI enable full configuration and operation of the legacy Logitech G13 on modern Debian systems.",
+      "ideas": [
+        "Daemon g13d handles USB I/O, uinput events, backlight, and LCD via sockets.",
+        "Profiles saved as TOML files under ~/.config/g13-linux/profiles/ for easy backup.",
+        "Hot‑plug works: plugging in restores previous profile without restarting GUI.",
+        "Backlight hue and intensity are per‑profile, with live LCD images or GIFs.",
+        "udev rule grants user access; service runs as user systemd unit."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a complete, well-documented user-space driver and GUI for the Logitech G13, with concrete daemon architecture, hot‑plug handling, and detailed installation steps. It offers practical mechanisms and source-level insight valuable to Linux developers, though its scope is narrow to G13 enthusiasts. The main limitation is its niche focus, which reduces broader relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T04:00:36.346016"
+    },
+    {
+      "id": 5511,
+      "source_id": 34,
+      "original_url": "https://hitesh.in/2026/built-to-game-your-ai/",
+      "title": "Someone built 215,000 pages to game your AI",
+      "summary": "Answer engines obscure spam by stripping verification signals, making citation provenance essential for trustworthy AI recommendations.",
+      "ideas": [
+        "215,000 pages cited as “best software,” many machine‑generated.",
+        "Nearly 60% of citations point to sites outside the top 100k.",
+        "A vendor blog was cited 194 times and redirected to a gambling site.",
+        "AI removes the human “smell test,” hiding source verification."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides verifiable data on 215,000 AI‑spam pages, explains how answer engines remove human verification, and offers concrete mitigation steps, meeting high relevance and depth; its value is slightly reduced by broader market‑analysis framing that drifts from pure technical detail.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T03:58:35.354553",
+      "image_url": "https://hitesh.in/2026/built-to-game-your-ai/images/cover.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Someone built 215,000 pages to game your AI"
+    },
+    {
+      "id": 5510,
+      "source_id": 34,
+      "original_url": "https://blog.bsprague.com/digitalocean/",
+      "title": "Backing up old Digital Ocean VMs for 1/20th the price",
+      "summary": "Use dosnap to image DO snapshots, zero free space, upload via restic to Backblaze B2, achieving ~95% storage cost reduction.",
+      "ideas": [
+        "DigitalOcean charges ~8.5× more for snapshot storage than Backblaze B2.",
+        "Snapshots cannot be directly downloaded; must spin up a VM and image the disk.",
+        "dosnap automates the process and uses restic for efficient, deduped uploads.",
+        "Zeroing free space before imaging improves compression.",
+        "Archived snapshots are stored as restic repositories with part files."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, non‑obvious technical details: snapshot pricing comparison, lack of native export, a reproducible workflow using dosnap and restic, command‑level steps, and cost‑saving measurements. It balances depth with clarity, offering high value per minute despite occasional fluff. The solution is immediately applicable to sysadmin tasks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T03:52:57.827703"
+    },
+    {
+      "id": 5509,
+      "source_id": 34,
+      "original_url": "https://blog.alpindale.net/posts/antislop/",
+      "title": "Rewinding One Request in a Continuously Batched LLM Server",
+      "summary": "Implementing streaming phrase-banning in an async, continuously-batched LLM server requires rewinding token history, preempting in-flight GPU work, holding KV blocks until abandoned writes drain, and recovering cache state—none of which is trivial with hybrid or speculative-decoding setups.",
+      "ideas": [
+        "Async schedulers preempt a request and let abandoned GPU work drain before replay with a shortened history",
+        "Phrase matching runs an Aho-Corasick automaton in native C++ over incrementally detokenized bytes",
+        "Deferred block freeing stops KV blocks returning to the pool while stale GPU writes are still pending",
+        "Recurrent/hybrid layers cannot simply rewind to an earlier KV position and need checkpoint recovery",
+        "Speculative decoding needs per-logits-row masking tied to request slots, not whole-batch masking",
+        "Phrase banning is bounded backtracking, not exact sampling from the constrained distribution"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Firsthand, implementation-level engineering writeup of phrase-banning rewinds in a continuously-batched, async LLM server (Sonar). It explains non-obvious mechanisms in depth: Aho-Corasick trie over incremental detokenization, request preemption when the GPU is ahead of the scheduler, deferred block freeing to prevent stale writes leaking into other requests' KV memory, hybrid/recurrent model KV recovery limitations, speculative decoding's multi-token packets, and per-request logprob journaling. Specific limits and caveats are stated honestly. This is exactly the kind of substantive inference-systems content the target reader wants.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T03:52:36.342794"
+    },
+    {
+      "id": 5508,
+      "source_id": 34,
+      "original_url": "https://bhargav.dev/writing/three-berlin-teams-on-running-agents-in-production/",
+      "title": "Three Berlin teams on running agents in production",
+      "summary": "Production agent systems converge on architecture, infrastructure, and network layers of containment that the model cannot argue with, regardless of domain.",
+      "ideas": [
+        "Measure TTS latency by audible onset, not time to first byte; providers emit leading silence.",
+        "In a voice cascade, six of eight boxes exist to answer 'has the user finished talking.'",
+        "Voice agents are real-time systems problems; Python's GIL can starve the audio path.",
+        "Sandbox agents by giving them their own credentials, fresh containers, and egress allowlists.",
+        "Split engineering docs into RFC, ADR, and a linter-checked convention bank.",
+        "Agents learn wrong lessons confidently from nearby legacy code; counter with explicit conventions.",
+        "Report a zero-human-touch rate as the honest production metric for agents.",
+        "Cortea tests on real data; Integral generates fake companies; the disagreement is the axis."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional synthesis of three production agent deployments with concrete, non-obvious technical insights. Covers voice agent architecture (only 2 of 8 cascade boxes are the 'intelligence'), real-time latency measurement pitfalls (audible onset vs TTFB), Python GIL contention as a real-time systems problem, sandbox design where no constraint depends on the model behaving well, and a meaningful test-data debate between two teams. Delivers specific, reproducible takeaways rather than speculation or marketing. Includes honest operational metrics (58.3% zero-touch rate, daily guardrail escapes) and surfaces a clean disagreement (real data vs synthetic companies) that gives the reader a real decision axis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-08T03:52:13.912567"
+    },
+    {
+      "id": 5507,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/qwen-drive-1-0-tells-you-why-it-brakes-just-dont-expect-the-explanation-to-match-the-maneuver/",
+      "title": "Qwen-Drive 1.0 tells you why it brakes, just don't expect the explanation to match the maneuver",
+      "summary": "Qwen-Drive 1.0 unifies perception, QA, and planning in one model, improving spatial reasoning and safety, though its explanations often fail to match its actual driving decisions.",
+      "ideas": [
+        "Qwen-Drive 1.0 combines perception, traffic QA, and route planning in one AI model.",
+        "A dedicated module verifies the model’s genuine 3D spatial understanding.",
+        "Training cuts veering off-road incidents, reducing error rates from 24% to 12%.",
+        "The model’s explanations sometimes do not align with its executed maneuvers.",
+        "Retraining mitigates catastrophic forgetting, preserving general knowledge for rare traffic cases.",
+        "Qwen releases the model openly for research, though real‑world robustness remains limited."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple novel insights—such as the separate spatial‑understanding module, the use of reinforcement learning to cut veering errors from 24% to 12%, and the discussion of catastrophic forgetting—plus concrete simulation data. The presence of ads and subscription prompts adds minor fluff, but does not outweigh the substantive technical content. It aligns strongly with AI and technology themes, providing high value density for readers interested in automotive AI.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-08T03:38:19.901957",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/qwen-drive-1.0-blog_banner.jpg",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 5506,
+      "source_id": 4,
+      "original_url": "https://affixsec.substack.com/p/the-3-wifi-extender-with-a-backdoor",
+      "title": "Affix' Security Musings",
+      "summary": "Cheap whitelabel IoT hardware routinely ships with hardcoded, unchangeable root backdoors that can only be proven by reading the flash chip directly, since vendor firmware and listings reveal nothing.",
+      "ideas": [
+        "Cheap whitelabel devices inherit the original ODM's security posture, backdoors included, across every reseller",
+        "Reading SPI flash directly captures the true running image, including NVRAM defaults update packages omit",
+        "Identify devices by board markings, not listing brand names, to avoid misattributing vulnerability research",
+        "In-circuit flash reads risk bus contention; hold the SoC in reset or suspect corrupted dumps",
+        "Binwalk misses root filesystems embedded as XZ initramfs inside kernel images; carve them manually",
+        "Initramfs root filesystems live in RAM, so any device modification evaporates on reboot",
+        "Vendor helpers like doSystemCmdComlib (vsnprintf to stack buffer plus system call) flag command injection candidates",
+        "Boot scripts are the best static analysis entry point, revealing what the vendor prioritizes at boot",
+        "A 2024 firmware build on a 2011-era kernel with zero exploit mitigations means 2005-style exploitability",
+        "The device ships a nine-character hardcoded root password, unconditional telnet, and no inbound filtering",
+        "Contact quality determines dump integrity; one intermittent hook corrupts a 4MB read silently",
+        "Entropy analysis validates dumps: high-entropy kernels, 0xFF gaps, readable bootloader strings",
+        "UART consoles depend on bootloader cooperation; direct flash reads bypass software entirely"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is original, first-hand security research that delivers on its headline: an undocumented, unchangeable root account with a hardcoded password and unconditional telnet daemon on a £3 consumer device. The writeup packs 8-10 genuine value instances into ~10 minutes of reading, including the insight that whitelabel ODM reference designs propagate identical backdoors across all resellers, a reproducible SPI flash extraction workflow (Bus Pirate pinout, in-circuit bus contention caveats, entropy-based dump validation), the non-obvious detail that binwalk misses XZ initramfs root filesystems embedded in kernels, and the command-injection pattern recognition via doSystemCmdComlib. Thematic alignment with CyberSecurity is strong, the methodology is genuinely actionable, and there are no significant penalties - it is not clickbait since the promised backdoor is documented with evidence. It falls short of exceptional only because the individual techniques are established practice; the novelty lies in the finding and the clean, instructive execution.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-08T03:36:54.665880"
+    },
+    {
+      "id": 5505,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ai-designed-drug-appears-to-turn-back-the-bodys-biological-clock-in-early-trial/",
+      "title": "AI-designed drug appears to turn back the body's biological clock in early trial",
+      "summary": "AI‑designed rentosertib reversed multiple biological aging markers in trial participants, as confirmed by six independent aging clocks.",
+      "ideas": [
+        "AI identified target TNIK and designed rentosertib for IPF and aging",
+        "Six independent aging clocks indicated treated patients appear up to six years younger",
+        "30 mg dose reduced predicted age more than 60 mg, indicating a separate effect",
+        "Protein pattern changes reversed age‑related markers versus 55k UK Biobank references",
+        "Nobel laureate Levitt praised the concordance among disparate aging clocks",
+        "Insilico’s AI pipeline merges target discovery with generative molecule design, yielding 28 candidates",
+        "Phase III trial for IPF is underway, advancing toward potential approval"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers multiple high‑quality insights: AI identified a novel target and designed rentosertib; six independent aging clocks agreed the drug appears to make patients biologically younger by up to six years; dose‑specific effects and protein‑pattern reversals were demonstrated; and expert commentary validated the findings while noting limitations. Minor penalties apply for promotional UI elements and slight padding, but value density remains strong. The piece effectively bridges AI innovation and longevity research, earning a high score.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-08T03:36:33.951163",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/ai_pill_medicine-1200x670.png",
+      "image_width": 1200,
+      "image_height": 670,
+      "image_alt": ""
+    },
+    {
+      "id": 5504,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/mathspace-discloses-data-breach-affecting-over-1-million-people/",
+      "title": "Mathspace discloses data breach affecting over 1 million people",
+      "summary": "Mathspace’s breach exposed over a million users due to a Metabase zero‑day, underscoring the ongoing threat to similar platforms.",
+      "ideas": [
+        "Attackers exploited a Metabase SQL injection zero‑day to gain admin access to Mathspace’s reporting system.",
+        "Over 1,079,819 students, staff, and parents in Australia and New Zealand had personal data stolen.",
+        "No academic records, passwords, or authentication tokens were compromised in the breach.",
+        "Victims were advised to monitor account activity and beware of password‑reset phishing attempts.",
+        "The breach is part of a wider campaign targeting Metabase instances across multiple companies."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: details of the breach and its scale, the Metabase zero‑day exploitation, a clear timeline, practical advice for affected users, and context about a broader Metabase campaign. It stays on‑topic with strong cybersecurity relevance and minimal padding, meeting medium‑length density expectations.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-08T03:36:09.066683",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/09/07/0_Mathspace.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 5503,
+      "source_id": 4,
+      "original_url": "https://www.malwarebytes.com/blog/privacy/2026/09/lg-tv-flaws-could-let-attackers-listen-in-even-in-standby-mode",
+      "title": "https://www.malwarebytes.com/blog/privacy/2026/09/lg-tv-flaws-could-let-attackers-listen-in-even-in-standby-mode",
+      "summary": "Smart TVs can leak extensive network and audio data even in standby, turning them into potential surveillance devices unless properly hardened.",
+      "ideas": [
+        "Smart TVs collect network data, including nearby devices' identifiers.",
+        "ACR technology tracks viewing habits, building detailed user profiles.",
+        "LG TVs can capture audio even when seemingly off, via built‑in microphone.",
+        "Compromised TVs may serve as a foothold for broader network attacks.",
+        "Researchers responsibly disclosed remote‑code‑execution vulnerabilities in LG firmware.",
+        "Mitigate risks by updating firmware, disabling ACR, and isolating IoT devices.",
+        "Use a separate IoT or guest network to limit a compromised TV's reach."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides multiple concrete insights about LG TV data collection, microphone capture, and network risks, plus actionable mitigation steps, demonstrating high value density. Minor promotional bias and self‑promotion slightly reduce impact but do not outweigh the substantive content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-08T03:35:32.041245"
+    },
+    {
+      "id": 5502,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/198573/malware/jsceal-hides-crypto-malware-in-v8-bytecode.html",
+      "title": "JSCeal Hides Crypto Malware in V8 Bytecode",
+      "summary": "JSCeal’s use of V8 bytecode and layered obfuscation makes analysis hard, but specialized decompilation and AI naming can expose its advanced crypto‑theft functions.",
+      "ideas": [
+        "JSCeal hides crypto‑stealer code in compiled V8 bytecode, evading standard JS analysis.",
+        "Researchers extended open‑source View8 to decompile JSCeal’s version‑specific bytecode.",
+        "Malware applies commercial obfuscation then V8 compilation, creating layered analysis friction.",
+        "JSCeal extracts passwords, cookies, Telegram data, keystrokes, screenshots, and installs a rogue HTTPS cert.",
+        "It can modify traffic, replace Binance QR codes, and inject fake scripts into Ledger pages.",
+        "Automated account takeover uses stolen cookies to navigate Google authentication without appearing as a bot.",
+        "AI models Claude and GPT were tested to rename obfuscated functions; Claude succeeded in 128/142 cases.",
+        "New variants add AES‑256‑CBC encryption with keys supplied via environment variables, further hindering reverse‑engineering."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete insights: novel malware obfuscation techniques, a decompilation tool, detailed capability breakdown, and AI‑assisted analysis, all tightly focused on cybersecurity. It contains minimal padding and no clickbait, aligning well with the CyberSecurity and AI themes, resulting in high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-08T03:34:48.453293",
+      "image_url": "https://securityaffairs.com/wp-content/uploads/2026/09/JSCeal.png",
+      "image_width": 905,
+      "image_height": 642,
+      "image_alt": ""
+    },
+    {
+      "id": 5501,
+      "source_id": 4,
+      "original_url": "https://www.securityweek.com/north-korean-hackers-deploy-new-linux-espionage-toolkit/",
+      "title": "North Korean Hackers Deploy New Linux Espionage Toolkit",
+      "summary": "North Korean hackers use a custom HAProxy backdoor ('ted') to conduct persistent espionage on South Korean automotive and media targets, blending malicious traffic with legitimate content to evade detection.",
+      "ideas": [
+        "Custom HAProxy plugin 'ted backdoor' implants persistence in load balancer",
+        "Toolkit targets automotive and media firms in South Korea for long‑term surveillance",
+        "Integrates with native HAProxy filter API, memory pools, scheduler to hide traffic",
+        "Deploys CurlRAT that polls C&C every 12 hours for commands",
+        "Uses credential‑stealing keylogger and stager to move laterally after initial access",
+        "Blends payloads with legitimate domains mimicking Naver static content to avoid detection"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece provides several concrete, novel technical insights—such as the ted backdoor in HAProxy, CurlRAT’s 12‑hour C&C polling, and blending attacks with legitimate Naver traffic—sourced from Rapid7 research, delivering strong CyberSecurity and Tech relevance; minor promotional fluff and ads slightly lower density but do not outweigh the substantive value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-08T03:33:33.359253"
+    },
+    {
+      "id": 5500,
+      "source_id": 4,
+      "original_url": "https://cyberinsider.com/new-attack-eavesdrops-on-headphone-audio-from-30-meters-away/",
+      "title": "Skip to main content",
+      "summary": "InjectEave shows that RF injection can covertly recover headphone audio from up to 30 meters, exposing significant privacy vulnerabilities.",
+      "ideas": [
+        "InjectEave injects RF signals causing nonlinear mixing that leaks audio from headphones.",
+        "The attack can capture intelligible speech from up to 30 meters away, even through walls.",
+        "Researchers tested 11 devices, including wired and wireless headphones, smart fans, lamps, and landline phones.",
+        "Smart‑fan motor control signals can reveal occupancy or sleep patterns.",
+        "Power leakage from smart lamps can expose brightness levels and household routines.",
+        "A closed‑loop scenario demonstrated both eavesdropping and audio injection into a phone.",
+        "Practical limitations include needing RF equipment, frequency profiling, and a matching device for calibration."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article introduces the novel InjectEave technique, provides concrete experimental evidence, and outlines practical implications and limitations, delivering several actionable insights in a concise format. It aligns strongly with cybersecurity themes and contains minimal padding or clickbait, resulting in a high value‑density score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-08T03:33:04.037718",
+      "image_url": "https://cyberinsider.com/wp-content/uploads/2026/09/New-attack-eavesdrops-on-headphone-audio-from-30-meters-away.jpg",
+      "image_width": 950,
+      "image_height": 486,
+      "image_alt": ""
+    },
     {
       "id": 5499,
       "source_id": 7,
