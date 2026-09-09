@@ -1,7 +1,226 @@
 {
-  "updated_at": "2026-09-09T06:00:00.360188+00:00",
-  "total_items": 1007,
+  "updated_at": "2026-09-09T07:00:00.178428+00:00",
+  "total_items": 1016,
   "items": [
+    {
+      "id": 5536,
+      "source_id": 34,
+      "original_url": "https://clef-lang.com/blog/flight-qualified-bytecode/",
+      "title": "Flight-Qualified Bytecode",
+      "summary": "The core insight is that SpaceWASM provides a flight‑qualified WebAssembly sandbox that uses a verifier‑style gate and strongly typed contracts to safely run untrusted mission modules on spacecraft hardware.",
+      "ideas": [
+        "SpaceWASM validates Wasm bytecode into a constrained IR for deterministic memory on flight hardware.",
+        "The sandbox admission mirrors eBPF’s kernel verifier, enabling untrusted modules on spacecraft.",
+        "Clef’s type system encodes dimensional units, preventing unit mismatches at compile time.",
+        "Discharged obligations replace sampling tests, closing failure classes before execution.",
+        "Interpreter over JIT provides deterministic timing for launch‑critical code."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers original, concrete mechanisms such as a constrained Wasm IR, a verifier-like admission contract, and a type‑system that encodes dimensional units. It connects these to established practices like eBPF verification and DO‑178C verification, showing clear relevance to flight‑software safety. The coverage is high but remains somewhat theoretical without publicly available performance measurements, preventing a top‑tier rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:23:31.438250",
+      "image_url": "https://clef-lang.com/images/blog/WASM.png",
+      "image_width": 850,
+      "image_height": 706,
+      "image_alt": ""
+    },
+    {
+      "id": 5535,
+      "source_id": 34,
+      "original_url": "https://byclaude.net/the-ceiling-i-typed",
+      "title": "The Ceiling I Typed",
+      "summary": "A manually entered context window limit becomes a self‑enforcing constraint that can mislead downstream decisions until an empirical probe reveals the true capacity.",
+      "ideas": [
+        "Typed context limit created an architectural constraint without verification",
+        "Probe discovered ceiling 371k then 921k tokens, far above assumed 272k",
+        "Provider silently increased capacity; original typed number remained in config",
+        "Assumptions embedded in code influence cost, routing, and user behavior",
+        "Numbers carry no provenance; downstream systems treat them as factual"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete measurements, a clear mechanism showing how a guessed token limit shapes architecture, and evidence of self‑fulfilling design constraints. It remains highly technical and relevant, though it leans on a single case study without broader empirical breadth. The narrative could benefit from more systematic analysis, which caps its score below the exceptional range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:22:52.515711"
+    },
+    {
+      "id": 5534,
+      "source_id": 34,
+      "original_url": "https://blog.victorsilva.com.uy/oci-always-free-tier-security-guide/",
+      "title": "OCI Always Free Tier Security: A Zero-Bill Lab Guide",
+      "summary": "Secure your OCI free tier lab by enforcing spend limits via compartment quotas and leveraging free services like VSS, Bastion, and audit to prevent unexpected charges.",
+      "ideas": [
+        "Cloud Guard needs a PAYG account; pure Always Free lacks CSPM.",
+        "Always Free A1 compute capped at ~2 OCPU / 12 GB after June 2026.",
+        "Use compartment quotas to block core‑count usage and stop spend instantly.",
+        "Enable VSS host scans with the CLI to get free vulnerability detection.",
+        "Bastion provides SSH without exposing public ports, with short‑lived sessions.",
+        "Audit retains logs for 365 days and cannot be disabled, satisfying CIS 3.1.",
+        "Prometheus + Grafana + Loki fits as a lightweight monitoring backbone on the free tier."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece offers concrete, actionable security mechanisms—quota policies, VSS CLI setup, Bastion usage, and audit handling—tailored to the OCI Always Free constraints, delivering rare implementable guidance for a technically capable reader. It remains focused on spend‑driven threat modeling and includes precise command snippets, though some details rely on 2026 limit updates that may need verification. The depth and relevance outweigh the minor temporal caveats.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:19:07.692743"
+    },
+    {
+      "id": 5533,
+      "source_id": 34,
+      "original_url": "https://blog.victorsilva.com.uy/leaked-aws-access-keys-detect-remediate/",
+      "title": "Leaked AWS Access Keys: Detect, Contain, Eliminate",
+      "summary": "Readers gain a practical, step‑by‑step workflow to discover, quarantine, and remediate long‑living AWS keys exposed in public artifacts.",
+      "ideas": [
+        "88% of 64k leaked keys were still valid as of Aug 2026.",
+        "AWSCompromisedKeyQuarantineV3 adds ~90 deny actions, but does not disable the key.",
+        "Use TruffleHog with --results=verified to catch live AWS keys in CI/CD pipelines.",
+        "Run a break‑glass IAM role for remediation, never the compromised principal.",
+        "Disable (not delete) a leaked key first, revoke sessions with an aws:TokenIssueTime deny policy, then delete after investigation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, actionable guidance for detecting, containing, and eliminating leaked AWS access keys, including real‑world statistics, exact CLI commands, Terraform snippets, and a complete incident‑response runbook. It is directly relevant to cloud security and operations, and provides novel, up‑to‑date details about AWS’s quarantine policy and AI/ML supply‑chain leakage vectors. The only limitation is its length and occasional promotional tone about specific tools, but the core technical content remains highly useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:18:53.693217"
+    },
+    {
+      "id": 5532,
+      "source_id": 34,
+      "original_url": "https://barbarito.me/notes-workflow/",
+      "title": "Turning Quick Notes Into Long-Term AI Memory",
+      "summary": "A low‑friction note capture combined with an AI agent that extracts, filters, and stores durable context for later recall.",
+      "ideas": [
+        "Separate PROTECTED and PRIVATE visibility layers enforce privacy boundaries",
+        "Hermes evaluates memos and decides what becomes durable memory",
+        "OpenViking stores semantic facts for later retrieval",
+        "Memos acts as a shared timeline where both user and agent can write",
+        "Scheduled six‑hour reviews consolidate related observations"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, self‑hosted workflow that links a capture app, an LLM agent, and persistent memory, explaining privacy boundaries, two‑way interaction, and durable memory extraction with enough technical detail to be directly useful. It lacks broader validation or generalizability beyond the author's setup, and depends on specific tools that may not be universally available.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:13:00.554448"
+    },
+    {
+      "id": 5531,
+      "source_id": 34,
+      "original_url": "https://aydinnyunus.github.io/2026/09/09/family-link-trailing-dot-bypass-tr/",
+      "title": "Family Link site engelini sonuna nokta koyarak atlatmak",
+      "summary": "A simple trailing dot in a blocked domain bypasses Chrome Family Link’s URL filter due to unnormalized host matching.",
+      "ideas": [
+        "Trailing dot bypasses URL filter via strict string equality.",
+        "HostMatchesPattern fails to trim trailing dots.",
+        "Fix requires normalizing both host and pattern before comparison.",
+        "Trailing‑dot bypass can be used to defeat content blocklists.",
+        "Missing unit tests for trailing‑dot edge cases."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers deep, reproducible technical analysis of a trailing‑dot bypass in Chrome’s Family Link URL filter, with code excerpts, root‑cause identification, fix proposal, and impact assessment. It contains concrete mechanisms and defensive recommendations, though its scope remains limited to Chrome‑specific implementations. The substance outweighs minor gaps in broader context.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:12:37.761381"
+    },
+    {
+      "id": 5530,
+      "source_id": 34,
+      "original_url": "https://aydinnyunus.github.io/2026/09/09/family-link-trailing-dot-bypass/",
+      "title": "Bypassing Family Link’s website blocklist with a trailing dot",
+      "summary": "A missing trailing‑dot normalization in Chrome Family Link’s URL filter lets children bypass blocked sites by appending a dot to the hostname.",
+      "ideas": [
+        "FamilyLinkUrlFilter compares hosts with strict string equality, ignoring trailing dots.",
+        "GURL::GetHost() preserves the dot, causing the bypass.",
+        "Fix by stripping trailing dots or using url::DomainIs() before comparison.",
+        "Add unit tests for trailing‑dot cases to prevent regression."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible security bypass with code excerpts, a detailed bug analysis, and a clear fix proposal, all directly relevant to security practitioners. It offers original evidence and measurements (CVSS rating, impact scope) rather than generic commentary, though the underlying concept of trailing‑dot mismatches is known elsewhere, limiting novelty slightly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:12:33.126467"
+    },
+    {
+      "id": 5529,
+      "source_id": 34,
+      "original_url": "https://aminrj.com/posts/cosine-similarity-is-not-a-safety-property/",
+      "title": "Cosine Similarity Is Not a Safety Property",
+      "summary": "RAG poisoning succeeds cheaply through vocabulary engineering rather than gradient optimization, but the same geometric requirement that makes poisoned documents retrievable also makes them detectable at ingestion time.",
+      "ideas": [
+        "Vocabulary engineering poisons RAG without white-box access, reaching 95% success",
+        "Three corroborating fabricated documents can crowd legitimate ones out of top-k",
+        "Adversarial framing matters more than retrieval optimization in poisoning attacks",
+        "Attacker's retrieval requirement doubles as a detection signature via similarity clustering",
+        "Metadata where-filters on every retrieval path are the only complete access defense",
+        "Embedding model swaps invalidate tuned similarity thresholds; pin the model version",
+        "Vec2Text inverted embeddings to recover 92% of inputs, including full names"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense, practitioner-grade analysis of RAG poisoning with original lab measurements (95% attack success via vocabulary engineering, reduced to 20% with an ingestion-time similarity detector), working ChromaDB code, threshold trade-off tables, and explicit caveats about small sample sizes. The central structural insight — that the attacker's retrieval requirement is also their detection signature — is genuinely non-obvious and actionable, and the coverage of embedding inversion (Vec2Text, ALGEN) and access-controlled retrieval adds real defensive value. Limits: lab experiments use 20 runs on a small corpus, key findings synthesize existing cited research, and the text is truncated mid-section, slightly reducing completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:08:51.333865",
+      "image_url": "https://aminrj.com/assets/media/ai-security/cosine-similarity-is-not-a-safety-property.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Poisoned documents positioned closer to a query vector than the legitimate document"
+    },
+    {
+      "id": 5528,
+      "source_id": 34,
+      "original_url": "https://amerpie.lol/2026/09/08/mckinley-the-sf-symbols-editor.html",
+      "title": "McKinley: The SF Symbols Editor Apple Never Built",
+      "summary": "McKinley is a specialized SF Symbols editor that lets developers draw a symbol once and automatically generate consistent multi‑weight, multi‑scale assets ready for Xcode, with a low‑risk trial and affordable pricing.",
+      "ideas": [
+        "Draw a symbol once; McKinley auto‑generates consistent versions across nine weights and three scales for Xcode.",
+        "Live preview uses Apple’s rendering engine, ensuring exported symbols match real UI appearance.",
+        "Priced at £55 (≈$60) with a 15% launch discount and a fully functional 14‑day trial."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece delivers a concrete technical explanation of SF Symbols creation challenges and details a dedicated app that automates weight‑scale consistency, exporting to Xcode‑ready assets. It provides practical, firsthand evaluation, pricing, and trial information with little promotional hype, making it highly relevant to macOS developers. Its niche focus limits broader impact, slightly tempering the score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:08:02.038957"
+    },
     {
       "id": 5527,
       "source_id": 4,
