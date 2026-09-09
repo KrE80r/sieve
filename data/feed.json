@@ -1,7 +1,222 @@
 {
-  "updated_at": "2026-09-09T07:00:00.178428+00:00",
-  "total_items": 1016,
+  "updated_at": "2026-09-09T08:00:00.330264+00:00",
+  "total_items": 1025,
   "items": [
+    {
+      "id": 5545,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/dedicated-jail-images",
+      "title": "Dedicated Jail Images",
+      "summary": "Quantified evidence that ZFS replication of FreeBSD jails yields far smaller, faster, and more reproducible service deployment than container registries, while honestly noting where registries still win.",
+      "ideas": [
+        "pkg nginx needs 2.1 MB over wire versus 66 MB for nginx:latest",
+        "ZFS clone relationships survive send/receive; shared base crosses wire once",
+        "Recursive zfs send carries all snapshots: 18.7 GiB became 48.8 GB stream",
+        "Snapshot-delta cut-over moved 16 production jails with 2m22s downtime",
+        "84% of 2012 FreeBSD rc.conf variables still valid in 2026",
+        "Ansible installs at 834 MB, five times the FreeBSD base system it configures",
+        "Same nginx tag grew 3 MB in two weeks; registry tags mutate silently"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense, well-measured comparison of FreeBSD pkg/jails/ZFS replication against container registries and Ansible, with original quantified evidence: package and image sizes, a real 16-jail migration (18.7 GiB in 7 minutes, 29 MB delta cut-over), a novel rc.conf API-stability measurement across 14 years, and reproducible methodology. The non-obvious operational insights—clone relationships surviving send/receive streams and recursive sends inflating the payload with rotation snapshots—are genuinely useful. Limitations: single-platform measurements, some apples-to-oranges sizing (container images include an OS userland), and an advocacy tone, though counterarguments like registry portability and mixed-estate management are honestly acknowledged.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T17:27:02.225422"
+    },
+    {
+      "id": 5544,
+      "source_id": 34,
+      "original_url": "https://thuongvuho.com/writing/when-503s/",
+      "title": "When 503s Are the Right Answer (Part 2 of LLM Inference Bottlenecks)",
+      "summary": "Admission control (rejecting excess requests) dramatically improves LLM inference latency and goodput compared to merely limiting scheduler slots with max_num_seqs.",
+      "ideas": [
+        "Rejecting requests once 32 unfinished ones exist raises goodput from ~1 req/s to >4 req/s.",
+        "max_num_seqs=32 limits scheduler slots but does not prevent queue buildup, harming latency.",
+        "vLLM's new --max-num-queued-reqs flag replicates external gateway behavior.",
+        "Using TTFT p99 as an SLO threshold enables measurable goodput under load."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post offers concrete, reproducible experiments on LLM inference serving with vLLM, measuring TTFT, goodput, and admission‑control strategies. It supplies specific configurations, numbers, and a clear comparison between gateway throttling, max_num_seqs, and the newly added max_num_queued_reqs flag, giving actionable insight for engineers. The content stays focused on technical mechanisms without excess hype, though its scope is limited to vLLM and a single hardware setup.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T17:24:31.955168"
+    },
+    {
+      "id": 5543,
+      "source_id": 34,
+      "original_url": "https://syslinuxos.com/terminal-system-ai-assistant-claude-code-codex-for-your-linux-system/",
+      "title": "Terminal-system AI assistant (Claude Code, Codex) for your Linux system",
+      "summary": "AI translates natural language into verified shell commands within tmux, with safety checks.",
+      "ideas": [
+        "AI translates natural language into verified shell commands within tmux, with safety checks."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, executable details—for example, the two‑panel tmux layout, :auto readonly safety checks, and command examples such as \"find . -maxdepth 1 -type f -size +100M -exec ls -lh {} \\;\"—and explains how they integrate Claude or Codex into a live shell session. It is highly relevant to readers interested in AI‑assisted terminal workflows, Linux administration, and security‑focused command verification, though it acknowledges occasional command‑fusion glitches and the need for manual review. Overall it offers practical, firsthand engineering insight with clear safety mechanisms, making it valuable despite minor noise from site navigation and marketing copy.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T17:21:27.146125",
+      "image_url": "https://syslinuxos.com/wp-content/uploads/2026/09/terminal-system.png",
+      "image_width": 920,
+      "image_height": 560,
+      "image_alt": ""
+    },
+    {
+      "id": 5542,
+      "source_id": 34,
+      "original_url": "https://rdiachenko.com/posts/essays/building-faster-than-we-understand/",
+      "title": "Do We Still Understand the Systems We Build?",
+      "summary": "We must deliberately slow down and retain human judgement for critical decisions to preserve understanding of systems built with agents.",
+      "ideas": [
+        "Agents accelerate delivery but weaken learning loops and technical judgment.",
+        "Human review must precede delegation to avoid fatigue‑driven blind approval.",
+        "Only delegate low‑risk changes; high‑impact design decisions still need careful human analysis."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article offers a focused, evidence‑based analysis of how AI agents erode learning loops and technical judgement, presenting concrete mechanisms and trade‑offs valuable to engineers. It remains highly relevant to AI and systems thinking while avoiding superficial hype. Its limitation is strategic guidance rather than concrete code or experiment results, preventing a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T17:08:32.447241",
+      "image_url": "https://rdiachenko.com/posts/essays/building-faster-than-we-understand/dangerous-cycle-cover.png",
+      "image_width": 4800,
+      "image_height": 2520,
+      "image_alt": ""
+    },
+    {
+      "id": 5541,
+      "source_id": 34,
+      "original_url": "https://mint.dzgapp.com/build-journey/what-22-gb-of-agent-conversations-is-made-of/",
+      "title": "22.83 GB of agent conversations, byte by byte: 71% images, 16% unique",
+      "summary": "Agent storage optimization should preserve textual history while compressing recent duplicated media, and must account for dependent conversation forks before rewriting files.",
+      "ideas": [
+        "Images occupied 16.18 GB, or 71%, of one Codex conversation store."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is an unusually concrete engineering case study: it presents a complete on-device byte-level census, hashing methodology, cleanup tradeoffs, and validation through the agent's own reader. The discovery that forked sessions depend on byte offsets in base sessions, together with measured storage-reclamation results, is highly actionable and non-obvious. The evidence comes from one developer Mac and is vendor-authored promotional material, with limited independent reproduction, but the measurements are sufficiently detailed to be very valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T17:01:01.259150",
+      "image_url": "https://mint.dzgapp.com/journey/agent-post-og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Mint's Disk view mapping a whole Mac disk as a flow, with AI agents highlighted."
+    },
+    {
+      "id": 5540,
+      "source_id": 34,
+      "original_url": "https://minogin.com/one-character-at-a-time-a-7x-regression-in-dhis2/",
+      "title": "One character at a time: a 7× regression in DHIS2",
+      "summary": "A Jackson json‑tree change introduced a per‑character synchronized write that caused a 7× regression in JSON export, which compression exacerbates, and upgrading the library or using CSV+gzip restores performance.",
+      "ideas": [
+        "7× slowdown in JSON export due to per‑character synchronized append",
+        "gzip adds 27 s penalty despite 31× smaller payload",
+        "cost per value rises from 3.3 µs to 24.4 µs for JSON",
+        "CSV export degrades only ~2×, remains fastest format",
+        "Upgrade json‑tree or use CSV+gzip as a practical workaround"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers original, reproducible performance measurements that isolate a 7× slowdown to a per‑character synchronized append in the json‑tree serializer, quantifies the cost per data value, and demonstrates a 27‑second penalty for gzip compression despite reducing payload size. It provides concrete evidence, clear mechanisms, and an actionable mitigation (upgrade json‑tree or switch to CSV+gzip). The depth of technical detail and practical usefulness exceed typical content in this domain. The only limitation is that the finding is specific to the 2.43 release and may not generalize beyond that context.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T17:00:42.712193",
+      "image_url": "https://minogin.com/wp-content/uploads/2026/09/dhis2-json-regression-featured.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Dhis2 json regression featured"
+    },
+    {
+      "id": 5539,
+      "source_id": 34,
+      "original_url": "https://mcpherrin.ca/2026/09/07/rsa.html",
+      "title": "I’ve factored the RSA keys of a Certificate Authority…",
+      "summary": "512-bit RSA root CAs shipped with Netscape 4.51 in 1999 were factored on a desktop in about 30 hours each, and the recovered private keys were verified by issuing certificates that load successfully in a Netscape 4.51 VM.",
+      "ideas": [
+        "Netscape 4.51 shipped 512-bit RSA root CAs (E-Certify) trusted for SSL in 1999",
+        "CADO-NFS with 32 threads factors 512-bit RSA in ~30 hours on a Ryzen 9 5950X",
+        "Reconstructed private keys issued certs accepted by a working Netscape 4.51 VM",
+        "Modern TLS stacks have zero overlap with Netscape 4.51, requiring a custom Go server",
+        "The VeriSign Test Commercial Software Publisher CA (IE 3.02) used the same 512-bit RSA"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Exceptional hands-on security archaeology: the author extracts historical root CAs from archive.org snapshots, identifies 512-bit RSA roots that Netscape 4.51 actually trusted, factors them with CADO-NFS on a desktop Ryzen (32-29 hours), reconstructs the private keys, and verifies them by serving a real TLS endpoint that loads in a Netscape 4.51 VM. The article includes concrete Python and shell commands, full certificates and private keys, and a public repo, making the work fully reproducible. Direct modern security impact is essentially zero (acknowledged), but the demonstration of real historical PKI vulnerability with working exploitation is unusually thorough and novel.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:59:18.762546"
+    },
+    {
+      "id": 5538,
+      "source_id": 34,
+      "original_url": "https://mcginniscommawill.com/posts/2026-09-07-bounded-autonomy-retry-escalate-never-go-silent/",
+      "title": "Bounded Autonomy: Retry, Escalate, Never Go Silent",
+      "summary": "Autonomous systems fail primarily by going silent rather than by acting badly, so every pipeline stage needs a third 'hand it to a human' outcome, retries must carry new information and bounded budgets, exit codes are a protocol that callers must branch on, and durable records must never be silently fabricated.",
+      "ideas": [
+        "Pipeline stages need three outcomes: succeeded, retry-with-budget, escalate to a human."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a tightly-written practitioner post on building autonomous agent systems, grounded in firsthand experience running a multi-repo automation loop. It delivers several non-obvious, concrete insights: the three-outcome pattern (succeeded/retry/escalate), the 'instrument the claim, not the error' logging pattern with starting N / completed M pairs, and especially the sharp observation that `|| true` discards a subprocess exit-code protocol and conflates 'never attempted' with 'failed.' Code snippets are minimal but pointed. The article avoids hype and is unusually focused; every section yields a usable design rule.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:58:44.688853",
+      "image_url": "https://mcginniscommawill.com/images/blog-headers/2026-09-07-bounded-autonomy-retry-escalate-never-go-silent.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5537,
+      "source_id": 34,
+      "original_url": "https://joe.blog.freemansoft.com/2026/09/we-tried-14-levers-to-get-reliable-card.html",
+      "title": "We tried 14 levers to get reliable SDUI card JSON from a local LLM model",
+      "summary": "Redirecting explanation output to a designated TextBlock and prepending a seed card are the most effective ways to force a local LLM to consistently return valid Adaptive Card JSON.",
+      "ideas": [
+        "Redirect prose to TextBlock to avoid raw JSON output",
+        "Seed card boosts success rates by up to +10 shapes",
+        "Set temperature:0 and think:false for biggest reliability gains",
+        "Format flag is unreliable; some models ignore it destructively",
+        "Server‑code fix is the only durable resolution"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents concrete, original investigations of 14 prompt and decoding levers, with measurable outcomes, failure mode analysis, and clear mechanisms that directly improve reliability of LLM‑generated Adaptive Card JSON. It balances depth with focused evidence, though some findings are model‑specific and require further validation. The work delivers actionable insights for engineers building reliable LLM‑driven UI pipelines.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-09T16:48:15.260806"
+    },
     {
       "id": 5536,
       "source_id": 34,
