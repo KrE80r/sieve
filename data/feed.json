@@ -1,7 +1,69 @@
 {
-  "updated_at": "2026-09-09T00:00:00.678841+00:00",
-  "total_items": 1012,
+  "updated_at": "2026-09-09T01:00:00.171157+00:00",
+  "total_items": 1014,
   "items": [
+    {
+      "id": 5527,
+      "source_id": 4,
+      "original_url": "https://remedio.io/blog/trust-me-im-the-system-arango-db-bugs-secure-system-architecture/",
+      "title": "This website stores cookies on your computer.  These cookies are used to improve your browsing experience and to provide Remedio with analytics on visitors to this website and other media.",
+      "summary": "Mismatched URL decoding and a controllable flag let attackers bypass auth and achieve full host compromise, highlighting holistic authorization checks.",
+      "ideas": [
+        "URL‑encoded underscore (%5f) bypasses auth gating by appearing public before decoding.",
+        "ArangoDB treats non‑/_ paths as unauthenticated, granting superuser in system‑only mode.",
+        "Decoded path \"_api\" routes to privileged API after auth bypass.",
+        "Root password hash is exposed via unauthenticated read, enabling credential cracking.",
+        "Setting isSystem:true in task creation runs JavaScript in god‑mode, allowing host file access.",
+        "isSystem flag grants read/write of any host file and outbound HTTP, leading to RCE.",
+        "Patch to ArangoDB 3.12.11 fixes both vulnerabilities; upgrade required.",
+        "Secure architecture must consider component interpretation mismatches, not just individual bugs."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel technical insights and practical exploitation steps for two critical ArangoDB vulnerabilities, plus clear remediation guidance, aligning strongly with cybersecurity. Value density is high despite some boilerplate navigation text. No clickbait or padding penalties apply.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-09T09:38:10.323324",
+      "image_url": "https://remedio.io/wp-content/uploads/2026/09/secure-system-architecture-vulnerability-research-1-scaled.webp",
+      "image_width": 2048,
+      "image_height": 1142,
+      "image_alt": ""
+    },
+    {
+      "id": 5526,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-10520-ivanti-sentry-os-command-injection/",
+      "title": "https://blog.securelayer7.net/cve-2026-10520-ivanti-sentry-os-command-injection/",
+      "summary": "Ivanti Sentry's pre-auth root RCE exists because a deliberately designed command-execution feature in its configuration API relied on network isolation instead of application-layer authentication, leaving any caller reaching port 8443 able to execute unsanitized commands and read their output.",
+      "ideas": [
+        "Unauthenticated POST to the MICS handleMessage endpoint yields root-level command execution on Ivanti Sentry",
+        "'execute' is a designed allowlist verb in the config API; the flaw is unguarded reachability, not a smuggled command",
+        "StringTokenizer round-trip preserves multi-word commands via single spaces but forbids tab or newline separation",
+        "Patched builds block via Apache config rules (302 redirect) and ignore supplied values, running a hardcoded benign command",
+        "Network-layer isolation assumptions replaced real authentication once MICS API was consolidated onto shared port 8443",
+        "Command stdout returns inline in the JSON response body, making the injection non-blind with no out-of-band callback needed",
+        "validateXPath checks only the destination path, never the payload, so commandexec arguments reach the shell unsanitized",
+        "Reflection-based native dispatch resolves methods by string name, converting a configuration API into a command executor",
+        "HTTP 400/500 confirms a vulnerable reachable endpoint; 302 indicates patched; 404 means MICS service is not running",
+        "The reqandres XML element is deliberately overloaded to carry command input inbound and command stdout outbound"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is dense, expert-level vulnerability research containing roughly ten distinct value instances: a fully traced root-cause chain across four decompiled Java classes (controller, tokenizer, validator, reflection dispatcher), a working PoC with the exact request format, practical patch-verification observables (400/500 vs 302 vs 404), and genuinely novel analysis such as the StringTokenizer whitespace round-trip that makes multi-word commands survive to the sink, and the observation that 'execute' is a designed allowlist verb rather than a smuggled input. The content properly attributes watchTowr, Rapid7, and CrowdSec while adding original decomposition beyond their writeups, avoiding any rehash penalty. Strong thematic alignment with CyberSecurity and enterprise infrastructure defense; the only mild limitation is that the core discovery is derivative of already-published research rather than original.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-09T09:32:46.392051",
+      "image_url": "https://blog.securelayer7.net/wp-content/uploads/2026/09/CVE-2026-10520-Ivanti-Sentry-OS-Command-Injection-Analysis-1200x630.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 5525,
       "source_id": 4,
