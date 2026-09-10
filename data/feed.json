@@ -1,7 +1,87 @@
 {
-  "updated_at": "2026-09-10T20:00:00.157063+00:00",
-  "total_items": 1058,
+  "updated_at": "2026-09-10T21:00:00.151196+00:00",
+  "total_items": 1061,
   "items": [
+    {
+      "id": 5597,
+      "source_id": 34,
+      "original_url": "https://intertwingly.net/blog/2026/09/07/Campfire-Cached.html",
+      "title": "Campfire, Cached",
+      "summary": "A real Rails app benchmarked on three runtimes reveals that a fragment cache moved in-process, a transitive `after_touch` fix, and an SQLite synchronous-mode default are each worth an order of magnitude or more — and that the headline compiler speedup is mostly the GVL, not codegen.",
+      "ideas": [
+        "belongs_to touch: true silently no-ops when subclasses override Base#touch; fix is firing after_touch",
+        "Cache keys must namespace page renders vs WebSocket broadcasts because broadcast omits CSRF",
+        "Three benchmark lanes ran different SQLite synchronous settings because the binary linked its own SQLite",
+        "Mark phase scales with parked green-thread stack depth, not worker count directly",
+        "Roundhouse lowering gives ~4.7x; Spinel compiler adds ~2.5x; factors multiply on top of GVL difference",
+        "GC spends 49% of wall time in collector on the room page; mark is the dominant phase",
+        "Remembered-set clear walking the whole old heap on every non-full GC cost up to 67% under threads",
+        "The 2.8x headline speedup is almost entirely 8 CRuby processes vs 6 workers in one binary",
+        "Per-core binary vs CRuby is close (1.24x room, 0.98x messages) — codegen parity, not a leap",
+        "Action Cable registry is per-process, so multi-process CRuby deployment silently loses broadcasts"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 94,
+      "rating_reason": "Exceptionally substantive engineering write-up with original measurements, multiple non-obvious discoveries (silent no-op on `touch: true` callbacks, three lanes inadvertently running different SQLite durability settings, GC mark phase tracking parked-fiber stack depth rather than worker count), and rigorous separation of compiler contribution from lowering contribution. The author is unusually honest about limitations and what the data cannot support, including per-core caveats and the deployability gap of the CRuby lane. Direct practical implications for anyone working on Ruby/Rails performance, runtime engineering, or benchmark methodology.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T06:26:38.414442"
+    },
+    {
+      "id": 5596,
+      "source_id": 34,
+      "original_url": "https://fanpu.io/blog/2026/gated-deltanet/",
+      "title": "Concise Introduction to Gated DeltaNets",
+      "summary": "Gated DeltaNets combine decay gating with a delta-rule update on a fixed-size state to give linear attention that forgets gracefully and can overwrite prior values, interpretable as online gradient descent on a regression objective.",
+      "ideas": [
+        "Linear attention replaces softmax attention with a D_v × D_k state, yielding O(1) updates and constant memory.",
+        "Naive linear accumulation causes unbounded growth and blind writes; decay gates fix forgetting.",
+        "The delta rule update equals a per-token gradient step on a least-squares recall loss.",
+        "For unit-norm keys, I - βkk^T scales the key direction by 1-β, giving an erase-then-write reading.",
+        "β_t acts as a learned per-token learning rate controlling old-vs-new value interpolation."
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "A focused, mathematically rigorous walkthrough of Gated DeltaNets that derives the mechanism step-by-step from softmax attention to linear attention to delta-rule updates. It offers two non-obvious interpretive frames — test-time regression (the update is a gradient step on a least-squares recall loss) and the erase-then-write view (with a clean proof that I - βkk^T scales the k direction by 1-β). Limitations: it is a synthesis of existing papers rather than new research, and includes no empirical comparisons or implementation guidance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T05:49:42.913241"
+    },
+    {
+      "id": 5595,
+      "source_id": 34,
+      "original_url": "https://eduwass.com/edge-language-tools/",
+      "title": "Building a Language Server for EdgeJS in Three Days",
+      "summary": "EdgeJS templates can get full LSP-level type safety without writing a type checker, by compiling templates byte-for-byte into virtual TypeScript and letting Volar/tsserver do the work, with interface merging's fallthrough flaw defeated via Omit.",
+      "ideas": [
+        "Edge templates compile to virtual TypeScript via byte-equal copying and offset maps; Volar handles the LSP.",
+        "Interface merging cannot replace signatures; Omit defeats loose-signature fallthrough.",
+        "Virtual TS files without imports/exports become ambient scripts sharing global scope; export {} fixes it.",
+        "Bun.child_process.fork spawns Bun, masking Node TypeScript strip-mode bugs in test runs.",
+        "Fixture corpus with atText offset anchors is the spec; agents work unsupervised against shared fixtures.",
+        "Emit template constructs as real control flow so tsc infers types from loops and branches.",
+        "Central type registries rot; in-template declaration plus caller-side inference won in every ecosystem surveyed."
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Productivity"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional first-person engineering deep-dive with multiple non-obvious, well-supported technical findings: the interface-merging footgun (declare module cannot replace, only add overloads), the script-scope leak in virtual TS files (no imports/exports = ambient scripts sharing global scope), the Bun fork-with-Bun masking Node TS strip-mode issues, and the translator-not-type-checker pattern (Volar + virtual TS + offset maps). The ecosystem survey, fixture-as-spec methodology, and bug writeups are dense with mechanism and evidence. Minor narrative padding is offset by rare practical depth and a generalizable pattern.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T05:43:25.608723",
+      "image_url": "https://eduwass.com/og.jpg",
+      "image_width": 800,
+      "image_height": 800,
+      "image_alt": ""
+    },
     {
       "id": 5594,
       "source_id": 34,
