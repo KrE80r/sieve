@@ -1,7 +1,65 @@
 {
-  "updated_at": "2026-09-10T07:00:00.258829+00:00",
-  "total_items": 1037,
+  "updated_at": "2026-09-10T08:00:00.206951+00:00",
+  "total_items": 1039,
   "items": [
+    {
+      "id": 5575,
+      "source_id": 34,
+      "original_url": "https://zander.wtf/blog/obsidian-mcp-pi/",
+      "title": "Claude, meet my Obsidian vault",
+      "summary": "A Raspberry Pi host with an OAuth‑protected MCP server lets Claude phone apps read and edit Obsidian notes via a public HTTPS URL.",
+      "ideas": [
+        "Raspberry Pi runs obsidian‑sync Docker for continuous vault synchronization.",
+        "FastMCP server exposes read_note, write_note, list_notes, search_notes tools.",
+        "Tailscale Funnel provides public HTTPS endpoint required by Claude phone app."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers precise, reproducible steps for self‑hosting an MCP server that integrates Claude with Obsidian, showing concrete code, Docker config, and security controls. It is highly relevant to AI‑assisted note‑taking and self‑hosted infrastructure, and it balances depth with brevity. However, the solution assumes an existing Obsidian Sync setup and relies on a Raspberry Pi that may not be accessible to all users.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:42:57.850053",
+      "image_url": "https://zander.wtf/opengraph/obsidian-mcp-pi/og.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
+    {
+      "id": 5574,
+      "source_id": 34,
+      "original_url": "https://xroot.dev/blog/solana-confidential-transfers-native-vs-rings",
+      "title": "Confidential Transfers on Solana: What's Native, What's Helius Rings, and What's Actually on Mainnet",
+      "summary": "A primary-source, on-chain-verified comparison of Solana's native Token-2022 confidential transfers (re-enabled in epoch 982 after a one-line Fiat-Shamir fix) versus Helius Rings (devnet-only, currently requires sending plaintext to the RPC for proving), with explicit analysis of what each design actually hides and what plaintext leakage remains.",
+      "ideas": [
+        "Token-2022 confidential transfer fee logic had a forgeable OR-proof fixable by appending one scalar to the Fiat-Shamir transcript.",
+        "Native confidential transfers require three transactions because the three ZK proofs exceed Solana's per-transaction size limit.",
+        "Transfer amounts are capped at 48 bits because ElGamal decryption time grows with the value.",
+        "Helius Rings currently requires wallet to send plaintext recipient, asset, amount, and nullifier keys to Helius for proving.",
+        "Confidential transfer extension must be opted into at mint creation; legacy SPL tokens cannot gain it.",
+        "Auditor key lets a designated ElGamal pubkey decrypt but never spend transfers on a regulated mint.",
+        "Confidential balance accounts that aren't provably zero cannot be closed; rent is locked until emptied.",
+        "Default Ring is permissionless but does not hide sender/recipient; only custom anonymous rings do.",
+        "Rings throughput is roughly 130 private transfers per second per tree at current compute-unit limits.",
+        "Re-enable feature gate activated at slot 424,224,000; Token-2022 program last upgraded at slot 427,147,035."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional technical analysis that reads primary sources—audit reports, on-chain slot/epoch data, source code, and documentation—and synthesizes them into a precise comparative breakdown of two confidential-transfer designs on Solana. It explains the specific sigma OR-proof vulnerability (missing scalar in the Fiat-Shamir transcript), the three-transaction staging around proof size limits, the 48-bit amount cap driven by ElGamal performance, and the practical plaintext leakage in Helius Rings until local proving ships. The article is densely sourced, date-stamped with explicit staleness caveats, and grounded in firsthand on-chain observation rather than announcements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:42:23.029233",
+      "image_url": "https://xroot.dev/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "xroot.dev"
+    },
     {
       "id": 5573,
       "source_id": 34,
@@ -29,7 +87,11 @@
       "rating_reason": "This is a firsthand engineering investigation with verified root causes: LMCache's C++ fs_native connector silently rejects five-field salted keys (Python serializer emits object_group_id, C++ parses three or four), the error string is dropped in the completion-callback chain, the plain fs adapter is excluded from eviction because it declares no capacity, and the AWS CRT-based S3 adapter is virtual-hosted-only while Swift's s3api serves path-style. The author provides byte-level reproductions, live benchmarks (102 MiB/s aggregate multipart PUT, 60 MiB/s GET), upstream PR tracking, and a durable ~200-line launcher shim with subtle findings like reverse-batch LRU insertion and L1 entries pinned by the slowest tier. It is dense, reproducible, and squarely on LLM inference infrastructure, losing a few points only for its ranty framing, the truncated final sentence, and a fairly narrow OpenStack-specific integration.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-10T16:29:42.385491"
+      "published_at": "2026-09-10T16:29:42.385491",
+      "image_url": "https://images.unsplash.com/photo-1649775547463-1b4f16c8feed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDE2fHxzdXBlcmNoYXJnZXIlMjBlbmdpbmUlMjBjcmFzaHxlbnwwfHx8fDE3ODg5Mzc1ODd8MA&ixlib=rb-4.1.0&q=80&w=2000",
+      "image_width": 2000,
+      "image_height": 1333,
+      "image_alt": ""
     },
     {
       "id": 5572,
@@ -83,7 +145,11 @@
       "rating_reason": "Substantive, first-person engineering account of re-architecting a critical Postgres backup tool from C to Go. Provides original comparative analysis (51,000 of pgBackRest's 96k C lines had nothing to do with backups), ten named invariants with the bug each one prevents, three design tenets grounded in concrete mechanisms (WAL bracket ordering, no-extension requirement, scoped credentials), real code (errgroup parallel copy), and explicit acknowledgement of limitations. No hype, no padding, no promotion — a practitioner writing from experience.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-10T16:26:08.368051"
+      "published_at": "2026-09-10T16:26:08.368051",
+      "image_url": "https://vyruss.org/blog/images/pgsafe_pgdayuk_2026_card_photo.jpg",
+      "image_width": 1644,
+      "image_height": 1206,
+      "image_alt": ""
     },
     {
       "id": 5570,
