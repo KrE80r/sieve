@@ -1,7 +1,69 @@
 {
-  "updated_at": "2026-09-10T22:00:00.147121+00:00",
-  "total_items": 1062,
+  "updated_at": "2026-09-10T23:00:00.133335+00:00",
+  "total_items": 1064,
   "items": [
+    {
+      "id": 5600,
+      "source_id": 34,
+      "original_url": "https://nesbitt.io/2026/09/10/package-manager-trends.html",
+      "title": "Package Manager Trends",
+      "summary": "A comprehensive 16-week ecosystem survey showing that supply-chain defensive features (release-age cooldowns, install-script blocking, malware checks, integrity enforcement, registry-side controls) are converging across package managers, while path traversal, credential leakage, and VCS command injection remain the dominant recurring vulnerability classes.",
+      "ideas": [
+        "Release-age cooldowns now default across Bundler, npm, Yarn, mise, Hex, Mamba, and Cargo nightly",
+        "Dependabot made 3-day cooldown unconditional default in August 2026",
+        "npm 12 blocks lifecycle scripts by default with allowScripts allowlist",
+        "Composer 2.10 ships native malware filtering against Aikido-supplied feed, on by default",
+        "uv exposes UV_MALWARE_CHECK env var and built-in `uv audit` command",
+        "pnpm now hard-fails on tarball integrity mismatch and lockfile entries missing integrity",
+        "PyPI rejects new files added to releases older than 14 days",
+        "NuGet.org cut API key lifetime from 365 to 30 days",
+        "AUR disabled orphaned-package adoption after alvr takeover incidents",
+        "Path traversal in archive extraction hit 14 of 16 weeks across uv, pnpm, Docker, Composer",
+        "ORAS 1.3.4 fixed mTLS certificates presented to any HTTPS peer",
+        "RubyGems.org CDN served one account's legacy API key to another via caching bug",
+        "Sovereign Tech Agency invested €508,640 in Flatpak security work",
+        "Rust Foundation Maintainers Fund first residents backed by Google, AWS, OpenAI",
+        "Renovate disclosed four exfiltration paths via malicious Link headers"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "Information-dense, expert-curated roundup of 16 weeks of package-manager ecosystem activity. Provides highly specific, verifiable technical detail across dozens of tools with version numbers, dates, vulnerability mechanisms, and defensive feature rollouts. The cross-cutting analysis identifying three recurring vulnerability classes and converging defensive patterns adds value beyond the individual entries. No padding or hype; minimal personal narrative despite being a 'holiday phone-in' post. Slightly limited because it is aggregation rather than original investigation or hands-on analysis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T07:53:22.578465"
+    },
+    {
+      "id": 5599,
+      "source_id": 34,
+      "original_url": "https://nesbitt.io/2026/09/08/whats-new-in-git-pkgs.html",
+      "title": "What’s new in git-pkgs",
+      "summary": "A substantial tour of the git-pkgs ecosystem of Go supply-chain tools, with original performance numbers, security-focused design rationales, and a modular architecture that deliberately isolates heavy dependencies like TUF, Fulcio, and Rekor.",
+      "ideas": [
+        "licenses embeds ScanCode rule corpus, runs 145× faster at 19× less memory",
+        "capcheck diffs against capcheck.lock.json to flag new privileged capabilities",
+        "Provenance split into 5 modules to keep heavy trust-roots opt-in",
+        "cooldown policy shared across proxy and pin with 48-hour default age",
+        "git-spdx scans full history at 614 MiB via in-process go-git backend",
+        "pin vendors browser assets without npm, default 48-hour release age",
+        "outline strips function bodies via tree-sitter for 35 languages at ~6 MB/s",
+        "distill uses offline classifier trained once via LLM labeling"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "Sysadmin",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "Extremely dense, firsthand engineering write-up of ~45 Go modules covering supply-chain security, package management, license detection, and SBOM tooling. Includes original benchmarks (licenses vs ScanCode: 145× faster, 19× lighter memory; git-spdx history scan timings), non-obvious architectural decisions (decomposing provenance into attestation/sigstore/integrity/artifacts/cooldown to keep heavy trust-roots opt-in), and concrete CLI surface across many ecosystems. Slightly reduced from a higher score because the article is cut off mid-sentence at the Maven section and some entries read as listicle-style changelog rather than deep explanations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T07:52:50.069158"
+    },
     {
       "id": 5598,
       "source_id": 34,
@@ -19257,11 +19319,7 @@
       "rating_reason": "Original synthesis of 2FA enforcement across roughly 20 major package registries, organized by an insightful account-model framework (native/OAuth/git-forge/email-gated) that clarifies otherwise-confusing policy variations. The article provides concrete dates, thresholds (PyPI's Jan 2024 mandate, RubyGems' 180M-download cutoff, NuGet's March 2022 rollout), specific mechanisms for trusted publishing and the newer staged-publishing pattern, and forward-looking items clearly flagged. Highly valuable for anyone working on supply-chain security or maintaining packages across ecosystems; minimal padding or hype.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-08-20T16:49:19.692481",
-      "image_url": "https://nesbitt.io/images/boxes.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-08-20T16:49:19.692481"
     },
     {
       "id": 4859,
@@ -25292,11 +25350,7 @@
       "rating_reason": "This is a technically dense analysis with 9+ distinct insights about code sharing patterns across package managers and their security implications. The author provides concrete data (Pixi's 28 uv crates, 8 shared npm-org packages, 5-year vulnerability gap in Go) rather than vague assertions. The core insight about independent reimplementation of security-critical code creating parallel vulnerability surfaces is both novel and actionable. The bootstrap problem insight is particularly valuable - a chicken-and-egg constraint preventing self-referential dependencies. Only minor deduction for the fact that this targets a narrow specialist audience of package manager developers and security researchers rather than a broader technical audience. The content is tightly focused with no obvious padding or fluff.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-08-13T06:46:09.298813",
-      "image_url": "https://nesbitt.io/images/boxes.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-08-13T06:46:09.298813"
     },
     {
       "id": 4626,
