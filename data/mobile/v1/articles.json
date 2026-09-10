@@ -1,11 +1,112 @@
 {
   "schema_version": 1,
-  "sequence": 502,
-  "revision": "sha256:f57053d8df222e3978c518c74bbde3840ee1dd3fe437c9b933dcb947864516ee",
-  "generated_at": "2026-09-10T19:00:00.206039+00:00",
+  "sequence": 503,
+  "revision": "sha256:18825099ad9ea1ac70be00288503643840d6d423a923ce4dcc2ab3698b83dda7",
+  "generated_at": "2026-09-10T20:00:00.157063+00:00",
   "complete": true,
-  "total_items": 1049,
+  "total_items": 1054,
   "items": [
+    {
+      "article_id": "article:5594",
+      "original_url": "https://debasishg.github.io/blog/data-race-ring-buffer/",
+      "title": "How Miri found a data race in a lock-free ring buffer that the compiler had no way to see",
+      "summary": "A generic trait bound requiring Deref/DerefMut causes a silent retag over an entire ring buffer, turning correct slot-level reasoning into undefined behavior that even cargo miri test misses without aggressive preemption scheduling.",
+      "rating": 88,
+      "rating_reason": "Exceptional technical depth on a subtle Rust aliasing bug. The article meticulously explains how automatic Deref/DerefMut insertion through a generic trait bound silently widens a reference to the entire allocation, triggering a retag that violates Stacked Borrows even when the SPSC protocol's slot-level invariants hold. Includes a reproducible 57-line Miri test, the exact CLI flags needed (-Zmiri-preemption-rate=0.1), a visual model of the bug, and concrete guidance on why prior test suites missed it. The piece is truncated mid-sentence at section 5 and the fix section is not visible, which slightly limits its standalone utility.",
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T05:28:11.619317+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T05:28:11.619317+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5593",
+      "original_url": "https://clover.moe/2026/09/09/clovers-toy-box-25-12/",
+      "title": "Clover’s Toy Box 25.12",
+      "summary": "Supporting a broad SDL compatibility range requires deliberate ABI loading, extensive version gates, graphics fallbacks, and substantial platform-specific work rather than merely switching SDL libraries.",
+      "rating": 86,
+      "rating_reason": "This is a strong, firsthand engineering account of supporting SDL 1, 2, and 3 within one dynamically loaded executable, including concrete version-checking and OpenGL fallback techniques. It provides unusually practical details about SDL_GL_MakeCurrent, buffer swapping, HIDAPI, portability, and licensing constraints, though the discussion is project-specific, lacks loader source and systematic benchmarks, and offers limited depth outside the application’s immediate requirements.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T05:10:10.136828+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T05:10:10.136828+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5592",
+      "original_url": "https://brainwagon.org/blog/2026-09-08-revisiting-two-nights-of-pluto-images.html",
+      "title": "Revisiting Two Nights Of Pluto Images",
+      "summary": "Claude Code autonomously executed a complete photometric pipeline on Pluto FITS files, producing magnitude estimates validated by two independent methods agreeing to 0.013 mag while honestly flagging an unexplained 0.35 mag systematic offset.",
+      "rating": 85,
+      "rating_reason": "An unusually substantive AI case study showing Claude Code performing end-to-end photometric analysis of Pluto FITS files with multiple cross-validation steps. The article provides concrete numerical evidence (sub-pixel PSF fits, S/N measurements, magnitude estimates with proper uncertainty derivation, and two independent photometric pipelines agreeing to 1.3%/0.013 mag). The technical depth on WCS registration, PSF matching, exposure normalization arithmetic (0.225 mag observed vs 0.257 mag predicted from 760s/600s), and unprompted flagging of a 1σ difference as noise demonstrates real methodological rigor. Slightly limited as a single case study rather than systematic investigation, and primarily valuable to those interested in AI applications to scientific image analysis.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T05:00:27.933172+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T05:00:27.933172+00:00",
+      "image": {
+        "url": "https://brainwagon.org/images/2026/09/08/pluto_night1.jpg",
+        "width": 1200,
+        "height": 1200,
+        "alt": "Revisiting Two Nights Of Pluto Images"
+      }
+    },
+    {
+      "article_id": "article:5591",
+      "original_url": "https://boyter.org/posts/did-i-just-get-buster-scrugged/",
+      "title": "Sloc Cloc and Code - Did I just get Buster Scrugged?",
+      "summary": "Investigating why mezura beat scc revealed Go's os.Open does 5 syscalls per regular file on Linux for netpoll registration that always fails, and that a single stat-file goroutine was starving the walker pipeline; switching to syscall.Open and scaling the stat stage cut wall-clock time by ~2.4x to ~167ms (~9 GB/s) on the Linux kernel tree.",
+      "rating": 89,
+      "rating_reason": "Excellent first-hand systems engineering investigation with reproducible measurements, concrete syscall-level analysis via strace, and non-obvious findings about Go runtime behavior on Linux. The os.Open vs syscall.Open optimization (dropping fcntl from 383,594 to 25,790 calls) and the pipeline bottleneck diagnosis (one stat goroutine starving 8 walker goroutines) are highly actionable. The end is truncated, removing some analytical depth, but the substantial body delivers exceptional practical value for Go/Linux systems work.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T04:57:56.521607+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T04:57:56.521607+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5590",
+      "original_url": "https://blog.gaborkoos.com/posts/2026-09-08-Half-Past-Fetch/",
+      "title": "Half Past Fetch",
+      "summary": "fetch() resolves when headers arrive, not when the body finishes, so ignoring response.body silently burns HTTP/1.1 connections in Node from 16KB upward and clones form tees that retain every chunk until the unused branch is drained or cancelled.",
+      "rating": 93,
+      "rating_reason": "Exceptional technical investigation that combines spec-level analysis with reproducible experiments and hard numbers. The article demonstrates (with measured evidence across Node and Chrome) that fetch() resolves on headers, not body; quantifies the connection-pool cost of ignoring bodies (Node ≥16KB, Chrome ≥512KB); shows clone() is a tee that doubles memory (~55MB for a 60MB response); and reveals the deadlock when awaiting cancel() on one branch before reading the other. Content is truncated at the abort section, which is a real limitation, but the delivered substance is original, expert-level, and immediately actionable for production web/server code.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T04:39:41.795553+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T04:39:41.795553+00:00",
+      "image": null
+    },
     {
       "article_id": "article:5589",
       "original_url": "https://andlukyane.com/blog/rogii-geosteering-kaggle",
