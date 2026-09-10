@@ -1,7 +1,350 @@
 {
-  "updated_at": "2026-09-10T06:00:00.356742+00:00",
-  "total_items": 1024,
+  "updated_at": "2026-09-10T07:00:00.258829+00:00",
+  "total_items": 1037,
   "items": [
+    {
+      "id": 5573,
+      "source_id": 34,
+      "original_url": "https://www.cloudnull.io/2026/09/lmcache-swifts-s3api-and-the-shim-i-did-not-want-to-write/",
+      "title": "LMCache, Swift's s3api, and the Shim I Did Not Want to Write",
+      "summary": "Running vLLM LMCache disk and Swift-s3api tiers surfaces three silent upstream bugs and yields a measured, monkey-patch-based shim plus hard-won operational rules about eviction, promotion, and L1 locking.",
+      "ideas": [
+        "LMCache fs_native fails all salted keys: C++ parses 3-4 fields, Python sends 5",
+        "Store failures log keys but not reasons; C++ exception strings vanish in Python completions",
+        "fs adapter without max_capacity_bytes is skipped by the eviction controller and grows unbounded",
+        "AWS CRT S3 client is virtual-hosted-only; Swift s3api needs path-style and returns 500s",
+        "Launcher shim monkey-patches adapters at runtime instead of forking or editing site-packages",
+        "LRU inserts batches in reverse order; seed disk listing newest-first to avoid MRU inversion",
+        "Slowest L2 tier read-locks L1 chunks per adapter, so slow WAN uploads can fill L1 unevictably",
+        "Cascade never promotes L3 hits to L1; store controller deliberately ignores prefetch writes",
+        "SigV4 region must match s3api location; malformed region error names the expected value",
+        "KV cache objects are plaintext with tenant salt in names; aesgcm serde can wrap the S3 tier"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a firsthand engineering investigation with verified root causes: LMCache's C++ fs_native connector silently rejects five-field salted keys (Python serializer emits object_group_id, C++ parses three or four), the error string is dropped in the completion-callback chain, the plain fs adapter is excluded from eviction because it declares no capacity, and the AWS CRT-based S3 adapter is virtual-hosted-only while Swift's s3api serves path-style. The author provides byte-level reproductions, live benchmarks (102 MiB/s aggregate multipart PUT, 60 MiB/s GET), upstream PR tracking, and a durable ~200-line launcher shim with subtle findings like reverse-batch LRU insertion and L1 entries pinned by the slowest tier. It is dense, reproducible, and squarely on LLM inference infrastructure, losing a few points only for its ranty framing, the truncated final sentence, and a fairly narrow OpenStack-specific integration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:29:42.385491"
+    },
+    {
+      "id": 5572,
+      "source_id": 34,
+      "original_url": "https://www.chrismdp.com/prompt-evals-are-useless/",
+      "title": "Prompt Evals Alone Are Useless",
+      "summary": "The core insight is that prompt evaluations must be coded as part of an integrated system and judged by an agent reading entire runs.",
+      "ideas": [
+        "Prompt evals should test whole system, not isolated prompts alone.",
+        "Require story paragraphs to name the game event to prevent bookkeeping leaks.",
+        "Debt tracking excludes routine actions like “checking equipment” from progress.",
+        "Evals are organized in a pyramid, with ordinary tests below and code‑based scenarios above.",
+        "An agent acts as judge, comparing story, recorded state, and expected outcome.",
+        "Browser screenshots replace separate UI tests, covering the full user experience.",
+        "Replay cases preserve exact request and answer for regression verification.",
+        "All runs execute against temporary DB copies to provide sandboxed isolation."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers concrete, original engineering details for integrating prompt evaluations into a full LLM‑driven game system, with clear mechanisms, code snippets, and reproducible testing. It is highly relevant to AI engineering but remains niche, limiting broad impact.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:29:08.582031"
+    },
+    {
+      "id": 5571,
+      "source_id": 34,
+      "original_url": "https://vyruss.org/blog/100000-lines-of-c-later-pgsafe-pgday-uk-2026.html",
+      "title": "100,000 Lines of C Later: pgSafe at PGDay UK 2026",
+      "summary": "Half of pgBackRest's C codebase was the cost of using C, not the cost of doing backups; a Go reimplementation can drop to ~18k LoC while keeping the same operational invariants because modern stdlib, SDKs, and Postgres-native features absorb the work.",
+      "ideas": [
+        "Over half of pgBackRest's 96,000 lines of C were not about backups — they were the cost of using C.",
+        "Every hard bug in backup tooling is an ordering or durability bug, not a copying bug.",
+        "pgSafe's parallel file copy is six lines of errgroup, replacing pgBackRest's 3,256-line protocol layer.",
+        "Resume on checksums, not mtimes: Postgres can rewrite a file's contents within a single mtime tick.",
+        "The WAL bracket (start LSN to stop LSN) is what makes individually inconsistent file copies recoverable.",
+        "Never store long-lived cloud credentials on the DB host; issue narrow, short-lived scoped credentials per backup.",
+        "Atomic rename substitutes require different conditional-write procedures across S3, Azure, GCS, SFTP, and POSIX.",
+        "Backup mode is a property of deployment topology, resolved from config — there is no --mode flag.",
+        "Use Postgres-native backup_manifest so anyone can verify with pg_verifybackup rather than maintaining a private format.",
+        "An archive_library can delay checkpoints or crash the cluster, so go through archive_command even with the ~2ms cost."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Substantive, first-person engineering account of re-architecting a critical Postgres backup tool from C to Go. Provides original comparative analysis (51,000 of pgBackRest's 96k C lines had nothing to do with backups), ten named invariants with the bug each one prevents, three design tenets grounded in concrete mechanisms (WAL bracket ordering, no-extension requirement, scoped credentials), real code (errgroup parallel copy), and explicit acknowledgement of limitations. No hype, no padding, no promotion — a practitioner writing from experience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:26:08.368051"
+    },
+    {
+      "id": 5570,
+      "source_id": 34,
+      "original_url": "https://vande.fr/posts/en/installer-proxmox-ve-sur-vps-ovh/",
+      "title": "Proxmox VE on OVHcloud VPS - nested KVM validation, Debian 13 install, and NAT networking",
+      "summary": "Nested KVM is validated and Proxmox can run hardware‑accelerated VMs; NAT/DNAT plus nftables secures a minimal public surface accessed only via Tailscale.",
+      "ideas": [
+        "KVM flag (vmx) present in /proc/cpuinfo",
+        "/dev/kvm device exists and is usable",
+        "Proxmox installed on Debian 13 via no‑subscription repo",
+        "nftables default‑drop firewall allows only Tailscale ports",
+        "DNAT maps public 80/443 to NPM on 10.10.10.1"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a step‑by‑step, verifiable setup for nested KVM on an OVH VPS, complete with KVM checks, Proxmox installation on Debian 13, nftables firewall rules, NAT/DNAT to Nginx Proxy Manager, and Tailscale‑only management. It provides concrete code, results, and a hardened security posture, but the niche audience and limited novelty prevent a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:24:35.714543"
+    },
+    {
+      "id": 5569,
+      "source_id": 34,
+      "original_url": "https://samuellawrentz.com/blog/herdr-6m-seed-why-agent-runtimes-get-funded/",
+      "title": "Herdr Raised $6M. Why Would Anyone Fund a Terminal Multiplexer?",
+      "summary": "Herdr adds agent awareness to tmux, letting scripts coordinate concurrent AI processes.",
+      "ideas": [
+        "herdr expose agent status via socket API for script coordination",
+        "grove builds on herdr to manage worktrees and pane agents"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete technical details about Herdr’s agent‑aware multiplexer, showing specific commands and the investor rationale, which gives the reader usable insight. It remains focused on engineering mechanisms rather than generic hype, though it contains promotional phrasing and notes early‑stage instability. Overall it provides a clear, non‑obvious value proposition for integrating AI agents into terminal workflows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:18:29.886379",
+      "image_url": "https://samuellawrentz.com/og-images/blogherdr6mseedwhyagentruntimesgetfunded.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5568,
+      "source_id": 34,
+      "original_url": "https://remkusdevries.com/your-ai-agent-may-have-more-access-to-wordpress-than-you-think/",
+      "title": "Your AI Agent May Have More Access to WordPress Than You Think",
+      "summary": "Connecting AI agents to WordPress via MCP requires explicit, scoped permission checks at each layer, as broad admin access can bypass safety measures.",
+      "ideas": [
+        "MCP standardizes discovery but does not enforce trust.",
+        "WordPress abilities expose scoped permission callbacks.",
+        "Four connection models differ in MCP server location and credential path.",
+        "Admin‑level PHP execution can bypass sandbox protections.",
+        "Production integrations must answer seven concrete security questions."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers deep, concrete technical analysis of AI‑WordPress integration via MCP, detailing permission layers, ability APIs, and four distinct connection models with clear trade‑offs. It provides actionable guidance through seven security questions, making it highly relevant for technically savvy readers interested in AI, security and WordPress engineering. Its value is slightly limited by promotional content and newsletter plugs, which introduce minor noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:17:07.915380",
+      "image_url": "https://remkusdevries.com/wp-content/uploads/2022/11/remkusdevries.com_.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5567,
+      "source_id": 34,
+      "original_url": "https://mdelapenya.xyz/posts/2026-09-09-understanding-testcontainers-the-ryuk-reaper/",
+      "title": "Understanding Testcontainers: The Ryuk Reaper",
+      "summary": "Ryuk uses Docker labels and a single TCP connection as a dead‑man switch to guarantee cleanup of all test‑created resources when the test process terminates.",
+      "ideas": [
+        "Ryuk communicates via plain TCP on port 8080 inside its container.",
+        "Resources are registered with filters sent as URL‑query strings; each line is OR‑combined.",
+        "Labels such as org.testcontainers.sessionId uniquely identify a test run’s resources.",
+        "When the client disconnects, Ryuk waits a grace period then prunes matching containers, networks, volumes, and images."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers deep, concrete insight into Testcontainers' Ryuk cleanup mechanism, explaining label-based resource identification, the TCP protocol, and failure handling with technical precision. It is highly relevant to developers using Docker and CI pipelines, though it lacks quantitative experiments or hard metrics that would push it into the exceptional tier. The explanation is well-structured but remains largely theoretical without a benchmarked performance comparison.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:12:08.704025",
+      "image_url": "https://mdelapenya.xyz/images/posts/2026-09-09-understanding-testcontainers-the-ryuk-reaper/cover.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5566,
+      "source_id": 34,
+      "original_url": "https://matheuzsecurity.github.io/hacking/linux-kernel-keyring-fileless-exec/",
+      "title": "Fileless ELF Execution via Kernel Keyring",
+      "summary": "You can store an ELF in the kernel keyring, read it back into anonymous memory, and execute it by manually mapping its segments and jumping to its entry point, bypassing execve and any filesystem artefacts.",
+      "ideas": [
+        "Use add_key/keyctl to place an ELF blob in kernel slab memory without a file descriptor.",
+        "Manually map PT_LOAD segments with MAP_FIXED_NOREPLACE and construct the stack for a direct jump.",
+        "Revoke the key after copying to erase the kernel‑side copy, leaving only an anonymous mapping."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives a concrete, reproducible method for executing an ELF payload without touching the filesystem by abusing the Linux keyring API, complete with system‑call numbers, code snippets for loading, mapping, and jumping to the entry point, and discussion of kernel quotas and detection evasion. The technique is novel compared to common memfd_create or O_TMPFILE tricks and provides practical details that a security‑oriented reader can implement and test. The write‑up stays focused on technical specifics and avoids hype, though it is limited to Linux and requires the payload to fit within the keyring quota.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T16:09:02.407440",
+      "image_url": "https://i.imgur.com/VHYFmWT.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5565,
+      "source_id": 34,
+      "original_url": "https://codon.org.uk/~mjg59/blog/p/systemio-conflicts-are-not-firmware-bugs/",
+      "title": "SystemIO conflicts are not firmware bugs",
+      "summary": "ACPI operation regions use shared SystemIO ports and require mutual exclusion; without proper locking drivers can race with firmware, causing the kernel to warn about conflicts.",
+      "ideas": [
+        "OperationRegion defines a hardware-operation region at specific I/O ports.",
+        "Concurrent ACPI methods can corrupt each other without a Mutex.",
+        "Linux drivers accessing the same ports trigger ACPI conflict warnings."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article explains a non-obvious race condition in ACPI operation regions, shows how firmware and drivers can conflict, and provides concrete code examples and kernel warning semantics, delivering deep technical insight. Its relevance is high for Linux kernel developers, OS engineers, and advanced sysadmins who need to understand hardware access coordination. The main limitation is that the discussion stays within the ACPI niche and does not address broader AI or infrastructure topics that some readers might expect.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T15:55:06.734230"
+    },
+    {
+      "id": 5564,
+      "source_id": 34,
+      "original_url": "https://belderbos.dev/blog/database-driven-rbac-fastapi-azure-entra/",
+      "title": "Database-Driven RBAC with FastAPI and Azure Entra ID",
+      "summary": "Storing endpoint‑to‑role mappings in a database lets you change authorizations at runtime without redeploying code.",
+      "ideas": [
+        "Store endpoint→roles mapping in a DB table with JSON column.",
+        "Guard routes with a require() that reads the table at runtime.",
+        "Admin can edit permissions via a protected endpoint, changing policies without code changes.",
+        "Azure token validation requires setting requestedAccessTokenVersion to 2.",
+        "Only direct role assignments appear in the JWT roles claim; nested groups are ignored."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a concrete, database‑driven RBAC implementation with FastAPI and Azure Entra ID, showing code for permission lookup and runtime policy updates. It details pitfalls such as v2 token versioning and direct role assignment, and offers test overrides. The value is high for engineers needing dynamic authorization without redeploys, but its usefulness is limited to Azure‑centric environments. Overall it delivers substantive, non‑obvious technical insight with minimal fluff.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-10T15:48:55.202635",
+      "image_url": "https://belderbos.dev/images/og/database-driven-rbac-fastapi-azure-entra.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5563,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/198770/security/us-agencies-warn-chinese-ai-firms-are-extracting-advanced-ai-models.html",
+      "title": "US Agencies Warn Chinese AI Firms Are Extracting Advanced AI Models",
+      "summary": "Industrial‑scale model distillation can stealthily steal AI capabilities, and defenders can detect and deceive such attacks.",
+      "ideas": [
+        "Industrial‑scale distillation can extract billions of tokens, capturing reasoning, coding, and agentic skills.",
+        "Detection signals include shared accounts across IPs, nonstop usage, and abnormal API subscription ratios.",
+        "Countermeasure: quietly serve degraded responses to suspected extraction accounts to mislead attackers.",
+        "Chinese firms use gray‑market proxy “transfer stations” to hide origins and bypass rate limits.",
+        "Prompt injection can trick models into behaving as if they are a different product.",
+        "Fast response capability: firms redirect extraction traffic to new model releases within 24 hours.",
+        "Enterprise AI account sharing may trigger false positives under these detection patterns."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several concrete insights on AI model extraction—detection signals, adversary tactics, and a novel countermeasure—making it valuable for security and AI practitioners. It aligns well with AI and cybersecurity themes and offers more than enough distinct ideas for its length, though it includes boilerplate navigation content, preventing an exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-10T15:38:09.779643"
+    },
+    {
+      "id": 5562,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/four-spy-groups-used-same-chrome-and.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "AI‑enabled exploit kits can rapidly combine zero‑day browser and Windows flaws, demanding swift patching and detection.",
+      "ideas": [
+        "BlueMoon chains Chrome V8 zero‑days with a Windows ALPC privilege‑escalation bug.",
+        "CVE‑2026‑85046 is a Chrome V8 type‑confusion flaw patched after exploitation.",
+        "CVE‑2026‑85880 is a Windows ALPC heap overflow patched in Sep 2026.",
+        "Multiple China‑aligned groups used BlueMoon via spear‑phishing and DLL sideloading.",
+        "The kit’s development likely leveraged AI tools to track public Chromium patches.",
+        "Remediation includes checking specific process trees, temp files, folders, tasks, mutexes, and registry keys.",
+        "Proofpoint released detection rules 2071919‑2071924 for the kit’s loader and C2 traffic.",
+        "AI lowers the barrier for rapid exploit creation against open‑source codebases like Chromium."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers multiple concrete value instances—technical details of the BlueMoon exploit chain, CVE identifiers, AI‑assisted development insight, and actionable remediation steps—within a medium‑length news piece, giving it a good value density. Minor promotional fluff appears at the end, but it does not detract significantly. Strong thematic relevance to cybersecurity and AI justifies a solid score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-10T15:36:10.542344",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxouoVfK0MjZpruL0J1chmWnC7avUov1fOLbgX-XyFGrTcXeOh08tVntBjzJ7wBMmOB3P-PpxMr6E868Wpsaky-b-Nrf1LajzoQFfmjnkI1KHQzGXrCcVnC57nF2ndYZHCLx5WA3dENCWmCbZlSAb5TC-p8DXCGWxWB7I3iRIsdMMk6SS6IV03722lZIS4/s1700-nu-rw-lo-l85-e365/spy.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 5561,
+      "source_id": 4,
+      "original_url": "https://invokere.com/posts/2026/09/breaking-efimers-pyarmor-infection-chain-with-frida/",
+      "title": "Breaking Efimer’s Pyarmor Infection Chain with Frida",
+      "summary": "Reverse‑engineering Efimer’s Pyarmor‑protected loader reveals how to extract XOR keys and unpack its JavaScript payloads using Frida and static‑unpack tools.",
+      "ideas": [
+        "Pyarmor protects .pyc by encrypting function‑by‑function, making static dumping hard",
+        "Frida hooks CPython APIs like PyEval_EvalCode to capture live code objects",
+        "Metadata extraction yields co_filename, co_qualname, co_names for identifying protected modules",
+        "Marshaling objects with PyMarshal_WriteObjectToString creates .pyc candidates for offline decompilation",
+        "Known‑plaintext attack on PyInstaller packages recovers 12‑byte XOR key for decryption",
+        "Extracted JavaScript payloads include cryptocurrency clipboard hijacker and WordPress brute‑forcer",
+        "Persistence established via pseudo‑random Run keys and scheduled task XML files",
+        "Static-unpack‑1shot tool decompiles protected .pyc after extracting with pyinstxtractor‑ng",
+        "Malware uses Tor SOCKS proxy and on‑ion C2 for command‑and‑control communication",
+        "Anti‑analysis checks Windows recent‑items count and filename substrings to evade sandboxing"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers multiple novel reverse‑engineering insights, including detailed Frida hooking techniques, XOR‑key recovery via known‑plaintext attacks, and full payload specifications. It contains rich, actionable data with only minor promotional fluff from surrounding navigation text. Overall value density is high, justifying a strong score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-10T15:32:36.105807"
+    },
     {
       "id": 5560,
       "source_id": 28,
@@ -9761,11 +10104,7 @@
       "rating_reason": "The article provides concrete, actionable details on three critical CVEs, remediation steps, and a novel insight about AI agents exploiting a kernel flaw, aligning well with CyberSecurity. Content density is good for its length with five clear value instances and no major padding or clickbait.",
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
-      "published_at": "2026-08-29T03:34:37.719128",
-      "image_url": "https://securityaffairs.com/wp-content/uploads/2020/07/CISA.jpeg",
-      "image_width": 700,
-      "image_height": 368,
-      "image_alt": ""
+      "published_at": "2026-08-29T03:34:37.719128"
     },
     {
       "id": 5188,
@@ -11143,11 +11482,7 @@
       "rating_reason": "The article delivers multiple concrete insights about real-world red‑team compromises of critical infrastructure, including specific attack vectors, detection failures, and actionable mitigation steps. It aligns strongly with cybersecurity themes and provides high value density despite minor promotional clutter. Therefore it merits a high score near the top of the scale.",
       "source_type": "nitter",
       "source_name": "Nicolas Krassas",
-      "published_at": "2026-08-27T15:34:07.201293",
-      "image_url": "https://securityaffairs.com/wp-content/uploads/2020/07/CISA.jpeg",
-      "image_width": 700,
-      "image_height": 368,
-      "image_alt": ""
+      "published_at": "2026-08-27T15:34:07.201293"
     },
     {
       "id": 5134,
