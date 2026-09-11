@@ -1,7 +1,108 @@
 {
-  "updated_at": "2026-09-11T06:00:00.352614+00:00",
-  "total_items": 1043,
+  "updated_at": "2026-09-11T07:00:00.183411+00:00",
+  "total_items": 1046,
   "items": [
+    {
+      "id": 5611,
+      "source_id": 4,
+      "original_url": "https://tuxxin.com/blog/carnival-cclpromos-malvertising",
+      "title": "Skip to main content",
+      "summary": "An authenticated marketing email from Carnival Cruise Line was routing recipients to malware through a lapsed promotional domain that had been wired into a cloaked redirection network, demonstrating how domain hygiene failures create authentic-looking attack vectors that bypass both email authentication and security scanners.",
+      "ideas": [
+        "Authenticated emails (SPF/DKIM/DMARC passing) can still deliver malware via lapsed promotional domains",
+        "Cloaking redirects scanners to clean pages while real browsers reach malware payloads",
+        "PseudoJack uses .appinstaller manifests with forced auto-update channels for persistent access",
+        "PhantomJack packages pad to ~148MB to exceed antivirus and sandbox size scan thresholds",
+        "Browser lockers abuse Pointer Lock API, synthesized voice, and fake scrolling terminals",
+        "Per-advertiser reporting fails because monetization services replace removed advertisers quickly",
+        "Parked domain monetization chains funnel leftover traffic into malware delivery networks",
+        "Anti-analysis debugger traps build at runtime, evading static scanner detection",
+        "Malware certificates use bare GUIDs as organization names, valid for only 3 days",
+        "Domain hygiene failure: domain lapsed November 2024 while live marketing mail still linked to it",
+        "Exposure window ran from November 2024 lapse to August 2026 domain re-acquisition",
+        "Real visitors get fingerprinted and routed differently than datacenter scanners or headless browsers",
+        "urlscan.io flagged the page as one of 10,000+ similar, indicating a templated cloaking network",
+        "Microsoft disabled ms-appinstaller protocol handler in 2023 due to Storm-1113 and others abusing it"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "Original threat intelligence research documenting a genuine malware delivery path through authenticated Carnival Cruise Line marketing emails routed via a lapsed promotional domain. Delivers multiple novel insights: the PseudoJack variant with .appinstaller auto-update channels, cloaking behavior that fools both scanners and reputation services, ~148MB payload padding to bypass AV size thresholds, and browser locker techniques using Pointer Lock API. Provides specific artifacts (IOCs, certificate GUIDs, package sizes) and a clear timeline. Some repetition in methodology framing and the article is cut off mid-sentence at the end, but the substance is dense and well-evidenced throughout. Builds meaningfully on Trinity Cyber's earlier work with new findings.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-11T15:41:29.511776",
+      "image_url": "https://tuxxin.com/uploads/blog/2026/09/og-carnival-cclpromos-malvertising.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Tuxxin - IT Solutions & Custom Development"
+    },
+    {
+      "id": 5610,
+      "source_id": 4,
+      "original_url": "https://gabdevele.dev/posts/sqlite-dbpage-shared-objects-rce/",
+      "title": "gabdevele@dev",
+      "summary": "By exploiting SQLite's sqlite_dbpage virtual table to write raw binary pages and relocating ELF Program Header Tables to avoid corruption, attackers can weaponize SQL queries to write malicious shared objects and achieve RCE on Python and Ruby web applications.",
+      "ideas": [
+        "sqlite_dbpage provides low-level read/write access to raw database pages",
+        "SQLite header has immutable bytes at offsets 24-27, 92-95, and 96-99",
+        "Relocate ELF Program Header Table to binary's end to avoid header corruption",
+        "Python .so shared objects take precedence over .py files during module resolution",
+        "Gunicorn's 30-second timeout can crash workers and force module reload",
+        "Recursive zeroblob queries exhaust memory to crash managed processes",
+        "PRAGMA page_size=65536 enables writing entire binary in single UPDATE statement",
+        "SQLite ATTACH DATABASE requires non-existent or valid existing database file",
+        "Ruby's nio4r C extension can be shadowed during Puma worker restart",
+        "Use LIEF library's relocate_phdr_table to move ELF PHDR safely",
+        "Cythonize Python modules into .so files for stronger module hijacking",
+        "Puma's preload_app prevents direct shadowing but imports nio4r on restart"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional original security research presenting a novel RCE technique via SQLite's sqlite_dbpage virtual table. The post delivers multiple genuinely novel insights: precise identification of immutable SQLite header bytes, ELF Program Header Table relocation workaround, cross-language applicability (Python and Ruby), and practical crash-to-restart trigger methods. Code examples are concrete and reproducible, and the research builds credibly on prior work with clear attribution. Content is truncated at the end, which slightly diminishes completeness, but the dense, actionable technical content more than compensates.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-11T15:38:28.826490",
+      "image_url": "https://gabdevele.dev/_astro/thumbnail.DTbbCKam.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5609,
+      "source_id": 4,
+      "original_url": "https://www.accomplish.ai/blog/beltdown-escaping-the-claude-code-sandbox/",
+      "title": "Boundary-Bench",
+      "summary": "Claude Code's macOS sandbox can be escaped by a malicious repo that chains git core.fsmonitor exploitation, an unhardened git ls-files call, nested .git folder placement, working directory manipulation, and skill auto-loading to execute commands without any user permission prompt.",
+      "ideas": [
+        "Anthropic's Claude Code sandbox can be escaped by untrusted repositories running commands without permission prompts",
+        "The sandbox paradoxically causes permission prompts to disappear because Seatbelt handles sandboxing",
+        "Git's core.fsmonitor config setting executes shell commands whenever git inspects the working tree",
+        "The git ls-files refresh command was left unhardened, bypassing core.fsmonitor protection",
+        "Claude's .git folder write protection only covers the root directory, not nested subdirectories",
+        "Bash tool retains last-used directory, letting attackers redirect harness git calls elsewhere",
+        "Skill auto-loading on file reads can trigger automatic file index refreshes for exploitation",
+        "Anthropic fully fixed the exploit chain in Claude Code 2.1.247 after responsible disclosure",
+        "VM-based agent isolation with credential placeholders and proxy-based network control is a robust defense"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "Excellent technical security disclosure with high value density. The post delivers 6+ distinct value instances including the novel sandbox escape finding, precise technical breakdown of four defense bypasses (core.fsmonitor exploitation, unhardened git ls-files, nested .git folder gap, and skill auto-loading abuse), a responsible disclosure timeline, and a sound architectural recommendation (VM isolation with credential placeholders). The final section promoting the authors' product 'Accomplish' introduces mild hidden promotion but also provides genuinely useful architectural guidance, warranting a small deduction rather than a major one.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-11T15:34:36.339247",
+      "image_url": "https://accomplish.ai/images/beltdown-claude-code-key.jpg",
+      "image_width": 1600,
+      "image_height": 893,
+      "image_alt": ""
+    },
     {
       "id": 5608,
       "source_id": 34,
