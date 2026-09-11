@@ -1,7 +1,56 @@
 {
-  "updated_at": "2026-09-11T15:00:00.131295+00:00",
-  "total_items": 1057,
+  "updated_at": "2026-09-11T16:00:00.179252+00:00",
+  "total_items": 1059,
   "items": [
+    {
+      "id": 5624,
+      "source_id": 34,
+      "original_url": "https://ygoow.com/blog/2026-09-10-we-removed-the-location-lock/",
+      "title": "We removed the location lock",
+      "summary": "Android location providers leak identifying requests to third parties outside the app's Tor/SOCKS transport, so any feature requiring OS location lookup structurally defeats the anonymity layer and must be removed entirely.",
+      "ideas": [
+        "Android's NETWORK_PROVIDER sends Wi-Fi/cell scans to Google, bypassing any app-level proxy or Tor circuit.",
+        "Assisted GPS (SUPL) similarly phones home on cold fixes, outside app control.",
+        "Client-enforced conditions (location, locks) only deter phone seizure, not client modification.",
+        "Location predicates are themselves metadata that link network activity to geography.",
+        "Any OS call that consults external services can leak past a hardened transport layer.",
+        "Retired envelope identifiers must never be reused to avoid legacy-client misinterpretation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "Firsthand, technically precise postmortem explaining why a location-lock feature was architecturally incompatible with the app's anonymity goals. The article names specific Android APIs (GPS_PROVIDER, NETWORK_PROVIDER, SUPL), explains how Google Play Services' network provider attributes requests to a third party bypassing Tor/SOCKS, and articulates a generalizable principle: any OS-mediated call that 'looks outward' defeats transport-layer anonymity. The references to EncroChat and Ricochet failures and the concrete remediation (permission removal, envelope version retirement) add credibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-12T01:27:11.612961"
+    },
+    {
+      "id": 5623,
+      "source_id": 34,
+      "original_url": "https://www.serpentine.com/posts/2026/x3-stripes/",
+      "title": "How my e-reader lost its stripes",
+      "summary": "A first-hand debugging investigation that uses LLM coding assistants to find and fix vertical-stripe artifacts in greyscale rendering on an e-ink e-reader, ultimately tracing them to the device's short grey-nudge waveform and replacing it with a longer manufacturer-provided waveform.",
+      "ideas": [
+        "ESP32-C3's 53KB free RAM block couldn't hold a second full screen buffer",
+        "Two-bit-per-pixel format eliminated need for redundant screen copy",
+        "Column brightness variation dropped from 4% to 1% after waveform fix",
+        "Eight-pixel stripe period matched interleaved gate-driver clock phases",
+        "Dark-grey was being lost because CrossPoint selected an empty waveform table",
+        "Phone JPEG processing exaggerated stripe amplitude by ~70 percent",
+        "FFT on a 1D column profile beat naive 2D image processing for stripes"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "A substantive first-hand investigation that combines embedded-systems work (ESP32-C3, freeink-sdk), signal analysis (FFT on column brightness), e-ink display physics (grey nudge waveforms, gate-driver timing), and honest evaluation of LLM-assisted debugging. Provides concrete measurements (column variation dropping from 4% to 1%, 53KB vs 52KB memory budget), a reproducible methodology, and two real upstreamed firmware bugs. Slight penalty for the truncation at the end and some narrative padding, but the technical density is high and the insights about grey rendering on e-ink panels are genuinely non-obvious.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-12T01:21:20.771640"
+    },
     {
       "id": 5622,
       "source_id": 34,
