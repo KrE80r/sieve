@@ -1,7 +1,32 @@
 {
-  "updated_at": "2026-09-11T14:00:00.125935+00:00",
-  "total_items": 1056,
+  "updated_at": "2026-09-11T15:00:00.131295+00:00",
+  "total_items": 1057,
   "items": [
+    {
+      "id": 5622,
+      "source_id": 34,
+      "original_url": "https://techanarchy.net/uncontrolled-access-control-compromising-paxton10/",
+      "title": "Uncontrolled Access Control: Compromising Paxton10",
+      "summary": "A network-adjacent attacker can chain hardcoded /support portal credentials, plaintext bearer tokens leaked via SignalR long-poll query parameters into nginx logs, and a SQL injection in the Tokens/Lost endpoint (with inconsistent escaping in ufn_GetFullTextQueryString) to achieve unauthenticated remote code execution on Paxton10 servers via xp_cmdshell.",
+      "ideas": [
+        "Hardcoded htpasswd credentials across all Paxton10 installations expose a /support log collection portal",
+        "OAuth2 bearer tokens passed as URL query parameters in SignalR long-poll requests get written to nginx access logs in plaintext",
+        "Inconsistent escaping in ufn_GetFullTextQueryString routes single-quote inputs through a path without apostrophe escaping",
+        "Paxton10's installer unconditionally enables xp_cmdshell and grants the service account sysadmin role",
+        "Stacked SQL queries with xp_cmdshell provide OS command execution as NETWORK SERVICE within a ~40-character budget",
+        "Timing and ICMP echo capture can confirm blind OS command execution from SQL injection",
+        "Disclosure: Paxton10 4.9 SR12 (24 June 2026) fixed both the hardcoded credentials and SQL injection issues"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Detailed, evidence-driven vulnerability research writeup documenting a complete chain from hardcoded nginx credentials to bearer token exposure in access logs to SQL injection leading to OS command execution via xp_cmdshell. Includes specific code paths, payload construction with character budget analysis, hashcat cracking output, timing-based and ICMP-based command execution confirmation, CVSS vectors, and a clean disclosure timeline. Minimal noise, highly substantive, and instructive for both offensive and defensive practitioners.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-12T00:21:59.784619"
+    },
     {
       "id": 5621,
       "source_id": 34,
