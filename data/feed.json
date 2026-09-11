@@ -1,7 +1,90 @@
 {
-  "updated_at": "2026-09-11T00:00:00.400531+00:00",
-  "total_items": 1067,
+  "updated_at": "2026-09-11T01:00:00.135077+00:00",
+  "total_items": 1070,
   "items": [
+    {
+      "id": 5606,
+      "source_id": 34,
+      "original_url": "https://www.cubeyond.net/volume/3/inspect-field-notes/",
+      "title": "Inspect: Read the Bits",
+      "summary": "A pocket tool plus tutorial that teaches subtle C integer-promotion, signed/unsigned conversion, IEEE 754, and byte-order semantics through interactive selection of numbers, dumps, and expressions.",
+      "ideas": [
+        "'Unsigned always wins' ignores width: -1L < 0U is true because long holds every unsigned int.",
+        "Integer literal type is decided before negation: 2147483648 is long, making -2147483648 long.",
+        "COERCE_FLOAT reinterprets bits; (float) cast converts value - same 0x3f800000 yields different results.",
+        "uint8_t promotes to int before ~, so ~(uint8_t)0 yields -1, not 255.",
+        "Hex dumps record byte order; debugger words like 0x41424344 are already host-order numbers.",
+        "Decimal literals round directly to float32, preserving precision vs float64-then-narrow.",
+        "Uppercase NAN/INFINITY are float32; lowercase are float64, matching C macros.",
+        "IDA _BYTE/_WORD/_DWORD/_QWORD casts interpret a constant as that many little-endian bytes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Dense, well-illustrated documentation for a browser-based binary inspector that doubles as a tutorial on non-obvious C semantics and binary representation. The article is not promotional fluff: it explicitly teaches counter-intuitive points such as width defeating the 'unsigned always wins' rule (-1L < 0U is true), integer-promotion effects on casts and ~, the cast-vs-COERCE distinction for bit reinterpretation, and how different dump formats (xxd, hexdump, GDB, pwndbg) carry byte-order information. It is highly relevant to reverse engineering, vulnerability research, and low-level programming, with minimal noise and concrete reproducible examples throughout.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T09:45:03.101452",
+      "image_url": "https://www.cubeyond.net/assets/social/entropic-og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Entropic — Research Philes: vulnerability research, reverse engineering, and exploitation notes."
+    },
+    {
+      "id": 5605,
+      "source_id": 34,
+      "original_url": "https://www.codeotaku.com/journal/2026-09/open-source-progress-update/index",
+      "title": "From Raw Memory to Structured Web Applications",
+      "summary": "A maintainer's deep dive into giving Ruby I/O buffers explicit ownership, formalizing scheduler hooks, bounding untrusted content parsing, and rebuilding Utopia around protocol objects instead of Rack hashes.",
+      "ideas": [
+        "IO::Buffer slices now retain their root buffer, so freeing the root invalidates every view",
+        "Buffer locks are reference counted to support overlapping users safely",
+        "Scheduler hooks perform one transfer; higher-level IO decides waiting/retry",
+        "Protocol parsers enforce explicit size, pair-count, and nesting-depth limits",
+        "Protocol::URL::Path preserves encoded slashes to avoid filesystem traversal",
+        "Utopia 3 replaces Rack with Utopia::Application on Protocol::HTTP middleware",
+        "Accept#preferred_media_ranges preserves source order for equal q-values"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Dense, original engineering journal from a maintainer deeply embedded in Ruby's I/O, async, and web stack. Contains concrete code, explicit ownership/lifetime models for IO::Buffer, security-aware bounded parsing (DoS limits, encoded slash vs filesystem separator), and a substantial architecture shift (Utopia 3 replacing Rack with Protocol::HTTP middleware). Content is truncated near the end, but the delivered material is high in substance, mechanisms, and reproducible detail with no hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T09:41:37.056513"
+    },
+    {
+      "id": 5604,
+      "source_id": 34,
+      "original_url": "https://www.benjoffe.com/fast-time-of-day",
+      "title": "A faster way to calculate the Time of Day",
+      "summary": "By reordering the H/M/S decomposition into two parallel dependency chains of length 4 and applying fixed-point and base-64 modulus-padding tricks, daily timestamp-to-time-of-day conversion can be reduced to roughly 5 CPU cycles of latency versus ~8–16 in mainstream date libraries.",
+      "ideas": [
+        "Compute tmin and hour first in parallel, then derive minute/second independently to break chains.",
+        "Use mul-shift fixed-point division (e.g., *71582789>>32 for /60) when input is bounded to ~626 hours.",
+        "Pad-mod trick: x mod 60 equals (x + 4*(x/60)) mod 64, turning costly divmod into a mask.",
+        "LEA/LSL#2 instructions compute time + 4*tmin in a single cycle on x86 and ARM.",
+        "Total achievable latency is ~5 cycles, beating Lemire/Neri's ~8-cycle prior art.",
+        "JIT/compilers often fail to recognize these algebraic rearrangements automatically."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional systems-level performance engineering article presenting multiple novel algorithms for converting seconds-of-day to H/M/S with explicit cycle-latency tables, derivation of magic constants, real benchmarks on AMD Ryzen 9 and Apple M4 Pro, and comparison against implementations in the Linux kernel, glibc, Go, CPython, OpenJDK, V8, Boost, musl, and .NET. The 'parallel decomposition' (computing hour and tmin independently, then deriving minute and second in a second parallel phase) and the base-64 modulus-padding trick (x mod 60 = (x + 4*floor(x/60)) mod 64) appear to be original contributions with no prior precedent in date libraries. Limitations (range restrictions, throughput vs latency tradeoffs) are honestly disclosed. Article is slightly truncated at the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T09:35:41.255250",
+      "image_url": "https://www.benjoffe.com/manual-assets/fast-time-of-day-socialthumb.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 5603,
       "source_id": 34,
