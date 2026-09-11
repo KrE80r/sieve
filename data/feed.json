@@ -1,7 +1,112 @@
 {
-  "updated_at": "2026-09-11T13:00:00.195317+00:00",
-  "total_items": 1052,
+  "updated_at": "2026-09-11T14:00:00.125935+00:00",
+  "total_items": 1056,
   "items": [
+    {
+      "id": 5621,
+      "source_id": 34,
+      "original_url": "https://joecotellese.com/posts/claude-code-explore-agent-haiku/",
+      "title": "Claude Code Explore Agent Doesn't Run Haiku. Mine Ran Opus.",
+      "summary": "Claude Code's Explore agent does not run on Haiku; it inherits the session model (capped at Opus on first-party accounts), as verified by reading the compiled binary and counting 4,733 Opus/Sonnet turns and 0 Haiku turns across the author's real transcripts.",
+      "ideas": [
+        "Built-in Claude Code agents have model: 'inherit' in the compiled binary, not Haiku as commonly believed.",
+        "Claude Code logs model + effort level per subagent turn in JSONL transcripts under ~/.claude/projects/.",
+        "CLAUDE_CODE_SUBAGENT_MODEL pins subagent default model; _FORCE variant removes the model schema param entirely.",
+        "Custom agents in ~/.claude/agents/ support a frontmatter effort field that is undocumented elsewhere.",
+        "Spotify's Portal claims ~90% bulk-read savings; much of it achievable via env vars without a proxy."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Original empirical investigation combining binary reverse engineering of Claude Code with analysis of the user's own JSONL session logs, producing a non-obvious finding (Explore inherits the session model, often Opus, not Haiku). Includes reproducible Python code for both phases, concrete environment variables (CLAUDE_CODE_SUBAGENT_MODEL, CLAUDE_CODE_SUBAGENT_MODEL_FORCE), and a custom-agent frontmatter format with effort field. Well-caveated about internals vs documented API and version drift. Minor deduction for promotional footer and affiliate disclosure typical of personal blogs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T23:19:30.597278",
+      "image_url": "https://joecotellese.com/posts/claude-code-explore-agent-haiku/images/featuredImage.png",
+      "image_width": 1536,
+      "image_height": 857,
+      "image_alt": ""
+    },
+    {
+      "id": 5620,
+      "source_id": 34,
+      "original_url": "https://jchigg2000.dev/blog/everything-looks-like-everything",
+      "title": "Everything Looks Like Everything",
+      "summary": "On redundant corpora the retrieval problem is disambiguation, not search; scope the query to a subject first, measure the system end-to-end rather than the stage in isolation, treat the refusal as the product with explicit reasons, and never trust an API label to identify the model that actually responded.",
+      "ideas": [
+        "Redundant corpora make embedding similarity a worthless signal; resolve the subject before retrieving",
+        "Stage metrics that skip the scoping step measure a pipeline nobody runs",
+        "Build refusal as a first-class output with named reasons (Divergent, Stale, Conflicting, Below authority)",
+        "Attribution guards must verify every claim appears in cited evidence, not just check citations exist",
+        "API-reported model identity can silently mismatch the model that actually answered",
+        "Authority hierarchy: certificate of coverage > amendment > benefit summary > marketing one-pager"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptionally substantive post with concrete numbers, real architectural decisions, and hard-won practitioner insight. The author dissects a production RAG build for insurance contracts with rare honesty: 3.5% to 99.8% from scoping before retrieval, the stage-vs-system metric trap (0.998 recall on a pipeline nobody ran), explicit refusal categories with authority ordering, and the final twist where the API label lied about which model actually answered. Every claim is backed by a number or a named component. The lessons generalize well beyond insurance and beyond RAG.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T23:13:00.149349",
+      "image_url": "https://jchigg2000.dev/og-profile.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Terminal profile: justin higgins — software engineer · midwest · 20yr, with a quote about building a search engine to find a job."
+    },
+    {
+      "id": 5619,
+      "source_id": 34,
+      "original_url": "https://cyberstan.co.uk/vmxnet3-tso-overflow/",
+      "title": "Guest-to-host heap overflow via integer overflow in VMXNET3 TSO segmentation (CVE-2026-59346)",
+      "summary": "A guest-to-host heap overflow in VMware VMXNET3 TSO code bypasses CVE-2025-41236 because the prior fix validated descriptor fields individually but never validated their product, allowing a 32-bit imul truncation to produce a tiny allocation that the segmentation loop then writes far past.",
+      "ideas": [
+        "Bounding multiplicands individually does not bound their product, so any product-based allocation needs its own check",
+        "32-bit imul truncation yields a heap overflow with attacker-controlled content via packet headers",
+        "IPv6 Destination Options padding provides fully guest-specified bytes that land on glibc chunk metadata",
+        "Silent glibc heap corruption enables tcache poisoning or FSOP for host code execution",
+        "VMware Workstation/Fusion 26H1u1 (VMSA-2026-0007) fixes by using 64-bit arithmetic or validating the product",
+        "VMXNET3 guest TX ring + doorbell at BAR0+0x600 is the reachable attack surface from any admin guest"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional vulnerability research with original evidence including specific disassembly from the affected binary, a fully worked numerical example (688,297 × 6,240 wrapping to 5,984), and exact byte offsets for heap metadata corruption. The conceptual analysis of why CVE-2025-41236's individual-field bounds checks failed to bound their product is a non-obvious, broadly applicable lesson. The exploitation chain through IPv6 Destination Options padding to corrupt glibc heap metadata is presented with high specificity and minimal noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T22:37:51.460880"
+    },
+    {
+      "id": 5618,
+      "source_id": 34,
+      "original_url": "https://charlie0129.github.io/blog/p/alpine-image-builder/",
+      "title": "Building Alpine Linux Disk Images Without a VM",
+      "summary": "A chroot-based, no-VM Alpine image builder that exposes non-obvious pitfalls in losetup, XFS/ext4/Btrfs mount-option remounting, GRUB removable-path installation, and Btrfs compression heuristics, with concrete fixes for each.",
+      "ideas": [
+        "losetup -P returns before udev creates /dev/loopNp* nodes; escalate via udevadm settle, partx -a, then mknod",
+        "XFS logbsize is fixed at initial mount and silently downgraded on remount, so it must go in rootflags=",
+        "Btrfs compress=zstd skips ELF binaries by heuristic; use compress-force at build time",
+        "Place /boot on the ESP so GRUB only ever reads FAT, decoupling it from root FS feature changes",
+        "Use grub-install --removable --no-nvram for cloud images whose NVRAM cannot be written at build time",
+        "Pin Alpine to concrete branch (v3.24), not latest-stable, so runtime apk upgrades do not jump releases",
+        "Alpine's setup-disk assumes a booted live system and cannot be reused for image building",
+        "ext4 block size cannot exceed kernel page size (4 KiB); align via stride/stripe_width, not -b"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional hands-on systems engineering write-up. The article documents real debugging incidents with full mechanism explanations: the losetup/udev partition-node race, XFS logbsize being silently downgraded because it's fixed at initial mount, the Btrfs compress heuristic that skips ELF binaries, and the rootflags= kernel cmdline trick to preserve mount options. It provides a reproducible, configurable pipeline (mkalpine.sh) with thoughtful knobs, security defaults, and concrete mkfs/mount tuning per filesystem. Highly relevant to Linux/sysadmin/infrastructure readers and dense with non-obvious, verifiable findings.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T22:33:56.719236"
+    },
     {
       "id": 5617,
       "source_id": 34,
