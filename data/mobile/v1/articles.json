@@ -1,11 +1,146 @@
 {
   "schema_version": 1,
-  "sequence": 519,
-  "revision": "sha256:fb4c78d802a7b97429d049af7f8d7ad8db7e2657a71614cbe09374ca71b687bc",
-  "generated_at": "2026-09-11T12:00:00.530618+00:00",
+  "sequence": 520,
+  "revision": "sha256:7220e051702a26268dcf106f39ed506d01bb64e62439d3b84f5ca28683726ae8",
+  "generated_at": "2026-09-11T13:00:00.195317+00:00",
   "complete": true,
-  "total_items": 1046,
+  "total_items": 1052,
   "items": [
+    {
+      "article_id": "article:5617",
+      "original_url": "https://ayles.github.io/doom-in-kernel/",
+      "title": "DOOM in the kernel, or fibers in eBPF",
+      "summary": "Compiling arbitrary C to verifier-acceptable eBPF requires reshaping pointer provenance and loops so the verifier's symbolic state survives LLVM optimization, enabling DOOM, Lua, Python, SQLite, and llama2.c to run unmodified inside the stock Linux BPF JIT.",
+      "rating": 92,
+      "rating_reason": "Original, deeply technical first-hand engineering report on compiling arbitrary C/C++/Rust programs to verifier-acceptable eBPF, demonstrated by running unmodified DOOM in the Linux kernel BPF JIT. Dense with non-obvious verifier mechanics (pointer laundering via map indirection, canonicalizing loops into a single iterator, the paradox that the verifier is faster with less precise state, how LLVM's -O2 destroys verifier proofs), concrete LLVM/verifier code examples, a reproducible artifact (`nix run github:ayles/bpf-capsule#doom`), and broader applicability to Lua, QuickJS, SQLite, llama2.c, and CPython in BPF. Score docked slightly because the article is truncated mid-sentence and we do not see the final architecture, benchmarks, or conclusions.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T22:12:45.997644+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T22:12:45.997644+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5616",
+      "original_url": "https://808bits.com/articles/fips-140-2-vs-140-3-what-changed/",
+      "title": "FIPS 140-2 vs 140-3: what actually changed",
+      "summary": "FIPS 140-3 changed the vocabulary, paperwork, and self-test timing rather than module security properties; deferred algorithm self-tests and the largely-untested non-invasive security area are the substantive technical shifts.",
+      "rating": 91,
+      "rating_reason": "Exceptional firsthand analysis from someone running a nightly CMVP certificate tracker, with original data (5,506 certs, 766/778 listing non-invasive security as N/A, 114 vendors lacking any 140-3 cert, queue issuance curves) and concrete code references (Go's fips140/aes/cast.go). The deferred self-test analysis tied to the 2019 YubiKey RNG flaw and the rebranding pattern (60/75 recent 140-2 certs being software, often OpenSSL) deliver non-obvious practitioner insight. The central finding—that 140-3 is mostly an alignment/vocabulary exercise and the date moved more than the security properties—is well-supported and genuinely useful for procurement, compliance, and module-integration work.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-11T22:03:48.043835+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T22:03:48.043835+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5615",
+      "original_url": "https://github.com/google-deepmind/alphagenome",
+      "title": "google-deepmind/alphagenome",
+      "summary": "Official Google DeepMind client library providing programmatic access to the AlphaGenome model for predicting regulatory variant effects in DNA sequences, backed by a pre-computed Atlas of genome-wide predictions.",
+      "rating": 92,
+      "rating_reason": "Strong problem significance (24/25) addressing a fundamental challenge in regulatory genomics; technical novelty is notable but this repo is the client-side API rather than the model itself (16/25); high practical utility with free non-commercial access, Colab notebooks, visualization library, and Atlas of pre-computed predictions (20/25); excellent documentation with clear examples, installation, and citation guidance (23/25). Strong AI/ML alignment earns +10 domain bonus. The repo is a well-engineered client library but the actual model innovation lives elsewhere (Nature paper, separate model code).",
+      "labels": [],
+      "source_id": 27,
+      "source_name": "GitHub Trending (Python)",
+      "source_type": "github",
+      "admitted_at": "2026-09-11T21:41:11.153970+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T21:41:11.153970+00:00",
+      "image": {
+        "url": "https://opengraph.githubassets.com/906b1fe6166963b99e8112f1344e2e9ae163e2ce432fdcbeb09ef815e385bd29/google-deepmind/alphagenome",
+        "width": 1200,
+        "height": 600,
+        "alt": "This API provides programmatic access to the AlphaGenome model developed by Google DeepMind. - google-deepmind/alphagenome"
+      }
+    },
+    {
+      "article_id": "article:5614",
+      "original_url": "https://github.com/gpustack/gpustack",
+      "title": "gpustack/gpustack",
+      "summary": "GPUStack is a production-grade open-source GPU cluster manager that orchestrates multiple inference engines (vLLM, SGLang, TensorRT-LLM) across heterogeneous hardware and environments, enabling organizations to deploy and serve AI models at scale with unified management.",
+      "rating": 92,
+      "rating_reason": "GPUStack scores high across all criteria: it addresses a significant problem (heterogeneous GPU cluster management for AI inference), provides meaningful differentiation through its pluggable inference engine architecture and broad accelerator support (NVIDIA, AMD, Ascend, Hygon, MThreads, Cambricon, etc.), demonstrates clear production-readiness with 68 releases, 5.7k stars, and 3,524 commits, and has thorough multilingual documentation. The technical novelty is solid but not groundbreaking—it's an orchestration layer over existing inference engines like vLLM and SGLang rather than novel algorithms. Full domain relevance bonus applied for AI/ML infrastructure tooling.",
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 27,
+      "source_name": "GitHub Trending (Python)",
+      "source_type": "github",
+      "admitted_at": "2026-09-11T21:39:37.706876+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T21:39:37.706876+00:00",
+      "image": {
+        "url": "https://opengraph.githubassets.com/313fab80d1f43c0a1b79db83eb7ab5f17275d8562a868886b06b2c2ada0b1895/gpustack/gpustack",
+        "width": 1200,
+        "height": 600,
+        "alt": "A GPU cluster manager for high-performance AI model serving (vLLM, SGLang) and on-demand SSH-accessible GPU instances. - gpustack/gpustack"
+      }
+    },
+    {
+      "article_id": "article:5613",
+      "original_url": "https://github.com/mein-0/forti-research",
+      "title": "https://github.com/mein-0/forti-research",
+      "summary": "Fortinet's signed FortiClient kernel driver exposes an unauthenticated communication port that allows any local admin to terminate PPL-protected processes (including Defender and lsass) with a trivial 8-byte message, while also leaking a PROCESS_ALL_ACCESS handle to usermode.",
+      "rating": 85,
+      "rating_reason": "Genuine, well-documented vulnerability disclosure with high technical density. Provides specific exploit details (8-byte message structure with magic 0x6C6C696B), identifies multiple root causes, includes a working PoC and video demo, and documents responsible disclosure. Strong thematic relevance to cybersecurity, BYOVD attacks, and kernel driver security. The secondary handle leak finding adds extra value beyond the primary vulnerability.",
+      "labels": [
+        "CyberSecurity"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-11T21:38:16.739846+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T21:38:16.739846+00:00",
+      "image": {
+        "url": "https://opengraph.githubassets.com/72545781bc4859e199dc90caf314915381a448279d31f9096a6f821d5815801e/mein-0/forti-research",
+        "width": 1200,
+        "height": 600,
+        "alt": "Contribute to mein-0/forti-research development by creating an account on GitHub."
+      }
+    },
+    {
+      "article_id": "article:5612",
+      "original_url": "https://github.com/JustVugg/colibri",
+      "title": "JustVugg/colibri",
+      "summary": "A tiny pure-C inference engine that stages massive MoE models (744B–2.8T params) across VRAM/RAM/NVMe as a single tiered hierarchy, with learned expert pinning, dual-SSD striping, and a CLI that runs real frontier models today.",
+      "rating": 91,
+      "rating_reason": "Exceptionally strong project addressing a significant problem (running frontier MoE models on consumer hardware). The memory multitiering approach — treating VRAM, RAM, and NVMe as a single inference hierarchy with a 'JIT for weights' — is genuinely novel rather than incremental. Documentation is outstanding, with concrete CLI examples, a working web dashboard, multiple GPU backends (CUDA/Metal/Vulkan), and notably an 'open hypotheses' section that honestly admits unproven claims and invites negative results — a strong signal of engineering rigor. Production-usable for its demonstrated workloads.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 26,
+      "source_name": "GitHub Trending (All)",
+      "source_type": "github",
+      "admitted_at": "2026-09-11T21:36:11.456267+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-11T21:36:11.456267+00:00",
+      "image": {
+        "url": "https://opengraph.githubassets.com/eeb6be6cb49e886209c2b51d87d448ddc0054244e1b483ea76b5ba393073cc63/JustVugg/colibri",
+        "width": 1200,
+        "height": 600,
+        "alt": "Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦 - JustVugg/colibri"
+      }
+    },
     {
       "article_id": "article:5611",
       "original_url": "https://tuxxin.com/blog/carnival-cclpromos-malvertising",
@@ -5255,12 +5390,7 @@
       "admitted_at": "2026-09-03T21:40:20.817088+00:00",
       "source_published_at": null,
       "expires_at": "2026-10-03T21:40:20.817088+00:00",
-      "image": {
-        "url": "https://808bits.com/social-card.png",
-        "width": 1200,
-        "height": 630,
-        "alt": "808bits: the quiet infrastructure of trustless systems"
-      }
+      "image": null
     },
     {
       "article_id": "article:5375",
@@ -6278,12 +6408,7 @@
       "admitted_at": "2026-09-02T21:41:11.222965+00:00",
       "source_published_at": null,
       "expires_at": "2026-10-02T21:41:11.222965+00:00",
-      "image": {
-        "url": "https://808bits.com/social-card.png",
-        "width": 1200,
-        "height": 630,
-        "alt": "808bits: the quiet infrastructure of trustless systems"
-      }
+      "image": null
     },
     {
       "article_id": "article:5328",
