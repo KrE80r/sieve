@@ -1,7 +1,92 @@
 {
-  "updated_at": "2026-09-10T23:00:00.133335+00:00",
-  "total_items": 1064,
+  "updated_at": "2026-09-11T00:00:00.400531+00:00",
+  "total_items": 1067,
   "items": [
+    {
+      "id": 5603,
+      "source_id": 34,
+      "original_url": "https://willjordan.us/writing/predicting-the-go-linker/",
+      "title": "Predicting the Go Linker",
+      "summary": "Because the Go linker derives most of the binary from the function list by deterministic rules, a patcher that models the linker can predict nearly every byte after a small edit and ship only the delta plus a correction, yielding 30x smaller patches than bsdiff on Go release binaries.",
+      "ideas": [
+        "Go binaries are ~half tables derived from the function list, making them highly predictable from edits.",
+        "One 200-byte source edit amplified to 14% of bytes changed because addresses and table offsets shift.",
+        "Predicted then corrected beats chunk-dedup and slide-finding for linker-derived formats.",
+        "Presage encodes a function-list diff as the plan and falls back to a generic ELF module when unsupported.",
+        "DWARF is a second amplifier addressable by unwrapping compression and predicting structure layer by layer.",
+        "Linker-version coupling (Go 1.27 moved type descriptors, changed debug compressor) requires per-version models.",
+        "Release hashes plus BLAKE3 plus a small correction bytes lets the decoder verify predictions safely.",
+        "presage is open source at wjordan/presage and supports Go 1.26 and 1.27 today."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 94,
+      "rating_reason": "Original technical work describing presage, a binary patcher that models Go's linker to predict most of a new binary from the old one plus a small edit. Provides concrete benchmarks (1.1 KB vs 150 KB bsdiff for a one-line change; 80 KB vs 2.7 MB for a Prometheus release), detailed byte-level mechanism (192-byte handler growth propagating as 34-byte table shifts, recursing into offsets throughout .gopclntab, .rodata, ELF, DWARF, FIPS HMAC), and honest discussion of linker-version coupling. Dense, low-noise, and reproducibly grounded with comparisons against xdelta3, bsdiff, Zucchini, and rsync on real artifacts. The only minor limits are the narrow applicability surface (Go binaries today, Chrome via a generic ELF module) and that it is a single-author tool write-up rather than peer-reviewed measurement.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T09:27:38.175559"
+    },
+    {
+      "id": 5602,
+      "source_id": 34,
+      "original_url": "https://shocm.me/posts/2026-09-10-php-86-stream-error-handling/",
+      "title": "PHP 8.6 Gives Streams Real Errors, and You Can Finally Stop Parsing Warning Strings",
+      "summary": "PHP 8.6 replaces fragile warning-string parsing on stream failures with typed StreamError objects, an error_mode context option (Error/Exception/Silent), and stream_last_errors(), enabling reliable programmatic error handling.",
+      "ideas": [
+        "Use StreamErrorMode::Exception with try/catch on StreamException for application code paths.",
+        "Compare StreamErrorCode enum cases instead of substring matching on error messages.",
+        "One stream call can produce multiple errors, so iterate the array from stream_last_errors().",
+        "stream_select, stream_copy_to_stream, stream_socket_pair, and stream_is_local gained optional context parameters.",
+        "Cannot set error_mode on the default context; you must pass an explicit context you created.",
+        "Exception mode only throws for terminating errors, not warnings like buffer truncation.",
+        "PHP 8.6 hard freeze is September 24, 2026; GA targeted November 19, 2026.",
+        "Implementation coverage is still being filled in; unconverted wrappers still emit old-style errors."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Substantive, well-sourced walkthrough of the PHP 8.6 stream error handling RFC with concrete code examples, the new API surface (StreamErrorMode, StreamError, stream_last_errors()), 70+ StreamErrorCode cases, design rationale (arrays over linked lists), and the deliberate restriction against configuring the default context. Includes versioned timeline and honest caveats about incomplete implementation coverage. Falls short of exceptional because it is primarily explanatory documentation of a single RFC rather than original investigation or measurement.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T08:44:11.170810",
+      "image_url": "https://shocm.me/attachments/2026-09-10-php-86-stream-error-handling.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 5601,
+      "source_id": 34,
+      "original_url": "https://shocm.me/posts/2026-09-08-claude-code-hooks-php-pint-phpstan/",
+      "title": "Stop Asking Claude to Run Pint: Enforce Your PHP Toolchain With Hooks",
+      "summary": "A complete, well-tested configuration for enforcing PHP quality (Pint, PHPStan, Pest) via Claude Code hooks, with several non-obvious findings about exit codes, prompt-injection-safe framing, and loop prevention.",
+      "ideas": [
+        "Exit code 2 is the blocking exit for Claude Code hooks; exit 1 only logs a notice.",
+        "Stderr from a hook that exits 0 is invisible to the model.",
+        "Phrase additionalContext as factual statements to avoid prompt-injection defenses.",
+        "Use a guard file pattern to let Stop hooks fire once before standing down.",
+        "Analyse single files, not the whole project, to keep hook latency under a second.",
+        "Broken hooks (exit 127) fail silently—always verify the first run.",
+        "The 'if' matcher holds exactly one rule and no AND/OR operators."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a densely practical, technically substantive article with complete, copy-paste-ready code for configuring Claude Code hooks. It surfaces multiple non-obvious findings: exit code 2 (not 1) is the blocking code, stderr from exit 0 is invisible to the model, additionalContext phrasing matters for prompt-injection defenses, and the Stop hook needs a guard file to prevent infinite loops. Every claim is grounded in either code or a specific mechanism, with no padding or hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-11T08:42:42.552275",
+      "image_url": "https://shocm.me/attachments/2026-09-08-claude-code-hooks-php-pint-phpstan.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
     {
       "id": 5600,
       "source_id": 34,
