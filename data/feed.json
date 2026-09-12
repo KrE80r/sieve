@@ -1,7 +1,92 @@
 {
-  "updated_at": "2026-09-12T20:00:00.266678+00:00",
-  "total_items": 966,
+  "updated_at": "2026-09-12T21:00:00.140062+00:00",
+  "total_items": 969,
   "items": [
+    {
+      "id": 5646,
+      "source_id": 34,
+      "original_url": "https://victordelpuerto.com/posts/it-never-opened-the-file-i-handed-it/",
+      "title": "It never opened the file I handed it",
+      "summary": "A tool-execution-layer trigger that injects note names into prompts fires reliably, but the model only reads the named file ~24% of the time even when the pointer is relevant, so reminders are enforced while reading remains a model decision.",
+      "ideas": [
+        "Only 23.6% of correct file pointers were ever opened by the model",
+        "Baseline file-open rate is 11% with no pointer, 26.1% with relevant pointer",
+        "43.7% of triggers originally fired on machine messages, not human prompts",
+        "Reminder mechanism enforcement is decoupled from actual file reading",
+        "Pointer relevance (68.3%) far exceeds pointer consumption (23.6%)",
+        "Pre-trained LLM habits cannot be corrected by records created post-training",
+        "Cohen's kappa 0.837 across blind re-judging of 60 firings",
+        "A name in context is information; behavior requires a constraint"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Highly substantive engineering write-up with rare quantitative rigor: 1,234 hash-verified firings, blind judging with Cohen's kappa 0.837, concrete open-rate measurements (26.1% vs 11% baseline), and an honest correction of earlier flawed methodology. The central finding is genuinely non-obvious and actionable for anyone building agent memory: injecting a pointer is not the same as injecting content, and ~75% of correct pointers were never followed by a file read. The author is admirably transparent about what was and wasn't measured (e.g., whether the correction actually held after reading). Slight deductions for terse framing in places and reliance on a single LLM-as-judge without an independent human pass.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-13T05:52:15.038358",
+      "image_url": "https://victordelpuerto.com/posts/it-never-opened-the-file-i-handed-it/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5645,
+      "source_id": 34,
+      "original_url": "https://sleepingrobots.com/dreams/halogen-vs-nathanw-qwen38-flash-next-strix-halo/",
+      "title": "Halogen vs Nathanw: Why My Tuned llama.cpp Stack Beats the Hype",
+      "summary": "A tuned llama.cpp fork with MTP speculative decoding outperforms a marketing-heavy closed-source ROCm engine on warm decode at production agent depths (~55k tokens), demonstrating that community '2-4× faster' claims compare against weak default baselines rather than properly configured stacks.",
+      "ideas": [
+        "Warm decode at 55k context, not cold prefill, governs agent throughput",
+        "Community LLM benchmarks often compare against untuned default configurations",
+        "MTP speculative decoding hits jackpot bands on code-shaped prompts at depth",
+        "Live production traffic runs 40%+ below synthetic repeat-only benchmarks",
+        "QSA pooled-block-keys fix in llama.cpp roughly doubled warm decode at 55k",
+        "Closed-source inference engines block community kernel contributions on niche hardware",
+        "Cold prefill wins lose value when warm decode dominates agent wall-clock time"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Exceptionally dense technical content with a rigorous A/B benchmark methodology comparing a closed-source ROCm inference engine against a tuned llama.cpp fork on Strix Halo. The article delivers original measurements across multiple context bands and prompt classes, identifies a non-obvious methodological flaw in community benchmark comparisons (wrong baseline), and provides hard-won operational insights including the 40%+ gap between synthetic and live production traffic. Reproducible commands, explicit confounds (IOMMU, quant mismatch, streaming wedge), and honest treatment of limitations add significant credibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-13T05:36:57.178914"
+    },
+    {
+      "id": 5644,
+      "source_id": 34,
+      "original_url": "https://rivassec.com/cryptominer-in-the-docker-layer.html",
+      "title": "Finding the Cryptominer Hiding in a Docker overlay2 Layer",
+      "summary": "Container persistence in image-layer diff directories survives docker rm and eludes runtime-only forensics like ps/ss, so IR scoping must include overlay2 layer walks, manifest comparisons, and registry digest checks rather than just live process sampling.",
+      "ideas": [
+        "Image-layer files survive docker rm; only docker rmi drops the layer, and only when no other image or stopped container references it.",
+        "Deploy by repo@sha256:<digest> instead of tag to prevent registry-side retargeting that mutates what gets pulled.",
+        "Clean on-disk tampering of an overlay2 diff requires forging layerdb and imagedb metadata alongside the file changes.",
+        "Docker 29.0+ fresh installs default to the containerd image store; check docker info before assuming overlay2 paths are correct.",
+        "Manifest comparison of layer contents against the rebuilt image catches renamed variants that a name-only find misses.",
+        "File mtimes inside image layers are weak forensic evidence because tar and COPY preserve build-host timestamps."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Firsthand incident-response walkthrough with unusually specific forensic detail about overlay2 layer roles, image-layer persistence mechanics, and a concrete validation triad (name check, manifest compare, digest compare). Non-obvious insights include the survivability of image layers through docker rm but removal via docker rmi, the tag-vs-digest retargeting attack vector, the need for layerdb/imagedb forgery to achieve clean on-disk tampering, and the critical caveat that Docker 29.0+ defaults to the containerd image store where overlay2 sweeps are meaningless. Author is unusually disciplined about flagging inferences vs observations and unresolved attribution. Truncation mid-sentence at the very end is a real but minor blemish on an otherwise exceptional piece.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-13T05:31:07.277072",
+      "image_url": "https://rivassec.com/images/og/cryptominer-in-the-docker-layer.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Finding the Cryptominer Hiding in a Docker overlay2 Layer"
+    },
     {
       "id": 5643,
       "source_id": 34,
