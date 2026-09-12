@@ -1,11 +1,151 @@
 {
   "schema_version": 1,
-  "sequence": 548,
-  "revision": "sha256:9c7f83d6cf089eeb0c719a567cf31f6bdd3bd349b8016e39ed6fce750b6c0459",
-  "generated_at": "2026-09-12T19:00:00.130592+00:00",
+  "sequence": 549,
+  "revision": "sha256:f55921050f7ae75f73f3057b8bf6867a02f92c6473e91aa42f819fbdbe01edbb",
+  "generated_at": "2026-09-12T20:00:00.266678+00:00",
   "complete": true,
-  "total_items": 958,
+  "total_items": 965,
   "items": [
+    {
+      "article_id": "article:5643",
+      "original_url": "https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/",
+      "title": "Dropping eBPF CPU Cost by About 90% With Memoization (Not AI Gen)",
+      "summary": "Memoizing inode-to-policy lookups in an eBPF LSM file-open agent with an LRU_HASH map keyed on (mntns, mount_id, inode) cut kernel CPU by ~90%, with i_nlink used to safely skip hardlinked inodes.",
+      "rating": 85,
+      "rating_reason": "Firsthand eBPF engineering write-up with concrete mechanism (inode + mount ID + mntns composite key in a BPF_MAP_TYPE_LRU_HASH), real implementation code, verifiable benchmark numbers (kernel cycles dropped from 28B to 3.03B, ~90%), and a thoughtful edge-case analysis using i_nlink to handle hardlinks. The optimization is genuinely useful and non-obvious, and the author is transparent about trade-offs (sacrificing cache coverage for correctness). No hype, minimal noise.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T05:16:49.532657+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T05:16:49.532657+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5642",
+      "original_url": "https://jm33.me/weaponizing-starlark-non-executable-malware-and-scriptable-c2-agents.html",
+      "title": "Weaponizing Starlark: Non-Executable Malware and Scriptable C2 Agents",
+      "summary": "Embedding a deterministic language interpreter (Starlark) in a Go C2 lets modules call native APIs without ever creating unbacked executable memory, evading BOF-oriented scanners while still enabling token-aware operations.",
+      "rating": 87,
+      "rating_reason": "Original, empirically-supported research on using Starlark as a scriptable module layer in a Go C2 agent (emp3r0r), with concrete code, debugger call stacks, and head-to-head memory-scanner comparisons (YARA, PE-sieve, Moneta, Patriot, Hunt-SB) showing BOF detections vs clean Starlark execution. Strongly technical, first-hand, and honest about caveats (e.g., VirtualAlloc in a script reintroduces RWX). Slightly docked because the article is truncated mid-explanation of runWithToken and module packaging, leaving the token-implementation walkthrough incomplete.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T04:55:01.972770+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T04:55:01.972770+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5641",
+      "original_url": "https://gaultier.github.io/blog/optimization-tales-cockroachdb-part5-uuid.html",
+      "title": "Optimization tales in production with CockroachDB: UUID generation (part 5)",
+      "summary": "Using CockroachDB's server-side gen_random_uuid() instead of client-generated UUIDs eliminates cross-region unique-constraint lookups on REGIONAL BY ROW tables, cutting INSERT latency from ~250ms to ~5ms in a multi-region deployment.",
+      "rating": 88,
+      "rating_reason": "Firsthand production engineering account of a highly specific, non-obvious CockroachDB optimization: using server-side gen_random_uuid() to skip cross-region unique checks on REGIONAL BY ROW tables, yielding a documented 50x latency improvement (250ms → 5ms). The article explains the underlying mechanism (region-prefixed primary keys, SERIALIZABLE isolation preventing TOCTOU races), shows query plan evidence, and includes a concrete production methodology. Minor limitations: the article references code blocks/screenshots that aren't fully rendered here, and some details (CockroachDB version specifics, behavior with default_setting_unique_checks) could go deeper.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T04:43:32.425613+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T04:43:32.425613+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5640",
+      "original_url": "https://fzakaria.com/2026/09/11/a-nix-store-is-three-functions",
+      "title": "A Nix store is three functions",
+      "summary": "A Nix binary cache is just three HTTP GETs (nix-cache-info, .narinfo, .nar.xz) whose signature scheme deliberately decouples content trust from transport, enabling creative storage backends including GitHub Pages, git objects, DNS TXT records, and the npm registry.",
+      "rating": 91,
+      "rating_reason": "Exceptional technical deep-dive that elegantly reduces Nix's binary cache protocol to three HTTP endpoints, then demonstrates the implications through working examples. The article explains the signature security model (what it covers and crucially what it doesn't), and includes a fully reproducible demonstration of publishing a complete Nix closure to npm as a binary cache, plus references to original alternative implementations (DNS TXT records, gachix). Dense with concrete commands, outputs, and reproducible steps; minimal noise; genuine original insight rather than rehashing documentation.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T04:41:44.041376+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T04:41:44.041376+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5639",
+      "original_url": "https://explainanalyze.com/p/a-10-gb-database-filled-a-200-gb-disk-and-du-could-not-find-the-space/",
+      "title": "A 10 GB Database Filled a 200 GB Disk and du Could Not Find the Space",
+      "summary": "When df and du disagree by orders of magnitude, the missing space is almost always in deleted-but-open files; MySQL unlinks temp files by design, so other processes (here an endpoint scanner) can hold them indefinitely and be found with lsof +L1.",
+      "rating": 92,
+      "rating_reason": "Exceptional firsthand postmortem of a real production incident, with exact commands, outputs, file sizes, and PIDs supporting the diagnosis. The mechanism is explained precisely (inodes, unlinked-but-open file descriptors, reference counting), the version-specific MySQL 8.0 vs 8.4 behavior change is genuinely non-obvious, and the two-item differential for df/du disagreement is a clean, actionable framework. Trade-offs for mitigation are spelled out honestly. Slight literary framing and a few references to other posts add minor padding but do not weaken the core substance.",
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T04:39:09.755243+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T04:39:09.755243+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5638",
+      "original_url": "https://explainanalyze.com/p/one-column-added-to-a-select-1020-page-reads-became-166667/",
+      "title": "One Column Added to a SELECT: 1,020 Page Reads Became 166,667",
+      "summary": "Adding a column to a SELECT can flip an index-only scan into a sequential scan once enough matching rows are scattered across heap pages, and even after extending the index, writes that clear the visibility map can quietly negate the recovery.",
+      "rating": 87,
+      "rating_reason": "Strong practitioner article with reproducible benchmarks showing how adding a single column to a SELECT flips an index-only scan to a sequential scan at scale. Includes cross-engine comparison (PostgreSQL 18 vs MySQL 8.4) with concrete plans, demonstrates the non-obvious interaction between the visibility map and Heap Fetches (Heap Fetches: 0 is a property of the moment), and honestly weighs the tradeoffs of extending the index (INCLUDE columns, HOT update path breakage, write amplification) versus shrinking the projection. Dense, focused, and free of hype.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T04:36:21.107521+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T04:36:21.107521+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5637",
+      "original_url": "https://desh2608.github.io/2026-09-11-dissecting-gpt-live/",
+      "title": "Dissecting GPT-Live",
+      "summary": "By combining API behavior, pricing, and latency observations, the author reverse-engineers GPT-Live-1's likely architecture: a frontend/backend split operating on 80 ms audio frames prefilled in 400 ms chunks, with model size inferred to be similar to mid-tier GPT-5.x text models after accounting for real-time serving overhead.",
+      "rating": 90,
+      "rating_reason": "Exceptional reverse-engineering analysis with concrete technical substance throughout. The article performs original pricing-based model size inference (deriving ~$28/M blended tokens and comparing to GPT model price ladders), performs latency math (12.5 Hz audio, 5-frame chunks explaining the 0.8s turn-taking), dissects the delegation API mechanics (instructions/commentary/thinking channels), and analyzes real-time serving constraints (no-op prefix caching, harmful continuous batching). Methodology is transparent, separating sourced facts from explicit guesses. The forward-dated framing (Sep 2026, hypothetical model names) limits reproducibility of specific benchmarks but does not undermine the architectural analysis or engineering insights, which are transferable to any full-duplex S2S system.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T04:30:31.345928+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T04:30:31.345928+00:00",
+      "image": {
+        "url": "https://desh2608.github.io/static/img/desh_new.jpeg",
+        "width": 1024,
+        "height": 1024,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:5636",
       "original_url": "https://808bits.com/articles/crypto-segregation-bankruptcy-keys/",
