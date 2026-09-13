@@ -1,11 +1,81 @@
 {
   "schema_version": 1,
-  "sequence": 563,
-  "revision": "sha256:71a2bbb4af04555ad0038a3c1513e9b98d598d29e426c651b564159c3340db5c",
-  "generated_at": "2026-09-13T13:00:00.157077+00:00",
+  "sequence": 564,
+  "revision": "sha256:ea6cf389693a3eeab1b168f281651fc0b888d877df1cb39c01a7234c77b9a25e",
+  "generated_at": "2026-09-13T14:00:00.160562+00:00",
   "complete": true,
-  "total_items": 971,
+  "total_items": 974,
   "items": [
+    {
+      "article_id": "article:5666",
+      "original_url": "https://startdebugging.net/2026/09/agent-framework-1-21-localcodeact-stops-inheriting-host-environment/",
+      "title": "Agent Framework 1.21: LocalCodeAct Stops Handing Your Host Environment to Model-Written Python",
+      "summary": "Microsoft Agent Framework LocalCodeAct 1.20 leaked the parent process environment (including secrets) to model-written Python due to a ProcessStartInfo misconfiguration, fixed in 1.21 by always clearing and re-populating only the user-supplied dictionary plus Windows-required variables.",
+      "rating": 88,
+      "rating_reason": "Firsthand security investigation of a concrete vulnerability in Microsoft Agent Framework's LocalCodeAct, where model-written Python could inherit and exfiltrate host environment variables including API keys. Provides reproducible proof-of-concept code, measured results across two versions (63 vars vs 2 vars), the exact mechanism (ProcessBridge.ConfigureEnvironment early-return), platform-specific fix details, and related hardening PRs. Highly specific, technically accurate, and directly actionable for .NET AI agent developers.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T23:25:33.969508+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T23:25:33.969508+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/09/agent-framework-1-21-localcodeact-stops-inheriting-host-environment.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Agent Framework 1.21: LocalCodeAct Stops Handing Your Host Environment to Model-Written Python - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:5665",
+      "original_url": "https://sot.dev/cutting-a-rust-gpui-launcher-idle-memory.html",
+      "title": "cutting a Rust GPUI launcher’s idle memory",
+      "summary": "Lazy GPU init, Vulkan ICD filtering via VK_LOADER_DRIVERS_DISABLE, sprite atlas clearing, LRU icon caching, and capping glibc per-thread arenas with MALLOC_ARENA_MAX=2 cut a GPUI launcher's idle RSS from 141 MiB to 39 MiB; triangulate heaptrack, smaps, and timing-aware RSS measurements because each tool alone misleads.",
+      "rating": 94,
+      "rating_reason": "Exceptional practitioner writeup with original measurements, concrete numbers (141→39 MiB idle), and several non-obvious findings including the glibc per-thread arena ratchet, the VK_LOADER_DRIVERS_DISABLE ICD filter, and the append-only sprite atlas. The malloc_trim/malloc_arena behavior and methodology section ('Every tool I used was technically right, and every one tricked me on its own') are particularly valuable. The fixes were even upstreamed as a PR to Zed itself, which provides independent validation. Highly efficient per-minute density of actionable insight.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T23:23:19.392826+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T23:23:19.392826+00:00",
+      "image": {
+        "url": "https://sot.dev/assets/images/awari-launcher-nord.png",
+        "width": 1742,
+        "height": 790,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5664",
+      "original_url": "https://iter.ca/post/llm-agent-git/",
+      "title": "Agent harness security and Git",
+      "summary": "Coding-agent harnesses that auto-allow git commands in untrusted directories enable arbitrary code execution via malicious Git config (fsmonitor, insteadOf) and nested bare repos, with concrete CVEs and vendor fixes documented.",
+      "rating": 92,
+      "rating_reason": "Exceptional firsthand security research documenting original vulnerabilities found in major LLM coding agent harnesses (Claude Code, Codex, Copilot CLI, Cursor) with reproducible exploitation mechanisms. Provides concrete config payloads (core.fsmonitor, insteadOf with ext:: protocol), specific CVE numbers (CVE-2026-45033), vendor disclosure timelines, and concrete mitigations (safe.bareRepository explicit). The bare-repo-inside-repo attack surface and the fsmonitor/URL-rewriting primitives are non-obvious mechanisms that most developers and security practitioners do not know about. While the author downplays practical impact (advocating sandboxing instead), the technical depth and originality are clearly exceptional.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-13T22:33:21.406204+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-13T22:33:21.406204+00:00",
+      "image": null
+    },
     {
       "article_id": "article:5663",
       "original_url": "https://dnim.dev/blog/mail-relay-cloudflare-email-service",
