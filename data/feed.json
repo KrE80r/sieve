@@ -1,7 +1,32 @@
 {
-  "updated_at": "2026-09-13T14:00:00.160562+00:00",
-  "total_items": 974,
+  "updated_at": "2026-09-13T15:00:00.168357+00:00",
+  "total_items": 975,
   "items": [
+    {
+      "id": 5667,
+      "source_id": 34,
+      "original_url": "https://www.hdlfactory.com/post/2026/09/12/sqlite-simulation-tests/",
+      "title": "Automated Tests on Simulation Output, with SQLite",
+      "summary": "Turn VCD waveform dumps into SQLite databases via vcdcvt so CI can run ordinary Go tests against simulation output, with careful handling of timescale units, edge semantics, and SQL gotchas around case-sensitive metavalue matching.",
+      "ideas": [
+        "Convert VCD to SQLite once; memory use scales with signal count, not simulation length",
+        "ValueAt returns value before transition at ts; ValueAtP includes it (common off-by-one)",
+        "Raw VCD timestamps are integer ticks of the file's declared timescale, not nanoseconds",
+        "SQLite LIKE is ASCII-case-insensitive and matches 'x' in signal names like rx_get_start_bit",
+        "GLOB '*[XxUuZzWw-]*' with Type<>18 filter reliably catches unresolved metavalues",
+        "ROW_NUMBER() OVER (PARTITION BY Code ORDER BY Timestamp DESC) gets last value per signal at or before T",
+        "Bazel genrule makes VCD-to-SQLite a cacheable build artifact, not a manual step"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "First-hand engineering writeup of a concrete, reproducible workflow for turning VCD simulation dumps into SQLite databases and writing CI-friendly Go tests against them. The article delivers unusually dense technical content: Bazel integration, Go query API semantics (ValueAt vs ValueAtP off-by-one edge handling), a real timescale bug discovered during writing, exact SQL queries with non-obvious SQLite case-sensitivity traps, and real performance measurements. Highly specialized (hardware verification) but exceptionally substantive within its domain, with mechanisms, evidence, and actionable steps throughout.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-13T23:41:45.366379"
+    },
     {
       "id": 5666,
       "source_id": 34,
