@@ -1,7 +1,165 @@
 {
-  "updated_at": "2026-09-14T00:00:00.451215+00:00",
-  "total_items": 975,
+  "updated_at": "2026-09-14T01:00:00.172148+00:00",
+  "total_items": 981,
   "items": [
+    {
+      "id": 5673,
+      "source_id": 34,
+      "original_url": "https://www.controlpaths.com/2026/09/13/agilex3-reloading-fpga-fabric-from-linux/",
+      "title": "Reconfiguring the Agilex 3 FPGA fabric from Linux without rebooting",
+      "summary": "Runtime reconfiguration of Agilex 3 FPGA fabric via .core.rbf and dtbo allows Linux to be updated without reboot, with verification of hash compatibility.",
+      "ideas": [
+        "Runtime FPGA core reload uses .core.rbf and dtbo; isolate fabric first."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers highly relevant, concrete technical steps for reloading an Agilex 3 FPGA core bitstream from Linux without rebooting, including hash verification, device‑tree overlay creation, fabric isolation, and user‑space testing. It provides original mechanisms, exact commands, and reproducible scripts that enable rapid hardware‑software co‑design iteration. The depth is limited to this specific SoC family, requiring prior FPGA and Linux expertise, and some sections assume familiarity with boot flow details. Nonetheless, the practical value and specificity justify a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-14T09:58:56.806863",
+      "image_url": "https://www.controlpaths.com/assets/img/2026/2026-08-29-agilex3-hps-linux-custom-ip_img0.png",
+      "image_width": 1100,
+      "image_height": 400,
+      "image_alt": "Agilex 3 SoC development kit reconfiguring its FPGA fabric from userspace while Linux keeps running"
+    },
+    {
+      "id": 5672,
+      "source_id": 34,
+      "original_url": "https://www.bamsoftware.com/sec/squid/",
+      "title": "Squid: FTP command injection in FTP gateway",
+      "summary": "Both bugs reveal how unhashed digest nonces leak pointers for ASLR bypass and how newline injection in FTP URLs enables arbitrary command execution via Squid's FTP gateway.",
+      "ideas": [
+        "Digest nonces expose raw pointer values, enabling ASLR bypass.",
+        "FTP gateway allows command injection by embedding newlines in FTP URLs."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides two deep, reproducible vulnerability analyses with concrete code snippets, configuration details, proof-of-concept commands, and clear patch suggestions, delivering rare insight into Squid's digest nonce exposure and FTP gateway command injection. It avoids hype and superficial coverage, but its scope spans multiple distinct bugs, making the overall contribution strong yet not uniformly exceptional across a single high‑impact finding. The technical depth and actionable evidence meet the criteria for a high‑value security disclosure. Major limitation is the breadth of two separate issues, which slightly dilutes focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-14T09:56:48.090944"
+    },
+    {
+      "id": 5671,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-cursor-agent-extension-host-did-not-finish-starting-within-60-seconds/",
+      "title": "Fix: Cursor Agent Won't Initialise Because the Extension Host Didn't Finish Starting Within 60 Seconds",
+      "summary": "Cursor's 'Agent Execution Timed Out', ERROR_EXTENSION_HOST_TIMEOUT, and 'Timeout waiting for EverythingProvider' are all the same extension-host-startup failure, and the right fix depends on reading exthost.log to distinguish endpoint-security, VPN-loopback, state-database, extension, or HTTP/2-proxy causes.",
+      "ideas": [
+        "All three timeout errors share root cause: extension host missed 60s startup budget",
+        "Healthy host activates in ~2.5s; 25x slowdown means outside blocking",
+        "VPN clients in TUN mode can capture 127.0.0.1 and silently break loopback",
+        "Endpoint security file-scanning latency stacks across thousands of JS loads",
+        "Rename state.vscdb rather than deleting; it can hold recoverable chat history",
+        "Use cursor --user-data-dir /tmp/cursor-clean to test without touching profile",
+        "HTTP/2 buffering by corporate proxies (e.g., Zscaler) needs HTTP/1.1 fallback"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional practitioner debugging guide that synthesizes three seemingly different error messages into a single root cause (Cursor's extension host missing its 60s startup budget), then provides concrete diagnostic branching with a runnable log-parsing script, exact log/file paths per OS, and specific remediations for each failure mode (endpoint security exclusions, VPN TUN loopback capture, corrupt state.vscdb, extension bisect, HTTP/2 fallback). Hard-won, mechanism-grounded knowledge that goes well beyond forum-thread summaries. Minor limitation: article is truncated at the end of Step 4.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-14T09:53:21.112740",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-cursor-agent-extension-host-did-not-finish-starting-within-60-seconds.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: Cursor Agent Won't Initialise Because the Extension Host Didn't Finish Starting Within 60 Seconds - Start Debugging"
+    },
+    {
+      "id": 5670,
+      "source_id": 34,
+      "original_url": "https://frn.sh/go-gc/",
+      "title": "A 40ms Go GC pause caused by swap",
+      "summary": "Swap can evict Go's non-freed GC metadata pages, converting microsecond stop-the-world pauses into tens-of-millisecond stalls verified through bpf page-fault tracing.",
+      "ideas": [
+        "Go GC stop-the-world metadata pages can be swapped out, causing 40ms pauses",
+        "bpf traced 228 page faults accounting for 39ms of one GC pause",
+        "Per-cgroup eviction does not protect GC bookkeeping pages from swap-out",
+        "Swap-in during sweep termination invokes do_swap_page, bio submission, disk wait",
+        "Allocation latency jumped from 3-5ms to 903ms with swap on network volume"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Firsthand engineering investigation with original measurements: the author shows Go's GC metadata pages (allocated once, never freed) can be evicted to swap, turning ~51us median stop-the-world pauses into 40ms stalls, and traced 39ms of one pause to 228 page faults via a bpf script plus addr2line stack output. The mechanism (LRU eviction of cold GC bookkeeping, do_swap_page during sweep termination) is clearly explained, and the linked GitHub repo provides reproducibility artifacts. Relevance is high for Go runtime, kernel memory management, and production latency work, and the article is concise with good value per minute. Limitations: the allocation-latency spike (105-903ms) is explicitly unconfirmed, and the niche swap-plus-cgroup configuration narrows applicability, but the core finding is well-supported and actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-14T09:44:27.784438"
+    },
+    {
+      "id": 5669,
+      "source_id": 34,
+      "original_url": "https://aien.me/your-error-messages-are-talking-to-machines-now/",
+      "title": "Your Error Messages Are Talking to Machines Now",
+      "summary": "Error messages have become critical inputs for AI agents, requiring structured, trustworthy formats to avoid pipeline stalls and prompt injection attacks.",
+      "ideas": [
+        "Agents treat error messages as inputs, influencing further actions.",
+        "Structured errors prevent blind retries by AI agents.",
+        "Fake errors enable prompt injection attacks on autonomous agents.",
+        "RFC 9457 defines a standardized, machine‑readable error format.",
+        "Clear, stable error shapes allow agents to reliably branch logic."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article explains how AI agents now consume error messages as inputs, exposing new failure modes and security risks. It offers concrete, actionable guidance on structuring errors, while highlighting injection vulnerabilities. Substance is strong, but the focus remains narrow to modern API practices.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-14T09:38:29.254715",
+      "image_url": "https://images.unsplash.com/photo-1527430253228-e93688616381?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fHJvYm90fGVufDB8fHx8MTc4ODczMzgwM3ww&ixlib=rb-4.1.0&q=80&w=2000",
+      "image_width": 2000,
+      "image_height": 1123,
+      "image_alt": ""
+    },
+    {
+      "id": 5668,
+      "source_id": 4,
+      "original_url": "https://github.com/xzf-thu/VoiceMem",
+      "title": "https://github.com/xzf-thu/VoiceMem",
+      "summary": "VoiceMem’s dual‑brain streaming architecture enables low‑latency, emotion‑aware memory for real‑time voice agents.",
+      "ideas": [
+        "Separate factual (left brain) and emotional/personality (right brain) memory for voice agents.",
+        "Streamed retrieval can fetch relevant memory before the user finishes speaking.",
+        "Low latency achieved via hierarchical storage and speculative prefetching (0‑300 ms).",
+        "Each query uses only about 300 tokens, drastically reducing token consumption.",
+        "Open‑source models (Qwen2.5‑Omni, Qwen3‑Omni, Step‑Audio2‑Mini) can read VoiceMem memory.",
+        "Benchmark on LoCoMo yields 91.4% accuracy with 12 ms median retrieval latency.",
+        "Installation via pip and model download from HuggingFace simplifies setup.",
+        "Streaming API integrates VAD, ASR, speaker ID, scene, emotion, and embedding extraction.",
+        "LLM decides on‑the‑fly whether transcribed utterances merit permanent storage.",
+        "Demo web server provides interactive interface and detailed logging."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The README delivers multiple concrete value instances: novel dual‑brain architecture, practical installation and code snippets, benchmark results, and detailed streaming usage examples. It aligns well with AI and tech themes and contains actionable information without clickbait or padding, resulting in high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-14T09:34:29.202173",
+      "image_url": "https://opengraph.githubassets.com/5762fd0c3d2a6ed157c4306a51c5ff7cc4561f6193143814041a437a0c537768/xzf-thu/VoiceMem",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Infrastructure for the next generation of voice agents, designed to provide universal memory. It is divided into a left brain and a right brain, storing information and emotions respectively, while..."
+    },
     {
       "id": 5667,
       "source_id": 34,
