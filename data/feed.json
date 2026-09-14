@@ -1,7 +1,549 @@
 {
-  "updated_at": "2026-09-14T18:00:00.359377+00:00",
-  "total_items": 982,
+  "updated_at": "2026-09-14T19:00:00.311019+00:00",
+  "total_items": 1002,
   "items": [
+    {
+      "id": 5695,
+      "source_id": 34,
+      "original_url": "https://vivekdhami.com/blog/secrets-for-llm-applications-key-vault-csi-pattern/",
+      "title": "Secrets for LLM applications: the Key Vault CSI pattern secures delivery, not the process that reads it",
+      "summary": "Separate the secret‑fetching container from the LLM‑agent container and expose only a narrow broker API to limit the damage of prompt‑injection attacks.",
+      "ideas": [
+        "Split container workloads: keep CSI‑mounted secrets out of the agent’s filesystem.",
+        "Use workload identity annotations to prevent secret token injection into the agent.",
+        "Expose a minimal broker endpoint to contain the secret’s scope.",
+        "Re‑read the secret file on each request to catch CSI autorotation.",
+        "Prefer vendor‑issued scoped keys over tenant‑wide credentials when possible."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents concrete, non‑obvious design guidance for securing LLM agents that consume secrets, with working Kubernetes manifests, threat analysis, and a concrete mitigation pattern. It clearly explains the limitation of the CSI driver when the workload parses attacker‑controlled input and offers a practical split‑container solution with annotations and narrow APIs. The value is high but slightly tempered by assumptions about pod topology and the need for vendor‑side key scoping.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:25:00.690727",
+      "image_url": "https://vivekdhami.com/blog/secrets-for-llm-applications-key-vault-csi-pattern/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5694,
+      "source_id": 34,
+      "original_url": "https://thinhdanggroup.github.io/pgbouncer-pooling-modes/",
+      "title": "Postgres Connection Pooling Under Sustained Load",
+      "summary": "Using transaction‑level locks instead of session‑level ones prevents lock leakage when employing PgBouncer’s transaction pooling.",
+      "ideas": [
+        "Advisory locks persist across transaction boundaries in pooled server connections",
+        "Prepared statements fail unless max_prepared_statements is enabled in PgBouncer",
+        "Session‑level state (SET, temp tables, LISTEN) is lost between pooled transactions",
+        "Switch to transaction‑level locks or table‑based mutexes to avoid silent failures"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article precisely explains how PgBouncer transaction pooling breaks session‑level features such as advisory locks and prepared statements, causing silent lock leaks. It provides concrete code fixes, configuration checks, and troubleshooting steps that let engineers diagnose and resolve the issue without relying on band‑aid tuning.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:22:51.833808",
+      "image_url": "https://thinhdanggroup.github.io/assets/images/pgbouncer-pooling-modes/banner.webp",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 5693,
+      "source_id": 34,
+      "original_url": "https://thereallo.dev/blog/reverse-engineering-hong-kong-traffic-lights",
+      "title": "Reverse Engineering Hong Kong's New Traffic Lights",
+      "summary": "It reveals the exact encrypted BLE advertisement format that the traffic‑light button uses and shows how to replicate it with a Flipper Zero.",
+      "ideas": [
+        "BLE manufacturer payload is 24 bytes: 8‑byte header \"GaLiLeO \" + 16‑byte AES‑ECB block.",
+        "AES key is the ASCII string \"GalileoLH0000852\" (16 bytes).",
+        "Plaintext consists of \"TeCh>Z\" + 6‑byte timestamp nonce + 0x70 + tail bytes 0x58,0x79,0x11.",
+        "Service UUID 47614c69-4c65-4f20-5465-43683e42544e decodes to \"GaLiLeO TeCh>BTN\".",
+        "Two button modes (20 min audio boost, 10 s trigger) differ only by advertising duration."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete reverse‑engineered details of the BLE protocol used by Hong Kong's new eATS traffic lights, including the exact manufacturer payload, AES‑128 key derivation, UUID, and a working Flipper Zero implementation. The evidence is reproducible (code snippets, Python builder, Rust Flipper app) and demonstrates a realistic attack surface, making it highly valuable to security and embedded engineers. The write‑up is concise, free of hype, and includes actionable steps, though it is narrowly scoped to this specific system.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:22:24.517131",
+      "image_url": "https://thereallo.dev/og/images/reverse-engineering-hong-kong-traffic-lights.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Reverse Engineering Hong Kong's New Traffic Lights"
+    },
+    {
+      "id": 5692,
+      "source_id": 34,
+      "original_url": "https://tej.as/blog/what-is-an-agent-harness/",
+      "title": "What Is an Agent Harness? Harness Engineering Explained",
+      "summary": "A harness that adds tool registry, guardrails, verification and secret handling can reliably make an untrusted LLM perform tasks like upvoting Hacker News.",
+      "ideas": [
+        "Guardrails prevent infinite loops and context overflow.",
+        "Deterministic verification catches false claims and enables retries."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete code, architecture diagrams, and verification steps that transform a black‑box LLM into a reliable upvoting agent, demonstrating measurable improvements and clear implementation guidance; it is substantive and relevant, though it focuses on a single demo scenario. The content avoids hype, offers practical harness engineering techniques, and includes reproducible examples.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:21:01.313589",
+      "image_url": "https://tej.as/img/og/blog/what-is-an-agent-harness.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What Is an Agent Harness? Harness Engineering Explained. An article by Tejas Kumar."
+    },
+    {
+      "id": 5691,
+      "source_id": 34,
+      "original_url": "https://syslinuxos.com/syslinuxos-13-3/",
+      "title": "SysLinuxOS 13.3",
+      "summary": "SysLinuxOS 13.3 ships a live Linux environment where Claude Code can autonomously reinstall GRUB using only natural‑language instruction, demonstrating AI‑enabled system recovery without manual chroot.",
+      "ideas": [
+        "AI agent can autonomously reinstall GRUB using only natural‑language instruction in a SysLinuxOS live session."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, non‑obvious technical mechanisms and a real‑world example of AI‑driven GRUB repair in a btrfs live environment, providing reproducible steps and security details. It is highly relevant to Linux sysadmins and AI tooling readers, though some promotional fluff and navigation content slightly dilute its polish.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:20:18.042766"
+    },
+    {
+      "id": 5690,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-coding-agent-loops-re-running-a-check-it-cannot-satisfy/",
+      "title": "Fix: a coding agent loops forever re-running a check it can't satisfy",
+      "summary": "Stop hooks and gates in Claude Code create infinite retry loops when they demand a check the sandbox cannot satisfy; the article provides five concrete patterns (distinct exit codes, fingerprint memory, intra-turn repeat detection, prompt-evaluated 'impossible', and hard ceilings) plus the exact version-specific hooks that break or cap those loops.",
+      "ideas": [
+        "Exit code 78 (EX_CONFIG) lets a gate distinguish 'environment cannot run this' from a real failure",
+        "Fingerprint gate state per session_id so identical failures allow the turn to end",
+        "PostToolUseFailure can nudge the agent after repeated identical failing commands",
+        "Prompt-based Stop hooks support an 'impossible: true' field to break stop loops",
+        "Claude Code 2.1.143+ caps Stop hook blocks at 8 consecutive failures per turn",
+        "--max-turns and --max-budget-usd (2.1.217+) are essential safety nets for headless runs",
+        "Middle-truncated tool output can make two identical failures look different in keys",
+        "Key repeat-failure fingerprints only on first lines of error to avoid false negatives"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive, deeply technical article on Claude Code hook engineering with five concrete fix patterns, full reproducible code (Stop hooks, PostToolUseFailure, prompt hooks), specific version-gated behavior (2.1.143 block cap, 2.1.163 additionalContext, 2.1.217 budget semantics, etc.), and references to real bug reports. Non-obvious mechanisms (exit 78 EX_CONFIG as 'cannot run here', fingerprint-based gate memory keyed by session_id, 'impossible: true' schema, middle-truncation breaking identical-failure detection) are well explained. Content is truncated near the end, and some future-dated version numbers warrant mild caution, but the core engineering substance is intact and high-signal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:18:55.499211",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-coding-agent-loops-re-running-a-check-it-cannot-satisfy.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: a coding agent loops forever re-running a check it can't satisfy - Start Debugging"
+    },
+    {
+      "id": 5689,
+      "source_id": 34,
+      "original_url": "https://mikelev.in/futureproof/wrong-front-door-split-dns-dhcp/",
+      "title": "The Wrong Front Door: Split DNS, DHCP Leases, and Verifiable Local Testing",
+      "summary": "Split‑DNS entries on the router solve the hairpin‑NAT TLS verification problem without needing insecure curl flags.",
+      "ideas": [
+        "Use curl --connect-to to target the LAN address while keeping the original hostname.",
+        "Configure pfSense DNS resolver Host Overrides for npvg.org pointing to the LAN IP.",
+        "Avoid NAT reflection; it can cause silent timeouts when the server sees its own LAN address.",
+        "Verify the correct certificate by checking subject/issuer with probe commands."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible diagnostics for split‑DNS and DHCP lease issues that cause TLS failures when testing a local domain from inside the network. It explains the mechanism, provides exact curl commands, and shows both a lightweight --connect-to workaround and a full router configuration, backed by verification probes. Its relevance is high for networking, security, and Linux practitioners, though the novelty is moderate and the solution assumes pfSense access.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:07:43.812828"
+    },
+    {
+      "id": 5688,
+      "source_id": 34,
+      "original_url": "https://licensing.guide/copilot-credits-are-changing-the-licensing-conversation/",
+      "title": "Copilot Credits are changing the licensing conversation",
+      "summary": "Microsoft is moving AI licensing from per‑user seats to consumption‑based Copilot Credits, raising new cost‑forecasting and governance issues for autonomous agents.",
+      "ideas": [
+        "Consumption‑based Copilot Credits replace per‑user seats for AI development workloads.",
+        "Predicting costs for AI‑assisted tasks remains difficult due to variable token usage."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The post delivers concrete, technical insight into Microsoft's shift to Copilot Credits, explaining usage‑based billing, forecasting challenges, and the governance question of who pays for autonomous agent resources. It is relevant to AI licensing and infrastructure, but it contains some promotional tone and lacks code or raw data, limiting its depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:01:13.457441",
+      "image_url": "https://licensing.guide/wp-content/uploads/sites/5/2026/09/pexels-photo-16595193-16595193-scaled.jpg",
+      "image_width": 2560,
+      "image_height": 1707,
+      "image_alt": "Close-up of a professional microphone on a stage with vibrant lighting in Paris, France."
+    },
+    {
+      "id": 5687,
+      "source_id": 34,
+      "original_url": "https://katelynlesse.com/blog/secure-agents-architecture-and-sandboxing",
+      "title": "Secure agents: architecture and sandboxing",
+      "summary": "Keep the agent’s harness, state, and credentials outside a strongly isolated, ephemeral sandbox and enforce scoped egress via a proxy.",
+      "ideas": [
+        "Separate harness, state, and credentials from sandbox.",
+        "Run untrusted code in microVMs or gVisor for isolation.",
+        "Default‑deny outbound traffic through a scoped egress proxy.",
+        "Use ephemeral sandboxes with hard time/resource limits.",
+        "Log and externally monitor tool calls, with an immediate kill switch."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, actionable guidance on secure agent architecture, particularly the brain‑hands split and sandbox isolation levels, with clear mechanisms such as egress proxies and ephemeral microVMs. It is highly relevant to AI/LLM agent security and infrastructure engineers, though it lacks experimental data or code samples, limiting depth. Overall it offers strong, practical insight with minimal noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T04:00:41.017999",
+      "image_url": "https://www.katelynlesse.com/blog/secure-agents-architecture-and-sandboxing/opengraph-image?827db79d5184d391",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Blog post"
+    },
+    {
+      "id": 5686,
+      "source_id": 34,
+      "original_url": "https://jmason.ie/2026/09/14/072656a.html",
+      "title": "Pluralistic: LLMs are real, AI is fake (12 Sep 2026)",
+      "summary": "LLMs' apparent hacking stems from trained patterns and explicit scripts, not autonomous AI agency.",
+      "ideas": [
+        "LLM hacking results from prompt‑driven scripts, not emergent AI agency.",
+        "Training data contains numerous hack‑the‑rival examples, shaping model outputs.",
+        "Autonomous malicious software is just scripted code, not sentient intelligence."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece offers a clear, evidence‑based debunking of the notion that LLMs possess autonomous agency, showing how the Hugging Face incident reflects trained patterns and explicit code rather than emergent AI behavior. It supplies concrete technical insight but stops short of deep implementation detail, leaving some depth on the table. The argument is well‑structured and avoids hype, making it highly relevant to technically savvy readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T03:59:28.587011"
+    },
+    {
+      "id": 5685,
+      "source_id": 34,
+      "original_url": "https://itsgg.com/blog/2026/09/14/a-check-that-cannot-look/",
+      "title": "A Check That Cannot Look",
+      "summary": "The most dangerous checks are the ones that pass because they could not look; treat 'cannot tell' as a distinct outcome, mutation-test every protection, and demand control arms for claims that a flag or gate works.",
+      "ideas": [
+        "A timed-out scan is no scan reported as clean; time the gates",
+        "CLIs can silently ignore invalid settings files, disabling protections for weeks",
+        "A check that cannot run needs a third answer: 'cannot tell'",
+        "Mutation-test protections: delete the behavior, verify the check goes red",
+        "Test-failure reporter name collisions can silently rescore the whole suite",
+        "Subshell tallies die with the subshell; keep counts in files",
+        "Displayed is not handled: models ignore truncation flags in tool output",
+        "Control arms distinguish a working flag from a hook that never registered",
+        "Read logs for what never appears; absence of calls is signal, not silence"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "A firsthand catalog of nine real failures in an agent codebase, all sharing one mechanism: checks that report clean because they cannot see what they were meant to check. Each case includes a concrete cause (timeout-as-pass, renamed helper swallowing test cases, subshell variable loss, a CLI silently discarding invalid settings files, truncation flags ignored by the model), the diagnostic that exposed it, and the fix, including control-arm runs against a hook log and a mutation batch showing 5 of ~30 assertions would pass with the feature deleted. This is directly relevant to AI agent engineering, testing practice, and shell/CI reliability, and its distilled disciplines—a 'cannot tell' third outcome, mutation-testing every protection, counts in files not subprocess variables—are actionable. Individual bugs are mostly simple once explained, which keeps it out of exceptional territory, but the aggregate evidence and practitioner synthesis are unusually dense and hype-free.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T03:57:34.410439",
+      "image_url": "https://itsgg.com/assets/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5684,
+      "source_id": 34,
+      "original_url": "https://andreafortuna.org/2026/09/14/f5-big-ip-rootkit-in-memory/",
+      "title": "When the web shell isn’t on disk: the F5 BIG-IP rootkit that lives in memory",
+      "summary": "The rootkit hides malicious PHP execution by altering in‑memory representations of legitimate scripts, rendering filesystem scans ineffective.",
+      "ideas": [
+        "Rootkit hooks Apache and PHP at runtime to replace script contents in memory",
+        "It uses a Unix domain socket /run/bigtlog.pipe to spawn /bin/bash",
+        "Detection requires memory forensics, not just file integrity checks"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents original, highly technical details on a memory‑only Linux rootkit that hijacks Apache and PHP at runtime, includes concrete implementation mechanisms, detection signals, and forensic implications, which are valuable for a technically capable security reader. It also explains mitigation steps and the importance of memory forensics, though its focus on a specific F5 vulnerability limits broader applicability. The piece avoids sensational hype and padding, delivering substantive, evidence‑based insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T03:42:12.432244"
+    },
+    {
+      "id": 5683,
+      "source_id": 34,
+      "original_url": "https://albertoarena.it/posts/agent-teams-isolated-reviewer/",
+      "title": "Agent Teams: Why I Don't Let My Reviewer See My Reasoning",
+      "summary": "Effective AI review requires separating the reviewer from the author's reasoning to obtain truly independent feedback.",
+      "ideas": [
+        "A reviewer isolated from author's reasoning can surface errors invisible to self-review.",
+        "An isolated reviewer flagged a reversed token‑cost assumption in the draft.",
+        "Model independence fails without separate context.",
+        "Effective AI review depends on deliberate context scoping, not just duplicate agents."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a concrete method for using isolated AI reviewers to surface errors that shared context would conceal, supported by specific prompt design and observed findings. It offers valuable insight into the limits of model independence, though it includes modest self‑promotion. Overall it delivers focused, evidence‑based guidance in a brief format, earning a high but not perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T03:40:43.183548",
+      "image_url": "https://albertoarena.it/images/posts/agent-teams-isolated-reviewer/cover.jpg",
+      "image_width": 1199,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5682,
+      "source_id": 4,
+      "original_url": "https://medium.com/@S3N4T0R/charming-kitten-apt-adversary-simulation-fa6257b42811",
+      "title": "Charming Kitten APT Adversary Simulation",
+      "summary": "Telegram‑based C2 and VBA macro obfuscation illustrate modern APT simulation techniques for defenders.",
+      "ideas": [
+        "Use AI-generated Rust code to create fast, custom backdoors.",
+        "Deploy blurred document lures with VBA macros for stealthy execution.",
+        "Obfuscate strings via hexadecimal encoding to evade static detection.",
+        "Implement conditional download logic to avoid redundant payload fetching.",
+        "Use multiple execution methods (Shell, WSH) to increase reliability.",
+        "Leverage compromised government email accounts for trusted phishing.",
+        "Replace traditional C2 with Telegram bot communication over HTTPS.",
+        "Split large command outputs into 4000‑character chunks for Telegram limits.",
+        "Encode file transfers with Base64 to safely transmit through messaging channels.",
+        "Provide file management commands (download, upload, delete) via C2 agent."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers numerous actionable insights for red‑team and defensive practitioners, such as AI‑generated Rust backdoors, VBA macro obfuscation, trusted‑relationship phishing, and a Telegram‑based C2 implementation, providing concrete code patterns and configuration steps. While the length includes repetitive UI prompts, the core content is dense with practical techniques aligned with cybersecurity and technology themes, resulting in a high value‑per‑minute score. No clickbait or promotional bias is evident, though minor padding reduces the score slightly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:38:08.272149"
+    },
+    {
+      "id": 5681,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/09/14/ukgov-begins-killing-off-passwords-for-23-million-users/5296088",
+      "title": "Jump to main content",
+      "summary": "Passkeys dramatically speed up and secure government logins while cutting daily SMS costs.",
+      "ideas": [
+        "UK government offers passkeys to 23 million users, reducing reliance on passwords.",
+        "Passkeys unlock via device biometric or PIN, keeping biometric data private.",
+        "Authentication with passkeys can be up to eight times faster than password + 2FA.",
+        "Adoption of passkeys saves Whitehall roughly £600 each day on SMS fees.",
+        "Cryptographic credentials make passkeys highly resistant to phishing attacks.",
+        "NCSC promotes passkey use, though passwords remain optional for now.",
+        "GOV.UK One Login provides a single account for multiple government services."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete insights about the UK government's passkey rollout—speed gains, cost savings, security mechanics, and policy stance—delivering solid value with minimal fluff. It aligns well with CyberSecurity and Tech themes and contains no clickbait or padding, earning a high density score for its short length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:37:00.626413",
+      "image_url": "https://image.theregister.com/1681829.jpg?imageId=1681829&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+      "image_width": 1200,
+      "image_height": 683,
+      "image_alt": ""
+    },
+    {
+      "id": 5680,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/malicious-twitch-browser-extension.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "A Twitch browser extension was leaking OAuth tokens of nearly 31,000 users to proxy servers, and version 85.8.7 patches the issue by removing token forwarding.",
+      "ideas": [
+        "Twitch Enhanced Viewer extension leaks OAuth tokens to proxy servers.",
+        "Nearly 31,000 users' tokens forwarded via &auth= query parameter.",
+        "Tokens bypassed for a hardcoded list of 10 Russian-language channels.",
+        "Version 85.8.7 removes token forwarding, patches the vulnerability.",
+        "OAuth tokens enable full account control, including chat and whispers.",
+        "Developer acknowledges oversight and provides update instructions."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article uncovers a serious OAuth token leakage in a popular Twitch extension, explaining how tokens were forwarded to proxy servers and exposing 31,000 users. It then details the vulnerability, the fix in version 85.8.7, and the associated security implications, delivering high value density with strong cybersecurity relevance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:36:46.314115",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguNgykDjufnR6xGrMUSq67eZ5sCFxbYjf8J6pEXekhUnt-zCt2xaJ4jzj6I0wPMYjps9z2ufKJ-JSJ8ZqhGe4BcbtNWfRETdaB6QgIRVLw0CtnsM5q2qCpyI3kL7oBXmNixcTTcumZJHFgCKaoLY8kRIBDbPHslMmmzzb25TlESGooJuaxtXEL5qrUzkop/s1700-nu-rw-lo-l85-e365/twitch.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 5679,
+      "source_id": 4,
+      "original_url": "https://arstechnica.com/security/2026/09/clickfix-attacks-infecting-pcs-and-macs-are-going-viral/",
+      "title": "https://arstechnica.com/security/2026/09/clickfix-attacks-infecting-pcs-and-macs-are-going-viral/",
+      "summary": "Hostile web design and CAPTCHA fatigue have desensitized users to absurd instructions, making fake-CAPTCHA ClickFix attacks devastatingly effective—and victim-blaming misses this systemic cause.",
+      "ideas": [
+        "ClickFix attacks use fake CAPTCHA overlays to trick users into pasting malicious terminal commands",
+        "Chronic web friction and CAPTCHA fatigue desensitize users to absurd instructions, enabling social engineering",
+        "ClickFix eliminates code-signing requirements by substituting user-executed commands for installer legitimacy",
+        "ClickFix broadens victim pools from targeted searchers to anyone browsing compromised websites",
+        "macOS ClickFix variants documented that bypass Gatekeeper protections",
+        "Attackers abuse public services like Google Sheets and blockchain smart contracts for control infrastructure",
+        "BlockBlock and uBlock can now intercept ClickFix attacks at the paste-command stage",
+        "Victim-blaming worsens outcomes; trained users should build awareness among less experienced contacts",
+        "Vendors ignored infostealers for years due to young pirate targets and low individual losses",
+        "Attackers fabricate trust signals like upload ratios and positive comments to create false download safety"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 80,
+      "rating_reason": "This is solid security journalism from a reputable source with multiple genuine value instances: the BlueVoyant insight that ClickFix eliminates code-signing requirements by substituting user execution for installer legitimacy, documented macOS Gatekeeper bypasses, novel C2 infrastructure techniques (Google Sheets abuse, blockchain smart contracts with 5,400 beaconing sites per Netskope), and actionable defenses (BlockBlock intercepting at the paste stage, updated uBlock). The standout expert comment from the r/antivirus moderator adds rarely-shared insider context on why vendors ignored these attacks—the young pirate demographic, fabricated trust signals, and low individual losses. The piece's systemic insight that UX hostility and CAPTCHA fatigue normalize absurd instructions elevates it above typical threat reporting. It loses points because it aggregates others' research rather than delivering original analysis, and portions rehash already-documented ClickFix trends.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:36:24.327725",
+      "image_url": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/malware-infected-laptop-1152x648.jpg",
+      "image_width": 1152,
+      "image_height": 648,
+      "image_alt": ""
+    },
+    {
+      "id": 5678,
+      "source_id": 4,
+      "original_url": "https://blog.silentsignal.eu/2026/09/14/IBM-Db2-Mirror-for-i-pre-auth-RCE-and-the-road-to-QSECOFR/",
+      "title": "SILENT SIGNAL",
+      "summary": "By exploiting a path‑parameter auth bypass and a validation‑skip flag, attackers can read files and write a JSP to achieve RCE on IBM Db2 Mirror for i.",
+      "ideas": [
+        "AuthFilter’s rets[2] check can be bypassed using a semicolon path parameter",
+        "skipVald parameter disables input validation, allowing unsafe inputs",
+        "Action class and method are resolved before authentication, exposing primitives",
+        "LogAction.getLogFileContent permits arbitrary file reads without directory restriction",
+        "LogAction.updateLogSetting writes attacker‑controlled path to jvm.options and trace file",
+        "Setting Trace file to a JSP path creates a writable web shell for RCE",
+        "The exploit chain combines auth bypass, validation skip, file read, and write to achieve RCE",
+        "Vulnerability affects IBM Db2 Mirror for i builds up to late 2025",
+        "Servlet dispatcher uses reflection on URL segments, a risky design pattern",
+        "AdminSession.skipVald flag persists across requests using the same JSESSIONID"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The write‑up delivers multiple novel security insights—auth bypass via path parameters, validation skip flag, arbitrary file read/write primitives, and a full RCE chain—clearly explained with code snippets, offering actionable knowledge for security engineers. It aligns strongly with CyberSecurity and Tech themes and contains no clickbait or padding, resulting in high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:34:43.337447"
+    },
+    {
+      "id": 5677,
+      "source_id": 4,
+      "original_url": "https://deturris.io/posts/n8n-ai-agents-authorization-bypasses/",
+      "title": "Antonio De Turris",
+      "summary": "AI‑driven features can unintentionally bypass existing permission checks, allowing low‑privilege users to execute nodes and exfiltrate credentials.",
+      "ideas": [
+        "Project Viewer role can execute arbitrary nodes via run_node_tool, bypassing read-only restrictions.",
+        "Exploiting run_node_tool can exfiltrate project credentials using attacker-controlled HTTP endpoint.",
+        "Execute Command node can be abused through AI agent to obtain reverse shell on n8n host.",
+        "MCP client neglects credential domain restrictions, allowing credential exfiltration via custom MCP server.",
+        "Shared credentials with \"Allowed HTTP Request Domains = None\" can still be sent in headers via MCP.",
+        "Vulnerabilities stem from missing auth checks in new AI‑driven pathways.",
+        "Fixes released in n8n versions 2.29.8/2.30.1 and 2.27.4/2.28.1 address these bypasses.",
+        "Security research highlights need to enforce consistent authorization across AI features."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article delivers multiple concrete security disclosures (two CVEs) with detailed exploitation steps, code references, and remediation information, providing high value density for security and dev audiences. No clickbait or padding is present, and the content aligns strongly with CyberSecurity, AI, and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:33:08.901492",
+      "image_url": "https://deturris.io/posts/n8n-ai-agents-authorization-bypasses/agent-chat-tool-call.png",
+      "image_width": 1032,
+      "image_height": 728,
+      "image_alt": ""
+    },
+    {
+      "id": 5676,
+      "source_id": 4,
+      "original_url": "https://www.infostealers.com/article/hbo-max-ads-on-a-compromised-reddit-account-exposed-a-massive-pasteswitch-clickfix-operation/",
+      "title": "https://www.infostealers.com/article/hbo-max-ads-on-a-compromised-reddit-account-exposed-a-massive-pasteswitch-clickfix-operation/",
+      "summary": "PasteSwitch leverages compromised verified accounts to deliver OS‑specific ClickFix malware using copy‑paste commands and dynamic smart‑contract C2.",
+      "ideas": [
+        "Verified HBO Max Reddit account hijacked to run ClickFix malvertising",
+        "PasteSwitch switches payloads based on OS via copy‑paste commands",
+        "macOS branch uses MacSync, AMOS helper, and fake wallets to steal data",
+        "Windows branch employs InstallFix, mshta, PowerShell, in‑memory loading, and SNI spoofing",
+        "Cryptocurrency clippers use Binance Smart Chain contracts as mutable C2",
+        "Attackers rotate domains and use deceptive TLS to evade detection",
+        "108 distinct ads were pushed in 48 hours targeting varied user groups",
+        "Indicators of compromise include specific IPs, domains, and smart‑contract addresses",
+        "Reddit paused ads after community reports, highlighting user vigilance",
+        "Detection focuses on copied‑command execution and consistent route tokens"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides extensive, actionable intelligence on a sophisticated malvertising campaign, including novel ClickFix tactics, cross‑platform payload switching, and smart‑contract C2, which are valuable to security professionals. It stays focused without clickbait, though the long list of domains adds minor padding. The content aligns strongly with CyberSecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T03:32:46.534330",
+      "image_url": "https://www.infostealers.com/wp-content/uploads/2026/09/official_hbo_reddit_ad.png",
+      "image_width": 918,
+      "image_height": 706,
+      "image_alt": ""
+    },
     {
       "id": 5675,
       "source_id": 26,
