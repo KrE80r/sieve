@@ -1,7 +1,662 @@
 {
-  "updated_at": "2026-09-15T12:00:00.857496+00:00",
-  "total_items": 1011,
+  "updated_at": "2026-09-15T13:00:00.192268+00:00",
+  "total_items": 1035,
   "items": [
+    {
+      "id": 5728,
+      "source_id": 34,
+      "original_url": "https://drmike.xyz/posts/we-cant-be-that-stupid/",
+      "title": "We cannot be that stupid",
+      "summary": "Doom announcements from frontier AI labs are statistically aligned with funding, product launches, and IPO activity, revealing a financial motive behind the panic.",
+      "ideas": [
+        "70% of AI doom statements occur within a week of a company’s commercial event",
+        "Bayesian model shows posterior probability of timing link ≈0.7",
+        "System cards often contain self‑generated scare statements on launch day",
+        "Reward‑hacking incident shows imperfect safety proxies can be exploited",
+        "Open‑source Chinese models narrow the capability gap but lack moat protection"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents original Bayesian analysis of 58 AI‑doom statements linked to commercial milestones, showing 70% timing correlation with financial events and quantifying the effect. It also dissects system‑card disclosures and specific engineering failures, providing concrete technical insight beyond hype. The piece offers clear, reproducible evidence and practical implications for researchers and regulators, with only minor limitations due to reliance on publicly available data.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:22:46.857875",
+      "image_url": "https://drmike.xyz/posts/we-cant-be-that-stupid/figs/sept2026.light.png",
+      "image_width": 1593,
+      "image_height": 836,
+      "image_alt": ""
+    },
+    {
+      "id": 5727,
+      "source_id": 34,
+      "original_url": "https://dunkirk.sh/blog/screentime/",
+      "title": "Breaking macOS Screen Time for fun and profit",
+      "summary": "macOS Screen Time stores the 4-digit PIN as plaintext behind an 'opaque' wrapper, protected primarily by kernel datavault and SIP rather than cryptography, with client-side XPC providers accepting unauthenticated connections.",
+      "ideas": [
+        "Screen Time PIN is stored plaintext in CoreData SQLite despite STOpaquePasscode naming",
+        "Client-side XPC service providers lack entitlement or identity checks on accept",
+        "Lockout escalation uses hardcoded table: 60s, 300s, 900s, then 3600s",
+        "Four-layer protection: TCC entitlement, kernel datavault, SIP, CKKS iCloud encryption",
+        "4-digit PIN entropy (10000) makes hashing provide minimal additional security"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Original vulnerability research into macOS Screen Time with substantial firsthand reverse engineering: identifies plaintext PIN storage in CoreData SQLite behind a misleading 'STOpaquePasscode' wrapper, hardcoded lockout timeout escalation table, missing entitlement checks on client-side XPC service providers, and the full four-layer protection model (TCC, datavault, SIP, CKKS). Includes concrete disassembly snippets, dyld_info exports, lsof and plutil output, and a thoughtful rationale for Apple's plaintext choice (10000 PIN space defeats hashing). Content is truncated mid-paragraph at the end, and the cloud sync path and full exploit chain are not fully resolved, but the analysis is reproducible and technically dense.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:22:44.784967",
+      "image_url": "https://dunkirk.sh/blog/screentime/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5726,
+      "source_id": 34,
+      "original_url": "https://doug.sh/posts/tuning-a-local-coding-agent-oh-my-pi/",
+      "title": "Tuning a Local Coding Agent: Oh My Pi and Qwen3.8-27B on Two RTX 3090s",
+      "summary": "Tuning Oh My Pi with vLLM prefix caching on two RTX 3090s cuts agent latency from ~28s to ~7s by setting explicit effort levels per role, capping thinking at ~7,500 tokens, raising maxTokens to 32,768, truncating large tool outputs to ~10 KB, and stabilizing prompt prefixes against cache invalidation.",
+      "ideas": [
+        "Set explicit effort level on every omp role to avoid Qwen's xhigh default (6× tokens, 7× time).",
+        "thinking_token_budget of ~6,000–7,500 plus maxTokens 32,768 prevents mid-write truncation.",
+        "Tool outputs >10 KB should be saved as artifacts; halves per-turn prefill.",
+        "Live subagent status lists invalidate vLLM's prefix cache by altering prompts early.",
+        "Append-only context and ≤4 concurrent subagents preserve cache hits.",
+        "Tool definition field-order drift can silently break prefix cache on ~8% of turns.",
+        "Cache hit rate drove average time-to-first-token from 26–28s to 7.3s."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Highly substantive, evidence-based engineering write-up with concrete measurements (cache hit rate 55%→95%, avg reply 2,481→867 tokens, slowest 10% 390s→77s), reproducible settings, and first-hand debugging of non-obvious failure modes including a tool-definition field-ordering cache-invalidation bug and subagent status lists breaking prefix caching. Directly relevant to LLM inference, agent tooling, and self-hosted AI infrastructure. Slightly self-contained to one specific agent (omp) but the underlying principles (thinking budgets, maxTokens vs. output tokens, artifact truncation, prefix cache preservation) generalize well.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:20:58.087162",
+      "image_url": "https://doug.sh/images/og/tuning-a-local-coding-agent-oh-my-pi.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5725,
+      "source_id": 34,
+      "original_url": "https://dnhkng.github.io/posts/m4-tinystories/",
+      "title": "Teaching an M4 CPU to Tell Stories with XOR, Popcount and SDOT",
+      "summary": "The model uses ARM instructions like XOR, popcount, and SDOT to implement a Boolean feed‑forward and attention mechanism, achieving efficient token generation at 20k tokens/sec with 0.8786 bpb.",
+      "ideas": [
+        "EOR+CNT computes disagreement score via popcount of XORed vectors.",
+        "Boolean FFN uses three LUT3 rounds via EXT, BSL, and EOR on packed bits.",
+        "Clipped-linear attention replaces softmax with learned max-centered scaling.",
+        "Model reaches 0.8786 bpb and 20.9k tokens/sec on ARM M4."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete, low-level implementation details of a small language model using ARM Neon instructions, including Boolean feed‑forward, popcount scoring, SDOT dot products, and optimized attention, along with measured performance results.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:20:46.524206"
+    },
+    {
+      "id": 5724,
+      "source_id": 34,
+      "original_url": "https://dial9-rs.github.io/blog/principles-for-fast-tokio-applications/",
+      "title": "Principles for fast Tokio applications",
+      "summary": "Practical, evidence-backed principles for diagnosing and fixing Tokio runtime performance, emphasizing that long polls are usually not the real problem and that fairness/batching trade-offs plus isolation (CPU pinning, multiple runtimes) matter more than micro-optimizing polls.",
+      "ideas": [
+        "Yield after several consecutive immediately-ready reads to cut P99 latency ~10× for pipelined protocols",
+        "tokio::fs goes through the global blocking pool; batch filesystem operations or use a dedicated thread",
+        "RWLocks still contend on atomics on the read path—avoid them in async hot paths",
+        "Co-located processes (e.g., Java with many threads) can delay Tokio worker wakeups by 10–20+ ms; pin workers to dedicated cores",
+        "tokio::sync::Mutex is rarely appropriate; only worth it for critical sections lasting multiple milliseconds",
+        "Schedule latency histogram is the most useful Tokio metric for diagnosing runtime interactions",
+        "Spawning thousands of tiny tasks adds runtime overhead; batch work instead of spawning per unit",
+        "Blocking pool becomes a contention bottleneck around 50k tasks/sec on a 32-core host",
+        "Use multiple runtimes with CPU pinning to isolate latency-sensitive from background work"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Authoritative, firsthand guidance from the creator of dial9, a Tokio tracing tool, with specific quantitative observations (10× latency improvement from yielding after pipelined reads, ~50k spawn_blocking/sec bottleneck on 32-core hosts, 100 ms+ tracing_appender stalls, kernel scheduling delays from co-located Java processes). Each principle includes concrete diagnostic indicators and code where relevant. Some advice is qualitative, the article is self-described as a first draft, and a few points (mutex contention, work-stealing basics) are familiar—but the combination of original mechanism explanations, real production numbers, and non-obvious insights (tokio::fs overhead, RWLocks atomic contention on read path, tokio::sync::Mutex rarely being appropriate) makes this substantially above average practitioner material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:20:26.376924"
+    },
+    {
+      "id": 5723,
+      "source_id": 34,
+      "original_url": "https://david.weekly.org/blog/2026-09-12-the-phish-that-passed-every-check/",
+      "title": "The Phish That Passed Every Check: an AiTM (VoidProxy) Campaign Analysis",
+      "summary": "A real AiTM reverse-proxy phishing campaign (VoidProxy-class) defeats SPF/DKIM/DMARC and code-based 2FA because authentication proves domain custody, not human intent; passkeys defeat it by WebAuthn origin binding, and session revocation—not password change—is required to remediate stolen-cookie compromises.",
+      "ideas": [
+        "SPF/DKIM/DMARC pass proves domain custody, not human intent—account compromise defeats all three.",
+        "AiTM proxies relay TOTP/SMS codes in real time, so code-based 2FA is insufficient.",
+        "WebAuthn origin binding makes passkeys AiTM-resistant by construction; no credential for phishing origin.",
+        "Session cookie theft requires session revocation; password change alone leaves stolen cookies valid.",
+        "Anti-analysis chain uses SHA-256 PoW handshake plus self-erasing eval()'d lz-string payloads.",
+        "Registrar/registry suspension (NXDOMAIN) is more durable than CDN warnings for phishing takedowns.",
+        "Identity-side detections (sign-in IP/ASN mismatch, impossible travel) catch AiTM independent of kit.",
+        "Attribution to PhaaS families is moderately reliable via technique clustering, capped by novel per-deployment constants."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional firsthand threat intelligence with original investigation methodology. The article documents a live AiTM (VoidProxy) campaign with concrete technical detail: SHA-256 proof-of-work anti-analysis handshake protocol, lz-string-compressed self-erasing JavaScript payloads, wildcard DNS rewriting Google service hostnames, and a controlled honeypot walkthrough that empirically confirmed WebAuthn origin binding defeats the attack while code-based 2FA fails. Attribution analysis is honest about confidence levels and where passive attribution is walled. Detection guidance is actionable and specific. The transparent AI-authorship disclosure and defanged indicators reinforce trust.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:17:34.255700",
+      "image_url": "https://david.weekly.org/og/blog-2026-09-12-the-phish-that-passed-every-check.png?v=2",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The Phish That Passed Every Check: an AiTM (VoidProxy) Campaign Analysis - David E. Weekly"
+    },
+    {
+      "id": 5722,
+      "source_id": 34,
+      "original_url": "https://char.lt/blog/2026/09/atproto-full-net-backlinks/",
+      "title": "designing a storage engine for AT Protocol backlinks",
+      "summary": "A fixed‑width LSM‑based index using u64 DIDs enables efficient, low‑cost backlink queries across the AT Protocol network.",
+      "ideas": [
+        "Use u64‑encoded DIDs as fixed‑length keys in an LSM tree.",
+        "Store backlinks as 64‑byte structs with target, source, location, and sourceRev.",
+        "Offload LSM run metadata to object storage while keeping local bloom filters.",
+        "Deduplicate backlinks via sourceRev and handle revocations with a separate revocation LSM."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a detailed, original design for a fixed‑width backlink index using LSM trees, u64‑encoded DIDs, and off‑loading to object storage, with concrete data structures and query flow. However, it lacks measured performance numbers and assumes familiarity with AT Protocol internals, limiting completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:10:19.812945"
+    },
+    {
+      "id": 5721,
+      "source_id": 34,
+      "original_url": "https://blog.cygankiewicz.com/en/meta-muse-black-box-testing/",
+      "title": "I stress-tested Meta Muse until its agent control plane started timing out",
+      "summary": "Black-box stress testing of Meta Muse reveals that PostgreSQL lock timeouts in the spawn path cause catastrophic failure rates at high concurrency (72.5% failures at 120 simultaneous spawns vs 0% when spread over time), demonstrating that subagent fan-out is bounded by database contention rather than inference capacity.",
+      "ideas": [
+        "BURST-120 issued in one turn: only 33/120 agents created; 87 spawn_failed from PostgreSQL lock timeouts",
+        "STAGGERED-80 with 1.1s mean spacing: 0% failures, but changed both cadence and topology",
+        "Six recovered error payloads: identical sqlx 'canceling statement due to lock timeout'",
+        "Worker concurrency is bounded by database contention, not inference backend capacity",
+        "Lock timeout causes are not identifiable from trace: lock, table, row, query all unknown",
+        "Distinct cadence-vs-topology controls needed to isolate agent runtime scaling factors"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "Exceptional empirical case study combining AI agent engineering, distributed systems, and database behavior under load. The author runs four reproducible experiments against a production multi-agent runtime, recovers exact error payloads from durable traces, and carefully separates observed, inferred, and unknown claims. The article provides non-obvious technical insights about PostgreSQL lock timeouts as the bottleneck in subagent spawn paths, with a sharp cadence-versus-topology distinction. Limitations: content appears truncated mid-sentence, scope of authorized testing is somewhat ambiguous, and findings are diagnostic rather than directly actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T22:01:00.067704",
+      "image_url": "https://blog.cygankiewicz.com/og/meta-muse-black-box-testing.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "I stress-tested Meta Muse until its agent control plane started timing out"
+    },
+    {
+      "id": 5720,
+      "source_id": 34,
+      "original_url": "https://barkingiguana.com/writing/living-documentation-when-the-wiki-starts-lying/",
+      "title": "Living Documentation: When the Wiki Starts Lying",
+      "summary": "Stale architectural documentation can trigger real production errors, and preventing them requires explicit ownership, version‑controlled updates, and regular verification cycles.",
+      "ideas": [
+        "Stale ADRs mislead developers and cause production incidents.",
+        "Assign document ownership to system owners, not just authors.",
+        "Include documentation updates in every pull‑request definition of done.",
+        "Add ‘last verified’ timestamps and schedule quarterly documentation reviews."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The piece recounts a real incident where outdated ADRs caused double charges, then details concrete, actionable fixes such as ownership assignment, quarterly verification, and moving docs into the codebase. It provides measurable evidence and clear engineering practices, making it highly useful for technical readers, though it stops short of a breakthrough technical insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T21:56:31.638941",
+      "image_url": "https://barkingiguana.com/images/posts/living-documentation-when-the-wiki-starts-lying.png",
+      "image_width": 768,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 5719,
+      "source_id": 34,
+      "original_url": "https://balaurengine.org/blog/concave-2d-colliders/",
+      "title": "Concave 2D colliders",
+      "summary": "Using a configurable overlap parameter lets a decomposed concave polygon grow collision pieces along seams, reducing penetration bugs and providing measurable performance trade‑offs.",
+      "ideas": [
+        "Overlap scales collision depth, not piece count, affecting performance.",
+        "Trimesh is cheaper static collider when bodies only touch from outside.",
+        "Overlap 0.9 costs 367 ns; overlap 0 costs 187 ns per placement.",
+        "A beam remains inside with overlap 0 but exits when overlap is 0.9.",
+        "Physics mass comes from ungrown piece area, matching shape area."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives a clear, hands‑on explanation of concave 2D collider decomposition using an overlap parameter, includes concrete benchmark numbers and observable behavior, and explains trade‑offs without hype. It is highly relevant to game‑engine developers but stays narrowly focused on collision implementation, so while valuable it lacks broader technical depth or algorithmic breakthroughs. The explanation is dense yet readable, delivering practical insight in a short read.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T21:55:17.629645",
+      "image_url": "https://balaurengine.org/img/manual/concave_pieces.webp",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": ""
+    },
+    {
+      "id": 5718,
+      "source_id": 34,
+      "original_url": "https://avelino.run/the-page-i-deleted-came-back/",
+      "title": "The page I deleted came back",
+      "summary": "Fixing undo for Create requires tracking which operation created a node to avoid reverting legitimate edits.",
+      "ideas": [
+        "Duplicate Create can resurrect a deleted node via undo.",
+        "undo_op must record creation to delete only when appropriate.",
+        "Generator exclusion missed duplicate Creates as normal input.",
+        "Full‑log scans are costlier than indexed node‑specific replays.",
+        "Move‑op must handle non‑existent nodes to prevent phantom creation."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article details a subtle CRDT convergence bug where undoing a Create mistakenly deletes a node created later, causing lost edits; it provides concrete code changes, performance measurements, and reveals how generator exclusions hid the issue. It offers deep engineering insight with minimal noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T21:54:37.700191",
+      "image_url": "https://avelino.run/og/blog/2026-09-the-page-i-deleted-came-back.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5717,
+      "source_id": 34,
+      "original_url": "https://andrei-calazans.com/posts/2026-09-14-how-kmp-with-swiftui-scales-on-ios/",
+      "title": "How Does KMP with SwiftUI Scale on iOS?",
+      "summary": "In KMP-on-iOS apps the single linked framework imposes a fixed, uncachable relink floor that grows linearly with total shared code, but isolating Swift features behind contracts keeps Kotlin changes from rebuilding more than ~10% of the app.",
+      "ideas": [
+        "Kotlin/Native umbrella link is a fixed ~12 s floor the Gradle cache never helps",
+        "Link time scales linearly: about 9 ms per 1,000 linked symbols",
+        "Module splitting speeds compile caching only; the link sees one merged binary",
+        "Swift-contract boundary limits Kotlin-change rebuilds to ~10% of Swift files",
+        "Multiple KMP frameworks are unsafe: each embeds an uncoordinated runtime/GC",
+        "Simulator-only builds save ~6 s per Kotlin change versus device+sim slices"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "This is genuinely original, measured engineering work: a production-scale KMP repo plus a synthetic sweep establish a falsifiable scaling law (link time linear at ~9 ms per 1,000 symbols, R²=0.996), demonstrate that the Kotlin/Native umbrella link is a fixed, cache-immune floor, and rank concrete levers with before/after numbers. The mechanism explanations — why multiple frameworks are unsafe, why module splitting only helps compiles, how the Swift-contract boundary caps the ABI blast radius at ~10% of Swift files — are non-obvious and actionable. Limitations: the findings are specific to the KMP+iOS/Gradle stack and one machine/toolchain snapshot, and the content is truncated before the conclusion and appendix, slightly reducing completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T21:49:30.142800",
+      "image_url": "https://andrei-calazans.com/og-image/2026-09-14-how-kmp-with-swiftui-scales-on-ios.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5716,
+      "source_id": 34,
+      "original_url": "https://alexrios.me/blog/pathological-connection-br/",
+      "title": "Fronteiras transparentes",
+      "summary": "Encapsulation can be illusory when other code in the same package directly manipulates a struct’s internals, and moving state changes into a manager restores true encapsulation.",
+      "ideas": [
+        "Direct map access bypasses encapsulatio, breaking when internal storage changes.",
+        "Centralized Apply method returns error for missing orders instead of nil pointer deref."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article offers concrete, first‑hand refactoring guidance on opaque internal state dependencies in Go, showing before and after code, mechanisms, and the cost of transparent boundaries. It is highly relevant to software‑engineering practice and provides original, actionable insight, though its focus is a specific language pattern rather than broad trends. The main limitation is its niche applicability outside Go ecosystems.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T21:46:52.776929",
+      "image_url": "https://alexrios.me/transparent-boundaries-internal-state.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": "Fronteiras transparentes"
+    },
+    {
+      "id": 5715,
+      "source_id": 34,
+      "original_url": "https://ai.rundatarun.io/ai-development-agents/four-upgrades-none-moved-the-number",
+      "title": "Four Upgrades to the Agent Loop. None of Them Moved the Number.",
+      "summary": "In agent systems, what tools return to the model often matters more than which tool or backend is chosen, while compute allocation in generate-critique-refine pipelines belongs in the refiner seat, not the critic.",
+      "ideas": [
+        "Tool response shape (inline context vs bare locations) moved pass@1 more than swapping grep for LSP.",
+        "Critic model size barely affects generate-critique-refine pipeline; refiner size dominates.",
+        "Even a 0.6B critic beats no critic; bigger critics waste compute on detections the refiner can't use.",
+        "Robustness to imperfect feedback is a refiner property, not a critic property.",
+        "Run Belady vs LRU as the first sanity check for any cache eviction simulator.",
+        "KV-cache policies designed for TTL/idle regime fail in capacity-bound tight-loop regime.",
+        "Verification instructions change agent behavior (e.g., 67/160 TDD runs) but not correctness.",
+        "Agent performance bounded by thoroughness, not tool precision, once precision exceeds ~0.66."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "Exceptional synthesis of four primary studies with specific, verifiable numbers throughout (pass@1 0.67 to 0.83, critic std dev under 3.1pp vs refiner 20.6pp, -3.2% to -207.8% recompute cost deltas). The article's central insight—that tool response shape moved pass rate more than swapping the search backend—is non-obvious, well-evidenced, and immediately actionable for anyone building agent systems. Epistemic discipline is unusually strong: the author flags selection bias (the four surfaced together), uneven rigor across studies, and a +4 to +6pp offset left in a repo rather than tuned away. The article is truncated at the end, preventing full evaluation of its closing argument, but the substantive findings are intact.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T21:46:13.898916"
+    },
+    {
+      "id": 5714,
+      "source_id": 4,
+      "original_url": "https://github.com/bl4ckr0ss3/knife",
+      "title": "https://github.com/bl4ckr0ss3/knife",
+      "summary": "knife is a cross‑format static binary analyzer that uncovers exploit pathways, offers safe patching, and integrates with AI agents for advanced reverse engineering.",
+      "ideas": [
+        "Static binary analyzer with cross‑format PE/ELF/Mach‑O support.",
+        "Function discovery via exception directories and unwind tables.",
+        "Ranks dangerous calls by argument provenance for exploit research.",
+        "Command suite: sec, sinks, audit, xrefs, graph, tui for varied analysis.",
+        "Persist notes, bookmarks, prototypes in a SHA‑256‑keyed database.",
+        "Safe binary patching without altering original files.",
+        "Model Context Protocol server enables AI agent integration.",
+        "Kernel driver analysis for BYOVD and system‑call surface inspection.",
+        "Comprehensive TUI with navigation, cross‑reference, and search features.",
+        "Reusable structure layouts and typed fields via typelib commands."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The content delivers numerous concrete insights—function discovery via exception directories, detailed command suite, safe patching, persistent database, and MCP integration—resulting in high value density. It is well‑structured with minimal padding and no clickbait or promotional fluff, earning a strong score. The material remains focused on technical utility for reverse engineers and security researchers, aligning closely with cybersecurity and tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:40:46.032890",
+      "image_url": "https://opengraph.githubassets.com/82677b9f96d060f0902df678b2d5c1051e988f8b9147ce47d62c4cd84ac69cdc/bl4ckr0ss3/knife",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "A reverse engineer's binary Swiss-army knife in Rust: triage, disassembly, function/CFG recovery, crypto-constant + YARA scanning for PE/ELF/Mach-O. Installs as 'knife'. - bl4ckr0ss3/knife"
+    },
+    {
+      "id": 5713,
+      "source_id": 4,
+      "original_url": "https://github.com/google/artemis",
+      "title": "https://github.com/google/artemis",
+      "summary": "ARTEMIS automates Android UI testing via natural‑language instructions, offering dual execution modes and achieving 99%+ benchmark success.",
+      "ideas": [
+        "ARTEMIS turns natural-language prompts into Android UI automation",
+        "It offers two execution profiles: Flash for fast steps, Pro for planning and verification",
+        "Achieves 99%+ task completion on Google's AndroidWorld benchmark",
+        "Installs an accessibility helper for screen reading and UI inspection",
+        "Provides one-click start scripts for macOS, Linux, and Windows",
+        "Integrates with AI coding assistants via the Model Context Protocol",
+        "Uses visual, OCR, and accessibility hierarchy methods for element locating"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece delivers multiple concrete insights: it explains ARTEMIS's natural-language Android automation, details the Flash and Pro execution profiles, cites the 99%+ AndroidWorld benchmark success, and provides actionable installation scripts. It avoids major fluff but repeats some commit‑message boilerplate that adds minor padding. Overall value density is high for a technical overview.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:38:00.431037",
+      "image_url": "https://opengraph.githubassets.com/1f6dc9b7a44b0f625914fc6c038890ba0c71734f11672652eb6ee12d517e4730/google/artemis",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "ARTEMIS turns natural-language instructions into reliable Android automation. It automates end-to-end workflows, captures logs, and integrates seamlessly with AI coding assistants such as Antigravi..."
+    },
+    {
+      "id": 5712,
+      "source_id": 4,
+      "original_url": "https://github.com/CSPF-Founder/redactproxy",
+      "title": "https://github.com/CSPF-Founder/redactproxy",
+      "summary": "RedactProxy lets you safely run Claude Code on client data by swapping real values for consistent fake placeholders.",
+      "ideas": [
+        "RedactProxy replaces sensitive client data with stable fake values before reaching Claude.",
+        "Real-to-fake mappings persist for the entire engagement, preserving context without exposing secrets.",
+        "The proxy listens only on loopback, ensuring it cannot be accessed remotely.",
+        "Rules allow blocking or allowing specific values, with special handling for domains.",
+        "Debug logging levels control how much real data is written to disk for troubleshooting.",
+        "Known gaps include encoded data, names, apex domains, folder names, and HTTP headers.",
+        "Multiple engagements can run concurrently on separate ports with independent configurations.",
+        "Tool works with any API compatible with Anthropic's Messages format via the --upstream flag."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The README delivers concrete, actionable guidance for securing client data when using Claude Code, offering practical setup steps, command reference, and a clear threat model with known gaps. It provides several genuine value instances (practical knowledge, expert insight, exclusive tool) without clickbait or filler, aligning well with AI and cybersecurity themes, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:36:46.961852",
+      "image_url": "https://opengraph.githubassets.com/69d1ddc2170d868fae5631d28f96ad87ef81e27a802eb5d50f9369629ba5b99a/CSPF-Founder/redactproxy",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "A local proxy that keeps client data out of Claude Code. - CSPF-Founder/redactproxy"
+    },
+    {
+      "id": 5711,
+      "source_id": 4,
+      "original_url": "https://rainpwn.blog/blog/uania-os-rce/",
+      "title": "UANIA OS: Authenticated Remote Code Execution",
+      "summary": "An appliance's web GUI that proxies raw UBUS filesystem RPC with permissive ACLs hands any authenticated admin a root shell, since one writable path (/etc/firewall.user) is a shell script executed as root on every firewall restart.",
+      "ideas": [
+        "Web frontends proxying raw UBUS JSON-RPC expose internal filesystem operations to authenticated users",
+        "Unvalidated path parameter in a download CGI yields arbitrary file reads despite other fields being properly validated",
+        "OpenWrt can be fingerprinted from UBUS call patterns, referer paths, and LuCI URL structure",
+        "OpenWrt ACLs bind session tokens to UBUS scopes; overly permissive scopes enable file read, list, and write",
+        "Writing to /etc/firewall.user achieves root RCE because it runs as a shell script on every firewall restart",
+        "Validating the obvious dangerous input is insufficient; every parameter feeding backend RPC must be audited",
+        "Vendors shipping OpenWrt skins deny operators shell access, pushing attackers toward feature abuse for command execution",
+        "Scripting minimal JSON-RPC tooling accelerates manual proxy-based enumeration during vulnerability research"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is an original first-hand vulnerability disclosure with high value density: full HTTP/JSON-RPC PoC traces for the arbitrary file read via the download CGI, enumeration of UBUS file read/list/write methods, OpenWrt fingerprinting from traffic patterns, and the concrete root RCE path through /etc/firewall.user executed on firewall restart. It also documents transferable methodology (auditing every parameter, not just the visibly dangerous one; understanding OpenWrt ACL scoping) plus a responsible disclosure trail with vendor confirmation and a pending CVE. Penalties are limited to the truncation of the final payload section and the familiar nature of the underlying vulnerability class (authenticated RCE on embedded OpenWrt devices via exposed RPC), keeping it below the exceptional tier but firmly in good-to-strong territory for a cybersecurity audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:36:37.476041",
+      "image_url": "https://dhcftaslxavzzaedybba.supabase.co/storage/v1/object/public/images/website/rainpwn_blog_header.png",
+      "image_width": 1640,
+      "image_height": 856,
+      "image_alt": "rainpwn"
+    },
+    {
+      "id": 5710,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/china-linked-hackers-exploit-chrome.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Researchers warn that unpatched Chrome‑Windows vulnerabilities enable sophisticated Chinese threat actors to deploy advanced espionage backdoors.",
+      "ideas": [
+        "Chinese threat actor UTA0560 uses Chrome‑Windows zero‑day chain to deliver GRIMWEDGE malware.",
+        "Exploit chain leverages three CVEs: CVE‑2026‑85046, CVE‑2026‑87491, CVE‑2026‑85880.",
+        "Chain first gains V8 sandbox read/write, then escapes via sandbox escape, then executes code.",
+        "GRIMWEDGE provides reconnaissance, file/process management, and C2 communication via eval().",
+        "Second group JungleBamboo (APT31) reuses same chain with SUPERSTOMP loader and LONGTALE Chrome extension.",
+        "LONGTALE steals credentials, records keystrokes, cookies, screenshots, and exfiltrates data every 30 seconds.",
+        "Researchers note patch‑gap: Chrome fixes in Chromium not yet in stable Chrome, extending exploit window.",
+        "LLMs accelerate vulnerability research, widening risk from fast‑moving N‑day exploits."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece provides several concrete, novel insights, including a full Chrome‑Windows zero‑day exploit chain, specific CVE identifiers, and the capabilities of GRIMWEDGE and LONGTALE malware. It also explains the patch‑gap phenomenon and the role of LLMs in accelerating vulnerability research, which adds strategic context. No clickbait, padding, or promotional bias is present, so the high value density and strong thematic relevance merit a score in the mid‑80s.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:34:09.384752",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5aJxmkQeaEoRUyxjlnH4uMELX24ICkHN1UpJaF3kM181M-V32GMskTo1YCRAf-8m4rsHw0nEYM53AC1CAZekv6yOEfBkj1ZNxL3lWatq_F5Bpuwsvw7snHIiIz62EA1pX-bPaawFgIwbvtUH020WdVwEupWi_CkYJVDog_w0LVEnMMvRYo0D7giAdtuGK/s1700-nu-rw-lo-l85-e365/chrome-windows.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 5709,
+      "source_id": 27,
+      "original_url": "https://github.com/searxng/searxng",
+      "title": "searxng/searxng",
+      "summary": "SearXNG is a self‑hosted, privacy‑preserving metasearch engine that aggregates results without tracking users.",
+      "ideas": [
+        "Privacy‑preserving metasearch aggregating multiple engines without user tracking"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 81,
+      "rating_reason": "The README shows SearXNG tackles a significant privacy‑focused search problem (22 pts) and offers a usable, production‑ready self‑hosted metasearch engine (22 pts). Technical novelty is moderate as it builds on existing SearX concepts (13 pts). Documentation is adequate with links to detailed guides (16 pts). No penalties apply, and a domain relevance bonus (+8) for privacy‑related tooling raises the total to 81.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-15T21:33:40.837536",
+      "image_url": "https://opengraph.githubassets.com/7f70b5a0c1809def568372c793767b962b00e7c8a879cf04fb6354ba00d6883a/searxng/searxng",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled. - searxng/searxng"
+    },
+    {
+      "id": 5708,
+      "source_id": 4,
+      "original_url": "https://ministryofcyberaffairs.com/news/india-seizes-5-13-847-gmail-ids-sold-as-crime-as-a-service-for-sending-bomb-threats-5f33f163-75d6-4348-847d-50531114bc89",
+      "title": "⚠️ DISCLAIMER: This is an independent news website and is NOT an official government or ministry portal.",
+      "summary": "Criminals operated a SaaS‑style Gmail‑ID‑as‑a‑Service, creating over half a million accounts for bomb‑threat campaigns, which was dismantled through coordinated police action.",
+      "ideas": [
+        "Criminals created over 5 lakh fake Gmail accounts and sold them as a service",
+        "The service offered bulk creation, authentication bypass, and ready‑to‑use credentials",
+        "Payments for the Gmail IDs were made in USDT cryptocurrency to Bangladesh‑linked wallets",
+        "Law enforcement seized 513,847 Gmail IDs and matched them against bomb‑threat emails",
+        "Inter‑state police coordination enabled rapid takedown of the operation",
+        "A single threat email triggered investigation uncovering the large‑scale Gmail ID factory"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete insights into a novel cybercrime model, including the scale of fake Gmail account creation, the as‑a‑service structure, crypto payments, and coordinated law‑enforcement response, aligning well with cybersecurity themes. It avoids clickbait or promotional fluff, offering substantive information in a concise news format, resulting in good value density for its length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:33:31.600899",
+      "image_url": "https://ministryofcyberaffairs.com/news/india-seizes-5-13-847-gmail-ids-sold-as-crime-as-a-service-for-sending-bomb-threats-5f33f163-75d6-4348-847d-50531114bc89/opengraph-image?f9fddc7462b6f618",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Ministry of Cyber Affairs article"
+    },
+    {
+      "id": 5707,
+      "source_id": 26,
+      "original_url": "https://github.com/peetzweg/opendisplay",
+      "title": "peetzweg/opendisplay",
+      "summary": "A free, self-hosted alternative to Apple Sidecar and Duet Display that turns spare iPhones, iPads, and Macs into true Retina second displays over USB or WiFi, with a technically substantive low-latency pipeline and rare documentation quality.",
+      "ideas": [
+        "Turns spare iPhones, iPads, and Macs into true Retina second displays over USB or WiFi",
+        "Low-latency hardware H.264 pipeline with touch and scroll input injection",
+        "Open wire protocol enabling third-party Android, Linux, and legacy iOS receiver clients",
+        "No accounts, subscriptions, dongles, or servers — one direct TCP connection"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 84,
+      "rating_reason": "Problem significance (~21/25) is high: Sidecar's Apple-ID/hardware limits, Duet's subscription, and Luna's dongle leave a genuine gap this fills. Technical novelty (~15/25) reflects a meaningful recombination rather than invention — CGVirtualDisplay private API, hardware H.264 via VideoToolbox, usbmuxd transport, and CGEvent touch injection — but the open protocol spec and ecosystem of third-party Android/Linux receivers are real differentiators. Practical utility (~21/25) is strong with signed/notarized DMGs, TestFlight, Sparkle updates, and an active commit/release history; documentation (~23/25) is exemplary, including a wire protocol spec, architecture diagram, permissions table, and honest limitations like private-API fragility. No penalties applied; a small domain bonus for developer productivity tooling brings the total to 84.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-15T21:33:06.227829",
+      "image_url": "https://opengraph.githubassets.com/97922d94c076d11da925c5cbe93e839f3500ea8718229b524aafe910328e061a/peetzweg/opendisplay",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Free, open-source Sidecar/Duet alternative — use your iPhone, iPad or Mac as a true second monitor for your primary Mac over USB or WiFi. Low latency H.264, Retina HiDPI, touch input. - peetzweg/op..."
+    },
+    {
+      "id": 5706,
+      "source_id": 4,
+      "original_url": "https://www.malwarebytes.com/blog/threat-intel/2026/09/search-results-are-sending-people-to-fake-bitrefill-checkouts",
+      "title": "https://www.malwarebytes.com/blog/threat-intel/2026/09/search-results-are-sending-people-to-fake-bitrefill-checkouts",
+      "summary": "Scammers create convincing crypto checkout clones to steal funds, urging users to verify domains before paying.",
+      "ideas": [
+        "Fake Bitrefill checkout sites mimic brand and accept crypto payments to steal funds",
+        "Scammers use lookalike domains and UX cues to trick users into paying crypto directly",
+        "Payment flows include QR codes and countdown timers, making deception convincing",
+        "Operators use analytics to optimize conversion rates on fraudulent checkouts",
+        "Detection requires verifying the exact domain and avoiding search-driven checkout links",
+        "Malwarebytes provides IOCs and tools like Browser Guard to block such scams"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, novel insights about fake crypto checkout scams, detailing attacker tactics, analytics-driven conversion optimization, and clear defensive steps, while offering actionable IOCs. Though it includes subtle product promotion, the depth and relevance outweigh minor penalties. It aligns strongly with cybersecurity themes and provides high value per minute.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:32:46.182020",
+      "image_url": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/09/bitrefill.jpg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 5705,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/199090/security/non-zero-day-vpn-flaw-left-japan-government-shared-network-platform-exposed-246000-records-at-risk.html",
+      "title": "Non-Zero-Day VPN Flaw Left Japan ‘s Government Shared Network Platform Exposed: 246,000 Records at Risk",
+      "summary": "Unpatched VPN flaws can expose massive government data, underscoring the need for rigorous vulnerability management.",
+      "ideas": [
+        "VPN vulnerability let attackers breach Japan's Government Solution Service",
+        "Attackers leveraged a maintenance staff account to access and copy files",
+        "246,000 records (names, emails, phones) were exposed, enabling phishing",
+        "The flaw was known and patchable but remained unpatched",
+        "Incident reveals systemic patch management issues in Japan's public sector",
+        "Remediation plans focus on better vulnerability management and connection controls"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides concrete information about a significant cyber incident, including timeline, data scope, exploitation method, and systemic lessons, offering several actionable insights for security professionals. It delivers 5‑6 genuine value instances within a moderate length, with strong relevance to cybersecurity and no evident clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T21:32:06.999321",
+      "image_url": "https://securityaffairs.com/wp-content/uploads/2026/09/image-40.png",
+      "image_width": 1190,
+      "image_height": 665,
+      "image_alt": ""
+    },
     {
       "id": 5704,
       "source_id": 4,
