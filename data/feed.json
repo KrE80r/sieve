@@ -1,7 +1,174 @@
 {
-  "updated_at": "2026-09-15T14:00:00.212062+00:00",
-  "total_items": 1046,
+  "updated_at": "2026-09-15T15:00:00.177623+00:00",
+  "total_items": 1053,
   "items": [
+    {
+      "id": 5746,
+      "source_id": 34,
+      "original_url": "https://ygoow.com/blog/2026-09-10-measured-not-assumed/",
+      "title": "Measured, not assumed",
+      "summary": "They systematically measured shipped cryptographic code on real phones, exposing and fixing multiple hidden timing leaks and flawed assumptions.",
+      "ideas": [
+        "15.6% timing delta from secret division on ARM64 phone, hidden until measured.",
+        "Branch‑free GF(2⁸) multiply eliminates 1222‑unit timing leak on ARM64.",
+        "Ed25519 signing leak fixed; constant‑time native impl cuts timing from 71→16 and speeds 21×.",
+        "KyberSlash division replaced with Barrett reduction, cutting timing from 339→3.9 on phone.",
+        "Backup cost measurement disproved iteration myth; restored 256 MiB/4 passes needed for 3.6 GiB guess cost."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, reproducible measurements of cryptographic code on real phones, exposing hidden timing leaks and flawed assumptions while documenting transparent fixes. It provides actionable technical insight and cites specific numeric results, meeting high‑value criteria, though some promotional material slightly reduces its purity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T00:00:25.565509",
+      "image_url": "https://ygoow.com/static/pages/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5745,
+      "source_id": 34,
+      "original_url": "https://www.nikhilsnayak.dev/blog/react-server-functions",
+      "title": "React Server Functions Are More Than Mutations",
+      "summary": "React Server Functions can be streamed over HTTP QUERY, delivering progressive UI components while preserving encoding semantics and requiring careful abort handling.",
+      "ideas": [
+        "Query Server Functions via HTTP QUERY to keep reads separate from mutation requests.",
+        "Return a Stream from Server Functions; Flight carries React nodes progressively to the client.",
+        "AbortSignal must cancel server streams while still allowing pending component renders."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete implementation details, original experiments, and clear mechanisms for streaming React Server Functions, providing valuable technical insight. It includes code, real‑world testing, and nuanced discussion of request handling, though it remains niche and occasionally assumes prior expertise. The depth and originality justify a strong score, but the focus on a specific framework limits broader relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T23:51:18.631343",
+      "image_url": "https://www.nikhilsnayak.dev/api/og?title=React%20Server%20Functions%20Are%20More%20Than%20Mutations",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "React Server Functions Are More Than Mutations — Nikhil S"
+    },
+    {
+      "id": 5744,
+      "source_id": 34,
+      "original_url": "https://www.msoos.org/2026/09/cryptominisat-on-xnf-benchmarks-revisited/",
+      "title": "CryptoMiniSat on XNF Benchmarks, Revisited",
+      "summary": "Lifting CryptoMiniSat's internal limits and applying AI‑driven tweaks makes it outperform recent XNF solvers on the original benchmark suite.",
+      "ideas": [
+        "Use --autodisablegauss 0 and raise matrix limits to restore CryptoMiniSat performance on large XNF benchmarks.",
+        "AI can discover faster Gauss‑Jordan elimination strategies and improve proof generation to pure XLRUP.",
+        "A simple AI‑generated fuzzer revealed correctness bugs in Xorcle and Xorricane solvers."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete, reproducible information about lifting CryptoMiniSat limits, fixing performance bugs, and using AI to improve the solver, backed by benchmark data and a publicly available fuzzer. It is highly relevant to SAT‑solver engineering and tooling, though its novelty is limited to a specific solver family rather than broader concepts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T23:50:24.585756"
+    },
+    {
+      "id": 5743,
+      "source_id": 34,
+      "original_url": "https://www.kerryritter.com/essays/18-returning-strix-halo/",
+      "title": "Why I'm Returning My Strix Halo",
+      "summary": "Local LLM benchmark scores do not predict performance inside an agentic factory loop: the best local worker on a 128GB Strix Halo still only earned a B+ on one bounded slice of a real feature, while larger 'frontier-class' open models collapsed in practice.",
+      "ideas": [
+        "Strix Halo 128GB runs 262K quants but cold 200K prefill ranged from 14 min to a projected 5.8 hours.",
+        "Qwen3-Coder-Next 80B (3B active) was fastest at 46.1 t/s and produced an accepted slice.",
+        "DFlash2 speculative decoding hit 88.5% acceptance and 33.4 t/s on the 27B model.",
+        "Devstral 2 123B scored 72.2 SWE-bench but decoded at 2.8 t/s and never committed a fix.",
+        "MiMo-V2-Flash 309B used 99 GiB, passed recall, but tool calling was never reliable.",
+        "Non-self-graded factory loops surface failures leaderboards hide (e.g., fabricated commits).",
+        "Agentic workload favors many short turns; prefill, not decode, dominates wall time at 200K.",
+        "Two 3090s vs Strix Halo: heavy GPU rigs win synthetic decode but cost like a subscription."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Firsthand, deeply technical evaluation of six local LLMs running on a 128GB Strix Halo inside an actual agentic software factory harness, not synthetic benchmarks. Provides specific LM Studio configurations (quants, batch sizes, K/V cache types, ubatch), measured tokens-per-second, cold prefill times, tool-call latencies, and reproducible failure modes on a real Prisma/TypeScript task. The agentic framing (a non-self-graded factory loop with watchdog and cloud reviewer) is the genuinely non-obvious contribution. Limited mainly by truncation near the end and by being one developer's setup rather than a controlled study.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T23:48:31.116977"
+    },
+    {
+      "id": 5742,
+      "source_id": 34,
+      "original_url": "https://www.allevato.io/articles/run-the-full-test-suite/",
+      "title": "run the full test suite",
+      "summary": "Agent conduct rules fail at whole-task scope, enforcement only works where someone owns the runtime and explains denials, and the missing piece for host-declared agent policy is a wire, not a mechanism.",
+      "ideas": [
+        "Whole-task agent rule compliance is 9.7-28.1% despite ~84% per-rule rates",
+        "Harness-level enforcement hit 120/120 where models self-halted 0% of the time",
+        "Semantic error feedback lifted compliance 22 points over opaque kernel denials",
+        "Host-specific rules (Skills) were obeyed worst, memory best, inverted from expectation",
+        "73.6% of AGENTS.md/CLAUDE.md rules are unenforceable without resolving host context",
+        "Modern agent gateways unknowingly replicate AMELI's 2004 governor architecture",
+        "Agent governance gap is authority, not technology: enforcement requires runtime ownership"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 89,
+      "rating_reason": "A dense, well-calibrated synthesis of 2025-2026 measurement studies on agent rule compliance, packed with concrete numbers: whole-task compliance collapses to 9.7-28.1% despite ~84% per-rule rates, harness-level enforcement beats model self-restraint 120/120 vs 0%, and semantic error feedback adds 22 points over opaque kernel denials. It adds original value through the historical grounding (Shoham 1995, AMELI 2004 governors mapping exactly onto modern gateways) and the 'gap is authority, the wire is missing' analysis. Limitations: the author relays others' preprints rather than running experiments, flags one key result as unreplicated with judge-model overlap, and admits the prior-art survey was non-systematic.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T23:39:17.896433"
+    },
+    {
+      "id": 5741,
+      "source_id": 34,
+      "original_url": "https://ulysseszh.github.io/update/2026/09/12/restructure-2.html",
+      "title": "Reducing build time of my blog by 88% by optimizing cross-language invocations",
+      "summary": "Reordering filters and using MessagePack with a single JavaScript context cuts build time by 88% by minimizing cross‑language serialization and leveraging FFI for Haskell‑Ruby communication.",
+      "ideas": [
+        "Combine Ruby filters to reduce language switches and serialization overhead.",
+        "Use MessagePack and isolated JS context to avoid repeated option serialization.",
+        "FFI approach outperforms IPC for Haskell‑Ruby interop in benchmarks."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, measured improvements in cross‑language build pipelines, detailing filter reordering, MessagePack serialization, and FFI‑based Haskell‑Ruby communication that together achieve an 88% reduction in build time; the evidence is clear and directly relevant to programming and infrastructure performance, though the solutions are tightly coupled to a specific static‑site generator and may require substantial re‑engineering to generalize. The work showcases original engineering insight but relies on bespoke integration that limits broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T23:34:41.392490"
+    },
+    {
+      "id": 5740,
+      "source_id": 34,
+      "original_url": "https://topaz.thecloudtheory.com/blog/finops-ace-cost-estimates/",
+      "title": "FinOps for local Azure: cost estimates before you deploy",
+      "summary": "Early, subscription‑free cost estimation can be baked into every deployment via Topaz's local emulator and ACE library.",
+      "ideas": [
+        "Local emulator stores ARM state as .topaz files for cost estimation.",
+        "ACE estimation runs against emulator state, no Azure subscription needed.",
+        "Endpoint returns per‑resource estimated monthly cost, even for unstubbed types.",
+        "CLI diffs estimates per PR, surfacing cost regressions instantly.",
+        "Integration uses ArmClient abstraction, allowing identical estimation code for real and local Azure."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete implementation details for early cost estimation in local Azure using Topaz emulator and ACE integration, includes code snippets, API endpoint shape, and CLI usage, making cost feedback actionable in CI pipelines. Strength lies in depth and relevance, but the focus is narrow to Topaz and may not generalize to all Azure scenarios.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-15T23:31:21.359100"
+    },
     {
       "id": 5739,
       "source_id": 34,
