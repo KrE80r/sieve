@@ -1,7 +1,95 @@
 {
-  "updated_at": "2026-09-15T06:00:00.392353+00:00",
-  "total_items": 1008,
+  "updated_at": "2026-09-15T07:00:00.178272+00:00",
+  "total_items": 1011,
   "items": [
+    {
+      "id": 5704,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/3bb-attacker-used-meshcentral-backdoor.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Attackers leveraged MeshCentral and an unpatched FortiGate flaw to harvest subscriber RADIUS data from Thailand’s 3BB ISP, and defenders must patch, hunt agents, rotate credentials, and preserve logs.",
+      "ideas": [
+        "Attackers used MeshCentral as hidden backdoor to maintain root access.",
+        "They exploited an unpatched FortiGate SSL-VPN CVE-2024-21762.",
+        "Malicious scripts harvested RADIUS databases for subscriber credentials.",
+        "Defenders should hunt for unauthorized MeshCentral agents and rotate exposed credentials.",
+        "Preserve logs before cleanup to retain forensic evidence.",
+        "Indicators include attacker server IP 92.63.180.133 and domain ayuthayatech.com."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "High value density with multiple concrete technical insights, including the use of MeshCentral as a hidden backdoor, exploitation of an unpatched FortiGate CVE-2024-21762, and actionable defender recommendations. The article also supplies clear indicators and step-by-step mitigation guidance. Minor promotional padding prevents a perfect score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T15:32:24.535303",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9khzZCrFkNfQ1fOYHT8A4LJrIsfc52ppe6xZffdUrfRacqTVQ76P0VPDZhqC2UfKM32jdbEiQfaCZDbrV2F0_dssOM8V8nT3ZZYvwhflLdfEhJhdNa0-UntK9XHkFJ4R5RthFMOM2X5kDZxUKW1RnRLmmQ0xLh5foMldMZovB0ZPdafoRf9cEb_w9Hwk/s1700-nu-rw-lo-l85-e365/3bb.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 5703,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/telegram-desktop-flaw-lets-hidden.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Unescaped button text in Telegram Desktop's HTML export allowed hidden JavaScript to steal chat data, fixed by adding proper escaping.",
+      "ideas": [
+        "Telegram Desktop HTML export could embed hidden JavaScript via bot inline keyboards.",
+        "Lack of escaping allowed script injection without any user click.",
+        "Exported files can exfiltrate all messages, timestamps, and sender information to an attacker.",
+        "Injected script can rewrite the export page, displaying fake verification forms.",
+        "Fix added proper escaping in July 2026; versions 6.9.4 beta and 7.0.1 include the patch.",
+        "Users should update, re‑export old chats, or open old files with JavaScript disabled.",
+        "No CVE was assigned; researchers declined a $500 bounty and donated it to charity."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers multiple concrete insights about a Telegram Desktop HTML export vulnerability, its exploitation mechanics, impact, and remediation steps, showing strong relevance to cybersecurity. With roughly 7 distinct value instances in a medium‑length piece, the value density is high, though the surrounding ads and promotional links introduce some padding that modestly lowers the score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T15:32:23.107227",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7YYT-Mf718wZ9kLasqkkPZ1Drw4dlLUMaHtOPuWRltuG7bOcA-d4bFr4GRmer0MMohBwgv7HFVFADi-EeDvIMcbEaJUiyn8t-iLxtR8PVRDWHLmxKnofrZgoPOH_RS7qaUkzd0Ery8Rr7oWlgoPJligCMSSywXmXdMHgzuER6M77sWisfdMOo_rqudmk/s1700-nu-rw-lo-l85-e365/telehgram.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 5702,
+      "source_id": 4,
+      "original_url": "https://github.com/erberkan/CVE-2026-42536-PoC",
+      "title": "https://github.com/erberkan/CVE-2026-42536-PoC",
+      "summary": "A mismatched buffer accounting bug in mod_xml2enc allows a heap overflow that crashes Apache workers.",
+      "ideas": [
+        "Apache mod_xml2enc had a heap overflow due to mismatched buffer capacity after xml2StartParse",
+        "Trigger overflow by skipping 2048 bytes and sending repeated 0x80 bytes expanding to UTF-8",
+        "Apache 2.4.68 fixes the bug by subtracting the skipped offset from ctx->bblen",
+        "PoC requires filter, proxy, proxy_http, xml2enc modules and specific virtual‑host configuration",
+        "Run poc.py with default localhost settings to reproduce the crash",
+        "Verify crash via Apache error logs, systemd journal, or Docker logs",
+        "Negative control: test against patched Apache 2.4.68 to ensure no crash",
+        "Recovery: restart Apache service or container if worker does not auto‑replace"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers multiple concrete, actionable insights for security researchers, including the root cause, exploit steps, verification, and mitigation, without filler or clickbait. It aligns well with CyberSecurity and Sysadmin themes and provides high value density for its technical audience.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-15T15:32:07.290071",
+      "image_url": "https://opengraph.githubassets.com/a231d4e71ac799bd0568bd8702e28438e57e867de661f3200548e3fd34b8e62e/erberkan/CVE-2026-42536-PoC",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Heap-based Buffer Overflow vulnerability in Apache HTTP Server with mod_xml2enc, xml2StartParse, and untrusted content - erberkan/CVE-2026-42536-PoC"
+    },
     {
       "id": 5701,
       "source_id": 4,
