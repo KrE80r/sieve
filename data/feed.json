@@ -1,7 +1,554 @@
 {
-  "updated_at": "2026-09-16T05:00:00.174764+00:00",
-  "total_items": 994,
+  "updated_at": "2026-09-16T07:00:00.321234+00:00",
+  "total_items": 1016,
   "items": [
+    {
+      "id": 5778,
+      "source_id": 34,
+      "original_url": "https://thinhdanggroup.github.io/measuring-free-threaded-python/",
+      "title": "Free-Threaded Python on a Real Workload",
+      "summary": "Properly benchmarking free-threaded CPython requires distinguishing three interpreter configurations, guarding against C extensions silently re-enabling the GIL, and accepting that the tax is now smaller than typical measurement noise on a single machine.",
+      "ideas": [
+        "Free-threaded Python has three runtime states, not two: default, ft+GIL on, and ft+GIL off.",
+        "C extensions not opted in to free-threading will silently re-enable the GIL on import.",
+        "Split fixed total work across threads to measure scaling, not throughput inflation.",
+        "Check sysconfig.get_config_var(\"Py_GIL_DISABLED\") and sys._is_gil_enabled() at benchmark start.",
+        "3.14's free-threaded tax is roughly 1-8% on pyperformance, smaller than typical harness noise.",
+        "SPECP659 adaptive interpreter is now enabled in free-threaded builds, closing much of the gap.",
+        "GIL removal only helps CPU-bound workloads; I/O-bound services pay the tax for nothing."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong practitioner piece that combines a reproducible benchmark harness (with full source), actual 16-core measurements, and unusually honest self-critique about the experiment's limitations. The three-interpreter framing, the silent-GIL-re-enable failure mode from C extensions, and the insight that the decision-relevant comparison is the one least amenable to honest measurement are all non-obvious and well-supported. Limited only by the narrow benchmark workload and the GCC-vs-Clang / 3.14.4-vs-3.14.7 confound the author admits to, which is itself a useful lesson.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:26:22.133398"
+    },
+    {
+      "id": 5777,
+      "source_id": 34,
+      "original_url": "https://techanarchy.net/stamping-my-own-passport-dc34-rfid-scavenger-hunt/",
+      "title": "Stamping my own passport: a master-key flaw in the DEF CON 34 RFID scavenger hunt",
+      "summary": "A missing secure‑channel check lets anyone set the card's master key and forge stamps, breaking the DEF CON RFID scavenger hunt.",
+      "ideas": [
+        "The applet only checks the CLA secure‑messaging bit without verifying who set it.",
+        "Setting CLA=0x84 bypasses the security check, allowing master key replacement.",
+        "With a forged master key, you can create valid stamp certificates and signatures offline.",
+        "The NDEF read limit (246 bytes) and per‑read counter prevent extracting a full signature‑verified stamp list."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a detailed, reproducible exploit of a smart‑card applet, including exact APDU bytes, source snippets, and cryptographic operations that let an attacker replace the master key and forge stamps. It showcases a concrete security design flaw (missing secure‑channel verification) and explains its practical impact, which is highly valuable for vulnerability researchers. The write‑up is focused, well‑documented, and free of unnecessary hype, though it is specific to a conference badge and therefore limited in broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:24:23.243440",
+      "image_url": "https://techanarchy.net/content/images/2026/08/passport-stamps-1.png",
+      "image_width": 750,
+      "image_height": 438,
+      "image_alt": ""
+    },
+    {
+      "id": 5776,
+      "source_id": 34,
+      "original_url": "https://sushantdhiman.dev/blog/software-engineering-is-not-dead/",
+      "title": "Software Engineering Isn't Dead. I Just Spent Several Months Proving It to Myself.",
+      "summary": "AI can generate code, but true engineering insight comes from building and debugging systems yourself.",
+      "ideas": [
+        "Write‑ahead logging appends messages to produce deterministic offsets",
+        "Segments split logs to control file size and simplify recovery",
+        "Partitions distribute messages across multiple brokers for scalability",
+        "Raft consensus requires careful handling of term, votedFor, and log matching",
+        "Debugging duplicate messages reveals subtle replication state mismatches"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article earns a high score because it delivers concrete, firsthand engineering details—WAL implementation, segment management, Raft consensus bugs, and protocol design—while addressing AI’s role without hype. It remains relevant to practitioners interested in low‑level system building, though it stops short of exceptional original research. The main limitation is the lack of formal experiments or benchmark data, keeping it from a perfect rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:23:08.468318"
+    },
+    {
+      "id": 5775,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-aspnetcore-api-endpoints-return-401-instead-of-redirecting-to-login-dotnet-10/",
+      "title": "Fix: ASP.NET Core API endpoints return 401 instead of redirecting to the login page after upgrading to .NET 10",
+      "summary": "ASP.NET Core 10 stops redirecting unauthenticated API requests, returning 401/403 instead, and you can restore redirects per endpoint, globally, or via an AppContext switch.",
+      "ideas": [
+        "Cookie auth now checks IDisableCookieRedirectMetadata and returns 401 for endpoints marked as API.",
+        "Add .AllowCookieRedirect() or [AllowCookieRedirect] to specific endpoints to reinstate 302 redirects.",
+        "Override OnRedirectToLogin/OnRedirectToAccessDenied to customize redirect logic for all requests.",
+        "Set Microsoft.AspNetCore.Authentication.Cookies.IgnoreRedirectMetadata switch to regain .NET 9 behavior app‑wide.",
+        "Use Sec‑Fetch‑Mode or Accept headers to differentiate browser navigations from API calls in custom events."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article gives concrete, reproducible code and measurements of a breaking change in ASP.NET Core 10’s cookie authentication, explains the underlying metadata mechanism, and offers multiple practical fixes (per‑endpoint, global events, or AppContext switch). It is highly relevant to developers and operators of .NET web services and to security engineers dealing with authentication flows, though it is niche to the .NET ecosystem rather than broadly novel.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:22:57.060328",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-aspnetcore-api-endpoints-return-401-instead-of-redirecting-to-login-dotnet-10.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: ASP.NET Core API endpoints return 401 instead of redirecting to the login page after upgrading to .NET 10 - Start Debugging"
+    },
+    {
+      "id": 5774,
+      "source_id": 34,
+      "original_url": "https://samuellawrentz.com/blog/hmx-terminal-mind-maps/",
+      "title": "hmx - Terminal Mind Maps in Plain Text, and Why I Ported h-m-m to Go",
+      "summary": "Porting a plain‑text terminal mind‑map tool to Go retains its original layout and adds practical features like list view, linking, subtree extraction, and body editing while staying lightweight and Taskwarrior‑integrated.",
+      "ideas": [
+        "Preserved byte‑identical rendering by porting layout functions one‑to‑one.",
+        "Adds list view, link navigation, subtree extraction, and body editing.",
+        "Keeps plain‑text .hmm files, uses grep for backlinks, and integrates with Taskwarrior tasks."
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, verifiable implementation details—byte‑identical rendering, link handling, extraction, and plain‑text file format—making it highly relevant to developers seeking lightweight terminal tools. It is concise (4 min read) and free of hype, though it focuses on a niche personal workflow rather than broad infrastructure impact.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:21:15.870077",
+      "image_url": "https://samuellawrentz.com/og-images/bloghmxterminalmindmaps.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5773,
+      "source_id": 34,
+      "original_url": "https://sahandsaba.com/from-ai-agents-to-ai-controllers.html",
+      "title": "From AI Agents to AI Controllers",
+      "summary": "AI controllers can autonomously maintain engineering objectives by continuously reconciling desired states and admitting changes, using feedback loops and durable memory.",
+      "ideas": [
+        "Agentic controllers use feedback loops, memory, and authority to pursue engineering objectives.",
+        "Reconciliation improves existing systems; admission guards proposed changes.",
+        "Controllers trigger bounded experiments and require human approval before acting.",
+        "Hierarchical mediation resolves conflicts among competing engineering objectives."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a concrete, agent‑centric extension of Kubernetes controllers that maps engineering objectives to persistent AI oversight, illustrated with explicit YAML configurations and real‑world metrics from the Maxwell framework; its depth and original mechanisms merit a strong score, though it offers limited quantitative validation and assumes reader familiarity with the underlying systems. It provides clear technical mechanisms, reproducible patterns, and hierarchical conflict resolution, making it relevant to practitioners seeking durable engineering automation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:20:43.734267",
+      "image_url": "https://sahandsaba.com/images/ai-controllers-social.png",
+      "image_width": 1734,
+      "image_height": 907,
+      "image_alt": "From AI Agents to AI Controllers"
+    },
+    {
+      "id": 5772,
+      "source_id": 34,
+      "original_url": "https://ryangreenberg.com/2026/09/the-case-of-the-wrong-user/",
+      "title": "The Case of the Wrong User",
+      "summary": "A caller-side timeout in an internal Avro client that didn't tear down the socket could leave a previous response in the receive buffer, so the next user lookup on the same application instance could be answered with the wrong user object.",
+      "ideas": [
+        "On RPC timeouts, the socket must be disconnected, not just the call abandoned",
+        "Socket receive buffers can leak responses across unrelated requests",
+        "Homegrown v0.0.1 internal libraries deserve extra suspicion during outages",
+        "Cross-user data exposure needs explicit authorization checks at the data layer"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "A standout firsthand engineering postmortem with a genuinely non-obvious root cause: an internal Avro RPC client failed to disconnect the TCP socket on caller-side Timeout::Error, leaving an earlier response in the receive buffer to be misread as a later request's reply, producing cross-user data exposure. The article efficiently combines a compelling narrative, a precise mechanism walkthrough, a one-line fix, and hard-won lessons about socket lifecycle management, timeout handling, and the value of experienced engineers who will suspect homegrown libraries before network plumbing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:20:43.639228"
+    },
+    {
+      "id": 5771,
+      "source_id": 34,
+      "original_url": "https://rolandfranke.nl/frontend-stories/a-css-reading-progress-bar-that-tracks-the-article",
+      "title": "A CSS Reading Progress Bar That Tracks the Article",
+      "summary": "Using view‑timeline with timeline‑scope lets a CSS progress bar track an article's reading progress independently of the page scroll.",
+      "ideas": [
+        "Use view-timeline + timeline-scope to track article progress independently of page scroll"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete CSS implementation details—view‑timeline, timeline‑scope, animation‑range—and explains how to tie a progress bar to an article's movement rather than the whole document. It provides a clear mechanism and practical code, but its value is limited to front‑end developers interested in advanced CSS, leaving outside audiences with less direct relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:20:10.181146",
+      "image_url": "https://rolandfranke.nl/_astro/default-og-image.o80cBQWX.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "A CSS Reading Progress Bar That Tracks the Article - Roland Franke"
+    },
+    {
+      "id": 5770,
+      "source_id": 34,
+      "original_url": "https://rescue1130.blogspot.com/2026/09/deglitching-write-output-of-1130-for_01215035981.html",
+      "title": "Deglitching the write output of the 1130 for Virtual 2315 Cartridge Facility - part 2",
+      "summary": "The write to the V2315 cartridge produces garbage on read because the RAM does not hold the updated data long enough, indicating a timing problem in the write logic.",
+      "ideas": [
+        "RAM timing insufficient; data not locked before read, causing garbage on sector read."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a detailed, original experiment on IBM 1130 disk I/O, showing measured ECC behavior, RAM timing issues, and a concrete failure mode where written sectors read back as garbage. It provides specific mechanisms (XIO Start Write, logic analyzer traces) and a clear hypothesis for debugging, making it highly relevant to low‑level systems engineers. The piece is concise and technically focused, though it remains niche and offers limited broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:18:09.930016",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-Unoy94AFVOeJHYfBABuvcnX2UHrTG_oCGdhskirQmWYqSHDtVY0CMYkYSCe6P6oZu8-xBYPKgQmfopL9o9nAuMsQri5VoqNhkFjuoqlANLyXd9K9qd3sFkoCZMsbK5txmZKYFXTBGhxFL0wiyGPL2gMdsh6fO2KvQT5THBYEBqdCdOONvieL2iitDdM/w1200-h630-p-k-no-nu/IMG_2824.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5769,
+      "source_id": 34,
+      "original_url": "https://poltora.dev/interactive-map-redis",
+      "title": "Interactive Redis Operation Map",
+      "summary": "Readers learn how Redis processes commands internally and tracks memory, including allocator behavior and persistence paths.",
+      "ideas": [
+        "Interactive map visualizes full command execution from socket to persistence.",
+        "Deleting a key frees logical size but RSS may remain unchanged.",
+        "Memory allocation distinguishes allocator request, size class, and resident pages.",
+        "BGSAVE shows copy‑on‑write page splitting when snapshot and writes overlap.",
+        "The model separates Redis heap from kernel page cache for accurate memory accounting."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article explains Redis internals through an interactive diagram, covering command parsing, memory allocation, TTL, and persistence mechanisms with concrete source‑code‑based detail. It offers rare, hands‑on insight into memory behavior and persistence paths, though it simplifies some subsystems and excludes cluster or Sentinel features. Overall it delivers high‑value technical knowledge for developers seeking deep Redis understanding, with only minor promotional noise at the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:17:03.558748",
+      "image_url": "https://poltora.dev/interactive-map-redis/opengraph-image?5524b88ef3562f9b",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "poltora.dev article"
+    },
+    {
+      "id": 5768,
+      "source_id": 34,
+      "original_url": "https://phil.lavin.me.uk/2026/09/analysis-of-poor-asterisk-srtp-performance-on-debian-linux/",
+      "title": "Analysis of poor Asterisk SRTP Performance on Debian Linux",
+      "summary": "Rebuilding Debian's libsrtp2 against OpenSSL cuts SRTP CPU overhead from >100% to ~17% and removes the 500‑call concurrency ceiling on modern hardware.",
+      "ideas": [
+        "NSS‑linked libsrtp adds >100% CPU overhead for SRTP encryption on Debian.",
+        "Switching to OpenSSL eliminates the NSS per‑operation lock bottleneck.",
+        "Rebuilding with –enable-openssl restores expected ~17% overhead and high concurrency."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article presents original performance measurements, identifies a concrete bottleneck (NSS‑based libsrtp overhead), and provides a reproducible fix (rebuilding against OpenSSL) with before/after numbers. It is highly relevant to Linux/Infrastructure engineers dealing with SRTP encryption. Limitations are minor promotional nudges and a brief introductory section that does not affect the core technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:16:33.773136"
+    },
+    {
+      "id": 5767,
+      "source_id": 34,
+      "original_url": "https://lemire.me/blog/2026/09/15/subnormal-floating-point-numbers-are-expensive-on-intel-processors/",
+      "title": "Subnormal floating-point numbers are expensive… on Intel processors",
+      "summary": "On recent Intel CPUs, subnormal floating‑point operations can be 45–50× slower than normal ones, especially in latency‑critical dependent chains, while AMD and ARM handle them efficiently.",
+      "ideas": [
+        "Subnormal multiply on Intel: ~45× slower than normal multiply.",
+        "Dependent chain latency jumps from ~1 ns to >30 ns per step with subnormals on Intel."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a reproducible benchmark that quantifies up to 50× slowdown of subnormal floating‑point operations on recent Intel CPUs, explains the underlying latency mechanisms, and offers practical guidance for performance‑critical code. It is highly relevant to AI/ML and systems engineers seeking concrete optimization insights. The findings are limited to Intel microarchitectures and may not extrapolate to all future designs or non‑Intel hardware.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:08:18.354310",
+      "image_url": "https://lemire.me/blog/wp-content/uploads/2026/09/Gemini_Generated_Image_gh1asmgh1asmgh1a-1024x559.jpg",
+      "image_width": 1024,
+      "image_height": 559,
+      "image_alt": ""
+    },
+    {
+      "id": 5766,
+      "source_id": 34,
+      "original_url": "https://karanbansal.in/blog/claude-mods-scoreboard/",
+      "title": "Claude Code Plugins Can Now Run Inside Claude Code. 14 of 31 Can Run Commands on Your Machine.",
+      "summary": "It explains how Claude Mods are validated, what capabilities they expose, and how their static footprints can be measured.",
+      "ideas": [
+        "Hooks are TypeScript functions loaded into Claude Code's process.",
+        "Validator statically enumerates $.noun.verb calls before execution.",
+        "Footprints categorize mods by capability level L0‑L3.",
+        "14 of 31 mods can run host processes; 4 can write files; 4 can reach network.",
+        "Only versions matching current Claude Code version validate successfully."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, implementation‑level details about Claude Code's new TypeScript plugins (Claude Mods), including code snippets, hook registration, static validation, and capability footprints. It reveals novel architectural insight into how side‑effects are statically enumerated before execution, which is highly relevant to AI engineering and tooling. Minor noise exists in promotional phrasing, but the technical substance outweighs it.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:05:54.252178",
+      "image_url": "https://karanbansal.in/blog/claude-mods-scoreboard/scoreboard.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Scoreboard of 31 Claude Mods with the reach each one has, from Claude's own plugin validator."
+    },
+    {
+      "id": 5765,
+      "source_id": 34,
+      "original_url": "https://humanwhocodes.com/snippets/2026/09/watermelondb-expo/",
+      "title": "Use WatermelonDB with Expo 56+",
+      "summary": "You can integrate WatermelonDB with Expo 56+ by configuring Babel for decorators, adding custom simdjson bindings via expo-build-properties, and rebuilding with prebuild.",
+      "ideas": [
+        "Install Babel plugins for decorators and TypeScript transforms.",
+        "Add simdjson as an extraPod in app.json with the correct module path.",
+        "Run npx expo prebuild --clean before testing the app."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The post gives concrete, step‑by‑step configuration for using WatermelonDB with Expo 56+, solving a clear technical integration problem. It provides useful code snippets but lacks deeper performance data or edge‑case coverage, keeping it strong yet not exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T16:00:11.296819",
+      "image_url": "https://humanwhocodes.com/_astro/watermelon-expo.B2ii5jwk_ghEXD.jpeg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5764,
+      "source_id": 34,
+      "original_url": "https://fluff.blog/2026/09/14/just-draw-it-you-dont-need-a-box-model.html",
+      "title": "Just draw it: you don’t need a box model",
+      "summary": "Separate layout computation from rendering to enable cacheable shapes and flexible UI positioning.",
+      "ideas": [
+        "Layout passes first compute sizes, then position shapes for rendering.",
+        "Shapes are pure data that can be cached and moved before drawing.",
+        "Centering UI requires computing overall bounds before offsetting shapes.",
+        "Compose! helper simplifies ordering of rendered elements.",
+        "Moving shapes after layout avoids coupled draw‑and‑measure cycles."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post delivers concrete, original implementation details for UI layout and shape composition, showing measurable calculations, layout passes, and caching benefits; it directly serves engineers interested in software design and rendering. Its relevance is high, though limited to UI programming contexts and does not address AI or security topics. The article could be slightly less valuable if readers seek broader AI or system-level insights, but it excels in actionable technical depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T15:58:26.122524"
+    },
+    {
+      "id": 5763,
+      "source_id": 34,
+      "original_url": "https://explainanalyze.com/p/a-billion-row-versions-from-one-uncommitted-read-stalled-a-mysql-replica/",
+      "title": "https://explainanalyze.com/p/a-billion-row-versions-from-one-uncommitted-read-stalled-a-mysql-replica/",
+      "summary": "An idle transaction on a replica can pin the InnoDB purge, causing a billion‑row history list, massive undo growth, and replication lag that is fixed by killing the transaction.",
+      "ideas": [
+        "Use `information_schema.innodb_trx` joined with `processlist` to identify open read‑view transactions.",
+        "Monitor `trx_rseg_history_len` metric and oldest transaction age to pre‑empt replica lag.",
+        "A single idle transaction with zero rows modified can balloon undo tablespaces to hundreds of GB.",
+        "Killing the idle transaction (ensuring `trx_rows_modified` is zero) immediately allows purge to drain and resolves lag."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives a concrete, reproducible diagnosis of a MySQL replica lag caused by a single idle transaction holding a read view, complete with SQL queries, InnoDB metrics, and alert thresholds. It explains the underlying MVCC mechanics and shows how to locate and safely kill the offending thread, which is directly actionable for DB engineers and sysadmins. While the underlying concept is known, the detailed walk‑through and monitoring recommendations add substantial practical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T15:55:48.029557"
+    },
+    {
+      "id": 5762,
+      "source_id": 34,
+      "original_url": "https://dashaun.com/posts/deepseek-v4-flash-2x-dgx-spark/",
+      "title": "Two DGX Sparks, One Model: DeepSeek-V4-Flash with a 1M-Token Context",
+      "summary": "It shows how to reliably deploy DeepSeek‑V4‑Flash with a 1M‑token context across two DGX Sparks, handling networking, memory allocation, and stability pitfalls.",
+      "ideas": [
+        "Four RoCE devices appear from two QSFP cables; use all for optimal NCCL bandwidth (~150 Gbit/s).",
+        "Pin KV‑cache memory (--kv-cache-memory-bytes) to avoid unstable auto‑sizing on unified memory systems.",
+        "Set --gpu-memory-utilization conservatively; exceeding ~0.85 can starve the OS and cause crashes.",
+        "Running vLLM with 1M‑token context yields ~41–52 t/s for a single request, ~88 t/s with 8 concurrent requests.",
+        "A clean restart requires disabling the desktop environment and ensuring containers are properly stopped and started."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a detailed, reproducible guide for running a 1‑million‑token LLM on two DGX Spark nodes, with concrete scripts, network configuration, memory‑sizing rules, and measured performance numbers. It addresses subtle hardware‑specific issues (RoCE devices, unified memory pressure) that are not covered in generic tutorials, providing clear, actionable insights. Minor promotional language and limited broader context keep the score from the top tier, but overall the technical depth and novelty are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T15:51:23.654091",
+      "image_url": "https://dashaun.com/posts/deepseek-v4-flash-2x-dgx-spark/images/feature.png",
+      "image_width": 1280,
+      "image_height": 640,
+      "image_alt": ""
+    },
+    {
+      "id": 5761,
+      "source_id": 34,
+      "original_url": "https://char.lt/blog/2026/09/imapfilter/",
+      "title": "fixing my email like it's 2011",
+      "summary": "Using imapfilter with Lua and env‑var credentials on a self‑hosted dovecot/mbsync server enables precise, provider‑agnostic email sorting.",
+      "ideas": [
+        "Lua‑based imapfilter can move messages based on headers using env‑var credentials."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete NixOS configuration, Lua‑based imapfilter code, and env‑var credential handling that demonstrate a clear mechanism for provider‑agnostic email sorting. It is highly relevant to sysadmin and email‑infrastructure interests but is niche and assumes familiarity with dovecot, mbsync, and Lua. The substance is strong, though its value is confined to users willing to set up a custom mail server.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T15:48:16.604390"
+    },
+    {
+      "id": 5760,
+      "source_id": 34,
+      "original_url": "https://barkingiguana.com/writing/four-findings-and-four-different-services/",
+      "title": "Four Findings and Four Different Services",
+      "summary": "Separate services by data they read and match each audit question to the appropriate AWS tool.",
+      "ideas": [
+        "GuardDuty reads CloudTrail, Flow Logs, DNS logs for malicious activity",
+        "Inspector scans EC2 and ECR images for CVEs with reachability scoring",
+        "Macie classifies S3 object contents and flags public/unencrypted buckets",
+        "Security Hub CSPM aggregates findings and maps them to compliance standards",
+        "AWS Config records resource configuration as a prerequisite for CSPM"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a clear, technical mapping of AWS security services to the four audit questions, explains what each reads, required deployment, and how they aggregate findings. It gives concrete mechanisms and actionable steps, though some details are terse. The analysis is highly relevant to technical readers seeking substantive, non‑obvious information.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T15:42:38.951771",
+      "image_url": "https://barkingiguana.com/images/hero-iguana.png",
+      "image_width": 768,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 5759,
+      "source_id": 34,
+      "original_url": "https://balaurengine.org/blog/pausing-a-game/",
+      "title": "Pausing a game",
+      "summary": "Pause flags and time_scale settings let developers freeze most engine activity while selectively keeping certain nodes running and controlling simulation speed.",
+      "ideas": [
+        "engine.set_paused(true) freezes default subtree but nodes marked process='always' continue",
+        "process='always' enables pause menus or loading screens",
+        "when_paused runs only while paused; disabled never runs",
+        "engine.set_time_scale(0.25) slows simulation, preserving tick rate and interpolation",
+        "physics step count scales with time_scale, preventing clipping during fast‑forward",
+        "on_paused(bool) is invoked for scripts that stop when paused",
+        "tick_hz can replace default 60 Hz to customize fixed update frequency",
+        "interpolate draws positions between steps, adding one‑frame latency but smoother motion"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete details on pause flags, script callbacks, and time scaling in the Balaur engine, explaining how node execution and physics are controlled during pauses. It also describes configurable tick rates and interpolation options for fine‑grained timing. However, it assumes prior engine knowledge and offers limited broader context.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-16T15:41:34.627702",
+      "image_url": "https://balaurengine.org/img/manual/pause_states.webp",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": ""
+    },
+    {
+      "id": 5758,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/09/15/htb-ghostlink.html",
+      "title": "0xdf hacks stuff",
+      "summary": "Exploit MQTT healthcheck to coerce authentication, abuse file-share read to steal domain credentials, and relay to the CA for full domain takeover.",
+      "ideas": [
+        "Discover open Windows DC ports and services via nmap",
+        "Create a hosts file entry to resolve DC01.ghostlink.htb",
+        "Subscribe to MQTT # topic to listen for healthcheck messages",
+        "Trigger healthcheck to coerce target into authenticating to attacker",
+        "Exploit unchecked download endpoint for arbitrary file read",
+        "Read registry hive from share to obtain password database",
+        "Abuse Gogs symbolic‑link flaw to overwrite config and gain shell",
+        "Extract domain credentials from Gogs database for further moves",
+        "Relay machine account auth to domain controller’s CA for cert",
+        "Reverse‑engineer file sharing app to achieve full domain compromise"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The write-up delivers multiple novel exploitation techniques — MQTT healthcheck co‑induction, SMB share traversal, Gogs symbolic‑link abuse, and CA relay — each providing concrete commands. It maintains tight focus without filler, resulting in high value density. The content aligns strongly with CyberSecurity and Tech themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-16T15:32:18.739750"
+    },
+    {
+      "id": 5757,
+      "source_id": 4,
+      "original_url": "https://racoten.gitbook.io/red-team-developments-and-operations",
+      "title": "Red Team Developments and Operations",
+      "summary": "You can load and execute a DLL entirely from memory by manually handling PE mapping, relocations, and imports, enabling hot‑swappable plugins without LoadLibrary.",
+      "ideas": [
+        "Reflective DLL loading maps a PE from memory without using LoadLibrary.",
+        "Manually parse PE headers, copy sections, apply relocations, and resolve imports.",
+        "Use custom mapper to load plugin bytes sent by a team server.",
+        "Implement a plugin ABI with init, execute, and cleanup functions.",
+        "Resolve required OS functions via hashed lookup of kernel32 and ntdll exports.",
+        "Allocate memory with VirtualAlloc and set appropriate page protections.",
+        "Patch the Import Address Table using GetProcAddress or ordinal handling.",
+        "Apply base relocations by calculating delta between actual and preferred image base.",
+        "Use this technique to keep agent footprint small and avoid extra processes.",
+        "Reference Stephen Fewer's original ReflectiveDLLInjection as foundation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers concrete, actionable knowledge on implementing reflective DLL loading, including detailed code, step‑by‑step explanations, and references to original research, providing multiple high‑value instances for security practitioners. It stays focused, avoids clickbait or fluff, and aligns strongly with cybersecurity and low‑level development themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-16T15:32:07.684698"
+    },
     {
       "id": 5756,
       "source_id": 4,
