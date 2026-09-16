@@ -1,7 +1,121 @@
 {
-  "updated_at": "2026-09-15T23:00:00.213490+00:00",
-  "total_items": 1059,
+  "updated_at": "2026-09-16T01:00:00.190758+00:00",
+  "total_items": 1063,
   "items": [
+    {
+      "id": 5756,
+      "source_id": 4,
+      "original_url": "https://rhinosecuritylabs.com/research/multiple-vulnerabilities-in-frappe-lms-leading-to-remote-code-execution/",
+      "title": "(888) 944-8679",
+      "summary": "Sanitization at input time is insufficient — downstream transformations like BeautifulSoup's get_text() can reassemble 'safe' fragments into live XSS payloads, and unsanitized path joins in ZIP extraction can turn any privileged file write into full remote code execution.",
+      "ideas": [
+        "Unsanitized path joins during ZIP extraction enable path traversal to arbitrary file overwrite and RCE",
+        "Overwriting an application's own source file (api.py) with a backdoored version achieves persistent code execution",
+        "BeautifulSoup get_text() concatenates text nodes and can reassemble sanitized fragments into executable XSS payloads",
+        "get_text() extracts text but doesn't sanitize; rendering its output without re-escaping creates second-order XSS",
+        "Stored XSS in student-editable profile bios fires when any user, including admins, views the attacker's profile",
+        "Chaining student-level XSS with admin-only path traversal yields a full student-to-RCE privilege escalation path",
+        "SCORM packages are ZIP archives rooted by imsmanifest.xml; their upload handlers are an under-audited attack surface",
+        "Meta tag injection (CVE-2026-46546) enables open redirects in Frappe LMS",
+        "Frappe LMS users must upgrade to v2.50.1 to remediate all three disclosed CVEs",
+        "A 500 error after upload doesn't mean exploitation failed — file replacement can still succeed"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is original vulnerability research with high practical value: a documented attack chain (CVE-2026-39405, CVE-2026-34606, CVE-2026-46546) from student-level access to server RCE, complete with working payloads, POC code, vulnerable/fixed versions, and a disclosure timeline. The most transferable insight is the second-order XSS technique exploiting BeautifulSoup's get_text() to reassemble sanitized HTML fragments into executable payloads — a pattern security researchers can apply when auditing other applications. Scores are held below exceptional because roughly a third of the scraped content is website navigation boilerplate and end-of-post marketing for Rhino Security Labs' services, diluting value density, though the core technical writeup is genuinely strong and squarely on-theme for cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-16T09:39:02.454477"
+    },
+    {
+      "id": 5755,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "BambooToken malware leverages MQTT and compromised hardware tokens to stealthily control Windows and Linux systems, exfiltrating data from diverse enterprise targets.",
+      "ideas": [
+        "BambooToken uses MQTT protocol for command-and-control communication.",
+        "Malware sideloads a rogue DLL leveraging compromised Tendyron OnKey hardware tokens.",
+        "C2 server is extracted from a .DAT file or falls back to a hard-coded address.",
+        "Malware gathers extensive host details and exfiltrates installed antivirus products.",
+        "Cloudflare proxies hide C2 domains, making detection harder.",
+        "Targets include financial, government, enterprise, and biomedical sectors across Asia and South America.",
+        "DLL sideloading reduces EDR alerts, enabling stealthier persistence.",
+        "MQTT provides low-overhead, scalable remote command execution for many clients.",
+        "Compromised entities span mobile apps, GitLab servers, hotels, and biomedical firms.",
+        "Threat actor likely China-nexus based on VPN and compromised router IPs."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel insights: MQTT-based C2, DLL sideloading via compromised hardware tokens, extensive host reconnaissance, and Cloudflare-proxied command servers. It avoids clickbait and padding, offering dense, actionable intelligence, earning a high score despite lacking deeper strategic analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-16T09:37:09.168565",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7hFIl_GRAlPuegwLGZ2PzXVsPEUTEevpEYhkU2Va9isB7aC8a0jJCLVszVOUc_CAIb4IkIkmRjkvyaTIadUizNNEhHTxvzlPX0EUN6UQutjyrauyi35fzRtBjFudyOW4HlAnTRNC9XDj39uNBMKUWHUV2g0Rt8o3aSADZAeAIYgLN-dT0q8gIH9cWUDBF/s1700-nu-rw-lo-l85-e365/windows-linux.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 5754,
+      "source_id": 4,
+      "original_url": "https://accomplish.ai/blog/escaping-the-openai-codex-sandbox-twice/",
+      "title": "Boundary-BenchBlog",
+      "summary": "Sandbox enforcement must reside outside the sandbox; otherwise attacks like Overpatch and Heapjack can bypass even read‑only modes.",
+      "ideas": [
+        "Overpatch grants a patch write access to the parent folder, enabling disk-wide writes.",
+        "Heapjack reads the secret token from a shared V8 heap to gain unsandboxed execution.",
+        "Both vulnerabilities stem from enforcement logic being placed inside the sandbox itself.",
+        "Running the AI agent inside a VM isolates it and prevents host compromise.",
+        "Read‑only sandbox mode can be broken when untrusted code accesses trusted memory."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete security insights—two distinct sandbox‑escape techniques and a mitigation strategy—making it valuable for security practitioners. It stays on topic, provides technical detail, and aligns with CyberSecurity and AI themes. Minor promotional tone about Accomplish does not outweigh the substantive content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-16T09:33:09.042715",
+      "image_url": "https://accomplish.ai/images/codex-openai-sandbox-cover.png",
+      "image_width": 2048,
+      "image_height": 1176,
+      "image_alt": ""
+    },
+    {
+      "id": 5753,
+      "source_id": 9,
+      "original_url": "https://www.youtube.com/watch?v=xC_cuTSOy4s",
+      "title": "A Conversation with Abhishek",
+      "summary": "Securing the modern workspace requires API‑driven protection that treats email as both a repository and verification layer, enabling proactive containment across the entire productivity ecosystem.",
+      "ideas": [
+        "Cloud mailbox APIs enable security use cases impossible with traditional email servers.",
+        "An attacker inside a mailbox can cause extensive havoc beyond message access.",
+        "Email should be viewed as a content repository and verification layer, not just a filter.",
+        "Workspace security treats productivity environments as an integrated operating system.",
+        "API access allows holistic monitoring of telemetry, file content, and directory context.",
+        "Post‑breach containment focuses on limiting attacker actions, not just blocking inbound threats.",
+        "Overly permissive file sharing can be automatically detected and remediated.",
+        "Third‑party app connections in Google Workspace/M365 pose significant OTH risks.",
+        "Security programs should prioritize workspace protection early, alongside EDR and identity controls.",
+        "Mature teams can use workspace telemetry for detection engineering and auto‑remediation.",
+        "Workspace security reduces reliance on multiple point solutions by unifying controls.",
+        "Auto remediation offers set‑and‑forget simplicity for less mature security teams."
+      ],
+      "labels": [],
+      "rating": 87,
+      "rating_reason": "The interview offers multiple novel, actionable insights about treating email as a content repository and extending security to the broader workspace ecosystem via APIs. It provides detailed use cases, maturity‑level strategies, and integration guidance without filler or clickbait. However, the dense technical discussion could be more accessible to non‑technical readers.",
+      "source_type": "youtube",
+      "source_name": "Unsupervised Learning",
+      "published_at": "2026-09-16T09:32:35.048411"
+    },
     {
       "id": 5752,
       "source_id": 30,
