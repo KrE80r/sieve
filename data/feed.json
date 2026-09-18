@@ -1,7 +1,349 @@
 {
-  "updated_at": "2026-09-18T01:00:00.219469+00:00",
-  "total_items": 1025,
+  "updated_at": "2026-09-18T02:00:00.170731+00:00",
+  "total_items": 1039,
   "items": [
+    {
+      "id": 5825,
+      "source_id": 34,
+      "original_url": "https://veganmosfet.codeberg.page/posts/2026-09-15-astra_autoreview/",
+      "title": "Triple A: Astra, Auto-Review, Arbitrary Code Execution (Indirect Prompt Injection Experiment)",
+      "summary": "A trusted-looking AGENTS.md plus an image-steganography payload delivered via Python's logging config achieved sandbox-escaping arbitrary code execution that codex-cli's auto-review safety classifier approved in every trial.",
+      "ideas": [
+        "AGENTS.md instructions can socially engineer coding agents into requesting privilege escalation",
+        "logging.config.fileConfig evaluates handler args, enabling exec of payloads decoded from images",
+        "Steganographic code in repo images evades bandit and superficial agent code review",
+        "Auto-review safety classifier approved the escalated malicious command 5/5 times",
+        "A plain 'summarize this repo' prompt sufficed to trigger the full attack chain"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a firsthand AI-agent security experiment with strong concrete substance: a complete reproducible attack chain (AGENTS.md social engineering, steganographic payload in an image, Python logging fileConfig exec) against codex-cli's sandbox and auto-review classifier, with code, a linked repository, logs, and a 5/5 success rate. The mechanisms are non-obvious and practically important: the safety classifier inspects surface-level scripts but never decodes the stego, and bandit flags nothing. Limitations keep it short of exceptional: the writeup is a focused experiment rather than a deep analysis, it relies on one tool/version configuration, and no mitigation or detection guidance beyond the demonstration is provided.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:29:15.364681"
+    },
+    {
+      "id": 5824,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/canvaskit-vs-skwasm-for-flutter-web-in-2026/",
+      "title": "CanvasKit vs skwasm for Flutter web in 2026: which renderer should you ship?",
+      "summary": "Use skwasm for smaller downloads and faster frame rates, staying single‑threaded on Flutter 3.47.x until the multi‑threaded crash fix is stable.",
+      "ideas": [
+        "skwasm cuts download size by ~330 KB versus Chromium CanvasKit",
+        "skwasm yields 32.7 fps vs CanvasKit’s 24 fps on heavy scenes",
+        "Multi‑threaded skwasm crashes on text‑heavy frames in 3.47.x",
+        "Force single‑threaded mode with forceSingleThreadedSkwasm: true"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The piece supplies original performance measurements, exact build commands, and pragmatic migration advice that directly inform a Flutter web developer’s renderer choice; it is highly relevant to programming and infrastructure but remains specialized, assuming deep prior knowledge of Flutter internals, which limits its broader appeal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:21:06.113432",
+      "image_url": "https://startdebugging.net/og/2026/09/canvaskit-vs-skwasm-for-flutter-web-in-2026.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "CanvasKit vs skwasm for Flutter web in 2026: which renderer should you ship? - Start Debugging"
+    },
+    {
+      "id": 5823,
+      "source_id": 34,
+      "original_url": "https://scottberrevoets.com/til/uiapplicationmain-can-choose-an-app-delegate-at-runtime/",
+      "title": "UIApplicationMain can choose an app delegate at runtime",
+      "summary": "Swap app delegate class at runtime to enable test‑specific implementations without conditional setup.",
+      "ideas": [
+        "Swap app delegate class at runtime to enable test‑specific implementations without conditional setup"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Provides concrete Swift code and explanation of how UIApplicationMain can dynamically select an app delegate class, enabling test‑specific delegates without extra conditional logic; the knowledge is narrow to iOS/Swift developers but technically deep and directly applicable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:18:31.366899"
+    },
+    {
+      "id": 5822,
+      "source_id": 34,
+      "original_url": "https://qsoe-dev.blogspot.com/2026/09/sel4-for-spacemit-k3.html",
+      "title": "seL4 for SpacemiT K3",
+      "summary": "Detailed port of seL4 16.0.0 to the SpacemiT K3 RISC-V SoC, structured as an overlay that adapts the kernel to AIA interrupts, modern-only SBI, Multiboot3 booting, and non-coherent DMA, while documenting three real bugs found during bring-up.",
+      "ideas": [
+        "seL4's six-function interrupt-controller header enables a 323-line AIA/IMSIC driver without touching arch code",
+        "Upstream RISC-V trap path races in getActiveIRQ, causing six spurious interrupts per boot",
+        "Non-coherent DMA rings must be mapped PBMT=NC and flushed before mapping, not cache-maintained",
+        "Overlay porting: git archive upstream, apply 21-file overlay, make check audits legacy SBI fingerprints",
+        "K3 has no engine behind its display — character console is a borrowed RISC-V hart",
+        "Hart selection comes from device tree status plus video-controller handoff, not a count",
+        "Debug syscall for cold reset registered last to preserve upstream syscall numbering",
+        "Wall clock survives reset via SBI MPXY to the management processor, recorded pre-MBI walk"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Exemplary first-person kernel porting report with concrete mechanisms, original debugging findings, and reproducible engineering decisions. Covers AIA/IMSIC driver design, SBI modernization, Multiboot3 boot stub, Svpbmt non-coherent DMA handling, and three substantive bugs discovered with their root causes explained at the instruction level. No hype, no padding — every paragraph carries technical weight, with file counts, line counts, version tags, and verifiable build/test commands.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:10:23.146997",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFaOVazYZiHwp2w8yEpQGjIkC4AJrOB_9xCXCDr2Kgi2EPmfuqiyYSRqOxxeoKL-C1Y0BB9nxvLLLlG46NSjrvwxSzaoK6ptqHq0Ww8_lgh_Npym8p1zVydJaUTQJ8X5EC1_PKINvdFn0PBcGR57LMxhYaTlcNMmaZccS14Rz9fbD-ewVj4IH4WyvfZQ/w1200-h630-p-k-no-nu/k3sel4_booted.jpg",
+      "image_width": 1133,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5821,
+      "source_id": 34,
+      "original_url": "https://patrickdesjardins.com/blog/self-fixing-bug-discord-bot-app-log",
+      "title": "Porting the Self-Fixing Bug Workflow to a Bot With No Sentry, No Railway, No CI Runner",
+      "summary": "The key insight is using a disposable git worktree and file locking to safely validate patches on a shared production box without affecting the live repository.",
+      "ideas": [
+        "Use fingerprinting of log lines to group recurring errors.",
+        "Validate patches in a separate git worktree to avoid altering live repo.",
+        "Detect empty model content by checking both content and finish_reason."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Score is high because the article presents original, reproducible engineering solutions—log fingerprinting, disposable worktrees, and robust model output handling—that solve concrete problems in a constrained environment. The substance is technical and directly useful to readers familiar with Linux automation and AI‑assisted code. Limitations are the niche context and reliance on specific AI APIs, which may not generalize.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:02:55.390773"
+    },
+    {
+      "id": 5820,
+      "source_id": 34,
+      "original_url": "https://paquari.com/posts/seeing-through-template-black-magic/",
+      "title": "Seeing through the template black magic",
+      "summary": "Empirical test shows GCC 16 and Clang 22 generate essentially identical machine code from plain C functions with constant arguments as from Boost's deep C++ template tower, when the function body is visible at the call site.",
+      "ideas": [
+        "Modern compilers fold constants from plain C functions as effectively as from C++ template specializations",
+        "Templates bake constants into each instantiation at any optimization level, even -O0",
+        "Merging multiple template instances into one function is the optimizer's work, not the templates'",
+        "RISC-V (rv64gc) emits byte-identical assembly for C and template versions",
+        "LTO restores constant folding when function bodies aren't visible at call site",
+        "At -O0 the C++ version still keeps a five-deep call tree with constant immediates",
+        "Compiler behavior is a mechanism, not a guarantee; large or unusual functions may resist folding"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "An empirical, reproducible investigation that directly tests a specific claim (templates guarantee merged, optimal code 'even in a 1999 C++ compiler') using Boost's taus88 RNG as the subject. The article provides source code, side-by-side disassembly across two architectures (x86-64, RISC-V), two compilers (GCC 16.2.1, Clang 22.1.8), and multiple optimization levels (-O0 through -O3), plus reproducible shell commands. Methodology is honest about limitations (e.g., using a template replica for RISC-V since real boost headers need a RISC-V C++ stdlib). The conclusion is well-calibrated: modern compilers produce equivalent code from C functions with constants when bodies are visible, while templates retain immediates even at -O0. Strong value-per-minute and minimal noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:02:38.359902"
+    },
+    {
+      "id": 5819,
+      "source_id": 34,
+      "original_url": "https://nullprogram.com/blog/2026/09/17/",
+      "title": "A custom virtual machine for the Stars! 4X game",
+      "summary": "A custom 80286 emulator plus Win16 bridge preserves a 1995 4X game, validated by differential fuzzing, optimized by replacing hot routines with C without a full JIT, and exposed to AI agents via MCP for programmatic play.",
+      "ideas": [
+        "Run x87 instructions on host hardware instead of emulating them for speed and precision",
+        "Validate an emulator via differential fuzzing against host JIT execution",
+        "Patch guest hot routines into the decoder as new instructions for pseudo-JIT speedup",
+        "Map 16-bit Windows handles to host pointer-sized handles in a bridge layer",
+        "Implement Win16 DLLs natively and dynamically link them into the 16-bit process",
+        "Buffer legacy unbuffered I/O calls to cut host syscall overhead",
+        "Tailor LZ compression to specific embedded game assets for major size reduction",
+        "Expose legacy UI to AI agents via MCP by reading the message pump and injecting events",
+        "Reverse-engineer and neutralize copy protection via handle/serial interception"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 91,
+      "rating_reason": "Exceptional first-hand engineering writeup combining a custom 80286 emulator, Win16-to-Win32 bridging, differential fuzzing validation, hot-spot routine patching as a JIT substitute, custom LZ compression, and an MCP integration that lets an LLM drive the legacy game. Performance numbers (2x turn-generation speedup, ~5% I/O reduction, ~1.5MB compressed size) and concrete mechanism details make this substantive and non-obvious, with no hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T11:00:19.976619"
+    },
+    {
+      "id": 5818,
+      "source_id": 34,
+      "original_url": "https://nobe4.fr/posts/poor-mans-devenv-now-with-caching/",
+      "title": "Poor Man's devenv: Now with Caching",
+      "summary": "Caching builds of per-project Nix shell environments via a hash and saved profile restores them instantly on subsequent runs.",
+      "ideas": [
+        "Cache each package set by hashing sorted package names and name cache files accordingly.",
+        "Source the saved .bash script to instantly restore the environment without re-running nix-shell."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, reproducible method for caching Nix shell environments by hashing package lists and reusing saved profiles, delivering clear implementation steps for Linux developers. It addresses a specific performance pain point with minimal noise, but the novelty is incremental rather than groundbreaking, limiting it to strong rather than exceptional. The explanation lacks deeper theoretical insight or broad industry impact, keeping the score below the highest tier.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:57:06.906543"
+    },
+    {
+      "id": 5817,
+      "source_id": 34,
+      "original_url": "https://nikogura.com/blog/chasing-nines/",
+      "title": "Chasing Nines",
+      "summary": "Decide the required SLA in nines up front and build the cheapest architecture that meets it, because each additional nine demands a fundamentally different design and cost.",
+      "ideas": [
+        "Nines represent a concrete downtime budget, not a vague “high availability” claim.",
+        "System availability multiplies across components, making the weakest link the bottleneck.",
+        "Fast recovery with reproducible failures can satisfy three nines without full redundancy.",
+        "Match infrastructure spend to the promised SLA; avoid over‑engineering beyond required availability."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers highly concrete, evidence‑based guidance on availability budgeting using nines, directly addressing architecture trade‑offs that matter to technical readers. Its depth and actionable mechanisms merit a strong score, but some parts assume familiarity with SRE concepts and could be less accessible to newcomers. Overall it offers rare, directly usable insight with minimal noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:56:34.746707"
+    },
+    {
+      "id": 5816,
+      "source_id": 34,
+      "original_url": "https://micahflee.com/flock-cameras-are-riddled-with-security-vulnerabilities-and-hard-coded-credentials/",
+      "title": "Flock cameras are riddled with security vulnerabilities and hard-coded credentials",
+      "summary": "Reverse engineering of a Flock ALPR camera reveals obsolete Android and kernel versions, a hard‑coded API key, and exposed Auth0 credentials that can be abused for further attacks.",
+      "ideas": [
+        "Android 8.1 with 2018‑06‑05 patch level, years out‑of‑date.",
+        "Linux kernel 3.18.71, nine years beyond maintenance.",
+        "Hard‑coded API key 'HaJ3FgupAm8RrDJW3MHgT9X7Ft27eVaD' in com.flocksafety.android.common.lib.",
+        "Exposed Auth0 client ID/secret usable to mint FlockAuth0Tokens.",
+        "CVE‑2018‑9568 socket confusion vulnerability exploitable for root access."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, technical details about an outdated Android 8.1 firmware, an old Linux 3.18 kernel, hard‑coded API keys, and exploitable CVEs, supported by reproducible extraction steps. It provides actionable insight for security researchers while containing minor promotional noise. The substance is high, but some speculative commentary and subscription prompts slightly temper its perfection.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:50:37.298142",
+      "image_url": "https://storage.ghost.io/c/ab/b9/abb95af0-3cb7-4e49-a6c2-c87b36f5d5c2/content/images/size/w1200/2026/09/Screenshot-From-2026-09-16-08-56-39-1.png",
+      "image_width": 1200,
+      "image_height": 805,
+      "image_alt": ""
+    },
+    {
+      "id": 5815,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/subagent-time-token-log-viewer/",
+      "title": "Building a Log Viewer for Codex and Claude Code Subagent Time and Tokens",
+      "summary": "Subagents run as threads that accumulate hidden token and time costs, and most runtime is spent waiting for model responses rather than executing commands.",
+      "ideas": [
+        "Subagents are threads, not separate processes.",
+        "Token usage heavily cached; subagents generate ~68% of output.",
+        "Over 70% of total session time is “waiting on child”.",
+        "Adjustments corrected child‑wait counting and completion detection.",
+        "gpt‑6‑astra shows twice latency per call compared to sol."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides measurable, first‑hand evidence of subagent threading, token caching, and runtime distribution across 30‑day sessions. It supplies precise breakdowns of time spent waiting, tool usage, and token volumes, which are directly useful for optimizing AI‑agent orchestration. However, its findings are tied to specific CLI versions and workloads, limiting broad applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:43:04.906285",
+      "image_url": "https://lilting.ch/og/images/tags/experiment.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Building a Log Viewer for Codex and Claude Code Subagent Time and Tokens | lilting channel"
+    },
+    {
+      "id": 5814,
+      "source_id": 34,
+      "original_url": "https://lazyadmin.nl/home-network/omada-fusion-g-vs-unifi-cloud-gateway-ultra/",
+      "title": "Omada Fusion G+ vs UniFi Cloud Gateway Ultra",
+      "summary": "The Fusion G+ outperforms the UniFi Ultra with double the IPS throughput and independent LAN ports, making it the better choice unless device-level VPN routing is required.",
+      "ideas": [
+        "Fusion G+ achieves 2,183 Mbps IPS throughput; Ultra limited to 1 Gbps total upstream."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete performance measurements, clearly exposing a critical LAN upstream bottleneck in the UniFi Ultra and demonstrating the Fusion G+’s superior throughput. It provides actionable, hardware-level insight that directly informs purchasing decisions for technically savvy readers. Minor noise from ads and repetitive promotional sections slightly detracts from overall value. Overall, it meets high technical relevance and substance criteria.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:40:39.036030",
+      "image_url": "https://lazyadmin.nl/wp-content/uploads/2026/09/omada-fusion-g-vs-unifi-ultra-.jpg",
+      "image_width": 1200,
+      "image_height": 677,
+      "image_alt": ""
+    },
+    {
+      "id": 5813,
+      "source_id": 34,
+      "original_url": "https://joe.blog.freemansoft.com/2026/09/ollamas-tool-channel-produces-better.html",
+      "title": "Ollama's tool channel produces better JSON cards, when the model remembers to use it",
+      "summary": "Using Ollama's tool channel to return Adaptive Card JSON dramatically reduces malformed responses and improves parsing reliability compared to embedding JSON in message content.",
+      "ideas": [
+        "Tool channel adoption reached 100% on several models.",
+        "Malformed JSON failures dropped from 50 to 7 cases.",
+        "Retry mechanism recovered 43 of 99 parse failures.",
+        "Conversation history can suppress tool calls for some models.",
+        "Empty tool calls can still be returned, reducing effectiveness."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides original experimental measurements comparing Ollama's tool channel versus prose output, showing substantial reductions in malformed JSON and measurable gains in parsing success. It offers concrete evidence of channel benefits and identifies adoption limits due to model-specific history effects. However, the study is limited to a narrow set of models and does not address broader deployment concerns.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:35:12.730564",
+      "image_url": "https://blogger.googleusercontent.com/img/a/AVvXsEifXg7cVcrfM1amfwBHZvJjhWbaCxN77joD14kZ8DQhboLjIO0eNq88LuYfQrJhZQXK0A5WiNMjAfQtyJuXBMbPgPypRGMCN9XOlYMEByZzaxK-0eKKPgRi-FiOP4DVDqb1hfMTm5OZ3AUdBTCklfJB9mPF6My4QT7rpxglpz9uYxBNvDZwUxH5bRKDq6ik=w1200-h630-p-k-no-nu",
+      "image_width": 701,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5812,
+      "source_id": 34,
+      "original_url": "https://ivrodriguez.com/how-i-learn/",
+      "title": "How I learn",
+      "summary": "The author details a rigorous multi‑agent pipeline that generates both a vetted technical document and a podcast‑style audio summary for deep learning.",
+      "ideas": [
+        "Agents research topics under strict rules producing a verified document and audio summary",
+        "Pipeline includes drafting, judging, synthesizing, critiquing, refuting, and fixing stages"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible multi‑agent research pipeline with clear stages, rules, and verification checks, offering practical engineering insight into how to automate learning. It delivers original mechanisms rather than generic advice, though it leans on personal workflow and includes some self‑referential narrative.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-18T10:30:08.666152",
+      "image_url": "https://ivrodriguez.com/_astro/hero.B1b2l18n.png",
+      "image_width": 1456,
+      "image_height": 720,
+      "image_alt": ""
+    },
     {
       "id": 5811,
       "source_id": 34,
@@ -28,7 +370,11 @@
       "rating_reason": "Substantive workshop with full Go source code for implementing WebAuthn passkey registration, login, session handling, and CSRF protection. It explains mechanisms (challenges, ceremonies, credential cloning for race-safety, exact media-type checks) and gives concrete decisions with their trade-offs (pre-1.0 library pin, in-memory storage limits, HTTP/localhost caveat, no email verification in production). Content is truncated at the end mid-sentence, preventing a higher score, but what is present is technically dense, reproducible, and non-obvious.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-18T10:26:44.785590"
+      "published_at": "2026-09-18T10:26:44.785590",
+      "image_url": "https://hyeomans.com/_astro/hero.OH-9p1fL.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": "The Go gopher holding a key ring, representing passkey authentication in a Go application"
     },
     {
       "id": 5810,
