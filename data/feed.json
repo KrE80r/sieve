@@ -1,7 +1,158 @@
 {
-  "updated_at": "2026-09-18T06:00:00.347912+00:00",
-  "total_items": 1014,
+  "updated_at": "2026-09-18T07:00:00.185929+00:00",
+  "total_items": 1019,
   "items": [
+    {
+      "id": 5838,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/09/17/ai-coding-agents-0-click-rce-flaw-could-hand-attackers-keys-to-the-kingdom/5297335",
+      "title": "Jump to main content",
+      "summary": "Plugin4Shell bypasses AI agents' SHA‑pinning, enabling zero‑click remote code execution across major coding assistants.",
+      "ideas": [
+        "Plugin4Shell exploits SHA‑pinning bypass to achieve zero‑click remote code execution in AI agents.",
+        "Attack targets plugin marketplaces, affecting Claude Code, Codex, Gemini CLI, Copilot, and GitHub Copilot.",
+        "Vulnerability stems from agents not verifying that pinned commit actually contains the expected code.",
+        "Mitigation requires vendor patches; only Anthropic and OpenAI have released fixes so far.",
+        "Google deprecated Gemini CLI, advising migration to Antigravity environment to avoid the flaw.",
+        "Microsoft Copilot remains unpatched; GitHub’s SHA‑name restriction is insufficient protection.",
+        "Attack scenarios include submitting benign plugins then swapping them later, or hijacking legitimate repos."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: it reveals a novel AI supply‑chain attack (Plugin4Shell), explains the technical SHA‑pinning bypass and zero‑click RCE mechanics, provides actionable mitigation details and patch versions, and illustrates attack scenarios. The content aligns with CyberSecurity and AI themes and, despite some surrounding navigation fluff, offers high density of useful insights for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-18T15:34:47.488977",
+      "image_url": "https://image.theregister.com/5297339.jpg?imageId=5297339&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+      "image_width": 1200,
+      "image_height": 683,
+      "image_alt": ""
+    },
+    {
+      "id": 5837,
+      "source_id": 4,
+      "original_url": "https://www.wiz.io/blog/exploring-the-new-aws-sign-up-experience",
+      "title": "Exploring the new AWS Sign Up experience",
+      "summary": "AWS's new sandboxed signup experience prioritizes cost control and simplicity over security, blocking even free security services while permitting risky configurations, so security-focused users must upgrade out of the sandbox to implement a complete security strategy.",
+      "ideas": [
+        "New AWS signup creates a three-account Organization, hiding the management and identity accounts from users",
+        "Sandbox blocks AWS security services like GuardDuty, SecurityHub, and Inspector, even their free tiers",
+        "Sandbox permits risky configurations: IAM access keys, public S3 buckets, and IMDSv1 EC2 instances",
+        "FreeTierSCP uses Deny with NotAction as an allowlist, which will deny future new AWS services",
+        "RCP data perimeter blocks cross-account AssumeRole, breaking vendor integrations and possibly encouraging IAM user keys",
+        "Builder ID replaces root credentials, enforcing email verification codes as default two-factor authentication",
+        "IAM Role Manager attaches PowerUserAccess by default, forcing retroactive privilege reduction instead of least privilege",
+        "$20 monthly budget triggers an SCP denying over one hundred compute-related actions when breached",
+        "No CloudTrail is configured in the sandbox; only the limited 90-day Event History remains available"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This is genuine first-hand research, not a rehash of AWS's announcement: the author upgraded out of the sandbox and inspected CloudTrail artifacts to document the hidden three-account Organization structure, the FreeTierSCP allowlist that blocks even free tiers of GuardDuty, SecurityHub, and Access Analyzer, and the RCP that severs cross-account role assumption for vendors. Multiple actionable findings for security practitioners emerge: the sandbox permits IAM access keys, public S3 buckets, and IMDSv1 while denying AWS's own security services; IAM Role Manager attaches near-admin PowerUserAccess by default; and the RCP could push vendors back to IAM user access keys. Thematic alignment with CyberSecurity and cloud infrastructure is strong, and density is high for a ~6-minute read. Minor deductions for the surrounding site boilerplate and the absence of broader remediation guidance beyond 'upgrade out of the sandbox.'",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-18T15:34:37.338539",
+      "image_url": "https://www.datocms-assets.com/75231/1789596868-starter-home-2x.png?fm=webp",
+      "image_width": 3829,
+      "image_height": 2122,
+      "image_alt": ""
+    },
+    {
+      "id": 5836,
+      "source_id": 4,
+      "original_url": "https://asec.ahnlab.com/en/95469/",
+      "title": "Threat Resources",
+      "summary": "Threat actors are abusing private home‑trading system software to deliver ransomware, turning investment fraud into file‑encryption attacks.",
+      "ideas": [
+        "Private HTS lets investors trade via software, but unauthorized versions enable fraud.",
+        "Fraudulent HTS platforms mimic legitimate brokers to steal victims' investment funds.",
+        "Malware such as Quasar RAT was previously spread through the HPlus unauthorized HTS.",
+        "UBP Asset HTS, linked to Korean investment scams, was found distributing ransomware.",
+        "KRSID ransomware, written in Rust and allegedly AI‑generated, encrypts many file types.",
+        "UBP Asset HTS loads UBP.Dll, which executes HTSPnew.Exe ransomware during updates.",
+        "Ransom note demands Telegram contact and lists extensive encrypted file extensions.",
+        "Ransomware encrypts the full drive but deliberately excludes shadow copy deletion.",
+        "Regulators state legitimate firms never distribute private HTS via messaging apps.",
+        "Users should use official HTS, patch software, and update V3 to block such infections."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "The report delivers multiple novel insights, detailed technical analysis of UBP Asset HTS and KRSID ransomware, and concrete mitigation steps, yielding high value density. It aligns strongly with CyberSecurity and Tech themes and contains no clickbait or padding. Consequently it merits a score in the high 80s.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-18T15:32:52.310769",
+      "image_url": "https://asec.ahnlab.com/wp-content/uploads/2026/09/yxBtCeP8NTA3yA8oRxQk3zD0JQwoMbOJiJxNtvTg-1024x535.webp",
+      "image_width": 1024,
+      "image_height": 535,
+      "image_alt": ""
+    },
+    {
+      "id": 5835,
+      "source_id": 4,
+      "original_url": "https://agyn.io/blog/sentry-seer-autofix-vulnerability",
+      "title": "How ready are your AI agents for a bad day? Get your security readiness score in 2 minutes.",
+      "summary": "Autonomous AI agents can be hijacked via fabricated error reports, so treat all inputs as untrusted and harden your remediation pipeline.",
+      "ideas": [
+        "Fabricated error reports can trigger autonomous AI agents to execute attacker-controlled code.",
+        "Sentry Seer’s autofix feature is vulnerable, assigned CVE‑2026‑90999 “PhantomFix”.",
+        "The attack works across leading large language models, not model‑specific.",
+        "Public DSN keys allow anyone to submit fake bug reports to the system.",
+        "Mitigation: pause automated remediation, verify bugs, restrict agent installs, narrow credential scopes.",
+        "Researchers disclosed the issue to Sentry and withheld details until a fix is released."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The post delivers several genuine value instances: a novel attack class (PhantomFix), concrete CVE details, cross‑LLM vulnerability evidence, actionable mitigation steps, and references to official vulnerability notes. It aligns strongly with AI security and technology themes, and contains no clickbait or undue promotion, resulting in high value density for a medium‑length article.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-18T15:32:42.201331",
+      "image_url": "https://agyn.io/images/blog/sentry-seer-autofix-vulnerability/hero-sentry-seer-autofix-vulnerability.webp",
+      "image_width": 1600,
+      "image_height": 1200,
+      "image_alt": "PhantomFix — a fabricated bug that hijacks an AI autofix agent (CVE-2026-90999, critical), shown in agyn Agent Threat Research styling"
+    },
+    {
+      "id": 5834,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/iran-linked-handala-hack-tied-to.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Telegram‑based HEAVYGRAM uses custom command prefixes and social‑engineering to maintain persistent, stealthy espionage access.",
+      "ideas": [
+        "HEAVYGRAM uses Telegram bot C2 with prefixed commands for system control.",
+        "CRUDEEXCLUDE prepares staging directories and evades Defender by setting exclusion paths.",
+        "Malware disguises as legitimate apps like Pictory, KeePass, Telegram to deliver payload.",
+        "Operators use social engineering via Telegram, WhatsApp, Instagram to target dissidents.",
+        "HEAVYGRAM can exfiltrate passwords, screenshots, microphone audio, and messaging data.",
+        "Persistence achieved via Windows autorun registry keys and PowerShell scripts.",
+        "Two Telegram bot setups: single bot C2 or dual bots for logging and stage polling."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: technical details of HEAVYGRAM’s Telegram C2 commands, CRUDEEXCLUDE’s evasion tactics, and attribution to Iranian actors, which are useful for security professionals. It stays on‑topic and avoids sensational clickbait, though it includes some promotional padding at the end, resulting in a modest penalty. Overall the content is thematically relevant to cybersecurity and offers actionable insight.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-18T15:32:08.127913",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdqFZ07lueoUFevcbuCOBavlR6CaAxmFqFs7hLpyqw-maKbLcISxW0Q-y7JwvoRrhDumRNaJo_Z4T6QRrGLUTDEE8yYqFfoRLmkoc_J4omdeCAmew1_5k-NwnNWJyYawal5nni-TVZu8M4aDsGNhbwlpp1Y7wLUSjsFR-olY89Mls9hD4CiL9jq0roUpzA/s1700-nu-rw-lo-l85-e365/telegram-handala.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
     {
       "id": 5833,
       "source_id": 34,
