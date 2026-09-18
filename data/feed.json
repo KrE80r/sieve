@@ -1,7 +1,255 @@
 {
-  "updated_at": "2026-09-18T18:00:00.357394+00:00",
-  "total_items": 1037,
+  "updated_at": "2026-09-18T19:00:00.177719+00:00",
+  "total_items": 1045,
   "items": [
+    {
+      "id": 5865,
+      "source_id": 7,
+      "original_url": "https://bradmurry.com/software/reactive-reducer-patterns/",
+      "title": "The 13 Multi-Agent Orchestration Patterns, Implemented via the Reactive Reducer 👏👏",
+      "summary": "Using a reactive reducer makes agent orchestration deterministic, replayable, and easier to debug.",
+      "ideas": [
+        "Replace agent messages with context writes for deterministic control flow.",
+        "Single source of truth context enables traceable errors and replayability.",
+        "Sequential pipeline back‑edge review allows controlled rework of faulty stages.",
+        "Parallel fan‑out uses guard conditions to customize join quorum policies.",
+        "Supervisor/router centralizes routing while journaling prevents hidden bottlenecks.",
+        "Hierarchical manager/worker limits context distortion across delegation layers.",
+        "Peer handoff/swarm adds dynamic routing with maxIterations guard to stop loops.",
+        "Each pattern's state is visible and recoverable via durable parked records.",
+        "Typed context fields avoid lossy handoff messages and enforce schema compliance.",
+        "Guarded joins allow flexible policies like two‑of‑three for partial results."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete insights on deterministic multi‑agent orchestration using a reactive reducer, with practical patterns, failure analyses, and guard‑based solutions. It aligns strongly with AI and software engineering themes and contains no clickbait or padding, though its density is moderate given its length.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-09-19T03:36:50.599235",
+      "image_url": "https://bradmurry.com/13-reactive-reducer-patterns-hero.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": "The 13 Multi-Agent Orchestration Patterns, Implemented via the Reactive Reducer"
+    },
+    {
+      "id": 5864,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/anthropic-wants-you-to-know-claude-leads-a-quarter-of-its-research-but-lead-doesnt-mean-what-you-think/",
+      "title": "Anthropic wants you to know Claude leads a quarter of its research, but \"lead\" doesn't mean what you think",
+      "summary": "Anthropic’s claim that Claude ‘leads’ a quarter of its research masks a self‑reported, loosely defined autonomy metric with limited safety oversight.",
+      "ideas": [
+        "Anthropic uses an internal AL scale; 26% of tasks are rated AL4, termed 'lead'.",
+        "These 'lead' scores are assigned by Claude itself, matching human judgments only 59% of the time.",
+        "Real‑time monitoring blocks just 0.002% of AI decisions, showing minimal safety safeguards.",
+        "Only ~6% of compute goes to safety research, undermining claims of heavy safety investment.",
+        "About 30,000 internal agents operate under limited oversight, with low agreement on automation levels.",
+        "The disclosed metrics support both product promotion and calls to slow AI development."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article reveals Anthropic's novel \"lead\" metric based on an internal AL scale, showing only 26% of work is classified as AI‑driven. It exposes weaknesses such as self‑graded scores matching humans only 59% of the time, negligible safety monitoring, and modest safety compute share. While rich in data, the piece is marred by promotional subscribe prompts that slightly dilute its focus.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-19T03:36:12.939452",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/06/anthropic_claude_clone.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 5863,
+      "source_id": 4,
+      "original_url": "https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/",
+      "title": "A Vault with a Heap-View: The Uncomfortable Space Between AgentCore Harness and Identity",
+      "summary": "Default-configured AWS AgentCore agents run a root shell that can scrape plaintext credentials straight from the harness runtime's memory, turning any successful prompt injection into a credential-theft primitive unless operators aggressively scope tools and egress.",
+      "ideas": [
+        "AgentCore Harness's built-in shell tool runs as root by default, no misconfiguration required",
+        "Shell tool can read the harness runtime's memory via /proc/1/mem, exposing plaintext vault credentials",
+        "Indirect prompt injection in support tickets reliably hijacks agent shell execution where direct prompting fails",
+        "Choosing a less-aligned model per invocation bypasses agent safety refusals since any tool-capable model obeys",
+        "Programmatic tool use slashes token costs but amplifies prompt injection from text-level to runtime-privilege level",
+        "Memory scraping works in two steps: read /proc/1/maps for layout, then read each region from /proc/1/mem",
+        "Defenses: scope allowedTools, least-privilege vault service accounts, monitor harness container egress",
+        "AWS closed the disclosure as informative under shared responsibility, leaving controls to customers",
+        "Prompt injection impact is now bounded by the managed runtime's privileges, not typed tool schemas"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is original, expert-level security research with several genuine value instances: the discovery that AgentCore's default shell tool runs as root, the finding that /proc/1/mem of the harness runtime is readable and exposes plaintext vault credentials, the indirect prompt injection technique that bypassed model refusals, and the per-invocation model selection trick that sidesteps safety alignment. The programmatic tool use analysis (context efficiency trade-off against prompt injection amplification) and the two-step procfs memory-scraping methodology are actionable for both attackers' understanding and defenders' threat modeling, backed by concrete recon evidence and layered mitigations (allowedTools scoping, least-privilege vault accounts, egress filtering). Minor penalties apply for background sections rehashing function-calling basics for a general audience and the vendor product tie-in, which dilute density slightly in an otherwise 16-minute deep-dive. Strong thematic alignment with cybersecurity, agentic AI, and cloud security makes this well worth a practitioner's time.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-19T03:35:03.728199",
+      "image_url": "https://unit42.paloaltonetworks.com/wp-content/uploads/2026/09/03_Cloud_cybersecurity_research_Overview_1920x900.jpg",
+      "image_width": 1920,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 5862,
+      "source_id": 4,
+      "original_url": "https://cyberinsider.com/interpol-says-it-used-ai-to-identify-126-criminals-from-100000-images/",
+      "title": "Skip to main content",
+      "summary": "AI-driven facial recognition and crypto tracing allowed INTERPOL to identify 126 foreign terrorists at scale, illustrating AI’s growing role in cross‑border law enforcement.",
+      "ideas": [
+        "AI processed 108,076 images, reducing to 6,362 high‑quality faces for matching.",
+        "Results were reviewed by trained officers under INTERPOL’s data rules, ensuring accuracy.",
+        "Crypto tracing linked suspected terrorist financing, leading to three data requests.",
+        "Operation involved 28 officers from 11 countries, showcasing multinational cooperation.",
+        "Facial recognition identified 126 foreign terrorist fighters for further investigation.",
+        "AI enables biometric evidence processing at scale beyond manual capability.",
+        "Extracted data enriches INTERPOL databases for ongoing investigative leads."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple concrete insights—AI processing of 108k images, verified matches, crypto tracing, multinational officer team, and database enrichment—which provide high value density. Minor penalties apply for the initial navigation text and promotional call‑to‑action, but they do not significantly reduce overall value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-19T03:34:52.103376",
+      "image_url": "https://cyberinsider.com/wp-content/uploads/2026/09/INTERPOL-says-it-used-AI-to-identify-126-criminals-from-100000-images.jpg",
+      "image_width": 950,
+      "image_height": 497,
+      "image_alt": ""
+    },
+    {
+      "id": 5861,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/security-researchers-used-anthropics-claude-to-hack-openais-internal-systems-in-under-72-hours/",
+      "title": "Security researchers used Anthropic's Claude to hack OpenAI's internal systems in under 72 hours",
+      "summary": "AI models can autonomously create functional exploits, collapsing sophisticated attacks from months to days.",
+      "ideas": [
+        "Outdated libheif allowed code execution via crafted HEIC images.",
+        "OpenAI's SSO misconfiguration let attackers impersonate users and hijack accounts.",
+        "Claude Opus 5 produced a working exploit in hours, unlike earlier versions.",
+        "The hack was completed in under 72 hours with less than $3,000 spent on AI.",
+        "AI removes the expertise barrier, making cyberattacks cheaper and faster.",
+        "Threat models must adapt to AI-driven automation of exploit development."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: it explains two specific vulnerabilities, shows how Claude Opus 5 autonomously generated an exploit, provides quantitative data on time and cost, and argues for updated threat models. The content aligns well with CyberSecurity and AI themes and contains little padding or clickbait, supporting a solid GOOD rating.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-19T03:34:39.529340",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/openai_anthropic_hack.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 5860,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ai-training-built-on-fair-use-looks-shaky-when-the-companies-own-people-call-it-astonishing-theft/",
+      "title": "AI training built on fair use looks shaky when the companies' own people call it \"astonishing theft\"",
+      "summary": "OpenAI and Microsoft's own executives internally admitted their AI products substitute for publishers, training involved paywall circumvention and license violations, and evidence was filtered after lawsuits—statements that directly undermine the fair use defense.",
+      "ideas": [
+        "Microsoft scientist called AI training 'an astonishing theft' and possibly largest theft of labor in history",
+        "OpenAI's ChatGPT head admitted products are 'largely substitutive' and will increasingly replace publishers",
+        "Microsoft data shows Copilot cut publisher click-through rates by 51 to 94 percent",
+        "Internal 'doom loop' memo: AI threatens the economic foundations of its own content suppliers",
+        "OpenAI employees found a hack around the NYT paywall and Brockman replied 'ah nice'",
+        "OpenAI used the NYT Annotated Corpus commercially despite knowing its license forbade it",
+        "OpenAI built a post-lawsuit output filter plaintiffs argue was designed to suppress evidence",
+        "Generating one million AI news articles costs about $6,800, enabling 'pink slime' news farms",
+        "Existing licensing deals with other publishers undercut claims that licensing was impossible",
+        "Nadella testified paywalled content should be licensed and he would have forced retraining",
+        "Plaintiffs challenge all four fair use factors: substitutive use, commercial purpose, whole-work copying, market harm",
+        "OpenAI's promised Media Manager opt-out tool was shelved rather than deployed"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "This is dense, original reporting on the NYT v. OpenAI/Microsoft litigation, extracting numerous concrete value instances from a 92-page court brief: sworn testimony from Nadella that chatbots substitute for original sources, a Microsoft scientist's internal 'astonishing theft' admission, hard click-through-rate data (51-94% declines), documented paywall circumvention with Brockman's 'ah nice' reply, the improperly licensed NYT Annotated Corpus, the post-lawsuit output filter plaintiffs call evidence suppression, and the $6,800-per-million-articles 'pink slime' economics. The article organizes these efficiently with clear structure and attributes claims to sources, showing strong thematic relevance to AI and copyright law. Minor deductions for the surrounding site boilerplate and the fact that it synthesizes a legal filing rather than generating original analysis, but the disclosed internal documents and data are genuinely novel information most readers haven't encountered.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-19T03:34:29.884533",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/openai_vacuum_internet_data-1200x670.png",
+      "image_width": 1200,
+      "image_height": 670,
+      "image_alt": ""
+    },
+    {
+      "id": 5859,
+      "source_id": 4,
+      "original_url": "https://www.malwarebytes.com/blog/news/2026/09/new-android-malware-uses-ai-to-steal-bank-logins-and-pins",
+      "title": "https://www.malwarebytes.com/blog/news/2026/09/new-android-malware-uses-ai-to-steal-bank-logins-and-pins",
+      "summary": "Modern Android malware now delegates decision-making to a live AI assistant controlling the accessibility tree, and the strongest defense remains refusing sideloaded apps and any accessibility, Developer Options, or Wireless Debugging permission requests.",
+      "ideas": [
+        "AI-driven malware dynamically navigates the accessibility tree instead of hardcoded scripts, evading signature-based detection.",
+        "RatHat silently enables Wireless Debugging and reads the on-screen pairing code to self-pair via ADB.",
+        "ADB shell access lets the malware escape the normal app sandbox without a computer or human.",
+        "Malware records raw touch coordinates and matches keypad layouts to reconstruct PINs and unlock patterns.",
+        "A Go-based agent and reverse-proxy tunnel provide persistent command execution that bypasses firewalls and NAT.",
+        "Overlay attacks steal bank credentials, OTPs, and MFA codes from targeted financial apps.",
+        "Persistence survives normal uninstallation, requiring a full factory reset to remove the infection.",
+        "Legitimate apps never need Developer Options or Wireless Debugging; requests for these are red flags.",
+        "Android's Advanced Protection Mode restricts which apps can request accessibility permissions."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several genuinely novel technical insights: AI-assisted dynamic navigation of the accessibility tree instead of hardcoded scripts, self-pairing via ADB by reading pairing codes off-screen, and reconstruction of PINs from raw touch coordinates matched against keypad layouts. It also provides actionable defenses (avoid sideloading, refuse suspicious accessibility requests, factory reset if infected). Thematic relevance is strong, aligning with CyberSecurity and AI. Minor deductions for standard vendor-blog promotion of Malwarebytes products and conventional closing advice, plus the fact that it reports on Zimperium's research rather than original analysis.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-19T03:33:07.701932",
+      "image_url": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/09/spying_RAT.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 5858,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/fake-lastpass-authenticator-github-repos-push-new-rapuncel-infostealer/",
+      "title": "Fake LastPass Authenticator GitHub repos push new Rapuncel infostealer",
+      "summary": "Attackers use SEO‑optimized fake GitHub repos to spread a signed kernel driver that kills AV and a new Rapuncel infostealer.",
+      "ideas": [
+        "Fake GitHub repos impersonating popular software deliver the Rapuncel infostealer.",
+        "Rapuncel uses a signed kernel driver (Alinubx.sys) to terminate 145 antivirus/EDR processes.",
+        "The driver bypasses Protected Process Light by opening process handles in kernel mode.",
+        "The installer disguises Microsoft vsdbg.exe, sideloading a malicious DLL to deploy malware.",
+        "Rapuncel steals credentials from browsers, crypto wallets, messaging apps, and documents.",
+        "It injects a helper DLL to bypass Chrome and Edge’s app‑bound encryption.",
+        "Stolen data is compressed and exfiltrated via raw TCP to a fixed IP address.",
+        "Persistence is achieved through a Windows service that restarts after reboot.",
+        "Recommendation: download software only from official sites and avoid dubious GitHub repos."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple genuine insights: it unveils a new Rapuncel infostealer, explains the signed kernel driver that disables 145 AV/EDR products, and details the technical attack chain. These value instances outweigh minimal padding and align strongly with cybersecurity themes, earning a high but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-19T03:32:51.728428",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/06/23/lastpass.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
     {
       "id": 5857,
       "source_id": 34,
