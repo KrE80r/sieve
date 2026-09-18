@@ -1,11 +1,291 @@
 {
   "schema_version": 1,
-  "sequence": 664,
-  "revision": "sha256:98cb26a22cff264a1053dbe3bdf0a0cc076eba2d464dcb6a2e84c5826e11451b",
-  "generated_at": "2026-09-18T00:00:00.461982+00:00",
+  "sequence": 665,
+  "revision": "sha256:b667ef3142d0ff8bd8190be40ebd07fa4a8783c33f7ca2916da4bb60f414795c",
+  "generated_at": "2026-09-18T01:00:00.219469+00:00",
   "complete": true,
-  "total_items": 987,
+  "total_items": 1000,
   "items": [
+    {
+      "article_id": "article:5811",
+      "original_url": "https://hyeomans.com/posts/passkeys-only-authentication/",
+      "title": "Build Passkey Authentication in Go: A Complete Workshop",
+      "summary": "A step-by-step Go implementation of WebAuthn passkey registration, login, server-side sessions, and CSRF protection using go-webauthn, built in progressive checkpoints with full source and mechanism explanations.",
+      "rating": 87,
+      "rating_reason": "Substantive workshop with full Go source code for implementing WebAuthn passkey registration, login, session handling, and CSRF protection. It explains mechanisms (challenges, ceremonies, credential cloning for race-safety, exact media-type checks) and gives concrete decisions with their trade-offs (pre-1.0 library pin, in-memory storage limits, HTTP/localhost caveat, no email verification in production). Content is truncated at the end mid-sentence, preventing a higher score, but what is present is technically dense, reproducible, and non-obvious.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T10:26:44.785590+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T10:26:44.785590+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5810",
+      "original_url": "https://freipaul.com/posts/what-actually-is-a-docker-container",
+      "title": "What actually is a Docker container?",
+      "summary": "Linux containers are not lightweight VMs: isolation is implemented per-process via namespace pointers in task_struct, so the same kernel answers the same syscalls differently depending on the calling process's nsproxy.",
+      "rating": 85,
+      "rating_reason": "Exceptionally mechanism-focused explainer that walks through Linux kernel source (task_struct, nsproxy, kernel/sys.c) to show exactly how containers differ from VMs and how namespace isolation is implemented per-process rather than via virtualization. Uses a reproducible test program and references real CVEs (CVE-2022-0185, CVE-2024-1086), capabilities, and UID mapping to demonstrate non-obvious behaviors like 'root inside' not being 'root outside'. Truncation at the PID namespace section is a meaningful limitation, and some territory is familiar to seasoned kernel engineers, but the kernel-source-grounded explanation is genuinely instructive.",
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T10:18:50.270738+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T10:18:50.270738+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5809",
+      "original_url": "https://eldermoraes.com/what-retry-actually-retries-when-your-ai-service-has-tools/",
+      "title": "What @Retry Actually Retries When Your AI Service Has Tools",
+      "summary": "Retrying an AI service method repeats the whole conversation loop, so any side‑effecting tool runs again unless it is explicitly idempotent.",
+      "rating": 94,
+      "rating_reason": "The article delivers deep, reproducible insight into how MicroProfile @Retry restarts the entire AI-tool loop, explaining mechanism, idempotency contract, and concrete failure scenarios with code. It provides concrete mechanisms, experiment logs, and actionable guidance, meeting high relevance and substance. The only limitation is lack of quantitative performance data, but overall it offers rare, high‑value technical knowledge.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T10:14:24.088902+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T10:14:24.088902+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5808",
+      "original_url": "https://doug.sh/posts/vllm-kv-cache-agents/",
+      "title": "Keeping vLLM's Prefix Cache Warm Between Agent Turns",
+      "summary": "Agent prefix-cache misses are usually caused by non-deterministic prompt serialization like shuffled tool-schema keys, and fixing serialization plus prompt layout took cache hits from 55% to 95% and first-token latency from ~27s to 7.3s.",
+      "rating": 94,
+      "rating_reason": "Exceptional firsthand LLM-inference engineering: the author measures prefix-cache hit rates before and after tuning, traces mysterious cache misses by tokenizing and diffing consecutive prompts, and root-causes a subtle bug where Go map randomization in the MCP gateway shuffled tool-schema key order, invalidating 100k+ cached tokens per turn, with merged upstream fixes and a Jinja workaround. It also documents non-obvious hybrid-attention cache behavior (2048-token block boundaries that make CPU KV offload nearly useless) and a practical, evidence-backed checklist including the finding that speculative decoding's verdict flips once the cache is warm. Relevance to the reader's LLM-systems and agent-engineering interests is direct, and the density of measurements, configs, and reproducible debugging steps is very high. The main limitation is that some findings are specific to Qwen3.8-27B, vLLM 0.28.0, and the oh-my-pi/Bifrost stack, though the methodology generalizes.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T10:12:29.899228+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T10:12:29.899228+00:00",
+      "image": {
+        "url": "https://doug.sh/images/og/vllm-kv-cache-agents.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5807",
+      "original_url": "https://connectedplaces.online/ai-watermarking-has-a-decentralisation-problem/",
+      "title": "AI watermarking has a decentralisation problem",
+      "summary": "AI watermarking must be globally coordinated to let users reliably detect any AI‑generated content, but fragmented key usage and defection incentives make such coordination extremely difficult.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical details about watermarking mechanisms (e.g., SynthID keyed token selection), shows how key governance creates a decentralization challenge, and explains incentives for defection and coordination failures. It provides original evidence and mechanisms relevant to AI policy and inference ecosystems, though it contains modest promotional padding.",
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T10:06:28.553672+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T10:06:28.553672+00:00",
+      "image": {
+        "url": "https://connectedplaces.online/wp-content/uploads/2026/07/20260514-01_-764x400.jpg",
+        "width": 764,
+        "height": 400,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5806",
+      "original_url": "https://cagritemel.com/blog/hn-broke-my-llm-agent-gate.html",
+      "title": "What I Measured After Hacker News Broke My LLM Agent Gate",
+      "summary": "A careful, reproducible measurement of a provenance-based LLM agent gate shows it reduces attack success from 97% to 9% but at meaningful utility cost, while text-pattern detection fundamentally cannot see the majority of real attacks whose harm is policy conflict, not phrasing.",
+      "rating": 90,
+      "rating_reason": "Exceptional measurement-driven account of prompt-injection defense for LLM agents. The author isolates the capability gate's effect from model behavior via a replay harness, reports specific numbers across five iterative improvements, and provides genuinely non-obvious findings: 59% of real attacks carry no textual marker (the attack is policy conflict, not phrasing), provenance-based gating cuts attack success from 97% to 9% at a real utility cost, and current capable models refused every tested injection on their own. Honesty about limitations (benchmark distortions, single-deployment policy, unmeasured real-world utility) and the reproducible harness elevate this above typical security blog content.",
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T10:00:45.899235+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T10:00:45.899235+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5805",
+      "original_url": "https://blog.stackdump.com/posts/capacity-paradox",
+      "title": "The Capacity Paradox",
+      "summary": "Adding engineers can actually degrade validated‑feature output when the evaluation gate is too loose, and diagnosing queue dynamics reveals the true bottleneck.",
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, well‑engineered Petri‑net model that quantifies the hidden cost of adding engineers, shows diagnostic evidence that a tight evaluation gate improves outcomes, and demonstrates a general diagnostic method applicable across unrelated systems. Its insights are technically deep and substantively different from typical spreadsheets, yet it relies on specialized tooling that most readers may not have immediate access to, limiting universal applicability.",
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T09:56:18.053670+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:56:18.053670+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5804",
+      "original_url": "https://blog.maartenballiauw.be/posts/2026-09-16-device-bound-session-credentials-in-aspnet-core/",
+      "title": "Device Bound Session Credentials in ASP.NET Core",
+      "summary": "DBSC ties sessions to device‑bound private keys, requiring cryptographic proof to refresh and greatly reducing replay viability.",
+      "rating": 85,
+      "rating_reason": "Provides concrete, well‑described mechanisms for tying sessions to device‑bound private keys, including key generation, registration, challenge signing, storage in encrypted refresh cookies, and trade‑offs of short‑lived cookie expiration; experimental, limited browser support.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T09:54:33.018741+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:54:33.018741+00:00",
+      "image": {
+        "url": "https://blog.maartenballiauw.be/posts/2026-09-16-device-bound-session-credentials-in-aspnet-core/index.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5803",
+      "original_url": "https://barkingiguana.com/writing/how-to-run-a-two-tier-offline-ca/",
+      "title": "How to Run a Two-Tier Offline CA",
+      "summary": "You can construct a cost‑effective, air‑gapped two‑tier CA on Raspberry Pis with hardened images, split‑personality ceremonies, and strict name‑constraint policies.",
+      "rating": 85,
+      "rating_reason": "The article delivers a concrete, step‑by‑step guide for building a two‑tier offline CA on Raspberry Pi hardware, including exact commands, image‑hardening procedures, and ceremony scripts. It provides practical security mechanisms (name constraints, pathlen=0, split passphrase, hardware token protection) and a clear maintenance schedule, making it highly actionable for engineers. While the concept of an offline CA is not novel, the depth of implementation detail and reproducible instructions give it strong value for a technically capable audience.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T09:46:50.969199+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:46:50.969199+00:00",
+      "image": {
+        "url": "https://barkingiguana.com/images/posts/how-to-run-a-two-tier-offline-ca.png",
+        "width": 768,
+        "height": 768,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5802",
+      "original_url": "https://antfu.me/posts/pluggable-extensible-playful-devtools",
+      "title": "<![CDATA[Pluggable, Extensible, and Playful DevTools]]>",
+      "summary": "Devframe provides one stable definition and Web Standard handler that can be mounted in any framework‑agnostic host, enabling modular, composable DevTools shared across ecosystems.",
+      "rating": 85,
+      "rating_reason": "The article presents a concrete, framework‑neutral definition for DevTools, complete with code snippets, adapter patterns, and real‑world plugin examples. It delivers non‑obvious technical insight and measurable mechanisms for reusing DevTool functionality across hosts, which directly serves engineers seeking deeper tooling capabilities. The content is dense with implementation details, but occasional promotional phrasing prevents a perfect score.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T09:42:36.125177+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:42:36.125177+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5801",
+      "original_url": "https://ajitem.com/blog/beneath-the-porcelain-part-6-signed-tags-as-a-release-gate/",
+      "title": "Signed Tags as a Release Gate",
+      "summary": "SSH-signed tags enforced via pre-receive hooks and verify-before-deploy scripts create a release authorization gate that is independent of third-party platform protections, with several subtle implementation details that matter for correctness.",
+      "rating": 85,
+      "rating_reason": "Substantive, well-tested article on using SSH-signed git tags as a release authorization gate. It provides reproducible commands and scripts, documents non-obvious gotchas (verifying by SHA not ref name in pre-receive hooks because refs don't exist yet, distinguishing 'Good signature' from trusted signature via allowed_signers), and is honest about limitations (key custody, no correctness guarantee, no review timing). The technical depth is strong without padding.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T09:40:33.518879+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:40:33.518879+00:00",
+      "image": {
+        "url": "https://ajitem.com/optimized/images/blog/beneath-the-porcelain-part-6-signed-tags-as-a-release-gate-hero.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": "Signed Tags as a Release Gate"
+      }
+    },
+    {
+      "article_id": "article:5800",
+      "original_url": "https://alexandermigdal.com/hacking-the-millennium-problem-is-not-solving-turbulence/",
+      "title": "Hacking the Millennium Problem Is Not Solving Turbulence",
+      "summary": "AI can solve a formal breakdown case by retro‑fitting a force, but this does not address the physical turbulence problem, which the author tackles with a stable statistical framework tied to Riemann zeros.",
+      "rating": 88,
+      "rating_reason": "The post delivers concrete, technically dense analysis of how an AI-generated breakthrough on a Navier–Stokes Millennium case merely manufactures a force to force a singular velocity field, exposing the loophole and highlighting the lack of stability. It then outlines a substantive, original candidate solution to true turbulence that links statistical laws to Riemann zeros and proves Lyapunov stability, providing measurable insight beyond hype. The main limitation is its reliance on a dense mathematical narrative without raw data or reproducible code, which may impede quick comprehension for some readers.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-18T09:40:20.528179+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:40:20.528179+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5799",
+      "original_url": "https://www.theregister.com/security/2026/09/17/chinas-salt-typhoon-backdoors-latin-american-orgs-with-new-snooping-malware/5297286",
+      "title": "Jump to main content",
+      "summary": "SparroWocky is a sophisticated Salt Typhoon backdoor targeting Latin American entities, using open‑source tools and advanced evasion to support China’s strategic monitoring of US influence.",
+      "rating": 82,
+      "rating_reason": "The article provides several genuine value instances: novel intel on the SparroWocky backdoor, detailed technical breakdown of its components and evasion methods, geopolitical analysis of its target shift, and links to IOCs on ESET's GitHub. It stays on topic, offers actionable insight for security professionals, and contains no clickbait or padding, yielding a high value density for a medium‑length piece.",
+      "labels": [
+        "CyberSecurity"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-18T09:32:43.380949+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-18T09:32:43.380949+00:00",
+      "image": {
+        "url": "https://image.theregister.com/1681600.jpg?imageId=1681600&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+        "width": 1200,
+        "height": 683,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:5798",
       "original_url": "https://thehackernews.com/2026/09/critical-unbound-dnssec-validator-flaw.html",
