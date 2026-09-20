@@ -1,7 +1,230 @@
 {
-  "updated_at": "2026-09-20T17:00:00.172646+00:00",
-  "total_items": 972,
+  "updated_at": "2026-09-20T19:00:00.168082+00:00",
+  "total_items": 981,
   "items": [
+    {
+      "id": 5911,
+      "source_id": 34,
+      "original_url": "https://www.hdlfactory.com/post/2026/09/20/an-icosahedron-on-hdmi-drawn-by-a-txhdl-core/",
+      "title": "An icosahedron on HDMI, drawn by a TxHDL core",
+      "summary": "A full RISC-V SoC on an Artix-7 draws a rotating icosahedron on HDMI, illustrating how convexity eliminates the need for a depth buffer and how per-channel FIFOs cleanly cross clock domains between core and video peripheral.",
+      "ideas": [
+        "Convexity removes depth buffer: positive z of unit normal tests visibility and lights.",
+        "Compose one row in a buffer, write each pixel once, eliminate clear-then-draw flicker.",
+        "Cross each AXI-Lite channel with its own FIFO since channels have no timing relationship.",
+        "Single brightness ramp of one tan, square-root spaced, plus 2x2 ordered dither quadruples perceived levels.",
+        "K-per-word serial protocol prevents UART buffer overrun when streaming programs.",
+        "65-entry quarter-wave sine table read forward/backward/negated covers full circle in fixed point.",
+        "Half-open fill rule with Q16 edge interpolation paints shared edges exactly once.",
+        "FPGA placement organically clusters subsystems near their I/O and adjacent logic."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional first-hand FPGA engineering writeup with concrete, non-obvious technical substance throughout: a RISC-V core written in a Rust-based HDL, clock-domain crossing per AXI-Lite channel via Gray-coded FIFOs, hidden-surface removal via convexity (z component doubles as visibility test and lighting intensity), single-pass row composition to avoid flicker without double buffering, and a K-acknowledged serial loader protocol. Every section contains reproducible detail (memory map, timings, code paths) with zero padding, hype, or career content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T04:15:25.757600"
+    },
+    {
+      "id": 5910,
+      "source_id": 34,
+      "original_url": "https://skmp.dev/blog/sh4-fpu/",
+      "title": "Reversing the SH-4 fpu with the help of three AI models",
+      "summary": "The SH‑4 FPU is a block of four truncated Booth multipliers, aligners, a four‑input adder and a single rounding stage, with FSCA/FSRRA implemented via small ROMs and feedback latches, all recovered through AI‑driven brute‑force analysis.",
+      "ideas": [
+        "Four 24×24 truncated Booth multipliers feed a four‑input adder and one rounding stage.",
+        "FSCA and FSRRA use 17‑word and 34‑word coefficient ROMs with feedback latches.",
+        "AI models (Claude/Fable, GPT‑6 Astra, Opus) performed exhaustive searches on billions of input/output pairs.",
+        "Bit‑exact C implementation validates the reconstructed pipeline across millions of vectors.",
+        "Truncated design saves ~30 % area versus a fully IEEE‑rounded implementation."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a detailed, reproducible reverse‑engineering of the Dreamcast SH‑4 FPU, including concrete pipeline architecture, exhaustive test‑vector validation, and a publicly available bit‑exact C model. It demonstrates novel use of multiple AI models to explore a large hypothesis space, offering practical insights for emulators and low‑level hardware engineers. While the narrative is long, the technical depth and evidence outweigh the occasional anecdotal fluff, making it highly valuable to technically capable readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T04:07:09.172991"
+    },
+    {
+      "id": 5909,
+      "source_id": 34,
+      "original_url": "https://dnim.dev/blog/vm-tiered-downsampling",
+      "title": "VictoriaMetrics already had downsampling, under another name",
+      "summary": "A small patch repurposes VictoriaMetrics' deduplication flags to implement multi‑tier downsampling without needing the enterprise edition.",
+      "ideas": [
+        "Use -dedup.minScrapeInterval to set per‑tier bucket size for raw data thinning.",
+        "Patch GetDedupInterval() to dedupIntervalForTimestamp(ts, now) for age‑based tier selection.",
+        "Merge path uses newest sample timestamp to decide when a block crosses a tier boundary.",
+        "Watcher re‑merges partitions when their MaxTimestamp ages past a tier, reclaiming disk space."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete 213‑line patch that enables tiered downsampling in the open‑source VictoriaMetrics binary, with detailed code walkthrough, merge‑path mechanics, and real‑world disk‑usage numbers. It is directly relevant to monitoring/TSDB practitioners and provides reproducible steps, but its impact is limited to this specific system and lacks broader novelty beyond exposing an existing enterprise hook.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T03:50:09.369079",
+      "image_url": "https://dnim.dev/blog/vm-tiered-downsampling/opengraph-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5908,
+      "source_id": 34,
+      "original_url": "https://blog.yellowday.day/posts/scar_of_quantization/",
+      "title": "Scar of Quantization",
+      "summary": "Outlier activations can leave irreversible quantization scars that stall validation loss, and fixing the scaling strategy (e.g., 1×32 or Hadamard rotation) can restore convergence.",
+      "ideas": [
+        "Outlier activations can freeze a large fraction of a tile to zero during INT8 quantization, causing irreversible training scars.",
+        "Using 1×32 per‑token scaling instead of 1×32 per‑block reduces scar formation enough to enable convergence.",
+        "Hadamard rotation can spread outlier magnitude, improving signal‑to‑quantization‑noise ratio from 43.4 dB to 54.0 dB."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a clear, reproducible failure pattern in quantization aware training, showing how outlier activations create irreversible \"scars\" in INT8 tensors and quantifies their impact with concrete measurements (e.g., underflow rates, signal‑to‑quantization‑noise ratios). It offers a practical mitigation—switching to 1×32 scaling and experimenting with Hadamard rotation—to improve convergence, making the insight both technical and actionable for a specialist audience. The discussion is tightly focused on quantization mechanics rather than peripheral hype, though the evidence remains partly offline and not fully validated in a full training run.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T03:47:14.050126"
+    },
+    {
+      "id": 5907,
+      "source_id": 34,
+      "original_url": "https://blog.mastykarz.nl/eval-score-half-result/",
+      "title": "An eval score is only half the result",
+      "summary": "Evaluating AI agents requires examining both quality and inference cost, not just the score.",
+      "ideas": [
+        "A 15‑point quality gain can correspond to a 15‑fold cost increase."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete measurements of inference cost versus quality, illustrates nonlinear cost scaling, and explains how to interpret trade‑offs in AI agent evaluation. It is highly relevant to technical readers focused on AI engineering and provides actionable guidance on budgeting and variance analysis. Limitations include a broader discussion that drifts into philosophical framing and occasional padding that dilutes focus. Overall, it delivers substantive, evidence‑based insight with clear practical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T03:46:36.091615",
+      "image_url": "https://blog.mastykarz.nl/assets/images/2026/09/parcel-bill.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5906,
+      "source_id": 34,
+      "original_url": "https://aydinnyunus.github.io/2026/09/22/cve-2024-27763-basicsr-slurm-command-injection-tr/",
+      "title": "CVE-2024-27763: SLURM_NODELIST üzerinden BasicSR komut enjeksiyonu",
+      "summary": "A command‑injection bug in BasicSR’s SLURM handler lets attackers execute arbitrary code via uncontrolled SLURM_NODELIST values.",
+      "ideas": [
+        "subprocess.getoutput without sanitization allows shell injection via SLURM_NODELIST",
+        "Attacker can inject arbitrary commands by exporting SLURM_NODELIST='$(id > /tmp/pwned)'",
+        "Mitigation: use subprocess.run with capture_output to avoid shell interpretation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article provides a concrete, step‑by‑step exploitation of a shell‑injection vulnerability in BasicSR’s SLURM integration, complete with code, PoC, and a clear mitigation path. It delivers deep technical insight relevant to security‑focused engineers working with HPC clusters. However, the vulnerability only affects multi‑tenant deployments where SLURM_NODELIST can be set by users, limiting its universal impact.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T03:44:10.681893"
+    },
+    {
+      "id": 5905,
+      "source_id": 4,
+      "original_url": "https://blog.zsec.uk/below-the-waterline-stage-1-red-team-planning/",
+      "title": "https://blog.zsec.uk/below-the-waterline-stage-1-red-team-planning/",
+      "summary": "Red team engagements succeed or fail in the planning discipline—threat-led framing, risk appetite/tolerance clarity, tiered authorization, and a live risk register—rather than in clever technical execution.",
+      "ideas": [
+        "Threat-led framing prevents red teaming from becoming a pentest with more secrecy",
+        "Emulation mirrors named threat actors; simulation tests behavior classes broadly",
+        "Answer Who, What, and How sophisticated before scoping any red team engagement",
+        "Five-stage pipeline: Threat Intel, Test Plan, Risk Workshop, Delivery, Wash-up",
+        "Risk appetite and risk tolerance are not synonyms—confusing them breaks plans",
+        "Severity formula weights client impact at 70%, red team impact at 30% deliberately",
+        "Tiering: User, Business, Critical (with OT as potential fourth tier above Critical)",
+        "Technical Tier 0 differs from business Tier 0; ask client what is truly critical",
+        "Risk register must be a live document updated throughout delivery, not paperwork",
+        "Spreadsheet arriving at acceptable score does not make an unsafe action safe",
+        "Operator discretion decreases as potential business consequence of system increases",
+        "Standing authority in RoE still applies when no additional authorization required"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is expert-level content from a practitioner (Andy Gill/Zsec.uk) on red team engagement planning, delivering 10+ distinct, actionable frameworks and insights. Value instances include: the threat-led framing vs. 'penetration test with secrecy' distinction, the risk appetite vs. tolerance distinction with concrete examples, a novel severity formula (L × 0.7×Ic + 0.3×Ir) with deliberate client-impact weighting, environmental tiering with operator discretion guidance, the 'Tier 0 means different things to technicians vs. board' insight, and the principle that spreadsheet approval doesn't make unsafe actions safe. The content appears truncated mid-section (operational safety/exit criteria), and there's some introductory padding, which costs a few points. Strong thematic relevance to cybersecurity and security operations management.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-21T03:33:06.519501"
+    },
+    {
+      "id": 5904,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/tencents-gander-aims-to-keep-talking-while-it-works-in-the-background/",
+      "title": "Tencent's Gander aims to keep talking while it works in the background",
+      "summary": "Separating conversational and reasoning components lets AI assistants talk continuously while handling complex tasks, but timing gains can reduce accuracy.",
+      "ideas": [
+        "Split AI assistants into a fast “cerebellum” for dialogue and a “brain” for complex reasoning.",
+        "Real‑time conversation works by segmenting speech into one‑second intervals for interrupt handling.",
+        "Gander interrupts users only 8% of the time, better than competitors.",
+        "Task accuracy lags behind rivals due to trade‑off and weaker audio/video perception.",
+        "The “brain” module can be swapped with other agents like Codex or Claude Code.",
+        "Tencent plans to open‑source Gander’s weights and training data after release process.",
+        "Other firms use orchestrators, e.g., OpenAI’s GPT‑Live and Sakana AI’s Fugu."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several genuine insights: a novel split architecture for real‑time assistants, benchmark timing results, trade‑offs affecting accuracy, swappable reasoning modules, and upcoming open‑source release. It aligns well with AI/technology themes and contains no clickbait or padding, giving solid value density for its length.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-21T03:32:47.512026",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/tencent.png",
+      "image_width": 2048,
+      "image_height": 1152,
+      "image_alt": ""
+    },
+    {
+      "id": 5903,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/alibabas-open-weight-qwen-image-2-1-claims-to-beat-closed-models-in-image-generation-with-just-7-billion-parameters/",
+      "title": "Alibaba's open-weight Qwen-Image-2.1 claims to beat closed models in image generation with just 7 billion parameters",
+      "summary": "Open‑weight Qwen‑Image‑2.1 shows that a 7 B‑parameter model can rival closed systems while running on consumer GPUs and supporting advanced image editing features.",
+      "ideas": [
+        "Qwen-Image-2.1 is an open-weight 7B‑parameter image generation model",
+        "It claims to outperform most closed models on Qwen's benchmark",
+        "Runs efficiently on consumer GPUs such as RTX 3090",
+        "Natively generates and edits transparent RGBA images",
+        "Supports up to ten reference images for group portraits and design",
+        "Architecture changes and KV‑cache reuse speed up inference with multiple references",
+        "Available on Hugging Face, GitHub, ModelScope under a research‑only license"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers several concrete insights—model size, performance claim, consumer‑GPU compatibility, RGBA editing, multi‑reference handling, inference optimizations, and licensing details—within a brief format, giving high value density and strong relevance to AI and technology themes. No clickbait, padding, or promotional bias is evident, so no penalties apply.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-21T03:32:43.698910"
+    },
     {
       "id": 5902,
       "source_id": 22,
