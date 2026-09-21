@@ -1,7 +1,275 @@
 {
-  "updated_at": "2026-09-21T06:00:00.688487+00:00",
-  "total_items": 949,
+  "updated_at": "2026-09-21T07:00:00.200714+00:00",
+  "total_items": 959,
   "items": [
+    {
+      "id": 5924,
+      "source_id": 34,
+      "original_url": "https://www.tqdev.com/2026-macos-support-fyne-mines-tunnel-launcher/",
+      "title": "MacOS support in Fyne Mines (and Tunnel Launcher)",
+      "summary": "Developers can successfully run MacOS Fyne apps on non‑Mac hardware by using a KVM‑based VM, extracting a recent MacOS SDK via third‑party mirrors, patching glfw for CPU rendering, and handling OpenGL constraints.",
+      "ideas": [
+        "Use a MacOS.xml libvirt domain with explicit PCI addresses for video and NIC to avoid black screen.",
+        "Download MacOSX12.3.sdk from a GitHub mirror and symlink it into the fyne-cross Docker image.",
+        "Patch glfw’s nsgl_context.m to fallback to the generic CPU renderer when no accelerated pixel format is available.",
+        "When shipping Windows builds, rely on a system‑wide Mesa3D opengl32.dll rather than embedding the large stub DLL."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The post delivers original, hands‑on details for building and running MacOS binaries with Fyne, including VM setup, SDK acquisition, and GPU work‑arounds, which directly serve developers seeking concrete implementation knowledge. Its value is high but tempered by some peripheral links and modest pacing issues. The article is highly relevant to Linux/Go developers but offers limited novelty for broader audiences.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T16:08:33.772921"
+    },
+    {
+      "id": 5923,
+      "source_id": 34,
+      "original_url": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+      "title": "ChatGPT now knows what you do on other websites via ad collector",
+      "summary": "OpenAI's __obi cookie enables linking users' on‑site behavior on external advertisers to their ChatGPT accounts via cross‑site tracking.",
+      "ideas": [
+        "__obi cookie set on .openai.com with a one-year expiration and sent from advertiser pages.",
+        "Advertiser SDKs transmit __obi together with scraped identity such as email and phone hashes.",
+        "Observed cross-site reach on 12 major sites including Chewy, Wayfair, and Coursera.",
+        "685 scraped identity events versus 255 advertiser-provided events were sent to OpenAI.",
+        "The cookie is the only OpenAI identifier using SameSite=None for cross-site transmission.",
+        "Conversion events with __obi were accepted by OpenAI with HTTP 202 status across tested requests.",
+        "Anonymous and account subjects share the same __obi identifier, persisting at least 27 days."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a detailed, reproducible technical description of how OpenAI's __obi cookie links external site activity to a ChatGPT account. It includes concrete steps, token generation, cookie behavior, and measurements across multiple advertisers, demonstrating strong evidence of cross‑site tracking. Limitations include the focus on Chrome Android and lack of OpenAI's official response, preventing it from reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T16:03:57.158614"
+    },
+    {
+      "id": 5922,
+      "source_id": 34,
+      "original_url": "https://vincent.bernat.ch/en/blog/2026-goatcounter",
+      "title": "Bot-free self-hosted analytics with GoatCounter on NixOS",
+      "summary": "Interaction-gated, proxy-buffered, self-hosted GoatCounter analytics on NixOS cuts inflated AI-scraper traffic by 10x while preserving privacy-friendly, reproducible deployment.",
+      "ideas": [
+        "Requiring user interaction before counting filters AI scrapers without blocking humans",
+        "Log-based analytics inflated visitor counts ~10x versus interaction-filtered counting",
+        "CSS :hover border-image records analytics hits for JavaScript-disabled visitors",
+        "In-memory local proxy batches hits to survive days of backend downtime",
+        "Ephemeral systemd-nspawn containers with bind mounts and Colmena-managed secrets",
+        "Maintainers rightly reject niche one-time contributions to avoid long-term burden"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "A substantive practitioner writeup with real mechanisms: an interaction-gated custom analytics client, a CSS :hover fallback for no-JS visitors, a buffering local proxy, and complete NixOS module code for ephemeral systemd-nspawn containers with Colmena-managed secrets. The firsthand measurement that log-based analytics reported ~2,000 daily visitors while interaction-filtered counting sees fewer than 200 is an original, useful data point on AI-scraper inflation. Limitations: the bot-filtering trick is borrowed from Bear Blog rather than invented here, the piece is moderately niche, and the content is truncated near the end of the proxy configuration section.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T16:01:06.350717",
+      "image_url": "https://d2pzklc15kok91.cloudfront.net/images/covers/en/blog/2026-goatcounter.e99796e686b552.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5921,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/how-to-add-custom-pluralization-to-dotnet-ef-dbcontext-scaffold-with-ipluralizer/",
+      "title": "How to add custom table-name pluralization to dotnet ef dbcontext scaffold with IPluralizer",
+      "summary": "Customizing EF Core scaffold pluralization requires implementing IPluralizer, registering it via IDesignTimeServices with AddSingleton (not TryAddSingleton, which silently does nothing), and using a Pascal-case-aware split so whole identifiers like InvoiceStatus resolve correctly.",
+      "ideas": [
+        "TryAddSingleton<IPluralizer> is silently a no-op during design-time; AddSingleton is required.",
+        "EF Core's RelationalScaffoldingModelFactory calls Singularize on candidate identifiers, not raw words.",
+        "Splitting identifiers on the last Pascal-case boundary is required for suffix rules like Status to apply.",
+        "ConfigureUserServices only scans the startup assembly and uses FirstOrDefault, ignoring duplicates silently.",
+        "tbl_ prefix stripping must use ICandidateNamingService, since IPluralizer runs after candidate generation.",
+        "DesignTimeServicesReferenceAttribute runs before AddEntityFrameworkDesignTimeServices, reversing which TryAdd wins.",
+        "Humanizer.Core version should be pinned explicitly; relying on EF's transitive pin risks upgrade breakage."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "Original investigation of EF Core scaffolding internals with firsthand source-code verification (path and version pinned). Provides multiple non-obvious findings: TryAddSingleton is silently a no-op because HumanizerPluralizer is registered first via TryAdd; ConfigureUserServices scans only the startup assembly and uses FirstOrDefault so duplicate IDesignTimeServices are silently ignored; ICandidateNamingService runs before IPluralizer, so tbl_ stripping is a separate concern. Includes a complete, runnable IPluralizer with Pascal-case-aware split logic, real SQLite schema and concrete before/after outputs. Density and verifiability are high; trade-off is some padding with ADVERTISEMENT blocks and a minor truncation at the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T15:58:23.953047",
+      "image_url": "https://startdebugging.net/og/2026/09/how-to-add-custom-pluralization-to-dotnet-ef-dbcontext-scaffold-with-ipluralizer.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How to add custom table-name pluralization to dotnet ef dbcontext scaffold with IPluralizer - Start Debugging"
+    },
+    {
+      "id": 5920,
+      "source_id": 34,
+      "original_url": "https://sam.dev/blog/faster-sha1-collision-detection",
+      "title": "Solving for faster SHA-1 collision detection",
+      "summary": "A solver-generated SIMD implementation of SHA-1 collision detection closes most of the gap to plain SHA-1 and roughly doubles git pack verification speed.",
+      "ideas": [
+        "Spill SHA-1 schedule to a buffer so hardware SHA-NI/ARMv8 SHA-1 instructions can coexist with collision detection",
+        "Solver chooses prefix condition groups to maximize block-disqualification under a per-ISA group budget",
+        "Vector group of 4-8 conditions only pays off when bit positions, word distance, and shape all match",
+        "Witness blocks for fuzzing generated by solving linear equations on the message-expansion bits",
+        "Achieved 2-2.8x throughput over sha1-checked; reduced single-threaded pack verify SHA-1 share from 84% to 73%"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "Original engineering research with deep technical substance: the author built a solver-driven code generator that vectorizes SHA-1 collision detection into NEON/SSE2/AVX2 lanes, achieving 68-81% of plain SHA-1 speed versus 28-29% for the prior crate and ~2x speedup on real git pack verification. Includes concrete benchmark numbers across three architectures, mechanism explanations grounded in the Stevens-Shumow paper, a clever linear-algebra witness-generation technique for fuzzing, and reproducible code published on crates.io. Minimal noise, no hype, and clean differentiation between hardware-acceleration gains and vector-check gains.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T15:55:49.623782",
+      "image_url": "https://sam.dev/blog/faster-sha1-collision-detection/opengraph-image?b54d76b7efe3201a",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "A post on sam.dev"
+    },
+    {
+      "id": 5919,
+      "source_id": 34,
+      "original_url": "https://prakhargurunani.com/blog/building-an-agentic-coding-server-in-go/",
+      "title": "Building an Agentic Coding Server in Go",
+      "summary": "Agent harness quality determines how much model capability is wasted, and the highest-leverage decisions are instructive tool errors, content-hash read-before-edit, kernel-level path confinement, and pruning tool results before summarising.",
+      "ideas": [
+        "Go 1.24 os.Root eliminates TOCTOU path races via kernel-level openat resolution",
+        "Read-before-edit should track per-path content hashes, not boolean read flags",
+        "POSIX forces SIGINT ignored in background children; use SIGTERM then SIGKILL",
+        "Prune stale tool-result bodies before spending a model call on summarisation",
+        "Estimate tokens via byte ratio corrected by EWMA over reported usage tokens",
+        "Tool error messages are implementation, not decoration, they are the model's recovery signal",
+        "Deny-only guard chains are monotonic, so ordering cannot weaken safety",
+        "Provider quirks belong in data profiles, not code branches",
+        "Never cut between assistant tool_calls and results; providers reject the whole request",
+        "Programmatic exit-code checks beat noisy LLM judges for eval harnesses"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "A dense, firsthand engineering write-up of a ~12k-line Go agent harness, packed with non-obvious mechanisms: content-hash read-before-edit versioning, Go 1.24 os.Root eliminating the TOCTOU path race at the kernel level, asymmetric truncation, monotonic deny-only guard chains, self-correcting token estimation, and the POSIX SIGINT-ignoring behavior of background shell children. It is directly relevant to LLM systems, agent tooling, and security, with honest caveats (bash not jailed, no time-to-first-token benefit from streaming) and no hype. Limitations: evidence is mostly qualitative design rationale rather than benchmarks, and the content truncates near the end, cutting the measurement section.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T15:54:38.141852"
+    },
+    {
+      "id": 5918,
+      "source_id": 34,
+      "original_url": "https://joe.blog.freemansoft.com/2026/09/ollama-silently-drops-history-message.html",
+      "title": "Ollama silently drops a history message larger than its context window",
+      "summary": "Ollama drops whole history messages that exceed the model's trained context window, silently truncating without error, and the allocated window follows a simple min(requested, trained) rule.",
+      "ideas": [
+        "Ollama allocates context size as min(requested, trained window) with no warning.",
+        "History messages larger than the window are removed entirely, not trimmed.",
+        "Compare prompt_eval_count with sent token count to detect dropped history.",
+        "Tokenizers differ widely; size context in tokens, not characters or bytes."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, reproducible measurements of Ollama's context‑window handling, showing that oversized history messages are silently dropped and that the allocated window is clamped to the model's trained size. It includes token‑level data across multiple models and versions, a clear detection method (prompt_eval_count), and practical checks developers can use, making it highly relevant to AI/LLM engineering. While lengthy, the content stays focused on technical behavior without hype, though it assumes familiarity with Ollama APIs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T15:47:41.799124",
+      "image_url": "https://blogger.googleusercontent.com/img/a/AVvXsEhMb4GI2cnjTSa5j42fmwOQdTCfhpYfbvvYvNDc3e1V76KUHNwLWMvMli16Ku-n7BGhAqfaNw1y3mQm0VjTKaoPICKyksIqwH_BtLpgL0Feus_HyFEznHolLwi1rWMOgl7m8oIaznfrhM2dXL483r_V7gx20KZVWLT1rpRWFf5xgHf5MmLKnPuVKwqOYwCx=w1200-h630-p-k-no-nu",
+      "image_width": 864,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 5917,
+      "source_id": 34,
+      "original_url": "https://blog.vezpi.com/en/post/install-haproxy-opnsense-replace-caddy/",
+      "title": "Installing HAProxy on OPNsense to replace Caddy",
+      "summary": "Using HAProxy as a TCP dispatcher with SNI‑based maps enables OPNsense to terminate TLS for internal services while preserving passthrough for Traefik‑managed sites.",
+      "ideas": [
+        "HAProxy inspects TLS ClientHello with a 5 s delay to route SNI without terminating TLS.",
+        "Maps assign hostnames to policies (e.g., INTERNAL_INFRA, EXTERNAL_DOCKERVM) for routing decisions.",
+        "ACME certificates are obtained via os‑acme‑client and reloaded automatically after renewal.",
+        "Disabling HTTP/2 in backend pools resolves long loading screens for Proxmox/TrueNAS interfaces."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides clear, step‑by‑step HAProxy configuration that directly solves the SSL error and demonstrates concrete TLS inspection, map routing, and ACME integration. It is highly relevant to sysadmin and infrastructure readers seeking practical reverse‑proxy migration details. Some introductory filler and GUI limitations add minor noise, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-21T15:38:31.317459",
+      "image_url": "https://blog.vezpi.com/en/post/install-haproxy-opnsense-replace-caddy/cover-23.webp",
+      "image_width": 1672,
+      "image_height": 940,
+      "image_alt": ""
+    },
+    {
+      "id": 5916,
+      "source_id": 4,
+      "original_url": "https://darkmarc.substack.com/p/hijacking-ai-agents-how-an-agents",
+      "title": "https://darkmarc.substack.com/p/hijacking-ai-agents-how-an-agents",
+      "summary": "Attackers can hijack AI agents by embedding malicious instructions in retrieved content, causing unauthorized actions.",
+      "ideas": [
+        "AI agents treat fetched text as instructions, creating execution blind spots.",
+        "OWASP ranks Agent Goal Hijack as ASI01, the top agentic security risk.",
+        "Attackers embed malicious commands in web pages that agents retrieve.",
+        "Real attacks have used hijacked agents to steal crypto funds via bankr.",
+        "Compromised npm packages forced AI coding agents to exfiltrate secrets.",
+        "Calendar invites can hijack Gemini assistants, enabling unauthorized actions.",
+        "Cross‑browser agents share the same provenance flaw in instruction handling.",
+        "Input validation alone fails; all natural‑language inputs must be untrusted.",
+        "Indirect prompt injection can trigger transfers, data leaks, or system crashes.",
+        "Defense requires treating all fetched text as untrusted user input."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The piece uniquely defines Agent Goal Hijack as OWASP ASI01, explains how fetched text becomes executable instructions, and provides multiple concrete, documented exploits across crypto, npm, calendar invites, and cross‑browser agents, delivering extensive actionable insight. It dissects why traditional input validation fails and outlines clear mitigation principles. No significant padding or clickbait is present, avoiding major penalties.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-21T15:32:11.085763"
+    },
+    {
+      "id": 5915,
+      "source_id": 4,
+      "original_url": "https://www.securifera.com/blog/2026/09/21/one-login-two-rces-cve-2026-90822-and-cve-2026-90823/",
+      "title": "https://www.securifera.com/blog/2026/09/21/one-login-two-rces-cve-2026-90822-and-cve-2026-90823/",
+      "summary": "Combining protobuf misuse and unchecked strcpy creates a dual‑stage root exploit, but can be mitigated with proper input validation and hardened binaries.",
+      "ideas": [
+        "Unchecked strcpy() into fixed buffer enables stack overflow ROP exploit",
+        "Protobuf fields concatenated into shell command cause OS command injection",
+        "XSS filter misses POSIX shell metacharacters, allowing command substitution",
+        "Multiple -g layers can write zero bytes via strcpy termination primitive",
+        "Shell expansion can compress payload to bypass command buffer size limits",
+        "Use of popen() without argument vector leads to unsafe command execution",
+        "Mitigation: replace unbounded copy with length check and remove shell from auth path",
+        "Rebuild native components with stack canaries, PIE, RELRO, fortified libc"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple concrete security insights, exploit techniques, and mitigation steps, providing high value for pentesters and defenders. It includes novel exploitation methods (protobuf‑to‑shell injection, multi‑layer strcpy trick) and practical remediation advice, with no clickbait or padding. Strong thematic relevance to CyberSecurity justifies a good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-21T15:32:07.394678"
+    },
     {
       "id": 5914,
       "source_id": 32,
