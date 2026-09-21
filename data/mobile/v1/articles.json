@@ -1,11 +1,364 @@
 {
   "schema_version": 1,
-  "sequence": 749,
-  "revision": "sha256:ee8c5ba3ef00dfbecd22298a2f65da381fe9bbe88124142a7eb208e23daa76a6",
-  "generated_at": "2026-09-21T17:00:00.163093+00:00",
+  "sequence": 750,
+  "revision": "sha256:2c86512ea756d5e6beec45d2ab5526a91f1914e4fa11cb96f6ab95c6a1c25600",
+  "generated_at": "2026-09-21T19:00:00.181271+00:00",
   "complete": true,
-  "total_items": 960,
+  "total_items": 976,
   "items": [
+    {
+      "article_id": "article:5944",
+      "original_url": "https://startdebugging.net/2026/09/how-to-add-the-current-user-id-to-every-log-entry-in-aspnet-core/",
+      "title": "How to add the current user id to every log entry in ASP.NET Core",
+      "summary": "Use Microsoft.Extensions.Telemetry's ILogEnricher (not a BeginScope middleware) to attach the current user id to every log entry in ASP.NET Core, because AsyncLocal scopes miss log calls emitted after the middleware unwinds, such as the exception handler's error and the hosting 'Request finished' line.",
+      "rating": 88,
+      "rating_reason": "Highly concrete practitioner article that goes well beyond introductory tutorials. The author identifies a structural reason (AsyncLocal scope lifetime vs late log emissions from ExceptionHandlerMiddleware and hosting diagnostics) why the common BeginScope middleware approach fails, demonstrates it with a real results table from an actual test app, and documents a non-obvious Serilog trap where a specific registration order produces zero log output silently. Code, package versions, and JSON output are reproduced verbatim, and the article closes with several production gotchas (JWT MapInboundClaims, GDPR, Blazor interactivity) that add further value.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T04:19:07.746866+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T04:19:07.746866+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/09/how-to-add-the-current-user-id-to-every-log-entry-in-aspnet-core.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "How to add the current user id to every log entry in ASP.NET Core - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:5943",
+      "original_url": "https://mil.ad/blog/2026/wl-pick.html",
+      "title": "wl-pick: a live window picker for Sway",
+      "summary": "wl-pick provides live, zero‑pixel‑inspection previews of Sway windows by reusing capture buffers as subsurfaces.",
+      "rating": 86,
+      "rating_reason": "The article delivers a concrete, firsthand engineering solution for live window picking in Sway, explaining the capture protocol and near‑zero overhead of live previews. It is highly relevant to Linux/Wayland users seeking efficient window selection without external tools. The main limitation is that it relies on recent Sway versions (≥1.11) and requires Rust/cargo to run. Otherwise the technical depth and practical utility are strong.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T04:09:30.042206+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T04:09:30.042206+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5942",
+      "original_url": "https://mcclowes.com/blog/2026/09/20/too-many-agents-one-mac",
+      "title": "Too many agents, one Mac",
+      "summary": "Parallel coding agents on a single machine need a system-wide, memory-aware admission controller (like Turnstile) rather than per-agent coordination, because the constrained resource is the computer itself, not any individual agent.",
+      "rating": 85,
+      "rating_reason": "Concrete engineering article addressing a real and underappreciated problem: parallel AI coding agents contending for CPU/memory on a single Mac, causing throughput collapse. Provides specific metrics (1,435 jobs over 30 days, median wait 2ms, p90 32s, longest 2h 39m), a clear architecture (PATH shims feeding a priority/resource-aware admission daemon), and thoughtful comparison with Matt McKenna's MCP-based approach. Substantive firsthand experience, with appropriate caveats (macOS-only, fail-open design). Self-promotion of Turnstile is balanced by acknowledging alternative solutions and explaining trade-offs.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T04:09:04.000157+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T04:09:04.000157+00:00",
+      "image": {
+        "url": "https://mcclowes.com/img/social-card.png",
+        "width": 993,
+        "height": 599,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5941",
+      "original_url": "https://llbbl.blog/2026/09/21/my-quality-tool-gave-missing.html",
+      "title": "My Quality Tool Gave Missing Checks a Perfect Score",
+      "summary": "A scoring tool that silently gave missing checks a perfect score taught the author to exclude unmeasured metrics from totals and report coverage alongside any letter grade.",
+      "rating": 85,
+      "rating_reason": "Excellent firsthand engineering post-mortem on a subtle scoring bug in the cargo upkeep Rust quality tool. The article identifies three concrete failure modes (missing checks defaulting to perfect scores, dependency count vs. checked count mismatch, error string mismatch causing misclassification), explains the mechanisms clearly, and documents the fix with commit references and sample JSON output. Highly relevant to anyone building quality/scoring/CI tooling, with non-obvious lessons that go well beyond this specific tool.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T04:06:45.411254+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T04:06:45.411254+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5940",
+      "original_url": "https://lanrat.com/posts/fixing-arista-7050s-management/",
+      "title": "Fixing Arista 7050S Management1 \"notpresent\"",
+      "summary": "Flashing a newer Arista Aboot bootloader or setting NETDEV=lo restores the Management1 Ethernet interface by preventing the NIC from being power‑gated during EOS boots.",
+      "rating": 88,
+      "rating_reason": "The article delivers detailed, first‑hand engineering diagnosis and two concrete fixes for a persistent Management1 notpresent error, showing bootloader incompatibility and power‑gate behavior. It provides exact commands, boot‑config variables, and firmware upgrade steps, supported by measurements and rollback procedures. Limitations include the need for donor firmware images and risk associated with flashing, and some narrative padding reduces efficiency.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T04:05:45.796129+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T04:05:45.796129+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5939",
+      "original_url": "https://joe.blog.freemansoft.com/2026/09/a-full-context-breaks-three-local.html",
+      "title": "A full context breaks three local models, each in a different way - 7",
+      "summary": "Filling a model's context window beyond about three‑quarters consistently reduces its ability to output correctly‑shaped Adaptive Card JSON, with each affected model failing in a unique, non‑obvious way.",
+      "rating": 86,
+      "rating_reason": "The article presents a systematic, reproducible experiment on how long context windows degrade local LLM behavior, with clear measurements, failure categorization, and actionable implications for developers. It provides concrete data on shape‑coverage loss, distinct error modes, and practical checks needed for production chat applications. The coverage is deep but limited by niche focus on Adaptive Card rendering and a specific set of models, preventing it from being exceptional. It suffers slight noise from repetitive filler descriptions and minor presentation issues.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T04:02:31.503036+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T04:02:31.503036+00:00",
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/a/AVvXsEjrfycyGtstb0lajgk_3TbBRHRTfIXZf4Bc-JXPhnn8jsfjm3vUQOswpjTNm7T4Dk8JQxWHHt3sC7iS2Gvf5UOjJwNIkJ22sUOJCQe57Ek01geqx0qw5U0HwiEVeNLmwfu7KtVKsWrxT5f535qNt7t-QLXhX2WtZucBhk23tcgK-jjzohJoyoZ9sVMcAAla=w1200-h630-p-k-no-nu",
+        "width": 751,
+        "height": 486,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5938",
+      "original_url": "https://blog.r6i.it/typesafe-jev-vs-agentic-loop.html",
+      "title": "Typed Judgments or Agentic Loops? Benchmarking Jev Against a GPT Agent",
+      "summary": "Typed judgments can achieve 7× faster latency and fewer calls than agentic loops for clear classifications, yet they need additional checks for ambiguous or depth‑dependent cases.",
+      "rating": 85,
+      "rating_reason": "The article provides detailed measurements showing a typed judgment system reduces latency by 7× and cuts calls by 56% compared to an agentic loop, explains the speculative fan‑out mechanism, and highlights failure modes such as depth truncation and path_score misuse. It is highly relevant to AI engineers evaluating classification primitives, but the results depend on a specific taxonomy and the path_score metric is shown to be an imperfect proxy for correctness.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T03:52:31.372560+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:52:31.372560+00:00",
+      "image": {
+        "url": "https://blog.r6i.it/images/social/typesafe-jev-vs-agentic-loop.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Typed Judgments or Agentic Loops? Benchmarking Jev Against a GPT Agent"
+      }
+    },
+    {
+      "article_id": "article:5937",
+      "original_url": "https://amitkvint.com/writing/what-should-never-be-automated/",
+      "title": "What Should Never Be Automated",
+      "summary": "Automating the wrong tasks erodes the human capacity needed for customer trust and complex problem solving.",
+      "rating": 92,
+      "rating_reason": "The article supplies concrete measurements, a clear classification mechanism, and a rigorous analysis of how automation reshapes support work. It directly addresses technically sophisticated readers interested in AI engineering and operational practice. Its limitation is a focus on a single support context, which may reduce broader applicability.",
+      "labels": [
+        "AI",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T03:47:41.822762+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:47:41.822762+00:00",
+      "image": {
+        "url": "https://amitkvint.com/share.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5936",
+      "original_url": "https://securityaffairs.com/199460/hacking/a-byd-shark-6-hack-shows-the-risks-of-connected-cars.html",
+      "title": "A BYD Shark 6 Hack Shows the Risks of Connected Cars",
+      "summary": "Remote hacking of a BYD Shark 6 shows connected cars can be commandeered to control vehicle functions and spy on occupants due to weak security and regulatory gaps.",
+      "rating": 82,
+      "rating_reason": "The piece provides several concrete value instances, such as the unprotected entry point, remote control of lights and wipers, microphone eavesdropping, and extraction of passwords via the voice assistant. It also highlights the lack of mandatory vehicle cybersecurity standards and the associated national‑security concerns for foreign‑made EVs. Only modest promotional padding prevents a perfect rating, resulting in an 82 score.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-22T03:44:46.895119+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:44:46.895119+00:00",
+      "image": {
+        "url": "https://securityaffairs.com/wp-content/uploads/2026/09/image-58.png",
+        "width": 700,
+        "height": 482,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5935",
+      "original_url": "https://0xdf.gitlab.io/2026/09/21/htb-hercules.html",
+      "title": "0xdf hacks stuff",
+      "summary": "A single LDAP injection can chain into full domain compromise when combined with machine-key cookie forging, AD CS misconfiguration (ESC3), and delegation abuse.",
+      "rating": 86,
+      "rating_reason": "This is an exceptionally dense technical writeup with 10+ distinct, transferable security techniques: LDAP injection past client-side filters, rate-limit bypass for password spraying, three-way 404 fingerprinting to identify IIS/ASP.NET/MVC layers, ASP.NET machine key leakage enabling auth cookie forgery, shadow credentials, OU-based permission inheritance, ESC3 certificate abuse, and delegation-to-DCSync escalation. Each step includes real commands, outputs, and reasoning about why techniques work rather than just recipes. Thematic alignment is perfect for CyberSecurity, and the expert insight is not commonly available; minor deductions because CTF writeups are niche and command output adds bulk without proportional insight.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-22T03:41:44.068407+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:41:44.068407+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5934",
+      "original_url": "https://github.com/naw103/foremerge",
+      "title": "Show HN: Foremerge – Catch intent conflicts between parallel coding agents",
+      "summary": "Foremerge prevents hidden merge conflicts by letting AI agents pre‑announce their intended code changes and alerts on overlapping intents before any edits occur.",
+      "rating": 92,
+      "rating_reason": "The post delivers multiple novel insights—such as announcing intent via symbolic scopes, a shared SQLite coordination store, and advisory conflict detection—that solve hidden merge conflicts between parallel AI agents. It provides extensive CLI examples, a clear semantic workflow, and reproducible outcomes, giving very high value density for a technical audience. No major penalties apply, resulting in a strong score.",
+      "labels": [
+        "Tech",
+        "AI",
+        "Productivity"
+      ],
+      "source_id": 29,
+      "source_name": "Hacker News Show",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T03:41:05.964783+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:41:05.964783+00:00",
+      "image": {
+        "url": "https://repository-images.githubusercontent.com/1342084139/287b3c71-0a34-4383-a6bc-c7137af4d1a6",
+        "width": 1280,
+        "height": 640,
+        "alt": "Catch intent conflicts before code conflicts. The open-source coordination protocol for coding agents, built above Git. - naw103/foremerge"
+      }
+    },
+    {
+      "article_id": "article:5933",
+      "original_url": "https://unit42.paloaltonetworks.com/detecting-exposed-aws-iam-credentials/",
+      "title": "From Exposure to Lockdown: How AWS Neutralizes Compromised IAM Credentials through Managed Policies",
+      "summary": "AWS silently quarantines leaked IAM keys within seconds of exposure, but the resulting CloudTrail event falsely shows the victim user as the actor, so defenders must alert on the specific quarantine policy ARN to catch incidents their logs would otherwise miss.",
+      "rating": 84,
+      "rating_reason": "This Unit 42 research delivers substantial expert insight through original experimentation: the team deliberately exposed an AWS access key and documented the quarantine response with a second-precise CloudTrail timeline, revealing non-obvious forensic details like the AttachUserPolicy event misattributing AWS's automated action to the victim IAM user and the fact that Health alerts and Support cases generate no CloudTrail events. Practical value includes the full v1 policy JSON, a concrete detection strategy (alerting on the policy ARN in requestParameters), and the Systems Manager Explorer tip for closing org communication gaps. Thematic relevance to cybersecurity and cloud infrastructure is very strong. Minor deductions apply for the vendor product-promotion boilerplate and the truncated conclusion, which slightly reduce polish but do not undermine the original research value.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-22T03:40:49.002656+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:40:49.002656+00:00",
+      "image": {
+        "url": "https://unit42.paloaltonetworks.com/wp-content/uploads/2026/09/04_Cloud_cybersecurity_research_Overview_1920x900.jpg",
+        "width": 1920,
+        "height": 900,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:5932",
+      "original_url": "https://www.openwall.com/lists/oss-security/2026/09/16/14",
+      "title": "CVE-2026-89775: Guest-to-Host Escape in KVM/arm64",
+      "summary": "A type‑truncation bug in KVM’s pseudo‑TLB handling lets an unprivileged guest obtain arbitrary host memory access on arm64 systems with nested virtualization.",
+      "rating": 82,
+      "rating_reason": "The content provides several concrete, technical insights about a newly disclosed KVM/arm64 vulnerability, including its root cause, exploitation path, impact scenario, and patch details, delivering high value density for security professionals. Minor padding from product listings is present but does not detract significantly. It aligns strongly with the CyberSecurity theme.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-22T03:36:28.741006+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:36:28.741006+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5931",
+      "original_url": "https://the-decoder.com/xai-launches-grok-4-7-at-bargain-prices-but-benchmarks-reveal-a-wide-gap-to-claude-and-gpt-6/",
+      "title": "xAI launches Grok 4.7 at bargain prices, but benchmarks reveal a wide gap to Claude and GPT-6",
+      "summary": "Grok 4.7 is a low‑cost model that lags significantly behind Claude and GPT‑6 on key benchmarks.",
+      "rating": 80,
+      "rating_reason": "The article supplies concrete, actionable data: pricing details, overall AI Index score, and specific benchmark results for Grok 4.7 versus Claude and GPT-6, offering clear insight for AI practitioners. With four distinct value instances in a concise (~300‑word) piece, the value density is high and there are no clickbait, padding, or promotional penalties.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 28,
+      "source_name": "The Decoder",
+      "source_type": "rss",
+      "admitted_at": "2026-09-22T03:34:28.913289+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:34:28.913289+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5930",
+      "original_url": "https://www.schneier.com/blog/archives/2026/09/reverse-engineering-flock-cameras.html",
+      "title": "Schneier on Security",
+      "summary": "Reverse-engineering a Flock ALPR camera reveals extensive surveillance capabilities and a critical encryption misconfiguration.",
+      "rating": 85,
+      "rating_reason": "The post delivers multiple concrete insights, including detailed technical findings and a clear security flaw, with high value density and no evident padding or clickbait. It aligns strongly with CyberSecurity and Tech themes. Minor limitations are marginal and do not affect overall assessment.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-22T03:33:28.455123+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:33:28.455123+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:5929",
+      "original_url": "https://minanagehsalalma.github.io/zte-smartlife-app-pwned/",
+      "title": "Technical writeup",
+      "summary": "When a backend accepts a mobile client's embedded cryptographic identity as proof of user authorization, recovering the client's key material converts app access into complete account takeover - a flaw class that generalizes far beyond this specific product.",
+      "rating": 90,
+      "rating_reason": "This is original, first-hand security research of exceptional depth: a vendor-verified account takeover chain in ZTE SmartLife (four CVEs, CVSS 8.8) documented with full methodology, recovered key material (CVE-2026-86555), two independent PoC approaches (direct replay and Frida runtime extraction), an endpoint behavior matrix, and coordinated disclosure artifacts. The writeup delivers 10+ distinct value instances including the crucial architectural lesson that app-level authentication was conflated with user-level authorization, the bootstrap-blob key recovery chain, account enumeration via verify endpoints, and reset-without-reset-code takeover. Minor deductions only for the content being truncated mid-sentence and for the specificity of some findings to this single product ecosystem; the methodology and bug-class lessons generalize broadly.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-22T03:33:00.991748+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-22T03:33:00.991748+00:00",
+      "image": {
+        "url": "https://minanagehsalalma.github.io/zte-smartlife-app-pwned/writeup-assets/Hero.png",
+        "width": 1774,
+        "height": 887,
+        "alt": "ZTE SmartLife security findings"
+      }
+    },
     {
       "article_id": "article:5928",
       "original_url": "https://www.interconnects.ai/p/the-current-balance-of-power-in-open",
