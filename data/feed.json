@@ -1,7 +1,443 @@
 {
-  "updated_at": "2026-09-22T17:00:00.359047+00:00",
-  "total_items": 964,
+  "updated_at": "2026-09-22T19:00:00.203920+00:00",
+  "total_items": 982,
   "items": [
+    {
+      "id": 5976,
+      "source_id": 34,
+      "original_url": "https://lapcatsoftware.com/articles/2026/9/5.html",
+      "title": "macOS 26.4 silently enabled login keychain data protection",
+      "summary": "macOS 26.4 silently enabled iOS-style Data Protection on the login keychain, binding its encryption to the specific APFS volume and Secure Enclave so the keychain is no longer portable and is catastrophic to recover from backup unless you still have a pre-26.4 copy.",
+      "ideas": [
+        "macOS 26.4 enabled Data Protection on the login keychain, binding it to the volume/SE.",
+        "Any password unlocks a DP-protected login keychain via `security unlock-keychain`.",
+        "Pre-26.4 login keychain backups remain recoverable on newer macOS after renaming the file.",
+        "APFS volume encryption is per-volume, not shared across boot volumes on one Mac."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Original, firsthand technical investigation with exceptional substance: identifies the exact mechanism (Apple enabling Data Protection for the login keychain), shows the relevant securityd source code excerpt, provides reproducible test commands, reports firsthand VM/boot-volume experiments, and documents a real-world data-loss case with practical workaround. The author is an experienced Mac security researcher, claims are well-supported by evidence, and the content delivers actionable knowledge (keychain file renaming for downgrade-path recovery, the fact that any password works against a DP-protected keychain because SE handles auth). Slight deductions only for occasional loaded framing ('sabotaged') and the reliance on one anecdotal Reddit post for catastrophic-loss evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:28:53.686494"
+    },
+    {
+      "id": 5975,
+      "source_id": 34,
+      "original_url": "https://jonathankinlay.com/2026/09/the-holdout-that-made-the-sharpe-bigger/",
+      "title": "The Holdout That Made the Sharpe Bigger",
+      "summary": "Reusing validation windows inflates reported Sharpe dramatically, while simple evolutionary search adds no measurable predictive power.",
+      "ideas": [
+        "Evolutionary search adds no measurable Sharpe beyond random selection.",
+        "Reusing validation windows inflates Sharpe by up to 74%.",
+        "Random 200‑expression pool yields Sharpe ~2.0 on null panels.",
+        "De‑flated Sharpe shows size inflation on search‑derived candidate families.",
+        "Out‑of‑path gate fails to eliminate manufactured Sharpe."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article presents original, reproducible evidence on how selection and holdout reuse inflate Sharpe ratios, with detailed methodology, measurements, and quantified effects. It addresses a core validation problem relevant to AI/ML model testing and quantitative research. While technical depth is high, the focus on finance may limit direct alignment with the core interest categories, slightly tempering the score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:25:18.187121"
+    },
+    {
+      "id": 5974,
+      "source_id": 34,
+      "original_url": "https://hsaghir.com/blog/2026-09-11-agents-are-files/",
+      "title": "Agents Are Files",
+      "summary": "Storing agent behavior in editable, testable files (cartridges) enables reliable modular improvement and separation of concerns.",
+      "ideas": [
+        "Cartridge directory separates behavior, config, prompts, tools, and evals.",
+        "Host controls execution and enforces safety checks before actions.",
+        "Captured‑response replay tests changes deterministically without model variation.",
+        "Autonomous improvement lets another agent edit a cartridge, judged by host tests.",
+        "Separate permissions prevent edited agents from altering final validation logic."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides concrete, testable cartridge architecture for AI agents, with original evaluation methodology and reproducible experiments. It is highly relevant to AI engineering and offers practical mechanisms for modular behavior editing. However, its depth assumes familiarity with agent frameworks and may not generalize to all use cases.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:19:10.033270",
+      "image_url": "https://hsaghir.com/images/looplet/platform-ownership.png",
+      "image_width": 1800,
+      "image_height": 945,
+      "image_alt": ""
+    },
+    {
+      "id": 5973,
+      "source_id": 34,
+      "original_url": "https://entropicthoughts.com/cheaper-llm-labeling",
+      "title": "Cheaper LLM labelling",
+      "summary": "A Perl pipeline uses a lightweight logistic‑regression filter to label easy commits, reserving costly LLM calls for uncertain cases while training and caching the filter on the fly.",
+      "ideas": [
+        "Cheap classifier filters obvious labels before invoking LLM.",
+        "Logistic regression trained by streaming one label at a time.",
+        "Cache LLM outputs using deterministic random seeds for reproducibility."
+      ],
+      "labels": [
+        "AI",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece delivers concrete Perl code, a full logistic regression implementation, and a streaming training approach that cuts expensive LLM calls. It includes calibration via Platt scaling, cache optimisations, and measurable latency improvements, all with reproducible examples. Some exposition and appendix material dilute density, but the technical depth and actionable methodology remain strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:11:51.363219"
+    },
+    {
+      "id": 5972,
+      "source_id": 34,
+      "original_url": "https://clouatre.ca/posts/orchestrating-ai-agents-subagent-architecture/",
+      "title": "Orchestrating AI Agents: A Subagent Architecture",
+      "summary": "Fresh, isolated subagents with structured JSON handoffs eliminate context rot and enable reproducible, high-quality AI-driven code changes.",
+      "ideas": [
+        "Specialized subagents with isolated contexts reduce token waste and improve PR acceptance.",
+        "Guard agent validates research proposals and flags risks before plan synthesis.",
+        "AGENTS.md provides portable project rules that all subagents inherit automatically.",
+        "Routing building to Haiku cuts cost up to 5× versus single Opus.",
+        "Handoff JSON files make the AI SDLC auditable, resumable, and debuggable."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a concrete subagent workflow with measurable cost and quality gains, showcasing isolated contexts, structured JSON handoffs, and reproducible results. It provides original engineering insight beyond generic AI hype, though some promotional tone moderates its impact. The depth of technical detail makes it highly valuable for practitioners seeking actionable architecture guidance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:06:26.045702"
+    },
+    {
+      "id": 5971,
+      "source_id": 34,
+      "original_url": "https://carldesouza.com/copilot-studio-evals-a-practical-guide-to-testing-ai-agents/",
+      "title": "Copilot Studio Evals: A Practical Guide to Testing AI Agents",
+      "summary": "Evals enable systematic, repeatable testing of AI agents by encoding acceptance criteria and supporting custom abstention checks.",
+      "ideas": [
+        "Evals encode explicit acceptance criteria for AI responses.",
+        "Test sets can be auto‑generated or hand‑crafted for targeted scenarios.",
+        "Custom criteria can enforce correct abstention when policy lacks data."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, mechanistic guidance on building and using Copilot Studio evaluations, including how to create test sets, design custom abstention criteria, and integrate via Power Platform APIs. It avoids fluff and provides actionable steps that a technically proficient reader can apply directly. Its relevance is strong for AI/ML engineering and software testing, though it stays within a narrow domain and does not cover broader AI policy or industry trends.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:02:03.201663",
+      "image_url": "https://carldesouza.com/wp-content/uploads/2026/09/img_6ab161ff794ff.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 5970,
+      "source_id": 34,
+      "original_url": "https://brianmuenzenmeyer.com/posts/2026-pr-age-gate/",
+      "title": "PR Age Gate",
+      "summary": "Enforcing configurable hour‑based waiting periods in CI can automate open‑governance policies, with bypass options for urgent changes.",
+      "ideas": [
+        "Enforces configurable hour wait before PR can be merged.",
+        "Uses GitHub Actions schedule to auto‑green after timeout.",
+        "Allows bypass via labels or file‑path glob patterns.",
+        "Provides standalone npm CLI for any CI environment.",
+        "MIT‑licensed tool already used by nodejs.org for governance."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, actionable guidance for automating open‑governance waiting periods in CI, with detailed GitHub Actions configuration, bypass mechanisms, and a reusable CLI, directly serving engineers interested in process automation. Its value is high but limited by modest novelty and a slight promotional tone that leans toward self‑promotion of the author's tool. The explanation of why a clock is a governance feature adds depth, while the MIT license and real‑world adoption demonstrate practical relevance. However, the piece offers limited empirical evidence or benchmark data, keeping it from reaching the highest tier.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T04:01:06.854043"
+    },
+    {
+      "id": 5969,
+      "source_id": 34,
+      "original_url": "https://blog.pwkf.org/2026/09/21/correct-type-punning-in-c.html",
+      "title": "Type Punning in C and C++",
+      "summary": "Pointer casts for type punning invoke undefined behavior and can be silently optimized away, while unions or memcpy give defined, portable reinterpretation.",
+      "ideas": [
+        "Pointer casts violate strict aliasing and cause UB",
+        "Union or memcpy safely reinterpret memory",
+        "Compilers may remove code assuming no aliasing",
+        "C++ allows stricter aliasing assumptions than C"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, non‑obvious insight into strict‑aliasing undefined behavior, shows a reproducible optimization trap, and provides practical safe alternatives such as unions and memcpy. It includes full code examples, explains the C‑vs‑C++ divergence, and warns about silent compiler optimizations. The value is high but limited to type‑punning scenarios and lacks deeper theoretical generalization.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:56:14.600741"
+    },
+    {
+      "id": 5968,
+      "source_id": 34,
+      "original_url": "https://blog.officefloor.net/2026/09/we-asked-nicely-and-it-cost-23-percent.html",
+      "title": "We asked nicely and it cost 23 percent",
+      "summary": "Plain‑English prompts reduce method bloat but increase cost and do not reliably improve structure, revealing a clear trade‑off between readability and correctness.",
+      "ideas": [
+        "Plain English cut added lines from ~600 to ~30 per 60 changes",
+        "Complexity dropped from 201 to 129 on average",
+        "23% higher tool‑turn cost with 「ask nicely」 vs. formula",
+        "Logic moved into new Spring beans half the time, enabling injection",
+        "Duplication rose ~25%, showing reuse request not fully realized"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article presents a tightly controlled experiment with reproducible measurements, concrete metrics, and clear comparisons across three prompting strategies. It delivers original insights on code‑size reduction, complexity shifts, cost impacts, and structural trade‑offs that are directly useful for AI‑assisted software development. Limitations include modest sample size, focus on one codebase, and a trade‑off between structural improvement and correctness loss, but overall the evidence is strong and actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:53:31.485525"
+    },
+    {
+      "id": 5967,
+      "source_id": 34,
+      "original_url": "https://benjaminreece.com/blog/feldd-cc-a-45-dollar-controller-for-claude-code",
+      "title": "feldd-cc: a $45 hardware controller for Claude Code",
+      "summary": "feldd firmware turns a $45 open‑source SP‑1 controller into a real‑time hardware console that mirrors AI agent state and controls Claude Code sessions via LEDs, faders, and buttons.",
+      "ideas": [
+        "Custom firmware flashes onto $45 TE‑1 SP‑1 to emulate keyboard and MIDI",
+        "LEDs reflect session state using cadence (pulse, solid, blinking)",
+        "Faders control autopilot duration and fleet‑wide functions",
+        "State files shared with tmux cockpit ensure hardware and software agree",
+        "Verify gate prevents green LED on red verification"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a concrete, original firmware implementation that ties cheap hardware to AI agent workflows, with detailed mechanisms, state‑file synchronization, and safety checks. It is highly relevant to technically inclined readers interested in AI tooling and efficient workflow customization. Limitations include reliance on unofficial firmware and assumptions about the reader's existing setup.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:47:55.189086",
+      "image_url": "https://benjaminreece.com/images/og-default.jpg",
+      "image_width": 1200,
+      "image_height": 500,
+      "image_alt": "feldd-cc: a $45 hardware controller for Claude Code"
+    },
+    {
+      "id": 5966,
+      "source_id": 34,
+      "original_url": "https://bengreenberg.dev/blog/your-agent-has-a-wallet-it-still-can-t-buy-anything/",
+      "title": "Your agent has a wallet. It still can't buy anything.",
+      "summary": "It shows how to let autonomous agents pay for API calls using MPP on Arbitrum with signed credentials and merchant‑paid gas.",
+      "ideas": [
+        "MPP separates challenge, credential, and settlement stages for secure agent payments.",
+        "EIP‑3009 lets the merchant settle tokens without the payer holding ETH for gas.",
+        "Permit2 requires a one‑time allowance approval, enabling payments for tokens lacking EIP‑3009."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives a concrete, reproducible implementation of the Machine Payments Protocol on Arbitrum, with clear code, step‑by‑step instructions, and a comparison of EIP‑3009 versus Permit2. It introduces a novel payment flow for autonomous agents and explains the gas‑inversion model, which is valuable for engineers building agentic services. The content is focused and low on hype, though some promotional fluff reduces efficiency slightly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:47:00.268088"
+    },
+    {
+      "id": 5965,
+      "source_id": 34,
+      "original_url": "https://b1tank.github.io/writing/my-real-world-qwen38-flash-next-agent-run/",
+      "title": "Qwen3.8-Flash-Next on a 64 GB M2 Ultra: A 66-Minute Real Work Run",
+      "summary": "A 64GB M2 Ultra can sustain a 66-minute, 106-tool-call agentic coding session with Qwen3.8-Flash-Next at ~35.5 tok/s decode, but long-context rebuilds (~3 min for 78K tokens) and compaction (~6 min) become the practical bottleneck.",
+      "ideas": [
+        "Mixed-precision Q2 with BF16 n-grams on SSD fits 137 GiB model in 64 GB RAM with ~47 GiB peak plan",
+        "96.5% cache hit rate across 6.59M cumulative input tokens sustains long agent sessions efficiently",
+        "Split-turn compaction produced two summarization calls, paused ~6 min, and preserved enough context to continue",
+        "Cold context rebuild of 78K tokens after Pi restart took ~3 min at 427 tok/s prefill",
+        "Three distinct macOS packaging failures: CRLF line endings, missing rasterized tray assets, Linux-bundled CLI wrapper",
+        "Median completed-response decode of 36.6 tok/s remained tolerable for interactive coding over 66 minutes",
+        "47 GiB is a memory plan, not measured peak footprint; screenshots show nonzero system swap during heavy GPU use"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Exceptional firsthand engineering evidence with exact commands, precise measurements (35.5 tok/s decode, 401.7 tok/s prefill, 96.5% cache hit rate across 6.59M cumulative input tokens), and honest acknowledgment of limitations (no MTP draft-acceptance stats, cumulative vs unique token accounting). The article documents a real 66-minute agentic coding session diagnosing three concrete packaging failures on macOS, with detailed compaction and cold-resume mechanics. Some speculative framing (future date, unfamiliar model name) slightly reduces trust, but the technical substance is dense, verifiable, and directly useful to practitioners running local LLMs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:45:43.031074"
+    },
+    {
+      "id": 5964,
+      "source_id": 34,
+      "original_url": "https://b1tank.github.io/writing/how-far-can-a-64gb-m2-ultra-push-local-llms/",
+      "title": "How Far Can a 64 GB M2 Ultra Push Local LLMs?",
+      "summary": "A reproducible benchmark study showing what actually runs usably on a 64 GB M2 Ultra across dense, MoE, and SSD-streamed 284B models, with concrete token-throughput, memory-footprint, and failure-boundary data for each configuration.",
+      "ideas": [
+        "MTP speedup varies by quantization: q8 +50%, q4 +9%, q6 slightly slower on identical hardware."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional hands-on investigation of local LLM inference on 64 GB Apple Silicon, packed with original measurements (tok/s at every context length, peak footprints, MTP acceptance rates, swap behavior), explicit failure boundaries (224K OOM at prefill token 2,048), and reproducible artifacts (commit hashes, SHA-256 checksums, published CSVs). Findings are non-obvious and actionable: MTP is not a universal speedup (q8 +50%, q4 +9%, q6 slightly slower), FP16 MTP head on an oQ4 base adds under 1 GiB yet raises decode from 32.3 to 39.9 tok/s, prompt-cache reuse dwarfs small decode improvements, and the same 64 GB envelope behaves very differently on M2 Ultra vs M4 Max. Methodology is rigorous and honest about real-world memory pressure versus isolated benchmarks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:45:21.268356"
+    },
+    {
+      "id": 5963,
+      "source_id": 34,
+      "original_url": "https://antomon.github.io/posts/photovoltaic-cybersecurity-authority-architecture/",
+      "title": "Photovoltaic Cybersecurity Is an Authority-Architecture Problem",
+      "summary": "PV cyber-physical risk is driven less by vulnerability count than by the topology of digital authority — how fleet-scale control, update, and aggregation paths concentrate consequence across many installations.",
+      "ideas": [
+        "Severity and reach are distinct security variables; CVSS alone misleads OT risk",
+        "Manufacturer clouds convert application flaws into control-plane exposure",
+        "Make cloud-optional, maintenance authority, and firmware governance contractually testable",
+        "IEC 62443 zones must follow consequence, not just network topology",
+        "Negative commissioning tests should prove prohibited authority paths fail",
+        "Market concentration becomes cyber-physical concentration at fleet scale"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive, evidence-based analysis of the Swiss NTC's 2026 PV assessment, extending findings into procurement specifications, IEC 62443 architecture, hardening, and lifecycle assurance. The article's central contribution — distinguishing severity from reach (authority topology) — is a non-obvious framework that avoids both CVSS-counting and vague OT generalizations. Concrete substance includes specific vulnerability statistics (50+ findings, 7 critical, 4 products with root compromise), named standards (IEC 62443, NIST IR 8498, CIS Benchmarks, CRA), real incidents (Iberian blackout, Polish OT incident), and actionable procurement/commissioning/handover checklists. The 84-minute length is justified by density rather than padding. Minor limitation: the article appears truncated in the captured content, and some vendor identities are intentionally withheld under coordinated disclosure.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:40:58.601382",
+      "image_url": "https://4m4.it/posts/photovoltaic-cybersecurity-authority-architecture/pv-cybersec.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 5962,
+      "source_id": 34,
+      "original_url": "https://apievangelist.com/2026/09/22/an-open-model-a-commercial-model-and-a-pile-of-scripts/",
+      "title": "An Open Model, A Commercial Model, And A Pile Of Scripts",
+      "summary": "A modular pipeline that moves most API profiling tasks into script‑driven, validated steps while reserving limited model judgement yields cheaper, more consistent results and built‑in error checking.",
+      "ideas": [
+        "First pile handles most pipeline tasks with scripts, no judgement.",
+        "Validation gates reject model answers not verbatim on source.",
+        "Local open‑weight model runs cheaply and stops early, improving consistency.",
+        "Benchmark score rose from 10 to near‑Claude levels after script migration.",
+        "Generated contracts are marked with provenance and priced at quarter value.",
+        "Finishing pass improves artifact quality for both engine types."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article details a concrete pipeline that separates scriptable, verifiable steps from model‑driven judgement, providing measurable improvements in cost, consistency, and validation. It presents original experiments (benchmark score gains, provenance‑marked generated contracts) and practical mechanisms that a technical reader can apply. Limitations arise from reliance on a specific model ecosystem and the need for manual tuning of validation rules, but the evidence is strong enough to merit a high score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:40:50.937370",
+      "image_url": "https://kinlane-images.s3.amazonaws.com/apievangelist/api-evangelist-images/an-open-model-a-commercial-model-and-a-pile-of-scripts.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": "Optimizing my AI Spend with an Open Model, A Commercial Model, and Deterministic Scripts"
+    },
+    {
+      "id": 5961,
+      "source_id": 34,
+      "original_url": "https://aicode.danvoronov.com/2026-09/21_20-39/",
+      "title": "2026-09-21 20:39",
+      "summary": "Git status can execute commands with full user privileges before sandbox prompts, letting attackers hijack core.fsmonitor to run arbitrary code.",
+      "ideas": [
+        "Git status runs before trust prompt, allowing fsmonitor hijack.",
+        "core.fsmonitor can be set to arbitrary command, inheriting user privileges."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article details a concrete Git-based sandbox escape that affects multiple AI coding agents, providing test results, CVE identifiers, patches, and mitigation steps. It offers substantial technical insight into how agents inherit full user privileges and how core.fsmonitor can be abused, which is highly relevant to both AI and cybersecurity readers. The coverage is strong but limited to the specific vulnerability and does not explore broader implications or theoretical depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-23T03:37:21.172035"
+    },
+    {
+      "id": 5960,
+      "source_id": 4,
+      "original_url": "https://any.run/cybersecurity-blog/csuite-attack-analysis/",
+      "title": "CSuite Targets US and EU Organizations with Device-Code Phishing and Remote Access",
+      "summary": "CSuite blends device‑code phishing with legitimate remote‑management tools to hijack Microsoft 365 accounts and gain persistent endpoint control, detectable via specific indicators and infrastructure patterns.",
+      "ideas": [
+        "CSuite uses device‑code authentication to steal Microsoft 365 sessions via phishing.",
+        "Legitimate remote‑management tools (ScreenConnect, Action1, Atera, Syncro, PDQ Connect) are abused as RATs.",
+        "Campaign targets US/EU orgs using Microsoft 365 and remote admin workflows.",
+        "Attack chain includes lure documents, counterfeit viewers, script droppers, and admin elevation.",
+        "Operators embed Telegram bot notifications to capture visitor metadata from lure pages.",
+        "Anti‑analysis measures include blacklist checks, decoy pages, and honeypot fields.",
+        "TI lookup query “url:/m/js/utils.js$” can identify related sandbox samples.",
+        "Operator mistake linking hosting panel and remote‑desktop host exposed campaign infrastructure.",
+        "Victims risk credential theft, mailbox compromise, device access, and fraud.",
+        "SOC should monitor remote‑management tool installs and anomalous Microsoft 365 session activity."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The report offers multiple high-value insights: detailed attack chain, detection indicators, threat‑intel query, and real‑world statistics, reflecting expert cybersecurity analysis. Minor promotional language (e.g., \"Strengthen Your SOC\") incurs a small penalty, but overall density and relevance to cyber threats keep the score high.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-23T03:36:15.279503",
+      "image_url": "https://any.run/cybersecurity-blog/wp-content/uploads/2026/09/CSuite_smm.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": ""
+    },
+    {
+      "id": 5959,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Sep/22/llm-typesafe/",
+      "title": "llm-typesafe 0.1a0",
+      "summary": "The llm-typesafe plugin lets developers query Jev’s TypeSafe AI model to produce structured, predictable JSON outputs for tasks like refund detection.",
+      "ideas": [
+        "Install via `llm install llm-typesafe`.",
+        "Set API key using `llm keys set typesafe`.",
+        "Query Jev with `llm -m jev` for yes/no questions.",
+        "Yes/no output returns confidence score in JSON.",
+        "Choice responses use `-o answer_type choice` with criteria JSON.",
+        "Score responses use `-o answer_type score` with predefined levels.",
+        "Enables structured extraction like refund detection from text."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post provides concrete installation steps, API key setup, and multiple example commands that demonstrate yes/no, choice, and score outputs from the Jev model. It delivers practical, actionable knowledge directly relevant to AI tooling, fitting the AI and Tech themes. No major penalties apply, though the brief nature limits depth.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-09-23T03:35:08.612671"
+    },
     {
       "id": 5958,
       "source_id": 4,
