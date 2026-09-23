@@ -1,7 +1,667 @@
 {
-  "updated_at": "2026-09-23T18:00:00.359149+00:00",
-  "total_items": 953,
+  "updated_at": "2026-09-23T19:00:00.185682+00:00",
+  "total_items": 978,
   "items": [
+    {
+      "id": 6020,
+      "source_id": 34,
+      "original_url": "https://sdowney.org/posts/existing-practice/",
+      "title": "✌Existing Practice✌",
+      "summary": "Standardisation now relies on implementing proposals to gather real‑world feedback rather than forcing existing libraries into the standard unchanged.",
+      "ideas": [
+        "Standard libraries must evolve through implementation, not direct adoption.",
+        "fmt succeeded by continuously adapting to committee changes.",
+        "Ranges diverged from range‑v3 but incorporated user feedback.",
+        "Modules lacked implementation, delaying production use.",
+        "Contracts face an unattainable deployment‑experience requirement."
+      ],
+      "labels": [
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a dense, evidence‑based critique of C++'s current standardisation approach, using concrete library case studies to show how implementation experience shapes design. It is highly relevant to technical readers but remains narrow in scope. Its depth and low noise merit a high score, though the focus limits universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:29:07.421486"
+    },
+    {
+      "id": 6019,
+      "source_id": 34,
+      "original_url": "https://people.kernel.org/monsieuricon/using-shallow-git-tarballs-for-ci",
+      "title": "Using shallow-git tarballs for CI",
+      "summary": "Safe, CDN‑cached shallow tarballs from kernel.org can replace deep clones in CI when fetched and verified via the provided wrapper script.",
+      "ideas": [
+        "Download nightly shallow tarballs from kernel.org and verify using the signed commit SHA.",
+        "Run get-verified-shallow-tar to clean .git and fetch the exact commit.",
+        "Cache tarballs via Fastly CDN to accelerate CI job startup."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Delivers a concrete, safety‑aware workflow for fetching shallow Git tarballs in CI, complete with verification steps and a ready‑to‑use wrapper script; valuable for Linux kernel CI administrators but niche to that audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:25:03.989464"
+    },
+    {
+      "id": 6018,
+      "source_id": 34,
+      "original_url": "https://muratbuffalo.blogspot.com/2026/09/in-search-of-compositional-theory-of.html",
+      "title": "In Search of a Compositional Theory of Self-Stabilization",
+      "summary": "Combining diagonal 'memory' entries with off-diagonal 'coupling' entries via eigenvalue analysis is necessary to correctly predict metastable failure in retry-storm systems, because small-gain reasoning alone ignores backlog carryover and gives falsely optimistic stability verdicts.",
+      "ideas": [
+        "Parametric assume-guarantee contracts express behavior at every badness level, avoiding vacuous satisfaction outside the precondition.",
+        "Diagonal entries (11/12, 5/6) capture per-queue memory; off-diagonals (7/12, 1/6) capture cross-queue coupling.",
+        "Ignoring diagonal entries yields apparent loop gain 0.1; including them gives eigenvalue 1.19, predicting instability.",
+        "Retry budgets and fresh-first service both work by zeroing one coupling entry, restoring eigenvalues to 0.92 and 0.83.",
+        "Cap M=7 drains all starts; M≥8 introduces new attractors; M=40 parks system at (39,38) wasting 2/3 of capacity on duplicates.",
+        "Compositional self-stabilization theory has not advanced fundamentally since early 2000s, leaving metastable failures unaddressed.",
+        "Fixed point (8,4) balances arrivals with fresh service and retry rate with duplicate service."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Exceptional technical depth from a domain expert exploring compositional theory for self-stabilization. The article derives a concrete 4-entry Jacobian from the retry-storm model, computes eigenvalues (1.19 and 0.56), and explains mechanistically why known fixes (retry budgets, fresh-first service, capping) work by zeroing off-diagonal coupling entries. Honest about limitations—admits the parametric assume-guarantee formalism didn't fully apply due to its memoryless, single-scalar nature—but the analysis itself is original and rigorous. Highly relevant to distributed systems and resilience engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:22:29.338026"
+    },
+    {
+      "id": 6017,
+      "source_id": 34,
+      "original_url": "https://mehmetince.net/part-2-6-breaking-the-superuser-guardrails-attacking-security-hardening-extensions-systemic-risks-in-the-managed-postgresql-industry/",
+      "title": "Part 2/6 &#124; Breaking the Postgres Superuser Guardrails: Attacking Security-Hardening Extensions &#124;Systemic Risks in the Managed PostgreSQL Industry",
+      "summary": "Privilege-borrowing windows in managed-Postgres security-hardening extensions are a systemic flaw: function names resolved after superuser elevation allow attacker-supplied code to run with full privileges.",
+      "ideas": [
+        "Hardening extensions borrow superuser identity during vetted queries, creating exploitable privilege-escalation windows",
+        "FDW validator names resolve to OIDs after privilege switch, executing attacker code as superuser",
+        "Attack: custom validator function creates a NOLOGIN SUPERUSER role during FDW creation",
+        "76 hardening-extension vulnerabilities reported across Supabase, Azure, Aiven, Aurora, and other vendors",
+        "Vendors must pass validated OIDs, not attacker-supplied names, into elevated-privilege execution"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is original firsthand vulnerability research with a concrete, reproducible exploit mechanism: managed-Postgres hardening extensions temporarily switch to superuser before PostgreSQL resolves FDW handler/validator names to OIDs, so attacker-controlled functions execute inside the elevated window. The article supplies real code (the supautils C hook snippet and a working malicious-validator SQL PoC), a clear threat model for cross-tenant compromise, and cross-vendor scope (76 reported findings across Supabase, Azure, Aiven, Aurora, AlloyDB, and others, with confirmed Supabase fixes). Value per minute is high for security and database engineers, but the content is truncated mid-case-study, includes personal narrative and talk-promotion padding, and the aggregate 76-vulnerability claim is asserted rather than fully demonstrated.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:20:36.542785",
+      "image_url": "https://mehmetince.net/wp-content/uploads/2026/09/Article-Cover-Superuser-Guardrails-selection-1.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": ""
+    },
+    {
+      "id": 6016,
+      "source_id": 34,
+      "original_url": "https://learncloudnative.com/blog/2026-09-23-sandboxing-kafka-temporal-resource-plugins",
+      "title": "Sandboxing Kafka, Temporal, and external resources",
+      "summary": "Isolate Kafka and Temporal workloads by routing via baggage‑carried keys and dedicated consumer groups, letting sandboxed consumers filter messages and Temporal retries handle isolation.",
+      "ideas": [
+        "Spectrum of isolation: share, partition, branch based on test data collision risk.",
+        "Route Kafka via routing key in baggage; sandboxed consumer checks cache of allowed keys.",
+        "Unique consumer group per sandbox gives independent stream copy in Kafka.",
+        "Temporal routes workflows using routing key; worker skips tasks not matching sandbox key."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, non‑obvious mechanisms for isolating Kafka and Temporal in sandboxes, with detailed implementation steps, code snippets, and a resource‑plugin model that directly serves technically capable readers; minor promotional padding slightly lowers the score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:18:09.650926",
+      "image_url": "https://learncloudnative.com/timgs/2026-09-23-sandboxing-kafka-temporal-resource-plugins.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Sandboxing Kafka, Temporal, and external resources"
+    },
+    {
+      "id": 6015,
+      "source_id": 34,
+      "original_url": "https://johnlian.net/posts/jetkvm-usb-wake/",
+      "title": "I had to patch the Linux kernel to wake my PC using a browser, again",
+      "summary": "Enabling USB remote wake on a Linux USB gadget (f_hid) requires both a kernel configfs wakeup_on_write patch and the Go app advertising bmAttributes=0xa0; the DWC3 controller driver needed no fix once the real cause (USB not attached after sleep) was identified.",
+      "ideas": [
+        "f_hid gadget needs wakeup_on_write configfs flag plus usb_gadget_wakeup() call before HID writes",
+        "DWC3 had dwc3_gadget_wakeup already; only the HID driver had to call it",
+        "Polling loop false lead - real failure was UDC re-enumeration racing Windows S3 entry",
+        "nginx mirror /wake-trigger fires WoL CGI on every proxied UI request, carpet-bombing wake packets",
+        "Raw USB wake ~4s; end-to-end (browser to video) ~26s, mostly GPU/HDMI reinitialization",
+        "USB wake fails if JetKVM reboots while host is already asleep - keep WoL as fallback",
+        "bmAttributes=0xa0 advertises remote-wake capability to the host"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "Excellent first-person Linux kernel investigation with original measurements, code, and an honest debugging narrative. The author documents the USB HID gadget wake mechanism, contrasts DWC3 vs DWC2 controller behavior, isolates a false lead (DWC3 polling loop) from the real cause (USB enumeration race after sleep), and reports reproducible timing data across multiple builds. Three upstream PRs with merge status add credibility. Minor limitations: niche subject area (JetKVM/KVM-over-IP) and the 26s end-to-end measurement isn't fully decomposed.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:16:15.871614"
+    },
+    {
+      "id": 6014,
+      "source_id": 34,
+      "original_url": "https://intertwingly.net/blog/2026/09/22/Campfire-Three-Rubies.html",
+      "title": "Campfire, Three Rubies",
+      "summary": "Empirical runtime benchmarks reveal that the Ruby runtime 'winner' depends on workload shape: TruffleRuby's dispatch specialization wins on blog pages but the C-extension lock and per-row toll make JRuby/JDBC dominant on chat-app workloads, with a single undocumented flag worth 2.5× and a real-world bundler landmine for mixed-runtime deployments.",
+      "ideas": [
+        "TruffleRuby's 'GIL' is a global C-extension lock; --cexts-lock=false is worth 2.5× on multi-threaded emits.",
+        "C-extension per-call toll is invisible in microbenchmarks (~3%) but decisive in servers (~2.5×).",
+        "JRuby+JDBC outperforms TruffleRuby+sqlite3 on row-heavy pages because JDBC bypasses C extensions.",
+        "emit dividend halves on row-heavy Campfire vs dispatch-heavy blog pages.",
+        "Precompiled gems in Gemfile.lock landmine for a second Ruby runtime.",
+        "JRuby thread ladder peak maps directly to hardware thread count for IO-bound work.",
+        "JRuby in-process shared registry solves a deployment seam (cross-worker pubsub) that CRuby forks lack.",
+        "Spinel AOT binary: 2,570 req/s in 140 MB, 0.3s to render."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Highly substantive benchmark-driven investigation of Ruby runtime selection (CRuby+YJIT, JRuby, TruffleRuby) on the Campfire chat app, with original measurements, a transparent factual correction from a TruffleRuby maintainer, and concrete reproducible methodology. Contains non-obvious empirical findings: the TruffleRuby 'GIL' is actually a global C-extension lock costing 2.5× in production but 3% in microbenchmarks; the JVM lane beats TruffleRuby on row-heavy pages because JDBC bypasses C extensions entirely; the AOT compiler dividend halves on database-heavy pages. Provides full reproduction commands and version pinning. Minor limitations: narrow to Ruby/Rails deployment, and one published lane still uses a setting whose bias the author himself flags.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:12:52.984799"
+    },
+    {
+      "id": 6013,
+      "source_id": 34,
+      "original_url": "https://isene.org/2026/09/Glow.html",
+      "title": "Console graphics",
+      "summary": "glow writes real pixel graphics directly to the Linux framebuffer via /dev/fb0, bypassing X and terminal emulation layers.",
+      "ideas": [
+        "glow maps terminal output to /dev/fb0 for true pixel rendering.",
+        "Direct unmap of framebuffer updates 1920×1200 in ~10 ms.",
+        "Kernel restricts text colors to 16, and key releases aren't captured."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The post delivers concrete, low‑level details of writing to /dev/fb0, timing behavior, and kernel color limitations, which are highly relevant to Linux developers. It avoids hype and provides actionable insight, though it remains narrow in scope and lacks deeper experimental validation. This yields strong technical value per minute.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:12:45.586907",
+      "image_url": "https://isene.org/assets/posts/glow-console.png",
+      "image_width": 1000,
+      "image_height": 600,
+      "image_alt": ""
+    },
+    {
+      "id": 6012,
+      "source_id": 34,
+      "original_url": "https://gazagnaire.org/blog/2026-09-23-tailwind-parity.html",
+      "title": "Rewriting Tailwind CSS in OCaml: Is It (Pixel-)Correct?",
+      "summary": "The key insight is using cascade diff and browser pixel comparison to rigorously verify that OCaml‑generated Tailwind CSS produces functionally identical output to the original Tailwind compiler.",
+      "ideas": [
+        "cascade diff compares CSS rules semantically, normalising styles.",
+        "pixel‑based browser testing catches property order effects missed by textual diffs.",
+        "mutation testing validates cascade’s equivalence by breaking stylesheets deliberately."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete technical solution for verifying CSS equivalence, describing cascade diff, pixel testing, mutation testing, and trade‑offs, offering expert insights valuable to developers building or validating Tailwind‑style pipelines in OCaml. It balances depth with focused evidence, though its niche focus slightly limits broader applicability. It contains original mechanisms and practical guidance, meriting a high but not perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:08:23.426496",
+      "image_url": "https://gazagnaire.org/blog/og/2026-09-23-tailwind-parity.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6011,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/cloudflare-tunnel/",
+      "title": "The complete guide to Cloudflare Tunnel",
+      "summary": "Cloudflare Tunnel enables exposing any local service on a custom domain over HTTPS without opening inbound ports, using a persistent outbound connector.",
+      "ideas": [
+        "cloudflared connects outbound only, avoiding any inbound port exposure",
+        "a single tunnel can route multiple hostnames to distinct local ports"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers detailed, step‑by‑step instructions, code snippets, and architectural diagrams that let a technically proficient reader implement a named Cloudflare Tunnel, manage routes, and expose multiple local services securely. Its depth and concrete commands merit a high score, but promotional sections and self‑advocacy introduce minor noise that prevents a perfect rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:07:01.719719",
+      "image_url": "https://flaviocopes.com/images/cloudflare-tunnel/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for The complete guide to Cloudflare Tunnel"
+    },
+    {
+      "id": 6010,
+      "source_id": 34,
+      "original_url": "https://dnim.dev/blog/dlssg-open-ampere-proton",
+      "title": "The Ampere kernels were in the DLL the whole time",
+      "summary": "NVIDIA's DLSS Frame Generation gates on architecture while shipping Ampere (sm_86) kernels inside the same runtime DLL, allowing an open-source Linux path that rewrites PTX targets and substitutes neural-network cubins at the NVAPI upload layer.",
+      "ideas": [
+        "DLSS-G runtime 310 carries both sm_89 and sm_86 ELF cubins side by side, 39 each, despite Ada-only gating",
+        "LZ4-compressed PTX target line sits as a literal run, allowing in-place .target sm_89 → sm_86 rewrite",
+        "Proton's nvcuda.dll is a 36KB placeholder missing cuInit; the runtime falls back silently",
+        "Wine 11 Proton needs the 'Wine builtin DLL' string at DOS offset 0x40 to honor dlloverrides builtin mode",
+        "Runtime selects kernels by NVAPI m_gpuArch (AD100=0x190), not CUDA compute capability, so spoof must happen upstream",
+        "SASS-similarity scoring uniquely matches 39 of 39 Ampere twins to Ada cubins by kernel name plus .text size plus constant banks",
+        "Handle-passing bug in CreateCubinComputeShaderExV2 caused every driver fault in the investigation",
+        "dlssg_for_sm86 cites GPL but ships only binaries; the Linux fix lives in dxvk-nvapi and never touches the signed DLL"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 96,
+      "rating_reason": "Original first-person reverse engineering of NVIDIA's DLSS-G runtime with concrete evidence at every step: fatbin surveys, kernel counts, exact error codes, source listings, and reproduction logs. The investigation uncovers the genuinely surprising finding that NVIDIA ships sm_86 cubins for Ampere inside the runtime despite the 40-series gate, then demonstrates a working open-source Linux workaround by retargeting PTX and substituting the neural-network cubins on the dxvk-nvapi upload path. Extremely high signal density, expert-level technical writing, and a methodology a reader could replicate.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:04:40.875094",
+      "image_url": "https://dnim.dev/blog/dlssg-open-ampere-proton/opengraph-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6009,
+      "source_id": 34,
+      "original_url": "https://david.weekly.org/blog/2026-09-22-party-invite-phish-watched-live/",
+      "title": "A Party-Invite Phish, Watched Live",
+      "summary": "Live analysis of a manually operated Google credential phishing kit reveals timestamp-encoded session IDs, an unvalidated Turnstile, geo-gated scanner evasion, and a repointable QR-code first hop, plus detection rules and honeypot-measured operator behavior.",
+      "ideas": [
+        "uniqid()-based session IDs are timestamps; fake 13-hex Cloudflare Ray IDs decode to request time.",
+        "Cloudflare Turnstile success callback here only hides an overlay; token never validated server-side.",
+        "Repointable QR-code redirect is the higher-priority takedown target than the phishing server.",
+        "Kit geo-screens visitors: urlscan.io (Austria) redirected, US residential connection served the kit.",
+        "DESKTOP-1C3NAFS is stable across one machine, useful for cross-campaign correlation.",
+        "Manual operator panel decides next page via poll_status.php; page list is not fixed client-side."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Original threat-intel writeup with firsthand observation: the author stood up a controlled environment, typed credentials into the live kit, and measured operator behavior (12-second wrong-password verdict, ~1-minute credential use, US consumer VPN, stable Windows machine name DESKTOP-1C3NAFS). The analysis exposes non-obvious kit details (PHP uniqid()-based session IDs and a 13-hex-digit fake 'Ray ID' that decodes to current Unix time, an unvalidated Turnstile widget whose success callback only hides the overlay, geo-gated scanner evasion, and a repointable QR redirect whose takedown priority exceeds the phishing-server takedown). Concrete detection signatures across web, mail, and identity layers are provided.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:02:34.307041",
+      "image_url": "https://david.weekly.org/og/blog-2026-09-22-party-invite-phish-watched-live.png?v=3",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "A Party-Invite Phish, Watched Live - David E. Weekly"
+    },
+    {
+      "id": 6008,
+      "source_id": 34,
+      "original_url": "https://dashaun.com/posts/ollama-to-vllm-on-rtx-5090/",
+      "title": "From Ollama to vLLM on an RTX 5090",
+      "summary": "Migrating from Ollama to vLLM on a single RTX 5090 resolves multi‑agent bottlenecks via continuous batching and requires targeted fixes for driver, Docker, quantization, and volume path problems.",
+      "ideas": [
+        "Ollama serializes agents; vLLM’s continuous batching enables parallel request handling.",
+        "Reboot fixes stale NVIDIA driver after kernel update.",
+        "Use system Docker, not rootless, for NVIDIA runtime in systemd.",
+        "Drop --quantization awq flag; let vLLM read compressed‑tensors config.",
+        "Mount huggingface cache relative to repo to avoid literal \"~\" directories."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece details concrete technical hurdles and proven fixes when moving from Ollama to vLLM on an RTX 5090, offering clear mechanisms, code snippets, and practical lessons that directly benefit readers tackling similar AI deployment issues; however, its scope is narrow to a single hardware setup, limiting broader novelty or generalizable insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T04:02:24.275352"
+    },
+    {
+      "id": 6007,
+      "source_id": 34,
+      "original_url": "https://cloudywithachanceoflatency.net/blog_03-mock-internet.html",
+      "title": "How to mock the Internet",
+      "summary": "The packet‑pair bottleneck can be precisely measured, but it disappears when load balancing splits the two frames.",
+      "ideas": [
+        "Bottleneck packet‑pair gap equals time of slowest link (≈1.7 µs at 5 Gbps).",
+        "Load balancing that splits the pair masks the gap, increasing it by several milliseconds.",
+        "Measured gaps match expected values within 1 µs for links up to 10 Gbps."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides detailed, reproducible measurements of the packet‑pair effect and quantifies how different load‑balancing configurations alter observed gaps, presenting clear tables and formulas. It contains solid concrete substance and technical relevance, but includes some rhetorical filler and limited generalizability beyond the specific test setup. The depth of evidence justifies a strong score, though not exceptional. ",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T03:59:04.699961",
+      "image_url": "https://cloudywithachanceoflatency.net/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6006,
+      "source_id": 34,
+      "original_url": "https://boring-observability.dev/blog/instrumenting-guzzle-laravel",
+      "title": "Instrumenting Guzzle in Laravel: Logging and Metrics for Every Outgoing Request",
+      "summary": "Use a Guzzle middleware with on_stats to capture every outgoing request—including failures and retries—then aggregate the data into histograms or store each transfer for detailed diagnostics.",
+      "ideas": [
+        "Register a Guzzle middleware via Http::globalMiddleware() to log all HTTP transfers.",
+        "Record transfer time and curl_error in on_stats, not just response status.",
+        "Count each transfer separately; redirects and retries generate multiple middleware executions.",
+        "Export request duration as a histogram and errors with reason labels using httptheus.",
+        "Push the same middleware onto SDK‑specific handler stacks to cover custom Guzzle clients."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, reproducible techniques for instrumenting Guzzle in Laravel: a middleware that records transfer time, status, and curl error via on_stats, handling of redirects, retries, and failed transfers, plus metric export via httptheus and the Requizon dashboard. It addresses gaps in Laravel events (e.g., missing timing on ConnectionFailed) and shows how to apply the same approach to SDKs that create their own Guzzle client. The substance is technical and actionable, but the value is slightly reduced by reliance on the author's own packages for full metric coverage and by the need for manual normalization of cardinality in metrics.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T03:56:40.944681",
+      "image_url": "https://boring-observability.dev/og/blog/instrumenting-guzzle-laravel.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Skyline — queue control for Laravel Horizon."
+    },
+    {
+      "id": 6005,
+      "source_id": 34,
+      "original_url": "https://blog.tinyinterpreters.dev/posts/fun-first-class-functions/",
+      "title": "FUN: First-Class Functions, Currying, and a Surprise",
+      "summary": "Functions in FUN are first‑class values that can be created, passed, and returned, but their free variables are resolved dynamically, affecting currying expectations.",
+      "ideas": [
+        "VFun stores only parameter and body, not its lexical environment.",
+        "Function calls use dynamic scope, binding free variables at call time.",
+        "Currying requires nested functions; missing outer variable causes IdentifierNotFound.",
+        "Evaluator must check VFun type and extend environment on call."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete interpreter design details—grammar extensions, AST changes, value representation, evaluation rules, and a non‑obvious dynamic‑scope issue with currying—providing deep technical insight. However, it stops short of a full fix for the currying problem and stays within a toy language, limiting broader impact.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T03:55:10.020553",
+      "image_url": "https://blog.tinyinterpreters.dev/posts/fun-first-class-functions/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6004,
+      "source_id": 34,
+      "original_url": "https://blog.ipspace.net/2026/09/ospf-mtu-saga/",
+      "title": "The OSPF MTU Mismatch Saga",
+      "summary": "OSPF adjacency can stall when MTU values in DBD packets don’t match, and implementations differ on how strictly they enforce MTU consistency.",
+      "ideas": [
+        "RFC 2328 introduced MTU field in OSPF DBD packets to avoid fragmentation.",
+        "Some vendors (e.g., FRR) now enforce strict MTU matching, rejecting mismatched DBD MTU values.",
+        "Setting an interface MTU to zero in OSPF packets can break adjacency and is rejected by modern implementations.",
+        "Historical RFC 1583 compatibility allowed zero MTU but modern OSPFv3 implementations often reject it."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The post explains OSPF MTU handling in depth, detailing RFC history, DBD packet semantics, and vendor implementation differences that cause adjacency stalls, providing concrete mechanisms and real‑world examples useful for network engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T03:51:30.518023"
+    },
+    {
+      "id": 6003,
+      "source_id": 34,
+      "original_url": "https://adithyanak.com/loopjacking-in-a2a-implementations/",
+      "title": "Loopjacking in A2A Implementations: Hijacking Human-in-the-Loop Approvals",
+      "summary": "A stale approval binding can be exploited to substitute a different operation with altered arguments while retaining the original approval.",
+      "ideas": [
+        "Same Task ID binds stale approval to different arguments.",
+        "Approver's decision authorizes only the shown operation, not later mutations.",
+        "Implementations must enforce exact operation scope, not just Task approval."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The note provides a concrete, reproducible experiment demonstrating how a pending approval in A2A can be hijacked to execute a different operation, complete with source-level details, mock ledger evidence, and policy implications. It is directly relevant to AI agent security and human‑in‑the‑loop workflows, offering deep technical insight. Limitations include its scope to a specific LangGraph test setup and lack of broader deployment validation. Overall, it delivers unusually strong, evidence‑backed security knowledge for the target audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T03:42:59.748169",
+      "image_url": "https://adithyanak.com/images/posts/loopjacking-a2a-task-update-cover.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": "An A2A task carries changed operation B before a decision made over A is used"
+    },
+    {
+      "id": 6002,
+      "source_id": 4,
+      "original_url": "https://cyberinsider.com/chatgpt-advertising-system-reportedly-tracks-users-across-websites/",
+      "title": "Skip to main content",
+      "summary": "OpenAI’s ChatGPT ad SDK uses a persistent cross‑site cookie to link advertiser conversion data to individual user identities.",
+      "ideas": [
+        "OpenAI’s __obi cookie links ChatGPT activity to external ad conversion events.",
+        "The cookie has a one‑year lifespan and can transmit identifiers across sites.",
+        "Researchers captured token flow and identified data fields sent to OpenAI.",
+        "Advertiser sites including Chewy, Wayfair, and Coursera were observed sending data.",
+        "Collected data includes hashed emails, phone numbers, and plaintext location details.",
+        "Sensitive fields like passwords and payment info are denied in the SDK.",
+        "Users can block third‑party cookies or use privacy‑focused browsers to limit tracking.",
+        "OpenAI’s ad infrastructure mirrors broader ad‑tech tracking patterns used by Google and Meta."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers several concrete insights about OpenAI’s cross‑site tracking cookie __obi, including the token flow, data fields collected, and advertiser sites involved, which together constitute high value density. No major penalties such as clickbait or padding are present, and the content aligns strongly with CyberSecurity and AI themes. Consequently it earns a high score in the 80‑90 range.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T03:38:12.923551",
+      "image_url": "https://cyberinsider.com/wp-content/uploads/2026/09/ChatGPT-advertising-system-reportedly-tracks-users-across-websites.jpeg",
+      "image_width": 900,
+      "image_height": 447,
+      "image_alt": ""
+    },
+    {
+      "id": 6001,
+      "source_id": 4,
+      "original_url": "https://cyberinsider.com/ai-agents-steal-600000-credit-cards-in-attacks-on-online-retailers/",
+      "title": "Skip to main content",
+      "summary": "Autonomous AI agents can autonomously execute complex, high‑value retail attacks at low per‑target cost.",
+      "ideas": [
+        "Autonomous AI agents can conduct large-scale credit card theft with minimal human input.",
+        "Attackers used open-source tools Strix, Cairn, and Hermes for discovery, exploitation, orchestration.",
+        "Hermes featured 121 custom skills, 78 focused on offensive security operations.",
+        "Campaign stole over 600,000 unexpired payment cards, costing about $25 per target.",
+        "Attack chain included SQL injection, MFA bypass, admin access, AWS Secrets extraction.",
+        "Cleanup routines sometimes caused massive data loss, deleting 180 database tables.",
+        "Researchers observed 105 attack projects across 27 compromised organizations.",
+        "AI model access cost $12k‑$18k total, averaging $25.46 per scan."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: novel insight into autonomous AI‑driven theft, detailed tool usage (Strix, Cairn, Hermes), hard data on scale and cost, and specific exploit chains. It aligns strongly with cybersecurity and AI themes and contains no clickbait or padding, resulting in a high value density.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T03:38:12.407019",
+      "image_url": "https://cyberinsider.com/wp-content/uploads/2026/09/AI-agents-steal-600000-credit-cards-in-attacks-on-online-retailers.jpg",
+      "image_width": 950,
+      "image_height": 502,
+      "image_alt": ""
+    },
+    {
+      "id": 6000,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/inside-basecamp-research-the-ai-startup-turning-evolution-into-training-data/",
+      "title": "Inside Basecamp Research, the AI startup turning evolution into training data",
+      "summary": "Biology is a data problem orders of magnitude larger than language AI, and progress depends on diverse natural genome collection paired with expensive real-world experimental validation—not benchmark scores.",
+      "ideas": [
+        "Biology contains vastly more data than language: 10^37 nucleotides versus roughly five quadrillion text tokens",
+        "Public genome databases are heavily biased: 68% of sequence volume comes from just five species",
+        "Training biology AI on human-only data is like training an LLM solely on 1975 newspapers",
+        "Bacterial 'biological warfare' between competing microorganisms is a proven source of potent antibiotic compounds",
+        "The EDEN-7 antibiotic worked in mice against multidrug-resistant bacteria, generated without manual tweaking",
+        "Gene-insertion enzymes can bypass patient-specific mutations by inserting healthy gene copies regardless of defect",
+        "Editing cell therapies directly inside the body could slash per-patient manufacturing costs of hundreds of thousands",
+        "A third of Basecamp's GPU compute goes to reinforcement learning rather than pretraining",
+        "Recording ecological conditions alongside DNA captures context that isolated sequence fragments lose",
+        "Benchmark success doesn't guarantee clinical value—delivery, toxicity, and immune responses remain unsolved",
+        "None of Basecamp's six therapy programs has advanced past lead optimization yet",
+        "Pairing massive data collection with small targeted experiments steers broad models toward specific tasks"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This article delivers substantial value density: concrete data-scale comparisons (10^37 nucleotides vs ~5 quadrillion language tokens), the striking statistic that 68% of public genome database volume comes from just five species, specific experimental results (97% lab activity rate, EDEN-7 mouse efficacy, 50% active recombinases in human cells), and insider operational detail like dedicating a third of GPUs to reinforcement learning. The journalism is notably balanced—it flags unpeer-reviewed results, cites external critics like Patrick Hsu on delivery challenges, and notes the company failed to answer questions about clinical timelines, which prevents it from reading as hidden promotion. It falls short of exceptional because much of the substance rests on company claims and funding-announcement materials rather than independently verified science, but it strongly aligns with AI, technology, and scientific themes and rewards the reading time.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-24T03:36:31.083341",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/Basecamp-Research-title-1200x675.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 5999,
+      "source_id": 4,
+      "original_url": "https://haveibeensquatted.com/blog/inside-corp-mdm-android-spyware-targeting-logisitics",
+      "title": "Have I Been Squatted?",
+      "summary": "Fake Google Play listings can deploy Android spyware that siphons SMS and enables lasting call forwarding.",
+      "ideas": [
+        "Fake Google Play pages were used to sideload a malicious Android app targeting logistics firms.",
+        "The malware exfiltrates newly received SMS messages via cleartext HTTP without storing a queue.",
+        "It can enable unconditional call forwarding using USSD codes, persisting even after app removal.",
+        "Persistence relies on START_STICKY service, boot receiver, and component disabling.",
+        "The implant’s C2 server is a single IP hosting both Android and Windows phishing payloads.",
+        "Command‑and‑control panel claims more functions than the APK actually implements.",
+        "The APK is signed with a self‑issued certificate valid until 2053.",
+        "Threat actors likely employed AI during development, though the implant contains bugs.",
+        "Indicators link the campaign to Armenian and Russian groups previously seen in Diesel Vortex.",
+        "The malicious app disguises itself as a system service to avoid user suspicion."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The report delivers numerous concrete indicators and technical analysis of a logistics‑sector Android spyware campaign, providing actionable intelligence for defenders. It includes novel details such as the fake Play store delivery, SMS interception via cleartext HTTP, and persistent USSD call‑forwarding, all without unnecessary filler. No clickbait or promotional content was detected, and the thematic focus aligns strongly with CyberSecurity and Technology.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T03:36:15.610878",
+      "image_url": "https://haveibeensquatted.com/img/blog/inside-corp-mdm-android-spyware-targeting-logistics/cover.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 5998,
+      "source_id": 4,
+      "original_url": "https://www.nattothoughts.com/p/huwangprotect-the-network-inside",
+      "title": "Natto Thoughts",
+      "summary": "China's HuWang cyber exercise has become a state‑driven, AI‑enhanced platform that fuels industry growth, talent development, and advanced offensive‑defensive capabilities.",
+      "ideas": [
+        "China runs a nationwide live‑fire cyber exercise called HuWang, now in its 10th year.",
+        "The exercise emphasizes offensive‑defensive capabilities and recent AI integration.",
+        "HW drives demand for domestic cybersecurity firms and shapes talent pipelines.",
+        "Compared to U.S. Cyber Storm, HuWang is larger in scale and more state‑controlled.",
+        "The exercise spans months of prep, wartime response, and post‑exercise review phases.",
+        "Its evolution reflects shifting Chinese cybersecurity laws and geopolitical stances.",
+        "Success influences China's APT ecosystem and broader industry practices."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The piece delivers multiple high‑value insights: a detailed description of China's nationwide live‑fire exercise, its evolution and AI integration, comparative analysis with the U.S. Cyber Storm, and analysis of its impact on industry demand and talent development. No major penalties apply; the content is substantive and well‑structured, though not exceptional enough for a 90+ score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T03:36:11.615075",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!fRID!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd4e8418f-0c68-4d7f-b969-6cef8f223789_723x399.jpeg",
+      "image_width": 723,
+      "image_height": 399,
+      "image_alt": ""
+    },
+    {
+      "id": 5997,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/news/1st-autonomous-ai-c2-implant-uses-panel-of-models-to-vote-on-next-task",
+      "title": "First ‘autonomous AI C2 implant’ uses panel of models to vote on next task",
+      "summary": "AI models are now being weaponized as autonomous malware decision-makers, ending the human operator bottleneck in attacks, but their reliance on commercial APIs creates detectable and disruptable weaknesses.",
+      "ideas": [
+        "Malware can replace traditional C2 with commercial LLM APIs voting on next actions",
+        "CLOSEDQUORUM uses four models voting on steal, inject, and persist actions",
+        "AI autonomy removes the human operator bottleneck, enabling unattended continuous attacks",
+        "Legitimate services like AI APIs and Discord make domain blocking an impractical defense",
+        "Detect AI API traffic from unfamiliar executables and multi-model request bursts",
+        "Correlate Discord webhook traffic with process injection for effective detection",
+        "Model refusals, rate limits, and account takedowns are exploitable attacker weaknesses",
+        "The LLM-as-C2 architecture appears designed as malware-as-a-service for other criminals"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "This is high-quality security journalism reporting a genuinely novel threat: malware using a four-LLM voting panel (DeepSeek, Qwen, Mistral, Gemini) as autonomous C2, a first-of-its-kind architecture. The article delivers specific technical value instances including the voting/tie-breaker mechanics, Discord webhook exfiltration with AES-256-GCM encryption, the 'effort displacement' insight that AI autonomy removes the human operator bottleneck, and concrete behavioral detection recommendations (AI API traffic from unfamiliar executables, multi-model request patterns). It also provides balanced analysis by noting attacker weaknesses like model refusals, rate limits, and account takedowns. Scores slightly below exceptional because it reports on Cisco Talos research rather than offering original analysis, and the discovered binary contained placeholder keys meaning the threat wasn't confirmed active in the wild.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T03:34:58.383503"
+    },
+    {
+      "id": 5996,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/googles-new-flash-tts-models-let-you-design-ai-voices-from-scratch-using-text-descriptions/",
+      "title": "Google's new Flash TTS models let you design AI voices from scratch using text descriptions",
+      "summary": "Google's Flash TTS models let developers generate custom, multilingual voices from text prompts with low‑cost, scalable pricing.",
+      "ideas": [
+        "Gemini 3.8 Flash TTS creates custom voices from textual descriptions.",
+        "Flash-Lite TTS provides low‑cost, scalable speech generation.",
+        "Voice cloning builds profiles from 30‑second audio with consent and watermark.",
+        "Users can add script directions, laughter, sighs, and two‑voice dialogue.",
+        "Upcoming Voice Remixing lets adjust timbre, pitch, tempo, and accent.",
+        "Pricing: $0.81 per hour audio with Flash TTS (2026), $0.54 with Flash‑Lite.",
+        "Over 2,000 preset voices include regional variants like Mexican Spanish and Scottish English.",
+        "Integration supported via Gemini API on platforms such as Agora and Vercel."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple concrete value instances—new model capabilities, voice cloning details, pricing, and integration options—without fluff or clickbait, aligning well with AI and technology themes. Its medium length contains 8 distinct insights, providing a high value‑density score.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-24T03:32:50.435696",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/gemini_voice_audio.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
     {
       "id": 5995,
       "source_id": 26,
