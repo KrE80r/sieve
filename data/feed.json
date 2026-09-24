@@ -1,7 +1,211 @@
 {
-  "updated_at": "2026-09-24T05:00:00.179050+00:00",
-  "total_items": 949,
+  "updated_at": "2026-09-24T07:00:00.168591+00:00",
+  "total_items": 957,
   "items": [
+    {
+      "id": 6031,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-iconfiguration-bind-does-not-populate-an-array-or-list-property/",
+      "title": "Fix: IConfiguration.Bind does not populate an array or List<T> property from appsettings.json",
+      "summary": "The .NET configuration binder fails silently for collection properties in multiple ways, and safe binding requires public setters, ErrorOnUnknownConfiguration, PostConfigure-applied defaults, and awareness that AOT switches to a differently-behaving binder implementation.",
+      "ideas": [
+        "Binder silently skips arrays without public setters and swallows element conversion errors",
+        "Source generator skips init accessors that the reflection binder binds fine",
+        "Binder appends configured values to default collections instead of replacing them",
+        "Layered config files merge arrays by index; overrides never clear base entries",
+        "PublishAot/PublishTrimmed silently swap in a binder with different edge-case behavior"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a dense, measurement-backed troubleshooting guide with an original probe matrix comparing the reflection binder and source generator across .NET 10 and 11, citing source code, GitHub issues, and exact SDK versions. It documents genuinely non-obvious behaviors: silent skipping of get-only arrays and init accessors, append-instead-of-replace defaults, index-based array merging across layered config files, and undocumented AOT generator divergences like ImmutableArray failures. The fixes (public setters, ErrorOnUnknownConfiguration, PostConfigure defaults) are concrete and immediately actionable, though the topic is narrow and .NET-specific, and some base behavior (index-key flattening) is already documented.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T16:08:12.050399",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-iconfiguration-bind-does-not-populate-an-array-or-list-property.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: IConfiguration.Bind does not populate an array or List<T> property from appsettings.json - Start Debugging"
+    },
+    {
+      "id": 6030,
+      "source_id": 34,
+      "original_url": "https://stack72.dev/your-agent-written-tests-arent-real-tests/",
+      "title": "Your Agent-Written Tests Aren't Real Tests",
+      "summary": "Agent-written unit tests function as specification maps, not verification, and real verification requires independent tests that agents cannot modify.",
+      "ideas": [
+        "12k green tests missed 80 real defects",
+        "80.2% test patches lack explicit oracle signals",
+        "34% pass functional tests but fail full requirements",
+        "Independent boundary-level verification required"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical evidence—metrics on test failures, oracle signal deficits, and failure rates—while clearly distinguishing specification from verification. It offers actionable insight for AI engineering practice, though it generalizes some conclusions and lacks deeper experimental validation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T16:06:58.518537",
+      "image_url": "https://stack72-ghost-blog.nyc3.digitaloceanspaces.com/2026/09/hero-testing.jpg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6029,
+      "source_id": 34,
+      "original_url": "https://omid.dev/2026/09/23/after-generation-where-the-product-lives/",
+      "title": "After Generation: Where the Product Lives",
+      "summary": "The key insight is that choosing a home for a generated product is a trade‑off among distribution, control, operational burden, and exit cost, and you must decide which responsibilities to retain and which to rent.",
+      "ideas": [
+        "Choosing a host determines who owns users, data, and incident response.",
+        "Identify vetoes—data residency, exportability, and platform policies—before selecting a home.",
+        "The real cost is the operational burden you refuse to inherit.",
+        "Each home model shifts different responsibilities: distribution, ops, or exit.",
+        "A “demo‑only” mindset hides the long‑term exit and reliability risks."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, non‑obvious trade‑offs for hosting AI‑generated or generated products, mapping distribution, control, ops tax, and exit costs across specific platform models. It offers actionable decision frameworks but relies on generic platform examples that may date quickly, limiting its timeless relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T16:02:20.727689",
+      "image_url": "https://omid.dev/opengraph/techblog_hu_15558eff03a1172.jpg",
+      "image_width": 1408,
+      "image_height": 736,
+      "image_alt": ""
+    },
+    {
+      "id": 6028,
+      "source_id": 34,
+      "original_url": "https://mreduar.dev/blog/screening-outgoing-email-for-phishing-with-jev",
+      "title": "Screening Every Outgoing Email for Phishing With Jev",
+      "summary": "A Laravel listener uses Jev's classification API to stop outgoing emails that resemble phishing while preserving legitimate client communications.",
+      "ideas": [
+        "Listener intercepts MessageSending events and returns false to block spam emails."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, production‑ready solution for blocking phishing emails by integrating a small classifier into Laravel's mail event system. It includes detailed code, evaluation results, cost analysis, and discussion of false‑positive mitigation, making it highly relevant to security‑focused engineers. Limited relevance is that it assumes familiarity with Laravel and email infrastructure, but overall it delivers substantive technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T16:00:18.076949"
+    },
+    {
+      "id": 6027,
+      "source_id": 34,
+      "original_url": "https://mcginniscommawill.com/posts/2026-09-23-metering-is-a-ledger-not-a-counter/",
+      "title": "Metering Is a Ledger, Not a Counter",
+      "summary": "Treat usage metering as an atomic ledger with reservations rather than a simple counter to avoid double‑spending and ensure accurate billing.",
+      "ideas": [
+        "Define the unit precisely before coding.",
+        "Use one customer‑facing meter with published conversion rates.",
+        "Meter the cost driver proportional to your expense.",
+        "Implement atomic debit via conditional UPDATE, not read‑check‑write.",
+        "Employ two‑phase reservations for long‑running jobs.",
+        "Maintain an append‑only ledger with reasons and metadata.",
+        "Allow negative balances only for deliberate force‑debits.",
+        "Arm‑once, fire‑once, re‑arm‑on‑topup for balance warnings."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, low‑level mechanisms for usage metering — atomic debits, reservation handling, an append‑only ledger, and explicit invariant management — backed by code snippets and clear rationale. It remains relevant to engineers designing billing or usage‑based APIs, avoiding fluff or hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T15:58:47.150901",
+      "image_url": "https://mcginniscommawill.com/images/blog-headers/2026-09-23-metering-is-a-ledger-not-a-counter.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6026,
+      "source_id": 34,
+      "original_url": "https://harrisonsec.com/projects/waxseal/",
+      "title": "WaxSeal: Robust Image Watermarking for Secret Delivery",
+      "summary": "Robust watermarks can embed a sealed, device‑bound reference in photos that survives standard chat re‑encoding, enabling secret delivery that only authorized devices can decrypt.",
+      "ideas": [
+        "Reed‑Solomon coding restores watermark integrity after 3.2% BER in chat re‑encoding."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a detailed experimental evaluation of robust watermarking techniques that survive photo recompression in chat platforms, quantifying bit‑error rates and demonstrating how Reed‑Solomon coding enables reliable secret delivery. It quantifies concrete findings such as the failure of LSB and the effectiveness of a two‑tier design while acknowledging practical limitations like vulnerability to cropping. The work is technically deep and reproducible, though its scope is limited to compression‑aware scenarios.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T15:50:24.646280"
+    },
+    {
+      "id": 6025,
+      "source_id": 34,
+      "original_url": "https://blog.shellnetsecurity.com/posts/2026/agent-bom-ai-blast-radius/",
+      "title": "The CVE List Isn't the Point: Mapping Blast Radius in AI Infrastructure with agent-bom",
+      "summary": "agent-bom maps vulnerable packages to reachable AI agents and their credentials, revealing blast radius that traditional scanners miss.",
+      "ideas": [
+        "Critical CVE can expose live credentials via agent‑BOM chain",
+        "EPSS low‑score doesn’t diminish risk when credentials are reachable",
+        "Scan output includes trust signals and exit codes for CI integration"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete technical content: it explains the blast‑risk chain, lists specific CVEs with exposed credentials, shows command‑line usage and the resulting scan output, and cites real‑world EPSS scores and exit‑code semantics. The analysis remains somewhat high‑level and leans on assumptions about discoverable configuration files, which limits depth for large‑scale environments.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-24T15:42:35.582930",
+      "image_url": "https://blog.shellnetsecurity.com/posts/2026/agent-bom-ai-blast-radius/agent-bom-ai-blast-radius-cover.webp",
+      "image_width": 1512,
+      "image_height": 794,
+      "image_alt": ""
+    },
+    {
+      "id": 6024,
+      "source_id": 4,
+      "original_url": "https://labs.watchtowr.com/is-this-a-joke-in-the-auth-header-f5-big-ip-unauth-heap-overflow-to-rce-cve-2026-94127/",
+      "title": "https://labs.watchtowr.com/is-this-a-joke-in-the-auth-header-f5-big-ip-unauth-heap-overflow-to-rce-cve-2026-94127/",
+      "summary": "The F5 BIG-IP OAuth heap overflow (CVE-2026-94127) can be triggered with oversized Authorization headers to achieve remote code execution despite ASLR and SELinux protections.",
+      "ideas": [
+        "F5 BIG-IP OAuth heap overflow triggered by Authorization header >0x4100 bytes",
+        "Patch diff adds size check, preventing copy when header exceeds 0x4100",
+        "Exploit overwrites function pointer to gain code execution despite ASLR and NX",
+        "SELinux blocks exec, so they append command to tmm.finish hook script",
+        "Ret2plt gadget used to write a web shell via /watchTowr.txt",
+        "Vulnerability stems from missing Authorization header size validation in legacy code",
+        "Author satirizes vendor security complacency and LLM-driven vulnerability hunting"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 84,
+      "rating_reason": "The post delivers detailed technical analysis of CVE-2026-94127, including novel exploit mechanics, patch diff specifics, and bypass of ASLR/SELinux, giving high value density. Minor clickbait title and occasional humor introduce slight padding, reducing the score a few points. Overall it provides multiple actionable insights for security researchers.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T15:32:15.481102",
+      "image_url": "https://storage.ghost.io/c/a0/dc/a0dcbbe4-0ae7-4d7e-90f7-ebbc3a0f5a84/content/images/size/w1200/2026/09/1.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
     {
       "id": 6023,
       "source_id": 34,
