@@ -1,7 +1,85 @@
 {
-  "updated_at": "2026-09-24T19:00:00.164132+00:00",
-  "total_items": 981,
+  "updated_at": "2026-09-24T20:00:00.190307+00:00",
+  "total_items": 984,
   "items": [
+    {
+      "id": 6058,
+      "source_id": 34,
+      "original_url": "https://www.fratepietro.com/2026/laya-vs-dijkstra-path-solving-mlx/",
+      "title": "Laya vs Dijkstra: can a typed-decision model find its way out of a maze?",
+      "summary": "A small local decision model guided only by a compass and memory can solve mazes when paired with Trémaux's algorithm as a safety layer, but prompt format matters enormously—choice questions exhibit position bias that noul questions eliminate, and Good/Bad wording extracts more signal than neutral facts.",
+      "ideas": [
+        "Choice questions with 4 options show position bias: best-move label won only 11/24 permutations.",
+        "Switching to per-direction yes/no noul questions yielded 24/24 correct under permutations.",
+        "Wording the same facts as Good vs Bad improved pair ordering from 23/36 to 34/36.",
+        "Trémaux's algorithm (closed-after-twice rule) provides guaranteed reachability for any local walker.",
+        "Hybrid design: hard rules for guarantees, model only runs when multiple legal moves remain.",
+        "Laya beats random baseline on 5/6 maps but loses on tight mazes where Manhattan distance misleads.",
+        "Dijkstra is 2-3 orders of magnitude faster and optimal; Laya is for when you lack the map.",
+        "Decision determinism verified: identical numbers across runs and fresh clones."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong, substantive investigation with original measurements, reproducible experiments, and practical findings about prompt design. The position-bias discovery (11/24 correct with choice question vs 24/24 with noul questions) is genuinely non-obvious and actionable. The hybrid architecture (Trémaux rules + local model) is clearly explained with concrete performance data on six maps. Limitations honestly acknowledged: small sample size (6 maps, 2 seeds), deterministic Laya runs, and one outright loss on maze #7.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:31:49.009202"
+    },
+    {
+      "id": 6057,
+      "source_id": 34,
+      "original_url": "https://www.derekneighbors.com/2026/09/23/the-human-in-the-loop-is-not-driving",
+      "title": "The Human in the Loop Is Not Driving",
+      "summary": "Ownership of the decision‑making turn, not mere approval, is the structural key to effective AI‑agent integration.",
+      "ideas": [
+        "Approvers become rubber‑stamps after training on clean approvals.",
+        "'Turn' comprises goal, constraints, done definition, stop condition, and owner.",
+        "Accountability must attach to the turn author, not the approver.",
+        "Convert work units from diffs to turns to eliminate approval queues.",
+        "Junior engineers grow by executing whole small turns with real consequences."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "The article offers an original, clearly articulated framework for replacing rubber‑stamp approval queues with an explicit 'turn‑owner' model, backed by concrete mechanisms, trade‑offs and actionable steps; it is highly relevant to AI engineering and software practice, though some niche terminology may limit immediate accessibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:30:48.106125",
+      "image_url": "https://www.derekneighbors.com/assets/images/the-human-in-the-loop-is-not-driving.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Mid-century editorial illustration of a ship at night: a large gold wheel stands empty in the foreground while a small figure at the stern stamps a stack of papers under a lantern."
+    },
+    {
+      "id": 6056,
+      "source_id": 34,
+      "original_url": "https://www.agwa.name/blog/post/macos_cant_clone_dumb_git_repos_over_http2",
+      "title": "macOS Can't Clone \"Dumb\" Git Repositories Over HTTP/2",
+      "summary": "A two-year-old libcurl bug (FAILONERROR over HTTP/2) breaks cloning of Git 'dumb' HTTP repositories on macOS, fixable either by forcing HTTP/1.1 client-side or by creating empty alternates files server-side.",
+      "ideas": [
+        "libcurl 8.7.1's FAILONERROR bug corrupts other in-flight HTTP/2 requests, affecting all macOS 14.6+ users",
+        "Server-side fix: create empty objects/info/alternates files instead of returning 404s",
+        "Homebrew Git still uses Apple's buggy system libcurl, so MacPorts is needed to fix",
+        "Git's dumb HTTP protocol is much more resilient to AI scraper load than smart protocol",
+        "go get with GOPROXY=direct also inherits this bug via Git"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "Firsthand technical investigation tracing a specific bug from observable symptom (failing Git clone on macOS) through libcurl's FAILONERROR handling over HTTP/2 multiplexed connections, with concrete version numbers (libcurl 8.7.1, fixed in 8.8.0, still present in macOS 27), a minimal reproduction URL, and both client-side and genuinely clever server-side workarounds (empty files instead of 404s). The article also delivers useful insight on Git's dumb vs smart protocol trade-offs, the AI-scraper-resilience angle favoring dumb protocol, and why Homebrew's Git doesn't fix the issue. Minor editorializing and the Claude Code aside don't materially detract.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:30:12.800266"
+    },
     {
       "id": 6055,
       "source_id": 34,
@@ -47,7 +125,11 @@
       "rating_reason": "A substantive launch post for a genuinely novel tool that addresses a real and increasingly common problem: giving AI agents scoped, auditable access to third-party APIs without exposing long-lived credentials. The architecture is clearly explained with concrete CLI commands, the access-level examples for Sentry, DataForSEO, and Cloudflare show real understanding of those services, and the limitations section is unusually honest (no exfiltration protection, bearer token risk, credential concentration). Minor deductions for being a self-promotional launch post and for the AI-written-tool disclosure, though the open-source code and SECURITY.md invitation mitigate that.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-25T04:29:00.146746"
+      "published_at": "2026-09-25T04:29:00.146746",
+      "image_url": "https://vpetersson.com/assets/agent-iap-approval-prompt.webp",
+      "image_width": 1384,
+      "image_height": 640,
+      "image_alt": ""
     },
     {
       "id": 6053,
