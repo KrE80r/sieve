@@ -1,7 +1,553 @@
 {
-  "updated_at": "2026-09-24T18:00:00.380865+00:00",
-  "total_items": 960,
+  "updated_at": "2026-09-24T19:00:00.164132+00:00",
+  "total_items": 981,
   "items": [
+    {
+      "id": 6055,
+      "source_id": 34,
+      "original_url": "https://www.adrian.idv.hk/2026-09-24-samples/",
+      "title": "Optimal number of trials",
+      "summary": "Sample complexity required grows linearly with effective support and inversely with the allowable similarity margin.",
+      "ideas": [
+        "Required trials N scales as effective support divided by (1−c^2)/c^2, e.g., ~99·S_eff for c=0.99"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article derives explicit formulas for the sample complexity needed to achieve a target cosine similarity, presenting original covariance analysis, SNR expression, and scaling with effective support; it is technically deep and useful, but some steps are terse and assume familiarity with the notation, limiting accessibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:29:20.426184"
+    },
+    {
+      "id": 6054,
+      "source_id": 34,
+      "original_url": "https://vpetersson.com/2026/09/23/little-snitch-meets-1password-for-ai-agents/",
+      "title": "Introducing Agent IAP - Little Snitch meets 1Password for AI agents",
+      "summary": "Agent IAP is an identity-aware proxy that brokers API credentials to AI agents via 1Password with ACL narrowing, time-boxed approvals, and per-agent hash-chained audit logs, deliberately designed to avoid the prompt-fatigue trap of firewall-style tools.",
+      "ideas": [
+        "Proxy pattern isolates agents from raw credentials via 1Password-backed tokens",
+        "Per-agent hash-chained audit log names the agent and rule for each call",
+        "Defaults set narrowest scope and 'Once' to defeat reflexive approval",
+        "Time-boxed grants prevent 'yes for now' from quietly becoming permanent",
+        "ACL narrows credentials but cannot widen upstream-scoped keys",
+        "Credential isolation does not stop data exfiltration through read access",
+        "Bearing tokens plus workload identity can scope leaked tokens to a task",
+        "Network-layer logging (SOCKS5) is the missing half of agent auditing"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A substantive launch post for a genuinely novel tool that addresses a real and increasingly common problem: giving AI agents scoped, auditable access to third-party APIs without exposing long-lived credentials. The architecture is clearly explained with concrete CLI commands, the access-level examples for Sentry, DataForSEO, and Cloudflare show real understanding of those services, and the limitations section is unusually honest (no exfiltration protection, bearer token risk, credential concentration). Minor deductions for being a self-promotional launch post and for the AI-written-tool disclosure, though the open-source code and SECURITY.md invitation mitigate that.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:29:00.146746"
+    },
+    {
+      "id": 6053,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-httpioexception-the-response-ended-prematurely-httpclient/",
+      "title": "Fix: HttpIOException: The response ended prematurely from HttpClient in .NET",
+      "summary": "The 'response ended prematurely' HttpClient error is a keep-alive race between pooled idle connections and server-side idle timeouts, fixable by setting PooledConnectionIdleTimeout to half the shortest upstream timeout and retrying ResponseEnded only for idempotent or idempotency-keyed requests.",
+      "ideas": [
+        "SocketsHttpHandler silently retries failed GETs on reused connections but never POSTs with content",
+        "Set PooledConnectionIdleTimeout below server idle timeout; scavenger enforces it with ~1.25x overshoot",
+        "Servers advertising Keep-Alive: timeout=N get their header checked by .NET at rent time",
+        "Default resilience handler treats every HttpRequestException as transient, risking duplicate POSTs",
+        "Consistent first-request ResponseEnded means protocol/port mismatch or proxy with dead backend"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "This is an exceptional debugging article: it reproduces the HttpIOException keep-alive race on .NET 10/11 with a raw-socket repro, explains the mechanism down to HttpConnection.cs internals (scavenger timer cadence, Keep-Alive header rent-time check, the _canRetry flag that silently retries GETs but never POSTs), and validates fixes with an original measurement (3/150 failures eliminated by idle-timeout or header changes). The guidance is immediately actionable, including the non-obvious footgun that AddStandardResilienceHandler retries unsafe POSTs by default. Limitations are minor: the benchmark uses a small 150-request sample and the content is truncated near the end, but the central claims are well supported.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:24:02.404730",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-httpioexception-the-response-ended-prematurely-httpclient.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: HttpIOException: The response ended prematurely from HttpClient in .NET - Start Debugging"
+    },
+    {
+      "id": 6052,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-conflicting-assets-with-the-same-target-path-in-aspnetcore-10/",
+      "title": "Fix: Conflicting assets with the same target path after upgrading to the .NET 10 SDK",
+      "summary": "The .NET 10 SDK forces StaticWebAssetBasePath=/ on every Microsoft.NET.Sdk.Web project, causing cross-project static asset collisions; fix by setting <StaticWebAssetBasePath>_content/$(MSBuildProjectName)</StaticWebAssetBasePath> on the referenced project (compression flags do not help).",
+      "ideas": [
+        ".NET 10 SDK sets StaticWebAssetBasePath=/ unconditionally on Web SDK projects, breaking web-to-web references",
+        "Disabling build compression does not fix base-path collisions; the check runs before compression targets",
+        "Use $(MSBuildProjectName) not $(PackageId) in StaticWebAssetBasePath; PackageId is empty at csproj evaluation",
+        "Blazor Web App server and .Client projects share / by design, so duplicate files in both wwwroots collide",
+        "GenerateStaticWebAssetsManifest at line 640 of StaticWebAssets.targets is the source of the conflict error",
+        "CompressionExcludePatterns is the correct way to opt files out of build-time compression",
+        "Pinning SDK 9 via global.json is a stopgap; base-path fix is the durable solution"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional hands-on investigation of a .NET 10 SDK breaking change with reproducible evidence. The author verifies every claim by inspecting SDK source files (Sdk.Server.props, StaticWebAssets.targets) at specific line numbers, runs the minimal repro across multiple SDK/TFM combinations, and produces a measured results table that debunks common search-result advice (disabling compression). Distinguishes multiple lookalike errors and provides concrete fixes including a subtle gotcha ($PackageId vs $MSBuildProjectName). Limited only by its narrow audience of .NET developers hitting this exact error.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:23:46.087102",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-conflicting-assets-with-the-same-target-path-in-aspnetcore-10.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: Conflicting assets with the same target path after upgrading to the .NET 10 SDK - Start Debugging"
+    },
+    {
+      "id": 6051,
+      "source_id": 34,
+      "original_url": "https://paultendo.github.io/posts/tothepenny/",
+      "title": "tothepenny: bank statements that have to add up",
+      "summary": "A parser's output is only trustworthy when validated against figures the bank printed — printed balances are free checksums, and any tool checking itself against its own numbers (including LLM-based ones) verifies nothing.",
+      "ideas": [
+        "Only balances the bank printed can validate parsed transactions; self-computed balances are circular evidence.",
+        "Balance columns are free checksums: day-end balances give windowed checks, running balances per-transaction coverage.",
+        "Browser and desktop must share one PDFium build, or character boxes diverge and parses break.",
+        "Balance-carry chains between printed balances caught 49 misreads invisible to opening/closing checks.",
+        "LLM-based statement parsers often check output against their own output, providing no independent validation."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "A practitioner-built PDF statement extractor whose central design principle is genuinely non-obvious: parse output is only reconciled against balances the bank printed, because a balance the parser computed itself is circular evidence — a lesson derived from a real NatWest bug and reinforced by a measured survey (77.5% of 133,889 transactions individually checked; 49 Nationwide misreads caught only by balance-carry chains). The article also delivers hard-won implementation detail: replacing pdfplumber/pdftotext with raw PDFium character boxes, a WebAssembly/desktop PDFium version mismatch that broke 132 Halifax statements and its reproducibility fix validated across 1,250 PDFs, and cross-statement gap, duplicate, and transfer detection. Its source-level critique of competing tools, including LLM-based parsers that validate against their own output, extends the independence-of-evidence lesson to AI extraction generally. Limitations: the bank-statement domain is niche, and the piece is partly a project announcement, though it is honest about constraints and open-source.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:17:54.264126",
+      "image_url": "https://paultendo.github.io/og/tothepenny.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6050,
+      "source_id": 34,
+      "original_url": "https://norlinder.nu/posts/The-Limitations-of-Running-a-Workload-Generator-In-the-Same-JVM-as-the-System-Under-Test/",
+      "title": "The Limitations of Running a Workload Generator In the Same JVM as the System-Under-Test",
+      "summary": "Running the workload generator in the same JVM as the SUT can cause large latency spikes because GC pauses block request scheduling, a problem mitigated only when the generator is isolated.",
+      "ideas": [
+        "GC pauses block request scheduling, inflating p99 latency.",
+        "Distributed mode isolates generator, avoiding scheduling delays.",
+        "Scheduled submit time correction fails when generator is paused.",
+        "Use MultiJVM or Distributed for accurate latency measurements."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents deep, reproducible experiments showing how GC pauses in the same JVM as the workload generator dramatically increase p99 latency, with clear data and mechanistic explanation; however, its conclusions are tightly tied to SPECjbb2015 configurations and may not generalize to all workloads.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:15:31.255219"
+    },
+    {
+      "id": 6049,
+      "source_id": 34,
+      "original_url": "https://muhammadraza.me/2026/convert-gguf-to-mlx/",
+      "title": "How to Convert GGUF to MLX (and When You Should Not)",
+      "summary": "Convert GGUF weights using the original repo’s config and tokenizer; direct conversion of the original weights yields the best quality, while converting a GGUF only works reliably when you preserve those components and start from a Q8_0 file.",
+      "ideas": [
+        "No one‑line GGUF‑to‑MLX converter; MLX expects Hugging Face folder structure.",
+        "Convert original weights directly for highest quality; avoid double quantisation.",
+        "If only GGUF exists, dequantise with transformers, copy config/tokenizer from source, then convert.",
+        "Q8_0 GGUF gives near‑original quality; Q4_K_M conversion loses ~3% perplexity.",
+        "Lost RoPE scaling or rope_theta causes severe quality drops, sometimes model failure."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible procedures, measurements, and clear trade‑offs for converting GGUF models to MLX, with experimental results that quantify quality loss and pitfalls. It explains mechanisms such as quantisation paths, RoPE settings, and tokenizer handling, giving a technically capable reader actionable insight. Limitations include reliance on specific model types and the need for original repo metadata, but the depth and evidence justify a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:14:32.096824"
+    },
+    {
+      "id": 6048,
+      "source_id": 34,
+      "original_url": "https://itamargilad.com/good-ideas/",
+      "title": "Why Good Product Ideas Don’t Survive",
+      "summary": "Evidence‑guided development can raise the survival rate of high‑impact product ideas from about 5% to over 80%, far outperforming traditional launch‑and‑iterate.",
+      "ideas": [
+        "Traditional launch‑and‑iterate lets only ~5% of high‑value ideas reach full impact.",
+        "Evidence‑guided development increases survival of good ideas to 80%+ by testing assumptions early.",
+        "AI primarily amplifies output without fundamentally improving idea survival."
+      ],
+      "labels": [
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete quantitative estimates, outlines specific phases with measurable survival probabilities, and explains mechanisms of evaluation and validation, offering non‑obvious technical insight into product‑development processes. It also critiques AI’s limited role, highlighting process‑centric improvements rather than superficial hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:06:15.103302",
+      "image_url": "https://itamargilad.com/wp-content/uploads/2026/09/Feature-image-2-scaled.png",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 6047,
+      "source_id": 34,
+      "original_url": "https://freshbrewed.science/2026/09/24/maint.html",
+      "title": "Home lab maintenance: certs and more certs",
+      "summary": "Fixing a faulty ClusterIssuer selector and updating Helm values restores automatic TLS certificate renewal after a DNS provider switch.",
+      "ideas": [
+        "ClusterIssuer mismatch prevents cert renewal; correct the dnsZones selector.",
+        "Update ingress cluster-issuer reference to the new ClusterIssuer.",
+        "Edit Helm values to replace old ClusterIssuer with the active one."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The post provides deep, firsthand debugging of cert-manager issuance failures, detailing concrete commands, error messages, and step‑by‑step fixes for mismatched ClusterIssuer and selector configurations. It delivers high technical relevance to sysadmin and infrastructure readers seeking practical TLS and DNS troubleshooting knowledge, though it includes some personal anecdotes that add minor noise. The article’s substance is strong, but the dense presentation and occasional repetition keep it from reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:03:33.735590"
+    },
+    {
+      "id": 6046,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/ai-coding-models/",
+      "title": "Which AI model is best for coding? A hands-on comparison",
+      "summary": "The article demonstrates that running a bake‑off test with hidden assessments is the most reliable way to determine which AI model truly excels at coding.",
+      "ideas": [
+        "Concrete test uses hidden assessments to validate model fixes.",
+        "Claude Opus 5.5 medium effort costs $2.91 per task and scores 52.5% on CursorBench.",
+        "GPT‑6 Sol was unavailable during testing but is priced at $2/$10.",
+        "Grok 4.7 low per‑token price does not translate to lower cost per task.",
+        "Slugify must strip accented characters to avoid URL errors.",
+        "readingTime must ignore words inside fenced code blocks.",
+        "tableOfContents must ignore headings inside code fences and deduplicate slugs.",
+        "Fable 5.1 high effort costs $9.08 per task despite similar token use.",
+        "Effort levels affect step count and per‑task cost dramatically.",
+        "Open‑weight models lack leaderboard presence and rely on hosted APIs."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article supplies an original, reproducible hands‑on bake‑off test that measures coding ability, cost, and token usage across multiple models, with concrete code, hidden test results, and detailed trade‑offs. Its substance is highly technical and directly relevant, though promotional material and some redundancy dilute the value slightly. Novelty is strong but not exceptional due to some repetitive framing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:02:48.522170",
+      "image_url": "https://flaviocopes.com/images/ai-coding-models/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for Which AI model is best for coding? A hands-on comparison"
+    },
+    {
+      "id": 6045,
+      "source_id": 34,
+      "original_url": "https://entropicthoughts.com/shrinking-fedora-virtual-disk",
+      "title": "Shrinking a Fedora virtual disk",
+      "summary": "By consolidating Btrfs chunks, resizing the partition to ~156 GB, merging Hyper‑V checkpoints, and shrinking the VHDX, the author frees enough space to host a second Fedora installation on bare metal.",
+      "ideas": [
+        "Delete hiberfil.sys and unused Windows drivers to reclaim 30% disk space.",
+        "Use btdu to accurately measure Btrfs usage and clean large unused files.",
+        "Balance Btrfs chunks aggressively to enable resize to 150 GB.",
+        "Resize the containing partition to ~156 GB then shrink the VHDX to ~150 GB.",
+        "Merge Hyper‑V checkpoints and Optimize-VHD to reclaim space in the base disk.",
+        "Repair a corrupted backup partition table after failed shrink operations."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand engineering steps — measuring disk usage, consolidating Btrfs chunks, resizing partitions, and safely merging Hyper‑V checkpoints — that enable a practical reduction of a Fedora VM’s virtual disk. It provides original calculations, command sequences, and troubleshooting insights, making it highly relevant to a technically capable sysadmin. While the narrative includes some speculation and minor risks, the substance and actionable knowledge are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T04:02:11.984646"
+    },
+    {
+      "id": 6044,
+      "source_id": 34,
+      "original_url": "https://boring-observability.dev/blog/laravel-job-retries-backoff-unique-locks",
+      "title": "Laravel Job Retries and Backoff with ShouldBeUnique and WithoutOverlapping",
+      "summary": "Laravel retry and backoff behavior differ for ShouldBeUnique, ShouldBeUniqueUntilProcessing, and WithoutOverlapping, affecting lock duration and job ordering.",
+      "ideas": [
+        "ShouldBeUnique holds its unique lock through the entire retry backoff period.",
+        "ShouldBeUniqueUntilProcessing releases the lock at the start of handling, allowing new jobs during backoff.",
+        "WithoutOverlapping releases its lock before backoff, so another copy can acquire the lock and run while the failed job waits.",
+        "Overlap releases count as attempts, shifting which backoff entry is used for the real exception.",
+        "A backoff that extends past retryUntil() causes MaxAttemptsExceededException to replace the original exception."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article dives deep into Laravel’s queue retry mechanics with concrete code, experiments, and version‑specific behavior, giving actionable guidance on lock handling, backoff timing, and unique job configuration. It is highly relevant to developers and sysadmins managing Laravel job processing, though its scope is limited to a specific framework, keeping it from an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T03:54:38.874336",
+      "image_url": "https://boring-observability.dev/og/blog/laravel-job-retries-backoff-unique-locks.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Skyline — queue control for Laravel Horizon."
+    },
+    {
+      "id": 6043,
+      "source_id": 34,
+      "original_url": "https://blog.arusekk.pl/posts/srht-account-takeover/",
+      "title": "https://blog.arusekk.pl/posts/srht-account-takeover/",
+      "summary": "Attackers can inject malicious ANSI escape sequences into build logs, enabling XSS that hijacks victim accounts on SourceHut.",
+      "ideas": [
+        "ANSI escape sequences in logs enable XSS via HTML link injection",
+        "Exploit requires only view access to build logs, no account needed",
+        "Affected ansi2html versions 1.7.0‑1.9.3 and builds.sr.ht before 0.105.1",
+        "Mitigation via CSP and upstream patch; vulnerability persisted ~4.5 years"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, reproducible exploitation details, including code snippets, PoC construction, affected versions, and mitigation steps, which are valuable to security‑focused readers. It is directly relevant to software engineering and vulnerability research, though it includes personal commentary and promotional content that add noise. The substance is strong, but the length and self‑referential sections slightly dilute efficiency. Overall, it delivers exceptional technical insight for a technically capable audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T03:51:22.099544"
+    },
+    {
+      "id": 6042,
+      "source_id": 4,
+      "original_url": "https://www.recordedfuture.com/blog/russia-new-generation-warfare",
+      "title": "This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. Privacy Policy",
+      "summary": "Russia is expanding hybrid New Generation Warfare across Europe, using coordinated cyber, physical sabotage, and influence operations that increasingly threaten critical infrastructure and require proactive resilience measures.",
+      "ideas": [
+        "Russia blends cyber, physical sabotage, and influence ops to target European critical infrastructure",
+        "Airspace incursions and undersea cable attacks have quadrupled, straining NATO response",
+        "CopyCop uses AI‑generated text and voice clones to spread Kremlin propaganda across Europe",
+        "Insikt Group recommends enhanced security protocols, cross‑sector coordination, and threat monitoring",
+        "Russia may escalate to full‑scale NGW before the 2028 US election, exploiting European fragmentation",
+        "Sabotage aims to test defenses and sow fear while avoiding direct NATO retaliation",
+        "Offensive cyber ops focus on persistent access, targeting logistics and transport hubs",
+        "Private firms risk brand damage and supply‑chain interruption from Russian attacks",
+        "Public sector faces rising polarization and erosion of trust in government institutions"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece delivers multiple novel insights—such as the New Generation Warfare framework, quantified airspace incursions, and AI‑driven disinformation campaigns—paired with concrete data, actionable recommendations, and exclusive threat intel, yielding high value density. It aligns closely with cybersecurity and technology themes, offering practical guidance for both public and private sectors without notable padding or sensationalism.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-25T03:38:34.641683",
+      "image_url": "https://www.recordedfuture.com/blog/media_10c22e9fea0dfce1e29616a799bc21f1237b1a779.png?width=1200&format=pjpg&optimize=medium",
+      "image_width": 1200,
+      "image_height": 450,
+      "image_alt": ""
+    },
+    {
+      "id": 6041,
+      "source_id": 4,
+      "original_url": "https://blog.doyensec.com/2026/09/24/chrome-ios-policy-bypass.html",
+      "title": "One Tap Too Far: Using Shortcuts to Bypass Chrome for iOS Call Prompts",
+      "summary": "Security checks that validate only the first hop in an app-handoff chain can be bypassed when an intermediary like Shortcuts opens attacker-supplied callback URLs directly, so gates must move to the first handoff.",
+      "ideas": [
+        "Chrome treated shortcuts:// URLs as trusted Apple app navigations, skipping its app-launch confirmation alert",
+        "Shortcuts x-callback-url parameters (x-error, x-success, x-cancel) carry real URLs opened after execution outcomes",
+        "Shortcuts opens callback URLs directly through iOS, so Chrome can never apply its tel: user-gesture policy",
+        "A single webpage click can trigger tel: or facetime: by invoking a deliberately failing shortcut's x-error callback",
+        "Callback destinations must be URL-encoded inside query strings to nest one custom scheme within another",
+        "Prompting at the first shortcuts:// handoff covers all callback types, nested URLs, and future similar mechanisms",
+        "Chrome's app-launch policy gates on user initiation, incognito status, and recent taps before allowing external handoffs"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is original security research delivering high-value instances efficiently: a novel vulnerability (CVE-2026-13795), the actual exploit chain with working URL-encoded payload, Chromium source code analysis from app_launcher_tab_helper.mm, and a clear remediation rationale for why prompting at the first handoff is future-proof. The x-callback-url abuse technique is a genuinely reusable insight for anyone auditing inter-app communication, and references to the Chromium issue and fix add verifiable credibility. At roughly 1,000 words with 7-8 distinct technical ideas, value density is excellent, the writing is focused with no padding, and the CyberSecurity/tech thematic alignment is strong. It misses the exceptional tier only because the vulnerability's severity is moderate (prompt bypass leading to tel:/facetime: invocation) and the audience is specialized.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-25T03:38:22.831799"
+    },
+    {
+      "id": 6040,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/googles-suncatcher-project-aims-to-put-ai-data-centers-in-orbit-powered-by-solar-energy/",
+      "title": "Google's Suncatcher project aims to put AI data centers in orbit powered by solar energy",
+      "summary": "Orbital AI data centers face massive cost and engineering hurdles, making them over a decade away from practicality.",
+      "ideas": [
+        "Google’s “Suncatcher” aims to run AI data centers in orbit powered by solar energy.",
+        "MVP satellite, refrigerator-size, launches Oct 1 on SpaceX Falcon 9.",
+        "Approximately 10,000 orbital satellites would equal a 1‑GW Earth data center.",
+        "Space lacks air for cooling, and cosmic radiation can fry chips.",
+        "Launch costs must fall to about $200 per kilogram for viability.",
+        "Jeff Bezos estimates up to 20 years before orbital data centers beat ground‑based costs."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides concrete, actionable information about Google's Suncatcher project, including launch details, cost estimates, and technical challenges, delivering 4‑5 genuine value instances in a short 250‑word piece. It aligns well with the Technology & Innovation theme (AI data centers) and lacks clickbait or padding, but its depth is limited to reporting facts without deeper analysis.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-25T03:36:59.260158",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/gemini_blue.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6039,
+      "source_id": 14,
+      "original_url": "https://www.youtube.com/watch?v=TfWkoq6BXEY",
+      "title": "“This Will Be The Most Violent Election Of Our Lifetime” - Robert Pape",
+      "summary": "Violent populism has emerged as a new epoch where sizable segments of Americans endorse force, including assassination, to achieve political ends, raising the risk of unprecedented electoral violence.",
+      "ideas": [
+        "Violent populism is a new paradigm distinct from ordinary populism.",
+        "Over 25% of Americans support using force to stop Trump’s presidency.",
+        "55% of those surveyed equate that support with assassinating Trump.",
+        "16% of Americans back using the military to suppress Democratic protesters.",
+        "The authors’ surveys indicate a domestic escalation trap threatening elections.",
+        "Political violence has shifted from lone-wolf to mass support across parties.",
+        "Historical comparisons show unprecedented levels of support for political violence.",
+        "The tipping point stems from social changes linked to Trump's rise.",
+        "Three recent assassination attempts illustrate rising threats.",
+        "Methodology includes nationally representative surveys and focus groups.",
+        "Understanding violent populism helps anticipate future electoral instability."
+      ],
+      "labels": [],
+      "rating": 84,
+      "rating_reason": "The content offers multiple novel insights, original survey data, and detailed methodology on violent populism, demonstrating high value density. It also contains self‑promotion and unverified claims of recent assassinations that temper credibility, preventing a perfect score. Overall it delivers substantive, theme‑relevant analysis worthy of recommendation but with notable caveats.",
+      "source_type": "youtube",
+      "source_name": "Chris Williamson",
+      "published_at": "2026-09-25T03:36:18.120293"
+    },
+    {
+      "id": 6038,
+      "source_id": 15,
+      "original_url": "https://gambit.security/blog-posts/autonomous-ai-agents-online-retailers-25-a-company",
+      "title": "Autonomous AI Agents are breaking into hundreds of Online Retailers for $25 a target",
+      "summary": "Autonomous AI tools can automate large‑scale retail hacks at a fraction of traditional costs.",
+      "ideas": [
+        "Open-source AI tools Strix, Cairn, and Hermes automate scanning, exploitation, and orchestration.",
+        "Attackers compromised 27 retailers averaging $25 per target, showing low‑cost viability.",
+        "Models GLM 5.2, DeepSeek v4 Pro, and Opus‑4.6 are leveraged via OpenRouter for attacks.",
+        "Minimal human input is required for extensive AI‑driven hacking campaigns.",
+        "Security teams must monitor autonomous AI agents as emerging low‑cost threats."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The brief provides several concrete value instances: naming specific open-source AI tools, revealing a low $25 per target cost, listing the AI models used, and showing minimal human involvement. This offers actionable insight for security professionals. The content is concise, high‑density, and aligns with AI security themes. No significant clickbait or padding is present, so penalties are minimal.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-09-25T03:36:11.414141",
+      "image_url": "https://cdn.prod.website-files.com/699d15905fa8481718f06229/6ab26ea523209fbac0178ed3_blog-cover.jpg",
+      "image_width": 1446,
+      "image_height": 813,
+      "image_alt": ""
+    },
+    {
+      "id": 6037,
+      "source_id": 15,
+      "original_url": "https://www.wiz.io/blog/investigating-github-pat-compromise",
+      "title": "How to Investigate GitHub PAT Compromise: Lessons From a Multi-Organization Campaign",
+      "summary": "Use a six-step process to contain, investigate, and remediate GitHub PAT compromises, including source identification, blast-radius assessment, credential rotation, and hunting unauthorized secret use.",
+      "ideas": [
+        "Six-step framework to investigate and remediate GitHub PAT compromise.",
+        "Contain the compromised PAT to stop further attacker activity.",
+        "Reconstruct attacker timeline using artifact and log analysis.",
+        "Identify source of leaked PAT, such as exposed logs or misconfigurations.",
+        "Assess blast radius by mapping where leaked PAT was usable.",
+        "Rotate exposed credentials and enforce least privilege policies.",
+        "Hunt for unauthorized use of leaked secrets across services and APIs.",
+        "Multi-organization campaign used phased API reconnaissance from AWS us-east-1.",
+        "Attack progressed from reconnaissance to exploitation across target environments."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a clear six-step investigative framework and actionable details such as containing the PAT, reconstructing the timeline, identifying the leak source, assessing blast radius, rotating credentials, and hunting unauthorized use, all illustrated with a real multi-organization campaign. The content delivers high value density with multiple concrete insights and aligns closely with CyberSecurity and Tech themes. No clickbait or padding detected.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-09-25T03:34:04.660651",
+      "image_url": "https://www.datocms-assets.com/75231/1786570602-github-pat-compromise-2.png?fm=webp",
+      "image_width": 4048,
+      "image_height": 2246,
+      "image_alt": ""
+    },
+    {
+      "id": 6036,
+      "source_id": 15,
+      "original_url": "https://bughunters.google.com/blog/breaking-into-googles-gfile-for-100k",
+      "title": "Breaking into Google's GFile for $100k",
+      "summary": "A previously unauthenticated Google API allowed attackers to exfiltrate partner data and chain bugs to gain privileged storage access, netting a $97k bug-bounty.",
+      "ideas": [
+        "AI tool flagged firefly-pa.googleapis.com lacking authorization checks.",
+        "Attacker dumped partner CMS records via this unauthenticated API.",
+        "Unchecked callback enabled fake success in file-copy jobs.",
+        "Chained two internal API bugs to gain read/write across storage.",
+        "Exploit earned $97,604 across two Google VRP bug reports.",
+        "Technique demonstrates risk of insufficient access control in internal APIs."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The piece presents several concrete, novel insights: AI-driven discovery of an unauthenticated Google API, the ability to dump partner data and chain bugs for storage read/write, and the real-world payout of $97k. It offers high value density with multiple actionable takeaways and minimal filler. These strengths justify a near-exceptional rating.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-09-25T03:33:31.376283",
+      "image_url": "https://storage.googleapis.com/bughunters-social/og_social_image_bughunters.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": ""
+    },
+    {
+      "id": 6035,
+      "source_id": 15,
+      "original_url": "https://portswigger.net/research/crlf-powered-desync-attacks",
+      "title": "CRLF-Powered Desync Attacks: Beheading HTTP Streams",
+      "summary": "A misconfigured Nginx proxy can turn URL‑encoded CRLFs into header boundaries, enabling powerful desync attacks.",
+      "ideas": [
+        "Nginx $uri in proxy_pass decodes %0d%0a into actual CRLF characters.",
+        "Decoded CRLF creates a new HTTP header boundary in the upstream request.",
+        "This header injection can be escalated to full request smuggling attacks.",
+        "Exploiting the flaw can spawn a self‑replicating CRLF‑powered desync worm.",
+        "The primitive also allows response queue poisoning across the backend."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "The brief excerpt delivers several concrete security insights: a specific Nginx $uri misconfiguration, how decoded %0d%0a creates a real header boundary, and how this primitive enables full request‑smuggling and a self‑replicating desync worm. With under 150 words it provides high value density and aligns directly with cybersecurity themes, without clickbait or filler.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-09-25T03:32:09.745140"
+    },
     {
       "id": 6034,
       "source_id": 7,
