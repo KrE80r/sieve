@@ -1,170 +1,20 @@
 {
   "schema_version": 2,
-  "batch_id": "7148347cc644d9f30090606324913f31",
-  "published_at": "2026-09-23T20:32:00.001573+00:00",
-  "scheduled_for": "2026-09-23T20:30:00+00:00",
-  "next_update_at": "2026-09-24T03:30:00+00:00",
+  "batch_id": "dd6c9b5aada696e973b32a0990096f7f",
+  "published_at": "2026-09-24T03:32:00.000958+00:00",
+  "scheduled_for": "2026-09-24T03:30:00+00:00",
+  "next_update_at": "2026-09-24T08:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-09-22T20:30:00+00:00",
-    "ends_at": "2026-09-23T20:30:00+00:00"
+    "starts_at": "2026-09-23T03:30:00+00:00",
+    "ends_at": "2026-09-24T03:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 21,
+  "total_developments": 26,
   "developments": [
-    {
-      "id": "cf3f8b19eeff86dcc524e58093163343",
-      "occurred_at": "2026-09-22T20:53:48+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-23T20:53:48+00:00",
-      "title": "Astra finds ~14-year-old libuv bug while debugging ChatGPT crashes on macOS 27",
-      "detail": [
-        "Peter Steinberger reports that ChatGPT sometimes crashed on his machine after he updated to macOS 27, and that the Astra model traced the trouble to a bug in libuv that had been present for roughly 14 years. The find produced libuv pull request #5283, \"darwin: release fsevents path allocations,\" opened under Steinberger's account to fix the long-lived defect.",
-        "libuv is a cross-platform asynchronous I/O library, and the faulty code sits in its macOS-specific fsevents handling, which the patch updates to release fsevents path allocations. That closes a bug that had survived in the codebase for about 14 years."
-      ],
-      "why_it_matters": "A defect that endured roughly 14 years in libuv's macOS file-events code is now identified and patched in pull request #5283, addressing the ChatGPT crash behavior Steinberger encountered on macOS 27. The fix removes a long-standing defect from a core cross-platform I/O dependency rather than leaving it buried in the stack.",
-      "sources": [
-        {
-          "author_name": "Peter Steinberger 🦞",
-          "author_username": "steipete",
-          "url": "https://x.com/steipete/status/2102501642176528743",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://github.com/libuv/libuv/pull/5283",
-          "domain": "github.com",
-          "title": "darwin: release fsevents path allocations by steipete · Pull Request #5283 · libuv/libuv · GitHub",
-          "preview_image_url": "https://opengraph.githubassets.com/ef2d9dfaf17fd734683f133aed12fc60da84b0f5c9c62194e15e9f5f4e6344f3/libuv/libuv/pull/5283"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "9417009877071adb5273daa09fb7953d",
-      "occurred_at": "2026-09-22T21:01:43+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-23T21:01:43+00:00",
-      "title": "Paweł Huryn benchmarks frontier models on real bug fixes; GPT-6 Astra leads with 45 at $33",
-      "detail": [
-        "Paweł Huryn ran a benchmark with 105 planted bugs across two real repositories, asking each model to find and fix what it could. GPT-6 Astra (max) addressed 45 bugs at $33.03, followed by Fable 5.1 (max) at 43 for $77.55, Claude Opus 5.5 (max) at 43 for $60.49, Muse Spark 1.3 (max) at 32.2 for $18.11, and Claude Opus 5.0 (max) at 27 for $51.33.",
-        "Huryn described the test as probing how the models perform on actual work rather than synthetic benchmarks, and said additional effort levels and more attempts (n=3 runs per model) would be posted in a follow-up thread the same night."
-      ],
-      "why_it_matters": "The benchmark gives a direct fix-count-versus-cost comparison of five current frontier models on identical real code. Opus 5.5 ties Fable 5.1's 43-bug result at $17.06 less per run, and GPT-6 Astra edges out both top performers on score at the lowest price of the leading group.",
-      "sources": [
-        {
-          "author_name": "Paweł Huryn",
-          "author_username": "PawelHuryn",
-          "url": "https://x.com/PawelHuryn/status/2102479269335101504",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HS2BqqSWEAAjvYd.png",
-              "preview_url": "https://pbs.twimg.com/media/HS2BqqSWEAAjvYd.png:small",
-              "width": 1695,
-              "height": 2048
-            }
-          ]
-        },
-        {
-          "author_name": "Ian Nuttall",
-          "author_username": "iannuttall",
-          "url": "https://x.com/iannuttall/status/2102503635477557493",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "21071ff7b25b79dc8f7e03bc78caa308",
-      "occurred_at": "2026-09-22T21:28:27+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-23T21:28:27+00:00",
-      "title": "pi-mcp-adapter reaches 1 million monthly npm downloads",
-      "detail": [
-        "Nico Bailon announced that the pi‑mcp‑adapter package has surpassed one million downloads per month on npm, marking a significant usage milestone for the tool. The adapter provides a token‑efficient MCP interface for the Pi coding agent, enabling developers to integrate AI‑driven code assistance more cheaply.",
-        "The rapid adoption reflected by the download volume suggests growing interest in AI‑enhanced development workflows and validates the utility of the adapter within the npm ecosystem."
-      ],
-      "why_it_matters": "The milestone demonstrates strong community uptake of the pi‑mcp‑adapter, indicating that AI coding agents are becoming a mainstream component of developers’ toolchains today.",
-      "sources": [
-        {
-          "author_name": "Nico Bailon",
-          "author_username": "nicopreme",
-          "url": "https://x.com/nicopreme/status/2102510361891230147",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HS2d4cPbcAEuFus.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HS2d4cPbcAEuFus.jpg:small",
-              "width": 1332,
-              "height": 612
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [
-        {
-          "url": "https://github.com/nicobailon/pi-mcp-adapter",
-          "domain": "github.com",
-          "title": "GitHub - nicobailon/pi-mcp-adapter: Token-efficient MCP adapter for Pi coding agent · GitHub",
-          "preview_image_url": "https://opengraph.githubassets.com/a27454d6b88370b1e4b42e711ab4a5d4ea8b89fed5f0764f2589687fde7ed941/nicobailon/pi-mcp-adapter"
-        }
-      ],
-      "interest_slugs": [
-        "ai",
-        "linux"
-      ]
-    },
-    {
-      "id": "bea2334bf1f43bc27491a48b4c121367",
-      "occurred_at": "2026-09-23T01:14:15+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-24T01:14:15+00:00",
-      "title": "OpenCode fixes invisible required field on flight check‑in page",
-      "detail": [
-        "A user reported that the flight check‑in page failed because a hidden required form field prevented submission. They invoked OpenCode, which downloaded the page source, identified the invisible field, supplied the needed value, and successfully submitted the form. The AI agent performed the entire debugging and fix automatically."
-      ],
-      "why_it_matters": "The automatic fix enabled the traveler to complete check‑in instantly, demonstrating OpenCode’s ability to resolve real‑world web‑form issues without human intervention.",
-      "sources": [
-        {
-          "author_name": "dax",
-          "author_username": "thdxr",
-          "url": "https://x.com/thdxr/status/2102567186028274058",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HS3Rga9WYAAN3aH.png",
-              "preview_url": "https://pbs.twimg.com/media/HS3Rga9WYAAN3aH.png:small",
-              "width": 1844,
-              "height": 324
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai",
-        "web_security"
-      ]
-    },
     {
       "id": "39f8b0f2077f7f07608836acc6e98931",
       "occurred_at": "2026-09-23T05:46:48+00:00",
@@ -842,6 +692,337 @@
               "height": 1080
             }
           ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "8644ede5df0596a5d345df6b80ad42f0",
+      "occurred_at": "2026-09-23T20:15:01+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T20:15:01+00:00",
+      "title": "Claude.ai performance 3× faster after two weeks of optimization",
+      "detail": [
+        "ClaudeDevs announced that the Claude.ai service was made three times faster within a two‑week period, sharing the measurement, debugging, and performance‑improvement techniques used to achieve the speedup.",
+        "The claim was posted alongside a link to a blog article that provides engineers with detailed learnings and methods for accelerating their own applications."
+      ],
+      "why_it_matters": "The latency reduction directly improves the responsiveness of Claude.ai for its users, enabling faster query handling and more efficient AI‑powered workflows.",
+      "sources": [
+        {
+          "author_name": "ClaudeDevs",
+          "author_username": "ClaudeDevs",
+          "url": "https://x.com/ClaudeDevs/status/2102839691154427983",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Boris Cherny",
+          "author_username": "bcherny",
+          "url": "https://x.com/bcherny/status/2102854267782705648",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "acadfd68b696fcf548e785e5775478e4",
+      "occurred_at": "2026-09-23T20:41:51+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T20:41:51+00:00",
+      "title": "PrismML demonstrates 1‑bit Bonsai vision‑language model running locally on Snapdragon‑powered AI smart glasses",
+      "detail": [
+        "At the Snapdragon Summit, PrismML announced a 1‑bit Bonsai vision‑language model that can run entirely on AI smart glasses using the Snapdragon® AR1 Gen 1 platform.",
+        "The model was co‑designed with Qualcomm and optimized for the Snapdragon Hexagon™ NPU, delivering four‑times lower memory usage and twice the token‑generation speed for comparable intelligence.",
+        "This shows that sophisticated AI inference is now feasible on highly constrained wearable devices without relying on cloud services."
+      ],
+      "why_it_matters": "Running a vision‑language model locally on smart glasses removes the need for cloud connectivity, cutting latency and preserving user privacy on wearable devices.",
+      "sources": [
+        {
+          "author_name": "PrismML",
+          "author_username": "PrismML",
+          "url": "https://x.com/PrismML/status/2102859262062145966",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HS7ad-gaQAAc3_B.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HS7ad-gaQAAc3_B.jpg:small",
+              "width": 1001,
+              "height": 559
+            }
+          ]
+        },
+        {
+          "author_name": "nisten",
+          "author_username": "nisten",
+          "url": "https://x.com/nisten/status/2102861023770190277",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "bfd32adff250aa2fa249f0da59ec244a",
+      "occurred_at": "2026-09-23T20:45:19+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T20:45:19+00:00",
+      "title": "Google Gemini 3.8 Text-to-Speech Playground",
+      "detail": [
+        "Simon Willison released an interactive web playground for Google’s Gemini 3.8 text‑to‑speech API, enabling low‑cost generation of multi‑speaker conversations and voice cloning.",
+        "The demo showcases the model’s capability to handle over 2,000 distinct voices and includes a UI where Claude scripted a humorous debate between two pelicans."
+      ],
+      "why_it_matters": "The playground gives developers immediate, low‑cost access to Gemini 3.8 TTS, lowering barriers to building multi‑voice applications and proving the model’s scalability.",
+      "sources": [
+        {
+          "author_name": "Simon Willison",
+          "author_username": "simonw",
+          "url": "https://x.com/simonw/status/2102861892549279922",
+          "role": "source",
+          "media": []
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://simonwillison.net/2026/Sep/23/gemini-tts-playground/",
+          "domain": "simonwillison.net",
+          "title": "Tool: Gemini 3.8 TTS Playground",
+          "preview_image_url": "https://simonwillison.net/2026/Sep/23/gemini-tts-playground/￼￼ https:/static.simonwillison.net/static/2026/tts-playground.webp"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "bd260626e85837d380c70a0b4d989d43",
+      "occurred_at": "2026-09-23T20:52:29+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T20:52:29+00:00",
+      "title": "HumanLayer exposes Claude Opus 5.5 through the latest Claude Code CLI",
+      "detail": [
+        "According to dex, HumanLayer users can access Claude Opus 5.5 by selecting Opus as the model within HumanLayer, provided they have the latest Claude Code CLI installed.",
+        "Dex adds that the context window warning that appears in that flow can be ignored, indicating that Opus 5.5 is already wired into HumanLayer's Claude Code CLI integration without requiring a separate HumanLayer update."
+      ],
+      "why_it_matters": "HumanLayer users on the current Claude Code CLI can begin routing work to Opus 5.5 immediately by choosing the Opus model option, giving them access to the newer model without waiting on a dedicated HumanLayer release.",
+      "sources": [
+        {
+          "author_name": "Arun Gopalakrishnan",
+          "author_username": "arungk",
+          "url": "https://x.com/arungk/status/2102862079959142775",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "dex",
+          "author_username": "dexhorthy",
+          "url": "https://x.com/dexhorthy/status/2102863697945469415",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "f671b99081062ec97e2e39237ccd23d5",
+      "occurred_at": "2026-09-23T21:04:16+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T21:04:16+00:00",
+      "title": "Dan McAteer's Opus 5.5 prompt audit flags ~70 improvements across his Claude Code instruction files",
+      "detail": [
+        "Dan McAteer reports that running an Opus 5.5 'prompt audit' against his Claude Code setup surfaced roughly 70 ways to improve his skills, CLAUDE.md, and AGENTS.md instruction files. The audit is a cleanup prompt, invoked as '/claude-api prompt-audit', which McAteer recommends to Claude Code users while crediting another community member for the technique.",
+        "Per the accompanying note, the prompt optimizes those instruction files and removes anti-patterns that restrict Opus 5.5, and McAteer describes the whole run as taking about five minutes."
+      ],
+      "why_it_matters": "Claude Code operators can apply this audit to their own CLAUDE.md, AGENTS.md, and skills files immediately, and McAteer's ~70-finding result indicates these configuration files commonly carry fixable anti-patterns that constrain how well Opus 5.5 performs.",
+      "sources": [
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2102799218154881486",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2102799030854004736/img/Jd1YFPcSMiuIEL-Q.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2102799030854004736/img/Jd1YFPcSMiuIEL-Q.jpg:small",
+              "width": 2048,
+              "height": 1511
+            }
+          ]
+        },
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2102866663997952076",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HS7h3QdXEAAYuNs.png",
+              "preview_url": "https://pbs.twimg.com/media/HS7h3QdXEAAYuNs.png:small",
+              "width": 893,
+              "height": 614
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "5cac6a9d12f384eb3e2fdfb10fabba26",
+      "occurred_at": "2026-09-23T21:56:03+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T21:56:03+00:00",
+      "title": "Evadne W. has Opus 5.5 complete a prototype streaming two 4K Pyrowave feeds over UDP to an M1 Mac mini",
+      "detail": [
+        "Evadne W. reports that Opus 5.5 completed the initial prototype of her video streaming setup: two Pyrowave-based 4K streams are sent over UDP and consumed on an M1 Mac mini. Having viewed the result, she says the model exceeded her expectations.",
+        "She adds that all of her annoyances with NDI are addressed in the new pipeline. The assessment rests on her own viewing of the working prototype, and no performance figures or independent verification are supplied."
+      ],
+      "why_it_matters": "A completed dual-4K UDP pipeline running on an M1 Mac mini gives Evadne W. a functioning alternative to NDI right now, replacing the video-over-IP path that had been a recurring source of friction in her workflow.",
+      "sources": [
+        {
+          "author_name": "Evadne W.",
+          "author_username": "evadne",
+          "url": "https://x.com/evadne/status/2102879696409047444",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2102879523255521280/img/6hrt3InQCDMzx-tw.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2102879523255521280/img/6hrt3InQCDMzx-tw.jpg:small",
+              "width": 2048,
+              "height": 1152
+            },
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2102879523226173440/img/PhbbinQqs8sDQrGK.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2102879523226173440/img/PhbbinQqs8sDQrGK.jpg:small",
+              "width": 2048,
+              "height": 1152
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "3f1b97255e0fc45057a788748d1ef065",
+      "occurred_at": "2026-09-23T22:08:56+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T22:08:56+00:00",
+      "title": "OpenChamber 2.0 released on OpenCode v2 with instant skill and plugin updates",
+      "detail": [
+        "OpenChamber 2.0 was announced as the newest frontend for OpenCode v2, adding Code Mode, web‑search cards, a stats page, and support for skills, agents, MCP servers, and plugins that apply the moment they are saved, eliminating the need for restarts.",
+        "The release demonstrates that OpenCode's server protocol enables rich, polished custom frontends, allowing developers to iterate on agent tooling instantly and expect further extensions built on the same protocol."
+      ],
+      "why_it_matters": "Developers can now modify and deploy OpenCode agents and plugins without restarting the server, dramatically speeding up development and experimentation cycles.",
+      "sources": [
+        {
+          "author_name": "OpenChamber.dev",
+          "author_username": "openchamber_dev",
+          "url": "https://x.com/openchamber_dev/status/2102870804522209554",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "dax",
+          "author_username": "thdxr",
+          "url": "https://x.com/thdxr/status/2102882938815992183",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "7898fa79a09761f64594c9975f436933",
+      "occurred_at": "2026-09-23T23:07:28+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-24T23:07:28+00:00",
+      "title": "Amp's plugin system demonstrated creating webhooks that integrate third-party services like Linear",
+      "detail": [
+        "In a quoted post, jesse edelstein shared a prompt for the Amp coding agent that instructs it to create a plugin registering a webhook keyed `linear-issues`, capturing the `linear-signature` header for verification, and deduping on event IDs. The plugin is meant to watch for Linear issues labeled `amp` moving to `In Progress` and create a corresponding Orb thread.",
+        "Beyang, amplifying the example, frames the broader pattern: agents can register webhooks with arbitrary third-party services on demand rather than requiring a dedicated, pre-built integration for each app.",
+        "The example was shared with a link to Amp's plugin documentation, indicating the webhook-registration flow is a supported capability of the agent's plugin architecture rather than an ad-hoc workaround."
+      ],
+      "why_it_matters": "Demonstrates that Amp can act as a programmable webhook endpoint for external SaaS events, so users can wire agent behavior to live service signals (such as Linear ticket transitions) through prompts instead of bespoke integrations. This shifts integration work from per-service engineering to in-prompt plugin authoring inside the agent runtime.",
+      "sources": [
+        {
+          "author_name": "jesse edelstein",
+          "author_username": "jedelstein25",
+          "url": "https://x.com/jedelstein25/status/2102871622860636233",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Beyang",
+          "author_username": "beyang",
+          "url": "https://x.com/beyang/status/2102897665520648592",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "dfa047aa9d347beb40c106a1cd6691b0",
+      "occurred_at": "2026-09-24T00:22:32+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-25T00:22:32+00:00",
+      "title": "Simon Willison holds a voice conversation with his blog's Datasette backup via datasette-mcp in the ChatGPT iPhone app",
+      "detail": [
+        "Simon Willison reports having a voice conversation with the Datasette backup of his blog through datasette-mcp, connecting via the ChatGPT iPhone app. The exchange shows an MCP server exposing a site's archived content being driven entirely by spoken requests in ChatGPT's voice mode.",
+        "The demonstration arrives alongside Vaibhav Srivastav's announcement that ChatGPT Voice can now invoke plugins and runs on the GPT-6 Astra, Sol, and Luna models in ChatGPT Work on web and mobile."
+      ],
+      "why_it_matters": "MCP servers are now reachable through ChatGPT's voice interface, so a database exposed via datasette-mcp can be queried conversationally by speaking rather than typing, as Willison's blog-backup exchange demonstrates.",
+      "sources": [
+        {
+          "author_name": "Vaibhav (VB) Srivastav",
+          "author_username": "reach_vb",
+          "url": "https://x.com/reach_vb/status/2102822338702307757",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Simon Willison",
+          "author_username": "simonw",
+          "url": "https://x.com/simonw/status/2102916558712705427",
+          "role": "commentary",
+          "media": []
         }
       ],
       "evidence_state": "reported",
