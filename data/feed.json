@@ -1,7 +1,98 @@
 {
-  "updated_at": "2026-09-24T12:00:00.664007+00:00",
-  "total_items": 957,
+  "updated_at": "2026-09-24T13:00:00.271299+00:00",
+  "total_items": 960,
   "items": [
+    {
+      "id": 6034,
+      "source_id": 7,
+      "original_url": "https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/",
+      "title": "https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/",
+      "summary": "Rigorous math proves most consistent-hashing replicas are wasted due to diminishing returns and hash collisions, and Rust struct packing exploits this to reclaim 100TB of RAM with negligible accuracy loss.",
+      "ideas": [
+        "Consistent hashing's ring visualization obscures what is really a simple integer number-line concept",
+        "Single-hash consistent hashing yields ~99% coefficient of variation, causing severe workload imbalance",
+        "Adding 160 hashes per server drops error margin from 99% to roughly 8%",
+        "Ketama algorithm scales hash counts by server weight to match workload to capacity",
+        "Feature combinations force separate hash rings, causing exponential memory explosion",
+        "Rust alignment rules pad structs to multiples of the largest field, so shrinking one field saves nothing",
+        "Storing fields as raw byte arrays with getter methods safely packs memory where #[repr(packed)] is risky",
+        "Packing hash and 16-bit index into six bytes cut consistent hashing memory by 25%",
+        "Each order-of-magnitude increase in hashes per server buys progressively smaller error reduction",
+        "Birthday paradox collisions degrade hashing accuracy as hash counts approach 32-bit space limits",
+        "Exact SD formula for k hashes per server derived where most sources only offer approximations",
+        "Math justified cutting hashes per server by 90% with no appreciable error increase"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This deep-dive delivers exceptional engineering value: an original derivation of the exact standard deviation formula for k hashes per server (beyond the approximations found in most sources), a counterintuitive proof that adding hashes yields diminishing returns, and the birthday-paradox insight that 32-bit collisions degrade accuracy at scale. It also contains immediately applicable Rust knowledge—struct alignment rules and the safe byte-array-with-getters pattern that replaced risky #[repr(packed)], yielding a 25% memory reduction. Concrete results (90% fewer hashes, 100TB RAM reclaimed) validate the math, and the content is dense with roughly a dozen distinct insights across a 13-minute read. The only minor deductions are for introductory consistent-hashing material that is standard fare and some casual filler, but the core contributions are genuinely novel and well-earned.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-09-24T21:43:56.816198",
+      "image_url": "https://blog.cloudflare.com/_emdash/api/media/file/01M2PFY1FZ7AH3P8JEQCDM9YWH.01M2PFY2XJ3KBV9JD78JMJK88K.png",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
+    {
+      "id": 6033,
+      "source_id": 4,
+      "original_url": "https://blog.nns.ee/2026/09/24/oneplus-root/",
+      "title": "[Getting root on OnePlus 15 from an untrusted app, via an audio debug service and a vendor HAL](/2026/09/24/oneplus-root/)",
+      "summary": "Combining AtlasService and olc2 HAL flaws lets any untrusted Android app achieve root on OnePlus 15 devices.",
+      "ideas": [
+        "AtlasService.setEvent lets any app set_property and trigger audiodumpinfo service.",
+        "audioDumpInfo executes untrusted property value via system() call, granting shell as dumpstate.",
+        "Olc2 HAL doShell runs arbitrary shell commands with full Linux capabilities.",
+        "Chaining both bugs escalates untrusted app to uid 0 with extensive capabilities.",
+        "PoC extracts classes.dex to external storage and invokes app_process via boot.sh.",
+        "dumpstate calls vendor HAL via ServiceManager.getService and writeInterfaceToken.",
+        "Vendor HAL inherits vendor_qti_init_shell with all capabilities, enabling root access.",
+        "Remediation: restrict setEvent caller and remove doShell method from HAL."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post provides multiple novel, actionable insights, detailing two distinct privilege‑escalation bugs, a complete PoC chain, and concrete remediation suggestions, resulting in exceptionally high value density. It aligns strongly with CyberSecurity and Tech themes and contains no noticeable padding or clickbait. Consequently it merits a score in the high 80s. No significant penalties apply. ",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-24T21:37:02.366839",
+      "image_url": "https://blog.nns.ee/img/2026-09-24-oneplus-root/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6032,
+      "source_id": 26,
+      "original_url": "https://github.com/harry7557558/spirula-studio",
+      "title": "harry7557558/spirula-studio",
+      "summary": "A self-contained 3D Gaussian Splatting trainer that goes from raw photos/video to splat to textured mesh without Python, PyTorch, or COLMAP, running cross-vendor on NVIDIA, AMD, Intel, and Apple GPUs via Vulkan - a rare genuinely engineered alternative in a space dominated by NVIDIA-locked Python stacks.",
+      "ideas": [
+        "Cross-vendor 3DGS training via Vulkan compute, no PyTorch required",
+        "Quantized training fits 10M full-SH Gaussians in 8GB VRAM",
+        "End-to-end pipeline: video to splat to textured mesh in one binary",
+        "Native 360-degree camera and fisheye support without undistortion",
+        "Built-in SfM with LoMa, AI masking, and metric scale from telemetry"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "Strong scores across the board: problem significance ~22 (3DGS training is locked to NVIDIA/PyTorch/COLMAP ecosystems, a real accessibility pain point), technical novelty ~21 (Vulkan compute implementation, quantized training fitting 10M full-SH Gaussians in 8GB, integrated SfM, native 360° support - substantial original engineering, not a wrapper), practical utility ~23 (multi-platform binaries, GUI+CLI, 915 commits, 12 releases, active feature velocity), documentation ~17 (clear features, build comparison table, download instructions, though no architecture deep-dive or honest limitations section). Domain relevance bonus of +3 for AI/ML tooling and developer productivity alignment. No penalties applied - this is a self-contained original implementation, not a clone or collection.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-24T21:32:21.923333",
+      "image_url": "https://opengraph.githubassets.com/8a83e9374b2bb02c0f5913dff175aa18941b0b081352ef98344f1d67288b6163/harry7557558/spirula-studio",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Cross-vendor 3D Gaussian Splatting trainer - video to splat to mesh, Vulkan or CUDA. - harry7557558/spirula-studio"
+    },
     {
       "id": 6031,
       "source_id": 34,
