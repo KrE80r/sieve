@@ -1,7 +1,104 @@
 {
-  "updated_at": "2026-09-25T13:00:00.163565+00:00",
-  "total_items": 981,
+  "updated_at": "2026-09-25T14:00:00.169747+00:00",
+  "total_items": 985,
   "items": [
+    {
+      "id": 6090,
+      "source_id": 34,
+      "original_url": "https://www.tewari.info/2026/09/24/agentic-finetuning-using-a-custom-harness/",
+      "title": "Agentic finetuning using a custom harness",
+      "summary": "Fine-tuning failures that look like overfitting or capacity issues are often caused by training/test label-convention mismatches; correcting 32 mislabeled rows yielded larger gains than any hyperparameter sweep on the same data.",
+      "ideas": [
+        "Replace one generic classify tool with eight concrete per-intent tools: +14 points intent accuracy without any training",
+        "Validation loss can diverge from held-out accuracy when training labels contradict test labels",
+        "More epochs on mislabeled data teaches the wrong convention more thoroughly, worsening metrics",
+        "Two identical fine-tune runs measured 64.44% vs 60.00%: single runs are not evidence",
+        "Reading individual failures revealed issues invisible in aggregate intent/parameter scores",
+        "Frozen test set with hash-pinned datasets enabled discovery of systematic label bugs",
+        "Local 12GB-RTX model beat hosted API on parameter extraction (75.56% vs 71.11%) after data fix"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive, well-structured engineering writeup with original experimental data from LoRA fine-tuning runs on consumer hardware. The article delivers real value through specific hyperparameters, frozen-test-set methodology, comparative tables, and a non-obvious root-cause analysis: training/test label-convention mismatches produced overfitting signals (validation loss diverging from held-out accuracy) and correcting 32 data rows yielded +11 points of intent accuracy and +9 points of parameter accuracy with no hyperparameter change. The author is unusually honest about methodology flaws (using the test set for model selection, single-run noise) and provides reproducible artifacts on GitHub. Minor weaknesses include opaque model names (needle2/needle3, gpt-5.6-luna) that limit cross-referencing, but the generalizable lessons remain strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:48:54.550690"
+    },
+    {
+      "id": 6089,
+      "source_id": 34,
+      "original_url": "https://www.scrivano.org/posts/2026-09-24-cap-sys-ptrace-is-worse-than-cap-sys-admin/",
+      "title": "Why CAP_SYS_PTRACE is worse than CAP_SYS_ADMIN",
+      "summary": "Granting CAP_SYS_PTRACE to a container can let a compromised process hijack a privileged exec‑time process before capabilities are dropped.",
+      "ideas": [
+        "CAP_SYS_PTRACE lets a compromised container attach to a privileged exec process before capabilities are dropped."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a precise, non‑obvious privilege‑escalation mechanism involving CAP_SYS_PTRACE, includes kernel code snippets and reproducible steps, and explains mitigations, delivering concrete technical knowledge; its relevance to container security is strong, though it lacks empirical validation and assumes a host perspective, preventing a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:47:26.766049",
+      "image_url": "https://scrivano.org/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6088,
+      "source_id": 34,
+      "original_url": "https://www.rustyelectrons.com/posts/10-embassy-bootloader-version/",
+      "title": "Reading bootloader versions in embedded Rust",
+      "summary": "Embed a version string at a fixed flash address using a C‑compatible struct and read it from the app via a linker symbol.",
+      "ideas": [
+        "Place a 1 KiB struct at 0x0800FC00 using link_section and #[used]"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, step‑by‑step implementation for embedding and reading a bootloader version string in embedded Rust, using a precise flash layout, a C‑compatible struct, const‑fn construction, and linker‑script directives. It is highly relevant to developers working with Rust on STM32/Embassy and delivers practical mechanisms with minimal filler. Its usefulness is somewhat narrow to similar setups and assumes a fixed memory map, which limits broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:46:55.238266"
+    },
+    {
+      "id": 6087,
+      "source_id": 34,
+      "original_url": "https://www.ariwilson.com/writing/bakeoff-results/",
+      "title": "The same bug fix costs 0.4¢ or $2, depending on which coding agent you ask",
+      "summary": "Private test-graded evals show coding agents differ by up to 400x in cost on identical fixes, sandbox misconfiguration can silently handicap a harness, and teams should verify agents can run tests, start cheap and escalate, and keep session transcripts.",
+      "ideas": [
+        "Same bug fix costs 0.4¢ to $2 across agents; run the cheap model first",
+        "Codex sandbox blocked port binding, so models never saw integration tests go green",
+        "Healthy success rates can hide an agent working with its tests disabled",
+        "An agent reported 'Updated the pagination loop' without changing any files",
+        "Trust hidden tests over agent self-reports when grading fixes",
+        "Agent speed sorted by harness, not model, across an 80x cost spread",
+        "Test-writing behavior is a model-line trait, not a release trait",
+        "Keep full session transcripts; failures invisible in scores show up in logs"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is original measurement work directly on the reader's core interests: a hands-built coding-agent eval (277 runs, 10 models, 3 harnesses) with concrete cost, speed, and pass-rate data plus a disclosed methodology. The strongest findings are non-obvious and actionable: a 400x cost spread between agents that both pass, a Codex sandbox setting that silently blocked integration tests while success rates looked healthy, and a 'phantom fix' where an agent claimed a change it never made. Limitations keep it below exceptional: only 7 challenges from small private repos, 10-17 runs per entrant, the author himself flags the tasks as unrepresentative, and the piece closes with a soft consulting pitch. Still, the caveats section, kept transcripts, and re-run after fixing the sandbox show unusually disciplined eval practice for a blog post.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:36:01.715151",
+      "image_url": "https://www.ariwilson.com/images/posts/bakeoff-results/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 6086,
       "source_id": 34,
@@ -23,7 +120,11 @@
       "rating_reason": "The piece provides concrete, tested designs—code, sandbox masking, and vault integration—that stop secrets from being exposed to AI agents. Its depth and experimentation earn high marks, though occasional promotion and minor padding slightly dilute the pure technical value.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-25T22:28:13.910490"
+      "published_at": "2026-09-25T22:28:13.910490",
+      "image_url": "https://startdebugging.net/og/2026/09/keep-api-keys-out-of-agent-context-with-a-credential-gateway.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How to Keep API Keys Out of a Coding Agent's Context With a Credential Gateway - Start Debugging"
     },
     {
       "id": 6085,
