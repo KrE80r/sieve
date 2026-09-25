@@ -1,7 +1,599 @@
 {
-  "updated_at": "2026-09-25T12:00:00.421772+00:00",
-  "total_items": 957,
+  "updated_at": "2026-09-25T13:00:00.163565+00:00",
+  "total_items": 981,
   "items": [
+    {
+      "id": 6086,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/keep-api-keys-out-of-agent-context-with-a-credential-gateway/",
+      "title": "How to Keep API Keys Out of a Coding Agent's Context With a Credential Gateway",
+      "summary": "Implement a gateway or sentinel proxy to keep real credentials out of the agent’s environment while allowing controlled access.",
+      "ideas": [
+        "Scoped tokens still leak if embedded in the agent’s environment",
+        "Route gateways enforce allowlists and inject real tokens only after policy checks",
+        "Claude Code sandbox masking + injectHosts provides ready‑made credential protection"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece provides concrete, tested designs—code, sandbox masking, and vault integration—that stop secrets from being exposed to AI agents. Its depth and experimentation earn high marks, though occasional promotion and minor padding slightly dilute the pure technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:28:13.910490"
+    },
+    {
+      "id": 6085,
+      "source_id": 34,
+      "original_url": "https://nohzafk.github.io/posts/2026-09-18-one-value-one-owner-affinity-in-bend/",
+      "title": "One Value, One Owner — Reading Bend Through Affinity",
+      "summary": "Affinity—‘a value may be used at most once on any execution path’—is the sole rule that underpins Bend’s memory safety, parallelism, and zero‑cost proofs.",
+      "ideas": [
+        "A value may be used at most once per path, enabling zero‑GC and lock‑free parallelism."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, well‑documented examples that illustrate the affine ownership model of Bend, showing how at‑most‑once usage enables zero‑GC, lock‑free parallelism and erased proofs. It includes runnable code, clear mechanisms, and measurable trade‑offs, delivering solid technical insight. It is somewhat verbose and contains marginal promotional tone, preventing a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:18:13.923876"
+    },
+    {
+      "id": 6084,
+      "source_id": 34,
+      "original_url": "https://mrzk.io/papers/pauper-consensus-llm-studies/",
+      "title": "Pauper Consensus: Two Pre-Registered LLM Studies",
+      "summary": "A pre‑registered jury of small LLMs can reliably aggregate claim verification results, with instrument design and calibration mapping driving observed agreement.",
+      "ideas": [
+        "Jury of 3‑4B LLMs yields +0.20289 nats log‑loss, surpassing model‑free baseline"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a rigorously pre‑registered experimental protocol that quantifies LLM consensus using Dawid–Skene aggregation and reports concrete numerical results (e.g., +0.20289 nats log‑loss). It supplies detailed instrument specifications, calibration maps, and reproducible findings, demonstrating substantive technical value. However, its scope is limited to 3–4B local models and synthetic‑real news datasets, so the generalizability is modest.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:16:50.271595",
+      "image_url": "https://mrzk.io/papers/pauper-consensus-llm-studies/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Pauper Consensus: Two Pre-Registered LLM Studies"
+    },
+    {
+      "id": 6083,
+      "source_id": 34,
+      "original_url": "https://lyonwj.com/blog/gliner-decide-knowledge-graph-extraction",
+      "title": "Checking Knowledge Graph Extraction with GLiNER2.5-Decide",
+      "summary": "Using a cheap, local label‑set classifier can close most of the quality gap between a span‑extractor and a hosted LLM gate for knowledge‑graph construction.",
+      "ideas": [
+        "Label‑set classification can efficiently validate entity‑resolution and relation extraction without API calls.",
+        "Prompt wording and task name dramatically affect classifier decisions; short label names often work best.",
+        "Combining modality and relation checks yields near‑hosted performance with no recall loss.",
+        "GLiNER2.5‑Decide runs locally on CPU, needing only 1.9 GB download and integrates with Neo4j."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides concrete, reproducible code and detailed experimental results for using a label‑set classifier (GLiNER2.5‑Decide) to validate knowledge‑graph extraction, which is directly useful for AI/ML engineers building KG pipelines. It includes measured performance, failure analysis, and practical tips on prompt wording, all grounded in real data, with little hype or filler.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:12:54.777519"
+    },
+    {
+      "id": 6082,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/m5stack-cores3-tailscale-disco-direct-udp/",
+      "title": "M5Stack CoreS3 Tailscale: Direct UDP Drops WAV Download from 9s to 2.4s",
+      "summary": "Porting Tailscale direct-UDP to ESP32-S3 surfaced an lwIP TCPIP-core reentrancy deadlock, an HTTP/2 WINDOW_CONTROL omission, and a DISCO probe-table exhaustion that together pinned traffic to DERP; fixing them quadrupled throughput.",
+      "ideas": [
+        "lwIP's non-recursive TCPIP core lock deadlocks if WireGuard RX callback re-enters it",
+        "Tailscale DISCO Ping requires NaCl crypto_box, not XChaCha20-Poly1305",
+        "Constrained HTTP/2 clients must send WINDOW_UPDATE frames after receiving DATA",
+        "DISCO 64-entry probe table fills with unreachable peers, silently dropping new probes",
+        "Tailscale's home DERP selection picks lowest region ID, often a distant region",
+        "portable_terminal DISCO implementation already conformed to official packet formats",
+        "Pinning ESP32 WireGuard's external endpoint prematurely strands traffic before Pong arrives"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional first-hand debugging writeup documenting five distinct, non-obvious bugs encountered while porting Tailscale's networking stack to an ESP32-S3: a Tailscale DISCO protocol format mismatch, an lwIP double-locking deadlock inside the WireGuard RX callback, an HTTP/2 flow-control stall from missing WINDOW_UPDATE frames, a DISCO probe-table exhaustion caused by unreachable tailnet peers, and a DERP home-region selection bug picking the lowest region ID. Each finding is grounded in concrete logs, backtraces, code diffs, and 30-run before/after benchmarks (47 KiB/s → 187 KiB/s, 9 s → 2.4 s). The article is dense, technical, reproducible, and almost entirely free of hype or padding; the only modest limitation is its narrow niche audience of embedded networking practitioners.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:12:44.598922",
+      "image_url": "https://lilting.ch/og/images/tags/experiment.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "M5Stack CoreS3 Tailscale: Direct UDP Drops WAV Download from 9s to 2.4s | lilting channel"
+    },
+    {
+      "id": 6081,
+      "source_id": 34,
+      "original_url": "https://grokked.it/posts/after_the_bubble_ii/",
+      "title": "After The Bubble - Snake II",
+      "summary": "A single-layer transformer with 6 attention heads and 409 MLP neurons can fully implement Snake game state and logic, using tricks like chessboard-parity collision checks and additive unembedding scores to encode two values per token.",
+      "ideas": [
+        "Self-collisions only occur between positions an even number of moves apart",
+        "Wall deaths detected when clamped new head equals the prior position",
+        "Position embeddings hold a deterministic food-lookup table keyed by token position",
+        "Additive unembedding scores encode food and length jointly without combinatorial neurons",
+        "Negative weights from length dimensions suppress stale collision matches beyond L-1",
+        "Full game logic fits in one transformer layer within a 236-token context"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "This is original, hands-on transformer circuit engineering: the author implements complete Snake game logic (movement, tail, food, collision, death) in a single-layer, 6-head, 409-neuron transformer with only 236 tokens of context, and explains every mechanism at the attention/MLP/residual-stream level. It contains several genuinely non-obvious, reusable insights: the chessboard-parity argument that self-collisions only occur across even move gaps (halving required attention heads), length-conditioned inhibition of stale collision matches via negative weights, a deterministic food lookup table stored in position embeddings, and an additive unembedding trick that packs food and length into one token without combinatorial neurons. It is squarely relevant to LLM internals and interpretability interests, dense with concrete architecture details, and free of hype or padding. Minor limitations: it depends on part one of the series for some context, the game is admittedly a toy, and some passages are terse, but the mechanism-level knowledge delivered per minute is exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:05:36.494799"
+    },
+    {
+      "id": 6080,
+      "source_id": 34,
+      "original_url": "https://grahamdumpleton.me/posts/2026/09/a-master-class-in-decorators-patching-and-tracing/",
+      "title": "A master class in decorators, patching and tracing",
+      "summary": "Readers gain a practical, workshop‑style mastery of Python decorators, wrapt library features, and wrapture for tracing and patching.",
+      "ideas": [
+        "Decorators preserve function metadata via functools.wraps.",
+        "wrapt uses the instance argument to distinguish decoration contexts.",
+        "wrapture can trace calls and export traces to OpenTelemetry."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, workshop‑style material on Python decorators, wrapt, and wrapture, complete with code examples, mechanism explanations, and practical instrumentation techniques, though it intersperses personal narrative and promotional links that slightly reduce overall focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:05:17.500291",
+      "image_url": "https://grahamdumpleton.me/assets/images/graham-blog-banner.png",
+      "image_width": 1196,
+      "image_height": 630,
+      "image_alt": "A master class in decorators, patching and tracing - Graham Dumpleton"
+    },
+    {
+      "id": 6079,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/09/24/every-package-is-already-installed",
+      "title": "Every package is already installed",
+      "summary": "Omnibin lets any process on‑demand access to any historic Nix package without ever storing it on disk.",
+      "ideas": [
+        "All Nix packages are lazily mounted via FUSE, zero disk footprint.",
+        "First access incurs ~2.7 seconds to fetch and unpack NARs.",
+        "Hydra’s .ls index provides on‑demand package metadata without network fetches.",
+        "Works inside Docker containers using --device fuse and SYS_ADMIN.",
+        "Version‑specific binaries are available via @ syntax, not listed by ls."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a concrete, novel FUSE implementation that lazily exposes the entire Nixpkgs binary set, includes measurable startup latency, and details the underlying index from Hydra. It delivers deep technical insight and practical usage examples, though it contains some promotional tone and modest padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T22:04:47.044859"
+    },
+    {
+      "id": 6078,
+      "source_id": 34,
+      "original_url": "https://davekiss.com/blog/i-opened-a-fake-auto-shop-for-ai-agents/",
+      "title": "I opened a fake auto shop for AI agents",
+      "summary": "Agents can reliably locate and use well‑documented, machine‑readable endpoints when businesses expose clear \"loading docks\" such as MCP servers, agent cards, and dedicated email addresses.",
+      "ideas": [
+        "Full MCP handshake succeeded when endpoint was well defined.",
+        "Sloppy JSON‑RPC requests succeeded because server logged missing headers.",
+        "Spoofed crawler attempted to execute a shell command to dump server secrets.",
+        "Visible note addressed to AI assistants prompted agents to request confirmation before acting.",
+        "Instinct’s email used X‑Auto‑Submitted, DKIM, and signed credential headers.",
+        "Agents require explicit instruction to reroute; they do not autonomously follow new addresses.",
+        "Hidden email signals are ignored; only visible, business‑directed notes work.",
+        "Standard agent‑mail header with signed token helps businesses identify machine messages.",
+        "MCP servers should accept partial requests and log deficiencies for debugging.",
+        "Clear phrasing that invites rerouting reduces prompt‑injection risk."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers a well‑documented, firsthand experiment that reveals concrete mechanisms for exposing and routing AI agents, including protocol details, email header practices, and observed attacks. It offers actionable design guidance while providing measurable evidence, though some descriptive sections add little technical depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:58:51.590535",
+      "image_url": "https://davekiss.com/og/i-opened-a-fake-auto-shop-for-ai-agents.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6077,
+      "source_id": 34,
+      "original_url": "https://codecut.ai/agent-skills-bad-session-history/",
+      "title": "I Tested Whether Bad Examples Override Agent Skills. They Do",
+      "summary": "Bad session examples can override a skill file, and correction only delays but does not permanently eliminate the unwanted pattern.",
+      "ideas": [
+        "Repeated bad assistant replies can override skill-file rules.",
+        "Correction delays the failure but does not fully eliminate the pattern.",
+        "Using fresh sessions when updating skills improves reliability.",
+        "Automatic validation scripts can catch bodies and enforce one‑line output."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a well‑designed experiment that demonstrates how bad session examples can override a skill file, supported by data, reproducible code, and clear mechanisms. It delivers substantial technical insight with minimal promotional noise, though the trailing newsletter sections add slight padding. The findings are novel, evidence‑based, and accompanied by actionable best‑practice recommendations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:56:45.099707",
+      "image_url": "https://codecut.ai/wp-content/uploads/2026/09/agent-skills-bad-session-history-featured-c8d90de4.png",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
+    {
+      "id": 6076,
+      "source_id": 34,
+      "original_url": "https://caseywest.com/obtainability-part-1-the-other-half-of-scarcity/",
+      "title": "Obtainability, Part 1: The Other Half of Scarcity",
+      "summary": "Obtainability failures arise when capacity‑advice scores are stale priors rather than live facts, requiring a probe to confirm real‑time GPU availability before scheduling.",
+      "ideas": [
+        "A prior obtainability score of 0.90 does not guarantee immediate capacity; it can be stale.",
+        "Live probing of the capacity‑advice API is required to know if a rung is truly obtainable.",
+        "A selector must act on fresh confirmations, not static scores, to avoid prolonged stockouts.",
+        "The fallback ladder must reorder itself based on real‑time probe results, not just predefined priorities."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers original, concrete technical insight into GPU obtainability, illustrating how prior capacity‑advice scores can be misleading and how to implement a live probe() function for accurate selection. It ties directly to AI workloads, shows measurable failure cases, and proposes a practical pattern for building a self‑correcting fallback ladder. It remains focused on engineering substance without relying on hype or peripheral business commentary.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:55:21.968746",
+      "image_url": "https://caseywest.com/images/posts/obtainability-part-1-the-other-half-of-scarcity/hero.jpg",
+      "image_width": 2752,
+      "image_height": 1536,
+      "image_alt": ""
+    },
+    {
+      "id": 6075,
+      "source_id": 34,
+      "original_url": "https://blog.officefloor.net/2026/09/complexity-is-fixed-only-shape-moved.html",
+      "title": "Complexity is fixed only the shape moved",
+      "summary": "AI prompt engineering can dramatically reshape code structure in permissive frameworks like Spring (100%+ spread across organization metrics) but barely affects already-additive frameworks like OfficeFloor; meanwhile total complexity stays conserved (~7-15% spread) regardless of architecture or prompt, validating Brooks's essential/accidental distinction empirically.",
+      "ideas": [
+        "Total complexity is conserved across architectures and prompts (~7% spread on Halstead volume)",
+        "Spring's structural shape moved 100%+ under different prompts; OfficeFloor barely moved",
+        "Spring with cohesion coaching converges to OfficeFloor's natural structural shape",
+        "OfficeFloor's structural stability is a property of the composition itself, not prompts",
+        "Asking agents to restructure while implementing drops strict pass rates by 50-90%",
+        "Container-dispatched classes ballooned 3→11 in Spring under formula prompts (advice/aspects)",
+        "Function count and cognitive complexity are not valid amount metrics under restructuring",
+        "Spring endpoints are mutative statements; OfficeFloor endpoints are additive graph nodes",
+        "Structure depending on prompts depends on whoever is holding them every time",
+        "Conservation law empirically validated: eight independent attempts reached same total complexity"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Original, well-controlled experiment testing Tesler's conservation law in AI-driven code generation across two architectures (Spring vs OfficeFloor), four prompting conditions, and ten runs each, using four independent complexity operationalizations. Provides concrete measurements, multiple metrics for amount vs organization, falsifiable claims that are explicitly tested, and honest reporting of limitations including correctness degradation under restructuring coaching and bimodal distribution issues. Strong mechanism explanation distinguishes mutative vs additive composition. Slight penalty for the truncated ending and the single-problem-domain scope.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:53:20.892849"
+    },
+    {
+      "id": 6074,
+      "source_id": 34,
+      "original_url": "https://blog.nspawn.org/posts/nspawn-comeback-an-oci-hub-new-images-and-nspawn-1-0-0/",
+      "title": "Nspawn comeback: an OCI hub, new images and nspawn 1.0.0",
+      "summary": "nspawn 1.0.0 provides a Rust‑based OCI‑aware container manager that integrates with systemd‑machined, using mkosi‑built images hosted on a zot registry.",
+      "ideas": [
+        "nspawn pulls OCI images directly from a zot registry via D‑Bus, avoiding machinectl/importctl.",
+        "mkosi builds OCI images with compressed ZSTD layers, auto‑tagging by date.",
+        "Three storage back‑ends (overlay, flat, mstack) let nspawn choose the best method per host.",
+        "nspawn creates its own NAT bridge (10.99.0.0/24) using nftables, independent of host network managers."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, reproducible details on reviving systemd‑nspawn with a Rust client, an OCI registry, and mkosi‑built images, including configs, command examples, and lessons learned. It is directly relevant to Linux/container/sysadmin readers and introduces a novel, usable toolchain not previously documented. The only limitation is that it targets a niche use‑case and some features (signatures, IPv6) are still missing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:52:55.132762",
+      "image_url": "https://raw.githubusercontent.com/nspawn/nspawn.github.io/main/_imgs/nspawn-rust-cmd.png",
+      "image_width": 2036,
+      "image_height": 1983,
+      "image_alt": "nspawn search, pull, start, shell and exec on an Arch Linux image"
+    },
+    {
+      "id": 6073,
+      "source_id": 34,
+      "original_url": "https://blog.madhukaraphatak.in/non-destructive-refusal-supression-using-engram",
+      "title": "Dynamic Abliteration: Non-Destructive Refusal Suppression via Multi-Layer Engram Steering",
+      "summary": "Dynamic multi‑layer steering using contrastive vectors can suppress LLM refusal behavior while preserving base model weights.",
+      "ideas": [
+        "Layer‑aligned contrastive vectors extracted from opposing prompts.",
+        "Forward‑hook controller injects scaled vectors across multiple layers simultaneously.",
+        "Method suppresses refusal without modifying frozen model weights."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents an experimentally validated, original steering technique that intercepts residual streams across multiple layers to suppress LLM refusal without altering weights, backed with concrete code and measurable vector extraction. It directly serves technically sophisticated readers interested in AI safety mechanisms, offering reproducible methodology and clear engineering insight. Its main limitation is reliance on a single model and sparse hyper‑parameter justification, preventing the highest novelty score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:52:45.102771"
+    },
+    {
+      "id": 6072,
+      "source_id": 34,
+      "original_url": "https://blog.cygankiewicz.com/en/is-open-mercato-an-ai-slop/",
+      "title": "Is Open Mercato AI Slop?",
+      "summary": "Agentic AI engineering can reliably produce reviewable software when anchored by clear specs, isolated execution, and human‑in‑the‑loop review rather than raw output.",
+      "ideas": [
+        "Terminal QR code provides instant remote cockpit access via private mesh",
+        "Trusted‑host mechanism secures private fronts without public exposure",
+        "Open Mercato Skills encode repeatable engineering steps as agent‑readable instructions",
+        "Sandboxes offer ready isolated environments, reducing custom control‑plane maintenance",
+        "Spec‑first development separates intent, spec, architecture, implementation, and review"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The piece delivers concrete, firsthand engineering mechanisms—QR‑code access, trusted‑host private fronts, Open Mercato Skills, and spec‑first agent workflows—that illustrate a genuine, reproducible approach to AI‑assisted development. It shows original insight and practical value, but mixes speculative future claims and occasional promotional phrasing that prevent a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:51:11.782166",
+      "image_url": "https://blog.cygankiewicz.com/og/is-open-mercato-an-ai-slop.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Is Open Mercato AI Slop?"
+    },
+    {
+      "id": 6071,
+      "source_id": 34,
+      "original_url": "https://barkingiguana.com/writing/a-second-region-and-no-path-between-them/",
+      "title": "A Second Region and No Path Between Them",
+      "summary": "Use inter‑Region transit‑gateway peering with static /12 supernet routes and a targeted VPC‑peering link for imaging traffic to avoid per‑GB processing fees while maintaining on‑prem reach.",
+      "ideas": [
+        "Static /12 supernet routes replace per‑VPC CIDR maintenance.",
+        "Imaging traffic uses a /22 over inter‑Region VPC peering to skip processing charges.",
+        "Direct Connect gateway association provides on‑prem reach without new circuit."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "The article delivers rare, detailed networking mechanics—supernet static routing, precise peering attachment setup, and cost-driven trade‑offs—that are actionable for advanced practitioners. It offers original, evidence‑based analysis with minimal hype, though the depth assumes prior expertise and focuses on a niche AWS scenario. Its limited breadth and lack of broader AI or security context keep it from reaching top‑tier exceptional status. The content remains highly valuable for engineers designing resilient multi‑region architectures.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-25T21:49:45.402723",
+      "image_url": "https://barkingiguana.com/images/hero-iguana.png",
+      "image_width": 768,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 6070,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/wso2-and-adobe-commerce-flaws-exploited.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Two critical vulnerabilities in WSO2 and Adobe Commerce are actively exploited, and patches must be applied immediately.",
+      "ideas": [
+        "CVE-2026-5430 is a path traversal allowing file upload and remote code execution in WSO2 components.",
+        "CVE-2026-71362 is an auth flaw letting attackers switch Magento customer sessions and access private data.",
+        "WatchTowr captured forged JWT tokens exploiting the WSO2 flaw on September 13, confirming real‑world attacks.",
+        "Sansec detected and blocked exploitation attempts against the Adobe Commerce vulnerability.",
+        "Federal agencies are urged to apply fixes for both flaws by September 27 2026 to mitigate risk."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, timely threat intelligence about two high‑severity CVEs and includes evidence of active exploitation, which provides actionable knowledge for defenders. It offers clear guidance to apply patches, aligning well with cybersecurity relevance, and contains five distinct value instances in a concise format. Minor promotional filler is present but does not detract significantly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-25T21:38:28.819086"
+    },
+    {
+      "id": 6069,
+      "source_id": 27,
+      "original_url": "https://github.com/aayushch/laya",
+      "title": "aayushch/laya",
+      "summary": "An open‑source, local‑first AI command center that aggregates notifications from many work tools and autonomously stages actions via LLM‑powered agents.",
+      "ideas": [
+        "Multi‑persona AI routes notifications, runs research, and executes actions via configurable agent workflows"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "Problem significance scores high (23/25) as it tackles notification overload with real‑world tool integration. Technical novelty is moderate (19/25) – the multi‑persona brain and rule‑learning pipeline are novel but built on existing n8n and LLM wrappers. Practical utility is strong (21/25) with a production‑ready desktop app and good documentation (20/25), and a 7‑point domain bonus pushes the total to 91.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-25T21:38:18.675078"
+    },
+    {
+      "id": 6068,
+      "source_id": 27,
+      "original_url": "https://github.com/Fosowl/agenticSeek",
+      "title": "Fosowl/agenticSeek",
+      "summary": "AgenticSeek is a fully local, voice-enabled AI assistant that can autonomously browse, code, and plan tasks without any cloud dependency.",
+      "ideas": [
+        "Fully local AI browsing and coding assistant with voice interaction"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 91,
+      "rating_reason": "Problem significance 22/25 (privacy‑focused local AI assistant), technical novelty 18/25 (incremental but notable local browsing/coding agent), practical utility 20/25 (usable with setup instructions), documentation quality 23/25 (comprehensive multilingual README), no penalties; +8 domain relevance bonus for AI tooling, yielding a total of 91.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-25T21:35:27.198816",
+      "image_url": "https://opengraph.githubassets.com/84041fe65aea058b461b6408cce5ccae6706147f81e5e8dfc593fc42dd0289d2/Fosowl/agenticSeek",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Fully Local Manus AI. No APIs, No $200 monthly bills. Enjoy an autonomous agent that thinks, browses the web, and code for the sole cost of electricity. - Fosowl/agenticSeek"
+    },
+    {
+      "id": 6067,
+      "source_id": 4,
+      "original_url": "https://blog.scrt.ch/2026/09/22/how-one-twitch-chat-message-became-code-execution-on-a-streamers-pc/",
+      "title": "https://blog.scrt.ch/2026/09/22/how-one-twitch-chat-message-became-code-execution-on-a-streamers-pc/",
+      "summary": "OBS Browser Sources run an unsandboxed, outdated Chromium (vulnerable to an in-the-wild V8 bug), so any overlay rendering viewer-controlled content as HTML can escalate from a single Twitch chat message to full code execution on the streamer's machine.",
+      "ideas": [
+        "OBS Browser Sources embed full Chromium via CEF with the sandbox explicitly disabled by default",
+        "OBS 32.2.2 shipped Chromium 127, roughly two years behind current stable releases",
+        "CVE-2024-7971 is a V8 type confusion exploited by North Korean group Citrine Sleet in the wild",
+        "A single unsanitized chat message in an OBS overlay creates a zero-click XSS entry point",
+        "XSS + V8 exploit + disabled sandbox = direct path from chat message to native code execution",
+        "Chat content must always be rendered as text, never as raw HTML, in overlay widgets",
+        "OBS team confirmed CEF 128+ upgrade and sandbox re-enablement are in progress",
+        "Sandbox was originally disabled because it broke authentication for service integrations",
+        "Responsible disclosure spanned February–September 2026 with coordinated PR merges",
+        "Any attacker-controlled page in an OBS Browser Source could bypass the XSS step entirely"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Excellent original security research with a clear, well-structured attack chain: Twitch chat XSS → unsandboxed Chromium renderer → V8 CVE-2024-7971 exploitation → native code execution on the streamer's machine. The post delivers genuine novel insight (OBS shipping with `no_sandbox = true` in CEF settings, combined with a 2-year-old Chromium build), includes responsible disclosure timeline with specific PR references, and provides actionable advice for streamers and overlay authors. Technical depth is strong without being padded, and the narrative around discovering the vulnerability through a friend's screenshot is engaging. Minor limitations: the exploit internals are deliberately omitted, and the XSS-as-entry-point is well-trodden ground—but the OBS-specific context makes it valuable.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-25T21:34:29.337958"
+    },
+    {
+      "id": 6066,
+      "source_id": 4,
+      "original_url": "https://www.schneier.com/blog/archives/2026/09/on-anthropics-ai-misuse-report.html",
+      "title": "Title: On Anthropic&#039;s AI Misuse Report - Schneier on Security",
+      "summary": "Anthropic’s misuse report needs stronger governance and transparency to prevent real‑world AI harms.",
+      "ideas": [
+        "Classification of AI misuse lacks nuance and practical guidance.",
+        "Governance frameworks must include industry collaboration and oversight.",
+        "Transparency in model release mitigates malicious exploitation.",
+        "Current report underestimates socio‑technical impacts and user behavior.",
+        "Proactive policy development is essential to stay ahead of AI risks."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "Schneier offers original, expert analysis of Anthropic’s misuse report, highlighting gaps in classification, emphasizing the need for transparency and governance, and providing actionable perspective on risk mitigation. The piece is concise yet dense with insight, aligning strongly with AI and cybersecurity themes. No notable padding or sensationalism detracts from its value.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-25T21:33:31.186904"
+    },
+    {
+      "id": 6065,
+      "source_id": 26,
+      "original_url": "https://github.com/leejet/stable-diffusion.cpp",
+      "title": "leejet/stable-diffusion.cpp",
+      "summary": "stable-diffusion.cpp provides a pure C/C++ engine for running diffusion model inference locally across CPUs and GPUs, enabling lightweight, dependency‑free image generation.",
+      "ideas": [
+        "Pure C/C++ diffusion inference engine supporting many models and GPU/CPU backends without external dependencies"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "Problem Significance 22/25 (addresses real need for lightweight local diffusion inference). Technical Novelty 20/25 (first pure C/C++ diffusion engine using ggml, novel application beyond LLMs). Practical Utility 22/25 (production‑ready, multi‑backend, extensive model support). Documentation Quality 23/25 (detailed README with usage, guides, limits). No penalties applied; domain relevance bonus +8 for AI tooling.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-25T21:33:13.621211",
+      "image_url": "https://opengraph.githubassets.com/a5a90f6e664e9746535ae01ed5d8ae1ff10de71aea865eaf7404f451f27b732a/leejet/stable-diffusion.cpp",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Diffusion model(SD,Flux,Wan,Qwen Image,Z-Image,...) inference in pure C/C++ - leejet/stable-diffusion.cpp"
+    },
+    {
+      "id": 6064,
+      "source_id": 26,
+      "original_url": "https://github.com/julyx10/lap",
+      "title": "julyx10/lap",
+      "summary": "Lap is a production-ready, cross-platform, local-first desktop photo manager with on-device AI search and face recognition - a credible open-source privacy alternative to cloud photo services.",
+      "ideas": [
+        "Folder-first library avoids database lock-in; originals stay untouched in place",
+        "CLIP text and visual similarity search runs fully on-device via ONNX Runtime",
+        "Local face clustering and smart tags with no cloud upload required",
+        "RAW+JPEG/HEIC pairs and Live Photos handled as unified linked items",
+        "Interactive map view clusters geotagged photos following active filters",
+        "Duplicate cleanup with reclaimable-space summaries and bulk removal across sets"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 84,
+      "rating_reason": "Problem significance is high (~21/25): managing large personal photo libraries offline with privacy is a genuine, widely-felt need, and Lap positions itself credibly against cloud services. Documentation is exceptional (~23/25), with an unusually honest explanation of what data lives in files vs. the local database, per-platform uninstall instructions, build-from-source steps, and a full format/architecture breakdown - a strong signal of engineering maturity. Practical utility is high (~21/25): notarized macOS builds, Homebrew/MSI/AppImage packaging, 1,170 commits, and 60+ format support indicate near-production readiness. Technical novelty is moderate (~16/25) since photo managers like digiKam exist, but the folder-first workflow combined with fully local CLIP search, InsightFace face clustering, and multilingual semantic search is a meaningful differentiator. No penalties applied; small domain bonus for on-device AI inference and privacy-focused tooling.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-25T21:32:55.965270",
+      "image_url": "https://opengraph.githubassets.com/a60580229ee302379ddc1e1af9435a1cd75ec48ccd60c984a7037cef266661d6/julyx10/lap",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "An offline-first photo manager for large local libraries - julyx10/lap"
+    },
+    {
+      "id": 6063,
+      "source_id": 26,
+      "original_url": "https://github.com/FxEmbed/FxEmbed",
+      "title": "FxEmbed/FxEmbed",
+      "summary": "Provides a Dockerized Cloudflare Worker that creates multi‑platform embeds for social links on Discord/Telegram.",
+      "ideas": [
+        "Multi-platform embed generator for Discord/Telegram via Cloudflare Workers"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "Problem significance scores 22 for solving a real embed customization issue. Technical novelty earns 16, practical utility 18, documentation quality 19, with a +5 domain relevance bonus and no penalties.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-25T21:32:20.230532",
+      "image_url": "https://opengraph.githubassets.com/f39fe1ca497c00866f92d7c9f3a7bab58d9caf405be585075aeac4e7af5184f7/FxEmbed/FxEmbed",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Fix X/Twitter and Bluesky embeds! Use multiple images, videos, polls, translations and more on Discord, Telegram and others - FxEmbed/FxEmbed"
+    },
     {
       "id": 6062,
       "source_id": 4,
