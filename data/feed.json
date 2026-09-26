@@ -1,7 +1,220 @@
 {
-  "updated_at": "2026-09-26T18:00:00.350908+00:00",
-  "total_items": 955,
+  "updated_at": "2026-09-26T19:00:00.163487+00:00",
+  "total_items": 962,
   "items": [
+    {
+      "id": 6106,
+      "source_id": 4,
+      "original_url": "https://adhdmurky.github.io/posts/post4/",
+      "title": "Home Posts Whoami |",
+      "summary": "AD CS certificate enrollment can be relayed not only through classic /certsrv Web Enrollment but also through the CES SOAP/WSTEP endpoints, opening a new NTLM-relay path to domain privilege escalation with freely released tooling.",
+      "ideas": [
+        "CES endpoints (/CA_CES_Kerberos, /CA_CES_NTLM service.svc) also accept enrollment and can be abused via NTLM relay",
+        "Web Enrollment uses HTTP form POSTs; CES uses SOAP/WSTEP WS-Trust RequestSecurityToken messages",
+        "CES passes certificate templates inside AdditionalContext XML, not the CertAttrib form field",
+        "CES embeds the PKCS10 CSR in a WS-Security BinarySecurityToken rather than a form field",
+        "CES returns the X509v3/PKCS7 certificate directly in the SOAP response, eliminating the separate ReqID fetch",
+        "CES defaults to Negotiate authentication but still accepts NTLM negotiation, enabling relay",
+        "Existing Web Enrollment relay tooling fails against CES because the underlying HTTP protocols are completely different",
+        "A modified impacket ntlmrelayx intercepts authentication and relays it to CES to obtain certificates",
+        "Relayed CES certificates enable Un-PAC-the-Hash and Pass-the-Certificate escalation chains",
+        "AD CS comprises CA, Web Enrollment, Online Responder, NDES, and CES/CEP role services, each a potential attack surface",
+        "Web Enrollment supports SAN/UPN injection via CertAttrib (e.g., CertificateTemplate:User with SAN:upn)"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "This is original offensive-security research extending NTLM relay attacks on AD CS beyond classic Web Enrollment to the lesser-known CES endpoints, a genuinely novel privilege escalation vector (ESC_CES). The post delivers 7+ high-quality value instances: a complete protocol-level comparison of Web Enrollment form POSTs versus CES SOAP/WSTEP WS-Trust requests, exact request templates showing how the certificate template moves from CertAttrib to AdditionalContext, the authentication-negotiation difference between endpoints, a working relay tool built on impacket, and freely released tooling on GitHub with no paywall or upsell. Value density is very high for ~1,300 words, with almost no padding, and the thematic alignment with CyberSecurity is exact. Minor roughness in prose and image references missing from the text keep it from a perfect score, but for its practitioner audience this is top-tier, immediately actionable research.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-27T03:36:38.372451"
+    },
+    {
+      "id": 6105,
+      "source_id": 4,
+      "original_url": "https://cyberinsider.com/google-warns-shinyhunters-is-mass-exploiting-oracle-peoplesoft-flaw/",
+      "title": "Skip to main content",
+      "summary": "Attackers bypass Web Application Firewall filters by URL‑encoding the PeopleSoft endpoint to exploit a critical CVE and deploy backdoors.",
+      "ideas": [
+        "Attackers bypass WAF by URL-encoding 'PSEMHUB' as '%50SEMHUB'.",
+        "ShinyHunters exploit CVE-2026-35273 vulnerability in Oracle PeopleSoft.",
+        "Mandiant identified group UNC6240 conducting mass exploitation.",
+        "Exploitation exposed sensitive employee and organizational data.",
+        "Attackers deployed JSP web shells and Ple64.exe backdoor.",
+        "Mitigation: install patch, disable hub, rotate credentials, monitor logs.",
+        "Target sectors include education, tech, healthcare, government."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 84,
+      "rating_reason": "84 - The article delivers multiple high‑value insights: it explains a novel URL‑encoding bypass, details the UNC6240 group’s tactics, outlines concrete mitigation steps, and describes impact across several sectors. No padding or clickbait is present, so no penalties apply. The content aligns tightly with cybersecurity themes and offers actionable intelligence for practitioners.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-27T03:36:15.469517",
+      "image_url": "https://cyberinsider.com/wp-content/uploads/2026/09/Google-warns-ShinyHunters-is-mass-exploiting-Oracle-PeopleSoft-flaw.png",
+      "image_width": 950,
+      "image_height": 485,
+      "image_alt": ""
+    },
+    {
+      "id": 6104,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/sharepoint-rce-and-mikrotik-routeros.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Active exploitation of SharePoint and MikroTik flaws highlights how misused trust boundaries can enable unauthenticated full control.",
+      "ideas": [
+        "SharePoint CVE-2026-65660 enables remote code execution via network code injection.",
+        "MikroTik RouterOS CVE-2026-67279 combined with CVE-2026-86060 allows admin console takeover without a password.",
+        "\"MikroTrick\" exploit chain bypasses authentication by abusing trust boundaries in RouterOS.",
+        "CISA added these flaws to its KEV catalog, urging federal agencies to patch by Sep 28, 2026.",
+        "Design risk: features for trusted local callers become remote attack surfaces when authentication state is lost."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers concrete, actionable information about two newly exploited vulnerabilities and the MikroTrick exploit chain, backed by CISA listings and expert quotes, providing clear value for security professionals. While it includes promotional boilerplate, the core content is concise and free of clickbait, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-27T03:36:07.696003",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHEPamtRBBEzltsUWnj-F8umrMf4eUUhTmGUJdhHlrvWZamHWpBtXcrpQKDArTziRiiIWv8psX4DTZyN9kLBtcAyLOPJma9_M7sYKgYz6WBISbOhJrRlfByfCKfTTMdBqaYUp-0nskrt2ndt3poUFLDGegEFJojS0EzEvwAqzaUNtvX26jZopYE4zA4S3K/s1700-nu-rw-lo-l85-e365/share-kev.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 6103,
+      "source_id": 4,
+      "original_url": "https://ironpeak.be/blog/ex-arrr-sailing-the-0-click-seas/",
+      "title": "EX-ARRR: Sailing the Apple 0-click Seas",
+      "summary": "Niche, low-scrutiny formats like OpenEXR are prime zero-click attack surfaces, and LLM-guided fuzzing of disassembly can surface deterministic, mostly attacker-controlled heap overflows reachable through Apple's automatic image-processing machinery.",
+      "ideas": [
+        "Apple's EXR decoder allocates RGB-sized buffers but writes RGBA, overflowing 4 bytes per pixel",
+        "Three of four overflow bytes are attacker-controlled; only the alpha lane is fixed at 1.0",
+        "Zero-click bugs matter because OS daemons automatically decode incoming images with elevated privilege",
+        "LLM-guided fuzzing reads disassembly to propose structure-preserving mutations that reach deep parser code",
+        "Static analysis findings are hypotheses only; runtime validation separates leads from bugs",
+        "Heap grooming makes overflow landing deterministic; tone-mapping creates an invertible byte-control mapping",
+        "Any EXR-to-SDR conversion path, including PNG/JPEG export, triggers the same vulnerable decode routine",
+        "Validate exploits on stock devices reachable only via attacker-controlled channels, never dev machines",
+        "Write-only overflow primitives without reads fundamentally constrain exploitation strategy options",
+        "Niche, high-complexity, low-scrutiny formats like OpenEXR disproportionately hide valuable bugs",
+        "AppleScript can drive real application ingest paths for realistic, repeatable crash experimentation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is original vulnerability research with exceptional technical depth: a heap overflow in Apple's libAppleEXR.dylib (12-byte RGB allocation vs 16-byte RGBA write) with 75% attacker-controlled overflow content, plus a rare LLM-guided, disassembly-anchored fuzzing methodology that most security readers haven't seen operationalized. Value instances are abundant: the channel-count confusion bug, the write-only NEON store primitive analysis, heap grooming for deterministic landing, the invertible tone-mapping byte control, multiple conversion-pipeline attack surfaces, and a rigorous stock-device validation methodology. Strong CyberSecurity theme alignment throughout. Points deducted because the content cuts off mid-narrative right at the zero-click payoff, leaving defenders/disclosure sections promised but undelivered.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-27T03:35:57.088250"
+    },
+    {
+      "id": 6102,
+      "source_id": 4,
+      "original_url": "https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records",
+      "title": "blog.faav.net",
+      "summary": "JWT validation that checks tenant, audience, and user claims but never verifies the signature is security theater — and human intuition about backend implementation quirks, not AI persistence, is what breaks such systems open.",
+      "ideas": [
+        "Titan accepted JWTs without verifying signatures, rendering all other authentication checks meaningless.",
+        "Mutating JWT claims one field at a time reveals which checks validate content versus signature.",
+        "The upn claim was used as a local username lookup, not an email identity.",
+        "'admin' worked because backend logic was guessed, not because the token was forged cleverly.",
+        "Wayback Machine snapshots of archived configs can recover API table definitions and routing values.",
+        "AI agents grind through error messages well but miss semantic reinterpretations of field names.",
+        "Developers must verify token signatures above all else when building authentication.",
+        "Metadata counts across 17 ClickHouse databases estimated 17.3 trillion reachable rows.",
+        "Employee title and hierarchy data enables targeted social engineering without touching PII.",
+        "Cross-dataset MUID presence makes cross-service user activity correlation plausible at scale."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is an original first-hand security writeup packed with value instances: a working alg:none JWT bypass methodology, a claim-mutation technique for mapping which token checks are actually enforced, a reusable OSINT tactic (recovering table configs from Wayback Machine snapshots), and the key novel insight that the upn claim functioned as a local username lookup — which AI tools systematically missed because 'admin' wasn't a plausible UPN. The disclosure timeline with MSRC case numbers, bounty figures, and verification of the 17.3 trillion row estimate via two independent metadata paths adds concrete evidence rare in public writeups. Only minor deductions for narrative padding (personal anecdotes, the 2 AM moment) and the disclosed fact that Microsoft cut sections before publication, meaning some technical depth was filtered out. Thematic alignment is excellent for cybersecurity and AI-assisted research workflows.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-27T03:35:03.011861",
+      "image_url": "https://blog.faav.net/assets/images/647380bf-4a6a-462c-b2f6-f16f2f02bc19.png",
+      "image_width": 2253,
+      "image_height": 711,
+      "image_alt": ""
+    },
+    {
+      "id": 6101,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ai-access-makes-people-almost-entirely-unwilling-to-say-i-dont-know-study-finds/",
+      "title": "AI access makes people almost entirely unwilling to say \"I don't know,\" study finds",
+      "summary": "AI access dramatically reduces people's willingness to admit uncertainty, leading to overconfidence and more errors despite more answers.",
+      "ideas": [
+        "AI advice cuts willingness to say 'I don't know' from ~36% to 6%.",
+        "Participants become 2.5× more confident while answer accuracy drops.",
+        "Financial incentives only modestly reduce reliance on AI guidance.",
+        "Unsolicited AI output still suppresses admission of uncertainty.",
+        "People tend to trust AI more than human advice, even when wrong.",
+        "AI use can turn correct answers into errors by encouraging blind trust.",
+        "Widespread AI integration threatens critical thinking and metacognitive awareness."
+      ],
+      "labels": [
+        "AI",
+        "Philosophy"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete insights: AI dramatically lowers the rate at which people admit uncertainty, boosts confidence while halving accuracy, and only modestly responds to financial incentives. It also highlights the risk of overtrusting AI, which can turn correct answers into errors. The findings align strongly with AI and philosophical themes on cognition and epistemic behavior.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-27T03:32:57.935314",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/huma_talking_ai.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 6100,
+      "source_id": 22,
+      "original_url": "https://generativeprogrammer.com/p/the-emerging-standards-behind-ai",
+      "title": "The Emerging Standards Behind AI Agents",
+      "summary": "AI agent interoperability is standardizing one boundary at a time, so teams can adopt each contract—model API, tools, delegation, UI, packaging, telemetry, IDE—independently without committing to a single universal standard.",
+      "ideas": [
+        "Agent interoperability converges on independent contracts per boundary instead of one universal standard.",
+        "Open Responses defines an open, multi-provider model API built on OpenAI's Responses semantics.",
+        "MCP uses JSON-RPC 2.0 with host, client, server roles; closest to de facto standard.",
+        "MCP grants access to capabilities; A2A delegates outcomes to autonomous, independently-operated agents.",
+        "AG-UI streams interaction events; A2UI declaratively describes what the client renders.",
+        "AGENTS.md is a plain Markdown convention giving coding agents predictable repository instructions.",
+        "Agent Skills use progressive disclosure: load descriptions first, full instructions only when activated.",
+        "Authoritative business rules and irreversible decisions belong in tested code, not agent skills.",
+        "Claude Code plugins are product-specific; the Agent Plugins spec packages skills plus MCP servers portably.",
+        "Pin OpenTelemetry GenAI semantic-convention versions because names and attributes can still change.",
+        "ACP aims to do for coding agents what LSP did for language servers.",
+        "Adopt each standard only at the boundary where you must replace what sits opposite.",
+        "Most teams start with model-access contracts and add protocols as agents cross new boundaries.",
+        "Emerging specs cover agent schemas, discovery, identity, and authorization but remain experimental or unendorsed."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a dense, well-organized reference mapping 10+ emerging agent interoperability standards (Open Responses, MCP, A2A, AG-UI, A2UI, AGENTS.md, Agent Skills, OpenTelemetry GenAI, ACP) with concrete protocol details, maturity status, and adoption guidance for each. Genuinely valuable insights include the 'independent boundary contracts' architectural model, the MCP-versus-A2A capability/delegation distinction, the progressive disclosure pattern in Agent Skills, and the honest caveat that authoritative rules belong in code rather than skills. The curated watchlist with candid maturity assessments (e.g., AAuth not IETF-endorsed, ACP v2 wire protocol unstable) saves engineers hours of scattered research. Strong thematic alignment with AI and software development; only limited by being a landscape survey rather than implementation-depth original research.",
+      "source_type": "rss",
+      "source_name": "Generative Programmer",
+      "published_at": "2026-09-27T03:32:42.347103",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!I2PL!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F676e0362-4819-4911-8d4b-8fa9b5f028e2_1200x630.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 6099,
       "source_id": 28,
