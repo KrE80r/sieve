@@ -1,7 +1,117 @@
 {
-  "updated_at": "2026-09-25T23:00:00.167899+00:00",
-  "total_items": 987,
+  "updated_at": "2026-09-26T01:00:00.179875+00:00",
+  "total_items": 991,
   "items": [
+    {
+      "id": 6096,
+      "source_id": 4,
+      "original_url": "https://www.safateam.com/intelligence-hub/research/technical-articles/cve-2025-13032-entering-and-breaking-the-avast-antivirus-sandbox-part-2",
+      "title": "Products & Services",
+      "summary": "A double-fetch bug in Avast's driver can be exploited via I/O Ring RegBuffers corruption to achieve arbitrary kernel read/write.",
+      "ideas": [
+        "Double-fetch bug enables pool overflow by toggling Length between allocation and copy.",
+        "Race thread repeatedly changes Length to create a reliable overflow window.",
+        "Windows paged pool and segment heap behavior allow targeted heap spraying.",
+        "I/O Ring object's RegBuffers allocation is perfect for arbitrary read/write.",
+        "Corrupting a RegBuffers pointer redirects kernel I/O to attacker-controlled data.",
+        "IoRingReadFile writes arbitrary data to any kernel address via fake entry.",
+        "IoRingWriteFile reads kernel memory by reading from a fake buffer entry.",
+        "Spray strategy aligns allocation sizes to increase probability of adjacency."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides multiple concrete exploitation techniques, detailed code analysis, and practical guidance for vulnerability researchers, delivering high value for cybersecurity professionals. While the repeated boilerplate sections add some padding, the core technical content is dense with 8 distinct value instances, resulting in a strong but not flawless score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-26T09:34:09.997977",
+      "image_url": "https://images.ctfassets.net/g83bdkwoho6w/7dPJuuDzRaEOvzFwAeudGk/5ad1c6b31404f381268bcc920ac9b907/CVE-2025-13032.jpeg",
+      "image_width": 1024,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6095,
+      "source_id": 4,
+      "original_url": "https://mononclemich.medium.com/so-apparently-rovo-has-neighbors-88998d0ad59c",
+      "title": "Critical Cross-user and Cross-tenant compromise in Atlassian Rovo",
+      "summary": "Attacker can bypass Rovo’s sandbox proxy to execute code in other users’ active runtimes and access their Atlassian tenant APIs across tenants.",
+      "ideas": [
+        "Rovo sandbox can be proxied bypassed allowing direct network access",
+        "Attacker can execute arbitrary Python in other users’ active Rovo runtimes",
+        "Cross-tenant execution accesses other users’ Atlassian product contexts",
+        "Management interface exposed unauthenticated administrative endpoints",
+        "Shared sandbox infrastructure lets code escape its intended isolation",
+        "Proxy configuration via environment variables is not a security boundary"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel insights—proxy bypass, cross‑tenant runtime takeover, unauthenticated management interface—and provides concrete evidence and actionable takeaways, making it high‑value despite a sensational title. Minor padding and clickbait reduce density slightly.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-26T09:32:46.380418"
+    },
+    {
+      "id": 6094,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/09/25/other-people/",
+      "title": "Pluralistic: Itch scratching (25 Sep 2026)",
+      "summary": "Building and using your own tools gives a uniquely rewarding sense of autonomy and improves productivity.",
+      "ideas": [
+        "Personal keybinding Windows+E replaces alt‑tab for faster file explorer access.",
+        "“boingpic.sh” script batch‑resizes images and syncs them to a personal server.",
+        "Self‑made scripts give a rewarding “scratch‑your‑own‑itch” feeling of autonomy.",
+        "Low‑code/no‑code tools empower users to build custom solutions without experts.",
+        "Vibe‑coding carries security risks if the creator lacks programming expertise.",
+        "Open‑source co‑creation thrives on mutual care between developers and users.",
+        "“Nothing about us without us” originates from 16th‑century Polish political movements.",
+        "Personal automation provides tiny pleasure jolts that boost productivity."
+      ],
+      "labels": [
+        "Productivity",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 81,
+      "rating_reason": "The essay delivers several concrete insights—keyboard shortcut, a personal image‑processing script, the self‑empowerment metaphor of ‘scratching your own itch,’ low‑code tool advocacy, security cautions for hobby coding, and the value of open‑source co‑creation—while staying on theme of technology and human development. With roughly 7‑8 value instances in a medium‑length post, the value density is good, and there are no clickbait or padding issues.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-09-26T09:32:40.260450"
+    },
+    {
+      "id": 6093,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Compromised GitHub Actions can silently reactivate malicious code when repositories are re-enabled, so developers must pin actions to clean SHAs, rotate secrets, and audit workflow history.",
+      "ideas": [
+        "Compromised GitHub Actions resumed execution of Mini Shai‑Hulud malware after repository re‑enablement.",
+        "Malicious code remained uncleaned, allowing reactivation without new code or configuration changes.",
+        "Linked to Mini Shai‑Hulud via shared exfiltration domain t.m‑kosche[.]com.",
+        "Mutable tags can be compromised, contained, and reactivated silently without changes.",
+        "Mitigation: locate references, pin to pre‑May‑18 SHA, rotate secrets, audit workflow history.",
+        "Affected workflows continue to pose supply‑chain risk until actions are replaced."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete, actionable mitigation steps, reveals the novel risk of mutable tag reactivation, and includes expert quotes and specific technical evidence. Minor UI padding is present but does not substantially diminish value. Overall it offers high‑density, relevant insights for security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-26T09:32:14.355031",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJFMIQ6v0uJDRoxyIhqsoqsYoXN00dcDH4IvkdQAkRBRj6ha5LIu2-2yzzvQk1OZTc-7tK1fjeqyIh8xvRNvz_CotOtGNsYnejlbHED7cI-bmZFP80JIdxk_0D9I6Zo10-6b4x4euCTaRtz8c6ncYKykDsW7Bt4oFEVYWTe3AHJdiUxM32R6hGP9C0Y0Xf/s1700-nu-rw-lo-l85-e365/github-shai.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
     {
       "id": 6092,
       "source_id": 29,
