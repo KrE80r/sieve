@@ -1,11 +1,359 @@
 {
   "schema_version": 1,
-  "sequence": 867,
-  "revision": "sha256:d02c173d5353c9f4443fc16deb6f06784ece2047acaec170f9b1cdbb790fab35",
-  "generated_at": "2026-09-26T23:00:00.284217+00:00",
+  "sequence": 868,
+  "revision": "sha256:8639175eacc35242bf1fc55d4956e98992b7dd764124fb72215c602602bcd100",
+  "generated_at": "2026-09-27T01:00:00.182486+00:00",
   "complete": true,
-  "total_items": 940,
+  "total_items": 957,
   "items": [
+    {
+      "article_id": "article:6123",
+      "original_url": "https://mikelev.in/futureproof/fixing-patch-parser-failures-and-actuator-surprises/",
+      "title": "Closing the Loop: Fixing Patch Parser Failures and Actuator Surprises",
+      "summary": "Introduces a deterministic patch grammar that treats adjacent divider and replacement markers as explicit empty replacements, eliminating reliance on invisible blank lines and providing targeted diagnostics for malformed inputs.",
+      "rating": 87,
+      "rating_reason": "The article provides concrete, original mechanisms for fixing patch parser failures, with explicit code changes, diagnostic steps, and measurable deltas, offering valuable insight for engineers. It avoids superficial AI hype and focuses on implementable solutions, though its density may require careful reading. The depth and specificity merit a high score, though some context could be streamlined.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:28:37.607418+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:28:37.607418+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6122",
+      "original_url": "https://manualmeida.dev/articles/figma-to-code-before-llms/",
+      "title": "Figma to Code Before LLMs",
+      "summary": "Recovering responsive layout hierarchies from Figma by treating the problem as pairwise merge comparisons scored by gradient-boosted decision trees on geometric features alone.",
+      "rating": 88,
+      "rating_reason": "Dense, firsthand engineering write-up of a pre-LLM Figma-to-code system with concrete mechanics throughout: XGBoost pairwise comparisons in a tournament, 21 geometric features per candidate (fixed-size input despite variable Figma trees), training data synthesized by rendering known sites with Chromium, and explicit failure modes. The approach is non-obvious and well-supported by the author's Builder.io experience, with specific thresholds and algorithmic pseudocode rather than hand-waving.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:24:39.269279+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:24:39.269279+00:00",
+      "image": {
+        "url": "https://manualmeida.dev/og/figma-to-code-before-llms.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Figma to Code Before LLMs — Manu Martínez-Almeida social preview image"
+      }
+    },
+    {
+      "article_id": "article:6121",
+      "original_url": "https://llbbl.blog/2026/09/26/the-code-was-right-the.html",
+      "title": "The Code Was Right. The Comment Explained It Wrong.",
+      "summary": "Repeated dependency entries are not ambiguous; only multiple distinct versions create ambiguity, and Cargo’s fallback now tracks name‑kind keys to reflect this.",
+      "rating": 87,
+      "rating_reason": "The post delivers precise insight into how Cargo’s metadata resolves repeated dependency entries, explains the ambiguity detection mechanism, and corrects misleading comments—substantive, non‑obvious technical content. It is highly relevant to developers working on build tooling, though its depth is limited to the Cargo ecosystem and offers little beyond that niche.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:23:20.456023+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:23:20.456023+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6120",
+      "original_url": "https://joe.blog.freemansoft.com/2026/09/on-ollama-models-memory-type-and-its.html",
+      "title": "On Ollama, a model's memory type and its runner decide how much of the cached prompt a new conversation reuses - 8",
+      "summary": "Ollama's prompt cache reuse depends on whether a model uses attention-only or recurrent memory: attention models stay warm on new conversations, while recurrent models on llama-server re-evaluate ~1024 tokens per new conversation due to positional checkpoint restore, and MLX runner recurrent builds pay one full cold prefill per system prompt before warming.",
+      "rating": 88,
+      "rating_reason": "Original empirical investigation measuring Ollama prefix-cache behavior across 15 models and two runners (llama-server and MLX), distinguishing attention-only, sliding-window, and recurrent memory types. Provides specific token counts, prefill timings, and identifies the mechanism behind non-obvious cache misses—particularly that recurrent models roll back one batch (~1024 tokens) on new conversations because checkpoints are positional and cannot be restored mid-prompt. Methodology is reproducible (synthetic prompts, probe code referenced), control builds validate findings, and source-code references (prefix_cache.go) explain why the MLX runner pays one extra cold prefill per system prompt via snapshot placement inside trie nodes.",
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:14:40.363403+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:14:40.363403+00:00",
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/a/AVvXsEjDOmQuGtkR5EbdTEMBAQXW67irNFMyhluXX9sgWPs5P4LmXrNDL9ElEFy4_z4Ek4_DEb1TkyudA7OCVZGWBJsEJ6Rp5BeEMFjX0-nFZfmbuQoDXOcNqUfWpW8lNbZWbjocinGIr176Ob1MT0wE8XsYQLmz8duE9Mxv58DCM-OXSEd9gKzeJBdHE_JhvM4V=w1200-h630-p-k-no-nu",
+        "width": 799,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6119",
+      "original_url": "https://jesseliberty.com/2026/09/25/chatclient-v-responsesclient-in-microsoft-agent-framework/",
+      "title": "ChatClient v ResponsesClient in Microsoft Agent Framework",
+      "summary": "For new projects, prefer the Responses client to unlock hosted tools and structured outputs; use Chat Completion only for backward compatibility or Go‑only constraints.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, actionable guidance on choosing between Microsoft's Responses and Chat Completion clients, including precise code patterns and clear feature comparisons. It is highly relevant to AI engineers seeking practical implementation details, though novelty is moderate and assumes prior familiarity with the framework. Minor promotional content and a broad audience list slightly dilute focus, but the core technical substance remains strong. Limitations include limited discussion of edge‑case migration pitfalls beyond tool parity.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:14:22.360916+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:14:22.360916+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6118",
+      "original_url": "https://jakegoldsborough.com/blog/2026/goodbye-to-the-hard-parts-that-never-mattered/",
+      "title": "Goodbye to the Hard Parts That Never Mattered",
+      "summary": "AI agents relocate engineering effort from manual coding to direction, verification, and judgment, expanding what engineers can explore.",
+      "rating": 87,
+      "rating_reason": "The article provides concrete, firsthand insight into how AI agents shift software engineering work, clearly explains mechanisms of verification and judgment, and discusses the trade‑offs and learning implications. It balances evidence with practical advice, avoiding excessive hype. The piece remains optimistic about adoption speed and access equity, which slightly limits its depth.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:13:04.087046+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:13:04.087046+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6117",
+      "original_url": "https://disobey.dev/posts/ternary-bonsai-27b-16gb-vram/",
+      "title": "Ternary 27B on 16GB VRAM, or: the smaller file is not the faster one",
+      "summary": "A ternary 27B model packed in PQ2_0 format runs faster than the smaller PTQ1_0 despite its larger size, even on a 16 GB GPU.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, measured performance data on ternary 27B model inference with novel packings, revealing that a larger file can be faster—a non‑obvious finding. It provides clear technical details, memory usage numbers, and practical setup guidance, though it limits itself to synthetic tests and single‑run measurements. The substance is highly relevant to LLM engineering and GPU memory constraints, but the narrow scope and lack of broader benchmarking keep it from reaching exceptional status.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T10:02:18.942916+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T10:02:18.942916+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6116",
+      "original_url": "https://cyberdom.blog/hands-on-post-quantum-tls-lab/",
+      "title": "Hands-On Post Quantum TLS Lab",
+      "summary": "You can locally test a hybrid TLS 1.3 handshake that mixes X25519 with ML‑KEM‑768 using OpenSSL 3 and Apache.",
+      "rating": 88,
+      "rating_reason": "The piece delivers a complete, reproducible lab setup with explicit OpenSSL and Apache configuration commands, packet‑size observations, and verifiable checks that let a skilled reader build and evaluate a hybrid post‑quantum TLS handshake. It contains concrete mechanisms and measurements, but it offers no novel theory and relies on experimental tools that may require upkeep. Overall it meets the criteria for strong, hands‑on value.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:58:53.656945+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:58:53.656945+00:00",
+      "image": {
+        "url": "https://cyberdom.blog/wp-content/uploads/2026/09/Gemini_Generated_Image_ciqdkaciqdkaciqd-1024x559.jpeg",
+        "width": 1024,
+        "height": 559,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6115",
+      "original_url": "https://bur.gy/2026/09/24/what-makes-an-expression-regular.html",
+      "title": "What Makes an Expression Regular?",
+      "summary": "Thompson's 1968 compile-regexes-to-code technique can be reproduced as FORTH IMMEDIATE words, with the return stack serving as the NFA's pending-state list, demonstrated by side-by-side correspondence and a working WebAssembly demo.",
+      "rating": 85,
+      "rating_reason": "Dense, firsthand engineering content: the author ports Thompson's 1968 regex compiler to FORTH IMMEDIATE words, presents a near one-to-one correspondence between 7094 machine code and threaded FORTH, and explains non-obvious mechanisms such as the return stack doubling as Thompson's CLIST and why EXECUTE cannot replace XCALL. Concrete substance includes a real debugging find (two off-by-two offset errors that cancelled out for 18 years until a minimal a* repro exposed an epsilon loop), runnable code, and a measured V8/TurboFan WebAssembly run. Relevance is high for compilers, language internals, and FORTH/x86/WASM practice, though some material retells well-documented history and a few code listings are only partially present in the extraction. The value also depends partly on appetite for FORTH specifically, keeping it below exceptional.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:53:27.471948+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:53:27.471948+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6114",
+      "original_url": "https://bur.gy/2026/09/25/what-makes-a-computation-incremental.html",
+      "title": "What Makes a Computation Incremental?",
+      "summary": "A from-scratch implementation of incremental computation in Python that discovers dependencies at runtime via a call stack, with concrete trade-offs versus static-analysis approaches like Jane Street's Incremental.",
+      "rating": 88,
+      "rating_reason": "Excellent technical article with a working implementation of incremental computation in ~30 lines of Python. Provides concrete source code for a stack-based dependency tracking engine (dagify), a runnable toy example with stock positions, specific performance measurements (300ns per cached read), and honest trade-off analysis compared to Jane Street's Incremental and Goldman Sachs' UFO. The caveats about functools.cache vs lru_cache and thread-safety issues show engineering rigor. The mechanism explanation (using Python context managers and cached_property) is clear and non-obvious.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:53:04.374934+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:53:04.374934+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6113",
+      "original_url": "https://blog.softwarewrighter.com/2026/09/25/made-visible-rosetta-m/",
+      "title": "Made Visible #4: Rosetta M, a Stone with Four Faces",
+      "summary": "One line of proposed array notation can replace a three‑nested convolution sum with a single named reduction while still showing live dataflow and training trace.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, original notation and a live dataflow visualization that explain how a convolution can be expressed as a single named reduction, supported by a trace of training loss; it assumes advanced knowledge and avoids hype, making it highly relevant to AI/ML engineers. Its main limitation is reliance on a mock‑up without an executable parser, so the practical utility remains speculative.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:50:45.163145+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:50:45.163145+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6112",
+      "original_url": "https://blog.siddjain.com/2026/09/18/using-certbot-with-cloudflare/",
+      "title": "Using certbot with cloudflare",
+      "summary": "Using certbot’s Cloudflare DNS authenticator removes nginx dependency for SSL certificate renewals.",
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, step‑by‑step commands, explains the Cloudflare DNS authenticator mechanism, and documents renewal‑config gotchas, giving high practical value for sysadmin and security tasks. It remains relevant only to readers familiar with Cloudflare and certbot, limiting its breadth. Thus it scores strongly but not at the exceptional top tier.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:50:17.582370+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:50:17.582370+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6111",
+      "original_url": "https://barkingiguana.com/writing/four-protocols-and-one-front-door/",
+      "title": "Four Protocols and One Front Door",
+      "summary": "A three‑layer LB design using NLB for stable AZ pins, ALB for path/header routing, and GLB for external access optimally routes four distinct AWS workloads behind fixed firewall addresses.",
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, AWS‑specific technical depth on layer‑7, layer‑4, and layer‑3 routing trade‑offs, showing how to pin stable IPs, preserve client IPs for UDP, and encapsulate GENEVE traffic. It includes measurable constraints (subnet quotas, zone distribution effects) and clear mechanisms, but stays tightly scoped to AWS services and assumes AWS expertise. Some details may be less portable to non‑AWS environments.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:45:53.681331+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:45:53.681331+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6110",
+      "original_url": "https://barkingiguana.com/writing/four-hundred-vpcs-and-a-route-table-limit/",
+      "title": "Four Hundred VPCs and a Route Table Limit",
+      "summary": "For 400 VPCs, combining RAM-shared subnets for single-app accounts, a transit gateway for segmented any-to-any platform traffic, and PrivateLink for one-way shared services collapses the architecture to ~100 attachments and 8 endpoints while respecting hard AWS quotas.",
+      "rating": 86,
+      "rating_reason": "Dense, expert-level AWS networking analysis comparing five connectivity options (peering, transit gateway, PrivateLink, VPC Lattice, RAM-shared subnets) against concrete hard/soft quotas, per-VPC cost arithmetic, and traffic shape. The decision matrix, the distinction between adjustable and hard limits (125 peering connections is a wall; route table entries are raisable), and the recommended combination of RAM-shared subnets + transit gateway + PrivateLink for segregated workload types are non-obvious and actionable. The article is truncated mid-sentence in the Observability section, costing some completeness, but the delivered content is unusually substantive infrastructure engineering with firsthand-grade reasoning about ownership, billing transfer, and AZ-ID mechanics.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:45:48.148530+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:45:48.148530+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6109",
+      "original_url": "https://albertoarena.it/posts/i-told-claude-not-to-sign-my-commits/",
+      "title": "I told Claude not to sign my commits. It signed 25 of them.",
+      "summary": "Claude Code silently adds Co‑Authored‑By attribution despite explicit no‑attribution rules, and only the explicit \"attribution\": false setting consistently prevents it.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete experiments, version-specific evidence, and a clear reproducible setting ('attribution': false) that reliably stops the unwanted commit signing. It addresses a real technical problem with detailed verification steps, but its value is limited by intermittent failure description and reliance on anecdotal observation rather than exhaustive testing.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:41:24.095550+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:41:24.095550+00:00",
+      "image": {
+        "url": "https://albertoarena.it/images/posts/i-told-claude-not-to-sign-my-commits/cover.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6108",
+      "original_url": "https://0xdf.gitlab.io/2026/09/26/htb-smarthire.html",
+      "title": "HTB: SmartHire",
+      "summary": "Exploit an MLflow PyFunc deserialization vulnerability by overwriting a model artifact with a malicious pickle to achieve code execution.",
+      "rating": 87,
+      "rating_reason": "The write-up provides a detailed, step‑by‑step exploitation of an MLflow deserialization flaw, including concrete commands, code for a malicious pickle, and post‑exploitation steps, demonstrating practical, verifiable techniques that a technically capable reader can apply. Minor fluff and generic tags lower it slightly, but the actionable insight and depth justify a high score.",
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-27T09:39:05.789935+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:39:05.789935+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6107",
+      "original_url": "https://www.hackingarticles.in/windows-privilege-escalation-semanagevolumeprivilege/",
+      "title": "https://www.hackingarticles.in/windows-privilege-escalation-semanagevolumeprivilege/",
+      "summary": "Attackers can abuse SeManageVolumePrivilege to rewrite Windows directory ACLs and execute arbitrary DLLs as SYSTEM through three distinct hijacking paths.",
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel exploitation techniques, detailed step‑by‑step instructions, and concrete evidence of ACL modifications, providing high value density with no clickbait or filler. It aligns strongly with CyberSecurity and Tech themes, warranting a high score. No penalties apply due to lack of superficial content or hidden promotion.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-09-27T09:32:43.176110+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-27T09:32:43.176110+00:00",
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvkPf0O_3SPTN4MtKficmVDkN32zMU8rJOTbpFTGJZFcKAu7kZzd3bWAESZ_z6_6WHedy1FIv4b6KTDJktf8caEhaOLJxhnKnVuzSAL8nPTnkYQqrYHBque2lG_AuC9ewFdyihQJuV_HmL4m8ZAJquHrW6wZkly-D7dLZT5WPZSCtw21OU9vL80OS-zFEZ/s1600/0.png",
+        "width": 1600,
+        "height": 828,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:6106",
       "original_url": "https://adhdmurky.github.io/posts/post4/",
@@ -808,12 +1156,7 @@
       "admitted_at": "2026-09-25T21:49:45.402723+00:00",
       "source_published_at": null,
       "expires_at": "2026-10-25T21:49:45.402723+00:00",
-      "image": {
-        "url": "https://barkingiguana.com/images/hero-iguana.png",
-        "width": 768,
-        "height": 768,
-        "alt": ""
-      }
+      "image": null
     },
     {
       "article_id": "article:6070",
@@ -7715,12 +8058,7 @@
       "admitted_at": "2026-09-16T15:42:38.951771+00:00",
       "source_published_at": null,
       "expires_at": "2026-10-16T15:42:38.951771+00:00",
-      "image": {
-        "url": "https://barkingiguana.com/images/hero-iguana.png",
-        "width": 768,
-        "height": 768,
-        "alt": ""
-      }
+      "image": null
     },
     {
       "article_id": "article:5759",
