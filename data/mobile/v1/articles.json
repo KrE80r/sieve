@@ -1,11 +1,352 @@
 {
   "schema_version": 1,
-  "sequence": 883,
-  "revision": "sha256:58ea43a1821783cfa1ee2ee7fd754141b2ae9d19a3fadb509f7dbbeeeb4bed56",
-  "generated_at": "2026-09-27T17:00:00.253441+00:00",
+  "sequence": 884,
+  "revision": "sha256:5b174a60d645bd6cf032f87500172875ebd45559a1771b71afdf0a7d2b4e2e15",
+  "generated_at": "2026-09-27T19:00:00.184639+00:00",
   "complete": true,
-  "total_items": 952,
+  "total_items": 967,
   "items": [
+    {
+      "article_id": "article:6160",
+      "original_url": "https://www.grahambrooks.com/post/letting-an-agent-read-your-mail/",
+      "title": "Letting an agent read your mail: split the reader from the network",
+      "summary": "Isolating the email reader in a sandboxed, network‑blocked process makes any prompt injection powerless to exfiltrate private mail data.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete, non‑obvious mechanisms for sandboxing an email‑reading AI agent, including OS‑level sandbox profiles, file‑based request passing, and strict schema‑enforced model output. It is highly relevant to security‑focused engineers seeking practical isolation techniques. Weaknesses lie in limited external validation and some assumptions about macOS specifics that may not generalize.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:28:40.875272+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:28:40.875272+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6159",
+      "original_url": "https://tylerromero.com/posts/2026-09-policy-gradient/",
+      "title": "Policy Gradient for LLMs, Explained Visually",
+      "summary": "REINFORCE updates model parameters by weighting each sampled token’s log‑probability score with the final reward, enabling supervised‑style fine‑tuning on reward‑signalled completions.",
+      "rating": 92,
+      "rating_reason": "The post provides a clear, step‑by‑step derivation of REINFORCE for language models, explaining the policy‑gradient theorem, score function, token‑wise decomposition, and the use of baselines to reduce variance. It delivers concrete equations and practical insights into credit assignment and reward weighting. The main limitation is that some steps assume familiarity with RL basics and do not cover advanced variance‑reduction tricks in depth.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:23:19.882165+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:23:19.882165+00:00",
+      "image": {
+        "url": "https://www.tylerromero.com/assets/img/headshot_2.jpg",
+        "width": 702,
+        "height": 709,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6158",
+      "original_url": "https://tanin.nanakorn.com/postgres-at-time-zone-u-does-not-do-what-you-think-it-does/",
+      "title": "Postgres AT TIME ZONE 'UTC' does NOT do what you think it does",
+      "summary": "Postgres requires applying AT TIME ZONE 'UTC' twice to preserve timestamptz type and enable correct equality when adding intervals.",
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, reproducible PostgreSQL behavior with code snippets, explains why AT TIME ZONE 'UTC' must be applied twice, and clarifies pitfalls with timestamp vs timestamptz equality. It provides hard‑won engineering insight directly useful to developers. Minor issues are limited to a few redundant emojis and a promotional link, but they do not affect the core technical value.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:18:47.273727+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:18:47.273727+00:00",
+      "image": {
+        "url": "https://storage.ghost.io/c/8e/d4/8ed49d05-fc36-4ef7-9248-fb37c2916880/content/images/size/w1200/2024/11/banner-1.png",
+        "width": 1200,
+        "height": 799,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6157",
+      "original_url": "https://startdebugging.net/2026/09/how-to-add-a-unique-index-on-a-json-mapped-property-in-ef-core-11/",
+      "title": "How to add a unique index on a JSON-mapped property in EF Core 11 (SQL Server and SQLite)",
+      "summary": "EF Core 11 RC 1's IsUnique() on ToJson() members is broken on both SQL Server and SQLite; the fix is a computed column with a unique B-tree index, queried via EF.Property so lookups actually use it.",
+      "rating": 87,
+      "rating_reason": "Original, version-pinned investigation of a real bug in EF Core 11 RC 1: HasIndex().IsUnique() on a ToJson() member silently fails on SQL Server (drops IsUnique) and creates a wrong constraint on SQLite (indexes whole document). The article provides actual generated SQL, references to upstream issues, reproducible test results on SQLite, and a working computed-column fix for both providers, including the SQL Server filter trap and EXPLAIN QUERY PLAN evidence that JSON path queries don't use the index. Noise from two ADVERTISEMENT slots and the very narrow audience (EF Core 11 RC 1 users with JSON uniqueness needs) keep it just below 90.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:16:27.438137+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:16:27.438137+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/09/how-to-add-a-unique-index-on-a-json-mapped-property-in-ef-core-11.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "How to add a unique index on a JSON-mapped property in EF Core 11 (SQL Server and SQLite) - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:6156",
+      "original_url": "https://startdebugging.net/2026/09/ag-ui-dotnet-sdk-1-0-moves-agui-out-of-agent-framework/",
+      "title": "AG-UI .NET SDK 1.0: AGUI.Server and AGUI.Client Move the Protocol Out of Agent Framework",
+      "summary": "The SDK lets .NET applications expose and consume AG‑UI streams with correct event ordering and supports legacy .NET Framework clients.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, implementation‑level details about the new AG‑UI .NET SDK, showing how any IChatClient can be turned into an AG‑UI endpoint, how ordering and interrupt handling are enforced, and how the client works on .NET Framework 4.7.2. It also clarifies API rename changes for existing Agent Framework users, which is valuable for developers maintaining legacy code. However, the piece assumes familiarity with the protocol and does not dive deeply into low‑level wire format specifics, limiting its depth compared to a full specification.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:16:14.205580+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:16:14.205580+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/09/ag-ui-dotnet-sdk-1-0-moves-agui-out-of-agent-framework.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "AG-UI .NET SDK 1.0: AGUI.Server and AGUI.Client Move the Protocol Out of Agent Framework - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:6155",
+      "original_url": "https://prateekcodes.com/zanzibar-leopard-index-precomputed-group-membership/",
+      "title": "'Can Jane open this file?' asked millions of times a second, across nested groups. How Google's Zanzibar answers it fast",
+      "summary": "Leopard replaces recursive group‑membership checks with two fast set lookups and an intersection by precomputing the transitive closure.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete engineering details of Google Zanzibar's Leopard index—tuple model, transitive‑closure materialization, skip‑list set intersection, and an incremental update layer with timestamps—along with real‑world performance numbers and practical guidance for recreating the pattern in other systems. It stays focused on mechanisms and trade‑offs with minimal hype, offering high utility for readers interested in authorization, security, and large‑scale infrastructure.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:10:34.295677+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:10:34.295677+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6154",
+      "original_url": "https://paultendo.github.io/posts/denial-of-spend-gpt-6-claude-fable/",
+      "title": "Denial of Spend survives GPT-6 and Claude Fable",
+      "summary": "Flooded contracts force LLMs to spend 4–5.7× more tokens, raising costs up to nearly 4× without improving comprehension, but normalization can cut the overhead to under 3%.",
+      "rating": 86,
+      "rating_reason": "The article provides concrete, reproducible measurements of token inflation caused by Unicode confusables in legal contracts, shows cost impacts across multiple state‑of‑the‑art LLMs, and offers a practical mitigation. Its relevance to AI security is high, though it focuses on a narrow attack surface and does not address broader exploitation cases.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:08:52.787206+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:08:52.787206+00:00",
+      "image": {
+        "url": "https://paultendo.github.io/og/denial-of-spend-gpt-6-claude-fable.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6153",
+      "original_url": "https://mercurialsolo.github.io/posts/roles-in-the-agent-era/",
+      "title": "The Jobs They Are A-Changin'",
+      "summary": "AI is migrating operational work to automation first, pushing decision‑making and evaluation later, which fundamentally redefines job roles and entry requirements.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete, data‑backed evidence that AI is moving operational tasks into automated pipelines, shifting judgment and evaluation to humans and reshaping job specifications. It explains mechanisms such as eval suites and cites specific measurements (e.g., Radiology time savings, Anthropic’s economic index), making it highly relevant to technically capable readers. Its limited novelty and occasional reliance on anecdotal observations prevent it from reaching exceptional status.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:04:54.141329+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:04:54.141329+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6152",
+      "original_url": "https://mckoss.com/posts/reviving-dawg/",
+      "title": "Reviving a 2017 Repo",
+      "summary": "A thorough revamp of a 2017 TypeScript DAWG library uncovered a subtle packing bug and demonstrated that a DAWG can outperform zip compression before gzip is applied.",
+      "rating": 88,
+      "rating_reason": "The article supplies concrete engineering work: a real bug in the DAWG packing algorithm, a full‑dictionary test that uncovered it, detailed modernization steps, and measured compression comparisons. The evidence is reproducible (code snippets, test methodology, CI logs) and the findings are directly applicable to anyone maintaining legacy TypeScript libraries or interested in trie‑based compression. It does not drift into hype, and the only limitation is that its value is niche to DAWG/Trie implementations and TypeScript tooling.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T04:03:20.048717+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T04:03:20.048717+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6151",
+      "original_url": "https://jbarrow.ai/2026-09-22-on-policy-distillation-from-scratch/",
+      "title": "On Policy Distillation from Scratch",
+      "summary": "Building a distributed OPD training setup with vLLM enables a small student model to improve using a larger teacher model through token‑level reverse‑KL loss.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, runnable implementation details for building a distributed OPD training pipeline, including architecture, code snippets, loss derivation, and experimental results. It provides substantive technical value directly applicable to engineers building LLM distillation systems. However, the depth is uneven—some sections rely on external dependencies and lack full reproducibility, which prevents a perfect score.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T03:55:42.650914+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T03:55:42.650914+00:00",
+      "image": {
+        "url": "https://jbarrow.ai/2026-09-22-on-policy-distillation-from-scratch/opd.png",
+        "width": 1444,
+        "height": 1268,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6150",
+      "original_url": "https://isene.org/2026/09/Bloatware.html",
+      "title": "Bloatware",
+      "summary": "Targeted, single‑user software can slash idle power consumption from watts to milliwatts by eliminating unnecessary features and resource usage.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete measurements (e.g., idle power dropping from 2.4 W to 26 mW) and clearly explains hidden resource costs such as CPU wakeups and network chatter. It is directly relevant to developers concerned with performance, efficiency, and lean software design. Its impact is limited to a specific methodology and lacks broader empirical comparison, preventing a higher score.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T03:54:52.756756+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T03:54:52.756756+00:00",
+      "image": {
+        "url": "https://isene.org/assets/posts/bloatware.png",
+        "width": 1376,
+        "height": 768,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6149",
+      "original_url": "https://blogsh.app/posts/2026/the-parts-that-don-t-rebuild-themselves/",
+      "title": "The parts that don't rebuild themselves",
+      "summary": "Identify the minimal set of files—posts, version history, media hardlinks, config, env, and a few images—that must be backed up to recreate the blog unchanged.",
+      "rating": 85,
+      "rating_reason": "Provides concrete, non‑obvious insight into which file sets are truly irreplaceable for a static blog engine, explaining backup vs export and detailing specific config files that must be preserved; useful but limited to a niche audience.",
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "Philosophy"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T03:44:47.307793+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T03:44:47.307793+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6148",
+      "original_url": "https://blog.kvit.app/posts/agent-not-allowed-to-write-prose/",
+      "title": "Claude Isn't Allowed to Write Me Prose",
+      "summary": "Structured interaction blocks let LLMs convey only necessary decisions and evidence, cutting report-processing time from minutes to seconds.",
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, reproducible mechanism for replacing prose agent reports with typed interaction blocks, dramatically reducing reading overhead and ensuring the model communicates only essential decisions. It includes detailed examples of block schemas, UI implementations, and validation checks, demonstrating measurable efficiency gains. Limitations are modest, primarily tied to the author's specific workflow and UI dependencies.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T03:43:42.798103+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T03:43:42.798103+00:00",
+      "image": {
+        "url": "https://blog.kvit.app/images/og-default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6147",
+      "original_url": "https://bayton.org/blog/2026/09/waking-app-generator-apps-with-amapi-role-support/",
+      "title": "Zero-touch initiation comes to the app generators",
+      "summary": "Application roles now let EMMs wake background apps instantly, removing the need for manual launch.",
+      "rating": 85,
+      "rating_reason": "Provides concrete, firsthand details on using AMAPI application roles to enable zero‑touch background activation; explains implementation steps, requirements, and privacy trade‑offs clearly and succinctly.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T03:43:06.032267+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T03:43:06.032267+00:00",
+      "image": {
+        "url": "https://bayton.org/img/bayton_logos/og_img.png?v=415c1f3c285e7efe7ca5fcb5",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6146",
+      "original_url": "https://the-decoder.com/ai-agents-do-more-of-the-work-in-model-development-but-humans-still-make-the-decisions/",
+      "title": "AI agents do more of the work in model development, but humans still make the decisions",
+      "summary": "Even with heavy AI involvement, humans retain decisive control, and unchecked AI chains risk superficial oversight.",
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: empirical data on AI‑human task split, quantitative metrics (96.5% AI actions, 85% human decisions, 1/3 tasks infeasible without AI), and a clear risk analysis of rubber‑stamp oversight. It aligns strongly with the AI theme and offers actionable insight into how humans should supervise AI agents. Minor padding from subscription prompts is present but does not detract significantly.",
+      "labels": [
+        "AI"
+      ],
+      "source_id": 28,
+      "source_name": "The Decoder",
+      "source_type": "rss",
+      "admitted_at": "2026-09-28T03:32:18.056163+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-10-28T03:32:18.056163+00:00",
+      "image": {
+        "url": "https://the-decoder.com/wp-content/uploads/2026/09/research-tree-nano-banana-pro.jpg",
+        "width": 1920,
+        "height": 1047,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:6145",
       "original_url": "https://aiengineeringfromscratch.com/index.html",
