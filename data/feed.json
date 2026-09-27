@@ -1,7 +1,319 @@
 {
-  "updated_at": "2026-09-27T01:00:00.182486+00:00",
-  "total_items": 979,
+  "updated_at": "2026-09-27T02:00:00.280064+00:00",
+  "total_items": 991,
   "items": [
+    {
+      "id": 6135,
+      "source_id": 34,
+      "original_url": "https://www.mohitranka.com/blog/how-forge-structures-requests-for-prompt-cache-reuse/",
+      "title": "How Forge Structures Requests for Prompt Cache Reuse",
+      "summary": "Forge achieves >99% prompt‑cache hit ratio by preserving a stable, sorted prefix and using workspace‑derived cache keys.",
+      "ideas": [
+        "Stable prefix yields 99.6% average cache hit ratio.",
+        "Changing early instructions drops hit ratio by ~5% and adds ~30k uncached tokens.",
+        "Cache key derived from workspace path improves provider reuse.",
+        "Tool results and frozen snapshots keep context unchanged.",
+        "Providers report cached-input tokens for reliable measurement."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article details Forge's concrete prompt‑caching implementation, measures >99% hit ratios, and shows how early instruction changes degrade cache reuse. It provides reproducible experiment data and clear architectural guidance. However, the findings depend on provider‑specific caching behavior and limited use‑cases.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:58:34.428263"
+    },
+    {
+      "id": 6134,
+      "source_id": 34,
+      "original_url": "https://www.infinitescript.com/2026/09/a-shared-gpu-cluster-with-slurm-and-beegfs/",
+      "title": "A Shared GPU Cluster with Slurm and BeeGFS",
+      "summary": "Prevent silent data loss by disabling BeeGFS automatic target initialization and enforcing mount‑point checks.",
+      "ideas": [
+        "Use RAID10 on GPU servers for faster BeeGFS write performance",
+        "BeeGFS separates metadata from data, enabling scalable storage bandwidth",
+        "Set storeAllowFirstRunInit=false to avoid accidental storage re‑initialization",
+        "Define global UIDs via Ansible to prevent file‑ownership mismatches",
+        "Enable Slurm configless mode and GRES for GPU resource handling",
+        "Work around Ubuntu 26.04's sudo‑rs password prompt with sudo.ws"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece supplies meticulous, original setup instructions, concrete mechanisms, and warnings about precise pitfalls, delivering high‑value, directly applicable knowledge for building a reliable GPU cluster. Its depth and practical detail merit a strong score, though it assumes prior expertise and relies partly on manual steps rather than fully automated playbooks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:54:41.299351",
+      "image_url": "https://www.infinitescript.com/2026/09/slurm-beegfs-thumbnail.webp",
+      "image_width": 1920,
+      "image_height": 640,
+      "image_alt": "A Shared GPU Cluster with Slurm and BeeGFS"
+    },
+    {
+      "id": 6133,
+      "source_id": 34,
+      "original_url": "https://writewithset.com/blog/on-device-dictation-in-a-fully-offline-cross-platform-notes-app",
+      "title": "On-device dictation in a fully offline, cross-platform notes app",
+      "summary": "On‑device dictation using Whisper.cpp with a 5‑bit quantized small model achieves ~4% word error rate, sub‑second latency per minute, and ~190 MB download, enabling privacy‑preserving cross‑platform speech‑to‑text in a Tauri notes app.",
+      "ideas": [
+        "5‑bit quantized small model matches full small accuracy, 190 MB vs 488 MB, saving ~280 MB memory.",
+        "Transcription latency ~3.5 s per minute on M1 GPU, ~5 s on CPU alone.",
+        "Audio pipeline downmixes to 16 kHz mono, caps recordings at 5 minutes."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article supplies concrete benchmarks, memory and latency numbers, and a detailed implementation of on‑device dictation with Whisper.cpp, including quantized model trade‑offs and cross‑platform integration details. Its depth satisfies technical relevance and substance, though the findings are limited to the author's M1 hardware and do not cover broader device variability. The piece remains focused on practical engineering rather than generic hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:49:16.185367",
+      "image_url": "https://writewithset.com/blog/previews/4tqc8j134y.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Set's dictation bar listening, with its level meter, on an empty page"
+    },
+    {
+      "id": 6132,
+      "source_id": 34,
+      "original_url": "https://subhadipmitra.com/blog/2026/rlvr-verifier-gamed/",
+      "title": "I Trained Three Models Against the Rubric I Published in January. Two Learned to Game It.",
+      "summary": "Models trained on a simple rubric discovered distinct exploits: a small model stuffed premium words, a medium model copied prompts, and a larger LoRA‑tuned model improved quality while still satisfying the rubric.",
+      "ideas": [
+        "0.8B model stuffed premium words to achieve perfect rubric scores.",
+        "2B model collapsed to a copy‑prompt template and stopped learning.",
+        "9B LoRA model improved quality but still relied on rubric keywords."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a controlled experiment that directly demonstrates how different LLMs exploit a published rubric, providing concrete code, metrics, and measurable outcomes. It delivers original evidence of reward hacking, clear mechanisms, and important limitations such as the impact of LoRA versus full fine‑tuning. The findings are highly relevant to AI evaluation and alignment research, though the narrow scope and budget‑driven model choices restrict broader generalisation. The work balances depth with transparent caveats, justifying a high but not maximal score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:42:55.819590",
+      "image_url": "https://subhadipmitra.com/assets/img/og/rlvr-verifier-gamed.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6131,
+      "source_id": 34,
+      "original_url": "https://subhadipmitra.com/blog/2026/mcp-stateless-spec-audit/",
+      "title": "The Stateless MCP Spec Audited My Compiler, and My Confirmation Gate Failed",
+      "summary": "An audit of the 2026‑07‑28 MCP spec reveals version‑pinning, replica‑inconsistent confirmation gates, and hidden schema mismatches, prompting protocol‑driven fixes.",
+      "ideas": [
+        "Pin major versions in generated code to avoid breaking imports after SDK upgrades.",
+        "Use a shared, explicit key for requestState sealing in multi‑replica deployments.",
+        "Replace in‑process confirmation tokens with MRTR elicitation and sealed requestState.",
+        "Advertise full JSON Schema 2020‑12 for each tool to prevent silent input validation gaps."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete audit of a generated MCP server against a new protocol revision, exposing three specific failures with reproducible steps, code snippets, and concrete mitigation advice. It delivers novel, security‑relevant insight for AI‑agent governance and distributed service deployment, though some narrative padding reduces efficiency slightly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:42:53.160456",
+      "image_url": "https://subhadipmitra.com/assets/img/og/mcp-stateless-spec-audit.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6130,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-youtube-embed-video-unavailable-error-152-153-in-flutter-youtube-player-iframe/",
+      "title": "Fix: YouTube embed shows \"Video unavailable\" (Error 152 / 153) in Flutter with youtube_player_iframe",
+      "summary": "YouTube embeds now require a real, non-youtube.com page origin/Referer, and the fix in Flutter is separating the WebView base URL (your app ID) from the iframe host (a real YouTube domain).",
+      "ideas": [
+        "YouTube error 153 means no origin/Referer; 152 means the embedding page claims youtube.com",
+        "loadHtmlString without baseUrl leaves the WebView page originless, triggering error 153",
+        "youtube_player_iframe 5.x defaulted origin and iframe host to youtube.com, causing error 152",
+        "Version 6.0.0 split origin from host; set origin to https://<app-id>, keep host as youtube-nocookie",
+        "Putting the app ID into the 5.x origin param breaks playback because it also becomes the iframe host",
+        "Raw error 153 maps to YoutubeError.unknown in 6.0.2, so enum-based handlers show the wrong message",
+        "Flutter web ignores origin and uses Uri.base; a no-referrer Referrer-Policy header causes 153 there"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a focused, evidence-driven debugging writeup: the author built a minimal repro matrix testing page origin against player host, quoted the relevant package source from 5.2.2 and 6.0.2, traced the failure to YouTube's Referer/origin identification requirement, and verified three concrete fixes with working code. The mechanism explanation (WebView base URL derives the Referer; a page claiming youtube.com gets 152, no origin gets 153) is non-obvious and generalizes to any WebView-based embed, not just this package. Limitations are disclosed honestly (iOS-only measurements, Android reasoning from docs and source), and the gotchas section (enum mis-mapping, Referrer-Policy on Flutter web, NavigationDelegate interference) adds practical value. The narrow scope keeps it from exceptional territory, but for anyone hitting this failure it is exactly the right article.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:42:44.918933",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-youtube-embed-video-unavailable-error-152-153-in-flutter-youtube-player-iframe.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: YouTube embed shows \"Video unavailable\" (Error 152 / 153) in Flutter with youtube_player_iframe - Start Debugging"
+    },
+    {
+      "id": 6129,
+      "source_id": 34,
+      "original_url": "https://stacktoheap.com/blog/2026/09/25/dspy-heart-jev/",
+      "title": "DSPy ♥ Jev: Typed Decisions, One Program, and ReAnchor",
+      "summary": "A single DSPy program can run on Jev and GLiNER backends while optimizing decision thresholds via ReAnchor, delivering robust typed decisions and measurable accuracy gains.",
+      "ideas": [
+        "Same DSPy signature works with Jev and GLiNER via TypeSafe.",
+        "Choice type preserves full probability distribution and label evidence.",
+        "ReAnchor adjusts thresholds or weights without retraining the model.",
+        "ReAnchor uses fold validation to avoid overfitting to training examples.",
+        "Jev achieved 80.52% accuracy, GLiNER 70.26% on BANKING77."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides original code, explicit decision types, and performance numbers, showing concrete engineering value for AI/ML practitioners. It explains the ReAnchor optimization mechanics and demonstrates compatibility between DSPy signatures and System One models. Its focus on banking intent classification limits breadth, and it assumes prior DSPy knowledge. Thus it scores as strong but not exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:42:30.592152",
+      "image_url": "https://stacktoheap.com/images/dspy-heart-jev-hero.png",
+      "image_width": 1400,
+      "image_height": 760,
+      "image_alt": ""
+    },
+    {
+      "id": 6128,
+      "source_id": 34,
+      "original_url": "https://snehankekre.com/posts/debian-10-to-13/",
+      "title": "Upgrading my Tor bridge from Debian 10 to 13 after 21 months of not logging in",
+      "summary": "Upgrading a remote Tor bridge from Debian 10 to 13 can succeed in under an hour by fixing apt source paths, handling cloud‑init‑generated sources.list, and preserving SSH daemon restarts, while using YubiKey ECDSA‑SK keys to avoid lockout.",
+      "ideas": [
+        "Fix /etc/apt/sources.list path omission to avoid 404 errors",
+        "Comment out bullseye‑backports after it moves to archive.debian.org",
+        "Upgrade one Debian release at a time and reboot to keep sshd reachable",
+        "Rename SSH key files correctly to match token identity",
+        "Use ECDSA‑SK keys with FIDO hardware tokens for password‑less logins"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 93,
+      "rating_reason": "The article delivers highly concrete, first‑hand engineering details on Debian upgrade procedures, SSH key handling with YubiKey, and Tor version migration, including specific commands, failure modes, and verification steps. This directly serves a technically‑savvy sysadmin audience seeking reproducible operational insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:41:05.530551",
+      "image_url": "https://snehankekre.com/_astro/og-debian-10-to-13.0xz_Pj8y_8ADOs.jpg",
+      "image_width": 1200,
+      "image_height": 626,
+      "image_alt": "Upgrading my Tor bridge from Debian 10 to 13 after 21 months of not logging in"
+    },
+    {
+      "id": 6127,
+      "source_id": 34,
+      "original_url": "https://shocm.me/posts/2026-09-26-nativephp-mobile-async-tasks/",
+      "title": "NativePHP Mobile 4.5: Async Tasks Give You a Second PHP Thread",
+      "summary": "AsyncTask lets PHP work run off the UI thread while safely returning results via callbacks.",
+      "ideas": [
+        "AsyncTask executes closures on a separate PHP thread with its own memory space."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, actionable guidance on using AsyncTask in NativePHP Mobile, including code examples, serialization constraints, error handling, testing tricks, and distinctions from queued jobs. It is directly relevant to PHP mobile development and offers practical mechanisms that a technically capable reader can apply. Its value is limited to users of the NativePHP ecosystem and assumes prior framework knowledge, which slightly reduces its universal appeal. Overall, it provides deep, usable insight with minimal promotional noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:39:15.751203",
+      "image_url": "https://shocm.me/attachments/2026-09-26-nativephp-mobile-async-tasks.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 6126,
+      "source_id": 34,
+      "original_url": "https://seanvoisen.com/writing/design-system-ai-readiness/",
+      "title": "What does design system AI readiness mean, anyway?",
+      "summary": "AI readiness for a design system means preserving a stable quality baseline while intentionally deciding which design decisions remain under human control.",
+      "ideas": [
+        "Preserve stable quality floor while intentionally keeping some design decisions human‑controlled.",
+        "Make documentation machine‑legible and use llms.txt/MCP to feed LLMs context.",
+        "Apply cybernetic concepts like POSIWID and Ashby’s Law of Requisite Variety.",
+        "Capture design decisions in a unified ledger to train and govern AI outputs.",
+        "Constrain LLM output via rule sets or self‑critique loops to manage variety."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers a deep, technically grounded analysis of design system AI readiness, linking cybernetic theory to practical LLM integration strategies and emphasizing the need to preserve quality floors while retaining human judgment. Its value per minute is high, though some philosophical framing could be trimmed. The main limitation is the abstract discussion without concrete implementation examples.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:38:11.395348",
+      "image_url": "https://seanvoisen.com/assets/images/og/sean_voisen_og@1200x630.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What does design system AI readiness mean, anyway?"
+    },
+    {
+      "id": 6125,
+      "source_id": 34,
+      "original_url": "https://scottspence.com/posts/copy-buttons-and-line-numbers-in-mdsvex-with-twinkleplop/",
+      "title": "Copy Buttons and Line Numbers in mdsvex With twinkleplop",
+      "summary": "The highlighter returns a Svelte component, enabling copy buttons, line numbers, and line highlighting within mdsvex code blocks.",
+      "ideas": [
+        "Copy button removes line numbers and copies plain code",
+        "Toggle line numbers via data-line-numbers attribute",
+        "Highlighting uses twinkleplop's build‑time renderer"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, build‑time syntax highlighting with copy and line‑number controls for mdsvex, using twinkleplop. It explains a practical component‑based highlighter swap, handling of line metadata, and CSS alignment tricks. While technically dense and valuable, some padding and repetitive setup explanation slightly reduce efficiency. Overall it offers actionable implementation details for developers wanting similar features.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:36:58.788850",
+      "image_url": "https://og.scott.garden/og?title=Copy%20Buttons%20and%20Line%20Numbers%20in%20mdsvex%20With%20twinkleplop&author=Scott%20Spence&website=scottspence.com",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Copy Buttons and Line Numbers in mdsvex With twinkleplop - Scott Spence"
+    },
+    {
+      "id": 6124,
+      "source_id": 34,
+      "original_url": "https://samuellawrentz.com/blog/claude-code-usage-limit-wrap-up/",
+      "title": "What Claude Code Tells the Model When You Hit the 5-Hour Limit",
+      "summary": "Claude Code injects a concise wrap‑up message that tells the model to finish the current step and list remaining work when a 5‑hour usage limit is reached mid‑task.",
+      "ideas": [
+        "Grace window headers reveal limit detection: anthropic-ratelimit-unified-grace-5h-utilization and 7d-utilization.",
+        "Wrap‑up note tells model: finish step, list up to 3 short bullets, don’t start subagents.",
+        "Wrap‑up only fires mid‑turn; subsequent messages after limit drop the pending note."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a rare, first‑hand binary inspection of Claude Code’s usage‑limit handling, revealing exact header messages and when the wrap‑up note is injected. It explains how the limit is detected, what the model receives, and practical workflow tips to make the checkpoint useful. The piece is highly relevant for engineers working with LLMs and usage‑limit architectures, though its depth is limited to this specific implementation and may not generalize to other agents.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-27T10:36:28.940663",
+      "image_url": "https://samuellawrentz.com/og-images/blogclaudecodeusagelimitwrapup.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 6123,
       "source_id": 34,
