@@ -1,7 +1,392 @@
 {
-  "updated_at": "2026-09-27T17:00:00.253441+00:00",
-  "total_items": 956,
+  "updated_at": "2026-09-27T19:00:00.184639+00:00",
+  "total_items": 971,
   "items": [
+    {
+      "id": 6160,
+      "source_id": 34,
+      "original_url": "https://www.grahambrooks.com/post/letting-an-agent-read-your-mail/",
+      "title": "Letting an agent read your mail: split the reader from the network",
+      "summary": "Isolating the email reader in a sandboxed, network‑blocked process makes any prompt injection powerless to exfiltrate private mail data.",
+      "ideas": [
+        "twin‑mail runs as a sandboxed user agent with Full Disk Access but no network.",
+        "Requests are exchanged via atomic rename files, ensuring serialized handling.",
+        "The sandbox profile explicitly denies network and is enforced by the OS kernel.",
+        "plain() sanitizer removes Markdown link syntax, preventing attacker‑controlled links.",
+        "Account scope is derived from opaque macOS metadata, preventing accidental reads."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, non‑obvious mechanisms for sandboxing an email‑reading AI agent, including OS‑level sandbox profiles, file‑based request passing, and strict schema‑enforced model output. It is highly relevant to security‑focused engineers seeking practical isolation techniques. Weaknesses lie in limited external validation and some assumptions about macOS specifics that may not generalize.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:28:40.875272"
+    },
+    {
+      "id": 6159,
+      "source_id": 34,
+      "original_url": "https://tylerromero.com/posts/2026-09-policy-gradient/",
+      "title": "Policy Gradient for LLMs, Explained Visually",
+      "summary": "REINFORCE updates model parameters by weighting each sampled token’s log‑probability score with the final reward, enabling supervised‑style fine‑tuning on reward‑signalled completions.",
+      "ideas": [
+        "Gradient update = sampled reward × log‑probability score of completed token sequence.",
+        "REINFORCE estimates gradient by averaging reward‑weighted token scores across rollouts.",
+        "Advantage baseline subtracts a constant to lower variance while keeping gradient unbiased.",
+        "Score zero mean forces any parameter change to raise some token probs, lowering others.",
+        "Token scores decompose into logit gradients: +1‑p for chosen token, -p for others.",
+        "Credit assignment limited; only final reward shapes token‑level updates."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The post provides a clear, step‑by‑step derivation of REINFORCE for language models, explaining the policy‑gradient theorem, score function, token‑wise decomposition, and the use of baselines to reduce variance. It delivers concrete equations and practical insights into credit assignment and reward weighting. The main limitation is that some steps assume familiarity with RL basics and do not cover advanced variance‑reduction tricks in depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:23:19.882165",
+      "image_url": "https://www.tylerromero.com/assets/img/headshot_2.jpg",
+      "image_width": 702,
+      "image_height": 709,
+      "image_alt": ""
+    },
+    {
+      "id": 6158,
+      "source_id": 34,
+      "original_url": "https://tanin.nanakorn.com/postgres-at-time-zone-u-does-not-do-what-you-think-it-does/",
+      "title": "Postgres AT TIME ZONE 'UTC' does NOT do what you think it does",
+      "summary": "Postgres requires applying AT TIME ZONE 'UTC' twice to preserve timestamptz type and enable correct equality when adding intervals.",
+      "ideas": [
+        "AT TIME ZONE 'UTC' converts timestamptz to timestamp, losing zone information.",
+        "Equality of timestamp and timestamptz is always false, requiring double AT TIME ZONE."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, reproducible PostgreSQL behavior with code snippets, explains why AT TIME ZONE 'UTC' must be applied twice, and clarifies pitfalls with timestamp vs timestamptz equality. It provides hard‑won engineering insight directly useful to developers. Minor issues are limited to a few redundant emojis and a promotional link, but they do not affect the core technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:18:47.273727",
+      "image_url": "https://storage.ghost.io/c/8e/d4/8ed49d05-fc36-4ef7-9248-fb37c2916880/content/images/size/w1200/2024/11/banner-1.png",
+      "image_width": 1200,
+      "image_height": 799,
+      "image_alt": ""
+    },
+    {
+      "id": 6157,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/how-to-add-a-unique-index-on-a-json-mapped-property-in-ef-core-11/",
+      "title": "How to add a unique index on a JSON-mapped property in EF Core 11 (SQL Server and SQLite)",
+      "summary": "EF Core 11 RC 1's IsUnique() on ToJson() members is broken on both SQL Server and SQLite; the fix is a computed column with a unique B-tree index, queried via EF.Property so lookups actually use it.",
+      "ideas": [
+        "EF Core 11 RC 1 silently drops IsUnique on JSON indexes for SQL Server",
+        "SQLite unique index on JSON path actually covers the whole document",
+        "Fix: shadow property mapped to JSON_VALUE/json_extract computed column",
+        "SQL Server filter predicate can't reference a computed column, breaking creation",
+        "LINQ on c.Contact.Email doesn't hit the computed-column index; use EF.Property",
+        "Migrations adding a unique index will fail loudly if duplicate JSON values exist",
+        "npgsql/efcore.pg#3918 shows the same whole-column problem for jsonb"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Original, version-pinned investigation of a real bug in EF Core 11 RC 1: HasIndex().IsUnique() on a ToJson() member silently fails on SQL Server (drops IsUnique) and creates a wrong constraint on SQLite (indexes whole document). The article provides actual generated SQL, references to upstream issues, reproducible test results on SQLite, and a working computed-column fix for both providers, including the SQL Server filter trap and EXPLAIN QUERY PLAN evidence that JSON path queries don't use the index. Noise from two ADVERTISEMENT slots and the very narrow audience (EF Core 11 RC 1 users with JSON uniqueness needs) keep it just below 90.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:16:27.438137",
+      "image_url": "https://startdebugging.net/og/2026/09/how-to-add-a-unique-index-on-a-json-mapped-property-in-ef-core-11.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How to add a unique index on a JSON-mapped property in EF Core 11 (SQL Server and SQLite) - Start Debugging"
+    },
+    {
+      "id": 6156,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/ag-ui-dotnet-sdk-1-0-moves-agui-out-of-agent-framework/",
+      "title": "AG-UI .NET SDK 1.0: AGUI.Server and AGUI.Client Move the Protocol Out of Agent Framework",
+      "summary": "The SDK lets .NET applications expose and consume AG‑UI streams with correct event ordering and supports legacy .NET Framework clients.",
+      "ideas": [
+        "AGUI.Server wraps any IChatClient as SSE events, enforcing correct RUN_STARTED/RUN_FINISHED ordering.",
+        "AGUI.Client works on .NET Framework 4.7.2, enabling legacy WinForms/WPF apps to call AG‑UI agents.",
+        "API rename: AddAGUI() → AddAGUIServer(), breaking change for Agent Framework users.",
+        "The SDK isolates the protocol from Microsoft Agent Framework, removing coupling to that library."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, implementation‑level details about the new AG‑UI .NET SDK, showing how any IChatClient can be turned into an AG‑UI endpoint, how ordering and interrupt handling are enforced, and how the client works on .NET Framework 4.7.2. It also clarifies API rename changes for existing Agent Framework users, which is valuable for developers maintaining legacy code. However, the piece assumes familiarity with the protocol and does not dive deeply into low‑level wire format specifics, limiting its depth compared to a full specification.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:16:14.205580",
+      "image_url": "https://startdebugging.net/og/2026/09/ag-ui-dotnet-sdk-1-0-moves-agui-out-of-agent-framework.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "AG-UI .NET SDK 1.0: AGUI.Server and AGUI.Client Move the Protocol Out of Agent Framework - Start Debugging"
+    },
+    {
+      "id": 6155,
+      "source_id": 34,
+      "original_url": "https://prateekcodes.com/zanzibar-leopard-index-precomputed-group-membership/",
+      "title": "'Can Jane open this file?' asked millions of times a second, across nested groups. How Google's Zanzibar answers it fast",
+      "summary": "Leopard replaces recursive group‑membership checks with two fast set lookups and an intersection by precomputing the transitive closure.",
+      "ideas": [
+        "Precompute GROUP2GROUP and MEMBER2GROUP tables to turn recursive ACL walks into simple set intersections.",
+        "Store each set as an ordered skip‑list posting list, achieving O(min(|A|,|B|)) intersection cost.",
+        "Keep the index fresh via an incremental layer that streams timestamped tuple changes and deletion markers from Zanzibar's Watch API.",
+        "Accept high write amplification (thousands of index rows per change) only when reads vastly outnumber writes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete engineering details of Google Zanzibar's Leopard index—tuple model, transitive‑closure materialization, skip‑list set intersection, and an incremental update layer with timestamps—along with real‑world performance numbers and practical guidance for recreating the pattern in other systems. It stays focused on mechanisms and trade‑offs with minimal hype, offering high utility for readers interested in authorization, security, and large‑scale infrastructure.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:10:34.295677"
+    },
+    {
+      "id": 6154,
+      "source_id": 34,
+      "original_url": "https://paultendo.github.io/posts/denial-of-spend-gpt-6-claude-fable/",
+      "title": "Denial of Spend survives GPT-6 and Claude Fable",
+      "summary": "Flooded contracts force LLMs to spend 4–5.7× more tokens, raising costs up to nearly 4× without improving comprehension, but normalization can cut the overhead to under 3%.",
+      "ideas": [
+        "Flooded contracts increase token usage 4–5.7× for GPT‑6 and Claude models",
+        "Cost per output token rises up to 3.9× despite unchanged answer length",
+        "Canonicalising text reduces token inflation to ~3% overhead",
+        "Some Claude models detect odd characters yet still incur full token cost",
+        "Phishing campaigns already exploit similar confusables to bypass filters"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, reproducible measurements of token inflation caused by Unicode confusables in legal contracts, shows cost impacts across multiple state‑of‑the‑art LLMs, and offers a practical mitigation. Its relevance to AI security is high, though it focuses on a narrow attack surface and does not address broader exploitation cases.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:08:52.787206",
+      "image_url": "https://paultendo.github.io/og/denial-of-spend-gpt-6-claude-fable.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6153,
+      "source_id": 34,
+      "original_url": "https://mercurialsolo.github.io/posts/roles-in-the-agent-era/",
+      "title": "The Jobs They Are A-Changin'",
+      "summary": "AI is migrating operational work to automation first, pushing decision‑making and evaluation later, which fundamentally redefines job roles and entry requirements.",
+      "ideas": [
+        "AI moves operational work to automation before decision-making.",
+        "Job specs now feature a computational section and new eval suites.",
+        "Entry‑level roles demand judgment, not just execution.",
+        "Anthropic’s index shows eight extra months of education needed.",
+        "MIT Iceberg Index reveals 11.7% of US wage value AI‑capable."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, data‑backed evidence that AI is moving operational tasks into automated pipelines, shifting judgment and evaluation to humans and reshaping job specifications. It explains mechanisms such as eval suites and cites specific measurements (e.g., Radiology time savings, Anthropic’s economic index), making it highly relevant to technically capable readers. Its limited novelty and occasional reliance on anecdotal observations prevent it from reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:04:54.141329"
+    },
+    {
+      "id": 6152,
+      "source_id": 34,
+      "original_url": "https://mckoss.com/posts/reviving-dawg/",
+      "title": "Reviving a 2017 Repo",
+      "summary": "A thorough revamp of a 2017 TypeScript DAWG library uncovered a subtle packing bug and demonstrated that a DAWG can outperform zip compression before gzip is applied.",
+      "ideas": [
+        "Bug: pack() inlined wrong suffix node, dropping five words from the packed string.",
+        "Full‑round‑trip test (pack‑unpack) detected the bug missed by sampled tests.",
+        "Modernized toolchain: TypeScript 6, ESLint, mocha, CI via GitHub Actions, Node 24 LTS.",
+        "DAWG size 28.7% of raw list; gzip reduces it to 17.5%, beating zip on the same data.",
+        "Cache‑busting via content‑hashed asset URLs solved stale GitHub Pages deployments."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article supplies concrete engineering work: a real bug in the DAWG packing algorithm, a full‑dictionary test that uncovered it, detailed modernization steps, and measured compression comparisons. The evidence is reproducible (code snippets, test methodology, CI logs) and the findings are directly applicable to anyone maintaining legacy TypeScript libraries or interested in trie‑based compression. It does not drift into hype, and the only limitation is that its value is niche to DAWG/Trie implementations and TypeScript tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T04:03:20.048717"
+    },
+    {
+      "id": 6151,
+      "source_id": 34,
+      "original_url": "https://jbarrow.ai/2026-09-22-on-policy-distillation-from-scratch/",
+      "title": "On Policy Distillation from Scratch",
+      "summary": "Building a distributed OPD training setup with vLLM enables a small student model to improve using a larger teacher model through token‑level reverse‑KL loss.",
+      "ideas": [
+        "Distributed OPD uses separate GPU instances for student, teacher, and training.",
+        "vLLM provides async generation and weight-syncing for on‑policy updates.",
+        "Loss combines per‑token reverse‑KL with advantage computed from teacher log‑probs.",
+        "Experimental gain: 4% GSM8K accuracy improvement on Qwen‑0.8B student.",
+        "Heterogeneous hardware support allows teacher and student on separate machines."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, runnable implementation details for building a distributed OPD training pipeline, including architecture, code snippets, loss derivation, and experimental results. It provides substantive technical value directly applicable to engineers building LLM distillation systems. However, the depth is uneven—some sections rely on external dependencies and lack full reproducibility, which prevents a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T03:55:42.650914",
+      "image_url": "https://jbarrow.ai/2026-09-22-on-policy-distillation-from-scratch/opd.png",
+      "image_width": 1444,
+      "image_height": 1268,
+      "image_alt": ""
+    },
+    {
+      "id": 6150,
+      "source_id": 34,
+      "original_url": "https://isene.org/2026/09/Bloatware.html",
+      "title": "Bloatware",
+      "summary": "Targeted, single‑user software can slash idle power consumption from watts to milliwatts by eliminating unnecessary features and resource usage.",
+      "ideas": [
+        "Hidden timer loops cause constant CPU wakeups and drain battery.",
+        "Replacing big libraries with minimal usage reduces power consumption dramatically.",
+        "Targeted software for a single user can cut idle power to under 3 W."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete measurements (e.g., idle power dropping from 2.4 W to 26 mW) and clearly explains hidden resource costs such as CPU wakeups and network chatter. It is directly relevant to developers concerned with performance, efficiency, and lean software design. Its impact is limited to a specific methodology and lacks broader empirical comparison, preventing a higher score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T03:54:52.756756",
+      "image_url": "https://isene.org/assets/posts/bloatware.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 6149,
+      "source_id": 34,
+      "original_url": "https://blogsh.app/posts/2026/the-parts-that-don-t-rebuild-themselves/",
+      "title": "The parts that don't rebuild themselves",
+      "summary": "Identify the minimal set of files—posts, version history, media hardlinks, config, env, and a few images—that must be backed up to recreate the blog unchanged.",
+      "ideas": [
+        "Posts and their version history are irreplaceable; back them up.",
+        "Media uses hardlinks; one backup suffices.",
+        "config/site.yml, env.sh, banner/favicon must be preserved.",
+        "Trash and custom palette are optional conveniences.",
+        "Backup keeps exact state; export converts to HTML."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete, non‑obvious insight into which file sets are truly irreplaceable for a static blog engine, explaining backup vs export and detailing specific config files that must be preserved; useful but limited to a niche audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T03:44:47.307793"
+    },
+    {
+      "id": 6148,
+      "source_id": 34,
+      "original_url": "https://blog.kvit.app/posts/agent-not-allowed-to-write-prose/",
+      "title": "Claude Isn't Allowed to Write Me Prose",
+      "summary": "Structured interaction blocks let LLMs convey only necessary decisions and evidence, cutting report-processing time from minutes to seconds.",
+      "ideas": [
+        "Replace prose reports with typed blocks containing change, finding, check, warning, and question schemas.",
+        "UI can reorder or filter blocks, showing only relevant details until user interaction",
+        "Block validation prevents malformed reports, forcing the model to pre-fill required fields"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, reproducible mechanism for replacing prose agent reports with typed interaction blocks, dramatically reducing reading overhead and ensuring the model communicates only essential decisions. It includes detailed examples of block schemas, UI implementations, and validation checks, demonstrating measurable efficiency gains. Limitations are modest, primarily tied to the author's specific workflow and UI dependencies.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T03:43:42.798103",
+      "image_url": "https://blog.kvit.app/images/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6147,
+      "source_id": 34,
+      "original_url": "https://bayton.org/blog/2026/09/waking-app-generator-apps-with-amapi-role-support/",
+      "title": "Zero-touch initiation comes to the app generators",
+      "summary": "Application roles now let EMMs wake background apps instantly, removing the need for manual launch.",
+      "ideas": [
+        "Roles can directly wake background apps via AMAPI.",
+        "Toggle adds SDK dynamically; enables background activation.",
+        "One wake suffices for wallpaper or contacts sync."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete, firsthand details on using AMAPI application roles to enable zero‑touch background activation; explains implementation steps, requirements, and privacy trade‑offs clearly and succinctly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-28T03:43:06.032267",
+      "image_url": "https://bayton.org/img/bayton_logos/og_img.png?v=415c1f3c285e7efe7ca5fcb5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6146,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ai-agents-do-more-of-the-work-in-model-development-but-humans-still-make-the-decisions/",
+      "title": "AI agents do more of the work in model development, but humans still make the decisions",
+      "summary": "Even with heavy AI involvement, humans retain decisive control, and unchecked AI chains risk superficial oversight.",
+      "ideas": [
+        "AI agents performed 96.5% of task actions in model development study.",
+        "Humans made over 85% of method and parameter decisions.",
+        "About one-third of AI‑assisted tasks were infeasible without AI.",
+        "Median agent actions per human input rose from 11 to 28.5 over four weeks.",
+        "Human interventions mainly added context or diagnosed issues, not full takeovers.",
+        "Risk of rubber‑stamp oversight when humans review long AI‑generated chains.",
+        "Future phases may involve recursive self‑improvement of AI models."
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several concrete value instances: empirical data on AI‑human task split, quantitative metrics (96.5% AI actions, 85% human decisions, 1/3 tasks infeasible without AI), and a clear risk analysis of rubber‑stamp oversight. It aligns strongly with the AI theme and offers actionable insight into how humans should supervise AI agents. Minor padding from subscription prompts is present but does not detract significantly.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-28T03:32:18.056163",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/research-tree-nano-banana-pro.jpg",
+      "image_width": 1920,
+      "image_height": 1047,
+      "image_alt": ""
+    },
     {
       "id": 6145,
       "source_id": 7,
