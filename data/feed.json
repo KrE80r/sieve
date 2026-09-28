@@ -1,7 +1,619 @@
 {
-  "updated_at": "2026-09-28T17:00:00.191206+00:00",
-  "total_items": 1031,
+  "updated_at": "2026-09-28T19:00:00.185215+00:00",
+  "total_items": 1055,
   "items": [
+    {
+      "id": 6276,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-maui-resizetizer-mauir0001-missingmethodexception-svg-filter-text/",
+      "title": "Fix: MAUIR0001 MissingMethodException in .NET MAUI Resizetizer on an SVG with <filter> or <text>",
+      "summary": "Pin Resizetizer to 10.0.100 or remove <filter>/<text> from SVGs to avoid the MissingMethodException in .NET MAUI 10.0.101/110.",
+      "ideas": [
+        "Resizetizer 10.0.101/110 bundles mismatched System.Memory versions.",
+        "MissingMethodException occurs when SkiaSharp spans mismatch due to two System.Memory assemblies.",
+        "Pin Resizetizer to 10.0.100 or strip filters/text from SVGs to avoid the crash."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "The article provides a precise diagnosis of the Resizetizer version conflict causing MissingMethodException, explains the assembly loading mechanism, and offers reproducible reproduction steps and two concrete mitigation strategies. It is highly relevant to developers encountering SVG filter or text failures in .NET MAUI 10.x, with clear, actionable fixes. The depth of technical detail and evidence makes it exceptional, though the scope is limited to that specific MAUI bug.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:24:06.387152",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-maui-resizetizer-mauir0001-missingmethodexception-svg-filter-text.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: MAUIR0001 MissingMethodException in .NET MAUI Resizetizer on an SVG with <filter> or <text> - Start Debugging"
+    },
+    {
+      "id": 6275,
+      "source_id": 34,
+      "original_url": "https://samx.io/blog/topics/devlog/2026-09-26-ruby-lean-technical-appendix.html",
+      "title": "ruby-lean Technical Appendix",
+      "summary": "ruby-lean implements a verified executable semantics of Ruby with a type validator and soundness proof using Lean and differential testing.",
+      "ideas": [
+        "Desugarer reduces Ruby to :if and :send, passing 1,232/1,309 bootstrap tests.",
+        "CESK semantics in Lean defines control, environment, store, continuation with explicit reduction rules.",
+        "Type validator checks untrusted derivations to guarantee well‑typed programs cannot type‑stick."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article provides concrete technical material: a detailed desugarer pipeline validated against >1k bootstrap tests, a full CESK semantics in Lean with explicit reduction rules, and a rigorous type validator and soundness proof design using a strict ratchet discipline. It includes original measurements, mechanism descriptions, and trade‑off analysis, though it remains dense for casual readers. The work is highly substantiated and directly relevant to formal software engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:21:07.838780"
+    },
+    {
+      "id": 6274,
+      "source_id": 34,
+      "original_url": "https://pgj11.com/posts/Windows-NCSI-Proxy-Auth-Coercion-Part-2/",
+      "title": "Microsoft Windows NCSI Cross-Context Proxy Authentication Coercion - ZDI-26-708 - Part 2",
+      "summary": "NCSI ingests a user-controlled proxy configuration through a WinINet Event Log subscription (Event ID 5600) and applies it to a NETWORK SERVICE WinHTTP session during user-proxy active probes, with WNF serving only as the probe trigger.",
+      "ideas": [
+        "NCSI subscribes to WinINet ProxyConfigChanged Event 5600 via EvtSubscribe, not registry reads",
+        "Event ID 5600 carries proxy data; WNF callback only schedules the active probe",
+        "NCSI probe types 4/5 apply stored user proxy to service-owned WinHTTP sessions",
+        "EvtRender two-call pattern delivers four proxy fields into NCSI config state",
+        "logman ETW traces on NCSI/WinHTTP/WinINet-Config providers expose hidden config channels",
+        "IsUserProxyConfigured flag gates the user-proxy probe branch in NcsiHttpGet",
+        "WinHTTP option 181 aggregates proxy configs for probe types 1/2, not user-proxy path"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is genuine first-hand vulnerability research on ZDI-26-708, walking through the exact mechanism by which an unprivileged user's WinINet proxy reaches NCSI's NETWORK SERVICE probe via an Event Log subscription (EvtSubscribe/EvtRender on Event ID 5600) rather than registry reads or the WNF payload the author initially chased. It provides reproducible tracing commands, IDA/WinDbg breakpoints, call stacks, the IsUserProxyConfigured flag logic, undocumented WinHTTP option 181 analysis, and a clear data-path-versus-trigger-path model. Limitations: the content is truncated mid-sentence, it is the internals part of a multi-part series requiring Part 1 context, and no full exploit chain is completed here. Still, the mechanism explanation and methodology are substantive, non-obvious, and directly serve security researchers interested in Windows service internals and cross-context credential coercion.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:18:59.510421"
+    },
+    {
+      "id": 6273,
+      "source_id": 34,
+      "original_url": "https://perrotta.dev/2026/09/talisman-exempt-git-commit-shas/",
+      "title": "talisman: exempt git commit SHAs",
+      "summary": "Add the regex \\\\b[0-9a-f]{40}\\\\b to Talisman's allowed_patterns to suppress standalone 40‑character hex commit SHAs.",
+      "ideas": [
+        "Add regex \\\\b[0-9a-f]{40}\\\\b to allowed_patterns to ignore full Git SHA values."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a precise, reproducible fix for Talisman false positives by adding a regex pattern that exempts full Git SHA hashes. It includes the exact configuration change, a test command, and an explanation of why the rule works, offering concrete, technical value without extraneous hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:18:35.410837"
+    },
+    {
+      "id": 6272,
+      "source_id": 34,
+      "original_url": "https://pgj11.com/posts/Windows-NCSI-Proxy-Auth-Coercion-Part-1/",
+      "title": "Microsoft Windows NCSI Cross-Context Proxy Authentication Coercion - ZDI-26-708 - Part 1",
+      "summary": "NCSI wrongly applies a user‑controlled proxy to a Network Service request, leaking NTLM credentials that can be relayed on domain‑joined machines.",
+      "ideas": [
+        "NCSI runs under netprofm as NETWORK SERVICE but reads user‑proxy settings without impersonation.",
+        "WinHTTP option WINHTTP_OPTION_DISABLE_PROXY_AUTH_SCHEMES is set with the wrong flag, leaving NTLM enabled.",
+        "Active probe types 4 and 5 force explicit proxy use, copying the user’s proxy string into the service context.",
+        "A non‑admin user can trigger NTLM authentication from the service, enabling credential‑relay attacks on domain‑joined hosts."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a detailed, original analysis of a Windows NCSI proxy‑authentication coercion flaw, including reverse‑engineered code paths, registry locations, WinHTTP options, and a reproducible PoC. It offers concrete technical insight useful for red‑teamers and defenders, with minimal filler. The only limitation is that it focuses on a single vulnerability without a complete exploitation chain, but the depth of evidence makes it highly valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:18:09.805525"
+    },
+    {
+      "id": 6271,
+      "source_id": 34,
+      "original_url": "https://jeffgothelf.com/blog/how-to-write-an-outcome-based-okr-when-your-user-is-an-ai-agent/",
+      "title": "How to write an outcome-based OKR when your user is an AI agent",
+      "summary": "To write effective AI‑focused OKRs, shift each key result up one level to target the human whose behavior must change, rather than just tracking the agent's activity.",
+      "ideas": [
+        "Agent metrics are health indicators, not outcomes; target human behavior instead.",
+        "Rewrite OKRs to measure traveler acceptance, support repairs, and post‑failure reliance.",
+        "Ask whose behavior you predict when defining each key result."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, non‑obvious guidance on rewriting OKRs for AI‑centric products, with clear examples that replace agent‑centric metrics with measurable human behavior changes. It avoids hype and provides original, actionable insight, though its length and meta navigation add minor padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:07:54.998800",
+      "image_url": "https://i0.wp.com/jeffgothelf.com/wp-content/uploads/2026/09/ChatGPT-Image-Sep-20-2026-at-06_09_00-PM.png?fit=1536%2C1024&quality=80&ssl=1",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6270,
+      "source_id": 34,
+      "original_url": "https://internals-for-interns.com/posts/kronk-model-server/",
+      "title": "The Model Server",
+      "summary": "Streaming inference requires pre‑commit validation and uses SSE events with keep‑alive to keep connections alive while propagating errors after the response is already sent.",
+      "ideas": [
+        "Return NoResponseError to log and count errors after HTTP commit",
+        "Validate model limits and concurrency before flushing headers",
+        "Use SSE data: events with : keep-alive every 15 seconds to avoid proxy timeout",
+        "Handlers can get ResponseWriter from context to bypass Encode design",
+        "Middlewares propagate errors from NoResponse without writing response"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete Go‑level implementation details of a streaming LLM inference server, covering commit point handling, SSE usage, error propagation, and middleware composition, which are directly applicable to engineers building similar systems. It avoids generic AI hype but is limited to Kronk's internal design and lacks broader architectural comparison.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:06:31.379438",
+      "image_url": "https://internals-for-interns.com/images/go-ai-preview.webp",
+      "image_width": 1082,
+      "image_height": 514,
+      "image_alt": "The Model Server"
+    },
+    {
+      "id": 6269,
+      "source_id": 34,
+      "original_url": "https://intertwingly.net/blog/2026/09/28/As-If.html",
+      "title": "As If",
+      "summary": "An 'as-if rule' framing of AI-translated code: a port should only be free to do what a compiler is free to do, and behavior changes must go back upstream or the reference oracle decays.",
+      "ideas": [
+        "Compiler's as-if rule reframes the question of when AI code translation is legitimate",
+        "Invisible optimizations belong in the runtime; behavior changes must return upstream",
+        "A maintained Rust port decouples from the framework, killing the oracle over time",
+        "Port's headline 27x speedup depends on behavior changes that should backport anyway",
+        "Compiled Rails likely ~7-8x faster; hand port ~2-4x faster than compiled"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive technical analysis that frames the 37signals Campfire Rust port and the Roundhouse compiler through the C++ 'as-if rule,' producing an original taxonomy of optimizations (invisible, gray area, behavior) and a concrete comparison of three maintenance strategies with specific benchmark numbers. The article honestly acknowledges measurement uncertainty (different hardware, compression differences) and identifies a non-obvious long-term risk: maintained ports let the reference oracle decay. The truncation near the end of the Backus section is a minor limitation, but the core analysis is complete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:06:20.531925"
+    },
+    {
+      "id": 6268,
+      "source_id": 34,
+      "original_url": "https://gracecondition.github.io/posts/phaseshift/",
+      "title": "PhaseShift: Arbitrary Code Execution in Safari Technology Preview",
+      "summary": "PhaseShift exploits a cross‑realm Set spread optimization flaw to achieve arbitrary code execution via JIT type confusion and a dyld PAC bypass.",
+      "ideas": [
+        "Cross‑realm Set spread uses wrong realm, allowing stale structure proof",
+        "Agent iterator converts ArrayWithDouble to contiguous, enabling addrof/fakeobj",
+        "Quadrature bypasses dyld PAC via function‑variant fixups on arm64e",
+        "Exploit works only in Safari Technology Preview beta (Sep 2026)",
+        "Apple fixed by aligning realm handling in DFG Spread optimization"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article details a sophisticated cross‑realm JIT optimization bug in JavaScriptCore that leads to arbitrary read/write and a PAC bypass, with full exploit chain and proof‑of‑concept; it provides concrete mechanisms, measurements, and firsthand engineering insight; however its depth assumes extensive prior knowledge and some sections are densely packed, limiting accessibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T04:01:46.213514"
+    },
+    {
+      "id": 6267,
+      "source_id": 34,
+      "original_url": "https://brtkwr.com/posts/2026-09-28-zero-downtime-redis-password-rotation/",
+      "title": "Zero-downtime Redis password rotation",
+      "summary": "Redis can safely rotate passwords by temporarily allowing both old and new passwords, moving sentinel credentials, restarting clients and pods one‑by‑one, and verifying with ACL counters and connection timelines.",
+      "ideas": [
+        "Redis ACL allows multiple passwords simultaneously for zero‑downtime rotation",
+        "Sentinel must also receive the new password; restart all sentinel pods",
+        "Inject new password via piped input to avoid exposing it in shell history"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, step‑by‑step commands, verification checks, and configuration details for rotating Redis passwords without downtime, directly addressing security and operational needs. Its specificity is valuable but focused on Bitnami‑based clusters and assumes familiarity with Redis ACLs, so its broader applicability is limited. Noise and promotional context are minimal, but some caveats around chart internals remain. Overall, it provides unusually practical, first‑hand engineering insight for its target audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:56:16.788441"
+    },
+    {
+      "id": 6266,
+      "source_id": 34,
+      "original_url": "https://blog.glyph.im/2026/09/serious-ai-product.html",
+      "title": "What Would A Serious AI Product Look Like?",
+      "summary": "Serious AI products must prioritize verifiable outputs, rich citation display, task‑specific interfaces, and transparent context management.",
+      "ideas": [
+        "Add per‑claim verification checkboxes for user review",
+        "Display citations as large, metadata‑rich objects",
+        "Provide task‑specific UI buttons like security scanning",
+        "Expose context visibility and reproducibility controls"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete, technically grounded proposals—such as verification checkboxes, citation scaffolding, and UI redesigns—addressing real limitations of current LLMs. It is highly relevant to AI‑focused developers and researchers, but its breadth stretches across usability and theoretical concerns without deep empirical validation. The suggestions are persuasive yet remain speculative, limiting absolute exceptionalism.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:52:42.210336"
+    },
+    {
+      "id": 6265,
+      "source_id": 34,
+      "original_url": "https://benbashford.com/posts/introducing-pan/",
+      "title": "Introducing Pan",
+      "summary": "Pan is a fully self‑hosted voice assistant that runs all models locally, uses a relay architecture, and speeds up retrieval with hybrid Meilisearch‑augmented RAG, yielding sub‑200 ms responses with diverse TTS voices.",
+      "ideas": [
+        "ESP32 board captures mic input and streams it to Whisper on a Mac mini.",
+        "Hybrid RAG with Meilisearch cuts answer latency to under 0.2 seconds.",
+        "Answers use separate British/Irish TTS voices with an echo effect for each sentence."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a complete, end‑to‑end design of a local voice assistant, describing hardware, a multi‑model pipeline, hybrid RAG implementation, and UI refinements with concrete latency and accuracy results. It delivers rare, reproducible technical insight for AI‑engineering practitioners. Minor issues include occasional promotional phrasing and limited discussion of failure modes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:50:22.589870"
+    },
+    {
+      "id": 6264,
+      "source_id": 34,
+      "original_url": "https://barkingiguana.com/writing/keeping-s3-traffic-off-the-internet-in-forty-accounts/",
+      "title": "Keeping S3 Traffic Off the Internet in Forty Accounts",
+      "summary": "A multi-account AWS S3 egress remediation that splits by flow: free gateway endpoints for in-VPC traffic (won't serve on-prem) plus centralised PrivateLink for the rest, with org-scoped endpoint policies to close the actual exfiltration path that routing alone leaves open.",
+      "ideas": [
+        "Gateway endpoints don't serve traffic arriving via TGW/DX because VPC route tables aren't applied to those packets.",
+        "Private hosted zones from interface endpoints don't propagate to spoke VPCs across a transit gateway.",
+        "AWS-managed prefix lists can be used in security groups but not in NACLs, which must use raw CIDRs.",
+        "aws:ResourceOrgID condition closes the off-organisation resource path that route constraints don't.",
+        "Per-condition-block AND semantics cause multi-key conditions to deny only requests failing both keys.",
+        "Splitting flows by per-hour vs per-GB meter reveals where centralisation actually saves money.",
+        "Endpoint policies are capped at 20,480 characters shared across all consuming accounts.",
+        "DynamoDB endpoint-specific URLs bypass the unsupported private hosted zone behaviour for that service."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "Dense, expert-level analysis of AWS private service access across a 40-account estate with hybrid Direct Connect connectivity. The article provides concrete cost calculations ($3,300/month vs $44/month), a complete IAM policy template using aws:PrincipalOrgID and aws:ResourceOrgID conditions, non-obvious mechanistic insights (gateway endpoints don't apply route tables to TGW/DX traffic; private hosted zones don't propagate across spoke VPCs), and a flow-split architecture rather than a single-choice recommendation. Slightly truncated at the DNS-solution section, which limits the closing argument but not the core substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:47:21.733826"
+    },
+    {
+      "id": 6263,
+      "source_id": 34,
+      "original_url": "https://alexrios.me/blog/slogbox-go-1-27-devlog/",
+      "title": "Updating slogbox for Go 1.27",
+      "summary": "Migrating a logging library to encoding/json/v2 shows that a spectacular benchmark win can be a bug measuring failure speed, while real gains are only modest allocation reductions.",
+      "ideas": [
+        "Benchmark that discards errors measures rejection speed, not serialization throughput",
+        "Corrected result: JSON v2 was 14.6% slower but allocated 28-35% fewer bytes",
+        "JSON v2 changes bytes: UTF-8 rejection, nil-as-empty, minimal escaping, unsorted keys",
+        "Normalize slog.Value kinds before delegating to an encoder or durations error out",
+        "io.Writer wrappers must report consumed bytes, not delivered bytes, when buffering",
+        "Streaming HTTP responses can commit status 200 before serialization fails",
+        "Pointer-receiver MarshalJSON must be checked via *T method set, not T's interface",
+        "GOEXPERIMENT jsonv2/nojsonv2 CI tasks keep both encoder paths tested during migration"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense practitioner post with real code covering Go 1.27's JSON v1/v2 semantic differences, slog.Value normalization, io.Writer consumed-versus-delivered byte accounting, and HTTP streaming failure modes. The strongest original evidence is the corrected benchmark: a previously claimed 27x v2 speedup was an artifact of discarded encoding errors, and validated reruns show v2 14.6% slower with roughly 28-35% fewer allocations. The publicly correcting of one's own wrong measurement is a strong trust signal. Limitations: the scope is one small hobby library, the HTTPError redesign is niche, and the throughput conclusions come from limited reruns on a single machine.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:44:24.149630",
+      "image_url": "https://alexrios.me/slogbox.png",
+      "image_width": 1183,
+      "image_height": 619,
+      "image_alt": "Updating slogbox for Go 1.27"
+    },
+    {
+      "id": 6262,
+      "source_id": 34,
+      "original_url": "https://alexrios.me/blog/slogbox-go-1-27-devlog-br/",
+      "title": "Atualizando o slogbox para o Go 1.27",
+      "summary": "Migrating slogbox to Go 1.27's encoding/json/v2 exposed that the encoder is not the data model, forced a streaming HTTP contract redesign, and revealed that a headline 27x speedup benchmark was actually measuring early failure rather than work.",
+      "ideas": [
+        "Normalize slog.Value types before encoding; time.Duration has no default JSON v2 representation",
+        "JSON v2 streaming can leave partial JSON with HTTP 200 on mid-array failure",
+        "io.Writer wrappers must distinguish bytes consumed from bytes delivered to honor io.Writer",
+        "Benchmarks that discard errors measure failure speed, not work speed",
+        "HTTPError.ResponseStarted was overreach; track only what the handler knows",
+        "Run CI on both GOEXPERIMENT=jsonv2 and GOEXPERIMENT=nojsonv2 while fallback exists"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Highly substantive engineering writeup with concrete code, honest measurement methodology, and unusually valuable self-correction. The benchmark revelation—where a claimed 27x improvement actually measured early failure rather than work—is a memorable practitioner insight. The article documents non-obvious consequences of Go 1.27's JSON v2 (encoding contract differences, the encoder-vs-data-model split, HTTP streaming semantics around io.Writer contracts, and overreach in HTTPError.ResponseStarted). Code examples are real and tightly linked to the narrative. Minor limitations: the content is tied to a single small library and is in Portuguese, and the corrected numbers (14.6% slower, 28-35% fewer bytes) are presented without the full reproducible methodology.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:44:11.898151",
+      "image_url": "https://alexrios.me/slogbox.png",
+      "image_width": 1183,
+      "image_height": 619,
+      "image_alt": "Atualizando o slogbox para o Go 1.27"
+    },
+    {
+      "id": 6261,
+      "source_id": 34,
+      "original_url": "https://alexmarquardt.com/data-generation/synthetic-industrial-product-catalog/",
+      "title": "Generating a synthetic industrial product catalog for search demos",
+      "summary": "A deterministic generator creates a realistic industrial product catalog that captures attribute‑role collisions for evaluating search engine relevance.",
+      "ideas": [
+        "Attribute entries include both textual value and parsed numeric value for consistency.",
+        "88 end mills have 3/8\" cutting diameter; 53 use it as shank, exposing search ambiguity.",
+        "Flat Elasticsearch shape loses attribute pairing, requiring facets_num to preserve relationships.",
+        "Cutting‑tool dimensions are convention‑based; fastener dimensions follow ISO/DIN standards.",
+        "Technical drawings map brand, coating, material, and flutes to visual properties, preserving realism."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers detailed, original engineering of a synthetic industrial catalog, showing attribute parsing, role ambiguity, and search‑engine testing challenges. It stays within a narrow domain without broader breakthroughs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T03:42:03.725263",
+      "image_url": "https://alexmarquardt.com/social-card-square.png",
+      "image_width": 675,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6260,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/09/28/cost-of-everything/",
+      "title": "Pluralistic: Priceful (28 Sep 2026)",
+      "summary": "Creative workers should stop chasing stronger IP rights and AI copyright victories, and instead pursue labor power and consent-based frameworks, because property frameworks structurally transfer value to those with bargaining leverage.",
+      "ideas": [
+        "'IP' is a bully's charter: deliberate ambiguity lets rights-holders conflate unrelated legal regimes.",
+        "Copyright incentivizes creation; trademark protects consumers - conflating them chills lawful activity.",
+        "'Intellectual property' was a branding exercise that rebranded government-granted monopolies as natural property.",
+        "Useful IP definition: any law letting a company control outsiders - competitors, critics, and customers.",
+        "Modeling privacy on bodily consent instead of property would end commercial surveillance entirely.",
+        "Selling privacy for nothing harms individuals far more than companies profit from the data.",
+        "Fifty years of expanding copyright enriched media conglomerates while impoverishing creative workers.",
+        "More copyright for weak workers is lunch money for a bullied schoolkid - it gets bargained away.",
+        "Studios sue AI companies to license training data, not to keep writers employed.",
+        "The NYT sues OpenAI for a bigger share of displacement, not worker protection.",
+        "The Hollywood writers' strike defeated AI using labor rights, not copyright.",
+        "Sectoral bargaining was effectively outlawed by the 1947 Taft-Hartley Act; Hollywood guilds are its vestige."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "This essay delivers 10+ distinct, high-quality insights with exceptional density for its length: the copyright-vs-trademark policy distinction, 'IP' as a 'bully's charter' of tactical ambiguity, the rebranding of monopolies as property, a genuinely novel consent-based privacy framework replacing the failed property model, the 'bullied schoolkid lunch money' analogy for copyright expansion, and the counterintuitive analysis that media companies' AI lawsuits aim to license-and-displace workers rather than protect them. Thematic relevance is strong across AI, tech policy, and philosophy of rights. Minor deductions for the standard blog navigation boilerplate and the essay cutting off mid-sentence, but the substance is expert, original, and efficiently delivered.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-09-29T03:40:55.331796"
+    },
+    {
+      "id": 6259,
+      "source_id": 4,
+      "original_url": "https://krebsonsecurity.com/2026/09/dutch-police-arrest-reformed-hacker-in-shiny-hunters-investigation/",
+      "title": "Advertisement",
+      "summary": "Dutch authorities arrested ex‑hacker Pepijn van der Stap linked to ShinyHunters, who later breached the FBI via a PeopleSoft zero‑day and executed a $100 million extortion campaign.",
+      "ideas": [
+        "Convicted hacker Pepijn van der Stap arrested as “Umbreon,” formerly software engineer at Hadrian.",
+        "ShinyHunters breached FBI job site, stealing Social Security numbers of 5,000 employees via PeopleSoft CVE‑2026‑35273.",
+        "Hackers bypassed Mandiant WAF rules using URL‑encoding tricks to exploit the zero‑day flaw.",
+        "Rey’s takeover added Umbreon ASCII art defacement to blame van der Stap.",
+        "ShinyHunters accumulated nearly $100 million in extortion payments throughout 2026.",
+        "Van der Stap said prior hacks were data‑collection obsession, not money motive.",
+        "Dutch authorities sought public help identifying voice in recorded ShinyHunters phone call."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece delivers multiple concrete insights: identification of the arrested hacker, his dual professional background, detailed explication of ShinyHunters' tactics and internal power shift, technical breakdown of the exploited PeopleSoft zero‑day and bypass method, and quantification of their $100M extortion haul. These value instances are densely packed, with minimal filler, and align closely with Technology and CyberSecurity themes. No clickbait or promotional padding was detected.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T03:35:59.973832"
+    },
+    {
+      "id": 6258,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/09/carbonato-botnet-compromises-docker.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "AI agents are now autonomously compromising Docker hosts and orchestrating multi‑stage attacks, demanding a resilience‑first security approach.",
+      "ideas": [
+        "Carbonato botnet exploits unauthenticated Docker daemons to deploy Hermes AI agent via Telegram.",
+        "Hermes Agent uses a persona file to receive LLM-generated commands without ethical constraints.",
+        "Attackers achieve persistence using privileged containers, cron jobs, watchdog scripts, and reverse SSH tunnels.",
+        "AI tools like DeepSeek enable autonomous reconnaissance, exploit selection, and post‑compromise actions.",
+        "“YOLO” mode allows AI agents to operate unattended in high‑value target networks.",
+        "CLOSEDQUORUM Windows implant votes among multiple LLMs to decide next attack step autonomously.",
+        "AI‑driven attacks can outpace human defenders, demanding resilience‑first security strategies.",
+        "Threat actors have stolen over 600,000 credit card details using AI‑orchestrated campaigns.",
+        "Multi‑LLM voting favors DeepSeek, creating deterministic bias in malware decision‑making."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 84,
+      "rating_reason": "The article provides multiple concrete, technical insights into AI‑enabled malware (e.g., Carbonato botnet, Hermes Agent, CLOSEDQUORUM) and real‑world case studies, delivering high value for security professionals. It aligns strongly with Cybersecurity and AI themes and offers actionable knowledge about attack vectors and mitigation mindset. Minor promotional fluff at the end incurs a small penalty, but overall density is strong.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T03:34:42.690592",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3O4ih8J3-A5sGh57xyYKMGbnSqaXbWhu2g9HBE_mG11gEdedMUmYyeeYpA9TnNPwRsB4t-5V9UTW54iOR0VNzyaaa0fWhOG4Oi46KwGvrrVQRdWIDS7GX6YxjaMrA6sF9RHWNyO8gBttCQ7Nc8LUmrhhH24jSp1lPDuhok9r3CfKxgGJRObZRqRTW-5Gf/s1700-nu-rw-lo-l85-e365/hermes-telegram.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 6257,
+      "source_id": 4,
+      "original_url": "https://labs.watchtowr.com/oh-look-the-foot-gun-went-off-again-citrix-netscaler-preauth-command-injection-cve-2026-88771/",
+      "title": "https://labs.watchtowr.com/oh-look-the-foot-gun-went-off-again-citrix-netscaler-preauth-command-injection-cve-2026-88771/",
+      "summary": "Unvalidated log fields interpolated into a Perl backtick 'find' command turn crash-log parsing into unauthenticated root command injection on NetScaler - fixed only by eliminating shell invocation and strictly validating inputs.",
+      "ideas": [
+        "Attacker-controlled login data can poison pitboss logs that downstream scripts parse",
+        "Perl backticks interpolate unvalidated log fields into a shell command, enabling injection",
+        "Injected commands run as root because nearly everything on NetScaler executes with root privileges",
+        "This flaw lives in a Perl monitoring script, not the historically vulnerable NSPPE binary",
+        "The patch replaces the grep/sed/awk pipeline with strict regex captures of PPE name and PID",
+        "Fixed code uses Perl's list-form open so shell metacharacters are never interpreted",
+        "Defense-in-depth added: returned file paths must match a strict allowlist regex",
+        "Exploitation is pre-auth via a single crafted POST to the authentication endpoint",
+        "CVE-2026-88778 requires enabling Enhanced ISN Generation, not just upgrading",
+        "Two 9.5-critical NetScaler CVEs were exploited in the wild before any patch existed",
+        "Vendors must communicate actively exploited zero-days; the public learned before Citrix acknowledged"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "This is original vulnerability research with high technical value: a genuine root-cause analysis showing how attacker-controlled pitboss log text gets interpolated into a Perl backtick shell command for pre-auth root RCE, an actual diff of vulnerable vs. patched code, a working PoC request, the full eight-CVE advisory table, and fixed build numbers - all concrete, actionable material for defenders and detection engineers. Thematic alignment with CyberSecurity is strong, and the counterintuitive finding that the flaw lives in a Perl monitoring script rather than the historically vulnerable NSPPE binary is a real insight. Score is held below the exceptional range because the post is padded with heavy snark/banter and repeated watchTowr platform promotion (multiple demo-request and client-capability plugs), which dilutes value density in a 13-minute read, though the core research is far from a marketing shell.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T03:34:31.853042",
+      "image_url": "https://storage.ghost.io/c/a0/dc/a0dcbbe4-0ae7-4d7e-90f7-ebbc3a0f5a84/content/images/size/w1200/2026/09/ohlooooook.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6256,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/09/28/is-your-human-in-the-loop-actually-slowing-you-down-here-s-what-we-learned/",
+      "title": "Is Your “Human-in-the-Loop” Actually Slowing You Down? Here’s What We Learned",
+      "summary": "Apply a Pareto‑based, tiered HITL design to automate most decisions while directing human effort to high‑impact, low‑confidence cases.",
+      "ideas": [
+        "Use an 80/20 tiered HITL: automate 85% of decisions, reserve humans for critical 15%.",
+        "Prevent bottlenecks by routing only low‑confidence cases to reviewers using confidence thresholds.",
+        "Deploy a Prediction Router that classifies inputs into three tiers with 94% accuracy in under 1 ms.",
+        "Asynchronous expert review reduces average review time from six minutes to ninety seconds.",
+        "Implement feedback loops at seconds, daily, weekly, and quarterly intervals for continuous improvement.",
+        "Tiered HITL cut false‑negative rate from 8.3% to 2.1% and increased reviewer throughput tenfold.",
+        "Use active learning to sample uncertain cases, ensuring human feedback drives the most model gains."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete, actionable insights on designing tiered human‑in‑the‑loop systems, including failure modes, a three‑tier architecture, and multi‑speed feedback loops, backed by real metrics (e.g., false‑negative reduction). It aligns strongly with AI and technology themes and provides practical guidance, meeting the density requirement for a >1500‑word piece. No clickbait or major padding detected, so no penalties apply.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-09-29T03:33:10.487532"
+    },
+    {
+      "id": 6255,
+      "source_id": 4,
+      "original_url": "https://www.schneier.com/blog/archives/2026/09/new-attack-against-rsa.html",
+      "title": "Schneier on Security",
+      "summary": "RSA forgery attacks only threaten unpadded signatures, so using modern padding and key rotation is essential.",
+      "ideas": [
+        "RSA forgery attack can create signatures without factoring the private key",
+        "Attack works only on pure (textbook) RSA signatures lacking padding",
+        "Subexponential algorithm forged 1024-bit signatures using 1380 CPU core-years",
+        "Modern padding schemes like PSS mitigate this attack",
+        "Cryptographic agility and key rotation are essential to address emerging threats",
+        "Blind‑signature protocols could be vulnerable but require massive resources",
+        "McEliece code‑based cryptography is a candidate for post‑quantum security"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The post provides several concrete insights about a RSA forgery attack, its limitations, and practical mitigation steps, offering actionable advice for security practitioners. It aligns well with cybersecurity themes and contains no clickbait or padding, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T03:33:06.301865"
+    },
+    {
+      "id": 6254,
+      "source_id": 4,
+      "original_url": "https://fortbridge.co.uk/research/cve-2026-32740-nextjs-sharp-libheif-rce/",
+      "title": "https://fortbridge.co.uk/research/cve-2026-32740-nextjs-sharp-libheif-rce/",
+      "summary": "A single rounding-off-by-one chroma row in libheif becomes full remote code execution by leaking library bases through returned image pixels, forging plane maps into a write-what-where, overwriting memcpy@GOT, and reusing libvips's internal GLib loader instead of a ROP chain.",
+      "ideas": [
+        "Rounding mismatch between destination row and copy height lets a fourth tile write one extra chroma row past allocation",
+        "A controlled 58-byte overflow becomes exploitable via forged plane-map entries redirecting Cr-plane copies to attacker-chosen destinations",
+        "Uninitialized alpha-channel bytes in returned PNGs expose libvips pointers, defeating ASLR without any direct memory read",
+        "Overwriting memcpy@GOT mid-loop hijacks control flow on the very next row, minimizing the window for state disturbance",
+        "Reusing libvips's internal g_module_open_full routine wraps dlopen so hijacked control flow loads attacker-supplied shared objects without ROP",
+        "Versioned native-stack profiles with verified byte signatures and offsets make exploits portable across Ubuntu and Debian builds",
+        "All runtime code addresses derive from the leaked libvips base, so PIE Node executables never need their randomized address recovered",
+        "Web routes passing attacker-controlled files into native decoder chains create attack surfaces beyond OWASP Top 10 coverage",
+        "Heap selectors derive from measured allocator page-lane relationships, not OS names, requiring per-build calibration"
+      ],
+      "labels": [],
+      "rating": 86,
+      "rating_reason": "This is original vulnerability research with exceptional technical depth: the chroma rounding bug in copy_image_to() yielding a controlled 58-byte overflow, the novel ASLR bypass that leaks libvips base addresses through uninitialized alpha-channel pixels in returned PNGs, the constrained write-what-where built from forged plane-map entries, and the clever reuse of libvips's internal g_module_open_full as a non-exported control-flow target eliminating the need for a ROP chain. Each technique is documented with concrete offsets, code excerpts, and reproducible geometry, giving security researchers genuine expert insight rarely published at this level. Minor deductions for the scraped navigation padding, the truncation of the final section, and the somewhat permissive lab upload route the authors themselves acknowledge may not survive hardened deployments.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T03:32:58.868285",
+      "image_url": "https://fortbridge.co.uk/wp-content/uploads/2026/09/hero-kan-6293-nextjs-id-proof.png",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": ""
+    },
+    {
+      "id": 6253,
+      "source_id": 11,
+      "original_url": "https://www.youtube.com/watch?v=_U-O5lYhJ7Q",
+      "title": "10 Levels of Jev For Agentic Engineers",
+      "summary": "Jev lets engineers replace expensive LLM calls with cheap, programmable decision layers, using confidence gating and weighted scoring for scalable, safe agentic systems.",
+      "ideas": [
+        "Jev provides programmable question answering via JSON.",
+        "Level 1 offers cheap yes/no decisions with near‑zero cost.",
+        "Prompt‑injection detection uses confidence scores to flag malicious inputs.",
+        "Level 2 enables multi‑choice selection from predefined options for priority triage.",
+        "Composite scoring lets engineers weight multiple ticket criteria into a single score.",
+        "Confidence gating prevents dangerous commands like Bash execution in agents.",
+        "Jev’s pricing allows millions of calls for roughly $20 versus thousands for alternatives.",
+        "Intent routing uses Jev’s cheap decision as a gate before invoking expensive models.",
+        "Engineers can encode expertise templates into Jev JSON blobs for reusable logic.",
+        "Jev’s low latency enables real‑time decision making in production agent pipelines."
+      ],
+      "labels": [],
+      "rating": 80,
+      "rating_reason": "The piece delivers concrete value through its detailed walkthrough of ten Jev levels, pricing comparisons, confidence‑gating techniques, and composite scoring. However, it includes some click‑bait promotion and repetitive filler that slightly dilute the density. Overall it offers high‑density, engineer‑focused insights that justify a strong rating.",
+      "source_type": "youtube",
+      "source_name": "IndyDevDan",
+      "published_at": "2026-09-29T03:32:27.698928"
+    },
     {
       "id": 6252,
       "source_id": 27,
