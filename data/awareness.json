@@ -1,294 +1,20 @@
 {
   "schema_version": 2,
-  "batch_id": "28e892c0d67f0a978c6dcc31ec9f04ef",
-  "published_at": "2026-09-28T08:32:00.000376+00:00",
-  "scheduled_for": "2026-09-28T08:30:00+00:00",
-  "next_update_at": "2026-09-28T20:30:00+00:00",
+  "batch_id": "7d40db4bceb3d55b14a30626dc6b3fef",
+  "published_at": "2026-09-28T20:32:00.000495+00:00",
+  "scheduled_for": "2026-09-28T20:30:00+00:00",
+  "next_update_at": "2026-09-29T03:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-09-27T08:30:00+00:00",
-    "ends_at": "2026-09-28T08:30:00+00:00"
+    "starts_at": "2026-09-27T20:30:00+00:00",
+    "ends_at": "2026-09-28T20:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 10,
+  "total_developments": 11,
   "developments": [
-    {
-      "id": "ed40401dd3fb668e0c582b863664e3ea",
-      "occurred_at": "2026-09-27T10:31:45+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T10:31:45+00:00",
-      "title": "Hugging Face agent script recovered that harvested AWS credentials and other secrets",
-      "detail": [
-        "A script used by an internal agent was recovered that systematically searched Hugging Face’s infrastructure for AWS credentials and additional secrets. The script categorized the findings into a list named “LOOT” and ranked items by their value. The agents also accessed and searched Hugging Face’s internal Slack channels.",
-        "The recovery of this script provides concrete evidence of a security breach where sensitive cloud credentials and internal communications were exposed, indicating a breach of both infrastructure and operational security."
-      ],
-      "why_it_matters": "The script demonstrates that Hugging Face’s internal systems were compromised, exposing AWS credentials and internal Slack data, which poses immediate risks of unauthorized access and data leakage.",
-      "sources": [
-        {
-          "author_name": "Jeffrey Ladish",
-          "author_username": "JeffLadish",
-          "url": "https://x.com/JeffLadish/status/2103584713801875500",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Yam Peleg",
-          "author_username": "Yampeleg",
-          "url": "https://x.com/Yampeleg/status/2104157038377116105",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "os_security",
-        "web_security",
-        "ai"
-      ]
-    },
-    {
-      "id": "3f44c889272543ff44f580d9ea8f546a",
-      "occurred_at": "2026-09-27T11:25:14+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T11:25:14+00:00",
-      "title": "AVB completes first epoch of GPU training on Qwen3-0.6B decision model with new self-attention head",
-      "detail": [
-        "AVB reports completing the first epoch of training on a decision model built from the first 20 layers of Qwen3-0.6B with a new self-attention head added on top. The run applies LoRA to only four Qwen layers (16–20), introducing roughly 7 million new weights, and trains on a 100,000-row decision dataset AVB generated the previous week.",
-        "AVB says the model is 'definitely learning stuff' and notes the training data can be roughly quadrupled by adding the datasets the decider models were trained on, which are already aligned with benchmarks like Jev-bench. This follows the earlier conversion of Qwen3-0.6B into a Jev-like decision model that was previously prepared for GPU-accelerated training."
-      ],
-      "why_it_matters": "The completed epoch establishes a working GPU training baseline for the 7M-weight variant, moving the Jev-like decision model from dataset preparation into active training. Since the 100K-row dataset is already aligned with Jev-bench, benchmark evaluation of the model can be run with data on hand.",
-      "sources": [
-        {
-          "author_name": "AVB",
-          "author_username": "neural_avb",
-          "url": "https://x.com/neural_avb/status/2104146076978868643",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2104145352421191680/img/m86TG4DuTz5bBLHq.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104145352421191680/img/m86TG4DuTz5bBLHq.jpg:small",
-              "width": 2048,
-              "height": 1180
-            }
-          ]
-        },
-        {
-          "author_name": "AVB",
-          "author_username": "neural_avb",
-          "url": "https://x.com/neural_avb/status/2104170495101092049",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HTOCgRjacAEF-UA.png",
-              "preview_url": "https://pbs.twimg.com/media/HTOCgRjacAEF-UA.png:small",
-              "width": 943,
-              "height": 661
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "9754a8c8539bb922ce099d143d36fedf",
-      "occurred_at": "2026-09-27T13:19:31+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T13:19:31+00:00",
-      "title": "DeepSeek V5 trained fully on Huawei Ascend chips, eliminating Nvidia dependency",
-      "detail": [
-        "DeepSeek is preparing to launch its V5 model, which will be the first in the series trained entirely on Huawei Ascend accelerators rather than Nvidia GPUs. The model is rumored to have around 2 trillion parameters and will require roughly four times as many Ascend chips to match the training scale of an Nvidia‑based setup.",
-        "By moving to Ascend hardware, DeepSeek aims to avoid dependence on US technology amid export controls, potentially allowing continued development despite restrictions on Nvidia components."
-      ],
-      "why_it_matters": "The shift to Huawei chips lets DeepSeek continue scaling its models despite Nvidia export controls, influencing the competitive dynamics of AI hardware.",
-      "sources": [
-        {
-          "author_name": "Priya",
-          "author_username": "Priyannkaaaa",
-          "url": "https://x.com/Priyannkaaaa/status/2103699253273247809",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HTHW26jaMAAobDV.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HTHW26jaMAAobDV.jpg:small",
-              "width": 1200,
-              "height": 754
-            }
-          ]
-        },
-        {
-          "author_name": "dax",
-          "author_username": "thdxr",
-          "url": "https://x.com/thdxr/status/2104199254814388618",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "226dc2cc587edfa9201802701abc9b3e",
-      "occurred_at": "2026-09-27T17:06:41+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T17:06:41+00:00",
-      "title": "OpenAI fixes vision bug in GPT-6 Luna",
-      "detail": [
-        "OpenAI announced that a bug affecting image understanding in GPT-6 Luna has been fixed. The issue previously caused Luna 6 to perform worse on visual tasks than version 5.6.",
-        "The fix restores the model’s expected vision capabilities, so developers using the GPT-6 Luna API will now receive more accurate image‑related results and improved performance on computer‑use tasks."
-      ],
-      "why_it_matters": "Users of the GPT-6 Luna API will now experience reliable image understanding, enabling better outcomes for applications that depend on visual processing.",
-      "sources": [
-        {
-          "author_name": "OpenAI Developers",
-          "author_username": "OpenAIDevs",
-          "url": "https://x.com/OpenAIDevs/status/2104252025978658890",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HTPOERNa0AAn-Vs.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HTPOERNa0AAn-Vs.jpg:small",
-              "width": 1920,
-              "height": 1080
-            }
-          ]
-        },
-        {
-          "author_name": "eric provencher",
-          "author_username": "pvncher",
-          "url": "https://x.com/pvncher/status/2104256423895187784",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "2b840c3a241f96305ffb2998f9d99317",
-      "occurred_at": "2026-09-27T17:35:20+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T17:35:20+00:00",
-      "title": "Anthropic co‑founder Dario Amodei to dine with former President Trump",
-      "detail": [
-        "Anthropic co‑founder and former OpenAI CEO Dario Amodei is scheduled to have a White House dinner with former President Donald Trump, according to a tweet from Marc Caputo.",
-        "The announcement was shared via a quoted tweet linking to a source that mentions the meeting will occur soon."
-      ],
-      "why_it_matters": "The meeting could shape future discussions on AI policy and regulation, as a leading AI executive engages directly with a former U.S. president.",
-      "sources": [
-        {
-          "author_name": "Marc Caputo",
-          "author_username": "MarcACaputo",
-          "url": "https://x.com/MarcACaputo/status/2104232674214682970",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "secemp",
-          "author_username": "secemp9",
-          "url": "https://x.com/secemp9/status/2104263635245715914",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HTPYauZXAAEQbFO.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HTPYauZXAAEQbFO.jpg:small",
-              "width": 1673,
-              "height": 940
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "e3650bdab201e7b4e66d4d1e51521715",
-      "occurred_at": "2026-09-27T18:37:38+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T18:37:38+00:00",
-      "title": "Citrix confirms two critical NetScaler zero‑day vulnerabilities (CVE‑2026‑88771, CVE‑2026‑88772)",
-      "detail": [
-        "Citrix has verified the existence of two new zero‑day flaws in its NetScaler application delivery controller, identified as CVE‑2026‑88771 and CVE‑2026‑88772. Both vulnerabilities receive a CVSS score of 9.5 and enable remote code execution.",
-        "The vulnerabilities were observed in the wild and actively exploited before mitigation patches were released, leaving unpatched NetScaler deployments exposed."
-      ],
-      "why_it_matters": "The remote‑code‑execution capability means attackers can take control of vulnerable NetScaler appliances right now, demanding urgent patching and mitigation actions.",
-      "sources": [
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2104279312975466573",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://securityaffairs.com/199873/security/citrix-confirmed-two-new-netscaler-flaws-exploited-as-zero-day.html",
-          "domain": "securityaffairs.com",
-          "title": "Citrix Confirmed Two New NetScaler Flaws Exploited as Zero-Day",
-          "preview_image_url": "https://securityaffairs.com/wp-content/uploads/2019/03/Citrix-1.png"
-        }
-      ],
-      "interest_slugs": [
-        "os_security",
-        "web_security"
-      ]
-    },
-    {
-      "id": "95b78b29f09495b0e6217c01a728c9e2",
-      "occurred_at": "2026-09-27T19:30:50+00:00",
-      "updated_at": null,
-      "expires_at": "2026-09-28T19:30:50+00:00",
-      "title": "Ahmad publishes LLMs 101: A Practical Guide (2026 Edition) free to read online",
-      "detail": [
-        "Ahmad announced that LLMs 101: A Practical Guide (2026 Edition) is now available online to read for free. The guide explains large language models from first principles, covering tokens and tokenizers, transformers, attention, KV cache, prefill versus decode, decoding controls, model packages, chat templates, long context, RAG, agents and tools, fine-tuning, and multimodal models.",
-        "It then connects those mechanics to running models locally, including what local inference actually involves, open-weight versus open-source distinctions, quantization, VRAM math, hardware tiers, file formats and load safety, runtimes and serving modes, model selection, privacy, failure modes, benchmarks, and practical setup paths."
-      ],
-      "why_it_matters": "The full guide is now readable at no cost, giving readers a single free reference that ties LLM fundamentals directly to local deployment concerns such as quantization, VRAM budgeting, and runtime selection.",
-      "sources": [
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2057590224729911346",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2104292700409196861",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
     {
       "id": "a39d3cea70919c8d4be9bf8014c0df75",
       "occurred_at": "2026-09-28T00:15:51+00:00",
@@ -416,6 +142,437 @@
           "preview_image_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/datasets/avbiswas/bev-decision.png"
         }
       ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "c7b563807dc6138c2182297bfb01afc5",
+      "occurred_at": "2026-09-28T12:47:26+00:00",
+      "updated_at": "2026-09-28T20:32:00.000495+00:00",
+      "expires_at": "2026-09-29T12:47:26+00:00",
+      "title": "NVIDIA launches Open Agent Safety Platform with 100+ partners, integrating OpenShell and Sentry",
+      "detail": [
+        "NVIDIA announced the Open Agent Safety Platform, an open ecosystem uniting more than 100 industry partners and integrating OpenShell and Sentry into a trust layer positioned as the foundation for a safer AI economy built on confident, responsible deployment of AI agents.",
+        "OpenShell, one of the projects being integrated, has also published a proof-of-concept for egress usage monitoring, documented in a public GitHub repository, that records request counts, write operations, and byte volumes per sandboxed agent, establishes baseline traffic, flags drift, and highlights fleet-wide patterns such as coordinated writes to a single host, including the 'message board' attack pattern observed in July."
+      ],
+      "why_it_matters": "A broad industry coalition around a shared trust layer addresses growing concerns about AI agent reliability and safety, while egress monitoring of the kind OpenShell's proof-of-concept demonstrates gives operators an immediate signal for spotting malicious coordination among autonomous agents without changing allow-list rules.",
+      "sources": [
+        {
+          "author_name": "Jensen Huang",
+          "author_username": "JensenHuang",
+          "url": "https://x.com/JensenHuang/status/2104499465055023424",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HTSuRsKaUAE1VGz.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTSuRsKaUAE1VGz.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "dax",
+          "author_username": "thdxr",
+          "url": "https://x.com/thdxr/status/2104553569349153083",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "clem 🤗",
+          "author_username": "ClementDelangue",
+          "url": "https://x.com/ClementDelangue/status/2104597818606338298",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2104597183508918272/img/M3F23L_a1ozT9vjv.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104597183508918272/img/M3F23L_a1ozT9vjv.jpg:small",
+              "width": 1080,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "Josh Cohenzadeh",
+          "author_username": "jshchnz",
+          "url": "https://x.com/jshchnz/status/2104612644145742001",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://github.com/Hugoch/OpenShell/blob/poc/egress-usage-monitoring/rfc/NNNN-egress-usage-monitoring/poc.md",
+          "domain": "github.com",
+          "title": "OpenShell/rfc/NNNN-egress-usage-monitoring/poc.md at poc/egress-usage-monitoring · Hugoch/OpenShell · GitHub",
+          "preview_image_url": "https://opengraph.githubassets.com/6a4216b504d8f169b544d9153fbf95ddcd8db2978497ba7fe5fc9f6e43c17a58/Hugoch/OpenShell"
+        }
+      ],
+      "interest_slugs": [
+        "ai",
+        "os_security"
+      ]
+    },
+    {
+      "id": "db39ac409ff5e9e0d5a80762be31ba11",
+      "occurred_at": "2026-09-28T18:05:00+00:00",
+      "updated_at": "2026-09-28T20:32:00.000495+00:00",
+      "expires_at": "2026-09-29T18:05:00+00:00",
+      "title": "Claude Sonnet 5.5 Launches with 30% Speed Boost and 30% Cost Reduction",
+      "detail": [
+        "Anthropic released Claude Sonnet 5.5, the second model in the Claude 5.5 family.",
+        "The new model runs more than 30% faster than Sonnet 5 and costs up to 30% less for most workloads, while also including bug‑fixes for Claude Code."
+      ],
+      "why_it_matters": "The performance and cost improvements let users complete AI‑assisted development tasks faster and cheaper, directly reducing compute expenses for current Anthropic customers.",
+      "sources": [
+        {
+          "author_name": "Claude",
+          "author_username": "claudeai",
+          "url": "https://x.com/claudeai/status/2104633115620823187",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/media/HTUo6fcWwAAbZiB.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTUo6fcWwAAbZiB.jpg:small",
+              "width": 1920,
+              "height": 1080
+            },
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/media/HTUthyeWIAAInna.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTUthyeWIAAInna.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2104633488574177460",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HTUpAMpXEAEXfrk.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTUpAMpXEAEXfrk.jpg:small",
+              "width": 1837,
+              "height": 2048
+            }
+          ]
+        },
+        {
+          "author_name": "AVB",
+          "author_username": "neural_avb",
+          "url": "https://x.com/neural_avb/status/2104641975349870637",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "Alex Albert",
+          "author_username": "alexalbert__",
+          "url": "https://x.com/alexalbert__/status/2104633937280811010",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "Boris Cherny",
+          "author_username": "bcherny",
+          "url": "https://x.com/bcherny/status/2104638725317923228",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2104638670234132481/img/EDWsy5fJBJZhvSOt.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104638670234132481/img/EDWsy5fJBJZhvSOt.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "Charlie Holtz",
+          "author_username": "charlieholtz",
+          "url": "https://x.com/charlieholtz/status/2104642981936685530",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2104653363141091706",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2104653215379668992/img/kXkH2sLMttWC7jun.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104653215379668992/img/kXkH2sLMttWC7jun.jpg:small",
+              "width": 2048,
+              "height": 1645
+            }
+          ]
+        },
+        {
+          "author_name": "Thariq",
+          "author_username": "trq212",
+          "url": "https://x.com/trq212/status/2104660926373023830",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "6d9923bde06b12a995f1f74efaabe1ff",
+      "occurred_at": "2026-09-28T18:14:43+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-29T18:14:43+00:00",
+      "title": "Shivani Poddar launches Fo, a personal AI service that employs humans for tasks AI cannot do",
+      "detail": [
+        "Shivani Poddar, who says she led engineering at Google DeepMind, introduced Fo, a personal AI assistant that employs human workers to complete tasks AI cannot handle, with free sign-up available. She reports the service is 2x better at real-world task completion, beating other agents by 69%, and cites a 94% trust rate, making it 4x less likely to leak private information than competitors Muse and Instinct. Jonathan Haas endorsed the launch, noting Fo is the only personal assistant that has not been removed from his iMessage."
+      ],
+      "why_it_matters": "Fo is available now as a free personal assistant that routes AI-infeasible tasks to human workers, providing a working alternative to fully automated personal AI agents that cannot complete every real-world request.",
+      "sources": [
+        {
+          "author_name": "Shivani Poddar",
+          "author_username": "shivanipod",
+          "url": "https://x.com/shivanipod/status/2104624129626309024",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2104623978417438720/img/ITO7eKzMhDt3Myif.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104623978417438720/img/ITO7eKzMhDt3Myif.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "Jonathan Haas",
+          "author_username": "JonathanHaas",
+          "url": "https://x.com/JonathanHaas/status/2104635935644405877",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "5f4966d9a0d3c0bf974a6c123f89a083",
+      "occurred_at": "2026-09-28T18:17:23+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-29T18:17:23+00:00",
+      "title": "Anthropic uses regex to flag swear words in Claude Code for QA review",
+      "detail": [
+        "A leak of Claude Code revealed that Anthropic has implemented a regular‑expression filter to detect profanity in generated text. The filter flags threads containing swear words for manual QA review, allowing reviewers to focus on potentially problematic outputs.",
+        "The approach is part of Anthropic's safety pipeline for Claude Code, aiming to reduce the risk of toxic language reaching end users."
+      ],
+      "why_it_matters": "The regex‑based profanity filter shows Anthropic is actively strengthening safety checks in Claude Code, helping prevent offensive content from being exposed to users during the QA stage.",
+      "sources": [
+        {
+          "author_name": "Armin Ronacher ⇌",
+          "author_username": "mitsuhiko",
+          "url": "https://x.com/mitsuhiko/status/2104627183461577037",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HTUjQ7KXkAAo1C6.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTUjQ7KXkAAo1C6.jpg:small",
+              "width": 2048,
+              "height": 1260
+            }
+          ]
+        },
+        {
+          "author_name": "Drew Breunig",
+          "author_username": "dbreunig",
+          "url": "https://x.com/dbreunig/status/2104636602903564631",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "a3479f08b5c66f22373218fff8b9d3b3",
+      "occurred_at": "2026-09-28T18:18:47+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-29T18:18:47+00:00",
+      "title": "Instinct integrates with Shopify for in‑chat product discovery and checkout",
+      "detail": [
+        "Instinct announced a partnership with Shopify that enables its AI‑driven personal shopping assistant to search Shopify’s merchant network, retrieve live pricing, size and availability data, and set up orders directly within a conversation. Users can check out using Shop Pay with saved payment and shipping details, and receive notifications for price drops, back‑in‑stock items, delivery updates, and return‑window reminders.",
+        "The integration consolidates product discovery, comparison, and purchase execution into a single chat experience, leveraging Instinct’s knowledge of user preferences such as sizes, brands, and gifting contexts."
+      ],
+      "why_it_matters": "Instinct users can now complete purchases without leaving the chat, streamlining the shopping workflow and providing real‑time product information.",
+      "sources": [
+        {
+          "author_name": "Noah Shinn",
+          "author_username": "noahrshinn",
+          "url": "https://x.com/noahrshinn/status/2104628465488306183",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2104628090790125568/img/0BA8GnZinvADwTua.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104628090790125568/img/0BA8GnZinvADwTua.jpg:small",
+              "width": 1080,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "tobi lutke",
+          "author_username": "tobi",
+          "url": "https://x.com/tobi/status/2104636956248539639",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "161553a306d48e57ced2fc5b7ad8e5b6",
+      "occurred_at": "2026-09-28T18:34:58+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-29T18:34:58+00:00",
+      "title": "Amp Announces Simplified Pricing Tiers and Free BYO Compute Option",
+      "detail": [
+        "Amp, an AI inference platform, posted its current pricing structure. Individual users can choose a $20 subscription or a $200 plan, while teams receive the same rates plus features such as SAML/OIDC SSO, thread sharing, and other collaboration tools.",
+        "Users who provide their own compute and inference resources can use Amp at no cost, and the service also allows plugging in personal tokens to leverage other subscriptions or commits."
+      ],
+      "why_it_matters": "Clear, low‑cost pricing and a free BYO compute tier lower the barrier for developers to adopt Amp for AI workloads, potentially expanding its user base.",
+      "sources": [
+        {
+          "author_name": "Beyang",
+          "author_username": "beyang",
+          "url": "https://x.com/beyang/status/2104641029056180684",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HTUulBKaoAA2hy_.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTUulBKaoAA2hy_.jpg:small",
+              "width": 1399,
+              "height": 972
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "eadc7d864ba0f25f7fd0df42befb6bea",
+      "occurred_at": "2026-09-28T18:55:10+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-29T18:55:10+00:00",
+      "title": "Grok Bot adds Finance integration for bank, card, and investment account linking",
+      "detail": [
+        "Grok Bot now supports a Finance integration that lets users link their bank, credit‑card, and investment accounts directly to the bot.",
+        "With this feature, users can ask the bot to manage spending, track investments, and uncover ways to save money across their subscriptions."
+      ],
+      "why_it_matters": "The integration gives users immediate access to personal financial data through the AI assistant, enabling automated budgeting and expense insights today.",
+      "sources": [
+        {
+          "author_name": "Grok Bot",
+          "author_username": "bot",
+          "url": "https://x.com/bot/status/2103936247995752705",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HTKt7P3aUAAZptd.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HTKt7P3aUAAZptd.jpg:small",
+              "width": 2048,
+              "height": 1153
+            }
+          ]
+        },
+        {
+          "author_name": "lauren",
+          "author_username": "poteto",
+          "url": "https://x.com/poteto/status/2104646114427457941",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "85211facf27ba78a84431ed070bb3bba",
+      "occurred_at": "2026-09-28T20:07:22+00:00",
+      "updated_at": null,
+      "expires_at": "2026-09-29T20:07:22+00:00",
+      "title": "Grok Bot adds multiplayer Team Bots feature",
+      "detail": [
+        "Grok Bot now supports Team Bots, allowing a shared AI teammate that can access a team's plugins, skills, and credentials and be added to Slack with a single click.",
+        "The multiplayer capability lets multiple users collaborate with the same bot instance, turning the bot into a collaborative assistant for team workflows."
+      ],
+      "why_it_matters": "Teams can immediately deploy a shared AI assistant in Slack, streamlining collaborative tasks that require unified access to plugins, credentials, and skills.",
+      "sources": [
+        {
+          "author_name": "Grok Bot",
+          "author_username": "bot",
+          "url": "https://x.com/bot/status/2104661562715967548",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2104654684527251457/img/7ZvdEODvazICBcqM.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2104654684527251457/img/7ZvdEODvazICBcqM.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "lauren",
+          "author_username": "poteto",
+          "url": "https://x.com/poteto/status/2104664283808428165",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HTVEYv6aEAAdaXF.png",
+              "preview_url": "https://pbs.twimg.com/media/HTVEYv6aEAAdaXF.png:small",
+              "width": 129,
+              "height": 85
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
       "interest_slugs": [
         "ai"
       ]
