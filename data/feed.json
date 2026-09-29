@@ -1,7 +1,70 @@
 {
-  "updated_at": "2026-09-28T23:00:00.161482+00:00",
-  "total_items": 1057,
+  "updated_at": "2026-09-29T01:00:00.202834+00:00",
+  "total_items": 1059,
   "items": [
+    {
+      "id": 6280,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/09/28/why-model-versioning-is-not-enough-for-production-ai/",
+      "title": "Why model versioning is not enough for production AI",
+      "summary": "A deployed AI system is a combination of model, prompts, retrieval, tools, and runtime settings—true production reliability requires bundling, testing, and replaying that entire release as one unit, not just versioning model weights.",
+      "ideas": [
+        "Model version is only one dependency; prompts, retrieval, tools, and runtime change behavior independently.",
+        "A versioned release manifest with resolvable references is the practical starting point, not a bigger platform.",
+        "Manifests are not reproducibility promises; record nondeterminism limits and ingestion watermarks honestly.",
+        "Sequentially updating four config stores is not an atomic release; resolve the tested combination consistently.",
+        "Evaluation gates should test the full path—retrieval through output validation—not just model calls with prepared prompts.",
+        "Keep held-out evaluation data so repeated prompt tuning doesn't turn the whole suite into a training target.",
+        "Prefer deterministic checks; model-judge scores need pinned configuration and human review of disagreements.",
+        "Set acceptance criteria before examining the candidate, and make failed gates emit debugging artifacts.",
+        "Load test distributions of input length, output length, concurrency, and bursts, not just requests per second.",
+        "Separate time-to-first-token, token pace, and queue time; users spend most latency waiting in queues.",
+        "Never sum per-stage percentiles to claim end-to-end p95; they may describe different requests.",
+        "Benchmark the batching scheduler you actually run; batching trades user-visible delay for throughput.",
+        "GPU utilization is a diagnostic signal, not the product objective—measure user experience instead.",
+        "Compute cost per successful task, counting retries and escalations, not cost per request.",
+        "A release that looks cheaper because it silently truncates answers should fail evaluation, not win on cost.",
+        "Rollback must restore compatible dependencies; routing to old app code can still read a new retrieval index.",
+        "Tool side effects like emails or record updates need idempotency and approval boundaries; model rollback cannot undo them.",
+        "Historical index snapshots must still honor current access revocations and deletion requirements.",
+        "Feed incidents back into versioned evaluation suites, but recognize production feedback is selective and biased.",
+        "Assign ownership at interfaces and empower someone to stop a rollout; an alert without an empowered actor is incomplete."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is dense, expert-level MLOps content from a practitioner engineer with numerous genuine value instances: a concrete versioned release manifest covering prompts, retrieval indices, and runtime config; practical evaluation gate design with held-out datasets and deterministic checks; correct statistical advice that per-stage percentiles cannot be summed into end-to-end p95; a cost-per-successful-task accounting method that counts retries; and rollback-as-routing with the subtle failure modes of incompatible index versions, in-flight request draining, and irreversible tool side effects. The content is well-attributed (Google MLOps, vLLM, Triton, SRE Workbook) and efficiently structured with minimal fluff in the article body. Thematic alignment is strong across AI, Tech, and Sysadmin themes. A minor deduction for the surrounding site boilerplate inflating the content envelope and because the piece synthesizes established guidance (Google MLOps, SRE canarying) for generative applications rather than introducing novel research.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-09-29T09:33:03.517724"
+    },
+    {
+      "id": 6279,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Sep/28/joedaroo/",
+      "title": "Quoting @joedaroo",
+      "summary": "Organizations must proactively build cultural, procedural, and staff resilience to handle rapid, unexpected advances in AI capabilities.",
+      "ideas": [
+        "Sudden AI capability jumps require organizational cultural hardening.",
+        "People must evolve alongside emerging AI threats.",
+        "Resilient processes and incident response are essential.",
+        "Effective communication planning must be prepared.",
+        "Teams need ready personnel to act on AI breakthroughs.",
+        "Security posture depends on ingraining practices, not just technical hardening."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The excerpt provides multiple concrete insights — cultural hardening, evolving personnel, resilient processes, communication planning, and ready teams — delivering high value density in a brief format. It aligns strongly with AI and CyberSecurity themes and contains no discernible padding or clickbait, justifying a high score.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-09-29T09:32:12.815025"
+    },
     {
       "id": 6278,
       "source_id": 34,
