@@ -16,7 +16,9 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # FeedSieve commits the feed and mobile snapshots separately. Let the newer
+  # queued run deploy after the current run so Pages receives both files.
+  cancel-in-progress: false
 
 jobs:
   deploy:
