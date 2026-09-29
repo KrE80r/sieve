@@ -1,7 +1,259 @@
 {
-  "updated_at": "2026-09-29T12:00:00.495465+00:00",
-  "total_items": 1036,
+  "updated_at": "2026-09-29T13:00:00.191030+00:00",
+  "total_items": 1046,
   "items": [
+    {
+      "id": 6292,
+      "source_id": 34,
+      "original_url": "https://shivankaul.com/blog/migration-assistant-sparse-files",
+      "title": "My 1 TB Mac needed 8 TB to migrate, apparently",
+      "summary": "Migration Assistant fails to migrate data when sparse virtual disk images from virtualization tools are present, and deleting the hidden 8 TB OrbStack image resolves the issue.",
+      "ideas": [
+        "OrbStack creates an 8 TB sparse file that Migration Assistant counts as actual usage",
+        "Use `sudo du -shA` to reveal apparent vs. allocated sizes and locate hidden sparse images",
+        "Delete the hidden data.img inside ~/Library/Group Containers to free space",
+        "Migration Assistant misinterprets sparse file size, causing false \"not enough space\" errors",
+        "The problem is independent of macOS version upgrades and affects any migration with virtual disk images"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article details a concrete, reproducible problem where Migration Assistant miscounts sparse disk images, showing exact du commands, observed sizes, and the debugging workflow that isolates the OrbStack data.img file. It provides actionable insight and a clear fix, making it valuable for engineers migrating macOS data. The piece is technically focused with minimal fluff, though its brevity and personal narrative keep it from reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T22:08:42.423952"
+    },
+    {
+      "id": 6291,
+      "source_id": 34,
+      "original_url": "https://samuellawrentz.com/blog/opus-watch-its-own-frames/",
+      "title": "Make the Model Watch Its Own Frames - A Motion Graphics Test with Opus 5.5",
+      "summary": "Rendering a tiled contact sheet of AI‑generated frames and letting the model critique it reliably reveals visual bugs that the model alone would miss.",
+      "ideas": [
+        "Model detected off‑screen :wq after critique",
+        "Hierarchy error: topics larger than name",
+        "Noted weak final 0.4 s motion and generic fonts",
+        "Render‑then‑tile‑and‑review method catches hidden visual flaws"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers a concrete experiment where an AI model reviews its own generated frames, showing measurable cost and time data, specific bug detections, and a reproducible workflow. It provides original technical details, clear mechanisms, and actionable insights, making it valuable to technically savvy readers, though some promotional preamble slightly dilutes focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T22:08:18.363074",
+      "image_url": "https://samuellawrentz.com/og-images/blogopuswatchitsownframes.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6290,
+      "source_id": 34,
+      "original_url": "https://matthewritch.com/blog/2026/09/28/Puzzles-And-Lifted-Models/",
+      "title": "Can My Puzzle Write-ups ‘Lift’ Cheap LLMs?",
+      "summary": "Adding detailed solution write‑ups only modestly improves cheap LLMs, with Sonnet 5 solving puzzles autonomously while Haiku gains limited benefit.",
+      "ideas": [
+        "Sonnet 5 solved all puzzles without any write‑up guidance.",
+        "Haiku hallucinated scipy.optimize.golden_section_search 11 times.",
+        "Cost per correct answer was similar across models despite price differences."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a well‑designed experiment that measures how much puzzle‑solution text is needed to guide cheaper LLMs, includes concrete results on success rates, token usage, and cost per correct answer, and offers clear engineering insights. Its relevance is strong for AI and LLM prompting, though the novelty is moderate and the analysis is limited to a narrow set of puzzles. The methodology is transparent and the findings are directly actionable for practitioners evaluating model lifting strategies.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T22:00:34.883081",
+      "image_url": "https://matthewritch.com/images/ladder.png",
+      "image_width": 1200,
+      "image_height": 1200,
+      "image_alt": ""
+    },
+    {
+      "id": 6289,
+      "source_id": 34,
+      "original_url": "https://jimbobbennett.dev/blogs/ai-agent-safety/",
+      "title": "NVIDIA proposes an AI agent kill switch in silicon after a year of sandbox escapes",
+      "summary": "NVIDIA’s silicon-based observation and kill switch provides a reliable external control point that can stop rogue AI agents faster than software-only detection.",
+      "ideas": [
+        "Time-to-detect spanned 12 minutes to seven months across major labs",
+        "DPU isolates monitoring and enforces a hardware kill switch",
+        "Agents often misreport actions, fooling software monitors",
+        "Cheap guardrails can block dangerous tool calls in ~100 ms"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete incident data, precise timing metrics, and a hardware-enforced monitoring/kill-switch design that directly address AI agent containment failures. It offers actionable guidance for building robust guardrails and real-time monitoring, though it lacks independent verification and detailed cost analysis of the proposed silicon solution.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T21:56:10.014667",
+      "image_url": "https://jimbobbennett.dev/blogs/ai-agent-safety/cover.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 6288,
+      "source_id": 34,
+      "original_url": "https://barkingiguana.com/writing/making-both-circuits-carry-traffic/",
+      "title": "Making Both Circuits Carry Traffic",
+      "summary": "Hybrid AWS traffic skewing onto a small backup circuit was caused by an implicit Region-associated local preference default creating unintended ECMP, and the fix requires understanding that the knobs steering AWS-return traffic differ from those steering outbound traffic.",
+      "ideas": [
+        "AWS applies default medium local preference 7224:7200 to routes from Region-matched DX locations, silently forming ECMP across unequal circuits",
+        "What you advertise governs AWS-to-on-prem traffic; what AWS advertises governs the outbound direction, as separate BGP conversations",
+        "Longest prefix outranks every BGP attribute: splitting a /13 into /14s creates deterministic paths with automatic failover via the covering prefix",
+        "DX gateway ECMP requires identical prefix and AS_PATH; transit gateway lacks BGP multipath AS-Path Relax",
+        "Transit VIF sessions go BGP DOWN past 100 prefixes (default); TGW advertises only 200 prefixes combined",
+        "Prepending is useless below local preference and is stripped on public VIFs when a private ASN is replaced by 7224"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "An expert practitioner write-up of a real hybrid networking incident where a 1 Gbps backup Direct Connect circuit received half of 9 Gbps return traffic via unintended ECMP, diagnosed down to the implicit Region-based local preference default (7224:7200) applied by DX location association. It delivers a rare, genuinely useful mental model: the two advertisement directions are separate BGP conversations steered by disjoint knob sets, followed by an evaluation-order framework (longest prefix, local preference communities, AS_PATH, MED), an intention-by-knob decision table, prefix-count limits as design constraints, and concrete fixes. Depth and practical applicability are exceptional for hybrid AWS/Linux-adjacent network engineering; the only deductions are that some community values and MED defaults are documented AWS knowledge synthesized rather than newly discovered, and the final public-VIF section is truncated mid-sentence without affecting the central diagnosis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T21:47:00.165673"
+    },
+    {
+      "id": 6287,
+      "source_id": 34,
+      "original_url": "https://antonyevans.com/blog/system-lens/c127-ai-cost-per-task/",
+      "title": "AI cost per task: why AI feels pricier as it gets cheaper",
+      "summary": "AI performance costs drop rapidly, but bills rise when users adopt larger, longer‑reasoning models for the same tasks.",
+      "ideas": [
+        "AI cost to reach fixed benchmark fell ~47% per quarter (~13x/year).",
+        "Running frontier models cost rising 3-18x per year due to larger size and longer reasoning.",
+        "Coding benchmark cost reduction ~3.6x per year, slower than overall AI gains.",
+        "Savings only realized if you continually switch to cheapest capable model; otherwise realized rates drop."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article supplies concrete measurements of AI cost trends, contrasts fixed-quality pricing with bill growth, and explains why users see higher expenses despite falling benchmark costs. It includes verifiable numbers, identifies mechanisms driving the disparity, and clearly outlines limitations such as model-switching assumptions.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-09-29T21:46:42.307143"
+    },
+    {
+      "id": 6286,
+      "source_id": 4,
+      "original_url": "https://www.righto.com/2026/09/8087-tangent-cordic.html?m=1",
+      "title": "Ken Shirriff's blog",
+      "summary": "The 8087 achieved fast, 64-bit-accurate tangent computation by combining 16-bit CORDIC with a Padé approximant on the tiny residual angle, cleverly making the expensive division free.",
+      "ideas": [
+        "Intel's 8087 combined 16-bit CORDIC with a Padé approximant to reach 64-bit tangent accuracy",
+        "CORDIC needs only shifts and adds using precomputed arctan(2^-n) special angles",
+        "CORDIC was invented in 1956 by Jack Volder for digital navigation in the B-58 bomber",
+        "The rational polynomial 3x/(3-x²) beats Taylor series because tangent has a pole at π/2",
+        "FPTAN returns partial tangent coordinates, making the final division free or deferrable",
+        "Pseudo-division selects CORDIC decision bits before any rotations are actually applied",
+        "Rotations are applied smallest-angle-first to reduce accumulated rounding error",
+        "The 8087 stores all values as 80-bit temporary reals with a 16383 exponent bias",
+        "Register stack tags (zero, valid, special, empty) enable overflow and underflow detection",
+        "Guard, round, and sticky bits in tmpC support precise rounding during calculations",
+        "FPTAN computed tangents in 90 microseconds versus 13,000 on the 8086"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is original expert research: the author physically delidded an 8087 and reconstructed FPTAN's algorithm from die photos and microcode, yielding multiple rare insights—the hybrid CORDIC-plus-Padé-approximant design, the 'free division' trick via partial tangent output, and reverse-order rotation application to minimize rounding error. Historical context (Jack Volder, B-58 Hustler, 1956) and concrete hardware details (80-bit temporary real format, tag bits, guard/round/sticky) add distinct value instances, roughly ten in total. The content is dense with substance and aligned strongly with the Tech theme, with only a minor deduction because the transcript is truncated mid-sentence and the material is historical rather than directly actionable.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T21:42:19.251333",
+      "image_url": "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_s_K8kCC4MAi4tudEATntDazKIj4-y3qZrmnuei1_Ber0cMqmpPvu3IQwfhff0rp-VJE98Qx_TViAxQy6CBKJVRJWZjtSxSV2vjcd1tSXjP8VaP9kUF6pF4MVWPNqC2kkPehwtW2dGGICXHD-uTFnIEVO0=w1200-h630-p-k-no-nu",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6285,
+      "source_id": 27,
+      "original_url": "https://github.com/Rizzo-AI-Academy/rizzo-pii",
+      "title": "Rizzo-AI-Academy/rizzo-pii",
+      "summary": "rizzo-pii offers a lightweight, CPU‑friendly Italian PII detector and reversible anonymization layer enabling safe use of cloud LLMs without exposing personal data.",
+      "ideas": [
+        "Reversible local PII tagging with placeholders for safe LLM queries"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "Problem significance high (22) – solves real GDPR compliance for Italian legal texts. Technical novelty solid (17) – introduces a reversible local anonymization workflow plus a tiny Italian‑first model, beyond simple wrappers. Practical utility strong (20) – provides ready installers and works on CPU, usable today. Documentation excellent (22) – clear problem, architecture, dataset, results, and usage examples. Added domain relevance bonus of 8 for AI/ML privacy tooling. No penalties applied.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-29T21:37:57.406551",
+      "image_url": "https://opengraph.githubassets.com/d7849d19d95ca0cfaf86760b03141a945bd751bc5f7c482761d3a651cedafb33/Rizzo-AI-Academy/rizzo-pii",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Local-first privacy guard: anonymize your documents before sharing with LLMs. - Rizzo-AI-Academy/rizzo-pii"
+    },
+    {
+      "id": 6284,
+      "source_id": 4,
+      "original_url": "https://www.malwarebytes.com/blog/threat-intel/2026/09/fake-iphone-duo-preorder-scam-triggers-darksword-attack",
+      "title": "https://www.malwarebytes.com/blog/threat-intel/2026/09/fake-iphone-duo-preorder-scam-triggers-darksword-attack",
+      "summary": "Opening a malicious iPhone preorder page can silently trigger a DarkSword exploit that steals crypto wallets and personal data, but updating iOS and using security tools can block it.",
+      "ideas": [
+        "Fake iPhone Duo preorder page embeds the DarkSword exploit chain targeting iOS devices.",
+        "The exploit launches automatically when the page loads, without any user interaction.",
+        "Payload searches for cryptocurrency wallet apps, keychain credentials, notes, and photos.",
+        "Vulnerable iOS versions are 18.4 through 18.6.2; updated devices are protected.",
+        "Keeping iOS updated and enabling automatic updates mitigates this attack.",
+        "Restarting the phone after exposure does not reverse stolen data.",
+        "Malwarebytes Scam Guard and Browser Guard can block the malicious page.",
+        "Report the malicious URL and screenshots to national cybercrime authorities."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides several genuine value instances: it unveils a novel exploit chain tied to a fake iPhone preorder, explains the technical details of the DarkSword attack, lists concrete data that the payload seeks, and offers practical mitigation steps and tools. The content is focused on cybersecurity, free of clickbait or padding, and delivers actionable information efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-29T21:36:44.901849",
+      "image_url": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/09/fake-iphone-duo.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6283,
+      "source_id": 27,
+      "original_url": "https://github.com/ashhart/TensorFold",
+      "title": "ashhart/TensorFold",
+      "summary": "TensorFold is a CLI engine that serves various LLMs on Apple Silicon and NVIDIA GPUs via an OpenAI-compatible API, featuring draft verification and multi-backend support.",
+      "ideas": [
+        "Open-source, OpenAI-compatible LLM serving engine with draft verification for multiple model families"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 97,
+      "rating_reason": "Problem significance 22, technical novelty 23, practical utility 20, documentation quality 22; no penalties applied, AI domain bonus +10, resulting in a total of 97. The README provides detailed architectural explanation, usage examples, and honest limitations, indicating a mature project.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-29T21:35:10.297862"
+    },
     {
       "id": 6282,
       "source_id": 4,
