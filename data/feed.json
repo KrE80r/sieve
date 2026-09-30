@@ -1,7 +1,143 @@
 {
-  "updated_at": "2026-09-30T11:00:00.168369+00:00",
-  "total_items": 1028,
+  "updated_at": "2026-09-30T13:00:00.200157+00:00",
+  "total_items": 1033,
   "items": [
+    {
+      "id": 6305,
+      "source_id": 4,
+      "original_url": "https://xbow.com/blog/no-time-to-pwn-cve-2026-72018",
+      "title": "Skip to main content",
+      "summary": "Kernel subsystems ported to commodity hardware carry stale threat models and become fresh attack surface, and even a 16-zero-byte write primitive suffices for root when aimed at the cred structure's identity fields.",
+      "ideas": [
+        "Porting obscure kernel subsystems to commodity hardware turns 'unreachable' code into fresh attack surface",
+        "Peer-controlled CLC handshake fields flow unchecked into offset arithmetic, enabling kernel heap overwrites",
+        "A constrained 16-zero-byte write becomes full LPE by targeting cred's identity fields",
+        "Zeroing euid and suid directly achieves root without any infoleak or address knowledge",
+        "NFQUEUE enables attackers to MITM loopback CLC traffic and forge kernel handshake fields",
+        "Spray cred objects via capset, not fork, so children get fresh non-refcounted credentials",
+        "Capture a warmup connection's DMB token to pin every write to the same buffer",
+        "Autonomous AI handled discovery and exploit development, but human redirection broke key dead ends",
+        "CAP_NET_ADMIN is a realistic privilege assumption since containers and network daemons hold it",
+        "Adversarial, protocol-aware kernel testing must be automated to match the rate new code lands"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "This is original security research with genuine novelty: a full technical write-up of a new Linux kernel LPE (CVE-2026-72018), including the vulnerable code path with actual source snippets, an NFQUEUE-based loopback MITM technique, and a heap-grooming strategy that turns a weak '16-zero-byte write' primitive into root by targeting cred identity fields without any infoleak. The broader insight—that virtual transports porting obscure mainframe-era code to commodity hardware invalidate original threat models—is a reusable review heuristic for auditors. Thematic alignment is strong (CyberSecurity, AI-assisted research). Minor deductions: the content is truncated mid-sentence before the reliability results, and the company-blog framing ('Get a Demo') introduces slight self-promotion around XBOW, though the research substance is real and not a press release.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-09-30T21:36:23.670878",
+      "image_url": "https://cdn.sanity.io/images/1lq2ca9s/production/a3b049e8cf59c99b9e46cd0abba1f93608a7d6e3-1920x1465.png?rect=0,229,1920,1008&w=1200&h=630&fm=jpg&q=80&fit=crop",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6304,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/anthropic-says-zhipus-open-weight-glm-5-3-nearly-matches-claude-mythos-preview-at-building-exploits/",
+      "title": "Anthropic says Zhipu's open-weight GLM-5.3 nearly matches Claude Mythos Preview at building exploits",
+      "summary": "Open‑weight models like GLM‑5.3 can match frontier exploit performance while lacking effective safeguards, creating a significant security risk.",
+      "ideas": [
+        "GLM‑5.3 can autonomously build working exploits, matching Claude Mythos performance on benchmarks.",
+        "ExploitBench shows GLM‑5.3 succeeded in 50 of 410 attempts, close to Mythos' 56 successes.",
+        "In binary exploitation tests, GLM‑5.3 achieved 4% full control versus Mythos' 6%.",
+        "Open‑weight models lack effective safeguards, easily bypassed with techniques like abliteration.",
+        "Within one day of minimal human oversight, GLM‑5.3 discovered unknown browser bugs and exfiltrated an SSH key.",
+        "US agency CAISI rates GLM‑5.3 as the most cyber‑capable open‑weight model, four months behind top US models.",
+        "Open models are cheaper to run and customizable, raising misuse risk for state and non‑state actors.",
+        "Anthropic’s warning also supports its business case for closed, vetted models like Claude Mythos."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article supplies concrete benchmark data and real‑world examples showing GLM‑5.3’s exploit capabilities, plus policy and business implications, delivering several genuine insights. Minor drawbacks are promotional boilerplate and some repetitive framing, but overall the content is substantive and relevant to AI and cybersecurity.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-09-30T21:34:09.410493"
+    },
+    {
+      "id": 6303,
+      "source_id": 27,
+      "original_url": "https://github.com/SemiAnalysisAI/InferenceX",
+      "title": "SemiAnalysisAI/InferenceX",
+      "summary": "A continuously updated, Apache-2.0 LLM inference benchmarking platform backed by AMD/NVIDIA compute gifts and major framework maintainers, delivering live cross-hardware performance tracking that matters to anyone serving models at scale.",
+      "ideas": [
+        "Continuous end-to-end inference benchmarks across NVIDIA, AMD, and TPU hardware with live dashboard",
+        "AgentX: fully open-source million-token long-context multi-turn agentic benchmark",
+        "OperatorX kernel-level and CollectiveX networking benchmarks layered below e2e serving",
+        "OSS system-level power modeling for GPU inference clusters",
+        "Pluggable Python launchers with CI and Slurm automation for vLLM, SGLang, TensorRT-LLM"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 84,
+      "rating_reason": "Strong scores across criteria: problem significance (22/25) for solving the real pain of stale LLM inference benchmarks amid daily software advances, technical novelty (16/25) for continuous cross-vendor benchmarking with AgentX agentic testing, kernel-level (OperatorX) and networking (CollectiveX) layers, and power modeling, practical utility (21/25) given CI/Slurm automation, a standalone harness, and an actively used live dashboard, and documentation (16/25) with a docs map, contributing guides, and architecture references. The README leans marketing-heavy ('Trusted by Operators of Trillion Dollar Token Factories', trademark-driven fork disclaimers), but the underlying technical substance and contributor activity (2,492 commits, 131 contributors) prevent a full marketing penalty. The AI/ML tooling and infrastructure alignment earns a +8 domain bonus.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-09-30T21:33:12.985762",
+      "image_url": "https://opengraph.githubassets.com/6abebd2ac3f4bb51226b01cf3d0ebc4d82703244a558a8d7b1064a63afd8827f/SemiAnalysisAI/InferenceX",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Open Source Inference Research Platform Standard / 开源推理研究平台 - SemiAnalysisAI/InferenceX"
+    },
+    {
+      "id": 6302,
+      "source_id": 26,
+      "original_url": "https://github.com/rakyll/hey",
+      "title": "rakyll/hey",
+      "summary": "A battle-tested HTTP load generator CLI tool serving as a modern ApacheBench replacement, valuable for everyday developer use despite offering little novelty over existing solutions.",
+      "ideas": [
+        "HTTP load testing CLI tool",
+        "ApacheBench replacement with HTTP/2 support",
+        "Configurable concurrency and rate limiting"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 72,
+      "rating_reason": "hey is a mature, widely-used HTTP load testing CLI tool (ApacheBench replacement) scoring high on practical utility (24/25) and documentation (19/25). However, it scores low on technical novelty (8/25) as it's essentially a modernized reimplementation of ab with incremental improvements like HTTP/2 and rate limiting. Problem significance is moderate (15/25) since load testing is a real but well-served need. Bonus of +6 applied for being a solid developer productivity/CLI tool. No automatic penalties apply - it's a legitimate tool, not a wrapper, list, or tutorial.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-30T21:32:27.787845",
+      "image_url": "https://opengraph.githubassets.com/bfad42c701fa41130a8dee841f532efbf4cfca42a0b9335bb8f3219773774757/rakyll/hey",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "HTTP load generator, ApacheBench (ab) replacement. Contribute to rakyll/hey development by creating an account on GitHub."
+    },
+    {
+      "id": 6301,
+      "source_id": 26,
+      "original_url": "https://github.com/t8y2/dbx",
+      "title": "t8y2/dbx",
+      "summary": "DBX is a lightweight, cross‑platform universal database client with built‑in AI assistant, plugin ecosystem, and MCP integration.",
+      "ideas": [
+        "Unified AI‑assisted SQL editor with 100+ DB support in a 25 MB binary"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 96,
+      "rating_reason": "Problem significance: 25 (addresses central need for unified DB access). Technical novelty: 23 (combines AI assistant, plugin system, MCP, and 100+ DB support in a 25 MB binary). Practical utility: 24 (production‑ready with CLI, Docker, and plugin ecosystem). Documentation quality: 22 (detailed feature list and install guide, though marketing‑heavy sections are present). No automatic penalties applied.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-09-30T21:32:16.892976",
+      "image_url": "https://repository-images.githubusercontent.com/1224172037/32bdb2d1-cbb6-4a47-8743-150c311fbb1b",
+      "image_width": 1792,
+      "image_height": 896,
+      "image_alt": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and D..."
+    },
     {
       "id": 6300,
       "source_id": 4,
