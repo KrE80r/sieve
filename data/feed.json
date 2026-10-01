@@ -1,7 +1,231 @@
 {
-  "updated_at": "2026-10-01T17:00:00.169764+00:00",
-  "total_items": 1041,
+  "updated_at": "2026-10-01T19:00:00.171608+00:00",
+  "total_items": 1049,
   "items": [
+    {
+      "id": 6338,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/openai-says-it-stopped-a-campaign-to-steal-its-models-reasoning-but-the-trick-still-worked-on-azure/",
+      "title": "OpenAI says it stopped a campaign to steal its models' reasoning, but the trick still worked on Azure",
+      "summary": "Adversarial distillation enables cheaper models to pilfer expensive models' hidden reasoning, exposing critical security gaps across cloud platforms.",
+      "ideas": [
+        "OpenAI disrupted adversarial distillation campaign targeting model reasoning but attack still succeeded on Azure",
+        "Researchers showed encrypted packets act as decryption oracle to extract hidden thoughts",
+        "A cheaper model can unlock an expensive model's internal reasoning via intercepted encrypted packets",
+        "Simpler extraction uses a virtual notepad tool to reveal model reasoning verbatim",
+        "Cloud platforms lack consistent protections, leaving models exposed across services",
+        "Inconsistent safeguards enable attackers to bypass export controls and threaten model security"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers multiple novel insights on adversarial distillation, encryption bypass, and cloud‑wide security gaps, offering actionable knowledge and original research details. Minor penalties apply for promotional footer content that slightly inflates length without adding value. The depth and relevance to AI security justify a high but not exceptional score. It contains several high‑impact ideas while only modestly falling short of perfect efficiency.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-10-02T03:39:20.558817",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/09/openai_gpt_6_stars_astra.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 6337,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ai-beats-strategos-greatest-player-ending-one-of-the-last-human-strongholds-in-board-games/",
+      "title": "AI beats Stratego's greatest player, ending one of the last human strongholds in board games",
+      "summary": "A team from CMU, NYU, Stanford, and MIT built Ataraxos—an AI that decisively beat the greatest Stratego player ever—for under $8,000 in compute, using regularization and belief networks to conquer imperfect-information games.",
+      "ideas": [
+        "Ataraxos beat greatest Stratego player 15-1-4 in official 20-game series",
+        "University team's $8,000 training cost beat DeepMind's failed $3-4.5M attempt",
+        "Regularization forces AI to vary play, preventing it from becoming too predictable",
+        "Belief network predicts opponent's hidden pieces to enable search during decisions",
+        "Same method achieved superhuman play in Hanabi and Dou dizhu with less compute",
+        "Stratego's 10^33+ possible setups made it uniquely resistant to prior AI methods",
+        "AI won despite structural disadvantage of not adapting between games against human",
+        "Imperfect information in finance, military, and negotiations may now be AI-tractable",
+        "Training schedule loosens randomness pressure gradually to maintain learning capacity",
+        "Limitation: search mimics only one learning step, preventing further compute scaling"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This article delivers strong technical substance on a genuine AI research breakthrough published in Nature. It provides multiple value instances: the dramatic cost-efficiency story ($8K vs DeepMind's $3-4.5M), the key regularization technique insight, the belief network architecture for search under hidden information, cross-game validation results, and first-hand expert quotes. The writing is clear and the technical depth is accessible without being superficial. Minor penalties for some promotional/newsletter padding and a bit of structural repetition, but the core reporting is solid and original.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-10-02T03:37:55.071150",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/10/Stratego-Ataraxos-title-1200x675.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6336,
+      "source_id": 4,
+      "original_url": "https://ifritnoises.org/articles/the-lucifer/",
+      "title": "How to Spot a Compromised MikroTik Router",
+      "summary": "Hunt persistent configuration changes on MikroTik routers rather than active tunnels, because attacker pivots survive reboots as artifacts (SSH forwarding-enabled, SOCKS, dst-nat, DNS static entries) whose legitimacy hinges on whether a documented owner set them and where redirects point.",
+      "ideas": [
+        "SSH forwarding-enabled config persists after reboot; the tunnel itself vanishes, so hunt the setting",
+        "forwarding-enabled=no is the default; any other value means someone deliberately enabled pivoting capability",
+        "WAN-reachable SSH plus undocumented forwarding changes indicate an outside door, not internal tooling",
+        "Enabled SOCKS proxy with auth-method=none and WAN reachability forms an unauthenticated open relay",
+        "Web proxy redirect-to pointing externally with non-zero hits proves active client traffic tampering",
+        "2018 CoinHive campaign abused MikroTik web proxy redirects to inject mining scripts into HTTP traffic",
+        "dst-nat alone doesn't expose internal hosts; audit NAT and forward filter chains together",
+        "Attackers camouflage malicious firewall rules with innocent comments like 'bandwidth-monitor' on RDP ports",
+        "Disabled firewall rules can be sleeping port forwards activated later via a scheduler",
+        "Public domains in DNS static tables resolving to external IPs signal hijacking; internal targets are routine",
+        "DNS regexp entries matching public domains enable mass interception beyond a single local override",
+        "Scheduler chains link system scripts to on-event triggers, providing toolless attacker persistence",
+        "Sensitive ports (3389, 445, 22) exposed with empty src-address accept connections from anywhere"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "This is expert-level forensic content with roughly ten distinct, actionable value instances: concrete CLI collection paths for each technique, default-state baselines (forwarding-enabled=no, empty DNS static table), and nuanced triage frameworks distinguishing legitimate configuration from attacker persistence. Standout insights include the principle that durable config changes (not ephemeral tunnels) are the forensic artifact, the attacker tradecraft of camouflaging firewall rules with innocent comments like 'bandwidth-monitor', the non-obvious requirement to audit both NAT and forward filter chains for exposure, and the real-world 2018 CoinHive/CVE-2018-14847 campaign validating the redirect-to abuse. Thematic alignment with CyberSecurity and networking/Sysadmin is maximal and the density is high with minimal padding; the only deduction is for the truncation that cuts off the Scheduler section and fails to deliver promised Users and Traffic Sniffing chapters.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-02T03:37:19.786953",
+      "image_url": "https://ifritnoises.org/covers/the-lucifer.png",
+      "image_width": 1200,
+      "image_height": 1200,
+      "image_alt": ""
+    },
+    {
+      "id": 6335,
+      "source_id": 4,
+      "original_url": "https://lab52.io/blog/backdoors-in-the-dungeon-turn-mqtt-abused-by-dragonforce/",
+      "title": "The threat intelligence division of S2 Grupo",
+      "summary": "Modern ransomware operations like DragonForce now blend C2 traffic through legitimate services (Teams TURN, MQTT brokers) with host-bound, memory-encrypting tooling, so detection hinges on protocol-level signatures and shared IOCs.",
+      "ideas": [
+        "DragonForce backdoors abuse legitimate Microsoft Teams TURN servers to mask C2 traffic",
+        "MQTT brokers serve as redundant C2 channel when TURN-based communications fail",
+        "Beacon protocol uses UUIDs, nonces, MD5 block validation, and XOR-derived keys",
+        "Persistence combines scheduled tasks with DLL sideloading via javaw.exe loading jli.dll",
+        "DPAPI encryption binds payload stages to the specific infected host, varying hashes per system",
+        "Payload templates use 0xAA byte markers filled by cmdnum-driven JSON parameters",
+        "Beacon encrypts its memory region during Sleep calls to evade security tools",
+        "DragonForce evolved from RaaS into a 'ransomware cartel' offering access and resilient infrastructure",
+        "Published SHA256 hashes and network indicators enable immediate threat hunting"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is original, expert-level threat intelligence research delivering multiple high-value instances: the novel abuse of legitimate Microsoft Teams TURN servers for C2 masking, MQTT as a redundant fallback channel, a complete protocol breakdown (message formats, command IDs, MD5 block validation, XOR key derivation) that defenders can use for detection engineering, host-binding via DPAPI encryption, memory-encryption evasion during Sleep, and directly usable IOC hashes and network indicators. The analysis is dense and efficient for its length, strongly matching the CyberSecurity theme. A minor penalty applies (~2-3 points) for the private-feed teaser promoting S2 Grupo's paid intelligence, though the public analysis is substantive regardless.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-02T03:36:12.595050"
+    },
+    {
+      "id": 6334,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/ideogram-says-its-new-model-can-edit-part-of-an-image-without-messing-up-the-rest/",
+      "title": "Ideogram says its new model can edit part of an image without messing up the rest",
+      "summary": "Ideogram 4.5 offers precise, artifact‑free partial image editing with tiered pricing, partner integration, and an upcoming open‑weight release for diverse professional use cases.",
+      "ideas": [
+        "Precise partial image editing that leaves untouched areas unchanged.",
+        "Maintains consistency across multiple edits, reducing artifacts.",
+        "Pricing tiers range from $0.8 to $22 per 2K‑resolution image.",
+        "Early testers confirm strong consistency across varied editing scenarios.",
+        "Planned open‑weight release will expand accessibility for researchers.",
+        "Integrates with partners including Picsart, Runway, Pika, and Leonardo AI.",
+        "Target use cases: product photography, interior design, restoration, text editing."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers multiple genuine insights: a novel editing consistency claim, practical pricing tiers, use‑case examples, an upcoming open‑weight release, partner integrations, and early tester validation. While navigation and ads add minor fluff, there are no clickbait promises or severe padding, keeping the value density solid for its length.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-10-02T03:35:26.907896",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/10/ideogram_45-1200x675.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6333,
+      "source_id": 15,
+      "original_url": "https://www.perplexity.ai/hub/blog/securing-agents-across-perplexity-s-client-endpoints-with-numbat",
+      "title": "Securing Agents Across Perplexity’s Client Endpoints with Numbat",
+      "summary": "Numbat offers an open‑source, hook‑based framework with telemetry and session replay to secure AI agents across client endpoints.",
+      "ideas": [
+        "Open-source suite detects, prevents, investigates risky AI agent behavior",
+        "Runs on macOS, Linux, Windows, integrates with Claude Code, Codex, OpenCode, Pi",
+        "Utilizes hooks to block risky actions before they execute",
+        "Provides session artifacts for post-event timeline reconstruction",
+        "Employs OpenTelemetry (OTLP) protocol for telemetry monitoring"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece delivers five concrete, novel insights about Numbat's design—hooks to block risky actions, session artifacts, OTLP telemetry, cross‑platform integration, and open‑source availability—within a concise description, yielding high value density. It aligns strongly with AI security themes and shows no evident padding or clickbait. Minor deduction for lacking deeper technical evidence or original research.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-10-02T03:34:48.825073"
+    },
+    {
+      "id": 6332,
+      "source_id": 15,
+      "original_url": "https://cje.io/2026/04/08/offense-scales-with-compute-defense-scales-with-committees",
+      "title": "Offense Scales with Compute. Defense Scales with Committees.",
+      "summary": "AI lets attackers move at computational speed while defenders are slowed by committees, demanding deeper, systemic security strategies.",
+      "ideas": [
+        "Offense can exploit at compute speed; defense must gain committee approvals first.",
+        "AI widens the attacker‑defender gap, making traditional surface defenses insufficient.",
+        "Defenders concentrate on visible layers like AppSec and SIEM, called the \"top five turtles\".",
+        "Threats such as Volt Typhoon hide in deeper, less‑monitored system layers.",
+        "Effective defense requires systemic, committee‑driven approaches beyond surface‑level tools."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece delivers several original insights: it frames offense as compute-limited and defense as committee-limited, introduces the \"top five turtles\" metaphor, and highlights hidden threats like Volt Typhoon operating below the surface. These ideas give security leaders a clear, actionable perspective on AI-driven asymmetry. No penalties apply; the content is tightly themed to cybersecurity and AI.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-10-02T03:33:58.350434",
+      "image_url": "https://storage.ghost.io/c/ec/8a/ec8abb38-39b9-4422-95b9-695b2a5e652e/content/images/2026/07/header-final.jpeg",
+      "image_width": 898,
+      "image_height": 486,
+      "image_alt": ""
+    },
+    {
+      "id": 6331,
+      "source_id": 15,
+      "original_url": "https://cyber.zorgenkind.eu/posts/Mapping-Scaleway-IAM",
+      "title": "Mapping Scaleway IAM, An Attacker’s View of the Trust Boundaries",
+      "summary": "Scaleway user API keys can fully impersonate users and allow account takeover, so defenders should use application keys and safeguard plaintext configuration.",
+      "ideas": [
+        "Scaleway user API keys impersonate users, enabling full account takeover.",
+        "A policy‑less key still reveals metadata and permissions for reconnaissance.",
+        "Application keys provide safer isolation compared to user keys.",
+        "Store and protect plaintext CLI configuration to prevent credential leakage."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece uncovers a novel attacker perspective on Scaleway's IAM trust boundaries, revealing how user API keys can fully impersonate owners and enable account takeover. It provides actionable defensive guidance, such as preferring application keys and protecting plaintext CLI config. The content is concise, thematically aligned with CyberSecurity and Tech, and suffers no padding or clickbait. Therefore it merits a solid but not exceptional score.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-10-02T03:33:11.382987"
+    },
     {
       "id": 6330,
       "source_id": 7,
