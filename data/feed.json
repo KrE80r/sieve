@@ -1,7 +1,217 @@
 {
-  "updated_at": "2026-10-01T00:00:00.530719+00:00",
-  "total_items": 1036,
+  "updated_at": "2026-10-01T01:00:00.176934+00:00",
+  "total_items": 1044,
   "items": [
+    {
+      "id": 6316,
+      "source_id": 34,
+      "original_url": "https://msg.samsonov.io/2026-09-30-when-a-database-restore-signs-you-in-as-someone-else/",
+      "title": "Rails’ Default Authentication Has a Database Restore Problem",
+      "summary": "Rails 8.1's default authentication uses signed cookies containing integer session primary keys, so a database restore that resets the sessions sequence can cause pre-restore cookies to authenticate as later users who receive the same ID.",
+      "ideas": [
+        "Signed cookies holding integer primary keys are not safe across DB restores that rewind the sequence.",
+        "The vulnerability was introduced in rails/rails#52504, which replaced random tokens with signed_id.",
+        "Staging refreshes from production carry the same risk when signing keys are shared.",
+        "Multi-tenant apps sharing a cookie name can replay cookies across tenants with the same id reuse issue.",
+        "Devise's authenticatable_salt approach prevents id-reuse hijacking by binding sessions to password material."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Original, well-evidenced security research identifying a real session-hijacking vulnerability in Rails 8.0/8.1's default authentication generator. The author provides concrete code, a clear reproduction mechanism (signed cookies containing integer session IDs become ambiguous after a database restore rewinds the sequence), references upstream issues (#55881, #52328, #52504), notes the Rails security team's dismissal, expands the attack surface beyond the obvious case (staging refresh, multi-tenant), and offers practical fixes including comparison to Devise's salt approach. The article is focused, technically dense, and directly actionable for affected teams.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:21:20.886960",
+      "image_url": "https://msg.samsonov.io/assets/images/og/posts/when-a-database-restore-signs-you-in-as-someone-else.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Rails’ Default Authentication Has a Database Restore Problem"
+    },
+    {
+      "id": 6315,
+      "source_id": 34,
+      "original_url": "https://mdelapenya.xyz/posts/2026-09-29-isolate-the-agent-keep-your-tools/",
+      "title": "Understanding Docker Sandboxes: Isolate the Agent, Keep Your Tools",
+      "summary": "Isolate agents in Docker sandboxes and access them via ordinary SSH without keys, ports, or dedicated servers, using named sandboxes and optional build kits to preserve existing editors and harnesses.",
+      "ideas": [
+        "sbx create --name demo claude . mounts the host workspace unchanged inside the sandbox",
+        "sbx setup ssh exposes sandboxes as <name>.sbx reachable via plain SSH",
+        "Use a kit like docker.io/sbx/t3code-kit:latest to pre‑install toolchains and avoid source compilation on first connect",
+        "Explicitly specify the workspace path when connecting apps to avoid mismatched remote directories"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a concrete, production‑ready method for isolating Docker agents while preserving familiar SSH‑based toolchains, complete with explicit commands, kit usage, and SSH configuration details. It explains the mechanism, security benefits, and practical setup steps, offering original insight not found in typical tutorials. The content is somewhat lengthy and includes promotional calls, but the core technical material is dense and valuable. Overall it delivers substantial, actionable knowledge for developers focused on secure sandboxing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:18:46.209787",
+      "image_url": "https://mdelapenya.xyz/images/posts/2026-09-29-isolate-the-agent-keep-your-tools/cover.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6314,
+      "source_id": 34,
+      "original_url": "https://loige.co/hidden-design-compromises-of-docker-layers/",
+      "title": "The hidden design compromises of Docker layers",
+      "summary": "Whiteout files (.wh.*) let later layers delete paths from earlier layers by naming conventions, a clever tar workaround.",
+      "ideas": [
+        "Deletion uses .wh.<path> entries in tar to hide earlier files",
+        "Whiteouts are regular files with special .wh. prefix; OCI consumer interprets them",
+        "Layers are immutable changesets applied sequentially, not patches",
+        "Modifications replace files by shipping new versions, not diffs",
+        "Removing a large file doesn't shrink the layer that contained it"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Provides concrete, original explanation of Docker layer deletion using whiteouts, detailed mechanisms, and OCI spec nuances; highly relevant to Linux/containers engineering. Slight padding but overall focused and valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:16:43.206580",
+      "image_url": "https://loige.co/og/hidden-design-compromises-of-docker-layers.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6313,
+      "source_id": 34,
+      "original_url": "https://kovashikawa.com/ai/when-ai-lies-about-your-search-data/",
+      "title": "When AI Lies About Your Search Data",
+      "summary": "LLM numeric claims should be verified outside the model — via declared receipts, plain-code checks against saved tool output, and cross-provider judges — because fluent wrongness in agents is silent and errors harden as they travel downstream.",
+      "ideas": [
+        "A model should never grade its own work; use a judge from a different family",
+        "Verify numbers with plain code against saved tool output, never fresh queries",
+        "Match tolerance should derive from how the number was written, not a fixed percent",
+        "Never silently convert units; API CTR is a fraction, reports show percent",
+        "Agent quality broke after a refactor dropped analysis context and worked examples",
+        "Check numbers at handoffs; numeric errors become narrative prose and evade detection"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A substantive, firsthand account of building (and breaking) a production LLM search-data agent, with concrete engineering: structured receipts, deterministic verification against saved tool output with written-form-based tolerance, unit-aware comparators, and cross-family model judging. The author grounds the problem in a real fluent-wrong failure (Search Console position semantics), cites specific empirical findings (self-conditioning, snowballing, error propagation across handoffs), and ends with directly reusable guidance including a metric-semantics checklist. Limitations are honestly stated (faithfulness not truth, undeclared numbers escape checks), but literary flourishes and a truncated final paragraph add mild noise relative to the density of the core content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:12:24.063335",
+      "image_url": "https://kovashikawa.com/assets/images/og/site-card.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6312,
+      "source_id": 34,
+      "original_url": "https://gemsofcoding.com/Inference-Engineering-Where-The-Representation-Lives/",
+      "title": "Inference Engineering - Part 3: Where the Representation Lives",
+      "summary": "The internal representation resides in the KV‑cache vectors generated by the decoder's self‑attention, which decoder‑only models store and reuse rather than relying on a separate encoder.",
+      "ideas": [
+        "KV‑cache stores ~320 KB per token of the prompt's representation.",
+        "Cross‑attention can be replaced by self‑attention with a different mask.",
+        "Prefix caching reuses cached KV pairs because causal masking prevents changes to prior tokens."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents concrete technical detail about the KV‑cache representation, memory budgeting, and the removal of cross‑attention in decoder‑only LLMs, tying these mechanisms to inference efficiency. It offers non‑obvious, well‑supported insights but leans heavily on AI‑centric discussion, limiting its universal applicability. It is highly relevant to the target reader and provides actionable engineering understanding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:00:49.594811",
+      "image_url": "https://gemsofcoding.com/images/inference/03-where-representation-lives/02-where-representation-lives.webp",
+      "image_width": 1200,
+      "image_height": 500,
+      "image_alt": ""
+    },
+    {
+      "id": 6311,
+      "source_id": 34,
+      "original_url": "https://embracethered.com/blog/posts/2026/from-select-to-sysadmin-sql-copilot-bluehat-asia/",
+      "title": "From SELECT to SYSADMIN with SQL Copilot (CVE-2026-65669)",
+      "summary": "An AI agent's read-only mode enforced only by prompt instructions and a fragile regex classifier let persistent prompt injection via SQL Server extended properties escalate a database owner to sysadmin (CVE-2026-65669).",
+      "ideas": [
+        "SQL Copilot read-only mode was only a regex classifier, not a real permission",
+        "DECLARE @p sysname='sp_executesql'; EXEC @p bypasses EXEC blocklist for arbitrary T-SQL",
+        "Extended properties AGENTS.md/CONSTITUTION.md inject persistent instructions into Copilot",
+        "Lower-privileged user with ALTER can hijack a sysadmin's Copilot session",
+        "db_owner plants malicious constitution to escalate to sysadmin via prompt injection",
+        "xp_dirtree SMB paths and backup tool enable row-by-row database exfiltration",
+        "Read-only enforcement must be a security invariant, not a model instruction"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Original first-party vulnerability research with a critical-rated CVE, delivering concrete payloads (the DECLARE/EXEC blocklist bypass, sp_executesql escalation, sp_addextendedproperty examples), reverse-engineering details, and a fully described db_owner-to-sysadmin attack chain. The insight that read-only enforcement was merely a regex classifier, and that AGENTS.md/CONSTITUTION.md extended properties create a new privilege-asymmetric trust relationship in SQL Server, is genuinely novel and actionable. Minor deductions for conference travelogue padding and reliance on external slides/videos for some demos, but the core content is dense, expert, and directly useful to security and AI-agent engineering readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T09:56:37.620692",
+      "image_url": "https://embracethered.com/blog/images/2026/sqlcopilot/sqlcopilot-tn.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 6310,
+      "source_id": 34,
+      "original_url": "https://caseywest.com/obtainability-part-2-the-api-that-tells-you-what-you-can-get/",
+      "title": "Obtainability, Part 2: The API That Tells You What You Can Get",
+      "summary": "It shows how to query GCP’s advice.capacity API to predict Spot VM availability and interpret its scores.",
+      "ideas": [
+        "Provides the exact JSON request body for the advice.capacity endpoint.",
+        "Shows how to interpret the obtainability score versus detailed shard placement.",
+        "Highlights a gotcha: omit locationPolicy for region‑wide history, include it for zone queries.",
+        "Shares a small Go program (capacity‑advisor) that ranks region‑machine‑type combos."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible guidance on a little‑known GCP beta API for Spot VM capacity, with exact request/response payloads, IAM setup, and an open‑source Go tool. It explains how to interpret the obtainability score and history data, showing real pitfalls and practical usage, which is directly valuable to infrastructure engineers, though the underlying algorithm remains opaque.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T09:48:27.396013",
+      "image_url": "https://caseywest.com/images/posts/obtainability-part-2-the-api-that-tells-you-what-you-can-get/hero.jpg",
+      "image_width": 2752,
+      "image_height": 1536,
+      "image_alt": ""
+    },
+    {
+      "id": 6309,
+      "source_id": 34,
+      "original_url": "https://blog.narf.ssji.net/2026/09/30/disk-rotation-with-lvm-almost-no-downtime/",
+      "title": "Disk rotation with LVM: almost no downtime",
+      "summary": "LVM’s pvmove enables near‑zero‑downtime data migration between disks by moving extents rather than copying files.",
+      "ideas": [
+        "Migrate LVM data across disks using pvmove for minimal downtime."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete LVM migration commands, real‑world examples, and a clear script that enable near‑zero‑downtime disk rotation, directly addressing sysadmin technical needs. Its depth and practical value outweigh minor omissions, resulting in a high score. No significant hype or irrelevant filler detracts from the core substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T09:42:51.309381"
+    },
     {
       "id": 6308,
       "source_id": 28,
