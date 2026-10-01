@@ -1,7 +1,194 @@
 {
-  "updated_at": "2026-10-01T01:00:00.176934+00:00",
-  "total_items": 1044,
+  "updated_at": "2026-10-01T02:00:00.207903+00:00",
+  "total_items": 1051,
   "items": [
+    {
+      "id": 6323,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/checkpoint-restore-destination-policy/",
+      "title": "Checkpoint Restore: Destination Policy Was Never Reapplied",
+      "summary": "Checkpoint restore re‑instantiates a process without applying the destination’s security policy, allowing saved credentials and seccomp settings to override the pod’s declared restrictions.",
+      "ideas": [
+        "Checkpoint restore can grant root caps and no_new_privs despite restrictive pod policy.",
+        "Status reports requested config, not actual process state, enabling hidden drift.",
+        "Admission cannot enforce policy on restore; the runtime must decide precedence."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, original technical evidence about checkpoint restore bypassing security policy enforcement, with clear mechanisms, CVE details, and actionable checks like reading /proc/<pid>/status. It is highly relevant to security, infrastructure, and container runtimes, offering deep insight into a boundary problem that most readers lack. Its value is limited slightly by some navigational padding and promotional links, but the core content is substantive and novel.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T11:05:28.508408",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/09/featured-checkpoint-restore-policy-gap.jpg",
+      "image_width": 1024,
+      "image_height": 559,
+      "image_alt": "checkpoint restore path skipping the policy translation step that the normal create path applies"
+    },
+    {
+      "id": 6322,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/airbus-sovereign-cloud/",
+      "title": "Airbus Sovereign Cloud: A Per-Workload Decision, and the Proof the Public Record Doesn’t Show",
+      "summary": "Airbus is moving 70 of 900 workloads to Scaleway under a per‑workload sovereign‑cloud principle, but the public record only confirms the first tranche and leaves key evidence gaps.",
+      "ideas": [
+        "70 of 900 workloads moved to Scaleway; rest unspecified.",
+        "Assessment considered jurisdiction, integration, and roadmap influence.",
+        "Airbus states per‑workload principle: balance choices by data criticality.",
+        "No public proof of AWS exit or continuity of service.",
+        "Sovereignty evidence chain lacks public custody and re‑validation proof."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers unusually deep, concrete analysis of Airbus’s sovereign‑cloud tender, mapping the disclosed evidence chain and exposing what can actually be verified. It is highly relevant to technical decision‑makers interested in cloud strategy, security, and procurement. However, its conclusions depend on secondary reports and do not prove key sovereignty links such as key custody or continuity, tempering the certainty of the insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T11:04:39.484591",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/09/airbus-sovereign-cloud-decision-vs-proof.jpg",
+      "image_width": 1024,
+      "image_height": 572,
+      "image_alt": "Airbus sovereign cloud — public decision on the left, four-link evidence chain on the right with only the first link shown as claimed"
+    },
+    {
+      "id": 6321,
+      "source_id": 34,
+      "original_url": "https://www.juststeveking.com/articles/your-endpoint-as-an-agent-sees-it/",
+      "title": "Your endpoint, as an agent sees it",
+      "summary": "Tool definitions structurally lose information when four HTTP namespaces flatten into one object, and response/deprecation metadata has nowhere to live in the schema, so descriptions become the only channel agents can read.",
+      "ideas": [
+        "Path and body parameters collide when flattened into a single tool input object",
+        "Tool definitions have no field for response metadata, so header-based deprecation is invisible to agents",
+        "OpenAI and Anthropic tool name regexes reject dots, breaking Laravel's `users.update` route-name convention",
+        "With deferred loading, tool descriptions stop being docs and become a search index for BM25",
+        "Tool definitions are sent on every request, so wide APIs cost tokens even on unrelated calls",
+        "Provider depth limits have an off-by-one ambiguity that must be defined explicitly in code",
+        "A small Artisan command can detect name collisions and other lossy conversions in CI"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a substantive, original investigation of how OpenAPI specs degrade when converted to LLM tool definitions. The article provides concrete PHP/Laravel code, the actual JSON shape of Anthropic and OpenAI tool schemas, specific character-class restrictions with regex, depth limits with explicit counting rules, and a working Artisan command to detect collisions. It explains mechanisms (four namespaces flattened to one object, no field for response metadata, deprecation headers structurally invisible) rather than just naming problems. The Laravel-specific framing narrows the audience, but the underlying mechanics generalize. Some provider-behavior claims (e.g., depth counting, the exact deferred-loading tool type) could use stronger sourcing, and a few suggestions (put sunset dates in description) feel obvious once stated, but the structural analysis is genuinely non-obvious and well-evidenced.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T11:01:08.029581",
+      "image_url": "https://www.juststeveking.com/og/articles/your-endpoint-as-an-agent-sees-it.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6320,
+      "source_id": 34,
+      "original_url": "https://www.drkrzysztofozimek.com/large-language-models-in-finance-1st-edition-book-review/",
+      "title": "Large Language Models in Finance, 1st Edition — Book Review",
+      "summary": "LLMs introduce unique backtesting leakage and require formal audit trails, which this book details with concrete implementations and governance guidance.",
+      "ideas": [
+        "Six LLM backtesting leakage channels identified, illustrated with error-doubling example.",
+        "Generative alpha defined as factor-model intercept, requiring audit ledger of all candidates.",
+        "Multi-agent trading systems given formal math plus explicit backtesting caveats.",
+        "FinBERT, FinEAS, FinGPT presented as concrete, freely available building blocks.",
+        "Strategy-search protocol audits every candidate, not just the winning model."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The review showcases a mathematically rigorous, four‑layer framework for applying LLMs to quantitative finance, with concrete code, equations, and detailed pitfalls such as LLM‑specific backtesting leakage and audited strategy search. It delivers substantial, non‑obvious insights but retains some promotional tone and assumes reader familiarity with quant concepts, limiting absolute novelty. Overall it offers high‑value, technically dense material for specialist readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:56:24.969760",
+      "image_url": "https://www.drkrzysztofozimek.com/wp-content/uploads/2026/09/large-language-models-in-finance-book-review.png",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": "Book review banner for Large Language Models in Finance by Miquel Noguer i Alonso, Packt, with the book cover showing a circuit-board head beside a candlestick chart"
+    },
+    {
+      "id": 6319,
+      "source_id": 34,
+      "original_url": "https://thebiglog.com/posts/send-agent-harness-screenshots-via-ssh",
+      "title": "Pasting screenshots into Claude Code over SSH",
+      "summary": "Persist an SSH ControlMaster session and use a short script to copy screenshot clipboard data to a remote host for seamless pasting into Claude Code.",
+      "ideas": [
+        "Use clipssh to copy screenshot to remote /tmp directory",
+        "Set up SSH ControlMaster with ControlPersist 4h",
+        "Script expands PATH, sets CLIPSSH_HOST and CLIPSSH_REMOTE_DIR, dismisses Shottr, then runs clipssh",
+        "Shortcut triggers via ⇧⌘D in Shottr to invoke the script"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "AI",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a clear, minimal implementation for transferring macOS screenshots to a remote host via SSH to paste into Claude Code, including script usage, environment variables, and an SSH ControlMaster setup; highly relevant to engineers automating AI‑assisted terminal workflows but limited to that specific niche, with modest breadth and no broader generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:38:06.828698"
+    },
+    {
+      "id": 6318,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/09/fix-certificate-verify-failed-in-dart-3-13-docker-image/",
+      "title": "Fix: CERTIFICATE_VERIFY_FAILED: unable to get local issuer certificate in a Dart 3.13 Docker image",
+      "summary": "Dart 3.13 no longer includes built‑in root certificates, so containers need an explicit CA bundle or related VM options to restore HTTPS trust.",
+      "ideas": [
+        "Dart 3.13 removed fallback root certificates, causing CERTIFICATE_VERIFY_FAILED in minimal images.",
+        "Copy the official /runtime/ directory into scratch images to provide the system trust store.",
+        "Install ca‑certificates package in slim base images to supply standard certificate bundles.",
+        "Use DART_VM_OPTIONS=--root-certs-file=/path/to/cacert.pem when you cannot modify the image.",
+        "Load a custom bundle at runtime with SecurityContext.setTrustedCertificates for programmatic control."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible guidance on a recent breaking change in Dart 3.13 Docker images, including source‑level explanations, multiple fix options, and verification steps. It is highly relevant to developers, sysadmins, and security engineers working with containers and TLS, and offers actionable code and Dockerfile snippets. The only limitation is its narrow focus on Dart, but the depth and originality of the fix make it very valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:34:57.573954",
+      "image_url": "https://startdebugging.net/og/2026/09/fix-certificate-verify-failed-in-dart-3-13-docker-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: CERTIFICATE_VERIFY_FAILED: unable to get local issuer certificate in a Dart 3.13 Docker image - Start Debugging"
+    },
+    {
+      "id": 6317,
+      "source_id": 34,
+      "original_url": "https://sahandsaba.com/postgresql-deadlock-detection-storm.html",
+      "title": "The Deadlock-Detection Storm That Brings PostgreSQL to a Halt",
+      "summary": "A single long‑running lock wait can trigger a convective deadlock‑detection storm that serializes the lock manager, starving throughput even without a real deadlock.",
+      "ideas": [
+        "All 16 partition LWLocks are taken exclusively during each deadlock check.",
+        "Queue length directly inflates detection time, creating a positive‑feedback throughput collapse.",
+        "Telemetry queries also need those locks, so they freeze when the storm occurs."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 95,
+      "rating_reason": "The article explains a novel, low‑level PostgreSQL lock‑manager feedback loop that can halt throughput despite no actual deadlock, providing concrete code paths, quantitative effects, and practical mitigation steps; it remains tightly focused on technical substance with minimal noise. It delivers deep, firsthand insight into how partition‑lock contention creates a self‑amplifying storm, making it exceptionally valuable for engineers debugging concurrency issues.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-01T10:31:42.102900",
+      "image_url": "https://sahandsaba.com/images/postgresql-deadlock-detection-storm-social.png",
+      "image_width": 1733,
+      "image_height": 908,
+      "image_alt": "The Deadlock-Detection Storm That Brings PostgreSQL to a Halt"
+    },
     {
       "id": 6316,
       "source_id": 34,
