@@ -16,13 +16,14 @@ permissions:
 
 concurrency:
   group: pages
-  # FeedSieve commits the feed and mobile snapshots separately. Let the newer
-  # queued run deploy after the current run so Pages receives both files.
-  cancel-in-progress: false
+  # FeedSieve publishes both snapshots in one commit. A newer snapshot can
+  # replace even a deployment stuck waiting for its environment.
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: https://sieve.nazmy.io/
@@ -53,23 +54,29 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-        continue-on-error: true
 
-      - name: Wait before deploy retry
-        if: steps.deployment.outcome == 'failure'
-        run: sleep 60
-
-      - name: Retry deploy to GitHub Pages
-        id: deployment_retry_1
-        if: steps.deployment.outcome == 'failure'
-        uses: actions/deploy-pages@v5
-        continue-on-error: true
-
-      - name: Wait before final deploy retry
-        if: steps.deployment.outcome == 'failure' && steps.deployment_retry_1.outcome == 'failure'
-        run: sleep 120
-
-      - name: Final retry deploy to GitHub Pages
-        id: deployment_retry_2
-        if: steps.deployment.outcome == 'failure' && steps.deployment_retry_1.outcome == 'failure'
-        uses: actions/deploy-pages@v5
+      - name: Verify public snapshots advanced
+        run: |
+          node --input-type=module <<'JS'
+          import { readFileSync } from 'node:fs';
+          const expected = JSON.parse(readFileSync('data/mobile/v1/articles.json'));
+          for (let attempt = 0; attempt < 12; attempt++) {
+            try {
+              const snapshots = await Promise.all(['feed.json', 'mobile/v1/articles.json'].map(async path => {
+                const response = await fetch(`https://sieve.nazmy.io/data/${path}?verify=${process.env.GITHUB_SHA}-${attempt}`, {
+                  signal: AbortSignal.timeout(10000),
+                });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+              }));
+              const [feed, mobile] = snapshots;
+              if (mobile.sequence >= expected.sequence && mobile.complete &&
+                  Date.parse(feed.updated_at) === Date.parse(mobile.generated_at)) {
+                console.log(`Verified public snapshot ${mobile.sequence}`);
+                process.exit(0);
+              }
+            } catch (error) { console.log(error.message); }
+            await new Promise(resolve => setTimeout(resolve, 10000));
+          }
+          throw new Error('Public feed did not advance to the deployed snapshot');
+          JS
