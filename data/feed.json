@@ -1,7 +1,199 @@
 {
-  "updated_at": "2026-10-02T13:00:00.162461+00:00",
-  "total_items": 1015,
+  "updated_at": "2026-10-02T14:00:00.218887+00:00",
+  "total_items": 1023,
   "items": [
+    {
+      "id": 6348,
+      "source_id": 34,
+      "original_url": "https://www.gilesthomas.com/2026/10/why-do-openai-gpt2-weights-beat-mine-5-data-quality",
+      "title": "Why do OpenAI's GPT-2 weights beat mine? Part five: data quality",
+      "summary": "Higher-quality curated data improves IFT performance, but OpenAI's superior results stem partly from their data curation and training practices.",
+      "ideas": [
+        "OpenAI GPT‑2 small scored 26.00 IFT vs 21.46 best local model",
+        "FineWeb‑Edu training raised test loss but not IFT score",
+        "Removing dropout during IFT evaluation boosted most model scores",
+        "50:50 FineWeb/FineWeb‑Edu mix gave intermediate IFT performance"
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "The post provides concrete experimental evidence comparing data quality impacts on LLM performance, with reproducible metrics and clear methodology. It directly addresses a technically relevant issue for LLM engineers. However, the findings are limited to the author's specific setup and may not generalize to all model sizes or training pipelines.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:27:36.748617"
+    },
+    {
+      "id": 6347,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/ktls-sendfile",
+      "title": "kTLS Sends the File Without Copying It",
+      "summary": "FreeBSD's kTLS reuses its 23-year sendfile infrastructure to reduce TLS file-serving system calls to 2.1% of the userland equivalent and deliver 4x CPU efficiency gains, outperforming Linux by roughly 2x in matched benchmarks due to vertical integration of the kernel stack.",
+      "ideas": [
+        "kTLS on FreeBSD cuts nginx write calls from 131,080 to 2,746 sendfile calls for 2GB transfers",
+        "FreeBSD reuses Smirnoff's 2016 'not-ready' socket-buffer flag for async TLS sealing",
+        "Same nginx config line yields 29% throughput gain on FreeBSD vs 13% on Ubuntu 21.10",
+        "Intel found kTLS sendfile beats userland above ~64KB files, loses below 4KB",
+        "Gallatin's 2019 NUMA siloing took a Xeon 4216 from 105 to 191 Gb/s",
+        "Netflix measured 731 Gb/s from a dual-socket FreeBSD box with inline NIC crypto",
+        "kTLS code path is 2,503 lines in uipc_ktls.c, in GENERIC, on by default since 15.0",
+        "Author's Ryzen test showed worker CPU time falling 7.07s to 0.26s for 10GB"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 95,
+      "rating_reason": "Exceptional technical depth combining original DTrace measurements, named contributor history dating to 1998, specific implementation details (line counts, mbuf chain ratios, sysctl names), and cross-platform benchmarks from multiple independent sources. The article traces a 23-year chain of FreeBSD kernel features (sendfile, async flag, mbufs, kTLS, RACK/BBR, NUMA siloing, lagg) with reproducible numbers at every step. It also honestly engages with 2026 security advisories as limitations. Truncation at the end is a minor blemish on an otherwise exemplary piece of systems engineering writing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:22:43.035456"
+    },
+    {
+      "id": 6346,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/review-at-the-cover",
+      "title": "The Review That Stopped at the Cover",
+      "summary": "Linux system‑call latency varies with mitigation settings and virtualization layers, while FreeBSD jails impose negligible overhead because isolation occurs within the single kernel.",
+      "ideas": [
+        "Linux syscall latency spikes to 816 ns when mitigations are applied; FreeBSD stays ~50 ns",
+        "Jails provide isolation with no extra kernel, adding only ∼0.3 ns overhead",
+        "Hypervisor (bhyve) does not incur extra syscall cost; guest runs natively",
+        "Measured latency differences persist across architectures and are reproducible with lmbench"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Philosophy"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers highly concrete performance measurements and mechanistic explanations that directly address OS-level syscall latency differences and isolation design choices. It presents reproducible experiments, clear methodology, and original insights not found in mainstream coverage. The main limitation is the extensive philosophical asides, which dilute focus and can obscure the core technical takeaways.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:22:34.516101"
+    },
+    {
+      "id": 6345,
+      "source_id": 34,
+      "original_url": "https://tonym.us/alpine-gce-extreme-memory-survival.html",
+      "title": "Surviving the 1 GB Squeeze: Engineering an Unstoppable Alpine GCE Image",
+      "summary": "Using Dropbear, removing Google guest daemons, and configuring zRAM enables a 1 GB GCE instance to stay responsive under extreme memory pressure.",
+      "ideas": [
+        "Dropbear SSH uses ~800 KB RAM and avoids heavy glibc-linked processes",
+        "Removing Google guest daemons frees ~150 MB resident RAM on small GCE instances",
+        "zRAM swap with lz4 compresses inactive pages, effectively expanding usable RAM beyond 1 GB"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers original engineering details, benchmarked stress tests, and concrete mechanisms (Dropbear, stripped daemons, zRAM) that directly address memory‑tight GCE issues, making it highly relevant to a technical audience. It offers rare, actionable insight but focuses on a single case study, limiting broader generalizability. The practical value per minute is strong, though the depth is specialized rather than universally applicable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:20:44.442630"
+    },
+    {
+      "id": 6344,
+      "source_id": 34,
+      "original_url": "https://meltedinhex.com/posts/hijacking-ai-agents-catching-it/",
+      "title": "Hijacking AI Agents, Part 4: Catching It",
+      "summary": "Normalize text to strip invisible Unicode and then scan for override, suppression, and persistence signals to reliably flag hijacked AI agent instruction files.",
+      "ideas": [
+        "Strip zero‑width and bidi characters before matching security signals",
+        "Flag files containing override phrasing, suppression clauses, or secret file references",
+        "Fail CI builds on any HIGH‑severity findings from the scanner"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete code, a clear two‑pass detection framework, and a practical CI integration method for spotting hidden characters and malicious phrasing in AI instruction files. It is highly relevant to AI security and threat‑hunting practitioners, though it acknowledges that detection is a filter and may miss novel encodings. The value per minute is strong, with minimal noise and no promotional fluff.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:05:48.527687",
+      "image_url": "https://meltedinhex.com/images/hijacking-ai-agents-catching-it/cover.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6343,
+      "source_id": 34,
+      "original_url": "https://matthiasroder.com/how-my-grok-bots-learn-from-working-with-me/",
+      "title": "How My Grok Bots Learn From Working With Me",
+      "summary": "Bots can record corrected instructions as auditable lessons with evidence and scope, then retrieve them automatically for future tasks.",
+      "ideas": [
+        "Lessons stored with explicit evidence and scope tags.",
+        "Review queue runs twice daily to approve or reject pending lessons.",
+        "Database records evidence, lesson versions, and retrieval traces for inspection."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The piece details a concrete, auditable learning pipeline for AI bots that records corrections as evidence‑backed lessons, defines scoped applicability, and uses a timed review queue to approve changes. It avoids generic AI hype and instead provides implementable mechanisms, measurements, and rollback capabilities. The explanation is technically dense and directly relevant to engineers building persistent, learnable agents.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:04:32.201707",
+      "image_url": "https://storage.ghost.io/c/0d/9f/0d9f505b-12d0-4a29-bd07-db0c186a006e/content/images/size/w1200/2024/03/philipp_gladsome-1003945_fs-1.jpg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6342,
+      "source_id": 34,
+      "original_url": "https://mager.co/notes/2026-10-01-pubsub-for-prxps/",
+      "title": "Pub/Sub for prxps",
+      "summary": "Using a Firestore outbox with Pub/Sub and stable IDs lets a settlement safely invalidate downstream recommendations without double‑awarding picks.",
+      "ideas": [
+        "Outbox persisted in same Firestore transaction as settlement.",
+        "Publish pending events via scheduled Cloud Run handler with retry.",
+        "Use stable event IDs and receipt recording to prevent duplicate processing.",
+        "Cache version per user isolates fresh recommendations after settlement.",
+        "Recheck pick in transaction to avoid double RXP award."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete, production‑ready mechanisms for duplicate‑safe event handling and cache versioning, directly applicable to scalable backend designs. Its outbox‑in‑transaction pattern and receipt‑based deduplication provide valuable implementation insight beyond generic Pub/Sub usage. However, the focus is narrow to sports‑pick reward pipelines, limiting broader relevance, and assumes familiarity with Firestore and Cloud Run.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T23:03:50.964491"
+    },
+    {
+      "id": 6341,
+      "source_id": 34,
+      "original_url": "https://gemsofcoding.com/Inference-Engineering-Sampling-From-The-API-To-The-Bits/",
+      "title": "Inference Engineering - Part 5: Sampling, From the API Down to the Bits",
+      "summary": "It explains the precise mathematics and GPU‑level implementation of LLM sampling knobs, revealing why radix select is used for top‑k and how temperature and top‑p affect token selection.",
+      "ideas": [
+        "Temperature scales logits by 1/T, raising probabilities to the power 1/T before renormalizing.",
+        "Top‑k is executed on GPUs via a radix‑select algorithm that finds the k‑th largest logit in linear time.",
+        "Top‑p is applied after top‑k because it requires sorting a far smaller candidate set, saving bandwidth.",
+        "Floating‑point bit patterns can be XOR‑masked to sort values without numeric comparison."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, detailed explanations of how temperature, top‑k, and top‑p operate on the raw logits and how top‑k is implemented on GPUs using radix select and related tricks. It includes exact arithmetic, memory‑bandwidth implications, and practical guidance, offering non‑obvious insight for inference engineers. While dense, it stays focused on technical mechanisms without fluff, making it highly valuable for a technically capable audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-02T22:34:09.643907",
+      "image_url": "https://gemsofcoding.com/images/inference/05-sampling/04-radix-select.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 6340,
       "source_id": 4,
