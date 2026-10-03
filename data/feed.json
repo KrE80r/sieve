@@ -1,7 +1,250 @@
 {
-  "updated_at": "2026-10-03T18:00:00.330058+00:00",
-  "total_items": 980,
+  "updated_at": "2026-10-03T19:00:00.179743+00:00",
+  "total_items": 989,
   "items": [
+    {
+      "id": 6367,
+      "source_id": 34,
+      "original_url": "https://martin.ankerl.com/2026/10/02/oans-deduplication-for-btrfs/",
+      "title": "oans: Faster Deduplication for btrfs and XFS",
+      "summary": "A fork of duperemove for btrfs/XFS that achieves ~13x speedup on larger-than-RAM trees and ~7x on re-runs by skipping already-shared extents via FIEMAP and by pre-reading data into the page cache before the kernel's non-readaheaded compare.",
+      "ideas": [
+        "FIEMAP check skips files whose extents already point at the same physical storage",
+        "Pre-read both ranges before FIDEDUPERANGE to defeat kernel's missing readahead in compare path",
+        "Snapshot-shared extents let oans reuse hashes without re-reading files",
+        "FIDEDUPERANGE does byte-by-byte compare, so hash bugs can only waste time",
+        "On compressed btrfs, reported Reclaimed is logical, not physical"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive systems article: provides quantitative comparisons against the established alternative (duperemove 0.15.2), details two non-obvious mechanisms (FIEMAP pre-check to skip already-shared extents, and a deliberate pre-read before FIDEDUPERANGE to work around the kernel's lack of readahead in its compare path), and explains why correctness is preserved even when the tool has bugs (kernel does byte-by-byte verification). Methodology and hardware are specified, results are reproducible via docs/benchmarks.md, and limitations (narrow testing, XFS coverage, no spinning-disk numbers) are honestly stated. Minor limit: it is a single author's fork announcement rather than an independent investigation, and some claims (e.g., gap larger on HDDs) are unverified.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T05:22:24.667052",
+      "image_url": "https://martin.ankerl.com/img/2026/oans/oans-social-preview.png",
+      "image_width": 1280,
+      "image_height": 640,
+      "image_alt": ""
+    },
+    {
+      "id": 6366,
+      "source_id": 34,
+      "original_url": "https://hfiguera.github.io/smolbox/blog/replace-the-machine-keep-the-project/",
+      "title": "Replace the machine. Keep the project.",
+      "summary": "Managed local volumes can be safely detached, reattached, and readonly‑mounted across machine replacements while preserving project data until explicit deletion.",
+      "ideas": [
+        "Volumes persist after machine deletion and survive controller restarts.",
+        "Read‑only mounts block overwrites but allow reading modified files.",
+        "Explicit version‑checked delete releases worker reservations only upon acknowledgment.",
+        "Approved volume paths enforce mounting boundaries and prevent unauthorized attachments.",
+        "Project data should be owned by the project, not tied to a specific machine identity."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "The piece delivers highly concrete, reproducible technical content—code snippets, API calls, and verified hands‑on steps—that illustrate a novel lifecycle for managed volumes across machine replacement. It offers clear mechanisms, firsthand validation, and explicit cleanup procedures, though its scope is niche to the SmolBox system and not broadly applicable to general AI or software topics. The material is tightly organized with minimal noise, justifying a score in the high‑80s.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T04:54:08.531825",
+      "image_url": "https://hfiguera.github.io/smolbox/media/replace-the-machine-keep-the-project/project-volume.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The original machine is deleted. A replacement attaches to the same retained project volume on the Linux worker."
+    },
+    {
+      "id": 6365,
+      "source_id": 34,
+      "original_url": "https://chrystianschutz.com/blog/would-ai-arrest-gandhi/",
+      "title": "AI praises Gandhi. Would it arrest him?",
+      "summary": "LLMs that condemn an unjust sanction as observers often choose that same sanction when placed in the deciding role, but the effect varies sharply by model, role, and even by checkpoint of the same model, suggesting role-conditioned obedience is real but unstable.",
+      "ideas": [
+        "Same session-freeze, Qwen 3.7 Flash condemns Turing's sentence 40/40 then imposes it 20/20",
+        "Opus 5 and both Sol releases upheld unjust law 0/100 and 0/200 in non-control cases",
+        "Adding one 'later verdict' paragraph shifted GPT-6 Luna's enforcement from 87/400 to 24/400",
+        "GPT-6 Luna dropped Turing treatment choices from 19/20 to 5/20 vs predecessor on identical text",
+        "Out-of-sample test: re-running new releases reproduced Champaran magistrate behavior near-exactly"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 90,
+      "rating_reason": "Original empirical study of role-conditioned moral inconsistency in 12 LLMs across 15 historical unjust-law cases, with ~21,000 sessions, explicit denominators, control cases, code/data release, and an out-of-sample replication using re-released checkpoints. The Turing gap (40/40 impermissible as observer, 20/20 chose it as judge), the refusal of expensive models (Opus, Sol) to follow the pattern, and the dramatic GPT-5.6 Luna → GPT-6 Luna shift on identical frozen prompts are non-obvious findings directly relevant to LLM evaluation and agentic deployment. The author is unusually transparent about limitations (Champaran's contested menu, post-hoc selection of 'largest drops', GLM truncation, no mechanism isolation).",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T04:46:26.037907",
+      "image_url": "https://chrystianschutz.com/images/blog/would-ai-arrest-gandhi/og-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Same model, different chair: as an observer Qwen 3.7 Flash calls Turing's sanction impermissible in 40 of 40 answers; as the court it chooses the treatment route in 20 of 20."
+    },
+    {
+      "id": 6364,
+      "source_id": 34,
+      "original_url": "https://blog.spuria.app/writeups/clouded-perception-bellingcat-ela/",
+      "title": "Clouded Perception: Reading a Number Hidden in a JPEG's Compression",
+      "summary": "The hidden six‑digit number becomes visible only when re‑saving the JPEG at quality 73, where error‑level analysis isolates the original compression imprint.",
+      "ideas": [
+        "ELA at quality 73 isolates a ghost compression pattern revealing 428309.",
+        "Only a re‑save at the original quality shows the digits; other qualities yield uniform noise.",
+        "Mean error for digit strokes hits a distinct minimum (0.22) while surrounding sky is higher.",
+        "Independent Python verification reproduces the digits using Pillow.",
+        "A final save at quality 100 preserves the ghost, making the edit detectable."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a tightly focused, reproducible forensic technique with original error‑level measurements and verified code, making it highly useful for technically skilled readers. Its relevance is strong for image‑forensics and security contexts, though it remains niche and assumes familiarity with JPEG internals. The explanation is clear and evidence‑backed, with minimal noise or hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T04:43:33.629078",
+      "image_url": "https://blog.spuria.app/_astro/cover.D8v6LQdH_Z1gCOq1.jpeg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "SPURIA field-notes cover: the challenge photo of a mountain lake at sunset with red and violet clouds, snow peaks lit orange and a person on a dock, a framed patch of the clouds enlarged top right into blocky JPEG compression noise, headlin"
+    },
+    {
+      "id": 6363,
+      "source_id": 34,
+      "original_url": "https://blog.kolen.dev/LLM/metadata-extraction.html",
+      "title": "Extracting metadata with an LLM is data cleaning",
+      "summary": "Treat LLM metadata extraction as a statistical data-cleaning problem: pin the model+prompt+settings, sample multiple times to capture uncertainty, build a controlled vocabulary with embedding clustering, use log-probabilities over closed sets, and validate with prediction-powered inference on a small human-labeled sample.",
+      "ideas": [
+        "Hosted LLMs are non-deterministic at temperature zero due to floating-point order and batching effects",
+        "LLM agreement overstates confidence because models share training data and have correlated errors",
+        "Sum probabilities across files before deciding; argmax-then-count biases aggregates",
+        "Constrain LLM to a closed label set and use log-probabilities for calibrated classification",
+        "Use prediction-powered inference to combine small labeled sample with model predictions unbiasedly",
+        "Distinguish Not present, Unknown, and Other as separate explicit outcome categories",
+        "Pin model version, prompt, settings, and hash input to reproduce LLM pipeline output"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive, well-structured article that reframes LLM metadata extraction as a statistical data-cleaning problem rather than a reproducibility problem. It delivers multiple non-obvious, actionable techniques: the 'pin' pattern for reproducibility (hash of input + model + prompt + settings), the warning that LLM agreement overstates confidence because training data is correlated, the 'sum probabilities before deciding' aggregation rule, embedding-based vocabulary building from free LLM tags, use of log-probabilities over closed sets, and prediction-powered inference for unbiased estimates. The core framework is grounded in real research (Angelopoulos et al. 2023, Horace He 2025, Chann 2023, Dolstra 2006) and is implementable. Slight penalties for the future-dated references (October 2026, Jev) which reduce verifiability, and the breadth means some sections are thinner than others.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T04:43:21.885711"
+    },
+    {
+      "id": 6362,
+      "source_id": 34,
+      "original_url": "https://blog.chaospixel.com/linux/2026/10/ceph-osd-removal-or-replace.html",
+      "title": "Removing and Replacing Ceph OSDs",
+      "summary": "Remove or replace a Ceph OSD by using `ceph orch osd rm <id> --zap` for permanent removal or `--replace --zap` to swap disks while preserving the ID, always setting the spec to unmanaged first.",
+      "ideas": [
+        "ceph orch osd rm <id> --zap drains, stops daemon, and wipes the disk",
+        "Classic `ceph osd purge` removes OSD from map, frees ID, and requires safe‑to‑destroy check",
+        "`--replace` keeps OSD ID but wipes the disk, ideal for swapping without full rebalance",
+        "Set OSD spec to unmanaged (`ceph orch set-unmanaged`) before removal to avoid auto‑redeploy",
+        "Use `noout` and `norebalance` during fast disk swaps, then unset them afterwards"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article supplies detailed, original command breakdowns, explains draining, disk wiping, and ID reuse, and lists concrete pitfalls and safe‑swap steps. It remains highly relevant to Ceph administrators, though some repetition and padding prevent a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T04:40:35.967354",
+      "image_url": "https://blog.chaospixel.com/images/themes/theme_storage.jpg",
+      "image_width": 1000,
+      "image_height": 500,
+      "image_alt": ""
+    },
+    {
+      "id": 6361,
+      "source_id": 34,
+      "original_url": "https://barkingiguana.com/writing/the-assistant-that-has-to-book-the-van/",
+      "title": "The Assistant That Has to Book the Van",
+      "summary": "An AI assistant can rebook parcels using a bounded tool set and spend‑threshold approvals, with full audit traces and independent cost limits.",
+      "ideas": [
+        "Agent selects from 11 pre‑approved functions to handle rebooking.",
+        "Spend above AUD$100 requires dispatcher approval before execution.",
+        "Gateway policy enforces tool allow‑list and logs each call.",
+        "Cost per turn is variable; turn limits and monthly budgets cap exposure.",
+        "Audit trail records tool inputs, outputs, and policy decisions."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete technical detail on AI‑driven rebooking, bounded tool usage, cost thresholds, audit tracing, and governance limits. It offers original mechanisms and clear operational impact, though it remains focused on a single use case without broader generalizations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-04T04:38:30.612631"
+    },
+    {
+      "id": 6360,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/10/03/full-employment/",
+      "title": "Pluralistic: Economic probabilities for our grandchildren (03 Oct 2026)",
+      "summary": "Redirecting wasted capital toward climate‑resilient infrastructure can create widespread prosperity in a post‑oligarch world.",
+      "ideas": [
+        "Post‑oligarch world can rebuild industrial capacity for climate defenses and universal housing.",
+        "Climate crisis will force full employment in building sea defenses, rail, and resilient infrastructure.",
+        "Economic stability depends on resource availability, not monetary constraints, requiring new public investment.",
+        "Historical ‘peace dividend’ models show redirected wartime capacity can fund peacetime prosperity.",
+        "Redistributing wealth from oligarchic hoarding can fund universal services and reduce inequality.",
+        "Transitioning away from data‑center copper usage and luxury construction frees resources for public good.",
+        "A new global reserve system must replace the dollar, oil, and internet as technologies evolve.",
+        "Reclaiming public infrastructure and democratic control over resources can create a sustainable, inclusive economy."
+      ],
+      "labels": [
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides numerous novel, actionable insights on a post‑oligarch, climate‑resilient economy, supported by historic analogies and concrete policy suggestions. The only drawback is the long appendix of archived links, which adds length without deepening the core argument, slightly reducing overall density.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-10-04T04:35:13.385985"
+    },
+    {
+      "id": 6359,
+      "source_id": 7,
+      "original_url": "https://domenic.me/agentic-coding-setup/",
+      "title": "Domenic Denicola",
+      "summary": "A disposable Linux VM on an always-on home desktop, networked via Tailscale and driven through thin-client agent apps, makes fully autonomous parallel AI coding sessions you can run from anywhere practical — if you mitigate blast radius by pushing to GitHub early and often.",
+      "ideas": [
+        "Agentic coding requires Linux; agents trained on Bash fail on Windows quoting and UTF-8",
+        "Run a disposable Linux VM on an always-on desktop instead of paying for cloud hosting",
+        "Tailscale ties machines into a private network enabling SSH and HTTPS dev servers anywhere",
+        "ChatGPT desktop app works as a thin client for remote agent sessions over SSH",
+        "Claude desktop app lacks session sync and dies on disconnect; its CLI gets the focus",
+        "Full agent autonomy via never-approvals and full-access sandbox trades safety for speed",
+        "Agents follow instructions not intent; one merged a PR to main without review",
+        "Push commits to GitHub early and often as insurance against VM damage",
+        "Git worktrees, managed by agents themselves, enable parallel workstreams without conflicts",
+        "Claude's default worktree location inside the project breaks node_modules discovery and recursive commands",
+        "Enable nested virtualization so agents can create their own containers and VMs",
+        "Headless Ubuntu needs no GUI; agents install Playwright or Xvfb when tasks require it",
+        "Tailscale HTTPS certificates give agent dev servers proper secure contexts",
+        "VS Code Remote-SSH turns any agent worktree into a locally-browsable review environment"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is dense, expert-firsthand content with 12+ distinct actionable value instances: the Linux-vs-Windows agentic coding constraint, a Tailscale-based VM networking recipe, specific autonomy configs (approval_policy never, bypassPermissions), a candid ChatGPT-vs-Claude remote session comparison, non-obvious worktree location gotchas (node_modules discovery bugs, recursive command pollution), and nested virtualization/secure-context HTTPS details. The 'agent merged my PR without review' anecdote distills a genuine risk lesson about intent vs. instruction following into a concrete example. Density is high across ~2000 words with minimal padding, no promotion, and honest treatment of the blast-radius tradeoffs, though the content appears truncated at the end and the recommendations of permission bypass are niche and debatable in their safety framing.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-04T04:34:52.692631"
+    },
     {
       "id": 6358,
       "source_id": 28,
