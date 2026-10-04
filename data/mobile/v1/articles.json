@@ -1,11 +1,145 @@
 {
   "schema_version": 1,
-  "sequence": 1050,
-  "revision": "sha256:584f5892cc3c7e535e1dc97667cd96e7a75ef442b15525a61cd44300c03ea9fe",
-  "generated_at": "2026-10-04T18:00:00.358492+00:00",
+  "sequence": 1051,
+  "revision": "sha256:c10f117b3707484732abfae6ff4598839a5d0739325c37b2903aa4e5a0ca4124",
+  "generated_at": "2026-10-04T19:00:00.170759+00:00",
   "complete": true,
-  "total_items": 962,
+  "total_items": 968,
   "items": [
+    {
+      "article_id": "article:6382",
+      "original_url": "https://veganmosfet.codeberg.page/posts/2026-10-03-math_opus55/",
+      "title": "From Math to Arbitrary Code Execution with Opus-5.5 in GitHub Copilot CLI",
+      "summary": "An LLM agent tasked with summarizing a repo can be steered through a multi-step prompt-injection chain into executing obfuscated remote Python, even when the model verbalizes safety concerns that it then ignores.",
+      "rating": 85,
+      "rating_reason": "Detailed, reproducible prompt-injection / RCE research with concrete commands, attack chain, and experimental results. The article documents how Opus-4.5 in GitHub Copilot CLI, despite being marketed as the most robust model against indirect prompt injection, executed untrusted remote code in 3/5 attempts after only superficial inspection. The 'hidden payload after 500 padding spaces in a long line' technique combined with an 'impossible' math puzzle that tempts the agent to fetch a 'hint' is a well-executed chain. Slightly docked because the core obfuscation technique is not entirely novel and the 3/5 success rate is moderate, not catastrophic.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-05T05:08:54.436086+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-04T05:08:54.436086+00:00",
+      "image": {
+        "url": "https://veganmosfet.codeberg.page/pictures/opus55_1.webp",
+        "width": 1554,
+        "height": 810,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6381",
+      "original_url": "https://pinglin.tw/blog/beyond-ocr-scores/",
+      "title": "Beyond OCR Scores: Where Document Parsers Fail",
+      "summary": "A large‑scale benchmark shows that a composite two‑stage OCR pipeline (MinerU2.5‑Pro + dots.mocr) outperforms both specialist and generalist models, especially in reading order and table recovery.",
+      "rating": 85,
+      "rating_reason": "The article presents a thorough, reproducible benchmark of 12 OCR/document parsers on a large, annotated dataset, providing concrete metrics (text edit distance, TEDS, reading order, formula CDM) and detailed analysis of failure modes that directly affect RAG and agent pipelines. While it lacks source code, the methodology, hardware specifics, and comparative numbers are valuable for engineers designing downstream AI systems. The content is highly relevant to AI/ML engineering and infrastructure, though it stays within known evaluation practices and does not introduce fundamentally new algorithms.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-05T04:57:48.416164+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-04T04:57:48.416164+00:00",
+      "image": {
+        "url": "https://pinglin.tw/blog/beyond-ocr-scores/hero-ocr-watercolor-polished.png",
+        "width": 1728,
+        "height": 910,
+        "alt": "Illustrative OCR failures: interleaved columns, lost table headers, flattened math, and omitted notes distort a complex page before it reaches RAG or an AI agent."
+      }
+    },
+    {
+      "article_id": "article:6380",
+      "original_url": "https://notenoughcylinders.com/en/adams-farwell-rotary-engine/",
+      "title": "Adams-Farwell: the Iowa car whose entire engine spun around a crankshaft that never moved",
+      "summary": "Farwell’s fixed‑crank rotary engine spun the entire block around a stationary crankshaft, delivering high power without a flywheel or water cooling.",
+      "rating": 85,
+      "rating_reason": "The piece gives a clear, well‑documented description of a fixed‑crank rotary engine, its measurements, and how it functioned, but it focuses on early automotive history rather than AI, infrastructure, or security topics, limiting its direct relevance to the target reader. It provides valuable technical insight, yet its audience‑specific applicability is narrow.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-05T04:55:59.902879+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-04T04:55:59.902879+00:00",
+      "image": {
+        "url": "https://notenoughcylinders.com/wp-content/uploads/2026/10/adams-farwell-destacada-en.jpg",
+        "width": 1200,
+        "height": 800,
+        "alt": "1907 Adams-Farwell five-cylinder rotary engine in the Smithsonian collection"
+      }
+    },
+    {
+      "article_id": "article:6379",
+      "original_url": "https://fzakaria.com/2026/10/03/rewind-vm-a-flaky-build-you-only-catch-once",
+      "title": "Rewind VM: a flaky build you only catch once",
+      "summary": "Rewind VM is a single-vCPU KVM tool that makes a Linux process run a deterministic function of its inputs—including thread schedule—letting you replay, fork, and shrink to find concurrency bugs that Nix and CI cannot reproduce.",
+      "rating": 91,
+      "rating_reason": "Original, well-substantiated work on a deterministic KVM-based VM for reproducing flaky concurrency bugs. The author demonstrates the tool end-to-end on the dining philosophers problem, then lists concrete real-world bugs found and fixed upstream (Nix gc-closure.sh SIGPIPE, Nix 'database is busy', nixd 64KB formatter hang, jujutsu tmpfs ordering). The architecture explanation (single vCPU, controlled timer interrupts, virtual clock, recorded events) is technically deep and grounded in specifics, with honest footguns called out. Remains valuable without any AI/trend framing; it is pure systems engineering with reproducible evidence and PR-level citations.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-05T04:48:19.547373+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-04T04:48:19.547373+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6378",
+      "original_url": "https://martinfowler.com/articles/exploring-gen-ai/local-models-for-coding-factors.html",
+      "title": "Refactoring",
+      "summary": "Local LLMs can code but remain fragile; MoE models like Qwen3.6 35B MoE offer the best current balance.",
+      "rating": 88,
+      "rating_reason": "The piece delivers numerous concrete, novel insights about local LLM viability — RAM limits, MoE benefits, reasoning pitfalls, tool‑calling challenges — showing strong value density and clear AI/Tech relevance. It lacks major fluff or clickbait, so it earns a high but not perfect score.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 7,
+      "source_name": "Bilgin Ibryam",
+      "source_type": "nitter",
+      "admitted_at": "2026-10-05T04:32:31.200307+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-04T04:32:31.200307+00:00",
+      "image": {
+        "url": "https://martinfowler.com/articles/exploring-gen-ai/donkey-card.png",
+        "width": 1000,
+        "height": 500,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6377",
+      "original_url": "https://bibryam.medium.com/the-emerging-standards-behind-ai-agents-7d958737fa4e/share/bibryam",
+      "title": "8 Emerging Standards for AI Agents",
+      "summary": "Adopt modular, standardized contracts at each agent boundary to achieve interoperable, portable AI agents.",
+      "rating": 82,
+      "rating_reason": "The article delivers eight concrete value instances—new standards, practical protocol guidance, and packaging formats—giving high density for its medium length. It aligns strongly with AI and technology themes. Minor promotional CTA is the only slight penalty.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 7,
+      "source_name": "Bilgin Ibryam",
+      "source_type": "nitter",
+      "admitted_at": "2026-10-05T04:32:11.369749+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-04T04:32:11.369749+00:00",
+      "image": null
+    },
     {
       "article_id": "article:6376",
       "original_url": "https://eliocapella.com/blog/writing-code-by-hand-is-over/",
