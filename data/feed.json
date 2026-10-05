@@ -1,7 +1,181 @@
 {
-  "updated_at": "2026-10-05T18:00:00.366284+00:00",
-  "total_items": 963,
+  "updated_at": "2026-10-05T19:00:00.162689+00:00",
+  "total_items": 970,
   "items": [
+    {
+      "id": 6401,
+      "source_id": 34,
+      "original_url": "https://www.dutchosintguy.com/post/phishing-campaign-identified-how-osint-exposed-a-real-calendly-link-in-a-fake-bloomberg-interview-i",
+      "title": "Phishing Campaign Identified: How OSINT Exposed a Real Calendly Link in a Fake Bloomberg Interview invite trough a x.com DM",
+      "summary": "The piece demonstrates how a real Calendly URL can be weaponized in a multi‑stage phishing chain and shows how to map, detect, and report such infrastructure using passive OSINT.",
+      "ideas": [
+        "Passive OSINT (RDAP, CT logs, certificate transparency) can reveal phishing infrastructure without interacting with the lure.",
+        "A legitimate Calendly link can redirect to a malicious OAuth app that ultimately lands on a credential‑harvesting page.",
+        "Blocking cal-apis.com and its subdomains stops the credential‑stealing stage of the campaign."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers a concrete, reproducible OSINT walk‑through of a targeted phishing campaign that leverages a genuine Calendly link and an OAuth redirect to harvest credentials. It provides domain registration data, DNS and certificate details, indicators, and actionable detection and response steps, which are directly useful to security engineers. The narrative includes some extraneous storytelling, but the technical substance is strong and highly relevant to readers interested in phishing, OSINT, and AI‑related threat actors.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-06T05:22:09.323012",
+      "image_url": "https://static.wixstatic.com/media/038b0b_b473f030d76a4c37888d6b12460a0176~mv2.jpg/v1/fill/w_750,h_395,al_c/038b0b_b473f030d76a4c37888d6b12460a0176~mv2.jpg",
+      "image_width": 750,
+      "image_height": 395,
+      "image_alt": ""
+    },
+    {
+      "id": 6400,
+      "source_id": 34,
+      "original_url": "https://p10s.cloud/posts/claude-subscription-vs-api/",
+      "title": "A $100 Claude seat holds up to $4,000 of API tokens",
+      "summary": "A $100 Claude Team Premium seat can absorb up to roughly $4,000 worth of API tokens, making direct API calls far more expensive than using the subscription.",
+      "ideas": [
+        "Team Premium seat provides ~7B tokens per month, costing ~$4,000 at list rates.",
+        "Using API directly can cost ~12× more per month for the same workload.",
+        "Cache reads account for 96% of token usage, reducing actual expense."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers precise, original token calculations and cost analyses that reveal a surprising pricing artifact for Claude seats versus API usage, directly relevant to AI engineering and budgeting. It provides concrete mechanisms, measurement methodology, and practical architectural advice, though its findings rest on a single observed workload and speculative capacity fluctuations, limiting generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-06T05:04:44.239848"
+    },
+    {
+      "id": 6399,
+      "source_id": 34,
+      "original_url": "https://jm33.me/ssh-password-harvesting-with-ebpf.html",
+      "title": "https://jm33.me/ssh-password-harvesting-with-ebpf.html",
+      "summary": "An eBPF uprobe can silently harvest SSH passwords from running sshd sessions by intercepting at a precise program offset without using ptrace.",
+      "ideas": [
+        "Use uprobe instead of ptrace to silently capture SSH passwords",
+        "Locate auth_password code pattern by scanning PT_LOAD segments",
+        "Read registers dynamically via volatile array indexed at runtime",
+        "Stream credentials to operator via encrypted memfs file"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete, original technical detail: it describes a uprobe‑based password harvester that avoids detection, shows how to locate code patterns in stripped binaries, and demonstrates register reading via a dynamic volatile array. It provides practical implementation steps and clear limits, but relies on specific kernel versions and CAP_BPF, restricting universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-06T05:00:10.427862"
+    },
+    {
+      "id": 6398,
+      "source_id": 34,
+      "original_url": "https://iter.ca/post/gh-workflow-nested/",
+      "title": "Bypassing the GitHub workflow permission with nested Git tags",
+      "summary": "Nested tags can bypass workflow permission checks, allowing arbitrary workflow modifications with only repo‑scoped OAuth access.",
+      "ideas": [
+        "Nested tags can point to any Git object, not just commits.",
+        "Recursion limit bug lets pushes succeed even when Git returns an error.",
+        "Allows arbitrary workflow file changes with repo‑scoped OAuth token.",
+        "Results in CVE‑2024‑8263 and $4,000 bug bounty award.",
+        "Trigger workflow modifications without needing Actions secrets."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a clear exploit where nested Git tags can bypass GitHub's workflow permission checks. It explains the recursion limit bug that permits pushes despite Git errors and ties it to CVE‑2024‑8263 with a $4,000 bounty. The limitation is that impact is modest and some filler reduces focus, keeping it strong but not exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-06T04:59:06.665196"
+    },
+    {
+      "id": 6397,
+      "source_id": 34,
+      "original_url": "https://brtkwr.com/posts/2026-10-04-an-on-demand-wireguard-vpn-i-can-switch-on-from-my-phone/",
+      "title": "An on-demand WireGuard VPN I can switch on from my phone",
+      "summary": "A reproducible, cost-engineered WireGuard VPN on a GCP spot f1-micro that boots on demand from a Cloud Run function, updates DNS via Cloudflare, auto-stops after 5 minutes of no client handshakes, and runs for roughly $0.0034/hour when active.",
+      "ideas": [
+        "Clamp TCP MSS to 1340 to fix GitHub TLS hangs from MTU mismatch (1420 vs 1380)",
+        "Spot VMs with STOP termination action enable cheap always-on-demand servers",
+        "Systemd timer counts WireGuard handshakes to auto-stop idle VM in 5 minutes",
+        "Park DNS at 192.0.2.1 when VM is stopped so the name never points at reused IPs",
+        "Avoid google-cloud-compute on Cloud Run; REST + google-auth fits in 256 MiB",
+        "Custom IAM role scoped to a single VM limits blast radius of leaked tokens",
+        "Renaming HOST env var fixes Cloud Run function binding conflicts",
+        "No --can-ip-forward needed when all egress uses the VM's own IP via masquerade"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "Substantive end-to-end build of an on-demand WireGuard VPN with concrete commands, cost analysis, and several non-obvious findings. Particularly strong: the MTU/MSS debugging (macOS client default 1420 vs VM tunnel MTU 1380 causing GitHub TLS hangs, fixed by clamping SYN MSS to 1340), the systemd idle-stop handshake check, the HOST env var conflict with the functions framework, and parking DNS at 192.0.2.1 to avoid stale IPs. Limitations: a future-dated timestamp (October 2026) and the benchmark section is truncated with only single-run measurements, which weakens the 'Premium didn't help' claim. Trade-offs are discussed honestly and the implementation is reproducible.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-06T04:55:25.167666"
+    },
+    {
+      "id": 6396,
+      "source_id": 34,
+      "original_url": "https://albertoarena.it/posts/the-sound-of-silence/",
+      "title": "The Sound of Silence: What Your AI Agent Does Not Tell You",
+      "summary": "Agents silently drop parts of long conversations because middle-context information is poorly retained, leading to early wrong guesses that persist until the context is reset.",
+      "ideas": [
+        "Reset chats after ~50% token usage to avoid silent rule drops",
+        "Restate rules in each new message to keep them in a high‑recall position",
+        "Limit topics per conversation to reduce noise and commitment bias"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, well‑supported analysis of a silent failure mode in long AI conversations, cites recent empirical studies, and explicates three underlying mechanisms with practical mitigation steps. It is highly relevant to AI engineering and software‑development practice, but stops short of breakthrough novelty, keeping it in the strong rather than exceptional range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-06T04:52:30.825817",
+      "image_url": "https://albertoarena.it/images/posts/the-sound-of-silence/cover.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6395,
+      "source_id": 11,
+      "original_url": "https://www.youtube.com/watch?v=8BD6w5wELRo",
+      "title": "OpenRouter State Of Models: Jev, Open-Weights, and Tokenomics",
+      "summary": "Efficient token use and open‑weight models are reshaping AI engineering profitability and performance.",
+      "ideas": [
+        "OpenRouter token usage grew from 4.5 trillion to 146 trillion weekly within a year.",
+        "Raw token volume does not equal value; efficiency drives productivity.",
+        "Anthropic's $2 trillion IPO valuation may be unsupported by token spending trends.",
+        "Estimated $60 billion revenue implies roughly 65 trillion tokens processed daily.",
+        "DeepSeek, OpenAI, and Google lead OpenRouter rankings, highlighting open‑weight success.",
+        "Jev model provides zero‑shot classification with about 20% token savings.",
+        "Integrating multiple models yields better results than selecting a single one.",
+        "New releases like Cloud Opus 5.5 and GPT‑6 expand available compute power.",
+        "Open‑weight models gain market share due to low cost and high performance.",
+        "Tokenomics should prioritize cost‑performance balance over sheer token count."
+      ],
+      "labels": [
+        "AI",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The content delivers multiple concrete insights—growth data on token usage, tokenomics principles, market share analysis, and practical tips on using the Jev model to cut token costs—making it highly relevant to AI technology and productivity. While it contains some promotional language and repetitive phrasing, the value density remains strong for a medium‑length transcript.",
+      "source_type": "youtube",
+      "source_name": "IndyDevDan",
+      "published_at": "2026-10-06T04:32:16.557855"
+    },
     {
       "id": 6394,
       "source_id": 7,
