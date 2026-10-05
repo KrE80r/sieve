@@ -1,7 +1,156 @@
 {
-  "updated_at": "2026-10-05T06:00:00.350655+00:00",
-  "total_items": 951,
+  "updated_at": "2026-10-05T07:00:00.179802+00:00",
+  "total_items": 956,
   "items": [
+    {
+      "id": 6387,
+      "source_id": 34,
+      "original_url": "https://percentes.ai/writing/2026/i-sigkilled-vllm-on-an-l40-under-load-it-served-again-after-42-seconds/",
+      "title": "I SIGKILLed vLLM on an NVIDIA L40 under load – it served again after 42 seconds",
+      "summary": "A SIGKILL under load on a single-replica vLLM Qwen2.5-7B serve caused all 111 in-flight streams to truncate after HTTP 200 was sent, all 684 outage-period requests to fail to connect immediately, and a median 42.2s recovery dominated by a silent 22-25s pre-engine phase, with torch.compile cache reuse cutting restart time from ~83s cold to ~29s.",
+      "ideas": [
+        "SIGKILL cuts off all 111 in-flight requests even though 106 had already received partial answers and HTTP 200",
+        "22.7-24.8s of every restart is silent before vLLM's engine first logs",
+        "torch.compile cache in container's writable layer survives Docker restarts, saving ~17s",
+        "684/684 outage requests failed to connect in 2ms, none waited for the 30s client timeout",
+        "Median outage is 42.2s; recovery to pre-fault baseline takes ~41s after that",
+        "CUDA graph capture is not cached, still takes ~5s per restart",
+        "Docker's timestamp resolution limits in-flight kill-time attribution to 12-14ms"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional empirical engineering work: a controlled experiment that SIGKILLs a vLLM server under load, with pre-registered falsifiable predictions, open-source reproducible tooling, and complete per-stage timing data. The findings are concrete and non-obvious: streaming responses sent HTTP 200 before SIGKILL then truncated, the silent 22-25s window before any engine log line, and the persistence of the torch.compile cache across Docker restarts saving ~17s. Limitations are honestly acknowledged (single machine, no Kubernetes case, no profiler in the silent window), but the depth of measurement and reproducibility place this far above typical engineering blog content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-05T16:48:39.356415"
+    },
+    {
+      "id": 6386,
+      "source_id": 34,
+      "original_url": "https://hevmind.com/writing/jev-has-company/",
+      "title": "Jev has company",
+      "summary": "General-purpose LLM decision models can match purpose-built rerankers, but their request shape (pair/batch/choice) and document order matter enormously: Clef-flash collapses below BM25 in batch mode, and Perplexity choice edges Jev batch on most corpora for less money.",
+      "ideas": [
+        "Clef-flash scores 0.283 in batch mode, below the BM25 order of 0.404.",
+        "Document order reversal changes Clef-flash's top result on all 20 diagnostic queries.",
+        "Perplexity batch costs $11.59/1k queries because shared context is billed per question receipt.",
+        "Jev batch is the fastest at 192ms p50, ~10x faster than Perplexity batch (2.0s).",
+        "Gaps between Perplexity choice and Jev batch are mostly within 95% bootstrap intervals.",
+        "One HTTP request doesn't mean the prompt prefix is billed only once.",
+        "Decision-model rerankers now land next to purpose-built rerankers like Voyage and Cohere.",
+        "Choice shape gives only ranked order, not independent scores usable as thresholds."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Original, reproducible benchmark of three LLM decision models (Clef, Clef-flash, Perplexity pplx-decider) used as rerankers against frozen baselines on three corpora (SciFact, NFCorpus, FiQA). The article reports concrete nDCG@10 numbers with 95% bootstrap intervals, real cost-per-1000-queries at list rates, latency percentiles from a controlled side-by-side batch test, and documents non-obvious failure modes such as Clef-flash falling to 0.283 (below BM25's 0.404) when given all 30 documents at once, and Perplexity's shared-context pricing quirk. Methodological caveats (training-data contamination, multiple comparisons, different hardware for some latency runs) are stated honestly. Minor limitations include modest sample sizes and shallow shortlist (30), and the differences between top systems are mostly within confidence intervals.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-05T16:42:41.794570",
+      "image_url": "https://hevmind.com/blog/jev-has-company/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6385,
+      "source_id": 34,
+      "original_url": "https://blog.mastykarz.nl/eval-user-success-product-behavior/",
+      "title": "Your eval should describe the user's success, not your product's behavior",
+      "summary": "Design evaluations around the user's job, not the tool, and treat invocation only as an unscored diagnostic, not a scoring criterion.",
+      "ideas": [
+        "Score based on user outcome, not on whether the extension is invoked.",
+        "Run a baseline without the extension to measure actual lift.",
+        "Separate invocation as an unscored diagnostic from the scored quality/cost metric."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article offers concrete, non‑obvious guidance on designing evaluation metrics for AI coding agents, emphasizing user outcomes over tool invocation and providing clear implementation steps; it is highly relevant to AI and software‑engineering practitioners; however its scope is limited to extension design and may not generalize to broader evaluation contexts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-05T16:36:44.676812",
+      "image_url": "https://blog.mastykarz.nl/assets/images/2026/10/high-striker.png",
+      "image_width": 1369,
+      "image_height": 1149,
+      "image_alt": ""
+    },
+    {
+      "id": 6384,
+      "source_id": 4,
+      "original_url": "https://github.com/ivancabrera02/SrHollow",
+      "title": "https://github.com/ivancabrera02/SrHollow",
+      "summary": "Reusing existing VSS shadow copies with an inline hive parser lets you dump LSA secrets and DPAPI keys while leaving a forensic footprint indistinguishable from ordinary backup software.",
+      "ideas": [
+        "Reusing preexisting VSS shadow copies extracts LSA secrets with minimal OPSEC footprint",
+        "NtOpenDirectoryObject enumerates shadow copies; SRSetRestorePointW creates one as fallback",
+        "SeBackupPrivilege plus FILE_FLAG_BACKUP_SEMANTICS reads locked SECURITY and SYSTEM hives",
+        "Single-file C# regf parser walks nk/vk/lf/lh/li/ri/db/sk cells with no dependencies",
+        "Microsoft's regf documentation is ambiguous on name and class length struct offsets",
+        "BootKey derives from four LSA registry values, hex-decoded and permuted by a fixed table",
+        "LSA AES-256 key comes from PolEKList: SHA-256 of BootKey plus salt stretched 1000 times",
+        "DPAPI_SYSTEM blob yields MachineKey and UserKey, decrypting all SYSTEM-scoped DPAPI master keys",
+        "Shadow-copy file-open profile matches legitimate backup agents, minimizing detection signals"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This is a dense, technically substantive repository README describing a novel credential-extraction technique with genuine expert insight: the inline regf parser's corrected offset for name/class lengths (noting Microsoft's docs are ambiguous), the complete BootKey and LSA AES-256 key derivation chains, the DPAPI_SYSTEM MachineKey/UserKey layout, and a thoughtful OPSEC-footprint analysis showing the extraction mimics legitimate backup-agent behavior. The shipped single-file C# tool plus staged PowerShell scripts constitute a usable resource with zero external dependencies. It strongly aligns with the CyberSecurity theme and contains 7-8 distinct technical insights with minimal padding, though it is a tool artifact rather than extended original research, keeping it below exceptional.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-05T16:32:46.798580",
+      "image_url": "https://opengraph.githubassets.com/39308c78f601ebe8aeeee7d9c08cb4ece46d60e69e829535f2f63afc557442a2/ivancabrera02/SrHollow",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Contribute to ivancabrera02/SrHollow development by creating an account on GitHub."
+    },
+    {
+      "id": 6383,
+      "source_id": 4,
+      "original_url": "https://github.com/lexmount/moli",
+      "title": "https://github.com/lexmount/moli",
+      "summary": "Moli is a resource‑efficient headless browser that prioritizes structure extraction for AI agents, only invoking layout and rendering when explicitly required.",
+      "ideas": [
+        "Moli is a production-ready headless browser optimized for AI agents.",
+        "It separates structure-first operations from visual rendering to save resources.",
+        "Default mode avoids layout/paint; --layout enables on-demand rendering.",
+        "Supports Linux, macOS, Windows; installable via single CLI script.",
+        "CLI can fetch pages and output markdown, semantic trees, screenshots, PDFs.",
+        "Runtime includes full web standards: V8, CSS, DOM, Fetch, WebCrypto, etc.",
+        "Agent workloads extract structure without continuous rendering overhead.",
+        "Visual operations trigger layout only when needed, then discard state.",
+        "Unified server serves CDP, WebDriver Classic, and WebDriver BiDi.",
+        "Cost model requires explicit opt-in for expensive operations.",
+        "Open-source project; Lexmount provides managed cloud runtime around it.",
+        "Repository contains many modules and preview features, indicating active development.",
+        "Provides clear examples for extracting HTML, querying DOM, running JavaScript.",
+        "Can render pages as images, PDFs, or screenshots on demand.",
+        "Design reduces CPU usage for tasks needing only DOM/structure."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece offers several novel, actionable insights about Moli's design—separating structure from visual rendering, on-demand layout, and resource‑efficient agent workloads—while providing clear installation and usage examples. It aligns strongly with AI and technology themes and contains no filler or clickbait. Thus it earns a high score for value density and relevance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-05T16:32:27.317791",
+      "image_url": "https://repository-images.githubusercontent.com/1329849289/f24c9784-1001-41cc-af14-3edecd9e55cc",
+      "image_width": 1774,
+      "image_height": 887,
+      "image_alt": "Best headless browser for AI agents. Lite, Fast, High-Compatibility. Built in Rust - lexmount/moli"
+    },
     {
       "id": 6382,
       "source_id": 34,
