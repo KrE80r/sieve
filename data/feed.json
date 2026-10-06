@@ -1,7 +1,441 @@
 {
-  "updated_at": "2026-10-06T18:00:00.404133+00:00",
-  "total_items": 949,
+  "updated_at": "2026-10-06T19:00:00.166986+00:00",
+  "total_items": 965,
   "items": [
+    {
+      "id": 6427,
+      "source_id": 34,
+      "original_url": "https://qsoe-dev.blogspot.com/2026/10/i-wanted-to-build-qsoe-04-on-azure.html",
+      "title": "I Wanted to Build QSOE 0.4 on Azure Linux 4.0 -- Here's What Happened",
+      "summary": "Building QSOE on Azure Linux 4.0 surfaced seven Debian-specific portability bugs in one evening, with detailed mechanisms and fixes for cross-toolchain naming, kconfiglib path hard-coding, Free Pascal ordering, and inconsistent optional/mandatory build dependencies.",
+      "ideas": [
+        "Bootlin's gcc is a wrapper that dispatches via argv[0] to a .br_real binary, so symlink renaming breaks it.",
+        "Free Pascal's install.sh writes /etc/fpc.cfg pointing at gcc's lib directory, so it must run after gcc.",
+        "Makefile ':=' assignment for KCFG_LIB overrides exported environment values, blocking override via 'make KCFG_LIB=...'.",
+        "Failed Free Pascal builds leave usable-looking binaries because make does not delete targets after a failing recipe.",
+        "Redirecting build output to /dev/null hides errors printed to stdout, masking real failures.",
+        "seL4's RISC-V QEMU target needs qemu-system-riscv64 at configure time just to dump the virt board DTB.",
+        "Optional vs. mandatory handling of oggenc across build layers created a silent inconsistency surfaced only on non-Debian distros."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Firsthand engineering write-up documenting a systematic cross-distro build attempt (Debian to Azure Linux) with concrete reproducible detail. Each of the seven identified bugs includes the exact error, mechanism, and fix - notably the Bootlin gcc wrapper's argv[0]-based dispatch via .br_real, Free Pascal install.sh's gcc-ordering dependency, make's := shadowing exported variables, and stdout-discarded errors hiding real failure causes. Highly substantive, focused, and free of hype; only minor limitation is the niche QSOE project context.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T05:22:48.651809"
+    },
+    {
+      "id": 6426,
+      "source_id": 34,
+      "original_url": "https://mihai.dinculescu.dev/posts/tapo-speaks-tpap/",
+      "title": "tapo speaks TPAP: Third-Party Compatibility can stay off",
+      "summary": "TPAP replaces the insecure KLAP protocol with SPAKE2+ authentication, allowing third‑party control without enabling the risky compatibility switch.",
+      "ideas": [
+        "TPAP uses SPAKE2+ password‑authenticated key exchange, preventing offline password guessing.",
+        "A wrong password or repeated attempts triggers device lockout, reported as TPAP_CREDENTIALS or TPAP_AUTH_ATTEMPTS_LIMIT.",
+        "The Rust/Python tapo library now auto‑detects KLAP vs TPAP and works with the switch off.",
+        "Plug schedule and timer APIs let devices run autonomously, even when the host script is down."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives concrete, reproducible details about TP-Link Tapo’s undocumented TPAP protocol, its SPAKE2+ authentication, and the security implications of the Third‑Party Compatibility switch. It includes real code snippets for Rust and Python, explains lock‑out behavior, and documents library changes that enable secure operation without the switch. The content is highly relevant to security and IoT developers and offers actionable knowledge, though its narrow device focus limits broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T05:14:56.446976"
+    },
+    {
+      "id": 6425,
+      "source_id": 34,
+      "original_url": "https://lapcatsoftware.com/articles/2026/10/3.html",
+      "title": "More details about how macOS 26.4 changed the login keychain",
+      "summary": "macOS 26.4+ ties login keychain decryption to a protected entropy file in /var/db/SystemKeys, breaking portability and backup strategies until both files are preserved together.",
+      "ideas": [
+        "macOS 26.4 keychains require protected entropy files in /var/db/SystemKeys to unlock",
+        "security show-keychain-info -s reveals a keychain's salt to identify its entropy file",
+        "SIP blocks /var/db/SystemKeys access but the recovery volume can modify it",
+        "Backups must include /var/db/SystemKeys or restored keychains become useless",
+        "Manually-created keychains lack entropy references and remain portable across macOS versions",
+        "security unlock-keychain has no option to supply entropy data for cross-volume unlocking"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "Original, expert firsthand investigation by a respected macOS security researcher into an undocumented Apple behavior change. The article delivers specific file paths (/var/db/SystemKeys), concrete commands (security show-keychain-info -s), file format details (XML plist with 32 bytes base64), SIP/recovery workarounds, and practical backup and recovery guidance. It directly quotes Apple's belated developer documentation and adds verified observations that go beyond it, such as the -s flag not being in the man page and keychain portability differences between auto-created login keychains and manually created ones. Highly substantive, low-noise, and actionable for anyone managing macOS security or keychain backups.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T05:10:43.987935"
+    },
+    {
+      "id": 6424,
+      "source_id": 34,
+      "original_url": "https://julienvincent.io/projects/internet-enabling-intercom/",
+      "title": "Internet-Enabling My Apartment Intercom",
+      "summary": "An ESP32-C3 with an ADG884 analog switch and a fake speaker load can fully bridge an analog apartment intercom to push notifications and a Matter door lock in Apple Home.",
+      "ideas": [
+        "Controller detects 'call answered' by loading S1/S2 speaker lines past a threshold",
+        "ADG884 analog switch preferred over MOSFETs for AC audio signal integrity",
+        "Matter ContactSensorDevice used to model an intercom buzzer for Apple Home",
+        "Buck + LDO chain derives 3.3V and 5V by leeching intercom's 12V rail",
+        "32Ω + 150Ω fake load from manufacturer datasheet simulates speaker/mic",
+        "Lifting intercom handset silences it, simplifying MITM design"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Excellent firsthand hardware hacking writeup with strong concrete substance: specific signal-line analysis (VT/V0/BZ/S1/S2/DR) with voltages and behaviors, a non-obvious discovery that the controller detects 'answered' by monitoring speaker loading, and a justified component selection (ADG884 analog switch over MOSFETs for AC fidelity, buck+LDO power tree). The Matter/Apple Home workaround using a ContactSensorDevice as a buzzer proxy is a genuinely useful pattern. Practical applicability is limited to similar intercom systems, which keeps it just shy of exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T05:10:17.470943"
+    },
+    {
+      "id": 6423,
+      "source_id": 34,
+      "original_url": "https://invertedpassion.com/how-funny-are-the-frontier-ai-models/",
+      "title": "How funny are the frontier AI models?",
+      "summary": "Frontier AI models, especially larger recent ones, increasingly produce jokes that elicit chuckles or laughter, with measurable performance gains linked to model size and recency.",
+      "ideas": [
+        "GPT-6 Astra achieved >50% chuckle‑or‑better rating on original jokes.",
+        "Chuckle‑or‑better correlates 0.714 with model release recency.",
+        "Preference share clusters separate newer large models from older smaller ones.",
+        "Krippendorff α indicates modest human agreement on humor judgments.",
+        "LLM‑as‑judge rankings align with human humor ratings."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article presents a detailed, statistically grounded experiment measuring humor performance of frontier LLMs, including original data on chuckle rates, preference shares, and correlations with other benchmarks. It offers concrete mechanisms, reproducible methodology, and firsthand engineering insight, though it contains some promotional framing and limited error‑bar transparency, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T05:07:03.523242"
+    },
+    {
+      "id": 6422,
+      "source_id": 34,
+      "original_url": "https://harrisonsec.com/blog/llm-as-judge-is-a-reasoning-contract/",
+      "title": "LLM-as-Judge Is Not a Score. It Is a Reasoning Contract.",
+      "summary": "A judge must be defined by a contract specifying evidence, rubric, schema, and rule over facts to be trustworthy.",
+      "ideas": [
+        "Judge must not treat producer claims as evidence; must verify facts first",
+        "Replace 1‑10 scores with anchored comparisons for reproducible ratings",
+        "Verdict must label failure and cite specific evidence, not just a number",
+        "Objective rule can veto judge’s output when it contradicts verified facts",
+        "Continuously test judge on a fixed corpus to detect score drift"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article offers concrete, non‑obvious mechanisms—four contractual clauses—that make LLM judges auditable and trustworthy. It is highly relevant to AI engineers seeking rigorous evaluation methods, and its structured guidance delivers measurable value per minute. However, it assumes the reader can implement versioned test suites and rule engines, which may be a barrier for teams lacking DevOps resources.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T05:06:33.935916",
+      "image_url": "https://harrisonsec.com/images/llm-as-judge-is-a-reasoning-contract-cover.webp",
+      "image_width": 1600,
+      "image_height": 901,
+      "image_alt": ""
+    },
+    {
+      "id": 6421,
+      "source_id": 34,
+      "original_url": "https://cagritemel.com/blog/agent-gate-measured-without-a-model.html",
+      "title": "I Measured an Agent Gate Without a Model in the Loop. Here Is What It Catches, and What It Costs.",
+      "summary": "A provenance-based gate can block malicious tool calls by tracking value origins, achieving substantial attack reduction at the cost of some legitimate user tasks.",
+      "ideas": [
+        "Taint tracking blocks 3.1% attack success vs 95.6% without gate.",
+        "Strict taint reduces user task completion by ~41% but achieves 0% attack success.",
+        "Deployment interruptions occur for mail/calendar and admin panels due to destination checks.",
+        "Drafted tool schemas miss some attacker-targeted verbs like ManagePatientRecords."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete, experimentally validated taint-checking mechanism for agent tool calls, providing original measurement data and detailed failure analyses. It is highly relevant to AI safety and tool-use security for technically sophisticated readers. Limitations arise from its narrow threat model and reliance on specific benchmark conditions, which may limit broad applicability. The work excels in delivering measurable, reproducible insights despite these constraints.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T04:59:28.063095"
+    },
+    {
+      "id": 6420,
+      "source_id": 34,
+      "original_url": "https://blog.phor.net/zero-day-pannellum",
+      "title": "Zero Day Live: Pannellum 2.5.6",
+      "summary": "A single unrestricted config query parameter in the popular Pannellum panorama viewer turns hundreds of trusted .gov/.edu and major-media sites into attacker-controlled phishing, SEO, and cloaking surfaces with no server compromise whatsoever.",
+      "ideas": [
+        "Unrestricted config parameter lets remote JSON configs hijack trusted domains via XSS",
+        "/\\/ obfuscation hides protocol-relative attacker URLs from naive slash filtering",
+        "Hotspot attributes inject onanimationstart handler auto-fired by a 0.001s CSS animation",
+        "eval payload uses document.write and history.replaceState to fake nps.gov page paths",
+        "Cloaking serves clean SEO content to googlebot/bingbot, spam to humans",
+        "Google News RSS redirects distributed the malicious nps.gov links at scale",
+        "Same infrastructure reused across hundreds of sites; sitemap enables IOC enumeration",
+        "Fixed in Pannellum 2.5.7; allowlists should replace attribute denylists"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Original, firsthand vulnerability research with a complete exploit chain: unrestricted remote config loading in Pannellum 2.5.6, protocol-relative URL obfuscation (/\\/), hotspot-attribute injection triggering eval via a 0.001s CSS animation's onanimationstart event, document.write page replacement, history.replaceState URL spoofing, and crawler cloaking. The evidence is concrete and verifiable: live campaign URLs, harmless PoC config, IOC domains, affected .gov/.edu host list, CVSS vectors, patch reference (2.5.7), and disclosure timeline. Directly serves vulnerability research and defensive engineering interests, though the title slightly overstates ('zero day' for a patched issue affecting unpatched deployments) and minor typos plus a somewhat generic denylist-vs-allowlist takeaway slightly dilute an otherwise dense, high-value writeup.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T04:52:35.707901",
+      "image_url": "https://blog.phor.net/assets/images/zero-day-pannellum.webp",
+      "image_width": 3248,
+      "image_height": 2122,
+      "image_alt": ""
+    },
+    {
+      "id": 6419,
+      "source_id": 34,
+      "original_url": "https://alediaferia.com/2026/10/06/a-valid-graphql-query-can-still-answer-the-wrong-question/",
+      "title": "How to mitigate structural and referential failure in agentic architectures [Part 2]",
+      "summary": "The piece presents a systematic agent architecture using scope gating, entity grounding, and query validation with repair loops to reliably map natural‑language requests to accurate GraphQL queries.",
+      "ideas": [
+        "Scope gating flags unsupported concepts like “department” as NOT_TRACKED",
+        "Grounding resolves ambiguous terms such as “NYC” to concrete attribute values",
+        "Planner can repair invalid GraphQL queries up to two times using error feedback"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a concrete, multi‑stage architecture that reduces structural and referential failures in LLM‑driven agents, with detailed steps for scoping, grounding, planning, validation, and repair. It provides original mechanisms, example code, and evaluation results, making it highly relevant to engineers building AI agents. Some redundancy and high‑level overview slightly lower the score, but overall substance and innovation are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-07T04:49:13.852004"
+    },
+    {
+      "id": 6418,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/10/06/nonfungible/",
+      "title": "Pluralistic: Swapping money for expertise (06 Oct 2026)",
+      "summary": "Theory-free AI is less a technical breakthrough than a political project: by substituting money for scarce expertise, it aims to strip the only workers whose power can still contest capital.",
+      "ideas": [
+        "The term 'AI' changes referent every 5-10 years, obscuring technical capabilities and political economy",
+        "Previous symbolic AI required domain experts to build causal models, creating an expertise bottleneck",
+        "Theory-free AI maps statistical A-causes-B patterns without any model of why",
+        "AI 'hallucinations' are features of model-free statistical guessing, not cognitive misfires",
+        "1950s vacuum-tube chess programs avoided illegal moves; modern AI cannot despite vastly more compute",
+        "Theory-free AI's real advantage: operating on causal relationships observed but unexplained",
+        "Hybridizing AI with symbolic models rationally admits theory-free inference's core limitation",
+        "Scarce expertise is the only substantial form of power that reliably contests wealth",
+        "AI investment targets reducing expert labor power, not merely eliminating wage bills",
+        "Silicon Valley engineers once wielded power, forcing concessions via the 2018 Google walkouts",
+        "AI burns over a trillion dollars for roughly fifty billion in revenue this year",
+        "Centaurs have humans directing machines; reverse centaurs have machines directing humans",
+        "Billionaires seek to manipulate the world with money alone, without studying or understanding"
+      ],
+      "labels": [
+        "AI",
+        "Philosophy",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This essay delivers 8-10 genuine value instances: a clear historical framing distinguishing symbolic AI from theory-free inference, a counterintuitive argument that hallucinations are features not bugs, concrete evidence like the trillion-dollar spend vs $50b revenue, the 2018 Google walkouts as a case study of expert power, and the novel political-economy thesis that AI serves to swap money for expertise to strip workers of bargaining power. The core argument is novel and well-developed, with strong thematic alignment to AI and political-economy critique. Scores fall short of exceptional because several claims are asserted rather than evidenced (e.g., 'heptillions of times more compute,' the alleged corporate allergy to hybridization), the argument repeats itself at points, and the essay ends on an unresolved cliffhanger without a payoff.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-10-07T04:46:45.145843"
+    },
+    {
+      "id": 6417,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/200468/data-breach/fbi-drops-accenture-contractor-after-sensitive-data-breach.html",
+      "title": "FBI Drops Accenture Contractor After Sensitive Data Breach",
+      "summary": "A missed security patch on a third‑party platform exposed highly sensitive FBI employee data, underscoring the critical importance of timely patching and the broader operational risks of such breaches.",
+      "ideas": [
+        "Missed patch on third‑party platform caused FBI data breach",
+        "Exposed data includes SSNs, addresses, medical records, and counter‑intelligence info",
+        "FBI cyber chief cites patch failure as root cause",
+        "ShinyHunters claimed exploitation of PeopleSoft vulnerability",
+        "Stolen data posed serious operational security risks",
+        "Timely patching prevents known vulnerability exploitation",
+        "Third‑party risk can compromise even secure government systems"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete insights, including a missed patch that caused the breach and exposed sensitive FBI employee data, highlighting operational security impacts and third‑party risk. These insights provide high value density despite some surrounding newsletter filler, and the thematic relevance is strong to cybersecurity.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-07T04:42:50.272464",
+      "image_url": "https://securityaffairs.com/wp-content/uploads/2015/02/Rule-41-google-fbi-21.jpg",
+      "image_width": 690,
+      "image_height": 388,
+      "image_alt": ""
+    },
+    {
+      "id": 6416,
+      "source_id": 4,
+      "original_url": "https://any.run/cybersecurity-blog/ironchain-analysis/",
+      "title": "IronChain Ransomware Threatens Businesses with Permanent Data Loss and Costly Downtime",
+      "summary": "IronChain ransomware is engineered to cause irreversible file destruction, making recovery impossible even after payment and significantly increasing business downtime risk.",
+      "ideas": [
+        "RSA-4096 public key only; private key discarded, making decryption impossible.",
+        "Four kernel drivers bundled; only Baidu driver correctly used for process termination.",
+        "Bug prevents full system folder targeting; only user folders encrypted.",
+        "Ransom note promises recovery, but technical design can cause irreversible file destruction.",
+        "September 2026 build adds SYSTEM scheduled task and multiple drivers, raising downtime risk.",
+        "Encryption gaps leave plaintext fragments, but full file restoration remains unattainable.",
+        "Detection focuses on driver loads, task creation, and anomalous process termination behavior."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post delivers multiple novel, actionable insights: permanent data loss design, driver usage details, encryption lacking recovery, and technical bugs that limit impact. It aligns strongly with cybersecurity themes and contains no clickbait or padding, resulting in high value density. Penalties are minimal, keeping the score in the high 80s.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-07T04:40:13.837541",
+      "image_url": "https://any.run/cybersecurity-blog/wp-content/uploads/2026/10/IronChain-2.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": ""
+    },
+    {
+      "id": 6415,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/welcome-to-jungle-what-we-found-inside.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Enterprises must treat MCP marketplaces as unvetted environments and implement governance, code signing, and origin verification to protect data from hidden server risks.",
+      "ideas": [
+        "MCP marketplaces lack governance, exposing data.",
+        "Servers can execute hidden code unrelated to public repositories.",
+        "15,465 indexed servers; 15.6% hosted outside US, some in China/Russia.",
+        "0.45% use consumer tunneling (ngrok) from personal machines.",
+        "2.3% of domains expired and can be re-registered, inheriting server identity.",
+        "Trust in MCP servers becomes the attack surface needing vetting and code signing.",
+        "Enterprises must extend cloud governance practices to MCP connections.",
+        "Recommendations: implement marketplace vetting, code signing, origin verification.",
+        "Webinar on AI attack surface and securing AI agents scheduled for Oct 13.",
+        "The protocol isn’t flawed; the trust placed in it is the vulnerability."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple novel findings—statistics on unvetted MCP servers across jurisdictions, hidden-code risks, and dangling domains—plus actionable recommendations for enterprise governance, supported by original data and a downloadable report. It avoids clickbait and padding, maintaining high value density for a cybersecurity audience, which justifies a score in the high 80s. No major penalties apply, though the promotional webinar link slightly blurs the line between pure insight and marketing.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-07T04:38:53.734069",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhd9ijWk9zlAlr4Ogzkb3OyeREM6GDYe0AZx5DQ-TmdUPN5ogFXFM0Z9Lh-qdG1CAIVdBX7cV7NSfgEk_yBtaTFCPdIjAo23ixCfHqa4j1m8FY2cRfmdcrd4GZNn-5QQScWonyO6GDRx6RA1ZRcuW9tAmCOFG9u7KQbWx3fftJ921w8rUqHx4ya_5CFuJM/s1700-nu-rw-lo-l85-e365/ox.png.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 6414,
+      "source_id": 4,
+      "original_url": "https://mehmetince.net/the-story-of-a-perfect-exploit-chain-six-bugs-that-looked-harmless-until-they-became-pre-auth-rce-in-a-security-appliance/",
+      "title": "https://mehmetince.net/the-story-of-a-perfect-exploit-chain-six-bugs-that-looked-harmless-until-they-became-pre-auth-rce-in-a-security-appliance/",
+      "summary": "Seemingly harmless misconfigurations can be combined to achieve full remote code execution on a security appliance.",
+      "ideas": [
+        "Small misconfigurations can combine into pre‑auth remote code execution.",
+        "Two Nginx instances act as insecure proxy layers exposing internal services.",
+        "Hard‑coded signing secret allows forging authentication tokens.",
+        "Leaked internal API credentials elevate privileges within microservices.",
+        "SSRF can pivot to host Python endpoints to mint admin sessions.",
+        "Static AES key in alert‑rule packages bypasses eval() validation.",
+        "Decompiling .pyc files reveals hidden Python logic in appliances.",
+        "Docker bridge networking permits inter‑container communication, expanding attack surface."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers multiple genuine insights into how a series of seemingly minor bugs can be chained into a pre‑auth RCE exploit, providing practical techniques, code snippets, and architectural analysis valuable to security professionals. It aligns strongly with cybersecurity themes and offers concrete, actionable knowledge without hype or promotional content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-07T04:38:45.622087",
+      "image_url": "https://mehmetince.net/wp-content/uploads/2025/12/logpoint-perfect-chain-e1766933862462.jpg",
+      "image_width": 1370,
+      "image_height": 750,
+      "image_alt": ""
+    },
+    {
+      "id": 6413,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/reflections-beam-becomes-the-most-capable-open-weight-model-built-outside-china/",
+      "title": "Reflection's Beam becomes the most capable open-weight model built outside China",
+      "summary": "Reflection's Beam achieves high performance with far less compute than comparable models by activating only 23B of its 501B parameters and using a compute‑heavy RL phase that yields emergent capabilities.",
+      "ideas": [
+        "Beam uses 23B of 501B parameters, cutting compute three to four times versus GLM‑5.2.",
+        "RL training on 10,500 Nvidia GB300 GPUs for four weeks drove emergent web‑browsing ability.",
+        "Tunable reasoning depth lets users trade compute cost for higher output quality.",
+        "Beam matches GLM‑5.2 and Qwen‑3.8 on benchmarks while using far less compute.",
+        "A separate safety model is merged with Beam, providing alignment and factual accuracy.",
+        "Founders are former DeepMind researchers; startup raised $2B at an $8B valuation.",
+        "Reflection plans to open‑source weights and technical report under Apache 2.0 later this month.",
+        "Emergent capabilities include solving coding tasks and interfacing with external APIs.",
+        "Beam targets cost‑sensitive businesses needing coding and agentic workflows.",
+        "Successor in development aims to close the performance gap to top open models."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers multiple concrete insights, including compute‑efficient activation of 23B parameters, massive RL training on 10,500 GPUs, emergent web‑browsing capability, tunable reasoning trade‑offs, and an integrated safety model. These points align tightly with AI and tech themes and contain no major padding or clickbait, resulting in a high value density.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-10-07T04:38:17.723189",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/10/reflection-beam-01-hero.jpg",
+      "image_width": 1800,
+      "image_height": 1012,
+      "image_alt": ""
+    },
+    {
+      "id": 6412,
+      "source_id": 19,
+      "original_url": "https://www.interconnects.ai/p/the-cyber-risk-discourse-is-broken",
+      "title": "The Cyber Risk Discourse is Broken",
+      "summary": "Balancing open-weight and closed AI models requires careful trade‑offs, as restricting one can exacerbate cyber risk overall.",
+      "ideas": [
+        "Open-weight models' cyber risks must be weighed against benefits of defensive tools.",
+        "Chinese firms assess and release open-weight models under government oversight.",
+        "Policy debates often rely on partisan or classified arguments rather than nuanced analysis.",
+        "Closed models' APIs can be as vulnerable as open-weight models despite stronger safeguards.",
+        "Effective AI governance requires balancing openness, safety, and national competitiveness.",
+        "Safety testing resources in China are limited by political and economic constraints.",
+        "Overstated fears of open-weight harms may not yet be supported by observed cyber incidents."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers multiple novel insights—such as the trade‑off between banning open‑weights and restricting closed‑model APIs—and provides nuanced analysis of Chinese AI risk posture, giving it strong value density. It avoids overt clickbait, though promotional elements are present, keeping the score solidly in the good range.",
+      "source_type": "rss",
+      "source_name": "Interconnects AI",
+      "published_at": "2026-10-07T04:36:33.973651",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!AOtb!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F12ea1add-1879-4004-a05c-017c3091dd6a_3182x1790.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
     {
       "id": 6411,
       "source_id": 29,
