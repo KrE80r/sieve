@@ -1,7 +1,349 @@
 {
-  "updated_at": "2026-10-07T18:00:00.370059+00:00",
-  "total_items": 947,
+  "updated_at": "2026-10-07T19:00:00.286349+00:00",
+  "total_items": 961,
   "items": [
+    {
+      "id": 6452,
+      "source_id": 34,
+      "original_url": "https://www.amitmerchant.com/practical-way-to-check-your-ai-search-visibility/",
+      "title": "A Practical Way to Check Your AI Search Visibility",
+      "summary": "It presents a practical JavaScript tool that compares AI-generated answers and regular Google results to see if a target domain is mentioned or cited.",
+      "ideas": [
+        "Normalize domains by stripping protocol and www to enable consistent comparisons.",
+        "Extract AI answer text from SearchAPI’s text_blocks and check for lowercase domain inclusion.",
+        "Use SearchApi’s reference_links to detect if the target domain is cited as a source.",
+        "Track the best organic position from Google’s organic_results to assess traditional visibility."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, implementable guidance on detecting AI search visibility, with full code snippets, domain normalization, and clear separation of AI and organic results. It offers a novel, practical method for measuring AI mentions and citations, though it leans on external SearchAPI and does not provide a score. The piece is technically rich but remains tutorial‑focused, limiting it to strong rather than exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:20:35.070317"
+    },
+    {
+      "id": 6451,
+      "source_id": 34,
+      "original_url": "https://vincentdelft.be/post/post_20261006",
+      "title": "My redundant DHCPD on 2 OpenBSD servers",
+      "summary": "OpenBSD's dhcpd has built-in lease synchronization (-Y/-y flags) that enables active/active DHCP redundancy without ifstated, and this article documents the working setup, its mechanics, and its failure modes from source and practice.",
+      "ideas": [
+        "OpenBSD dhcpd built-in lease sync enables active/active DHCP without ifstated",
+        "Sync messages use HMAC-SHA1 keyed from /var/db/dhcpd.key; mismatches drop silently",
+        "Only DHCPREQUEST acknowledgements sync; fresh servers catch up via renewals, no bulk transfer",
+        "Synced leases lack a uid line, distinguishing them from locally granted leases",
+        "Unicast sync is simplest; multicast 224.0.1.240 fails due to default lo0 REJECT route",
+        "This is lease replication, not failover: no pool splitting or load balancing"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A concise, hands-on guide to OpenBSD's built-in dhcpd lease synchronization for active/active DHCP, with concrete flags, pf rules, key management, tcpdump verification, and a troubleshooting section, several details verified against the dhcpd source code. Source-derived findings such as silent packet drops on key mismatch, synchronization only on DHCPREQUEST acknowledgements, and the missing uid line as a synced-lease fingerprint are genuinely non-obvious and operationally useful. Limitations include narrow scope, untested behavior under heavy concurrent load, an incomplete multicast investigation, and a passing note that some source analysis came from Claude. Still, this is a directly applicable, hard-won practitioner writeup squarely relevant to sysadmin and infrastructure interests.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:18:26.670900"
+    },
+    {
+      "id": 6450,
+      "source_id": 34,
+      "original_url": "https://tonym.us/wsl3-kernel-mitigations-tax-benchmark.html",
+      "title": "The Security Tax in WSL3: Benchmarking Kernel Mitigations Against WSL 2.x",
+      "summary": "Disabling speculative‑execution mitigations in WSL 3 reduces syscall latency by ~120 ns and boosts IPC throughput by 77%, revealing a still‑significant security‑performance tax.",
+      "ideas": [
+        "Mitigations = off cuts syscall latency from 186.8 ns to 67.6 ns (2.76× faster).",
+        "IPC pipe throughput rises from 123k to 218k ops/s (+76.8%).",
+        "Go build system time drops 22% (71.4 s → 55.5 s) with mitigations off.",
+        "WSL 3 baseline is 5.5× faster than WSL 2 even with mitigations on.",
+        "Disabling mitigations requires adding \"mitigations=off\" to .wslconfig and restarting WSL."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers original, reproducible benchmarks comparing WSL 2 and WSL 3 with speculative‑execution mitigations on and off, complete with command‑line details and raw numbers. The findings are directly relevant to developers, sysadmins, and security engineers interested in Linux kernel performance inside Hyper‑V VMs. While the analysis is thorough, it is narrowly focused on WSL and does not explore broader kernel or hardware variations, limiting its generality.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:17:30.945686"
+    },
+    {
+      "id": 6449,
+      "source_id": 34,
+      "original_url": "https://thehiddenport.dev/posts/vulnerability-management-sla-design/",
+      "title": "Vulnerability Management SLAs: Design, Enforcement, and Rollout Without Burnout",
+      "summary": "Set strict, tiered SLAs with a gradual promotion model and documented exception process to prevent burnout while maintaining enforcement.",
+      "ideas": [
+        "Promote findings only when flagged; start SLA clock at ticket creation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, end‑to‑end SLA design with automation details, exception workflow, and rollout tactics that are directly applicable to security engineers; it avoids generic hype and presents original mechanisms. Its relevance is strong for vulnerability‑management practitioners but limited to that niche, and the value per minute is high due to focused implementation guidance. The main limitation is that it assumes some familiarity with the cited tools and may not generalize to all environments.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:16:11.837054",
+      "image_url": "https://thehiddenport.dev/images/default-preview.png",
+      "image_width": 1200,
+      "image_height": 637,
+      "image_alt": ""
+    },
+    {
+      "id": 6448,
+      "source_id": 34,
+      "original_url": "https://sbulav.github.io/kubernetes/kubernetes-network-stack-2026/",
+      "title": "Our Kubernetes Network Stack in 2026: Still Calico, BGP and BFD",
+      "summary": "Staying with Calico, using BGP and BFD via a small template tweak, remains the most reliable design despite emerging alternatives.",
+      "ideas": [
+        "BFD detects node failures in under a second, preventing 90‑second blackholes.",
+        "Calico announces service CIDR, making ClusterIP reachable without a load balancer.",
+        "Calico VPP lacks BFD and adds complexity to host networking and debugging."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible technical details—BFD integration via BIRD template patches, performance numbers, and a thorough comparison of Calico VPP and Cilium—while staying narrowly focused on Kubernetes networking, making it highly relevant to sysadmin‑type readers; however, its scope is limited to a specific environment and does not cover broader AI or general infrastructure topics, preventing an exceptional rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:12:51.400169"
+    },
+    {
+      "id": 6447,
+      "source_id": 34,
+      "original_url": "https://rtfm.co.ua/en/litellm-postgresql-failed-requests-aws-rds-and-manual-debugging/",
+      "title": "LiteLLM: PostgreSQL Failed Requests, AWS RDS, and “Manual Debugging”",
+      "summary": "Increasing Aurora RDS’s max_allocated_storage from 100 GB to 500 GB resolves LiteLLM PostgreSQL failed requests caused by storage exhaustion.",
+      "ideas": [
+        "Alert fires when increase(litellm_postgres_failed_requests_total[5m]) > 0",
+        "PostgreSQL logs show \"Error { kind: Closed, cause: None }\"",
+        "RDS max_allocated_storage was set to 100 GB, needed to raise to 500 GB",
+        "Storage autoscaling changes apply instantly without reboot",
+        "Added Recording Rule to count PostgreSQL error logs in VictoriaLogs"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post provides concrete, reproducible debugging steps, identifies the root cause (RDS storage limit), and offers exact Terraform and monitoring fixes; the technical depth and actionable insight are high, but the surrounding meta‑commentary adds minor noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:12:23.559734"
+    },
+    {
+      "id": 6446,
+      "source_id": 34,
+      "original_url": "https://piscaries.github.io/posts/codex-and-pi-build-the-same-app-in-orca/",
+      "title": "I had Codex and Pi build the same app in Orca, then compared them side by side",
+      "summary": "Pi’s agent produced a stronger chess engine despite a slower build, highlighting that agent architecture critically influences final product quality.",
+      "ideas": [
+        "Pi engine defeated Codex engine 18‑2 in 20‑move matches.",
+        "Codex built the app in 48 min; Pi required 217 min.",
+        "Both apps passed 43 hidden tests; Pi's UI had reversed colors."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Score high because the article presents a reproducible side‑by‑side experiment comparing Codex and Pi agents, providing original measurements of build time, token usage, and engine performance, along with identified UI defects that were only visible in direct comparison. The findings are directly relevant to AI/LLM engineering and tooling evaluation. Limitations include narrow scope to a single chess‑coach task and dependence on specific model versions, which may limit generalisation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:08:56.446522",
+      "image_url": "https://piscaries.github.io/images/codex-and-pi-build-the-same-app-in-orca/fig2-architecture.png",
+      "image_width": 2800,
+      "image_height": 1880,
+      "image_alt": ""
+    },
+    {
+      "id": 6445,
+      "source_id": 34,
+      "original_url": "https://mikelev.in/futureproof/removing-the-conversion-event/",
+      "title": "Removing the Conversion Event: When Paradigms Become Invisible Infrastructure",
+      "summary": "Paradigm shifts win when they become invisible defaults that users adopt without explicit conversion, turning new mechanics into inherited infrastructure.",
+      "ideas": [
+        "Invisible paradigm adoption occurs when users click a button and inherit new mechanics without realizing the shift.",
+        "Successful mental models become internal infrastructure that shapes identity and innovation capacity.",
+        "Operation Stick Bug: make new paradigms the default to win adoption without persuasion."
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a clear technical insight about paradigm adoption via invisible infrastructure, supported by concrete examples such as WSL 2 and Docker Desktop, and explains how to remove conversion ceremonies. It avoids excessive philosophical fluff while offering practical mechanisms and trade‑offs, though some informal prose adds minor noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T05:06:56.934398"
+    },
+    {
+      "id": 6444,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/whatcable/",
+      "title": "Use WhatCable to figure out what your USB cable can do",
+      "summary": "The post explains how WhatCable reads USB‑C cable e‑markers to reveal data speed, power limits, and cable provenance, showing practical steps and underlying macOS I/O Kit mechanisms.",
+      "ideas": [
+        "USB‑C cables share a plug; internal wires and e‑marker determine speed and power",
+        "e‑marker chip reports vendor ID, capabilities, enabling detection of cable limits",
+        "whatcable command outputs JSON with speed, maxWatts per port for debugging",
+        "Pro version adds live power monitoring and port‑cable compatibility comparison"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers deep, concrete technical explanation of USB‑C cable capability detection using e‑markers, command‑line usage, and macOS IOKit internals, which is valuable to engineers. It includes practical examples and command snippets, but is mixed with promotional content and limited novelty due to focusing on a single tool. Overall it offers high utility for readers interested in hardware debugging.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T04:56:36.645091",
+      "image_url": "https://flaviocopes.com/images/whatcable/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for Use WhatCable to figure out what your USB cable can do"
+    },
+    {
+      "id": 6443,
+      "source_id": 34,
+      "original_url": "https://benniemosher.com/learning/2026/10/06/slis-slos-and-error-budgets.html",
+      "title": "SLIs, SLOs and Error Budgets",
+      "summary": "Using measurable SLIs, SLOs, and error budgets lets you quantify reliability targets and decide when to ship changes or address stability issues.",
+      "ideas": [
+        "SLI is a ratio of good events to valid events.",
+        "Error budget equals 100% minus the SLO target (e.g., 99.9% allows ~43 minutes of outage).",
+        "Valid events must be defined at input, before counting them.",
+        "Low‑traffic services need scheduled test events or longer windows to measure error budgets.",
+        "Burn‑rate alerts trigger on remaining error budget rather than raw error rates."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete definitions, precise calculations, and real‑world implementation details for SLIs, SLOs, and error budgets, illustrating how to measure and allocate reliability budgets in low‑traffic services. It demonstrates practical mechanisms such as valid‑event filtering, test events, and burn‑rate alerts, which meet the technical relevance and substance criteria. The main limitation is its introductory focus and reliance on personal anecdotes, but the depth of technical guidance justifies a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T04:48:27.744000"
+    },
+    {
+      "id": 6442,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/kandinsky-6-video",
+      "title": "Kandinsky 6.0 Video: two token streams on one clock, and where the lip-sync comes from",
+      "summary": "Kandinsky 6.0 uses two cross‑attention streams that share token positions via a 0.144 RoPE scale, achieving synchronized 44 kHz audio and lip‑movement in a single 5‑second clip.",
+      "ideas": [
+        "30.14B parameters measured via Hub API; 3.18B for Lite.",
+        "Audio stream holds 16% of Pro’s weights and processes 0.4% of tokens.",
+        "RoPE scaling 0.144 aligns 218 audio tokens to 31 video latent frames."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, measured architecture details, token budgets, and weight splits, explaining how Kandinsky 6.0 jointly denoises video and audio with cross‑attention. It provides original insights and hard numbers that a technical reader can act on, though it assumes familiarity with diffusion methods and does not include experimental results. The depth and evidence justify a strong score, but the lack of hands‑on verification and the niche focus keep it from exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T04:44:43.172022",
+      "image_url": "https://ai.thesatyajit.com/articles/kandinsky-6-video/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 6441,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/3d-reconstruction-roundup-2",
+      "title": "3D reconstruction roundup 2: old geometry, bolted onto feed-forward models",
+      "summary": "Six feed-forward 3D papers are dissected against their own tables, showing which old geometric ideas actually pay off: cascade pyramids win on city blocks, exact Gaussian budgets beat random subsets, and SE(3) loop closure only works if the front end's scale is already consistent.",
+      "ideas": [
+        "T3lescope cascade halves cell sizes per level, beating GenRecon 0.645m vs 4.858m Chamfer on city blocks.",
+        "PocketSplat's entropy-based Gaussian budget beats random subsets by 2.19–3.69 dB on DL3DV.",
+        "SE(2) loop closure with one edge reduces 12.02m drift to 0.25m RMSE, but 25% scale drift leaves 2.98m.",
+        "LoGeR cross-window scale error is 5.8% vs VGGT-Long's 18.8%, enabling SE(3) loop closure.",
+        "Gravity-aligned pointmaps reduce inter-frame transform from 7-DoF similarity to 5-DoF (yaw + scale + translation).",
+        "PocketSplat phone runtime is flat 10.2–11s across budgets; memory win comes from no cost volume, not budgeting.",
+        "Edge-based BA (EPO) reaches AUC@5 77.1 vs VGGT's own BA at 70.9 on ScanNet++ without explicit tracks."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Original technical analysis of six feed-forward 3D reconstruction papers with clearly distinguished reported, measured, and reasoned evidence. Includes a reproducible SE(2) loop-closure toy, recomputed metrics from paper tables, and sharp critical reading (e.g., PocketSplat's 'budget saves compute' claim does not hold on-device). The article is truncated mid-EPO section, which prevents a complete synthesis, but the existing content is dense with mechanisms, numbers, and non-obvious observations that reward a technically capable reader.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-08T04:42:37.181899",
+      "image_url": "https://ai.thesatyajit.com/articles/3d-reconstruction-roundup-2/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 6440,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/unpatched-critical-lmcache-flaw-lets.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Unauthenticated code execution via LMCache's pickle deserialization enables attackers to run code on LLM cache servers.",
+      "ideas": [
+        "Unauthenticated code execution via LMCache multiprocess mode with pickle deserialization",
+        "CVE-2026-105192 severity 9.8 affects LMCache 0.3.9‑0.5.5, no patch released",
+        "Server reachable only when started with routable address; default isolates locally",
+        "Pickle deserialization runs code with process privileges, often root",
+        "No public fix; mitigation advises avoid routable address and limit network access",
+        "Related vLLM flaw CVE-2026-105756 causes denial‑of‑service via malformed cache_salt",
+        "ShadowMQ identified similar pickle vulnerabilities across AI inference frameworks in 2025",
+        "Multiple reported LMCache security issues lack CVE, confirmation, or fix"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers multiple concrete insights: detailed exploitation mechanics, CVE details including severity 9.8, mitigation advice, related vLLM flaw, and broader ShadowMQ context. It provides high value density with no clickbait or padding, aligning closely with CyberSecurity and AI themes. No penalties applied, making it a high‑scoring piece of content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-08T04:32:59.941774",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyMSiFF8XNm1OpF4uWou7e4nt4fqsuPc0IXyUXhHky9w8ydKkauWm_j0yxdpMsRFlDx-5PHhtAxYNg3Z-rYqvexgILhokXO8tARRTtDHn2P83GOlUhiD6jN7rtkf3Ul1-Hp7O4VyvwV6EGNUgjmcC-B_o_P-xQy9eD7RaTnO_RoDpDwgjTePDvkjC9xso/s1700-nu-rw-lo-l85-e365/lm.jpg",
+      "image_width": 900,
+      "image_height": 470,
+      "image_alt": ""
+    },
+    {
+      "id": 6439,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Oct/7/anti-patterns-in-software-blogging/",
+      "title": "Anti-Patterns in Software Blogging",
+      "summary": "Write clearly, conversationally, respect readers' existing knowledge, and inject personality to avoid bland, AI‑generated blog content.",
+      "ideas": [
+        "Avoid meandering intros in blog posts",
+        "Don't misjudge readers' existing knowledge",
+        "Skip assuming readers will read prior posts",
+        "Refrain from excessive formality",
+        "Explain terminology; don't rely solely on links",
+        "Use your own voice, write conversationally",
+        "AI makes blogging bland; readers seek personality"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The post provides seven distinct, actionable insights on software‑blogging anti-patterns, delivering high value density in a concise format. It aligns closely with the Tech theme and contains minimal clickbait or padding, though it includes brief promotional disclosures. These factors merit a solid score without reaching exceptional status.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-10-08T04:32:09.509837"
+    },
     {
       "id": 6438,
       "source_id": 4,
