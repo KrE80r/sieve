@@ -1,11 +1,298 @@
 {
   "schema_version": 1,
-  "sequence": 1172,
-  "revision": "sha256:c32dc4e77859f02abfeeff15a43ae6fc2d640b47cad7cc77308d26d023233187",
-  "generated_at": "2026-10-09T20:00:00.176257+00:00",
+  "sequence": 1173,
+  "revision": "sha256:c589602dfce8a4c7487f543becfe6954440be387097e1b097e1a10bb31dbdcc0",
+  "generated_at": "2026-10-09T21:00:00.308471+00:00",
   "complete": true,
-  "total_items": 965,
+  "total_items": 978,
   "items": [
+    {
+      "article_id": "article:6538",
+      "original_url": "https://qsoe-dev.blogspot.com/2026/10/qsoe-04-released.html",
+      "title": "QSOE 0.4 released",
+      "summary": "A QNX-compatible microkernel OS targeting RISC-V now ships working audio, a content-addressed package manager, a self-hosted C toolchain, and unified userspace across custom Skimmer and seL4 kernels — with detailed incident writeups that reveal real IPC and scheduler gotchas.",
+      "rating": 92,
+      "rating_reason": "Exceptionally substantive release notes from a small-team OS project. Contains concrete measurements (spawn 404ms→166ms, 57.9MB copy 73s→18s), a genuine debugging investigation (407 audio underruns traced through IPC buffer copies and pulse handling), and non-obvious engineering details: RISC-V fence.i for I-cache coherence, hart-aware ThreadDestroy, exact-ratio polyphase resampling for unsupported sample rates, and content-addressed packages with atomic generation switches. Almost no padding or hype; known gaps are stated explicitly.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:28:41.680780+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:28:41.680780+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6537",
+      "original_url": "https://patrickdesjardins.com/blog/from-15-minutes-to-71-milliseconds-big-o-and-a-matrix",
+      "title": "From 15 Minutes to 71 Milliseconds: Big O and a Matrix",
+      "summary": "The author collapsed duplicate comparisons into counts and replaced iterative EP updates with a single Cholesky solve on a precision matrix, reducing runtime from 108 seconds to 71 milliseconds for 100x100 inputs.",
+      "rating": 93,
+      "rating_reason": "The article is exceptional for its rigorous engineering case study: it derives an O(X*Y^4) bottleneck from sequential EP, then rewrites the core loop using vectorized matrix algebra and Cholesky solve, achieving a 1500x speedup. It provides concrete source code, exhaustive benchmarks across multiple input sizes, and a validation study of 5000 matrices that thoroughly addresses determinism and tie handling. The deep technical detail and practical usefulness for ML engineering outweigh the highly specialized scope.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:22:54.540894+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:22:54.540894+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6536",
+      "original_url": "https://okt.ai/2026/10/03/what-if-git-cared-about-what-agents-read/",
+      "title": "What if Git cared about what agents read?",
+      "summary": "Multi-agent coding coordination should track agent reads and notify higher-ranked agents when their premises go stale, with function-level identity enabling semantic merging and all reasoning stored as Git refs.",
+      "rating": 91,
+      "rating_reason": "Original, well-supported synthesis of 8 research papers into a concrete system design (Loom) for multi-agent code coordination. The article cites specific benchmark numbers (1.04x for 2PL, 1.83x tokens for optimistic concurrency, 93% correctness for MTPO), proposes concrete APIs and infrastructure choices on Cloudflare's Artifacts/Durable Objects, and is unusually honest about limitations like the 74% bypass rate of read tools and rename detection gaps. The core insight—that multi-agent coordination failure lies in reads rather than writes—is non-obvious, well-evidenced, and underpins a workable architectural sketch. Truncation mid-sentence and the speculative/unbuilt nature of the design prevent a higher score.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:18:15.464107+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:18:15.464107+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6535",
+      "original_url": "https://narendranag.com/2026/10/05/the-empty-200.html",
+      "title": "The Empty 200",
+      "summary": "A lookup returning zero items can cause downstream nodes to be skipped, resulting in a misleading HTTP 200 with an empty body that masks failures.",
+      "rating": 85,
+      "rating_reason": "The article delivers a concrete, firsthand engineering analysis of a subtle runtime bug where a zero-match lookup silently produces an HTTP 200 with an empty body. It provides clear mechanism description, a practical fix, and a reproducible test pattern, making it highly relevant to technicians building workflow or API systems. The score is strong but limited to the specific workflow-engine context and does not generalize beyond that niche.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:10:54.986775+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:10:54.986775+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6534",
+      "original_url": "https://mdelapenya.xyz/posts/2026-10-09-a-cheaper-model-can-be-a-better-instrument/",
+      "title": "A Cheaper Model Can Be a Better Instrument",
+      "summary": "Clarifying instructions for cheaper models exposes ambiguities, enabling cost‑effective parallel execution.",
+      "rating": 88,
+      "rating_reason": "The article provides concrete technical mechanisms—prompt precision, tiered orchestration, and measurable token cost reductions—that directly inform AI model deployment. It offers original evidence and practical workflow improvements, though it remains specialized to LLM orchestration and does not generalize broadly.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:04:37.723004+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:04:37.723004+00:00",
+      "image": {
+        "url": "https://mdelapenya.xyz/images/posts/2026-10-09-a-cheaper-model-can-be-a-better-instrument/cover.png",
+        "width": 1536,
+        "height": 1024,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6533",
+      "original_url": "https://mcginniscommawill.com/posts/2026-10-05-parga-genetic-algorithms-fundamentals/",
+      "title": "Genetic Algorithms: Evolution as Optimization",
+      "summary": "Hybridizing a GA to locate basins and then applying a local optimizer delivers near‑optimal results across diverse rugged landscapes.",
+      "rating": 88,
+      "rating_reason": "The post supplies original empirical comparisons, concrete implementation guidance, and nuanced analysis of when GAs outperform gradient methods, making it highly relevant to AI and optimization engineers. Its main limitation is a modest treatment of advanced variants and a subtle promotional slant toward the ParGA library that prevents a top‑tier score. The insights are technically deep yet remain concise enough for practical adoption.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:04:09.728530+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:04:09.728530+00:00",
+      "image": {
+        "url": "https://mcginniscommawill.com/images/defaults/hero.png",
+        "width": 1536,
+        "height": 1024,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6532",
+      "original_url": "https://martinhicks.dev/articles/parity-suite-36-release-notes",
+      "title": "Parity Suite 3.6 and a month of emulator fixes",
+      "summary": "Recent AWS DynamoDB region‑specific transaction size rules cause cross‑region test failures that Parity Suite 3.6.1 resolves by accepting both outcomes until consensus.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, original measurements of DynamoDB emulator test failures, explains the region‑specific validation mechanism causing those failures, and documents how Parity Suite 3.6.1 adapts to them. It is highly relevant to engineers testing or implementing DynamoDB emulators, though its niche focus limits broader appeal. Some valuable context is omitted, such as exact release dates for future merges, which slightly tempers its score.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:00:07.732084+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:00:07.732084+00:00",
+      "image": {
+        "url": "https://martinhicks.dev/images/articles/parity-suite-card.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6531",
+      "original_url": "https://knl.co.in/posts/gemma-3-1b-ternary/",
+      "title": "Gemma 3 1B at 114 tokens per second on a laptop CPU",
+      "summary": "A ternary‑weight Gemma 3 1B model with a 1.6‑bit kernel and sketch‑head output achieves 114 t/s on a laptop CPU, at the cost of modest quality degradation.",
+      "rating": 88,
+      "rating_reason": "The article provides deep, reproducible engineering details on ternary quantization, a custom AVX‑512 kernel, and a sketch‑head output pruning method that together give a 3.8× speedup on a laptop CPU. It includes concrete measurements, training recipes, and open‑source code, making it highly actionable for LLM inference engineers. The trade‑off of ~14% quality loss and hardware‑specific requirements limit universal impact, preventing an exceptional score.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T06:46:57.026872+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T06:46:57.026872+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6530",
+      "original_url": "https://kitallis.in/p/hutch-a-local-code-review-interface-for-magit/",
+      "title": "hutch: local code reviews in emacs for the mildly disenfranchised",
+      "summary": "A practitioner's deep dive into designing, observing, and benchmarking an Emacs-local LLM code review agent, with original data on model behavior, a novel Perfetto-based tracing approach, and concrete UX/engineering decisions (SEARCH/REPLACE patches, Tree-sitter context, bottom-up diff application).",
+      "rating": 90,
+      "rating_reason": "Dense, substantive engineering writeup of an LLM-powered code review agent with original empirical findings. The Perfetto-based agent tracing approach is genuinely novel and practical, the SEARCH/REPLACE diff methodology is hard-won practitioner knowledge, and the cross-model benchmark (Opus 4.8, GLM 5.2, GPT 5.5) yields non-obvious insights: low model agreement on what counts as a bug, ~55% lift from ensembling, Opus using 3x fewer turns. Personal narrative padding at the start is minor.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T06:46:48.847557+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T06:46:48.847557+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6529",
+      "original_url": "https://kevinold.com/blog/a-week-maintaining-wait-on",
+      "title": "https://kevinold.com/blog/a-week-maintaining-wait-on",
+      "summary": "A detailed case study in moving a critical npm package at AI-agent speed: lane-isolated parallel work, machine-checked guardrails, and a Rust core that halves the dependency tree while the same mocha suite verifies both engines.",
+      "rating": 87,
+      "rating_reason": "First-hand maintainer account of using AI coding agents at unusual speed on a 12M-download/week npm package (wait-on), with concrete metrics (27 PRs, 496 tests, 14 Rust lanes), specific tools (Compound Engineering, overdrive, herdr, codebase-memory-mcp), and honest documentation of both wins and a real miss (the axios-to-fetch port silently dropped strictSSL/ca/cert for HTTPS env-proxy targets until a reviewer caught it). The guardrails (test-first AGENTS.md rules, OIDC trusted publishing, cargo-deny/vet, agents cannot edit CI) are tied to specific failures and are independently actionable. Mild padding from personal context and self-promotion of his own tools keep it just below exceptional.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T06:44:35.496441+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T06:44:35.496441+00:00",
+      "image": {
+        "url": "https://www.kevinold.com/static/images/twitter-card.png",
+        "width": 1200,
+        "height": 600,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6528",
+      "original_url": "https://kachar.dev/blog/orders-get-obedience-questions-get-opinions",
+      "title": "Orders get obedience. Questions get opinions.",
+      "summary": "Questions keep the answer ceiling open, allowing better or unexpected solutions that orders can hide.",
+      "rating": 85,
+      "rating_reason": "The piece presents data‑driven analysis of ordering vs questioning in prompts, introduces a useful ceiling test, and shows measurable shifts in prompt design, but its conclusions rely heavily on Claude Code and may not generalize to all models.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T06:42:23.337580+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T06:42:23.337580+00:00",
+      "image": {
+        "url": "https://kachar.dev/blog/orders-get-obedience-questions-get-opinions/opengraph-image",
+        "width": 1200,
+        "height": 630,
+        "alt": "Orders get obedience. Questions get opinions."
+      }
+    },
+    {
+      "article_id": "article:6527",
+      "original_url": "https://joshua.hu/lessons-using-sanitizers-oracle-llm-vulnerability-triage",
+      "title": "Lessons from using sanitizers as an oracle for LLM vulnerability triage",
+      "summary": "A practitioner taxonomy of failure modes when using ASan/MSan/UBSan/TSan as deterministic oracles for LLM vulnerability triage, covering both agent cheating tactics and sanitizer blind spots, with concrete mitigations.",
+      "rating": 88,
+      "rating_reason": "Original firsthand engineering taxonomy of failure modes in LLM-assisted vulnerability triage using sanitizers as oracles. Categorizes problems into 'agent cheats' (A1–A8) and 'oracle blind' (B1–B5) with concrete real-world examples: tcpdump stack-size manipulation, custom allocator interposition, source-code tampering by the agent, and the Yara threat-model confusion. Includes non-obvious actionable details such as the Docker/ASan ASLR conflict requiring vm.mmap_rnd_bits=28 on the host (not in-container), ASan quarantine recycling defeating distant UAF detection, manual poisoning API for custom allocators, and the mutual-exclusion constraints between sanitizers. Substantially truncated at the end (cuts off mid-B4), which weakens the closing sections and checklist, but the bulk of the original insight is intact.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T06:38:12.887526+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T06:38:12.887526+00:00",
+      "image": {
+        "url": "https://joshua.hu/assets/img/social-card.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Lessons from using sanitizers as an oracle for LLM vulnerability triage | Joshua Rogers' Scribbles"
+      }
+    },
+    {
+      "article_id": "article:6526",
+      "original_url": "https://jchigg2000.dev/blog/i-published-the-rule-and-built-the-hole",
+      "title": "I Published the Rule and Built the Hole Eight Days Later",
+      "summary": "Loopback bindings alone cannot secure internal tools against browser-based access, and rate limiters behind proxies must count visitor IPs rather than proxy IPs — two critical boundaries frequently misconfigured.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand security engineering lessons with original evidence from actual failures and fixes. Loopback binding and proxy rate-limiter misconfigurations are explained with clear mechanisms, observed behavior, and specific code changes, providing non-obvious but highly applicable insights.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T06:30:38.008833+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T06:30:38.008833+00:00",
+      "image": {
+        "url": "https://jchigg2000.dev/og/i-published-the-rule-and-built-the-hole.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Terminal card: I Published the Rule and Built the Hole Eight Days Later — I published a security rule, then built a tool that broke it eight days later. Writing a lesson down did not carry it into my next build. Only a check that runs can."
+      }
+    },
     {
       "article_id": "article:6525",
       "original_url": "https://intertwingly.net/blog/2026/10/09/Many-Keepers.html",

@@ -1,7 +1,340 @@
 {
-  "updated_at": "2026-10-09T20:00:00.176257+00:00",
-  "total_items": 991,
+  "updated_at": "2026-10-09T21:00:00.308471+00:00",
+  "total_items": 1004,
   "items": [
+    {
+      "id": 6538,
+      "source_id": 34,
+      "original_url": "https://qsoe-dev.blogspot.com/2026/10/qsoe-04-released.html",
+      "title": "QSOE 0.4 released",
+      "summary": "A QNX-compatible microkernel OS targeting RISC-V now ships working audio, a content-addressed package manager, a self-hosted C toolchain, and unified userspace across custom Skimmer and seL4 kernels — with detailed incident writeups that reveal real IPC and scheduler gotchas.",
+      "ideas": [
+        "Late audio buffer is the canary that exposes IPC stalls far earlier than other tests.",
+        "A third party on a data path inherits every stall the path can meet.",
+        "Self-pulses should go through a per-process lock-free queue, never through taskman.",
+        "Use fence.i on every new thread start to avoid RISC-V I-cache/d-cache incoherence.",
+        "Build fails on removed or unlisted ABI exports — no weak linkage anywhere.",
+        "Resample with exact-ratio polyphase windowed-sinc when hardware accepts only one rate.",
+        "Package installs are immutable content-addressed dirs; one rename swaps generations atomically.",
+        "Skimmer interrupt thread runs above disk priority to bound audio under disk pressure."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptionally substantive release notes from a small-team OS project. Contains concrete measurements (spawn 404ms→166ms, 57.9MB copy 73s→18s), a genuine debugging investigation (407 audio underruns traced through IPC buffer copies and pulse handling), and non-obvious engineering details: RISC-V fence.i for I-cache coherence, hart-aware ThreadDestroy, exact-ratio polyphase resampling for unsupported sample rates, and content-addressed packages with atomic generation switches. Almost no padding or hype; known gaps are stated explicitly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:28:41.680780"
+    },
+    {
+      "id": 6537,
+      "source_id": 34,
+      "original_url": "https://patrickdesjardins.com/blog/from-15-minutes-to-71-milliseconds-big-o-and-a-matrix",
+      "title": "From 15 Minutes to 71 Milliseconds: Big O and a Matrix",
+      "summary": "The author collapsed duplicate comparisons into counts and replaced iterative EP updates with a single Cholesky solve on a precision matrix, reducing runtime from 108 seconds to 71 milliseconds for 100x100 inputs.",
+      "ideas": [
+        "Sequential EP rewrites YxY covariance per comparison, costing O(X*Y^4).",
+        "Vectorized matrix assembly via numpy.bincount and Cholesky solve reduces cost to O(Y^3).",
+        "Counting unique pair directions reduces comparisons from 495,000 to 9,900 at Y=100."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "The article is exceptional for its rigorous engineering case study: it derives an O(X*Y^4) bottleneck from sequential EP, then rewrites the core loop using vectorized matrix algebra and Cholesky solve, achieving a 1500x speedup. It provides concrete source code, exhaustive benchmarks across multiple input sizes, and a validation study of 5000 matrices that thoroughly addresses determinism and tie handling. The deep technical detail and practical usefulness for ML engineering outweigh the highly specialized scope.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:22:54.540894"
+    },
+    {
+      "id": 6536,
+      "source_id": 34,
+      "original_url": "https://okt.ai/2026/10/03/what-if-git-cared-about-what-agents-read/",
+      "title": "What if Git cared about what agents read?",
+      "summary": "Multi-agent coding coordination should track agent reads and notify higher-ranked agents when their premises go stale, with function-level identity enabling semantic merging and all reasoning stored as Git refs.",
+      "ideas": [
+        "Multi-agent concurrency fails on reads, not writes—locks deadlocks, optimistic aborts waste 1.83x tokens.",
+        "MTPO protocol: speculative writes plus one-way rank-ascending notifications form a DAG, no livelock.",
+        "Rank-filtered reads with replays achieve 93% correctness vs 98% serial, 1.43x speedup, 1.15x tokens.",
+        "Function-level identity (path::name) enables semantic merging: identical edits collapse, moves don't conflict.",
+        "74% of agent reads bypass tools, breaking premise tracking—built-in swarms must funnel via platform.",
+        "Import/export graph expansion: premise on function U covers signatures of its dependencies.",
+        "Push-time notifications only travel up ranks; down-rank triggers only at landing with re-rank cap.",
+        "All coordination state lives as Git refs so vanilla clone/fetch still works.",
+        "AgentGit: checkpoints permanent, retraction is ref move not deletion—losers stay as evidence."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "Original, well-supported synthesis of 8 research papers into a concrete system design (Loom) for multi-agent code coordination. The article cites specific benchmark numbers (1.04x for 2PL, 1.83x tokens for optimistic concurrency, 93% correctness for MTPO), proposes concrete APIs and infrastructure choices on Cloudflare's Artifacts/Durable Objects, and is unusually honest about limitations like the 74% bypass rate of read tools and rename detection gaps. The core insight—that multi-agent coordination failure lies in reads rather than writes—is non-obvious, well-evidenced, and underpins a workable architectural sketch. Truncation mid-sentence and the speculative/unbuilt nature of the design prevent a higher score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:18:15.464107"
+    },
+    {
+      "id": 6535,
+      "source_id": 34,
+      "original_url": "https://narendranag.com/2026/10/05/the-empty-200.html",
+      "title": "The Empty 200",
+      "summary": "A lookup returning zero items can cause downstream nodes to be skipped, resulting in a misleading HTTP 200 with an empty body that masks failures.",
+      "ideas": [
+        "Force a placeholder item through zero-match lookups to prevent silent 200 responses."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a concrete, firsthand engineering analysis of a subtle runtime bug where a zero-match lookup silently produces an HTTP 200 with an empty body. It provides clear mechanism description, a practical fix, and a reproducible test pattern, making it highly relevant to technicians building workflow or API systems. The score is strong but limited to the specific workflow-engine context and does not generalize beyond that niche.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:10:54.986775"
+    },
+    {
+      "id": 6534,
+      "source_id": 34,
+      "original_url": "https://mdelapenya.xyz/posts/2026-10-09-a-cheaper-model-can-be-a-better-instrument/",
+      "title": "A Cheaper Model Can Be a Better Instrument",
+      "summary": "Clarifying instructions for cheaper models exposes ambiguities, enabling cost‑effective parallel execution.",
+      "ideas": [
+        "Precise prompts let cheaper models execute tasks without ambiguity.",
+        "Model failures reveal missing details in instructions, guiding prompt refinement.",
+        "Tiered orchestration reduces token cost by clarifying responsibilities.",
+        "Token analysis shows 22% reduction in usage with the new workflow."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete technical mechanisms—prompt precision, tiered orchestration, and measurable token cost reductions—that directly inform AI model deployment. It offers original evidence and practical workflow improvements, though it remains specialized to LLM orchestration and does not generalize broadly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:04:37.723004",
+      "image_url": "https://mdelapenya.xyz/images/posts/2026-10-09-a-cheaper-model-can-be-a-better-instrument/cover.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6533,
+      "source_id": 34,
+      "original_url": "https://mcginniscommawill.com/posts/2026-10-05-parga-genetic-algorithms-fundamentals/",
+      "title": "Genetic Algorithms: Evolution as Optimization",
+      "summary": "Hybridizing a GA to locate basins and then applying a local optimizer delivers near‑optimal results across diverse rugged landscapes.",
+      "ideas": [
+        "GA alone reaches basin on Rastrigin but cannot descend to optimum.",
+        "Hybrid GA+local search improves Rastrigin from 1.52 to 0.995.",
+        "Griewank function gets easier with dimension due to product of cosines."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post supplies original empirical comparisons, concrete implementation guidance, and nuanced analysis of when GAs outperform gradient methods, making it highly relevant to AI and optimization engineers. Its main limitation is a modest treatment of advanced variants and a subtle promotional slant toward the ParGA library that prevents a top‑tier score. The insights are technically deep yet remain concise enough for practical adoption.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:04:09.728530",
+      "image_url": "https://mcginniscommawill.com/images/defaults/hero.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 6532,
+      "source_id": 34,
+      "original_url": "https://martinhicks.dev/articles/parity-suite-36-release-notes",
+      "title": "Parity Suite 3.6 and a month of emulator fixes",
+      "summary": "Recent AWS DynamoDB region‑specific transaction size rules cause cross‑region test failures that Parity Suite 3.6.1 resolves by accepting both outcomes until consensus.",
+      "ideas": [
+        "Region‑specific DynamoDB transaction size limits now cause cross‑region test failures."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, original measurements of DynamoDB emulator test failures, explains the region‑specific validation mechanism causing those failures, and documents how Parity Suite 3.6.1 adapts to them. It is highly relevant to engineers testing or implementing DynamoDB emulators, though its niche focus limits broader appeal. Some valuable context is omitted, such as exact release dates for future merges, which slightly tempers its score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T07:00:07.732084",
+      "image_url": "https://martinhicks.dev/images/articles/parity-suite-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6531,
+      "source_id": 34,
+      "original_url": "https://knl.co.in/posts/gemma-3-1b-ternary/",
+      "title": "Gemma 3 1B at 114 tokens per second on a laptop CPU",
+      "summary": "A ternary‑weight Gemma 3 1B model with a 1.6‑bit kernel and sketch‑head output achieves 114 t/s on a laptop CPU, at the cost of modest quality degradation.",
+      "ideas": [
+        "Pack ternary weights five per byte (20% size reduction) and unpack with AVX‑512 VNNI.",
+        "Use a sketch head: exact scoring on top 32 dimensions, 1‑bit sign scoring for pruning.",
+        "1‑bit sketch selects the correct token 86‑99% of the time; exact pass fixes all cases.",
+        "Ternary Gemma 1B runs 114 tokens/s on Ryzen 7 7445HS, 3.8× faster than llama.cpp 4‑bit.",
+        "Training the ternary decoder for 230 M tokens (6 h H100, $27) yields 14% higher perplexity.",
+        "Output layer becomes new bottleneck; pruning reduces its cost from 6.4 ms to 2.1 ms per token."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides deep, reproducible engineering details on ternary quantization, a custom AVX‑512 kernel, and a sketch‑head output pruning method that together give a 3.8× speedup on a laptop CPU. It includes concrete measurements, training recipes, and open‑source code, making it highly actionable for LLM inference engineers. The trade‑off of ~14% quality loss and hardware‑specific requirements limit universal impact, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T06:46:57.026872"
+    },
+    {
+      "id": 6530,
+      "source_id": 34,
+      "original_url": "https://kitallis.in/p/hutch-a-local-code-review-interface-for-magit/",
+      "title": "hutch: local code reviews in emacs for the mildly disenfranchised",
+      "summary": "A practitioner's deep dive into designing, observing, and benchmarking an Emacs-local LLM code review agent, with original data on model behavior, a novel Perfetto-based tracing approach, and concrete UX/engineering decisions (SEARCH/REPLACE patches, Tree-sitter context, bottom-up diff application).",
+      "ideas": [
+        "SEARCH/REPLACE diffs are more obedient across models than asking for exact line patches.",
+        "Cheaper models recall SEARCH blocks from memory instead of copying verbatim, breaking diffs.",
+        "Perfetto traces can serve as a free, infra-free observability medium for LLM agents via SQL.",
+        "Tree-sitter-wrapped surrounding_context reduces tokens vs raw read_file at comparable quality.",
+        "Different frontier models catch largely different code-review bugs; ensemble gives ~55% lift.",
+        "Apply diffs per-file bottom-up so earlier hunks don't shift later line positions.",
+        "Verify each SEARCH block uniquely before submission, downgrade invalid patches to comments.",
+        "Persist agent findings under refs/hutch/id to make reviews replayable from the git tree.",
+        "Opus 4.8 used ~3x fewer rounds than GPT 5.5 at similar hit rate in this benchmark.",
+        "Opus burned ~3x more input tokens, likely from per-round context resends."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Dense, substantive engineering writeup of an LLM-powered code review agent with original empirical findings. The Perfetto-based agent tracing approach is genuinely novel and practical, the SEARCH/REPLACE diff methodology is hard-won practitioner knowledge, and the cross-model benchmark (Opus 4.8, GLM 5.2, GPT 5.5) yields non-obvious insights: low model agreement on what counts as a bug, ~55% lift from ensembling, Opus using 3x fewer turns. Personal narrative padding at the start is minor.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T06:46:48.847557"
+    },
+    {
+      "id": 6529,
+      "source_id": 34,
+      "original_url": "https://kevinold.com/blog/a-week-maintaining-wait-on",
+      "title": "https://kevinold.com/blog/a-week-maintaining-wait-on",
+      "summary": "A detailed case study in moving a critical npm package at AI-agent speed: lane-isolated parallel work, machine-checked guardrails, and a Rust core that halves the dependency tree while the same mocha suite verifies both engines.",
+      "ideas": [
+        "Agents open PRs; humans merge; test-first and machine-checked guardrails are what make agent-speed safe on critical packages.",
+        "Parallel agents need lane isolation: one issue, one plan, one PR per lane with fixed file lists and per-worker git worktrees.",
+        "Post-Shai-Hulud npm defense combines ignore-scripts, OIDC trusted publishing, and shrinking runtime deps toward a Rust core gated by cargo-deny and cargo-vet.",
+        "Plans that name risky assumptions in prose without a failing test let silent regressions slip through (axios-to-fetch dropped strictSSL/ca/cert).",
+        "Same mocha suite under both engines (WAIT_ON_ENGINE=rust-strict) makes a JS-to-Rust cutover a flip rather than a big-bang rewrite.",
+        "A 'solutions' doc folder compounds each lane's learnings so the next agent session starts from the fix, not the failure."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "First-hand maintainer account of using AI coding agents at unusual speed on a 12M-download/week npm package (wait-on), with concrete metrics (27 PRs, 496 tests, 14 Rust lanes), specific tools (Compound Engineering, overdrive, herdr, codebase-memory-mcp), and honest documentation of both wins and a real miss (the axios-to-fetch port silently dropped strictSSL/ca/cert for HTTPS env-proxy targets until a reviewer caught it). The guardrails (test-first AGENTS.md rules, OIDC trusted publishing, cargo-deny/vet, agents cannot edit CI) are tied to specific failures and are independently actionable. Mild padding from personal context and self-promotion of his own tools keep it just below exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T06:44:35.496441",
+      "image_url": "https://www.kevinold.com/static/images/twitter-card.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
+    {
+      "id": 6528,
+      "source_id": 34,
+      "original_url": "https://kachar.dev/blog/orders-get-obedience-questions-get-opinions",
+      "title": "Orders get obedience. Questions get opinions.",
+      "summary": "Questions keep the answer ceiling open, allowing better or unexpected solutions that orders can hide.",
+      "ideas": [
+        "Orders cap answers at what you already know",
+        "Median prompt length dropped from 16 to 8 words while question share stayed stable",
+        "44% of questions lack a question mark yet act as true questions"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece presents data‑driven analysis of ordering vs questioning in prompts, introduces a useful ceiling test, and shows measurable shifts in prompt design, but its conclusions rely heavily on Claude Code and may not generalize to all models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T06:42:23.337580",
+      "image_url": "https://kachar.dev/blog/orders-get-obedience-questions-get-opinions/opengraph-image",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Orders get obedience. Questions get opinions."
+    },
+    {
+      "id": 6527,
+      "source_id": 34,
+      "original_url": "https://joshua.hu/lessons-using-sanitizers-oracle-llm-vulnerability-triage",
+      "title": "Lessons from using sanitizers as an oracle for LLM vulnerability triage",
+      "summary": "A practitioner taxonomy of failure modes when using ASan/MSan/UBSan/TSan as deterministic oracles for LLM vulnerability triage, covering both agent cheating tactics and sanitizer blind spots, with concrete mitigations.",
+      "ideas": [
+        "A sanitizer report proves only one of four required vulnerability claims, not the full chain",
+        "Run a control build on benign input before any PoC to catch harness-manufactured crashes",
+        "ASan in Docker needs vm.mmap_rnd_bits<=28 on the host sysctl, not the container",
+        "Custom allocators hide overflows from ASan; require manual ASAN_POISON_MEMORY_REGION or allocator disable",
+        "Use a 'revert test' against a clean build to detect LLM agents that patch out safety checks",
+        "Threat model matters: Yara rule crashes aren't attacker-reachable since rules are trusted",
+        "MSan and ASan are mutually exclusive and have overlapping but non-identical detection scopes",
+        "ASan quarantine is finite, so non-immediate use-after-frees silently corrupt instead of crashing"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Original firsthand engineering taxonomy of failure modes in LLM-assisted vulnerability triage using sanitizers as oracles. Categorizes problems into 'agent cheats' (A1–A8) and 'oracle blind' (B1–B5) with concrete real-world examples: tcpdump stack-size manipulation, custom allocator interposition, source-code tampering by the agent, and the Yara threat-model confusion. Includes non-obvious actionable details such as the Docker/ASan ASLR conflict requiring vm.mmap_rnd_bits=28 on the host (not in-container), ASan quarantine recycling defeating distant UAF detection, manual poisoning API for custom allocators, and the mutual-exclusion constraints between sanitizers. Substantially truncated at the end (cuts off mid-B4), which weakens the closing sections and checklist, but the bulk of the original insight is intact.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T06:38:12.887526",
+      "image_url": "https://joshua.hu/assets/img/social-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Lessons from using sanitizers as an oracle for LLM vulnerability triage | Joshua Rogers' Scribbles"
+    },
+    {
+      "id": 6526,
+      "source_id": 34,
+      "original_url": "https://jchigg2000.dev/blog/i-published-the-rule-and-built-the-hole",
+      "title": "I Published the Rule and Built the Hole Eight Days Later",
+      "summary": "Loopback bindings alone cannot secure internal tools against browser-based access, and rate limiters behind proxies must count visitor IPs rather than proxy IPs — two critical boundaries frequently misconfigured.",
+      "ideas": [
+        "Loopback binding fails when browser reaches local service",
+        "Rate limiter counts proxy IP instead of visitor IP",
+        "Docs are not security boundaries; code enforcement is",
+        "Forge headers + IP audits prevent proxy rate-limit bypass"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand security engineering lessons with original evidence from actual failures and fixes. Loopback binding and proxy rate-limiter misconfigurations are explained with clear mechanisms, observed behavior, and specific code changes, providing non-obvious but highly applicable insights.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T06:30:38.008833",
+      "image_url": "https://jchigg2000.dev/og/i-published-the-rule-and-built-the-hole.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Terminal card: I Published the Rule and Built the Hole Eight Days Later — I published a security rule, then built a tool that broke it eight days later. Writing a lesson down did not carry it into my next build. Only a check that runs can."
+    },
     {
       "id": 6525,
       "source_id": 34,
