@@ -1,772 +1,20 @@
 {
   "schema_version": 2,
-  "batch_id": "2353f7fa3278398c4e0aa3725ab2b5a7",
-  "published_at": "2026-10-09T07:32:00.001608+00:00",
-  "scheduled_for": "2026-10-09T07:30:00+00:00",
-  "next_update_at": "2026-10-09T19:30:00+00:00",
+  "batch_id": "27698b049ea02fd9885854d1c7f08d15",
+  "published_at": "2026-10-09T19:32:00.000800+00:00",
+  "scheduled_for": "2026-10-09T19:30:00+00:00",
+  "next_update_at": "2026-10-10T02:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-10-08T07:30:00+00:00",
-    "ends_at": "2026-10-09T07:30:00+00:00"
+    "starts_at": "2026-10-08T19:30:00+00:00",
+    "ends_at": "2026-10-09T19:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 27,
+  "total_developments": 16,
   "developments": [
-    {
-      "id": "d265c97d2db1ae2525886e3ab74fa082",
-      "occurred_at": "2026-10-08T08:01:09+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T08:01:09+00:00",
-      "title": "Haiku tokenizer generates more tokens than Luna, raising API costs",
-      "detail": [
-        "A post by AVB reports that the tokenizers used by Claude Haiku 5.5 and GPT‑6 Luna differ substantially. For identical input and output text, Haiku is billed for about 45‑50% more tokens than Luna, even when no reasoning tokens are involved.",
-        "Both models have the same published price of $0.10 per million input tokens and $0.50 per million output tokens, but Luna's tokenization efficiency makes its effective cost roughly 30% lower for comparable workloads. Internal benchmarks also suggest Luna performs slightly better or on par with Haiku."
-      ],
-      "why_it_matters": "Developers relying on Haiku will incur higher API costs for the same text, so choosing Luna or adjusting prompt design can reduce expenses immediately.",
-      "sources": [
-        {
-          "author_name": "AVB",
-          "author_username": "neural_avb",
-          "url": "https://x.com/neural_avb/status/2107906032186081428",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HUDIo6iaAAA4B-M.png",
-              "preview_url": "https://pbs.twimg.com/media/HUDIo6iaAAA4B-M.png:small",
-              "width": 680,
-              "height": 599
-            }
-          ]
-        },
-        {
-          "author_name": "AVB",
-          "author_username": "neural_avb",
-          "url": "https://x.com/neural_avb/status/2108105405293625824",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HUF-MlAasAA_QeV.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HUF-MlAasAA_QeV.jpg:small",
-              "width": 1742,
-              "height": 724
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "6fb9d380d0305ec3df46daf723a60693",
-      "occurred_at": "2026-10-08T11:56:36+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T11:56:36+00:00",
-      "title": "Swapnil reports fourth update to OpenAI problem #109, pushing integer multiplication κ past 2^-17",
-      "detail": [
-        "Swapnil posted the fourth update on OpenAI problem #109, the integer multiplication problem: κ is now past 2^-17, which the update describes as tightened from κ = 2^-182. The exact witness is 1.197 × 10⁻⁵, about 2.9-fold over the previous 4.19 × 10⁻⁶ and a 2^165-fold improvement over the original OpenAI result.",
-        "Dan amplified the update with a commute anecdote, saying that when he left home in the morning the working level was still 2^-18, before this result landed."
-      ],
-      "why_it_matters": "The current record on OpenAI problem #109 now stands at the witness 1.197 × 10⁻⁵, about 2.9 times the prior 4.19 × 10⁻⁶ mark and a 2^165-fold improvement over the original OpenAI result, a directly measurable advance on the challenge as it exists today.",
-      "sources": [
-        {
-          "author_name": "Swapnil",
-          "author_username": "SJ_Swapnil_Jain",
-          "url": "https://x.com/SJ_Swapnil_Jain/status/2108152926959284315",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "dan",
-          "author_username": "irl_danB",
-          "url": "https://x.com/irl_danB/status/2108164655310909807",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "0a5a0d4d07c3c18ef1fc931fe4fa6758",
-      "occurred_at": "2026-10-08T12:01:08+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T12:01:08+00:00",
-      "title": "Claude Code's advisorModel setting lets Haiku 5.5 delegate review to Opus",
-      "detail": [
-        "Dan McAteer recommends configuring Claude Code to run Haiku 5.5 as the primary model with Opus as the advisorModel, via the settings.json snippet {\"model\":\"haiku\",\"advisorModel\":\"opus\"}.",
-        "The configuration shows Claude Code supports a dedicated advisorModel field in addition to the primary model, letting a cheaper, faster model handle the bulk of inference while a more capable model reviews the output."
-      ],
-      "why_it_matters": "This configuration lets Claude Code users reduce inference costs by reserving Opus-level reasoning for review of generated work while paying only for cheaper Haiku 5.5 inference on routine generation steps.",
-      "sources": [
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2108165796593619070",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2108165720567615488/img/uTQ_jTT6uFPjHMJe.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108165720567615488/img/uTQ_jTT6uFPjHMJe.jpg:small",
-              "width": 2048,
-              "height": 1464
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "7afa1c401c73038bdc4aeb7f4b1757a0",
-      "occurred_at": "2026-10-08T13:41:32+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T13:41:32+00:00",
-      "title": "pi-durable core runs in-browser via Kotlin layer and WebView",
-      "detail": [
-        "mjf89 reported that the entire pi-durable core can be executed in a browser by pairing it with a small Kotlin layer that hosts the execution environment inside a proot with Alpine utilities. The setup is served as a WebView but could also be packaged as a server delivering a Progressive Web App, allowing pi-durable agents to operate without a traditional server backend."
-      ],
-      "why_it_matters": "Running pi-durable in-browser expands deployment options, letting developers host agents directly in client environments and reducing server infrastructure requirements.",
-      "sources": [
-        {
-          "author_name": "mjf89",
-          "author_username": "mjf891",
-          "url": "https://x.com/mjf891/status/2108177206962790452",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Mario Zechner",
-          "author_username": "badlogicgames",
-          "url": "https://x.com/badlogicgames/status/2108191061688664413",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "linux"
-      ]
-    },
-    {
-      "id": "2cf73556c551f868b6f88acf8a934047",
-      "occurred_at": "2026-10-08T13:51:51+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T13:51:51+00:00",
-      "title": "Finn Voorhees wraps pi-durable in Swift, running it in JavaScriptCore for iOS agents",
-      "detail": [
-        "Finn Voorhees released a Swift wrapper around pi-durable that runs it inside JavaScriptCore, making it possible to add durable agents directly to any iOS app. He describes the code as slightly slop-coded but says it lets apps run agents powered by a wide range of providers. According to him, the wrapper removes the surrounding hassle of OAuth login, conversation management, and state restoration. Mario Zechner amplified the announcement, calling it a creative use of JavaScriptCore that makes pi durable accessible in Swift."
-      ],
-      "why_it_matters": "iOS developers can now embed pi-durable agents natively with OAuth, conversation, and state-restoration plumbing handled by the wrapper rather than custom code, extending pi-durable beyond its original host environment.",
-      "sources": [
-        {
-          "author_name": "Finn Voorhees",
-          "author_username": "finnvoorhees",
-          "url": "https://x.com/finnvoorhees/status/2108192018824339709",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Mario Zechner",
-          "author_username": "badlogicgames",
-          "url": "https://x.com/badlogicgames/status/2108193659023950005",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "7fbda24be809297fa5909a87466e856b",
-      "occurred_at": "2026-10-08T15:23:37+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T15:23:37+00:00",
-      "title": "Microsoft releases MxC, an open source cross-platform sandboxing library",
-      "detail": [
-        "Microsoft has published MxC, an open-source library on GitHub described as providing policy-driven, layered isolation and containment. It works across Windows, Linux, and macOS, and Simon Willison notes it builds on processcontainer, bubblewrap, and seatbelt — the native sandboxing layers of each platform.",
-        "Kyle Daigle frames MxC as an answer to the proliferation of separate sandboxes for agents, spanning process, session, and micro VM isolation with deep integration into agent ID on Windows."
-      ],
-      "why_it_matters": "Agent developers currently juggle different sandboxing mechanisms for each operating system; MxC consolidates that into one open-source library that maps onto the native isolation primitives of Windows, macOS, and Linux.",
-      "sources": [
-        {
-          "author_name": "Kyle Daigle",
-          "author_username": "kdaigle",
-          "url": "https://x.com/kdaigle/status/2107882300210074108",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HUCzyBdasAEtlya.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HUCzyBdasAEtlya.jpg:small",
-              "width": 2048,
-              "height": 1536
-            }
-          ]
-        },
-        {
-          "author_name": "Simon Willison",
-          "author_username": "simonw",
-          "url": "https://x.com/simonw/status/2108216753604248000",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://github.com/microsoft/mxc",
-          "domain": "github.com",
-          "title": "GitHub - microsoft/mxc: Policy-driven, layered isolation and containment · GitHub",
-          "preview_image_url": "https://opengraph.githubassets.com/1700b0f1ff4c285afd7cfd0f03a99b2cb6fe89dcee3be00bbeb0720f96d4b838/microsoft/mxc"
-        }
-      ],
-      "interest_slugs": [
-        "ai",
-        "os_security"
-      ]
-    },
-    {
-      "id": "8d4eeacddf3931ac4bace0a4a783e2b5",
-      "occurred_at": "2026-10-08T15:40:03+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T15:40:03+00:00",
-      "title": "Grok Bot fixes channel‑confusion bug within 24 hours",
-      "detail": [
-        "The Grok Bot team identified that an ambiguous instruction caused the bot to post messages to a personal Slack channel instead of the intended work channel. They implemented a fix and deployed it in under 24 hours, resolving the issue."
-      ],
-      "why_it_matters": "The correction stops agents from misrouting messages, making automated workflows more reliable for teams that rely on Grok Bot for coordination.",
-      "sources": [
-        {
-          "author_name": "Shane Mac",
-          "author_username": "ShaneMac",
-          "url": "https://x.com/ShaneMac/status/2108209486154301893",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Josh",
-          "author_username": "jjpcodes",
-          "url": "https://x.com/jjpcodes/status/2108220889221242963",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "c19db23b1c46cad406c89d5b1f79afef",
-      "occurred_at": "2026-10-08T15:56:06+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T15:56:06+00:00",
-      "title": "Pi Coding Agent gains MCP adapter extension for 100‑server connectivity",
-      "detail": [
-        "Nico Bailon released an MCP adapter extension for the Pi coding agent that lets the agent import and connect to up to 100 MCP servers on demand, avoiding token bloat by searching for needed resources at runtime.",
-        "The extension can be installed via `npx pi-mcp-adapter` and automatically imports MCP configurations from existing Cursor or Claude setups."
-      ],
-      "why_it_matters": "By eliminating token overhead and streamlining multi‑server access, the adapter makes large‑scale agent deployments more efficient and easier to configure.",
-      "sources": [
-        {
-          "author_name": "Nico Bailon",
-          "author_username": "nicopreme",
-          "url": "https://x.com/nicopreme/status/2013466942850441447",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2013466885342347264/img/ODVeex2WNBG4c6-x.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2013466885342347264/img/ODVeex2WNBG4c6-x.jpg:small",
-              "width": 1268,
-              "height": 1350
-            }
-          ]
-        },
-        {
-          "author_name": "Nico Bailon",
-          "author_username": "nicopreme",
-          "url": "https://x.com/nicopreme/status/2108224926587277724",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "1cdad413ac60665503d6bcab9ad52667",
-      "occurred_at": "2026-10-08T16:00:36+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T16:00:36+00:00",
-      "title": "Augment Code to sell Cosmos, Auggie CLI, and Code Context Engine to Harness",
-      "detail": [
-        "Augment Code announced an agreement to sell Cosmos, Auggie CLI, the Code Context Engine, and related technology to Harness, the Autonomous SDLC Platform.",
-        "The Augment team will join Harness to bring software factory capabilities to its Autonomous SDLC Platform, with Augment citing the growing challenge of orchestrating AI-generated code reliably at scale as the motivation for the move."
-      ],
-      "why_it_matters": "The deal folds Augment's AI coding tooling into Harness's Autonomous SDLC Platform, giving enterprises a single integrated ecosystem for orchestrating AI-generated code at scale.",
-      "sources": [
-        {
-          "author_name": "Augment Code",
-          "author_username": "augmentcode",
-          "url": "https://x.com/augmentcode/status/2108212600651887095",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "GosuCoder",
-          "author_username": "GosuCoder",
-          "url": "https://x.com/GosuCoder/status/2108226062782218260",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "31f321fa3342161700ae284e1b865318",
-      "occurred_at": "2026-10-08T16:20:13+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T16:20:13+00:00",
-      "title": "ChatGPT Finances audit reclassifies 700 of 14,000 transactions in about an hour",
-      "detail": [
-        "Ethan Bloch reports having ChatGPT audit all of his transactions: in roughly an hour, the model reviewed 14,000 transactions and improved the categorization of 700 of them, working on top of the automatic categorization that ChatGPT and Plaid already perform in the background. He shares the prompt used as a screenshot and directs readers to set up Finances in ChatGPT to reproduce the setup.",
-        "Bloch frames near-perfect transaction categorization as a problem unsolved since Quicken launched in 1984, and concludes that keeping a budget or tracking spending no longer requires manual work. In his commentary on the report, Josh adds a related tip: the same prompting approach applied to an email inbox can compile a list of everything you own or have ever bought, with some iteration on the output format, which he says is useful for onboarding personal agents such as the Grok bot."
-      ],
-      "why_it_matters": "According to Bloch, budgeting and spending tracking no longer require manual categorization, because ChatGPT connected via Plaid can audit and fix categories across an entire transaction history in a single session.",
-      "sources": [
-        {
-          "author_name": "Ethan Bloch",
-          "author_username": "ebloch",
-          "url": "https://x.com/ebloch/status/2108219426327990460",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HUHmZTEasAAt0mw.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HUHmZTEasAAt0mw.jpg:small",
-              "width": 1320,
-              "height": 1447
-            }
-          ]
-        },
-        {
-          "author_name": "Josh",
-          "author_username": "jjpcodes",
-          "url": "https://x.com/jjpcodes/status/2108230998978592874",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "a4c8de504c375cb707e1eb8f603429c3",
-      "occurred_at": "2026-10-08T16:22:36+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T16:22:36+00:00",
-      "title": "hyperfine 2.0 adds peak memory and CPU cycle metrics",
-      "detail": [
-        "The hyperfine benchmarking tool released version 2.0, introducing support for alternative performance metrics such as peak memory usage, CPU cycles, and additional measurements.",
-        "The update expands hyperfine’s profiling capabilities beyond execution time, allowing developers to capture resource consumption directly from the command line."
-      ],
-      "why_it_matters": "Developers can now assess memory and CPU usage in a single benchmark run, enabling more comprehensive performance tuning without needing separate profiling tools.",
-      "sources": [
-        {
-          "author_name": "Charlie Marsh",
-          "author_username": "charliermarsh",
-          "url": "https://x.com/charliermarsh/status/2108231599137702107",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HUHwD1bWUAAx8Eq.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HUHwD1bWUAAx8Eq.jpg:small",
-              "width": 1568,
-              "height": 1000
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "linux"
-      ]
-    },
-    {
-      "id": "12a488e363aea098a6bcaa52903870b8",
-      "occurred_at": "2026-10-08T16:33:24+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T16:33:24+00:00",
-      "title": "Shopify launches connectors for asking Grok about your business and building Grok Bot agent teams",
-      "detail": [
-        "Shopify announced new connectors in a launch post: merchants can connect Grok to ask questions about their business, or connect Grok Bot to build a team of agents that help run the business.",
-        "The announcement provided no benchmarks, pricing, or setup details beyond those two use cases, so the substance rests on the connectors' newly shipped availability rather than demonstrated results.",
-        "lauren amplified the launch, framing the pairing of Shopify and Grok Bot as a way to run a business."
-      ],
-      "why_it_matters": "The connectors give Shopify merchants two new agentic-AI entry points today: conversational question answering about their business data and delegated multi-agent teams assembled through Grok Bot to help operate the store.",
-      "sources": [
-        {
-          "author_name": "Shopify",
-          "author_username": "Shopify",
-          "url": "https://x.com/Shopify/status/2108226178146263268",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/media/HUHt6AzXoAENFjq.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HUHt6AzXoAENFjq.jpg:small",
-              "width": 1080,
-              "height": 1080
-            }
-          ]
-        },
-        {
-          "author_name": "lauren",
-          "author_username": "poteto",
-          "url": "https://x.com/poteto/status/2108234315096330255",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "07d6aeca9284cf8d33a38338ce4bcdc7",
-      "occurred_at": "2026-10-08T17:13:04+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T17:13:04+00:00",
-      "title": "Multi Codex App Enables Up to 100 Parallel Codex Instances",
-      "detail": [
-        "The Multi Codex App lets users run many independent Codex applications at the same time, supporting up to 100 instances with separate accounts, plugins, and customizable dock icons.",
-        "By consolidating multiple Codex accounts into a single interface, the tool removes the need to log in and out when switching contexts, allowing developers to work across projects more efficiently."
-      ],
-      "why_it_matters": "It lets developers manage multiple Codex accounts simultaneously, streamlining workflows and eliminating repetitive log‑in steps.",
-      "sources": [
-        {
-          "author_name": "am.will",
-          "author_username": "LLMJunky",
-          "url": "https://x.com/LLMJunky/status/2108244296461590898",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2108242799472545792/img/Z3lFME3R0jKUJcVn.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108242799472545792/img/Z3lFME3R0jKUJcVn.jpg:small",
-              "width": 1080,
-              "height": 1080
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "4faba7b1c716837d768fcf9696bab0a7",
-      "occurred_at": "2026-10-08T17:30:58+00:00",
-      "updated_at": "2026-10-09T02:32:00.001055+00:00",
-      "expires_at": "2026-10-09T17:30:58+00:00",
-      "title": "Sol 6.1 agent runs Minecraft via a custom pidotdev codemode plugin after reverse-engineering protocol 26.2",
-      "detail": [
-        "Reports describe the Sol 6.1 agent playing Minecraft through a custom codemode plugin built for the pidotdev agent, which exposes mineflayer APIs so the agent can control the game through code.",
-        "Because existing plugins on that path support only Minecraft protocol 26.1, protocol 26.2 was reverse-engineered to make the setup work, and streaming the build remains only a consideration."
-      ],
-      "why_it_matters": "The reverse-engineered protocol 26.2 support closes a concrete gap, letting agents reach Minecraft connections that mineflayer-based plugins limited to 26.1 could not, and demonstrates that LLM agents can be deployed directly in interactive game environments.",
-      "sources": [
-        {
-          "author_name": "Kyle Mistele 🏴‍☠️",
-          "author_username": "0xblacklight",
-          "url": "https://x.com/0xblacklight/status/2108248803983909209",
-          "role": "source",
-          "media": []
-        },
-        {
-          "author_name": "Kyle Mistele 🏴‍☠️",
-          "author_username": "0xblacklight",
-          "url": "https://x.com/0xblacklight/status/2108263117218271370",
-          "role": "source",
-          "media": []
-        },
-        {
-          "author_name": "Kyle Mistele 🏴‍☠️",
-          "author_username": "0xblacklight",
-          "url": "https://x.com/0xblacklight/status/2108266276959482305",
-          "role": "source",
-          "media": []
-        },
-        {
-          "author_name": "Kyle Mistele 🏴‍☠️",
-          "author_username": "0xblacklight",
-          "url": "https://x.com/0xblacklight/status/2108268825556992436",
-          "role": "commentary",
-          "media": []
-        },
-        {
-          "author_name": "Kyle Mistele 🏴‍☠️",
-          "author_username": "0xblacklight",
-          "url": "https://x.com/0xblacklight/status/2108363333367927053",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "2656d50d898301d81edb2acd91dd1629",
-      "occurred_at": "2026-10-08T17:56:51+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T17:56:51+00:00",
-      "title": "Cactus Compute releases Whistle, an open 16.9 MB speech-to-text model with 11 ms first-token latency",
-      "detail": [
-        "Cactus Compute published Whistle, an open speech recognition model that transcribes seven languages and reaches its first token in 11 ms on CPU.",
-        "The 16.9 MB model shares the same CPU engine as Cactus's Needle runtime, so one binary can load Whistle beside Needle and turn an audio clip directly into tool calls without a separate server."
-      ],
-      "why_it_matters": "At 16.9 MB and CPU-runnable, Whistle lets developers embed local speech recognition into the same binary as other on-device model inference, producing tool-call-ready transcripts without a network round trip.",
-      "sources": [
-        {
-          "author_name": "Mario Zechner",
-          "author_username": "badlogicgames",
-          "url": "https://x.com/badlogicgames/status/2108255317288964477",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://cactuscompute.com/blog/whistle",
-          "domain": "cactuscompute.com",
-          "title": "Whistle: Speech to Text in 16.9 MB | Cactus",
-          "preview_image_url": null
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "baa08fd307a3eb98e9ec4fd5d410e5a0",
-      "occurred_at": "2026-10-08T18:22:21+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T18:22:21+00:00",
-      "title": "SpaceXAI joins Omacom Foundation as Founding Corporate Patron with $1.5M in Grok tokens for Omarchy",
-      "detail": [
-        "DHH announced that SpaceXAI has become a Founding Corporate Patron of the Omacom Foundation, with $1,500,000 in Grok tokens designated for the maintenance and development of Omarchy, the Linux distribution. The grant funds the distribution's ongoing upkeep directly, though it arrives as model tokens rather than cash.",
-        "Sharing the announcement, lauren asked anyone who runs Grok Bot on Omarchy or builds plugins for it to come forward with feedback and feature requests, pointing to the Omarchy plugins directory and saying she wants to see what interesting integrations the project could support."
-      ],
-      "why_it_matters": "Omarchy's maintenance and development now has $1,500,000 in Grok tokens behind it, and the open call gives Grok Bot users and plugin builders on the distribution a direct channel to influence which integrations get support.",
-      "sources": [
-        {
-          "author_name": "DHH",
-          "author_username": "dhh",
-          "url": "https://x.com/dhh/status/2108127662120014285",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "lauren",
-          "author_username": "poteto",
-          "url": "https://x.com/poteto/status/2108261735199371451",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [
-        {
-          "url": "https://plugins.omarchy.org/?q=grok+bot",
-          "domain": "plugins.omarchy.org",
-          "title": "Browse Plugins | Omarchy Plugins",
-          "preview_image_url": "https://plugins.omarchy.org/assets/img/omarchy-plugin-marketplace-preview.png"
-        }
-      ],
-      "interest_slugs": [
-        "linux",
-        "ai"
-      ]
-    },
-    {
-      "id": "466e55e1d031d5c0d5b1a5b317cf69c9",
-      "occurred_at": "2026-10-08T18:30:29+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T18:30:29+00:00",
-      "title": "OpenCode approaches 20 million monthly active users",
-      "detail": [
-        "dax reported that OpenCode is approaching 20 million monthly active users, set against an estimated 50-100 million developers worldwide. The figure was offered as a rebuttal to Travis Street's claim that AI-assisted coding is a Twitter bubble and that normal people are not vibe coding their own software.",
-        "dax's arithmetic implies either that roughly one in five developers globally uses OpenCode or that a large share of its active users are not conventional developers. The number is self-reported with no accompanying breakdown, methodology, or independent verification, so the exact scale rests on his statement."
-      ],
-      "why_it_matters": "If the figure is accurate, OpenCode's current user base rivals a large fraction of the world's developer population, which points to substantial present-day adoption of AI coding tooling beyond the professional developer population.",
-      "sources": [
-        {
-          "author_name": "Travis Street",
-          "author_username": "travismakes",
-          "url": "https://x.com/travismakes/status/2108180861396922565",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "dax",
-          "author_username": "thdxr",
-          "url": "https://x.com/thdxr/status/2108263779335287027",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "761f89165d9e860820216918015def92",
-      "occurred_at": "2026-10-08T18:35:27+00:00",
-      "updated_at": null,
-      "expires_at": "2026-10-09T18:35:27+00:00",
-      "title": "OpenInspect adds memory feature for agents",
-      "detail": [
-        "OpenInspect now supports persistent memory, allowing an agent to save useful learnings during a session. Users can choose to keep these memories private or share them across a repository or environment, enabling agents to recall prior information without being prompted again."
-      ],
-      "why_it_matters": "The new memory capability lets agents avoid repeating the same instructions, improving efficiency for developers who rely on OpenInspect for automation tasks.",
-      "sources": [
-        {
-          "author_name": "cole murray",
-          "author_username": "colemurray",
-          "url": "https://x.com/colemurray/status/2108265030596841672",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2108264706494623744/img/-XWb1lMba9Lo_jgX.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108264706494623744/img/-XWb1lMba9Lo_jgX.jpg:small",
-              "width": 1920,
-              "height": 1080
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "6e95f169651cfae4faaa7ec8d205627b",
-      "occurred_at": "2026-10-08T18:55:08+00:00",
-      "updated_at": "2026-10-09T02:32:00.001055+00:00",
-      "expires_at": "2026-10-09T18:55:08+00:00",
-      "title": "OpenAI sets GPT-6.1 Sol API pricing at $12 input / $60 output per million tokens in Ultrafast mode",
-      "detail": [
-        "OpenAI Developers announced API pricing for GPT-6.1 Sol in Ultrafast mode at $12 per million input tokens and $60 per million output tokens.",
-        "The tier is positioned for latency-sensitive workloads such as debugging an outage, agents navigating apps, and live experiences where every second counts.",
-        "Quoting the announcement, eric provencher said the price is slightly above Astra while delivering near-Astra intelligence at roughly 8x the speed, and described voice mode and computer use on Ultrafast as a new way to work with large language models."
-      ],
-      "why_it_matters": "The published per-million-token rates let developers immediately calculate the cost of running GPT-6.1 Sol in Ultrafast mode for latency-critical agent, voice, and computer-use workloads.",
-      "sources": [
-        {
-          "author_name": "OpenAI Developers",
-          "author_username": "OpenAIDevs",
-          "url": "https://x.com/OpenAIDevs/status/2108262830348886150",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HUIN3ucaIAAezvI.png",
-              "preview_url": "https://pbs.twimg.com/media/HUIN3ucaIAAezvI.png:small",
-              "width": 2048,
-              "height": 1024
-            }
-          ]
-        },
-        {
-          "author_name": "eric provencher",
-          "author_username": "pvncher",
-          "url": "https://x.com/pvncher/status/2108269984493514991",
-          "role": "commentary",
-          "media": []
-        },
-        {
-          "author_name": "OpenAI Developers",
-          "author_username": "OpenAIDevs",
-          "url": "https://x.com/OpenAIDevs/status/2108262812489531498",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2108262768805818368/img/r62HnwZHUafWIB5o.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108262768805818368/img/r62HnwZHUafWIB5o.jpg:small",
-              "width": 2048,
-              "height": 1152
-            }
-          ]
-        },
-        {
-          "author_name": "Tibo",
-          "author_username": "thsottiaux",
-          "url": "https://x.com/thsottiaux/status/2108275041276420573",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2108274873684652032/img/mNi9_fwNNhOCN5UX.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108274873684652032/img/mNi9_fwNNhOCN5UX.jpg:small",
-              "width": 734,
-              "height": 1140
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
     {
       "id": "2627db332e221e73e06d4cfd15d5a781",
       "occurred_at": "2026-10-08T19:36:59+00:00",
@@ -893,14 +141,14 @@
     {
       "id": "93c60e560fc96ac45535c722a01641be",
       "occurred_at": "2026-10-08T21:17:31+00:00",
-      "updated_at": null,
+      "updated_at": "2026-10-09T14:45:00.001917+00:00",
       "expires_at": "2026-10-09T21:17:31+00:00",
-      "title": "Anthropic makes abusive behavior toward Claude a Usage Policy violation starting November 12, 2026",
+      "title": "Anthropic's upcoming Usage Policy prohibits abusive or cruel behavior toward Claude",
       "detail": [
-        "Andrew Curran shared Anthropic's notice that, effective November 12th, 2026, abusive behavior towards Claude will be a violation of Anthropic's Usage Policy. The change means hostile conduct directed at the assistant itself — not just what users ask it to produce — becomes an enforceable policy breach.",
-        "Geoffrey Huntley amplified the announcement with a quip that Australia had been banned from using Claude; the quoted policy targets abusive conduct by individual users, not residents of any country."
+        "Anthropic's upcoming Usage Policy adds a provision prohibiting sustained and needless abusive or cruel behavior directed at its models, according to a report citing the published policy language. The rule governs how users treat the Claude assistant itself, and the report frames the update as a possible basis for banning users who bully the model.",
+        "This extends Anthropic's enforcement beyond the content users ask the model to produce, reaching the conduct of interactions with the assistant directly."
       ],
-      "why_it_matters": "Once the November 12, 2026 effective date arrives, how users treat Claude becomes an enforcement ground in its own right, so abusive interactions alone can constitute a Usage Policy violation separate from the model's output.",
+      "why_it_matters": "Account enforcement can now hinge on how people speak to Claude during their sessions, not only on what they ask it to do, so the tone of conversations with the model could itself put an account at risk.",
       "sources": [
         {
           "author_name": "Andrew Curran",
@@ -918,9 +166,46 @@
           ]
         },
         {
+          "author_name": "Jane Manchun Wong",
+          "author_username": "wongmjane",
+          "url": "https://x.com/wongmjane/status/2108266310492917916",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUIRCUUbAAAnjl2.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUIRCUUbAAAnjl2.jpg:small",
+              "width": 1206,
+              "height": 918
+            }
+          ]
+        },
+        {
           "author_name": "geoff",
           "author_username": "GeoffreyHuntley",
           "url": "https://x.com/GeoffreyHuntley/status/2108305814494859291",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "Josh",
+          "author_username": "jjpcodes",
+          "url": "https://x.com/jjpcodes/status/2108536153431531925",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUMGVkIWgAAj-Bl.png",
+              "preview_url": "https://pbs.twimg.com/media/HUMGVkIWgAAj-Bl.png:small",
+              "width": 720,
+              "height": 886
+            }
+          ]
+        },
+        {
+          "author_name": "nisten",
+          "author_username": "nisten",
+          "url": "https://x.com/nisten/status/2108562031435727072",
           "role": "commentary",
           "media": []
         }
@@ -1085,6 +370,332 @@
           "preview_image_url": "https://github.githubassets.com/assets/gist-og-image-54fd7dc0713e.png"
         }
       ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "bf91cf7efd1323da4b7f629756d2c38c",
+      "occurred_at": "2026-10-09T08:31:43+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T08:31:43+00:00",
+      "title": "PBD adds generative UI for building interactive paper explainers",
+      "detail": [
+        "PBD now supports generative UI, letting users build interactive explainers with context filled directly from the paper contents, and the feature is available to all users.",
+        "AVB demonstrated the capability on mech interp papers, including an Induction Heads breakdown, and noted that the visualizations were generated by Haiku 5.5, which he described as dirt cheap for the UI quality."
+      ],
+      "why_it_matters": "PBD's generative UI lowers the effort needed to turn machine learning papers into interactive visuals, and pairing it with Haiku 5.5's low cost makes on-demand generation of paper explainers economically practical.",
+      "sources": [
+        {
+          "author_name": "AVB",
+          "author_username": "neural_avb",
+          "url": "https://x.com/neural_avb/status/2108472427831595029",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2108472013849608192/img/eUiW_7bUtoX9Y-3N.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108472013849608192/img/eUiW_7bUtoX9Y-3N.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "AVB",
+          "author_username": "neural_avb",
+          "url": "https://x.com/neural_avb/status/2108475482115346658",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2108475003465613312/img/mPy1UPRcg9aHwDL1.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108475003465613312/img/mPy1UPRcg9aHwDL1.jpg:small",
+              "width": 2048,
+              "height": 1113
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "9087174ef49a4c959e5797f88933739c",
+      "occurred_at": "2026-10-09T13:16:10+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T13:16:10+00:00",
+      "title": "Simon Willison ships a Newsletters page for his blog, built entirely by voice with Codex Desktop",
+      "detail": [
+        "Simon Willison shipped a new Newsletters page for his blog today, which indexes all of the newsletters he has sent out, including his free weekly Substack. He reports building the feature entirely by voice with Codex Desktop while cooking dinner, and the page is live on his site. The write-up is titled 'A new feature for my blog, built using my voice,' confirming the shipped Newsletters page and the voice-only build."
+      ],
+      "why_it_matters": "The Newsletters page is already shipped and reader-facing, showing voice-driven use of Codex Desktop carrying a complete blog feature from spoken instructions to deployed output without keyboard work.",
+      "sources": [
+        {
+          "author_name": "Simon Willison",
+          "author_username": "simonw",
+          "url": "https://x.com/simonw/status/2108547065634844839",
+          "role": "source",
+          "media": []
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+          "domain": "simonwillison.net",
+          "title": "A new feature for my blog, built using my voice",
+          "preview_image_url": "https://static.simonwillison.net/static/2026/newsletters-card.webp"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "84834b20a61491feb508ce686ed30bf6",
+      "occurred_at": "2026-10-09T13:41:58+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T13:41:58+00:00",
+      "title": "Grok Bot gains native X integration",
+      "detail": [
+        "Grok Bot now integrates natively with X, removing the need for an X API or credit balance.",
+        "The feature simplifies automation workflows for users who rely on AI-driven X posting."
+      ],
+      "why_it_matters": "It lowers the barrier for developers to embed Grok Bot into X-based tools without managing API credits.",
+      "sources": [
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2108292342264611224",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2108292087749750784/img/9Lh1soYlulpXlO4a.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2108292087749750784/img/9Lh1soYlulpXlO4a.jpg:small",
+              "width": 1572,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2108553558882664723",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "6c54462629d769fa6271a54c59755fc3",
+      "occurred_at": "2026-10-09T15:11:24+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T15:11:24+00:00",
+      "title": "Anthropic and OpenAI executives privately model political backlash scenarios for a potential 2027 catastrophic AI event",
+      "detail": [
+        "Jim VandeHei reported that top executives at Anthropic, OpenAI, and other AI companies are privately gaming out scenarios for a public and political revolt following a catastrophic AI event.",
+        "According to VandeHei, the executives assume such an event could occur as early as 2027."
+      ],
+      "why_it_matters": "The report documents that leaders at Anthropic and OpenAI are formally modeling the political and social fallout of a catastrophic AI failure and treating 2027 as a plausible window for such an outcome.",
+      "sources": [
+        {
+          "author_name": "Jim VandeHei",
+          "author_username": "JimVandeHei",
+          "url": "https://x.com/JimVandeHei/status/2108495293620650261",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Josh Cohenzadeh",
+          "author_username": "jshchnz",
+          "url": "https://x.com/jshchnz/status/2108576065803452502",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUMqqQibIAA-ANe.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUMqqQibIAA-ANe.jpg:small",
+              "width": 912,
+              "height": 406
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "40ae024e7fe8047cbed7dbafe9987c8b",
+      "occurred_at": "2026-10-09T16:08:13+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T16:08:13+00:00",
+      "title": "Factory acquires Mentlio",
+      "detail": [
+        "Factory AI announced that it has acquired Mentlio, a company focused on inference allocation strategies. The acquisition is intended to integrate Mentlio's expertise in creating value through sophisticated inference allocation into Factory's AI product portfolio."
+      ],
+      "why_it_matters": "The deal broadens Factory's capabilities in inference allocation, allowing it to offer new AI-driven services that leverage Mentlio's technology.",
+      "sources": [
+        {
+          "author_name": "Factory",
+          "author_username": "FactoryAI",
+          "url": "https://x.com/FactoryAI/status/2108588934876000389",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUM2dT6bgAA52PF.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUM2dT6bgAA52PF.jpg:small",
+              "width": 2048,
+              "height": 2048
+            }
+          ]
+        },
+        {
+          "author_name": "Eno Reyes",
+          "author_username": "EnoReyes",
+          "url": "https://x.com/EnoReyes/status/2108590367197241703",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "14889af399b688689399371885d99b1f",
+      "occurred_at": "2026-10-09T16:41:41+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T16:41:41+00:00",
+      "title": "Sol 6.1 agent produces a full diamond kit in Minecraft via pi codemode",
+      "detail": [
+        "Kyle Mistele reported that Sol 6.1, an AI agent, was left running overnight in Minecraft and returned with a complete diamond kit.",
+        "The achievement was enabled by a custom pi codemode plugin that reverse‑engineered Minecraft protocol 26.2, allowing the agent to write and execute code that controls the game.",
+        "This demonstration shows Sol 6.1 can autonomously carry out non‑trivial in‑game tasks without human intervention."
+      ],
+      "why_it_matters": "It proves Sol 6.1’s capacity for autonomous, goal‑directed behavior in a complex simulated environment, confirming its utility for automated gameplay, testing, and potential broader task automation.",
+      "sources": [
+        {
+          "author_name": "Kyle Mistele 🏴‍☠️",
+          "author_username": "0xblacklight",
+          "url": "https://x.com/0xblacklight/status/2108595231709167860",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Kyle Mistele 🏴‍☠️",
+          "author_username": "0xblacklight",
+          "url": "https://x.com/0xblacklight/status/2108598787791073636",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "a75fe4f25d3eca314452e71f6aa91d14",
+      "occurred_at": "2026-10-09T17:14:23+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T17:14:23+00:00",
+      "title": "Codex introduces MXC‑powered Windows sandbox",
+      "detail": [
+        "OpenAI Developers announced a new sandbox mode for Codex on Windows built on Microsoft’s Execution Containers (MXC). The feature offers faster setup, stronger network enforcement, and granular file‑access controls, and requires a compatible Windows 11 device."
+      ],
+      "why_it_matters": "The sandbox enhances operating‑system isolation for Codex users, reducing the risk of malicious code execution and improving security for developers building on Windows.",
+      "sources": [
+        {
+          "author_name": "OpenAI Developers",
+          "author_username": "OpenAIDevs",
+          "url": "https://x.com/OpenAIDevs/status/2108573188703781190",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Alexander Embiricos",
+          "author_username": "embirico",
+          "url": "https://x.com/embirico/status/2108607017833341421",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai",
+        "os_security"
+      ]
+    },
+    {
+      "id": "9f9237f1c7641774e05eda7cdd8a6935",
+      "occurred_at": "2026-10-09T18:41:18+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-10T18:41:18+00:00",
+      "title": "Humanlayer releases teleport and orchestrate features with new UI",
+      "detail": [
+        "Humanlayer announced a new release that adds two major commands: /hl:teleport, which lets users move a local session to any remote host they own without losing context, and /hl:orchestrate, which enables the tool to drive itself, split tasks, fork workflows, and move artifacts.",
+        "The update also introduces a minimalist UI with rounded corners and a reduced visual noise mode accessed via Cmd+K, providing a cleaner interface for developers.",
+        "These additions aim to streamline remote development workflows and reduce the friction of managing multiple sessions across machines."
+      ],
+      "why_it_matters": "The teleport command lets developers retain session state when shifting work between machines, directly improving productivity for remote coding and debugging tasks.",
+      "sources": [
+        {
+          "author_name": "dex",
+          "author_username": "dexhorthy",
+          "url": "https://x.com/dexhorthy/status/2108628891904745931",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUNaHqEagAA0ULJ.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUNaHqEagAA0ULJ.jpg:small",
+              "width": 1876,
+              "height": 1840
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUNaUUwawAA03fK.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUNaUUwawAA03fK.jpg:small",
+              "width": 2048,
+              "height": 1164
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUNaa0mboAAmcZY.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUNaa0mboAAmcZY.jpg:small",
+              "width": 2048,
+              "height": 1164
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HUNah0GasAAR7CU.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HUNah0GasAAR7CU.jpg:small",
+              "width": 2048,
+              "height": 1164
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
       "interest_slugs": [
         "ai"
       ]
