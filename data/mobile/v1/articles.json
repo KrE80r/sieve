@@ -1,11 +1,427 @@
 {
   "schema_version": 1,
-  "sequence": 1173,
-  "revision": "sha256:c589602dfce8a4c7487f543becfe6954440be387097e1b097e1a10bb31dbdcc0",
-  "generated_at": "2026-10-09T21:00:00.308471+00:00",
+  "sequence": 1174,
+  "revision": "sha256:add6ec2c4ddad794ac17584591ac18c9a061d1d9c954719935e083c531fd147f",
+  "generated_at": "2026-10-09T22:00:00.307703+00:00",
   "complete": true,
-  "total_items": 978,
+  "total_items": 995,
   "items": [
+    {
+      "article_id": "article:6558",
+      "original_url": "https://www.carlmastrangelo.com/blog/storing-lists-in-registers",
+      "title": "Storing Lists in Registers",
+      "summary": "Pack 5‑letter Wordle words into a 32‑bit integer by reserving 2 bits for a NULL‑like prefix and derive length via leading‑zero count.",
+      "rating": 85,
+      "rating_reason": "The article presents a compact, bit‑level encoding of 5‑letter Wordle words using 6‑bit nibbles and a leading‑zero length trick, supplies Java code, explains the use of Integer.numberOfLeadingZeros, and reports ~3 ns timing. It delivers a reproducible, performance‑critical technique for storing variable‑length strings in a 32‑bit register, but it assumes familiarity with Java’s int handling and does not address broader AI or security contexts.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:26:38.387247+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:26:38.387247+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6557",
+      "original_url": "https://withblue.ink/2026/10/francis-stable",
+      "title": "Francis is now stable and already running on 10,000+ installs",
+      "summary": "Francis is a stable Go actor framework that persists state in SQLite/Postgres and scales from embedded use to multi‑node clusters with built‑in actors like rate limiting and durable workflows.",
+      "rating": 85,
+      "rating_reason": "The piece delivers concrete, hands‑on details of a new Go actor framework, including code snippets, durability mechanisms, scaling topologies, and built‑in actors, which directly serves developers seeking practical distributed‑systems solutions. It avoids hype and focuses on measurable engineering trade‑offs, though it is tied to the author’s project and lacks broader ecosystem comparison. Consequently, it merits a high but not perfect score. The article’s depth and specificity make it unusually useful for the target audience.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:18:59.866768+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:18:59.866768+00:00",
+      "image": {
+        "url": "https://withblue.ink/og/2026/10/francis-stable.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6556",
+      "original_url": "https://wiro.world/posts/calling-c-func-without-naming-it/",
+      "title": "Calling a function in C without naming it",
+      "summary": "A creative exploit chain that bypasses a school's restricted C grader by leaking intra-segment offsets between allowed symbols, using unions to type-pun function pointers under -pedantic, mmap to allocate W^X-compliant executable memory, and a hand-written syscall stub to invoke execve without naming it.",
+      "rating": 88,
+      "rating_reason": "Exceptional, reproducible exploit walkthrough with deep technical substance: intra-segment offset leak to bypass ASLR, union-based function pointer casts to defeat -pedantic, mmap for W^X-compatible executable pages, and a hand-rolled syscall stub. Includes concrete objdump output, real assembly bytes, working source code, and the non-obvious ASan interference finding. Responsible disclosure to the school adds credibility. Highly relevant to security, Linux internals, and C systems programming.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:18:39.811586+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:18:39.811586+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6555",
+      "original_url": "https://winware31.blogspot.com/2026/10/inside-windows-io-manager-deep-dive.html",
+      "title": "Inside the Windows I/O Manager : Deep dive into how read I/O requests are initialized.",
+      "summary": "The I/O manager resolves a read request by retrieving the target file object, locating its associated device object via Vpb and flags, validating user buffers, and dispatching the request to the top of the device stack.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand insight into how Windows read I/O requests are initialized, detailing handle lookup, device‑object selection, stack traversal, and parameter validation. These details are directly valuable to engineers debugging or securing low‑level Windows components. The explanation is somewhat dense and occasionally repetitive, which limits its polish, but the technical depth justifies a high score.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:18:36.904721+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:18:36.904721+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6554",
+      "original_url": "https://williamzujkowski.github.io/posts/2026-10-08-the-command-said-it-worked/",
+      "title": "The Command Said It Worked",
+      "summary": "Five common Linux commands exit 0 while silently failing, traceable to documented tool behavior, and the cheap defense is to run each one once in a situation that must fail before publishing.",
+      "rating": 88,
+      "rating_reason": "Dense, well-evidenced article that catalogs five concrete 'exit 0 but nothing happened' command anti-patterns (set -e without pipefail, gpg --symmetric with redirect, curl -sO on 403, Pi-hole v6 -a syntax removed, DOCKER-USER vs INPUT for container-to-host traffic) with mechanisms cited to source code and upstream manuals. A pinned, offline container lab reproduces four of the five with full version pinning, and the author supplies a Git checkout hash so readers can rerun. The 'run it where it must fail' negative-control methodology is genuinely useful, and the candid self-audit of link checker, ShellCheck, and audit pipeline blind spots adds practical value beyond a simple tip list.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:18:11.758555+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:18:11.758555+00:00",
+      "image": {
+        "url": "https://williamzujkowski.github.io/og/2026-10-08-the-command-said-it-worked.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6553",
+      "original_url": "https://vincent.bernat.ch/en/blog/2026-go-netip-addrto6",
+      "title": "Hacking the Go compiler to efficiently map IPv4 to IPv6",
+      "summary": "The reader learns how a missed Go compiler optimization is identified, measured, and fixed at the IR level, including exact benchmarks, assembly, and patch code.",
+      "rating": 93,
+      "rating_reason": "Exceptional expert-authored material: Vincent Bernat benchmarks the maintainer-favored netip.AddrFrom16(ip.As16()) pattern at 7.14 ns versus 0.87 ns for a native/unsafe equivalent, dissects the generated Plan 9 assembly (MOVBEQ under GOAMD64=v3), explains the Go compiler pipeline, and provides a working noder-stage IR rewrite patch, an unsafe layout-proxy trick, and a go build -overlay technique, all with a companion repository. It is directly relevant to Go engineering, networking, and compiler internals, with original measurements and reproducible steps and no hype. The delivered content is truncated mid-article, omitting the SSA-rule approach and final conclusions, which is the main limitation, but the substance shown is dense and verifiable.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:13:39.399578+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:13:39.399578+00:00",
+      "image": {
+        "url": "https://d2pzklc15kok91.cloudfront.net/images/covers/en/blog/2026-go-netip-addrto6.73414396a77c5a.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6552",
+      "original_url": "https://vijethph.github.io/ruminations/consuming-private-python-package-in-github",
+      "title": "Consuming a private Python package in GitHub",
+      "summary": "Using GitHub App tokens or SSH deploy keys with uv/Poetry enables safe, credential‑free consumption of a private package in CI and Docker builds.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, original implementation details for accessing a private Python package from GitHub without PATs, covering multiple CI/CD approaches, Docker secret handling, and credential management. It offers actionable mechanisms and clear trade‑offs, though it assumes an organizational context and can be dense for newcomers. Consequently it provides high technical relevance and substance, meriting a strong score.",
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:13:21.881912+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:13:21.881912+00:00",
+      "image": {
+        "url": "https://vijethph.github.io/ruminations/banner.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Different ways to install a private Python package from GitHub in CI/CD without personal access tokens, with setup steps and trade-offs."
+      }
+    },
+    {
+      "article_id": "article:6551",
+      "original_url": "https://tusacentral.net/joomla/index.php/mysql-blogs/270-pgo-or-not-pgo-this-is-the-dilemma-step-2",
+      "title": "PGO or not PGO this is the dilemma. Step 2",
+      "summary": "PGO reshapes the binary by using per‑edge profile data to concentrate hot code and relocate cold sections, dramatically improving cache and iTLB locality.",
+      "rating": 88,
+      "rating_reason": "The article provides a detailed, concrete description of PGO mechanisms—per‑edge counters, hot/cold splitting, binary reordering—and how they affect MySQL performance, delivering non‑obvious insight for developers. It lacks practical step‑by‑step deployment guidance and assumes deep MySQL knowledge, limiting universal relevance. Nonetheless, it reveals the true engineering value of PGO beyond simple profiling.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:10:23.255482+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:10:23.255482+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6550",
+      "original_url": "https://thinhdanggroup.github.io/architecture-diagrams-as-code-archify/",
+      "title": "Architecture Diagrams That Fail Like Code: Archify in Practice",
+      "summary": "Archify lets architecture diagrams be version‑controlled, validated, and diffed as code, exposing structural faults while requiring manual review of semantic intent.",
+      "rating": 87,
+      "rating_reason": "The article provides original experimental evidence that Archify’s typed‑JSON validation catches structural errors, citation mismatches, and layout issues that static images cannot. It demonstrates concrete CI integration and atomic delivery that let teams treat diagrams as code, which is highly relevant for software‑engineering workflows. However, it admits the tool cannot verify semantic correctness and relies on keyword‑based guide suggestions, limiting its completeness.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T08:02:58.567550+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T08:02:58.567550+00:00",
+      "image": {
+        "url": "https://thinhdanggroup.github.io/assets/images/architecture-diagrams-as-code-archify/banner.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6549",
+      "original_url": "https://tcanabrava.github.io/harmonicon-song-editor/",
+      "title": "Harmonicon's song editor, explained with one song about a jumping harmonica",
+      "summary": "The Harmonicon song editor uses specific color tints (orange for bends, mauve for notes outside the song's scale) to distinguish techniques, and its core song 'O Pulo da Gaita' revolves around a repetitive bend-release move on the 3 draw hole.",
+      "rating": 85,
+      "rating_reason": "Highly substantive walkthrough of a complex song editor UI. Packed with concrete implementation details (color coding for bends/scales, note selection mechanics, phrase structure). The author's discovery that 'mauve' means 'outside scale' rather than 'bend' provides a rare, non-obvious mechanics insight born from firsthand debugging. Excellent value per minute.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:59:05.923275+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:59:05.923275+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6548",
+      "original_url": "https://statmodeling.stat.columbia.edu/2026/10/09/digital-twins-version-2-0-the-skeptics-speak-up/",
+      "title": "Digital twins version 2.0: The skeptics speak up",
+      "summary": "Empirical data show LLM digital twins achieve only modest (~0.2) correlations with individual human responses and exhibit systematic biases, limiting their effectiveness for modeling individual heterogeneity.",
+      "rating": 85,
+      "rating_reason": "The article provides a substantive, evidence-driven critique of LLM digital twins, quantifying empirical limits (e.g., ~0.2 correlations with individual responses, 12 percentage-point average error across 300 survey questions) and exposing methodological pitfalls in prior hype. It is technically relevant for LLM evaluation and statistical modeling, though it synthesizes existing work rather than presenting new original experiments, and its findings are specific to survey-type behavioral prediction.",
+      "labels": [
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:52:50.380576+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:52:50.380576+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6547",
+      "original_url": "https://stanko.io/becoming-a-photographer-tIKMwUVuHnHG",
+      "title": "Becoming a photographer",
+      "summary": "AI lowers the speed limit of code implementation, shifting the programmer's role from writing syntax to cultivating taste and design—much like a photographer uses a camera, technical knowledge remains the differentiator.",
+      "rating": 85,
+      "rating_reason": "The article uses a compelling photography metaphor to articulate the shift from writing code to directing AI agents, grounded in the author's firsthand experience with HEY CLI. It offers concrete substance through specific case studies (HEY CLI, Calendar TUI), the 'eventual excellence' framework, and the civil engineering analogy that clarifies the distinction between implementation and design. It remains highly relevant to software engineering practice and AI tooling without relying on generic hype, and the reflective tone is supported by tangible examples rather than unsupported certainty.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:52:16.634625+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:52:16.634625+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6546",
+      "original_url": "https://shocm.me/posts/2026-10-06-php-86-pack-unpack-endianness-modifiers/",
+      "title": "PHP 8.6 pack() and unpack() Get Endianness Modifiers",
+      "summary": "PHP 8.6 introduces < and > modifiers for pack() and unpack() to specify signed/unsigned integers and floats in little or big endian order, simplifying binary protocol parsing and correcting prior workarounds.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, verifiable details about the new < and > endianness modifiers for PHP pack/unpack, including exact syntax, mixture rules, backward compatibility, and error handling, which directly enables safer binary parsing. It also warns about a subtle unpack element‑name parsing issue and provides practical migration steps, giving the reader actionable guidance. The content is narrowly focused, so its relevance is high for developers working with binary formats, but it offers limited broader context or cross‑domain insight. Overall the substance is deep and useful, though not exceptional enough for a 90+ score.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:48:22.427610+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:48:22.427610+00:00",
+      "image": {
+        "url": "https://shocm.me/attachments/2026-10-06-php-86-pack-unpack-endianness-modifiers.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6545",
+      "original_url": "https://sergiodxa.com/articles/the-remix-way",
+      "title": "The Remix Way",
+      "summary": "Using standardized contracts and modular primitives lets developers swap implementations and build testable components without altering application code.",
+      "rating": 87,
+      "rating_reason": "The article delivers concrete contracts, reusable primitives, and migration strategies with clear code examples, giving engineers a practical method to replace dependencies and build interchangeable implementations; however it contains some promotional framing that slightly reduces its depth.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:46:37.856693+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:46:37.856693+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6544",
+      "original_url": "https://sebsite.pw/w/20261009-strtod.html",
+      "title": "oh, apparently it's not possible to portably check for string-to-float conversion errors in standard c",
+      "summary": "Error handling for strtod requires checking errno for overflow and using floating‑point exception tests or endptr for underflow and invalid input.",
+      "rating": 85,
+      "rating_reason": "Provides deep, standards‑based analysis of portable overflow/underflow detection for strtod, with concrete mechanisms and clear caveats; however it cannot guarantee universal underflow detection due to optional implementation behavior.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:46:09.490597+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:46:09.490597+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6543",
+      "original_url": "https://rust.ai/eigen-times/",
+      "title": "Eigen Times: a newspaper in the eigenbasis of the news",
+      "summary": "A Rust-built eigenbasis of 1.09M news articles uses Hotelling's T² and Q residuals to quantitatively distinguish archetypal recurrence from genuinely unprecedented events, validated against held-out human categories.",
+      "rating": 87,
+      "rating_reason": "Genuinely substantive technical work: a deployed Rust system that computes a 60-dimensional eigenbasis over 1.09M articles using both term-space LSA (randomized SVD with implicit centering, 5-minute laptop fit) and embedding-space PCA (bge-small via ONNX Runtime, ~4 hours). The T²/Q novelty decomposition is a real, quantitative mechanism rather than hand-waving. Held-out evaluation against Wikipedia human categories (42.4% vs 40.0% purity) and Kuhn–Munkres matching of axes are methodologically sound, and the author is honest about what's not built (slot-schema diff layer). Dense concrete details — Parquet/Sail storage, WAF, 10,227 static S3 pages, varimax naming via TF-IDF loadings — make this unusually reproducible.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:40:24.528224+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:40:24.528224+00:00",
+      "image": {
+        "url": "https://digitalpress.fra1.cdn.digitaloceanspaces.com/drvo3fa/2026/08/eigentimes-headboard-1.png",
+        "width": 2400,
+        "height": 800,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6542",
+      "original_url": "https://runbook.scosovan.com/claude-code-routines-limits-and-gotchas/",
+      "title": "Claude Code routines: every limit, cap and gotcha",
+      "summary": "It compiles all current hourly limits and critical gotchas for using and triggering Claude Code routines.",
+      "rating": 92,
+      "rating_reason": "The piece provides precise, up‑to‑date hourly limits, scheduling nuances, and safety mechanisms for Claude Code, delivering rare operational clarity for engineers. It directly serves developers integrating LLMs into automation pipelines, making it highly relevant. Limitations include a narrow focus on a single proprietary system and occasional promotional framing.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:39:03.798903+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:39:03.798903+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6541",
+      "original_url": "https://ronaldbradford.com/blog/2026-10-02-how-easy-is-it-to-use-villagesql-mcp-extension/",
+      "title": "How easy is it to use the VillageSQL MCP extension?",
+      "summary": "VillageSQL MCP can be set up, secured with a read‑only user, and queried via HTTP without a sidecar, with clear evidence of both functionality and defensive limits.",
+      "rating": 92,
+      "rating_reason": "The article provides a fully documented, step‑by‑step experiment with measurable outcomes, showing installation, least‑privilege configuration, query execution, and systematic attempts to break the guardrails. It contains concrete commands, configuration values, status metrics, and observations that a technically adept reader can directly apply. Minor drawbacks are the GitHub rate‑limit issue and a Rust version hiccup, but they do not diminish the substantive value.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:38:34.728822+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:38:34.728822+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6540",
+      "original_url": "https://robdobson.com/2026/10/agent-free-ros-2-on-an-esp32/",
+      "title": "Agent-free ROS 2 on an ESP32",
+      "summary": "RaftROS lets an ESP32 act as a full ROS 2 node over Zenoh without a micro‑ROS agent, achieving sub‑millisecond loop times and hot‑plug sensor support.",
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible method for turning an ESP32 into a native ROS 2 node using a clean‑room Zenoh implementation, complete with protocol details, performance measurements, and source‑code references. It directly serves readers interested in embedded ROS 2, microcontroller networking, and low‑latency sensor integration. The exposition is dense but focused, with limited hype, making it high‑value despite its length.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:37:04.474309+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:37:04.474309+00:00",
+      "image": {
+        "url": "https://robdobson.com/wp-content/uploads/2026/10/agent-free-ros-2-on-an-esp32-hero.jpg",
+        "width": 2400,
+        "height": 1350,
+        "alt": "A Raft board with a multizone depth sensor in front of a laptop showing the live point cloud in Foxglove"
+      }
+    },
+    {
+      "article_id": "article:6539",
+      "original_url": "https://rdmsr.github.io/writing/gus/",
+      "title": "FreeBSD GUS",
+      "summary": "FreeBSD's GUS is an epoch-based safe memory reclamation scheme that uses unbounded sequences and tight integration with the UMA slab allocator to amortize polling costs across batches of objects, with XNU's zalloc extending the idea via a recirculation depot.",
+      "rating": 87,
+      "rating_reason": "Exceptional technical write-up of an under-documented OS mechanism. The article provides clear pseudocode for the GUS algorithm, detailed explanation of how it integrates with FreeBSD's UMA allocator for amortization, a thoughtful comparison with Linux RCU, and a substantive analysis of XNU's variant with its recirculation depot. Written by someone who clearly understands the code (and has reimplemented it), with concrete mechanisms rather than vague hand-waving. Diagrams are referenced but not visible, which slightly reduces accessibility.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-10T07:32:30.173248+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-09T07:32:30.173248+00:00",
+      "image": null
+    },
     {
       "article_id": "article:6538",
       "original_url": "https://qsoe-dev.blogspot.com/2026/10/qsoe-04-released.html",
@@ -21866,78 +22282,6 @@
         "width": 2560,
         "height": 1440,
         "alt": ""
-      }
-    },
-    {
-      "article_id": "article:5553",
-      "original_url": "https://claude.com/blog/how-anthropic-enables-self-service-data-analytics-with-claude",
-      "title": "Meet Claude",
-      "summary": "Effective self‑service analytics with LLMs require solid data foundations, canonical models, and well‑crafted skills to achieve high accuracy.",
-      "rating": 82,
-      "rating_reason": "The blog section delivers multiple concrete insights on using LLMs for self‑service analytics, including failure modes, data governance practices, and the impact of skills on accuracy, providing strong value for AI and data professionals. Repetitive site navigation adds padding, which slightly lowers the score, but the substantive content outweighs this.",
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "source_id": 7,
-      "source_name": "Bilgin Ibryam",
-      "source_type": "nitter",
-      "admitted_at": "2026-09-09T21:35:13.818649+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-09T21:35:13.818649+00:00",
-      "image": {
-        "url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a20599a39bd49c6ce8d4cde_og-self-service-data-analytics.jpg",
-        "width": 1200,
-        "height": 630,
-        "alt": "How Anthropic enables self-service data analytics with Claude | Claude by Anthropic"
-      }
-    },
-    {
-      "article_id": "article:5552",
-      "original_url": "https://github.com/neka-nat/freecad-mcp",
-      "title": "neka-nat/freecad-mcp",
-      "summary": "A FreeCAD MCP server that lets Claude Desktop script and automate FreeCAD modeling, FEM analysis, and other tasks across Windows, macOS, and Linux.",
-      "rating": 77,
-      "rating_reason": "Problem Significance: 18/25 (addresses real need for programmatic CAD control). Technical Novelty: 13/25 (provides a concrete MCP bridge but not a radical new algorithm). Practical Utility: 19/25 (installable, cross‑platform, usable in production workflows). Documentation Quality: 22/25 (clear installation, config, remote‑connection, and tool usage details). No automatic penalties applied. Domain Relevance Bonus: +5 for strong alignment with Tech and engineering use‑cases.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 27,
-      "source_name": "GitHub Trending (Python)",
-      "source_type": "github",
-      "admitted_at": "2026-09-09T21:34:51.130200+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-09T21:34:51.130200+00:00",
-      "image": {
-        "url": "https://opengraph.githubassets.com/ca3131865017b33428eeabe25ebc32247d606c50123e576f173ea893d289daec/neka-nat/freecad-mcp",
-        "width": 1200,
-        "height": 600,
-        "alt": "FreeCAD MCP(Model Context Protocol) server. Contribute to neka-nat/freecad-mcp development by creating an account on GitHub."
-      }
-    },
-    {
-      "article_id": "article:5551",
-      "original_url": "https://github.com/hpcaitech/Open-Sora",
-      "title": "hpcaitech/Open-Sora",
-      "summary": "Open‑Sora is an open‑source framework for training and running high‑quality text‑to‑video models, aiming to democratize video generation.",
-      "rating": 84,
-      "rating_reason": "The README shows a clear, significant problem—efficient high‑quality video generation—earning a strong score in problem significance. It presents novel architecture components (3D‑VAE, rectified flow, shift‑window attention) and a full training/inference pipeline, giving solid technical novelty. Usage instructions, scripts, and model checkpoints make it practically usable, though production‑readiness requires substantial GPU resources. Documentation is thorough with examples, reports, and detailed commands, supporting a high documentation score. A domain‑relevance bonus for AI/ML tooling brings the total to 84.",
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "source_id": 27,
-      "source_name": "GitHub Trending (Python)",
-      "source_type": "github",
-      "admitted_at": "2026-09-09T21:33:49.655155+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-09T21:33:49.655155+00:00",
-      "image": {
-        "url": "https://opengraph.githubassets.com/ef5a0609c46ee80df6c3c03d4425ca34045abbda8a7f1a265e4100f81b57ec29/hpcaitech/Open-Sora",
-        "width": 1200,
-        "height": 600,
-        "alt": "Open-Sora: Democratizing Efficient Video Production for All - hpcaitech/Open-Sora"
       }
     }
   ]
