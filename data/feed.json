@@ -1,7 +1,521 @@
 {
-  "updated_at": "2026-10-09T18:00:00.362588+00:00",
-  "total_items": 951,
+  "updated_at": "2026-10-09T19:00:00.138936+00:00",
+  "total_items": 971,
   "items": [
+    {
+      "id": 6505,
+      "source_id": 34,
+      "original_url": "https://blog.technodrone.cloud/2026/09/family-budget-whatsapp-bot.html",
+      "title": "I Replaced My Paper Budget With a WhatsApp Bot. Here's What Broke.",
+      "summary": "Built a family WhatsApp budget bot that reads credit card SMSs, tracks categories against budget, and answers in Hebrew/English — with the core rule that AI only interprets questions while deterministic Python handles all math and alerts.",
+      "ideas": [
+        "AI interprets chat messages into tool calls, but deterministic Python does all math and alerts",
+        "Budget follows credit card cycle, not calendar month, with weekly food category and monthly amount split over Sundays",
+        "Core architecture: SMS→IFTTT→port-forwarded router→Caddy→Hermes webhook→Python→SQLite→WhatsApp"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive engineering article detailing a WhatsApp budget bot implementation. Provides complete architecture (SMS→IFTTT→Caddy→Hermes→Python→SQLite→WhatsApp), concrete implementation decisions with trade-off analysis, original measurements (1,400 charges→420 merchant rules, 63→100 tests in 45 min), and critical security lessons about agent privilege abuse. The 'AI interprets, Python computes' pattern is a strong practical insight. Honest about failures without hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:28:40.592334"
+    },
+    {
+      "id": 6504,
+      "source_id": 34,
+      "original_url": "https://blog.ryjones.org/2026/10/09/hp-letsencrypt",
+      "title": "Let’s Encrypt on an HP LaserJet M553, renewed from a Proxmox container",
+      "summary": "Automates HP LaserJet TLS certificate renewal via Let's Encrypt DNS-01, Proxmox container, and headless Chromium, eliminating macOS certificate pinning breaks.",
+      "ideas": [
+        "RSA-only key type required; EC keys rejected outright by firmware.",
+        "PKCS#12 -legacy flag needed; AES-256/PBKDF2 encoding unrecognized by printer.",
+        "Headless Chromium required for cert upload; form POSTs scripted otherwise.",
+        "Leaf-only cert chain forces external intermediate handling for strict TLS clients."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers a complete, experimentally validated walkthrough of replacing a printer's self-signed cert with a Let's Encrypt certificate via DNS-01 ACME, PKCS#12 legacy PFX import, and headless Chromium automation. It contains rare firsthand troubleshooting (RSA-only firmware constraint, leaf-only cert chain, form CSRF trap) and a reproducible renewal hook. Highly relevant to sysadmins managing embedded TLS, though narrowly scoped to HP FutureSmart printers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:25:34.483404"
+    },
+    {
+      "id": 6503,
+      "source_id": 34,
+      "original_url": "https://blog.oguzhanatalay.com/engraving-images-live-in-the-browser-generative-line-art-with-svg-and-webgl",
+      "title": "Engraving Images Live in the Browser: Generative Line Art with SVG and WebGL",
+      "summary": "The article explains three in-browser rendering engines that generate live line-engraved images from code, unified by a single principle: map image tone to line width while preserving white gaps between lines to avoid halftone merging.",
+      "ideas": [
+        "Engine 1: Portrait engraved via pixel luminance, separable box-blur for tone separation, row-by-row polyline drawing with width proportional to local ink and a 6% hairline floor on highlights.",
+        "Engine 2: SVG plates built from ribbon geometry derived from centerline normals, Catmull-Rom + Chaikin smoothing, seeded deterministic RNG, hairline floor expressed in CSS-pixel-relative units, motion that cubic-hermites back to rest on hover exit.",
+        "Engine 3: WebGL fragment shader engraving using four terrain layers with Lambert shading, frequency-faded noise octaves, periodic line function bent by terrain shape, analytic antialiasing via box-filter coverage, loupe that re-engrvs at magnified coordinates rather than sampling pixels, and render loop that idles after 2 min of inactivity."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, well-structured technical detail across three rendering engines (Canvas 2D, SVG, WebGL) for generative line-art engraving. It explains real mechanisms—pixel luminance with Rec. 709 weights, separable box-blur approximation, tone mapping with gamma and contrast, SVG ribbon geometry from centerline normals + Chaikin smoothing, seeded deterministic randomness, fragment-shader line engraving with analytic antialiasing, frequency-faded noise octaves, and a magnifying loupe that re-engrvs rather than samples. Production concerns are explicitly addressed: resize handling, device-pixel-ratio capping, reduced-motion respect, pause switches, lazy loading, and layout-driven rebuilds. The unifying 'one rule' (tone → line width, no touching lines, white gap in deepest shadow) is clearly stated and consistently applied. The writing is focused, jargon is contextualized, and engineering trade-offs are discussed openly. It avoids hype, gives reproducible details, and provides genuine insight into efficient in-browser engraving. It falls short of 90 only because the techniques, while expertly synthesized, build on established graphics methods rather than presenting a wholly novel algorithmic contribution.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:22:47.905564",
+      "image_url": "https://cdn.hashnode.com/uploads/covers/5ff1dbf7786e5b71c88afff0/f1928fda-000c-4d5b-baf4-ca28d11730c2.png",
+      "image_width": 1600,
+      "image_height": 840,
+      "image_alt": ""
+    },
+    {
+      "id": 6502,
+      "source_id": 34,
+      "original_url": "https://blog.mikegchambers.com/posts/introducing-strands-decider-2b/",
+      "title": "Introducing Strands Decider 2B: A Small, Open Source, Decision Model",
+      "summary": "A 2B open-source decision model achieves fast, calibrated option-scoring by replacing an LLM's generative head with a lightweight pointer network, demonstrating competitive benchmark performance and practical utility for agentic pipelines.",
+      "ideas": [
+        "Replace LLM generative head with ~1M parameter pointer head that scores options via hidden state comparison",
+        "Fine-tune Qwen3.5-2B torso with rank-16 LoRA adapter for decision-task adaptation",
+        "Achieve third-place 2B class ranking on JevBench public benchmark, first among models just over 2B parameters"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides substantive, relevant technical detail on a novel 'System One' decision model architecture. It explains the concrete mechanism of stripping an LLM's generative head and replacing it with a pointer network for option scoring, fine-tuned via LoRA. It offers measurable benchmark results (JevBench rankings) and addresses a real engineering need for fast, calibrated decision-making in agentic workflows. The content is focused, noise-free, and directly serves the target audience of LLM systems engineers, though the architectural modification is a focused advancement rather than a field-shifting breakthrough.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:21:34.970304"
+    },
+    {
+      "id": 6501,
+      "source_id": 34,
+      "original_url": "https://blog.mikegchambers.com/posts/decider-gated-memory/",
+      "title": "Should the agent even look that up?",
+      "summary": "A carefully worded decider question achieves 100% accuracy in memory gating, slashing injected context from 147 to 25 records and avoiding 5 of 8 unnecessary memory calls.",
+      "ideas": [
+        "Question wording moves decider accuracy from 65% to 100% on memory worth queries",
+        "85% reduction in injected memory records (147→25) with unchanged answers",
+        "Ranking signal maintains AUC 1.000 while absolute thresholds fail across stores"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides original experimental evidence that question wording alone transforms a decider model's accuracy from 65% to 100% for memory retrieval gating, while reducing injected context by 85%. The mechanisms of AgentCoreMemorySessionManager are explained with firsthand implementation detail, and the findings about separating ranking from threshold selection are directly useful for agent designers. The results are data-dependent and deployed latency is confounded by remote infrastructure, but the core insights about question design and gate architecture are highly practical.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:20:08.981632",
+      "image_url": "https://blog.mikegchambers.com/assets/images/decider-gated-memory/score-spread.jpg",
+      "image_width": 1575,
+      "image_height": 806,
+      "image_alt": "Long term memory records returned for a query about drink preferences, with relevant and irrelevant records interleaved in a narrow score band"
+    },
+    {
+      "id": 6500,
+      "source_id": 34,
+      "original_url": "https://blog.khaledalam.net/kv-race-condition-view-counter-cloudflare-d1/",
+      "title": "Ten Visitors, One View: The Race Condition KV Hid in My Blog Counter",
+      "summary": "A read‑then‑write KV counter loses updates under concurrency; moving to D1 with an atomic INSERT ... ON CONFLICT DO UPDATE SET count = count + 1 fixes the race and also reveals a double‑decode bug for Arabic slugs.",
+      "ideas": [
+        "Read‑then‑write without atomicity loses increments under concurrent visitors.",
+        "Cloudflare KV has no compare‑and‑swap, so counters must use a database with atomic updates.",
+        "Single SQL INSERT ... ON CONFLICT DO UPDATE SET count = count + 1 RETURNING count eliminates the race.",
+        "Decoding a URL parameter twice (via decodeURIComponent after URLSearchParams.get) silently breaks lookups for percent‑encoded slugs.",
+        "Sequential tests cannot reveal race conditions; concurrent requests are required."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, well‑documented race‑condition in a Cloudflare KV‑backed view counter, explains why sequential tests mask it, and gives a single‑statement D1 fix. The technical detail (read‑then‑write, atomic SQL, double‑decode bug) is substantive and directly relevant to infrastructure and concurrency‑aware developers. The only limitation is that the scenario is specific to KV counters and may not generalize to all workloads.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:14:45.048937",
+      "image_url": "https://blog.khaledalam.net/wp-content/uploads/2026/10/kv-race-condition-d1-view-counter.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The atomic D1 upsert that replaced a racy read-then-write view counter on Cloudflare KV"
+    },
+    {
+      "id": 6499,
+      "source_id": 34,
+      "original_url": "https://blog.gaborkoos.com/posts/2026-10-04-I-Tested-11-Http-Resilience-Libraries/",
+      "title": "I Tested 11 HTTP Resilience Libraries",
+      "summary": "Comprehensive empirical testing reveals that most HTTP resilience libraries handle isolated patterns correctly but diverge significantly under combination scenarios involving cancellation, timeout interactions, and state changes underneath operations.",
+      "ideas": [
+        "Retry delays ignoring abort signals cannot be interrupted during backoff",
+        "Bulkhead queues fail to release capacity when waiters cancel, causing slot leaks",
+        "Retry-After headers may control or override library backoff behavior inconsistently",
+        "Hook rejections can leave caller promises perpetually pending if errors aren't properly propagated",
+        "Deadlines spanning retries and backoff require library-level composition, not just individual attempt timeouts"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article provides original empirical evidence through a comprehensive 21-scenario test suite across 11 HTTP resilience libraries, revealing non-obvious implementation patterns and bug interactions in retry delays, circuit breaking, bulkhead queuing, and timeout handling that most documentation omits. The author's firsthand experience implementing ffetch lends credibility, and the mechanism-level explanations are directly actionable for library selection and resilience engineering. The specialized nature of the content limits broad accessibility, but within its domain the material is substantive, relevant, and highly useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:08:04.893199"
+    },
+    {
+      "id": 6498,
+      "source_id": 34,
+      "original_url": "https://blog.aeilot.top/2026/10/04/cosma-communication-optimal-matmul/",
+      "title": "Beyond FLOPs: How COSMA Builds Parallel Matrix Multiplication from Communication Bounds",
+      "summary": "COSMA derives communication-optimal parallel matrix multiplication by modeling the computation as a 3D space, optimizing tile shapes under memory constraints, and showing that smaller local memory significantly increases boundary communication for the same workload.",
+      "ideas": [
+        "A processor receiving an a×b×c sub-box needs ac elements of A, bc elements of B, and ab partial sums of C, with local work abc and boundary cost ac+bc+ab.",
+        "The I/O lower bound exponent 1/2 arises because loading Θ(t²) numbers supports Θ(t³) multiply-adds, giving reuse scaling as S⁻¹/² rather than S.",
+        "For fixed output area ab=R, efficiency ρ=ab/(a+b) is maximized when a=b=√R, giving ρ_max=√R/2—most memory should hold a square output tile with smaller input buffers.",
+        "Local optimization via differentiation yields an ideal cubic domain a=b=W¹/³ with boundary cost 3W²/³; if the face doesn't fit in memory, the solution caps a at √S and extends the accumulation dimension.",
+        "With W=2³⁰ multiply-adds and S=2¹⁶, the ideal local domain becomes a=256, b=16384, boundary volume 8,454,144—a long column requiring ~2.7× more communication than the memory-rich cube case.",
+        "Minimum communication is not always minimum runtime: message startup latency α and bandwidth β must be balanced against volume, and processor count must align with grid shape (e.g., 64 vs 65 processors)."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides substantial, concrete technical content on I/O lower bounds for parallel matrix multiplication, with derivations of tile shapes, communication volume formulas, and a numerical example demonstrating the memory-communication trade-off. It systematically explains the COSMA framework, red-blue pebbling analysis, sequential schedules with output retention, and local geometric optimization—all directly relevant to ML inference and parallel computing. The substance is non-trivial and well-supported, though much of the underlying math draws from established literature (Hong-Kung, 2019 pebbling paper). The article’s organization and accessible framing add value without resorting to hype or filler.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:03:16.092413"
+    },
+    {
+      "id": 6497,
+      "source_id": 34,
+      "original_url": "https://benenewton.com/blog/jev-agent-routing-claude-code",
+      "title": "My Claude Code mod lets Jev choose the agent and model for every call",
+      "summary": "A Claude Code mod uses Jev's decision model to route suitable subagent calls to cheaper Haiku models, achieving 51% cost savings on verified lookups.",
+      "ideas": [
+        "Jev routes Explore calls to Haiku for read-only lookups ≥80% confident",
+        "51% cost reduction on 7 lookup calls, all facts verified",
+        "Blind judge confirmed Haiku answers correct on line numbers and config values"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers strong substantive value with original benchmark evidence, deep implementation details of the Claude Code mod, and concrete cost-saving measurements. Jev's decision model routing achieves 51% lookup cost reductions with verified correctness. However, limitations exist: single-codebase testing, strict thresholds route only 1 of 8 fresh lookups, and results may not generalize widely. The material is technically relevant and useful but falls short of exceptional due to these constrained validation conditions.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T05:01:05.600713",
+      "image_url": "https://iizonjzcppyrrwfitwxj.supabase.co/storage/v1/object/public/site-assets/ec149738-d388-44e3-bcd0-cbe2440807ac/generated/d6a4846f-a1ac-4314-8aff-857b2e812c36/hero-jev-agent-routing-claude-code-1791164671867.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "My Claude Code mod lets Jev choose the agent and model for every call"
+    },
+    {
+      "id": 6496,
+      "source_id": 34,
+      "original_url": "https://askdba.net/movie-finder-semantic-search-over-1m-films-inside-mysql/",
+      "title": "Movie Finder: semantic search over 1M films, inside MySQL",
+      "summary": "Vector search over 1M+ TMDB movies runs entirely inside MySQL using MyVector's HNSW index, achieving 5–20ms query latency with sub-second incremental updates and filter pushdown, as validated by original benchmarks.",
+      "ideas": [
+        "MyVector HNSW index builds in 29–545s depending on row count via MySQL binlog listener",
+        "HNSW search 5–20ms, exact scan 3s at 1M rows with 100% recall@10, ef_search trades recall for speed",
+        "Filter pushdown uses matching key count as HNSW search upper bound to prune candidates",
+        "ef_search=100 gives near-perfect recall@10 for unfiltered queries; raising ef improves recall at linear time cost",
+        "New movies INSERT-triggered HNSW update within ~1s, no full index rebuild required"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantial, technically dense material on integrating vector search inside MySQL via MyVector, with original benchmark data, concrete SQL implementations, and clear analysis of HNSW parameters, filter pushdown, and incremental index updates. It is highly relevant for DB/MLops practitioners seeking practical mechanisms and trade-off data. The content remains valuable even stripping away the demo framing, though its presentation as a product announcement and assumed MyVector dependency slightly contextualize rather than diminish its substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T04:56:42.736803",
+      "image_url": "https://askdba.net/wp-content/uploads/2026/10/myvector_movies-Large.jpeg",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 6495,
+      "source_id": 34,
+      "original_url": "https://aras-p.info/blog/2026/10/05/Unroll-a-loop-make-shader-10x-faster/",
+      "title": "Unroll a loop, make shader 10x faster",
+      "summary": "Loop unrolling a small fixed-bound loop in a Blender Kuwahara GPU shader produced a 10x speedup on Apple silicon and 2x on NVIDIA by eliminating icmpsel sequences the compiler emitted because the GPU cannot index registers.",
+      "ideas": [
+        "Apple GPU shader compiler expands indexed register access into long icmpsel chains because registers are not indexable.",
+        "Adding [[unroll]] in Blender's BSL dropped Apple GPU time from 220ms to 20.4ms.",
+        "Unrolling halved live registers (198 to 103) and doubled occupancy on RTX 3080Ti.",
+        "Instruction mix shifted from 12% float math to 79% float math after unrolling.",
+        "xcrun metal-tt plus Dougall Johnson's applegpu tools can disassemble Apple GPU shaders."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional firsthand investigation of GPU shader performance with concrete evidence at every step. The article provides reproducible benchmarks (408ms vs 19ms on RTX 3080Ti; 385ms vs 220ms on M4 Max), actual disassembly snippets showing icmpsel sequences, register-pressure measurements before and after the fix, and a verified 10x speedup on Apple silicon plus 2x on NVIDIA. The root-cause analysis (Apple GPU cannot index registers, so indexed array access expands to a chain of icmpsel instructions) is non-obvious and well-supported. Methodology is transparent, including use of Dougall Johnson's Apple GPU disassembler, and the fix was merged into Blender. Minimal noise; the personal framing serves the technical narrative rather than padding it.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T04:54:27.938750"
+    },
+    {
+      "id": 6494,
+      "source_id": 34,
+      "original_url": "https://annanay.dev/fixing-db-with-codex/",
+      "title": "Spending $150 in Codex credits to fix a DB bug in production",
+      "summary": "Using $150 of Codex credits, the engineer scanned and repaired 27 Redis clusters, uncovering a label‑size bug that caused missing index entries and restoring correct notification delivery.",
+      "ideas": [
+        "Codex scanned 365,808 index‑property checks across 27 production Redis clusters.",
+        "Detected 45 failing property/member comparisons and resolved 24,560 vs 24,772 mismatches.",
+        "Repaired index inconsistencies after a full resync uncovered a string‑indexing defect.",
+        "Adapted repair scripts per cluster’s access method, improving efficiency over custom Bash."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, firsthand incident details, measurable performance data, and a clear technical mechanism for repairing database indices in production. It showcases original evidence such as latency reductions, missing-entry counts, and the nuanced capabilities of Codex in handling heterogeneous clusters. The narrative is highly relevant to engineers interested in databases, Redis internals, and operational troubleshooting, though some contextual storytelling slightly dilutes the focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T04:50:18.576102"
+    },
+    {
+      "id": 6493,
+      "source_id": 34,
+      "original_url": "https://amohan.dev/blog/2026/libero-warp-mjx-rdna4/",
+      "title": "I ran 130 robot manipulation tasks in parallel on a $700 GPU",
+      "summary": "Porting all 130 LIBERO robot manipulation tasks to MuJoCo Warp on a $700 RX 9070 XT achieves 17,137 env-steps/s at scale but requires substantial renderer fixes (orientation, shadow constant, cube-map sampling, brightness) to keep a BC policy trained on CPU pixels functional at 42.5% vs 50%.",
+      "ideas": [
+        "MuJoCo Warp on RX 9070 XT hits 17,137 env-steps/s at 2,048 worlds vs 38 on CPU",
+        "16GB VRAM caps rendering at ~50 envs; physics-only scales much further",
+        "Warp ray tracer is ~85% as bright as MuJoCo CPU renderer, non-uniformly across frame",
+        "BC policy trained on CPU pixels transfers to GPU pixels with renderer fixes (42.5% vs 50%)",
+        "Small-batch Warp runs are launch-bound; switching OSC controller from JAX to Torch gave 1.27x speedup",
+        "mujoco_warp source patches must be applied before import to avoid stale kernel line numbers",
+        "Cube-map texture sampling missing in Warp renders LIBERO tables as flat tan smears",
+        "PandaPickCartesian runs 5,900 env-steps/s with rendering on critical path at 1,024 envs"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "Exceptional first-hand technical deep-dive with original benchmarks, reproducible findings, and honest disclosure of limitations. Documents the first MJX+Warp port of LIBERO and the first BC transformer training/eval on RDNA 4 outside AMD, with concrete numbers (17,137 env-steps/s at 2,048 worlds; 50% CPU vs 42.5% Warp success), specific renderer bugs and fixes (vertical flip, shadow constant, cube-map sampling, brightness multiplier, patch-ordering), and clear profiling analysis showing launch-bound vs compute-bound regimes. The article is truncated at the end (CCD kernel discussion cut off), which slightly limits completeness, but the depth and density of concrete, actionable findings is outstanding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T04:46:23.307974"
+    },
+    {
+      "id": 6492,
+      "source_id": 34,
+      "original_url": "https://anagogistis.com/posts/git-worktrees/",
+      "title": "Git worktrees: why not just clone the repo?",
+      "summary": "Worktrees give independent working directories that share a single repository, letting multiple agents edit separate files and indexes without needing to push or fetch commits between clones.",
+      "ideas": [
+        "Separate worktrees share repository objects, providing independent workspaces without commit transfer between clones."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers high technical relevance with detailed, concrete explanations of Git worktrees versus separate clones, including commands, mechanics of shared object storage, distinct HEADs and indexes, and practical scenarios for parallel coding agents. It reveals non‑obvious insights—such as immediate local access to commits without fetching and the shared branch reference limitation—that are valuable to an experienced reader. The piece is dense and focused, but its length and some peripheral explanations prevent it from reaching exceptional status, so it falls in the strong range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T04:46:18.631203"
+    },
+    {
+      "id": 6491,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/anyps5-static-relinker",
+      "title": "AnyPS5: a PS5 game turned into a Linux program by relinking, not emulating",
+      "summary": "PS5 x86-64 executables can be relinked as native Linux programs by recomputing NID imports and restructuring ELF segments for glibc loading, avoiding CPU emulation entirely.",
+      "ideas": [
+        "PS5 ELF relinking converts games to native Linux without emulation",
+        "NID hashing maps console function names to SHA-1 derived identifiers",
+        "Syscall scanning blocks inline syscalls during relinking",
+        "Entry stub uses mov rdi, rsp to emulate console argument passing",
+        "GPU shader path requires 102k lines of C++ recompilation to SPIR-V"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers exceptionally detailed technical analysis of AnyPS5's relinking methodology, explaining how PS5 ELF executables convert to native Linux programs through NID recomputation, syscall avoidance, and ELF format transformation. The substance includes concrete source code references, relocation mechanics, entry stub construction, and GPU shader recompilation architecture. However, practical applicability is narrow - only one game has been tested successfully, and the shader decoder acknowledges technical debt with incomplete translations and caveated implementations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-10T04:42:17.432786",
+      "image_url": "https://ai.thesatyajit.com/articles/anyps5-static-relinker/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 6490,
+      "source_id": 29,
+      "original_url": "https://github.com/loopai-hq/pulsar",
+      "title": "Show HN: Pulsar – Qwen3.8-27B at 148 tok/s writing code on M5 Max",
+      "summary": "Pulsar optimizes Qwen3.8-27B inference on Apple Silicon with GPU kernel optimizations and speculative decoding, achieving 1.11× to 4.14× speedups over existing inference engines.",
+      "ideas": [
+        "Pulsar 1.1.1 1.11× faster than Splash 1.3.0 on M5 Max",
+        "Speculative decoding uses draft model checking every token",
+        "38 GPU kernels hand-tuned for Apple Silicon Metal",
+        "Prompt cache enables repeated prompts in 0.1 seconds",
+        "Text-only mode skips image weights for more context memory",
+        "Benchmarks show 1.80×-4.14× speedup vs competing engines",
+        "Qwen3.6-35B-A3B MoE achieves 268-299 tok/s with Pulsar",
+        "Coding agents connect to Pulsar server for code editing",
+        "Editing 210-line file takes 8.1s with Pulsar vs 16.5s",
+        "Apache 2.0 license allows building on Pulsar with credit",
+        "M5 Max 128 GB reaches 452 tok/s for code editing tasks"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional value density with 11 distinct quality ideas spanning performance benchmarks, technical innovations, and practical applications. Strong thematic relevance to AI and Apple Silicon optimization. Reader gains actionable knowledge for running faster LLMs on macOS. No significant penalties applied; content is substantive without fluff.",
+      "source_type": "rss",
+      "source_name": "Hacker News Show",
+      "published_at": "2026-10-10T04:38:24.872463",
+      "image_url": "https://opengraph.githubassets.com/13407797f9b99dcbf36ad1924e6ad56428ae588098210da2b02a72397cc3479d/loopai-hq/pulsar",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Pulsar (formerly fastkernel): the fastest inference engine for Qwen3.8-27B and Qwen3.6-35B-A3B on Apple Silicon - loopai-hq/pulsar"
+    },
+    {
+      "id": 6489,
+      "source_id": 7,
+      "original_url": "https://newsletter.pragmaticengineer.com/p/the-state-of-the-tech-industry-in",
+      "title": "The Pragmatic Engineer",
+      "summary": "Software engineering has crossed a structural threshold: engineers now orchestrate 5-10 parallel AI agents instead of hand-writing code, and companies are rebuilding their infrastructure around agent-native workflows.",
+      "ideas": [
+        "Practically nobody writes code by hand anymore; AI agents now author most production code",
+        "Top engineers run 5-10 parallel coding agents, rotating between multiple local worktrees",
+        "GitHub data: agent-authored PRs grew ninefold in eight months, now outnumbering human-authored ones",
+        "Linear reports more agent-created issues than human-created issues since July",
+        "Steve Yegge's eight-level chart maps engineer progression from IDE use to custom agent orchestrators",
+        "IDEs are fading: Cursor, Codex, JetBrains Air all pivoted away from the editor concept",
+        "IDEs should evolve into validation and verification interfaces for checking agent output",
+        "Nearly every serious tech company is building its own internal AI agent harness",
+        "Development increasingly starts in Slack through integrated coding agents like @Codex and @Claude",
+        "Companies are building 'agentic software factories' wiring AI into CI/CD, reviews, and deploys",
+        "Migrations that formerly took years now take weeks: Anthropic, OpenAI, Airbnb, Asana, Uber examples",
+        "Martin Fowler: AI's impact is a 'whole size difference' from internet or agile shifts",
+        "Agent skills usage is mainstream: 83% of Factory AI users, up 2.5x since February"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 90,
+      "rating_reason": "This is a dense expert deep-dive packed with genuinely exclusive value: unpublished GitHub data showing 9x growth in agent-authored PRs (now exceeding human ones), Linear data on agent-created issues overtaking human ones, Factory AI skills adoption stats, named internal agent harnesses from major companies, and concrete migration timelines (Anthropic's 1.5-year Zig-to-Rust port in 11 days, Uber's 600K test migration in 4 months). First-hand accounts from Claude Code's creator, Cockroach Labs' founder, Martin Fowler, Kent Beck, and Steve Yegge's 8-level AI adoption chart add insider credibility. Minor deductions for paywalled slides/video and self-promotional references to prior editions, and slight editorial sloppiness in dates, but the substance is exceptional and highly relevant to AI and software engineering.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-10T04:36:33.041735",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!wmBO!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F55ac4f75-983e-45c6-bde0-40307f3bcd03_2048x1366.jpeg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6488,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/ukrainian-russian-dual-citizen-admits-to-laundering-millions-for-cybercriminals/",
+      "title": "Man admits to running network of 15,000 money mules for cybercriminals",
+      "summary": "A single operator ran a 15,000-mule network since 2007, laundering $10+ million for cybercriminals through fake job recruitment and international fund transfers.",
+      "ideas": [
+        "15,000 money mules recruited since 2007 for YMCO operation",
+        "Fake job ads and spam emails recruited U.S. residents as mules",
+        "Illicit funds wired via Western Union/MoneyGram to Eastern Europe",
+        "$10+ million stolen from 750+ U.S. bank accounts at 35+ banks",
+        "Korniev managed YMCO employees with performance-based rewards/punishments",
+        "Four co-conspirators received 37-63 month sentences, $9.1M restitution each",
+        "Law enforcement: mules often recruited from students, immigrants, economically distressed",
+        "Europol EMMA operation arrested 1,803 money mules internationally"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides valuable concrete details about a major money mule operation, including the scale (15,000 mules since 2007), recruitment methods (fake job ads/spam emails), international scope, and specific financial figures ($10M+ stolen from 750+ accounts at 35+ banks). Law enforcement quotes add context about vulnerable populations being targeted. No penalties apply; it's solid journalism delivering genuine insights efficiently.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-10T04:35:00.671998",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/10/09/hacker_money_laundering_dollars.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 6487,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/gobalance-flaw-lets-attackers-hijack.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Truncated key material in GoBalance's signing step lets anyone recover a dark-web site's .onion master key from a single public descriptor, and because that exposure is irreversible, affected sites must migrate to new addresses rather than just patch.",
+      "ideas": [
+        "GoBalance passes only half of a Tor private key to its signer, destroying signature nonce secrecy",
+        "A computable fixed nonce value allows private key recovery from a single published descriptor",
+        "Onion addresses are public keys, so whoever holds the matching private key controls the address",
+        "Leaked master keys are long-term, enabling address hijacking indefinitely into the future",
+        "Only Tor-format master keys are vulnerable; GoBalance's setup tool format is safe",
+        "The original Onionbalance and Tor itself are unaffected; only the Go rewrite is flawed",
+        "Dread forum's two onion addresses were hijacked and redirected to rival site Conclave",
+        "Patch cannot undo exposure; leaked keys are permanent, requiring new onion addresses",
+        "Users should change passwords and verify new addresses through signed announcements",
+        "No CVE or official fix yet; an independent researcher published a patch and working PoC"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This is a timely, well-sourced security news article delivering multiple concrete value instances: a clear technical explanation of the flaw (GoBalance truncating a 64-byte Tor key to 32 bytes, destroying signature nonce secrecy), real-world incident reporting on the Dread forum takeover, precise scoping of which sites are affected versus not, and genuinely actionable guidance including the important nuance that patching cannot undo exposure because published descriptors permanently leak keys. The writing is efficient with no clickbait or padding, and thematically aligns strongly with cybersecurity. It falls short of exceptional because it is largely coverage of a third-party disclosure rather than original research or unique expert insight.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-10T04:33:33.985635"
+    },
+    {
+      "id": 6486,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+      "title": "A new feature for my blog, built using my voice",
+      "summary": "Voice-driven interactions with AI can efficiently create and refine web features while multitasking.",
+      "ideas": [
+        "Voice-driven coding with ChatGPT can create Django features while multitasking.",
+        "Codex can discover undocumented APIs and generate pagination logic automatically.",
+        "Iteratively refine models and imports using voice transcripts without heavy typing.",
+        "Combine local preview with voice feedback for rapid UI design adjustments.",
+        "Automate newsletter imports from RSS, private GitHub, and custom APIs.",
+        "Switch to typing for detailed changes like API‑based import implementations.",
+        "Multitasking with voice allows building while cooking, boosting productivity."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The post provides several concrete, actionable insights about using ChatGPT's voice mode for software development, including discovering undocumented APIs and handling imports, which offers genuine value to developers. It aligns well with AI, technology, and productivity themes, and the content density is solid for its length. Minor sponsor mention is present but does not dominate the content.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-10-10T04:32:42.933178",
+      "image_url": "https://static.simonwillison.net/static/2026/newsletters-card.webp",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
     {
       "id": 6485,
       "source_id": 28,
