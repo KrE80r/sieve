@@ -1,7 +1,212 @@
 {
-  "updated_at": "2026-10-10T19:00:00.193132+00:00",
-  "total_items": 1034,
+  "updated_at": "2026-10-10T20:00:00.171457+00:00",
+  "total_items": 1042,
   "items": [
+    {
+      "id": 6609,
+      "source_id": 34,
+      "original_url": "https://zhebrak.io/posts/half-written-answers/",
+      "title": "Half-written answers",
+      "summary": "Asynchronous RL can safely reuse stale KV caches during generation, achieving higher throughput with only modest accuracy loss on short‑answer tasks.",
+      "ideas": [
+        "Stale KV undoes ~80% policy update for first 8 tokens",
+        "Recomputing 14/28 layers removes ~10% stale divergence",
+        "GSM8K: stale KV regime D yields 1,719 steps/h, 68.6% accuracy",
+        "MATH: 38% trainer tokens from stale cache, D faster than B",
+        "Asynchronous D and E nearly equal accuracy, D better throughput"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides rigorous empirical comparison of five asynchronous RL rollout regimes for language models, complete with throughput and accuracy measurements on GSM8K and MATH, and analysis of KV cache staleness impact. Its concrete substance—source-level regime descriptions, measured steps-per-hour, and KL-divergence decomposition—directly serves readers interested in LLM training infrastructure. However, the datasets are small (GSM8K, MATH), the analysis focuses on a single model size and vLLM version, and the KL divergence findings are descriptive rather than fully explanatory, limiting generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:51:44.029804",
+      "image_url": "https://zhebrak.io/posts/half-written-answers/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6608,
+      "source_id": 34,
+      "original_url": "https://www.theswift.dev/posts/validate-decimal-input-without-losing-the-draft/",
+      "title": "Validate Decimal Input Without Losing The Draft",
+      "summary": "Teaches a draft-then-validate pattern for SwiftUI decimal fields, ensuring rejected edits never overwrite the last accepted value while enforcing strict numeric policies.",
+      "ideas": [
+        "Use wholeMatch(of:) to validate the entire input string before committing the Decimal value",
+        "Separate mutable draft text from immutable committed value to prevent data loss on failed validation",
+        "Enforce domain constraints (range, step, precision) after format parsing, not just parsing success"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a robust, copy-pasteable pattern for SwiftUI decimal validation that cleanly separates draft and committed values. Offers concrete parsing logic via wholeMatch(of:), explicit domain constraints (range, step, precision), and careful locale/Unicode handling. The draft-commit model is non-obvious and solves a common editing pain point reliably.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:49:37.898709",
+      "image_url": "https://www.theswift.dev/images/posts/validate-decimal-input-without-losing-the-draft/numeric-input-v2/cover.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 6607,
+      "source_id": 34,
+      "original_url": "https://www.michelebologna.net/2026/minimum-release-age-supply-chain/",
+      "title": "I don't install anything younger than a week",
+      "summary": "A personal policy of waiting 7/14/30 days before installing non-security releases, backed by two real compromise incidents and implementable via tool-specific minimumReleaseAge configurations.",
+      "ideas": [
+        "Wait 7 days for patches, 14 for minors, 30 for majors before allowing automerge",
+        "Renovate requires 1-minute minimumReleaseAge to avoid automerge hang on timestamp-less deps",
+        "Tool-specific age units: npm days, pnpm minutes, uv/bun seconds for minimumReleaseAge settings",
+        "Exempt security fixes from the wait gate so vulnerability patches aren't delayed"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, evidence-based update-policy with original incident analysis, tool-specific configurational detail, and hard-won practical constraints. It explains mechanisms (Renovate rules, minimumReleaseAge units), supports claims with two real compromise incidents, and balances trade-offs transparently. The personal-scale scope limits direct multi-user applicability without additional guardrails, but the configurational knowledge is immediately useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:43:56.493101",
+      "image_url": "https://www.michelebologna.net/og/2026/minimum-release-age-supply-chain.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6606,
+      "source_id": 34,
+      "original_url": "https://www.jontsai.com/2026/10/11/building-organize-tabs-2-0-with-claude-code",
+      "title": "What Building Organize Tabs 2.0 with Claude Code Actually Looked Like",
+      "summary": "Using Claude Code to rebuild a Chrome extension showed that explicit constraint definition and robust end‑to‑end testing are essential to tame AI‑generated code.",
+      "ideas": [
+        "Never move pinned tabs or break tab groups during consolidation.",
+        "Windows with meetings or media are preserved during tab operations.",
+        "Preview before close and undo close action for safety.",
+        "End-to-end test harness catches Chrome quirks and platform bugs.",
+        "Adversarial review before shipping uncovered ten hidden defects.",
+        "Throwaway holodeck profile isolates test runs from real browser state.",
+        "Sequential window creation prevents popup chain breakage.",
+        "AGENTS.md grants agents sandbox freedom without permission hesitation."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, concrete engineering detail about rebuilding a Chrome extension with Claude Code, covering architecture, testing, and hard-won constraints. It is highly relevant to AI‑assisted development and software‑engineering practice, but much of the value is tied to the author’s specific workflow and includes narrative padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:42:51.597613"
+    },
+    {
+      "id": 6605,
+      "source_id": 34,
+      "original_url": "https://www.ilinmaks.com/blog/en/likeness-house-launch",
+      "title": "I put my own face on the front page. How I launched Likeness House",
+      "summary": "An AI engineer documents the technical and product choices behind launching Likeness House, a digital twin service, revealing the stack, security model, and hard-won lessons from a first-person project.",
+      "ideas": [
+        "Node.js server with no external frameworks renders multilingual pages for SEO",
+        "Portrait uses WebGL points of light as a 2.5D cursor-reactive relief",
+        "scrypt hashing, HttpOnly cookies, and rate-limited forms provide basic security",
+        "Author learned Google can only read one of four languages in prior project",
+        "Admin panel in Russian tracks request statuses and private notes"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical substance through a detailed case study of launching an AI-powered digital twin service. It provides valuable implementation knowledge (Node.js without frameworks, scrypt hashing, Railway deployment, WebGL portrait engine) and a hard-won SEO lesson from prior experience. The author’s honest product-vetting, architecture decisions, and mechanisms described merit a strong score for relevance to engineering and AI tooling interests, though it stops at 'exceptional' because it functions primarily as a personal launch diary rather than breakthrough research.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:40:09.639953",
+      "image_url": "https://www.ilinmaks.com/blog/likeness-house-launch.jpg",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "The Likeness House home page: a portrait of light made of thousands of points next to the headline"
+    },
+    {
+      "id": 6604,
+      "source_id": 34,
+      "original_url": "https://www.andreagrandi.it/posts/how-i-shrank-book-corners-map-payload/",
+      "title": "How I shrank the Book Corners map payload from 13.85 MB to 7 KB",
+      "summary": "Author reduced map payloads from 13.85 MB to 6.7 KB by compiling Django ORM filtered querysets into PostGIS `ST_SnapToGrid` subqueries for server-side clustering.",
+      "ideas": [
+        "Compile Django ORM filtered queryset into PostGIS subquery for ST_SnapToGrid clustering.",
+        "Cache clustered responses using filter hash and version bump on library edits.",
+        "Requests without bounds default to zoom-0 grid for minimal payload size."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article delivers concrete, production-measured payload reductions (13.85 MB to 6.7 KB) via a technically deep Django-to-PostGIS subquery clustering approach. It uniquely explains the `queryset.query.sql_with_params()` compilation pattern, zoom-dependent `ST_SnapToGrid` grid sizing, and a filter-hash caching strategy with version invalidation. The before/after numbers and reproducible code snippet provide exceptional practical value for engineers managing spatial API responses.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:36:40.930590",
+      "image_url": "https://www.andreagrandi.it/posts/how-i-shrank-book-corners-map-payload/cover.png",
+      "image_width": 2160,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 6603,
+      "source_id": 34,
+      "original_url": "https://third-bit.com/2026/10/10/frml-contracts/",
+      "title": "Contracts in Frml",
+      "summary": "Details how Frml verifies function contracts including requires/ensures clauses, old() value snapshots, recursive decreases obligations, and Z3 quantifier translation, using end-to-end execution traces.",
+      "ideas": [
+        "old() reads entry snapshot from old_vars while state.vars reads current mutated value",
+        "Multiple ensures clauses produce one obligation per clause in each branch condition",
+        "decreases clause verified at function entry and strictly at recursive call sites",
+        "Z3 ForAll/Exists translate specification quantifiers with added fresh variable symbols",
+        "Caller proves callee requires clauses and assumes ensures clauses at function call boundary"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 89,
+      "rating_reason": "Exceptionally concrete walkthrough of Frml's verification engine mechanics for function contracts. Covers state variable management, old() semantics, decreases tracking, recursive call handling, and Z3 quantifier translation with complete traces. Provides hard-won implementation insight rather than superficial advice, though focused on a specific toy language rather than broadly applicable theory.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:31:21.839770"
+    },
+    {
+      "id": 6602,
+      "source_id": 34,
+      "original_url": "https://thinhdanggroup.github.io/vietnamese-voicebot-cpu-only/",
+      "title": "A Vietnamese Phone Receptionist on a Laptop CPU: Rules First, LLM Last",
+      "summary": "Effective techniques to run a rule‑first, CPU‑only Vietnamese voice assistant with a small LLM by exploiting prompt caching and disciplined routing.",
+      "ideas": [
+        "Route every turn through cheap rules before invoking the LLM to hide latency.",
+        "Reuse the longest common prefix in llama.cpp's KV cache to reduce prompt re‑reading cost.",
+        "Avoid Ollama's templating for Qwen3 by using /api/generate with raw ChatML to prevent cache invalidation.",
+        "Six performance‑core threads outperform default thread counts on this hardware."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible engineering details for running a Vietnamese voice bot on a CPU‑only laptop, including latency measurements, prompt‑caching tricks, thread tuning, and a full code snippet for raw Ollama API calls. It shows a clear rule‑based routing architecture that minimizes LLM usage and provides actionable findings (e.g., JSON‑schema bug, cache invalidation due to <think> blocks). The scope is narrow to a specific stack and language, and it lacks a fully tested production deployment, but the depth of practical insight makes it highly valuable for the target reader.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T05:31:08.133552",
+      "image_url": "https://thinhdanggroup.github.io/assets/images/vietnamese-voicebot-cpu-only/banner.webp",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
     {
       "id": 6601,
       "source_id": 34,
@@ -23,7 +228,11 @@
       "rating_reason": "The article provides concrete performance measurements, code snippets, and practical guidance on EF Core 11 compiled models, making it highly relevant to developers focused on software engineering and infrastructure performance. It includes novel details about EF Core 11 changes, build ordering issues, and drift detection that are not widely documented. The main limitation is the presence of promotional noise and some peripheral discussions that slightly dilute focus.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-11T05:26:57.397930"
+      "published_at": "2026-10-11T05:26:57.397930",
+      "image_url": "https://startdebugging.net/og/2026/10/what-is-a-compiled-model-in-ef-core-11-and-when-is-it-worth-enabling.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What Is a Compiled Model in EF Core 11, and When Is It Worth Enabling? - Start Debugging"
     },
     {
       "id": 6600,
