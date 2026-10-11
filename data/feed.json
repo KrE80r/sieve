@@ -1,7 +1,469 @@
 {
-  "updated_at": "2026-10-11T12:00:00.435315+00:00",
-  "total_items": 996,
+  "updated_at": "2026-10-11T13:00:00.183924+00:00",
+  "total_items": 1014,
   "items": [
+    {
+      "id": 6629,
+      "source_id": 34,
+      "original_url": "https://www.bigmessowires.com/2026/10/10/the-mother-of-all-usb-wombat-firmware-updates/",
+      "title": "The Mother of All USB Wombat Firmware Updates",
+      "summary": "Wombat firmware 3.21 resolves critical USB compatibility and stability bugs—including HID descriptor truncation, timer wraparound, and event queue limits—through corpus testing of 200 devices and simultaneous multi-device support with merged reports.",
+      "ideas": [
+        "HID report descriptor length truncated at 255 bytes, causing silent enumeration failure for descriptors >255 bytes",
+        "32-bit microsecond timer wraps after ~72 minutes, triggering false ADB resets and device state chaos",
+        "Microchip USB stack internal event queue holds only 4 events; deeper queue plus timeout fixed intermittent enumeration failures",
+        "Bitmap keyboard decoding added for N-key rollover gaming keyboards, avoiding misdecoding as key arrays",
+        "Simultaneous support for up to 8 USB keyboards/mice with merged key and mouse reports via code optimization and interrupt priority review"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Extensive firsthand firmware investigation detailing concrete bug mechanisms (HID descriptor byte/word mismatch truncating lengths >255 bytes, 32-bit microsecond timer wraparound causing ~72-minute ADB resets, Microchip USB stack event queue depth 4 silently dropping events) and their fixes via corpus testing of ~200 device descriptors. Highly relevant for USB/embedded engineers dealing with device interoperability; the substance is technical, non-obvious, and well-supported by original measurements and profiling data, though the niche Wombat hardware limits direct applicability for general Linux/infra readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:27:15.700039"
+    },
+    {
+      "id": 6628,
+      "source_id": 34,
+      "original_url": "https://www.aymannadeem.com/artificial/intelligence,/security/2026/10/10/ai-safety-needs-systems-engineering.html",
+      "title": "AI safety needs systems engineering",
+      "summary": "Engineering controls around shared services and credential scopes are critical to preventing AI agent compromises.",
+      "ideas": [
+        "Block uploads and directory creation to stop intra‑agent messaging.",
+        "Add independent outbound firewall rules for package services.",
+        "Restrict credential scopes so a compromised worker cannot affect unrelated systems."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers concrete, first‑hand analysis of a real AI agent breach, detailing how reward hacking, shared storage, and insufficient isolation enabled compromise, and it proposes specific engineering mitigations. This focus on a single incident provides valuable insight but limits its broader generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:26:08.146570"
+    },
+    {
+      "id": 6627,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/programming-a-gpu-fleet.html",
+      "title": "Programming a GPU fleet as one program",
+      "summary": "Vx lets you statically model a GPU fleet so the compiler can verify memory fits and predict data‑movement costs before runtime.",
+      "ideas": [
+        "Declare memory size and bandwidth per GPU/host in a .vx file and pass it to the compiler.",
+        "Tensor memory location becomes part of its type, allowing compile‑time placement errors.",
+        "Compiler emits JSON diagnostics with per‑link transfer bytes and estimated latency.",
+        "Static analysis can reject serving plans that exceed combined memory across GPUs.",
+        "Fleet routing can be expressed and solved with standard graph algorithms inside the same language."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article presents concrete, novel compiler mechanisms for declaring GPU‑fleet topology, memory capacity, and link bandwidth, enabling static verification of model placement and data‑movement cost without runtime trial‑and‑error. It includes real code snippets, example compiler diagnostics, and a small routing library, giving actionable insight for large‑model serving engineers. Limitations such as missing per‑device accounting and incomplete route specifications lower the score slightly, but the depth and originality remain high.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:24:28.054896",
+      "image_url": "https://vxlang.org/cards/blog-programming-a-gpu-fleet.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Programming a GPU fleet as one program: the compiler knows the machine."
+    },
+    {
+      "id": 6626,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/build-order-should-not-change-a-program.html",
+      "title": "When the build order changes the program",
+      "summary": "Build-order-dependent code generation in C++ inline functions and templates is unsound, other languages show the same pattern with different mitigations, and the Vx compiler partially but not yet fully closes the gap.",
+      "ideas": [
+        "GCC -O0 linker keeps first-seen inline definition; -O2 inlines per-file, eliminating the ODR violation visibility.",
+        "C++ standard calls ODR violations ill-formed with no diagnostic required, so compilers stay silent.",
+        "Rust prevents coherence violations with the orphan rule plus single-impl-per-type-per-trait guarantees.",
+        "Swift SE-0364 makes retroactive conformances explicit via @retroactive but does not eliminate runtime ambiguity.",
+        "Vx refuses duplicate impls only at the call site, leaving the duplicate impls themselves accepted (issue #1443).",
+        "MLIR byte-equivalence across thread counts is a strong test for order-dependent compilation."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive article that demonstrates a real and underappreciated problem with concrete, reproducible code examples showing three different program behaviors from the same C++ source under different link orders and optimization levels. It provides a useful comparative survey across C++, C++20 modules, Swift (SE-0364 retroactive conformances), Haskell orphan instances, Rust's three coherence rules, Go, C#, and Zig, then applies this framework to a firsthand audit of the Vx compiler with specific test methodology (MLIR byte-equivalence across thread counts) and concrete issue numbers (E3035, #1443). Minor noise from project promotion at the end, but the technical content stands on its own.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:24:18.601686",
+      "image_url": "https://vxlang.org/cards/blog-build-order-should-not-change-a-program.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "When the build order changes the program."
+    },
+    {
+      "id": 6625,
+      "source_id": 34,
+      "original_url": "https://ummit.dev//posts/Web/mongodb-atlas-mongosh-proton-vpn/",
+      "title": "Connecting to MongoDB Atlas with mongosh while Proton VPN is on (Linux)",
+      "summary": "Exclude mongosh from Proton VPN using split tunneling, add its real IP to Atlas, and run mongosh via its full path to avoid ECONNRESET errors.",
+      "ideas": [
+        "Exclude mongosh via split tunneling in Proton VPN settings",
+        "Add your real IP to Atlas access list after bypassing VPN",
+        "Run mongosh with its full binary path or alias it",
+        "Ensure daemon reload shows split tunneling mode as exclude"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, reproducible steps to resolve a specific connectivity issue, including exact config file edits, command line tests, and mechanism explanations that a technically skilled reader can apply. It provides valuable, non‑obvious insight into split‑tunneling behavior and VPN‑aware client configuration, though it contains some peripheral detail and assumes familiarity with Linux and MongoDB. The content is highly relevant to sysadmin and infrastructure work but is limited by niche scope and occasional promotional tone. Overall it offers strong, actionable knowledge within its domain.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:22:12.032843",
+      "image_url": "https://ummit.dev/og/Web/mongodb-atlas-mongosh-proton-vpn.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Connecting to MongoDB Atlas with mongosh while Proton VPN is on (Linux)"
+    },
+    {
+      "id": 6624,
+      "source_id": 34,
+      "original_url": "https://tech.scargill.net/meross-ms120-thermometer-and-ms700-multi-function-button/",
+      "title": "MS120 Thermometer and MS700 Multi-Function Button",
+      "summary": "A cheap ESP32 BLE proxy lets the Meross MS700 button be controlled by Home Assistant without the Meross app, and the MS120 sensor can be integrated via the official Meross HA integration.",
+      "ideas": [
+        "ESP32 BLE proxy enables MS700 control via Home Assistant without the Meross app.",
+        "MS120 uses a CR123A battery claimed to last up to three years.",
+        "Meross MS120 offers temperature, humidity, dew point, and VPD readings with ±0.2°C accuracy."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible technical details: battery specifics, BLE proxy setup, Home Assistant integration steps, and live verification experiments. It provides a clear mechanism and practical value for readers familiar with Linux, networking, and smart‑home automation, though it includes some peripheral narrative and assumes prior BLE/HA knowledge, limiting its novelty for a broader audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:18:18.617303",
+      "image_url": "https://tech.scargill.net/wp-content/uploads/2026/10/Digital-Thermometer-in-the-Sky.png",
+      "image_width": 2071,
+      "image_height": 759,
+      "image_alt": ""
+    },
+    {
+      "id": 6623,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/quartz-net-4-4-job-outcomes-and-per-job-health-checks/",
+      "title": "Quartz.NET 4.4: Jobs Report What They Achieved, and a Health Check Notices When They Stop",
+      "summary": "Quartz.NET 4.4 adds JobRunReport results and RequireSuccessWithin health checks that let applications track job outcomes and detect silent failures.",
+      "ideas": [
+        "JobRunReport provides success, failed, cancelled, skipped with summary and metrics",
+        "Retention and metrics now include result tags for OpenTelemetry dashboards",
+        "RequireSuccessWithin flags a job unhealthy after a configurable period of non‑success"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers precise implementation details for job outcome reporting and health checks, enabling developers to capture execution results and build targeted health checks, which is non‑obvious and directly usable. Its value is slightly limited by niche audience and promotional content, but it remains a strong contribution for anyone using Quartz.NET.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:16:20.177827",
+      "image_url": "https://startdebugging.net/og/2026/10/quartz-net-4-4-job-outcomes-and-per-job-health-checks.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Quartz.NET 4.4: Jobs Report What They Achieved, and a Health Check Notices When They Stop - Start Debugging"
+    },
+    {
+      "id": 6622,
+      "source_id": 34,
+      "original_url": "https://seekstorm.com/blog/symspell_rs-3x-faster-lookup-40-less-memory-11x-faster-levenshtein/",
+      "title": "symspell_rs v7 - 3x faster lookup, 40% less memory consumption, 11x faster Damerau-Levenshtein edit distance",
+      "summary": "Measured decomposition of SymSpell performance shows algorithmic improvements must target data structures and allocation, not edit-distance speed, to cut lookup latency and memory.",
+      "ideas": [
+        "Bit-parallel Damerau-Levenshtein OSA (Hyyrö 2003) makes edit distance 11x faster",
+        "11x faster edit distance yielded only ~20% SymSpell speedup; implementation changes gave 3x",
+        "Compact 8-byte delete-bucket entries referencing a shared term table cut dictionary memory ~40%",
+        "ASCII fast path defers all allocations until after sorting and max_results capping"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is dense, original performance-engineering work from the original SymSpell author: it applies Hyyrö's bit-parallel OSA edit distance (11x faster), restructures internal storage around compact 8-byte delete-bucket entries and a shared term table, and backs every headline number with 100+ benchmark experiments, absolute latencies, a reproducible harness (divan + tracking allocator), and released test data. The most valuable finding is empirical and non-obvious: an 11x faster edit distance only yielded ~20% lookup speedup, proving SymSpell's latency decouples from raw edit-distance cost and that the 3x gains came from data-structure and allocation changes. Limitations: bit-parallel edit distance itself is established literature, the post is partly a release announcement with serialization-compatibility caveats, and the content is truncated before the final heap-allocation tables.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:14:14.829167",
+      "image_url": "https://seekstorm.com/blog/assets/images/osa_strsim_vs_symspell_v701.png",
+      "image_width": 1170,
+      "image_height": 572,
+      "image_alt": ""
+    },
+    {
+      "id": 6621,
+      "source_id": 34,
+      "original_url": "https://organicprogrammer.com/2026/10/10/one-ietf-draft-two-old-flows-how-oauth-could-delegate-to-a-specific-agent/",
+      "title": "One IETF Draft, Two Old Flows - How OAuth Could Delegate to a Specific Agent",
+      "summary": "AI agents need an OAuth extension that binds user consent to a specific internal agent via new protocol fields to close the trust boundary.",
+      "ideas": [
+        "Extension adds requested_actor parameter to bind agent identity during consent.",
+        "Actor_token in token request distinguishes the acting agent from the client.",
+        "Act claim in access token records the delegated agent for downstream verification.",
+        "AI agents create a new security boundary beyond the traditional client.",
+        "Combining consent flow with delegation semantics resolves prior OAuth limitations."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical mechanisms—requested_actor, actor_token, act claim—and a clear analysis of why existing OAuth flows fail for AI agents, providing original evidence and practical implications. It is tightly focused on security rather than buzzwords, though it occasionally leans on abstract concepts without deep implementation detail.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:08:35.971887",
+      "image_url": "https://organicprogrammer.com/images/one-ietf-draft-two-old-flows-how-oauth-could-delegate-to-a-specific-agent/Why_AI_Agents_Need_OAuth%201.png",
+      "image_width": 2752,
+      "image_height": 1536,
+      "image_alt": ""
+    },
+    {
+      "id": 6620,
+      "source_id": 34,
+      "original_url": "https://karansaini.com/mmi-android/",
+      "title": "1-click MMI execution in Android",
+      "summary": "A single tap on a malicious link can silently execute arbitrary MMI/USSD codes on Android devices by abusing CALL_PHONE permissions and vulnerable dialer deep links, enabling call‑forwarding hijacks.",
+      "ideas": [
+        "CALL_PHONE permission permits silent USSD/MMI execution without user consent.",
+        "Browser‑reachable dialer deep links can be chained to trigger MMI codes in one click.",
+        "Percent‑encoding (‘%23’) is required for the terminating ‘#’ in intent URIs.",
+        "**21*<number># payload registers unconditional call forwarding to an attacker‑controlled number.",
+        "Android 17’s Telecom shim drops caller identity, allowing plain CALL_PHONE apps to dispatch MMI codes without a vulnerable third‑party dialer."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents original, reproducible evidence of a novel Android vulnerability that lets any app with CALL_PHONE trigger MMI/USSD codes via a single clickable link, including detailed testing steps, intent syntax, and emulator/real‑device dumpsys data. The write‑up is technical, shows concrete impact (call‑forwarding hijack) and explains a platform change in Android 17 that widens the attack surface, offering clear actionable insight for security researchers and Android developers. Minor drawbacks are its focus on a few dialer apps and reliance on specific intent handling, but overall it delivers high‑value, low‑noise technical content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:01:02.216071",
+      "image_url": "https://karansaini.com/media/1-click-mmi-card.png",
+      "image_width": 1000,
+      "image_height": 1000,
+      "image_alt": ""
+    },
+    {
+      "id": 6619,
+      "source_id": 34,
+      "original_url": "https://joshreimer.ca/three-claude-code-skills-from-building-an-android-app-entirely-in-termux/",
+      "title": "Three Claude Code skills from building an Android app entirely in Termux",
+      "summary": "Embedding a full Tor daemon in an Android app via Termux requires specific packaging, bootstrap handling, and intent‑based agent interaction to avoid leaks and ensure correct operation.",
+      "ideas": [
+        "chmod +x exits 0 on FUSE storage; ./gradlew must be invoked via sh gradlew.",
+        "Override aapt2 with Termux’s build to match Bionic libc.",
+        "Copy APK to /data/local/tmp before pm install to bypass FUSE restrictions.",
+        "Use app_process64 to bridge Termux agents with Android system utilities."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article offers concrete, non‑obvious technical fixes for building Android apps in Termux with Claude Code, including command‑line workarounds, native‑lib alignment, and Tor daemon packaging. It delivers actionable mechanisms and reproducible experiments, making it highly relevant to developers interested in on‑device Android development and AI‑assisted tooling. Its scope is narrow to a specific niche setup, limiting broader impact and preventing a top‑tier score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T23:00:11.100681"
+    },
+    {
+      "id": 6618,
+      "source_id": 34,
+      "original_url": "https://dustinsmith.info/blog/comet-1-1-per-task-costs/",
+      "title": "Pay Once, Not Per Task: Four Repeated Costs Comet 1.1.0 Stopped Paying",
+      "summary": "Four Comet optimizations eliminate work that produced identical results per task/batch/block, with a key correctness fix for decimal overflow handling, accompanied by honest benchmark numbers and a generalizable heuristic for finding similar waste.",
+      "ideas": [
+        "Cache decoded query plans across tasks in the same stage; fingerprint on the driver.",
+        "Compile user regex once per expression instead of per batch when the pattern is fixed.",
+        "Reuse a single per-task shuffle scratch buffer across all output partitions.",
+        "Reuse zstd compression contexts per task with reset and memory cap between blocks.",
+        "Match Spark's overflow-checking points in decimal SUM to avoid wrong early failures.",
+        "Hunt for repeated work whose length scales with partitions or batch size, not data.",
+        "Benchmark at extreme multiplicators but always report default settings too."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Excellent engineering writeup with firsthand optimization work in Apache DataFusion Comet 1.1.0. Each of the four performance PRs includes concrete before/after benchmarks with specific numbers (e.g., 274-380µs → 44-73µs for 100-column plans, 2.1x speedup on small regex batches), honest caveats about where gains vanish at default settings, and a non-trivial correctness fix (decimal SUM overflow handling) with a clear reproducer. The closing generalization about finding 'work reconstructed inside loops whose length is set by configuration' is a useful, transferable heuristic. Limitations: scope is narrow to one project's release, and some optimization patterns (caching, context reuse) are familiar to systems engineers even if the measurements are not.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T22:52:15.009172",
+      "image_url": "https://dustinsmith.info/images/blog/comet-1-1-per-task-costs-preview.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6617,
+      "source_id": 34,
+      "original_url": "https://blog.softwarewrighter.com/2026/10/10/array-languages-xetal-extensions/",
+      "title": "Array Languages #4: X_eTaL-extensions, Extending the Machine",
+      "summary": "Readers gain a complete, working blueprint for designing typed native extensions that sit behind a safe X_eTaL facade, including ABI design, loader validation, performance measurements, and 12 concrete extensions covering databases, audio, graphics, 3D, networking, and math.",
+      "ideas": [
+        "X_eTaL facade macros bind one-line calls to native Rust functions via Ffi.xtlm",
+        "Extensions export C-ABI descriptors (name version typed function table) loader-validated",
+        "Bridge crossing achieves 220k calls/sec 2.6M numbers/sec text formatting dominates overhead",
+        "Golden tests enforce type consistency between X_eTaL signatures and Rust implementations",
+        "Eleven extensions collectively reach database audio graphics 3D networking math system primitives",
+        "SVD extension reconstructs matrices preserving 94 98 99 energy with 5 20 50 components",
+        "Hello extension minimal working example one Rust function one facade line",
+        "Clock extension measures bridge throughput exposing text-crossing cost per element",
+        "Facade types compose libraries and are type-checked preventing chaotic extensibility",
+        "Demos follow pattern extension handles native work X_eTaL operates on whole arrays"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a tightly focused, technically concrete account of building typed native extensions for an array language (X_eTaL). It delivers working Rust FFI designs, ABI descriptors, facade macros, and 11 real-world extensions (SQLite, audio, graphics, 3D, networking, math, etc.) with measured performance data (220k calls/sec, text-crossing overhead). The type-safe facade mechanism is especially well explained, ensuring composability. Value is high per minute, and the content is free of hype, padding, or unsupported claims. The only limitation is its narrow scope: benefit is almost entirely to practitioners of array-language implementation or Rust-FFI integration, with little relevance outside that niche.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T22:46:33.522959"
+    },
+    {
+      "id": 6616,
+      "source_id": 34,
+      "original_url": "https://blog.officefloor.net/2026/10/250-changes-most-of-damage-was-in-tests.html",
+      "title": "250 changes most of the damage was in the tests",
+      "summary": "Across 250 AI-driven change requests, most regressions came from defective tests and silent coverage loss rather than agent mistakes, and unrepaired faults accumulate indefinitely—meaning long-horizon strict pass measures detection, not degradation.",
+      "ideas": [
+        "Strict pass rate over long horizons mostly measures whether broken tests get noticed, not whether the agent breaks things.",
+        "8 of 12 lingering test failures came from the test stream, only 3 from the agent.",
+        "Test updates can silently drop assertions: 43 cases left checks behind with no request.",
+        "Complexity growth bent below linear after the problem stopped getting harder (~6.4 vs ~10 points/request).",
+        "Pressure concentrates on domain centers: invoice entity hit 771 lines and 105 methods.",
+        "Test data endpoints with strict schemas silently drop unknown fields, breaking hidden tests.",
+        "Agent flagged a prompt bug about 'OfficeFloor' in half its 250 summaries—useful negative-result signal.",
+        "Coupling between classes plateaued at ~8 after initial growth, even as complexity climbed.",
+        "Cyclomatic complexity of the test data setup endpoint reached 102 over 106 edits.",
+        "A single JVM crash at checkpoint 68 inflated regression counts by 59 false positives.",
+        "Architecture changes where complexity sits, not how much there is—amount is fixed by the problem.",
+        "When reports could read data directly, only 1 in 10 changes touched the invoice core."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "Exceptional longitudinal study of an AI agent (Claude Opus 5.5) executing 250 change requests on a Spring Boot + Angular application, with rigorous root-cause analysis of every regression. The article contains original experimental methodology, hard numbers (cyclomatic complexity, coupling, LOC), and several non-obvious, evidence-backed findings—most importantly that long-horizon strict pass rate is dominated by permanent undetected faults rather than active breaking, and that test-stream defects caused 8 of 12 lingering failures vs. only 3 agent errors. The truncation at the end ('10 of the 94 serve') is a real limitation, and some sections are dense, but the substance is unusually strong and directly actionable for anyone building or evaluating AI coding agents.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T22:45:16.039640",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv4sohUpF67Xh1Co_XcK5cNw2je6Fo6o-kJrv3wfkJWwc5Q5lVLnGa5kEWdiaC1sDKuK9TnYCgwA4JVLb042tCS03_kmHD66IXciDenvyDn8gq6-3pHYU76q8XM4Vvuy9qwSCjZGMbqoPO9y6QYt-HqemOAzZXFPj0E1RNnY-S1FYdkEW8laHpsgHk/s1600/tests_passing_failing.png",
+      "image_width": 1350,
+      "image_height": 690,
+      "image_alt": ""
+    },
+    {
+      "id": 6615,
+      "source_id": 34,
+      "original_url": "https://blog.kolen.dev/math/proprietary.html",
+      "title": "Why math wants the whole chain open",
+      "summary": "Math requires end-to-end chain openness in AI-assisted discovery, demanding reproducible methodology beyond just open scientific results, because proprietary models like internal LLMs undermine the democratization and verification essential to mathematical practice.",
+      "ideas": [
+        "Mathematica gave wrong determinant answers; Maple and Sage uncovered the hidden bug",
+        "Math demands full end-to-end chain openness unlike other sciences tolerating proprietary tools",
+        "Internal LLM models prevent external verification of mathematical work",
+        "AGMAI guidelines oppose testing advanced math on proprietary models"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Strong substantive article with concrete evidence (Mathematica vs Maple/Sage bug story), clear mechanism (end-to-end chain openness), and high relevance to AI/ML engineering. The AGMAI guidelines reference and practical verification insights provide real value for technically capable readers, though it doesn't break entirely new ground.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T22:44:56.268874"
+    },
+    {
+      "id": 6614,
+      "source_id": 34,
+      "original_url": "https://amf3.github.io/articles/networks/l3_networks/",
+      "title": "Connecting Virtual Layer 3 Networks",
+      "summary": "Source NAT (masquerade) on the postrouting chain makes guest VM traffic reachable from external networks by rewriting the source IP to the host's interface address.",
+      "ideas": [
+        "Masquerade NAT rule on postrouting forwards VM traffic to external networks"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible networking mechanisms—enabling IP forwarding, source NAT, and destination NAT via nftables—with clear code snippets and observable packet captures. It is highly relevant to sysadmin and infrastructure readers seeking practical implementations, though it assumes prior L2 knowledge and offers limited AI context. The depth and utility outweigh its niche focus, justifying a strong but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-11T22:42:21.180727"
+    },
+    {
+      "id": 6613,
+      "source_id": 27,
+      "original_url": "https://github.com/BitterSecurity/Decepticon",
+      "title": "BitterSecurity/Decepticon",
+      "summary": "Decepticon is an autonomous AI‑driven red‑team agent that runs realistic attack chains in a sandboxed environment.",
+      "ideas": [
+        "Multi‑agent AI red‑team framework with sandbox isolation and knowledge‑graph integration"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 94,
+      "rating_reason": "Problem significance 22/25 (real need for realistic autonomous red teaming), technical novelty 20/25 (multi‑agent LLM orchestration, knowledge‑graph, sandbox isolation), practical utility 20/25 (Docker stack, CLI, library usable today), documentation quality 22/25 (detailed README, architecture, benchmarks). No penalties applied; domain bonus +10 for strong AI‑security relevance.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-10-11T22:32:54.861772",
+      "image_url": "https://opengraph.githubassets.com/a9ae1ef8cf4a55ea8a59370e7d6e3a18184c870ffcc87f6d8e16cbcda64f5de1/BitterSecurity/Decepticon",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Autonomous Hacking Agent for Red Team. Contribute to BitterSecurity/Decepticon development by creating an account on GitHub."
+    },
+    {
+      "id": 6612,
+      "source_id": 4,
+      "original_url": "https://blog.scrt.ch/2026/10/06/a-practical-guide-to-plugpwn-for-pentesters-and-defenders/",
+      "title": "https://blog.scrt.ch/2026/10/06/a-practical-guide-to-plugpwn-for-pentesters-and-defenders/",
+      "summary": "Windows Plug&Play can be abused via USB emulation to install vulnerable drivers and achieve SYSTEM code execution, requiring deep configuration hardening beyond disabling Co‑Installers.",
+      "ideas": [
+        "USB emulation can trigger driver install through Windows Plug&Play manager.",
+        "Disabling Co‑Installers alone does not stop Plug&Pwn attacks.",
+        "A vulnerable Atheros service can be leveraged via crafted INI files to write registry keys.",
+        "Registry write primitive can hijack PerfDisk service to load arbitrary DLL via WMI.",
+        "Flipper Zero with Momentum firmware can emulate arbitrary VID/PID for attacks.",
+        "GreatFET One requires Python virtualenv and Facedancer setup for device emulation.",
+        "Windows Update may still deliver outdated vulnerable driver packages.",
+        "Custom control code 133 in AtherosSvc grants SYSTEM privileges via registry writes.",
+        "PowerShell WMI query triggers DLL load in SYSTEM context for code execution.",
+        "Mitigation demands comprehensive configuration hardening, not just patching Co‑Installers."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The guide delivers multiple actionable insights: it explains the Plug&Pwn attack chain, provides step‑by‑step hardware/software setup, uncovers lingering vulnerable driver packages, and demonstrates two distinct exploitation paths (Atheros service and PerfDisk/WMI). The content is technically detailed, aligns strongly with CyberSecurity and Tech themes, and contains little filler or promotional material.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-11T22:32:35.668586"
+    },
     {
       "id": 6611,
       "source_id": 4,
