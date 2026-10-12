@@ -1,7 +1,349 @@
 {
-  "updated_at": "2026-10-12T00:00:00.537384+00:00",
-  "total_items": 1021,
+  "updated_at": "2026-10-12T01:00:00.197722+00:00",
+  "total_items": 1035,
   "items": [
+    {
+      "id": 6650,
+      "source_id": 34,
+      "original_url": "https://swingbit.github.io/dirty_pages/",
+      "title": "The Dirty Pages Surprise: When a Read-Only Query Writes Terabytes",
+      "summary": "Linux dirty-page writeback policy can force a read-only mmap-backed query to write terabytes of disposable scratch data to disk; resizing the dirty budget (or using tmpfs) keeps the working set in RAM and turned a 1h13m query into ~1m40s.",
+      "ideas": [
+        "Free RAM is not usable RAM: kernel dirty-page budget, not memory pressure, forces writeback",
+        "Kernel flushes dirty mapped pages after 30s by default, even on an idle machine",
+        "MonetDB transient farm on tmpfs cut count(distinct) from 73min to 97s",
+        "Tuned vm.dirty_bytes and dirty_expire_centisecs keep disposable mmap scratch in RAM",
+        "Unlinking transient files while cached yields orphaned inodes reclaimed without writeback",
+        "Prefer vm.dirty_*_bytes over ratio knobs so limits don't shift with RAM changes"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "A firsthand performance investigation with original measurements (iostat, /proc/<pid>/io, PSI counters, a scaling test showing a cliff from ~48 to ~2660 ns/row), a clearly explained mechanism (kernel dirty-page writeback of mmap-backed scratch heaps vs. MonetDB's transient farm), and reproducible fixes: tmpfs via dbextra and an explicit sysctl tuning that cut a 73-minute query to under two minutes. The article includes a results table, honest caveats about tmpfs trade-offs, multi-tenant dirty-budget risks, and a durability analysis justifying relaxed flusher timers. It loses a few points because the underlying kernel writeback behavior is documented (familiar to kernel-savvy readers), but the concrete numbers, safety reasoning, and actionable guidance make it strongly valuable for anyone running mmap-based databases or large analytical workloads.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T11:14:38.568203"
+    },
+    {
+      "id": 6649,
+      "source_id": 34,
+      "original_url": "https://sub.fail/posts/opting-in/",
+      "title": "Opting in, and back out again",
+      "summary": "ADL‑based consteval functions or reflection annotations enable flexible, user‑controlled opt‑in mechanisms without tightly coupling to class definitions.",
+      "ideas": [
+        "Tag type with constexpr bool enables opt‑in per type.",
+        "consteval function with ADL provides namespace‑safe opt‑in.",
+        "Reflection annotation [[=enable_widgetising]] can carry conditional flags.",
+        "IFNDR risk when opt‑in specializations differ across translation units.",
+        "Namespace opening required for third‑party classes to participate in ADL."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, advanced C++ techniques—tag types, consteval ADL functions, and C++26 annotations—to implement a flexible opt‑in concept, complete with code examples and discussion of pitfalls such as IFNDR and namespace coupling. It is highly relevant to developers building generic libraries who need user‑controlled customization. The main limitation is that these methods rely on niche language features that can be fragile across translation units and require careful namespace management.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T11:14:09.395729",
+      "image_url": "https://sub.fail/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6648,
+      "source_id": 34,
+      "original_url": "https://stanko.io/katami-sxj77rR0FDZf",
+      "title": "Katami",
+      "summary": "Katami enables AI agents like Claude to retain and reuse context across sessions by automatically extracting, curating, and injecting relevant memories.",
+      "ideas": [
+        "Automated memory extraction from AI conversation transcripts every dozen messages.",
+        "Local CPU‑based AI models rank memories for relevance before injecting them as context.",
+        "Memory curation includes dropping unused entries, merging related ones, and building fact cards.",
+        "A mesh architecture shares memories across multiple machines without a central server."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article details a concrete mechanism for extracting, curating, and injecting agent memories, including specific commands, data structures, and cross‑machine mesh operation, which gives a technically capable reader directly usable insight. It lacks extensive independent verification or benchmark data, and the narrative leans heavily on personal experience, limiting depth of generalizable evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T11:13:03.560709",
+      "image_url": "https://stanko.io/og/katami-sxj77rR0FDZf.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6647,
+      "source_id": 34,
+      "original_url": "https://planetozh.com/blog/2026/10/a-per-repo-untracked-gitignore-local/",
+      "title": "A per-repo, untracked `.gitignore-local`",
+      "summary": "Git can use a repo‑local .gitignore‑local managed by a global alias to keep local patterns out of shared .gitignore and out of git status.",
+      "ideas": [
+        "Set core.excludesfile to a repo‑local `.gitignore-local` via global git config",
+        "Alias `git ignore-local` adds patterns to `.gitignore-local` and ensures it ignores itself"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete, original solution for per‑repo local ignores using a dedicated .gitignore‑local file and a global git alias, complete with commands and usage examples. It delivers clear mechanisms, reproducible steps, and practical utility, though some peripheral website noise slightly detracts from focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T11:09:05.527161",
+      "image_url": "https://planetozh.com/blog/wp-content/themes/planetozh/assets/img/og-ozh.jpg",
+      "image_width": 761,
+      "image_height": 400,
+      "image_alt": ""
+    },
+    {
+      "id": 6646,
+      "source_id": 34,
+      "original_url": "https://ldstephens.net/posts/fixing-a-drafts-stuck-window-position/",
+      "title": "Fixing a Drafts stuck window position",
+      "summary": "Deleting stale window tiling entries from Drafts' preference file restores its saved window size and position.",
+      "ideas": [
+        "Delete mainWindow.windowFrame and secondaryWindow.windowFrame from Drafts preference file"
+      ],
+      "labels": [
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a clear, reproducible fix by editing specific preference entries, which directly addresses the problem and requires minimal steps. It is highly relevant to developers and macOS users seeking precise troubleshooting. The limitation is that it assumes familiarity with plist files and Terminal permissions.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T11:02:47.565011"
+    },
+    {
+      "id": 6645,
+      "source_id": 34,
+      "original_url": "https://intertwingly.net/blog/2026/10/11/What-a-JIT-Cant-Know.html",
+      "title": "What a JIT Can't Know",
+      "summary": "Whole-program specialization removes per-request Rails framework work that a JIT cannot prove static, and the two optimizations compound multiplicatively rather than compete.",
+      "ideas": [
+        "JITs speed instructions; specializers eliminate whole work categories a JIT can't prove static.",
+        "Transpiled Lobsters runs over 4× faster than Rails under YJIT or ZJIT.",
+        "Rails' request overhead lives in Active Record, dispatch, time zones, and statement preparation.",
+        "Ruby JITs gain less on specialized output because some framework work is already gone.",
+        "Differential-test specialization against original Rails expressions using the app's own suite.",
+        "Prepared-statement reuse dropped SQLite prepare cost from 36 ms to 3 ms per pass."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is an original, measured engineering investigation: the author benchmarks Rails against Roundhouse's transpiled output with and without YJIT/ZJIT on the Lobsters harness, and provides a per-layer profile attributing Rails' overhead to Active Record, dispatch, statement preparation, and Active Support rather than application code or GC. The central insight—that a JIT makes instructions cheaper but cannot eliminate work whose necessity only whole-application specialization can prove—is a clear, mechanistic, evidence-backed distinction relevant to runtime and framework engineering. Limitations: results come from the author's own project and a single benchmark machine, ceiling figures are estimates rather than measurements, and the piece assumes context from prior posts about Roundhouse, Spinel, and Campfire.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:58:32.245753"
+    },
+    {
+      "id": 6644,
+      "source_id": 34,
+      "original_url": "https://in-parentheses.codeberg.page/posts/faster-integers-in-sbcl/",
+      "title": "Faster Integer Reading and Printing in SBCL",
+      "summary": "Fast-path integer reading and printing using base‑10 splitting yields up to 2× speedups for 18‑digit numbers.",
+      "ideas": [
+        "Fast path reads up to 18‑digit integers from strings in ~85 ns.",
+        "Printing uses base‑10 splitting and SSE2 to avoid division per digit.",
+        "Results match original behavior, no functional regression.",
+        "Performance gains are largest where conversion itself dominates."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides original performance measurements and patches for faster integer I/O in SBCL, with clear benchmarks and implementation details. Its relevance is specific to Lisp programming but limited to a niche implementation. While substantive, it contains some padding and ancillary notes that dilute focus. The core improvements are valuable but not broadly applicable to all readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:58:12.969058"
+    },
+    {
+      "id": 6643,
+      "source_id": 34,
+      "original_url": "https://explainanalyze.com/p/postgres-kafka-elasticsearch-on-ec2-keep-the-data-on-ebs-not-the-instance/",
+      "title": "Postgres, Kafka, Elasticsearch on EC2: Keep the Data on EBS, Not the Instance",
+      "summary": "Moving stateful workloads’ data volumes between EC2 instances is far faster and cheaper than node draining, but I/O ceilings and OS upgrades introduce hidden risks.",
+      "ideas": [
+        "Reattaching EBS volumes is quicker than draining and repopulating nodes.",
+        "Each instance shares a single 40,000 IOPS budget across all attached volumes.",
+        "Separate EBS volumes isolate I/O budgets for different write streams.",
+        "PostgreSQL text indexes can silently corrupt after an OS version change.",
+        "Elasticsearch deprecated support for multiple data paths per node."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, original mechanisms for moving EBS volumes, measurable performance gains, and critical pitfalls such as I/O bottlenecks and PostgreSQL index corruption. Its depth and practical utility are high, though some topics like multi‑AZ migration remain brief. The content directly serves sysadmin interests in storage architecture without extraneous hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:56:36.396038"
+    },
+    {
+      "id": 6642,
+      "source_id": 34,
+      "original_url": "https://curious-hiker.blogspot.com/2026/10/it-read-story-did-it-read-question.html",
+      "title": "It read the story. Did it read the question?",
+      "summary": "A model translating math word problems into expressions gains more from exact code, reference numbering, and a dumb orchestrator mask than from larger size or question‑reading, and its answer‑check mechanism reliably improves correctness.",
+      "ideas": [
+        "Exact code and reference numbering lift accuracy from 2% to 41%.",
+        "Mask orchestrator routes expressions to the maths floor with no learned parameters.",
+        "Answer check rejects invalid answers, gaining 5‑8 points on real and SVAMP problems.",
+        "Model’s own probabilities cannot select better answers; verifier harms performance.",
+        "Adding GSM8K data improved SVAMP more than increasing model size."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers detailed, firsthand experimental results on a math‑word‑problem model, with concrete mechanisms (indexer, mask orchestrator, answer check) and measurable accuracy impacts. It is technically relevant to LLM engineering and evaluation, offering non‑obvious insights such as the limited role of question‑reading and the value of exact code. However, findings are scoped to a small model and specific problem set, and some claims rely on limited ablations, limiting generalizability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:49:10.916110",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmbgRw9lH4KH6lqU-eFLVQ0ZG0AcJLfz5CX7WVt_eDj7zmAX1GyF_Lr6lJbyKJo8T1grBcjwMvvyKpGplenYfeLb7Lq_SF4M5fgOqiJ9bOVcoM9M1QXIH03ipKccihSNg7a5U37aDgspL0qmM7RYLmkkqZ9vIaKOvFL6P0kqa2ezzcREKeNTu9KxnV6PY/w1200-h630-p-k-no-nu/2026-10-question.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6641,
+      "source_id": 34,
+      "original_url": "https://civic.io/2026/10/11/the-lessons-of-direct-file/",
+      "title": "The Lessons of Direct File",
+      "summary": "Direct File demonstrated government can build popular tax tools, but its abrupt elimination reveals that voluntary, competition-facing products are fragile; sustainable value requires investing in backend capacity and verified specifications that survive staff turnover and political changes.",
+      "ideas": [
+        "IRS Direct File 2024 pilot: 86% of users reported increased trust in the IRS",
+        "Direct File team of ~75 built tool in-house using USDS/18F staff vs. traditional contracts",
+        "SpecOps Method uses AI to generate plain-language legacy system specs verified by domain experts, enabling gradual replacement",
+        "The failed Free File industry partnership ceded government tool-building capacity, achieving only 1.6-2.7% usage despite promising 70% reach",
+        "Verified, version-controlled specifications outlast individual expertise and survive administration turnover better than team knowledge"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantial, technically grounded analysis of the Direct File project's rise and elimination, anchored in concrete statistics (86% trust increase, 1.6-2.7% Free File usage) and clear organizational failure modes (probationary staff turnover, contractor-led big-bang modernization). It offers non-obvious reframing of where civic tech capacity persists versus erodes, with specific mechanisms like the SpecOps Method and Fact Graph described as actionable pathways. The piece remains highly relevant to readers interested in government tech infrastructure and AI-aided modernization. It loses a few points because much of its forward-looking value rests on the still-unproven scalability of AI-aided legacy specification work, which is argued persuasively but remains an empirical question rather than established evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:48:11.795049"
+    },
+    {
+      "id": 6640,
+      "source_id": 34,
+      "original_url": "https://blog.veeso.dev/blog/en/wasm-dbms-a-relational-database-for-webassembly-and-the-internet-computer/",
+      "title": "wasm-dbms: a relational database for WebAssembly and the Internet Computer",
+      "summary": "Readers learn how to embed a pure Rust relational database engine into WASM modules using a MemoryProvider abstraction, with schemas defined as Rust structs and original benchmarks comparing performance against SQLite and DuckDB.",
+      "ideas": [
+        "Pure Rust relational DB engine for WASM runtimes without C toolchain",
+        "Schema defined as Rust structs with compile-time validation via derive macros",
+        "MemoryProvider abstraction enables portability across Internet Computer, WASI, and custom runtimes",
+        "Benchmarks show wasm-dbms ~25x faster reads and ~10x faster deletes than DuckDB",
+        "Honest assessment: SQLite wins on raw speed, but wasm-dbms offers portability and built-in features"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantial, technically focused material on embedding a relational database in WASM. It provides concrete implementation details (MemoryProvider trait, Rust struct schemas with derive macros), original benchmark evidence comparing wasm-dbms against SQLite and DuckDB, and an honest assessment of trade-offs. The MemoryProvider abstraction and compile-time schema validation are non-obvious mechanisms that directly solve a hard problem for WASM/IC developers. While highly valuable, it functions as a focused library review rather than groundbreaking research, fitting the 'Strong' band conservatively.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:44:25.636317",
+      "image_url": "https://blog.veeso.dev/blog/en/wasm-dbms-a-relational-database-for-webassembly-and-the-internet-computer/featured.jpeg",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 6639,
+      "source_id": 34,
+      "original_url": "https://blog.softwarewrighter.com/2026/10/11/array-languages-xetal-ml/",
+      "title": "Array Languages #5: X_eTaL-ML, Where the Machine Learning Is",
+      "summary": "X_eTaL-ML expresses complete ML models as concise, typed array expressions where six libraries (NN, Quant, Conv, Embed, Learn, Net) enable demos from Tiny CNNs to k-means, all runnable in-browser with full code transparency and shape-checked intermediate arrays.",
+      "ideas": [
+        "Six concise libraries (NN, Quant, Conv, Embed, Learn, Net) express complete ML pipelines as typed array expressions",
+        "One-line network spec 'net: use< 'Net' 'u:d_eep c' ⁿᵉᵗm̲odel< '2 16 relu 16 relu 3 softmax' writes full forward+backprop with Adam steps",
+        "Typed array expressions catch shape errors before forward pass rather than after wrong numbers",
+        "1.58-bit network runs ternary codes with symmetric integer representations and scale factors",
+        "TTTML demonstrates gradient-free table-based self-play learning as contrast to modern NN approach"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Highly substantive technical article providing concrete array-language implementations of ML pipelines across six libraries (NN, Quant, Conv, Embed, Learn, Net) with runnable browser demos. The author's firsthand expertise shows in detailed mechanism explanations—from ternary weight codes to Adam optimization over tuples—but the specialized array-language focus limits broader exceptional status. The article delivers original evidence through working demos, explains explicit mechanisms for every ML component, and provides practical utility through in-browser experimentation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:43:05.186320"
+    },
+    {
+      "id": 6638,
+      "source_id": 34,
+      "original_url": "https://aminrj.com/posts/why-cve-programs-miss-most-ai-agent-vulnerabilities/",
+      "title": "Why Your CVE Program Misses Most AI Agent Vulnerabilities",
+      "summary": "Most AI agent risk lives in composition, defaults, prompt injection, and supply chain rather than single-component code bugs, so a CVE-driven program systematically misses four of six flaw categories and severity is environmental rather than intrinsic.",
+      "ideas": [
+        "Agent flaws sit in 6 places; CVE fits 2 well and leaves 4 uncovered (defaults, prompt injection, composition, supply chain).",
+        "A CVE closes an instance, not a class—mcp-server-git CVE fixed 2 tools; 4 more took 3 months with no CVE.",
+        "Same CVE ranges from footnote to breach depending on agent tool grants, identity, and egress.",
+        "Read-only agents with any egress path are exfiltration tools—classify by reach, not write permission.",
+        "Hash MCP tool definitions per session to detect rug pulls that change descriptions without changing code.",
+        "OSV.dev with MAL- IDs covers malicious-package row; KEV sources are saturated and slower than exploitation.",
+        "EU NIS2-style 24-hour early warning clock now governs actively exploited disclosure since Sept 2026.",
+        "Argument injection passes every 'never use shell=True' check because no shell is involved."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "Highly original taxonomy of agent/MCP vulnerabilities across six classes, anchored to specific CVE numbers, reproduction details, commit histories, and observed disagreements between CVSS scorers. Provides reproducible commands (find MCP configs, osv-scanner workflows, tool definition hashing on the Python SDK) and a defensible operating model with concrete controls tied to OWASP Agentic/MCP Top 10. Truncation mid-code is a minor limitation but does not undercut the dense prior material, which carries genuine expert firsthand experience from the OWASP working groups.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:37:20.027697",
+      "image_url": "https://aminrj.com/assets/media/ai-security/cve-six-places-agent-flaws.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Six places agent and MCP flaws live, ranked by how well a CVE record describes them"
+    },
+    {
+      "id": 6637,
+      "source_id": 34,
+      "original_url": "https://acid.vegas/blog/can-someone-turn-down-the-volume/",
+      "title": "Can Someone Turn Down the Volume?",
+      "summary": "A dead DNS reflection amplifier (the .sl TLD) is still being flooded with spoofed queries, revealing how attackers carpet‑bomb entire /24 subnets via source‑port manipulation.",
+      "ideas": [
+        "3.9 billion ANY queries targeted .sl, a now‑inactive 200× amplification vector.",
+        "Attackers use one source port (often 80) to forge many victim addresses, carpet‑bombing /24 subnets.",
+        "The .sl zone was unsigned by mid‑2025, dropping its amplification factor from ~200× to near‑zero.",
+        "Source‑port values reveal the targeted service (e.g., 80 for HTTP, 25 for SMTP), enabling fingerprinting.",
+        "Only 460 /24 blocks generated traffic; few completed sweeps in <30 s, indicating automated spoof loops."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand measurements of DNS amplification abuse, explains the mechanism of spoofed UDP reflection, reveals novel carpet‑bombing via source‑port manipulation, and shows a dead vector still being flooded at scale. It lacks firm timelines and some broader impact context, limiting completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-12T10:36:34.562687"
+    },
     {
       "id": 6636,
       "source_id": 28,
