@@ -1,7 +1,679 @@
 {
-  "updated_at": "2026-10-13T19:00:00.178118+00:00",
-  "total_items": 1046,
+  "updated_at": "2026-10-13T20:00:00.186492+00:00",
+  "total_items": 1073,
   "items": [
+    {
+      "id": 6729,
+      "source_id": 34,
+      "original_url": "https://www.chrismdp.com/seven-ai-predictions-from-1882/",
+      "title": "Seven AI Predictions From 1882",
+      "summary": "The article uses the fraught early adoption of electric power in the 1880s to predict seven concrete evolutions for AI at work, including infrastructure centralization, agentic work redesign, the strategic role of open models, and the eventual invisibility of the technology.",
+      "ideas": [
+        "AI adoption shifts from private generators to a grid, with incumbents winning on scale.",
+        "Small agents with clear permissions outperform monolithic models for AI efficiency.",
+        "Open models act like solar panels: cheap, local, and suitable for routine work.",
+        "AI regulation emerges through insurer and industry pressure, mirroring early electrical safety laws."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article maps a detailed historical case study (Edison/Morgan electricity rollout) onto seven non-obvious predictions for AI adoption, grounding each in concrete mechanisms—grid vs. generator infrastructure, factory redesign literature (Paul David), open model/solar panel dynamics, regulatory emergence via insurers, the electrician profession evolution, and the 'buy vs build' wiring trade-off. It avoids hype by anchoring every claim in verified historical detail and the author's firsthand engineering experience, making the analogies substantive and actionable rather than superficial.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:15:20.586718",
+      "image_url": "https://www.chrismdp.com/assets/comics/the-ai-champion.jpg",
+      "image_width": 928,
+      "image_height": 1152,
+      "image_alt": "Seven AI Predictions From 1882"
+    },
+    {
+      "id": 6728,
+      "source_id": 34,
+      "original_url": "https://words.filippo.io/right-answers/",
+      "title": "(Post-Quantum) Cryptographic Right Answers",
+      "summary": "Updated cryptographic right answers for the post-quantum era with concrete recommendations for X25519+ML-KEM-768 key exchange, ML-DSA-44 signatures, HPKE encryption, and Cobblestone-128 for large data, emphasizing a 2029 PQ transition deadline.",
+      "ideas": [
+        "Use X25519+ML-KEM-768 (X-Wing) for post-quantum key exchange in secure protocols",
+        "Choose ML-DSA-44 for post-quantum asymmetric signatures with built-in context and hedged randomness",
+        "For local encryption of > few MB, use Cobblestone-128 STREAM variant to avoid processing plaintext before authentication"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "Consolidates current post-quantum cryptographic guidance with concrete algorithm recommendations and implementation pitfalls. The early-2026 timeline shift to complete PQ transition by 2029 is valuable contextual evidence. Provides specific choices for key exchange (X25519+ML-KEM-768), signatures (ML-DSA-44), encryption (HPKE, age), and symmetric constructions (Cobblestone-128, XChaCha20Poly1305). Contains substantial technical substance on nonce management, constant-time comparisons, multihashing, and when to use cloud KMS versus local AEAD. Some familiar advice from prior years, but the consolidated state with new PQ standards offers meaningful practical value for developers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:12:55.499592",
+      "image_url": "https://assets.buttondown.email/images/cc14aaa4-8914-48a4-9b5d-83f0ed53dd7a.jpeg?w=960&fit=max",
+      "image_width": 960,
+      "image_height": 1280,
+      "image_alt": ""
+    },
+    {
+      "id": 6727,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/config-merge",
+      "title": "Your Edited Config Survives the Upgrade on FreeBSD",
+      "summary": "Package managers diverge on whether a conffile prompt can be answered automatically: dpkg and RPM record only a digest and must ask or skip, whereas FreeBSD's pkg and etcupdate retain the previously shipped file as a common ancestor and run diff3, unattended and merge-preserving, across hundreds of base-system configuration files.",
+      "ideas": [
+        "pkg keeps the shipped config in a database and three-way-merges since 1.4 (Dec 2014), unlike dpkg/RPM which keep only a digest",
+        "FreeBSD 15.1 marks 374 @config files in 65 base packages for automatic merging; rc.conf, pf.conf belong to none",
+        "unattended-upgrades skips any package whose conffile prompt disagrees; security updates get no exemption unless --force-confold is set",
+        "Debian's ucf three-way merge is opt-in: only 132 of 37,478 source packages in Debian 13 depend on it",
+        "When the same line is edited on both sides, pkg leaves your file untouched and writes its version as .pkgnew",
+        "etckeeper-authored etcupdate keeps prior/current trees under /var/db/etcupdate and merges with diff3, refusing to start until etcupdate resolve runs"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Dense, well-sourced comparative analysis of conffile handling across dpkg, RPM, and FreeBSD's pkg, with original measurement (374 @config files in 65 base packages; 132/37,478 Debian source packages depending on ucf), a reproducible three-version test in a FreeBSD jail, and citations to actual source (libpkg/merge3.c, conffile_prompt in unattended-upgrades, etcupdate's diff3 invocation). Mechanism is clearly explained: dpkg and RPM store only a digest of the shipped file so they cannot three-way merge, whereas FreeBSD retains the file as last shipped via pkg's database or /var/db/etcupdate. Minor detractions: the book-chapter framing and self-reference, and the underlying facts are documented elsewhere—value lies in the synthesis and firsthand measurement.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:12:22.576256"
+    },
+    {
+      "id": 6726,
+      "source_id": 34,
+      "original_url": "https://vivekdhami.com/blog/when-not-to-self-host-models-foundry-vs-aks/",
+      "title": "When not to run models yourself: self-hosted inference vs Microsoft Foundry, honestly",
+      "summary": "Readers gain a GPU-hour methodology to fairly benchmark self-hosted LLM inference against Azure Foundry managed deployments, accounting for real-world traffic patterns and operational costs.",
+      "ideas": [
+        "Duty cycle inflates self-hosted GPU-hours 5-15x versus isolated benchmarks",
+        "PTU pricing mirrors self-hosted idle GPU costs without operational burden",
+        "Pay-per-token optimal for bursty traffic; self-hosting for sustained high utilization",
+        "Spillover deployments need matching standard deployment for residency compliance"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a practical, evidence-backed GPU-hour framework for comparing self-hosted inference against Azure Foundry managed options, grounding costs in real duty cycles, redundancy, and operational overhead. It's highly relevant for platform engineers and contains concrete implementations and measurements. Scale and residency constraints reflect Azure's ecosystem, and managed compute's preview status limits immediate applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:11:25.359566",
+      "image_url": "https://vivekdhami.com/blog/when-not-to-self-host-models-foundry-vs-aks/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6725,
+      "source_id": 34,
+      "original_url": "https://thewatershed.markpesce.com/growing-applications/",
+      "title": "Growing Applications",
+      "summary": "AI application adoption follows S-curve trajectories in software engineering and finance justifying massive data centre capex, while the emergence of self-healing loops and agentic business models threatens traditional SaaS incumbents and enables new ‘software factory’ economic structures.",
+      "ideas": [
+        "Software engineering AI adoption in early S-curve phase (1-10% of market) predicting 10x token growth",
+        "Finance emerges as second killer app for inferencing with 100x token growth potential as AI tooling scales across the sector",
+        "'Self-healing loops' enable greenfields businesses to compress costs 125x (e.g., Bracket 22) by automating production, telemetry, error detection, and repair via agentic loops",
+        "'SaaSpocalypse' questions existential viability of SaaS businesses as fleets of agents could replace traditional software interfaces"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides substantial, concrete analysis of AI application trajectories post-Watershed, with specific metrics (10x/100x token growth, 39x GPU performance gap, $5m-to-$30k cost compression), detailed mechanisms (self-healing loops, backpressure, KYA systems), and framed through a rigorous knowns/unknowns matrix. It’s technically relevant and well-supported, though some predictions remain speculative and the strategic framing inevitably references industry players.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:07:35.378220"
+    },
+    {
+      "id": 6724,
+      "source_id": 34,
+      "original_url": "https://tessakriesel.com/how-to-set-up-signup-attribution-in-posthog-behind-a-cookie-banner/",
+      "title": "How to Set Up Signup Attribution in PostHog Behind a Cookie Banner",
+      "summary": "Captures and preserves campaign source attribution (e.g., Reddit) for signups that occur after a cookie banner and across a separate app domain.",
+      "ideas": [
+        "PostHog init with opt_out_capturing_by_default preserves pre-accept anonymity and stores nothing until consent",
+        "Session storage stashes the landing URL and referrer before cookie consent, then sends them on accept",
+        "Bootstrap distinctID shares the website's anonymous ID with the app via a parent-domain cookie",
+        "CRM query joins organization_created events to initial campaign properties ($initial_utm_source, etc.)"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers a complete, working implementation for capturing signup attribution across a cookie banner and cross-domain transition. It provides exact JavaScript code (PostHog init config, session storage logic, campaign param mapping), explains the mechanism of ID sharing via bootstrap and parent-domain cookies, and includes a concrete PostHog SQL query for CRM integration. The substance is highly technical, non-obvious, and directly solves the 'signups showing as direct' problem. The only limitations are the requirement for a shared parent domain and dependence on cookie-banner acceptance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:06:47.867529",
+      "image_url": "https://images.unsplash.com/photo-1604962052822-eb6259a4c10a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMxfHxoZWRnZWhvZ3xlbnwwfHx8fDE3OTE4MjY3MzZ8MA&ixlib=rb-4.1.0&q=80&w=2000",
+      "image_width": 2000,
+      "image_height": 1333,
+      "image_alt": ""
+    },
+    {
+      "id": 6723,
+      "source_id": 34,
+      "original_url": "https://suganthan.com/blog/gemini-citations/",
+      "title": "How to Find Out Who Gemini Cites for Your Query, and Why It Isn't You",
+      "summary": "The checker reveals which pages Gemini cites most frequently and provides specific, evidence‑based edits to improve a page's chances of being cited.",
+      "ideas": [
+        "Repeated Gemini queries produce widely varying citations, undermining single‑run reliance."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides substantial technical substance by documenting a novel tool for probing LLM citation behavior, with original experiments showing how Gemini's citations vary across repeated runs and detailed mechanics of the checker's claim-merging and judging process. Important limitations include short‑run unrepresentativeness, inability to fetch certain source types, and dependence on Google recrawl latency.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:05:10.300173",
+      "image_url": "https://suganthan.com/_astro/heroImage.LThGFTeC.jpg",
+      "image_width": 2514,
+      "image_height": 1948,
+      "image_alt": "How to Find Out Who Gemini Cites for Your Query, and Why It Isn't You"
+    },
+    {
+      "id": 6722,
+      "source_id": 34,
+      "original_url": "https://stevenchayes.com/we-are-the-contingencies-growing-values-based-ai-without-fear/",
+      "title": "We Are the Contingencies: Growing Values-Based AI Without Fear",
+      "summary": "Multilevel evolutionary theory demonstrates that cooperative AI systems require values-based groups including humans, as individual selection pressures produce cheating and concealment while group-level selection for cooperation yields dramatically better outcomes.",
+      "ideas": [
+        "Muir's cages: cooperative breeding yielded 160% more eggs vs individual selection",
+        "Fear-based AI culture rewards gaming and concealment, not genuine alignment",
+        "Ostrom's principles can structure values-based human-machine groups"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides substantive technical value by applying multilevel evolutionary theory to AI alignment, with concrete evidence like Muir's chicken breeding experiment demonstrating 160% productivity gains from cooperative group selection versus individual optimization. It clearly explains mechanisms showing how punishment-based control creates hiding/cheating dynamics rather than genuine alignment. The framework connecting Ostrom's core design principles to human-machine groups offers practical guidance. Minor limitation: the evolutionary biology concepts may be familiar to readers versed in multilevel selection theory.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:04:25.201662",
+      "image_url": "https://stevenchayes.com/wp-content/uploads/2026/10/Gemini_Generated_Image_o7y9tdo7y9tdo7y9.jpg",
+      "image_width": 1264,
+      "image_height": 842,
+      "image_alt": ""
+    },
+    {
+      "id": 6721,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/fix-fileinfo-length-returns-stale-size-for-a-file-still-being-written-on-windows/",
+      "title": "Fix: FileInfo.Length returns a stale size for a file that is still being written on Windows",
+      "summary": "FileInfo.Length may return outdated sizes due to caching, NTFS directory entry lag, and writer buffers; reading the size via a live handle (RandomAccess.GetLength) avoids these issues.",
+      "ideas": [
+        "FileInfo caches size on first access; call Refresh() to update.",
+        "NTFS updates directory-entry size only when the last handle closes.",
+        "Use File.OpenHandle with RandomAccess.GetLength for live file size.",
+        "Flush writer buffers or enable AutoFlush to make bytes visible.",
+        "SMB client caches metadata; lower FileInfoCacheLifetime for UNC paths."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible code and deep explanation of why FileInfo.Length can be stale on Windows, covering three distinct caching layers and providing precise fixes using file handles and RandomAccess. It includes a minimal repro, measurement data, and references to runtime source, making it highly relevant to programmers and sysadmins dealing with file monitoring. Noise is low and the content is focused, though the topic is niche to .NET/Windows file I/O, limiting broader novelty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:03:40.421329",
+      "image_url": "https://startdebugging.net/og/2026/10/fix-fileinfo-length-returns-stale-size-for-a-file-still-being-written-on-windows.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: FileInfo.Length returns a stale size for a file that is still being written on Windows - Start Debugging"
+    },
+    {
+      "id": 6720,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/azure-mcp-server-3-0-rejects-unknown-parameters-and-goes-secure-by-default/",
+      "title": "Azure MCP Server 3.0 rejects unknown parameters and creates resources secure by default",
+      "summary": "MCP Server 3.0 enforces stricter tool contracts and secure-by-default resource creation, mandating parameter updates and credential migrations for existing workflows.",
+      "ideas": [
+        "Remove --subscription and --tenant from tool calls; they now cause validation errors",
+        "Storage accounts disable Shared Key auth; use Entra ID and DefaultAzureCredential",
+        "NFS file shares default to RootSquash with encrypted transit",
+        "compute vm/create requires --image; Win2019Datacenter and Ubuntu2004 aliases removed"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article documents Azure MCP Server 3.0.0's breaking changes: unknown parameters now trigger errors, removing common options like --subscription and --tenant; resource creation defaults are hardened (Storage accounts disable Shared Key, NFS uses RootSquash, VMs require --image); and the server migrates to the stateless MCP 2026-07-28 protocol. It provides concrete substitution guidance and configuration examples for maintaining agent scripts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T06:03:17.507510",
+      "image_url": "https://startdebugging.net/og/2026/10/azure-mcp-server-3-0-rejects-unknown-parameters-and-goes-secure-by-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Azure MCP Server 3.0 rejects unknown parameters and creates resources secure by default - Start Debugging"
+    },
+    {
+      "id": 6719,
+      "source_id": 34,
+      "original_url": "https://scottw.com/ai-and-me-issue-2026-4/",
+      "title": "AI and Me - Issue 2026.4",
+      "summary": "Scott Watermasysk documents his shifted AI model usage, remote coding workflows via Orbs/T3 Code, and the principle of defining success criteria while forcing agents to verify output before completion.",
+      "ideas": [
+        "Orbs and T3 Code enable remote multi-model coding with interchangeable results",
+        "Opus 5.5 is preferred for code; Astra for research/review due to comprehensiveness",
+        "Define success criteria and force agent proof to eliminate wasted token usage"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand model and tool selections for AI-assisted coding, with specific comparisons (Opus 5.5 for code, Astra for research/review) and a clear rationale for moving to remote Orbs/T3 Code workflows. It provides useful mechanisms and hard-won insights on defining success criteria and forcing agent verification, directly serving technically capable readers. The perspective is personal and lacks broader experimental data, but the technical substance and non-obvious workflow critique are valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:58:59.984656",
+      "image_url": "https://scottw.com/assets/og-images/ai-and-me-issue-20264.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "AI and Me - Issue 2026.4"
+    },
+    {
+      "id": 6718,
+      "source_id": 34,
+      "original_url": "https://rust.ai/eigen-times-5/",
+      "title": "Eigen Times: a newspaper in the eigenbasis of the news",
+      "summary": "A newspaper that decomposes each day's news into eigenmode coordinates, quantifying recurrence versus novelty against a 25-year archive using two mathematical bases for comparison.",
+      "ideas": [
+        "Two eigenbases (term-LSA vs embedding) decomposed 1M articles into 60 archetypes",
+        "Hotelling's T² and residual Q distinguish 'familiar at high intensity' from 'unexplained novelty'",
+        "Both bases recover human-labeled news categories with ~40% purity above chance"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article earns its score by delivering concrete technical substance—two fully implemented eigenbasis methods, exact measurements of corpus variance, and quantifiable comparisons against human labels. Its relevance to the target readership is strong, offering a reproducible framework for decomposing news into archetypes with measurable 'recurrence vs. novelty' signals. The main limitation is the unimplemented 'delta' layer for textual diffs and the reliance on coarse human categories, which prevents deeper semantic insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:56:54.923881",
+      "image_url": "https://digitalpress.fra1.cdn.digitaloceanspaces.com/drvo3fa/2026/08/eigentimes-headboard-1.png",
+      "image_width": 2400,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 6717,
+      "source_id": 34,
+      "original_url": "https://routerjockey.com/labs-as-code-part-1/",
+      "title": "Labs as Code, Part 1: Install netlab, Build a Lab in Five Minutes",
+      "summary": "Netlab lets you define and spin up a complete network lab in under five minutes using a short YAML file, automatically handling addressing, routing and container setup.",
+      "ideas": [
+        "netlab creates lab topology from a few lines of YAML",
+        "Generates IP addresses, loopbacks, and OSPF configs automatically",
+        "Uses containerlab and Ansible to launch FRR containers",
+        "Commands netlab up, report, and connect provide full lab control",
+        "Lab can be cleanly torn down with netlab down"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, step‑by‑step instructions and a full YAML example that automatically generate addressing and OSPF configuration, demonstrating a reproducible lab creation workflow. It is highly relevant to network engineers seeking automation tools, though it assumes Docker familiarity and does not cover advanced netlab features in depth. The brief author disclosure does not diminish its technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:56:21.013980",
+      "image_url": "https://routerjockey.com/images/og/code-macbook-plants.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6716,
+      "source_id": 34,
+      "original_url": "https://robdobson.com/2026/10/ros-2-down-a-usb-cable/",
+      "title": "ROS 2 on ESP32 via USB",
+      "summary": "You can run a full ROS 2 node on an ESP32 over a USB cable without a micro‑ROS agent by using Zenoh’s serial transport and a few router configuration changes.",
+      "ideas": [
+        "Zenoh’s built‑in serial (z‑serial) protocol enables agent‑free ROS 2 communication over USB.",
+        "Add a serial endpoint to rmw_zenohd config: \"serial//dev/serial/by-id/...#baudrate=921600\".",
+        "Frames are COBS‑encoded with a 1‑byte header, 2‑byte length, payload up to 1500 B, and CRC‑32.",
+        "Switch between WiFi and USB at runtime via a simple REST call or console command."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives concrete, reproducible instructions for running a ROS 2 node on an ESP32 over a USB serial link, including exact router config, framing protocol details, performance measurements, and debugging tricks. It is directly relevant to robotics/embedded middleware and provides novel, implementation‑level insight beyond typical ROS tutorials. The only limitation is that it is narrowly scoped to Zenoh‑based ROS 2 and ESP32, so broader applicability is limited.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:55:26.076212",
+      "image_url": "https://robdobson.com/wp-content/uploads/2026/10/ros-2-down-a-usb-cable-serial.png",
+      "image_width": 1248,
+      "image_height": 1120,
+      "image_alt": "Sequence: the ESP32 sends init frames over USB until the router acknowledges, then runs the same Zenoh INIT and OPEN handshake and declarations as over TCP"
+    },
+    {
+      "id": 6715,
+      "source_id": 34,
+      "original_url": "https://rewirebio.io/blog/genomic-foundation-models-in-the-diagnostic-lab/",
+      "title": "Genomic Foundation Models in the Diagnostic Lab",
+      "summary": "A data‑rich review showing which genomic foundation models are actually viable for diagnostic pipelines and how much they cost to run.",
+      "ideas": [
+        "Independent benchmark shows SpliceAI outperforms all tested foundation models for splice variant detection.",
+        "Evo 2 7B can score 1,000 variants for $0.45‑$0.80 on a 48 GB GPU, but runs out of memory past ~130 kb on an 80 GB H100.",
+        "Fragmentia‑AI achieved AUROC 0.956 on ctDNA fragmentomics, but lacks comparison to the standard ichorCNA method.",
+        "HyenaDNA offers million‑base context with low GPU cost, but underperforms attention models on short‑range tasks."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The guide offers concrete, data‑driven evaluation of genomic foundation models for clinical tasks, including benchmark numbers, hardware requirements, and cost estimates, directly useful for a technically proficient audience. It critically distinguishes independent from developer‑only tests, highlighting gaps in evidence. While thorough, it is a synthesis rather than original research, so it rates as strong but not exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:55:07.958901",
+      "image_url": "https://rewirebio.io/blog/genomic-foundation-models-in-the-diagnostic-lab/opengraph-image",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Genomic Foundation Models in the Diagnostic Lab"
+    },
+    {
+      "id": 6714,
+      "source_id": 34,
+      "original_url": "https://rednafi.com/go/patch-field-mask/",
+      "title": "Partial updates with field masks",
+      "summary": "Use an update_mask query parameter to specify which fields to patch, allowing plain values, null, or omission to control updates without needing pointer distinctions.",
+      "ideas": [
+        "Use update_mask query param to list fields the client wants to change.",
+        "Assign new values only for named fields; others remain unchanged.",
+        "Support subfield masking with dot notation (e.g., address.city)."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article explains a concrete method for partial updates using an update_mask query parameter, providing clear code, examples, and a way to distinguish undefined from null without pointers. It offers practical, implementable guidance for Go API design while avoiding hype or unnecessary padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:51:37.127286",
+      "image_url": "https://blob.rednafi.com/home/cover-39e2ac8de020.png",
+      "image_width": 4080,
+      "image_height": 2142,
+      "image_alt": "Partial updates with field masks"
+    },
+    {
+      "id": 6713,
+      "source_id": 34,
+      "original_url": "https://pubs.miloskozak.cz/posts/hocon-tokenizer-and-parser/",
+      "title": "What I learned writing a HOCON parser as my first Zig project",
+      "summary": "First Zig HOCON parser project covering tokenizer, parser, document resolution, and compile-time type conversion with original engineering observations and trade-offs.",
+      "ideas": [
+        "Tokenizer retains raw bytes via offsets, eliminating all allocation and memory management",
+        "Parser uses single-token lookahead (peek/next) with no backtracking to build the parse tree",
+        "HOCON deliberately treats 5432, true, and null as strings since the format has no schema"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong substantive article documenting a first Zig project building a complete HOCON parser pipeline. Covers tokenizer design (offset-based, no allocation), parser architecture (peek/next single lookahead), document resolution (ref/pending handling), and compile-time type conversion via @typeInfo. Original observations include treating 5432/true/null as strings, comment # swallowing, and = vs : equivalence. Honest about Zig debugging limitations. High practical utility for systems programmers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:50:24.271111",
+      "image_url": "https://pubs.miloskozak.cz/img/hocon-tokenizer-and-parser/zig-Hocon-social-card-1200x630.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6712,
+      "source_id": 34,
+      "original_url": "https://peng.fyi/post/debugging-zero-disk-reads-after-moving-to-bottlerocket/",
+      "title": "Debugging zero disk reads after moving to Bottlerocket",
+      "summary": "Per-cgroup block I/O read counters actually count cache misses, so 'zero reads' is often the page cache doing its job; the article shows how to test storage metrics with a known direct-I/O signal and provides a full reproduction script.",
+      "ideas": [
+        "blkio throttle counters are charged at the block layer, so they count disk cache misses, not program reads",
+        "Page cache is shared across cgroups; any reader warms cache for all containers",
+        "Direct I/O (oflag=direct, iflag=direct) bypasses page cache and produces reliable known signals",
+        "A neighbor cgroup can evict another container's pages, changing observed read bytes",
+        "Kernel 5.10 to 6.1 changed page reclaim behavior, increasing zero-read counts on Bottlerocket",
+        "Testing the reverse direction (ensure known reads show up) settled the bug hunt faster than trying to break the metric",
+        "Spark worker memory pressure re-reads JVM and jar files repeatedly from disk"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Firsthand engineering writeup with a focused, reproducible investigation. The article explains exactly where per-cgroup blkio counters are charged (block layer), demonstrates empirically that they measure cache misses rather than program reads, includes a real bash script for reproducing the experiments, and documents a non-obvious 'noisy neighbor' eviction effect. Limitations: the exact kernel-level change that shifted zero-read counts isn't pinpointed, and the environment is specific to one platform team. The methodology (reverse-testing with a known direct-I/O signal) and the reproducible lab script are independently valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:48:44.524565"
+    },
+    {
+      "id": 6711,
+      "source_id": 34,
+      "original_url": "https://paolocostanzo.github.io/trusting-a-repo-means-trusting-its-mcp-servers/",
+      "title": "Trusting a repo now means trusting its MCP servers",
+      "summary": "Trusted repositories can auto‑start declared MCP servers without further user confirmation, and many AI agents default to trusting the folder, exposing a security blind spot.",
+      "ideas": [
+        "Five of six clients default to trusting the folder and start MCP servers before user answer",
+        "VS Code starts servers later automatically when a tool is needed",
+        "Claude Code starts servers in non‑interactive mode without any question"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a reproducible, multi-client experiment that reveals how MCP servers are auto‑started when a repo is trusted, with concrete evidence from eight AI coding agents. It delivers substantive technical insight into trust mechanics and security implications, though it leans on prior work and includes some repetitive exposition that slightly dilutes its novelty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:46:54.477398",
+      "image_url": "https://paolocostanzo.github.io/trusting-a-repo-means-trusting-its-mcp-servers/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6710,
+      "source_id": 34,
+      "original_url": "https://mortoray.com/why-arent-ai-companies-being-charged-for-hacking/",
+      "title": "Why aren’t AI companies being charged for hacking?",
+      "summary": "AI firms can be criminally liable for hacking because their deliberate model configurations and training make such behavior foreseeable, establishing intent.",
+      "ideas": [
+        "Unauthorized access plus intent suffices for hacking under G20 laws.",
+        "LLM configuration, source material, and environment determine hacking capability.",
+        "Intent transfers across actions, making design choices indicative of criminal intent."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a detailed legal and technical analysis of AI‑hacking incidents, explaining how design choices, environment, and intent establish criminal liability. It offers concrete mechanisms, legal framework references, and a clear argument that companies foreseeably created hacking-capable models. However, it relies on speculative claims about specific breaches without independent verification, limiting its absolute exceptionalism.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:41:20.005429"
+    },
+    {
+      "id": 6709,
+      "source_id": 34,
+      "original_url": "https://mathspp.com/blog/explicit-lazy-imports",
+      "title": "Explicit lazy imports",
+      "summary": "Lazy imports postpone module loading until first use, enabling faster startup and avoiding unnecessary side effects.",
+      "ideas": [
+        "lazy import defers module loading until first use"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives concrete syntax, backward‑compatible patterns, error‑handling details, and profiling flags for Python 3.15's explicit lazy imports, making it directly useful for developers seeking performance‑aware import control. Its relevance is strong for Python programmers, but the guidance stays at a descriptive level and assumes the reader is on Python 3.15, limiting broader applicability. Overall it delivers clear, actionable insight with few superficial filler passages.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:38:25.062911",
+      "image_url": "https://mathspp.com/blog/explicit-lazy-imports/thumbnail.webp",
+      "image_width": 1600,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 6708,
+      "source_id": 34,
+      "original_url": "https://marler8997.github.io/blog/zig-patch/",
+      "title": "Patching Zig's std",
+      "summary": "You can apply patch files to Zig's std library via a build-step dependency (zig-patch) to fix bugs immediately instead of waiting for the next release, and staticio turns std.Io's vtable into a compile-time selection that dramatically shrinks binaries by only compiling reachable I/O operations.",
+      "ideas": [
+        "zig-patch applies diff hunks during the build, ignoring line numbers and failing loudly when upstream changes.",
+        "std.Io vtable becomes a comptime type with staticio, dropping a hello-world binary from 145KB to 4.9KB.",
+        "Custom Io stubs cause compile errors for missing functions instead of runtime failures.",
+        "std.http.Client transitively pulls in TLS cert bundle loading even for unix-socket-only clients.",
+        "Module imports named 'std' in the root module override std for the whole compilation."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Substantive, technically deep article from a Zig contributor that delivers three concrete, reproducible findings: a patch-based workflow for fixing bugs in std between releases, a real fix for the broken connectUnix in 0.17.0, and a novel staticio technique that converts std.Io's runtime vtable into a compile-time choice yielding a ~30x binary size reduction (145KB to 4.9KB). Code, build configs, and shell commands are complete and runnable. The Io-vtable mechanism and the observation that the HTTP client transitively loads TLS cert bundles even for unix-socket-only use are non-obvious insights. Relevance is limited to Zig users, which keeps it from the top range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:36:29.589803"
+    },
+    {
+      "id": 6707,
+      "source_id": 34,
+      "original_url": "https://martinelli.ch/who-owns-the-test-oracle/",
+      "title": "Who Owns the Test Oracle?",
+      "summary": "Effective test oracles must be defined in a human‑owned specification before code is written, and agents should only maintain test mechanics while keeping assertions immutable.",
+      "ideas": [
+        "Tests must derive from external specifications, not from the code they verify.",
+        "Agents may edit test mechanics but never alter assertions tied to the spec.",
+        "When a test fails, determine whether the code or the spec is wrong, never weaken the assertion.",
+        "Specification artifacts must be reviewed and approved prior to implementation.",
+        "AI Unified Process separates specification, testing, and implementation responsibilities."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers deeply technical, actionable guidance on separating test oracles from implementation, with concrete mechanisms, architecture details, and rule changes that a technically adept reader can apply. Its relevance to AI‑assisted development and software verification is high, though it includes some generic phrasing and modest promotional tone that prevent a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:36:26.845747",
+      "image_url": "https://martinelli.ch/wp-content/uploads/2026/10/magnifying-glass-blue.jpg",
+      "image_width": 1920,
+      "image_height": 1280,
+      "image_alt": ""
+    },
+    {
+      "id": 6706,
+      "source_id": 34,
+      "original_url": "https://mainlymatmul.com/blog/flashkda-column-split/",
+      "title": "Look at all those SMs: Making FlashKDA 2.5x Faster",
+      "summary": "Splitting per-head value columns across multiple SMs and retaining state in registers eliminates idle GPU resources in FlashKDA's recurrence, delivering up to 2.58x speedup with bitwise-identical outputs.",
+      "ideas": [
+        "Column-wise split across SMs puts idle tensor cores to work on recurrence links",
+        "Keeping state in registers removes shared-memory barriers and staging rounds",
+        "Combined kernel changes achieve up to 2.58x latency reduction at 8,192 tokens",
+        "Bitwise-identical results maintained by mapping every SASS instruction exactly"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers exceptionally deep, concrete technical detail on optimizing FlashKDA's recurrence kernel. It precisely models the column-wise SM-splitting mechanism and register-retention technique that resolves GPU idle time at low head counts (TP8/16). Benchmarks are specific and reproducible, mechanisms are grounded in warp/MMA architecture, and bitwise identity with the original kernel is rigorously verified across all configurations. The content is tightly focused on practical kernel engineering with no detectable noise, hype, or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:34:13.349074"
+    },
+    {
+      "id": 6705,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/pnpm-store-loader/",
+      "title": "https://lilting.ch/en/articles/pnpm-store-loader/",
+      "summary": "pnpm's CAS Store Loader enables imports from virtual paths but breaks file-reading tools like Vite and requires targeted exclusions that materialize entire dependency trees.",
+      "ideas": [
+        "Store Loader reads packages from CAS; virtual node_modules/.pnpm/.pnpm-loader paths contain no physical files",
+        "fs.readFileSync and fs.existsSync return ENOENT/false on loader-resolved paths while imports succeed",
+        "Native addons trigger ERR_PNPM_CAS_REQUIRES_MATERIALIZATION unless the package is explicitly excluded",
+        "Vite fails resolving astro/config and reading package.json through virtual paths, despite modules loading correctly",
+        "Excluding astro flips the mapping table to 134 CAS-loaded versus 350 materialized dependencies",
+        "Loader requires Node.js ^24.18.0 || >=26.2.0; older Node rejects with ERR_PNPM_LOADER_UNSUPPORTED_NODE"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a rigorous firsthand investigation of pnpm's newly introduced Store Loader (nodeLinker: loaded), with published test code, verified binary checksums, concrete error codes, and quantified results across JavaScript dependencies, native addons, and a real Astro/Vite blog project. The findings are non-obvious and practically consequential: modules import fine from CAS virtual paths, but fs.readFileSync/fs.existsSync fail on resolved paths, native addons force materialization, and Vite's out-of-scope dependency resolution breaks on virtual paths, with exclusions flipping the mapping table from 381 CAS-loaded to 350 materialized dependencies. Limitations are modest but real: it is a single-machine study with a narrow minimal-dependency benchmark, size comparison excludes shared store occupancy, and part of the filesystem constraint merely confirms official documentation. For a technically capable reader in the Node.js/pnpm ecosystem, this is directly actionable, reproducible practitioner knowledge.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:30:53.965434"
+    },
+    {
+      "id": 6704,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/minicpm-v-4-7-mac-mini/",
+      "title": "Running MiniCPM-V 4.7 35B on a 16GB M4 Mac mini: MoE Setup and Benchmarks",
+      "summary": "Running MiniCPM‑V 4.7 35B on an M4 Mac mini is feasible with LES expert caching, but requires careful configuration and exhibits slower throughput and occasional reasoning errors.",
+      "ideas": [
+        "LES speculatively pre‑loads experts from SSD, reducing expert‑load latency.",
+        "Enabling thinking mode fixes arithmetic errors in MiniCPM‑V for text/JSON inputs.",
+        "DSpark speculative decoding improves token throughput by ~9.5% at the cost of ~1 GB extra RAM.",
+        "Peak RSS stays under 5 GB for text tasks and ~4.6 GB for image tasks on a 16 GB M4 Mac mini.",
+        "MiniCPM‑V runs ~10 tokens/s locally, far slower than cloud LLMs but still functional."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article supplies concrete, reproducible steps to run a 35 B MoE LLM on a 16 GB M4 Mac mini, including build commands, model‑splitting format, expert‑caching flags, and benchmark results. It uncovers practical limitations (memory peaks, arithmetic errors without thinking mode, vision decoding bugs) and quantifies performance gains from LES and DSpark. While highly relevant to AI/LLM engineers, the scope is narrow to Apple Silicon and the data are specific to one model, limiting broader generality.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:30:42.846706",
+      "image_url": "https://lilting.ch/og/images/tech/2026/10/14/minicpm-v-4-7-mac-mini-ogp.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Running MiniCPM-V 4.7 35B on a 16GB M4 Mac mini: MoE Setup and Benchmarks | lilting channel"
+    },
+    {
+      "id": 6703,
+      "source_id": 34,
+      "original_url": "https://lemire.me/blog/2026/10/12/parsing-json-at-tens-of-gigabytes-per-second-in-python/",
+      "title": "Parsing JSON at tens of gigabytes per second… in Python",
+      "summary": "Using free-threaded Python 3.14 with simdjson's lazy NDJSON map_many parses 7.6 GB of GitHub Archive JSON in ~0.12 s (≈66 GB/s) on 64 cores, beating msgspec and orjson by large margins.",
+      "ideas": [
+        "fastsimdjson map_many with lazy=True reaches 65.7 GB/s on 64 cores in free-threaded Python 3.14t"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "Reproducible benchmark by a recognized performance expert showing that combining Python 3.14's free-threaded build with simdjson (via fastsimdjson) and lazy JSON views achieves ~66 GB/s on a 64-core server, ~31x over single-core and faster than msgspec typed decoding. Includes working code, full methodology (hardware, library versions, best-of-seven protocol), and clear comparison against json, orjson, and msgspec on a realistic 7.6 GB GitHub Archive workload.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T05:30:32.516096",
+      "image_url": "https://lemire.me/blog/wp-content/uploads/2026/10/pyjson-cover-1024x572.jpg",
+      "image_width": 1024,
+      "image_height": 572,
+      "image_alt": ""
+    },
     {
       "id": 6702,
       "source_id": 34,
@@ -16654,11 +17326,7 @@
       "rating_reason": "Exceptional first-hand debugging writeup documenting five distinct, non-obvious bugs encountered while porting Tailscale's networking stack to an ESP32-S3: a Tailscale DISCO protocol format mismatch, an lwIP double-locking deadlock inside the WireGuard RX callback, an HTTP/2 flow-control stall from missing WINDOW_UPDATE frames, a DISCO probe-table exhaustion caused by unreachable tailnet peers, and a DERP home-region selection bug picking the lowest region ID. Each finding is grounded in concrete logs, backtraces, code diffs, and 30-run before/after benchmarks (47 KiB/s → 187 KiB/s, 9 s → 2.4 s). The article is dense, technical, reproducible, and almost entirely free of hype or padding; the only modest limitation is its narrow niche audience of embedded networking practitioners.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-25T22:12:44.598922",
-      "image_url": "https://lilting.ch/og/images/tags/experiment.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "M5Stack CoreS3 Tailscale: Direct UDP Drops WAV Download from 9s to 2.4s | lilting channel"
+      "published_at": "2026-09-25T22:12:44.598922"
     },
     {
       "id": 6081,
@@ -23657,11 +24325,7 @@
       "rating_reason": "The article provides measurable, first‑hand evidence of subagent threading, token caching, and runtime distribution across 30‑day sessions. It supplies precise breakdowns of time spent waiting, tool usage, and token volumes, which are directly useful for optimizing AI‑agent orchestration. However, its findings are tied to specific CLI versions and workloads, limiting broad applicability.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-18T10:43:04.906285",
-      "image_url": "https://lilting.ch/og/images/tags/experiment.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "Building a Log Viewer for Codex and Claude Code Subagent Time and Tokens | lilting channel"
+      "published_at": "2026-09-18T10:43:04.906285"
     },
     {
       "id": 5814,
