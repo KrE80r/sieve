@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "sequence": 1270,
-  "revision": "sha256:8c0bdb0973ab1dce3a0f61708b16fcb27fbf712c7e055794bf23ea3c26459ab6",
-  "generated_at": "2026-10-13T22:00:00.159681+00:00",
+  "sequence": 1271,
+  "revision": "sha256:f8e77cc9d62f6c143b09171c50269eb104b2dec95e36e12aa056b556bbaf295b",
+  "generated_at": "2026-10-13T23:00:00.173301+00:00",
   "complete": true,
-  "total_items": 1066,
+  "total_items": 1062,
   "items": [
     {
       "article_id": "article:6731",
@@ -23673,97 +23673,6 @@
         "height": 790,
         "alt": ""
       }
-    },
-    {
-      "article_id": "article:5664",
-      "original_url": "https://iter.ca/post/llm-agent-git/",
-      "title": "Agent harness security and Git",
-      "summary": "Coding-agent harnesses that auto-allow git commands in untrusted directories enable arbitrary code execution via malicious Git config (fsmonitor, insteadOf) and nested bare repos, with concrete CVEs and vendor fixes documented.",
-      "rating": 92,
-      "rating_reason": "Exceptional firsthand security research documenting original vulnerabilities found in major LLM coding agent harnesses (Claude Code, Codex, Copilot CLI, Cursor) with reproducible exploitation mechanisms. Provides concrete config payloads (core.fsmonitor, insteadOf with ext:: protocol), specific CVE numbers (CVE-2026-45033), vendor disclosure timelines, and concrete mitigations (safe.bareRepository explicit). The bare-repo-inside-repo attack surface and the fsmonitor/URL-rewriting primitives are non-obvious mechanisms that most developers and security practitioners do not know about. While the author downplays practical impact (advocating sandboxing instead), the technical depth and originality are clearly exceptional.",
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-09-13T22:33:21.406204+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-13T22:33:21.406204+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:5663",
-      "original_url": "https://dnim.dev/blog/mail-relay-cloudflare-email-service",
-      "title": "Relaying a self-hosted mail server through Cloudflare",
-      "summary": "A verified, end-to-end recipe for relaying Postfix through Cloudflare Email Service with proper DKIM/SPF/DMARC alignment, including the specific Postfix settings that cause hangs on port 465 if misconfigured.",
-      "rating": 88,
-      "rating_reason": "Highly practical, firsthand walkthrough of cutting over a self-hosted Postfix server to Cloudflare's Email Service relay. Includes specific Postfix postconf commands, Cloudflare API token creation via curl, DNS records produced, an auth-probe Python script, and verified Authentication-Results from Gmail showing SPF/DKIM/DMARC pass under p=REJECT. Documents non-obvious gotchas (square brackets on relayhost, smtp_tls_wrappermode for implicit-TLS port 465, MAIL FROM domain onboarding requirement) and surfaces the noteworthy privacy finding that Mailjet silently rewrites links and injects tracking pixels by default.",
-      "labels": [
-        "Sysadmin",
-        "Tech",
-        "CyberSecurity"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-09-13T22:18:26.477553+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-13T22:18:26.477553+00:00",
-      "image": {
-        "url": "https://dnim.dev/blog/mail-relay-cloudflare-email-service/opengraph-image.png",
-        "width": 1200,
-        "height": 630,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:5662",
-      "original_url": "https://ctrsec.io/research/lurves-pypi-typosquat-ai-toolchain/",
-      "title": "Three Injections and a Rootkit: How the lurves PyPI typosquat attacks the AI in your toolchain",
-      "summary": "A live typosquat campaign on PyPI uses .pth files for interpreter-startup execution and combines classic Linux implant tradecraft with three prompt-injection vectors aimed at AI code reviewers, MCP-powered coding agents, and skill manifests.",
-      "rating": 90,
-      "rating_reason": "Original primary research on a live PyPI supply-chain campaign, with empirically verified findings: the .pth interpreter-startup trigger, three distinct AI-targeted prompt injections (reviewer, MCP tool descriptions, Hermes skill), a multi-stage Linux implant (XMRig, credential theft, getdents64-hooking rootkit impersonating AMD, Tor C2), and full IOCs. The dissection is unusually deep — code excerpts, SHA256s, attribution slips noted honestly, and detection/remediation guidance. Content is truncated near the end and includes light Amazon-Inspector framing, but the substantive payload is exceptional and immediately actionable for defenders of AI toolchains.",
-      "labels": [
-        "CyberSecurity",
-        "AI",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-09-13T22:08:42.224236+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-13T22:08:42.224236+00:00",
-      "image": {
-        "url": "https://ctrsec.io/images/lurve-thumbnail.jpeg",
-        "width": 1200,
-        "height": 669,
-        "alt": "Three Injections and a Rootkit — cracked Python logo beside a terminal listing the typosquats ollamaa, langgrap, transfomers and openaii, with the three injection points"
-      }
-    },
-    {
-      "article_id": "article:5661",
-      "original_url": "https://blog.officefloor.net/2026/09/spending-cost-function-without-telling.html",
-      "title": "Spending the Cost Function Without Telling the Agent",
-      "summary": "When an LLM coding agent is shown a structural complexity cost function, it optimizes the number and degrades the code; when the same cost function is kept hidden and spent by an external tool that triggers refactors, structural concentration falls ~70% without the gaming artifacts.",
-      "rating": 85,
-      "rating_reason": "Substantive, well-controlled empirical study comparing three conditions (control, disclosed metric, hidden tool-spent metric) across two architectures and twenty chains of sixty accumulating changes. The experiment provides a clean demonstration of Goodhart's law applied to LLM coding agents, with concrete numbers, bootstrapped confidence intervals, and reproducible git branches. Findings are non-obvious and directly actionable for anyone building AI coding tooling. Limitations include single model (unnamed), single task family, the blog format rather than peer review, and the same author designing both prior and current interventions.",
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-09-13T22:02:59.893500+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-10-13T22:02:59.893500+00:00",
-      "image": null
     }
   ]
 }
