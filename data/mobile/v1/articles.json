@@ -1,11 +1,467 @@
 {
   "schema_version": 1,
-  "sequence": 1266,
-  "revision": "sha256:95b296ef915c52e27649ee428097849ca3dc308f75b6d5a1b1b0c21e667f52b2",
-  "generated_at": "2026-10-13T18:00:00.330247+00:00",
+  "sequence": 1267,
+  "revision": "sha256:49a007a88f56b93a1eca349aae1e2a312f04bac314761403e632f927b88848da",
+  "generated_at": "2026-10-13T19:00:00.178118+00:00",
   "complete": true,
-  "total_items": 1022,
+  "total_items": 1043,
   "items": [
+    {
+      "article_id": "article:6702",
+      "original_url": "https://justinchiu.netlify.app/blog/treerl/",
+      "title": "Tree RL",
+      "summary": "Derives a tree policy gradient estimator enabling training from LLM branching rollouts, contrasting it with VinePPO's Monte Carlo approach.",
+      "rating": 85,
+      "rating_reason": "The article delivers a substantive, non-obvious derivation of a tree policy gradient estimator for LLM reinforcement learning. It directly contrasts TreeRL's branched rollout training with VinePPO's Monte Carlo value-only estimation, providing concrete mathematical mechanisms and practical implementation insight. The content is technically dense, focused, and free of hype, padding, or promotional framing.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:26:44.977817+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:26:44.977817+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6701",
+      "original_url": "https://internals-for-interns.com/posts/linux-kernel-namespaces/",
+      "title": "Namespaces",
+      "summary": "Namespaces let a single Linux kernel present each process with its own virtualized view of resources such as hostname, network, and PID by referencing per‑process namespace structures.",
+      "rating": 85,
+      "rating_reason": "The article delivers deep technical insight into Linux namespace internals, explaining namespace structs, nsproxy, and ops tables with concrete code references and command examples. It is highly relevant to readers interested in kernel internals and container fundamentals, though it simplifies some aspects and does not cover security hardening.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:21:32.023140+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:21:32.023140+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6700",
+      "original_url": "https://gshell.dev/blog/container-from-scratch/",
+      "title": "A container in 81 lines of Bash: what the kernel primitives cost on Ubuntu 24.04",
+      "summary": "Building a container by hand reveals the exact kernel mechanisms Docker hides, including why ps lies without a remounted /proc, why swap must be disabled for OOM kills, and that NVIDIA drivers currently bypass cgroup VRAM limits.",
+      "rating": 89,
+      "rating_reason": "A dense, hands-on construction of a Linux container from namespaces, cgroups v2, pivot_root, and veth, backed by original measurements, documented wrong predictions, and a reproducible repository. Several findings are genuinely non-obvious and current: NVIDIA open modules failing to register dmem so GPU VRAM cannot be cgroup-limited, Ubuntu 24.04's AppArmor unprivileged-userns restriction with a working aa-exec bypass and sysctl fix, memory.swap.max=0 being required for real OOM kills, and Docker 29.8.0's zero-offset time namespace. The core exercise is a known pedagogical one, which keeps it from being fully exceptional, but the measured evidence, firsthand debugging of failures like the dead-PID-namespace fork error, and per-minute density make it strongly useful for anyone working on containers, sandboxes, or AI agent isolation.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:17:49.676880+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:17:49.676880+00:00",
+      "image": {
+        "url": "https://gshell.dev/blog/container-from-scratch/og.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Cover image for “A container in 81 lines of Bash: what the kernel primitives cost on Ubuntu 24.04”"
+      }
+    },
+    {
+      "article_id": "article:6699",
+      "original_url": "https://gangliao.me/blog/2026/cake-deep-dive/",
+      "title": "CAKE from Scratch: Agents Write GPU Kernels, and the Compiler Learns from Their Mistakes",
+      "summary": "CAKE argues that improving LLM agents alone cannot close the gap to expert-written GPU kernels; instead, agents write a checkable intermediate representation (CAKE IR) and the compiler itself evolves when agents repeat the same failure modes, yielding measurable wins (1.144× vs 0.928× on Flash-KMeans, 2.05× on Kimi Delta Attention prefill, 4 upstream FlashInfer merges).",
+      "rating": 87,
+      "rating_reason": "Substantive, well-sourced ground-up explanation of the CAKE paper (compiler–agent co-design for GPU kernel evolution). Concrete evidence includes B200/Blackwell-specific hardware numbers, derived arithmetic-intensity figure (~280 ops/byte), and concrete engineering outcomes (4 PRs merged upstream to FlashInfer for KDA prefill/decode, TinyGEMM, Alpha-MoE megakernel; 2.05× over official FlashKDA kernels validated end-to-end). The pedagogical framing (modeled on Arpaci-Dusseau's 'Three Easy Pieces') does add wordcount, but each Part delivers mechanisms, not slogans. Slight penalty for the visible portion being truncated and for length that may exceed what a practitioner reader needs if they already know GPU basics.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:15:38.192332+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:15:38.192332+00:00",
+      "image": {
+        "url": "https://gangliao.me/assets/img/og/default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6698",
+      "original_url": "https://gangliao.me/blog/2026/deepseek-v4-deep-dive/",
+      "title": "DeepSeek-V4 and V4-Flash, Layer by Layer: Compressing Attention to Reach a Million Tokens",
+      "summary": "DeepSeek-V4 achieves million-token context through layered KV compression (CSA/HCA), mHC residual streams, and MoE routing, reducing inference FLOPs to 10-27% and KV cache to 7-10% of V3.2.",
+      "rating": 87,
+      "rating_reason": "The article provides an extraordinary layer-by-layer breakdown of DeepSeek-V4's architecture, detailing CSA, HCA, and mHC compression mechanisms with exact dimension specifications and FLOP/cache reduction numbers. Its substantive technical depth—covering query projection, KV compressor design, residual stream mixing, and MoE routing—makes it highly valuable for ML engineers. However, much of the attention weight and routing data is synthetic, and Section 14 acknowledges unanswered architectural questions.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:15:32.586126+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:15:32.586126+00:00",
+      "image": {
+        "url": "https://gangliao.me/assets/img/og/default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6697",
+      "original_url": "https://fzakaria.com/2026/10/12/nixpkgs-for-the-frontend-impaired",
+      "title": "Nixpkgs for the frontend impaired",
+      "summary": "A transpiler that compiles all of nixpkgs into TypeScript produces identical drvPaths to native Nix while unlocking browser evaluation, source-mapped debugging, LSP completion, and unit testing at a 3-5x performance cost.",
+      "rating": 90,
+      "rating_reason": "This is a first-hand engineering write-up of a genuinely novel project (jinx) that compiles all 231,777 attributes of nixpkgs from Nix to TypeScript while preserving lazy evaluation, thunks, and exact drvPath equivalence. The article provides rigorous evidence (cross-evaluator comparison showing 0 differing drvPaths across three platforms), concrete implementation details (transpiler output, runtime design), reproducible benchmarks with explicit numbers (3-5x slower, 2-4x memory), and several creative use cases enabled by source-mapped TypeScript output (LSP completion, browser evaluation, in-tab debugging, unit testing). Limitations and tradeoffs are acknowledged honestly.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:15:11.041792+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:15:11.041792+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6696",
+      "original_url": "https://ericmjl.github.io/blog/2026/10/13/stress-testing-laya-pharma-surveillance/",
+      "title": "I stress-tested Laya, an open decision model, on pharma surveillance",
+      "summary": "Single-forward-pass decision models can cheaply cover the routine 90% of AI triage pipelines, but only if you refit calibration on your own data, treat question schemas as code requiring evals, and add deterministic guards because their confidence is equally high when wrong.",
+      "rating": 86,
+      "rating_reason": "Substantive first-party ML engineering: the author benchmarks a 421M-parameter encoder decision model on email triage, multilingual adverse-event surveillance, real-document classification, RLCD fine-tuning (accuracy 0.26→0.89, Brier scores improving 3-9x), calibration auditing, and Modal deployment economics, all reproducible via seven committed notebooks. Findings are non-obvious and transferable beyond pharma: negatively-phrased exclusion clauses inverted the yes/no head (detection 0/38→30/38), confidence scores never signal out-of-distribution failure (Khmer at 0.952 confidence, 0.000 accuracy), and GPU serving is a latency purchase rather than a cost decision. Limitations include LLM-generated ground-truth labels with self-admitted noise, modest held-out sets, and focus on a single vendor's model, but honest failure reporting and concrete numbers make it high value per minute.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:10:55.403757+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:10:55.403757+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6695",
+      "original_url": "https://dustinsmith.info/blog/comet-delta-58-days-to-merge/",
+      "title": "58 Days to Merge: Getting Native Delta Lake Into DataFusion Comet",
+      "summary": "Landing a large native-optimizer PR into an Apache project succeeds through reviewer-driven splitting, conservative decline-to-fallback gating, and answering every correctness finding with a reproduction and regression test.",
+      "rating": 85,
+      "rating_reason": "A dense firsthand post-mortem of landing a 21.5K-line native Delta Lake reader in DataFusion Comet, rich with concrete mechanisms: Java-vs-Rust case-folding differences, Julian/Gregorian rebase for Spark LEGACY timestamps, deletion-vector memory pooling, and a column-mapping bug that silently returned wrong rows, each backed by reproductions, measurements (19x-61x matching overhead, benchmarked NYC taxi workload), and regression tests. It is squarely relevant to programming practice and data infrastructure, and its process lessons (split along bisect lines, decline-when-unsure fallbacks, scope debates as separate issues) are transferable to any large open-source contribution. Limitations are the niche Comet/Delta subject matter and some inline jargon explanations that dilute value per minute for readers outside this ecosystem.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:08:29.651189+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:08:29.651189+00:00",
+      "image": {
+        "url": "https://dustinsmith.info/images/blog/comet-delta-58-days-to-merge-preview.webp",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6694",
+      "original_url": "https://dfa1.github.io/articles/a-tour-of-the-vortex-columnar-format-with-vortex-java.html",
+      "title": "A Tour of the Vortex Columnar Format with vortex-java",
+      "summary": "A hands-on tour of the Vortex columnar format demonstrating that recursively cascading simple, sampled-per-chunk encodings outperforms strong general-purpose compression while keeping data queryable column-by-column.",
+      "rating": 86,
+      "rating_reason": "A dense, well-evidenced tour of the Vortex columnar format with original measurement: the author benchmarks it against gzip/zstd (beating zstd -19 by 9% while encoding 189x faster), runs a cascade-depth ablation showing depth 1 captures nearly all gains and depth 3 buys nothing, and explains each encoding (ALP, ALPRD, sequence, runend, bitpacking with patches) at the mechanism level. Reproduction commands, per-column tables, DuckDB query demos, and honest methodology caveats (timing runs, MB units, dictionary discrepancy) make the substance verifiable and immediately actionable. Relevance is strong for data infrastructure, database, and tooling engineering, with mild limitations: the concepts derive from the known BtrBlocks paper, the market-data dataset is unusually friendly to these encodings, and the article is truncated mid-sentence at the very end.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:07:13.000651+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:07:13.000651+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6693",
+      "original_url": "https://dev.profullstack.com/~anthony/blog/228-post.html",
+      "title": "https://dev.profullstack.com/~anthony/blog/228-post.html",
+      "summary": "Describes using the Kitty graphics protocol's Unicode placeholders and numeric IDs to render full-color images in terminals, enabling emoji/icon support over SSH and tmux without font dependency, with hqtui library integration.",
+      "rating": 85,
+      "rating_reason": "Provides a concrete, non-obvious technical mechanism for rendering colored emoji/icons in terminals via the Kitty graphics protocol's Unicode placeholder system, including specific implementation details for SSH/tmux compatibility and hqtui integration. The substance is high-value for TUI engineers, though the scope is specialized around the qryptchat/hqtui ecosystem.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:06:52.870891+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:06:52.870891+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6692",
+      "original_url": "https://dentiny.github.io/posts/duckdb-on-object-storage/",
+      "title": "A Real DuckDB Database in S3, With Nothing Else to Run",
+      "summary": "DuckDB can store its entire on‑disk format in object storage via the duckdb_object_storage extension, delivering almost native query speed without any additional services.",
+      "rating": 88,
+      "rating_reason": "The article gives a concrete, reproducible way to run a full DuckDB instance directly on S3 using the duckdb_object_storage extension, with detailed code, architecture explanations, and benchmark numbers that show near‑native performance. It focuses on implementation specifics (SlateDB, OpenDAL, writer fencing, caching) rather than hype, providing actionable knowledge for engineers building serverless analytics or distributed query layers. The only limitation is that it assumes familiarity with DuckDB and S3, and the performance numbers are tied to specific hardware and workload sizes.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:06:30.078227+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:06:30.078227+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6691",
+      "original_url": "https://deanhume.com/oauth-2-0-vs-openid-connect/",
+      "title": "OAuth 2.0 vs OpenID Connect: What's the Difference and Which Do You Need?",
+      "summary": "OAuth 2.0 authorizes API access while OpenID Connect standardizes user authentication via ID tokens, and both are typically combined in modern web applications.",
+      "rating": 85,
+      "rating_reason": "The article delivers a practical, well-structured comparison of OAuth 2.0 and OpenID Connect, grounding abstract concepts in concrete request URLs, token payload examples, and a clear hotel analogy. It effectively distinguishes when each protocol is needed and highlights five common implementation pitfalls with actionable guidance. Its strength lies in bridging the gap between theory and real-world auth flows, though it assumes prior familiarity with authorization code flow and does not explore deeper protocol cryptography or alternative auth designs.",
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:05:14.993130+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:05:14.993130+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6690",
+      "original_url": "https://cdelmonte.dev/explainers/sorted-files-ordered-scan/",
+      "title": "Why Sorted Parquet Files Do Not Guarantee an Ordered Scan",
+      "summary": "Sorted Parquet files do not guarantee an ordered scan because DataFusion's file-to-partition grouping concatenates files by path or range, losing ordering whenever grouped files have overlapping key ranges.",
+      "rating": 85,
+      "rating_reason": "This is a dense, well-supported deep dive into DataFusion's query planner that explains a genuinely non-obvious mechanism: how per-file sort order is inferred (WITH ORDER vs. row-group sorting_columns metadata), how file grouping across partitions silently destroys it, and how ordering propagates through the physical plan via ordering_mode. It is directly relevant to data infrastructure and query engineering, backed by concrete EXPLAIN output, exact configuration parameters, version pinning (DataFusion 55.1.0), and actionable correctness warnings such as unverified sorting_columns being a false-premise hazard. Limitations: it is an explainer of one engine version whose behavior may be superseded, and the provided content is truncated mid-section, cutting off later sections of the argument.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T05:00:13.965382+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T05:00:13.965382+00:00",
+      "image": {
+        "url": "https://cdelmonte.dev/og-default.png",
+        "width": 1731,
+        "height": 909,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6689",
+      "original_url": "https://blog.oxyconit.com/future-of-programming-what-matters-now-and-how-to-beat-competitors/",
+      "title": "The future of programming: What matters right now and how to beat competing companies",
+      "summary": "Future architectures will be built around queryable knowledge graphs, event‑driven logs, and deterministic agent orchestration rather than conventional code.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, implementable patterns—a triple‑store schema, event envelope design, and deterministic agent orchestration—that directly address scalable system design. It ties these mechanisms to measurable business advantages, avoiding hype. The depth and practical code outweigh its modest stylistic fluff, justifying a high score.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T04:54:55.286107+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:54:55.286107+00:00",
+      "image": {
+        "url": "https://blog.oxyconit.com/content/images/size/w1200/2026/09/cand-6a97e67327530400013886fa-1.png",
+        "width": 1376,
+        "height": 768,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6688",
+      "original_url": "https://blog.kvit.app/posts/two-27b-models-on-single-rtx5090/",
+      "title": "Running Two 27B Models on a Single RTX 5090",
+      "summary": "Extracting a LoRA adapter from Clef and patching vLLM lets a single RTX 5090 run a chat model and a decision model simultaneously with minimal extra VRAM and significant latency improvements via prompt prefix reuse.",
+      "rating": 88,
+      "rating_reason": "Score reflects strong technical relevance and concrete, reproducible findings: a 700 M LoRA adapter extracts Clef from Qwen3.8‑27B, vLLM patch enables simultaneous chat and decision inference, and prefix‑caching cuts long‑prompt latency dramatically while using only ~1.8 GiB extra VRAM. The article supplies benchmark numbers versus Jev and detailed memory accounting, which are rare in public guides. Limitations are reliance on custom vLLM extensions and hardware‑specific assumptions that may not generalize.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T04:54:27.004880+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:54:27.004880+00:00",
+      "image": {
+        "url": "https://blog.kvit.app/images/og-default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6687",
+      "original_url": "https://bengreenberg.dev/blog/jev-answers-in-half-a-second-i-still-moved-my-private-decisions-to-a-local-model/",
+      "title": "Jev answers in half a second. I still moved my private decisions to a local model.",
+      "summary": "A frontend engineer systematically compares Jev and Clef Flash decision models, finding Clef agrees with Jev on 73.4% of questions but hedges more, runs ~6x slower locally, and enables privacy-preserving on-device decisions via a shared System One contract—shifting the trade-off from cost to latency and memory.",
+      "rating": 85,
+      "rating_reason": "Highly substantive engineering case study with original measurements comparing Jev and Clef Flash across 1,783 questions. Concrete data on agreement rates (73.4%), latency (Jev 350-520ms vs Clef 2.3s), cost (6 cents vs local memory/GPU trade-off), and the System One contract enabling prompt-free routing. Firsthand implementation details, clear limitations disclosed, and practical routing decisions. Minimal noise, well-supported claims.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T04:51:02.493311+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:51:02.493311+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6686",
+      "original_url": "https://awsteele.com/blog/2026/10/12/go-on-lambda-web-functions-via-execve.html",
+      "title": "Go on Lambda Web Functions via execve()",
+      "summary": "A Go binary can replace the Node process in Lambda Web Functions via process.execve() once the platform has initialized, trading Node's idle CPU overhead for Go while keeping Lambda's existing lifecycle, signals, and port contract intact.",
+      "rating": 89,
+      "rating_reason": "Original, focused investigation that exploits Node 24's process.execve() to swap the Node runtime for a cross-compiled Go binary on AWS Lambda Web Functions. Includes complete, reproducible Go source, build commands, and concrete measurements (298ms initReport, 9.8MB RSS, 71ms spinDown, CPU per-minute comparisons). The author also honestly flags what the technique doesn't solve—memory billing telemetry remains high-water-marked, so cost savings are unconfirmed. Strong practitioner knowledge of the Lambda runtime interface contract and Linux process semantics.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T04:49:05.323718+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:49:05.323718+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6685",
+      "original_url": "https://ashley.raiteri.net/blog/2026-10-12-lean-mode/",
+      "title": "Lean Mode: Make the Agents Split the Bill",
+      "summary": "A practical framework that teaches AI agents to self-regulate by checking machine resources, delegating work to the cheapest capable model/rung, and verifying completion against primary evidence while staying within subscription token budgets.",
+      "rating": 85,
+      "rating_reason": "The article delivers a concrete, engineering-focused framework for AI agent resource management. It includes a functional check script, a 6-rung delegation table with concrete model assignments, measured token/cost data, and reproducible installation steps. The content is directly relevant to AI engineering, LLM tooling, and infrastructure efficiency. While the general principle of delegating to cheaper models is familiar, the specific rung system, resource-triggered offload logic, and observed measurements provide genuine, non-obvious practical value. It is focused, efficient, and free of hype or significant noise.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T04:48:48.093708+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:48:48.093708+00:00",
+      "image": {
+        "url": "https://ashley.raiteri.net/images/og-article-template_hu_e2382ff82e3d77b2.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6684",
+      "original_url": "https://apievangelist.com/2026/10/13/driven-or-enabled-one-word-in-the-definition-of-an-agent/",
+      "title": "Driven Or Enabled: One Word In The Definition Of An Agent",
+      "summary": "The single word 'driven' vs 'enabled' in an agent's definition marks whether decision-making resides in the LLM (unpredictable, risky) or in pre-written business contracts and API schemas (governed, safe), highlighting the gap between flashy agent demos and production-ready API foundations.",
+      "rating": 85,
+      "rating_reason": "A focused, well-argued piece on the critical distinction between AI agents that 'drive' business processes versus those that 'enable' them under existing governance. Provides concrete examples (run-away API calls, incorrect orders, booking gaffes) illustrating what happens when decision-making lives in the LLM rather than in contracts/schemas. Explains concrete mechanisms: error semantics, idempotency keys, rate-limit signals, authorization patterns. The 'driven vs enabled' framing is non-obvious and practically useful for anyone deploying agents against APIs.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-14T04:46:19.218488+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:46:19.218488+00:00",
+      "image": {
+        "url": "https://kinlane-images.s3.amazonaws.com/apievangelist/api-evangelist-images/bill-kicks-off-nordic-apis-summit.jpeg",
+        "width": 2000,
+        "height": 1500,
+        "alt": "Driven Or Enabled: One Word In The Definition Of An Agent"
+      }
+    },
+    {
+      "article_id": "article:6683",
+      "original_url": "https://www.sregym.com/blog/jev-driven-sre-diagnosis",
+      "title": "https://www.sregym.com/blog/jev-driven-sre-diagnosis",
+      "summary": "A cheap, fast small model guided by programmatically curated cluster evidence can match LLM agents at incident diagnosis, and evidence granularity rather than model capability is the decisive design lever.",
+      "rating": 82,
+      "rating_reason": "This is a dense research post with genuine value instances: a reproducible pipeline architecture (programmatic collector + multiple-choice model), a concrete benchmark (76.2% pass rate, 14.6s median, ~200x cheaper than LLM agents), a worked Kubernetes case study (Pod-template vs live limit mismatch revealing a mutating webhook), a two-part failure taxonomy (wrong clue selected, decisive evidence omitted), and a transferable design insight that evidence granularity matters as much as model capability. Thematic alignment is strong across AI and Sysadmin/SRE. Minor deductions for the vendor-blog framing that mixes research with platform promotion, though honest disclosure of all five failed faults and open code offsets most promotional concern.",
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 7,
+      "source_name": "Bilgin Ibryam",
+      "source_type": "nitter",
+      "admitted_at": "2026-10-14T04:36:14.922157+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:36:14.922157+00:00",
+      "image": {
+        "url": "https://www.sregym.com/blog/jev-driven-sre-diagnosis/share-image",
+        "width": 1200,
+        "height": 630,
+        "alt": "Jev-Driven SRE Diagnosis: What Worked and What Failed | SREGym Blog"
+      }
+    },
+    {
+      "article_id": "article:6682",
+      "original_url": "https://www.rapid7.com/blog/post/etr-ivanti-connect-secure-zero-day-exploited-in-the-wild-cve-2026-104935/",
+      "title": "Ivanti Connect Secure zero-day exploited in the wild (CVE-2026-104935)",
+      "summary": "Ivanti Connect Secure’s high‑severity authentication‑bypass zero‑day is already exploited, demanding immediate patching.",
+      "rating": 82,
+      "rating_reason": "The article delivers concrete, actionable security information—details on the CVE, its exploitation, affected versions, and emergency mitigation—providing five clear value instances for a brief advisory. While it contains some promotional boilerplate, the core content is focused and free of clickbait or padding, aligning well with the CyberSecurity theme.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-10-14T04:32:23.685062+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-13T04:32:23.685062+00:00",
+      "image": {
+        "url": "https://www.rapid7.com/cdn/images/blt65a432ba319f4043/6846abddaf18306debe6cf4d/ETR.webp",
+        "width": 1200,
+        "height": 900,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:6681",
       "original_url": "https://the-decoder.com/anthropic-study-warns-that-small-ai-models-could-soon-replicate-across-everyday-devices/",
