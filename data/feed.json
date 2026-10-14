@@ -1,7 +1,126 @@
 {
-  "updated_at": "2026-10-14T06:00:00.364454+00:00",
-  "total_items": 1059,
+  "updated_at": "2026-10-14T07:00:00.302131+00:00",
+  "total_items": 1063,
   "items": [
+    {
+      "id": 6738,
+      "source_id": 4,
+      "original_url": "https://www.netspi.com/blog/technical-blog/cloud-pentesting/administrating-the-administrator-an-oci-identity-domains-permission-bypass/",
+      "title": "Administrating the Administrator, An OCI Identity Domains Permission Bypass",
+      "summary": "A lower-privileged User Manager role in OCI Identity Domains can create long-lived API keys for the Identity Domain Administrator due to two separate authorization models not sharing restrictions, enabling privilege escalation to full identity domain control.",
+      "ideas": [
+        "User Manager roles can create API keys for Identity Domain Administrators in OCI",
+        "OCI has two separate authorization models governing the same resource (API keys)",
+        "Classic OCI IAM API only works with the Default identity domain",
+        "Identity Domains SCIM API works with all identity domains including Default",
+        "Built-in admin roles are tied to a system-defined IDCS_Application",
+        "Two separate teams likely failed to communicate authorization expectations about shared resources",
+        "OCI compartments serve similar organizational purposes to AWS accounts or GCP projects",
+        "OCI uses lexical sentences for policies instead of JSON or YAML serialization",
+        "Identity domains logically group IAM users, groups, federation settings, and related resources",
+        "AppRoles authorize actions within identity domains while IAM policies authorize resource access",
+        "The oci-lexer-parser tool converts OCI IAM policy statements to JSON for analysis",
+        "Compartments can be nested with permissions inheriting downward from parents"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "Original, high-impact security research detailing a real OCI Identity Domains permission bypass that led to inclusion in Oracle's critical security update. The post provides significant value: the vulnerability itself (User Manager roles can create API keys for Identity Domain Administrators), a clear explanation of OCI's dual authorization models, technical evidence with CLI/API examples, released open-source tools (oci-lexer-parser, OCInferno), and a root-cause hypothesis about inter-team authorization misalignment. Density is good for the target audience, though the 'Quick OCI 101' sections add necessary but introductory context given OCI's lower market share. Minor padding exists but is justified.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-14T16:33:43.216157",
+      "image_url": "https://www.netspi.com/wp-content/uploads/2026/10/09.29.26_TECH_OCI-social.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6737,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/sap-discloses-critical-cvss-10-flaw-in.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Upgrade SAP Cloud SDK for Python to versions with tenant subdomain validation to prevent credential‑stealing SSRF attacks.",
+      "ideas": [
+        "SAP Cloud SDK for Python flaw allows OAuth2 credentials to be sent to attacker-controlled endpoint",
+        "CVE-2026-89111 has CVSS 10.0, affecting multi-tenant apps on SAP BTP",
+        "Versions 0.45.2+ include tenant subdomain validation; 0.53.0‑0.55.0 lack it for Destination calls",
+        "Mitigation: upgrade to fixed versions or validate tenant subdomains before SDK call",
+        "Flaw works via SSRF by constructing token URL with attacker-controlled subdomain",
+        "The Hacker News tested all releases to identify which versions passed the new checks"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers solid practical knowledge and evidence about a critical SAP SDK vulnerability, including version impact, mitigation steps, and technical explanation of the SSRF flaw, giving readers actionable insight. While promotional boilerplate is present, the core content is focused and dense enough for its length, earning a good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-14T16:33:05.719241"
+    },
+    {
+      "id": 6736,
+      "source_id": 4,
+      "original_url": "https://www.openwall.com/lists/oss-security/2026/10/14/2",
+      "title": "Vghost (CVE-2026-74580): Linux kernel vhost stale IOTLB cache leading to universal LPE and Guest-to-Host escape vector",
+      "summary": "A stale IOTLB metadata cache surviving vhost ring reconfiguration enables both local privilege escalation via raw_copy_to_user bypass and guest-to-host VM escape through QEMU heap corruption, requiring only access to /dev/vhost-* device nodes.",
+      "ideas": [
+        "VHOST_SET_VRING_ADDR fails to invalidate meta_iotlb cache, allowing stale address translation",
+        "Defect arises from interaction of commit f88949138058 and 0210a8db2aec (deferred GIOVA validation)",
+        "Local user to root via arbitrary kernel read/write through unchecked raw_copy_to_user calls",
+        "Guest-to-host escape via vIOMMU + iommu_platform + VIRTIO_F_RING_RESET triggers QEMU heap corruption",
+        "KASLR bypass achieved by reading target as desc[0] and leaking 8 bytes via IOTLB_MISS",
+        "modprobe_path overwrite technique enables privilege escalation after gaining kernel write primitive",
+        "Major distros ship vulnerable kernels with varying /dev/vhost-* permissions (Ubuntu 0660, RHEL 0666)",
+        "Fix resets vring metadata cache from vhost_vring_set_num_addr() to force IOTLB re-validation",
+        "Permission changes cannot revoke already-open file descriptors or block guest-triggered path",
+        "CVSS 8.8 High with scope changed due to VM escape impact on host QEMU process"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 84,
+      "rating_reason": "This is a high-quality vulnerability disclosure delivering dense, actionable technical content. It provides a novel cache-invalidation defect mechanism (interaction between two commits causing stale IOTLB metadata), a complete exploit chain for both LPE and guest-to-host escape, cross-distribution reproduction evidence on five major enterprise distros, permission analysis showing varying exposure (0660 vs 0666), and concrete remediation resources including fix commit, PoC, and vendor advisories. No padding or fluff; format follows standard CVE disclosure but with above-usual technical depth including KASLR bypass via IOTLB_MISS and modprobe_path overwrite technique. Slight penalty for AI-assisted authorship disclosure and standard oss-security boilerplate, but the substance is genuine and valuable to security professionals.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-14T16:32:58.595849"
+    },
+    {
+      "id": 6735,
+      "source_id": 4,
+      "original_url": "https://github.com/macedonga/visor",
+      "title": "https://github.com/macedonga/visor",
+      "summary": "An open-source Android app that replaces Meta's closed ecosystem for Ray-Ban Meta glasses, giving users control over their AI assistant, data privacy, and device protocol while keeping all processing and storage on their phone.",
+      "ideas": [
+        "Visor replaces Meta AI app for Ray-Ban Meta glasses with custom protocol over Bluetooth/Wi-Fi Direct",
+        "App keeps photos on phone rather than uploading to cloud servers",
+        "Assistant uses user's chosen AI model instead of Meta's default",
+        "All conversations stored locally on phone in diary format",
+        "No server, analytics, or crash reporting - privacy-focused design",
+        "Connects only to Meta during setup and for frame/lens info, not ongoing",
+        "Requires user's own API key for assistant functionality",
+        "Build from source needs JDK 21 and Android SDK platform 37",
+        "Setup requires Meta account login with password or email code (passkeys not supported)",
+        "Glasses accept one session at a time - Meta AI app and Visor cannot both connect"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The content provides extensive value through detailed reverse engineering documentation, protocol specifications, and practical build instructions for an Android app replacing Meta's closed ecosystem. Key value instances include: protocol reverse engineering insights revealing how glasses communicate via Bluetooth/Wi-Fi Direct, privacy architecture (no servers, no analytics, data stays on phone), assistant customization with user-chosen AI models (Claude, OpenAI-compatible), local conversation diary keeping all conversations on phone, installation verification via SHA-256 fingerprint checking, build-from-source requirements (JDK 21, Android SDK platform 37), Meta account setup requirements (password/email code, not passkeys), session management (glasses accept one session at a time), advanced settings access (feature flags, language packs), and minimal data transmission principles (only Meta during setup, model provider with user key, RTMP when broadcasting). Strongly aligned with Technology & Innovation and Privacy themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-14T16:32:33.650888",
+      "image_url": "https://repository-images.githubusercontent.com/1383504205/d944b146-68a7-4cf6-9959-b85cf3954820",
+      "image_width": 2560,
+      "image_height": 1280,
+      "image_alt": "A de-metaified Meta Glasses client. Contribute to macedonga/visor development by creating an account on GitHub."
+    },
     {
       "id": 6734,
       "source_id": 7,
