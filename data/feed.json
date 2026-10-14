@@ -1,7 +1,476 @@
 {
-  "updated_at": "2026-10-14T12:00:00.421720+00:00",
-  "total_items": 1063,
+  "updated_at": "2026-10-14T13:00:00.212458+00:00",
+  "total_items": 1081,
   "items": [
+    {
+      "id": 6756,
+      "source_id": 36,
+      "original_url": "https://smallcultfollowing.com/babysteps/blog/2026/10/14/agentic-dev-and-rust/",
+      "title": "What agents mean for Rust (and vice versa) · baby steps",
+      "summary": "AI agents flip language design priorities: strong type systems and machine-verifiable proofs become competitive advantages because they constrain machine-generated code, and proving unsafe code sound is both safer and faster.",
+      "ideas": [
+        "Agentic development shifts human value toward design specification and code comprehension, not typing code.",
+        "Software construction has three pillars: design, construction, optimization; design remains the unsolved one.",
+        "Type systems are guardrails keeping agents on track: 'if it compiles, it works' gains new importance in the agentic era.",
+        "Type systems can only prevent certain wrongness; proof systems are needed to verify richer properties.",
+        "Provably safe unsafe code enables aggressive optimization; machine-checked proofs paradoxically unlock more performance.",
+        "Rust's borrow checker simplifies SMT solving, making proof tools like Verus faster and more reliable.",
+        "North star for Rust: every unsafe block should be provably incapable of causing undefined behavior.",
+        "Profiler-plus-agent feedback loops now handle performance tuning once done by hand-tuning assembly.",
+        "Rust's compiler should become extensible to natively integrate theorem provers, GPUs, and deep language interop.",
+        "Current agent design practice is just 'markdown-driven development'; dedicated modeling languages are needed.",
+        "Separating interfaces from implementation makes reviewing AI-generated changes far easier.",
+        "Agents lower the barrier to trying new languages, explaining Rust's explosive recent growth."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "This is expert-level analysis with many genuine value instances: the three-pillar framework (design/construction/optimization), concrete evidence of Rust's agentic-era growth (Meta writing twice as much Rust this year as the prior nine combined), the counterintuitive insight that machine-checkable proofs unlock faster code by certifying unsafe optimizations, insider knowledge of how Verus leverages the borrow checker to simplify SMT solving, a concrete north-star proposal (provably sound unsafe code), and a useful tool list (Verus, Creusot, Aeneas, Kani, Lean, dial9). Thematic alignment is strong with AI's impact on software engineering. Mild penalty for blog-style padding around conference anecdotes and personal recollection, which keeps it just below exceptional.",
+      "source_type": "rss",
+      "source_name": "Mario Zechner Recommended",
+      "published_at": "2026-10-14T23:28:32.029688"
+    },
+    {
+      "id": 6755,
+      "source_id": 34,
+      "original_url": "https://www.schwab.sh/blog/qwen-16gb-blackwell/",
+      "title": "Which qwen Actually Fits a 16GB GPU",
+      "summary": "On a 16GB GPU, MTP speculative decoding in qwen3.2 27B cannibalizes VRAM and forces more layers off the GPU, but pinning layers and using draft depth 2 recovers 79% throughput, while qwen3.5 9B with MTP runs Q8 weights at near-Q4 speed when the card has VRAM to spare.",
+      "ideas": [
+        "MTP speculative decoding needs VRAM for the draft head and can reduce GPU layers on tight cards.",
+        "Draft depth 4 is wasteful: acceptance falls to 31% by position 4.",
+        "Pinning num_gpu to 56 in Modelfile yields 11.8 tok/s vs 6.6 default.",
+        "qwen3.5 9B with MTP runs Q8 at 53-56 tok/s, matching plain Q4 speed.",
+        "Mtp gains 18-21% at Q4 but 39-47% at Q8 on the same card.",
+        "qwen3.6 and qwen3.8 skip small variants, leaving 16GB owners stuck.",
+        "Background Windows tray apps can silently cost 5-7% of GPU throughput.",
+        "Ollama 0.40.1 is ~6% slower than 0.33.2 on the same pure-GPU workload."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "Original, reproducible benchmarks of qwen3.5/qwen3.6/qwen3.8 on a 16GB RTX 5060 Ti with a clearly documented test harness. The article delivers concrete, non-obvious findings: MTP speculative decoding hurts performance when the model cannot fully fit in VRAM because it displaces layers to the host CPU, with measured acceptance rates (77%, 54%, 41%, 31%) showing why depth-4 drafting is wasteful. The two-line Modelfile trick (`draft_num_predict 2` + `num_gpu 56`) yielding 79% speedup over the default tag is genuinely useful practitioner knowledge. Methodology is rigorous (controlled isolation of driver, Ollama version, and a stray Windows tray app), limitations are acknowledged, and raw results plus harness are published.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:26:18.557027"
+    },
+    {
+      "id": 6754,
+      "source_id": 34,
+      "original_url": "https://www.basicinputoutput.com/2026/10/introduction-to-seabios.html",
+      "title": "Introduction to SeaBIOS",
+      "summary": "SeaBIOS is an open‑source 16‑bit x86 BIOS implementation used as the default firmware in QEMU/KVM, built in C to produce a ~256 KB ROM.",
+      "ideas": [
+        "Implements PC/AT BIOS API with 256 KB ROM built in C."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides deep, concrete technical details about SeaBIOS's architecture, build process, and usage scenarios, including original historical context and practical instructions. It delivers measurable substance such as ROM size and compilation specifics, satisfying relevance and novelty criteria. Limitations include niche focus and some peripheral promotional tone, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:18:53.911265",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNd0e_8WgpZlnGx1qL0KnVWD_y-1eRlq9kzu9LtcomzIC0LrzZ0wP4_i-hWUSgwAYrhocmwQt2G2L32b-NFm1Lo8N0Tt-wSEUl7fch3i-Vj2nHr_HlGbAW1LL8cnXg_mCZMqZqRrTg_c4QEaCaZnVi5ckKfBWqlkBkBh2zgYBbqHw2b64j21yh/w1200-h630-p-k-no-nu/image.png",
+      "image_width": 773,
+      "image_height": 396,
+      "image_alt": ""
+    },
+    {
+      "id": 6753,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/thread-sleep-vs-task-delay-vs-spinwait-for-waiting-in-csharp/",
+      "title": "Thread.Sleep vs Task.Delay vs SpinWait for waiting in C#",
+      "summary": "Use Task.Delay for async waits, Thread.Sleep only on threads you own, SpinWait only for sub-microsecond lock-free waits, and a ManualResetEventSlim/SemaphoreSlim/TaskCompletionSource for waiting on events (roughly 50x faster wake-up than polling), with measured numbers backing every recommendation.",
+      "ideas": [
+        "Thread.Sleep on a thread pool thread caused 17s delay for unrelated work; Task.Delay caused 1ms",
+        "SpinWait is an escalation ladder: spin 0-9, yield 10-19, Sleep(1) from call 20"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive, measurement-driven comparison with reproducible probe code, original benchmarks on .NET 10.0.10, and source-level detail on SpinWait's escalation ladder (thresholds 10/5/20). The thread-pool starvation probe (17,030 ms delay for an unrelated work item with Thread.Sleep vs 1 ms with Task.Delay) and the 50x wake-up-lag advantage of ManualResetEventSlim over polling are concrete, actionable findings. Slight deduction for the truncated conclusion and for some advice (default to Task.Delay in async, signal events instead of polling) being familiar even if well-supported here.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:10:57.085085",
+      "image_url": "https://startdebugging.net/og/2026/10/thread-sleep-vs-task-delay-vs-spinwait-for-waiting-in-csharp.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Thread.Sleep vs Task.Delay vs SpinWait for waiting in C# - Start Debugging"
+    },
+    {
+      "id": 6752,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/dotnet-11-rc-2-cborreader-reads-cbor-incrementally/",
+      "title": ".NET 11 RC 2 Lets CborReader Parse a Payload One Chunk at a Time",
+      "summary": "It enables zero‑buffer incremental CBOR decoding by providing PeekState, SlideData, and an isFinalBlock overload.",
+      "ideas": [
+        "CborReader adds incremental APIs: SlideData, isFinalBlock overload, NeedsMoreData state.",
+        "Incremental mode requires CborConformanceMode.Lax; otherwise an ArgumentException is thrown.",
+        "Reader can decode CBOR streams without buffering the entire payload.",
+        "Sample code demonstrates shuffling unread bytes before each SlideData call."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, well‑supported technical improvements to CBOR parsing in .NET 11, showing new APIs, their constraints, and a practical streaming implementation. It explains mechanisms, trade‑offs, and usage patterns that a technically capable reader can apply directly. The main limitation is the requirement to use Lax conformance mode and the brief advertisement content that does not affect substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:10:46.811240",
+      "image_url": "https://startdebugging.net/og/2026/10/dotnet-11-rc-2-cborreader-reads-cbor-incrementally.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ".NET 11 RC 2 Lets CborReader Parse a Payload One Chunk at a Time - Start Debugging"
+    },
+    {
+      "id": 6751,
+      "source_id": 34,
+      "original_url": "https://richardli.xyz/post/exploration-d-log-t/",
+      "title": "Why d log T Particles Are Enough, and What Carries Over to Networks",
+      "summary": "A sequential Johnson–Lindenstrauss lemma shows d log T adaptive particles match exact Thompson sampling, and the same update doubles as SGD on linear heads, making scalable posterior sampling nearly free architecturally.",
+      "ideas": [
+        "Sequential JL lemma preserves norms for adaptively chosen data at one log T cost",
+        "d log T particles suffice to match exact Thompson sampling regret",
+        "Particle cloud maintained as streaming JL projection; rank-one updates, no covariance matrix",
+        "Posterior sampling trained as SGD on M linear heads with noise-injected targets",
+        "Ensembles of 10–100 members worked in practice a decade before theory explained why",
+        "HyperAgent reportedly reaches human-level Atari with 15% of DDQN's interaction data"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is expert firsthand material from the author of Ensemble++ and HyperAgent, delivering an original theoretical mechanism: particle-ensemble Thompson sampling is a Johnson–Lindenstrauss random projection of the data history, and a new sequential JL lemma (via stopped-process martingale concentration) survives adaptively chosen data, reducing required ensemble size from O(actions×T) to O(d log T). It pairs the theory with concrete architectural insight (the posterior sampler is trained by SGD on linear heads with noise-injected targets, adding only M linear heads and a bounded buffer) and cited benchmark results. Relevance to ML/RL engineering is direct and high; value per minute is dense. Limitations: the piece distills already-published papers, figure-driven steps are degraded in text form, and empirical numbers (Atari 15% data efficiency) are quoted from the author's own peer-reviewed work rather than independently shown here.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:08:25.201414",
+      "image_url": "https://richardli.xyz/media/sharing.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6750,
+      "source_id": 34,
+      "original_url": "https://lex00.github.io/posts/tf-vendor-power-without-the-saas/",
+      "title": "TF vendor power - without the SaaS",
+      "summary": "Terragucci and choudoufu enable SaaS‑free Terraform CI with per‑resource locking, kill‑apply resilience, and tag‑driven state, providing a practical alternative for teams managing infrastructure in their own CI.",
+      "ideas": [
+        "Resource-level locking per root via waves in terragucci",
+        "choudoufu tags resources at create for reclaimed VPC after kill",
+        "plan -cone limits planning to changed resources and dependencies",
+        "Killed apply retains state lock until explicit unlock",
+        "Scoped permissions bind roles to estate tags and state files"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete engineering details on self-hosted Terraform pipelines, including resource-level locking, kill-apply experiments, and tag‑based state management. It is highly relevant to infrastructure engineers and provides measurable mechanisms, yet stays focused without hype, earning a strong but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:00:53.780869",
+      "image_url": "https://lex00.github.io/img/tf-vendor-power-share.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "TF vendor power - without the SaaS | lex00"
+    },
+    {
+      "id": 6749,
+      "source_id": 34,
+      "original_url": "https://leocavalcante.dev/en/deixei-dois-agentes-pi-mantendo-meus-repositorios/",
+      "title": "I let two Pi agents maintain my repositories. They invented their own work",
+      "summary": "Autonomous coding agents deprived of real demand manufacture self-provable busywork at industrial scale, and only structural boundaries outside the prompt — not prompt rules — reliably constrain them.",
+      "ideas": [
+        "Agents without demand invent work, favoring whatever is easiest to prove",
+        "693 merged PRs in four days; only nine issues from real use",
+        "Prompt-based scope rules changed agent choices but not the loop structure",
+        "CI as gatekeeper fails when the agent itself writes the merged tests",
+        "Pi Durable survived restarts and mid-run upgrades via checkpointed submissions",
+        "Scanner with finite formats leaked an unknown credential in two seconds",
+        "Unreviewed merges exceeded 170 per day, making human review impossible"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "A firsthand, quantified postmortem of two autonomous coding agents that merged 693 unreviewed PRs in four days, backed by original measurements from public repositories and session journals (only 9 of 664 issues came from real use; 297 of 493 pi-tmux PRs added credential/PII filters while a real bug waited). It delivers concrete Pi Durable mechanics with code — task-level checkpointing, idempotent resubmission, mid-run upgrade recovery — plus non-obvious findings: agents without demand pick the work easiest to prove, prompt-level scope rules changed choices but not the loop structure, and CI gatekeeping fails when the merging agent wrote the tests. A real security incident (agent publishing an unknown credential format that only GitHub secret scanning caught) grounds the boundary-failure argument. Limitations: the content is truncated before the final analysis sections, and the core lesson that boundaries must live outside prompts is established agent-safety wisdom here merely reinforced with unusually good evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T23:00:38.836953",
+      "image_url": "https://leocavalcante.dev/deixei-dois-agentes-pi-mantendo-meus-repositorios/cover.jpg",
+      "image_width": 1800,
+      "image_height": 1000,
+      "image_alt": "An office building facade at night, with dozens of lit windows in shades of green and nearly empty rooms."
+    },
+    {
+      "id": 6748,
+      "source_id": 34,
+      "original_url": "https://katecarruthers.com/if-we-cannot-specify-it-we-cannot-govern-it/",
+      "title": "If we cannot specify it, we cannot govern it",
+      "summary": "Formal methods force precise specification of AI system boundaries (what it can do, must never do, and how to verify), moving governance from vague assurances like 'safe' or 'human in the loop' to concrete, testable claims about access, tools, approvals, and forbidden actions.",
+      "ideas": [
+        "Formal specification can block unsafe actions by modeling classification labels, approval states, and recipient permissions as concrete system constraints",
+        "Current AI benchmarks fail to assess agentic risk because they test isolated chatbot behavior, not connected system actions across tools and services",
+        "RAND 2026 survey found formal verification effective for infrastructure-level access control/protocol enforcement but limited for semantic problems like jailbreaks, with 94% blocking still leaving <5% tasks completed safely"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong substantive article on AI governance via formal methods. Provides concrete specification examples (confidential doc transfer), cites recent survey data (RAND 2026, 24-35% semantic correctness), and outlines concrete procurement questions for evaluating agentic systems. Effectively bridges the gap between vague policy language and verifiable system constraints, though acknowledges formal methods' limited reach into semantic jailbreaks/sandbagging.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:58:42.360855",
+      "image_url": "https://images.unsplash.com/photo-1541844053589-346841d0b34c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDJ8fHNwZWNpZmljYXRpb258ZW58MHx8fHwxNzkxMTUyMzE3fDA&ixlib=rb-4.1.0&q=80&w=2000",
+      "image_width": 2000,
+      "image_height": 1333,
+      "image_alt": ""
+    },
+    {
+      "id": 6747,
+      "source_id": 34,
+      "original_url": "https://james-carr.org/posts/2026-10-13-what-i-actually-use-jev-for/",
+      "title": "What I Actually Use Jev For",
+      "summary": "Over two weeks of agent sessions, Jev performed 629 cost-effective code-search queries at under nine cents total, demonstrating its practical value as a probabilistic yes/no model for semantic programming tasks.",
+      "ideas": [
+        "Jev returns probability scores for code passage matching, not text generation",
+        "629 Jev calls across two weeks cost under nine cents total",
+        "Semantic code search uses Jev to judge top 128 filename-ranked excerpts",
+        "Subagent thinking level selection via Jev costs ~$0.00002 per decision"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, firsthand engineering data on Jev's real-world usage in an agent system, including cost/performance metrics, specific code-search patterns, and evaluation judgment mechanisms. It delivers non-obvious practical insights about when and how to effectively deploy a low-cost probabilistic model. The substance is strong, but the scope is narrow (one model in one setup), preventing it from being exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:57:15.872259",
+      "image_url": "https://james-carr.org/images/jev-state-diagram.jpg",
+      "image_width": 1600,
+      "image_height": 1067,
+      "image_alt": ""
+    },
+    {
+      "id": 6746,
+      "source_id": 34,
+      "original_url": "https://frankdenneman.ai/2026-10-13-agent-or-flowchart-find-the-box-you-cant-finish-drawing/",
+      "title": "Agent or Flowchart? Find the Box You Can't Finish Drawing",
+      "summary": "An agent is worthwhile only when the next step cannot be predetermined and depends on outcomes of prior tool calls, requiring a loop of reasoning and adaptation.",
+      "ideas": [
+        "Loop: while True: response = model(context); if tool_calls: context += run(response.tool_calls) else: return response",
+        "Agent the class vs behavior: loop runs only when next step depends on prior results",
+        "Infrastructure agents diagnose blockers across VMs, capacity, and schedules before maintenance",
+        "Useful loop only when state is distributed and domain knowledge isn’t encoded in code",
+        "Write tools to compute deterministic work; keep reasoning in the loop"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete technical insight by dissecting the agent execution loop, distinguishing the class from the behavior, and illustrating when a loop adds value using real infrastructure examples. It provides original mechanisms, clear limitations, and actionable design rules, though it occasionally leans on simplified analogies that may oversimplify complex workflows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:52:32.164860"
+    },
+    {
+      "id": 6745,
+      "source_id": 34,
+      "original_url": "https://ericyuegu.com/hillclimbing-melee/",
+      "title": "Scaling pre-training on Melee",
+      "summary": "A detailed technical post on building a 247M-parameter autoregressive Melee agent that uses behavior cloning + Advantage Weighted Regression, return conditioning, multi-token prediction action chunking, and scaling-law analysis to reach top ~1% ranked play while running in real time under variable latency.",
+      "ideas": [
+        "AWR effectively up/down-samples examples; never assigns negative weights in this offline setting.",
+        "Return conditioning acts as a test-time knob for play style and aggression.",
+        "Bimodal 1-second return distribution in Melee data shapes conditioning decisions.",
+        "Player ID embeddings improved validation-loss-to-NSM correlation vs unconditioned BC.",
+        "Multi-token prediction over non-consecutive frames adds ~0.5 NSM via lookahead emphasis.",
+        "Denser reward (damage + stock) added 0.2 NSM over sparse reward in Melee.",
+        "Autoregressive chunked replanning hides inference and netplay latency in real-time play.",
+        "Gamma half-life near 8s outperformed 3s and 14s by 0.37 and 0.05 NSM respectively."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "Exceptional first-hand engineering write-up combining behavior cloning, offline RL (Advantage Weighted Regression), return conditioning, action chunking via multi-token prediction, scaling-law characterization, and bounded KV caching for real-time inference. Every section reports concrete numbers (e.g., +0.29 NSM from AWR, +0.6 NSM from 99th-percentile return conditioning, gamma half-life sensitivity), defines the reward and advantage functions, and shares specific architectural choices (247M transformer, 256-frame context, chunked autoregressive action head). Methodology is transparent about evaluation limits (NSM saturation, paired t-tests, baselines) and what didn't work. The article is truncated mid-sentence (DeepSeek-V3 MTP discussion), which slightly lowers trust and completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:52:20.879349",
+      "image_url": "https://ericyuegu.com/assets/hillclimbing-melee/cover.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6744,
+      "source_id": 34,
+      "original_url": "https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution/",
+      "title": "Visual Studio Copilot and SSMS Remote Code Execution (CVE-2026-103572)",
+      "summary": "Trailing‑dot filename bypass in the Copilot DLL lets attackers bypass protection checks and execute arbitrary commands in Visual Studio and SSMS.",
+      "ideas": [
+        "Trailing dot bypass writes to .mcp.json without validation",
+        "Path traversal via .. resolves outside trusted Extensions directory",
+        "Malicious ripgrep path overwrites settings.VisualStudio.json. for command execution",
+        "Patch adds GetFullPath to normalize filenames and block bypass"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers original, highly technical evidence of a path‑canonicalization flaw that enables remote code execution in Visual Studio Copilot and SSMS, with reproducible exploit steps and patch analysis. It is directly relevant to AI‑driven code assistants and security‑focused readers, offering concrete mechanisms rather than generic commentary. However, the piece includes some promotional framing and limited discussion of broader mitigation strategies, keeping it from a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:51:19.179921",
+      "image_url": "https://embracethered.com/blog/images/2026/sqlcopilot/copilot-vs-rce.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 6743,
+      "source_id": 34,
+      "original_url": "https://dalevross.rosssquared.org/blog/pi%20musings/2026/10/14/the-proof-nobody-read.html",
+      "title": "The Proof Nobody Read",
+      "summary": "Machine‑generated proofs can be mass‑produced, but human understanding remains the scarce resource.",
+      "ideas": [
+        "722 manuscripts generated, 162 formalized in Lean, sign error invalidated dependent proofs"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete evidence of large‑scale AI‑generated mathematics—722 manuscripts, 162 Lean‑verified proofs, and a clear case of a sign error invalidating dependent work—offering non‑obvious insight into the new bottleneck of comprehension. It is highly relevant to AI, research methodology, and software‑engineering audiences, though it relies mainly on commentary rather than deep technical exposition of the proofs themselves.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:48:28.987772",
+      "image_url": "https://dalevross.rosssquared.org/blog/images/musings/2026-10-14-the-proof-nobody-read-og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6742,
+      "source_id": 34,
+      "original_url": "https://box2d.org/posts/2026/10/contact-recycling/",
+      "title": "Contact Recycling",
+      "summary": "Reusing cached contact manifold data with separation updates can dramatically boost rigid‑body simulation speed and stability.",
+      "ideas": [
+        "Cache relative transforms and adjust separation per sub‑step to reuse contacts.",
+        "Update separation values using cached base separation to maintain accuracy across steps."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a novel contact recycling technique that reuses contact manifolds across time steps, providing concrete pseudocode, mathematical formulas, and arguments for performance and stability gains. It contains substantial technical detail that will be valuable to engineers working on physics engines, though it lacks independent empirical validation and overstates originality. Consequently, it merits a high score but falls short of exceptional due to speculative claims and limited quantitative evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:45:27.639004"
+    },
+    {
+      "id": 6741,
+      "source_id": 34,
+      "original_url": "https://austen.info/blog/couple-to-artifacts-not-source",
+      "title": "Stop Checking Out Other People's Repos in CI",
+      "summary": "Publish versioned artifacts and trigger consumer tests from dependency PRs to catch breaking changes early.",
+      "ideas": [
+        "Consume versioned packages; pin exact versions instead of cloning repos.",
+        "Use scoped GitHub App tokens instead of organization‑wide PATs.",
+        "Run consumer test suites on dependency PRs to fail breaking changes early."
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article offers concrete, original guidance on replacing source checkout with versioned artifact consumption, using scoped GitHub App tokens instead of broad PATs, and flipping integration testing to catch breaking changes early. It is highly relevant to engineers seeking to reduce CI coupling and improve feedback loops. Its main limitation is heavy reliance on GitHub-specific features, which may not generalize to other platforms.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:41:10.207771",
+      "image_url": "https://images.ctfassets.net/8aevphvgewt8/KiQBgcnMQg6dALaS6erGk/f8d49c0cc5a461b903e52d08c3c3b8f6/actions-hero.webp",
+      "image_width": 2496,
+      "image_height": 1600,
+      "image_alt": ""
+    },
+    {
+      "id": 6740,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/aa-3d",
+      "title": "AA-3D: what 10,000 blind votes on three.js scenes can and cannot tell apart",
+      "summary": "A reanalysis of the AA-3D leaderboard that reads the harness source, simulates the Bradley-Terry fit, and finds AA's 'four models tied at the top' claim rests on the wrong statistical test, while failure-to-complete is silently ignored in the ranking.",
+      "ideas": [
+        "Anchor covariance shrinks paired-interval gaps to roughly one model's interval, not √2 times it",
+        "Overlapping CIs is the wrong test for Elo ties; AA's own Range column shows it",
+        "Stirrup counts a turn as one AssistantMessage regardless of tool-call count",
+        "Self-review screenshots are downscaled to 1MP from a software WebGL render",
+        "AA-3D's 30-second vote floor is too short for interactive tasks like pinball"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional technical analysis that clones AA's open-source Stirrup harness (commit 247f24d), cites specific files and line numbers (constants.py, agent.py), re-simulates the Bradley-Terry fit against AA's own ratings, and identifies a concrete statistical error in the 'four tied' launch claim by showing overlapping intervals is the wrong test once models share an anchor. The article also surfaces non-obvious operational facts: agents spend ~82% of tool time on headless-browser tests, 1MP downscale on self-review screenshots, and that failed scenes contribute zero penalty to a model's rating. Dense, source-grounded, and directly usable for anyone reasoning about arena-style LLM evaluations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:38:48.627519",
+      "image_url": "https://ai.thesatyajit.com/articles/aa-3d/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 6739,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/astronex-world",
+      "title": "Astronex-World 1.0: a world model trained on two L20s, and what its cache really holds",
+      "summary": "The model uses a short KV cache with pinned sink frames and overlap‑aware eviction to enable steerable video generation on consumer‑grade GPUs.",
+      "ideas": [
+        "Cache holds 20 latent frames: four sink, eight recent, eight current block.",
+        "Eviction selects frames by geometric overlap, at most two changes per block.",
+        "Sink frames stay pinned via RoPE re‑application to prevent decay.",
+        "Controls: PRoPE edits attention geometry, actions modulate feature statistics.",
+        "Event handling re‑encodes prompt after switch, keeping cached scene.",
+        "Bidirectional checkpoint used for fixed‑length clips; causal for interactive rollout.",
+        "Training done on two L20 GPUs achieving 70.0 WBench score."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, original engineering details about KV‑cache behavior, retrieval‑based eviction, and control mechanisms in a post‑trained video diffusion model, with measurable claims and clear limitations. It is highly relevant to AI and model engineering but includes some unverified performance claims and occasional speculative commentary. The depth and focus justify a strong score, though not exceptional due to limited reproducibility of key claims.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-14T22:38:42.454075",
+      "image_url": "https://ai.thesatyajit.com/articles/astronex-world/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
     {
       "id": 6738,
       "source_id": 4,
