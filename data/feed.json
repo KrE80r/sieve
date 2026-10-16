@@ -1,7 +1,302 @@
 {
-  "updated_at": "2026-10-16T14:00:00.180572+00:00",
-  "total_items": 1074,
+  "updated_at": "2026-10-16T15:00:00.187726+00:00",
+  "total_items": 1086,
   "items": [
+    {
+      "id": 6844,
+      "source_id": 34,
+      "original_url": "https://williamzujkowski.github.io/posts/2026-10-15-npm-provenance-attests-the-pipeline/",
+      "title": "Provenance Attests the Pipeline, Not the Intent",
+      "summary": "npm provenance certifies which pipeline produced a tarball, not whether the source was malicious, so malware shipped through a trusted pipeline still produces a verified attestation; consumers should inspect the signed ref, trigger, and commit ancestry rather than trust the green checkmark.",
+      "ideas": [
+        "Malicious packages with valid provenance pass `npm audit signatures` with exit code 0 - the check is not a malware check",
+        "Orphan snapshot branches carry attacker-written release.yml that bypasses main's branch filter written inside the file",
+        "SLSA v1.0 explicitly excluded source-intent threats; v1.2 addresses them with two-party review, not build provenance",
+        "Pair npm trusted publisher with a GitHub environment restricted to the release branch and gated by a second reviewer",
+        "Removed packages bias measurement: 5,457 of 5,573 malicious versions became unreadable on the registry",
+        "Four field-level checks: ref vs project habit, commit ancestry, trigger pattern, presence of attestation on neighbors"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "Original empirical investigation combining firsthand experiments, decoded Sigstore/SLSA fields, and three detailed case studies (jagreehal burst, @injectivelabs/sdk-ts, keyv). The article makes a non-obvious, well-supported claim - that valid provenance on malware yields a clean `npm audit signatures` exit code - and pairs it with actionable consumer checks (ref vs project habit, commit ancestry, trigger, attestation presence) and concrete mitigations (GitHub environment gating, npm staged publishing). Methodological honesty about n=3 and survivor bias in removed packages raises rather than lowers the score. Minor limits: the three cases are a small sample and the october 1 measurements are not themselves published alongside.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:18:10.319635",
+      "image_url": "https://williamzujkowski.github.io/og/2026-10-15-npm-provenance-attests-the-pipeline.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6843,
+      "source_id": 34,
+      "original_url": "https://whatshallweweird.com/9645/free-checking/",
+      "title": "Free checking",
+      "summary": "Mobile deposit eliminated banks' secure check disposal safeguards, exposing check writers to new fraud vectors while appearing convenient.",
+      "ideas": [
+        "Mobile deposit removed banks' secure check disposal function, leaving writers vulnerable to zombie check re-deposition",
+        "2018 regulations added duplicate account info and deposit checkboxes but didn't restore physical security",
+        "Check writers' routing number, account number, and signature now exposed to recipients rather than bank shredding"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical analysis of security tradeoffs in the check-to-mobile-deposit transition. It explains mechanisms (check processing workflow, mobile deposit photo-based processing), presents original evidence (2018 regulatory changes requiring duplicate account info, Harland-Clarke survey showing 1 in 4 account holders want mobile deposit), and identifies non-obvious losses (secure disposal elimination, anti-alteration features rendered ineffective by image-based processing, 'zombie check' re-deposition risk). The firsthand engineering perspective reveals what functions were discarded without replacement. Limitation: narrow focus on personal checks limits broader applicability beyond banking contexts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:17:49.704738"
+    },
+    {
+      "id": 6842,
+      "source_id": 34,
+      "original_url": "https://webframp.com/posts/seven-months-with-swamp/",
+      "title": "Seven Months with Swamp",
+      "summary": "A 7-month case study detailing the shift from prose-based agent skills to behavior-centric model methods, with concrete patterns for building observers and drift detection in infrastructure automation.",
+      "ideas": [
+        "Drift detector normalizes observer data and diffs against baseline with zero direct API calls",
+        "Behavior-centric design moves procedures into code/schema, making agent runs deterministic and reviewable",
+        "Load test to 500 ECS Fargate workers revealed DynamoDB sync bottlenecks under write pressure"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article earns a high score for its substantive, firsthand technical account of shifting from skill-based agent instructions to behavior-centric model methods. It provides concrete, non-obvious mechanisms such as the drift detector that diffs observer-normalized data against a baseline without making direct API calls, and lessons from scaling load tests to 500 workers. The personal narrative is grounded in specific implementation details, making the insights directly applicable to infrastructure automation workflows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:14:52.615391"
+    },
+    {
+      "id": 6841,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/what-the-borrow-checker-let-through.html",
+      "title": "What the borrow checker let through",
+      "summary": "Safe code can still reach use-after-free, double-free, and writes to immutable data when a borrow checker has variance or coverage holes, because the optimizer trusts whatever the checker accepted.",
+      "ideas": [
+        "One-way inner-type comparison for &mut enables safe-code use-after-free (variance hole)",
+        "Checker holes hide in rare borrow sites: if/match arms lacked per-block borrow records",
+        "noalias lets LLVM assume &mut params don't alias, so duplicate &mut miscompiles",
+        "Rust soundness bug: covariant field assignment bypasses struct lifetime bounds, 11 years unfixed",
+        "References into statement-dropped unnamed values need stricter rules than named ones",
+        "Optimization-level-dependent output in safe code is a memory-safety red flag"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "This is exceptional original material: eleven reproducible soundness-bug programs with concrete mechanisms, issue-tracker evidence, and measured optimization-level-dependent outputs (e.g., printing 2 at -O0 but 1 at -O1 via LLVM noalias trust) that show how borrow-checker holes become silent miscompilation and use-after-free in safe code. It also covers a freshly reported 11-year-old Rust soundness bug (rust-lang/rust#164250) bypassing struct lifetime bounds through covariant field writes in a Drop impl, with the types team's prioritization rationale. The transferable taxonomy of checker failure modes (variance mistakes; rules checked at common borrow sites but missed in rare ones, like if/match arms) is expert firsthand knowledge. Minor limits: much of the detail concerns the niche in-development Vx language rather than daily-use tools, and the text is truncated at the very end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:13:48.395676",
+      "image_url": "https://vxlang.org/cards/blog-what-the-borrow-checker-let-through.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What the borrow checker let through."
+    },
+    {
+      "id": 6840,
+      "source_id": 34,
+      "original_url": "https://vinitkumar.me/13-years-of-json2xml/",
+      "title": "Thirteen Years of json2xml",
+      "summary": "Version 8.0.0 of json2xml adds a Rust extension, achieves full Python test coverage, and documents measurable speed and memory gains while preserving backward compatibility.",
+      "ideas": [
+        "Python baseline now 3–14× faster; Rust extension reduces memory use by ~49%."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete engineering substance—performance benchmarks, memory reductions, 100% statement coverage data, and real‑world adoption evidence—directly relevant to software‑engineering practice. It avoids hype and provides measurable improvements and clear implementation decisions, making it highly useful for a technically capable reader.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:08:32.430607",
+      "image_url": "https://vinitkumar.me/static/27647c39cf7156e094c7cc98c0ed989f/blog.jpg",
+      "image_width": 1024,
+      "image_height": 682,
+      "image_alt": ""
+    },
+    {
+      "id": 6839,
+      "source_id": 34,
+      "original_url": "https://varik.dev/blog/xnu/xnusp-xnu-learning-lab",
+      "title": "xnusp: Learning the Modern XNU Kernel by Building a Kernel Introspection CLI",
+      "summary": "A structured exercise set for building a userspace XNU kernel introspection CLI on a virtualized iOS 26.1, exposing modern mechanisms (SPTM, 16K page tables, PAC) and the data-only exploit surface that results from kernel heap being protected only by software PAC.",
+      "ideas": [
+        "SPTM replaces gPhysBase/gVirtBase; PA->VA requires walking libsptm_papt_ranges by 16K mapping count.",
+        "Kernelcache holds three separately KASLR-slid images; only kernelcache is MH_FILESET, SPTM and TXM are MH_EXECUTE.",
+        "sysent sy_call fields are PAC-signed, so handler scans must match scalar (ret/narg/bytes) tuples, not pointer runs.",
+        "kernproc lives in __DATA_CONST,__const (SECURITY_READ_ONLY_LATE); reachable by scanning for two 'kernel_task' strings.",
+        "vm_region_recurse_64 caps at VM_MAX_ADDRESS (0xF0000000) and fails for kernel addresses; use mach_vm_region_recurse.",
+        "With SPTM, page tables are read-only to the kernel itself; kernel heap is protected only by PAC, enabling data-only attacks."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "Exceptionally deep, hands-on research on a recent iOS kernel (xnu-12377.42.6 on iOS 26.1), with concrete code, expected behaviors, and explicit checks for each step. Covers genuinely novel and rarely documented material: SPTM physical aperture via libsptm_papt_ranges (replacing gPhysBase/gVirtBase), three-image KASLR slide disambiguation (kernelcache/MH_FILESET vs SPTM+TXM/MH_EXECUTE), locating kernproc in __DATA_CONST,__const, and breaking PAC-signed sy_call lookup by matching scalar fields instead of pointer runs. The article is truncated at the end ('Why are Mach traps negativ') which slightly reduces its utility, and the audience is narrow (jailbreak/internal-security researchers), but the technical substance is original, mechanistic, and reproducible.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:06:57.791161",
+      "image_url": "https://varik.dev/static/images/xnu/og-xnusp.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6838,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/what-does-a-csharp-with-expression-actually-copy/",
+      "title": "What Does a C# `with` Expression Actually Copy, and Why Don't Computed Record Properties Recalculate?",
+      "summary": "A `with` expression uses a compiler‑generated clone that copies fields byte‑wise and only runs init accessors, causing computed properties that rely on field initializers or caches to become stale.",
+      "ideas": [
+        "with calls compiler‑generated <Clone>$ which invokes copy constructor, skips property initializers.",
+        "Computed properties using field initializers become stale after with.",
+        "Expression‑bodied members recalculate correctly after copy.",
+        "Lazy caches inherited from original cause equality mismatches.",
+        "Required members can be set via with without repeating them."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 94,
+      "rating_reason": "The article provides deep, original technical analysis of C# record `with` semantics, showing concrete compiler-generated mechanisms, copy constructor behavior, and practical pitfalls such as stale computed properties and equality anomalies. It offers actionable solutions and a concise checklist, making it highly valuable for technically adept readers. Limitations include the need for manual overrides of equality and careful handling of derived records, which the article notes but does not eliminate. Overall, the coverage is exceptionally thorough and directly applicable to programming practice.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T00:50:59.248238",
+      "image_url": "https://startdebugging.net/og/2026/10/what-does-a-csharp-with-expression-actually-copy.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What Does a C# `with` Expression Actually Copy, and Why Don't Computed Record Properties Recalculate? - Start Debugging"
+    },
+    {
+      "id": 6837,
+      "source_id": 34,
+      "original_url": "https://seylox.github.io/2026/10/15/blog-agents-meta-repo-pattern-october-2026-update.html",
+      "title": "In Which the Agents Meta-Repo Pattern Gets Its October 2026 Update",
+      "summary": "The highest-value part of codified agent context is the team-shared clone that propagates every engineer's lessons to all colleagues' agents daily, not per-agent orientation across repositories.",
+      "ideas": [
+        "Meta-repo holding only context (registry, rules, workflows) orients agents across many repos",
+        "Shared cloned meta-repo propagates one engineer's lesson to all colleagues' agents within a day",
+        "Plain markdown workflow files beat tool-specific skills for team-wide agent portability",
+        "Autonomy buckets plus stop-loss rules make unattended agent runs safe up to defined stop points",
+        "Context rots: live meta-repo quarter drifts; generate what can be generated, date the rest",
+        "Agents did not improve at self-discovering context; prose overviews became the least-used layer",
+        "Copied meta-repo patterns stalled when teams skipped the shared-clone social mechanism"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "A substantive, firsthand practitioner update on a team-scale context-engineering setup for AI coding agents, with concrete artifacts: a four-level meta-repo layout, include-based workspace generation with drift checks, trigger-phrase workflow files, autonomy buckets with stop-loss rules, and quantified costs (64,000 lines of markdown, three quarters archived, live portion still rotting). Its genuinely non-obvious insight is that the valuable axis is 'many people, one agent memory' rather than 'one agent, many repositories,' supported by the observed failure of copied implementations and by a seven-month prediction retrospective. Relevance to agent engineering and software practice is high and the claims are candidly bounded (no atomic cross-repo commits, maintenance burden remains). Minor deductions for recap material for readers of the earlier post, narrative sections, and truncation that loses the closing sections.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T00:48:20.649534"
+    },
+    {
+      "id": 6836,
+      "source_id": 34,
+      "original_url": "https://rimusz.net/atr-how-i-finally-got-my-coding-agents-working-while-i-sleep/",
+      "title": "atr: How I Finally Got My Coding Agents Working While I Sleep",
+      "summary": "atr is a local task runner that enables unattended execution of coding agents while intelligently managing weekly limits and caching to maximize tool usage.",
+      "ideas": [
+        "atr switches agents at 90% weekly limit to prevent waste",
+        "cache hit rates tracked per run: input, read, write, output, cost",
+        "same worktree path reused between tasks with reset for cacheability"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "atr addresses a real pain point with coding agents (weekly limits, need for keyboard presence) with concrete technical solutions. The caching strategy details (cache_control, server-side caching, prefix stability) and agent-switching at 90% limits are well-grounded engineering decisions. However, it remains primarily a tool description rather than deep technical innovation, keeping it out of the 90+ range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T00:41:47.004446",
+      "image_url": "https://storage.ghost.io/c/c0/29/c0291139-5530-4e42-8132-5ec5bf8e096f/content/images/size/w1200/2026/10/atr-hero.jpg",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6835,
+      "source_id": 34,
+      "original_url": "https://redvice.org/2026/github-cve-delays/",
+      "title": "GitHub Security Advisory CVE Delays",
+      "summary": "A maintainer's attempt to assign a CVE for an Aegisub vulnerability resulted in 3+ week delays and missed GitHub deadlines, exposing systemic bottlenecks in the GitHub CNA process that can impede timely vulnerability fixes.",
+      "ideas": [
+        "GitHub CNA CVE approval took 3 weeks, missing 72-hour deadline",
+        "Author faced 5-week estimated turnaround for GitHub CVE assignment",
+        "Author considers publishing vulnerability without CNA due to process delays"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article documents a firsthand experience of severe delays in GitHub's CNA CVE assignment process, measuring waits of 3+ weeks and missed 72-hour publication deadlines. It is directly relevant to vulnerability disclosure and infrastructure security practices, providing concrete timing data and insight into the operational friction of the advisory system. However, its value is constrained to the specific anecdote of GitHub CNA bottlenecks rather than offering broader technical guidance or universal solutions.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T00:36:57.252634"
+    },
+    {
+      "id": 6834,
+      "source_id": 34,
+      "original_url": "https://readwriterachel.com/things-i-learned/2026/10/15/noodle-broken.html",
+      "title": "My Favorite Side Project Was Broken In Safari For Years And Nobody Noticed",
+      "summary": "The author discovered Safari's `activeElement` does not update when clicking buttons unless 'Full Keyboard Access' is enabled, breaking calendar navigation, and the fix involved switching to `e.target`.",
+      "ideas": [
+        "Safari's `activeElement` remains unpopulated for buttons unless 'Full Keyboard Access' is on in System Settings",
+        "Calendar forward/backward buttons failed in Safari due to reliance on `document.activeElement` instead of `e.target`",
+        "Fix: replace `activeElement` check with `e.target.classList` for reliable button event handling across browsers"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Delivers a concise, non-obvious DOM quirk specific to Safari's `activeElement` behavior on macOS/iOS, with a clear mechanism explanation and a practical one-line fix. The author provides reproducible investigation steps, honest self-analysis, and the fix restores full functionality. High value per minute with no detectable noise, hype, or promotion.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T00:34:30.840693",
+      "image_url": "https://www.readwriterachel.com/assets/opengraph/2026-10-15-noodle-broken.png",
+      "image_width": 1210,
+      "image_height": 640,
+      "image_alt": ""
+    },
+    {
+      "id": 6833,
+      "source_id": 34,
+      "original_url": "https://quaoar.su/blog/page/andronov-cad-live",
+      "title": "A3CAD live",
+      "summary": "Readers gain practical insight into using SMLib as a geometric kernel, bridging it with OpenCascade for STEP compatibility, and the real-world trade-offs of AI-assisted CAD development.",
+      "ideas": [
+        "SMLib exports analytical planes/cylinders as exact STEP entities, not splines",
+        "OpenCascade translators bridge A3CAD's missing STEP/IGES interfaces",
+        "BSD 3-Clause license deliberately chosen over AGPL in AI-assisted FOSS context"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand engineering lessons on bridging SMLib with OpenCascade translators, exporting analytical surfaces to STEP, and building a VTK-based GUI with AI assistance. It sharply evaluates kernel trade-offs and licenses the project under BSD 3-Clause, critiquing AGPL dynamics in AI-assisted FOSS. While lacking hard benchmarks, the specificity of mechanisms and practitioner insight makes it strongly valuable for readers in geometric modeling or CAD tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T00:33:11.154563"
+    },
     {
       "id": 6832,
       "source_id": 34,
@@ -26,7 +321,11 @@
       "rating_reason": "Firsthand security research with concrete, reproducible substance: silent extension installation in VSCode/Cursor via direct extensions.json manipulation and the directory-watcher __metadata propagation trick, hiding via isBuiltin, verified-badge spoofing, and an extension-hollowing injector that forwards lifecycle calls to the original module. The defensive half is equally actionableâjq hunt queries, FIM scope, an osquery limitation (vscode_extensions omits isBuiltin), Cursor's extension lineage env vars, and Santa/MDM mitigations. Novelty is moderate since the author adapts known Silent_Chrome techniques to a surface with fewer integrity checks, and the content is truncated mid-conclusion, but the attack techniques, detection guidance, and published scripts make this highly valuable for both offensive and defensive engineering.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-17T00:26:07.985784"
+      "published_at": "2026-10-17T00:26:07.985784",
+      "image_url": "https://pberba.github.io/assets/posts/20261014/header.jpg",
+      "image_width": 1024,
+      "image_height": 1024,
+      "image_alt": ""
     },
     {
       "id": 6831,
