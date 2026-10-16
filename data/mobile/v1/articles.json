@@ -1,11 +1,343 @@
 {
   "schema_version": 1,
-  "sequence": 1333,
-  "revision": "sha256:76adf4d3637b2f1fc60c4dba14511c2b6a986070f2f0a6152c6bea68b173dbfd",
-  "generated_at": "2026-10-16T13:00:00.186236+00:00",
+  "sequence": 1334,
+  "revision": "sha256:0d8f90e3b7297caaf4a57da1e9b8c00b315b646bf07adada6e412b45d96496ca",
+  "generated_at": "2026-10-16T14:00:00.180572+00:00",
   "complete": true,
-  "total_items": 1056,
+  "total_items": 1071,
   "items": [
+    {
+      "article_id": "article:6832",
+      "original_url": "https://pberba.github.io/security/2026/10/14/silent-vscode/",
+      "title": "Silently Install VSCode Extensions",
+      "summary": "macOS VSCodium-family IDEs leave extension directories unprotected and integrity-free, letting attackers silently install, hide, hollow out, and brand-spoof extensions, while defense hinges on file-integrity monitoring of extensions.json and the extensions directory.",
+      "rating": 85,
+      "rating_reason": "Firsthand security research with concrete, reproducible substance: silent extension installation in VSCode/Cursor via direct extensions.json manipulation and the directory-watcher __metadata propagation trick, hiding via isBuiltin, verified-badge spoofing, and an extension-hollowing injector that forwards lifecycle calls to the original module. The defensive half is equally actionableâjq hunt queries, FIM scope, an osquery limitation (vscode_extensions omits isBuiltin), Cursor's extension lineage env vars, and Santa/MDM mitigations. Novelty is moderate since the author adapts known Silent_Chrome techniques to a surface with fewer integrity checks, and the content is truncated mid-conclusion, but the attack techniques, detection guidance, and published scripts make this highly valuable for both offensive and defensive engineering.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-17T00:26:07.985784+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-16T00:26:07.985784+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6831",
+      "original_url": "https://orlp.net/blog/black-box-hashdos/",
+      "title": "Black-Box HashDoS: Attacking Hash Tables Without Knowing the Hash Function",
+      "summary": "Hash tables with randomized seeds (Rust, Python) remain vulnerable to algorithmic complexity attacks via timing side-channels, enabling an O(n log n) setup attack that forces O(n) lookups without knowing the hash function.",
+      "rating": 92,
+      "rating_reason": "Original security research presenting a novel black-box HashDoS technique that bypasses randomized hash seeding (previously considered sufficient mitigation) using timing side-channels. The article provides concrete algorithmic details with rigorous complexity analysis (Chernoff bounds, harmonic series), demonstrates a working attack against Rust's standard library hash table, and covers both linear and quadratic probing schemes. The content is truncated mid-section but the core contribution and methodology are fully present and technically deep.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-17T00:21:10.005610+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-16T00:21:10.005610+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6830",
+      "original_url": "https://nohzafk.github.io/posts/2026-10-15-merge-the-folds/",
+      "title": "Merge the Folds: A Binary Counter Over the Title List",
+      "summary": "Long-running LLM agent context can be managed with a title-list 'cover' that follows binary-counter alignment rules, merged only on unit close to ride existing prefix-cache rewrites, with empirically measured retrieval trade-offs.",
+      "rating": 90,
+      "rating_reason": "Exceptional original engineering research with concrete measurements. The author replays 168 sessions under four schedules, runs a 184-question retrieval evaluation across block sizes, derives a prefix-cache cost model, and proves out an aligned-block structure (binary counter with carry) that makes merging provably cheap. Insights like 'merge only when a unit closes because it rides on the existing tail rewrite,' 'cover is for orientation, grep is for finding,' and the steep found-rate drop with block size are non-obvious and directly actionable for anyone building long-running LLM agents. The idiosyncrasy of the prose and partial article truncation slightly reduce value per minute but the underlying substance is unusually strong.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-17T00:13:45.919749+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-16T00:13:45.919749+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6829",
+      "original_url": "https://minikin.me/blog/uikit-as-a-test-oracle/",
+      "title": "An Oracle for Coding Agents: Testing a Flutter Popover Against UIKit",
+      "summary": "Differential testing against UIKit/AppKit turned into a black-box oracle that lets coding agents refactor a Flutter popover safely, with hard-won measurements of path geometry, glass parameters, springs, and agent guardrails.",
+      "rating": 89,
+      "rating_reason": "Exceptionally substantive engineering writeup describing differential testing applied to UI components, with concrete implementation: probe Swift apps that extract UIKit path geometry via CGPath.applyWithBlock, 31/171 fixture paths compared element-by-element, and parameter fitting where exact extraction fails (shadow blur sigma 210, glass color matrix, spring mass/stiffness/damping). Includes genuinely non-obvious findings: Impeller gives BackdropFilter inside Opacity an empty backdrop; NSPopover animates in the window server so CGWindowListCreateImage cannot see it; a luminance switch (0.23) computed via WCAG contrast for light/dark glass selection. The guardrails-for-agents framing (fixtures agents cannot edit, 75% mutation threshold, golden tests in Docker) is practical and well-reasoned. Mild self-promotion for the package is the main weakness.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-17T00:08:39.967482+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-16T00:08:39.967482+00:00",
+      "image": {
+        "url": "https://minikin.me/og/uikit-as-a-test-oracle.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "An Oracle for Coding Agents: Testing a Flutter Popover Against UIKit"
+      }
+    },
+    {
+      "article_id": "article:6828",
+      "original_url": "https://mainlymatmul.com/blog/deepseek-v4-flash-tpu-v6e/",
+      "title": "Running DeepSeek V4 Flash on TPU v6",
+      "summary": "Custom kernel modifications enable accurate and faster 4‑bit MoE inference on TPU v6, matching bf16 accuracy and outperforming bf16 speed.",
+      "rating": 89,
+      "rating_reason": "The article provides deep, reproducible engineering details for running a 4‑bit MoE LLM on TPU v6, including a custom decode kernel, performance benchmarks, and a fix for a prefix‑caching crash. The concrete code, measurements, and error analysis are highly relevant to AI inference engineers, while the content is free of hype and well‑focused. Novelty and practical utility are strong, though the scope is limited to a specific hardware generation.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-17T00:04:34.353652+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-16T00:04:34.353652+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6827",
+      "original_url": "https://lemire.me/blog/2026/10/15/redis-now-has-compressed-bitmaps-roaring/",
+      "title": "Redis now has compressed bitmaps (Roaring)",
+      "summary": "Enabling Roaring compressed bitmaps via a single Redis configuration setting can dramatically reduce storage and improve operation speed for sparse integer sets compared to traditional uncompressed bitmaps.",
+      "rating": 87,
+      "rating_reason": "The article details Redis's new Roaring compressed bitmap support, explaining how it adapts storage to data sparsity rather than allocating full byte width. It includes original benchmarks showing Roaring can outperform uncompressed bitmaps, particularly with large sparse sets like 512 MB hash-based collections. The material is technically substantive with clear mechanisms and practical configuration guidance, though benchmarks reflect single-expert measurements.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:59:28.687147+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:59:28.687147+00:00",
+      "image": {
+        "url": "https://lemire.me/blog/wp-content/uploads/2026/10/redis-roaring-cover-1024x572.jpg",
+        "width": 1024,
+        "height": 572,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6826",
+      "original_url": "https://leodemoura.github.io/blog/2026-10-15-lean-now-ships-with-verified-kernels/",
+      "title": "Lean Now Ships with Verified Kernels",
+      "summary": "Lean v4.35.0 ships five kernels (including con-leche, formally proven consistent via AI assistance, and con-ron, a Rust port with a refinement proof) and a `lake check --paranoid` command to recheck developments across all of them, motivated by real vulnerabilities found by AI agents.",
+      "rating": 93,
+      "rating_reason": "Exceptional primary-source announcement from Lean's chief architect describing a substantive defense-in-depth multi-kernel strategy. Concrete and verifiable: specific commands (`lake check`, `lake check --paranoid`), named kernels with measured performance (con-leche at 0.69x instructions, ~100s for Mathlib on 8 threads), and a genuine AI-assisted formal verification story (Claude/Fable/Opus proved con-leche consistent under supervision, then Aeneas refinement proof for the Rust port). The scaling discussion (1B+ LoC proposals, current ~13M LoC in Anthropic's FLT) adds further technical depth. No hype or padding; every paragraph carries technical substance.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:59:10.429082+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:59:10.429082+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6825",
+      "original_url": "https://lawzava.com/blog/2026-10-16-separate-the-event-log-from-the-context-window/",
+      "title": "Separate the Event Log from the Context Window",
+      "summary": "Splitting an append‑only event log from a compiled context window enables deterministic prompt projection, safe permission revocation, and stable prefix caching for LLM agents.",
+      "rating": 85,
+      "rating_reason": "The article presents a concrete, non-obvious architectural pattern for separating session logging from model context, with detailed mechanisms (append-only logs, sandbox layers, contributing‑source IDs) and operational rules. It is highly relevant to AI agent systems and provides implementable guidance, though it lacks empirical benchmark data.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:58:35.785258+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:58:35.785258+00:00",
+      "image": {
+        "url": "https://lawzava.com/img/og-default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Agent Context Design: Separate Event Logs From Prompts"
+      }
+    },
+    {
+      "article_id": "article:6824",
+      "original_url": "https://katecarruthers.com/effective-human-in-the-loop-ai-governance/",
+      "title": "Effective Human-in-the-Loop AI Governance",
+      "summary": "Effective human-in-the-loop governance requires redesigning decision authority, evidence access, time, and challenge mechanisms—not merely inserting an approval step into automated workflows.",
+      "rating": 85,
+      "rating_reason": "The article provides a rare, practical breakdown of what 'human-in-the-loop' actually requires to avoid becoming accountability theater. The six-element redesign model offers actionable criteria for organizational decision authority, evidence transparency, time allocation, structured challenge, and auditability. While grounded in established frameworks (OECD, NIST, UNESCO), the critical analysis of rubber-stamp dynamics and the concrete redesign principles represent hard-won practitioner insight. The main limitation is its focus on organizational governance rather than low-level engineering or technical implementation details.",
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:52:29.609335+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:52:29.609335+00:00",
+      "image": {
+        "url": "https://images.unsplash.com/photo-1515238492980-aa1c0be28c56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDIwfHxodW1hbiUyMGxvb3B8ZW58MHx8fHwxNzkxNjA0MjUzfDA&ixlib=rb-4.1.0&q=80&w=2000",
+        "width": 2000,
+        "height": 711,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6823",
+      "original_url": "https://jchigg2000.dev/blog/the-writer-cant-be-the-checker",
+      "title": "The Writer Can't Be the Checker",
+      "summary": "Separating writer and checker LLM agents - with no shared conversation, veto power, and rechecking after any rewrite - surfaced directional errors and number-misattributions that a single agent's self-review consistently missed.",
+      "rating": 85,
+      "rating_reason": "Unusually strong empirical account of running a multi-agent content pipeline (scouts, judges, writers, checkers) on a real portfolio build, with concrete, verifiable errors caught by separating writer and checker roles. Includes specific numerical discrepancies (60/60 vs 57/60 declines, 4,840 vs 2,230 GPU-seconds), a directional-lean analysis (15 overclaims, 0 underclaims), image-text leakage missed by whole-page review, and a useful rule that any post-check rewrite is a fresh draft. The author's own self-critique of the 'no hedging' instruction is a genuine practitioner insight rather than cleanup. Minor deductions for length-to-density ratio and that some lessons are familiar agent-design principles, but the supporting evidence is unusually concrete.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:47:12.261641+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:47:12.261641+00:00",
+      "image": {
+        "url": "https://jchigg2000.dev/og/the-writer-cant-be-the-checker.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Terminal card: The Writer Can't Be the Checker — I had agents write up sixteen of my builds and gave other agents the sources and a veto. All sixteen came back corrected, and the errors leaned toward what a reader would hope was true."
+      }
+    },
+    {
+      "article_id": "article:6822",
+      "original_url": "https://iwhalen.com/relevance-bench/",
+      "title": "Relevance-bench",
+      "summary": "A benchmark comparing decision-model LLMs finds Microsoft's Decision-1 achieves the highest human agreement (Cohen's kappa=0.2696) while being more cost-efficient than GPT-6 luna, though all models show interchangeable ranking performance.",
+      "rating": 85,
+      "rating_reason": "The article provides substantive, data-driven comparison of decision-model LLMs on relevance judgment tasks. It includes concrete metrics (Cohen's kappa, nDCG, cost, latency) across five models, reveals that OpenAI's decisions API repackages GPT-6 luna, and finds Decision-1 achieves strongest human agreement. The findings are technically relevant to LLM evaluation and retrieval system comparison, with clear evidence and minimal noise.",
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:43:50.650698+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:43:50.650698+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6821",
+      "original_url": "https://hugo.im/posts/heldkeys/",
+      "title": "Which Keys Is Your Agent Holding?",
+      "summary": "Article introduces heldkeys, a tool that discovers and rates all credentials an AI agent currently holds on a system, revealing surprising exposure and providing practical cleanup steps.",
+      "rating": 87,
+      "rating_reason": "Concise, highly relevant article about AI agent credential exposure. Provides concrete tool (heldkeys) with specific mechanisms for discovering what agents can access, real-world results from the author's machine, and CI/GitHub Actions analysis. Strong engineering value with minimal noise or hype.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:39:27.943819+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:39:27.943819+00:00",
+      "image": {
+        "url": "https://www.hugo.im/posts/which-keys-is-your-agent-holding/index.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6820",
+      "original_url": "https://gshell.dev/blog/systemd-ollama/",
+      "title": "Hardening Ollama with systemd: limits, sandboxing and two GPUs",
+      "summary": "A measurement-first guide to hardening an LLM server under systemd that surfaces several non-obvious Linux behaviors—page-cache cgroup charging, the silent-failure nature of systemd's IP filter, and the fact that MemoryMax without MemorySwapMax=0 just moves the problem to swap.",
+      "rating": 90,
+      "rating_reason": "Exceptional, evidence-driven systemd hardening writeup with original measurements, deliberate failure testing, and multiple non-obvious findings (MemorySwapMax=0 swap behavior, page cache accounting for model files, ProcSubset=pid breaking /proc/meminfo, ExecStartPre '+' bypassing device rules, the 5-in-10-seconds start-limit math). The methodology—rounds of hardening with regression tests, ad-hoc failure injection, and exact reproducible commands—sets a high bar. Content is slightly truncated at the end but the substance present is dense, supported, and immediately actionable for anyone running LLM services on Linux.",
+      "labels": [
+        "Sysadmin",
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:36:09.534876+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:36:09.534876+00:00",
+      "image": {
+        "url": "https://gshell.dev/blog/systemd-ollama/og.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Cover image for “Hardening Ollama with systemd: limits, sandboxing and two GPUs”"
+      }
+    },
+    {
+      "article_id": "article:6819",
+      "original_url": "https://gshell.dev/blog/claude-code-sandbox/",
+      "title": "Sandboxing Claude Code on Ubuntu",
+      "summary": "Claude Code's Ubuntu sandbox withstands adversarial probing on files, secrets, and network, but its required AppArmor exception re-opens Ubuntu's user-namespace restriction, granting nested-root capabilities no external configuration can close.",
+      "rating": 93,
+      "rating_reason": "Original firsthand security engineering: the author deploys Claude Code's built-in sandbox via Ansible, verifies it with a probe matrix run by the agent itself, then discovers and root-causes a real gap — the AppArmor bwrap exception lets sandboxed commands create nested user namespaces with full root capabilities, and Ubuntu's official bwrap-userns-restrict fix breaks Claude's path-less apply-seccomp helper. The article includes concrete commands, configs, AppArmor denials, process trees, lsns output, and upstream issue references, making it reproducible and directly useful for LLM-agent sandboxing, Linux security, and infrastructure automation. Its value stands independently of AI trends as applied AppArmor/bwrap/seccomp analysis, with only minor limitations: the gap is documented rather than fixed, and the content is slightly truncated at the end.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:35:47.057345+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:35:47.057345+00:00",
+      "image": {
+        "url": "https://gshell.dev/blog/claude-code-sandbox/og.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Cover image for “Sandboxing Claude Code on Ubuntu”"
+      }
+    },
+    {
+      "article_id": "article:6818",
+      "original_url": "https://fzakaria.com/2026/10/14/always-sometimes-never",
+      "title": "Always, sometimes, never",
+      "summary": "Readers learn how Rewind's always/sometimes/never properties can detect and debug race‑condition bugs across many thread schedules.",
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, firsthand engineering experience with a deterministic VM and property‑based thread‑schedule testing, providing useful mechanisms and evidence for finding concurrency bugs. Its relevance is high for programming and systems work, but the demonstration is limited to a Java bank example and early‑stage tooling.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-16T23:31:32.145316+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-15T23:31:32.145316+00:00",
+      "image": null
+    },
     {
       "article_id": "article:6817",
       "original_url": "https://expatriotic.me/obsidian-livesync/",
@@ -25,7 +357,12 @@
       "admitted_at": "2026-10-16T23:28:23.695998+00:00",
       "source_published_at": null,
       "expires_at": "2026-11-15T23:28:23.695998+00:00",
-      "image": null
+      "image": {
+        "url": "https://bear-images.sfo2.cdn.digitaloceanspaces.com/expatriotic/red.webp",
+        "width": 640,
+        "height": 640,
+        "alt": ""
+      }
     },
     {
       "article_id": "article:6816",
