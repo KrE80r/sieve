@@ -1,7 +1,149 @@
 {
-  "updated_at": "2026-10-16T15:00:00.187726+00:00",
-  "total_items": 1086,
+  "updated_at": "2026-10-16T16:00:00.194507+00:00",
+  "total_items": 1092,
   "items": [
+    {
+      "id": 6850,
+      "source_id": 34,
+      "original_url": "https://www.tqdev.com/2026-logirgb-logitech-g515-g502-rgb-linux/",
+      "title": "Logitech G515 TKL and G502 lighting on Linux",
+      "summary": "logirgb lets Linux users read and write Logitech keyboard/mouse lighting and profiles directly via HID++ 2.0, storing settings onboard.",
+      "ideas": [
+        "Use /dev/hidraw and HID++ 2.0 to control Logitech RGB without a daemon.",
+        "Store lighting profiles in device memory, avoiding runtime processes.",
+        "Reverse‑engineered undocumented 0x8100/0x8101 profile features and published notes.",
+        "Provides a Go library (hidpp) for discovery and feature handling usable in other tools."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, open‑source implementation (logirgb) that talks directly to Logitech HID++ devices, includes protocol reverse‑engineering notes, code snippets, and command‑line usage, all of which enable reproducible control of keyboard and mouse lighting on Linux without proprietary software. It adds novel support for HID++ 2.0 features absent in existing tools, offering real value to developers of peripheral drivers or Linux power users. The focus is narrow to specific hardware, but the underlying approach and library are broadly applicable, and the write‑up is clear and low on hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:55:04.101878"
+    },
+    {
+      "id": 6849,
+      "source_id": 34,
+      "original_url": "https://www.theswift.dev/posts/keep-date-only-values-stable-in-swiftui-forms/",
+      "title": "Keep Date-Only Values Stable In SwiftUI Forms",
+      "summary": "Shows how to preserve calendar-date meaning across SwiftUI forms by implementing a custom GregorianDay type that validates wire formats, uses noon in a fixed UTC calendar for picker carriers, and maintains day-stability regardless of device time zone.",
+      "ideas": [
+        "Custom GregorianDay type validates YYYY-MM-DD wire format with leap-year-aware day limits",
+        "Picker carrier uses noon in fixed UTC calendar to avoid timezone-driven day boundary shifts",
+        "DayEditSession provides inclusive date bounds using nextDown to cover entire first and last supported days",
+        "Decode routes through GregorianDay initializer to prevent malformed dates through synthesized decoding",
+        "Save only converts on explicit Save operation, discarding draft on Cancel or sheet dismissal"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a complete, well-tested implementation for handling date-only values in SwiftUI without timezone drift. The GregorianDay type enforces wire-format validation, picker carriers use noon in a fixed UTC calendar, and edit sessions maintain inclusive day bounds. Code is verified across 73,414 calendar dates. Highly relevant for Swift/iOS developers but niche in scope, targeting iOS 17+ with Swift 6.4.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:52:55.251410",
+      "image_url": "https://www.theswift.dev/images/posts/keep-date-only-values-stable-in-swiftui-forms/cover.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 6848,
+      "source_id": 34,
+      "original_url": "https://www.tara.sh/posts/2026/2026-10-16_strongswan_stormshield/",
+      "title": "When strongSwan met Diffusion Restreinte on Stormshield",
+      "summary": "Diagnosing strongSwan–Stormshield DR interop failures requires understanding the ANSSI-modified IKEv2 grammar: 16-byte nonces, 32-byte SHA-256-based CERTREQ hashes, mandatory childless IKE and ESN, which together demand only two tiny source patches plus the right configuration.",
+      "ideas": [
+        "ANSSI DR profile requires 16-byte IKEv2 nonces, not the standard 32 bytes.",
+        "DR CERTREQ uses 32-byte SHA-256 hashes of CA SubjectPublicKeyInfo, not 20-byte SHA-1.",
+        "Childless IKE (RFC 6023) is mandatory under DR and enabled in strongSwan via childless = force.",
+        "ESN for ESP is required by the DR profile and must be included in proposals.",
+        "Linux DR client benefits from XFRM interfaces plus explicit routes rather than auto-routes.",
+        "Stormshield EVA 4.8.18 used native ESP rather than UDP/4500 by default, contrary to a 2023 DR note.",
+        "Installing strongSwan's kernel-libipsec alongside kernel-netlink silently breaks ESP/ESN and routing."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "This is a high-quality firsthand engineering narrative about making Linux strongSwan interoperate with Stormshield firewalls running the French ANSSI Diffusion Restreinte IPsec profile. The article documents non-obvious protocol differences (16-byte nonces instead of 32, 32-byte SHA-256 CA SPKI hashes in CERTREQ instead of 20-byte SHA-1, mandatory childless IKE per RFC 6023, ESN requirement), gives concrete source patches and strongSwan configuration, and is unusually honest about what was and was not solved (including incomplete revocation handling and a documentation/observed-behavior mismatch on encapsulation). It avoids hype, repetition, and filler, and the findings are reproducible via linked implementation notes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:51:50.579306"
+    },
+    {
+      "id": 6847,
+      "source_id": 34,
+      "original_url": "https://www.sandordargo.com/blog/2026/10/14/cpp26-ranges-part-1-new-views",
+      "title": "C++26 Ranges: Four New Views",
+      "summary": "C++26 introduces four range adaptors—views::concat for lazy multi-range iteration, views::to_input to avoid unnecessary forward-iterator overhead, views::cache_latest to prevent redundant transform computations, and views::indices for clean index generation—each with clearly described mechanics, constraints, and practical use cases.",
+      "ideas": [
+        "views::concat lazily concatenates multiple ranges into a single view with no copies",
+        "views::to_input downgrades iterator category to input-only to avoid wasteful multi-pass tracking",
+        "views::cache_latest caches most recent dereferenced value to prevent transform running twice in pipelines",
+        "views::indices provides clean view::iota(0, n) without type mismatch errors, reusing iota_view under the hood"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, practical C++26 range adaptors with detailed implementation mechanics, iterator category semantics, and trade-off analysis. It serves as a substantive technical reference for C++ developers working with ranges, offering original evidence through godbolt links and firsthand engineering insights into when and why each view matters.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:46:48.024495"
+    },
+    {
+      "id": 6846,
+      "source_id": 34,
+      "original_url": "https://www.korte.co/2026/10/08/outsourcing-cybersecurity-to-ai-will-fail/",
+      "title": "Outsourcing Cybersecurity to AI Will Fail",
+      "summary": "AI cannot replace accountable leadership; it augments but must be overseen, as autonomous cyber actions introduce new risks and require human oversight.",
+      "ideas": [
+        "AI can turn mistaken assessments into rapid business disruption.",
+        "AI security tools broaden attack surfaces by gaining privileged access.",
+        "Autonomous responses risk operational harm without human context.",
+        "Core security fundamentals remain essential despite AI adoption."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "The article supplies concrete evidence of AI‑driven attack surfaces, illustrates real‑world failure cases, and stresses that human accountability cannot be delegated. It offers practical governance steps, but lacks deep experimental data, limiting its depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:39:05.184670",
+      "image_url": "https://www.korte.co/wp-content/uploads/2023/08/pexels-cottonbro-studio-6153354.jpg",
+      "image_width": 4097,
+      "image_height": 2731,
+      "image_alt": ""
+    },
+    {
+      "id": 6845,
+      "source_id": 34,
+      "original_url": "https://www.damirscorner.com/blog/posts/20261016-ImplementingACustomNUnitConstraint.html",
+      "title": "Implementing a custom NUnit constraint",
+      "summary": "Implements a custom NUnit constraint that consolidates repeated submission validation asserts into reusable constraint objects with personalized error messages and fluent syntax.",
+      "ideas": [
+        "Custom NUnit constraint consolidates repeated validation asserts into reusable constraint class",
+        "Custom ConstraintResult provides clear error messages identifying exact failure reasons",
+        "Constraint modifiers (WithPhase2Completed/WithoutPhase2Completed) enable flexible assertion modes",
+        "C# 14 extension methods enable clean constraint composition with Is.ValidSubmission syntax"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong implementation of custom NUnit constraint with reusable assertion logic and custom error messaging. Provides concrete code architecture, constraint modifiers, and C# 14 extension methods for clean syntax. Improves test maintainability with clear failure diagnostics. Limited to .NET/NUnit audience, and article acknowledges overhead for small projects.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-17T01:30:55.407832"
+    },
     {
       "id": 6844,
       "source_id": 34,
