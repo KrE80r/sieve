@@ -1,7 +1,89 @@
 {
-  "updated_at": "2026-10-17T19:00:00.174897+00:00",
-  "total_items": 1101,
+  "updated_at": "2026-10-17T20:00:00.269955+00:00",
+  "total_items": 1104,
   "items": [
+    {
+      "id": 6890,
+      "source_id": 34,
+      "original_url": "https://www.tamirdresher.com/blog/2026/10/16/copilot-workflows-durability",
+      "title": "Copilot remembered the bookings. Why couldn't it resume the workflow?",
+      "summary": "Copilot’s dynamic workflow engine records completed steps but refuses to resume interrupted runs because resumability requires a clean checkpoint, not just journal entries.",
+      "ideas": [
+        "Copilot registers workflow tools via a three‑step handshake: guide → view docs → author scaffold.",
+        "Generated workflows are stored as ES modules under session extensions and loaded by the runtime.",
+        "ctx.step implements memoized read‑through/write‑through against a native JSON‑RPC ledger.",
+        "Interrupted runs are marked canResume:false despite having journal entries, preventing replay.",
+        "Durable Task Scheduler could provide the missing checkpointing to enable true resumability."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a deep, evidence‑backed walkthrough of GitHub Copilot's dynamic workflow runtime, including file‑system paths, tool schema handshakes, code generation, journaling mechanics, and why interrupted runs cannot be resumed. It provides original reverse‑engineering findings, concrete code snippets, and a reproducible crash test, all directly relevant to LLM‑agent tooling and durable orchestration. The only limitation is the unfinished discussion of integrating Azure Durable Task Scheduler, leaving the final solution incomplete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-18T05:35:24.895335"
+    },
+    {
+      "id": 6889,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/secure-boot-trust-state-ownership/",
+      "title": "Secure Boot Trust: Who Owns the Virtual Firmware State",
+      "summary": "Secure Boot trust is enforced as virtual-firmware state whose initial values, inheritance, and updates are controlled by different actors across platforms, creating an ownership split that must be explicitly managed.",
+      "ideas": [
+        "vSphere seeds PK at first power-on, stored in VM NVRAM",
+        "Proxmox EFI disks with firmware >=4.2025.05-1 carry 2011+2023 certs, ms-cert=2023k marker",
+        "Azure Trusted Launch stores certs platform-managed; VMs post-March 2024 get 2023 certs",
+        "Template inheritance: vSphere passes exact certs, Azure splits Boot Manager from certs, Proxmox undocumented",
+        "Update sequencing couples owners: vSphere PK-first, Proxmox BitLocker disable then enroll, Azure guest certs before redeploy"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Highly technical cross-platform analysis of Secure Boot trust ownership in virtualization. Provides concrete architecture details, documented update sequences, and inheritance behaviors across vSphere, Proxmox VE, and Azure. Valuable for infrastructure practitioners, though reliant on vendor documentation rather than original experimentation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-18T05:34:37.546704",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/10/secure-boot-trust-featured.jpg",
+      "image_width": 1024,
+      "image_height": 572,
+      "image_alt": "Secure Boot trust held in virtual firmware: platform, image and guest each own a different part of the state"
+    },
+    {
+      "id": 6888,
+      "source_id": 34,
+      "original_url": "https://www.kylereddoch.me/blog/security-signal-weekly-october-10-16-2026/",
+      "title": "Security Signal Weekly: October 10-16, 2026",
+      "summary": "A curated digest of 10 critically exploited vulnerabilities and supply-chain incidents, each paired with specific defensive actions and exploit context for immediate practitioner response.",
+      "ideas": [
+        "BeyondTrust zero-day: unauthenticated remote file ops and root escalation on support appliances.",
+        "Ivanti Connect Secure: auth bypass chained with privilege escalation, actively exploited in the wild.",
+        "Cisco Email Gateway: crafted attachment triggers root shell when Content Scanner Tools outdated.",
+        "Check Point VPN/management: two pre-auth RCE flaws exploitable; LivePatch 28/29 does not fix one.",
+        "Palo Alto PAN-OS: management-interface RCE requires privileged auth but enables root control of firewalls.",
+        "Collabora/Nextcloud: web-shell flaw unpatched for weeks; disabling app does not remove vulnerable files.",
+        "AOMEI update supply-chain: brief hijack windows delivered malware to backup/remote-access clients persisting on endpoints."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a technically specific weekly roundup of 10 active cybersecurity incidents, each with CVE details, observed exploit chains, and concrete remediation steps. It delivers substantive mechanism descriptions—such as remote-appliance file operations, VPN auth bypasses, email-gateway root shells, and refrigeration-controller physical impacts—alongside analyst-backed actionable guidance. While it aggregates disclosed advisories and threat-intel reports rather than presenting original experiments, the curation saves critical time for defenders tracking real-world threats.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-18T05:30:25.293558",
+      "image_url": "https://www.kylereddoch.me/assets/og-images/security-signal-weekly-october-10-16-2026-preview.jpeg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Security Signal Weekly: October 10-16, 2026"
+    },
     {
       "id": 6887,
       "source_id": 34,
@@ -21,7 +103,11 @@
       "rating_reason": "The article provides concrete substance through firsthand experiments (Claude Dashboards built in minutes via MCP), specific industry data (OpenAI token breakdown showing agent growth), and practical tool descriptions (AT Protocol, Aboard office suite). It balances ethical concerns with utility effectively and avoids hype, though it remains a curated newsletter summary rather than deep technical exposition, and the publishing focus limits broad technical relevance.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-18T05:28:12.870219"
+      "published_at": "2026-10-18T05:28:12.870219",
+      "image_url": "https://www.georgewalkley.com/images/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 6886,
@@ -44,7 +130,11 @@
       "rating_reason": "A focused critique of EU cloud sovereignty proposals, arguing that capacity targets and assurance levels alone don't ensure operational recovery if a provider fails. Grounded in historical precedents (GAIA-X, Plan Calcul) and concrete failure modes (CLOUD Act, cooling outage). Offers a practical checklist for true sovereignty: movable workloads, independent dependencies, tested failover.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-18T05:26:54.698338"
+      "published_at": "2026-10-18T05:26:54.698338",
+      "image_url": "https://storage.ghost.io/c/d3/dc/d3dc00c3-b74a-4935-9ec2-80eed6941820/content/images/size/w1200/2026/09/2026-10-19-a-kill-switch-of-ones-own.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 6885,
@@ -66,7 +156,11 @@
       "rating_reason": "The article is highly relevant to engineering leadership and incident management, using a concrete production-story anecdote to explore the psychology of premature closure. It delivers a rare, practical 4-step framework (write the question, list rivals, name evidence, set a date) grounded in firsthand experience and psychological research. The only reason it doesn't hit 90 is that the concepts synthesize existing ideas (Kruglanski, Keats) rather than presenting novel original research, but the applied framework is exceptionally well-executed and immediately useful.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-18T05:26:25.971566"
+      "published_at": "2026-10-18T05:26:25.971566",
+      "image_url": "https://www.derekneighbors.com/assets/images/the-answer-that-ends-your-discomfort-is-usually-the-wrong-one.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Brutalist still life photograph of a plain cardboard jigsaw puzzle on concrete, with a wrong piece forced and crushed into the last gap while the correct piece lies untouched beside it."
     },
     {
       "id": 6884,
