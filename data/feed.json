@@ -1,7 +1,579 @@
 {
-  "updated_at": "2026-10-18T18:00:00.332297+00:00",
-  "total_items": 1058,
+  "updated_at": "2026-10-18T19:00:00.210396+00:00",
+  "total_items": 1081,
   "items": [
+    {
+      "id": 6916,
+      "source_id": 34,
+      "original_url": "https://martinelli.ch/openspec-and-the-missing-flow-from-the-users-perspective/",
+      "title": "OpenSpec and the Missing Flow from the User’s Perspective",
+      "summary": "OpenSpec isolates requirements and scenarios without linking them into end‑to‑end user flows, whereas the AI Unified Process provides complete use‑case specifications, traceability, and validation that capture those flows.",
+      "ideas": [
+        "OpenSpec scenarios are isolated per requirement, not cross‑capability flows.",
+        "AI Unified Process uses use cases with full end‑to‑end scenarios and traceability IDs.",
+        "Reverse‑engineering into use cases reveals missing steps in existing code.",
+        "Adding a journeys.md file can partially close the flow gap in OpenSpec.",
+        "Delta‑change workflow makes flow capture difficult in OpenSpec."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, technical analysis of OpenSpec’s missing user‑flow issue, explains the AI Unified Process as a contrasting solution, and provides specific implementation suggestions with clear mechanisms and trade‑offs. The substance is relevant to engineers seeking deeper specification practices, but it lacks a fully integrated reverse‑engineering workflow and relies on manual maintenance of flow artifacts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:28:10.941338"
+    },
+    {
+      "id": 6915,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/m5stack-cores3-stackchan-face-freeze/",
+      "title": "Debugging Why StackChan Froze Mid-Blink on M5Stack CoreS3",
+      "summary": "Persistent ESP32 firmware stalls trace to internal-RAM TLS buffer exhaustion, an unpinned lwIP task stealing Core 1 from loop(), and blocking USB serial writes, each fixable via sdkconfig settings, core pinning, and Serial.setTxTimeoutMs(0).",
+      "ideas": [
+        "mbedTLS TLS buffers default to internal RAM; reconnect retries exhaust it",
+        "CONFIG_MBEDTLS_EXTERNAL_MEM_ALLOC=y moves mbedTLS buffers to external PSRAM",
+        "ESP-IDF lwIP tiT task is core-unpinned and preempts Arduino loopTask",
+        "CONFIG_LWIP_TCPIP_TASK_AFFINITY_CPU0 pins tiT to Core 0, ending priority stalls",
+        "arduino-esp32 HWCDC::write blocks ~2s per line when host stops reading",
+        "Serial.setTxTimeoutMs(0) makes USB serial writes non-blocking and lossy",
+        "Tailscale ESP32 tasks pinned to Core 0 via xTaskCreate macro redirection",
+        "Memory protection forces target reset on GDB attach, destroying frozen state"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense, firsthand embedded debugging investigation with concrete sdkconfig options, code snippets, serial logs, backtrace-to-symbol resolution via addr2line, and before/after stall measurements. The mechanisms are non-obvious and actionable: mbedTLS exhausting internal RAM during reconnects, the unpinned lwIP tiT task preempting Arduino's loopTask on Core 1, HWCDC USB serial writes blocking ~2s per line when the host stops reading, and memory protection preventing JTAG attachment without a reset. It sits squarely in systems/programming practice despite the whimsical robot framing, with the AI-agent aspect purely incidental content. Limitations: platform-specific (ESP32/ESP-IDF/arduino-esp32), short post-fix observation windows, one root cause (host pausing serial reads) left unresolved, and individually the fixes are documented knobs whose value comes mainly from the diagnosis methodology and the HWCDC discovery.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:24:22.119398"
+    },
+    {
+      "id": 6914,
+      "source_id": 34,
+      "original_url": "https://laurentkempe.com/2026/10/17/typesafe-dotnet-sdk-v0-7-0/",
+      "title": "TypeSafe Jev .NET SDK 0.7.0: Experimental Images and Bounding Boxes",
+      "summary": "The SDK enables sending PNG/JPEG images to Jev, returning normalized bounding‑box coordinates and confidence.",
+      "ideas": [
+        "BoxAnswer returns normalized coordinates; use separate presence check.",
+        "Image.FromBase64 creates image without data URL."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, reproducible technical details on integrating image input and bounding‑box queries with the Jev model via the .NET SDK, including code snippets, multipart request handling, compression, and validation. It also warns about the Box answer’s behavior and the need for separate presence checks, adding practical caution. The coverage is deep but remains niche and experimental, limiting broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:23:15.187230",
+      "image_url": "https://live.staticflickr.com/65535/55594464896_0b3ca1ae25_h.jpg",
+      "image_width": 1600,
+      "image_height": 1067,
+      "image_alt": ""
+    },
+    {
+      "id": 6913,
+      "source_id": 34,
+      "original_url": "https://lemire.me/blog/2026/10/17/decoding-base64-in-python-at-10-gigabytes-per-second/",
+      "title": "Decoding base64 in Python at 10 gigabytes per second",
+      "summary": "fastpybase64 offers SIMD‑based base64 decoding in Python, achieving ~10‑13 GB/s, far outpacing the standard library.",
+      "ideas": [
+        "fastpybase64 decodes base64 ~27× faster than the stdlib on a single Xeon core.",
+        "Installation is a simple `pip install fastpybase64` and works as a drop‑in replacement.",
+        "Benchmarks show 13 GB/s decode speed on 64 KiB–1 MiB inputs with realistic MIME line breaks."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article introduces fastpybase64, a SIMD‑accelerated Python binding that decodes base64 at up to ~13 GB/s, backed by concrete benchmark numbers and reproducible setup details. It provides actionable code, installation instructions, and links to the source and related research, making it directly useful for developers needing high‑throughput data processing. Noise is low and the claim is well‑supported, though the scope is narrowly focused on base64 decoding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:23:11.244293",
+      "image_url": "https://lemire.me/blog/wp-content/uploads/2026/10/pybase64-cover-1024x572.jpg",
+      "image_width": 1024,
+      "image_height": 572,
+      "image_alt": ""
+    },
+    {
+      "id": 6912,
+      "source_id": 34,
+      "original_url": "https://kyle.cascade.family/posts/porting-android-17-to-the-palm-pvg100/",
+      "title": "Porting Android 17 to the Palm PVG100",
+      "summary": "Porting Android 17 to the Palm PVG100 yields a low‑power, Wi‑Fi‑calling‑capable ROM with customizable power settings and experimental LTE band 12 support via calibration data.",
+      "ideas": [
+        "Chromium Web Flasher works on any OS via qdl.js, needing no extra software",
+        "MGLRU backport improves multitasking on the 3 GB RAM device",
+        "LTE band 12 enabled by writing calibration files to the tunning partition"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article earns a high score because it delivers original, low-level implementation details—such as a Chromium‑based web flasher, an MGLRU kernel backport, and practical Wi‑Fi‑calling fixes—backed by concrete measurements and reproducible steps. Its relevance is strong for readers interested in Linux kernel work, Android porting, and mobile firmware tinkering, though it remains niche and assumes familiarity with Qualcomm EDL and carrier‑config internals. The main limitation is its specialized scope, which restricts broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:21:04.357292"
+    },
+    {
+      "id": 6911,
+      "source_id": 34,
+      "original_url": "https://isamert.net/2026/10/18/a-more-intuitive-sway-scratchpad-turn-it-into-a-floating-workspace.html",
+      "title": "A more intuitive Sway scratchpad: Turn it into a floating workspace",
+      "summary": "Create a dedicated floating scratchpad workspace that can hold multiple windows and be summoned with a single keybinding.",
+      "ideas": [
+        "Use marks and a Bash script to toggle a floating workspace with a defined layout.",
+        "Bind $mod+m to send the focused window into the scratchpad workspace.",
+        "Summon the workspace with $mod+grave, then switch layouts or focus windows inside it."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives a concrete, reproducible scratchpad workflow using Sway marks and a Bash script, with explicit config bindings and a clear mechanism for toggling a floating workspace. It provides practical, non‑obvious implementation details, though it assumes familiarity with Sway and offers limited troubleshooting for edge cases.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:14:22.917060"
+    },
+    {
+      "id": 6910,
+      "source_id": 34,
+      "original_url": "https://hiraditya.github.io/posts/visibility-is-a-versioning-decision/",
+      "title": "Visibility Is a Versioning Decision",
+      "summary": "Rust's visibility system lacks a middle ground between \"this crate\" and \"everyone,\" forcing maintainers to stack workarounds—cfg pins, build-script version stamping, and __private naming conventions—to enforce version compatibility, as demonstrated by serde's derive/serde versioning constraints.",
+      "ideas": [
+        "cfg(any()) empty disjunction forces Cargo to keep serde_derive's version in lockstep with serde's even when derive feature is disabled",
+        "Build scripts bake patch numbers into private module names (e.g., __private229) to prevent mismatched derive/serde combinations",
+        "Rust has no visibility level meaning \"my other crate, but not yours,\" converging on pub + doc(hidden) + __private naming convention"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 95,
+      "rating_reason": "The article provides original evidence about how Rust's cfg(any()) empty disjunction forces Cargo to keep serde_derive's version in lockstep with serde's, demonstrates how build scripts stamp patch numbers into private module names (__private229), and offers a comprehensive examination of Rust's visibility system limitations with concrete code examples and language comparisons. It contains unusually deep technical explanation of visibility mechanics, compiler lints, macro expansion behavior, and package management interactions, making it valuable for Rust developers dealing with versioning constraints.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:11:30.746685"
+    },
+    {
+      "id": 6909,
+      "source_id": 34,
+      "original_url": "https://hiraditya.github.io/posts/sequence-points-are-about-dominance/",
+      "title": "Sequence Points Are About Establishing Dominance Relation Among Expressions",
+      "summary": "It shows how Rust’s two‑phase borrow model and the concept of dominance explain a real bug where a dangling reference arises from a vector push.",
+      "ideas": [
+        "Rust’s two‑phase borrow reserves a mutable borrow, then allows a shared borrow before activation.",
+        "A dangling reference can appear when a vector is pushed after its buffer is freed due to reservation semantics.",
+        "Sequence points enforce a dominance relation, not just evaluation order, across C, C++, and Rust.",
+        "Compiler probes reveal differing operand evaluation orders for C++ operators among GCC, Clang, and MSVC."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete Rust code that exhibits a subtle borrow‑checker bug, explains the underlying compiler mechanism (two‑phase borrows and the is_active dominator query), and backs its claims with measured compiler probes across GCC, Clang, and MSVC. It links the issue to language‑level concepts of sequence points and dominance, offering deep insight valuable to language and compiler engineers. The content is technically rich, well‑referenced, and free of hype, though it assumes familiarity with C/C++ and Rust semantics, limiting its novelty to experts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:11:03.626721"
+    },
+    {
+      "id": 6908,
+      "source_id": 34,
+      "original_url": "https://front-end.tips/javascript-iterator-helpers-when-lazy-beats-array-chains/",
+      "title": "JavaScript Iterator Helpers: When Lazy Beats Array Chains",
+      "summary": "JavaScript iterator helpers enable truly lazy pipelines where evaluation stops as soon as enough results are collected, avoiding unnecessary array copies for large or infinite data sources.",
+      "ideas": [
+        "Lazy pipelines stop evaluation after collecting enough results",
+        "Interleaved callbacks process one value through full chain before next",
+        "Infinite generators integrate with take() and toArray() for finite extraction"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article substantively explains JavaScript iterator helpers' lazy evaluation model, contrasting it with eager array chains with clear code examples. It provides concrete mechanics (interleaved callback execution), practical use cases (log processing, infinite generators), and important limitations (single-use, sync-only). However, it stays within a familiar JS domain and the core concept, while valuable, isn't deeply novel for experienced engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:08:32.613920",
+      "image_url": "https://front-end.tips/wp-content/uploads/2026/10/JavaScript_-iterator_helpers_lazy_pipeline_example.png",
+      "image_width": 813,
+      "image_height": 488,
+      "image_alt": ""
+    },
+    {
+      "id": 6907,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/opencode-lm-studio/",
+      "title": "How to use OpenCode with a local model in LM Studio",
+      "summary": "Readers learn how to configure OpenCode to use a local LM Studio model for offline coding workflows, including model selection criteria, server setup, and a concrete test project demonstrating tool use with file reading and repair tasks.",
+      "ideas": [
+        "Model discovery requires /models endpoint with lmstudio provider prefix",
+        "Tool use needs instruction-tuned models with proper chat template, not just conversational fluency",
+        "Offline coding workflows need pre-downloaded fixtures and no external integrations"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, concrete technical content about connecting OpenCode with LM Studio for local model inference. It provides specific model selection criteria, configuration examples (opencode.jsonc, baseURL settings), and a well-designed test project with clear before/after expectations. The troubleshooting guidance on tool invocation vs. conversational fluency, context management, and offline boundaries offers practical engineering value. While well-executed, it remains primarily tutorial-oriented rather than breaking new technical ground.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:07:08.288100",
+      "image_url": "https://flaviocopes.com/images/opencode-lm-studio/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for How to use OpenCode with a local model in LM Studio"
+    },
+    {
+      "id": 6906,
+      "source_id": 34,
+      "original_url": "https://dotmavriq.life/blog/humble-pi",
+      "title": "Humble Pi",
+      "summary": "Pi provides a viable free-ish terminal agent for bounded coding jobs between Claude Code resets, using extensible VM isolation, provider-agnostic model selection, and Exa search for current documentation lookup.",
+      "ideas": [
+        "Pi uses a micro-VM at /workspace with file write-through to host and isolated guest filesystem",
+        "Extensions register commands/tools without a private framework; written per annoyance automation need",
+        "Exa search integration provides current documentation lookup with euro-cost tracking per session"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Productivity",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong practical article detailing Pi, a terminal LLM agent toolkit. Contains concrete technical substance: VM architecture (/workspace mounting with host-write-through), extension mechanism (registers commands/tools in ~/.pi/agent/extensions/), specific model provider management with current pricing and deprecation warnings, Exa search integration for documentation lookups, and risk-command confirmation. Transparently covers that costs and model availability change, warns against mistaking provider accounts for free unlimited inference, and provides measurable token-cost tracking in euros. Highly relevant to LLM tooling and coding-agent workflows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:02:55.045529",
+      "image_url": "https://dotmavriq.life/og/humble-pi.png?v=d851f0ff23",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6905,
+      "source_id": 34,
+      "original_url": "https://developerinsider.co/build-and-understand-cron-schedules-in-your-browser/",
+      "title": "Build and Understand Cron Schedules in Your Browser",
+      "summary": "A browser-based cron explainer that correctly renders five-field matching rules, step-restart behavior, and day-of-week/month conflicts, with preview of next runs and timezone configuration.",
+      "ideas": [
+        "Step values restart within their cron field (e.g., */35 yields minutes 0 and 35)",
+        "Restricting both day-of-month and day-of-week fields means either may match",
+        "Browser preview shows next 5 scheduled runs with UTC/timezone offset"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Explains five-field cron matching rules with concrete detail, including non-obvious behaviors like step-value restart and day-field conflicts. Provides browser-based preview of next runs with timezone configuration. Useful validation tool for sysadmins, though limited to standard cron behavior without original experiments.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:01:31.580457",
+      "image_url": "https://developerinsider.co/content/images/size/w1200/2026/10/cron-builder-cover.webp",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6904,
+      "source_id": 34,
+      "original_url": "https://debugagent.com/update-db-schema-in-production-with-flyway-like-syntax",
+      "title": "Update DB Schema in Production with Flyway like Syntax",
+      "summary": "Explains how to version and apply ordered SQL migrations across client embedded databases and native backends using a Flyway-style engine, including handling baselines, transactional limits per DB engine, and deployment validation via Maven goals.",
+      "ideas": [
+        "Versioned SQL scripts use V__description.sql naming with double-underscore version separation; checksums prevent re-entry or history mismatch.",
+        "Client and backend migrations live in distinct paths but share the same engine; backend migrations run at startup with a lock coordinating multiple instances against the same database.",
+        "Baseline recording allows migration on databases with existing schema but no history, asserting schema version without inspecting every column and proving the assertion correct.",
+        "Maven goals `cn1:migrate-info` and `cn1:migrate-validate` allow inspecting and validating pending migrations before deployment, reading history without changing it.",
+        "Database-specific transactional limits exist: SQLite and PostgreSQL can roll back transactional migrations with history update, while MySQL and MariaDB commit DDL as executed, risking partial schema changes on failure."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantively technical article detailing a Flyway-style migration engine for Codename One, covering ordered SQL scripts with versioned checksums, distinct client/backend script paths, database-specific transactional boundaries (rollable vs. committed DDL), baseline recording without column inspection, and Maven validation goals. Provides concrete code snippets, command examples, and engineering trade-offs rather than generic advice.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:00:56.825854",
+      "image_url": "https://cdn.hashnode.com/uploads/covers/5762357f734d6d686c0f568a/ac1b9089-00f2-4e11-afaf-b63bdaa1344a.jpg",
+      "image_width": 1024,
+      "image_height": 512,
+      "image_alt": ""
+    },
+    {
+      "id": 6903,
+      "source_id": 34,
+      "original_url": "https://calabro.io/ohbf",
+      "title": "One Hash Bloom Filters",
+      "summary": "Explains how a single hash with coprime-sized partitions can replace multiple hashes in a Bloom filter, and details Go-specific cache-alignment and MUL-based optimizations that reduce lookup latency to a single cache miss.",
+      "ideas": [
+        "Single hash with coprime partitions replicates multi-hash Bloom filter behavior.",
+        "Cache-aligned 64-byte blocks ensure worst-case lookup is one cache miss.",
+        "MUL instruction optimizes block selection, avoiding expensive division."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Highly substantive technical article explaining the One Hash Bloom Filter mechanism using coprime partitions and a single hash. Includes concrete Go implementation details (cache-aligned blocks, MUL optimizations) and quantifies real-world impact at Bluesky (deploys 90min -> 15min, ~1% positive hit rate). The core mechanism is non-obvious and well-supported by firsthand engineering experience. Minor deductions for a future-dated timestamp and some narrative padding, but overall excellent value per minute.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:56:37.676616"
+    },
+    {
+      "id": 6902,
+      "source_id": 34,
+      "original_url": "https://bobaekang.com/blog/the-new-software-loop/",
+      "title": "The new software loop",
+      "summary": "Introduces a 'new software loop' where model-powered systems participate in work before organizational judgment is fully formalized, creating feedback loops that shape rather than merely reflect policy.",
+      "ideas": [
+        "Models can recommend exceptions to policies without requiring full rule formalization",
+        "System outcomes may reflect system design rather than genuine policy validity",
+        "Software and organizational judgment co-evolve through iterative softwarization loops"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a compelling and non-obvious framework for how model-powered systems change software development loops, with concrete examples (refund policy support cases) and important warnings about system-induced outcomes being mistaken for policy validation. Offers genuine engineering insight about the feedback between system behavior and organizational judgment. However, it remains primarily conceptual/theoretical without concrete code, measurements, or experimental data.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:54:41.527446",
+      "image_url": "https://bobaekang.com/preview.png",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
+    {
+      "id": 6901,
+      "source_id": 34,
+      "original_url": "https://blog.softwarewrighter.com/2026/10/16/array-languages-xetal-mojo-metal/",
+      "title": "Array Languages #10: X_eTaL on Metal and CUDA, Through Mojo",
+      "summary": "X_eTaL array programs can be lowered through Mojo to run on both Apple Metal and NVIDIA CUDA GPUs, with performance measurements and correctness verification against the evaluator.",
+      "ideas": [
+        "Mojo fuses divide, scale, and add into one fused kernel for GPU execution",
+        "Mojo reaches Apple GPUs via Metal and NVIDIA via CUDA driver without nvcc",
+        "OpenCL on macOS incurs ~1.3ms fixed call overhead absent in Mojo backend"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, highly relevant technical content by detailing the X_eTaL-to-Mojo compilation path for GPU execution on both Apple Metal and NVIDIA CUDA. It provides original benchmark measurements (build/call latency comparisons between OpenCL and Mojo, fused kernel verification), clear architecture diagrams, and firsthand engineering insight into backend mechanisms. The author honestly reports current limitations (missing Accel demos, Ints truncated to Float32) without hype, making it a strong practical reference for language implementation and cross-vendor GPU targeting.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:52:45.114809"
+    },
+    {
+      "id": 6900,
+      "source_id": 34,
+      "original_url": "https://blog.mihaisafta.com/posts/lcars_journal/",
+      "title": "Software for One: My Star Trek Computer [Built by AI Agents]",
+      "summary": "A personal Star Trek LCARS computer built entirely by Claude Code agents, documenting the C11 server stack, single-table SQL design, and autonomous agent workflow with human review gatekeeping.",
+      "ideas": [
+        "Single SQL table with 'kind' field eliminates schema migrations",
+        "C11 server uses 1MB stack arenas that abort on budget exhaustion",
+        "Claude Code engineers operate in herdmux with Number One review gate before deploy"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional technical depth in documenting a personal AI-agent-assisted software system. Provides concrete C11 server architecture (unity builds, 1MB stack arenas, raw sockets), a novel single-table SQL schema design, and a detailed Claude Code workflow with herdr terminal management and staged deployment guards. The substance is densely packed with implementation mechanisms rarely documented outside production-side engineering, and the guardrails (test suite, Number One review, deploy script) demonstrate hard-won practitioner insight rather than hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:51:33.895213",
+      "image_url": "https://public.mihai-safta.dev/lcars_journal/bridge-card.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 6899,
+      "source_id": 34,
+      "original_url": "https://blog.georgovassilis.com/2026/10/18/beating-chatgpt-5-on-a-laptop-pc/",
+      "title": "Beating ChatGPT 5 on a laptop PC",
+      "summary": "Shows how to run a 35B MoE LLM as a practical daily driver on 8GB VRAM using llama.cpp v0.7.0 specific flags and quantization.",
+      "ideas": [
+        "--moe-cache-mib 3000 allocates 3GB VRAM LRU cache for hottest MoE experts",
+        "-ub 4096 batching triples token throughput versus default settings",
+        "Q4_K_XL quantization reduces model size to 22.36GB for 8GB VRAM feasibility"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantial technical value through concrete command details, memory budget analysis, and optimization insights for running large MoE LLMs on constrained hardware. Key non-obvious findings include the `--moe-cache-mib` mechanism and the `-ub 4096` batching throughput boost. However, the score is calibrated conservatively (rather than 90+) due to the promotional article framing ('crusade', '0€ / token') and the reliance on a single external benchmark index for the GPT-5 comparison, which introduces a minor hype element.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:47:34.482265",
+      "image_url": "https://blog.georgovassilis.com/wp-content/uploads/2026/10/artificial-analysis-intelligence-index-18-oct-26.png",
+      "image_width": 2464,
+      "image_height": 944,
+      "image_alt": ""
+    },
+    {
+      "id": 6898,
+      "source_id": 34,
+      "original_url": "https://bhargav.dev/writing/shipping-a-latex-compiler-behind-an-edge-app/",
+      "title": "Shipping a LaTeX compiler behind an edge app",
+      "summary": "Explains how to safely offload LaTeX compilation from a Cloudflare Workers edge isolate to a containerized Tectonic service, detailing sandbox limitations, security hardening mechanisms, and practical deployment trade-offs.",
+      "ideas": [
+        "V8 isolates cannot execute native TeX binaries; compilation must leave the edge runtime",
+        "Tectonic defaults shell escape off and fetches support files on demand, keeping container images small",
+        "mkdtemp atomicity with random suffix prevents temp-file collisions across concurrent requests in shared instances",
+        "Path resolution against job directory (not filename stripping) blocks shell-based traversal attacks",
+        "Failing closed on missing COMPILE_TOKEN prevents silent denial-of-service via unexpected startup"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers exceptionally substantive technical content by diagnosing the fundamental incompatibility between Cloudflare Workers V8 isolates and native TeX binaries, then meticulously documenting the Tectonic-based compile service architecture. It offers concrete mechanisms throughout: shell escape mitigation via --untrusted, mkdtemp atomic directory creation preventing cross-request file collisions, path-resolution traversal protection, and failing-closed authentication patterns. Each paragraph yields verifiable engineering insights, and the deployment anecdotes, while personal, effectively illustrate the non-trivial risk of platform-dependent deployment ordering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:45:18.528241",
+      "image_url": "https://cms.bhargav.dev/api/media/file/hero-latex-compiler-edge-app-hero.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": "bhargav.dev — ENG · BERLIN"
+    },
+    {
+      "id": 6897,
+      "source_id": 34,
+      "original_url": "https://bandarra.me/posts/ev-vs-fine-tuned-bert",
+      "title": "Would Fine-Tuning Have Beaten Jev?",
+      "summary": "Fine-tuned BERT ranks toxic comments better than frozen-embedding models and an LLM baseline, but fails almost entirely on the two smallest labels and requires far more training compute, so the trade-off depends on label frequency and label budget.",
+      "ideas": [
+        "Fine-tuned BERT hits 0.98 ROC-AUC and 0.88 AP on toxic, beating cloud-embedding MLP and k-NN",
+        "BERT's top threat score on 2,000 comments is 0.23, so it never flags rare labels",
+        "BERT passes Jev around 500 labels on toxic; MLP on cloud embeddings passes near 100",
+        "Better ranking does not always yield better F1: k-NN ties BERT despite lower AP",
+        "Default 0.5 threshold is brittle on small training sets; small-run F1 drops to 0.31",
+        "Fine-tuning 8,000 comments takes 9 minutes on M1 Pro GPU vs 3-7 seconds for MLP",
+        "Cloud embeddings are already strong on toxicity before any labels are seen",
+        "Rare-label failure likely stems from too few training passes, not too little data"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong empirical comparison of fine-tuned BERT against frozen-embedding MLP, k-NN, and an LLM-based baseline on the Jigsaw toxicity dataset. The article provides original measurements (ROC-AUC, AP, F1), a real Hugging Face training loop, bootstrap-based statistical comparisons, and an honest scaling analysis across training-set sizes. Non-obvious findings include BERT's near-total failure on rare labels (highest threat score 0.23), the fact that better rank-ordering does not always translate to better decisions, and the threshold calibration problem on small training sets. Limitations: a single seed for the full-data run, only three repeats per sweep size, and the AI-assisted disclosure. Overall a high-value, practitioner-grade investigation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:43:15.579078"
+    },
+    {
+      "id": 6896,
+      "source_id": 34,
+      "original_url": "https://alexrios.me/blog/go-spinlocks-bounded-bet/",
+      "title": "Spinning is a bounded bet",
+      "summary": "A naive Go spinlock on GOMAXPROCS=1 with a 50µs critical section waits a median of 161ms versus 50µs for sync.Mutex, because spinning on the same P blocks the holder from running.",
+      "ideas": [
+        "Spinning only helps when the lock holder runs on a different P; on the same P it blocks progress.",
+        "Handmade spinlock waited 161ms median vs sync.Mutex 50µs for 50µs critical section.",
+        "Intel Skylake raised PAUSE latency from ~10 to ~140 cycles, breaking portability of spin counts.",
+        "Go's arm64 procyieldAsm uses ISB plus counter-timer, not a PAUSE equivalent.",
+        "Since Go 1.14, holder deadlock-style stalls resolve via sysmon async preemption at forcePreemptNS.",
+        "sync.Mutex hides a bounded spin-then-park policy that the lock word alone cannot decide."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Substantive, mechanism-driven article with original measurements on Go 1.26.7, runtime source references (procyieldAsm assembly, forcePreemptNS), and concrete architectural details (Skylake PAUSE latency shift, arm64 ISB/ctr-mseq path). The G/M/P framing of why spinning can block the holder on the same P is well-argued and grounded in a reproducible benchmark showing a 3-order-of-magnitude wait penalty. Minor weaknesses: the author explicitly leaves arm64 behavior partially unverified and defers mechanism coverage to later parts of the series, which limits standalone completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T04:38:21.412713",
+      "image_url": "https://alexrios.me/og-image.png",
+      "image_width": 1236,
+      "image_height": 579,
+      "image_alt": "Spinning is a bounded bet"
+    },
+    {
+      "id": 6895,
+      "source_id": 7,
+      "original_url": "https://cutlefish.substack.com/p/tbm-442-10-career-traps-thoughtful",
+      "title": "The Beautiful Mess",
+      "summary": "Your best professional strengths are the very entry points of career traps, and survival depends on identifying and rehearsing the 'saveable moment' before the trap closes.",
+      "ideas": [
+        "Every career trap begins as a strength - curiosity, empathy, or courage curdling into weakness",
+        "Volunteering for orphaned problems makes you illegible to the org and vulnerable at layoffs",
+        "People extract only what matches their beliefs, then brand your fresh perspective as 'all talk'",
+        "Defending unfairly ostracized people turns you into a sponge for everyone's anxiety",
+        "Questions that expose organizational incoherence get typecast as perfectionism and lack of conviction",
+        "Thinking in public reads as indecision when audiences only want landed answers",
+        "Being right early offers no payoff; raise weak signals once, then let go",
+        "Voicing others' private concerns makes you the visible target they quietly abandon",
+        "Workplace validation must not define professional identity; nobody stays at one company long",
+        "Endlessly adapting to workplace games can make accommodation become your entire identity",
+        "Hypersensitivity to dysfunction traps you in detection mode until the canary always dies",
+        "Find your personal tripwire and rehearse it with a friend before the trap springs",
+        "When trapped, ask: what's happening, what am I protecting, what if I step back"
+      ],
+      "labels": [
+        "Productivity",
+        "Philosophy"
+      ],
+      "rating": 86,
+      "rating_reason": "This piece delivers 10 distinct, named career traps, each paired with a concrete 'saveable moment' tripwire - an unusually actionable structure that converts abstract self-awareness into rehearseable triggers. The central framing that every trap begins as a strength (curiosity, empathy, courage) turned liability is a genuinely novel lens, and the cross-referenced 'see also' web between traps demonstrates systemic insight rather than a simple listicle. Value density is high for its length: firsthand expert experience, the tripwire rehearsal technique, and four closing reflection questions add further utility, with minimal padding. Strong alignment with career development, leadership, and human-flourishing themes; the only deduction is for some repetition in the interconnections and the absence of concrete anonymized case examples.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-19T04:34:50.301567"
+    },
+    {
+      "id": 6894,
+      "source_id": 4,
+      "original_url": "https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html",
+      "title": "Ken Shirriff's blog",
+      "summary": "Hardware-level floating-point arithmetic demands far more than an adder - alignment shifting, normalization, sign handling, and special-case logic, all orchestrated through dense microcode.",
+      "ideas": [
+        "Floating-point addition aligns operands by shifting on exponent difference, then normalizes the result",
+        "The 8087 stores 80-bit values: sign, 15-bit biased exponent, 64-bit significand",
+        "Register stack tags (zero, valid, special, empty) detect underflow and classify values fast",
+        "Guard, round, and sticky bits preserve rounding precision across multi-step calculations",
+        "Microcode target 0 uses special-case circuitry to route three different arithmetic operations",
+        "A sign latch tracks result sign when subtraction requires swapping argument order",
+        "Two-bit expAdj register handles single-bit shifts; larger changes tracked in tmpB's exponent",
+        "Denormalized inputs need leading-zero counting and conditional normalization paths",
+        "Zero results skip normalization and return signed +0 or -0",
+        "The 8087 sped floating-point addition nearly 100x over the 8086",
+        "High-level add/subtract decays to unsigned low-level operations based operand signs",
+        "Shifter circuitry consumes large die area to enable rapid arbitrary-width bit shifts"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "This is original expert research: the author performed physical die photography of an 8087, traced its 1648 micro-instructions, and publishes a genuine microcode listing - exclusive content unavailable elsewhere. Value instances are numerous: the 80-bit temporary real format details, guard/round/sticky bit design, register stack tag system, the ROM special-case circuitry hack, sign latch mechanics, the two-bit expAdj design, denormal handling, and complete annotated microcode. Thematic alignment with technology/innovation is excellent. Minor deductions for a standard textbook-style floating-point primer that experienced readers will skim, and the excerpt is truncated mid-sentence, but density of novel technical insight remains exceptional.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-19T04:32:27.608172",
+      "image_url": "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_u2Igyy369zIvnn3ZUo4aPqeGiNvxntqH8uAqE8W0BvewDO8LDlNYNDuxhJLE7yAj8IB4_kPbRPX-NGnCLSb4vRLxPndeuuXoddK1KceO6YtT50wjwF6YxqKGUpxWLYXNoH-s1vlrO5hsH_TAH7m9QDoQ=w1200-h630-p-k-no-nu",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 6893,
       "source_id": 4,
@@ -5080,11 +5652,7 @@
       "rating_reason": "This is a rigorous firsthand investigation of pnpm's newly introduced Store Loader (nodeLinker: loaded), with published test code, verified binary checksums, concrete error codes, and quantified results across JavaScript dependencies, native addons, and a real Astro/Vite blog project. The findings are non-obvious and practically consequential: modules import fine from CAS virtual paths, but fs.readFileSync/fs.existsSync fail on resolved paths, native addons force materialization, and Vite's out-of-scope dependency resolution breaks on virtual paths, with exclusions flipping the mapping table from 381 CAS-loaded to 350 materialized dependencies. Limitations are modest but real: it is a single-machine study with a narrow minimal-dependency benchmark, size comparison excludes shared store occupancy, and part of the filesystem constraint merely confirms official documentation. For a technically capable reader in the Node.js/pnpm ecosystem, this is directly actionable, reproducible practitioner knowledge.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-14T05:30:53.965434",
-      "image_url": "https://lilting.ch/og/images/tags/experiment.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "pnpm Store Loader on M4 Mac: virtual paths, native addons, and Vite resolution | lilting channel"
+      "published_at": "2026-10-14T05:30:53.965434"
     },
     {
       "id": 6704,
@@ -21792,11 +22360,7 @@
       "rating_reason": "Exceptional first-hand debugging writeup documenting five distinct, non-obvious bugs encountered while porting Tailscale's networking stack to an ESP32-S3: a Tailscale DISCO protocol format mismatch, an lwIP double-locking deadlock inside the WireGuard RX callback, an HTTP/2 flow-control stall from missing WINDOW_UPDATE frames, a DISCO probe-table exhaustion caused by unreachable tailnet peers, and a DERP home-region selection bug picking the lowest region ID. Each finding is grounded in concrete logs, backtraces, code diffs, and 30-run before/after benchmarks (47 KiB/s → 187 KiB/s, 9 s → 2.4 s). The article is dense, technical, reproducible, and almost entirely free of hype or padding; the only modest limitation is its narrow niche audience of embedded networking practitioners.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-09-25T22:12:44.598922",
-      "image_url": "https://lilting.ch/og/images/tags/experiment.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "M5Stack CoreS3 Tailscale: Direct UDP Drops WAV Download from 9s to 2.4s | lilting channel"
+      "published_at": "2026-09-25T22:12:44.598922"
     },
     {
       "id": 6081,
