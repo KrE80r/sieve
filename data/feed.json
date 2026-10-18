@@ -1,7 +1,372 @@
 {
-  "updated_at": "2026-10-18T19:00:00.210396+00:00",
-  "total_items": 1081,
+  "updated_at": "2026-10-18T20:00:00.174259+00:00",
+  "total_items": 1096,
   "items": [
+    {
+      "id": 6931,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/run-as-service-account-permission-check/",
+      "title": "Google’s Run-As Service Account Check Can Fail Without an Execution Log",
+      "summary": "Google's October 15, 2026 authorization change requires iam.serviceAccounts.actAs on run-as service accounts for Application Integration, with enforcement varying by integration creation date, region governance settings, and trigger type, and the article details the specific identities needing grants and where denials surface.",
+      "ideas": [
+        "iam.serviceAccounts.actAs required on run-as service accounts for App Integration from Oct 15 2026",
+        "Four distinct identities each need Service Account User grant: run-as account, auth profile SA, sub-integration SA, and trigger principal",
+        "API-started runs error to caller with no execution log; event triggers record failed execution without redelivery"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, technically detailed guidance about Google's upcoming run-as service account permission check rollout. It provides concrete failure modes across trigger types, creation dates, and region settings with specific IAM requirements. The content contains original evidence from Google's bulletins, troubleshooting tables identifying four distinct identities needing grants, and practical diagnostic information. However, it acknowledges limitations in reconciling conflicting documentation and doesn't state definitive rollout dates for all integrations, preventing it from reaching Exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T06:04:35.083780",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/10/run-as-service-account-permission-check-featured.jpg",
+      "image_width": 1024,
+      "image_height": 572,
+      "image_alt": "run-as service account check: one authorization gate for several identities, and an API-started denial that leaves the execution log empty"
+    },
+    {
+      "id": 6930,
+      "source_id": 34,
+      "original_url": "https://www.ooloi.org/home/purity",
+      "title": "Purity",
+      "summary": "The article details the removal of a history-dependent stability term from Ooloi, establishing a deterministic invariant where any edit route produces identical layout to a fresh recompile.",
+      "ideas": [
+        "Stability term removed to prioritize layout exactness invariance over edit-history dependence",
+        "Ooloi enforces that any edit route yields the same typeset page as a fresh recompile",
+        "LilyPond contrast: sacrificed exactness in 1999 to gain a single predecessor comparison term"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article is technically relevant to software engineering and system design, focusing on layout algorithms and invariants. It provides concrete substance through original benchmark data (reducing rhythm edit break moves from 33/60 to 8) and a clear mechanism explaining the trade-off between stability and exactness. The author's reversal on the stability term offers hard-won practitioner insight into why Ooloi adopted Hegazy and Gourlay's approach and how the new invariant resolves historical dependency issues. While highly valuable for readers interested in dynamic programming, system invariants, or music engraving technology, its niche domain slightly limits its breadth appeal, keeping it solidly in the 'Strong' range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T06:03:40.189292"
+    },
+    {
+      "id": 6929,
+      "source_id": 34,
+      "original_url": "https://www.dotnetperls.com/2026_10_18_allocations-performance-rust",
+      "title": "Allocations and Performance in Rust",
+      "summary": "Benchmark shows replacing heap-allocated Vec with stack-allocated array for fixed-size data in Rust reduces allocation overhead, resulting in approximately 18x faster performance for 2-element collections.",
+      "ideas": [
+        "Replacing heap-allocated Vec with stack array for fixed-size data reduces allocation overhead and improves performance",
+        "2-element array allocation is ~18x faster than Vec in Rust"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a concrete micro-benchmark comparing Rust Vec and array allocations for fixed-size data. Clearly demonstrates the performance cost of heap allocation (1.06ms vs 58.78us, ~18x slower) and establishes eliminating allocations as a primary optimization step. Substantive and relevant, though the core concept is familiar to experienced Rust developers, the specific measurements and practical heuristic add value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:58:30.620089"
+    },
+    {
+      "id": 6928,
+      "source_id": 34,
+      "original_url": "https://vincentdelft.be/post/post_20261017",
+      "title": "A parallel ZIP archiver in Zig — full AI in 17 minutes of code",
+      "summary": "A Zig‑based parallel ZIP archiver (zz) outperforms traditional ZIP tools by up to 46× while maintaining comparable compression ratios.",
+      "ideas": [
+        "Uses libdeflate and a Zig Deflate scanner to compress 2 MiB chunks in parallel without locks.",
+        "Plain pread/pwrite I/O beats mmap on ZFS, yielding a 3× speedup for cold reads.",
+        "Chunked compression adds only ~0.12% size overhead versus single‑stream compression.",
+        "Benchmarks show zz creating the Linux kernel source tree in 1.43 s versus 13 s for 7‑Zip."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives concrete implementation details of a high‑performance parallel ZIP tool written in Zig, including design choices, a custom Deflate chunk scanner, and reproducible benchmark scripts. The measurements against 7‑Zip, Info‑ZIP, and tar+pigz provide hard evidence of speed and compression‑ratio trade‑offs, which is valuable for engineers working on file‑system tooling or compression pipelines. The only limitation is that the benchmarks are from a single laptop and OS, so broader generality is not proven.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:52:38.479990"
+    },
+    {
+      "id": 6927,
+      "source_id": 34,
+      "original_url": "https://vanja.io/how-qmd-works/",
+      "title": "Total Recall: How QMD Works",
+      "summary": "A local hybrid search engine (FTS5 + vectors + HyDE expansion + RRF + reranking) gives coding agents semantic memory over prose notes, but only an enforcing harness of rules, grep-blocking hooks, and freshness queues makes agents actually rely on it.",
+      "ideas": [
+        "Hybrid retrieval ranked the correct file first 100% vs 50% keyword-only, 80% vector-only",
+        "Reranker score flipped 0.003 to 0.994 on paraphrase; rerankers are phrase-sensitive",
+        "Position-aware blend floors fusion rank-1 results at 0.75, so top score is rank not confidence",
+        "Search tools don't self-adopt; agents need pre-tool hooks blocking grep over knowledge folders",
+        "RRF tolerates imperfect small-model expansion because multiple typed query lists are fused"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "An unusually substantive firsthand teardown of QMD with real mechanisms: a stage-by-stage query trace including actual RRF arithmetic (0.0812→0.1312), reranker probabilities (0.003 vs 0.994 on phrasing), chunking rules with markdown break-point scores, offline verification with network blocked, and honest latency numbers (0.2s keyword vs 13s median agent query). Directly relevant to LLM agent tooling and retrieval engineering, and the harness section delivers hard-won operational insight — a search tool does not change agent behavior without hooks, rules, and freshness queues. Limitations: the benchmark is tiny (10 questions/6 documents, acknowledged as a toy), the content truncates near the end, and the practical takeaway leans on one deployment rather than broad evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:52:30.292800",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/10/how-qmd-works-1.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6926,
+      "source_id": 34,
+      "original_url": "https://unclesp1d3r.github.io/posts/red-team-operations-osint-social-engineering/",
+      "title": "Red team operations: OSINT for social engineering",
+      "summary": "Attackers compile detailed profiles from public sources to craft believable social‑engineering pretexts, and defenders can detect this by monitoring their own OSINT exposure.",
+      "ideas": [
+        "LinkedIn scraping is restricted after hiQ and Proxycurl shutdown rulings.",
+        "Certificate Transparency logs expose hidden subdomains attackers enumerate.",
+        "AI deepfake vishing, as shown in the Arup case, bypasses voice authentication.",
+        "Tools like Amass, subfinder, and SpiderFoot remain functional for OSINT enumeration.",
+        "Executives should remove personal data to reduce attackers' OSINT footprint."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, up-to-date OSINT enumeration tactics, tool lists, and defender mitigations, which are highly relevant to technical readers. Its value is hampered slightly by some introductory context and limited novel evidence beyond describing existing methods. Overall it offers actionable insight with modest noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:51:10.819302"
+    },
+    {
+      "id": 6925,
+      "source_id": 34,
+      "original_url": "https://uecker.codeberg.page/2026-10-17.html",
+      "title": "Uninitialized Variables: Silent Miscompilation",
+      "summary": "Clang can silently miscompile C programs whose uninitialized-variable reads are conforming under ISO C, because its frontend-only warnings cannot keep pace with its aggressive optimizer; the author recommends -ftrivial-auto-var-init=zero for C work with Clang.",
+      "ideas": [
+        "Reading uninitialized C variables is UB only in two specific situations, not always",
+        "Clang's warnings run only in the frontend, mismatching its aggressive optimizer",
+        "The uninitialized-local UB rule originated as an Itanium trap-representation safety feature",
+        "Taking a variable's address makes an uninitialized read conforming, yet Clang still miscompiles it",
+        "Mitigate silently miscompiled uninitialized reads using -ftrivial-auto-var-init=zero"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "Expert firsthand analysis with concrete, reproducible evidence: Godbolt examples, actual GCC/Clang warnings, and filed bug reports demonstrating that Clang silently miscompiles C code whose uninitialized reads are actually conforming per ISO C. It corrects a common misconception with historical grounding (the Itanium trap-representation origin of the UB rule) and explains a non-obvious mechanism: Clang's frontend-only warning architecture mismatching its aggressive optimizer. Limitations: it is a short post, part of a series, and the blanket recommendation of -fno-strict-aliasing and the strong non-conformance claim rest on a small set of examples and author opinion rather than exhaustive evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:50:57.088710"
+    },
+    {
+      "id": 6924,
+      "source_id": 34,
+      "original_url": "https://trysil.lastrucci.net/posts/batch-apply-one-transaction-three-lists/",
+      "title": "Batch apply: one transaction, three lists",
+      "summary": "ApplyAll enables atomic insertion, update, and deletion of three pre‑partitioned lists within a single transaction, optimizing batch database operations.",
+      "ideas": [
+        "ApplyAll takes three non‑nil lists and writes them in one transaction: inserts, then updates, then deletes.",
+        "Order matters: inserts must precede updates that may rely on new IDs, and deletes must follow dependent updates.",
+        "Wrapping multiple ApplyAll calls in RunInTransaction creates a single atomic unit across different entity types.",
+        "Avoid per‑row Insert<T> calls; they create many tiny transactions and hurt performance.",
+        "ApplyAll respects connection transaction mode and fires per‑row events within the same transaction."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, transactional batch API (ApplyAll) with precise code signatures, ordering rules, and performance trade-offs, which is directly relevant to developers designing efficient ORM interactions. It offers original technical insight and practical guidance, though it focuses on a niche framework rather than broader infrastructure topics. Limitations include a narrow scope limited to Trysil's implementation and lack of deeper experimental data. Overall, it delivers high‑value, actionable knowledge for the target audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:50:34.645960"
+    },
+    {
+      "id": 6923,
+      "source_id": 34,
+      "original_url": "https://thecloudlet.github.io/technical/refactor-with-ai/part-1-deletion/",
+      "title": "Deleting 19k Lines of Dead Compiler Code Without Trusting the LLM",
+      "summary": "Using an LLM‑driven classification and targeted tests enabled safe removal of 19k lines of dead compiler code without regressions.",
+      "ideas": [
+        "Color‑coded marking isolates functions affected by a deprecated compiler flag.",
+        "Four categories (mechanical, cross‑ownership, side effects, surgery) prioritize cleanup effort.",
+        "Deletion tests verify removal; surgical functional tests enforce unchanged behavior.",
+        "Post‑deletion cleanup collapses single‑mode configurations into simplified code."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, step‑by‑step methodology for safely deleting dead compiler code using an LLM, complete with classification, test scaffolding, and verifiable results, demonstrating original technical mechanisms and measurable outcomes. It avoids sensational hype and contains few non‑technical distractions, preserving its technical value. However, some portions repeat prior advice and could be trimmed, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:48:11.584895"
+    },
+    {
+      "id": 6922,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/how-to-catch-uncaught-async-errors-in-flutter-with-runzonedguarded-and-platformdispatcher/",
+      "title": "How to Catch Uncaught Async Errors in Flutter with runZonedGuarded and PlatformDispatcher.instance.onError",
+      "summary": "In Flutter 3.44 you need both FlutterError.onError and PlatformDispatcher.instance.onError (with true returned) in main() to catch all uncaught errors, and runZonedGuarded remains necessary on web because the dispatcher callback is never invoked there.",
+      "ideas": [
+        "PlatformDispatcher.onError is not invoked on Flutter web; runZonedGuarded is still required there.",
+        "Uncaught Dart errors never crash the app; only your handler decides visibility.",
+        "Isolate.run rethrows into the root isolate; raw Isolate.spawn does not.",
+        "Ensure WidgetsFlutterBinding is initialized inside the runZonedGuarded body to avoid Zone mismatch.",
+        "Chaining crash SDK handlers is required; reassignment silently replaces previous handlers.",
+        "unawaited() only suppresses the lint, not the error itself."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive Flutter/Dart error-handling article with empirical measurement of routing across error types. Includes a concrete handler matrix table built by triggering each error type on Flutter 3.44.8, complete runnable code samples pinned to specific versions, references to specific source files (lib/web_ui/lib/src/engine/platform_dispatcher.dart) and tracking issues (flutter/flutter#100277), and a strong gotchas section covering non-obvious behavior (catchError return type in Dart 3, PlatformDispatcher.onError boolean return value, Isolate.spawn vs Isolate.run error routing). Minor noise from newsletter promotion and ads does not materially detract from the technical content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:46:47.911776",
+      "image_url": "https://startdebugging.net/og/2026/10/how-to-catch-uncaught-async-errors-in-flutter-with-runzonedguarded-and-platformdispatcher.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How to Catch Uncaught Async Errors in Flutter with runZonedGuarded and PlatformDispatcher.instance.onError - Start Debugging"
+    },
+    {
+      "id": 6921,
+      "source_id": 34,
+      "original_url": "https://sinrega.org/2026-10-16-synchronous-queues-virtio-fs/",
+      "title": "Synchronous virtio-fs yields 30% better performance",
+      "summary": "Executing blocking virtio-fs requests on the notifying vCPU host thread via new synchronous queues cuts latency 24-38% by removing worker handoffs, completion interrupts, and idle-core wakeups.",
+      "ideas": [
+        "Synchronous virtio-fs queues let the vCPU thread process requests, removing worker handoff overhead",
+        "libkrunfw build fell 7m43s to 5m34s; system CPU time nearly halved",
+        "Average unlink latency dropped 36% for metadata-heavy microVM workloads",
+        "Per-vCPU queues and same-thread processing are confounded in the benchmarks",
+        "Long operations or workloads with other runnable guest work favor async queues"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "A first-party performance-engineering writeup from libkrun's maintainer explaining a novel mechanism: per-vCPU synchronous virtio-fs queues (VIRTIO_FS_F_SYNC) that process requests directly on the vCPU host thread, eliminating worker handoff and completion interrupts for blocking filesystem operations. The evidence is concrete and quantified — a 1.39× faster libkrunfw build with system CPU time dropping from 25m02s to 11m03s, +24-32% fio pvsync bandwidth, and -36% unlink latency — with reproducible fio commands and a linked PR. The author is candid about limitations: the comparison confounds same-thread processing with per-vCPU queue layout, runs are best-of-three without variability data, and the feature is experimental requiring both VMM and guest driver support. Depth is strong but not exhaustive (no kernel code-path analysis), and results are workload- and machine-specific, keeping it at the top of 'strong' rather than exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:45:08.521332"
+    },
+    {
+      "id": 6920,
+      "source_id": 34,
+      "original_url": "https://shocm.me/posts/2026-10-17-claude-code-onfailure-block-fail-closed-hooks/",
+      "title": "Claude Code Hooks Can Now Fail Closed: onFailure Block for PHP Guardrails",
+      "summary": "Adding onFailure \"block\" to PHP guard hooks stops silent bypasses by making any hook failure abort the action.",
+      "ideas": [
+        "onFailure \"block\" turns any non‑zero hook exit into a hard block.",
+        "Exit 2 is the designated blocking error code for hooks.",
+        "Test by renaming the script to confirm the call is refused."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete PHP guard script code, exact configuration snippets, and clear test procedures that demonstrate how onFailure \"block\" enforces fail‑closed behavior. It explains failure modes, exit codes, and practical implications in depth. Limitations include narrow scope to Claude Code hooks and lack of broader security context, but the technical substance is high.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:44:39.314753",
+      "image_url": "https://shocm.me/attachments/2026-10-17-claude-code-onfailure-block-fail-closed-hooks.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 6919,
+      "source_id": 34,
+      "original_url": "https://pahaz.8iq.dev/posts/model-cascade-russian-speech-transcription/",
+      "title": "ASR Model Cascade for Russian Speech Transcription",
+      "summary": "An empirical comparison of 32 ASR configurations on Russian speech shows that cascading GigaAM (base text) with Parakeet (term correction) under a Latin-character and phonetic-similarity gating rule reduces overall WER from 27.0% to 21.7% while preserving the strength of each model.",
+      "ideas": [
+        "GigaAM (base) + Parakeet (term corrections) cascade beats either model alone on mixed Russian/IT speech.",
+        "Latin-character requirement prevents accepting erroneous Russian-to-Russian corrections.",
+        "Custom WERx metric removes transliteration false positives in Cyrillic/Latin terms.",
+        "Whisper v3 worse than v2 on Russian/English mixed speech, likely due to v2-bootstrapped training labels.",
+        "32 configurations tested across four custom datasets (~1h38m, ~8.7k reference words).",
+        "Cascade runs at ~0.3 RTF on Intel i9 without GPU, about 18 minutes per audio hour.",
+        "Breeze-ASR-25 is a Whisper large-v2 fine-tune; strong on read-aloud, weak on live meetings.",
+        "Silero TTS synthetic speech produced different model rankings than real recordings.",
+        "Quantization gaps (F32 vs Q8 vs Q6_K) for Parakeet are small but measurable on meetings.",
+        "Reversing cascade (Parakeet base, GigaAM corrections) did not beat GigaAM alone."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive engineering write-up with original measurements across 32 ASR configurations on Russian speech. The author constructs custom datasets, defines a novel phonetic-normalization metric (WERx), and proposes a two-model cascade (GigaAM base + Parakeet correction) with explicit decision rules (Latin-character requirement, similarity thresholds) that drops WER from 27.0% to 21.7% on their data. Concrete numbers (RTF, quant, WER per dataset) and honest treatment of failure modes and sample-size caveats elevate it. Content is mildly truncated at the end, and the personal narrative adds some length without unique insight, preventing a higher score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:38:38.875654",
+      "image_url": "https://pahaz.8iq.dev/_astro/01-cover.HqbMh9Cy_iSxmS.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 6918,
+      "source_id": 34,
+      "original_url": "https://news.speedata.de/2026/10/18/anatomy-of-a-page/",
+      "title": "A page looks innocent: the algorithms behind a typeset page",
+      "summary": "The speedata Publisher separates page layout from typographic engines by using a modular Go‑based boxes‑and‑glue system that gives fine‑grained control over every layout decision.",
+      "ideas": [
+        "Page builder uses explicit grid instead of TEX's page builder",
+        "Paragraph break cost modeled as a graph for optimal line breaks",
+        "Hyphenation relies on pattern files with odd/even break flags",
+        "Glyph shaping performed by a Go port of HarfBuzz with OpenType lookups",
+        "PDF text objects store glyph IDs and embed font subsets"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers a rare, concrete walkthrough of typesetting algorithms—from page layout to PDF byte generation—using real code references, benchmarks, and mechanisms such as graph‑based line breaking, hyphenation patterns, and HarfBuzz shaping. It provides original evidence, measurable trade‑offs, and practical insight for engineers interested in PDF generation and layout engines, while avoiding hype and maintaining high relevance to technical audiences. Minor limitations include occasional high‑level glossing of older TEX concepts, but these do not diminish the depth of the technical content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:34:07.863568",
+      "image_url": "https://news.speedata.de/2026/10/18/anatomy-of-a-page//twittercard.png",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
+    {
+      "id": 6917,
+      "source_id": 34,
+      "original_url": "https://montemagno.com/rebuilding-my-blog-as-a-static-site-with-github-copilot-cli/",
+      "title": "Rebuilding 13 Years of Blog Posts as a Static Site with GitHub Copilot CLI",
+      "summary": "Using Copilot CLI’s plan mode, the author systematically migrated 13 years of blog content to a static Hugo site with full URL compatibility and automated CI verification.",
+      "ideas": [
+        "Migrated 2,172 legacy URLs and verified them via a CI manifest.",
+        "Case‑sensitive URL collisions uncovered and fixed during CI checks.",
+        "Redirects implemented as front‑matter aliases with meta‑refresh stubs.",
+        "Images preserved original URLs, maintaining hotlink continuity."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, verifiable migration details—case‑sensitive URL fixes, redirect implementation, CI‑driven validation—and showcases a systematic plan‑first workflow with Copilot CLI, but its narrow focus on personal blog migration limits broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-19T05:32:09.888661",
+      "image_url": "https://montemagno.com/content/images/2026/08/ghost-to-hugo-copilot-cli.png",
+      "image_width": 1600,
+      "image_height": 840,
+      "image_alt": ""
+    },
     {
       "id": 6916,
       "source_id": 34,
@@ -23,7 +388,11 @@
       "rating_reason": "The article delivers concrete, technical analysis of OpenSpec’s missing user‑flow issue, explains the AI Unified Process as a contrasting solution, and provides specific implementation suggestions with clear mechanisms and trade‑offs. The substance is relevant to engineers seeking deeper specification practices, but it lacks a fully integrated reverse‑engineering workflow and relies on manual maintenance of flow artifacts.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-19T05:28:10.941338"
+      "published_at": "2026-10-19T05:28:10.941338",
+      "image_url": "https://martinelli.ch/wp-content/uploads/2026/10/scattered-puzzle-pieces.jpg",
+      "image_width": 1920,
+      "image_height": 1280,
+      "image_alt": ""
     },
     {
       "id": 6915,
