@@ -1,7 +1,62 @@
 {
-  "updated_at": "2026-10-20T06:00:00.338410+00:00",
-  "total_items": 1051,
+  "updated_at": "2026-10-20T07:00:00.168134+00:00",
+  "total_items": 1053,
   "items": [
+    {
+      "id": 6953,
+      "source_id": 4,
+      "original_url": "https://www.sophos.com/en-us/blog/graph-reconnaissance-and-servicenow-user-enumeration-in-a-modern-identity-intrusion",
+      "title": "https://www.sophos.com/en-us/blog/graph-reconnaissance-and-servicenow-user-enumeration-in-a-modern-identity-intrusion",
+      "summary": "One vishing-enabled password reset plus token persistence is enough for an attacker to fan out across an entire SaaS estate, and defenders' audit blind spots like unaudited Teams reading make detection harder.",
+      "ideas": [
+        "Vishing plus SSPR abuse takes over M365 accounts without phishing pages, malware, or OAuth consent",
+        "Registering an Entra ID device and minting a PRT creates durable sessions with MFA marked previously satisfied",
+        "Graph API queries let attackers enumerate licenses, roles, tenants, service principals, and directory users",
+        "SharePoint can outweigh email as a target: roughly 100,000 files downloaded versus 100 emails accessed",
+        "Attackers searched SharePoint for their MFA vendor's name, hunting for bypass documentation",
+        "Federated SAML sessions let one compromised identity pivot into Salesforce and ServiceNow without reauthentication",
+        "ServiceNow sys_user table exports reveal org structure and contacts for future social engineering",
+        "Passive Teams message viewing leaves no audit trail, enabling undetected chat reconnaissance",
+        "The attacker read the company's vishing warning email, then deleted it to suppress awareness",
+        "No inbox or forwarding rules were created, showing modern intruders can skip classic BEC persistence",
+        "Salesforce anomaly detection auto-froze the compromised account, proving vendor-side containment works"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Original first-hand incident response research from Sophos X-Ops with dense, expert-level value instances: SSPR abuse via vishing as a malware-free initial access vector, PRT-backed Entra device registration for MFA-satisfied persistence, documented Graph API reconnaissance query patterns usable for detection engineering, and the genuinely overlooked finding that passive Teams message viewing leaves no audit trail. The ServiceNow sys_user export and the attacker deleting the company's own vishing warning add further novel, concrete insights backed by log evidence. Only minor deductions for corroborating prior Mandiant/ShinyHunters reporting rather than being wholly new, the truncated ending, and the scraped navigation boilerplate padding the text.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-20T16:38:15.255452"
+    },
+    {
+      "id": 6952,
+      "source_id": 4,
+      "original_url": "https://www.securifera.com/blog/2026/10/19/openeye-apex-rce-hidden-recovery-account-to-root/",
+      "title": "https://www.securifera.com/blog/2026/10/19/openeye-apex-rce-hidden-recovery-account-to-root/",
+      "summary": "A hidden recovery account, forged localhost headers, and an unsigned setuid installer combine to let attackers gain root on OpenEye Apex devices.",
+      "ideas": [
+        "Hidden recovery account with fixed password enables unauthorized password resets.",
+        "X-Forwarded-For header can spoof localhost, bypassing IP checks.",
+        "Unlock code generation lacks secret, allowing attacker‑crafted codes.",
+        "Command injection in recbackup runs commands as unprivileged nvr user.",
+        "Setuid installdeb installer runs unsigned packages as root.",
+        "Combining these bugs creates a full remote code execution chain to root.",
+        "Mitigations include stripping forwarding headers, removing fixed credentials, signing unlock codes, and eliminating setuid helpers.",
+        "Review logs for loopback headers, recovery logins, and unexpected package installs."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers multiple concrete security insights—hidden default recovery account, header spoofing, secret‑less unlock codes, command injection, and a setuid installer—all tied together into a full remote‑to‑root exploit chain, plus clear mitigation steps. This provides high practical value for security professionals with minimal fluff, aligning strongly with the CyberSecurity theme.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-20T16:35:05.440681"
+    },
     {
       "id": 6951,
       "source_id": 28,
