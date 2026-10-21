@@ -1,7 +1,129 @@
 {
-  "updated_at": "2026-10-21T12:00:00.434850+00:00",
-  "total_items": 1052,
+  "updated_at": "2026-10-21T13:00:00.170325+00:00",
+  "total_items": 1056,
   "items": [
+    {
+      "id": 6971,
+      "source_id": 7,
+      "original_url": "https://daily.dev/blog/we-built-an-org-wide-ai-agent-in-4-days-heres-what-broke-in-the-weeks-after/",
+      "title": "Skip to main content",
+      "summary": "Building production AI agents demands layered security, resource safeguards, and disciplined tool management to stay reliable.",
+      "ideas": [
+        "Use KMS‑backed secret resolution with ACLs and redaction to prevent credential leaks.",
+        "Implement tiered GitHub tokens and a command sanitizer to isolate user sessions.",
+        "Add a watchdog that force‑exits the process if the Node.js event loop stalls.",
+        "Enforce per‑turn memory limits via systemd cgroups to avoid VM freezes.",
+        "Start threads with a minimal set of always‑on tools and enable bundles on demand.",
+        "Store agent skills in a Git‑backed \"brain\" for auditability and version control.",
+        "Schedule autonomous jobs (spam sweep, A/B audit) to extend agent capabilities.",
+        "Expose an MCP endpoint for agent‑to‑agent delegation, expanding internal tool access.",
+        "Layer security (allowlists, sandbox containers, ACL checks) as defense‑in‑depth."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 81,
+      "rating_reason": "The post delivers numerous concrete lessons from deploying an org‑wide AI agent, such as secret‑leak mitigation, token tiering, event‑loop watchdogs, memory capping, progressive tool disclosure, and self‑updating skill repositories. These insights are highly relevant to AI, tech, and sysadmin audiences and are presented efficiently, with minimal fluff and no clickbait. The density of actionable knowledge is strong for a medium‑length technical post.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-21T22:34:52.544561",
+      "image_url": "https://media.daily.dev/image/upload/s--zVxoYtI---/f_auto,q_auto/v1/recruiter-landing/69c95772951715bbd575a2fc_smith_cover_option_1_e103aa9e9e?_a=BAMAMiB80",
+      "image_width": 1408,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 6970,
+      "source_id": 4,
+      "original_url": "https://github.com/dinosn/php-8.5.5-var_destroy-uaf",
+      "title": "https://github.com/dinosn/php-8.5.5-var_destroy-uaf",
+      "summary": "Implicit destructor dispatch during unserialize cleanup bypasses PHP's serialize_lock reentrancy guard, so fixes that bracket only explicit user-code calls leave an open heap-UAF-to-RCE path.",
+      "ideas": [
+        "var_destroy fires user __destruct at three lock-free zval_ptr_dtor sites during unserialize cleanup",
+        "Nested unserialize reuses outer var_hash after its back-reference chunks were freed, causing UAF",
+        "R:N backreference with N≥1018 walks dangling entries.next into freed heap memory",
+        "Heap spray reclaims freed chunk, substituting attacker-controlled zval pointer for arbitrary 8-byte read",
+        "Duplicate integer keys move objects into the dtor list, making it their sole owner",
+        "Lock is released before zval_ptr_dtor of __wakeup return values, firing unguarded destructors",
+        "Calif.io's serialize_lock patch fails; building it verified the bug survives via an independent path",
+        "Fix: hold serialize_lock across the entire destructor walk, not just explicit method dispatches",
+        "Defense-in-depth: NULL entries.next after phase-one efree to block unknown future reentry sites",
+        "Single-stage RCE via forged zend_closure using readable /proc/self/maps and /proc/self/mem",
+        "PHP policy since 2017 declines CVEs for unserialize memory-corruption bugs, complicating disclosure"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "This is disclosure-grade original security research: a line-level root-cause analysis of a serialize_lock reentrancy UAF in PHP's var_destroy(), backed by three ASAN-confirmed PoCs, a heap-spray leak primitive with attacker-controlled pointer dereference, and empirical proof that the community's proposed patch fails to close the hole. Value instances are abundant — novel root-cause insight, working PoCs with reproducible commands, patch-bypass evidence, a concrete fix diff, a defense-in-depth recommendation, and a demonstrated RCE chain — with essentially no author padding (the GitHub navigation text is a scraping artifact). Strong thematic alignment with cybersecurity and PHP internals; minor deductions for the truncated exploit narrative at the end and minimal presentation polish (a raw URL as the title).",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T22:32:57.426708",
+      "image_url": "https://opengraph.githubassets.com/7df4dbfed3bd4d84b3d9fe3ac6df36e9e203913b11f7943c98104bde7ddd9927/dinosn/php-8.5.5-var_destroy-uaf",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "PHP 8.5.5 — var_destroy __destruct reentrancy UAF. Sister bug to Calif MAD Bugs finding; survives their proposed patch. ASAN-confirmed PoCs + leak primitive. - dinosn/php-8.5.5-var_destroy-uaf"
+    },
+    {
+      "id": 6969,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/cisa-and-fbi-safepay-ransomware-has-hit-over-600-critical-infrastructure-organizations/",
+      "title": "CISA: SafePay ransomware hit over 600 critical infrastructure orgs",
+      "summary": "Ransomware defense hinges on MFA, strict admin controls, and promptly patching VPN and edge device vulnerabilities.",
+      "ideas": [
+        "SafePay ransomware has breached over 600 critical infrastructure organizations since 2024",
+        "Attackers gain access via credential exposure, brute‑force attacks, and VPN exploits, especially Mullvad",
+        "Implement MFA, ICAM, and restrict administrative tools to block lateral movement",
+        "Patch VPNs, firewalls, and edge devices against actively exploited CVEs",
+        "SafePay uses double‑extortion: steals data before encrypting and threatens public leak",
+        "Only 37% of attacker actions are blocked once valid credentials are obtained",
+        "SafePay operates without affiliates and publishes non‑paying victims on a leak site"
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article reports the scale of SafePay ransomware, explains its tactics and initial‑access methods, and offers concrete mitigation steps like MFA, admin‑tool restriction, and patching VPNs. It adds context on SafePay’s rise and the low detection rate after credential compromise, providing multiple actionable insights without clickbait or padding. This strong cybersecurity relevance yields a good rating.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T22:32:45.239193",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/08/11/Hacker.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 6968,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/attackers-hijacked-over-300-tor-exit.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Hijacked Tor exits can silently capture SSH passwords, but key‑based logins and thorough relay checks can mitigate the threat.",
+      "ideas": [
+        "Attackers hijacked 300+ Tor exit relays to redirect SSH and steal passwords.",
+        "They rewrote torrc exit policies to open port 22 and close encrypted mail ports.",
+        "Password‑based SSH can be intercepted; key‑based authentication resists this attack.",
+        "The BadExit flag was used to remove compromised relays from the Tor network.",
+        "Ebury backdoor installed via stolen credentials persisted across reboots on infected relays.",
+        "Reused passwords and enabled password authentication enabled the compromise.",
+        "Indicators of infection include modified libkeyutils.so, fake rsyslogd process, and unusual sockets.",
+        "Operators should inspect torrc, exit policies, NAT rules, and check for unknown processes.",
+        "Remediation steps: take relay offline, preserve logs, reinstall OS, rotate all credentials.",
+        "The incident suggests many other compromised Tor relays may exist undetected."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers numerous concrete insights about a large‑scale Tor exit‑relay hijack, SSH interception mechanics, and Ebury backdoor remediation, aligning strongly with cybersecurity. It offers practical detection steps and indicators, providing high value density for its length, with only minor promotional noise.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T22:32:09.590611"
+    },
     {
       "id": 6967,
       "source_id": 4,
