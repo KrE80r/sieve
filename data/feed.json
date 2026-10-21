@@ -1,7 +1,323 @@
 {
-  "updated_at": "2026-10-21T20:00:00.415870+00:00",
-  "total_items": 1089,
+  "updated_at": "2026-10-21T21:00:00.168246+00:00",
+  "total_items": 1102,
   "items": [
+    {
+      "id": 7017,
+      "source_id": 34,
+      "original_url": "https://scotthelme.ghost.io/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/",
+      "title": "Eight Bits of Trust; eMudhra's CA keys cracked in milliseconds",
+      "summary": "eMudhra's eight intermediate CA private keys were reduced to single bytes, trivially brute-forceable in milliseconds, compromising 17 months of TLS and code-signing traffic across virtually all non-browser clients.",
+      "ideas": [
+        "eMudhra P-384 private keys are single-byte values (d=4) trivially brute-forceable",
+        "Brute-force recovery requires at most 255 elliptic curve point additions per key",
+        "Non-browser TLS clients trust eMudhra intermediates without CT or revocation checks",
+        "Windows code signing accepts eMudhra CS root directly, accepting forged signatures",
+        "Affected IoT/embedded devices remain vulnerable until firmware expiry in 2039"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 95,
+      "rating_reason": "Exceptional technical find: eMudhra's eight intermediate CA private keys on P-384 were reduced to single bytes (as low as 4), making brute-force recovery trivial (1-255 point additions). Article provides concrete key values, explains the ECC mechanism, documents 17-month undetected compromise, and demonstrates real-world impact across non-browser TLS clients, IoT, CI/CD, and Windows code signing. Includes specific test results (curl/Python/Node against api.stripe.com) and practical mitigation guidance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T07:28:39.158918"
+    },
+    {
+      "id": 7016,
+      "source_id": 34,
+      "original_url": "https://sciencespot.co.uk/hunting-down-the-fake-news.html",
+      "title": "Hunting down the fake news",
+      "summary": "Researchers developed a fake news detection system combining transformer encoders with a deer-hunting optimization algorithm that achieved 98%+ accuracy while automatically fine-tuning model settings.",
+      "ideas": [
+        "Transformer encoder + DHOA achieves 98%+ fake news detection accuracy",
+        "DHOA automatically fine-tunes model settings without manual calibration",
+        "System preprocesses text by removing URLs, punctuation, and stop words"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article describes a concrete technical approach combining transformer encoders with a deer-hunting optimization algorithm for fake news detection, reporting 98%+ accuracy on two datasets. It provides specific methodology details (preprocessing steps removing URLs/punctuation/stop words, automatic fine-tuning via DHOA) and honestly outlines text-only limitations. While substantively relevant to AI/ML engineering with useful mechanisms and evidence, it's a press release summary rather than primary research data, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T07:27:34.342273"
+    },
+    {
+      "id": 7015,
+      "source_id": 34,
+      "original_url": "https://ryanxcharles.com/blog/2026-10-19-all-human-labor-is-better-done-by-machines-now",
+      "title": "All Human Labor is Better Done By Machines Now",
+      "summary": "The universal approximation theorem, combined with recent experiments in language, robotics, and mathematics plus accelerating hardware cost reductions, renders all human labor economically non-viable, leaving only the oversight of superintelligence as the final human role.",
+      "ideas": [
+        "Universal approximation theorem enables neural nets to learn any job as an input-output function.",
+        "Humanoid robot production surged 272% year-over-year, with units deployed in industrial workforces.",
+        "OpenAI's model produced hundreds of machine-verified mathematical proofs across 17 fields in one evaluation.",
+        "Machine compute costs approach zero relative to human biological cost floors due to manufacturing scale.",
+        "The only remaining human function is overseeing the goals, context, and correctness of superintelligence outputs."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 85,
+      "rating_reason": "The article systematically decomposes human labor into input-output functions and demonstrates via the universal approximation theorem and three concrete experiments (language modeling, robotics deployment at scale, automated mathematical proof generation) that machines can learn these functions. It further anchors the conclusion in economic modeling of hardware cost depreciation versus human biological cost floors. The result is a dense, evidence-rich piece that is highly technically relevant to AI/ML engineering, robotics, and mathematics, though the sweeping prediction of labor obsolescence reflects a strong personal thesis backed by recent data rather than neutral documentation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T07:22:46.233806"
+    },
+    {
+      "id": 7014,
+      "source_id": 34,
+      "original_url": "https://pberba.github.io/security/2026/10/20/amos-keychain/",
+      "title": "MacOS Infostealer “adapts” to new Keychain Protection",
+      "summary": "A recently analyzed macOS infostealer changes its credential harvesting behavior based on the macOS version: using a fake password prompt on older versions and switching to security find-generic-password targeting Chrome Safe Storage on macOS 26.4+, directly responding to Apple's enhanced keychain protections.",
+      "ideas": [
+        "Infostealer mocks sw_vers to check OS version, using fake password dialog on <26.4 and security find-generic-password -ga Chrome on >=26.4 with Chrome installed",
+        "Sample leverages security find-generic-password to access Chrome Safe Storage, bypassing new keychain protections that prevent offline decryption of keychains copied from the machine",
+        "IOCs include MD5 a6dd7a9332bed9225f0db4fe9453d4d1, SHA-256 hash, domains okaloq[.]com and IP 193.178.159[.]129, and staging paths /tmp/lksopo/, ~/.pwd"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly technical analysis of a macOS infostealer adapting its keychain theft technique based on OS version. Provides concrete sandbox observations, a mocking experiment to demonstrate behavior change, specific commands (security find-generic-password), and a thorough review of the evolving macOS stealer landscape. Valuable for understanding current evasion techniques against keychain protections.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T07:08:32.611624"
+    },
+    {
+      "id": 7013,
+      "source_id": 34,
+      "original_url": "https://patrickdesjardins.com/blog/audiorouter-memory-diet-four-steps",
+      "title": "AudioRouter's Memory Diet: From 960 MB to 30 MB in Four Steps",
+      "summary": "Measured render isolation, targeted updates, V8 heap limiting, and window destruction reduced AudioRouter from hundreds of megabytes to about 31 MB while hidden.",
+      "ideas": [
+        "Distinguish retained memory from uncollected garbage using forced GC and Chrome DevTools Protocol measurements.",
+        "Isolate 20 Hz telemetry in an external store to prevent unrelated React component rerenders.",
+        "Preserve React Flow graph identity by routing meter updates through context consumers.",
+        "Cap V8 old space only after verifying live heap and garbage-collection CPU cost.",
+        "Destroy hidden Tauri windows to free WebView2 processes while backend audio continues."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "The article provides a rigorous firsthand performance case study with release-build measurements, Chrome DevTools Protocol profiling, before-and-after allocation rates, process memory figures, and regression tests. It explains concrete React, React Flow, V8, and Tauri/WebView2 mechanisms, including useful implementation patterns and the risk of overwriting Tauri's default browser arguments. The evidence is highly actionable, though it comes from one application and session, and the 256 MB heap cap may not generalize.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T07:06:43.892861"
+    },
+    {
+      "id": 7012,
+      "source_id": 34,
+      "original_url": "https://omid.dev/2026/10/20/per-user-cloud-oauth-on-one-host/",
+      "title": "Per-User Cloud OAuth on One Host",
+      "summary": "Per‑user refresh tokens and temporary fetch URLs let a single host isolate cloud credentials and secure file transfers without shared secrets.",
+      "ideas": [
+        "Separate application identity from per‑user OAuth credentials",
+        "Register providers in a simple PHP registry resolved per user",
+        "Create capability URLs with explicit purpose and short TTL for secure file fetch",
+        "Map CLI token to a scoped application credential rather than shared refresh tokens",
+        "Store provider state and tokens in user‑scoped DB rows for isolation"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides concrete, original implementation details for per‑user OAuth, temporary fetch URLs, and provider registration that directly serve a technically capable reader looking for practical sandbox‑style cloud integration; however, it focuses on a private host model and does not include quantitative benchmarks or broader industry applicability, limiting its universal novelty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T07:02:39.416640",
+      "image_url": "https://omid.dev/opengraph/techblog_hu_b04c2cb6dd2ac186.jpg",
+      "image_width": 1408,
+      "image_height": 736,
+      "image_alt": ""
+    },
+    {
+      "id": 7011,
+      "source_id": 34,
+      "original_url": "https://matthorn.io/posts/2026-10-18-33-thomas-street/",
+      "title": "How one Manhattan power room took down FAA air traffic control and disrupted 1,174 flights",
+      "summary": "A misadjusted relay and four decaying alarm-system failures caused a 6.5-hour battery drain at 33 Thomas Street, collapsing the DS3 links FAA relied on for New York air traffic and grounding 1,174 flights.",
+      "ideas": [
+        "Burned-out indicator lamp with no lamp-supervision check allowed the rectifier trip to remain dark locally.",
+        "Missing 25-inch jumper strap on the 14th floor immobilized the secondary alarm circuit, reported as zero fault current.",
+        "Alarm bell was mechanically clamped muffled, silencing the audible alert during the fault condition.",
+        "DC power supervisor absent at training class; no remote telemetry existed, so no automated handoff block was possible.",
+        "Lead-acid battery voltage plateau masked the discharge until the final steep drop, after which rectifiers could not restart under full DS3 load."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense, well-structured case study of a 1991 AT&T power cascade that grounded 1,174 flights. Provides concrete technical mechanisms: how a misadjusted relay tripped rectifiers, how lead-acid battery voltage plateaus masked the 6.5-hour discharge, and the exact failure chain of four alarm-path deficiencies (burned bulb, missing strap, muffled bell, off-site staff) that prevented detection. Includes the recharging constraint requiring full equipment disconnection for recovery. The root-cause analysis linking organizational gaps (training class scheduling, absent NOC telemetry) to the outage is directly relevant to sysadmin/infrastructure interests. Substantive, non-obvious, and adequately supported throughout.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:53:18.957835",
+      "image_url": "https://matthorn.io/og-image.png",
+      "image_width": 1200,
+      "image_height": 627,
+      "image_alt": "matthorn.io: software and security engineering, styled as a terminal prompt"
+    },
+    {
+      "id": 7010,
+      "source_id": 34,
+      "original_url": "https://matduggan.com/clickhouse-will-let-you-be-wrong-at-scale/",
+      "title": "ClickHouse Will Let You Be Wrong at Scale",
+      "summary": "ClickHouse fails silently at scale, so practitioners must build verification habits around system.query_log and master exact sort-key, projection-routing, and ad-hoc-filter mechanics before designing schemas.",
+      "ideas": [
+        "Guard-clause WHERE filters disable primary-key pruning: 84x rows read, 10x latency",
+        "Grafana ad-hoc filters apply additional_table_filters at planning time, pruning like hand-written WHERE",
+        "Sort-key fast lookup works only on the key prefix; put timestamp first",
+        "MODIFY ORDER BY cannot reorder or prepend; fixes require a new table and backfill",
+        "Projections route only on exact expressions and aggregate subsets; verify via query_log",
+        "Wrong table key in Grafana ad-hoc config silently returns confidently wrong dashboard numbers"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A firsthand engineering writeup of running ClickHouse at ~2B rows/day with original measurements: an 84x row-read regression from guard-clause WHERE filters, projection-routing failures from inexact expression matches (2,022 vs 12.4M rows), and a wrong sort key forcing a ~520 GiB backfill plus atomic table swap. The mechanisms (additional_table_filters planning-time pruning, granule-based sparse prefix index, projection aggregate-subset and GROUP BY requirements) are non-obvious, directly applicable to observability and database engineering, and hard-won. Limitations: the causal explanation for the pruning failure is an admitted guess, the headline sort-key benchmark was confounded by S3 tiering and left unresolved, and foundational ORDER BY explanations are deferred to external links.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:50:06.481566"
+    },
+    {
+      "id": 7009,
+      "source_id": 34,
+      "original_url": "https://martinhicks.dev/articles/dynoxide-140-release-notes",
+      "title": "Dynoxide 1.4.0: clean shutdowns and JSON Lines import",
+      "summary": "Dynoxide 1.4.0 adds a clean embedded server shutdown mechanism via oneshot channels, JSON Lines import support, and several DynamoDB API parity fixes for Scan, Query, and UpdateItem based on the author's conformance suite findings.",
+      "ideas": [
+        "Graceful embedded server shutdown via oneshot channel.",
+        "JSON Lines (.jsonl) import support added.",
+        "Scan segments >4096 no longer duplicate items."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete technical details for the Dynoxide 1.4.0 release, including a hard-won clean shutdown mechanism for embedded servers, JSON Lines import support, and DynamoDB API parity fixes. The author's conformance suite work adds credibility, and the changes address specific, non-obvious behaviors in Scan, Query, and UpdateItem operations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:49:49.056127",
+      "image_url": "https://martinhicks.dev/images/articles/dynoxide-0120-release-notes.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7008,
+      "source_id": 34,
+      "original_url": "https://mariatta.ca/posts/python-core-sprint-2026-day-1/",
+      "title": "Python Core Sprint 2026: Day 1",
+      "summary": "Mariatta documents day 1 of the Python Core Sprint, focusing on migrating GitHub bots from Heroku to PSF's Cabotage, resolving a datetime docs PR, and observing emerging terminal multiplexers for AI agent workflows.",
+      "ideas": [
+        "Migrating bedevere, miss-islington, and blurb-it bots from Heroku to Cabotage required addressing environment variable formatting, Dockerfile scope, user permission constraints, and Redis certificate verification.",
+        "The datetime.strptime docs PR (gh-124549) evolved from a simple note into a multi-board effort due to the documentation's structural constraints, with a warning now added to strptime for conflicting format directives.",
+        "Zellij and herdr represent complementary approaches to terminal multiplexing: Zellij as a general-purpose workspace with discoverable keybindings, herdr as agent-aware session management for AI coding tools."
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides substantial, firsthand technical content about Python core infrastructure operations. The bot migration from Heroku to Cabotage is explained with concrete detail on environment variables, Dockerfile adjustments, blockers, and a monitoring plan—highly relevant for readers involved in similar deployment work. The datetime documentation fix offers interesting context on the editorial process behind seemingly trivial docs changes. Hallway discussions about terminal multiplexers (Zellij, herdr) in the AI agent context add practical tooling insight. The piece is non-obvious, well-structured, and avoids hype or padding, earning a solid 'Strong' score, though not 'Exceptional' due to its format as a single-day sprint recap.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:46:35.298234",
+      "image_url": "https://mariatta.ca/posts/python-core-sprint-2026-day-1/python-core-sprint-2026-day-1.jpg",
+      "image_width": 1472,
+      "image_height": 832,
+      "image_alt": "Python Core Sprint 2026: Day 1"
+    },
+    {
+      "id": 7007,
+      "source_id": 34,
+      "original_url": "https://liviutudor.com/2026/10/20/faster-code-same-release-date-what-gives/",
+      "title": "Faster Code, Same Release Date: What Gives?",
+      "summary": "AI coding agents accelerate typing, but release cycles stall because understanding, reviewing, and debugging remain the true bottlenecks, and faster generation increases code liability without corresponding gains in comprehension.",
+      "ideas": [
+        "Code generation outpaces human review capacity, increasing release lead time",
+        "35% of AI-generated code reaches production before teams fully understand it",
+        "'Almost but not quite right' bugs evade standard testing and surface in production",
+        "Review processes must constrain to match AI generation speed to realize productivity gains"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong technical analysis of AI coding agent productivity paradox. Directly addresses why faster code generation doesn't accelerate releases by identifying understanding, review, and debugging as the true bottlenecks. Well-supported with survey data (79% faster typing, 16.9h debugging/week, 35% code ships unprepared) and concrete bug examples from the author's Calendrz project (undeclared API fields, 401/403 status code confusion). The 'almost but not quite right' bug classification and the pipeline metaphor (Amdahl's law applied to engineering) provide non-obvious, verifiable insight. Recommendations are practical and grounded in firsthand engineering experience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:39:39.943493"
+    },
+    {
+      "id": 7006,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/emudhra-weak-intermediate-ca-keys/",
+      "title": "Recovering eMudhra's Weak P-384 CA Keys and Testing curl, Node.js, and uv on macOS",
+      "summary": "Eight eMudhra intermediate CAs used trivially weak P‑384 private keys that can be brute‑forced, and many macOS TLS tools still accepted them until updated.",
+      "ideas": [
+        "All eight private keys are integers between 1 and 255, recoverable by enumerating 255 candidates.",
+        "macOS built‑in curl and Node.js v25.3.0 accept the compromised chains despite browser revocations.",
+        "uv 0.13.4 and newer certifi releases drop the vulnerable root, fixing the validation failure.",
+        "Go’s TLS verification follows the OS store, so recent Go releases reject the compromised certificates."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, reproducible steps to recover the weak P‑384 CA private keys, includes a ready‑to‑run Python snippet, and reports real‑world TLS verification results across curl, Node.js, uv, and Go on macOS. It directly addresses security practitioners and sysadmins by naming affected versions and offering precise upgrade guidance, while avoiding hype or unsupported claims. The only limitation is that the incident is very recent, so long‑term impact and broader ecosystem coverage remain unknown.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:38:09.566191",
+      "image_url": "https://lilting.ch/og/images/tags/security.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Recovering eMudhra's Weak P-384 CA Keys and Testing curl, Node.js, and uv on macOS | lilting channel"
+    },
+    {
+      "id": 7005,
+      "source_id": 34,
+      "original_url": "https://libido-sciendi.com/journal/2026-10-19-french-ai-report-models-medicine-defence/",
+      "title": "The French AI Report 2026: from models to medicine and defence",
+      "summary": "The French AI ecosystem shows strong scientific foundations but faces capital concentration risks, with AI delivering tangible advances in drug discovery and clinical practice when paired with patient-specific experimental data.",
+      "ideas": [
+        "French AI startups attracted €3.5bn venture funding in 2025, behind UK and Germany",
+        "Orakl uses patient-derived tumour organoids to test hundreds of treatments in lab",
+        "Insilico Medicine reached preclinical candidate in under 18 months on $2.6M budget",
+        "ZML builds inference software close to hardware for efficient model deployment across processors"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand technical substance about France's AI ecosystem, with specific funding data, experimental approaches (tumour organoids, perturbation studies), and analysis of AI competitive advantages in health and defence. It avoids hype by grounding claims in measurable progress and practical deployment challenges.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-22T06:37:47.669767",
+      "image_url": "https://libido-sciendi.com/social-previews/journal-2026-10-19-french-ai-report-models-medicine-defence.png",
+      "image_width": 2048,
+      "image_height": 1362,
+      "image_alt": ""
+    },
     {
       "id": 7004,
       "source_id": 34,
@@ -23,7 +339,11 @@
       "rating_reason": "Provides concrete measurements of MCP server sprawl across 57 agent sessions (646 processes, 20 GB swap), identifies root causes (per-session stdio spawning, duplicate configurations, idle launchers), and documents practical solutions with specific configuration details and auth considerations. Includes original before/after experiments measuring swap reduction to near-zero after moving three servers to shared local HTTP instance.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-22T06:28:36.577654"
+      "published_at": "2026-10-22T06:28:36.577654",
+      "image_url": "https://karanbansal.in/blog/mcp-sprawl/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Before, 57 agent sessions ran 631 stdio MCP processes using 19.5 GB. After, three shared localhost services used 6 processes and 301 MB."
     },
     {
       "id": 7003,
