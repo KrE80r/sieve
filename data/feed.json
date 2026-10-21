@@ -1,7 +1,200 @@
 {
-  "updated_at": "2026-10-21T06:00:00.398249+00:00",
-  "total_items": 1046,
+  "updated_at": "2026-10-21T07:00:00.206584+00:00",
+  "total_items": 1052,
   "items": [
+    {
+      "id": 6967,
+      "source_id": 4,
+      "original_url": "https://kylesinvestigation.com/2026/10/20/cloud-outages-ai-built-exploits-and-ghostactions-return/",
+      "title": "https://kylesinvestigation.com/2026/10/20/cloud-outages-ai-built-exploits-and-ghostactions-return/",
+      "summary": "Teams must proactively map dependencies, test multi‑region failover, and rigorously rotate credentials and secrets to survive accelerating AI‑driven cloud threats.",
+      "ideas": [
+        "Cloud regional outages can cascade across services if dependencies aren't diversified.",
+        "AI can generate zero‑day exploits that bypass signature detection, requiring behavior‑based defenses.",
+        "GhostAction now harvests AI provider API keys from leaked CI/CD secrets.",
+        "Map all production services and SaaS vendors to single cloud regions and test multi‑region failover.",
+        "Rotate and revoke compromised personal access tokens and all exposed secrets in Git history.",
+        "Use fine‑grained, short‑lived tokens and enforce code‑owner review for workflow changes.",
+        "Pin third‑party GitHub Actions to exact commit SHAs and enable secret scanning with push protection.",
+        "Set spending limits and usage alerts on AI provider accounts to detect stolen keys.",
+        "Require phishing‑resistant MFA on admin tools and monitor EDR for anomalous authentication patterns.",
+        "Document critical services per region and schedule regular failover drills for resilience."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece delivers multiple novel, actionable insights on AI‑driven exploits, cloud regional failures, and CI/CD credential leaks, with a dense checklist of concrete mitigation steps. It avoids clickbait and padding, aligning closely with high‑value cybersecurity themes. Penalties are minimal, resulting in a strong value‑per‑minute score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T16:35:15.510463"
+    },
+    {
+      "id": 6966,
+      "source_id": 4,
+      "original_url": "https://ipinfo.io/blog/france-fridges-hack",
+      "title": "Skip to main content",
+      "summary": "French supermarket refrigeration controllers were largely exposed online and unpatched, enabling a cyberattack that forced many to go offline.",
+      "ideas": [
+        "Over half of Danfoss refrigeration dashboards in France were publicly accessible before the attack.",
+        "85% of French dashboards ran software with known security flaws, matching global percentages.",
+        "Legacy controllers lacking updates were the main vulnerable devices, many unsupported since 2023.",
+        "Following the attack, 76% of exposed French dashboards disappeared within days.",
+        "France's high exposure stems from many dashboards connecting through a single national telecom provider.",
+        "Mitigation advice: remove dashboards from the internet, use VPNs, update firmware, enforce strict security settings.",
+        "IPinfo's weekly internet scans reveal large‑scale IoT exposure trends across countries."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article offers several concrete value instances: original scan data on exposed Danfoss dashboards, statistics on outdated software, timeline of exposure and post‑attack offline rates, and actionable mitigation advice for operators. It aligns strongly with cybersecurity and IoT technology themes. Minor promotional language about IPinfo does not detract significantly from the substance, and there is no clickbait or shallow treatment.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T16:35:08.754243",
+      "image_url": "https://website-cdn.assets.ipinfo.io/images/og/og_blog.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 6965,
+      "source_id": 4,
+      "original_url": "https://by7e.dev/blog/bof-from-scratch-in-c",
+      "title": "0XBY7EWORKABOUTINVENTORYBLOGCONTACT",
+      "summary": "BOFs achieve zero-telemetry post-exploitation by having the C2 agent act as a runtime linker that resolves modules and functions at load time, forcing defenders to rely on behavioral chains and kernel-level signals rather than process or import artifacts.",
+      "ideas": [
+        "BOFs compile to COFF objects; the C2 agent acts as a minimal runtime linker and loader",
+        "MODULE$Function declarations yield zero static imports, defeating import-table static analysis",
+        "BOFs execute inside the agent's own process, generating no new processes or disk artifacts",
+        "Unlike .NET inline execution, BOFs avoid sacrificial processes, CLR injection, and thread telemetry",
+        "The BOF entry point is 'go', not 'main', receiving a packed argument buffer from the operator",
+        "No CRT exists in BOF context: implement string operations inline or use Win32 equivalents",
+        "Compile-only MinGW flags (-c, -DBOF, -Os) matter; there is deliberately no linking step",
+        "A BOF crash kills the agent since no process boundary absorbs the fault",
+        "Blocking operations freeze the whole agent because BOFs run on its main thread",
+        "Leaked handles persist in the agent process and become detectable artifacts over time",
+        "Match BOF architecture to the agent by compiling both x64 and x86 variants",
+        "Defenders should hunt COFF parsing patterns and rapid GetProcAddress burst sequences",
+        "ETW-TI and kernel callbacks still fire regardless of how userland resolves imports",
+        "BOFs reduce endpoint noise but layered behavioral detection still catches the C2 agent",
+        "NtQuerySystemInformation enumerates processes without triggering CreateToolhelp32Snapshot detections",
+        "The minimal ~60-line beacon.h API surface keeps the COFF loader's resolution simple and reliable"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense, well-structured technical tutorial with 12+ genuine value instances: a complete working privilege-enumeration BOF with full C source, explanation of the MODULE$Function dynamic resolution mechanism, exact MinGW compilation flags with rationale, a comparison table contrasting BOFs against shell and .NET execution telemetry, direct link to TrustedSec's community beacon.h, and a pitfalls section covering agent crashes, handle leaks, and blocking operations. The inclusion of defensive detection guidance (COFF parsing patterns, ETW-TI, kernel callbacks) adds a valuable dual perspective rare in offensive tooling tutorials. Strong thematic alignment with cybersecurity and software development. Minor deductions: the underlying BOF mechanics are documented across community resources so parts overlap with known material, and the conclusion is truncated mid-sentence; however, the step-by-step consolidation, original code walkthrough, and practical depth make this genuinely worth a practitioner's time.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T16:35:00.584792",
+      "image_url": "https://by7e.dev/uploads/3c6b001046b3cc9029f84a31.webp",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 6964,
+      "source_id": 4,
+      "original_url": "https://news.ycombinator.com/item?id=50166579",
+      "title": "https://news.ycombinator.com/item?id=50166579",
+      "summary": "Single-byte private keys from a compromised CA can enable covert certificate issuance, exposing gaps in key management and Certificate Transparency enforcement.",
+      "ideas": [
+        "Compromised CA private keys are single-byte values like '4'.",
+        "Flawed KGC script produced weaker ECC keys used for CSR signing.",
+        "Keys intended for export to US/EU data centers but only one reached production.",
+        "HSM wrap/unwrap process can generate keys without external exposure.",
+        "Certificate Transparency logs capture only logged certificates, not all issuances.",
+        "Non-browser software may trust certificates without checking CT logs.",
+        "State actors could silently exploit unlogged rogue certificates.",
+        "Single-byte entropy provides minimal cryptographic strength.",
+        "Undetected MITM attacks possible using rogue certificates without CT registration.",
+        "RSA issuers followed a different, unaffected path.",
+        "Random low-value keys may resemble lottery numbers, suggesting weak randomness.",
+        "Certification path differences affect impact of compromised intermediates.",
+        "Lack of CT logs means browsers detect misuse but other clients may not.",
+        "Weak keys increase risk of brute‑force attacks despite minor entropy differences.",
+        "Incident highlights need for stronger key management and audit practices."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The discussion reveals multiple novel insights: single-byte private keys like \"4\", a flawed KGC script that generated weaker ECC keys, and detailed analysis of HSM key export and wrap/unwrap processes. It also explains how Certificate Transparency logs affect browser versus non-browser trust, highlighting potential silent exploitation. This high value density and strong CyberSecurity relevance warrants a top‑tier score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T16:32:52.428544"
+    },
+    {
+      "id": 6963,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/stolen-updraftcentral-keys-used-to-backdoor-wordpress-sites/",
+      "title": "Stolen UpdraftCentral keys used to backdoor WordPress sites",
+      "summary": "Stolen UpdraftCentral keys let attackers silently backdoor thousands of WordPress sites, so admins must rotate keys and update plugins immediately.",
+      "ideas": [
+        "Stolen UpdraftCentral keys can be used to install backdoor plugins on WordPress sites",
+        "UpdraftCentral breach potentially affects ~400,000 sites (10% of UpdraftPlus users)",
+        "Attackers used valid private dashboard keys to execute arbitrary code via remote management",
+        "Update UpdraftPlus to version 1.26.13/2.26.13 to mitigate the issue",
+        "Rotate storage credentials and delete existing UpdraftCentral keys after breach",
+        "Inspect logs for indicators of compromise and restore from clean backups if needed",
+        "Bug in version 1.26.12/2.26.12 prevented removal of compromised keys"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete value instances: novel insight about stolen UpdraftCentral keys, actionable steps to rotate credentials and update plugins, detailed evidence (affected sites, timestamps, CVE), and expert commentary from Patchstack and Nethemba. It stays focused on cybersecurity without clickbait or padding, yielding high value density for its ~700‑word length.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T16:32:29.960369",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/09/03/wordpress.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 6962,
+      "source_id": 4,
+      "original_url": "https://gist.github.com/vladko312/d61b950f168c791db4786b83dc7a81e6",
+      "title": "https://gist.github.com/vladko312/d61b950f168c791db4786b83dc7a81e6",
+      "summary": "Exploiting Twig's {% use %} trait syntax via method-overrides and PHP traits turns CVE-2026-46633 into a near-universal sandbox-escape RCE, with each payload variant mapped precisely to affected version ranges.",
+      "ideas": [
+        "CVE-2026-46633 injection only triggers when {% use %} includes the with...as... aliasing syntax",
+        "Twig escapes quotes, dollar signs, and backslash sequences, constraining exploit design options",
+        "Injected code inside __construct() never executes, so the class context must be escaped using PHP traits",
+        "Traits allow fulfilling Twig's abstract method requirements and achieving RCE despite character escaping",
+        "Payload needs an extra parenthesis for Twig 1.15.1-2.5.0, and versions below 1.15.1 are unaffected",
+        "Overriding getSourceContext() executes attacker code in-class before the fatal error fires",
+        "Base64-encoded eval bypasses escaping to run arbitrary code with special characters",
+        "Re-compiling the template and registering a matching block lets payloads render without triggering errors",
+        "Overriding checkSecurity() from an injected trait disables the Twig sandbox for the main template",
+        "Copying local variables to a global array and extract()ing them transfers context into trait functions",
+        "Payloads work in both sandboxed and unsandboxed environments, providing a first universal exploit for Twig >1.19 <2.10",
+        "Class-defined methods take priority over trait functions, so redefining trait gadgets changes execution flow"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 81,
+      "rating_reason": "This is an original security research writeup delivering the first public exploit payloads for CVE-2026-46633, with substantial value instances: working RCE, Error-Based, Time-Based, Rendered, and Boolean Blind payloads covering nearly every Twig version range, a novel PHP traits technique for escaping the injected class context, Base64 eval chains to bypass character escaping, a recompilation-based template registration trick to eliminate rendering errors, and a checkSecurity() override that disables the Twig sandbox. The compiled-template dissection is genuinely instructive for understanding the injection context. Scores below exceptional only because the gist is truncated mid-sentence, the scraped GitHub UI boilerplate pads the beginning, and it is extremely niche with no defensive remediation guidance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-21T16:32:21.821653",
+      "image_url": "https://github.githubassets.com/assets/gist-og-image-54fd7dc0713e.png",
+      "image_width": 1280,
+      "image_height": 640,
+      "image_alt": "This research documents my development of payloads for the CVE-2026-46633. - CVE-2026-46633 writeup.md"
+    },
     {
       "id": 6961,
       "source_id": 1,
