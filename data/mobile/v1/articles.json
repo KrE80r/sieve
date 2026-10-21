@@ -1,11 +1,338 @@
 {
   "schema_version": 1,
-  "sequence": 1459,
-  "revision": "sha256:b18820a5593e9ebadd52e7b8428f75ab0e0420928a36aa7382bf513b4e13fa3f",
-  "generated_at": "2026-10-21T19:00:00.146123+00:00",
+  "sequence": 1460,
+  "revision": "sha256:180db713eea4dbfc39f82c26b398274c60ede2ba0729d0b3ac16ea4697d80bf4",
+  "generated_at": "2026-10-21T20:00:00.415870+00:00",
   "complete": true,
-  "total_items": 1062,
+  "total_items": 1076,
   "items": [
+    {
+      "article_id": "article:7004",
+      "original_url": "https://karanbansal.in/blog/mcp-sprawl/",
+      "title": "My Coding Agents Were Running 646 MCP Server Processes",
+      "summary": "Documenting how 57 agent sessions spawned 646 MCP server processes consuming 20 GB swap, and how moving three servers to a shared local HTTP instance reduced processes to 6 and swap usage to near zero.",
+      "rating": 85,
+      "rating_reason": "Provides concrete measurements of MCP server sprawl across 57 agent sessions (646 processes, 20 GB swap), identifies root causes (per-session stdio spawning, duplicate configurations, idle launchers), and documents practical solutions with specific configuration details and auth considerations. Includes original before/after experiments measuring swap reduction to near-zero after moving three servers to shared local HTTP instance.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "AI",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T06:28:36.577654+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T06:28:36.577654+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7003",
+      "original_url": "https://josie.lol/blog/linux-rtx-spark.html",
+      "title": "putting linux on my rtx spark laptop because i don't have a microsoft account",
+      "summary": "A reproducible Arch Linux ARM port to NVIDIA's RTX Spark laptop shows Linux matches Windows CPU performance while exposing the full unified 116 GiB memory pool to both CPU and CUDA for large local LLM inference.",
+      "rating": 89,
+      "rating_reason": "This is first-hand expert bring-up of brand-new hardware: the author (an Arch package maintainer) documents reverse-engineered ACPI overrides, patched hid-asus and audio drivers, hash-pinned build inputs, and an upstreamed Archinstall extension, all published as reproducible scripts. The original measurements are methodologically careful (warmups, medianed runs, explicit confound caveats) and yield a genuinely non-obvious finding: Linux exposes the same 116 GiB pool to CPU work and CUDA, versus Windows' partitioned 109.7 GiB, enabling ~90 GiB of model+KV cache without reservation reboot cycles. Limitations include non-isolated OS comparisons against third-party Windows results, only three toy LLM tasks with deterministic decoding, and some chatty framing, which keep it just below exceptional.",
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T06:27:22.543069+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T06:27:22.543069+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7002",
+      "original_url": "https://jhooq.com/aws-solutions-architect-exam-questions-explained/",
+      "title": "Three AWS Solutions Architect Associate Questions From My Shorts, Answered Properly - Migrating Web, Batch and Legacy Apps; Cutting EC2 Cost for a 2-Week Shutdown Without Losing Memory; Internet for P...",
+      "summary": "The article properly answers three AWS certification exam questions about multi-tier migration with EC2/AWS Batch, EC2 hibernation for cost reduction during shutdowns, and private subnet internet access via NAT gateways, while explaining the critical prerequisites and exam reasoning behind each answer.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete AWS Solutions Architect exam insights with detailed reasoning for three specific questions. It covers EC2 hibernation prerequisites, VPC NAT gateway architecture, and migration strategies with security groups/ACLs. The author explains not just answers but the underlying mechanisms, prerequisites, and exam traps, making it valuable for AWS certification preparation. The content is technically substantive without excessive hype or padding.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T06:23:48.526184+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T06:23:48.526184+00:00",
+      "image": {
+        "url": "https://jhooq.com/wp-content/uploads/aws/aws-course/nat-gateway/private-route-table-default-route-nat-gateway.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7001",
+      "original_url": "https://hugo.im/posts/code-review-in-one-year/",
+      "title": "Machines Read, Humans Sign: Code Review in One Year",
+      "summary": "A measured, first-person account of building and evaluating a production AI code reviewer, with concrete numbers on leakage in replay evals, complementary model-family review, and rule-level guardrails derived from the system's own failure modes.",
+      "rating": 87,
+      "rating_reason": "An unusually substantive firsthand engineering report on building an AI-driven code review system, packed with original measurements and non-obvious findings. Key contributions include a measured data-leakage problem in replayed evaluations (68% recall with future visible vs 44% without), evidence that different model families find categorically different bug types when used as second reviewers, and concrete guardrail patterns (e.g., removing approve permissions as tool-level controls rather than prompt instructions). The piece is truncated, the final two bets are cut off, and the 'eight bets' predictions are partly speculative (though self-scored), which keeps it from the top band.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T06:14:57.755727+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T06:14:57.755727+00:00",
+      "image": {
+        "url": "https://www.hugo.im/images/blog/code-review-in-one-year.jpg",
+        "width": 2400,
+        "height": 1260,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7000",
+      "original_url": "https://hamel.dev/blog/posts/decision-model-evals/",
+      "title": "How To Use Decision Models for Evals",
+      "summary": "Threshold tuning and calibration are essential to obtain reliable performance and cost‑effective use of AI decision models for evals.",
+      "rating": 88,
+      "rating_reason": "The article provides concrete, reproducible experiments on threshold tuning, cost‑performance trade‑offs, and probability calibration for AI decision models, delivering usable engineering guidance. It is highly relevant to AI‑eval engineers, though promotional calls to action introduce some noise that prevents a perfect score.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T06:12:31.973668+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T06:12:31.973668+00:00",
+      "image": {
+        "url": "https://hamel.dev/blog/posts/decision-model-evals/images/cover.png",
+        "width": 2400,
+        "height": 1260,
+        "alt": "Six decision models compared using overlapping failure and no-failure score distributions, with tuned thresholds shown as dashed lines on a cream background."
+      }
+    },
+    {
+      "article_id": "article:6999",
+      "original_url": "https://glaforge.dev/posts/2026/10/21/the-emudhra-ca-compromise-why-your-jvm-is-vulnerable-and-how-to-fix-it/",
+      "title": "The eMudhra CA Compromise: Why Your JVM Is Vulnerable (and How to Fix It Properly)",
+      "summary": "Java installations may remain vulnerable to cross-signed compromised CAs even after browsers are protected, requiring targeted intermediate-certificate blocking rather than root removal.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete, incident-specific defensive engineering: it explains JVM exposure, supplies a runnable TLS probe, and shows how cross-certification defeats removing only the original eMudhra roots. Its strongest actionable insight is using blocked.certs to reject the compromised intermediates without distrusteding entire root hierarchies, with hashes and multi-JDK patching commands. The compromise details and hashes are not independently demonstrated here, and the supplied article is truncated, so readers should cross-check primary incident and vendor sources before applying it.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T06:10:19.303733+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T06:10:19.303733+00:00",
+      "image": {
+        "url": "https://glaforge.dev/img/java/emudhra-ca-compromise-jvm.jpg",
+        "width": 1376,
+        "height": 768,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6998",
+      "original_url": "https://elonlit.com/scrivings/how-to-run-turing-complete-malware-in-pytorchs-backward-pass/",
+      "title": "How to Run Turing-Complete Malware in PyTorch's Backward Pass",
+      "summary": "A loss term that evaluates to 0.0 in float32 but carries an engineered gradient through autodiff can implant a Turing-complete state machine into SGD weight updates, exposing a novel supply-chain and auditing blind spot in ML training pipelines.",
+      "rating": 90,
+      "rating_reason": "This is exceptional, original technical work: it demonstrates a real divergence between IEEE 754 forward evaluation and PyTorch's symbolic autodiff (h(u)=(2^30+u)-2^30 is zero on hardware but has derivative 1 on the backward tape), weaponizes it via the product rule into a gradient multiplexer, and shows a verifiable end-to-end exploit — a self-contained script plus an MNIST CNN whose 1,024 hijacked weights run 2,345 generations of Game of Life at zero auxiliary loss with no accuracy degradation. The threat model (malicious zero-valued regularizer in a PyPI package, hidden via math-washing, config constants, or compiled CUDA kernels) is concretely argued. Limitations: the article is truncated mid-way through the security implications section, and the demonstrated attack applies cleanly to plain SGD (lr=1); adaptation to Adam/AdamW-style optimizers common in real fine-tuning is not shown.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:57:28.595038+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:57:28.595038+00:00",
+      "image": {
+        "url": "https://elonlit.com/images/flowers.png",
+        "width": 1024,
+        "height": 1277,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6997",
+      "original_url": "https://eigenwise.io/writing/see-where-your-ai-agents-answer-came-from",
+      "title": "See Where Your AI Agent’s Answer Came From",
+      "summary": "Readers gain concrete understanding of how to instrument Atomic Agent workflows in Phoenix to inspect values at each pipeline step from planner through calculator to answer writer.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical substance through exact package versions, span structures, and configuration patterns directly applicable to AI workflow observability. It provides verifiable trace data from a bill-splitting example showing how planner, calculator, and answer writer compose, with clear warnings about calculator security limitations. However, it functions primarily as a tutorial guide rather than presenting novel research findings, and the bill-splitting scenario, while useful, is a somewhat specialized use case.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:57:07.947237+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:57:07.947237+00:00",
+      "image": {
+        "url": "https://eigenwise.io/images/articles/see-where-your-ai-agents-answer-came-from/cover.webp",
+        "width": 1200,
+        "height": 675,
+        "alt": "See Where Your AI Agent’s Answer Came From"
+      }
+    },
+    {
+      "article_id": "article:6996",
+      "original_url": "https://dwaves.de/2026/10/19/latest-firefox-privacy-infos-agbs/",
+      "title": "latest firefox privacy infos agbs",
+      "summary": "Mozilla's Firefox Privacy Notice details how browser features process user data, distinguishing between on-device and server-side handling with concrete technical mechanisms like OHTTP for privacy-preserving query routing.",
+      "rating": 85,
+      "rating_reason": "The article provides substantial technical detail about Firefox's data processing mechanisms across its features, including OHTTP privacy-preserving proxies, on-device vs server-side AI processing, and specific feature implementations. It serves technically capable readers seeking substantive browser privacy infrastructure knowledge. The main limitation is that as a standard privacy notice, it presents Mozilla's stated practices rather than independent verification or discovery.",
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:55:32.932322+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:55:32.932322+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:6995",
+      "original_url": "https://dheerajakula.dev/blog/rust-primer-for-humans",
+      "title": "A Rust primer for humans: what matters when your agent writes the code",
+      "summary": "Readers gain a working understanding of Rust's ownership and borrowing rules, enabling them to read and debug code written by AI agents.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, concrete substance by thoroughly explaining Rust's ownership and borrowing model—the central mechanism blocking understanding of agent-generated code. It provides clear source code examples, compiler error insights, and practical mappings from Python/JS concepts. The focus on 'what matters when your agent writes the code' directly targets the reader interest, offering non-obvious, verifiable engineering knowledge (move semantics, reference rules) with high value per minute and minimal noise or hype.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:53:23.451490+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:53:23.451490+00:00",
+      "image": {
+        "url": "https://dheerajakula.dev/images/covers/rust-primer-for-humans.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6994",
+      "original_url": "https://daniel.haxx.se/blog/2026/10/20/do-minor-curl-vulnerabilities-in-the-open/",
+      "title": "https://daniel.haxx.se/blog/2026/10/20/do-minor-curl-vulnerabilities-in-the-open/",
+      "summary": "curl will handle LOW and MEDIUM severity vulnerability reports publicly on GitHub to survive an AI-driven flood of low-impact reports, accepting a slightly longer exploitation window in exchange for distributed triage and earlier fix scrutiny.",
+      "rating": 85,
+      "rating_reason": "A firsthand, authoritative account from curl's lead maintainer of a concrete vulnerability-disclosure policy change, backed by real data (over 90% of HackerOne submissions assess below HIGH) and non-obvious constraints like the CVE appeals process preventing dismissal of true LOW issues. It offers rare expert insight into how AI-driven fuzzing of libcurl's option space is producing low-real-world-risk reports that overwhelm maintainers, and it honestly weighs the trade-off of a longer attacker window. It is a process announcement rather than a deep technical writeup, with no code or reproducible analysis, which caps it below exceptional, but its substance, novelty, and source credibility make it strong.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:47:07.710458+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:47:07.710458+00:00",
+      "image": {
+        "url": "https://daniel.haxx.se/blog/wp-content/uploads/2020/02/http3-for-everyone-audience.jpg",
+        "width": 2048,
+        "height": 1050,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6993",
+      "original_url": "https://claritydev.net/blog/typescript-as-const-satisfies-type-safe-config",
+      "title": "Type-safe config objects with TypeScript's as const and satisfies",
+      "summary": "Combining as const with satisfies creates type-safe config objects that preserve exact literal values while validating against expected types at the definition site.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete TypeScript type-system instruction with multiple working examples demonstrating as const, satisfies, and their combination. It delivers practical mechanisms for type-safe configs with exact literal preservation and key validation. The substance is technical and directly relevant to software engineers working with TypeScript, though it assumes prior TypeScript familiarity and doesn't address runtime behavior.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:41:19.764254+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:41:19.764254+00:00",
+      "image": {
+        "url": "https://res.cloudinary.com/dliyzug4u/image/upload/v1746867588/blog/matthew-stephenson-8VvxbqE8ZX0-unsplash_yroskp.jpg",
+        "width": 1920,
+        "height": 1280,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6992",
+      "original_url": "https://catlikecoding.com/godot/procedural-gpu-patterns/10-curled-noise/",
+      "title": "Tiling Noise - Procedural GPU Patterns",
+      "summary": "Domain warping in procedural GPU patterns only works if the chain rule is applied to derivatives, which enables correct normals and makes derivative-based curl noise warping practical.",
+      "rating": 85,
+      "rating_reason": "This is a deep, mathematically rigorous shader tutorial from Catlike Coding explaining how to warp UV coordinates while keeping derivatives correct via the chain rule, then building toward curl noise by using noise derivatives as rotation-based offsets. It contains extensive working Godot shader code, non-obvious implementation details (partial-derivative composition for warped domains, per-blend-function derivative amplitude normalization factors of 2/3 and 8/15, separate pattern seeds), and a clearly explained mechanism that most tutorials get wrong or skip. The main limitations are its dependence on the prior nine tutorials in the series for context, the truncated ending, and graphics/shader math being adjacent rather than core to the reader's primary AI, security, and infrastructure interests.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:36:29.063860+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:36:29.063860+00:00",
+      "image": {
+        "url": "https://catlikecoding.com/godot/procedural-gpu-patterns/10-curled-noise/banner.png",
+        "width": 1024,
+        "height": 576,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:6991",
+      "original_url": "https://cannibalcode.com/blog/2026-10-20-i-argued-ioc-was-pointless/",
+      "title": "I argued IoC was pointless in JavaScript, forgetting I’d published my own container to npm.",
+      "summary": "The article introduces a convention-based TypeScript codegen strategy (`build__` prefix) that shifts IoC dependency registration and validation from runtime to compile time, enabling typable contracts and explicit build-time error messages for cyclic or missing dependencies.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantial, concrete technical value by detailing a TypeScript code generation approach for Inversion of Control, specifically resolving the runtime-versus-compile-time dependency resolution problem. It offers original mechanisms (the `build__` naming convention, AST-walking error reporting with file/line precision) that are directly applicable to engineers managing DI in JS/TS mono-repos. The narrative framing, while personal, does not obscure the dense engineering substance. It is not exceptionally rare in the broader landscape of DI tooling, but it is a focused, well-executed technical contribution.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-22T05:36:16.306089+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-21T05:36:16.306089+00:00",
+      "image": {
+        "url": "https://cannibalcode.com/og-default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:6990",
       "original_url": "https://brainstormsandraves.com/typography/fluid-typography-clamp-type-scales/",
@@ -22,7 +349,12 @@
       "admitted_at": "2026-10-22T05:28:22.642544+00:00",
       "source_published_at": null,
       "expires_at": "2026-11-21T05:28:22.642544+00:00",
-      "image": null
+      "image": {
+        "url": "https://brainstormsandraves.com/images/articles/fluid-typography-clamp-type-scales.jpg",
+        "width": 1280,
+        "height": 720,
+        "alt": "A designer's desk with a laptop showing blurred page layouts at different widths beside a printed type specimen"
+      }
     },
     {
       "article_id": "article:6989",
