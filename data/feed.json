@@ -1,7 +1,95 @@
 {
-  "updated_at": "2026-10-22T06:00:00.426088+00:00",
-  "total_items": 1092,
+  "updated_at": "2026-10-22T07:00:00.182172+00:00",
+  "total_items": 1095,
   "items": [
+    {
+      "id": 7043,
+      "source_id": 4,
+      "original_url": "https://www.scworld.com/brief/ovhcloud-command-line-tool-compromised-via-hijacked-contributor-account",
+      "title": "OVHcloud command-line tool compromised via hijacked contributor account",
+      "summary": "Attackers hijacked an OVHcloud contributor account to distribute malicious CLI tool builds that stole local secrets across macOS, Linux, and Windows before the provider enabled immutable releases and urged secret rotation.",
+      "ideas": [
+        "Attacker hijacked contributor account to replace OVHcloud CLI downloads with malicious builds",
+        "Malicious binaries stole local secrets from macOS Linux Windows during 94-minute window",
+        "Five releases April-September impacted while other builds left untouched by attacker",
+        "OVHcloud had not enabled immutable releases feature allowing unauthorized binary overwrites",
+        "Source code and build pipelines remained secure despite compromised release archives",
+        "Users must rotate all machine secrets and upgrade to v0.16.0 with release attestation",
+        "Compromised account linked to GlassWorm malware campaign with prior malicious loaders",
+        "OVHcloud has since enabled release immutability and is conducting full investigation",
+        "Attackers replaced macOS Linux Windows binaries while leaving other platform builds untouched"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides significant value through specific supply chain attack details—the 94-minute exposure window, five impacted releases, and the immutable releases misconfiguration. Notable value instances include the actionable remediation (rotate secrets, upgrade to v0.16.0), the GlassWorm campaign attribution, and the clarification that source code/pipelines remained secure. Thematic relevance to cybersecurity supply chain risks is strong, though it ranks as solid 'good' content rather than exceptional due to its journalistic rather than research-originated nature.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-22T16:35:51.029449"
+    },
+    {
+      "id": 7042,
+      "source_id": 4,
+      "original_url": "https://calif.io/php2shell/",
+      "title": "Skip to the write-up",
+      "summary": "Exploiting PHP's OOM‑fatal and interruptible allocation bugs enables remote code execution on mod_php deployments.",
+      "ideas": [
+        "OOM‑fatal can be triggered via multipart requests that bypass post_max_size limits",
+        "PHP increments hash bucket count before key allocation, leaving stale buckets after a fatal",
+        "Mod_php shutdown processes malformed hash tables, allowing remote code execution",
+        "PHP‑FPM discards malformed state, preventing the same exploit path",
+        "Session upload‑progress can be abused after early fatal to consume freed memory",
+        "Pattern: publish/destroy state, perform fallible work, then commit/rollback skipped",
+        "LLM assistance helped locate OOM exploitation vectors in PHP code",
+        "Exploits affect many default‑config PHP applications like WordPress and Drupal",
+        "Mod_php and PHP‑FPM handle fatal interruptions differently, impacting exploitability",
+        "Recommendations include patching memory_limit OOM bugs and reviewing session handling"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The write-up delivers multiple novel technical insights, such as the OOM‑fatal exploitation method, the hash‑bucket count bug, session upload‑progress abuse, and the differing mod_php vs PHP‑FPM handling, all backed by code analysis and real exploit demos, providing high value for security and dev audiences. No clickbait or padding is present, and the content aligns strongly with cybersecurity and technology themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-22T16:34:14.013940"
+    },
+    {
+      "id": 7041,
+      "source_id": 4,
+      "original_url": "https://github.com/ikow/php2shell-poc",
+      "title": "https://github.com/ikow/php2shell-poc",
+      "summary": "A 14-year-old PHP flaw enables zero-dependency pre-auth RCE against most of the web, and the practical takeaway is to disable session.upload_progress now and patch to fixed PHP versions since no INI setting fixes the Zend core corruption.",
+      "ideas": [
+        "Five pre-auth RCE chains exploit PHP session upload progress and Zend engine OOM bailout",
+        "OOM-triggered longjmp leaves Zend engine state invalid, enabling pre-auth RCE with no app flaws",
+        "Stale global state persists across FPM requests, causing exploitable use-after-free RCE",
+        "Fastest mitigation: block PHP_SESSION_UPLOAD_PROGRESS in multipart POST bodies since legitimate use is near-zero",
+        "INI settings reduce attack surface but cannot fix the Zend engine core OOM corruption",
+        "Complete fix requires patching PHP to 8.2.35, 8.3.36, 8.4.27, or 8.5.12+",
+        "Ready-made Suricata, Sigma, ModSecurity, and OpenResty rules enable immediate defender response",
+        "Chain E consumer runs during SAPI startup before application code, widening the attack surface",
+        "WordPress, Joomla, Drupal, Magento, and Laravel are all exposed through near-universal session usage"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "High-density security research delivering many value instances: documentation of two CVSS 9.2 pre-auth RCE bugs in PHP's session.upload_progress and Zend OOM bailout, working exploit/PoC scripts for three chains, a Docker reproduction lab, ready-made Suricata/Sigma/ModSecurity/OpenResty detection rules, and concrete mitigation guidance (blocking PHP_SESSION_UPLOAD_PROGRESS, INI hardening, patched versions, Wiz platform impact table). Thematic alignment with CyberSecurity is excellent and the content is efficiently organized for both attackers' understanding and defender action. A moderate penalty applies because the two most critical zero-dependency chains (D/E) are gated behind a paid writeup, leaving readers with a partially open picture of the worst-case impact.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-22T16:32:28.133290",
+      "image_url": "https://opengraph.githubassets.com/675dfe2c155d7d5e6d6e0f9f92c9fcbd3d2bce9b538219f5d671fe42d5bda829/ikow/php2shell-poc",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "CVE-2026-109618/109619 — 5 RCE chains + detection rules (Suricata, Sigma, ModSecurity). PHP session.upload_progress pre-auth exploit research. - ikow/php2shell-poc"
+    },
     {
       "id": 7040,
       "source_id": 33,
