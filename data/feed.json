@@ -1,7 +1,283 @@
 {
-  "updated_at": "2026-10-23T19:00:00.185867+00:00",
-  "total_items": 1134,
+  "updated_at": "2026-10-23T20:00:00.184697+00:00",
+  "total_items": 1145,
   "items": [
+    {
+      "id": 7135,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/workflow-write-access/",
+      "title": "Workflow Write Access Is Secret Read Access. GhostAction Showed Who Holds It.",
+      "summary": "Workflow write access grants secret read access when an identity can place a running workflow file, the run faces no approval gate, the job can reference a secret, and the runner can exfiltrate data, and the article provides a practical worksheet to audit these conditions across repositories.",
+      "ideas": [
+        "Workflow write access enables secret exfiltration under four enumerated conditions.",
+        "injected workflow scans full git history and exfiltrates 13 credential patterns via HTTP POST.",
+        "four controls address distinct questions and must be evaluated together to harden CI/CD.",
+        "forked repositories inherit workflow files but not source repository secrets due to GitHub's access isolation.",
+        "credentials committed years ago remain recoverable via fetch-depth: 0 history sweeps."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, technically detailed analysis of how workflow write access functions as a secret read path, grounded in the GhostAction campaign reports. It provides a rigorous four-condition audit framework with concrete mappings to GitHub permissions, environment rules, and history sweeps.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T06:07:13.213667",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/10/workflow-write-access-featured.jpg",
+      "image_width": 1024,
+      "image_height": 572,
+      "image_alt": "Workflow write access path: a pushed workflow file reads repository secrets and sends them out through an open egress path"
+    },
+    {
+      "id": 7134,
+      "source_id": 34,
+      "original_url": "https://www.fabian.fyi/2026/10/zombie-hunt.html",
+      "title": "Zombie Crisis",
+      "summary": "A practitioner’s detailed field guide to identifying and removing stale/orphaned accounts across multiple directory systems, with specific focus on legacy data pitfalls and system-specific zombie vectors.",
+      "ideas": [
+        "Sentinel values two centuries in the future can accidentally exclude career employees from identity systems.",
+        "Google Workspace zombie accounts can number in tens of thousands when account deletion is moratoriumed during events like COVID.",
+        "Adobe personal accounts created under work emails create a persistent 'personal profile behind the default' trap requiring official releases to merge."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Substantive, hands-on account of zombie account discovery and culling across AD, Azure, and Google environments. Provides concrete scripts, SQL queries, and—most valuably—non-obvious mechanisms like the 'sentinel value' data entry trap and windowing limitations in IAM systems. Explicitly warns about legacy API deprecation and script unsuitability. High practical utility for sysadmins, though the hyperbolic title and stress-written draft code warrant caution.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:57:04.695916",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhk5ynofM8bdPNy3tCdBsL3W5cI5AELzMjHCwLUPPk2n8Beg2A9wunda2_FKXY3KgbOzwEvQKW0xuRtCifpO_ybtNOhi1HJJmVfeBPABKebb3o08Rs4B_ME55wY6J9bJR-PpxTsNr5zjUh3hD48UNOUZZNQgIjnDD63o7ghk21G5t4N_1kwy1DDxa10Ls/w1200-h630-p-k-no-nu/ZOMBIEACCOUNTCRISIS.jpg",
+      "image_width": 1024,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7133,
+      "source_id": 34,
+      "original_url": "https://www.catchkill9.dev/posts/intro-gvisor-a-kernel-in-go.html",
+      "title": "gVisor, a kernel in Go: what sits between untrusted code and Linux",
+      "summary": "A production-focused tour of gVisor internals reveals two subtle sandbox-hang mechanisms and their narrowly targeted upstream fixes.",
+      "ideas": [
+        "systrap traps application syscalls, then Sentry services them through shared contexts.",
+        "Stuck contexts require killing only the affected stub, not the entire Sentry.",
+        "A randomized stub-memory gap must include the spinning queue to avoid stack aliasing.",
+        "gVisor adds syscall round-trip overhead, especially for small reads and writes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a dense, production-informed explanation of gVisor's systrap architecture, including how application syscalls are intercepted, how contexts move between stubs and the Sentry, and how shared-memory layout affects correctness. The author provides firsthand evidence through two upstream fixes: narrowly terminating a stuck stub and shifting the spinning queue to prevent stack aliasing. It is efficient and unusually actionable, though much of the architectural overview is familiar and the article offers little performance or comparative security analysis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:54:14.313864",
+      "image_url": "https://www.catchkill9.dev/_astro/card.SwDXWRtG.jpg",
+      "image_width": 2400,
+      "image_height": 1256,
+      "image_alt": ""
+    },
+    {
+      "id": 7132,
+      "source_id": 34,
+      "original_url": "https://www.catchkill9.dev/posts/gvisor-spinning-queue-gap.html",
+      "title": "My fix for this hang was already running. The sandbox hung anyway.",
+      "summary": "A random memory gap can cause the spinning queue to alias a thread stack, leading to an uninterruptible 100% CPU spin that bypasses existing fail‑stop logic, and the fix shifts the queue address with the gap.",
+      "ideas": [
+        "Random gap can align queue with a thread stack, causing 100% CPU spin",
+        "Fix adds stubSpinningThreadQueueAddr += uintptr(gap) to shift queue",
+        "Hang occurs only when gap < stack area, ~1 in 100k chance",
+        "Fail‑stop missed because no stub took the context",
+        "Forced gap reproduces hang; upgrade resolves it"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "The article delivers original, low‑level evidence of a concrete memory‑layout bug, explains the exact mechanism that caused a 100% CPU hang, provides a reproducible fix, and includes measurable reproducibility data. Its relevance is high for engineers working on sandboxing, container runtimes, or Linux kernel‑level security. Limitations are minor: it assumes familiarity with gVisor internals and does not discuss broader deployment impacts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:54:08.840684",
+      "image_url": "https://www.catchkill9.dev/_astro/card.DPLXPrQb.jpg",
+      "image_width": 2400,
+      "image_height": 1256,
+      "image_alt": ""
+    },
+    {
+      "id": 7131,
+      "source_id": 34,
+      "original_url": "https://wietsevenema.eu/blog/2026/building-rebaseable-images-with-docker/",
+      "title": "Building rebaseable container images with Docker from scratch",
+      "summary": "Runtime rebasing works by separating the application layer into an empty scratch image that Cloud Run rebuilds onto a managed base image.",
+      "ideas": [
+        "Scratch stage provides empty image; Cloud Run rebases app layer onto managed base"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, hands‑on multi‑stage Dockerfile instructions, explains rebaseable seams, and demonstrates reproducible steps to build and deploy a scratch image on Cloud Run. It delivers original technical mechanisms and detailed commands that are highly useful for practitioners familiar with containers. While the focus is narrow and assumes prior Docker knowledge, the content remains directly relevant to sysadmin and development workflows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:51:05.964657",
+      "image_url": "https://wietsevenema.eu/blog/2026/building-rebaseable-images-with-docker/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Building rebaseable container images with Docker from scratch"
+    },
+    {
+      "id": 7130,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/newsyslog-one-line",
+      "title": "newsyslog Rotates a Log in One Line",
+      "summary": "FreeBSD’s single‑line newsyslog configuration rotates logs by renaming files, sending a signal, pausing, and compressing, achieving the same result as Debian’s multi‑line logrotate setup.",
+      "ideas": [
+        "One‑line newsyslog config rotates nginx logs, signals nginx, waits 10 seconds, then compresses."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, well‑documented mechanisms for log rotation, compares FreeBSD newsyslog with Debian logrotate in detail, includes source‑code references, security considerations, and historical context, making it highly valuable for a technical sysadmin audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:50:37.366766"
+    },
+    {
+      "id": 7129,
+      "source_id": 34,
+      "original_url": "https://unmitigatedrisk.com/2026/10/trusted-everywhere-impact-everywhere/",
+      "title": "Trusted Everywhere, Impact Everywhere",
+      "summary": "Certificate issuance share does not bound a CA's misissuance risk: any broadly trusted CA can impersonate any domain, so admitting local-sovereignty CAs imposes a global 'sovereignty tax' on all relying parties, as the eMudhra key-recovery incident demonstrated.",
+      "ideas": [
+        "eMudhra intermediate CA private key was literally the integer 4",
+        "Top five CAs issue 88.8% of unexpired web certificates",
+        "Issuance share places no bound on which names a CA can sign",
+        "Chrome blocked eMudhra intermediates via CRLSet within roughly 100 minutes",
+        "GoDaddy: 10.6% of certificates but only 1.44% of Firefox validations",
+        "30 government-operated CAs hold just 0.09% of certificates",
+        "13 of 16 historical WebPKI trust actions targeted non-US CAs",
+        "Local RA registration can deliver local service without global signing authority"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "An expert PKI analysis combining an original dataset (WebPKI Observatory market-share and geography snapshots, Firefox GLAM validation telemetry) with a concrete incident breakdown of the eMudhra weak-key event, including Chrome CRLSet timing (~100 minutes), OneCRL distribution, and CT-enforcement caveats. The core mechanism—that root-store admission grants global signing authority decoupled from issuance share—is non-obvious, directly relevant to web security and infrastructure, and clearly evidenced. Limitations: the essay is partly a policy argument, the telemetry caveats are carefully but lengthily hedged, and the content is truncated mid-list toward the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:49:06.630300"
+    },
+    {
+      "id": 7128,
+      "source_id": 34,
+      "original_url": "https://stoppels.ch/2026/10/22/multi-interpretable-tarballs.html",
+      "title": "Multi-interpretable tarballs",
+      "summary": "Tar archives can be parsed inconsistently, leading to differing extracted sources and hidden security risks.",
+      "ideas": [
+        "Size fields with leading NUL are interpreted as 0 by Python but as octal 2000 by GNU tar.",
+        "Whitespace before pax header keys causes Python to ignore them while GNU tar applies them.",
+        "Multiple pax or GNU long‑name headers for one entry lead to different name resolution between tools.",
+        "Symlink then regular file ordering can cause Python to overwrite the original file via the symlink.",
+        "Python's tarfile mis‑detects ustar magic bytes, exposing a bug (gh‑155629) that alters extracted paths."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides concrete, reproducible examples of how identical tarballs can be interpreted differently by GNU tar and Python's tarfile, exposing a subtle integrity risk for package managers. It includes detailed format explanations, real‑world CVE references, and practical mitigation (recording post‑extraction tree hashes). While a bit verbose, the technical depth and security relevance are high for Linux/sysadmin readers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:44:59.545267"
+    },
+    {
+      "id": 7127,
+      "source_id": 34,
+      "original_url": "https://stefanbuck.com/blog/building-an-ai-software-factory-on-cursor-cloud-agents",
+      "title": "Building an AI Software Factory on Cursor Cloud Agents",
+      "summary": "Up to ten cloud‑based Cursor agents autonomously convert prioritized GitHub tickets into pull requests within a capped workflow, with a supervisor handling state‑free coordination.",
+      "ideas": [
+        "Supervisor uses ticket hashes to nudge agents only on status changes.",
+        "Fleet limits concurrency to 10 agents to prevent PR overload.",
+        "Workers suggest tickets, but duplicate‑check runs only on worker‑initiated tickets."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides a detailed, reproducible architecture for orchestrating multiple Cursor agents, including concrete mechanisms such as hash‑based change detection, ticket queuing, and capacity limiting. It offers unusually specific technical insight into AI‑augmented development workflows while avoiding hype. Limitations include reliance on manual merging and occasional agent loops that reduce generality. Overall it delivers high‑value, operationally focused content for practitioners.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:44:31.564518",
+      "image_url": "https://stefanbuck.com/api/og?title=Building%20an%20AI%20Software%20Factory%20on%20Cursor%20Cloud%20Agents",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7126,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/fix-claude-code-repeated-529-overloaded-errors-in-a-headless-run/",
+      "title": "Fix: \"API Error: Repeated 529 Overloaded errors\" ends a long headless Claude Code run",
+      "summary": "It explains why Claude Code aborts after three 529 overload errors and provides three concrete remedies—fallback models, a retry watchdog, and adjustable backoff delays.",
+      "ideas": [
+        "Claude Code stops after three consecutive 529 errors regardless of CLAUDE_CODE_MAX_RETRIES.",
+        "Use --fallback-model to switch to a secondary model when the primary is overloaded.",
+        "Set CLAUDE_CODE_RETRY_WATCHDOG=1 with a max wait to have unattended runs wait out overloads.",
+        "Adjust CLAUDE_CODE_OVERLOADED_RETRY_BASE_DELAY_MS and _MAX_DELAY_MS to stretch retry windows."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible fixes for Claude Code’s 529 overload errors, including specific CLI flags, environment variables, and backoff tuning, with code snippets and version‑specific details. It is directly applicable to LLM‑agent tooling and CI pipelines, offering novel operational insight beyond typical documentation. Minor padding and promotional language are absent, making it highly efficient for a technical audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:44:17.794086",
+      "image_url": "https://startdebugging.net/og/2026/10/fix-claude-code-repeated-529-overloaded-errors-in-a-headless-run.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: \"API Error: Repeated 529 Overloaded errors\" ends a long headless Claude Code run - Start Debugging"
+    },
+    {
+      "id": 7125,
+      "source_id": 34,
+      "original_url": "https://natestraub.github.io/2026/10/21/out-with-the-goog-in-with-the-muse/",
+      "title": "Out with the GOOG in with the Muse",
+      "summary": "A custom, minimal Kotlin launcher built with AI assistance can cut memory usage and cold‑start latency while replacing the default Google Assistant with Meta’s Muse.",
+      "ideas": [
+        "Launcher memory dropped from 356 MB to 23–27 MB after optimization",
+        "Cold‑start time fell from ~5 s to ~365 ms",
+        "Speech‑to‑text via Meta costs $0.18 per hour of audio"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete performance measurements, a reproducible optimization workflow, and detailed explanations of mechanisms such as caching and memory swapping, which meet the high‑value criteria. It also includes implementation specifics that a technically capable reader can apply. The main limitation is its niche Android‑TV focus, which reduces relevance to broader infrastructure audiences.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-24T05:30:50.220338",
+      "image_url": "https://natestraub.github.io/assets/images/launcher-home.jpg",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": ""
+    },
     {
       "id": 7124,
       "source_id": 34,
@@ -21,7 +297,11 @@
       "rating_reason": "The article delivers a concrete, novel observation about DynamoDB's vector read billing change, supported by measurements and architectural details relevant to database engineers. It is highly technical and directly serves readers interested in infrastructure and AI vector storage, though it includes some personal context and speculation that slightly dilute focus.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-24T05:28:20.674345"
+      "published_at": "2026-10-24T05:28:20.674345",
+      "image_url": "https://martinhicks.dev/images/articles/parity-suite-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 7123,
