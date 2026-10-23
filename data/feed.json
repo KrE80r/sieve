@@ -1,7 +1,73 @@
 {
-  "updated_at": "2026-10-23T06:00:00.790575+00:00",
-  "total_items": 1105,
+  "updated_at": "2026-10-23T07:00:00.177550+00:00",
+  "total_items": 1107,
   "items": [
+    {
+      "id": 7097,
+      "source_id": 4,
+      "original_url": "https://kb.isc.org/docs/cve-2026-94300",
+      "title": "Documentation Index",
+      "summary": "BIND deployments using GSS-TSIG should upgrade to 9.20.30 or 9.21.27 because replayed signed UDP traffic may enable remote code execution.",
+      "ideas": [
+        "ISC exposes a machine-readable documentation catalog at https://kb.isc.org/llms.txt.",
+        "Replaying captured GSS-TSIG UDP messages can corrupt memory in BIND's named process.",
+        "The negotiated TSIG key must remain valid when the signed message is replayed.",
+        "Attacker-controlled queries may combine with replay to enable remote code execution.",
+        "Successful exploitation can also terminate the affected BIND process.",
+        "The advisory rates the flaw High severity with CVSS 3.1 score 8.1.",
+        "Affected branches include 9.11.0-9.18.50, 9.20.0-9.20.29, and 9.21.0-9.21.26.",
+        "Supported Preview releases through 9.20.29-S1 are also affected.",
+        "ISC knows of no workaround for the GSS-TSIG memory-corruption vulnerability.",
+        "ISC is unaware of any active exploits at publication.",
+        "Operators should upgrade to BIND 9.20.30 or 9.21.27.",
+        "The supported preview branch receives fix 9.20.30-S1.",
+        "ISC patches only supported branches, leaving affected 9.11 deployments without listed fixes.",
+        "Dave Aitel at OpenAI independently discovered and reported the vulnerability."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 81,
+      "rating_reason": "This primary-source advisory provides concrete value by explaining a remotely exploitable BIND memory-corruption vulnerability, listing affected branches, assigning CVSS 8.1 severity, and specifying patched releases. It also offers a machine-readable documentation index and clearly states that no workaround or active exploitation is known. Navigation, cookie controls, legal text, and unrelated vulnerability listings substantially reduce the content's value density, while the generic title obscures the advisory's primary purpose.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-23T16:35:19.508820"
+    },
+    {
+      "id": 7096,
+      "source_id": 4,
+      "original_url": "https://berardinellidaniele.com/posts/php2shell/",
+      "title": "Daniele Berardinelli",
+      "summary": "PHP2Shell is exploitable but not universally so—leaked memory and a cookie leak are not an ASLR bypass without identified code pointers, so defenders should patch immediately, apply config mitigations, and distrust public PoCs and alarmist telemetry.",
+      "ideas": [
+        "PHP2Shell chains two core PHP bugs (CVE-2026-109618/109619) enabling unauthenticated RCE",
+        "Leaked heap bytes are not an ASLR bypass; identified code pointers and RVAs must fingerprint builds",
+        "Two unexplained leaked addresses can't identify a build; their difference mixes image and heap randomness",
+        "Crafted multipart bodies bypass post_max_size by shrinking wire representation versus in-memory PHP structures",
+        "Session upload progress publishes stale state reachable on surviving workers across requests",
+        "Overwriting a destructor callback with zif_handlers fails due to incompatible calling conventions",
+        "Public PoCs are unreliable slop; one popular exploit was a scam backing a meme coin rug pull",
+        "Multipart requests in logs prove scanning, not success; review logs from 17 October pre-disclosure attempts",
+        "Exploit unreliability isn't mitigation; attackers only need profiles for common builds",
+        "Mitigate via updates or set session.upload_progress.enabled=0, disable fatal backtraces, restart workers",
+        "AI prompting without domain guidance produced thousands of nonworking exploits and needless panic"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is expert-level security analysis with high value density: it provides root-cause explanations for both CVE-2026-109618 and CVE-2026-109619, mathematical reasoning on why leaked cookie memory alone does not beat ASLR, concrete mitigations (updating to 8.5.12/8.4.27/8.3.36/8.2.35, disabling session.upload_progress and fatal_error_backtraces, restarting workers), and actionable threat intelligence including AWS MadPot pre-disclosure exploitation attempts on 17 October warranting log review. It also delivers practical warnings against circulating fake PoCs and scams, and corrects widespread misinformation (telemetry requests are evidence of scanning, not successful RCE). A minor deduction applies to the opinionated 'AI killed responsible disclosure' tangent, which is contextually relevant but narrative rather than technical.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-23T16:34:49.593650",
+      "image_url": "https://berardinellidaniele.com/assets/php2shell.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
     {
       "id": 7095,
       "source_id": 36,
