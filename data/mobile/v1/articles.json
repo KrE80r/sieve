@@ -1,11 +1,136 @@
 {
   "schema_version": 1,
-  "sequence": 1489,
-  "revision": "sha256:210a59d183e92eb93e8098b97168e81b414d63ff00130561d4ddb4d6b97acb5c",
-  "generated_at": "2026-10-23T01:00:00.194698+00:00",
+  "sequence": 1490,
+  "revision": "sha256:7a99273e48428adaf028d1ba12dc86df92ab8517f66f3e51b5f64da4aed8fd81",
+  "generated_at": "2026-10-23T02:00:00.184053+00:00",
   "complete": true,
-  "total_items": 1103,
+  "total_items": 1109,
   "items": [
+    {
+      "article_id": "article:7071",
+      "original_url": "https://mydbanotebook.org/posts/region-a-lesson-in-data-integrity/",
+      "title": "Region : a lesson in data integrity",
+      "summary": "A practical guide to evolving check constraints on large PostgreSQL tables using the NOT VALID + VALIDATE pattern, with a comparative analysis of domains, enums, check constraints, and reference tables.",
+      "rating": 88,
+      "rating_reason": "Highly substantive PostgreSQL engineering article with first-hand production experience on a 24M-row table. It delivers a sharp comparison of four constraint approaches, explains the NOT VALID + VALIDATE two-transaction pattern for evolving constraints without long ACCESS EXCLUSIVE locks, clarifies lock semantics, and honestly documents an unimplemented PostgreSQL optimization (scan-avoidance for check constraints on constant-default columns) with references to pgsql-hackers. Minor padding from personal narrative keeps it just shy of exceptional.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-23T12:24:17.559967+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-22T12:24:17.559967+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7070",
+      "original_url": "https://mysticmind.dev/reversemarkdown-75m-downloads-630-halves-memory/",
+      "title": "ReverseMarkdown passes 7.5M downloads; 6.3.0 halves memory on real-world pages",
+      "summary": "6.3.0 cuts memory use by up to 58% during HTML‑to‑Markdown conversion by processing pages in a single linear pass and writing output directly to a TextWriter.",
+      "rating": 88,
+      "rating_reason": "The post delivers original performance data showing 50‑58% allocation cuts and modest timing gains on real‑world HTML conversions, explains a linear‑pass fix that eliminates quadratic copying, and adds TextWriter overloads that avoid full‑string allocation. It is highly relevant to developers building RAG pipelines, but the gains are limited to certain Markdown flavors and speed improvements are modest for many pages.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-23T12:24:13.487896+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-22T12:24:13.487896+00:00",
+      "image": {
+        "url": "https://mysticmind.dev/images/blog/reversemarkdown-75m-downloads-cover.jpeg",
+        "width": 1200,
+        "height": 630,
+        "alt": "ReverseMarkdown passes 7.5M downloads; 6.3.0 halves memory on real-world pages"
+      }
+    },
+    {
+      "article_id": "article:7069",
+      "original_url": "https://mjtsai.com/blog/2026/10/21/php2shell/",
+      "title": "PHP2Shell",
+      "summary": "PHP2Shell is an urgent remote code execution flaw in PHP that can be mitigated by immediate patching and temporary config changes such as disabling multipart uploads.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, actionable details on a critical PHP vulnerability, including version-specific patches, exploit timing, and configuration stop‑gaps, showing deep technical relevance to security and programming. It provides original evidence of exploitation attempts and verified mitigation steps, though it includes some speculation and click‑bait framing that prevents a perfect score.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-23T12:22:11.750008+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-22T12:22:11.750008+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7068",
+      "original_url": "https://kirillplatonov.com/posts/protect-shopify-theme-app-extensions/",
+      "title": "Protect your Shopify theme app extensions from script injection",
+      "summary": "Attackers can hijack Shopify checkout by injecting malicious scripts through public metafields or app configuration, and developers should migrate to app‑reserved namespaces and escape all rendered values.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, original technical analysis of script‑injection attacks on Shopify theme extensions. It explains multiple exploit paths and provides well‑supported mitigation steps with code examples.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-23T12:03:09.526332+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-22T12:03:09.526332+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7067",
+      "original_url": "https://jeff-mitchell.dev/blog/enter-mxc-part-2-the-fence-i-didnt-build/",
+      "title": "Enter MXC, Part 2: The Fence I Didn't Build",
+      "summary": "Agent containment must police effects (processes, files, tool results, environment) rather than just tool-call sites, because writes are delayed execution, tool results exfiltrate through the provider, and inherited env vars carry keys inside the fence.",
+      "rating": 87,
+      "rating_reason": "Exceptional practitioner writing on LLM agent containment. The author identifies a genuinely non-obvious category error: auditing process-spawn sites while ignoring file-based delayed execution via git hooks, envrc, or gitconfig, which renders process-level fences theatrical. Multiple other sharp insights (tool-result exfiltration through the model provider, inherited API keys inside the fence, CIDR-as-named-host failure) are each concrete, falsifiable, and well-supported. The article is also unusually honest about scope, explicitly stating what the threat model doesn't cover, and openly carries unresolved technical questions. Minor deductions: phase plan and tool specifics (MXC SDK, AppContainer, MSYS) limit the article's universality slightly, and some of the value depends on the author shipping the follow-up.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-23T11:48:21.614184+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-22T11:48:21.614184+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7066",
+      "original_url": "https://ilikekillnerds.com/2026/10/22/stop-mocking-and-start-stubbing/",
+      "title": "Stop Mocking and Start Stubbing",
+      "summary": "Prefer stubs that verify the final invoice amount over mocks that assert on individual service calls, making tests less brittle and more reflective of actual behavior.",
+      "rating": 85,
+      "rating_reason": "The article concretely distinguishes stubs from mocks, gives a clear invoice example, and references empirical data from a 2026 MSR paper showing agent‑driven test commits favor mocks. It offers practical guidance to prefer stubs/real implementations, reducing brittleness. The value is somewhat limited by the familiar nature of the mock‑vs‑stub debate, but the data and concrete recommendations raise it above introductory material.",
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-10-23T11:43:22.764887+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-11-22T11:43:22.764887+00:00",
+      "image": {
+        "url": "https://ilikekillnerds.com/img/fallback-og-ms-paint.png",
+        "width": 1536,
+        "height": 1024,
+        "alt": "Stop Mocking and Start Stubbing"
+      }
+    },
     {
       "article_id": "article:7065",
       "original_url": "https://frankdenneman.ai/2026-10-22-anatomy-of-an-agent-request/",
