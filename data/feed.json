@@ -1,7 +1,133 @@
 {
-  "updated_at": "2026-10-24T19:00:00.189989+00:00",
-  "total_items": 1146,
+  "updated_at": "2026-10-24T21:00:00.224351+00:00",
+  "total_items": 1151,
   "items": [
+    {
+      "id": 7175,
+      "source_id": 34,
+      "original_url": "https://www.ridingthecrest.com/blog/2026/10/22/copilot-shaarli-azure-container-apps-php2shell.html",
+      "title": "Using GitHub Copilot to stand up Shaarli on Azure Container Apps and patch the PHP2Shell vuln",
+      "summary": "Use immutable image digests and pre‑upgrade snapshots to safely patch CVE‑2026‑109618/19 while preserving data integrity in a Shaarli deployment on Azure Container Apps.",
+      "ideas": [
+        "Bash scripts automate creation, cloning, deletion of Shaarli on Azure Container Apps with Azure Files",
+        "Immutable image digest pinning ensures the exact patched PHP 8.4.27 container is deployed",
+        "Runtime exec confirmed PHP 8.4.27 version inside the Azure revision",
+        "File digest comparison showed only a 7‑byte update‑check file changed after rollout",
+        "Snapshot must be taken before image change to guarantee data consistency"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article supplies concrete scripts, reproducible deployment steps, and verifiable evidence of patching a critical PHP vulnerability, meeting high technical relevance and substance. It also discloses limitations such as snapshot timing and incomplete FPM verification, preventing a perfect score. Consequently it offers substantial, actionable knowledge for security‑focused engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:40:56.347574"
+    },
+    {
+      "id": 7174,
+      "source_id": 34,
+      "original_url": "https://www.in2it.be/2026/10/critical-php-vulnerabilities-cve-2026-109618-and-cve-2026-109619-after-patching/",
+      "title": "Critical PHP vulnerabilities (CVE-2026-109618 and CVE-2026-109619): after patching",
+      "summary": "Patched PHP introduces hard memory limits and altered diagnostics, requiring FPM-specific limits, logging, input restrictions, and explicit verification rather than version-string checks.",
+      "ideas": [
+        "Patched PHP separates soft memory limits from an immediate hard worker kill.",
+        "FPM exit code 137 must be distinguished from kernel OOM SIGKILL.",
+        "Early per-request PHP INI overrides can expose vulnerable diagnostic paths.",
+        "Verify patched PHP through memory_hard_limit_percent, not potentially stale version strings.",
+        "Bound request bodies and nesting consistently across PHP and the web server."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, actionable PHP/FPM hardening guidance, including soft versus hard memory limits, hard-kill observability, input bounds, removal of vulnerable per-request overrides, and a patch-verification command. Distinguishing FPM exit code 137 from kernel SIGKILL and explaining that distribution version strings may remain stale are especially useful operationally. The guidance relies primarily on cited advisories and practitioner assertions rather than original reproductions or measurements, while the AI-assisted provenance and some generic recommendations modestly limit confidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:36:41.102591",
+      "image_url": "https://www.in2it.be/wp-content/uploads/2020/10/in2it-sponsoring-elephpant.jpg",
+      "image_width": 1598,
+      "image_height": 600,
+      "image_alt": ""
+    },
+    {
+      "id": 7173,
+      "source_id": 34,
+      "original_url": "https://www.gilesthomas.com/2026/10/rmsnorm",
+      "title": "RMSNorm",
+      "summary": "RMSNorm normalizes by dividing each vector by its root‑mean‑square, enabling lower‑cost training while preserving comparable model performance.",
+      "ideas": [
+        "RMSNorm replaces LayerNorm’s mean and variance with RMS scaling.",
+        "It eliminates mean centering, saving ~3*emb_dim additions per vector.",
+        "No bias shift is applied, simplifying the normalization step.",
+        "PyTorch implementation uses eps before sqrt to avoid divide‑by‑zero.",
+        "Experiments show comparable loss with reduced computational overhead."
+      ],
+      "labels": [
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete derivations, code, and performance comparison that illustrate how RMSNorm replaces LayerNorm’s mean‑centering with RMS scaling, reducing operations. It explains the mathematical trade‑off, shows a PyTorch implementation, and reports that training loss remains comparable, making the insight technically substantive and directly useful. However, it lacks rigorous empirical results and focuses mainly on theoretical savings rather than large‑scale validation, so it falls short of exceptional rarity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:35:01.933444"
+    },
+    {
+      "id": 7172,
+      "source_id": 34,
+      "original_url": "https://www.ceondo.com/ecte/2026/10/chemeo-downtime-october-2026/",
+      "title": "Cheméo Was Down for an Hour",
+      "summary": "Intermittent outages were caused by a failing network link, not server failure, and the upcoming hardware replacement aims to eliminate recurring connectivity drops.",
+      "ideas": [
+        "247 link drops recorded since July, many at one‑tenth normal speed.",
+        "Only the network link failed; the server stayed up and data remained intact.",
+        "OVH reboot restored connectivity but did not fix the underlying hardware flaw."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The post provides concrete, well‑documented evidence of network‑link failures, timing, speed degradation, and root‑cause analysis, along with a clear mitigation plan. It reveals a rare operational incident with measurable data and firsthand engineering insight, though it remains focused on a single service rather than a breakthrough discovery.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:34:09.245251",
+      "image_url": "https://www.ceondo.com/images/2026/chemeo-downtime-october-2026.jpg",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
+    {
+      "id": 7171,
+      "source_id": 34,
+      "original_url": "https://vznjs.github.io/vx/blog/one-run-on-your-own-runners/",
+      "title": "$12k a year saved with vx vs Nx Cloud",
+      "summary": "vx DTE can run CI for free using its own orchestrated workers, eliminating the $12k annual cost seen with Nx Cloud Team.",
+      "ideas": [
+        "vx DTE costs $0 CI vs $12,192 annual for Nx Cloud Team",
+        "Relay transports encrypted frames, stores no messages or state",
+        "Scheduler packs tasks using graphene, tetris heuristics for minimal idle time",
+        "Warm‑up and worker pooling times are measured and documented"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete CI cost data, detailed architecture of vx DTE's relay, caching, and task scheduling, and benchmarks that clearly outperform Nx Cloud. It presents original measurements and mechanisms, but its niche focus and alpha status limit universal relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:32:28.318638",
+      "image_url": "https://vznjs.github.io/vx/blog/covers/one-run-on-your-own-runners.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "$12k a year saved with vx vs Nx Cloud"
+    },
     {
       "id": 7170,
       "source_id": 34,
@@ -23,7 +149,11 @@
       "rating_reason": "The piece delivers original calculations linking DeepInfer’s disclosed token volume, cache hit rates, and GPU utilization, revealing the economic centrality of caching. It supplies concrete mechanisms, measurements, and plausible alternative engine configurations, while openly acknowledging uncertainties.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-25T05:28:35.758679"
+      "published_at": "2026-10-25T05:28:35.758679",
+      "image_url": "https://subhadipmitra.com/assets/img/og/deepinfer-cache-is-the-business.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 7169,
@@ -46,7 +176,11 @@
       "rating_reason": "This is a focused, source-grounded explanation of a Dart packaging lint, including the analyzer implementation, dependency-resolution mechanism, public-versus-dev dependency rules, and a reproducible set of edge cases. It goes beyond introductory advice with measured behavior, concrete diagnostics, Flutter-specific constraints, workspace behavior, and publication failures. The main limitation is its narrow Dart-specific scope and dependence on the stated toolchain versions, while some findings are natural extensions of documented dependency hygiene.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-25T05:28:11.011894"
+      "published_at": "2026-10-25T05:28:11.011894",
+      "image_url": "https://startdebugging.net/og/2026/10/what-is-the-depend-on-referenced-packages-lint-in-dart.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What is the depend_on_referenced_packages lint in Dart and why does it fire on transitive imports? - Start Debugging"
     },
     {
       "id": 7168,
