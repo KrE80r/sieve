@@ -1,7 +1,618 @@
 {
-  "updated_at": "2026-10-24T18:00:00.401359+00:00",
-  "total_items": 1122,
+  "updated_at": "2026-10-24T19:00:00.189989+00:00",
+  "total_items": 1146,
   "items": [
+    {
+      "id": 7170,
+      "source_id": 34,
+      "original_url": "https://subhadipmitra.com/blog/2026/deepinfer-cache-is-the-business/",
+      "title": "DeepInfer: The Engine Is Open. The Cache Is the Business.",
+      "summary": "DeepInfer’s numbers imply roughly 97 % cache hit rates and about 1,700 GPUs to sustain 155 trillion tokens per day at $38 per GPU‑hour.",
+      "ideas": [
+        "155T tokens/day at $38/GPU‑hr implies ~1,700 GPUs.",
+        "Cache hit rate must be ~97 % to balance prefill and decode.",
+        "Output tokens are only ~0.5 % of total served tokens.",
+        "100 PiB cache can back 6–8 k GPUs at 14.4 TB per GPU.",
+        "Two viable readings: ~2k GPUs with hot decode or ~7k GPUs with cooler decode."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece delivers original calculations linking DeepInfer’s disclosed token volume, cache hit rates, and GPU utilization, revealing the economic centrality of caching. It supplies concrete mechanisms, measurements, and plausible alternative engine configurations, while openly acknowledging uncertainties.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:28:35.758679"
+    },
+    {
+      "id": 7169,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/what-is-the-depend-on-referenced-packages-lint-in-dart/",
+      "title": "What is the depend_on_referenced_packages lint in Dart and why does it fire on transitive imports?",
+      "summary": "A directly imported package should be explicitly declared because transitive resolution provides neither stable version constraints nor a reliable dependency boundary.",
+      "ideas": [
+        "Transitive dependencies can resolve today yet disappear after upgrades.",
+        "Public Dart code requires runtime dependencies, not dev-only packages.",
+        "The lint checks only each directive's primary URI.",
+        "Pub publication enforces dependency placement more strictly than analysis.",
+        "Flutter SDK pins can make handwritten constraints unsatisfiable.",
+        "Workspace members cannot safely rely on sibling packages' dependencies."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a focused, source-grounded explanation of a Dart packaging lint, including the analyzer implementation, dependency-resolution mechanism, public-versus-dev dependency rules, and a reproducible set of edge cases. It goes beyond introductory advice with measured behavior, concrete diagnostics, Flutter-specific constraints, workspace behavior, and publication failures. The main limitation is its narrow Dart-specific scope and dependence on the stated toolchain versions, while some findings are natural extensions of documented dependency hygiene.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:28:11.011894"
+    },
+    {
+      "id": 7168,
+      "source_id": 34,
+      "original_url": "https://ruxu.dev/articles/ai/build-an-ai-agent-sessions-2/",
+      "title": "Build a Basic AI Agent From Scratch: Session Management II",
+      "summary": "Session compaction reduces context size by summarizing older turns while preserving the full transcript on disk, using strict token‑budget validation and safe split points to keep tool results intact.",
+      "ideas": [
+        "Split only at latest user-turn boundary to keep tool calls and results paired.",
+        "Compaction must shrink token count or it aborts and retains original context.",
+        "Fork creates a deep copy with new ID, preserving working context and history.",
+        "Archive flags sessions for exclusion without deletion, requiring --yes to delete.",
+        "User‑provided titles override model summaries and aid session identification."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers concrete, non‑obvious implementation details for session compaction, branching, archiving, and export, including token‑budget calculations, safe split points, LLM‑call safety checks, and deep‑copy semantics. It provides original mechanisms and trade‑offs, but lacks empirical measurements and contains promotional framing (e.g., \"Build a Basic AI Agent From Scratch\"), preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:25:00.877759"
+    },
+    {
+      "id": 7167,
+      "source_id": 34,
+      "original_url": "https://notsocommonthoughts.com/blog/puzzle-machine/",
+      "title": "The Puzzle Machine",
+      "summary": "The system uses three compute hoppers, an LLM brain, and an inspection head to generate and verify 1,010 chess puzzles, revealing a token bottleneck as the main cost driver.",
+      "ideas": [
+        "Hoppers yield 1.7 candidates per worker‑minute; LLM consumes tokens, making them the bottleneck."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article explains a novel pipeline for generating and verifying chess mate puzzles with concrete architectural details, measurements, and token‑vs‑compute trade‑offs, providing significant technical substance and relevance to AI engineering. It scores high on relevance and novelty but remains specialized, missing the broader impact that would push it to exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:20:48.692045",
+      "image_url": "https://notsocommonthoughts.com/images/puzzle-machine/machine.webp",
+      "image_width": 1316,
+      "image_height": 1153,
+      "image_alt": "The Puzzle Machine - NSCT"
+    },
+    {
+      "id": 7166,
+      "source_id": 34,
+      "original_url": "https://nesbitt.io/2026/10/24/this-week-in-package-management.html",
+      "title": "This Week in Package Management: 24 October 2026",
+      "summary": "Several package ecosystems suffered serious supply-chain and trust failures, and the article identifies their mechanisms, affected versions, and practical mitigations.",
+      "ideas": [
+        "Compromised eMudhra intermediates exposed recoverable keys, forcing widespread trust-store updates.",
+        "A malicious LiteLLM release collected credentials through Python startup hooks without imports.",
+        "npm Trusted Publishing confused repository names with immutable IDs, exposing over 1,500 packages.",
+        "Attacker-controlled Ruby regex patterns remained exploitable despite timeout and length limits.",
+        "pnpm registry metadata substitution could bypass per-package allowBuilds execution rules.",
+        "Source-link requirements blocked 87.7–99.9% of known malicious npm and PyPI packages.",
+        "Vibenix built 95.3% of packaging tasks, but only 47% initially worked correctly."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This dense package-management roundup reports concrete, high-impact mechanisms rather than generic news: recoverable private keys in compromised eMudhra intermediates, credential-stealing startup hooks in a malicious LiteLLM release, npm Trusted Publishing identity confusion affecting more than 1,500 packages, and a pnpm metadata substitution that bypassed allowBuilds rules. Specific affected versions, mitigations, and ecosystem changes make it actionable for maintainers and operators. The main limitation is that most entries briefly summarize announcements or linked research, so independent verification and deeper mechanism analysis are limited.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:19:23.000835",
+      "image_url": "https://nesbitt.io/images/boxes.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7165,
+      "source_id": 34,
+      "original_url": "https://mgratzer.com/posts/reforging-the-workflow/",
+      "title": "Reforging the Workflow: Where the Human Goes When Agents Ship",
+      "summary": "The key insight is that structuring the problem and embedding guardrails enables trust in autonomous agents, shifting human effort from diff review to issue shaping and risk verification.",
+      "ideas": [
+        "Agents now merge PRs autonomously after CI and risk checks.",
+        "Guardrails combine repository conventions with Forge‑defined skills.",
+        "Land evaluates PR risk in fresh context and can auto‑merge low‑risk changes.",
+        "Review focus shifted to shaping issues and monitoring drift."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides a concrete, evidence‑rich workflow for human‑in‑the‑loop AI coding, detailing guardrails, experiments, and a risk‑based PR review system. It is directly relevant to AI engineering, software‑engineering practice, and workflow optimization. Its impact is slightly diluted by a focus on personal projects and occasional narrative padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:16:20.029074",
+      "image_url": "https://mgratzer.com/posts/reforging-the-workflow/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7164,
+      "source_id": 34,
+      "original_url": "https://m-compressors.github.io/2026/brotli-cve-2026-111497-mbrotli/",
+      "title": "CVE-2026-111497 in the Brotli decoder, and why mbrotli is not affected",
+      "summary": "CVE‑2026‑111497 is an out‑of‑bounds write in the C Brotli decoder caused by unchecked block‑switch returns, fixed in Brotli 1.2.1, while Rust‑based mbrotli is safe.",
+      "ideas": [
+        "Unchecked return value in fast path caused state corruption in Brotli 1.0.3‑1.2.0 decoders.",
+        "Fix changes block‑switch functions to return error codes and adds BROTLI_SAFE_WITH_STATUS checks.",
+        "Rust mbrotli forbids unsafe code, so it cannot write out of bounds, only reject invalid streams.",
+        "Upgrade all binaries linking libbrotli to 1.0.10, 1.1.1, or 1.2.1; mbrotli needs version 0.5.17 for parity."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a detailed, reproducible analysis of CVE‑2026‑111497 with concrete code‑path explanation, version impact, and exact fix details, which is highly relevant to security‑focused developers and sysadmins. It also explains why the Rust mbrotli implementation remains safe, providing practical upgrade guidance. The content is concise, evidence‑based, and free of hype, though it is narrowly scoped to this vulnerability, limiting broader novelty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:14:22.721150",
+      "image_url": "https://m-compressors.github.io/assets/img/og/brotli-cve-2026-111497-mbrotli.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7163,
+      "source_id": 34,
+      "original_url": "https://joeywang.github.io/posts/agentic-sdlc-approval-recovery-evidence/",
+      "title": "Agentic SDLC: Approval, Recovery, and Evidence Contracts",
+      "summary": "Approval must be tightly bound to the exact candidate, action, and target, with independent evidence to prevent stale authorizations.",
+      "ideas": [
+        "Approval must bind to specific candidate, action, and target, not just generic state."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, actionable contracts for approvals, evidence, and recovery, embedding precise YAML schemas and workflow diagrams that address critical failure modes in agentic SDLCs. It is highly relevant to AI engineering and software development but stays focused on technical mechanisms rather than hype, offering original mechanisms and clear limitations. The depth of detail and novelty justify a strong score, though it lacks concrete deployment results or measured productivity gains.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:08:22.090740"
+    },
+    {
+      "id": 7162,
+      "source_id": 34,
+      "original_url": "https://helderberto.com/posts/my-ai-coding-workflow-v3",
+      "title": "My AI Coding Workflow, v3",
+      "summary": "Replace ad‑hoc prompts with reusable, checked skills and guardrails to create a reproducible, self‑improving AI‑assisted development pipeline.",
+      "ideas": [
+        "Commands like `/hb:grill dark mode` replace manual AI prompts.",
+        "Guardrails such as `/hb:check` enforce lint, types, and test failures.",
+        "Debugging requires a reproducible bug command before hypothesis generation.",
+        "Retro suggests environment changes, not code modifications.",
+        "All workflow steps are single‑command actions in one repo.",
+        "Updating a step consists of a single commit to agent‑skills.",
+        "Generated specs and tickets are stored automatically in structured files.",
+        "The flow self‑improves via retro‑driven configuration updates."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, reproducible AI‑assisted development workflow using explicit commands, guardrails, and a self‑improving debugging loop. It offers original mechanisms and practical implementation details that are valuable to technical readers. However, the workflow is specific to the author’s environment and may not generalize broadly without adaptation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:03:00.120174",
+      "image_url": "https://helderberto.com/posts/my-ai-coding-workflow-v3/opengraph-image?a2e019f8726ca2cd",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Helder Burato Berto"
+    },
+    {
+      "id": 7161,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/10/23/who-wrote-this-byte",
+      "title": "Who wrote this byte?",
+      "summary": "rewind blame identifies the exact program that introduced a byte change, enabling precise debugging of nondeterministic build outputs.",
+      "ideas": [
+        "Python set iteration order varies with random seed, causing reproducible‑build failures.",
+        "Rewind records write/open events per step, allowing retroactive byte provenance.",
+        "Sorting the dependency list eliminates nondeterministic output across seeds and directory orders."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a practical, first‑hand method for pinpointing the source of nondeterministic byte differences in builds, backed by concrete examples, kernel‑level tracing, and reproducible‑build theory. It delivers actionable insight for engineers aiming for bit‑reproducible packages, though it assumes familiarity with Nix and virtualization, limiting appeal for broader audiences.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:01:09.105009"
+    },
+    {
+      "id": 7160,
+      "source_id": 34,
+      "original_url": "https://gctl.io/blog/2026/sandboxing-untrusted-ai-agents-on-linux/",
+      "title": "Sandboxing untrusted AI agents on Linux",
+      "summary": "A thorough guide to building layered Linux sandboxes for AI agents, covering current mechanisms, pitfalls, and emerging microVM‑based solutions.",
+      "ideas": [
+        "Landlock ABI 4 (Linux 6.7) adds TCP bind/connect rules, expanding its sandbox scope.",
+        "Seccomp‑notify lets a userspace supervisor make dynamic, TOCTOU‑safe syscall decisions.",
+        "MicroVMs (Firecracker, Kata) provide full‑kernel isolation with ~100 ms cold‑start times.",
+        "io_uring can bypass naive seccomp network blocks, so filters must cover it explicitly.",
+        "Unprivileged user namespaces increase attack surface and are disabled on many hardened distros."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers a deep, implementation‑level survey of Linux sandboxing techniques specifically for untrusted AI coding agents, including concrete layer stacks, known kernel‑level pitfalls, and recent tooling (Landlock ABI updates, seccomp‑notify, Sandlock, Firecracker). It balances breadth with detailed mechanisms and practical advice, making it highly relevant and actionable for a technically capable reader. The only drawbacks are its length and reliance on very recent (2026) kernel features that may not be widely available yet.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:00:51.616954"
+    },
+    {
+      "id": 7159,
+      "source_id": 34,
+      "original_url": "https://federicobruzzone.github.io/posts/see-you-at-the-2026-us-llvm-developers-meeting.html",
+      "title": "See You at the 2026 US LLVM Developers' Meeting",
+      "summary": "Most performance gains in the -O3 pipeline come from a small core of passes, and the pipeline’s behavior is non‑monotonic and back‑loaded.",
+      "ideas": [
+        "Pipeline speedup primarily from a small core of passes.",
+        "Pipeline shows non‑monotonic, back‑loaded performance growth.",
+        "Empirical per‑pass measurements across 30 PolyBench kernels."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, per‑pass empirical study of the LLVM -O3 optimization pipeline, demonstrating non‑monotonic behavior and that a small core of passes accounts for most speedup, which is directly relevant and useful to compiler engineers; however, methodological details are sparse and the focus remains niche, limiting broader applicability. It delivers high technical relevance and novelty but lacks extensive supporting evidence and depth for a general audience. The insight is valuable yet confined to a specialized community.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T05:00:08.841835"
+    },
+    {
+      "id": 7158,
+      "source_id": 34,
+      "original_url": "https://davevoyles.com/posts/the-match-that-came-back-no/",
+      "title": "The match that came back as no",
+      "summary": "Agents must distinguish between a true “not found” result and a broken search that exited with an error.",
+      "ideas": [
+        "Exit status of grep may be corrupted by SIGPIPE when pipefail is on."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers a precise, reproducible failure mode in shell guards, explaining the role of pipefail and SIGPIPE. It offers concrete fixes, yet the final strict solution overlooks some edge cases, limiting its completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:55:08.957445",
+      "image_url": "https://davevoyles.com/images/posts/the-match-that-came-back-no-cover.png",
+      "image_width": 900,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 7157,
+      "source_id": 34,
+      "original_url": "https://captnemo.in/blog/2026/10/23/emsign-revoked-gov-in/",
+      "title": "Indian government sites are serving revoked eMudhra certificates",
+      "summary": "An original scan of 8,947 Indian government domains found 156 still serving revoked eMudhra certificates, exposing that Chrome and Safari fail to enforce these revocations while Firefox blocks them, and contradicting official claims of limited impact.",
+      "ideas": [
+        "156 Indian government hosts still served revoked eMudhra certificates days after revocation",
+        "Chrome CRLSet omitted all 6,235 entries on the DV/G2A-1 CRL, so Chrome loads revoked certs",
+        "Safari iOS only checks OCSP for EV certificates, skipping revocation on most sites",
+        "MeitY's 'limited, short interval' claim false: weak keys exposed 18 months, 30k certs migrated",
+        "eMudhra revoked 9,356 certificates for missing certificate-type policy OIDs per its CP/CPS"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is original, evidence-driven PKI security research: the author independently scanned 8,947 hosts in the IGOD directory, documented 156 Indian government sites still serving revoked eMudhra certificates with serials, CRL references, and SSL Labs scans, and disproved MeitY's 'limited/short' impact claim using concrete timelines (flawed keys live since April 2025; ~30,000 certs needing migration). The analysis of differential browser revocation enforcement — Firefox CRLite blocking the sites, Chrome's CRLSet missing all 6,235 DV/G2A-1 CRL entries, Safari's EV-only OCSP checking — is a concrete, verifiable mechanism with direct operational implications for anyone relying on revocation. Limitations: the browser revocation-checking facts are largely known to PKI specialists, and a large fraction of the page is a raw evidence table rather than analysis, keeping it just below exceptional. Nonetheless, firsthand measurement, incident documentation, and reproducible verification paths make this highly valuable security material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:50:46.641510"
+    },
+    {
+      "id": 7156,
+      "source_id": 34,
+      "original_url": "https://canmom.art/programming/magic/5-memory",
+      "title": "programming grimoire [5]::memories",
+      "summary": "Readers gain a clear understanding of Rust's two-memory-area model (stack vs heap) and how ownership, borrowing, and the borrow checker enforce memory safety without garbage collection.",
+      "ideas": [
+        "Stack grows downward as let bindings are added and shrinks on scope exit",
+        "Rust moves values into function scopes by default, invalidating the original name",
+        "Immutable references allow observation without mutation while mutable references cause side effects",
+        "The borrow checker prevents use-after-free and double-free at compile time",
+        "Values with fixed size go on the stack; heap allocation requires global allocator"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive technical content about Rust's memory model with concrete mechanisms (stack/heap distinction, ownership moving, reference semantics, borrow checker). Directly relevant to Rust programmers seeking understanding of memory safety without garbage collection. The wizard-themed framing is distinctive stylistic choice but doesn't degrade technical value. Limitations: content is strongly tutorial-oriented and much of the material would be familiar to experienced Rust developers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:50:31.535457"
+    },
+    {
+      "id": 7155,
+      "source_id": 34,
+      "original_url": "https://blog.xiangpeng.systems/posts/bbtree/",
+      "title": "bbtree: fastest ordered map",
+      "summary": "A drop-in Rust BTreeMap replacement wins large speedups by minimizing cache misses through inline/prefix keys and by treating awaited cache-miss prefetches as futures in batched lookups.",
+      "ideas": [
+        "Size B-tree nodes to ~16-32 items so linear search beats binary search per cache miss.",
+        "Store 8-byte inline keys so one cache line covers ~8 key comparisons.",
+        "Derive each node's common key prefix for free from its parent's separator keys.",
+        "Store integer keys big-endian so byte order matches numeric ordering.",
+        "Interleave chained cache misses by awaiting prefetch() inside async batched searches.",
+        "Hand-specialize common key types on stable Rust to remain a drop-in replacement.",
+        "Mmap-compatible tree layout enables instant queries after restart, no rebuild."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "An unusually substantive engineering write-up: the author explains the exact mechanisms (cache-miss cost model, linear-vs-binary search break-even, inline and prefix keys borrowed from Umbra/Arrow, big-endian integer encoding, batched lookups interleaved as awaited prefetch futures) with concrete numbers, code, and reproducible open-source artifacts, plus end-to-end benchmarks on four real LSM-trees and Turso. It sits squarely in the reader's core interests (systems programming, data structures, databases, performance engineering) and credits a deep research lineage rather than padding. Limitations: benchmarks are self-reported by the author, the tone is promotional ('fastest B-tree I'm aware of' is hedged but branding-heavy), and the content is truncated mid-argument in the correctness section.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:49:29.114706",
+      "image_url": "https://blog.xiangpeng.systems/posts/bbtree/card-single-thread.png",
+      "image_width": 2196,
+      "image_height": 1516,
+      "image_alt": "Mean time per get, one thread, 10M entries, on u64, UUID, Wikipedia title and JSON keys: bbtree against std's BTreeMap, scc TreeIndex, concurrent-map, crossbeam SkipMap and std's HashMap."
+    },
+    {
+      "id": 7154,
+      "source_id": 34,
+      "original_url": "https://blog.softwarewrighter.com/2026/10/23/rabbit-hole-xetal-mojo-adreno/",
+      "title": "Rabbit-hole #9: X_eTaL and Mojo on a Qualcomm Adreno 702",
+      "summary": "A hands-on toolchain investigation shows how X_eTaL and a narrowly patched Mojo kernel can reach an Adreno 702 through OpenCL and SPIR-V while documenting hardware limits, unsupported paths, and unproven performance.",
+      "ideas": [
+        "Adreno lacks FP64; X_eTaL lowers Float to FP32 while retaining 64-bit Ints.",
+        "Reductions required 128 work-items despite a reported 512-wide device limit.",
+        "rusticl's returned binary contains SPIR-V; IR3 diagnostics reveal actual Adreno instructions.",
+        "A narrowly scoped LLVM IR rewrite ported scalar Mojo kernels through SPIR-V 1.0.",
+        "Adreno validation caught corrupted outputs and malformed SPIR-V modules.",
+        "No native Mojo runtime or performance advantage was demonstrated."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is an unusually detailed, reproducible systems experiment that traces an activation workload through X_eTaL's typed IR, OpenCL/SPIR-V, Mesa rusticl, and Freedreno IR3, then retargets ordinary Mojo LLVM IR for the Adreno. It provides first-hand code, artifact locations, exact hardware and driver constraints, generated-instruction evidence, and explicit correctness checks rather than merely announcing compatibility. The scope remains narrow—scalar-only kernels and tiny workloads, with no native Mojo runtime, broader kernel support, or performance benchmark—but its precise negative findings are unusually valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:48:18.434823"
+    },
+    {
+      "id": 7153,
+      "source_id": 34,
+      "original_url": "https://atlassc.net/2026/10/24/why-idle-ssh-sessions-freeze-and-drop",
+      "title": "https://atlassc.net/2026/10/24/why-idle-ssh-sessions-freeze-and-drop",
+      "summary": "Idle SSH sessions freeze because consumer NAT routers silently evict connections after 5-30 minutes of inactivity, causing terminals to hang waiting for TCP retransmitions to time out rather than disconnecting cleanly; adding ServerAliveInterval 60 and ServerAliveCountMax 3 to ~/.ssh/config keeps the NAT mapping alive with minimal overhead.",
+      "ideas": [
+        "Set ServerAliveInterval 60 and ServerAliveCountMax 3 in ~/.ssh/config to prevent NAT timeout eviction",
+        "Use tmux on the server to survive real network outages independent of SSH connection state",
+        "TCPKeepAlive yes is insufficient because kernel keepalives default to 2 hours, far longer than consumer router timeouts"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a strong, substantive technical article that provides original evidence, clear mechanisms, and practical implementation details. It correctly identifies the root cause of idle SSH session freezes (NAT session timeouts), explains why terminals freeze rather than immediately disconnect (TCP retransmission behavior), and provides well-structured solutions with specific configuration values. The article is technically accurate, well-organized, and directly addresses a common pain point for SSH users. The tmux and mosh recommendations add practical value beyond the core fix. The only minor deduction is that it's somewhat brief, but efficiency is valued over length per the scoring criteria.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:45:04.451108",
+      "image_url": "https://blogimgs.atlassc.net/og/2026/10/24/why-idle-ssh-sessions-freeze-and-drop.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7152,
+      "source_id": 34,
+      "original_url": "https://apievangelist.com/2026/10/23/gateways-count-every-token-and-charge-for-almost-none-of-them/",
+      "title": "Gateways Count Every Token And Charge For Almost None Of Them",
+      "summary": "API gateways universally meter AI token costs to protect providers' bills but provide almost no built-in way to convert those costs into consumer pricing, creating a fundamental asymmetry in API economics.",
+      "ideas": [
+        "AI policies dominate gateway catalogs with 120 of 884 entries.",
+        "Only 10 monetization entries exist across all 12 gateways.",
+        "Most monetization policies hand off to third-party billing systems.",
+        "WSO2 leads in AI policies (34) but has zero monetization controls.",
+        "Gateways meter token costs but lack built-in consumer pricing."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Highly substantive data-driven analysis of 12 API gateway policy catalogs (884 entries), revealing that AI-related policies dominate (120 entries) while built-in monetization is nearly absent (only 10 entries across all gateways). The article identifies a critical gap: gateways now meter token costs internally but lack mechanisms to charge consumers, undermining complete API economics.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:44:13.288716",
+      "image_url": "https://kinlane-images.s3.amazonaws.com/apievangelist/api-evangelist-images/gateways-count-every-token-and-charge-for-almost-none-of-them.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": "Gateways Count Every Token And Charge For Almost None Of Them"
+    },
+    {
+      "id": 7151,
+      "source_id": 34,
+      "original_url": "https://altunenes.github.io/posts/reuse/",
+      "title": "I forced a speech model onto the GPU for months. The CPU was faster.",
+      "summary": "A specialized Rust CPU implementation can outperform WebGPU for real-time speech denoising by eliminating per-frame GPU overhead while preserving near-reference accuracy.",
+      "ideas": [
+        "Per-frame GPU launch and synchronization overhead dominated small streaming inference workloads.",
+        "Four CPU layers achieved nearly the same SI-SDR as eight layers.",
+        "The Rust scan matched float64 output within 1.5e-6.",
+        "Custom CPU execution cut memory from roughly 420 MB to 150 MB.",
+        "48 kHz input tripled work, exceeding real-time constraints on the tested M3."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "This is unusually concrete, firsthand ML systems engineering: it explains Mamba selective-scan and ONNX limitations, provides Rust implementation details, reports latency and memory benchmarks, and validates numerical output against a float64 reference. The evidence yields actionable guidance—CPU execution can win for tiny streaming frames where GPU launch and synchronization dominate—but the conclusions are limited to one Apple-silicon machine, one model, and largely one audio clip. Transparent failure cases, code, configurations, and trade-offs make this substantially more valuable than a generic benchmark or announcement.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-25T04:43:17.953663"
+    },
+    {
+      "id": 7150,
+      "source_id": 4,
+      "original_url": "https://tusharpandey.com/blogs/ghostlock-somalia/index.html",
+      "title": "Tushar’s Casebook",
+      "summary": "Deriving a per‑boot physical address from a TrustZone seed enables reliable exploitation of a locked Unisoc T8300 device via the GhostLock bug without flashing.",
+      "ideas": [
+        "Use GhostLock CVE‑2026‑43499 to obtain kernel write primitive on locked Unisoc T8300.",
+        "Physical kernel load address varies per boot via TOS byte in PCD31.",
+        "Derive P0 address using leaked _text and slide calculation formula.",
+        "Exploit chain: leak KASLR, free waiter, reclaim stack, arbitrary write.",
+        "Forge file_operations table with legitimate kernel function pointers to bypass KCFI.",
+        "QEMU lab validates exploit before running on the device.",
+        "Per‑boot root achieved without modifying boot image or flashing.",
+        "No persistence across reboots; root only exists during the session.",
+        "Derivation avoids brute force by linking slide high bits to TOS byte.",
+        "The first successful root required 56 seconds and no kernel panic.",
+        "Two later builds panicked, documented as incident records.",
+        "Runtime derivation eliminates need for host‑side rebuild on each boot."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The writeup delivers multiple novel exploit techniques, detailed derivation of a per‑boot address, and a validated exploit chain, providing high‑value, density‑rich insight. It aligns strongly with CyberSecurity and Tech themes and includes practical, actionable methodology.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-25T04:34:38.437543"
+    },
+    {
+      "id": 7149,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/10/24/autonomous-attack-agent-in-skynet-mode-hijacks-other-models-to-carry-out-its-evil-deeds/5305215",
+      "title": "Jump to main content",
+      "summary": "AI can now power fully autonomous attack agents that hijack other models and execute thousands of steps without human oversight.",
+      "ideas": [
+        "Attackers built an AI agent that runs up to 100,000 autonomous steps without human approval.",
+        "The agent scans for unsecured OpenAI‑style endpoints and exploits common web frameworks.",
+        "A multi‑layered jailbreak prompt hides the model’s identity and disables safety warnings.",
+        "AI functions as a reasoning engine while separate modules handle scanning, exploitation, and mining.",
+        "Symantec found no real‑world deployment yet, but the kit is more than a prototype.",
+        "French‑language indicators suggest possible origin, yet attribution remains uncertain."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "The article provides several genuine insights: it uncovers a functional autonomous AI attack agent, details its multi‑layered jailbreak prompts, explains how AI is used as a reasoning engine for large‑scale scanning and crypto‑mining, and offers attribution clues. These value instances are significant for cybersecurity professionals and align well with AI and security themes. The sensational title adds minor clickbait flavor, but the content delivers substantive information, resulting in a solid good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-25T04:33:12.739802",
+      "image_url": "https://image.theregister.com/5305225.jpg?imageId=5305225&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+      "image_width": 1200,
+      "image_height": 683,
+      "image_alt": ""
+    },
+    {
+      "id": 7148,
+      "source_id": 4,
+      "original_url": "https://github.com/aicodeking/leanrea",
+      "title": "https://github.com/aicodeking/leanrea",
+      "summary": "A tiny skill can replace REA’s bulky framework, delivering comparable reverse‑engineering results faster and cheaper.",
+      "ideas": [
+        "Leanrea replaces REA's MCP layer with an 8 KB skill using plain CLI tools",
+        "Benchmark shows leanrea is 38 % faster and 35 % cheaper than REA",
+        "Installation via `npx skills add aicodeking/leanrea` works for multiple AI agents",
+        "Router selects fastest command per file type, covering Electron, Mach‑O, Go, etc",
+        "Batch probes and slice minified files to reduce token usage and turns",
+        "Use `rg -uu` to search extracted trees hidden by bundlers",
+        "Speed pattern: start from strings, follow otool literal‑pool comments, diff inventories",
+        "Manual install copies skill into `~/.claude/skills/` for agents without skill support"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The README provides several concrete value instances: a novel minimal skill replacing REA's heavy MCP layer, detailed benchmark data showing speed and cost gains, actionable installation steps, and specific reverse‑engineering techniques (router commands, batch probing, string‑first patterns). The content is dense with useful insights for AI‑agent developers and reverse‑engineering practitioners, with no clickbait or padding, aligning well with AI and technology themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-25T04:33:11.100544",
+      "image_url": "https://opengraph.githubassets.com/099b4c693ac914897827df05de8764a60a26fbdd3b47387ff3c8c6af40c2f47b/aicodeking/leanrea",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "One 8 KB skill that replaces REA (Reverse Engineer Anything): plain CLI tools, no MCP. Benchmarked: 38% faster, 35% cheaper. - aicodeking/leanrea"
+    },
+    {
+      "id": 7147,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/10/24/htb-checkpoint.html",
+      "title": "0xdf hacks stuff",
+      "summary": "Delegated AD object access can chain stale credentials, extension deployment, successor abuse, and backup memory extraction into domain-admin compromise.",
+      "ideas": [
+        "Exposed Kerberos, LDAP, SMB, and WinRM ports strongly identify a Windows domain controller.",
+        "Clock skew between attacker and domain controller can break Kerberos authentication.",
+        "NetExec generates host mappings and Kerberos configuration tailored to the target domain.",
+        "Server 2025 null-binding behavior initially broke NetExec's generated configuration files.",
+        "Credentials succeeding on SMB and LDAP may still fail on WinRM.",
+        "SMB share descriptions reveal intended workflows, including automated VS Code extension deployment.",
+        "NetExec exposes local users, service accounts, and additional SMB shares efficiently.",
+        "Negative Kerberoast and AS-REP checks narrow assessment toward permissions and credential reuse.",
+        "Kerberos-authenticated RustHound bypasses LDAP-signing restrictions blocking default configurations.",
+        "Unusual Active Directory Recycle Bin rights expose deleted accounts recoverable by attackers.",
+        "Restored users may retain default passwords, creating an immediate low-privilege credential foothold.",
+        "Writable extension shares deliver malicious VSIX packages through automated synchronization jobs.",
+        "BetterSuccessor recovers a target NTLM hash when generic write access exists despite patched BadSuccessor.",
+        "VMware memory snapshots expose administrator hashes through credential artifacts retained in RAM.",
+        "Reused administrator passwords convert one recovered service hash into full domain compromise.",
+        "Accessible deployment service accounts can reveal high-value attack paths.",
+        "Early ADCS enumeration can rule out certificate-service attack paths."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a substantive, highly relevant Active Directory penetration-testing walkthrough with a reusable path from initial access to domain administration. Valuable specifics include identifying a domain controller from exposed ports, correcting Kerberos clock skew, configuring NetExec, bypassing LDAP-signing restrictions with Kerberos-authenticated RustHound, and chaining AD Recycle Bin access, malicious VSIX delivery, BetterSuccessor, and vmkatz. Long raw command dumps, repeated summaries, and uneven pacing reduce value per minute, but the concrete commands, tool behaviors, and reusable offensive techniques make it worth reading for practitioners.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-25T04:33:03.189799"
+    },
     {
       "id": 7146,
       "source_id": 7,
