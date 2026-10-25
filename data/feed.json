@@ -1,7 +1,128 @@
 {
-  "updated_at": "2026-10-25T19:00:00.200500+00:00",
-  "total_items": 1145,
+  "updated_at": "2026-10-25T20:00:00.197565+00:00",
+  "total_items": 1150,
   "items": [
+    {
+      "id": 7211,
+      "source_id": 34,
+      "original_url": "https://www.madebymikal.com/chasing-openstack-memory-usage-the-memory-your-python-services-spend-on-code-they-never-run/",
+      "title": "Chasing OpenStack memory usage: the memory your Python services spend on code they never run",
+      "summary": "Measuring and eliminating unnecessary module imports can cut tens of megabytes of anonymous RSS per OpenStack service.",
+      "ideas": [
+        "Probe imports in a fresh interpreter to quantify anonymous RSS.",
+        "Remove unused modules via lazy imports; typical savings 14‑49 MB per process.",
+        "Unit‑test that a process no longer loads a package after the fix.",
+        "Package the measurement techniques as an import‑bloat skill for reuse."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete measurements of import‑bloat, explains the underlying mechanisms, and supplies reproducible techniques (lazy imports, import‑chain probing) with unit‑test verification. It is highly relevant to Python‑centric infrastructure work, though it includes some contextual description that adds limited technical depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-26T05:39:00.741204"
+    },
+    {
+      "id": 7210,
+      "source_id": 34,
+      "original_url": "https://www.julien.org/blog/industry-perspectives/2026-10-25_exploring-apples-on-device-model-twenty-billion-parameters-in-flash/",
+      "title": "Exploring Apple's On-Device Model: Twenty Billion Parameters in Flash",
+      "summary": "Apple's Core Advanced model runs a 20B‑parameter mixture‑of‑experts in flash, using per‑prompt routing and 2‑bit compression to stay under 2 GiB memory while consuming roughly one‑third of the power of comparable open models.",
+      "ideas": [
+        "Apple loads ~1 GB of weights per request, keeps inactive experts in 4.95 GB flash file.",
+        "Model uses a dense block to pick fixed experts per prompt, re‑selecting every ~32 tokens.",
+        "Experts kept in flash; only 636 MiB of pages loaded on Neural Engine.",
+        "Power draw ~3‑4 W, ~1/3 of open‑model consumption on identical tasks.",
+        "Core Advanced uses 2‑bit weight compression and per‑prompt routing.",
+        "Safety models run in separate process with their own tokenizer.",
+        "Model size scales per use‑case (1‑4 B active parameters) to match task difficulty.",
+        "Apple’s tokenizer differs from Google’s; only known public validation."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers deep, measured insight into Apple's on‑device 20B model, including expert‑selection per prompt, flash‑resident storage, 2‑bit compression, power and memory measurements, and safety‑process isolation. Its relevance to AI‑engineering and low‑level system details is strong, though it relies on assumptions and lacks independent reproducibility of the experiments.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-26T05:38:31.269034",
+      "image_url": "https://www.julien.org/blog/industry-perspectives/2026-10-25_exploring-apples-on-device-model-twenty-billion-parameters-in-flash/image-01.webp",
+      "image_width": 2752,
+      "image_height": 1536,
+      "image_alt": ""
+    },
+    {
+      "id": 7209,
+      "source_id": 34,
+      "original_url": "https://www.gabrielebartolini.it/articles/2026/10/cnpg-recipe-28-generated-and-rotating-postgresql-user-passwords-in-cloudnativepg-1.31/",
+      "title": "CNPG Recipe 28 - Generated and rotating PostgreSQL user passwords in CloudNativePG 1.31",
+      "summary": "CloudNativePG 1.31 lets DatabaseRole resources generate, shape, expire, and rotate PostgreSQL passwords while exposing credentials through operator-owned Secrets and status events.",
+      "ideas": [
+        "CloudNativePG supports generated, imported, externally managed, and null role-password modes.",
+        "Operator-owned Secrets contain username, password, and a ready-made wildcard .pgpass entry.",
+        "PostgreSQL VALID UNTIL prevents expired credentials from authenticating new connections.",
+        "Rotation combines duration with renewBefore, plus annotation-triggered immediate rotation.",
+        "Generated Secret ownership removes credentials during role deletion and mode transitions.",
+        "Replica clusters defer password generation until primary promotion.",
+        "Password policies constrain symbols, digit counts, repetition, and generator-feasible combinations."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a technically dense, directly applicable guide to an unreleased CloudNativePG feature, with working manifests, commands, Secret formats, rotation controls, status fields, and migration edge cases. The maintainer supplies useful implementation-level details about PostgreSQL VALID UNTIL enforcement, operator ownership semantics, password-policy constraints, replica behavior, and External Secrets Operator integration. Its main limitation is that version 1.31 remains a development snapshot whose behavior may change, making it a highly informed feature preview rather than battle-tested production guidance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-26T05:34:28.603776",
+      "image_url": "https://www.gabrielebartolini.it/articles/2026/10/cnpg-recipe-28-generated-and-rotating-postgresql-user-passwords-in-cloudnativepg-1.31/cover.jpg",
+      "image_width": 1280,
+      "image_height": 512,
+      "image_alt": ""
+    },
+    {
+      "id": 7208,
+      "source_id": 34,
+      "original_url": "https://www.davidpriver.com/Iterating-backwards-in-C.html",
+      "title": "Iterating Backwards in C",
+      "summary": "Teaches a compact, safe pattern for backward C iteration using `for(size_t i = count; i--; )` that avoids signed comparison pitfalls.",
+      "ideas": [
+        "Safe backward iteration using size_t post-decrement in loop condition"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a concrete, non-obvious C programming pattern for safe backward iteration. It clearly explains the pitfalls of common approaches (unsigned comparison traps, signed-type pitfalls) and provides the proper `for(size_t i = count; i--; )` idiom with explanation of post-decrement mechanics. The technical substance is focused and well-supported, the code example is public-domain, and the reasoning about unsigned wrap-around behavior is accurate. It serves its purpose efficiently without noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-26T05:32:39.297644"
+    },
+    {
+      "id": 7207,
+      "source_id": 34,
+      "original_url": "https://www.brethorsting.com/blog/2026/10/we-are-all-in-the-c-suite-now/",
+      "title": "We Are All in the C-Suite Now",
+      "summary": "The author documents how Opus 4.5 displaced hands-on keyboard coding, forcing software engineers into C-suite roles of direction, judgment, and product discernment rather than implementation.",
+      "ideas": [
+        "Opus 4.5 eliminated the author's hands-on keyboard coding within weeks of release.",
+        "Engineers now perform C-suite work: setting direction, judging unseen work, and deciding what not to build.",
+        "The 'greenhouse vs. lens' metaphor captures the two modes of agentic AI-aided development."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, firsthand evidence of a major workflow shift post-Opus 4.5, detailing the transition from hands-on coding to high-level product judgment. It non-obviously captures the cognitive trade-offs, the loss of the 'oracle' developer intuition, and the ascent into C-suite-style direction work. The substance is grounded in specific observations and measurable changes in daily practice.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-26T05:31:32.420252"
+    },
     {
       "id": 7206,
       "source_id": 34,
@@ -44,7 +165,11 @@
       "rating_reason": "The article provides unusually concrete compiler internals: tensor operations lower to linalg.matmul, a custom MLIR dialect lowers GPU lane reductions to warp shuffles, inline MLIR implements portable core routines, and checked memory contracts govern concurrent execution. Commit-pinned examples, emitted IR/PTX, and source code make the claims concrete and unusually actionable for compiler and AI-infrastructure readers. The score is limited because this is first-party project documentation without independent validation or meaningful benchmarks, and the supplied text is truncated mid-sentence before its caveats.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-26T05:28:16.387007"
+      "published_at": "2026-10-26T05:28:16.387007",
+      "image_url": "https://vxlang.org/cards/blog-vx-fully-embraces-ml-ir-mlir.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Vx fully embraces {ML, IR, MLIR}: tensor programs lowered through a Vx MLIR dialect into GPU kernels."
     },
     {
       "id": 7204,
@@ -64,7 +189,11 @@
       "rating_reason": "The article delivers concrete, reproducible technical substance—a full build pipeline from javac to Bluetooth deployment—grounded in firsthand experimentation. It explains the non-obvious mechanism of modern ProGuard preverification for Java ME and provides verifiable evidence of real-device transfer, but it remains a focused tutorial on a deprecated platform rather than a broad technical treatise.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-26T05:27:22.132613"
+      "published_at": "2026-10-26T05:27:22.132613",
+      "image_url": "https://voxelmanip.se/media/building-java-me-apps-with-modern-tooling/cover.webp",
+      "image_width": 1200,
+      "image_height": 400,
+      "image_alt": ""
     },
     {
       "id": 7203,
