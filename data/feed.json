@@ -1,7 +1,163 @@
 {
-  "updated_at": "2026-10-26T12:00:00.424388+00:00",
-  "total_items": 1125,
+  "updated_at": "2026-10-26T13:00:00.191627+00:00",
+  "total_items": 1130,
   "items": [
+    {
+      "id": 7227,
+      "source_id": 7,
+      "original_url": "https://www.anthropic.com/research/redesigning-source-control",
+      "title": "Skip to main content",
+      "summary": "Designing source control as a server‑centric, always‑online service enables massive AI‑driven codebases to scale efficiently.",
+      "ideas": [
+        "Use always‑online clients and server‑centric commits to avoid full repository clones.",
+        "Store changes as server‑side \"changesets\" with only changed files and content‑addressed blobs.",
+        "Compute derived data like blame and history lazily via recursive mechanisms.",
+        "Adopt horizontal scaling with tiered caches and content‑addressed storage.",
+        "Enable sparse and virtualized checkouts, fetching only needed trees and blobs.",
+        "Achieve 200× smaller infrastructure and two‑order‑of‑magnitude faster checkouts.",
+        "AI‑generated rewrite of ingestion pipeline cut memory 20× and runtime 4×."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides multiple concrete insights on building a server‑centric source‑control system for AI‑driven code, including architectural principles, data structures, scaling mechanisms, and measurable performance improvements—about seven distinct value instances in a medium‑length technical piece, yielding solid value density. Minor self‑promotion keeps it from a higher score, but overall it aligns well with AI, productivity, and infrastructure themes.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-26T22:36:32.875531",
+      "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/f51d635fde176783a022c74b185a4dea2a54e8a0-1200x630.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Anthropic logo"
+    },
+    {
+      "id": 7226,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/microsoft-365-token-replay-attacks.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Token‑replay attacks let adversaries bypass MFA by stealing and replaying Microsoft 365 sign‑in tokens, requiring strict Conditional Access controls.",
+      "ideas": [
+        "Attackers use adversary‑in‑the‑middle relays to steal Microsoft 365 sign‑in tokens and replay them.",
+        "Token replay (“token spraying”) bypasses MFA without password guessing.",
+        "Compromised accounts register rogue Entra devices for persistent token requests.",
+        "Threat actors create hidden email rules to delete or forward payroll‑related messages.",
+        "Mitigation includes revoking sessions, resetting passwords, auditing devices, and tightening Conditional Access policies.",
+        "Conditional Access should enforce MFA for all users, cloud apps, and client types unconditionally."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers several concrete insights—detailed token‑replay technique, attacker persistence via rogue devices, hidden email rule usage, and specific mitigation steps—providing genuine value for security professionals. While it includes some promotional boilerplate, the core content is focused, current, and aligns well with cybersecurity themes, resulting in a solid but not exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-26T22:33:57.938889"
+    },
+    {
+      "id": 7225,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Stolen GitHub write access can weaponize CI logs and environment secrets, making token scope, secret rotation, OIDC restrictions, and runner isolation essential.",
+      "ideas": [
+        "Stolen GitHub tokens let attackers inject workflows that expose repository secrets through Actions logs.",
+        "Write access alone permits reading every secret configured in the reachable repository.",
+        "The malicious workflow adds .github/workflows/sync-check.yml using the commit message ci: sync config.",
+        "Base32 encoding bypasses GitHub's log masking, revealing transformed secret values in plaintext.",
+        "Empty workflow permissions limit GITHUB_TOKEN without preventing access to repository secrets.",
+        "Deployment-environment jobs can expose production credentials once environment approvals succeed.",
+        "Attackers retrieve exfiltrated logs through GitHub's API, avoiding any external attacker server.",
+        "GitHub's malicious-workflow hold protected public repositories but not private repositories or Enterprise Server.",
+        "Wiz found over 13,500 malicious branches across more than 850 compromised GitHub accounts.",
+        "CloudTrail showed organizational workflows assuming AWS roles on attacker-created branches.",
+        "Enterprise attackers cycled through several users' tokens and cloned private repositories before planting workflows.",
+        "Cloud credentials later enumerated AWS Secrets Manager, although their origin was not established.",
+        "One Gheist variant targets self-hosted runners for private keys, cloud credentials, and Kubernetes tokens.",
+        "Branches matching ci-sync- plus six characters are a reliable Gheist detection indicator.",
+        "Deleted workflow runs and the gheist user agent provide additional GitHub audit-log indicators.",
+        "OIDC subjects usually include branch names, enabling cloud-side detection of planted workflow runs.",
+        "Self-hosted runner indicators include .gdmp_pat, .gdmp_patg, .gdmp_sweep, and gdmp-pivot strings.",
+        "Git blob SHA hashes distinguish four known workflow variants, though environment-specific versions lack fixed hashes.",
+        "Affected teams must rotate every reachable secret and revoke the token that pushed malicious branches.",
+        "Device inspection for infostealers is necessary because stolen tokens often originate from compromised endpoints.",
+        "Never approve held sync-check runs or execute code from ci-sync branches.",
+        "Compromised self-hosted runners require treating both the machine and its cloud role as compromised.",
+        "Required reviewers on deployment environments prevent jobs from accessing protected secrets without approval.",
+        "Restrict OIDC trust policies to protected branches or explicitly approved deployment environments.",
+        "Short-lived fine-grained tokens and GitHub Apps reduce the impact of stolen credentials.",
+        "Ephemeral self-hosted runners should avoid Docker sockets and cloud metadata access.",
+        "GhostAction differs from Gheist because it uses separate malicious workflow files.",
+        "Token sources included infostealer logs and earlier supply-chain compromises, including Trivy.",
+        "Active through late October, Gheist continued changing its tooling and techniques.",
+        "Two-thirds of involved GitHub accounts disappeared after Wiz reported the campaign.",
+        "Other attackers used many compromised accounts to rename repositories as cracked malware.",
+        "Some victims were also infected with North Korean-linked PolinRider malware.",
+        "Megalodon had previously compromised 57 accounts also observed in Gheist activity."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a high-density, strongly thematic threat-intelligence report explaining how stolen write-scoped GitHub tokens can turn Actions logs into a secret-exfiltration channel. It provides unusually actionable substance: more than 13,500 malicious branches across 850-plus accounts, precise GitHub and cloud indicators, a self-hosted-runner variant, and concrete rotation, token-revocation, OIDC, environment-reviewer, and runner-hardening steps. The score remains below the exceptional tier because it mainly summarizes Wiz research, leaves some attribution questions unresolved, and is diluted by promotional page clutter.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-26T22:33:50.875454"
+    },
+    {
+      "id": 7224,
+      "source_id": 26,
+      "original_url": "https://github.com/coollabsio/coolify",
+      "title": "coollabsio/coolify",
+      "summary": "Coolify is a mature, production-ready open-source PaaS that lets developers deploy applications and databases on their own servers with Heroku-level convenience, and it has earned its massive adoption through genuine substance.",
+      "ideas": [
+        "Self-hosted PaaS: deploy apps, databases, 360+ one-click services via SSH",
+        "Git push auto-deploys with pull-request previews and image rollbacks",
+        "Automatic HTTPS, reverse proxy, health checks, multi-server management",
+        "Dashboard, API, CLI, and MCP access with team-based controls",
+        "Backups, scheduled tasks, secrets, and notifications built-in"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Problem significance is high (23/25): self-hosted PaaS addressing real vendor lock-in and cost concerns. Technical novelty is moderate (16/25): competitors like Dokku and CapRover exist, but Coolify differentiates with 360+ one-click services, multi-server management, PR previews, and flexible build strategies. Practical utility is excellent (23/25): production-ready with one-command install, API/CLI/MCP, 719 releases, and 700 contributors. Documentation is strong (19/25) with clear feature breakdowns, quick start, and security policies, though slightly sponsor-heavy. Infrastructure/deployment domain bonus: +5.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-10-26T22:32:37.485057",
+      "image_url": "https://repository-images.githubusercontent.com/332880689/2061f103-12bd-421a-90dc-3bbea15766d0",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": "An open-source, self-hostable PaaS alternative to Vercel, Heroku &amp; Netlify that lets you easily deploy static sites, databases, full-stack applications and 360+ one-click services on your own s..."
+    },
+    {
+      "id": 7223,
+      "source_id": 26,
+      "original_url": "https://github.com/JetBrains/thinkrail",
+      "title": "JetBrains/thinkrail",
+      "summary": "ThinkRail is an agentic IDE that blends AI coding agents with isolated workspaces and spec‑driven development, aiming to make AI‑assisted coding more structured and usable.",
+      "ideas": [
+        "Spec‑driven, AI‑powered IDE with isolated git worktree workspaces"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 83,
+      "rating_reason": "Problem significance (20) – tackles real developer pain integrating AI agents into IDEs. Technical novelty (18) – novel spec‑driven, agentic architecture beyond typical code assistants. Practical utility (17) – provides desktop and CLI ready for use, though still maturing. Documentation quality (20) – thorough README with install, architecture, and usage details. No penalties applied; domain relevance bonus (+8) for AI‑focused developer tooling.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-10-26T22:32:11.714432",
+      "image_url": "https://opengraph.githubassets.com/16462055589301664a232c0eaf7759a85d3d7a765c72edecbb197d839542a78d/JetBrains/thinkrail",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need - JetBrains/thinkrail"
+    },
     {
       "id": 7222,
       "source_id": 34,
