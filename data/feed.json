@@ -1,7 +1,579 @@
 {
-  "updated_at": "2026-10-27T12:00:00.470524+00:00",
-  "total_items": 1098,
+  "updated_at": "2026-10-27T13:00:00.177236+00:00",
+  "total_items": 1120,
   "items": [
+    {
+      "id": 7256,
+      "source_id": 34,
+      "original_url": "https://destevez.net/2026/10/a-high-sensitivity-ads-b-receiver/",
+      "title": "A high-sensitivity ADS-B receiver",
+      "summary": "Treating Mode-S ADS-B as PCM/PM/bi-phase-L with a coherent residual carrier enables an FFT-based receiver that decodes weak and colliding messages far better than dump1090-lineage receivers.",
+      "ideas": [
+        "Mode-S PPM is equivalent to PCM/PM/bi-phase-L because transmitters are coherent",
+        "Residual carrier uses 50% of message energy versus 3.3% in preamble",
+        "Coherent demodulation beats noncoherent pulse-power comparison by about 1.8 dB",
+        "dump1090 receivers suffer from 2.4 Msps undersampling and fragile preamble detection",
+        "8 Msps sampling bounds symbol alignment error to a ~1.8 dB worst-case loss",
+        "CRC-checked brute-force alignment search removes need for precise preamble timing",
+        "Nearby TACAN/DME channels like 70X at 1094 MHz are realistic interference sources"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is expert firsthand engineering with an original, non-obvious insight: modern Mode-S transmitters produce coherent pulses, so ADS-B pulse-position modulation is equivalent to PCM/PM/bi-phase-L, enabling residual-carrier detection and coherent demodulation (~1.8 dB gain, 50% of energy versus 3.3% in the preamble). The article is dense with quantified design analysis (1.16/2.5 dB alignment losses, sample-rate rationale, collision tolerance), original spectrum evidence, and a working open-source Rust receiver plus benchmark simulator. While outside the core AI/Linux/security interests, it is exactly the kind of high-value technical serendipity the rubric allows. The main limitation is that the content is truncated mid-section, cutting off the FFT design parameters and the quantified benchmark results supporting the outperformance claims.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:28:44.792867"
+    },
+    {
+      "id": 7255,
+      "source_id": 34,
+      "original_url": "https://denodell.com/blog/design-systems-should-be-fast-by-default",
+      "title": "Design Systems Should Be Fast by Default",
+      "summary": "Design system performance varies dramatically based on implementation details like slot handling and virtualization rather than framework choice alone, and root causes can be identified and addressed through targeted investigation.",
+      "ideas": [
+        "Ionic's O(n) slot handling causes dropdown slowdown with many options",
+        "Ant Design virtualizes options, rendering only visible items plus hidden copy for screen readers",
+        "Material UI renders all 249 options at once, causing slow country selector openings",
+        "Stencil's experimentalSlotFixes replaces browser appendChild with custom slot logic",
+        "Shadow DOM adoption would fix Ionic's slot performance issue in radio groups",
+        "Design system performance doesn't correlate with framework alone",
+        "Virtualization must balance DOM size with screen reader accessibility needs"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 92,
+      "rating_reason": "The article delivers original empirical evidence through systematic testing of 10 design systems against concrete performance tasks, providing unusually deep technical analysis of root causes such as Stencil's O(n) slot handling complexity and varying virtualization strategies. These findings reveal that performance characteristics are implementation-specific rather than framework-dependent, though the measured results apply to the tested library versions and may not extrapolate to all component architectures.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:28:23.668115"
+    },
+    {
+      "id": 7254,
+      "source_id": 34,
+      "original_url": "https://convex-in-prod.github.io/posts/convex-wasm-compiler/",
+      "title": "Scaling self-hosted Convex: AOT compilation of TypeScript Convex functions into Wasm",
+      "summary": "The article demonstrates how AOT-compiling Convex TypeScript to Wasm can reduce runtime overhead while avoiding a large application rewrite.",
+      "ideas": [
+        "Static Hermes AOT compiles TypeScript-derived JavaScript into deployable WebAssembly",
+        "Wasmtime fibers suspend JavaScript promises while Tokio workers execute host operations",
+        "Reported results show twofold speedup, smaller tails, and 80% less memory",
+        "Deployment invalidation can trigger V8 recompilation waves and reactive-query re-execution",
+        "Cranelift precompilation produces target-specific cwasm artifacts for server deployment"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a strong, unusually concrete engineering account of building a Static Hermes-to-Wasm pipeline and integrating asynchronous JavaScript execution with Wasmtime fibers and Tokio. It provides architectural details, deployment mechanics, operational failure modes, and specific first-hand measurements for latency, tail latency, and memory usage. The main limitations are that the excerpt does not show benchmark methodology or sample size, and it ends before the promised operational discussion is complete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:21:50.170625",
+      "image_url": "https://convex-in-prod.github.io/og-image/convex-wasm-compiler.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7253,
+      "source_id": 34,
+      "original_url": "https://cocomelonc.github.io/linux/2026/10/26/linux-hacking-12.html",
+      "title": "Linux hacking part 12: LD_PRELOAD function interposition. Simple C examples",
+      "summary": "The article teaches the mechanics of LD_PRELOAD function interposition using readdir() as a case study, showing how to audit, filter, and hide directory entries from dynamically linked programs, and how to detect such manipulation by comparing library outputs with kernel system calls.",
+      "ideas": [
+        "LD_PRELOAD interposition forwards calls via dlsym(RTLD_NEXT, \"readdir\") to the original library implementation",
+        "Comparing strace getdents64 output with readdir logs detects user-space manipulation or rootkit filtering",
+        "A filtering LD_PRELOAD wrapper can hide directory entries from applications like ls without deleting files or modifying the filesystem"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers exceptionally high technical value by providing complete, compilable C source code for LD_PRELOAD function interposition, detailed strace analysis comparing user-space readdir() output with kernel-space getdents64 system calls, and a clear demonstration of how filtering wrappers hide entries from applications. It concretely explains the mechanism of dlsym(RTLD_NEXT), errno preservation, and the discrepancy between library-level and system-call-level views, which is invaluable for defensive engineering and rootkit analysis. The content is substantive, non-obvious, and tightly focused on practical implementation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:20:40.607479",
+      "image_url": "https://cocomelonc.github.io/assets/images/230/2026-10-27_10-07.png",
+      "image_width": 1892,
+      "image_height": 1097,
+      "image_alt": ""
+    },
+    {
+      "id": 7252,
+      "source_id": 34,
+      "original_url": "https://chrlschn.dev/blog/2026/10/larping-with-agents-and-why-it-works/",
+      "title": "LARPing with Agents (and Why It Works)",
+      "summary": "Readers gain a practical method to set up role-defined agent teams in Paseo that improve autonomy and token efficiency without requiring heavy harness tuning.",
+      "ideas": [
+        "Agent profile notes serve as dynamic prompt context for lead agents.",
+        "XML role/gate structure at initialization enforces consistent sub-agent behavior.",
+        "Mixing cheaper models via a meta-harness can raise code quality while reducing token cost."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete configuration details and mechanisms for multi-agent orchestration using Paseo, explains how agent profiles act as dynamic skills for lead agents, and offers practical observations about autonomy, token efficiency, and role-based coordination. It is technically relevant and contains non-obvious insights, though it lacks benchmark data and some claims are anecdotal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:17:54.848406",
+      "image_url": "https://chrlschn.dev/img/larping/og-larping.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7251,
+      "source_id": 34,
+      "original_url": "https://bruceediger.com/posts/contabo-crawler/",
+      "title": "Web Page Crawler Revealed",
+      "summary": "A synthetic link-tree crawler trap can reveal crawler architecture and scheduling through traversal patterns, IP reuse, and request-rate fingerprints.",
+      "ideas": [
+        "Parent-before-child ordering exposed a crawler following hyperlinks rather than enumerating URLs.",
+        "Apache logs showed repeated full-tree crawls near a stable four requests per second.",
+        "Six full-tree traversals used thousands of Contabo IPs, including thousands reused.",
+        "Per-address request multiples suggested crawler workers received fixed-size URL batches.",
+        "A Go queue simulation reproduced concurrent ranks but not the observed request ordering."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a strong firsthand experiment using a synthetic binary-tree website and Apache logs to fingerprint crawler scheduling, traversal order, IP reuse, and request rates. Its request-rate analysis and Go concurrency simulation provide concrete technical methodology and useful observations about distributed crawling. However, Contabo-hosted addresses do not prove a single operator or centralized control, while the suspected off-by-one and underlying queue architecture remain speculative and the simulation does not reproduce the observed rank concurrency.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:14:32.883327"
+    },
+    {
+      "id": 7250,
+      "source_id": 34,
+      "original_url": "https://blog.softwarewrighter.com/2026/10/26/array-languages-xetal-ergonomics/",
+      "title": "Array Languages #18: Small Comforts, X_eTaL’s Ergonomics",
+      "summary": "X_eTaL introduces _u for dropped lambda parameters, ▁ for ignored params, eq~ tolerant equality, and ~ lazy evaluation, giving language designers fine-grained ergonomic control over function signatures and evaluation.",
+      "ideas": [
+        "_u: dropped lambda parameter, lint ignores it",
+        "▁: ignored parameter, visually distinct from _",
+        "eq~: tolerant equality with 1e-14 fixed tolerance",
+        "~: lazy marker, delays eval until body first reads"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Exceptional language design article with original ergonomic mechanisms: _u dropped parameter shorthand (lint-silent), ▁ ignored parameter symbol distinct from _, eq~ tolerant equality at 1e-14 alongside exact =, and ~ lazy evaluation delaying argument computation. Deep technical explanation of lambda argument handling, linter enforcement, and doc test integration. Highly useful for language tool designers but niche outside PL theory.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:07:21.687208"
+    },
+    {
+      "id": 7249,
+      "source_id": 34,
+      "original_url": "https://blog.mycal.net/finally-a-replacement-for-the-relay-boards-we-cant-buy-anymore/",
+      "title": "Finally, a Replacement for the Relay Boards We Can't Buy Anymore",
+      "summary": "791 bytes of hand-written 8051 assembly reflashes SainSmart's serial relay boards to achieve near-HID speeds (3ms vs 40ms per relay) while adding reliable board-ID tracking and failsafe functionality.",
+      "ideas": [
+        "791 bytes of 8051 assembly enables 3ms relay switching on serial boards",
+        "Board IDs stored in EEPROM solve USB enumeration ordering ambiguity",
+        "CH340 bootloader reverse-engineered using relay test points as debugging equipment",
+        "Failsafe triggers relay cutoff after host silence, with keepalive enforcement",
+        "usb-relay now transparently drives both HID and serial relay boards by ID"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive engineering article detailing reverse-engineering of SainSmart relay board firmware. Contains original measurements (1000-pattern benchmarks showing 3ms median relay switching), clear mechanism explanations (8051 architecture, CH340/STC15W401AS UART mapping, ULN2803 driver Config), firsthand implementation experience (bench testing, pull-up resistor solution, firmware flashing), and concrete trade-offs. The 791-byte assembly solution achieves near-HID speeds (3ms vs 40ms per relay) while adding reliable board-ID tracking and failsafe functionality. Honest about bench-only validation status with clear path for field deployment. Minor deduction from 90+ because while excellent, it's not a paradigm shift but rather exceptional niche engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:06:38.956953",
+      "image_url": "https://blog.mycal.net/content/images/2026/10/relay16-OG.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7248,
+      "source_id": 34,
+      "original_url": "https://blog.christianposta.com/credential-brokering-patterns-for-ai-agent-egress-part3/",
+      "title": "Credential Brokering Patterns for AI Agents Part 3: Protecting the Token Vault with OpenBAO",
+      "summary": "Broker-mediated OpenBao authorization can limit a compromised agent controller to decrypting one credential row per live request, while direct JWT login is simpler but exposes every credential belonging to that user.",
+      "ideas": [
+        "Restrict OpenBao JWT login to the gateway to prevent controller-side subject-token replay.",
+        "Use derived Transit keys and per-row contexts to cryptographically bind wrapped credentials.",
+        "Broker row-specific decrypt tokens when live-request scope matters more than simplicity.",
+        "Gateway-restricted Vault login still exposes every credential belonging to that user.",
+        "OpenBao ACLs require broker-managed per-row state for one-row decrypt authorization."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete threat model and two implementable OpenBao designs, including derived Transit keys, row-bound contexts, JWT replay constraints, broker freshness proofs, and per-row ACL policies. It identifies non-obvious limitations such as user-wide credential exposure from direct Vault login, policy-state overhead, and the importance of restricting the login path. The supplied text ends abruptly and lacks benchmarks or a complete deployment artifact, but the core mechanisms and trade-offs remain highly actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:02:04.483779"
+    },
+    {
+      "id": 7247,
+      "source_id": 34,
+      "original_url": "https://bernat.tech/posts/pybeach-2026-recap/",
+      "title": "PyBeach 2026 Recap",
+      "summary": "Free-threading improves Python parallelism only when data is isolated via sub-interpreters, and supply-chain security in Python packaging demands rigorous quoting, hash pinning, and locked release-tool dependencies.",
+      "ideas": [
+        "Free-threading overhead: ~1% macOS aarch64, ~8% x86-64 Linux lock contention",
+        "Sub-interpreters isolate data, making free-threaded code faster than shared-data workloads",
+        "LLM doc chunking: recency weighting and reversed negations significantly alter retrieval",
+        "Property descriptors data-descriptor win over instance __dict__; non-data descriptors store on instance",
+        "virtualenv supply chain: quoting bugs in bash/fish/zsh/cmd.exe and unpinned hash dependencies"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "The recap delivers substantial technical depth across multiple Python systems domains: free-threading benchmarks with measurable overhead and sub-interpreter interaction effects, concrete supply-chain vulnerability findings in virtualenv's release pipeline, precise descriptor/metaclass mechanics, and LLM-aware documentation chunking strategies. Each section provides original evidence or firsthand implementation knowledge rather than generic advice. The article remains tightly focused on engineering mechanisms, though its value is inherently tied to Python practitioners and may be less accessible to non-programmers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:58:36.247879",
+      "image_url": "https://bernat.tech/posts/pybeach-2026-recap/pybeach-2026-opening-og.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "PyBeach 2026 Recap"
+    },
+    {
+      "id": 7246,
+      "source_id": 34,
+      "original_url": "https://berkaycubuk.com/2026/10/26/introducing-tomte-for-tiny-and-focused-agents/",
+      "title": "Introducing Tomte for tiny and focused agents",
+      "summary": "Tomte is a Go framework for building tiny, focused LLM agents, demonstrated by a 133-line Hacker News digest agent that compiles to a 6.7MB binary using ~10MB memory.",
+      "ideas": [
+        "133-line Go agent compiles to 6.7MB binary with ~10MB memory footprint",
+        "CLI commands (`tomte deploy/logs/runs`) manage agent lifecycle on a VPS",
+        "Token cost capping via `MaxCost`, `MaxSteps`, and `Price` settings limits spending per agent run"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, concrete value by providing specific Go code snippets, exact CLI commands, and measurable resource metrics (133 lines of Go, 6.7MB binary, ~10MB memory) for building tiny LLM agents. It is highly relevant to engineers interested in agent deployment, infrastructure efficiency, and LLM tooling. The framework's approach to CLI-driven deployment and token cost capping represents useful implementation knowledge. However, it remains an introductory overview/framework announcement rather than a deep technical deep-dive or original research article, which prevents a higher exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:57:28.491656",
+      "image_url": "https://berkaycubuk.com/images/introducing-tomte-for-tiny-and-focused-agents/cover.jpg",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 7245,
+      "source_id": 34,
+      "original_url": "https://bayton.org/android/android-enterprise-faq/cross-profile-data-sharing/",
+      "title": "How does cross-profile data sharing work in a work profile?",
+      "summary": "Administrators can configure selective cross-profile data sharing (clipboard, intents, contacts, widgets) between work and personal profiles, but Android 17 blocks localhost loopback communication across profiles, breaking identity provider flows like Okta Verify FastPass.",
+      "ideas": [
+        "Clipboard sharing is configurable per direction, blocked from work to personal by default on BYOD",
+        "Connected apps require administrator approval and app support to bridge profile data boundaries",
+        "Android 17 blocks 127.0.0.1 loopback calls across work and personal profiles with no admin opt-out",
+        "BYOD work profiles allow personal-to-work sharing by default, while COPE gives admins broader control"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete technical detail on Android work profile cross-profile sharing policies, including clipboard, intent, connected apps, and contact searching distinctions between BYOD and COPE. Most notably, it documents the Android 17 restriction blocking 127.0.0.1 loopback traffic across profiles, which has immediate practical implications for EMM admins and identity provider integrations. The material is non-obvious, mechanism-focused, and well-supported without hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:54:57.591578",
+      "image_url": "https://bayton.org/img/bayton_logos/og_img.png?v=415c1f3c285e7efe7ca5fcb5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7244,
+      "source_id": 34,
+      "original_url": "https://av.codes/blog/personal-trace-intelligence/",
+      "title": "Your diffs are your weights",
+      "summary": "The substantive value of interacting with coding agents resides in the corrected diffs engineers produce, and compiling these into personal rule harnesses creates portable judgment capital and guards decision boundaries from vendor/employer capture.",
+      "ideas": [
+        "90% of repeated engineer interventions collapse into ~15 mechanical rules",
+        "Diffs, not prompts, are the primary unit of human judgment in agent workflows",
+        "Compiling personal agent traces into rules/harnesses protects judgment capital and privacy",
+        "Cognitive drift in agent acceptance thresholds appears in traces before self-detection"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article earns its score by delivering highly concrete, firsthand engineering analysis of how coder-AI diff patterns form judgment capital, backed by original data (PublicAI pricing, Anthropic workforce study, regression-hunt audit). Its central model—that 90% of repeated interventions collapse into ~15 mechanical rules—is non-obvious, well-supported, and immediately actionable. The piece also provides a rigorous privacy framework treating decision boundaries as protectable assets. Its main limitation is strong dependence on current AI coding-tool ecosystems, which may narrow immediate applicability for readers outside that sphere.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:53:23.474766"
+    },
+    {
+      "id": 7243,
+      "source_id": 34,
+      "original_url": "https://apfelhammer.de/posts/ff92-g5/",
+      "title": "Firefox 92 on a PowerMac G5: Cross-Compiling 2021 Code with a 2026 Toolchain",
+      "summary": "Cross-compiling Firefox 92 for PowerMac G5 (ppc64 big-endian ELFv2) with a 2026 toolchain reveals and resolves intricate ABI, compiler, and graphics format bugs, though image colour accuracy and GPU acceleration remain constrained by underlying hardware/stack limitations.",
+      "ideas": [
+        "Rust UB in FF92 resolved by -C opt-level=1 instead of -O3",
+        "Big-endian surface formats need X8R8G8B8_UINT32 / A8R8G8B8_UINT32 aliases",
+        "NSS -mvsx poisons whole files; runtime CPU detection fails on POWER9",
+        "Image colour bug maps channels as out = (blue, 0, green)",
+        "Cross-toolchain needs GCC 16.2 with --with-abi=elfv2 and patched rustc 1.99.1"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantial, firsthand engineering value by documenting the intricate process of cross-compiling Firefox 92 for a PowerMac G5 (ppc64 big-endian ELFv2). It provides concrete mechanisms, original measurements, and hard-won insights into ABI quirks, compiler behavior, and graphics format handling. A score of 85 reflects 'Strong' relevance for systems readers, though it stops just short of 'Exceptional' because the remaining image colour bug necessitates a multi-file Gecko backport rather than a single-line fix, and the GPU acceleration verdict depends on stack-level driver limitations beyond the browser patches.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:50:53.456421"
+    },
+    {
+      "id": 7242,
+      "source_id": 34,
+      "original_url": "https://antoniocortes.com/cloudflare-cache-kv-llm/",
+      "title": "Cuando la caché de un LLM mezcla clientes: el incidente de Cloudflare con GLM-5.3",
+      "summary": "A capacity mismatch and SGLang rejection bug leaked stale KV-cache data across tenants, demonstrating that disaggregated inference requires explicit capacity checks, integrity validation, and safe page reuse.",
+      "ideas": [
+        "Context capacity must match actual KV-cache capacity on every prefill node.",
+        "Rejected prompts can retain reserved decode pages containing stale request data.",
+        "Checksums and delayed page release reduce disaggregated KV-cache races.",
+        "HTTP 200 and coherent output can hide semantic memory corruption.",
+        "Upgrade SGLang to v0.5.22 or later for disaggregated-serving safeguards."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This focused secondary account explains a concrete cross-tenant KV-cache leak in disaggregated LLM serving: a context-capacity mismatch combined with an SGLang rejection path exposed stale request data. It provides useful operational detail about RDMA transfers, page reuse, version-specific fixes, checksums, delayed frees, and deployment validation. Its main limitation is that it summarizes Cloudflare's account without independent reproduction or new measurements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:48:44.087252",
+      "image_url": "https://antoniocortes.com/uploads/cloudflare-cache-kv-llm_hu_c5e1828589507b4a.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Cuando la caché de un LLM mezcla clientes: el incidente de Cloudflare con GLM-5.3"
+    },
+    {
+      "id": 7241,
+      "source_id": 34,
+      "original_url": "https://andlukyane.com/blog/book-review-beyond-llms",
+      "title": "Book Review: Beyond LLMs",
+      "summary": "The book argues that production LLM reliability hinges on architectural patterns—separating logic from language, enforcing deterministic constraints on model outputs, and structuring state externally—rather than prompt engineering alone.",
+      "ideas": [
+        "Model outputs should be treated as unverified claims requiring source and confidence tracking",
+        "Agent actions should be categorized into risk tiers (reading, writing, side effects) with policy checks",
+        "The propose-then-constrain pattern uses deterministic rules to validate model-drafted actions before execution"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The review delivers substantial, practical architectural patterns for production LLM systems (propose-then-constrain, risk-tiered actions, memory poisoning safeguards) grounded in the author's firsthand experience. It successfully moves beyond hype to concrete mechanisms like state separation and verification pipelines. The value is high, though slightly moderated by the review format summarizing a book rather than presenting original research, and brief notes on missing tool-integration details.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:48:27.686345",
+      "image_url": "https://andlukyane.com/images/book_reviews/beyond_llms/cover.png",
+      "image_width": 657,
+      "image_height": 810,
+      "image_alt": ""
+    },
+    {
+      "id": 7240,
+      "source_id": 34,
+      "original_url": "https://aliirz.com/my-agent-fleet-setup-with-buzz",
+      "title": "My agent fleet setup, with Buzz as the relay",
+      "summary": "A personal account of orchestrating five LLM agents across two communities using Docker, Buzz relay, and custom configs, detailing the infrastructure patterns, security trade-offs, and operational failures that distinguished 'running' from 'functioning' agents, culminating in an unexpected collaborative game.",
+      "ideas": [
+        "Fleet config generator validates runtime/agent readiness before rendering Compose, blocking deployments on missing identities or unverified models",
+        "Sender allowlist compiled from config enforces strict mention policies, preventing unknown public keys from triggering agents",
+        "Memory and PID limits are ceilings, not reservations; misconfigured limits broke Terraform integration and required Compose instead"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly detailed technical writeup on deploying and operating a personal fleet of LLM agents. Covers concrete architecture (Docker/Compose/Ansible), specific security configurations, and non-obvious operational pitfalls (apt locks, permission gaps, mention-picker vs reachability gaps). The author honestly documents the difference between a running container and a functioning agent, credential management trade-offs (GitHub tokens vs Apps), and the workflow that led to a collaborative game. Extremely valuable for anyone attempting agent orchestration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:45:52.991804",
+      "image_url": "https://aliirz.com/images/fleet/fleet-header.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 7239,
+      "source_id": 34,
+      "original_url": "https://aicode.danvoronov.com/2026-10/26_14-35/",
+      "title": "2026-10-26 14:35",
+      "summary": "VibeWise implements a design-first checkpoint system for AI coding agents that requires the user to define understanding before generation, with Build/Design/Implementation phases and post-implementation verification reports.",
+      "ideas": [
+        "Agent probes user understanding with task-specification questions before code generation",
+        "Three-phase checkpoint system (Build/Design/Implementation) records design decisions and requires implementation explanations",
+        "State persists locally in .vibe-wise/ files with no backend, model, or telemetry"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article describes VibeWise, a design-first plugin for AI coding agents that introduces a concrete checkpoint system (Build, Design, Implementation) requiring the agent to probe user understanding before generation, lock in design decisions, and produce verification reports after implementation. It provides specific mechanisms, state-management details (.vibe-wise/ files), and behavior patterns without hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:44:48.004326"
+    },
+    {
+      "id": 7238,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/claude-code-sandbox-internals",
+      "title": "Claude Code's sandbox from the source: the bwrap argv, the seccomp program, and the proxy",
+      "summary": "The sandbox relies primarily on Linux mount namespaces and seccomp, with a narrowly mediated Unix-socket proxy providing controlled network egress.",
+      "ideas": [
+        "bwrap expresses filesystem policy through read-only binds, writable rebinds, and masking mounts.",
+        "A Unix-socket proxy is the sandbox's sole egress path.",
+        "Seccomp blocks AF_UNIX, AF_VSOCK, io_uring sockets, and namespace escape syscalls.",
+        "The USER_NOTIF observer is explicitly racy and cannot enforce policy decisions.",
+        "Proxy DNS rebinding defenses omit private ranges unless explicitly configured.",
+        "Seatbelt's network-outbound local-address filter has an any-address semantic trap.",
+        "clone3 returns ENOSYS so libc falls back to clone, preserving thread creation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 94,
+      "rating_reason": "This is an unusually concrete, source-grounded teardown of Claude Code's sandbox, citing a specific runtime commit and exposing the actual bwrap command line, seccomp filters, proxy flow, and measured policy violations. It identifies non-obvious escape-relevant details such as io_uring socket creation, clone3 fallback behavior, attacker-controlled observer paths, DNS rebinding gaps, and Seatbelt address-filter semantics. The macOS analysis was not experimentally validated, the Claude Code integration relies on documentation rather than source, and the supplied text ends abruptly, but the Linux analysis remains exceptionally substantive.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:44:23.780537",
+      "image_url": "https://ai.thesatyajit.com/articles/claude-code-sandbox-internals/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 7237,
+      "source_id": 34,
+      "original_url": "https://ai.thesatyajit.com/articles/lipogram-rl",
+      "title": "Qwen, minus the e: a mask removes the letter, training has to write the rest",
+      "summary": "Token-level masks guarantee constraint compliance but not quality, and GRPO under such masks optimizes reward loopholes like answer shortening or prompt echoing rather than true competence.",
+      "ideas": [
+        "31.3% of Qwen3 vocabulary tokens contain an e; half of letter-only tokens are banned",
+        "Masking forbids tokens, not letters; the model's committed plan degrades into misspellings",
+        "Model's top token was banned in 34% of masked generation steps",
+        "Cheap fluency proxy scored 0.96 on broken text; semantic sense requires an LLM judge",
+        "RL reward hacking: answer length collapsed 52 to 18 tokens while rewards stayed high",
+        "Echo-the-prompt policy exploited e-free prompt shortcuts for perfect reward",
+        "2B-model RL training fits 16 GB via LoRA, gradient checkpointing, chunked cross-entropy"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "This is a rigorous practitioner teardown with genuinely original empirical work: measured tokenizer statistics (47,405 of 151,669 Qwen3 tokens contain an e), quantified masked-generation behavior (top token banned in 34% of steps), verified memory arithmetic, and two independent CPU GRPO runs that surfaced a reward hack (echo-the-prompt policy) absent from the source writeup. It directly challenges a claim from the original experiment with evidence — masked 0.6B output was readable, not gibberish — and explains the mechanisms (logit filtering can't revise a committed plan, error compounding, group-relative advantage). Limitations: it builds on Kevin Wu's existing work rather than originating the system, several key numbers are 'reported' rather than independently re-run, the largest experiments are scaled-down proxies, and the content is truncated near the end. Even so, the labeled provenance methodology, reward-design failure analysis, and reproducible detail put it in the top tier of LLM engineering writing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T22:44:21.991052",
+      "image_url": "https://ai.thesatyajit.com/articles/lipogram-rl/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 7236,
+      "source_id": 4,
+      "original_url": "https://oddsolutions.github.io/Chromecast-with-Google-TV-4K-Secure-Boot-Bypass-v2/",
+      "title": "ODS Security Research - Nolen Johnson",
+      "summary": "The Chromecast with Google TV 4K remains persistently unlockable on current firmware by patching the u-boot env lock bits, and Android's RescueParty recovery mode inadvertently exposes unauthenticated ADB - a genuine security finding.",
+      "ideas": [
+        "Chromecast Google TV 4K secure boot can be bypassed persistently on latest 2025 firmware",
+        "AMLogic s905d3g reads bootloader lock state from u-boot env, not RPMB",
+        "LockData_t serializes lock state as eight ASCII decimal digits in the env partition",
+        "Unlocking requires flipping bits, recomputing CRC32 over the env, and writing both copies",
+        "GhostLock kernel exploit grants temporary root and SELinux permissive on Linux 5.10.170",
+        "FBE keys bound to AVB root of trust trap unlocked devices in a RescueParty boot loop",
+        "Recovery mode with rescueparty boot reason allows unauthenticated ADB access - likely unintended",
+        "adb reboot fastboot escapes the RescueParty loop into fastbootd, enabling bootloader access",
+        "Env patching repurposes the pairing button to enter fastboot instead of Burn mode",
+        "Flashing LineageOS 22.2 on Android 14 bootloader triggers anti-rollback and bricks the device",
+        "The original 2021 BootROM BL1 exploit is no longer triggerable on current firmware"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is original, first-hand security research with high value density: a complete persistent secure boot bypass for Chromecast with Google TV 4K on the latest 2025-10 firmware, released with working scripts (sabrina-unlock-v2, patch_env_unlock.py). Specific value instances include the newly discovered unauthenticated ADB access in recovery mode under a rescueparty boot reason (a likely unintended vulnerability), detailed LockData_t/AMLogic env partition internals, the FBE-key-bound-to-AVB catch-22 and its fastbootd escape workaround, and practical anti-brick warnings (LineageOS 22.2 ARB). The only penalties are a brief personal preamble and niche single-device applicability, which prevent an exceptional score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-27T22:33:10.462157"
+    },
+    {
+      "id": 7235,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/10/openai-compaction-flaw-let-researchers.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Server-side handling of decrypted model reasoning is a security trust boundary because any instruction-following step may become an exfiltration path.",
+      "ideas": [
+        "OpenAI's compaction flow can be instructed to copy encrypted reasoning into a plaintext-replayable item.",
+        "Same-model compaction bypassed defenses that only detected cross-model replay of hidden reasoning.",
+        "Replacing spaces with tabs helped copied reasoning evade OpenAI's usage-policy content filters.",
+        "Cheaper models repeated the compacted reasoning exactly, confirming reliable exfiltration through replay.",
+        "Researchers could not verify word-for-word authenticity because they never observed original internal reasoning.",
+        "OpenAI patched the flaw server-side, requiring no API developer changes.",
+        "The technique was tested only on gpt-5.6-sol; newer GPT-6 Astra remained unverified.",
+        "Any server-side step processing decrypted reasoning could leak it by following attacker instructions.",
+        "Hidden reasoning is protected partly because it provides superior training data for model distillation.",
+        "Published GitHub code lets researchers reproduce and audit Xint's compaction attack.",
+        "No evidence established that attackers exploited the flaw before OpenAI closed it.",
+        "Reported China-linked campaigns were separate from Xint's proof-of-concept demonstration.",
+        "The attack extends prior Stolen Thoughts and GhostCompact research against hidden-reasoning protections."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a concrete, technically specific account of how compaction could expose hidden reasoning, including same-model instruction injection, whitespace-based filter evasion, cross-model replay, and published research code. It also adds valuable caveats: researchers could not authenticate the extracted reasoning, only one model was tested, and no in-the-wild exploitation was established. The surrounding navigation, webinar promotions, and unrelated headlines dilute value density, while defensive guidance is limited beyond the broader trust-boundary lesson.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-27T22:32:49.641870"
+    },
     {
       "id": 7234,
       "source_id": 4,
