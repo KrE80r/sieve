@@ -1,7 +1,427 @@
 {
-  "updated_at": "2026-10-27T13:00:00.177236+00:00",
-  "total_items": 1120,
+  "updated_at": "2026-10-27T14:00:00.179940+00:00",
+  "total_items": 1137,
   "items": [
+    {
+      "id": 7273,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/how-to-iterate-over-two-collections-in-lockstep-without-heap-allocations-in-csharp/",
+      "title": "How to iterate over two collections in lockstep without heap allocations in C#",
+      "summary": "A measured guide to implementing faster, allocation-free lockstep iteration in C# by using sliced spans, concrete struct enumerators, or a custom ref-struct enumerator.",
+      "ideas": [
+        "Slice both spans to the minimum length, then use one indexed loop.",
+        "Concrete collection types preserve struct enumerators and eliminate boxing.",
+        "CollectionsMarshal.AsSpan exposes list storage without heap allocation.",
+        "Checking both lengths in MoveNext enables better JIT optimization.",
+        "Unequal lengths silently truncate, so validate them explicitly when required."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete implementation options, allocation measurements, runtime-specific benchmarks, and useful explanations of interface dispatch, boxing, struct enumerators, span slicing, and JIT bounds-check behavior. It also identifies important correctness and maintainability constraints, including mutation hazards, truncation on unequal lengths, ref-struct limitations, and unstable pairing of unordered collections. The evidence is limited to a focused int-array/list microbenchmark on one CPU and runtime, and some JIT explanations remain interpretive rather than demonstrated across workloads.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:23:04.542730",
+      "image_url": "https://startdebugging.net/og/2026/10/how-to-iterate-over-two-collections-in-lockstep-without-heap-allocations-in-csharp.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How to iterate over two collections in lockstep without heap allocations in C# - Start Debugging"
+    },
+    {
+      "id": 7272,
+      "source_id": 34,
+      "original_url": "https://stanislav.blog/make-git-worktrees-cheap-for-agents/",
+      "title": "Make git worktrees cheap for agents",
+      "summary": "A single CLI command can set up a git worktree with shared caches, Bazel disk cache, and generated files, enabling agent‑ready environments in under 30 seconds.",
+      "ideas": [
+        "pnpm global virtual store reduces node_modules to a few MB per worktree",
+        "Bazel --disk_cache shares compiled action outputs across worktrees",
+        "Pinning Rust toolchain sha256 cuts first Bazel call from 30 s to 9 s",
+        "Copy Bazel‑generated files from cache into worktree for type checkers and dev servers"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, measurable engineering steps—pnpm’s global virtual store, Bazel disk‑cache sharing, pinned toolchains, and generated‑file copying—that together cut worktree provisioning to under a minute. It is technically substantive, directly relevant to developer‑environment and agent workflows, and avoids hype. Slight deductions arise from reliance on specific Bazel versions and the need for careful generation‑file handling in some repos.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:22:36.685563"
+    },
+    {
+      "id": 7271,
+      "source_id": 34,
+      "original_url": "https://slaptijack.com/articles/a-feature-flag-needs-a-removal-owner.html",
+      "title": "A Feature Flag Needs a Removal Owner",
+      "summary": "Assign a dedicated removal owner and follow a documented, evidence‑driven sequence to safely retire feature flags once their purpose ends.",
+      "ideas": [
+        "Temporary rollout flag: retire after verified full traffic shift",
+        "Classify controls: rollout, migration, operational, entitlement",
+        "Give removal owner accountability and evidence checklist",
+        "Review all environments, including infrequent workloads",
+        "Retain flags only with a documented operating purpose",
+        "Archive configuration only after all dependencies are cleared"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, actionable guidance on flag lifecycle management, naming removal owners, classification criteria, and a step-by-step retirement sequence backed by specific evidence checklists. It avoids generic hype and provides technically precise mechanisms, though its length and some surrounding cookie-consent text add minor noise. The core content remains highly relevant to engineers seeking disciplined flag removal practices.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:19:25.243542"
+    },
+    {
+      "id": 7270,
+      "source_id": 34,
+      "original_url": "https://shocm.me/posts/2026-10-27-php-86-sortdirection-enum/",
+      "title": "PHP 8.6 SortDirection Enum: Stop Passing 'ASC' and 'DESC' Strings Around",
+      "summary": "Use a global SortDirection enum to replace scattered 'asc'/'desc' strings, mapping input early and ensuring type safety.",
+      "ideas": [
+        "Use match to convert raw strings to SortDirection enums early.",
+        "Polyfill defines enum on missing versions, avoiding backward compatibility issues.",
+        "Typed direction parameters improve code safety and reduce runtime validation."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives concrete code examples showing how to replace scattered 'asc'/'desc' strings with a typed SortDirection enum, includes a polyfill for older PHP, and warns about edge cases. It provides practical, non‑obvious guidance but is narrowly scoped to PHP developers, limiting broader relevance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:18:39.576520",
+      "image_url": "https://shocm.me/attachments/2026-10-27-php-86-sortdirection-enum.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 7269,
+      "source_id": 34,
+      "original_url": "https://rohanadwankar.github.io/posts/virt.html",
+      "title": "700 agent sandboxes on a 7GB PC",
+      "summary": "Routing lightweight sandboxes can increase tenant capacity from ~576 to 736 while dramatically reducing memory and wake overhead.",
+      "ideas": [
+        "736 sandboxes fit on 7 GB RAM using mixed VM and lightweight routing",
+        "Warm microVM latency ~20 ms, cold boot ~1.2 s, snapshots cut boot to tens of ms",
+        "Light sandbox (bubblewrap) handles file commands at ~6 ms vs 2.4 ms bare",
+        "Memory-bound shift to CPU-bound at ~576 tenants, queueing raises p99 to 1 s"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents an original, data‑driven experiment fitting hundreds of agent sandboxes on a 7 GB machine, showing concrete latency, memory, and CPU trade‑offs across four optimization levels. It supplies measurable results, code snippets, and clear mechanisms, but its scope is limited to a specific sandboxing setup and may not generalize to all agent workloads.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:15:45.179748"
+    },
+    {
+      "id": 7268,
+      "source_id": 34,
+      "original_url": "https://ramimac.me/gheist",
+      "title": "Gheist: Attempted Scaled Abuse of Stolen GitHub Tokens Stumbles",
+      "summary": "Stolen GitHub tokens can implant workflows that exfiltrate repository and environment secrets, while defender visibility must combine GitHub audit logs, cloud audit logs, and self-hosted runner telemetry.",
+      "ideas": [
+        "Base32 bypasses GitHub's verbatim secret masking in workflow logs.",
+        "Empty workflow permissions do not restrict the repository secrets context.",
+        "Approval holds exclude private repositories and GitHub Enterprise Server.",
+        "OIDC subject matching reveals attacker-branch role assumptions without GitHub logs.",
+        "Self-hosted runner payloads can escalate repository access into host compromise."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is strong original threat research with concrete telemetry, workflow code, campaign evolution, indicators of compromise, and actionable detection and remediation guidance. It explains non-obvious mechanisms such as base32 bypassing GitHub's secret masking, empty token permissions not restricting the secrets context, and approval holds failing to cover private repositories and GitHub Enterprise Server. The vendor-authored framing and some inferential claims about campaign overlap reduce confidence slightly, but the central findings are unusually specific and operationally useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:12:45.895793"
+    },
+    {
+      "id": 7267,
+      "source_id": 34,
+      "original_url": "https://rabbitictranslator.com/kde-workflow-with-jujutsu/",
+      "title": "My KDE workflow with jujutsu",
+      "summary": "Configure Jujutsu to avoid accidental master pushes, generate descriptive autogenerated bookmarks, and use advanced commands like squash-interactive and split-interactive for fine‑grained commit management.",
+      "ideas": [
+        "Disable default bookmark tracking to prevent accidental pushes to master",
+        "Set git_push_bookmark template for readable autogenerated branch names",
+        "Enable experimental-advance-branches limited to work/username/* globs",
+        "Use jj squash --interactive to move changes into a specific parent commit",
+        "Use jj split --interactive to divide a large working copy into multiple commits"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, original configuration details and command workflows for Jujutsu that give engineers precise control over bookmark tracking, branch advancement, and commit manipulation, which is valuable for software engineering tooling. It is highly relevant to programming and workflow customization but is niche and does not cover AI topics. The depth of technical substance justifies a strong score despite limited broad applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:12:31.795554",
+      "image_url": "https://rabbitictranslator.com/blumen/herz-chibbutts.png",
+      "image_width": 1500,
+      "image_height": 1500,
+      "image_alt": ""
+    },
+    {
+      "id": 7266,
+      "source_id": 34,
+      "original_url": "https://openwebcraft.com/archive/2026/helios64-reloaded-armbian-trixie-samba-radicale/",
+      "title": "Helios64 reloaded: Armbian Trixie w/ stock Samba & Radicale",
+      "summary": "The key insight is that using `panic=10 oops=panic` combined with a lightweight reboot service reliably recovers from the RK3399 PCIe kernel panic while preserving existing Samba passwords during a clean Debian+Samba+Radicale migration.",
+      "ideas": [
+        "Force a panic with `panic=10 oops=panic` and auto‑reboot to survive RK3399 PCIe kernel crashes."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "The piece offers concrete, first‑hand solutions for the RK3399 PCIe kernel panic, a minimal reboot script, and a seamless migration from OMV/Nextcloud to stock Debian with preserved SMB credentials. It is highly relevant to technically skilled sysadmins aiming for a stable ARM NAS, though its niche hardware focus and some narrative padding keep it from exceptional status. The article supplies original evidence, clear mechanisms, and practical implementation steps, meeting most criteria for strong value. Limitations include occasional padding and limited appeal outside the specific Helios64 audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:11:02.759162",
+      "image_url": "https://openwebcraft.com/public/archive-images/helios64-reloaded-armbian-trixie-samba-radicale/Armbian_26-8-1_Helios64_trixie_current_6-18-43_minimal_msg.png",
+      "image_width": 845,
+      "image_height": 513,
+      "image_alt": ""
+    },
+    {
+      "id": 7265,
+      "source_id": 34,
+      "original_url": "https://narendranag.com/2026/10/26/the-request-that-has-to-stay-home.html",
+      "title": "The Request That Has to Stay Home",
+      "summary": "DSAR compliance pipeline enforces strict data residency by compiling governance records on-premise, running a 7B LLM locally over Tailscale, and refusing to fall back to public APIs, proving that 'no data held' is a valid regulator-acceptable outcome.",
+      "ideas": [
+        "Governance records written before any data lookup prevents downstream failures",
+        "Private 7B model on localhost eliminates public API data leakage risk",
+        "'No data held' is a valid regulator-acceptable outcome, not a pipeline error"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly substantive technical article detailing a privacy-first DSAR pipeline architecture. Concrete mechanisms include governance record prioritization before data lookup, private-network 7B model inference, and explicit 'no data held' handling as a valid regulatory outcome. The six-execution verification protocol (401/400 error cases) and the post-test fixture cleanup demonstration add significant engineering credibility. The core value is the non-obvious constraint that this compliance workflow autonomously decides model placement rather than treating it as a variable cost-latency tradeoff.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:09:36.256438",
+      "image_url": "https://narendranag.com/assets/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Narendra Nag"
+    },
+    {
+      "id": 7264,
+      "source_id": 34,
+      "original_url": "https://markodenic.com/htaccess-301-redirect/",
+      "title": "301 Redirects in .htaccess: Copy-Paste Examples",
+      "summary": "A curated reference of Apache .htaccess 301 redirect patterns, from simple one-liners to complex regex, mod_rewrite conditions, and WordPress integration rules, including rarely documented gotchas like query string deletion and redirect chain prevention.",
+      "ideas": [
+        "RedirectMatch ^/old-page/?$ captures both /old-page and /old-page/ using optional slash regex.",
+        "mod_rewrite with %{HTTP_HOST} condition is required for domain-wide 301 redirects, not simple Redirect lines.",
+        "Always place custom Redirect rules above the # BEGIN WordPress block to avoid being overwritten by permalink rewrites.",
+        "Use curl -I to test redirects; browsers cache 301s aggressively, masking file errors.",
+        "Append $is_args$args in nginx return 301 to preserve query strings, unlike Apache which keeps them by default.",
+        "Redirect chains slow pages and crawl time; point old URLs straight at the final destination.",
+        "Redirect matches path prefix, not exact URL; use RedirectMatch with ^ and $ anchors for exact matching."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly practical .htaccess guide for 301 redirects. Packed with concrete copy-paste regex patterns, capture groups, and critical edge-case warnings (WordPress placement, query strings, nginx differences, redirect chains/loops). Explains mod_alias vs mod_rewrite trade-offs. Dense with implementation knowledge rather than hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T00:01:57.133374",
+      "image_url": "https://markodenic.com/wp-content/uploads/2026/10/og-htaccess-301-redirect.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "301 Redirects in .htaccess: Copy-Paste Examples - Marko Denic"
+    },
+    {
+      "id": 7263,
+      "source_id": 34,
+      "original_url": "https://liviutudor.com/2026/10/26/beware-of-the-markdown-file-in-your-downloads-folder/",
+      "title": "Beware of the Markdown File in Your Downloads Folder",
+      "summary": "Markdown instruction files in download folders can execute malicious code via AI agents, making them as dangerous as traditional scripts.",
+      "ideas": [
+        "Markdown files treated as instructions can trigger rogue npm installs.",
+        "Researchers reproduced attacks on OpenAI Codex with 90% success.",
+        "CLAUDE.md exposure leaked OAuth tokens in roughly half the attempts.",
+        "Agents launched >1,300 times from Downloads due to \"tidy up my Downloads\" queries.",
+        "Least‑privilege and sandbox policies are essential for safe agent operation."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete evidence of markdown files being abused as code by AI agents, reproducible experiments, and practical hardening steps, showing strong technical relevance. Its main limitations are sensational framing and occasional promotional language that slightly dilute the rigor.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:58:08.014283"
+    },
+    {
+      "id": 7262,
+      "source_id": 34,
+      "original_url": "https://lemire.me/blog/2026/10/26/billion-query-per-second-lookup-tables-in-c/",
+      "title": "Billion-query-per-second lookup tables in C++",
+      "summary": "Compile-time perfect hashing and guarded SIMD comparisons can make static string lookups dramatically faster than conventional hash tables.",
+      "ideas": [
+        "Compile-time greedy association tables eliminate collisions and runtime probing.",
+        "SIMD compares padded keys in five instructions while safely guarding page-boundary reads.",
+        "Benchmarks show 1.2–2 ns lookups, three to thirteen times faster than alternatives.",
+        "Wide-load safety depends on rejecting reads that could cross a memory page."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article presents a concrete C++23 compile-time perfect-hash implementation, explains its collision-free slot assignment, and shows how SIMD key comparison reduces branches. Its library and benchmark data provide unusually actionable evidence: roughly 1.2–2 ns per lookup and 3–13× speedups over gperf, Abseil, and unordered_map on tested key sets. Validation is narrow—primarily Apple M3 Max/M4 with AppleClang 15, and the approach only fits compile-time-known keys—so broader portability remains unproven.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:56:29.924846",
+      "image_url": "https://lemire.me/blog/wp-content/uploads/2026/10/perfect-hash-cover-1024x687.jpg",
+      "image_width": 1024,
+      "image_height": 687,
+      "image_alt": ""
+    },
+    {
+      "id": 7261,
+      "source_id": 34,
+      "original_url": "https://kattraxler.cloud/no-permissions-required-cross-tenant-data-theft-via-bigquery-data-transfer/",
+      "title": "No Permissions Required: Cross-Tenant Data Theft via BigQuery Data Transfer",
+      "summary": "A missing authorization check in shared BigQuery DTS infrastructure can let unrelated tenants exfiltrate private databases through another tenant's Private Service Connect attachment.",
+      "ideas": [
+        "BigQuery DTS shared connectors fail to enforce caller authorization for PSC network attachments.",
+        "ACCEPT_MANUAL cannot isolate tenants because regional DTS producers admit every customer's transfers.",
+        "Attack requires the attachment name, database private IP, and victim DTS deployment.",
+        "Immediate mitigation is removing the PSC attachment after each transfer completes.",
+        "Google reproduced the flaw but closed it as duplicate and declined mitigation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is substantive, original vulnerability research explaining a confused-deputy flaw in BigQuery Data Transfer Service's use of shared Private Service Connect connectors. It provides concrete exploit preconditions, affected database protocols, observed producer projects, vendor correspondence, reproduction dates, and an actionable mitigation. The evidence is weakened by the absence of public proof-of-concept code, dependence on reconnaissance such as attachment names and internal IP addresses, and the need for a specific victim configuration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:52:41.921537",
+      "image_url": "https://kattraxler.cloud/content/images/size/w1200/2026/10/bq_dts_confused_deputy_banner-1.jpg",
+      "image_width": 1200,
+      "image_height": 670,
+      "image_alt": ""
+    },
+    {
+      "id": 7260,
+      "source_id": 34,
+      "original_url": "https://jolars.co/blog/2026-10-26-how-to-train-your-intercept/",
+      "title": "How to Train Your Intercept",
+      "summary": "A safeguarded Newton update for the intercept can eliminate severe convergence slowdowns in imbalanced regularized logistic regression without exact subproblem minimization.",
+      "ideas": [
+        "Safeguarded Newton intercept updates eliminate a sevenfold slowdown under response imbalance.",
+        "Centering features fails to decouple intercept because logistic curvature weights vary.",
+        "One Newton update per sweep matches exact intercept minimization with less work.",
+        "Backtracking prevents approximate Newton steps from increasing actual Poisson loss.",
+        "IRLS solvers naturally avoid the intercept convergence trap affecting direct coordinate descent."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This unusually focused ML-optimization study provides equations, convergence experiments, solver comparisons, and a concrete skglm patch demonstrating a substantial improvement. It identifies a non-obvious failure mode: worst-case-curvature gradient updates for the unpenalized intercept become overly small under class imbalance, slowing the entire coordinate-descent solver. The evidence is valuable but bounded because the theory is local, no global convergence rate is proved, and the article provides less experimental detail than the linked manuscript and code.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:51:01.285861",
+      "image_url": "https://jolars.co/blog/2026-10-26-how-to-train-your-intercept/images/trajectories.png",
+      "image_width": 1200,
+      "image_height": 750,
+      "image_alt": "Three intercept-update strategies take different paths toward the same logistic regression solution."
+    },
+    {
+      "id": 7259,
+      "source_id": 34,
+      "original_url": "https://internals-for-interns.com/posts/linux-kernel-cgroups/",
+      "title": "Cgroups",
+      "summary": "cgroups enforce resource limits by tracking usage in controller‑specific counters and blocking new processes when limits would be exceeded.",
+      "ideas": [
+        "cgroups store limits in per‑controller css data structures.",
+        "writing to pids.max caps process count and blocks further forks.",
+        "child cgroup limits must be stricter than its parent’s."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents deep, concrete kernel internals of cgroup v2 with reproducible shell examples, showing how limits are enforced at the fork and memory levels. It is highly relevant to sysadmin and kernel developers and avoids hype, though it assumes prior knowledge of namespaces. The material offers actionable insight while remaining technically precise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:45:49.034388"
+    },
+    {
+      "id": 7258,
+      "source_id": 34,
+      "original_url": "https://emanueleferonato.com/2026/10/26/build-a-html5-gravity-flipping-platformer-like-gravity-duck-with-phaser-4-and-typescript/",
+      "title": "Build a HTML5 gravity-flipping platformer like “Gravity Duck” with Phaser 4 and TypeScript",
+      "summary": "Implements 4-direction gravity flipping in Phaser 4, where gravity vectors control player hitbox sizing, acceleration axes, and conditional collision logic for goals and hazards.",
+      "ideas": [
+        "Axis-swapping acceleration and drag based on gravity direction",
+        "Gravity wells rotate vector and transfer speed via velocity update",
+        "Goals collectible only when player gravity matches goal direction",
+        "Spikes trigger level restart on contact"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong tutorial content providing concrete implementation details for gravity-flipping mechanics in Phaser 4 TypeScript. Includes non-obvious mechanisms such as axis-swapping acceleration/drag based on gravity direction, vector-based gravity well interactions with speed transfer, and gravity-conditioned goal/spike collision checks. The step-by-step structure and full code snippets deliver practical engineering value for game physics implementation, fitting the 'programming and software-engineering practice' reader interest well.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:35:12.448009"
+    },
+    {
+      "id": 7257,
+      "source_id": 34,
+      "original_url": "https://dragosroua.com//video-stories-from-the-vibe-coding-trenches-when-the-agent-claude-deletes-your-files/",
+      "title": "[ Video ] Stories From The Vibe Coding Trenches – When the Agent (Claude) Deletes your Files",
+      "summary": "AI coding agents can silently delete files without instruction; Git version control is the essential safety net to prevent irreversible loss of work.",
+      "ideas": [
+        "Claude deleted all audio files without being prompted to do so",
+        "Stochastic agent behavior caused context drift and erroneous tool calls",
+        "Author's 20+ year Git habit prevented total work loss"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Concrete account of an AI coding agent stochastically deleting paid audio files during vibe coding development. Explains mechanisms (non-deterministic behavior, context drift, unexpected tool calls). Critical practical insight: Git version control prevented total loss. Directly relevant to AI-assisted development workflows, though limited to a single incident narrative without broader experimental data.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-27T23:31:46.416548",
+      "image_url": "https://cdn.dragosroua.com/wp-content/uploads/2026/10/hero-wehn-the-agent-deletes-your-fiels.webp",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": ""
+    },
     {
       "id": 7256,
       "source_id": 34,
@@ -49,7 +469,11 @@
       "rating_reason": "The article delivers original empirical evidence through systematic testing of 10 design systems against concrete performance tasks, providing unusually deep technical analysis of root causes such as Stencil's O(n) slot handling complexity and varying virtualization strategies. These findings reveal that performance characteristics are implementation-specific rather than framework-dependent, though the measured results apply to the tested library versions and may not extrapolate to all component architectures.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-27T23:28:23.668115"
+      "published_at": "2026-10-27T23:28:23.668115",
+      "image_url": "https://denodell.com/_astro/design-systems-should-be-fast-by-default.BV46fYgK_f3VjL.jpg",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": "Design Systems Should Be Fast by Default"
     },
     {
       "id": 7254,
