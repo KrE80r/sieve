@@ -1,7 +1,560 @@
 {
-  "updated_at": "2026-10-28T13:00:00.135767+00:00",
-  "total_items": 1069,
+  "updated_at": "2026-10-28T14:00:00.174038+00:00",
+  "total_items": 1091,
   "items": [
+    {
+      "id": 7327,
+      "source_id": 34,
+      "original_url": "https://www.tunbury.org/2026/10/26/week-43/",
+      "title": "Notes from week 43",
+      "summary": "Technical account of ocaml.org infrastructure issues including memory growth, documentation rendering bottlenecks, socket leaks, and overlayfs bugs, with before/after measurements showing 60% RSS reduction and 90% CPU improvement after fixes.",
+      "ideas": [
+        "Sidebar rendering consumed 97% of bytes with 23x memory amplification",
+        "Socket leak caused FD exhaustion on 404 responses over size cap",
+        "Overlayfs whiteout ordering caused pkgconf version conflicts",
+        "Memory grew 80MB/hour from uncached status caches",
+        "Gzip moved to Varnish freed 30% backend CPU"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Substantial technical substance with concrete measurements, profiling data, and before/after comparisons across multiple OCaml infrastructure issues. Deep engineering investigation with verifiable findings including 23x memory amplification, socket leak quantification, and 60% RSS reduction. High value per minute despite specialized OCaml focus.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:22:42.841277",
+      "image_url": "https://www.tunbury.org/images/ocamlorg-memory.png",
+      "image_width": 1600,
+      "image_height": 741,
+      "image_alt": ""
+    },
+    {
+      "id": 7326,
+      "source_id": 34,
+      "original_url": "https://www.stephanmiller.com/model-buzz-roundup-week-of-1021/",
+      "title": "Kimi K3.1 Pro and GPT-6.1 Terra: Cheap Per Token, Not Per Task",
+      "summary": "Per-token pricing is a misleading proxy for actual task efficiency; GPT-6.1 Terra and Kimi K3.1 Pro cost significantly more per completed task than competing models at comparable benchmark scores, making direct token-rate comparison a poor substitute for task-evaluation.",
+      "ideas": [
+        "GPT-6.1 Terra costs ~2x more per task than GPT-6.1 Sol at equivalent AA index scores",
+        "Kimi K3.1 Pro costs ~30% more per task than Argon for only 2 additional Artificial Analysis points",
+        "Terra at max effort burns 130M output tokens vs 81M median for its price tier, driving up cost despite lower per-token rate",
+        "K3.1 Pro writes at 41 tokens/sec vs Argon's 81 tokens/sec, doubling wait time per agent loop step",
+        "OpenAI rates GPT-6.1 Terra Critical for cyber, with 24.5% arbitrary code execution rate on internal tests"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a rigorous, data-driven comparison of per-task costs and benchmark performance for recent LLM releases, explicitly debunking the 'cheap per token' narrative with concrete task-level metrics from Artificial Analysis and Arena. It combines pricing data, token throughput, cybersecurity ratings, and observed model behaviors (reward hacking, speed differences) to give readers actionable insights into which models actually deliver value per dollar and per unit of capability. The analysis is well-supported with specific numbers and direct model comparisons, though it relies on third-party benchmark datasets and community reports for some behavioral observations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:21:39.704047",
+      "image_url": "https://www.stephanmiller.com/images/2026/model-buzz-2026-10-27.jpg",
+      "image_width": 2752,
+      "image_height": 1536,
+      "image_alt": ""
+    },
+    {
+      "id": 7325,
+      "source_id": 34,
+      "original_url": "https://www.pythonguis.com/faq/get-value-from-model-through-pair-of-integers-representing-row-and-column/",
+      "title": "Getting a Value from a Model Using Row-Column Indices — How to retrieve data from a Qt model using row and column integers",
+      "summary": "Qt's model.data() requires a QModelIndex created via model.index(row, column); the article demonstrates the correct two-step pattern with a complete runnable example showing how to retrieve cell values programmatically.",
+      "ideas": [
+        "Use model.index(row, column) to create QModelIndex before calling model.data()",
+        "DisplayRole retrieves text representation of model data",
+        "Row/column must be within data bounds or data() returns None"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Concise tutorial explaining the non-obvious Qt model/view pattern where model.data() requires a QModelIndex created via model.index(row, column) rather than raw integers. Provides complete working example with proper Qt.ItemDataRole.DisplayRole handling. Clear mechanism with boundary discussion. High practical value for Qt/PyQt developers needing programmatic model access.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:20:18.373867",
+      "image_url": "https://www.pythonguis.com/static/images/libraries/pyqt6.jpg",
+      "image_width": 1000,
+      "image_height": 500,
+      "image_alt": ""
+    },
+    {
+      "id": 7324,
+      "source_id": 34,
+      "original_url": "https://www.msuiche.com/posts/the-great-glyph-grift-and-how-to-detect-it-without-the-sample/",
+      "title": "The Great Glyph Grift, and How to Detect It Without the Sample",
+      "summary": "Detects the glyph‑grift exploit by measuring effective glyph coordinates against a 512×unitsPerEm threshold.",
+      "ideas": [
+        "Overflow in aa_double_to_fixed causes unbounded bounding‑box growth.",
+        "Effective coordinate must hit ≥512 × unitsPerEm to trigger the bug.",
+        "Nine maximal F2Dot14 composites can expand a 32 000‑unit glyph to ~16 M units.",
+        "Detection ignores stored bbox headers and walks actual contour deltas.",
+        "WhatsApp’s strict PDF validation flags malformed embedded FontFile2 streams."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The piece explains a subtle CoreGraphics glyph conversion bug, shows how undefined‑behaviour in fixed‑point casting enables a zero‑click exploit, and provides a concrete detection rule based on effective glyph coordinate thresholds. It delivers original mechanisms, measurements, and practical detection steps, making it highly relevant to security‑focused engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:17:06.942369",
+      "image_url": "https://www.msuiche.com/images/msuiche-2025-08.jpeg",
+      "image_width": 2048,
+      "image_height": 1384,
+      "image_alt": "The Great Glyph Grift, and How to Detect It Without the Sample"
+    },
+    {
+      "id": 7323,
+      "source_id": 34,
+      "original_url": "https://www.mitchelsellers.com/blog/article/deleting-18-million-rows-without-taking-the-application-down",
+      "title": "Deleting 18 Million Rows Without Taking the Application Down",
+      "summary": "Delete data in small, bounded batches using a targeted index to minimize resource pressure and maintain application availability.",
+      "ideas": [
+        "Delete ~25,000 rows every six seconds to balance throughput and load.",
+        "Use a bounded key range with clustered index to avoid full table scans.",
+        "Monitor CPU, I/O, latency, and lock behavior to adjust batch size dynamically.",
+        "Create index on (CreatedDateUtc, UserActivityRecordId) for efficient batch selection."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a concrete, production‑tested pattern for safely deleting millions of rows without service disruption, featuring bounded batching and an optimized index. It scores high on relevance and substance, though the advice is specific to Azure SQL and may need adaptation for other environments. Overall, it provides useful, verifiable guidance for engineers focused on sustainable database maintenance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:16:39.454581"
+    },
+    {
+      "id": 7322,
+      "source_id": 34,
+      "original_url": "https://www.maxtaylor.me/articles/same-price-different-reason-probing-ai-pricing-agents-for-collusion",
+      "title": "Same price, different reason. Probing AI pricing agents for collusion",
+      "summary": "Activation probes can distinguish explicitly cued pricing collusion from matched-price innocent behavior, but the signal does not reliably generalize to emergent collusion.",
+      "ideas": [
+        "Held-out Qwen probes separated matched-price collusion cues at 98.7–99.6% accuracy.",
+        "No-overlap wordings reduced TF-IDF to chance while probes stayed above 96%.",
+        "Transfer to uncued reciprocal pricing was weak; Llama flagged every uncued history.",
+        "Conditional sentence structure remains an uncontrolled alternative explanation.",
+        "Price-matched filtering and price-only controls isolated an internal signal from output behavior."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a focused, reproducible AI-interpretability experiment with pre-registered decisions, matched-price filtering, held-out cue wordings, and appropriate price-only and TF-IDF controls. On Qwen models, activation probes achieved 98.7–99.6% held-out accuracy, including 96–100% on wordings with no lexical overlap, providing concrete evidence of an internal signal. However, the probe may be detecting conditional grammar rather than collusion, the Llama positive control failed, and transfer to uncued reciprocal pricing was weak, so this is promising evidence rather than a general collusion detector.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:16:28.049703",
+      "image_url": "https://www.maxtaylor.me/articles/Same%20price,%20different%20reason.%20Probing%20AI%20pricing%20agents%20for%20collusion/thumbnail.png",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 7321,
+      "source_id": 34,
+      "original_url": "https://www.k5n.us/2026/10/27/webcalendar-security-audit-1-9-26/",
+      "title": "WebCalendar v1.9.26: 55 Security Fixes From an AI-Assisted Audit",
+      "summary": "A partitioned AI audit with separate validators and coverage critics can uncover and systematically remediate decades of web-application vulnerabilities, provided fixes are independently tested and human-reviewed.",
+      "ideas": [
+        "Partition large audits into units, use independent validators, and add explicit coverage critics.",
+        "Group vulnerabilities by root cause to prevent repeated authorization and escaping flaws.",
+        "Require regression tests that reproduce observed exploits before remediation.",
+        "Run agent-driven audits in network-isolated, resource-limited sandboxes.",
+        "Remove or block WebCalendar's wizard directory after installation.",
+        "Upgrade affected WebCalendar installations to version 1.9.27.",
+        "Resolve the authorization target once, then authorize and operate on that exact value."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is unusually concrete material combining vulnerability disclosure, defensive engineering, and AI-assisted development practice. It documents the audit architecture, independent validation, sandboxing, root-cause remediation, regression testing, concrete PHP failure modes, and human review rather than merely claiming that AI found bugs. The main limitations are the lack of linked prompts, transcripts, or audit artifacts needed to reproduce the claimed workflow, and some ambiguity between individual-finding and grouped-advisory severity counts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:14:29.148116"
+    },
+    {
+      "id": 7320,
+      "source_id": 34,
+      "original_url": "https://www.evolu.dev/blog/evolu-runs-its-own-sqlite-everywhere",
+      "title": "Evolu runs its own SQLite everywhere",
+      "summary": "Evolu creates a single C‑based SQLite core with constant‑time SQLCipher‑compatible encryption that works uniformly on web, React Native, and Node.js, improving security and performance.",
+      "ideas": [
+        "One SQLite C core compiled to WebAssembly, JSI, and Node‑API provides unified encryption across platforms.",
+        "Encryption uses constant‑time AES‑256‑CBC/HMAC‑SHA512 and hardware crypto when available, preventing key leakage via caches.",
+        "Benchmarks show 1.5×‑11× speedups for timestamp sync operations compared to better‑sqlite3 with recursive CTEs.",
+        "Builds are reproducible: binaries are pinned by hash, CI verifies identical output on Linux and macOS.",
+        "Comprehensive crash, allocation‑failure, and memory‑sanitizer tests ensure correctness of the encrypted VFS."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article supplies detailed, reproducible engineering of a custom SQLite core with constant‑time encryption that runs as WebAssembly, a React‑Native JSI module, and a Node‑API addon. It includes concrete benchmarks, cryptographic implementation notes, and extensive testing methodology, which are directly useful to developers building secure, cross‑platform storage. Some language is promotional and the concept builds on existing encrypted SQLite ideas, limiting novelty slightly, but the depth and practical guidance are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:10:52.755603"
+    },
+    {
+      "id": 7319,
+      "source_id": 34,
+      "original_url": "https://www.dariuszparys.com/placebound-archon-in-the-browser",
+      "title": "Placebound: Archon in the Browser",
+      "summary": "Placebound recreates Archon in the browser using Cloudflare Durable Objects, Three.js, and custom Blender‑generated figure models, with a complete test‑driven development pipeline.",
+      "ideas": [
+        "Python scripts generate all 20 figures in Blender with strict triangle and material limits.",
+        "Durable Object per room stores state in SQLite and uses alarms for disconnects.",
+        "Combat runs at 1/120 s steps on the server; browsers only interpolate snapshots for smooth rendering."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a detailed, original account of building a browser‑based Archon clone, covering game mechanics, custom Blender‑generated models, Python scripts for asset creation, extensive test suites, and a full Cloudflare Workers + Durable Objects deployment. It presents concrete mechanisms, implementation choices, and measurable outcomes such as test coverage and memory usage. The depth of technical explanation and reproducible engineering steps merit a high score, though the length and occasional self‑promotion keep it from exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:09:10.434771",
+      "image_url": "https://www.dariuszparys.com/social-cards/placebound-archon-in-the-browser.png?v=0410bd1",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Placebound: Archon in the Browser social card"
+    },
+    {
+      "id": 7318,
+      "source_id": 34,
+      "original_url": "https://www.badsecurity.ca/we-asked-ai-to-replace-us-now-were-terrified-it-might-succeed/",
+      "title": "We Asked AI to Replace Us. Now We're Terrified It Might Succeed.",
+      "summary": "Collaborative AI that augments humans, not replaces them, yields more secure, controllable systems and better outcomes.",
+      "ideas": [
+        "Implement six Hexad principles for agentic AI security.",
+        "Collaborative AI reduces permission breadth and containment risk.",
+        "Measure human‑AI team productivity instead of autonomous task completion."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical guidance—six Hexad principles for safer agentic AI, analysis of real containment breaches, and a clear argument for collaborative over autonomous AI—directly relevant to AI safety and cybersecurity; its depth and actionable insights merit a high score, though some promotional framing and brief promotional mentions slightly limit it from exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:06:57.403545",
+      "image_url": "https://storage.ghost.io/c/09/5f/095fb336-4ade-4802-9b02-9cffff45b71b/content/images/size/w1200/2026/10/ai1.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 7317,
+      "source_id": 34,
+      "original_url": "https://wiredream.com/anagram-fun/",
+      "title": "11 nanoseconds per word: Ridiculously Over-Optimizing Anagrams",
+      "summary": "Combining allocation-free grouping, compact keys, corpus-tuned prime products, and packed-word instruction-level parallelism yields roughly a 16x anagram-indexing speedup on the tested dictionary.",
+      "ideas": [
+        "Flat arrays and inline singletons reduce allocations in append-only dictionary grouping.",
+        "Four-bit letter counts in u128 avoid sorting and string-key allocation.",
+        "Distinct primes yield canonical multiset keys through unique factorization.",
+        "Corpus-specific prime assignments keep every tested dictionary product within 64 bits.",
+        "Packed words, dual accumulators, and fixed loops improve instruction-level parallelism.",
+        "Measured runtime drops from 173 ns to 10.9 ns per word."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a focused performance-engineering post with Rust code, concrete data-structure changes, and before/after measurements showing anagram indexing falling from 173 ns to 10.9 ns per word. The novel, actionable idea is corpus-specific prime-product encoding: distinct primes provide a canonical multiset key through unique factorization, while tuned assignments keep products within 64 bits for the tested dictionary. Its evidence is limited to one Scrabble corpus and one machine, with limited benchmark methodology and no demonstration beyond that corpus, so it is strong rather than universally conclusive.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:04:57.056995"
+    },
+    {
+      "id": 7316,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/two-bugs-the-h100-did-not-show.html",
+      "title": "Two bugs the H100 did not show",
+      "summary": "Comparing generated PTX against a formal memory model uncovered real ordering defects that GPU stress tests and LLVM's faulty lowering path had masked.",
+      "ideas": [
+        "PTX inspection exposed forbidden relaxed-load reordering despite zero H100 litmus-test failures.",
+        "LLVM 22 lowered ordered atomic read-modify-writes to relaxed PTX atom operations.",
+        "Negative concurrency results require controls proving the test can expose weak behavior.",
+        "Acquire fences can preserve atomic ordering but impose unmeasured GPU costs."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "The article provides unusually concrete compiler and runtime research: a formal RC11-based memory model, reproducible GPU litmus programs, PTX-level checks, and two distinct atomic-ordering defects. Its most valuable insight is methodological: zero H100 failures proved little because even permitted controls never exhibited weak behavior, whereas PTX inspection exposed forbidden load reordering and LLVM 22's loss of read-modify-write ordering. The limitations are candid but material: the hardware experiment was inconclusive, block-scope and async-copy behavior remain untested, and fence performance costs are unmeasured.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:03:18.593927",
+      "image_url": "https://vxlang.org/cards/blog.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Two bugs the H100 did not show."
+    },
+    {
+      "id": 7315,
+      "source_id": 34,
+      "original_url": "https://victorvelazquez.dev/blog/agents-by-function-not-by-role/",
+      "title": "Agents by function, not by role",
+      "summary": "A function-oriented, contract-driven agent pipeline with scouts, a single builder, verifiers and a cold-reader reliably uncovers defects and enforces verification in real projects.",
+      "ideas": [
+        "Verifiers caught three ship-stopping bugs in a security key-rotation feature.",
+        "Cold-reader identified contradictory README examples causing parser failures.",
+        "Budget overruns were hidden until fan-out reached ~3× estimates.",
+        "Separate verifiers independently discovered the same partial-keyring bug."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents a fully specified, experimentally validated multi-agent workflow with contracts, scouts, a single builder, verifiers and a cold-reader, accompanied by reproducible findings such as hidden bugs and token-budget overruns. It delivers concrete mechanisms and evidence, but some sections contain speculative framing and depend on proprietary tools, limiting universal applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:02:21.841650",
+      "image_url": "https://victorvelazquez.dev/_astro/agents-by-function-not-by-role-hero.3N3aGHoL.jpg",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 7314,
+      "source_id": 34,
+      "original_url": "https://tobilg.com/posts/duckdb-differential-merge/",
+      "title": "Merges for DuckDB branches and snapshots",
+      "summary": "DuckDB 1.1 introduces three‑way, cell‑level merges of branch snapshots with preview, conflict handling, and fast‑forward support.",
+      "ideas": [
+        "Cell‑level merge resolves conflicts by comparing each column against the common base snapshot.",
+        "Preview and preflight functions allow inspection and validation before committing a merge.",
+        "Fast‑forward merges move the target branch to an existing snapshot when it is an ancestor.",
+        "Merges require the target branch to be detached and snapshot IDs to match expected values."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides concrete, reproducible SQL examples and detailed explanations of DuckDB's new differential_merge functionality, including preview, preflight, conflict resolution, and fast‑forward logic. It offers original implementation details and practical guidance for using the feature locally or with S3, which is valuable for engineers working with versioned analytical databases. The content is focused, low on hype, and presents measurable behavior, though its relevance is niche to DuckDB users rather than a broader audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T00:00:55.050331",
+      "image_url": "https://tobilg.com/images/posts/duckdb-differential-merge/cover.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Merges for DuckDB branches and snapshots"
+    },
+    {
+      "id": 7313,
+      "source_id": 34,
+      "original_url": "https://patrickdesjardins.com/blog/audiorouter-performance-canvas-gpu-native-leak-and-logger",
+      "title": "AudioRouter Performance Round Two: Canvas GPU, a Native Leak, and Fewer Background Walks",
+      "summary": "Controlled GPU benchmarks with fixed telemetry and 8-hour soak tests uncover an SVG repaint storm and a hidden COM memory leak, each fixed and verified with before/after measurements and regression tests.",
+      "ideas": [
+        "windows-crate PWSTR from IMMDevice::GetId leaks unless the caller calls CoTaskMemFree",
+        "SMIL comets at opacity 0 still force whole-SVG repaints at 60 fps",
+        "8-hour soak runs catch leaks invisible in 10-minute tests"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "A dense practitioner writeup where every fix is backed by numbers, code, and failing-then-passing regression tests: an 8-hour soak harness surfaced a 9.3 MiB/h native leak, which dhat (proving it wasn't Rust allocations) and cdb heap-snapshot block-size diffing traced to six call sites missing CoTaskMemFree on windows-crate PWSTR strings; a CDP-based controlled benchmark isolated a 135%-GPU repaint storm caused by SMIL comets and per-tick CSS transitions inside a shared React Flow SVG. These findings—COM ownership in the windows crate, opacity-0 SMIL animations still forcing paint, transitions restarted every 20 Hz tick, notification-gated caching instead of TTL polling, serde IgnoredAny for skipped responses—are concrete, non-obvious, and transferable far beyond this app. Limitations: the domain (a personal Windows audio router) is niche, some value is in app-specific fixes, and the agent-assisted framing is incidental rather than a study of AI tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:51:12.031584"
+    },
+    {
+      "id": 7312,
+      "source_id": 34,
+      "original_url": "https://peng.fyi/post/page-cache-thrashing-on-ec2-kill-the-tenant/",
+      "title": "Page-cache thrashing on EC2: kill the tenant before it takes the host down",
+      "summary": "Page‑cache thrashing on low‑memory EC2 instances can exhaust EBS burst credits, causing a read‑storm that silently kills the host, and adding swap or disabling THP prevents the issue.",
+      "ideas": [
+        "Large anonymous heaps on 1 GiB instances leave insufficient page‑cache, causing active code pages to be evicted and continuously reread from EBS.",
+        "EBS burst‑credit exhaustion turns the read‑storm into a severe I/O throttle, making the host appear dead.",
+        "Adding at least 1 GiB of swap stops the thrashing by giving the kernel reclaimable memory for anonymous pages.",
+        "Disabling Transparent Huge Pages (THP) reduces Go heap memory usage and mitigates the thrash on small instances."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a detailed, reproducible investigation of page‑cache thrashing on tiny EC2 instances, including concrete code, sysctl experiments, swap and THP mitigation, and quantitative EBS credit analysis. This concrete evidence and actionable guidance are highly relevant to sysadmin and cloud‑infra engineers. It is limited by being specific to t3.micro‑class workloads and does not explore broader mitigation frameworks, but the depth and novelty for EC2 users merit a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:51:01.850575"
+    },
+    {
+      "id": 7311,
+      "source_id": 34,
+      "original_url": "https://paagman.dev/how-fast-can-you-patch-ruby/",
+      "title": "How fast can you actually patch Ruby?",
+      "summary": "The quickest way to patch Ruby is to use the Ruby core’s own tools, which make 4.0.9 available within minutes, while external providers can delay updates for many hours or days.",
+      "ideas": [
+        "ruby-build releases 4.0.9 after 43 minutes",
+        "rubylang/ruby Docker image available after 8 minutes",
+        "official Docker community image takes ~16 hours",
+        "AWS Lambda still runs 4.0.7 weeks later",
+        "Automate version uptake to cut manual delays"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers original, concrete timing data for Ruby version rollout across many tools, offering actionable guidance for faster patching. It is highly relevant to technical operations and security updates, though it includes minor self‑promotion and some generic filler. The depth of evidence and practical insight merit a strong score, but the presence of promotional content prevents a top‑tier rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:50:10.007028"
+    },
+    {
+      "id": 7310,
+      "source_id": 34,
+      "original_url": "https://opengeocoding.com/blog/billing-without-a-database-on-the-request-path",
+      "title": "Billing every API request exactly once, without a database on the request path",
+      "summary": "Requests are billed exactly once by counting them in memory per replica and persisting batches to Postgres every five seconds, avoiding any database hit on the request path.",
+      "ideas": [
+        "In‑memory counters synchronized to Postgres every 5 seconds guarantee exactly‑once billing.",
+        "Rate limits are divided per replica, using shared heartbeat via Postgres.",
+        "Replica crashes lose at most one sync interval of usage.",
+        "Final flush on SIGTERM ensures no billed request is missed."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article details a production‑grade, zero‑latency billing design using in‑memory counters and periodic Postgres flushes, explaining transactional guarantees, replica‑level rate limits, and failure handling. It is highly relevant to engineers building scalable API front‑ends, though some inaccuracies in limit precision and lack of exhaustive testing prevent an exceptional score. The depth of concrete mechanisms and realistic trade‑off discussion earns a strong rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:48:37.409592",
+      "image_url": "https://opengeocoding.com/blog/billing-without-a-database-on-the-request-path.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Billing every API request exactly once, without a database on the request path"
+    },
+    {
+      "id": 7309,
+      "source_id": 34,
+      "original_url": "https://minogin.com/optimizing-nanosecond-operations-when-the-cpu-cache-matters/",
+      "title": "Optimizing nanosecond operations: when the CPU cache matters",
+      "summary": "Eliminating redundant work can merely transfer its cost to later cache misses, so performance analysis should inspect unchanged operations that become slower.",
+      "ideas": [
+        "Repeated map probes warmed cache entries, hiding part of their cost from attribution.",
+        "Precomputing missing-release checks reduced batch runtime from 82.4 to 58.1 seconds.",
+        "A controlled recheck restored lookup latency from 185 to 99.9 nanoseconds.",
+        "Per-operation deltas can expose costs transferred to unchanged code."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a focused, reproducible performance investigation with code, operation-level timings, repeated runs, confidence intervals, and a controlled experiment. It demonstrates a non-obvious cache-locality effect: removing repeated checks made an untouched map lookup slower because the removed work had been warming cache entries, with a recheck restoring latency from 185 to 99.9 ns. The evidence comes from one large workload and the author's own profiler, so broader generalization is limited, but the profiling methodology and mechanism are highly useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:42:18.301328",
+      "image_url": "https://minogin.com/wp-content/uploads/2026/10/nanosecond-cpu-cache-featured.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Nanosecond cpu cache featured"
+    },
+    {
+      "id": 7308,
+      "source_id": 34,
+      "original_url": "https://metebalci.com/blog/claude-code-in-remote-sessions/",
+      "title": "Claude Code in Remote Sessions",
+      "summary": "The key insight is that a small bash function using dtach can keep Claude Code sessions alive and reattach to them from any machine.",
+      "ideas": [
+        "dtach socket per project enables session persistence across SSH disconnections.",
+        "cdt resumes idle background sessions or attaches to busy ones automatically.",
+        "Automatic detection of existing conversations uses .claude/projects path pattern.",
+        "Window size changes on attach are signaled via -r winch for proper redraw."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete shell code and explains how dtach can persist Claude Code sessions across SSH connections, which directly serves engineers seeking reliable remote workflows. It offers novel session handling details such as automatic resume and background attachment, but stops short of broader tooling advice. The practical focus and minimal noise justify a strong rating, though it lacks deeper architectural insight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:40:21.113560"
+    },
+    {
+      "id": 7307,
+      "source_id": 34,
+      "original_url": "https://lifeiscontent.net/blog-postings/auth-that-doesnt-trap-your-users/",
+      "title": "Auth that doesn't trap your users",
+      "summary": "An account’s security hinges on its weakest recovery or fallback path, and designers must audit every sign‑in route to prevent a single compromised factor from exposing the whole account.",
+      "ideas": [
+        "Map every sign‑in path and follow each to a takeover vector.",
+        "SMS codes are fragile; protect against SIM swap and port‑out.",
+        "Password reset must not bypass existing 2FA; require second factor.",
+        "Email inbox can become a master key; guard against domain takeover.",
+        "Social login risks concentrate danger; require passkey or extra factor.",
+        "TOTP needs rate‑limiting, single‑use validation, and encrypted secrets.",
+        "Passkeys are domain‑scoped; resist phishing; register multiple devices.",
+        "Recovery codes should be shown once, stored hashed, and regenerated on use.",
+        "Support desk resets are auth paths; enforce delayed noisy recovery.",
+        "Passwords: 8‑15 chars depending on 2FA, drop composition rules, check breached lists."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a detailed, first‑hand breakdown of authentication pitfalls with concrete mechanisms, code examples, and real‑world evidence, making it highly useful for engineers building secure sign‑in flows. Its strongest points are the systematic path‑mapping approach and actionable recommendations on passkeys and recovery, though it focuses on web‑centric auth and assumes control over the entire stack.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:34:32.869146",
+      "image_url": "https://lifeiscontent.net/open-graph/blog-postings/auth-that-doesnt-trap-your-users.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "An account is only as strong as the weakest way back into it. How to design sign-in, 2FA, and recovery so a hacked inbox or a hijacked phone number does not take everything with it."
+    },
+    {
+      "id": 7306,
+      "source_id": 34,
+      "original_url": "https://lazyadmin.nl/office-365/conditional-access-policy-plans/",
+      "title": "Migrate Conditional Access Policies to Policy Plans",
+      "summary": "Policy plans consolidate shared conditions across Conditional Access rules, but migrating policies requires manual handling of exclusions and strict Report-only validation due to the automated migration's limited scope.",
+      "ideas": [
+        "Migration moves only perfectly identical conditions (e.g., client apps, location) to plan shared scope; user assignments and exclusions generally stay per-rule.",
+        "PowerShell script groups policies and predicts shared condition migration based on exact configuration matching.",
+        "Break-glass/exclusion accounts must be manually added to the plan's shared identities, as the migration tool does not transfer them automatically."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides substantive, non-obvious technical depth on Entra ID Policy Plans, offering a working PowerShell script for candidate identification and a detailed, evidence-based analysis of exactly which conditions migrate versus remain rule-specific. It is highly relevant for Microsoft 365 admins dealing with policy sprawl. The score is grounded in concrete mechanisms and firsthand testing, though it is contextualized by the feature's preview status and the necessity of manual exclusion migration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-28T23:33:49.675313",
+      "image_url": "https://lazyadmin.nl/wp-content/uploads/2026/10/Microsoft-Third-Party-App-Consent-10.jpg",
+      "image_width": 1200,
+      "image_height": 677,
+      "image_alt": ""
+    },
     {
       "id": 7305,
       "source_id": 34,
