@@ -1,7 +1,655 @@
 {
-  "updated_at": "2026-10-29T18:00:00.381994+00:00",
-  "total_items": 1073,
+  "updated_at": "2026-10-29T19:00:00.181409+00:00",
+  "total_items": 1097,
   "items": [
+    {
+      "id": 7378,
+      "source_id": 34,
+      "original_url": "https://zitseng.com/archives/25296",
+      "title": "Writing Windows Apps — YAOC",
+      "summary": "A Tauri v2 + Rust implementation yields a sub‑6 MB native Windows chat client with ~5 MB memory use that runs efficiently on both x64 and ARM64.",
+      "ideas": [
+        "Tauri v2 yields <6 MB single executable Windows chat client.",
+        "Rust backend runs gateway; WebView2 UI uses OS-provided runtime.",
+        "App uses Windows efficiency mode, ~5 MB memory, idle CPU near zero."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete architectural choices, performance numbers, and Windows‑specific implementation details, making it highly relevant to developers building lightweight native apps. It includes measurable size (6 MB), memory (~5 MB), and cross‑architecture build steps, though it occasionally leans on AI hype and lacks extensive real‑world stress testing. Overall, the depth of technical insight outweighs the modest promotional framing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:21:15.590943"
+    },
+    {
+      "id": 7377,
+      "source_id": 34,
+      "original_url": "https://www.rack2cloud.com/migration-path-authorization/",
+      "title": "Migration Path Authorization: Who Approves the VDDK-Free Route?",
+      "summary": "A written migration‑path authorization record must name an approver, define privileged vCenter permissions and their scope, set duration and revocation, test recovery, and assign owners to unknowns.",
+      "ideas": [
+        "Two vCenter permissions (Provisioning, Direct Access) are required for VDDK‑free ESXi‑to‑AHV migration.",
+        "The approver must be a specific named role, not assumed by any team.",
+        "Each unknown (e.g., performance, network fit) needs an owner and a clear deadline."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, five‑part authorization framework with explicit vCenter permission details, which is unusually actionable for migration architects; however, it lacks performance measurements and concrete data‑path evidence, limiting its breadth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:18:38.367176",
+      "image_url": "https://www.rack2cloud.com/wp-content/uploads/2026/10/migration-path-authorization-featured.jpg",
+      "image_width": 1024,
+      "image_height": 541,
+      "image_alt": "migration path authorization: two migration routes into a target platform, with the VDDK-free route showing an unassigned approver slot"
+    },
+    {
+      "id": 7376,
+      "source_id": 34,
+      "original_url": "https://www.mybluelinux.com/django-models-fabulous-four-tools/",
+      "title": "Django models fabulous four tools",
+      "summary": "The four Django ORM tools (Q, F, annotate, aggregate) let developers express most complex queries directly in Python, eliminating raw SQL and N+1 pitfalls.",
+      "ideas": [
+        "Q objects enable OR/NOT logic using |, &, ~ operators.",
+        "F objects allow field‑to‑field comparisons and atomic updates.",
+        "annotate adds per‑row computed values; aggregate returns a single summary dict.",
+        "Combine annotate with filter/order_by to chain computed attributes; aggregate is terminal.",
+        "Understanding annotate vs aggregate resolves the most common ORM confusion."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin",
+        "AI",
+        "Philosophy"
+      ],
+      "rating": 93,
+      "rating_reason": "The article delivers concrete, implementation‑level Django tooling—Q objects, F objects, annotate, aggregate—with clear explanations, code snippets, and practical usage patterns. It supplies original mechanisms, battle‑tested insights, and measurable benefits (e.g., avoiding N+1 loops, atomic updates). While generally well‑written, it contains minor promotional phrasing and a few rhetorical flourishes that keep it from being flawless.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:18:10.833343"
+    },
+    {
+      "id": 7375,
+      "source_id": 34,
+      "original_url": "https://www.catchkill9.dev/posts/containerd-part-4-the-fix-lands.html",
+      "title": "Same day, two fixes: 5 days in one project, 175 in containerd",
+      "summary": "A production outage exposed that proxy snapshotter calls need a client-wide default timeout to prevent an unresponsive plugin from indefinitely blocking containerd operations.",
+      "ideas": [
+        "A wedged proxy snapshotter can indefinitely block containerd snapshot garbage collection.",
+        "Set proxy snapshotter default_timeout above healthy call latency to bound failures.",
+        "A client-wide deadline covered ten calls more cleanly than patching garbage collection.",
+        "A soci file-verification path leaked descriptors because readers were never closed.",
+        "Upstream review redirected the fix before release, avoiding a risky partial timeout."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a strong, firsthand production-incident account with concrete containerd mechanics, maintainer review decisions, and an actionable proxy-snapshotter configuration. It demonstrates why a narrowly scoped GC timeout was inferior to a client-wide deadline and provides useful lessons about lock scope, timeout placement, and upstream design. Its main limitation is that implementation details are largely delegated to linked pull requests and the account represents one failure mode rather than a broad validation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:14:23.507793",
+      "image_url": "https://www.catchkill9.dev/_astro/card.DhIbvnyE.jpg",
+      "image_width": 2400,
+      "image_height": 1256,
+      "image_alt": ""
+    },
+    {
+      "id": 7374,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/fix-azure-devops-nuget-restore-unable-to-find-version-of-package-from-an-internal-feed/",
+      "title": "Fix: Azure DevOps NuGet restore fails with \"Unable to find version 'x.y.z' of package\" from an internal feed",
+      "summary": "A systematic triage of Azure Artifacts restore failures can determine which package versions the pipeline identity, feed view, source configuration, and cache actually expose.",
+      "ideas": [
+        "NU1102's nearest-version line reveals which versions the authenticated caller can see.",
+        "Collaborator permission is required to save previously unseen upstream package versions.",
+        "Feed views can hide versions until explicit promotion to Release or Prerelease.",
+        "feedsToUse: select can replace repository NuGet configuration and source mappings.",
+        "Determine project-scoped versus collection-scoped build identity before assigning roles.",
+        "Use dotnet restore --no-http-cache to bypass stale self-hosted agent metadata."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense, directly relevant troubleshooting guide that connects NU1102 output to concrete causes involving build-service permissions, feed views, generated NuGet configuration, package-source mapping, HTTP caching, and upstream latency. Exact YAML, XML, CLI commands, and a local reproduction make the diagnosis actionable and efficient. Some behavioral claims are asserted rather than independently demonstrated, and the article ends mid-sentence, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:10:59.204566",
+      "image_url": "https://startdebugging.net/og/2026/10/fix-azure-devops-nuget-restore-unable-to-find-version-of-package-from-an-internal-feed.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: Azure DevOps NuGet restore fails with \"Unable to find version 'x.y.z' of package\" from an internal feed - Start Debugging"
+    },
+    {
+      "id": 7373,
+      "source_id": 34,
+      "original_url": "https://seangoedecke.com/you-can-just-ask-ai-to-do-things/",
+      "title": "You can just ask AI to do things",
+      "summary": "Engineers can offload significant routine dev-work to AI agents by using specific patterns: automated log polling, multi-model subagent review, and self-managing session hygiene.",
+      "ideas": [
+        "Agents can hourly poll production metrics and logs across a full workday, consuming more data than a human would manually check",
+        "Request subagent feedback from other models after code changes to incorporate diverse evaluations",
+        "Agents can triage unread messages daily, flagging questions and performing preliminary research for a summarized report"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "A focused, firsthand account of delegating routine dev tasks to AI agents. Provides concrete, non-obvious workflow patterns (hourly log polling, multi-model subagent feedback, automated session cleanup) that are directly useful for engineers operating current models. The examples are grounded in daily practice rather than hype. Slightly diluted by repetitive structure and the author's Copilot affiliation, but the mechanism-level insights are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:10:42.346975"
+    },
+    {
+      "id": 7372,
+      "source_id": 34,
+      "original_url": "https://rduffy.uk/writing/season-4-episode-18-the-ops-day/",
+      "title": "The Ops Day",
+      "summary": "Alert workflows should implement narrow, authenticated, context-bound actions while testing delivery, UI, upstream recovery, and network trust boundaries separately.",
+      "ideas": [
+        "Separate alert severity, budget, and test signals into distinct operational destinations.",
+        "Synthetic alert tests can expose upstream routing failures missed by direct Discord tests.",
+        "Alert context expires after restarts, so interaction handlers need explicit fallback behavior.",
+        "Bound silences using retained labels, fixed durations, and owner authorization.",
+        "Validate optional button URLs before message submission to avoid rejecting the alert.",
+        "Restrict Grafana before NAT because trusted source addresses can be spoofed.",
+        "Distinguish client rendering, API state, and upstream recovery when smoke tests disagree."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a strong, unusually concrete engineering retrospective covering severity-based alert routing, signed Discord interactions, expiring alert context, owner-authorized bounded silences, and the evidentiary limits of different smoke tests. The 512-character button URL that caused Discord to reject an entire alert and the Grafana auth-proxy bypass involving Kubernetes source-address aliasing are especially actionable findings supported by code and historical observations. Its retrospective and self-reported nature, lack of independent verification or measured reliability, and apparent truncation keep it below exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:09:12.844215"
+    },
+    {
+      "id": 7371,
+      "source_id": 34,
+      "original_url": "https://mohitkhare.com/blog/file-attack-ics/",
+      "title": "File Attack Deep Dives: ICS Calendar Invites",
+      "summary": "Calendar invites weaponize hidden URLs in DESCRIPTION/X-ALT-DESC to render phishing links within a trusted calendar UI, bypassing traditional attachment and email security controls.",
+      "ideas": [
+        "Hidden URLs in DESCRIPTION/X-ALT-DESC render as trusted 'Join meeting' links, enabling credential/OAuth theft without attachments."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, technically detailed analysis of .ics phishing mechanics, including VCALENDAR structure, gateway bypass signals, and detection cues. It provides measurable evidence and hard-won practitioner insight suitable for security engineers. The narrow focus and reliance on cited industry reports prevent it from reaching 'exceptional' rarity, but the depth and relevance are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:06:46.469394",
+      "image_url": "https://mohitkhare.com/images/blog/file-attack-ics/file-attack-ics-card.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "A calendar invite notification whose description hides a phishing link"
+    },
+    {
+      "id": 7370,
+      "source_id": 34,
+      "original_url": "https://marlonribunal.com/sql-server-demos-library/",
+      "title": "SQL Server Problems You Can Reproduce, Measure and Fix: A Free Demo Library",
+      "summary": "A free, open‑source library of reproducible SQL Server demos that quantify common performance and concurrency myths with concrete evidence and measurements.",
+      "ideas": [
+        "NOLOCK can return uncommitted values causing rollbacks",
+        "RCSI provides last committed value with no wait",
+        "Severely fragmented index reads same as clean index",
+        "Half‑empty pages at 0.12% fragmentation double reads",
+        "varchar(4000) grants 1.4 GB memory for a 24 MB sort"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers substantial technical value through a curated, runnable demo library that measures real SQL Server behaviors and challenges folk wisdom. It offers concrete code, measurements, and firsthand observations across multiple versions, making it highly relevant for performance‑tuning practitioners. The only limitation is that demos require a scratch instance and are not intended for production use.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:05:01.358208"
+    },
+    {
+      "id": 7369,
+      "source_id": 34,
+      "original_url": "https://m-compressors.github.io/2026/formal-verification-mbrotli-mzstd/",
+      "title": "Towards formal verification: mbrotli and mzstd",
+      "summary": "It outlines the ongoing formal verification of mbrotli and mzstd compressors to RFC specifications via Lean 4 proofs.",
+      "ideas": [
+        "Distance codes conform to RFC 7932 ring and offset rules.",
+        "mbrotli encoder/decoder distance tables match RFC definitions.",
+        "mzstd frame header parser follows RFC 8878 on all inputs.",
+        "Repeat offset update theorem proves RFC 8878 compliance.",
+        "No panic or overflow on covered inputs in proved functions.",
+        "CVE‑2026‑111497 shows RFC non‑conformance in C decoder.",
+        "Charon extracts MIR, Aeneas translates to Lean for proofs."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers substantial technical detail on formal verification progress for mbrotli and mzstd, with concrete theorem statements and a clear roadmap, making it highly relevant to systems engineers. Its value is slightly limited by the fact that verified codecs are not yet complete and some proofs depend on translation assumptions. The depth and originality of the verification work justify a high score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:04:34.613345",
+      "image_url": "https://m-compressors.github.io/assets/img/og/formal-verification-mbrotli-mzstd.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7368,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/phpmyadmin-webauthn-aaguid-raw-bytes/",
+      "title": "phpMyAdmin 5.2 WebAuthn Key Registration Fails with TypeError Due to Raw AAGUID Bytes",
+      "summary": "Raw 16-byte AAGUIDs stored unencoded in CustomServer cause json_encode() to fail on non-ASCII bytes, triggering a TypeError that prevents WebAuthn credential persistence.",
+      "ideas": [
+        "Raw AAGUID bytes survive json_encode only when all bytes are 0x00, causing TypeError otherwise",
+        "json_encode false propagates through strict escapeString() to trigger TypeError",
+        "Converting AAGUID to UUID string fixes registration and library compatibility"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 90,
+      "rating_reason": "The article delivers a meticulously traced root-cause analysis of a phpMyAdmin WebAuthn registration failure: raw 16-byte AAGUIDs stored unencoded cause json_encode() to return false, which under strict typing in escapeString() triggers a TypeError that blocks credential persistence. It provides concrete code snippets, Docker-based reproduction evidence, empirical probability math on UTF-8 validity, and a critical migration insight for web-authn-lib compatibility. The depth of mechanism explanation, original experiments, and practical fix strongly justify a high rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:03:04.062059",
+      "image_url": "https://lilting.ch/og/images/hero/ogp.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "phpMyAdmin 5.2 WebAuthn Key Registration Fails with TypeError Due to Raw AAGUID Bytes | lilting channel"
+    },
+    {
+      "id": 7367,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/phpmyadmin-webauthn-2fa-signature-bypass/",
+      "title": "phpMyAdmin 5.2.3 WebAuthn 2FA bypass tested against official releases",
+      "summary": "phpMyAdmin's fallback WebAuthn implementation can bypass 2FA with a forged signature, but tested official 5.2.3 packages bundle a cryptographic verifier and are not vulnerable.",
+      "ideas": [
+        "CustomServer accepts forged WebAuthn signatures because it never verifies the registered public key.",
+        "Official phpMyAdmin 5.2.3 archives bundle webauthn-lib and reject forged signatures.",
+        "The bypass affects only CustomServer fallback installations lacking web-auth/webauthn-lib.",
+        "Valid and wrong-key signature controls confirmed the test harness and verification path.",
+        "Checking for Webauthn\\Server identifies whether the vulnerable fallback implementation is active."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "The article dissects a reported phpMyAdmin WebAuthn flaw, reproduces the bypass in a controlled Docker environment, and uses garbage, wrong-key, and valid-signature controls to verify runtime behavior. It also corrects the original PoC's overly broad claim by showing that official archives bundle webauthn-lib and enforce cryptographic verification. Impact is narrower than the headline suggests because the vulnerable CustomServer fallback is not used by official packages and the attacker still needs valid database credentials, but the code analysis and practical verification are unusually substantive.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:02:37.661482",
+      "image_url": "https://lilting.ch/og/images/tags/security.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "phpMyAdmin 5.2.3 WebAuthn 2FA bypass tested against official releases | lilting channel"
+    },
+    {
+      "id": 7366,
+      "source_id": 34,
+      "original_url": "https://isaac-correa.github.io/the-last-tool/",
+      "title": "The Last Tool",
+      "summary": "The shift to AI agents changes work from operating tools to directing autonomous agents, demanding new skills in evaluating their outputs.",
+      "ideas": [
+        "AI agents can autonomously find consultants and prepare bids based on user goals.",
+        "Judgment about correctness remains a human responsibility that cannot be fully outsourced.",
+        "Future interfaces will adapt dynamically, reducing the need for traditional software learning."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The essay offers firsthand, concrete examples of delegating complex workflows to an autonomous AI agent and reflects on the irreplaceable judgement required to spot failures. It connects these mechanisms to broader shifts in tooling, interface design, and workforce dynamics, delivering original insight beyond hype. However, it includes speculative futures and limited technical detail on underlying AI architectures, preventing a top‑tier exceptional rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T05:00:10.713258",
+      "image_url": "https://isaac-correa.github.io/og/card-last-tool.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The Last Tool, an essay by Isaac Correa"
+    },
+    {
+      "id": 7365,
+      "source_id": 34,
+      "original_url": "https://gangliao.me/blog/2026/muse-spark-open-deep-dive/",
+      "title": "Muse Spark Open and Muse Glimmer, Layer by Layer: One Skeleton, a 30B Dense Model and an 816B Latent MoE",
+      "summary": "Reading two Meta open-weight models from their configs and Transformers code reveals one shared skeleton where every scale-dependent design choice—dense versus latent MoE, three-local-one-global attention with NoPE globals, norm-preserving residual gates—is backed by explicit, reproducible arithmetic.",
+      "ideas": [
+        "Only 16 of 62 Spark layers keep a growing KV cache; NoPE globals enable 1M context",
+        "Spark's 256 experts run at 4096 width inside an 8192-wide model, halving expert cost",
+        "Fixed attention temperature 43.78: every attention logit bounded by query multiplier times head width",
+        "Dense ladders beat MoE ladders 2-2.5x compute-efficiency under a 32GB VRAM ceiling",
+        "Spark Open is implemented as a modular patch subclassing Glimmer classes in Transformers",
+        "Weightless QK-norm plus sigmoid output gate define the shared attention skeleton",
+        "DFlash block-diffusion drafters replace built-in MTP heads for speculative decoding",
+        "64.4 GiB BF16 KV cache for one 1M-token sequence, derivable from configs"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is an unusually rigorous, code-and-config-grounded architecture deep dive that derives its own numbers (5.24% active parameters, 64.4 GiB KV cache at 1M context, 4096-wide latent experts, 43.78 fixed attention temperature) and carefully separates derived values from card claims and interpretation. It is directly on-target for the reader's core interests in LLM systems—attention mechanics, latent MoE, KV cache arithmetic, long-context design, and speculative decoding—with mechanisms that transfer beyond these specific models. Its main limitations are that it analyzes public artifacts rather than presenting original experiments, its value is partly tied to interest in these specific new models, and the fragment evaluated is truncated, though the table of contents and demonstrated sourcing discipline indicate the depth is sustained. It is long (105 min) but dense, with minimal hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T04:58:28.662276"
+    },
+    {
+      "id": 7364,
+      "source_id": 34,
+      "original_url": "https://allisterantosik.com/blog/aws-lambda-microvms-browser-for-ai-agents/",
+      "title": "A Disposable Browser for AI Agents with AWS Lambda MicroVMs",
+      "summary": "Disposable AWS MicroVMs enable safe, per-session browser isolation for AI agents by running headless Chromium behind Playwright MCP with snapshot launch, token‑scoped access, and low‑cost suspend/resume.",
+      "ideas": [
+        "Run headless Chromium in a Lambda MicroVM snapshot, launch in seconds, and isolate each session with port‑scoped tokens."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers detailed, reproducible steps for building an isolated browser environment on AWS MicroVMs, complete with code, configuration, and explicit security rationales. It explains the architectural benefits, provides concrete commands and cost estimates, and demonstrates a novel use of snapshot launch and token scoping. While the piece is well-focused, a few high-level assumptions about token security could be expanded, preventing a perfect score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T04:50:11.706236",
+      "image_url": "https://allisterantosik.com/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Allister Antosik — Lead SRE & AIOps Engineer"
+    },
+    {
+      "id": 7363,
+      "source_id": 34,
+      "original_url": "https://acostanza.com/blog/qwen38-27b-spec-decode/",
+      "title": "DFlash2 is the fastest drafter for Qwen3.8-27B, up to 120k tokens",
+      "summary": "Careful original benchmarks show DFlash2 with 8 draft tokens is the fastest drafter for Qwen3.8-27B at every context length, while decoder speed gains are diluted by prefill and paid for in KV-cache capacity.",
+      "ideas": [
+        "Speculative acceptance length stays stable from chat out to 120k-token prompts",
+        "DFlash2 with 8 draft tokens beats MTP and DSpark across all tested scenarios",
+        "More accepted tokens per step can be slower due to higher per-step cost",
+        "End-to-end speculative gains shrink at long context because prefill dominates wall time",
+        "DFlash2 8 costs 26% of KV pool and 76% of mamba slots",
+        "Thinking mode and temperature don't close the accept-length gap vs model card"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A firsthand, reproducible benchmark of speculative-decoding drafters (MTP, DFlash2, DSpark) on SGLang with full server flags, accept-length tables, per-token latency, KV-cache cost measurements, and published raw data and scripts. It delivers concrete, non-obvious findings: acceptance stays flat out to 120k tokens, prefill dilutes end-to-end gains, extra accepted tokens per step can still lose on wall-clock time, and DFlash2 8 trades 26% of the KV pool for its speedup. It also honestly reconciles a conflicting result from another team and tests thinking/sampling explanations for accept-length gaps. Limitations are single-run-per-config noise, one model and GPU, and small long-context prompt counts, but the author acknowledges all of them; the substance remains squarely relevant to LLM inference engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T04:49:32.185726"
+    },
+    {
+      "id": 7362,
+      "source_id": 7,
+      "original_url": "https://engineering.zalando.com/posts/2026/08/agentic-engineering-at-zalando-a-snapshot.html",
+      "title": "Engineering Blog",
+      "summary": "Standardized LLM proxies and governance practices accelerate AI‑driven development while maintaining safety and vendor independence.",
+      "ideas": [
+        "LiteLLM API proxy aggregates models with cost tracking and restarts",
+        "Chat UI and CLI drive adoption beyond IDE integrations",
+        "User-Agent tagging and token injection secure MCP server access",
+        "CLI includes MCP proxy, auto‑config, and safe plugin installation",
+        "Risk‑based PR approval bot auto‑approves low‑risk changes",
+        "Cyclomatic complexity analysis reveals AI impact on codebases",
+        "Session data analysis improves cache hit ratios and prompt usage",
+        "Agent skill plugins standardize migrations and platform tooling",
+        "Tech Radar AI section guides governance and legal compliance",
+        "Vendor‑independent tooling avoids lock‑in and encourages open adoption"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The blog delivers multiple concrete, high‑value insights: a LiteLLM API proxy with cost tracking, a widely adopted CLI/chat UI, risk‑based PR auto‑approval, and detailed complexity analysis. These ideas are densely packed and align strongly with AI and productivity themes.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-30T04:48:33.029423",
+      "image_url": "https://img01.ztat.net/engineering-blog/posts/2026/08/images/agentic-engineering-at-zalando-a-snapshot-og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Zalando Engineering Blog"
+    },
+    {
+      "id": 7361,
+      "source_id": 4,
+      "original_url": "https://github.com/1llu50ry/mcp-reverse",
+      "title": "https://github.com/1llu50ry/mcp-reverse",
+      "summary": "A unified MCP server consolidates numerous reverse‑engineering and anti‑cheat tools, dramatically reducing tool‑switching time for security researchers.",
+      "ideas": [
+        "Unified MCP server aggregates 59 RE/debug backends behind a single connection.",
+        "Ships 111 native MCP tools, enabling answers without external backends.",
+        "Enables multi‑agent mesh orchestration for collaborative reverse engineering.",
+        "Curates 4,200+ skills, including 177 hand‑written anti‑cheat references.",
+        "Reduces days of tool‑shuffling into a single MCP connection workflow.",
+        "Supports game, malware, mobile, firmware, and CTF reverse engineering verticals.",
+        "Provides extensive plugins, prompts, and component browsing for task automation.",
+        "Offers quickstart commands for cloning, building, testing, Docker, and CLI usage.",
+        "Details performance gains: 19 GiB → 3.3 GiB working tree (83% size reduction).",
+        "Emphasizes ethical, authorized analysis with clear responsible‑use guidelines."
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 88,
+      "rating_reason": "The content delivers multiple novel, actionable insights without filler or clickbait: it describes a unified MCP server that aggregates 59 RE/debug backends, ships 111 native tools, and enables multi‑agent orchestration, cutting days of tool‑shuffling; it details a massive skill library of 4,200+ entries, extensive plugins, prompts, and performance gains (19 GiB → 3.3 GiB); and it clarifies ethical, authorized usage. These insights align strongly with Technology and CyberSecurity themes, resulting in high value density and no penalized patterns.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-30T04:40:43.400963",
+      "image_url": "https://repository-images.githubusercontent.com/1405229384/a46336f4-3b8b-4843-8838-c5dfb8ba625a",
+      "image_width": 1500,
+      "image_height": 520,
+      "image_alt": "MCP (Model Context Protocol) server for game hacking &amp; reverse engineering. A structured knowledge base of 4,100+ skills with full source code archives, specialized agents, and workflow tools -..."
+    },
+    {
+      "id": 7360,
+      "source_id": 4,
+      "original_url": "https://github.com/irraz/vulnerator-ai",
+      "title": "https://github.com/irraz/vulnerator-ai",
+      "summary": "An AI-driven OODA-loop pentesting agent orchestrates Kali tools via MCP for autonomous security testing.",
+      "ideas": [
+        "Four-container OODA architecture: kali, playwright-mcp, ooda-agent, vulnerator-mcp.",
+        "Hermes AI decides actions and runs tools on Kali through MCP servers.",
+        "Installer auto-generates secret tokens and launches the stack from a single command.",
+        "Default deployment lacks scope-guard or consent, requiring explicit authorized targets.",
+        "Full docs cover configuration, usage, security, LLM fallback, and HTTP API reference."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The content delivers a clear OODA-loop architecture, detailed four-container setup, step-by-step installation instructions, comprehensive documentation links, and explicit security caveats—multiple actionable insights packed efficiently, with no clickbait or padding; it aligns strongly with AI and CyberSecurity themes.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-30T04:39:25.618715",
+      "image_url": "https://opengraph.githubassets.com/856bbf1c92a420e01aee0719adbce17e677729c1a10b9ab1d2551773cf7dc7df/irraz/vulnerator-ai",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Autonomous OODA-loop pentesting agent. Hermes brain, Kali + Playwright tools over MCP, ATT&CK as the Orient language. - irraz/vulnerator-ai"
+    },
+    {
+      "id": 7359,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
+      "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
+      "summary": "Mistral's open-weight Large 4 delivers real speed, cost, and sovereignty advantages, but independent benchmarks show it still trails Chinese open models on general intelligence and cyber defense.",
+      "ideas": [
+        "Mistral released Large 4's open weights, one trillion parameters with 52 billion active.",
+        "Self-hosting requires eight B300 GPUs, or four GB300s for a compressed variant.",
+        "Large 4 reached 41 percent on Terminal-Bench 4.0, edging GLM-5.3's 40 percent.",
+        "Claude Opus 5.5 dominates coding benchmarks at 62 percent Terminal-Bench and 46 percent FrontierCode.",
+        "Mistral omitted Kimi K3.1 Pro, which reportedly leads Terminal-Bench at 67 percent.",
+        "Large 4 ranks third in cyber defense, not first as Mistral claims.",
+        "Three extra training weeks barely improved the overall Intelligence Index, from 25 to 26.",
+        "Large 4 generates 161 tokens per second, trailing only two open models in speed.",
+        "Average index task costs $2.06, undercutting GLM-5.3 and Kimi but not DeepSeek.",
+        "Pricing dropped to $0.70 per million input tokens and $2.10 per million output tokens.",
+        "A modified MIT license permits commercial use but restricts cloud service reselling.",
+        "Large 4 rejects 96.6 percent of malicious cyber requests while retaining defensive utility.",
+        "European training and self-hosting position Large 4 as sovereign AI infrastructure.",
+        "Mistral's task creation and verification capability limits further reinforcement learning gains.",
+        "Mistral operates with a fraction of American and Chinese labs' research resources."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 81,
+      "rating_reason": "This is a dense, well-sourced news analysis with genuine informational value for anyone choosing open-weight models: it provides concrete deployment requirements (eight B300 GPUs, or four GB300s for a compressed variant), coding benchmark scores (41% on Terminal-Bench 4.0, 19.7% on FrontierCode 2.0), speed (161 tokens/second), pricing ($0.70/$2.10 per million tokens), and the modified MIT license's cloud-reselling restriction. Crucially, it applies critical scrutiny rather than repeating Mistral's press release, exposing that the model ranks third rather than first in cyber defense (51% vs DeepSeek's 57%), that Mistral omitted Kimi K3.1 Pro from its comparisons, and that three additional weeks of training added only one point to the overall Intelligence Index. Minor padding from repeated key points and promotional newsletter/site furniture keeps it from exceptional territory, and several claims (spreadsheet editing, scaling with ten times more capital) remain unverified vendor assertions.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-10-30T04:39:09.960466",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/07/mistral_ai-3.png",
+      "image_width": 2048,
+      "image_height": 1152,
+      "image_alt": ""
+    },
+    {
+      "id": 7358,
+      "source_id": 4,
+      "original_url": "https://ricardojoserf.github.io/axisrce/",
+      "title": "Ricardo J. Ruiz Fernández",
+      "summary": "Hardcoded key material plus a non-secret NTFS volume serial turns Axis Camera Station's credential encryption into trivial obfuscation, letting attackers who gain RCE pivot to every camera on the network.",
+      "ideas": [
+        "Axis Camera Station chains authentication bypass with insecure deserialization for SYSTEM-level RCE.",
+        "The application wraps a stateful binary protocol over HTTP using two long-lived channels.",
+        "Handshake exchanges X.509 certificates, then sends AES session keys wrapped with RSA PKCS#1 v1.5.",
+        "The server accepts any self-signed client certificate, removing authentication from the attack surface.",
+        "The clientInformationDto $type field triggers .NET deserialization through the WindowsIdentity gadget.",
+        "The public Python exploit implements channel management, RSA exchange, AES-CBC, and JSON framing.",
+        "Firebird database secrets use AES-256-CBC but with a key derived from predictable host data.",
+        "HMAC-SHA1 of the NTFS volume serial combined with hardcoded constants builds the passphrase.",
+        "PBKDF2-SHA1 with only 1,000 iterations and an MD5-derived salt further weakens key derivation.",
+        "The 32-bit volume serial is not secret, making the entire keyspace brute-forceable.",
+        "A CUDA kernel accelerates credential brute-forcing using a padding-check quick filter.",
+        "Weak encryption exposes camera credentials, JWT signing keys, PKI passphrases, and cloud account secrets.",
+        "Decrypted camera credentials enable direct connection to every camera managed by compromised servers.",
+        "AXIS Camera Station Pro 6.20 patches the flaw while version 5 will never receive the fix.",
+        "The full chain runs from scanning port 55752 through RCE, database copy, and credential decryption."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is an original, well-documented vulnerability research disclosure with high thematic relevance to cybersecurity and OT/ICS security. It delivers concrete value instances: a from-scratch Python exploit implementing the proprietary binary protocol (RSA-wrapped AES-CBC key exchange over two long-lived HTTP channels), a newly discovered CVE (CVE-2026-63286) explaining that 'AES-256-CBC' credential encryption is reversible because the passphrase derives from hardcoded HMAC/Suffix constants plus a non-secret 32-bit NTFS Volume Serial Number, a GPU brute-force script with a padding-check quick-filter optimization, an enumeration of every secret protected by the weak scheme (camera credentials, JWT signing key, PKI passphrase, cloud and SMTP credentials), and actionable remediation noting ACS Pro 6.20 is patched while ACS 5 will never be fixed. The attack-chain walkthrough and responsible-disclosure timeline add operational clarity, and the content properly credits Claroty's prior research rather than rehashing it; minor deductions for redundant recap sections and the fact that exploitation requires no authentication once the chain succeeds.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-30T04:37:41.165028"
+    },
+    {
+      "id": 7357,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/10/28/a-json-schema-is-not-an-ai-governance-layer/",
+      "title": "A JSON schema Is not an AI governance layer",
+      "summary": "Effective AI governance requires explicit code-level checks, clear normalization rules, and layered verification beyond JSON Schema.",
+      "ideas": [
+        "JSON Schema validates structure but cannot enforce unique reference constraints for authorization.",
+        "Different implementations (first-match vs last-write) can yield opposite policy outcomes.",
+        "Input normalization like trimming or lowercasing can break signature verification.",
+        "Trust must be derived by the verifier, not taken from the request payload.",
+        "Separate validation layers: schema, semantic verification, and policy evaluation.",
+        "Use canonical serialization (e.g., RFC 8785) to ensure consistent signed bytes.",
+        "Protocol specs must explicitly define normalization behavior to avoid ambiguity.",
+        "Reject malformed inputs early to reduce complexity of downstream checks."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The post delivers multiple concrete insights on why JSON Schema alone cannot enforce AI governance, illustrating real bugs, normalization pitfalls, and the need for layered verification. It provides actionable guidance for protocol design, making it highly relevant to AI, security, and software development without filler or clickbait.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-10-30T04:37:08.449622",
+      "image_url": "https://cdn.stackoverflow.co/images/jo7n4k8s/production/0c60f7b40db43d83c41e715c86e9764a779aaf8a-2560x1344.jpg?w=1200&h=630&auto=format",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7356,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Oct/29/how-i-built-the-most-ai-pilled-company-in-the-world/",
+      "title": "Building a multiplayer game world with autonomous Fable-class models",
+      "summary": "AI agents can autonomously manage code, bug reporting, and rollbacks in a live multiplayer game, enabling near‑real‑time deployment cycles.",
+      "ideas": [
+        "Autonomous agents continuously fix bugs and ship updates hourly.",
+        "Agents file bugs automatically when users encounter issues.",
+        "Rollbacks can occur in 30 seconds, targeting only the faulty change.",
+        "Development treats any hour without a ship as a critical incident.",
+        "Testing security fixes can disable features, halting autonomous workflows."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece delivers multiple novel operational insights about autonomous game‑development loops, bug‑filing agents, and ultra‑fast rollbacks. It provides concrete examples of cost, failure modes, and limits of current models, matching the AI and Tech themes. While the headline is sensational, the content supplies high‑density, actionable knowledge, warranting a strong but not perfect score.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-10-30T04:35:29.300354",
+      "image_url": "https://static.simonwillison.net/static/2026-10-29/IMG_9406.webp",
+      "image_width": 1322,
+      "image_height": 1079,
+      "image_alt": ""
+    },
+    {
+      "id": 7355,
+      "source_id": 15,
+      "original_url": "https://arxiv.org/abs/2604.08407",
+      "title": "Your Agent Is Mine: Measuring Malicious Intermediary Attacks on the LLM Supply Chain",
+      "summary": "Attackers can compromise LLM APIs via supply‑chain routers, injecting payloads, exfiltrating secrets, and evading detection.",
+      "ideas": [
+        "Formalizing threat model for malicious LLM API routers.",
+        "Two core attack classes: payload injection and secret exfiltration.",
+        "Empirical study of 28 paid and 400 free routers revealed malicious activity.",
+        "Eight free routers inject malicious code, two use adaptive evasion triggers.",
+        "Seventeen routers accessed researcher‑owned AWS canary credentials; one drained ETH."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "Content delivers multiple novel insights about LLM supply‑chain threats, supported by empirical data across paid and free routers. It defines clear attack classes and reports concrete metrics such as malicious code injection and credential access, demonstrating high value density. The focus aligns strongly with AI and CyberSecurity themes, making it both relevant and actionable.",
+      "source_type": "newsletter",
+      "source_name": "tl;dr sec",
+      "published_at": "2026-10-30T04:34:26.948277"
+    },
     {
       "id": 7354,
       "source_id": 4,
@@ -17354,11 +18002,7 @@
       "rating_reason": "Substantive, well-sourced ground-up explanation of the CAKE paper (compiler–agent co-design for GPU kernel evolution). Concrete evidence includes B200/Blackwell-specific hardware numbers, derived arithmetic-intensity figure (~280 ops/byte), and concrete engineering outcomes (4 PRs merged upstream to FlashInfer for KDA prefill/decode, TinyGEMM, Alpha-MoE megakernel; 2.05× over official FlashKDA kernels validated end-to-end). The pedagogical framing (modeled on Arpaci-Dusseau's 'Three Easy Pieces') does add wordcount, but each Part delivers mechanisms, not slogans. Slight penalty for the visible portion being truncated and for length that may exceed what a practitioner reader needs if they already know GPU basics.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-14T05:15:38.192332",
-      "image_url": "https://gangliao.me/assets/img/og/default.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-10-14T05:15:38.192332"
     },
     {
       "id": 6698,
@@ -17381,11 +18025,7 @@
       "rating_reason": "The article provides an extraordinary layer-by-layer breakdown of DeepSeek-V4's architecture, detailing CSA, HCA, and mHC compression mechanisms with exact dimension specifications and FLOP/cache reduction numbers. Its substantive technical depth—covering query projection, KV compressor design, residual stream mixing, and MoE routing—makes it highly valuable for ML engineers. However, much of the attention weight and routing data is synthetic, and Section 14 acknowledges unanswered architectural questions.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-14T05:15:32.586126",
-      "image_url": "https://gangliao.me/assets/img/og/default.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-10-14T05:15:32.586126"
     },
     {
       "id": 6697,
