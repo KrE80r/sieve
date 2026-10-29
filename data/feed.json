@@ -1,7 +1,379 @@
 {
-  "updated_at": "2026-10-29T06:00:00.393132+00:00",
-  "total_items": 1054,
+  "updated_at": "2026-10-29T07:00:00.187219+00:00",
+  "total_items": 1069,
   "items": [
+    {
+      "id": 7350,
+      "source_id": 34,
+      "original_url": "https://www.flyingpenguin.com/a-real-kill-switch-for-ai-agents-wirken/",
+      "title": "A Real Kill Switch for AI Agents: Wirken",
+      "summary": "Wirken implements a kill switch and verifiable audit log for AI agents by separating credentials into an external vault, enforcing per-action checks, and providing a signed hash-chain that enables safe stop/resume and compliance mapping.",
+      "ideas": [
+        "Credentials stored in external vault, checked before every agent action",
+        "Stop command cleans up agent sandboxes, denies pending approvals",
+        "Log uses hash chain and signatures, verifiable without gateway running",
+        "EU AI Act Article 14 stop-button requirement addressed architecturally"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "Provides concrete, original technical detail on an AI agent kill switch architecture. Explains the vault-based credential model, the stop command's cleanup behavior (denying approvals, ending sandboxes), and the cryptographically signed hash-chain log that is verifiable offline. Maps the implementation to EU AI Act Article 14. Grounded in firsthand maintenance experience. Historical analogies add context without hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T17:20:21.812740"
+    },
+    {
+      "id": 7349,
+      "source_id": 34,
+      "original_url": "https://writingslowly.com/2026/10/29/the-destiny-of-your-notes.html",
+      "title": "The Destiny of Your Notes Depends on Their Data Model",
+      "summary": "The underlying data model of a note-taking tool—particularly its alignment with atomic, interconnected principles and the portability of plain-text Markdown—determines long-term utility and resistance to vendor lock-in far more than interface features or commercial hype.",
+      "ideas": [
+        "Data model alignment dictates feasible workflows in note-making systems",
+        "Plain-text Markdown provides portability across platforms and apps",
+        "Software-layer features can create de facto lock-in even with open data formats"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a substantive, rigorously structured analysis of how note-taking app data models dictate workflow and longevity, framing the Zettelkasten approach as a technical data model rather than mere productivity advice. It provides concrete value through its explicit alignment framework (Low/Moderate/High) and the critical warning about software-layer lock-in negating data-layer portability. The analysis is technically grounded, non-obvious, and directly relevant to engineering concerns about system architecture and portability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T17:16:57.508051"
+    },
+    {
+      "id": 7348,
+      "source_id": 34,
+      "original_url": "https://wietsevenema.eu/blog/2026/first-look-at-cloud-run-instances/",
+      "title": "First look at Cloud Run instances",
+      "summary": "Standalone Cloud Run instances provide single-container cloud workloads with explicit lifecycle control, default SSH access, and optional Cloud Storage persistence, but FUSE mounts lack POSIX file locking, risking SQLite corruption on persistent databases.",
+      "ideas": [
+        "Standalone Cloud Run instances offer default SSH access without requiring --ssh flag",
+        "Cloud Storage FUSE mounts lack POSIX byte-range file locking, risking SQLite corruption",
+        "Singleton web apps on Cloud Run instances receive a stable run.app URL without autoscaling side effects"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, hands-on technical value through step-by-step gcloud workflows for standalone Cloud Run instances. It includes original engineering observations (revision ID changes on restart, file persistence patterns) and a critical non-obvious constraint about Cloud Storage FUSE lacking POSIX file locking. The content is substantive and relevant to cloud infrastructure practitioners, though it is tutorial-weighted and readers deeply versed in Cloud Run may find limited novelty beyond the standalone instance patterns and the SQLite FUSE caveat.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T17:16:26.159908",
+      "image_url": "https://wietsevenema.eu/blog/2026/first-look-at-cloud-run-instances/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "First look at Cloud Run instances"
+    },
+    {
+      "id": 7347,
+      "source_id": 34,
+      "original_url": "https://timvieira.github.io/conditional-poisson-sampling/",
+      "title": "Conditional Poisson Sampling",
+      "summary": "Readers gain a practical method to compute the normalizing constant and sample weighted subsets of exactly n items in O(N log^2 n) time using a polynomial product tree, enabling efficient stochastic sampling in ML applications.",
+      "ideas": [
+        "Polynomial product tree computes Zw(bw,n) in O(N log^2 n) via FFT"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a substantive, well‑structured treatment of conditional Poisson sampling, presenting novel O(N log^2 n) algorithms via polynomial product trees, explicit derivations of normalizing constants and inclusion probabilities, and Python code snippets. It is directly relevant to ML practitioners seeking efficient stochastic sampling for beam search and similar tasks. The verification via numerically checked identities and clear complexity analysis lend trust, though the primary value is algorithmic exposition rather than immediate deployment.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T17:14:49.445429"
+    },
+    {
+      "id": 7346,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/10/fix-cannot-access-a-disposed-object-object-name-iserviceprovider/",
+      "title": "Fix: Cannot access a disposed object. Object name: 'IServiceProvider'",
+      "summary": "Capture IServiceScopeFactory and create a fresh scope for any fire‑and‑forget or background work to avoid ObjectDisposedException from a disposed IServiceProvider.",
+      "ideas": [
+        "Leaking a scoped IServiceProvider causes ObjectDisposedException after the scope ends.",
+        "Fire‑and‑forget tasks that capture HttpContext.RequestServices race with request disposal.",
+        "Storing IServiceProvider in services creates a hidden service‑locator bug.",
+        "Background loops must honor the stopping token to stop before host shutdown.",
+        "Inject IServiceScopeFactory and use CreateAsyncScope() for each independent unit of work."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, reproducible code examples that explain why IServiceProvider disposal errors occur and offers clear, actionable fixes (capturing IServiceScopeFactory, proper background patterns, honoring cancellation tokens). It is directly relevant to .NET developers and engineers working with dependency injection and hosted services. The content is technical and detailed, though it mainly compiles known best‑practice advice rather than novel research, so it falls short of an exceptional rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T17:12:28.497632",
+      "image_url": "https://startdebugging.net/og/2026/10/fix-cannot-access-a-disposed-object-object-name-iserviceprovider.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: Cannot access a disposed object. Object name: 'IServiceProvider' - Start Debugging"
+    },
+    {
+      "id": 7345,
+      "source_id": 34,
+      "original_url": "https://stacktoheap.com/blog/2026/10/26/durable-code-mode-in-pi/",
+      "title": "Code Mode That Survives a Crash: Durable Scripts in Pi Durable",
+      "summary": "Durable agent scripts can recover from crashes by deterministically replaying code against journaled tool results, subject to strict divergence and side-effect constraints.",
+      "ideas": [
+        "Code mode keeps intermediate MCP data in sandbox, sharply reducing model-visible tool output.",
+        "Durable replay journals tool results and deterministically reruns scripts without repeating completed calls.",
+        "Replay diverges when call order, arguments, sandbox version, or timeout state changes.",
+        "Read-only tools can be replay-safe; unsafe calls fail rather than silently repeating.",
+        "Small agent benchmark showed lower Pi cost but little runtime improvement.",
+        "Pi and OpenCode otherwise restart interrupted scripts without preserving completed calls."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is highly relevant, substantive agent-engineering material with concrete implementation details, executable examples, implementation comparisons, crash testing, and token/cost measurements. Its strongest contribution is explaining durable replay through journaled tool results, deterministic sandbox state, divergence detection, and explicit per-tool replay policies. However, the reported experiment covers only one task and model with a handful of runs, and the provided article is truncated before completing its central crash test.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T17:12:18.800601",
+      "image_url": "https://stacktoheap.com/images/durable-code-mode-hero.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7344,
+      "source_id": 34,
+      "original_url": "https://jhooq.com/kubernetes-ip-address-planning/",
+      "title": "Kubernetes IP Address Planning: 22 Problems the Free IP Calculator Solves on EKS, GKE, AKS and On-Premises (kubeadm, Mirantis MKE, RKE2, OpenShift, Tanzu, Talos), with the Numbers and a Screenshot for...",
+      "summary": "It explains how each of the four Kubernetes address pools (node, pod, service, load‑balancer) drains resources and provides exact calculations and mitigations for EKS, GKE, AKS, and on‑prem clusters.",
+      "ideas": [
+        "EKS pods consume VPC IPs; ENI warm pool settings can reduce waste.",
+        "Prefix delegation lets an m5.2xlarge run 110 pods but requires /28 blocks.",
+        "GKE reserves a full /24 per node regardless of actual pod count.",
+        "Legacy Azure CNI pre‑assigns maxPods IPs to every node, inflating VNet usage.",
+        "IPv6 clusters shift pod IPs out of IPv4 space, needing only one IPv4 per node."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers deep, concrete guidance on Kubernetes IP address consumption across major cloud and on‑prem platforms, including formulas, Terraform snippets, and real‑world ticket examples. It uncovers non‑obvious nuances like ENI warm pools, prefix delegation, and service CIDR overlap, which are valuable to a technically capable reader. While promotional of the calculator, the substance outweighs the hype, making it a strong practical resource.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:58:54.244535",
+      "image_url": "https://jhooq.com/wp-content/uploads/tools/kubernetes-ip-calculator/problems/hero-eks-guided-flow.webp",
+      "image_width": 2760,
+      "image_height": 1776,
+      "image_alt": ""
+    },
+    {
+      "id": 7343,
+      "source_id": 34,
+      "original_url": "https://jhooq.com/ansible-aws-project-alb-rds-zero-downtime-deploy/",
+      "title": "Ansible on AWS: Zero-Downtime Deploys Behind an ALB, RDS, and an AI Postmortem (Project 2)",
+      "summary": "Readers learn to execute thirteen targeted Ansible commands to configure AWS EC2 instances behind an ALB with RDS, observing each step's effect on load balancer health.",
+      "ideas": [
+        "Rolling deploys drain each server from the ALB before deployment with 20-second deregistration delay",
+        "SSM Parameter Store stores and retrieves database credentials instead of vault files",
+        "Health checks use /health endpoint with 200 matcher and 10-second intervals, healthy/unhealthy thresholds of 2"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete, step-by-step Ansible deployment patterns on AWS with real infrastructure details. The thirteen-command approach gives readers genuine insight into each deployment phase, from package installation to ALB health checks. Rolling deploy mechanics with ALB drainage and SSM Parameter Store integration are well-demonstrated. The AI postmortem feature is mentioned only superficially without technical detail.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:58:42.436409"
+    },
+    {
+      "id": 7342,
+      "source_id": 34,
+      "original_url": "https://hoffman.home.blog/2026/10/28/rolling-thunder-neogeo-ai-port/",
+      "title": "Rolling Thunder (NeoGeo AI Port)",
+      "summary": "AI coding assistant streamlines arcade game porting by automating disassembly mapping, logic translation, and asset conversion, though final hardware fidelity still demands expert verification.",
+      "ideas": [
+        "Claude Code automated 6809 shared-RAM routine mapping and naming in IDA Pro",
+        "68000 translation reduced code size via more registers but required fixing 8-bit carry/BCD habits",
+        "Tilemap-to-sprite conversion remapped 8x8 System 86 tiles to 16x16 NeoGeo C-ROM tiles with palette dedup",
+        "Sound voice samples re-encoded as ADPCM using AI-written encoder, with author performing ear-level bassline validation"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, concrete technical detail on reverse-engineering and AI-assisted arcade game porting. It explains specific mechanisms—6809 shared-RAM mapping, 68000 logic translation, tilemap-to-sprite conversion, and ADPCM sound encoding—with firsthand engineering experience. The AI tooling is integrated professionally, but the author correctly maintains critical oversight.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:56:45.368719",
+      "image_url": "https://hoffman.home.blog/wp-content/uploads/2026/10/rt3.png",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": ""
+    },
+    {
+      "id": 7341,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/engineering-judgment-with-ai/",
+      "title": "Practicing engineering judgment with AI",
+      "summary": "A practical framework for using AI coding agents while maintaining engineering judgment, centered on a CSV export timeout case study that teaches how to separate observations from solutions, gather evidence, compare designs, and validate patches.",
+      "ideas": [
+        "Separate observed symptoms from assumed causes before proposing architectural changes to AI agents.",
+        "Give agents bounded tasks: reproduce the failure and identify the time/memory bottleneck without altering behavior.",
+        "Test implementations with out-of-scope records and malformed CSV data (commas, quotes, newlines) to expose filter gaps.",
+        "Read patches as a future maintainer, analyzing resource lifetime, side effects, and cancellation behavior beyond the happy path."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides a high-value, structured framework for practicing engineering judgment with AI agents. The concrete CSV export case study offers non-obvious investigation directions, specific test strategies (malformed CSV, account isolation), and maintainability guidance (resource Lifetime, side effects, cancellation). While the measurements are hypothetical, the process for reasoning through trade-offs and validating implementations is substantive and directly applicable to AI-assisted development.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:54:25.850074",
+      "image_url": "https://flaviocopes.com/images/engineering-judgment-with-ai/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for Practicing engineering judgment with AI"
+    },
+    {
+      "id": 7340,
+      "source_id": 34,
+      "original_url": "https://engineering.kenmazaika.com/blog/pass-password-store-for-ai-agents/",
+      "title": "Set Up a Secrets Store Your Agent Can Use",
+      "summary": "Use pass with a private GitHub repository and iOS Pass to create an encrypted secret store that both an agent and a phone can read, write, and autofill securely.",
+      "ideas": [
+        "Use pass with private GitHub repo and iOS Pass for encrypted secret store accessible to agents."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible steps for building an encrypted secret store with pass, GitHub, and iOS Pass, enabling agents to read and write secrets without exposing cleartext. It includes specific commands, verification checks, and policy guidance that are directly applicable to LLM agent credential management. The main limitation is occasional promotional fluff and a modest amount of background that does not add technical depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:52:18.524337",
+      "image_url": "https://engineering.kenmazaika.com/og/pass-password-store-for-ai-agents.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "One encrypted password store for your agent and phone — Ken Mazaika"
+    },
+    {
+      "id": 7339,
+      "source_id": 34,
+      "original_url": "https://cameronmpalmer.com/blog/are-you-paying-for-useless-llm-prompts",
+      "title": "Are you paying for useless LLM prompts?",
+      "summary": "An original multi-model experiment shows expert persona prompting leaves accuracy flat while measurably increasing reasoning tokens, cost, and latency on several models, so production LLM systems should prefer neutral prompts and audit baked-in personas.",
+      "ideas": [
+        "Expert personas leave accuracy flat but inflate reasoning tokens up to 36%",
+        "Blank system prompt raised Deepseek reasoning tokens 44% versus neutral",
+        "Ling ran 15-25% slower under expert personas; GLM was unaffected",
+        "Personas often baked into harness defaults silently increase user costs",
+        "Neutral prompts are Pareto-optimal for cost-accuracy on this benchmark"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is an original, reproducible experiment (code published) measuring accuracy, cost, reasoning tokens, and latency across 20 model-persona runs on 5000 MMLU-Pro questions, with 95% confidence intervals reported in tables. The novel contribution is quantifying the cost/speed penalty of expert personas rather than re-confirming the known accuracy null result, plus actionable production advice to audit harness-default personas and the surprising Deepseek finding that a blank system prompt inflates reasoning tokens by 44%. Limitations: the multiple-choice single-call setup limits generalization to agentic/coding work (acknowledged), the figures are not present in the text, the core accuracy result is confirmatory of prior literature, and the model set is limited to small/flash-class models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:48:13.714131",
+      "image_url": "https://cameronmpalmer.com/blog/are-you-paying-for-useless-llm-prompts.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7338,
+      "source_id": 34,
+      "original_url": "https://brtkwr.com/posts/2026-10-27-failed-to-authorize-deadlineexceeded-pushing-to-artifact-registry-with-buildkit/",
+      "title": "\"failed to authorize: DeadlineExceeded\" pushing to Artifact Registry with BuildKit",
+      "summary": "Setting BUILDKIT_NO_CLIENT_TOKEN=1 stops a BuildKit POST‑token stall, eliminating \"failed to authorize: DeadlineExceeded\" errors when pushing images from GitHub Actions to Artifact Registry.",
+      "ideas": [
+        "BuildKit’s client POST token request can stall 60 s with a 405 response, causing push failures.",
+        "Setting BUILDKIT_NO_CLIENT_TOKEN=1 forces the daemon to fetch registry tokens via GET, avoiding the stall.",
+        "After the fix, token POSTs drop to zero and failure rate falls from 7.6% to 0.4% in the first day.",
+        "The issue is observable via the OTLP build trace layer in the GitHub Actions artifact."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, reproducible evidence of a BuildKit token‑fetch stall, includes detailed traces, code snippets, and a clear configuration fix (BUILDKIT_NO_CLIENT_TOKEN=1) that eliminates the failures. It directly addresses CI/CD pipeline reliability for Docker/Artifact Registry, which is highly relevant to the reader, and the analysis is backed by measured before/after data. Minor limitations are its niche focus on Google Artifact Registry and reliance on internal BuildKit behavior, but overall the substance outweighs the narrow scope.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:46:54.174959"
+    },
+    {
+      "id": 7337,
+      "source_id": 34,
+      "original_url": "https://ai.rud.is/posts/2026-10-24-node2shell-wat/",
+      "title": "Node2Shell (CVE-2026-111497): how to find out if you're exposed",
+      "summary": "Exposure is determined solely by the actual running Node/Brotli binary version; patch or isolate services that handle brotli.",
+      "ideas": [
+        "Node.js brotli decoder memory bug enables remote code execution via malformed compressed streams.",
+        "Fixed versions: Node 22.23.4, 24.22.1, 26.12.1, Bun 1.4.4, Brotli 1.0.10‑1.2.1, etc.",
+        "Detect running versions with `node -v`, `ps` greps, or `docker exec` inside containers.",
+        "Disable inbound br encoding or outbound Accept‑Encoding to reduce exposure while patching.",
+        "Scanners cannot see the runtime version; direct binary checks are required for certainty."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible detection commands, clear version‑fix mappings, and practical mitigation guidance. It explains the underlying Brotli bug, inbound/outbound exposure paths, and how to test safely without triggering DoS. However it repeats generic warnings and includes non‑essential filler, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-29T16:36:44.441857",
+      "image_url": "https://ai.rud.is/posts/2026-10-24-node2shell-wat/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7336,
+      "source_id": 4,
+      "original_url": "https://www.atredis.com/blog/2026/10/28/turning-the-valve/",
+      "title": "Atredis Partners",
+      "summary": "Steam’s privileged service and lax IPC allowlist enable both local and remote code execution attacks.",
+      "ideas": [
+        "Steam’s privileged service (steamservice.exe) communicates with the client via named pipes and shared memory.",
+        "Permissive DACLs on the shared memory let any process connect to the Steam service.",
+        "IClientInstallUtils adds VDF scripts to an in‑memory allowlist without proper verification.",
+        "A crafted malicious VDF can run arbitrary commands as SYSTEM through the allowlist.",
+        "IClientModuleManager’s CallFunctionAsync can load and execute arbitrary DLL functions.",
+        "Exploiting RunInterface IPC commands enables remote code execution on Steam.",
+        "Researchers released PoCs, slides, and disclosed the bugs via Valve’s HackerOne program."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post delivers multiple concrete security insights, including the privileged‑service architecture, insecure allowlist via IClientInstallUtils, and arbitrary DLL execution via IClientModuleManager, each backed by code snippets and PoCs. It provides actionable exploitation steps and references to full disclosures, aligning strongly with cybersecurity themes and containing little filler.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-29T16:32:07.107905",
+      "image_url": "https://atredis.com/blog/2026/10/28/turning-the-valve/images/ico.webp",
+      "image_width": 960,
+      "image_height": 960,
+      "image_alt": "Turning the Valve - Exploiting RCE and LPE in the Steam Platform"
+    },
     {
       "id": 7335,
       "source_id": 4,
