@@ -1,7 +1,665 @@
 {
-  "updated_at": "2026-10-30T12:00:00.520644+00:00",
-  "total_items": 1082,
+  "updated_at": "2026-10-30T13:00:00.142064+00:00",
+  "total_items": 1108,
   "items": [
+    {
+      "id": 7407,
+      "source_id": 34,
+      "original_url": "https://tj-zhang.com/blog/progress-without-data/",
+      "title": "Debezium's heartbeat is a hack around a missing message",
+      "summary": "Readers learn that Debezium’s heartbeat is a pragmatic but semantically awkward workaround for being unable to acknowledge a consumer’s log position without writing a record, and that a progress‑message‑only solution already exists in PostgreSQL’s replication protocol but is not exposed through Kafka Connect.",
+      "ideas": [
+        "Heartbeat records serve as sentinel acknowledgments when no real changes exist.",
+        "Postgres replication protocol already sends position‑only status updates without records."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers a deep, well‑supported technical examination of why Debezium’s heartbeat acts as a sentinel‑record workaround for a missing offset‑only acknowledgment in Kafka Connect. It conveys concrete mechanisms (LSN progression, replication‑slot growth), cites real‑world measurement (200 GiB WAL growth), and references an open KIP‑910 issue, giving non‑obvious insight into data‑stream design. The reasoning is thorough, free of hype, and remains valuable without appealing to AI trends or promotional content.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:28:58.983750"
+    },
+    {
+      "id": 7406,
+      "source_id": 34,
+      "original_url": "https://tobilg.com/posts/duckdb-custom-extension-hosting/",
+      "title": "Hosting your own signed DuckDB extensions on S3-compatible storage",
+      "summary": "The reader learns how to sign, host, trust, install, and securely load custom DuckDB extensions while avoiding global unsigned mode.",
+      "ideas": [
+        "DuckDB extension signatures cover metadata and use a chunked SHA-256 tree",
+        "Pinned keys apply only when installing and loading through repository name",
+        "Extension binaries can be re-signed without rebuilding or stripping",
+        "HTTPS repositories require httpfs, while HTTP redirects can break installation",
+        "Public buckets remain safe when clients enforce pinned signature keys",
+        "DuckDB's upload script silently succeeds on macOS Bash 3.2 failures",
+        "Private S3 repositories require installation-time credentials",
+        "Custom extensions require explicit repository-qualified loading",
+        "Key fingerprints should be published outside the extension bucket"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "This is an unusually concrete, source-informed guide to DuckDB's new custom extension repositories, with reproducible OpenSSL, rclone, SQL, and CI steps plus firsthand tests of signature and key-selection behavior. It documents non-obvious footers, chunked hashing, repository URL layouts, redirect and httpfs caveats, private-bucket access, and operational pitfalls in DuckDB's upload script. The custom-repository feature is explicitly work in progress, several edge cases remain untested, and the supplied article ends mid-sentence, but the material is still highly actionable and technically substantive.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:28:58.555360"
+    },
+    {
+      "id": 7405,
+      "source_id": 34,
+      "original_url": "https://themaister.net/blog/2026/10/29/killing-what-cant-be-handled-putting-a-spaghetti-demon-to-eternal-rest/",
+      "title": "Killing what can’t be handled – putting a spaghetti demon to eternal rest",
+      "summary": "A correctness-first rewrite can tame pathological shader control flow through Mesa-style dominance-frontier structurization, PHI lowering, and differential fuzzing.",
+      "ideas": [
+        "Replacing heuristic CFG structurization with Mesa’s correctness-first algorithm preserved RADV performance in game testing.",
+        "Randomized reducible CFGs and 4,096 GPU walks enabled bit-exact differential validation.",
+        "Converting PHI nodes to variables simplified rewrites while relying on compilers’ mem2reg optimization.",
+        "Dominance-frontier levels encode selectors, skipped levels, and redirected branches.",
+        "Fuzzing found multiple Mesa bugs, demonstrating value beyond dxil-spirv."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a substantive first-hand compiler-engineering account of replacing dxil-spirv’s brittle control-flow structurizer with a Mesa-derived, correctness-first design. It provides concrete algorithmic detail on dominance-frontier levels, selector dispatch, skipped paths, PHI lowering, and randomized bit-exact GPU testing that uncovered Mesa bugs, alongside real-game validation and parity on RADV. The presentation is noisy, diagrams and code context are only partly conveyed in the excerpt, and proprietary-driver performance and correctness evidence remain less rigorous than the RADV results.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:28:32.328116"
+    },
+    {
+      "id": 7404,
+      "source_id": 34,
+      "original_url": "https://techblog.jeppson.org/2026/10/nextcloud-aio-mount-to-local-directory-reboot-persistence/",
+      "title": "Nextcloud AIO mount to local directory reboot persistence",
+      "summary": "Creating a dedicated systemd unit file with After=local-fs.target remote-fs.target ensures bindfs mounts after ZFS datasets are available, solving the reboot persistence issue for Nextcloud AIO local directory mounts.",
+      "ideas": [
+        "Use systemd unit with After=local-fs.target remote-fs.target for bindfs mount persistence across reboots",
+        "Set bindfs force-user/force-group to www-data (uid/gid 33) so Nextcloud properly reads/writes mounted files",
+        "ZFS dataset must be mounted before bindfs can bind to the directory; systemd dependencies enforce this ordering"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Firsthand solution to a ZFS/bindfs race condition for Nextcloud AIO data persistence. Provides complete systemd unit file configuration with proper dependency ordering using After=local-fs.target remote-fs.target. Explains the mechanism of why fstab entries fail due to fuse/bindfs binding before ZFS datasets are mounted, and how systemd service dependencies solve the ordering problem. The solution is technically specific, non-obvious, and directly applicable to anyone using bind mounts with Nextcloud AIO on ZFS.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:25:32.744360"
+    },
+    {
+      "id": 7403,
+      "source_id": 34,
+      "original_url": "https://ryanxcharles.com/blog/2026-10-29-i-make-156-commits-a-day-now",
+      "title": "I Make 156 Commits a Day Now",
+      "summary": "AI agents can dramatically increase commit output when given autonomy and isolated worktrees, but the count includes non‑code commits and requires careful deduplication.",
+      "ideas": [
+        "156 commits per day recorded for October 2026, eight times the 2024 rate.",
+        "Method counts unique commits by hash and author‑time/message matching.",
+        "Agents operating in separate worktrees drove the June and October spikes."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible data on commit volume, detailed methodology for deduplicating commits, and clear links between AI‑driven workflow changes and measurable output spikes. It is highly relevant to AI‑engineering and software‑development practices, though its value is slightly tempered by self‑referential promotion and limited generalizability beyond the author’s environment.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:20:33.048053"
+    },
+    {
+      "id": 7402,
+      "source_id": 34,
+      "original_url": "https://rore.im/posts/your-sdlc-is-not-enough",
+      "title": "Your SDLC is not enough",
+      "summary": "Durable work records and workflow checks preserve prior decisions and risk classifications, enabling more thorough reviews and preventing repeated undone work.",
+      "ideas": [
+        "Durable Work Records retain original requirements, exposing mismatches before implementation.",
+        "Elevated risk classification triggers extra review, revealing hidden bugs.",
+        "Reusing prior reviews focuses attention on new changes, cutting redundant testing.",
+        "Unresolved problems remain visible in Work Records, preventing false completion."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, durable mechanisms—work records, risk‑classification checks, and reusable review logs—that demonstrably improve standard SDLC practices for AI agents. It offers practical examples and clear operational insights, though it lacks deep quantitative evidence or breakthrough novelty, placing it in the strong but not exceptional range.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:20:08.929627"
+    },
+    {
+      "id": 7401,
+      "source_id": 34,
+      "original_url": "https://rduffy.uk/writing/rootweaver-resolve/",
+      "title": "An agent investigates. An SRE decides.",
+      "summary": "It presents a bounded debugging workflow where an AI agent selects limited system checks and an SRE reviews the evidence and gaps before acting.",
+      "ideas": [
+        "Agent selects from a validated check catalogue; host executes commands.",
+        "Four complete TCP streams show client FIN and server data timings.",
+        "Model claimed consistent server timing, but capture only supports four pairs.",
+        "Full packet capture and log lines are retained for local reproducibility.",
+        "Human handover must separate check suggestion from execution permission."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, bounded debugging methodology, packet timing measurements, and reproducible commands that directly aid SREs using AI agents. It balances valuable insight with acknowledged model overreach, making it highly relevant yet limited to a controlled lab context. The clear validation boundaries and human‑in‑the‑loop handover earn a strong but not exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:18:38.980839",
+      "image_url": "https://rduffy.uk/posts/resolve/resolve-evidence-bench.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": "Conceptual anime illustration of an engineer comparing diagnostic traces before acting."
+    },
+    {
+      "id": 7400,
+      "source_id": 34,
+      "original_url": "https://metebalci.com/blog/lto-at-home-in-2026/",
+      "title": "Linear Tape-Open (LTO) at Home in 2026",
+      "summary": "Describes a fully automated, monitored, and labeled LTO tape backup workflow on Proxmox/TrueNAS, including original performance measurements and a robust overwrite-prevention scheme.",
+      "ideas": [
+        "Drive buffer full limits writes 72% of time",
+        "Dual tar+cartridge labels prevent overwrite",
+        "Cartridge retired if errors exceed threshold"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This article earns a high score for its dense, firsthand technical detail. It moves beyond generic backup advice to document concrete mechanisms: a 72% buffer-full observation, a dual-label overwrite-protection scheme, and Prometheus/Grafana-driven cartridge lifecycle management. The practical usefulness and original measurements make it stand out as substantive, non-obvious engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:13:01.258233"
+    },
+    {
+      "id": 7399,
+      "source_id": 34,
+      "original_url": "https://martinalderson.com/posts/making-agents-fast/",
+      "title": "Making agents fast - what I've learnt over the last 12 months",
+      "summary": "Readers learn that inference speed optimization requires distinguishing between TTFT and tok/s priorities, but that thinking budgets and tooling improvements often yield greater performance gains than chasing faster models or providers.",
+      "ideas": [
+        "Thinking budgets often have greater impact than model/provider speed tiers",
+        "Shell startup overhead can dominate command execution time in agents",
+        "For loops with sleep indicate polling rather than async task completion",
+        "Open weight model CoT traces reveal valuable optimization opportunities",
+        "Hardware CPU type and NVMe IO speed significantly affect agent performance"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides substantive, relevant technical content with numerous concrete findings about optimizing AI agent performance. It covers inference metrics (TTFT/tok/s), tool call optimization, hardware considerations, suspend/resume handling, and practical engineering insights drawn from 12 months of experience. The material is non-obvious and well-supported with illustrative numbers and specific mechanisms. However, it stops short of exceptional because many concepts while well-compiled are not entirely novel in the broader field, and some advice is context-dependent.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:11:09.015788",
+      "image_url": "https://martinalderson.com/img/og/making-agents-fast-what-i-ve-learnt-over-the-last-12-months.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Making agents fast - what I've learnt over the last 12 months"
+    },
+    {
+      "id": 7398,
+      "source_id": 34,
+      "original_url": "https://malja.dev/the-battle-of-the-green-dot",
+      "title": "The Battle of the Green Dot",
+      "summary": "Builds a Swift script that uses an old webcam, Apple Vision/LLM models, and the Microsoft Graph API to automatically detect human presence and update Teams status in real time.",
+      "ideas": [
+        "Fix ffmpeg webcam frame rate by explicitly setting framerate, resolution, and pixel format flags",
+        "Apple Foundation Models can detect person presence in images locally without external dependencies",
+        "Microsoft Graph API Presence.ReadWrite enables programmatic Teams status updates without modifying the BeZoned app"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong engineering walkthrough that concretely solves a remote-work friction point using ffmpeg to tame a finicky webcam, Apple's Vision/Foundation Models for person detection, and the Microsoft Graph API for programmatic Teams presence updates. Provides working code snippets, API permission details, and a clear state machine. The approach is novel enough for the target audience and delivered with adequate evidence and no hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:10:38.490724",
+      "image_url": "https://cdn.hashnode.com/uploads/og-images/6409d4783e0c5ff6cf7f7de0/de6ca390-d85a-4f90-b130-bf6db8812cf3.png",
+      "image_width": 1774,
+      "image_height": 887,
+      "image_alt": ""
+    },
+    {
+      "id": 7397,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/anima-ref-adapter-v2-role-ref-kv-compare/",
+      "title": "Comparing Anima Ref Adapter v2 and Role-Ref-KV on M1 Max: v2 Ran 3x Faster Than Pilot on Turbo and Avoided 4koma Collapse",
+      "summary": "Caching reference-image attention makes character-reference adapters measurably faster, but guidance settings and model compatibility can still cause color drift, artifacts, and collapse.",
+      "ideas": [
+        "Reference-image KV caching removes a repeated model pass across sampling steps.",
+        "Ref Adapter v2 took 479.9 seconds versus Role-Ref-KV's 299.3 seconds on Base.",
+        "Turbo ref_guidance 1.0 avoided panel collapse and preserved better color fidelity.",
+        "2.9B compatibility required LoRA-key remapping and zero-padded blocks.",
+        "Role-Ref-KV exhibited scene-dependent orange hair drift across tested models.",
+        "Apple MPS required replacing crashing double-precision calls with float.",
+        "Raw 2.9B models failed with v2 because LoRA keys targeted incompatible block counts."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a focused, hands-on AI inference comparison with unusually concrete substance: architecture differences, exact model and commit versions, sampler settings, timings, failure cases, and workarounds for MPS and 2.9B remapping. It identifies actionable mechanisms, such as caching reference-image attention and avoiding extra guidance passes, and measures their effects rather than merely repeating release claims. Confidence is limited by one machine, a small prompt/seed matrix, nonmatching initial noise, and unsupported-model workarounds that bypass validation, while the pilot baseline was reused rather than regenerated.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:08:37.371515",
+      "image_url": "https://lilting.ch/og/images/tech/2026/10/30/rkv-hero-v2-turbo11-run.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Comparing Anima Ref Adapter v2 and Role-Ref-KV on M1 Max: v2 Ran 3x Faster Than Pilot on Turbo and Avoided 4koma Collapse | lilting channel"
+    },
+    {
+      "id": 7396,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/linux-ipv4-tcp-options-uaf-mptcp-rce/",
+      "title": "CVE-2026-98432 Linux TCP Use-After-Free Can Give Unauthenticated Root on MPTCP Listeners",
+      "summary": "A use‑after‑free in IPv4 TCP handling can be leveraged by unauthenticated remote attackers to achieve root on MPTCP‑listening servers, with fixes available in newer kernels and a temporary GODEBUG disable.",
+      "ideas": [
+        "SYN retransmit race with child‑socket free triggers UAF in ip_options",
+        "Fix changes kfree to kfree_rcu in inet_sock_destruct and tcp_v4_reqsk_destructor",
+        "Anthropic exploit defeats KASLR then hijacks control flow via option length mismatch",
+        "Go 1.24+ enables MPTCP by default, widening the attack surface",
+        "GODEBUG=multipathtcp=0 disables MPTCP as a stopgap mitigation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers detailed technical substance: it explains the SYN retransmit/child‑socket race, the RCU‑protected free bug, the CVSS metric rationale, and practical mitigations (kernel updates, GODEBUG). It provides original commit history and Anthropic's exploit chain, making it highly relevant to kernel security and infrastructure. However, it stops short of providing a full reproducible exploit and some details (e.g., why MPTCP is required) remain opaque, keeping it from exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:08:14.538078"
+    },
+    {
+      "id": 7395,
+      "source_id": 34,
+      "original_url": "https://ilikekillnerds.com/2026/10/30/introducing-offset/",
+      "title": "Introducing Offset",
+      "summary": "Offset provides a Rust-built memory editor and binary-workbench with a visual trainer builder that converts investigative findings into distributable, standalone apps.",
+      "ideas": [
+        "Module-relative addresses and pointer chains survive process restarts",
+        "Visual trainer builder exports standalone apps without requiring Offset installed"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers dense, concrete technical detail on memory editing workflows—pointer chains, grouped scans, investigator copies—grounded in a Rust-built toolchain. It is highly relevant to systems engineering and tooling interests, though its scope leans toward power-user modding rather than AI/ML or infrastructure. The visual trainer builder and game packs provide measurable practical utility, but the niche focus and commercial framing limit broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:02:55.939506",
+      "image_url": "https://ilikekillnerds.com/img/offset/workbench-scanner.webp",
+      "image_width": 2640,
+      "image_height": 1760,
+      "image_alt": "Introducing Offset"
+    },
+    {
+      "id": 7394,
+      "source_id": 34,
+      "original_url": "https://greg.molnar.io/blog/sql-injection-in-the-trilogy-mysql-adapter/",
+      "title": "https://greg.molnar.io/blog/sql-injection-in-the-trilogy-mysql-adapter/",
+      "summary": "A byte-level encoding mismatch can neutralize SQL escaping, and the article demonstrates and bounds the resulting Rails/MySQL injection surface.",
+      "ideas": [
+        "Ruby escaping failed because 0x5c can complete a multibyte character.",
+        "Payload bytes bf 5c 27 leave the quote unescaped after transcoding.",
+        "Rails validation blocks this path for ordinary query parameters.",
+        "Non-UTF-8 headers and decoded blobs remain viable injection sources.",
+        "Trilogy 2.13.2 re-encodes before escaping and rejects unsafe charsets.",
+        "Parameterized queries avoid encoding-dependent escaping entirely."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is exceptionally concrete security research: it explains the multibyte-character/backslash collision at the byte level, reproduces a working Rails exploit, and identifies both Rails' incidental mitigation and paths that bypass it. The exact patch behavior, affected charsets, sqlmap workflow, and narrow exploitation preconditions make the findings directly actionable for defenders and maintainers. It partly documents an already-published advisory rather than the original discovery, but the first-hand validation and reproducible evidence remain unusually valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:00:40.219861",
+      "image_url": "https://greg.molnar.io/images/og/posts/sql-injection-in-the-trilogy-mysql-adapter.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "SQL injection in the Trilogy MySQL adapter"
+    },
+    {
+      "id": 7393,
+      "source_id": 34,
+      "original_url": "https://divagr.com/blog/building-oversight-tools-into-a-models-weights",
+      "title": "Building oversight tools into a model's weights",
+      "summary": "Compiled DeltaNet circuitry can host an internal deception alarm and persistent log, though current evidence demonstrates controlled-case performance rather than robust, naturalized oversight.",
+      "ideas": [
+        "Compiled triggers can emit lie flags before deceptive outputs.",
+        "DeltaNet state persists exact monitoring logs across saved sessions.",
+        "The probe achieved 0.99 AUROC but suffered prompt-induced false positives.",
+        "A planted parity circuit ranked first among 864 transformer heads.",
+        "In-weight monitoring resists model tampering, not checkpoint owners.",
+        "Artificial planted circuits remain easy interpretability positive controls."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong, unusually concrete AI interpretability engineering: the author embeds a deception probe, trigger, and persistent DeltaNet-state log into compiled model weights, then reports 91% lie detection, no false flags across 28,000 tokens, and perfect log consistency across 12 session pairs. The planted parity circuit was also found first among 864 heads, although the author correctly identifies this as an easy positive control rather than a decisive interpretability test. Limitations include prompt-sensitive detection, incomplete protection against weight holders, untested log forging, and limited implementation detail in this standalone article.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:58:30.045389",
+      "image_url": "https://divagr.com/qwenputer/og.png",
+      "image_width": 3000,
+      "image_height": 1200,
+      "image_alt": "Building oversight tools into a model's weights"
+    },
+    {
+      "id": 7392,
+      "source_id": 34,
+      "original_url": "https://carteakey.dev/blog/homelab/alvidaa/",
+      "title": "alvidaa: root access to VIDAA OS",
+      "summary": "Documents a full reverse-engineered chain from MQTT login to persistent root shell on VIDAA OS, revealing sandbox escape via /APPS/ traversal, CORS bypass of a boot-helper, and a boot-time script write for arbitrary code execution as root.",
+      "ideas": [
+        "Extracted VIDAA MQTT cert from Android APK resources using legacy PKCS12 OpenSSL mode.",
+        "Sandbox escaped by requesting ../etc/passwd, exploiting /APPS/ prefix in the bridge path.",
+        "Bypassed phoenix helper wax-seal token by sending raw requests, exploiting open CORS.",
+        "Gained root by writing /var/local/otaTest.sh to the writable /var/local partition, executing on reboot via rc.local.",
+        "Achieved interactive root shell via bash /dev/tcp to LAN, fetching BusyBox-less binaries at boot."
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Extremely detailed reverse engineering diary of gaining root access on a Hisense VIDAA OS TV. Chains MQTT certificate extraction, custom auth handshake, browser sandbox escape via path traversal, CORS misconfiguration in a closed Node helper, and a boot script write primitive for persistent root. Each 'lock' is explained with concrete mechanisms, error paths, and firsthand observations. Highly substantive for embedded Linux and security research.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:54:22.104579",
+      "image_url": "https://carteakey.dev/img/og/alvidaa-v3-stamp-trim-9e999655ccd2.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Ink sketch of a TV showing an open padlock and terminal, with its power cord unplugged"
+    },
+    {
+      "id": 7391,
+      "source_id": 34,
+      "original_url": "https://building-babylon.net/2026/10/29/simulating-the-view-is-insufficient-when-functionality-is-non-deterministic/",
+      "title": "Simulating the view is insufficient when functionality is randomized",
+      "summary": "Randomized protocol simulation must preserve the joint relationship between outputs and views, not merely each distribution separately.",
+      "ideas": [
+        "Joint output-view comparison is necessary for randomized-functionality simulation.",
+        "Broken oblivious transfer has correct outputs and separately simulatable views.",
+        "A shared deterministic output map can make explicit output inclusion redundant.",
+        "The post identifies an error in a standard MPC textbook."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a precise, technically substantive analysis of a subtle failure mode in cryptographic simulator definitions. Its insecure oblivious-transfer example proves that correct output distributions and separately simulatable views do not imply joint simulatability, and the deterministic-map condition identifies when including outputs is redundant. The scope is narrow and the underlying issue was previously noted by Canetti, but the formal argument and textbook correction remain highly useful for protocol designers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:52:58.626797"
+    },
+    {
+      "id": 7390,
+      "source_id": 34,
+      "original_url": "https://boring-observability.dev/blog/what-to-monitor-in-a-laravel-queue",
+      "title": "What to Monitor in a Laravel Queue, from Dispatch to Done",
+      "summary": "Effective queue monitoring needs three separate signals—oldest job age, completion liveness, and backlog direction—because Horizon's built-in long-wait alert is a broken forecast that can stay silent through a fully stalled queue.",
+      "ideas": [
+        "Horizon's LongWaitDetected is a length×runtime forecast that drops to zero on stalled queues",
+        "Overload wait grows at t×(1−c/a): 10% over capacity takes 5.5 hours to trip a 30-minute threshold",
+        "Stall check asks whether anything finished; overload check asks whether the backlog is growing",
+        "Heartbeat jobs must ping from inside handle(), not the scheduler's pingOnSuccess()",
+        "Catch typo'd queues by SADD-ing JobQueued names and diffing against worker config",
+        "horizon:status exit codes (0/1/2) plus absent() rules cover Horizon-down from outside"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense, practitioner-level guide to Laravel queue observability with genuinely non-obvious findings: Horizon's LongWaitDetected is a forecast built from length and average runtime whose snapshot cycle can hide a stalled queue entirely, and the overload wait-growth model t×(1−c/a) gives concrete threshold trade-offs. The article delivers working code (heartbeat jobs, JobQueued listener to catch typo'd queues), distinct alert semantics with matched incident responses, and hard-won operational insight directly relevant to infrastructure and observability interests. Points are deducted for the truncated tail, the vendor blog context with product tie-in, and the framework-specific rather than broadly generalizable scope.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:52:32.313625",
+      "image_url": "https://boring-observability.dev/og/blog/what-to-monitor-in-a-laravel-queue.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Skyline — queue control for Laravel Horizon."
+    },
+    {
+      "id": 7389,
+      "source_id": 34,
+      "original_url": "https://blog.softwarewrighter.com/2026/10/29/ai-tools-domain-expert-skill/",
+      "title": "AI Tools #8: A Domain-Expert Skill Restarts a Stuck Project",
+      "summary": "The domain-expert AI skill framework forces research into a field's vocabulary, canons, pitfalls and frontier before coding, producing a documented briefing that identified precisely why a hinge sound project stalled and how to restart it.",
+      "ideas": [
+        "V-C-P-F framework prevents fluent shallow competence in AI agents",
+        "Hinge squeaks stem from stick-slip friction, not noise-plus-tone addition",
+        "Real squeaks classified into 5 types: stepped, gliding, creaks, groans",
+        "Briefing documents evidence limits so next agent starts from informed state",
+        "February generator misattributed squeak pitch to added tone rather than slip events"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly technical and substantive article detailing how a domain-expert AI skill framework prevented 'fluently shallow competence' in a stuck sound-effect generation project. Contains concrete physics of hinge squeaks (stick-slip dynamics), measured real-squeak classification into 5 types, V-C-P-F research framework, and a documented briefing that restarted the project. The author transparently states knowledge limits and measured gaps. Strong practical usefulness for anyone using AI agents for technical synthesis work.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:51:10.101242"
+    },
+    {
+      "id": 7388,
+      "source_id": 34,
+      "original_url": "https://blog.borodutch.com/solidity-test-loop-56-seconds-to-under-one/",
+      "title": "Why my Solidity test loop went from 56 seconds to under one",
+      "summary": "plain compiles test files by replacing contract instantiations with pre-deployed artifact references, avoiding redundant solc compilation per test and enabling near-instant edit-and-reevaluate cycles.",
+      "ideas": [
+        "plain replaces contract instantiations in tests with pre-deployed artifact references to avoid redundant solc compilation",
+        "7,500-line test file split into parallel-compiling units so solc only type-checks relevant functions",
+        "Cached test suites reuse prior results keyed by content hash, avoiding re-compilation on unchanged code"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Strong technical article with original benchmark measurements showing 56-second vs 0.99-second test loop times. Explains the concrete mechanism of redundant solc compilation per test, the via-IR vs plain approach, file-splitting strategy, and content-hash caching. Highly relevant to Solidity engineers and build-system design. Minor deduction from niche audience scope.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:46:33.458458",
+      "image_url": "https://blog.borodutch.com/content/images/2026/10/solidity-test-loop-56-seconds-to-under-one.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7387,
+      "source_id": 34,
+      "original_url": "https://bek-kurbonov.com/posts/mojo-net-networking-for-mojo/",
+      "title": "mojo_net: Network stack in Mojo and http benchmark against rust and go",
+      "summary": "This Mojo networking experiment demonstrates how event-loop architecture, parser layering, and language-runtime overhead determine real HTTP server performance.",
+      "ideas": [
+        "A blocking handler can stall every connection in its epoll process.",
+        "Pre-growing file-descriptor tables avoids measured 17–47 millisecond kernel stalls.",
+        "Profiling reduced HTTP overhead from 9,644 to 4,227 instructions per request.",
+        "Mutation testing caught 62 planted server bugs after strengthening some tests.",
+        "Three AI review rounds missed a TLS wildcard-certificate authorization flaw.",
+        "I/O-free parsers let one HTTP implementation serve clients and servers."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "The article documents an unusually concrete AI-assisted systems-engineering effort: a Mojo TCP, UDP, Unix-socket, and HTTP stack with reproducible comparisons against hyper, fasthttp, nginx, and Go. It surfaces actionable mechanisms and measurements involving epoll, SO_REUSEPORT, file-descriptor growth, parser overhead, error-handling costs, compiler bugs, and mutation-tested security findings, while openly stating its benchmark and review limitations. The narrow loopback benchmark, largely AI-authored and AI-reviewed implementation, and lack of production deployment prevent an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T22:45:44.427398"
+    },
+    {
+      "id": 7386,
+      "source_id": 7,
+      "original_url": "https://felixrieseberg.com/hunger-beats-tenure-advice-for-junior-engineers/",
+      "title": "FELIX RIESEBERG",
+      "summary": "Junior engineers can outpace senior staff by abandoning interview tests, targeting business impact, and quickly prototyping bold ideas.",
+      "ideas": [
+        "Coding interviews are becoming obsolete as AI like Claude can solve similar problems.",
+        "Prioritize business impact over feature backlog to align with company goals.",
+        "Create radical weekend prototypes to bypass lengthy PRD and approval processes.",
+        "Focus on a single strong idea rather than scattering many weak concepts.",
+        "Use fresh‑person empathy to identify user pain points or question assumed technical constraints.",
+        "New engineers at Anthropic shipped a Claude Code product after a weekend prototype."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The piece offers several concrete, actionable insights for early‑career engineers—shifting focus from coding tests to business impact, rapid prototyping, and leveraging fresh perspective—supported by real examples, giving it solid thematic relevance to tech and productivity. Some anecdotal filler reduces density, but no major clickbait or promotional penalties.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-10-30T22:36:53.417626"
+    },
+    {
+      "id": 7385,
+      "source_id": 4,
+      "original_url": "https://opensourcemalware.com/blog/trojanized-claude-code-extension-plants-persistent-ssh-backdoor",
+      "title": "Article from opensourcemalware.com",
+      "summary": "A compromised VS Code Claude extension silently installs an SSH backdoor and persistent reverse tunnel.",
+      "ideas": [
+        "Malicious Claude Code VS Code extension inserts 66-line loader before legitimate code to create SSH backdoor.",
+        "Loader adds attacker-controlled SSH key to authorized_keys and attempts to enable SSH service on host.",
+        "Establishes persistent reverse SSH tunnel to 134.209.82.225 using embedded private key.",
+        "Implements OS-specific persistence: LaunchAgent on macOS, cron on Linux, scheduled task on Windows.",
+        "Sends unencrypted beacon with host info (IP, env vars) to C2 via HTTP.",
+        "Suppresses exceptions to keep legitimate extension functional, hiding compromise.",
+        "Detection: search for specific file paths, LaunchAgent label, authorized_keys entry, IP address, hashes.",
+        "Response: isolate system, preserve evidence, block C2 IP/ports, remove extension, rotate credentials.",
+        "Attack demonstrates risk of trojanizing trusted developer tools by prepending malicious code.",
+        "No additional payloads downloaded; backdoor provides interactive access for further exploitation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers high-value technical insight into a trojanized VS Code extension, providing concrete IOCs, attack chain details, and clear detection & response steps—useful for security practitioners. It aligns strongly with CyberSecurity and Tech themes and contains multiple actionable value instances without clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-30T22:33:11.881267",
+      "image_url": "https://a.storyblok.com/f/293151920578295/2882x1870/5f70050a37/cursor-marketplace-compromised.png",
+      "image_width": 2882,
+      "image_height": 1870,
+      "image_alt": "OpenSourceMalware"
+    },
+    {
+      "id": 7384,
+      "source_id": 26,
+      "original_url": "https://github.com/CopilotKit/OpenBot",
+      "title": "CopilotKit/OpenBot",
+      "summary": "OpenBot is an open-source platform for running self‑hosted, isolated AI agents as coworkers on your own infrastructure.",
+      "ideas": [
+        "Agents run in isolated browsers with full action recording",
+        "Framework‑agnostic via AG‑UI protocol",
+        "Template design lets you clone and customize agents"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 96,
+      "rating_reason": "Problem significance 25, technical novelty 23, practical utility 18, documentation quality 22; no penalties applied; domain relevance bonus +8. The repo addresses a meaningful enterprise need for controllable AI agents and offers novel isolation via AG‑UI, though it is still early.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-10-30T22:32:19.139181"
+    },
+    {
+      "id": 7383,
+      "source_id": 4,
+      "original_url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "title": "RT @craiu: Hm, the Binance misalignment incident is now at 6.36B$",
+      "summary": "Pre‑signed EIP‑7702 authorizations let attackers hijack Binance hot wallets across ten chains, exposing critical signing‑infrastructure weaknesses.",
+      "ideas": [
+        "Attackers used EIP-7702 delegation to hijack Binance Ethereum hot wallet.",
+        "Pre‑signed 50 authorizations enabled sweeping funds across transaction counts.",
+        "Hot‑wallet signatures were compromised simultaneously on ten blockchains.",
+        "Stablecoin issuers froze $2.7B, but attacker retained $2.4B in assets.",
+        "Peel‑chain technique fragmented Bitcoin withdrawals to hinder tracking.",
+        "Exchanges should screen deposits against known attacker addresses and peel‑chain outputs.",
+        "Treasury teams must trigger alerts on unexpected EIP-7702 delegations.",
+        "Signing policies should reject batch authorizations and separate approval paths per chain."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The report delivers multiple concrete insights: technical details of the EIP-7702 exploit, forensic timeline, and actionable security recommendations for exchanges and treasury teams. It aligns strongly with CyberSecurity and Tech themes and contains little fluff aside from standard marketing headers, resulting in high value density for a long article.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-10-30T22:32:08.067222",
+      "image_url": "https://cdn.prod.website-files.com/6082dc5b670562507b3587b4/6ae3fb1f6296a921da05dce1_InsightsGraphTemplate_Horizontal1200x628%20(1).pptx%20(54).png",
+      "image_width": 2400,
+      "image_height": 1256,
+      "image_alt": ""
+    },
+    {
+      "id": 7382,
+      "source_id": 26,
+      "original_url": "https://github.com/milind-soni/OpenMausBot",
+      "title": "milind-soni/OpenMausBot",
+      "summary": "OpenMausBot is an open‑source, local‑first multi‑agent AI chat application that lets each bot run its own model and computer with integrated apps.",
+      "ideas": [
+        "Local‑first multi‑agent AI chat app with per‑bot models, computers, and app integrations"
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "Problem significance 22 (addresses real need for privacy‑preserving, multi‑agent AI chat); technical novelty 17 (novel integration of local harness and per‑bot computers but builds on existing concepts); practical utility 22 (installable desktop app ready for use); documentation quality 22 (detailed README with architecture, usage, limitations). No penalties applied; domain relevance bonus +8 for AI tooling. Total 91.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-10-30T22:32:07.186105",
+      "image_url": "https://opengraph.githubassets.com/0fa62508eb33aabf4576de4b95e986cddcf0729c0d2b3c2b0e2415029b50fb4c/milind-soni/OpenMausBot",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Open-source Grok Bot alternative with a virtual machine that bots can use - milind-soni/OpenMausBot"
+    },
     {
       "id": 7381,
       "source_id": 4,
@@ -395,11 +1053,7 @@
       "rating_reason": "The article dissects a reported phpMyAdmin WebAuthn flaw, reproduces the bypass in a controlled Docker environment, and uses garbage, wrong-key, and valid-signature controls to verify runtime behavior. It also corrects the original PoC's overly broad claim by showing that official archives bundle webauthn-lib and enforce cryptographic verification. Impact is narrower than the headline suggests because the vulnerable CustomServer fallback is not used by official packages and the attacker still needs valid database credentials, but the code analysis and practical verification are unusually substantive.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-30T05:02:37.661482",
-      "image_url": "https://lilting.ch/og/images/tags/security.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "phpMyAdmin 5.2.3 WebAuthn 2FA bypass tested against official releases | lilting channel"
+      "published_at": "2026-10-30T05:02:37.661482"
     },
     {
       "id": 7366,
@@ -9943,11 +10597,7 @@
       "rating_reason": "The article provides concrete, reproducible steps to recover the weak P‑384 CA private keys, includes a ready‑to‑run Python snippet, and reports real‑world TLS verification results across curl, Node.js, uv, and Go on macOS. It directly addresses security practitioners and sysadmins by naming affected versions and offering precise upgrade guidance, while avoiding hype or unsupported claims. The only limitation is that the incident is very recent, so long‑term impact and broader ecosystem coverage remain unknown.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-22T06:38:09.566191",
-      "image_url": "https://lilting.ch/og/images/tags/security.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "Recovering eMudhra's Weak P-384 CA Keys and Testing curl, Node.js, and uv on macOS | lilting channel"
+      "published_at": "2026-10-22T06:38:09.566191"
     },
     {
       "id": 7005,
