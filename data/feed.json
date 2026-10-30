@@ -1,7 +1,112 @@
 {
-  "updated_at": "2026-10-30T13:00:00.142064+00:00",
-  "total_items": 1108,
+  "updated_at": "2026-10-30T14:00:00.198388+00:00",
+  "total_items": 1112,
   "items": [
+    {
+      "id": 7411,
+      "source_id": 34,
+      "original_url": "https://www.supergoodcode.com/Advanced-Robotics-Synthesized-Capture/",
+      "title": "Advanced Robotics Synthesized Capture",
+      "summary": "Embedding apitrace in Mesa enables process-isolated Android graphics tracing while avoiding expensive EGLImage metadata probes.",
+      "ideas": [
+        "Mesa dispatch interception records GL, GLX, and EGL calls without modifying applications.",
+        "Meson's CMake integration required exposing apitrace's generated glproc header.",
+        "Android zygote forks require tracer resets to prevent shared trace corruption.",
+        "Mesa image metadata eliminated thirty texture probes per imported EGLImage.",
+        "Cross-driver trace replay exposed a separate Zink depth-clear assertion.",
+        "The LLM performed complex implementation work, but its contribution was not rigorously evaluated."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a strong, firsthand engineering account of integrating apitrace into Mesa's GL/EGL dispatch path, with concrete build switches, tracing controls, Meson/CMake workarounds, Android zygote handling, and upstream patches. Particularly valuable are the EGLImage readback optimization and replay validation across several drivers and operating systems. The theatrical persona and absence of complete diffs, prompts, benchmarks, or a rigorous evaluation of the LLM's contribution limit its value as evidence about AI-assisted development, but the underlying systems work remains unusually substantive.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:46:42.813557"
+    },
+    {
+      "id": 7410,
+      "source_id": 34,
+      "original_url": "https://www.salmanq.com/blog/dsc-neo-apple-home/",
+      "title": "Getting a DSC PowerSeries Neo Alarm Panel into Apple Home",
+      "summary": "A local DSC Neo-to-HomeKit integration can preserve the existing alarm system by routing outbound ITv2 sessions through NeoHub and a custom Homebridge plugin, with careful testing and isolation.",
+      "ideas": [
+        "ITv2 lets a Neo panel initiate an outbound, encrypted TCP integration session.",
+        "NeoHub exposes panel state over WebSocket; a custom plugin maps it to HAP.",
+        "Mock-panel tests validate arming, delays, bypass, failures, and stale-state handling.",
+        "Disabling Docker's default bridge prevents Homebridge interface-selection warning floods.",
+        "NeoHub's unauthenticated WebSocket permits LAN-originated commands, including disarm attempts.",
+        "TL280E firmware 5.63 reportedly breaks ITv2 integrations through a changed handshake.",
+        "The integration fails benignly because monitoring and local alarm controls remain operational.",
+        "Pinning versions, reserving the Pi IP, and isolating the bridge reduces deployment risk."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is a rare, concrete engineering account combining proprietary-protocol research, an original Homebridge plugin, mock-based testing, deployment troubleshooting, and explicit security trade-offs. It provides unusually actionable mechanisms for integrating a DSC Neo alarm panel locally while preserving monitoring, including useful guidance on firmware incompatibility, Docker networking, authentication weaknesses, and failure isolation. The scope is niche and some implementation detail remains in the linked repository, while the exposed WebSocket API and reportedly weak key exchange remain important unresolved risks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:45:09.476554",
+      "image_url": "https://www.salmanq.com/og-background_hu_15f95c84c7dd1804.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Getting a DSC PowerSeries Neo Alarm Panel into Apple Home"
+    },
+    {
+      "id": 7409,
+      "source_id": 34,
+      "original_url": "https://www.damirscorner.com/blog/posts/20261030-GettingCopilotToWorkInDockerSandboxes.html",
+      "title": "Getting Copilot to work in Docker Sandboxes",
+      "summary": "Inject the GitHub token into the 'copilot' secret to enable credential injection for api.individual.githubcopilot.com within Docker Sandboxes.",
+      "ideas": [
+        "Store token as secret for both github and copilot services.",
+        "Credential injection works for api.github.com but not api.individual.githubcopilot.com without explicit copilot secret.",
+        "Use `sbx secret set copilot --command 'gh auth token'` to enable Copilot inside the sandbox."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers a clear, concrete diagnosis of why GitHub Copilot fails inside Docker Sandboxes and outlines a precise fix involving separate secrets for the copilot service, along with an explanation of proxy credential injection differences. It provides firsthand engineering insight and reproducible steps, making it highly relevant to readers interested in Linux container tooling and AI code assistants. Minor peripheral content and generic blog meta information add slight noise, preventing an exceptional rating. The depth of technical detail and actionable guidance justifies a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:41:01.229106"
+    },
+    {
+      "id": 7408,
+      "source_id": 34,
+      "original_url": "https://victorvelazquez.dev/blog/my-agents-file-bugs-on-each-other/",
+      "title": "My agents file bugs on each other",
+      "summary": "Readers gain a concrete framework for transferring responsibility between agent sessions via isolated artifacts instead of shared context, dramatically reducing inter-agent misalignment.",
+      "ideas": [
+        "File issues on tool repos; owning session resolves them",
+        "Message other sessions directly instead of manual handoff",
+        "Artifacts must stand alone without sender context",
+        "Cold-reader test: strangers act on artifacts without questions",
+        "Context locality contains knowledge liability per session"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a rare, firsthand technical mechanism for multi-agent workflow reliability. It articulates 'context locality' as a concrete principle where handoffs carry complete artifacts (issues/briefs) rather than live session context, validated by the 'cold-reader test' ensuring strangers can act without explanation. Real war stories from framesmith and banneret illustrate the pattern's practical impact, though the 'artifact tax' and session-latency constraints are honestly presented as limitations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-10-30T23:34:33.584252",
+      "image_url": "https://victorvelazquez.dev/_astro/my-agents-file-bugs-on-each-other-hero.BIfTHKOR.jpg",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
     {
       "id": 7407,
       "source_id": 34,
@@ -20,7 +125,11 @@
       "rating_reason": "The article delivers a deep, well‑supported technical examination of why Debezium’s heartbeat acts as a sentinel‑record workaround for a missing offset‑only acknowledgment in Kafka Connect. It conveys concrete mechanisms (LSN progression, replication‑slot growth), cites real‑world measurement (200 GiB WAL growth), and references an open KIP‑910 issue, giving non‑obvious insight into data‑stream design. The reasoning is thorough, free of hype, and remains valuable without appealing to AI trends or promotional content.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-30T23:28:58.983750"
+      "published_at": "2026-10-30T23:28:58.983750",
+      "image_url": "https://tj-zhang.com/open-graph/editorial-1/blog/progress-without-data.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview of Debezium's heartbeat is a hack around a missing message on TJ Zhang"
     },
     {
       "id": 7406,
@@ -48,7 +157,11 @@
       "rating_reason": "This is an unusually concrete, source-informed guide to DuckDB's new custom extension repositories, with reproducible OpenSSL, rclone, SQL, and CI steps plus firsthand tests of signature and key-selection behavior. It documents non-obvious footers, chunked hashing, repository URL layouts, redirect and httpfs caveats, private-bucket access, and operational pitfalls in DuckDB's upload script. The custom-repository feature is explicitly work in progress, several edge cases remain untested, and the supplied article ends mid-sentence, but the material is still highly actionable and technically substantive.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-30T23:28:58.555360"
+      "published_at": "2026-10-30T23:28:58.555360",
+      "image_url": "https://tobilg.com/images/posts/duckdb-custom-extension-hosting/cover.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Hosting your own signed DuckDB extensions on S3-compatible storage"
     },
     {
       "id": 7405,
