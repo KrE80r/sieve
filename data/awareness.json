@@ -1,19 +1,19 @@
 {
   "schema_version": 2,
-  "batch_id": "bbbe6aa5f7566cdc79879cfc64f3bae8",
-  "published_at": "2026-10-31T02:32:00.000815+00:00",
-  "scheduled_for": "2026-10-31T02:30:00+00:00",
-  "next_update_at": "2026-10-31T07:30:00+00:00",
+  "batch_id": "2c533635de46d031bb8402d55fb49b92",
+  "published_at": "2026-10-31T07:32:00.000366+00:00",
+  "scheduled_for": "2026-10-31T07:30:00+00:00",
+  "next_update_at": "2026-10-31T19:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-10-30T02:30:00+00:00",
-    "ends_at": "2026-10-31T02:30:00+00:00"
+    "starts_at": "2026-10-30T07:30:00+00:00",
+    "ends_at": "2026-10-31T07:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 19,
+  "total_developments": 22,
   "developments": [
     {
       "id": "2c56ebbbf9def91184ea15594d0a817b",
@@ -871,6 +871,47 @@
       ]
     },
     {
+      "id": "a348df3292d3a2dd2705d665c2945f09",
+      "occurred_at": "2026-10-30T23:14:29+00:00",
+      "updated_at": null,
+      "expires_at": "2026-10-31T23:14:29+00:00",
+      "title": "Mainplane replaces agent context compaction with full-transcript retrieval",
+      "detail": [
+        "Alexander Yue reports that Mainplane, an open-source (MIT) agent-memory tool, replaces context compaction with retrieval. Instead of prefilling the whole session and writing a summary, Mainplane keeps the full record of every session as a file and starts a new session with a single instruction to retrieve key context from the old transcript as it goes. He says the agent searches the old session and copies exact lines when it needs them, so nothing is paraphrased.",
+        "On a real ~400k-token session with Opus 5.5, he measured compaction at 38 seconds and $1.99 with an expired prompt cache and 29 seconds and $0.17 with a warm cache, versus 15 seconds and $0.10 with Mainplane's approach, which he says does not depend on a cache hit.",
+        "Jediah Katz counters that compaction done properly should be cheap and near-instant — having the model summarize itself to keep cache hits, and starting compaction early and asynchronously — and argues that access to the past transcript should pair with compaction rather than replace it. He links a Cursor blog post on dynamic context discovery, which describes success with providing fewer details up front and letting agents pull relevant context on their own."
+      ],
+      "why_it_matters": "Long agent sessions currently pay real time and money each time compaction runs, and summaries can drop the exact error message, file path, or figure needed next. Mainplane is available under the MIT license now and, per Yue's measurements, cuts recovery to 15 seconds and $0.10 while preserving exact lines instead of a lossy paraphrase.",
+      "sources": [
+        {
+          "author_name": "Alexander Yue",
+          "author_username": "Alezander9",
+          "url": "https://x.com/Alezander9/status/2115842962521509968",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Jediah Katz",
+          "author_username": "jediahkatz",
+          "url": "https://x.com/jediahkatz/status/2116307783075139910",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [
+        {
+          "url": "https://cursor.com/blog/dynamic-context-discovery",
+          "domain": "cursor.com",
+          "title": "Dynamic context discovery · Cursor",
+          "preview_image_url": "https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/og/opengraph-default.png"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
       "id": "13e4672f9f2fb3aa90f72337f7dd5b78",
       "occurred_at": "2026-10-31T00:18:00+00:00",
       "updated_at": null,
@@ -909,6 +950,102 @@
       "interest_slugs": [
         "ai",
         "linux"
+      ]
+    },
+    {
+      "id": "d4cae7583650facbc9162168de52eac4",
+      "occurred_at": "2026-10-31T03:28:22+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-01T03:28:22+00:00",
+      "title": "FrontierCode 2.0 moves Gemini 4 Argon and Muse Wonder 1.0 to mid-pack",
+      "detail": [
+        "Cognition says FrontierCode 2.0 separates model tiers more clearly than FrontierCode 1.1 and produces a different ranking. Muse Wonder 1.0 and Gemini 4 Argon score highest on DeepSWE v1.1 but fall to the middle of the pack on FrontierCode 2.0. Eric Provencher adds that Cognition tested Gemini 4 Argon through Devin CLI while Astra and Opus received first-party harnesses, arguing that testing Gemini in Anti Gravity would make the comparison fairer."
+      ],
+      "why_it_matters": "The result shows that Gemini 4 Argon and Muse Wonder 1.0 were not consistently leading models across benchmark versions, so the earlier DeepSWE v1.1 ranking alone no longer describes their standing.",
+      "sources": [
+        {
+          "author_name": "Cognition",
+          "author_username": "cognition",
+          "url": "https://x.com/cognition/status/2115132493259321443",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HVpnvPbbkAEHa0y.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HVpnvPbbkAEHa0y.jpg:small",
+              "width": 1676,
+              "height": 1154
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HVpnvyRbkAYjbA_.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HVpnvyRbkAYjbA_.jpg:small",
+              "width": 1330,
+              "height": 900
+            }
+          ]
+        },
+        {
+          "author_name": "eric provencher",
+          "author_username": "pvncher",
+          "url": "https://x.com/pvncher/status/2116371675906281934",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HV7c0uaXMAAcvCt.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HV7c0uaXMAAcvCt.jpg:small",
+              "width": 1088,
+              "height": 561
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "1bd38f1922ea6247d61b46f088e55f6c",
+      "occurred_at": "2026-10-31T06:33:59+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-01T06:33:59+00:00",
+      "title": "Tibo ships easy multi-account switching on mobile, with desktop coming soon",
+      "detail": [
+        "Tibo announced that users can now easily switch between multiple accounts on mobile, with the same capability coming soon to desktop. The message is part of his Day 26 shipping update, in which he also teased that the next two days will bring resets to account usage, telling followers to 'do with this what you may.'",
+        "He offered no specifics on how many accounts are supported or how the switcher works beyond noting the feature is live on mobile today."
+      ],
+      "why_it_matters": "People who maintain more than one account can now move between them directly in the mobile app instead of juggling separate logins, removing that day-to-day switching friction today.",
+      "sources": [
+        {
+          "author_name": "Tibo",
+          "author_username": "thsottiaux",
+          "url": "https://x.com/thsottiaux/status/2116405414921384099",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "am.will",
+          "author_username": "LLMJunky",
+          "url": "https://x.com/LLMJunky/status/2116418387437850995",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HV8HIwpXoAAtvNH.png",
+              "preview_url": "https://pbs.twimg.com/media/HV8HIwpXoAAtvNH.png:small",
+              "width": 436,
+              "height": 98
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
       ]
     }
   ]
