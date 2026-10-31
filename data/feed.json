@@ -1,7 +1,167 @@
 {
-  "updated_at": "2026-10-31T19:00:00.164308+00:00",
-  "total_items": 1128,
+  "updated_at": "2026-10-31T20:00:00.168514+00:00",
+  "total_items": 1134,
   "items": [
+    {
+      "id": 7458,
+      "source_id": 34,
+      "original_url": "https://www.ospreylang.dev/blog/2026-10-27-gpui-desktop-apps-with-osprey-native/",
+      "title": "Desktop Apps on GPUI, Written in Osprey",
+      "summary": "The article shows how a declarative runtime can drive GPUI through a thin FFI while preserving pure logic, testability, and measurable rendering performance.",
+      "ideas": [
+        "A two-function native boundary keeps application logic pure and host rendering policy-free.",
+        "Resident sessions and streamed scenes cut 5,000-bird dispatch from 29 milliseconds.",
+        "Matching GPUI draw order, color precision, and headers enables pixel-identical rendering.",
+        "A sorted spatial grid removed the dominant neighbor-copying bottleneck in flock simulation.",
+        "Metal's emulation of 64-bit floats made CPU steering faster than GPU compute."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense, relevant account of embedding a declarative language in GPUI through a two-function FFI, covering pure state updates, session persistence, scene encoding, frame scheduling, and host abstraction. It provides concrete profiling evidence and reproducible tests: the 1,000-bird 120 Hz result, measured 5,000-bird optimizations, and pixel-identity comparison against GPUI's Rust example. Its value is limited by being a first-party case study for a niche project, currently targeting macOS, with little independent validation or discussion of portability risks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-01T05:46:13.586781",
+      "image_url": "https://www.ospreylang.dev/assets/images/blog/osprey-native-gpui.png",
+      "image_width": 1600,
+      "image_height": 1065,
+      "image_alt": "The Flock example in a GPUI window: a thousand pale blue birds wheeling away from a red hawk, a green dog with its herding ring, and a pen on the right"
+    },
+    {
+      "id": 7457,
+      "source_id": 34,
+      "original_url": "https://www.nayuki.io/page/optimal-text-segmentation-for-qr-codes",
+      "title": "Optimal text segmentation for QR Codes",
+      "summary": "A linear-time dynamic program can select version-aware QR encoding modes that materially reduce output size compared with single-mode or naive segmentation.",
+      "ideas": [
+        "Dynamic programming minimizes QR bit cost across four encoding modes.",
+        "Version-dependent count headers can change the optimal segmentation.",
+        "The example saves 454 bits versus byte-only encoding.",
+        "Optimal QR segmentation uses backward costing and forward reconstruction.",
+        "The QR specification's prose algorithm can produce suboptimal segmentations.",
+        "Extended Channel Interpretation reduces size but can harm interoperability."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is strongly technical and unusually concrete: it derives a linear-time dynamic program for choosing QR encoding modes, explains version-dependent headers and reconstruction, quantifies savings, and compares the result with the specification's flawed prose algorithm. The included implementation links, recurrence, worked output, complexity analysis, and interoperability caveats make the findings actionable and verifiable. Its scope is narrow and the claim of universal minimality lacks a separate formal proof, but it remains strong specialist engineering material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-01T05:45:45.625263"
+    },
+    {
+      "id": 7456,
+      "source_id": 34,
+      "original_url": "https://www.michelebologna.net/2026/terminal-color-system/",
+      "title": "I gave my terminal a color system (and now about forty tools match)",
+      "summary": "A fixed semantic color taxonomy in OKLCh with WCAG‑compliant contrast lets dozens of terminal tools share the same accessible colors through a single shared configuration.",
+      "ideas": [
+        "Fixed luminance ~0.179 provides 4.5:1 contrast on both black and white terminals.",
+        "Define 15 semantic roles (e.g., error, success, navigation) each with a unique hue and chroma.",
+        "All tools read colors from a single .chezmoidata/colors.toml file, enabling one‑change updates.",
+        "Palette uses OKLCh to ensure perceptually uniform differences and passes deuteranopia tests.",
+        "Ghostty’s 16 ANSI slots map to roles, letting tools adopt the palette."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers a concrete, reproducible palette built in OKLCh that guarantees WCAG 4.5:1 contrast on both dark and light terminal backgrounds and maps 15 semantic roles to identical colors across dozens of CLI tools via a single config file. It includes original implementation details, contrast validation, and a clear mechanism for propagating changes, making it highly useful for engineers seeking consistent, accessible terminal theming. The main limitation is heavy reliance on Chezmoi and custom scripts, which may be less portable for readers without that workflow.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-01T05:44:29.215806",
+      "image_url": "https://www.michelebologna.net/og/2026/terminal-color-system.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7455,
+      "source_id": 34,
+      "original_url": "https://vivekdhami.com/blog/governing-agents-mcp-tools-ai-gateway/",
+      "title": "Governing agents and MCP tools through an AI gateway: what changes when the caller isn't a chat completion",
+      "summary": "Governing agent-mediated MCP calls requires risk-scoped servers, end-user authorization, aggregate run budgets, and shared correlation IDs because request-level gateway controls are insufficient for agent loops and side effects.",
+      "ideas": [
+        "Split MCP servers by blast radius so read, write, and irreversible tools get distinct policies.",
+        "Combine app authentication with end-user tokens and role checks on write-tier tools.",
+        "Bound runaway agents with per-user token budgets and per-session MCP call limits.",
+        "Propagate one run ID across model and tool calls for end-to-end audit joins.",
+        "Treat gateway content filtering as defense-in-depth, not protection from tool-output injection.",
+        "Local stdio tools bypass HTTP gateways and require runner sandboxing."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a strong, highly actionable guide to governing agent-driven MCP traffic, grounded in Azure API Management’s actual policy scope, telemetry model, and deployment limitations. It provides concrete XML policies, a KQL correlation query, risk-tiering guidance, and explicit caveats about bypassable session counters, streaming responses, sensitive payload logging, and local stdio tools. The main limitation is its strong dependence on Azure-specific behavior and feature maturity, while several controls provide containment rather than true security boundaries.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-01T05:34:58.145194",
+      "image_url": "https://vivekdhami.com/blog/governing-agents-mcp-tools-ai-gateway/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7454,
+      "source_id": 34,
+      "original_url": "https://voxelmanip.se/2026/10/30/the-most-intense-week-in-a-while/",
+      "title": "The most intense week in a while",
+      "summary": "The key insight is that fixing an unbounded buffer overflow and promptly applying PHP security patches prevents severe memory exploits and active remote code execution attacks.",
+      "ideas": [
+        "Unbounded name length in parse_featured_levels can allocate 4 GB buffers.",
+        "eMudhra intermediate CA private keys were < 255, trivial to brute‑force.",
+        "Two PHP RCE CVEs (CVE‑2026‑109618/19) enabled remote code execution, requiring urgent updates."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece provides concrete, firsthand technical details on a buffer overflow, a certificate compromise, and critical PHP RCE vulnerabilities, with clear mechanisms and mitigation steps. These topics directly match the reader's focus on security, systems administration, and AI‑related tooling, making the content highly relevant. The presence of personal anecdotes and occasional promotional language slightly reduces its purity, limiting it from an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-01T05:34:44.900847",
+      "image_url": "https://voxelmanip.se/media/the-most-intense-week-in-a-while/cover.webp",
+      "image_width": 1200,
+      "image_height": 400,
+      "image_alt": ""
+    },
+    {
+      "id": 7453,
+      "source_id": 34,
+      "original_url": "https://vanja.io/cheapest-way-across-america/",
+      "title": "The Cheapest Way Across America",
+      "summary": "Real refueling optimization requires replacing the price-ranked greedy with a fuel-level dynamic program that treats detours and stops as lot-sizing fixed charges, validated against exact LP/MILP solvers.",
+      "ideas": [
+        "Linear purchase cost collapses min-plus convolution to a NumPy prefix-minimum scan, O(n·K).",
+        "Detours make effective price purchase-dependent, so posted prices no longer rank stations.",
+        "Optimal fuel cost equals the integral of the sliding-window minimum price along the route.",
+        "Cross-validate a dynamic planner against LP and MILP solvers on hundreds of random instances.",
+        "Round detours up and tank capacity down so grid-feasible plans stay feasible at exact distances.",
+        "Requiring E gallons at the finish equals driving E·mpg miles past it on a stationless stretch."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "A dense, rigorous treatment of the fixed-route refueling problem that moves from the classic greedy's optimality argument through the exact conditions real interstates break it (free stops, on-road stations) to a dynamic program over 2,000 fuel levels, accelerated to O(n·K) via a NumPy prefix-minimum that collapses the min-plus convolution. It delivers verifiable mechanisms: an LP/MILP-solver cross-validation suite over hundreds of random instances, conservative grid-rounding guarantees, the end-fuel modeling trick, and a reproducible Dockerized API with concrete results (NY-LA: 7 stops, $711.08, ~15 ms). The greedy and sliding-window-minimum material is known literature, and the content truncates near the end of the testing section, but the synthesis, safety guarantees, and validation methodology are unusually substantive and directly useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-01T05:34:34.716256",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/10/feature-cheapest-way-1.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
     {
       "id": 7452,
       "source_id": 34,
@@ -24,7 +184,11 @@
       "rating_reason": "The article explains a concrete memory-exhaustion flaw in gRPC .NET, including the previous compressed-size check, the unbounded decompression path, and the new limit-enforcement mechanism with relevant code. It provides reproducible payload figures, an observed allocation reduction, precise upgrade behavior, and actionable client/server mitigations. Its value is somewhat limited by relying on upstream PR evidence rather than independent testing, but the focused analysis is unusually useful and efficient.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-01T05:28:40.712856"
+      "published_at": "2026-11-01T05:28:40.712856",
+      "image_url": "https://startdebugging.net/og/2026/10/grpc-dotnet-2-85-enforces-maxreceivemessagesize-after-decompression.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "grpc-dotnet 2.85 Enforces MaxReceiveMessageSize After Decompression, Not Just Before - Start Debugging"
     },
     {
       "id": 7451,
@@ -47,7 +211,11 @@
       "rating_reason": "A source-level comparison of two agent-harness integrations with a Claude Code login, tracing a single tool call through each system with code snippets, hooks, CLI flags, and pinned revisions. The mechanisms are concrete and non-obvious: an in-process MCP promise bridge for OpenCode, a request-intercepting loopback relay with per-step worker replay for Pi, plus treatment of prompt-cache stability, transcript ownership, and system-prompt handling. It is directly relevant to LLM agent engineering and largely free of hype, though it explicitly lacks measured speed/quota benchmarks and the provided text cuts off near the end, keeping it just below exceptional.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-01T05:28:25.299340"
+      "published_at": "2026-11-01T05:28:25.299340",
+      "image_url": "https://stacktoheap.com/images/claude-subscriptions-two-harnesses-hero.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 7450,
@@ -72,7 +240,11 @@
       "rating_reason": "The article provides a concrete Bash guard script, detailed behavior matrix, and exact configuration snippets for five major coding agents, revealing undocumented defaults and edge‑case failures that affect security and reliability. It enables engineers to implement portable fail‑closed guardrails and test failure paths across agents. The content is focused, reproducible, and free of hype, making it highly valuable for technically capable readers.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-01T05:28:09.186215"
+      "published_at": "2026-11-01T05:28:09.186215",
+      "image_url": "https://startdebugging.net/og/2026/10/fail-closed-vs-fail-open-hooks-for-coding-agent-guardrails.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fail-Closed vs Fail-Open Hooks for Coding Agent Guardrails: What Claude Code, Cursor, Copilot, Codex and Gemini CLI Actually Do - Start Debugging"
     },
     {
       "id": 7449,
