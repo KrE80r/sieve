@@ -1,11 +1,111 @@
 {
   "schema_version": 1,
-  "sequence": 1704,
-  "revision": "sha256:c27de28d87776d9dbf900e9d02d4973bbd27d112c0eb3372cb1ec68432ebe214",
-  "generated_at": "2026-11-01T00:00:00.448274+00:00",
+  "sequence": 1705,
+  "revision": "sha256:2bfda9662eae62f729b2dcf01e234d6d99def7bca18652e4c2638daf3b5434b7",
+  "generated_at": "2026-11-01T01:00:00.225822+00:00",
   "complete": true,
-  "total_items": 1127,
+  "total_items": 1132,
   "items": [
+    {
+      "article_id": "article:7463",
+      "original_url": "https://xoranth.net/gcc-switch/",
+      "title": "Xoranth's musings",
+      "summary": "GCC's seemingly arbitrary switch lowering is governed by discoverable profitability heuristics and clustering algorithms, making jump tables, bitset tests, and decision trees predictable from case density and shape.",
+      "rating": 86,
+      "rating_reason": "This is original reverse-engineering of GCC's switch lowering, combining empirical assembly experiments with a line-by-line walkthrough of the compiler source. It surfaces genuinely non-obvious insights: the ~8 jump-table-entries-per-case profitability threshold, GCC's isolation of outlier labels into separate branches, the fact that contiguous case merging makes comparison count rather than label count the deciding metric, and the dynamic-programming approach that minimizes bitset clusters subject to a 64-bit range and three-edge limit. The constant 2753205 is explicitly decoded as an ASCII bitset for the `bt` instruction, which is the kind of concrete, transferable knowledge usually gatekept in compiler internals. Minor deductions for the abruptly truncated ending, missing variable names in the DP derivation, and a referenced diagram absent from the text.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 36,
+      "source_name": "Mario Zechner Recommended",
+      "source_type": "rss",
+      "admitted_at": "2026-11-01T10:38:42.045998+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-01T10:38:42.045998+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7462",
+      "original_url": "https://generativeprogrammer.com/lists/system-design-architecture",
+      "title": "https://generativeprogrammer.com/lists/system-design-architecture",
+      "summary": "A curated collection of top newsletters delivers focused resources for mastering system design and architecture.",
+      "rating": 80,
+      "rating_reason": "The content offers a concise curated list of high‑quality newsletters on system design, providing actionable resources for engineers. It delivers many practical knowledge instances (each newsletter) with clear descriptions, showing strong thematic relevance to technology and software architecture, and contains no clickbait or padding.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 7,
+      "source_name": "Bilgin Ibryam",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-01T10:33:56.483592+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-01T10:33:56.483592+00:00",
+      "image": {
+        "url": "https://substackcdn.com/image/fetch/$s_!a1n2!,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fgenerativeprogrammer.substack.com%2Flists%2F1930%2Fcard.png%3Fv%3D16793842%26version%3D1",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7461",
+      "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+      "title": "Claude Platform Docs",
+      "summary": "Write concise, well‑structured Skill files and choose instruction detail levels to maximize Claude’s efficiency.",
+      "rating": 82,
+      "rating_reason": "The document delivers multiple concrete, actionable guidelines for building Claude Skills, covering conciseness, instruction granularity, model-specific testing, naming, descriptions, file organization, progressive disclosure, and workflow checklists. These eight clear value instances over a long format give a high value density without clickbait or padding. The content aligns well with AI, technology, and productivity themes.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 7,
+      "source_name": "Bilgin Ibryam",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-01T10:33:43.754146+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-01T10:33:43.754146+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7460",
+      "original_url": "https://tanepiper.github.io/game-frame/",
+      "title": "https://tanepiper.github.io/game-frame/",
+      "summary": "Reliable agent-assisted preservation requires observing, reimplementing, and differentially verifying behavior against the original.",
+      "rating": 80,
+      "rating_reason": "GameFrame provides a concrete, reusable workflow for agent-assisted reverse engineering: the consent-based setup, ordered skills, capture-and-trace loop, and differential tests against emulated original functions. It also offers substantive architectural guidance through the core/frame event contract, renderer fidelity grades, obsolete graphics-library shims, and machine-readable documentation, strongly aligning with technology and practical AI tooling. However, this is primarily a project overview promoting its own open-source framework, and its compatibility libraries have only been tested against one game, leaving some broad exactness claims insufficiently validated.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-01T10:33:34.098490+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-01T10:33:34.098490+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7459",
+      "original_url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+      "title": "How We Took Over ChatGPT Accounts",
+      "summary": "Exploit chain leveraging sandboxed iframes and CSP allowed XSS and private data theft from ChatGPT accounts.",
+      "rating": 88,
+      "rating_reason": "The post details a sophisticated XSS attack on ChatGPT's HTML preview feature, showing how postMessage-triggered innerHTML injection and a permissive CSP enabled JavaScript execution and data exfiltration. It provides concrete technical insight, mitigation observations, and commentary on the relatively low bug bounty. No obvious filler or clickbait reduces penalization, making it high-value and highly relevant to cybersecurity and AI audiences.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 1,
+      "source_name": "Simon Willison's Weblog",
+      "source_type": "rss",
+      "admitted_at": "2026-11-01T10:32:12.130313+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-01T10:32:12.130313+00:00",
+      "image": null
+    },
     {
       "article_id": "article:7458",
       "original_url": "https://www.ospreylang.dev/blog/2026-10-27-gpui-desktop-apps-with-osprey-native/",

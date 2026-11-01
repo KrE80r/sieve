@@ -1,7 +1,160 @@
 {
-  "updated_at": "2026-11-01T00:00:00.448274+00:00",
-  "total_items": 1134,
+  "updated_at": "2026-11-01T01:00:00.225822+00:00",
+  "total_items": 1139,
   "items": [
+    {
+      "id": 7463,
+      "source_id": 36,
+      "original_url": "https://xoranth.net/gcc-switch/",
+      "title": "Xoranth's musings",
+      "summary": "GCC's seemingly arbitrary switch lowering is governed by discoverable profitability heuristics and clustering algorithms, making jump tables, bitset tests, and decision trees predictable from case density and shape.",
+      "ideas": [
+        "GCC converts dense switch statements into jump tables when entries stay below eight per case",
+        "GCC isolates outlier case values, generating a jump table only for the dense subset",
+        "Contiguous case labels merge into ranges, making comparison count—not label count—the key metric",
+        "GCC lowers certain sparse switches into bitset tests using the bt instruction",
+        "The magic constant 2753205 encodes ASCII case values as set bits",
+        "analyze_switch_statement clusters case labels before choosing a lowering strategy",
+        "GCC uses dynamic programming to minimize the number of bitsets needed for case clusters",
+        "Bit test clustering requires case range under 64 bits and at most three unique edges",
+        "Bitset profitability needs three cases for one edge, five for two, six for three",
+        "Case label probabilities come from profile-guided optimization, uniform by default"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is original reverse-engineering of GCC's switch lowering, combining empirical assembly experiments with a line-by-line walkthrough of the compiler source. It surfaces genuinely non-obvious insights: the ~8 jump-table-entries-per-case profitability threshold, GCC's isolation of outlier labels into separate branches, the fact that contiguous case merging makes comparison count rather than label count the deciding metric, and the dynamic-programming approach that minimizes bitset clusters subject to a 64-bit range and three-edge limit. The constant 2753205 is explicitly decoded as an ASCII bitset for the `bt` instruction, which is the kind of concrete, transferable knowledge usually gatekept in compiler internals. Minor deductions for the abruptly truncated ending, missing variable names in the DP derivation, and a referenced diagram absent from the text.",
+      "source_type": "rss",
+      "source_name": "Mario Zechner Recommended",
+      "published_at": "2026-11-01T10:38:42.045998"
+    },
+    {
+      "id": 7462,
+      "source_id": 7,
+      "original_url": "https://generativeprogrammer.com/lists/system-design-architecture",
+      "title": "https://generativeprogrammer.com/lists/system-design-architecture",
+      "summary": "A curated collection of top newsletters delivers focused resources for mastering system design and architecture.",
+      "ideas": [
+        "Engineering Leadership newsletter provides insights on technical decision‑making and building effective engineering organizations.",
+        "The Pragmatic Engineer shares real‑world engineering practices, architecture decisions, and lessons from big‑tech companies.",
+        "The System Design Newsletter offers practical system design concepts, scalability patterns, and architecture trade‑offs.",
+        "Byte‑Sized Design delivers digestible system design lessons, post‑mortems, and advice for engineers.",
+        "Architecture Weekly deep dives into event‑driven architecture, domain‑driven design, CQRS, and distributed systems.",
+        "Software Architecture Weekly gives backend architecture, infrastructure design, and engineering patterns from real deployments.",
+        "Architecture Notes provides illustrated deep dives on architecture and system design each Sunday.",
+        "ByteByteGo Newsletter explains complex systems with simple visual explanations of large‑scale architectures.",
+        "Software Design: Tidy First? explores foundational thinking about software design, refactoring, and managing complexity.",
+        "Tech World With Milan shares practical engineering judgment, software architecture, and AI insights for ambitious engineers."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The content offers a concise curated list of high‑quality newsletters on system design, providing actionable resources for engineers. It delivers many practical knowledge instances (each newsletter) with clear descriptions, showing strong thematic relevance to technology and software architecture, and contains no clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-11-01T10:33:56.483592",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!a1n2!,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fgenerativeprogrammer.substack.com%2Flists%2F1930%2Fcard.png%3Fv%3D16793842%26version%3D1",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7461,
+      "source_id": 7,
+      "original_url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+      "title": "Claude Platform Docs",
+      "summary": "Write concise, well‑structured Skill files and choose instruction detail levels to maximize Claude’s efficiency.",
+      "ideas": [
+        "Keep Skill definitions concise to conserve token budget and improve model performance.",
+        "Match degree of freedom (high, medium, low) to task fragility for effective instructions.",
+        "Test Skills on each Claude model variant to ensure appropriate guidance level.",
+        "Use strict naming conventions (lowercase, hyphens, gerund form) for clear Skill references.",
+        "Write Skill descriptions in third person with specific triggers for accurate discovery.",
+        "Organize Skill files with one‑level references and include a table of contents for large files.",
+        "Apply progressive disclosure by loading detailed files only when needed during execution.",
+        "Break complex workflows into sequential checklists for reliable step‑by‑step execution."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The document delivers multiple concrete, actionable guidelines for building Claude Skills, covering conciseness, instruction granularity, model-specific testing, naming, descriptions, file organization, progressive disclosure, and workflow checklists. These eight clear value instances over a long format give a high value density without clickbait or padding. The content aligns well with AI, technology, and productivity themes.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-11-01T10:33:43.754146"
+    },
+    {
+      "id": 7460,
+      "source_id": 4,
+      "original_url": "https://tanepiper.github.io/game-frame/",
+      "title": "https://tanepiper.github.io/game-frame/",
+      "summary": "Reliable agent-assisted preservation requires observing, reimplementing, and differentially verifying behavior against the original.",
+      "ideas": [
+        "GameFrame organizes reverse engineering into ordered skills from inventory through verification.",
+        "A consent-gated setup installs tools, validates tests, and standardizes project directories.",
+        "Ghidra, Unicorn, and REA combine into a toolkit for inspection, emulation, and validation.",
+        "Reference guides map game families to era-specific hardware, platforms, engines, formats, and protection.",
+        "Ten game families are organized by interaction model and shared technical systems.",
+        "Preservation work begins with a legally owned copy and documented behavior.",
+        "Capturing inputs, frames, memory, and calls creates an observable original-game model.",
+        "Differential tests compare port functions against emulated originals across values and random draws.",
+        "Failed verification returns development to tracing rather than accepting approximate behavior.",
+        "Separating game logic from shared interface code creates a stable integration boundary.",
+        "Event contracts let game cores integrate through traits, JSON lines, or configuration alone.",
+        "Manifests control visible frame features while permitting custom event topics.",
+        "Shared frames standardize launcher, library, saves, settings, renderers, help, and console.",
+        "Renderer grades disclose exact, good, partial, experimental, or missing visual fidelity.",
+        "Design tokens can recreate classic Windows, Macintosh, Unix, and workstation interfaces.",
+        "Stand-in libraries revive Glide, PowerVR, ATI3DCIF, S3D, and DirectDraw without original drivers.",
+        "Planet of Death under Wine is currently the only compatibility-library validation game.",
+        "Initial compatibility runs reveal unsupported modes, states, and library calls.",
+        "Three case studies expose capture tooling for Un-Banished, Tyrian 2000, and Frontier Elite II.",
+        "Project sessions preserve evidence, version gates, and implementation history.",
+        "Repository rules prohibit committing copied games, extracted assets, or decompiled code.",
+        "Apache 2.0 code and CC0 documentation enable broad reuse of the framework.",
+        "Markdown pages, llms.txt, and llms-full.txt make documentation directly retrievable by coding agents."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "GameFrame provides a concrete, reusable workflow for agent-assisted reverse engineering: the consent-based setup, ordered skills, capture-and-trace loop, and differential tests against emulated original functions. It also offers substantive architectural guidance through the core/frame event contract, renderer fidelity grades, obsolete graphics-library shims, and machine-readable documentation, strongly aligning with technology and practical AI tooling. However, this is primarily a project overview promoting its own open-source framework, and its compatibility libraries have only been tested against one game, leaving some broad exactness claims insufficiently validated.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-01T10:33:34.098490"
+    },
+    {
+      "id": 7459,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+      "title": "How We Took Over ChatGPT Accounts",
+      "summary": "Exploit chain leveraging sandboxed iframes and CSP allowed XSS and private data theft from ChatGPT accounts.",
+      "ideas": [
+        "Sandboxed iframe can inject HTML via postMessage-triggered innerHTML",
+        "MathLive library's virtual keyboard can be invoked cross-frame",
+        "Permissive CSP allowed YouTube oEmbed JavaScript execution in parent frame",
+        "Resulting XSS can exfiltrate private data through image references",
+        "Bug bounty of $5,000 was deemed low for such a critical vulnerability",
+        "OpenAI patched the flaw after demonstration of full account takeover",
+        "Interactive HTML preview frames remain risky if not properly isolated",
+        "Attack enables unauthorized actions on behalf of signed-in ChatGPT users"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post details a sophisticated XSS attack on ChatGPT's HTML preview feature, showing how postMessage-triggered innerHTML injection and a permissive CSP enabled JavaScript execution and data exfiltration. It provides concrete technical insight, mitigation observations, and commentary on the relatively low bug bounty. No obvious filler or clickbait reduces penalization, making it high-value and highly relevant to cybersecurity and AI audiences.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-11-01T10:32:12.130313"
+    },
     {
       "id": 7458,
       "source_id": 34,
