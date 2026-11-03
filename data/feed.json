@@ -1,7 +1,60 @@
 {
-  "updated_at": "2026-11-03T06:00:00.334195+00:00",
-  "total_items": 1153,
+  "updated_at": "2026-11-03T07:00:00.192709+00:00",
+  "total_items": 1155,
   "items": [
+    {
+      "id": 7525,
+      "source_id": 4,
+      "original_url": "https://opsshield.com/notice/cpguard-update-channel-compromise.html",
+      "title": "CPGuard / OPSSHIELD LLP Breach",
+      "summary": "Upgrade cPGuard, rotate all credentials, and verify indicators to mitigate the breach.",
+      "ideas": [
+        "Update all cPGuard installations to version 5.88.25 or later immediately.",
+        "Check server logs for versions 5.88.12‑5.88.19 to spot potentially compromised updates.",
+        "The malicious script harvested /etc/shadow, /etc/passwd, MySQL configs, shell history, and SSH keys.",
+        "Reset root and other local Linux passwords from a trusted recovery environment.",
+        "Rotate database, S3, DigitalOcean tokens, and any secrets found in shell history.",
+        "Replace root SSH private keys and remove old public keys from trusted systems.",
+        "Delete malicious files (/var/tmp/.cpg91511_sh, loot.tgz) after applying the corrective update.",
+        "OPSSHIELD removed its own support‑access keys as an extra precautionary step."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 80,
+      "rating_reason": "The advisory provides multiple concrete value instances: breach details, affected versions, data types stolen, step‑by‑step remediation, and indicators of compromise. It aligns strongly with CyberSecurity and offers actionable guidance for sysadmins, yielding high value density. Minor padding from product marketing detracts slightly but does not outweigh the substantive content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-03T16:34:29.433652"
+    },
+    {
+      "id": 7524,
+      "source_id": 4,
+      "original_url": "https://blog.nns.ee/2026/11/02/renault-hack/",
+      "title": "Jailbreaking my car's navigation system just so I can change the timeNov 02, 2026",
+      "summary": "A creative core_pattern kernel exploit using LOG command path traversal enabled arbitrary code execution on an embedded TomTom navigation system, allowing timezone patching in settings.dat without an authorized SD card.",
+      "ideas": [
+        "SD card DRM checks used CID and signatures to block time setting changes",
+        "Core_pattern kernel feature pipes coredumps to user-specified processes",
+        "LOG command path traversal writes to core_pattern from userland",
+        "dbus-monitor crash triggers SIGABRT enabling core dump execution",
+        "Master.script reverse engineering revealed LOG SHEX and image display commands",
+        "UnionFS over FAT32 SD card created writable layer on read-only rootfs",
+        "Timezone data stored in settings.dat at discoverable binary offset",
+        "Modified ttsystem images failed flashing due to recovery partition verification"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This detailed reverse-engineering walkthrough delivers 8 distinct quality ideas with high value density. The author systematically uncovered SD card DRM based on CID, exploited the core_pattern kernel feature via LOG command path traversal, and chained dbus-monitor crashes for code execution. The creative exploit enabled timezone patching in settings.dat without an authorized SD card. Thematic relevance is strong for CyberSecurity and Tech, with rigorous technical detail and no padding or fluff.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-03T16:33:13.755255"
+    },
     {
       "id": 7523,
       "source_id": 36,
