@@ -1,11 +1,621 @@
 {
   "schema_version": 1,
-  "sequence": 1794,
-  "revision": "sha256:ea26ffce3986e03081a336899ef989e717e18e793c857efdcf4f3eb69690d3f4",
-  "generated_at": "2026-11-04T18:00:00.336303+00:00",
+  "sequence": 1795,
+  "revision": "sha256:881018ce1898e912008426b72fa526f1387e995c2ecb3a4eaa9d6c04db7a91b6",
+  "generated_at": "2026-11-04T19:00:00.186549+00:00",
   "complete": true,
-  "total_items": 1190,
+  "total_items": 1217,
   "items": [
+    {
+      "article_id": "article:7605",
+      "original_url": "https://nnethercote.github.io/2026/11/04/how-to-speed-up-the-rust-compiler-in-november-2026.html",
+      "title": "How to speed up the Rust compiler in November 2026",
+      "summary": "Targeted representation changes and hot-path optimizations produced measurable Rust compiler gains, especially for incremental builds and peak memory.",
+      "rating": 88,
+      "rating_reason": "This is a strong firsthand engineering report with concrete compiler optimizations, implementation mechanisms, upstream PR references, and instruction-count, cycle-time, memory, and wall-time measurements. The span representation, trait-solver work, metadata encoding, and failed niche optimization provide unusually useful evidence about Rust compiler internals and performance engineering. Its main limitation is that it is a monthly progress summary rather than a full methodology or reproduction guide, and some improvements are specific to stress tests.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:29:14.421808+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:29:14.421808+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7604",
+      "original_url": "https://mlynn.org/blog/artframe",
+      "title": "ArtFrame: Hanging Museum Art on a Google TV",
+      "summary": "A macOS app uses ADB to transform any Google TV into a 4K museum art gallery with interactive JSON-based information widgets that respect a strict trust model and respond to remote input.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, hands-on engineering details for repurposing a Google TV as a museum art frame. It explains concrete mechanisms: ADB-driven developer mode setup, a JSON widget format parsed by a TV-side trust renderer, a 48-pixel-to-blur scaling technique for paintings, and a remote-driven state machine for card navigation. Trade-offs around image cropping, night dimming, and interactive vs. non-interactive dreams are clearly documented. While niche, the firsthand implementation knowledge and original technical choices make it valuable for readers interested in Android TV customization, UI automation, and open-data presentation.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:27:23.594190+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:27:23.594190+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7603",
+      "original_url": "https://markjgsmith.com/posts/2026/11/03/pretty-cool-git-gymnastics/index.html",
+      "title": "Pretty cool git gymnastics",
+      "summary": "Author shifted to preserving intermediate commits and using LLMs in PR summaries to balance transparency with a clean high-level view, preventing attribution doubts while managing complex workflow complexity.",
+      "rating": 85,
+      "rating_reason": "Solid practical article detailing a git workflow strategy for managing complexity at scale. The author explains the shift from polished history to 'warts and all' intermediate commits to prevent LLM attribution doubts, and describes a specific PR pattern using LLMs to group commits with high-level summaries. Concrete mechanisms and hard-won insight.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:24:49.402740+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:24:49.402740+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7602",
+      "original_url": "https://lilting.ch/en/articles/idol-image-to-3d-gaussian-m1-max/",
+      "title": "Running Idol Single-Image-to-3D on an M1 Max Without CUDA: 7 Minutes per Generation",
+      "summary": "The article details the successful porting and troubleshooting of Idol on Apple Silicon MPS, providing quantitative performance data, VAE interchangeability evidence, and analysis of how input style and random seed critically affect 3D Gaussian reconstruction quality.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantial technical value by documenting the practical challenges and solutions of running Idol on M1 Max MPS, providing exact performance metrics, VAE workarounds, and component-wise numerical drift analysis. It offers concrete implementation details and evidence (error percentages, timing) rather than general hype, though the results are notably sensitive to input style and random seed.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:22:29.817604+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:22:29.817604+00:00",
+      "image": {
+        "url": "https://lilting.ch/og/images/tech/2026/11/04/idol-hero-kana.ogp.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "Running Idol Single-Image-to-3D on an M1 Max Without CUDA: 7 Minutes per Generation | lilting channel"
+      }
+    },
+    {
+      "article_id": "article:7601",
+      "original_url": "https://khalidabuhakmeh.com/posts/skip-scheduled-static-site-builds-github-actions/",
+      "title": "GitHub Actions Cron: Skip Builds When No Posts Are Due",
+      "summary": "A GitHub Actions cron workflow can skip unnecessary Netlify builds by parsing YAML front matter dates in posts, only triggering the hook when a non-draft post is due yesterday or today.",
+      "rating": 92,
+      "rating_reason": "Provides concrete awk scripts and YAML workflow modifications to skip GitHub Actions builds when no posts are due. Explains the mechanism of front matter date parsing, sparse checkouts, and the two-day window for reliability. Directly relevant to engineers automating static site deployments. Limitations: does not prevent post loss from double failed builds, and GitHub's 60-day shutoff for inactive repos applies.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:19:07.611770+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:19:07.611770+00:00",
+      "image": {
+        "url": "https://khalidabuhakmeh.com/og-image/v2/skip-scheduled-static-site-builds-github-actions.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "GitHub Actions Cron: Skip Builds When No Posts Are Due • Khalid Abuhakmeh"
+      }
+    },
+    {
+      "article_id": "article:7600",
+      "original_url": "https://jacobrogelberg.com/the-end-of-software-relationships",
+      "title": "The Front Door and the Workshop",
+      "summary": "AI agents are replacing traditional interfaces as the primary entry point to software, necessitating designs that seamlessly transition between agent-mediated routine work and direct human workshop interaction while preserving context.",
+      "rating": 85,
+      "rating_reason": "Provides a substantive, non-obvious framework for understanding how AI agents reshape software interaction design. Offers concrete mechanisms (front-door/workshop dichotomy, trunk drawer pattern), firsthand engineering experience from building with agents, and clear evidence through personal examples. The value shift from interface ownership to interaction control is a meaningful insight. Relies primarily on anecdotal rather than systematic evidence, and technical depth remains conceptual rather than implementation-level, preventing exceptional tier placement.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:14:48.959163+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:14:48.959163+00:00",
+      "image": {
+        "url": "https://buzzy.blog/jake/the-end-of-software-relationships/og.png?v=20c89405454f",
+        "width": 1200,
+        "height": 630,
+        "alt": "The Front Door and the Workshop"
+      }
+    },
+    {
+      "article_id": "article:7599",
+      "original_url": "https://in-the-moment.info/agent-ai-agents-article/",
+      "title": "agent ai agents article",
+      "summary": "The agentic web is emerging through LLM-powered software agents that interact with the internet via text commands and browser use, fundamentally altering traffic patterns, security risks, and economic models for online content.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, technically grounded coverage of the agentic web, including benchmark results (73% OSWorld 2.0 success), real sandbox-escape incidents, measurable economic impacts (40% ad revenue drop), and concrete design trade-offs between browser-use and tool-based agent interfaces. It provides useful mechanisms, evidence, and hard-won practitioner insights. The score is tempered by its format as a magazine feature with predictive narrative framing and broad audience writing, rather than original research or engineering documentation.",
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:13:07.539558+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:13:07.539558+00:00",
+      "image": {
+        "url": "https://bearblog.dev/static/og-image.png",
+        "width": 1200,
+        "height": 1200,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7598",
+      "original_url": "https://hitesh.in/2026/vendors-write-your-agents-instructions/",
+      "title": "Your coding agent now takes instructions from your software vendors",
+      "summary": "Desktop app updates can silently install agent CLI plugins and startup hooks into coding environments like Codex and Claude Code, making vendor configuration a critical governance and security concern.",
+      "rating": 85,
+      "rating_reason": "Highly relevant technical article documenting how desktop app updates can inject agent configuration (CLI, plugins, session-start hooks) into coding agents like Codex and Claude Code. Provides concrete details about Postman's auto-existing-upgrade, the hook mechanism, and specific governance recommendations. Substantive engineering insight with clear mechanisms and observable behavior, though contains some speculative vendor trend predictions that prevent it from reaching the exceptional tier.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:10:56.844733+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:10:56.844733+00:00",
+      "image": {
+        "url": "https://hitesh.in/2026/vendors-write-your-agents-instructions/images/cover.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Your coding agent now takes instructions from your software vendors"
+      }
+    },
+    {
+      "article_id": "article:7597",
+      "original_url": "https://helgesver.re/articles/apple-adult-website-filter",
+      "title": "Apple's Porn Filter Flagged the Starbucks Menu",
+      "summary": "Apple's adult-content filter is an OTA-updated Bloom filter that broadly blocks non-adult sites and proxies before making an entitlement-gated encrypted server decision.",
+      "rating": 92,
+      "rating_reason": "This is an unusually concrete reverse-engineering report: it identifies private framework paths and method selectors, supplies reproducible Objective-C tooling, measures filter revisions against the Tranco top million, and documents fail-closed behavior and URL-matching semantics. The findings provide original evidence about OS internals, content-control implementation, and privacy-relevant overblocking rather than merely summarizing documentation. The main limitations are that the final server verdict could not be tested externally, observations came from one macOS installation, and all private APIs may change.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:09:23.806755+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:09:23.806755+00:00",
+      "image": {
+        "url": "https://helgesver.re/og/article-apple-adult-website-filter.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Apple's Porn Filter Flagged the Starbucks Menu"
+      }
+    },
+    {
+      "article_id": "article:7596",
+      "original_url": "https://grahamdumpleton.me/posts/2026/11/twenty-years-of-mod-wsgi/",
+      "title": "Twenty years of mod_wsgi, and what comes next",
+      "summary": "After twenty years maintaining mod_wsgi within Apache's rigid constraints, Graham Dumpleton outlines Muru—a cross-language (WSGI/ASGI/gRPC) hosting system designed around Python's actual runtime behaviors, with built-in deployment, health, and process management that finally addresses the operational gaps he could only approximate before.",
+      "rating": 85,
+      "rating_reason": "Twenty years of mod_wsgi experience distilled into concrete constraints of Apache daemon mode, with a forward-looking vision for Muru that addresses actual production pain points: process lifecycle rigidity, deployment orchestration, Python-specific realities (GIL, import times, memory creep), and integrated metrics. The article earns its keep by diagnosing real hard-won problems rather than abstract commentary.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:08:27.086544+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:08:27.086544+00:00",
+      "image": {
+        "url": "https://grahamdumpleton.me/assets/images/graham-blog-banner.png",
+        "width": 1196,
+        "height": 630,
+        "alt": "Twenty years of mod_wsgi, and what comes next - Graham Dumpleton"
+      }
+    },
+    {
+      "article_id": "article:7595",
+      "original_url": "https://fzakaria.com/2026/11/03/why-does-shuffling-the-schedule-find-so-many-bugs",
+      "title": "Why does shuffling the schedule find so many bugs?",
+      "summary": "Bugs are usually common but triggered by rare event orderings, because fast idle machines repeat the same handful of schedules, so deterministically shuffling schedules (or adding idempotency and pause-tolerance) exposes latent races that ordinary passing tests never reach.",
+      "rating": 87,
+      "rating_reason": "Firsthand engineering experience (an AWS RDS workflow incident), a fully reproducible C experiment with source code and commands, and original measurements across 20,000 runs quantifying that an idle laptop touches only 2-5 of 20 thread interleavings while schedule-shuffling under Rewind reaches all 20. The core counter++ combinatorics are textbook, and the article promotes the author's own VM, which tempers novelty and objectivity somewhat, but the empirical findings — near-total schedule sparsity on idle machines and the counterintuitive barrier result flipping the dominant ordering — are non-obvious, well-supported, and directly actionable for testing concurrent and workflow-based systems.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:07:00.577031+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:07:00.577031+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7594",
+      "original_url": "https://frostillic.us/blog/posts/2026/11/3/using-target-files-for-maven-dependencies-in-eclipse-and-tycho",
+      "title": "Using Target Files for Maven Dependencies in Eclipse and Tycho",
+      "summary": "Using .target files enables inline customization of Maven dependencies for Eclipse and Tycho, replacing separate p2 update‑site builds and improving tool compatibility and build speed.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete, firsthand engineering details on using .target files to customize Maven dependencies for Eclipse and Tycho, covering mechanisms, trade‑offs, workarounds, and automation benefits. It is highly relevant to developers working with OSGi‑based projects, though some limitations (slash‑in‑JAR names, version‑variable rigidity) and the need for manual dependency additions reduce perfection.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:06:46.138414+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:06:46.138414+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7593",
+      "original_url": "https://explainanalyze.com/p/how-to-read-explain-analyze-mysql/",
+      "title": "How to Read EXPLAIN ANALYZE: MySQL",
+      "summary": "EXPLAIN ANALYZE reveals the optimizer's estimates vs actual execution, teaching readers to identify bottlenecks by comparing expected vs actual row counts and timing, with concrete examples showing how indexes change query plans and performance.",
+      "rating": 85,
+      "rating_reason": "Provides substantive, technically relevant material about reading EXPLAIN ANALYZE output in MySQL. Contains concrete SQL examples with actual measurements, explains the optimizer's guessing mechanisms and statistics, and gives practical guidance on identifying bottlenecks and when indexes help. The content is non-obvious and would be valuable to anyone working with MySQL performance tuning.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:04:28.358721+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:04:28.358721+00:00",
+      "image": {
+        "url": "https://explainanalyze.com/p/how-to-read-explain-analyze-mysql/cover_hu_1e5bed81c264cf6d.jpg",
+        "width": 1200,
+        "height": 670,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7592",
+      "original_url": "https://eamag.me/2026/why-my-esm-c-flow-model-lost-the-amp-challenge",
+      "title": "Why My ESM-C Flow Model Lost the AMP Challenge",
+      "summary": "A detailed technical post-mortem identifying the specific scoring penalties and data pipeline flaws that caused an ESM-C flow model to underperform the AMP Challenge leaderboard.",
+      "rating": 85,
+      "rating_reason": "The article offers a concrete, mechanism-focused post-mortem of a failed peptide generation competition entry. It successfully identifies specific technical failure modes—non-causal flow sampling perplexity, soft synthesizability constraints, and an Active Coverage scoring calculation that penalizes library concentration—all grounded in specific metric values and pipeline details. The critique of relying on unvalidated computational databases (AMPSphere) over experimental ones (COMPASS) provides actionable insight for similar generative design tasks.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:03:06.852466+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:03:06.852466+00:00",
+      "image": {
+        "url": "https://eamag.me/2026/why-my-esm-c-flow-model-lost-the-amp-challenge-og-image.webp",
+        "width": 1200,
+        "height": 630,
+        "alt": "I placed 29th in the AMP Challenge with an Aggregation Score of 16.45 out of 100."
+      }
+    },
+    {
+      "article_id": "article:7591",
+      "original_url": "https://compositecode.blog/2026/11/03/keeping-long-running-agents-on-track/",
+      "title": "Long-running coding agents: When to stop and split",
+      "summary": "Define clear ownership, scope, and stop conditions for each agent run and split work at decision boundaries to enable independent review and prevent runaway execution.",
+      "rating": 85,
+      "rating_reason": "The article offers concrete, experience‑driven guidance for managing long‑running coding agents—defining ownership, scope, stop conditions, checkpoints, and decision‑boundary splits. These mechanisms are directly relevant to AI‑assisted development workflows and provide practical value, though the piece does not contain original experimental data or novel algorithms.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:01:11.317566+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:01:11.317566+00:00",
+      "image": {
+        "url": "https://compositecode.blog/assets/keeping-long-running-agents-on-track/hero.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7590",
+      "original_url": "https://clojurecivitas.org/scicloj/plotje/guide/a_little_plotje/tour.html",
+      "title": "A Little Plotje",
+      "summary": "Plotje models plots as plain Clojure data (poses) built from independent mappings and layers, enabling composition, inspection, reuse, and multiple output formats from a single description.",
+      "rating": 85,
+      "rating_reason": "The article introduces Plotje, a Clojure plotting library where plots are defined as composable plain data structures (poses). It delivers concrete substance through runnable code examples showing data mappings, layer composability (lay-bar/lay-line/lay-point), and multiple output formats (SVG, PNG, Hiccup, Membrane). The architectural explanation—how plots decompose into independent data/mapping/layer parts and inherit from parent poses—provides useful implementation knowledge. Its relevance isstrong for Clojure practitioners but narrow for general audiences, and it avoids hype, padding, or unsupported claims.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T05:00:45.265415+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T05:00:45.265415+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7589",
+      "original_url": "https://blog.vrma.dev/posts/jio-stb-jailbreak/",
+      "title": "Reclaiming the Jio Set-Top Box: ADB Access, Sideloading and the Work Behind It",
+      "summary": "Explains how to enable ADB access and sideload applications on Jio set-top boxes through TR-069/CWMP provisioning, with model-specific firmware guidance and clear separation between safe Stage 1 modifications and experimental Stage 2 bootloader research.",
+      "rating": 85,
+      "rating_reason": "Highly substantive technical article detailing reverse engineering and ADB setup for Jio set-top boxes. Provides concrete implementation details including TR-069/CWMP management channel configuration, DNS redirection, GenieACS integration, model-specific firmware differences (JMSC/JMSB vs JHS), and explicit Stage 1 vs Stage 2 distinctions. Includes practical commands, diagnostic scripts, and clear warnings about risks. Strong value for technically capable readers interested in embedded Linux, reverse engineering, and device customization.",
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:58:30.471103+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:58:30.471103+00:00",
+      "image": {
+        "url": "https://github-production-user-asset-6210df.s3.amazonaws.com/40134208/694503330-22a21378-5c4b-47fa-ac03-907d94fadfa9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=[REDACTED]%2F20261104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261104T183101Z&X-Amz-Expires=300&X-Amz-Signature=4a7b1f59611a520eb9f153cb514116f190623110318aae0d697838344133b571&X-Amz-SignedHeaders=host&response-content-type=image%2Fpng",
+        "width": 1774,
+        "height": 887,
+        "alt": "jio set top box"
+      }
+    },
+    {
+      "article_id": "article:7588",
+      "original_url": "https://bosnadev.com/2026/11/03/gpt-6-astra-weight-space-programming",
+      "title": "Weight-space programming: what GPT-6 Astra did to Qwen's weights",
+      "summary": "Astra edited a tiny, rank‑one direction in Qwen’s weights to stop looping, boosting math performance from ~8% to ~48% without additional training.",
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible analysis of GPT‑6 Astra’s weight‑space edits, including exact formulas, layer details, and benchmark gains. It offers original measurements (MATH‑500 improvement, token counts, GPU‑hour cost) and explains the underlying mechanism (rank‑one direction ablation) rather than just hype. While dense and occasionally speculative about safety, the technical depth and novelty make it highly valuable for a practitioner.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:58:21.353298+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:58:21.353298+00:00",
+      "image": {
+        "url": "https://bosnadev.com/og/2026/11/03/gpt-6-astra-weight-space-programming.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Weight-space programming: what GPT-6 Astra did to Qwen's weights"
+      }
+    },
+    {
+      "article_id": "article:7587",
+      "original_url": "https://blog.tripton.dev/rooting-an-echo-plus-2-with-ai/",
+      "title": "Rooting an Echo Plus 2 with AI",
+      "summary": "The author combines MediaTek BootROM exploitation with AI‑generated payloads to gain persistent root on an Echo Plus 2 and exploits a Binder use‑after‑free kernel bug for full code execution.",
+      "rating": 91,
+      "rating_reason": "The article provides deep, reproducible technical details on rooting an Echo Plus 2, including hardware interfacing, boot‑stage exploitation, a RAM overlay for persistent ADB, and a concrete Binder use‑after‑free kernel exploit. It contains real commands, code snippets, and measurements, offering novel, actionable knowledge for security researchers, far beyond generic device‑hacking tutorials. Minor hype about AI does not diminish the substantial engineering content.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:56:50.759039+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:56:50.759039+00:00",
+      "image": {
+        "url": "https://bear-images.sfo2.cdn.digitaloceanspaces.com/tripton/physical-access.webp",
+        "width": 1200,
+        "height": 750,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7586",
+      "original_url": "https://blog.scaglio.id/posts/self-hosting-my-notes/",
+      "title": "Self-Hosting My Notes",
+      "summary": "Readers gain a practical, firsthand blueprint for self-hosting Obsidian notes across Linux and iOS devices using Syncthing and the Remote SSH plugin, including specific cross-network sync configuration and date-fixing workarounds.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantial, firsthand engineering value with concrete Syncthing configuration steps, Obsidian plugin usage, and iOS sync workarounds. It directly serves technically capable readers seeking self-hosting solutions. However, its value is somewhat narrowed by iOS platform limitations and the need for external plugins to fix note metadata, preventing it from reaching exceptional status.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:56:28.857217+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:56:28.857217+00:00",
+      "image": {
+        "url": "https://blog.scaglio.id/posts/self-hosting-my-notes/og.webp",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7585",
+      "original_url": "https://blog.lyc8503.net/en/post/23-metrics-and-grafana-dashboard/",
+      "title": "AIO Ep23. Configuring Grafana Monitoring for HomeLab, Ditching Netdata",
+      "summary": "Readers gain a working blueprint for replacing Netdata with a Grafana-based observability stack, including Alloy exporter, PVE OTel integration, and Grafana Cloud remote_write configuration.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantive, practical configuration details for migrating a HomeLab from Netdata to a Grafana Alloy + Prometheus + Grafana Cloud stack. It provides concrete exporter, OTel receiver, and remote_write snippets, plus guidance on PVE metric collection and dashboard/PromQL setup. The author's hard-won insights into Netdata's commercialization/security issues frame the transition usefully. Readers gain actionable mechanisms, though the inline configs are truncated in favor of an external Ansible repo, and the narrative about Netdata may not resonate with all readers.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:55:09.361539+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:55:09.361539+00:00",
+      "image": {
+        "url": "https://blog.lyc8503.net/en/post/23-metrics-and-grafana-dashboard/nodeexporter.png",
+        "width": 2240,
+        "height": 1159,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7584",
+      "original_url": "https://baeke.info/2026/11/03/dapr-workflow-code-that-picks-up-where-it-left-off/",
+      "title": "Dapr Workflow: code that picks up where it left off",
+      "summary": "Dapr Workflow records activity results so a crashed workflow can resume from the last completed step, eliminating the need for custom status tables and retry loops.",
+      "rating": 85,
+      "rating_reason": "The article provides a thorough, hands-on explanation of Dapr Workflow's replay mechanism, retry policies, and fan-out/fan-in, with concrete code and deployment notes. It is highly relevant to AI‑augmented pipeline engineering, though the demo relies on local components and the deterministic coding constraints may be a barrier for some use cases.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:52:31.733270+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:52:31.733270+00:00",
+      "image": {
+        "url": "https://baeke.info/_astro/card.PpVbdMSh_1dlw6l.png",
+        "width": 1200,
+        "height": 800,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7583",
+      "original_url": "https://0xdc.me/blog/replacing-pre-commit-with-prek/",
+      "title": "Replacing pre-commit with prek",
+      "summary": "prek delivers 15x faster hook execution through Rust implementation and a 'fast path' that replaces common Python hooks with built-in Rust versions, plus configurable priority-based parallel execution and monorepo workspace support.",
+      "rating": 85,
+      "rating_reason": "Strong technical article documenting prek as a Rust-based pre-commit replacement with concrete benchmark data (fast path 105ms vs pre-commit 1942ms), priority-based parallel execution, and monorepo workspace mode. Provides measurable performance improvements, practical migration steps, and config examples. Limited to 85 rather than 90 because it primarily documents rather than deeply explains implementation mechanisms, and some claims (like safety tradeoffs around parallel execution) are acknowledged limitations rather than resolved technical breakthroughs.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:48:15.090598+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:48:15.090598+00:00",
+      "image": {
+        "url": "https://0xdc.me/img/thumbs/prek.webp",
+        "width": 830,
+        "height": 830,
+        "alt": "The prek logo, a red crab holding a magnifying glass next to the word prek"
+      }
+    },
+    {
+      "article_id": "article:7582",
+      "original_url": "https://umwelt.vision/first-silicon/",
+      "title": "Show HN: First Silicon, real chip bugs that AI models miss",
+      "summary": "Frontier models can propose useful hardware assertions but cannot reliably find real silicon bugs, while checker feedback can perversely make them abandon correct diagnoses.",
+      "rating": 91,
+      "rating_reason": "Dense, unusually strong original research at the intersection of AI and hardware verification: it builds a blind 86-case benchmark from real fixes, certifies behavioral differences with formal miters, and judges SystemVerilog assertions through Yosys, SymbiYosys, and PDR. It yields concrete findings and reusable artifacts: the best strict setup catches only 16 of 86 cases, 67 of 84 genuine bugs evade every default model, checker feedback induces harmful assertion abandonment, and per-bug results plus commitments are published. Contamination from public code, single-run prompts, only three post-cutoff cases, restricted assertions, and no external validation limit generalization and confidence in the model rankings.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 29,
+      "source_name": "Hacker News Show",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:43:57.134014+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:43:57.134014+00:00",
+      "image": {
+        "url": "https://umwelt.vision/img/og-first-silicon.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": "First Silicon, a benchmark of real hardware bugs for AI models, by Umwelt."
+      }
+    },
+    {
+      "article_id": "article:7581",
+      "original_url": "https://blog.bushidotoken.net/2026/11/uk-cybercrime-journal-beacon-crm-breach.html",
+      "title": "Skip to main content",
+      "summary": "Hard‑coded cloud credentials in client‑side code can expose thousands of donors, but automated secret scanning and strict IAM can prevent such supply‑chain breaches.",
+      "rating": 80,
+      "rating_reason": "The article delivers concrete incident details and multiple actionable security recommendations, aligning well with CyberSecurity themes. It provides six distinct value instances (incident analysis, risk insight, and four defensive takeaways) with minimal padding, resulting in a solid value density. No clickbait or promotional content is present.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-05T04:40:43.299610+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:40:43.299610+00:00",
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUn4wBAJV_6VNL__-CqdkmMmtHF0HWb4_kBThwJXt-HEArlpSOCqCyzO9IESUZRIQp90pu_BSXKm02OgBq3TW8J3plK6FyDkpVZNN5W_xG8akKmk8ZUDWf0DDLU-eNvHbGbDfD_iBR0UWSJRB-agbfV2GKWPFvYz97XS4cjiXH-sm5EtTw8K1A6WBi0odi/w1200-h630-p-k-no-nu/c26aa0de-f41d-45ed-a7f2-d8ee3224add7.jpg",
+        "width": 1024,
+        "height": 559,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7580",
+      "original_url": "https://stackoverflow.blog/2026/11/04/your-net-parallel-loop-can-become-serial-in-a-one-cpu-container/",
+      "title": "Your .NET parallel loop can become serial in a one-CPU container",
+      "summary": " .NET Parallel.ForEachAsync defaults to Environment.ProcessorCount concurrent operations, which can silently serialize I/O-heavy loops in containerized environments with CPU limits; explicit per-dependency concurrency budgets using SemaphoreSlim are needed to maintain reliable throughput and prevent HTTP 503 rejections.",
+      "rating": 88,
+      "rating_reason": "This is substantial, well-structured technical content with original lab experiments, specific data, and practical code patterns. It delivers many novel insights about .NET Parallel.ForEachAsync defaults, container CPU limits, and per-dependency concurrency budgets. No penalties apply; the content is substantive with strong thematic relevance to .NET developers. The author provides concrete measurements (C1-C4 comparisons), a reusable DependencyBudgets pattern, and practical advice on configuring explicit limits and validating at startup.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 13,
+      "source_name": "stackoverflow.blog",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T04:33:45.802941+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:33:45.802941+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7579",
+      "original_url": "https://arxiv.org/abs/2610.35624v1",
+      "title": "Skip to main content",
+      "summary": "LLMs operationalize Analysis of Competing Hypotheses at scale to create evolving threat actor behavioral signatures enabling continuous detection beyond simple IoC-based methods.",
+      "rating": 82,
+      "rating_reason": "The abstract presents 6 distinct value instances: (1) LLM-based adversary brain as evolving logical signature, (2) pattern matching campaigns versus single IoCs, (3) scaling ACH from few to thousands hypotheses, (4) LLMs turning prose into brains with automated matching, (5) partial pattern matching enabling new C2 indicator discovery, and (6) unknown unknowns framework. Strong thematic alignment with both CyberSecurity and AI. No penalties apply; content is tightly written and conceptually novel.",
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-05T04:32:28.089350+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T04:32:28.089350+00:00",
+      "image": null
+    },
     {
       "article_id": "article:7578",
       "original_url": "https://pluralistic.net/2026/11/04/genius-scan-is-neither/",
