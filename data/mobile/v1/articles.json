@@ -1,11 +1,228 @@
 {
   "schema_version": 1,
-  "sequence": 1813,
-  "revision": "sha256:b1f02b2c4189a4a57498d600416ffd86661cfe2bc9be69662b53261f059d4678",
-  "generated_at": "2026-11-05T13:00:00.386823+00:00",
+  "sequence": 1814,
+  "revision": "sha256:a8916be629e4ebe67b47d49605b8d7410e84708adcb26397170093275a52c99f",
+  "generated_at": "2026-11-05T14:00:00.245587+00:00",
   "complete": true,
-  "total_items": 1258,
+  "total_items": 1268,
   "items": [
+    {
+      "article_id": "article:7671",
+      "original_url": "https://zaerl.com/2026/11/04/moving-mojibake-ci-to-namespace/",
+      "title": "Moving Mojibake CI to Namespace",
+      "summary": "Faster CI jobs can still slow pull requests when concurrency limits create opaque queues, while kernel capabilities and container privileges determine whether VM-based jobs remain viable.",
+      "rating": 85,
+      "rating_reason": "Provides a reproducible, first-hand CI migration benchmark covering 27 jobs, three runs per side, identical commits, and an explicit noise threshold. It documents actionable failure modes involving vCPU concurrency, privileged containers, loop devices, missing kernel codepages, and an mtools workaround while honestly reporting an unexplained ARM64 regression and longer overall PR latency. Conclusions remain limited by the small sample, single-project workload, unmeasured paid-plan behavior, and some vendor framing, but the measurements and implementation details are directly useful.",
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:55:03.382602+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:55:03.382602+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7670",
+      "original_url": "https://xroot.dev/blog/solana-websocket-subscriptions-miss-updates",
+      "title": "Solana WebSockets That Stay Connected but Miss Updates",
+      "summary": "Agave’s one-slot PubSub reads can silently miss finalized updates when commitment advances multiple slots, requiring ledger reconciliation until a multi-slot fix lands.",
+      "rating": 92,
+      "rating_reason": "The article combines source-level tracing, two mainnet measurements, and concrete Rust and JavaScript examples to document a subtle failure mode: Agave PubSub subscriptions can silently omit updates when commitment slots advance by multiple slots. It quantifies the gaps, identifies affected subscription types, analyzes a proposed retention-and-backfill fix, and provides an actionable reconciliation strategy. The evidence is limited to one provider, one morning, and three programs, while the patch was not tested and the slot clustering remains unexplained.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:54:45.320639+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:54:45.320639+00:00",
+      "image": {
+        "url": "https://xroot.dev/og-image.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "xroot.dev"
+      }
+    },
+    {
+      "article_id": "article:7669",
+      "original_url": "https://www.theswift.dev/posts/keep-search-highlights-attached-to-the-original-text/",
+      "title": "Keep Search Highlights Attached To The Original Text",
+      "summary": "Demonstrates how to implement search highlighting in SwiftUI that correctly handles case/diacritic-insensitive matching and complete character boundaries without breaking on offsets from lowercased copies.",
+      "rating": 85,
+      "rating_reason": "The article identifies a subtle but critical bug in case-insensitive search highlighting (offset mismatch after lowercasing), provides a concrete Foundation-based solution using `localizedStandardRange(of:)` on the original text, and details a robust Character-boundary expansion technique for proper display. It includes reusable Swift code and thorough edge-case analysis (İX, emoji, Devanagari, cross-script numerals). Highly relevant for Swift/UIKit developers implementing search, though niche outside that ecosystem.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:53:01.013074+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:53:01.013074+00:00",
+      "image": {
+        "url": "https://www.theswift.dev/images/posts/keep-search-highlights-attached-to-the-original-text/cover.png",
+        "width": 1672,
+        "height": 941,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7668",
+      "original_url": "https://www.hdlfactory.com/post/2026/11/05/rules-vunit-in-bazel/",
+      "title": "rules_vunit: VUnit Testbenches Under Bazel",
+      "summary": "It describes how to package VUnit as a hermetic Bazel module by discarding the Python orchestrator and relying on Bazel's native test and compilation facilities.",
+      "rating": 85,
+      "rating_reason": "The article delivers substantial technical value by detailing the architectural trade-offs of integrating VUnit with Bazel, specifically the omission of the Python orchestrator in favor of native build primitives. It provides concrete mechanisms for dependency resolution, VHDL standard configuration, and synthesis compatibility, making it a strong resource for FPGA verification engineers. Its relevance is somewhat narrowed to the EDA/Bazel intersection, and it lacks broader cross-toolchain benchmark data, preventing it from reaching the highest exceptionality tier.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:49:15.257689+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:49:15.257689+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7667",
+      "original_url": "https://syslinuxos.com/syslinuxos-network-neighbors-switch-port-vlan-lldp/",
+      "title": "SysLinuxOS Network Neighbors: finding the port and VLAN on a switch using LLDP",
+      "summary": "Readers learn to use LLDP to identify the exact switch port and VLAN their Linux interface is connected to.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete, reproducible command-line instructions and configuration details for using LLDP to map a Linux interface to a specific switch port and VLAN. It includes firsthand engineering explanations of PVID, receive-only lldpd mode, and troubleshooting steps for empty results, delivering hard-won implementation insight. While highly relevant and substantive for network infrastructure work, it focuses on a specific toolchain rather than broader architectural innovation, placing it solidly in the strong category.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:37:51.765115+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:37:51.765115+00:00",
+      "image": {
+        "url": "https://syslinuxos.com/wp-content/uploads/2026/11/syslinuxos-network-neighbors.png",
+        "width": 880,
+        "height": 554,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7666",
+      "original_url": "https://startdebugging.net/2026/11/why-createchained-calls-the-first-rate-limiter-twice-per-request/",
+      "title": "Why is the first limiter in PartitionedRateLimiter.CreateChained called twice per request?",
+      "summary": "ASP.NET Core's synchronous-then-async acquisition path can consume two permits from the first limiter in a chain because failed leases are disposed without refunding window or token-bucket permits.",
+      "rating": 89,
+      "rating_reason": "This is a strong, narrowly scoped investigation of ASP.NET Core rate-limiting internals that traces a non-obvious double-acquisition mechanism through actual middleware and runtime source. It provides runnable middleware-level reproductions across .NET 10 and 11 showing fixed-window permits consumed twice on rejection and queued success, plus concrete mitigations and caveats. The supplied content is truncated during the wrapper discussion and lacks upstream resolution details, but the core findings remain unusually actionable and evidence-backed.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:37:30.578739+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:37:30.578739+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/11/why-createchained-calls-the-first-rate-limiter-twice-per-request.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Why is the first limiter in PartitionedRateLimiter.CreateChained called twice per request? - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:7665",
+      "original_url": "https://startdebugging.net/2026/11/github-actions-blocks-pull-request-target-by-default-december-2/",
+      "title": "GitHub Actions blocks pull_request_target by default on December 2: what public .NET repos must check",
+      "summary": "GitHub will block pull_request_target in public repositories from Dec 2 2026, and the article shows how .NET projects can safely migrate or selectively allow the event.",
+      "rating": 86,
+      "rating_reason": "The article explains a brand‑new GitHub Actions policy change that blocks pull_request_target in public repos, providing concrete security rationale, code examples, and step‑by‑step migration or allow‑list procedures that .NET maintainers can apply immediately. It delivers actionable guidance and a clear audit method, though it contains some promotional fluff and no original measurements, keeping it solid but not exceptional.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:36:47.105027+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:36:47.105027+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/11/github-actions-blocks-pull-request-target-by-default-december-2.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "GitHub Actions blocks pull_request_target by default on December 2: what public .NET repos must check - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:7664",
+      "original_url": "https://soarhen.com/why-you-cannot-trust-your-agent",
+      "title": "Why You Cannot Trust Your Agent (And How to Isolate It)",
+      "summary": "Readers learn how to confine untrusted processes to a minimal, controlled filesystem using bwrap with read-only root and tmpfs overlays that prevent permanent system modifications while preserving necessary project access.",
+      "rating": 87,
+      "rating_reason": "The article delivers substantive, non-obvious technical value by providing a complete, reproducible bwrap sandboxing implementation for AI agent confinement. It moves beyond conceptual discussion to a line-by-line Bash function with every flag explained, enabling immediate practical use. The security argument is well-grounded in kernel-level isolation mechanisms, and the trade-off discussion between trust and confinement is genuinely helpful. While the AI context provides the problem framing, the core technical solution remains valuable independent of that specific application.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:36:13.082595+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:36:13.082595+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7663",
+      "original_url": "https://rumple.github.io/blog/2026/11/04/the-narrow-case-for-jev.html",
+      "title": "The Narrow Case for Jev",
+      "summary": "Jev is a fast, cheap decision model that gives calibrated probabilities for predefined options, but its probabilities reflect preference not correctness, vary with wording, and require user validation despite TypeSafe's calibration claims.",
+      "rating": 87,
+      "rating_reason": "Strong technical substance with concrete mechanisms (single-pass vs autoregressive), calibration nuance (average vs per-instance), and practical 'when to use' framework. Explains why same input can yield different answers, probability as preference not correctness, and when code beats models. Some familiar concepts but execution is focused and evidence-grounded. Would benefit from more independent calibration validation.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:33:19.296605+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:33:19.296605+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7662",
+      "original_url": "https://pthm.dev/leeroy-making-ai-agents-play-world-of-warcraft/",
+      "title": "LEEROY: Making AI agents play World of Warcraft",
+      "summary": "The reader learns how to design and evaluate AI agents for real-time games using Lua scripts, network protocol parsing, and XP-per-hour as a robust performance metric.",
+      "rating": 85,
+      "rating_reason": "The article provides concrete technical substance: a detailed account of building AI agents for World of Warcraft via Lua scripts, network protocol parsing, and a benchmark centered on XP-per-hour metrics. It offers original evidence from dozens of experiments, firsthand engineering insights (notably the iterative judge program and bugs uncovered during long runs), and a non-obvious approach to measuring agent behavior without prescriptive prompts. However, its value is somewhat niche—relevant primarily for readers interested in AI agent benchmarking or game automation—and the technical depth, while solid, stops short of deep architectural or algorithmic exposition.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-05T23:31:18.688448+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-05T23:31:18.688448+00:00",
+      "image": null
+    },
     {
       "article_id": "article:7661",
       "original_url": "https://mygeekdaddy.net/2026/11/02/using-chatgpt-to-visually-breakdown-excel/",
@@ -1434,12 +1651,7 @@
       "admitted_at": "2026-11-05T05:13:07.539558+00:00",
       "source_published_at": null,
       "expires_at": "2026-12-05T05:13:07.539558+00:00",
-      "image": {
-        "url": "https://bearblog.dev/static/og-image.png",
-        "width": 1200,
-        "height": 1200,
-        "alt": ""
-      }
+      "image": null
     },
     {
       "article_id": "article:7598",
@@ -15311,12 +15523,7 @@
       "admitted_at": "2026-10-22T04:50:00.042724+00:00",
       "source_published_at": null,
       "expires_at": "2026-11-21T04:50:00.042724+00:00",
-      "image": {
-        "url": "https://bearblog.dev/static/og-image.png",
-        "width": 1200,
-        "height": 1200,
-        "alt": ""
-      }
+      "image": null
     },
     {
       "article_id": "article:6972",
