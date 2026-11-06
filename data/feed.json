@@ -1,7 +1,262 @@
 {
-  "updated_at": "2026-11-06T13:00:00.230386+00:00",
-  "total_items": 1280,
+  "updated_at": "2026-11-06T14:00:00.178631+00:00",
+  "total_items": 1290,
   "items": [
+    {
+      "id": 7722,
+      "source_id": 34,
+      "original_url": "https://xroot.dev/blog/solana-shred-recovery-simd-0504",
+      "title": "Solana Shred Recovery: When Valid Shreds Form an Invalid Erasure Batch",
+      "summary": "Always rebuilding Solana erasure batches closes a receipt-dependent validity gap, with simulations showing consistent rejection of malformed parity and modest computational overhead.",
+      "ideas": [
+        "Per-shred Merkle authentication does not prove coding shreds match the data shreds.",
+        "Always rebuilding each batch makes malformed erasure batches fail deterministically.",
+        "Across 800,000 malformed subset rebuilds, none passed validation.",
+        "Common-path recovery stayed near 299 microseconds; heavier cases rose about 9%.",
+        "Simulated random loss omits real Turbine behavior and full validator checks."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a focused, technically deep analysis of an apparent Solana consensus-validation gap: Merkle signatures authenticate shred bytes but do not establish Reed–Solomon parity, while receipt-dependent recovery could produce divergent validator behavior. Commit-level code references, a malformed-batch model using Agave's library, one million subset trials, packet-loss simulations, and concrete timings provide unusually strong evidence for the proposed mechanism. The main limitations are that it uses a model rather than a live cluster, omits full header/signature validation and realistic correlated Turbine loss, and notes that the stricter rejection gate was not yet active.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:54:52.561803",
+      "image_url": "https://xroot.dev/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "xroot.dev"
+    },
+    {
+      "id": 7721,
+      "source_id": 34,
+      "original_url": "https://www.tamirdresher.com/blog/2026/11/05/langgraph-after-the-crash",
+      "title": "LangGraph After the Crash: Checkpoints, Pending Writes and Recovery",
+      "summary": "LangGraph persists completed tool call results as pending writes against the latest checkpoint, so after a crash a replacement worker replays only tasks lacking writes—car runs again while flight and hotel are skipped—but explicit continuation invocation is still required to resume execution.",
+      "ideas": [
+        "Completed tool results are stored as pending writes against the latest checkpoint, not incorporated until the next full checkpoint",
+        "The Pregel loop reapplies successful writes to matching reconstructed task IDs, skipping tasks that already have results",
+        "Explicit continuation invocation is needed after crash recovery; the saved state alone doesn't auto-resume"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 95,
+      "rating_reason": "The article provides an original, firsthand investigation into LangGraph's checkpointing mechanics with concrete measurements of how tool calls survive process crashes. It details exactly what state is persisted, what gets replayed, and what requires explicit continuation invocation. The author measured body attempts vs booking effects across multiple configurations, providing non-obvious insights into LangGraph's recovery semantics that would be difficult to discover otherwise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:52:23.074542"
+    },
+    {
+      "id": 7720,
+      "source_id": 34,
+      "original_url": "https://www.rubenerd.au/update-your-alpine-linux-openssh-now/",
+      "title": "https://www.rubenerd.au/update-your-alpine-linux-openssh-now/",
+      "summary": "Alpine Linux users must update OpenSSH to 10.6p1 and restart sshd, or disable password authentication, to remediate a critical musl libc–related security vulnerability.",
+      "ideas": [
+        "Update OpenSSH to 10.6p1 and restart sshd on Alpine Linux"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, actionable security guidance for Alpine Linux OpenSSH users, including a specific version update (10.6p1) and a configuration-level workaround (PasswordAuthentication no). It directly addresses a critical musl libc–related vulnerability, explains the conditions (PAM disabled), and prioritizes remediation steps. The substance is highly relevant to Linux/sysadmin/infrastructure interests, though the lack of a CVE identifier and the forward-dated publication date are minor contextual limitations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:50:36.797831",
+      "image_url": "https://www.rubenerd.au/preview.png",
+      "image_width": 1280,
+      "image_height": 640,
+      "image_alt": ""
+    },
+    {
+      "id": 7719,
+      "source_id": 34,
+      "original_url": "https://www.ospreylang.dev/blog/2026-11-01-static-typing-python-without-type-hints/",
+      "title": "Static Typing for Python-Style Code, Without Writing Type Hints",
+      "summary": "Osprey's Python flavor provides static typing through complete type inference without requiring explicit type annotations, catching type errors at compile time even in untyped-looking code.",
+      "ideas": [
+        "Compiler infers all types automatically, refusing to build ill-typed programs",
+        "Result type pattern forces callers to handle potential failures at compile time",
+        "Type inference reaches places hint-based checkers often miss (lambdas, records, list contents)",
+        "71 of 134 functions in the Chromecast port carry no annotations yet remain fully typed"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article presents Osprey's Python flavor that infers types automatically, providing concrete code examples demonstrating type inference in practice (Result types, match patterns, list contents). It offers a substantive comparison between dynamic typing, hint-based checking, and inference-driven static typing using a real 1,262-line Chromecast sender port. The main limitation is that it promotes a specific language implementation rather than providing broadly applicable theory, and the Python flavor has significant restrictions (no classes, try/except, while, yield).",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:48:47.386404",
+      "image_url": "https://www.ospreylang.dev/assets/images/blog/static-typing-python.png",
+      "image_width": 1600,
+      "image_height": 840,
+      "image_alt": "Blue and gold ribbons passing through a prism into interlocking geometric blocks."
+    },
+    {
+      "id": 7718,
+      "source_id": 34,
+      "original_url": "https://www.lukasrieder.com/blog/xiaomi-ocr-in-looksneat/",
+      "title": "Running XIAOMI-OCR-0 natively in looksneat",
+      "summary": "The article demonstrates practical native MLX OCR inference while showing why strict output validation and realistic evaluations remain essential.",
+      "ideas": [
+        "Pinned MLX 4-bit OCR runs through Rust without a Python inference server.",
+        "Prompted extraction can fabricate fields, requiring schema and source validation.",
+        "Native port preserves packed projections and uses float32 recurrent state.",
+        "Whole-image inference lacks layout coordinates, confidence scores, and regional OCR.",
+        "Published benchmark scores do not validate the quantized whole-image implementation.",
+        "Image resizing can materially reduce document detail before model inference."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a strong, technically dense firsthand integration of a quantized OCR model through Rust and MLX, with useful commands, preprocessing details, recurrent-decoder implementation notes, and explicit output schemas. It provides concrete evidence of prompt-induced fabrication and carefully distinguishes whole-image inference from layout-aware OCR pipelines. The evaluation remains limited to a synthetic invoice, with no representative latency, memory, accuracy, or upstream-equivalence measurements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:47:03.691588"
+    },
+    {
+      "id": 7717,
+      "source_id": 34,
+      "original_url": "https://www.juststeveking.com/articles/setting-up-a-laptop-that-isnt-mine/",
+      "title": "Setting Up A Laptop That Isn't Mine",
+      "summary": "The author outlines a constraint-driven workflow for setting up a MacBook Pro, prioritizing tool isolation between mise and Homebrew, isolating work notes in a separate Obsidian vault with relative paths, and minimizing dotfile carryover due to the machine's temporary ownership.",
+      "ideas": [
+        "Use mise link to register Homebrew PHP builds instead of compiling from source",
+        "Remove third-party Homebrew taps on borrowed laptops to avoid trust prompts",
+        "Structure Obsidian notes with relative paths for portability across different machines"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, practical engineering details—specifically how mise and Homebrew interact for PHP version switching, the opt-in tap trust mechanisms on macOS, and the strategic use of relative paths in Obsidian to isolate a work vault on a non-owned machine. It is technically substantive and free of hype, though its relevance is inherently tied to the specific scenario of configuring a temporary, employer-provided work device.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:45:19.499005",
+      "image_url": "https://www.juststeveking.com/og/articles/setting-up-a-laptop-that-isnt-mine.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7716,
+      "source_id": 34,
+      "original_url": "https://williamzujkowski.github.io/posts/2026-11-05-dependabot-pnpm-overrides-two-ways/",
+      "title": "The Override Was Still in package.json",
+      "summary": "pnpm security overrides can silently stop applying after Dependabot updates, so CI must verify the parent's resolved dependency edge rather than merely the override header.",
+      "ideas": [
+        "Dependabot can drop pnpm override metadata and silently restore vulnerable dependency edges.",
+        "A restored overrides header can pass frozen installs without enforcing the overridden resolution.",
+        "Validate each override against the parent's actually resolved dependency version.",
+        "pnpm overrides rewrite dependency requests before resolution, not resolved versions afterward.",
+        "Regenerate lockfiles from untouched state rather than restoring missing metadata alone.",
+        "Nine redundant pnpm overrides were removed after measuring actual resolution effects."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "This is a focused, high-value supply-chain engineering investigation that reproduces Dependabot silently discarding a pnpm override and shows why merely restoring the lockfile header can leave the vulnerable resolution intact. The offline pnpm lab, command-level results, dependency-resolution mechanics, edge-checking CI guard, and removal of nine redundant pins provide concrete, actionable evidence. The scope remains narrow—one repository, simulated bot-written lockfiles, and a vulnerability in an uncalled function—so it does not establish Dependabot's general behavior or immediate exploitability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:39:16.968001",
+      "image_url": "https://williamzujkowski.github.io/og/2026-11-05-dependabot-pnpm-overrides-two-ways.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7715,
+      "source_id": 34,
+      "original_url": "https://victorvelazquez.dev/blog/framesmith-2-4-a-phone-is-not-a-narrow-web-page/",
+      "title": "framesmith 2.4: a phone is not a narrow web page",
+      "summary": "Framesmith 2.4 treats phone screens as a distinct medium with proper mobile rules, forcing designers to account for status bars, home indicators, and real tap targets rather than just shrinking a web page to 390px.",
+      "ideas": [
+        "Declaring canvas_create({ type: \"mobile\" }) reserves 47px status bar and 34px home indicator automatically",
+        "Phone tap targets under 44px now trigger errors for buttons, list rows, and tabs",
+        "Trail-running screen rebuilt from 93 to 33 nodes by using real mobile components that pass phone rules",
+        "Large type previously scaled against 1440px width, rendering a 33px title at only 20px on a 390px artboard"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "The article identifies a real design failure mode where phone screens were treated as narrow web pages, missing critical mobile considerations like tap targets, status bars, and home indicators. It provides concrete new mechanisms in framesmith 2.4 (mobile canvas declaration, phone-specific node types, rules) and documents actual bug fixes from a screen rebuild (type scaling, chart labels). The before/after measurements (93→33 nodes) and CI-integrated test give it strong practical value, though it's primarily additive to an existing tool rather than breakthrough theory.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:36:58.266245",
+      "image_url": "https://victorvelazquez.dev/_astro/framesmith-2-4-a-phone-is-not-a-narrow-web-page-hero.CVaulmbg.jpg",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 7714,
+      "source_id": 34,
+      "original_url": "https://vanja.io/countersign/",
+      "title": "The Model Proposes",
+      "summary": "Agents that touch infrastructure can be made safe by giving the model no write path: it only proposes, humans countersign a hash-bound plan, and capability-token-gated deterministic code executes exactly what was approved.",
+      "ideas": [
+        "Withhold instruction-like metadata entirely; flagging still puts attacker text in context",
+        "Bind approvals to plan hashes; per-action digests because ids survive edits",
+        "Enforce policy at submission, decision, and sandbox; each pass catches different mistakes",
+        "Model decides what to change; code computes cost, risk, and steps",
+        "Capability tokens carry authority as objects instead of ambient database flags",
+        "Offline eval validates harness and graders, not LLM quality itself",
+        "Groundedness grading: every dollar and CPU figure must match tool output"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "A dense, firsthand engineering writeup of an agent architecture where the LLM has no write path, packed with concrete mechanisms: capability tokens bound to SHA-256 plan hashes with per-action digests, policy enforced three times (submission, decision, sandbox), a withheld-not-flagged strategy for prompt injection in metadata, groundedness graders for model prose, and an idempotent leased state machine with hash-chained audit. It sits squarely in the reader's interests across agents, security, and infrastructure, and its key insight (authority as an unforgeable object rather than ambient state) is non-obvious and directly reusable. Deductions: it is effectively a showcase for the author's own demo project on a synthetic estate with an offline reference policy, so there is no production or real-LLM evidence, the demo walkthrough is partly promotional filler, and the text is truncated mid-argument near the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:36:39.881207",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/feature-countersign-1.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 7713,
+      "source_id": 34,
+      "original_url": "https://tauraamui.site/blog/minecraft-prism-rollback-bug",
+      "title": "When rollback brings the blocks back",
+      "summary": "Prism's rollback incorrectly restores blocks at positions with multiple changes because it undoes actions in forward rather than reverse order, and the author's Rewind plugin fixes this by determining each block's pre-window state directly from the earliest log entry.",
+      "ideas": [
+        "Prism undoes actions forward-order, breaking rollback on multi-change blocks",
+        "Earliest log entry per position gives the correct pre-window block state",
+        "Rewind plugin applies pre-change states via WorldEdit to fix rollback"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 94,
+      "rating_reason": "The article delivers original, firsthand engineering evidence of a subtle but critical rollback ordering bug in Prism, diagnosed by inspecting SQLite log entries. It clearly explains the mechanism (undo order determines final state), details multiple real-world edge cases (TNT, lava spills, falling sand, empty containers), and provides a working Rewind plugin fix. Substance is highly concrete, with DB schema excerpts, WorldEdit commands, and measurable results (334 blocks restored, 290 matching the original design). It is technically relevant to sysadmin/self-hosting audiences and offers strong value per minute without hype, padding, or unsupported claims.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:32:45.487034"
+    },
     {
       "id": 7712,
       "source_id": 34,
@@ -22,7 +277,11 @@
       "rating_reason": "A firsthand incident report detailing a Railway platform breach that exposed production environment variables and API keys. Contains concrete technical details: the dilemma of keeping services up vs taking them offline, the process of rotating all secrets and API keys, log review for exploitation, and the subsequent organizational lessons. The narrative provides hard-won insight on incident response, key-management runbooks, and cross-functional coordination. While not deeply technical in the sense of reverse-engineering or novel exploits, it offers substantive, non-obvious practical value for anyone managing production infrastructure on third-party platforms. The story is well-structured, evidence-supported, and free of hype or fluff.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-06T23:26:38.054240"
+      "published_at": "2026-11-06T23:26:38.054240",
+      "image_url": "https://samlowe.dev/assets/img/arrival-of-a-train-la-ciotat.webp",
+      "image_width": 1200,
+      "image_height": 890,
+      "image_alt": "Still from _L'Arrivée d'un train en gare de La Ciotat_. An urban legend claims that it made audiences jump out of their seats in 1896. Lumière brothers, Public domain, via Wikimedia Commons"
     },
     {
       "id": 7711,
