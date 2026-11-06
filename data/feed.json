@@ -1,7 +1,694 @@
 {
-  "updated_at": "2026-11-06T11:00:00.313513+00:00",
-  "total_items": 1251,
+  "updated_at": "2026-11-06T13:00:00.230386+00:00",
+  "total_items": 1280,
   "items": [
+    {
+      "id": 7712,
+      "source_id": 34,
+      "original_url": "https://samlowe.dev/railway/",
+      "title": "Going Off The Rails",
+      "summary": "After Railway disclosed a breach of their environment variable storage, the author made the rapid decision to take their production site and database offline, rotated all compromised secrets and API keys, and later reflected on the necessity of predefined runbooks and authority for future incidents.",
+      "ideas": [
+        "Rotated all environment secrets and API keys after Railway breach disclosure",
+        "Chose to take production offline rather than risk exposed production credentials",
+        "Established need for single-authority runbooks for key rotation and production downtime"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A firsthand incident report detailing a Railway platform breach that exposed production environment variables and API keys. Contains concrete technical details: the dilemma of keeping services up vs taking them offline, the process of rotating all secrets and API keys, log review for exploitation, and the subsequent organizational lessons. The narrative provides hard-won insight on incident response, key-management runbooks, and cross-functional coordination. While not deeply technical in the sense of reverse-engineering or novel exploits, it offers substantive, non-obvious practical value for anyone managing production infrastructure on third-party platforms. The story is well-structured, evidence-supported, and free of hype or fluff.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:26:38.054240"
+    },
+    {
+      "id": 7711,
+      "source_id": 34,
+      "original_url": "https://paulwrites.software/articles/zoetty/",
+      "title": "My Terminal demos are real now",
+      "summary": "zoetty generates lightweight SVG or HTML CLI demo clips from recorded terminal output via a TOML spec, replacing bloated GIFs with a syncable, checkable workflow.",
+      "ideas": [
+        "CLI demos generated as SVG/css, not GIFs",
+        "TOML spec drives clip recording and build",
+        "‘check’ command keeps clips in sync with CLI changes"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article introduces zoetty, a concrete Python tool that generates lightweight SVG or HTML CLI demo clips from recorded terminal output, directly solving the GIF bloat and staleness problem. It provides exact TOML specifications, recording mechanics, a build pipeline, and a 'check' command to keep demos in sync with CLI changes. The implementation is firsthand and practical, with minimal dependencies (click, rich). While highly useful and non-obvious, it remains a focused engineering utility rather than groundbreaking theoretical evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:21:22.122371"
+    },
+    {
+      "id": 7710,
+      "source_id": 34,
+      "original_url": "https://nikogura.com/blog/infrastructure-is-not-an-application/",
+      "title": "Infrastructure Is Not an Application",
+      "summary": "Infrastructure practices that work for stateless applications become fragile when applied to persistent, singular systems, and static, diff‑first approaches are preferable.",
+      "ideas": [
+        "Duplicate infra configs to enable literal diffs",
+        "Feature branches drift against moving reality",
+        "Umbrella charts weld failure domains together",
+        "Static rendering moves truth to PR review",
+        "Deterministic reconciler replaces dynamic controllers"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a sharp, well‑argued critique of transferring application‑development practices to stateful infrastructure, supported by concrete examples of DRY, feature‑branch drift, and umbrella chart pitfalls. Its relevance is strong for ops and GitOps practitioners, though the viewpoint is somewhat idiosyncratic and may not apply uniformly to all infra setups.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:18:47.691824"
+    },
+    {
+      "id": 7709,
+      "source_id": 34,
+      "original_url": "https://ncot.uk/projects/intel-x86-assembly-programming/assembly-is-hard/",
+      "title": "Assembly Is Hard",
+      "summary": "Learners discover that `CMP` discards the subtraction result and only sets CPU flags, which subsequent jump instructions read—a fundamental departure from C-style comparison.",
+      "ideas": [
+        "CMP subtracts operands but intentionally discards the result, preserving only the status flags",
+        "Conditional jumps inspect these flags rather than the comparison outcome itself",
+        "Register-heavy arithmetic like y*320+x requires explicit POP/MOV sequences to manage operand conflicts"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, non-obvious technical insight into x86 assembly semantics, specifically explaining why `CMP` sets flags without storing the result—a core paradigm shift for learners moving from C control flow to instruction-level reasoning. It grounds this in realistic code snippets (coordinate arithmetic, register swapping) and directly addresses the mental-model gap, making it highly relevant for technically capable readers interested in low-level programming. While it’s a personal learning log rather than an authoritative treatise, the mechanistic explanation is original for its audience and adequately supported.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:16:33.579055",
+      "image_url": "https://ncot.uk/projects/intel-x86-assembly-programming/assembly-is-hard/thumb.jpg",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": ""
+    },
+    {
+      "id": 7708,
+      "source_id": 34,
+      "original_url": "https://metaredux.com/posts/2026/11/05/proof-how-strong-is-your-nrepl.html",
+      "title": "proof: How Strong Is Your nREPL?",
+      "summary": "proof delivers a reusable, automated compatibility test suite that reveals nREPL server/client quirks and bugs, enabling reliable tooling development across the ecosystem.",
+      "ideas": [
+        "proof auto-checks nREPL servers against 80+ compatibility tests",
+        "interrupted evals sent to wrong connection cause indefinite hangs",
+        "server profiles (TOML) standardize launch and test snippets",
+        "client proxy records wire traffic for graded compliance reports"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article introduces `proof`, a focused compatibility suite for nREPL servers and clients that uncovers concrete protocol-level bugs via ~80 automated checks. It provides immediately useful profile mechanics, real-world failure examples with client linkages, and a clear CI integration path. The value is high for tool authors, though the niche scope limits general audience appeal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:14:47.057329"
+    },
+    {
+      "id": 7707,
+      "source_id": 34,
+      "original_url": "https://metaredux.com/posts/2026/11/05/neorepl-0-5.html",
+      "title": "neorepl 0.5: CIDER in a Terminal",
+      "summary": "neorepl 0.5 delivers a terminal REPL experience that closely mirrors CIDER's features—inline arglist display, smart pairing, inline evaluation, editor integration, and profiling—while adding real-world testing against multiple nREPL implementations.",
+      "ideas": [
+        "Inline arglists show function parameters with cursor position highlighting, matching CIDER's eldoc behavior",
+        "C-x Enter evaluates only the form at cursor and returns input, great for testing sub-expressions",
+        "C-x C-e opens typed content in $EDITOR when form outgrows the line editor",
+        "Profile command measures per-function call counts and timing statistics",
+        "Editor integration via `neorepl eval -f FILE --line N:COL` lets editors evaluate forms directly with unsaved changes"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "neorepl 0.5 delivers substantive, concrete technical details about a terminal RELL experience that mirrors CIDER's features. The article includes original mechanisms (inline arglist display, smart paren pairing, cursor-position-aware evaluation), practical value (editor integration via -f/--line flags), and real-world testing against actual nREPL implementations including cider-nrepl, babashka, piggieback, and shadow-cljs—finding and reporting actual bugs. The profiling command provides measurable data. While somewhat self-promotional, the engineering detail is genuine and useful without hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:14:09.114928"
+    },
+    {
+      "id": 7706,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/safari-adaptive-dark-mode-color-scheme/",
+      "title": "Preventing Safari 27.3 Beta Adaptive Dark Mode with color-scheme",
+      "summary": "Declaring color-scheme: light dark prevents Safari's Adaptive Dark Mode conversion, but only when paired with explicit dark background and text colors, otherwise text becomes invisible under OS dark mode.",
+      "ideas": [
+        "Declaring color-scheme light dark without dark colors causes invisible text under OS dark mode.",
+        "light only keyword excluded from Adaptive Dark Mode but unsupported in beta 1.",
+        "light-dark() with color-scheme enables per-mode background and text coloring.",
+        "SVG assets adapt to dark mode inversion; bitmaps do not.",
+        "Safari prevents client-side detection of Adaptive Dark Mode styling changes."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides substantive, well-documented technical detail about Safari's new Adaptive Dark Mode, including the color-scheme declaration pitfalls (invisible text when dark mode is declared without explicit dark colors), the light-only keyword limitation in beta 1, and practical light-dark() patterns. It’s highly relevant to web developers, contains concrete code examples tested in Safari 26.5.2, and avoids hype by clearly noting where behavior is speculative. The value is strong but calibrated against the fact that much of the beta behavior relies on WebKit announcements rather than local beta testing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:08:51.790604"
+    },
+    {
+      "id": 7705,
+      "source_id": 34,
+      "original_url": "https://lawzava.com/blog/2026-11-06-batch-bankruptcy-why-background-agents-starve-your-real-time-users/",
+      "title": "Batch Bankruptcy: Why Background Agents Starve Your Real-Time Users",
+      "summary": "Background agents starve real-time users through TPM exhaustion and GPU prefill monopolization; a two-lane inference admission contract with gateway enforcement, pool isolation, jittered pull scheduling, and SLO-driven load shedding is required to prevent catastrophic TTFT spikes.",
+      "ideas": [
+        "Background agents starve real-time users via TPM exhaustion and GPU prefill monopolization",
+        "Two-lane inference admission contract isolates interactive vs background traffic at gateway",
+        "Priority pull scheduling with jitter replaces wall-clock cron to smooth utilization",
+        "Three-rung load-shedding breaker driven by interactive SLO telemetry protects live traffic"
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "Exceptional technical substance addressing a concrete AI infrastructure problem. The article diagnoses two distinct failure modes (commercial API rate-limit exhaustion vs. self-hosted GPU scheduler saturation) that teams routinely conflate, then provides a complete 'two-lane inference admission contract' framework with specific mechanisms: gateway admission accounting mirroring upstream limiter rules, separate GPU worker pools, priority pull scheduling with jitter, and a three-rung SLO-driven load-shedding breaker. Packed with original mechanisms, measurable effects (40K-100K token prefill monopolization, 35-50% TPM/RPM reservation), and actionable mitigations. Zero hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:08:21.789754",
+      "image_url": "https://lawzava.com/img/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "LLM Inference SLOs: Isolating Real-Time From Batch Agents"
+    },
+    {
+      "id": 7704,
+      "source_id": 34,
+      "original_url": "https://joshmcarthur.com/til/2026/11/06/reject-portrait-photos-with-a-tiny-yunet-face-detector.html",
+      "title": "Reject portrait photos with a tiny YuNet face detector",
+      "summary": "Details using YuNet ONNX face detection to filter studio portraits from an archival photo pipeline, reporting empirical face-area fractions and threshold strategies to distinguish portraits from crowd scenes.",
+      "ideas": [
+        "YuNet ONNX returns face bounding box area as fraction of total image area",
+        "Threshold: discard if 1-2 faces and largest covers >= 1% of frame",
+        "Retain 3+ faces or a single tiny face regardless of size",
+        "Empirical measurements: seated studio portrait ~0.013, rider in wider scene ~0.003"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 85,
+      "rating_reason": "Concrete firsthand engineering account of wrapping YuNet ONNX for face detection in a Ruby/ONNXruntime/libvips pipeline. Includes specific, empirically-derived thresholds (1-2 faces with largest >= 1% area discard; 3+ faces/tiny faces retained) and measurement examples (studio portrait ~0.013, rider scene ~0.003). Highly relevant for practitioners building CV filtering tools. The strategy is non-obvious and well justified by test results, with no hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:04:39.881259"
+    },
+    {
+      "id": 7703,
+      "source_id": 34,
+      "original_url": "https://jc0b.computer/posts/krampus",
+      "title": "Krampus - A Santa sync server",
+      "summary": "Krampus is a modular, open-source Santa sync server supporting multiple databases and authentication methods, designed for GitOps-driven rule management and flexible deployment across cloud providers.",
+      "ideas": [
+        "Krampus supports pluggable database backends (Postgres, MySQL, Google Cloud Firestore) and custom implementations via Python modules",
+        "Configuration can be managed via YAML files and krampusctl, enabling GitOps and Infrastructure-as-Code workflows for Santa rule deployment",
+        "Uses mTLS or request headers for client authentication, with reverse-proxy SSL termination recommended for production"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly technical article detailing Krampus, an open-source Santa sync server. Covers modular architecture, multiple database backends (Postgres/MySQL/Firestore), authentication via mTLS/headers, event handlers (Pub/Sub/webhooks), and GitOps workflow using krampusctl. Provides concrete setup instructions and architectural trade-offs without hype. Directly relevant to macOS endpoint security and infrastructure engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:03:05.814150"
+    },
+    {
+      "id": 7702,
+      "source_id": 34,
+      "original_url": "https://i-a-s.me/blog/vulkan-series/vertex-and-index-buffers/",
+      "title": "Vulkan Series: 04 - Vertex and Index Buffers",
+      "summary": "Readers learn how to set up vertex and index buffers in Vulkan using VMA, implement a reusable Buffer class with staging for CPU-to-GPU data transfer, and configure pipeline vertex input state for indexed drawing.",
+      "ideas": [
+        "VMA flags dictate memory placement: STAGING allows CPU writes, VERTEX/INDEX stay GPU-only",
+        "Two-stage copy pattern: host data → staging buffer → vertex/index buffer via vkCmdCopyBuffer",
+        "Shader inputs replace hardcoded vertex array: in_pos and in_color from buffer attributes",
+        "Index buffer stores vertex references, enabling triangle sharing and memory savings"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article delivers exceptionally practical, concrete Vulkan implementation details—buffer class design, staging buffer pattern, vertex/index buffer setup with VMA, and pipeline configuration—all with complete, functioning code. Highly relevant for graphics programmers, non-obvious memory/usage flag decisions are clearly explained, and the staging transfer mechanism is immediately applicable with minimal hype or padding.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T23:00:48.438880",
+      "image_url": "https://i-a-s.me/og.png",
+      "image_width": 1734,
+      "image_height": 907,
+      "image_alt": "i-a-s.me | Computation. Systems. Philosophy."
+    },
+    {
+      "id": 7701,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/11/05/rewinding-by-fast-forwarding",
+      "title": "Rewinding by fast-forwarding",
+      "summary": "Deterministic checkpoint replay can reconstruct a value’s read-write history and expose concurrency bugs without conventional breakpoints.",
+      "ideas": [
+        "Deterministic replay turns reverse debugging into forward execution from periodic checkpoints.",
+        "rewind check explores thread schedules to reproduce intermittent concurrency failures.",
+        "rewind blame --reads reconstructs stale-value races from per-thread memory accesses.",
+        "Reverse GDB watchpoints locate the transition that changed a watched value.",
+        "Debugging memory provenance resembles git blame for program state."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is strong, directly applicable debugging material with reproducible commands for schedule exploration, memory-access blame, and reverse GDB execution. It clearly explains the mechanism: deterministic replay searches backward by restoring a checkpoint and fast-forwarding while trapping reads and writes. The focused race-condition example is valuable, though the article gives little performance data and only lightly addresses the practical constraints of deterministic recording and replay.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:58:30.652980"
+    },
+    {
+      "id": 7700,
+      "source_id": 34,
+      "original_url": "https://freakonometrics.hypotheses.org/91890",
+      "title": "Multi-Sensitive Distributional Fairness: Joint Wasserstein Audits and Shapley Allocation.",
+      "summary": "The framework jointly resolves three conflated fairness questions—joint distributional parity, disparity decomposition along an information path, and ordering-free Shapley attribution across sensitive coordinates—using Wasserstein geometry and Hilbert-valued quantile variance.",
+      "ideas": [
+        "Wasserstein geometry links joint distributional parity to Hilbert-valued quantile variance",
+        "Shapley values provide order-free attribution of disparity across sensitive attributes",
+        "Under attribute dependence, explicit formulas reveal suppression and redundancy effects masked by marginal audits"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The post delivers a technically rigorous framework for multi-sensitive distributional fairness using Wasserstein geometry and Shapley allocation, with concrete mechanisms (Hilbert-valued quantile variance, monotone information game, ANOVA decomposition under dependence), fixed-grid estimators, and an ACSIncome illustration. It directly addresses a genuine gap in fairness audits without hype. As a blog post, it omits full proofs and detailed dataset results, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:57:14.704587"
+    },
+    {
+      "id": 7699,
+      "source_id": 34,
+      "original_url": "https://e-whisper.com/posts/55930/",
+      "title": "Fully Removing Nix: Rebuilding the Local Toolchain with mise + uv, and Handing CI Over to a Single Self-Built Image",
+      "summary": "Migrating away from Nix to uv +mise with a custom self-built CI image reduced pipeline duration from 1174s to 20s and image size from 3.57GB to 842MB, with scripts preventing Nix regressions.",
+      "ideas": [
+        "uv +mise split: Python tools via uv, binary tools via mise with patch-level version pins",
+        "CI uses a single self-built debian:13-slim image pulled from host builds, not constructed in CI",
+        "check-no-nix script blocks Nix reintroduction via git ls-files and git grep patterns",
+        "Pipeline duration dropped from median 1174s to 20s after removing unused toolchains from CI image",
+        "Dependency groups in pyproject.toml (scripts, dev, ci, docs) provide clear separation of concern"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, measured technical migration from Nix to uv+mise with actual pipeline timing (1174s→20s) and image size reductions (3.57GB→842MB). It includes specific version pins, Dockerfile content, dependency group structures, and regression-prevention scripts. The China-network context adds real-world constraints rarely documented. Those seeking generic AI hype will be disappointed, but for infrastructure/CI tooling it's substantive and well-evidenced.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:55:06.291861"
+    },
+    {
+      "id": 7698,
+      "source_id": 34,
+      "original_url": "https://denkstein.github.io/2026/11/05/do-not-ask-is-a-a-b/",
+      "title": "Do not ask “Is A a B?”: Inheritance and the Is-A Trap",
+      "summary": "The 'is-a' test for inheritance is fundamentally dangerous because it relies on natural-language classification rather than technical contract compliance, and inheritance should only be used when subtype promises can be fully honored across all operations.",
+      "ideas": [
+        "\"is-a\" test mistakes natural language classification for technical subtype compliance",
+        "Square is not a Rectangle when width and height are independently mutable",
+        "Inheritance requires honoring all base class promises, not just superficial classification"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article delivers a thorough, concrete critique of the 'is-a' inheritance heuristic, firmly grounding the discussion in Liskov substitution principles and multiple concrete class-design examples (Square/Rectangle, unit vectors, penguins). It successfully distinguishes the misleading natural-language 'is-a' test from the technical contract checks that should drive inheritance decisions. The penalty to score comes from relying on well-known textbook examples rather than presenting novel empirical evidence or firsthand measurements, placing it solidly in 'Strong' rather than 'Exceptional' territory.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:54:25.130603"
+    },
+    {
+      "id": 7697,
+      "source_id": 34,
+      "original_url": "https://crunchybagel.com/talking-to-a-concept2-pm5-over-bluetooth/",
+      "title": "Talking to a Concept2 PM5 over Bluetooth",
+      "summary": "Reverse-engineering a quirky BLE fitness protocol reveals why specification-compliant implementations can still fail against real devices.",
+      "ideas": [
+        "Real PM5 firmware contradicts split-time units and additional-stroke-data lengths in Concept2's specification.",
+        "CSAFE frames require correct stuffing, checksums, command grouping, timing, and workout-state checks.",
+        "Comparing device timestamps with arrival times distinguishes PM5-side throttling from Bluetooth-link delay.",
+        "At 250 ms polling proved more reliable than 100 ms on real PM5 hardware.",
+        "Workout resends and invalid commands can trigger frame-overrun errors independently of write-response timing.",
+        "Simulator success cannot validate protocol tables because simulator and app share assumptions.",
+        "Binary notification recordings enable comparison against specifications and real rower sessions.",
+        "Dropping entire force curves when any fragment is missing avoids displaying misleading partial strokes."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is an unusually concrete, developer-oriented account of implementing a Bluetooth LE protocol against real hardware, including characteristic IDs, packet layouts, CSAFE framing code, state timing, and measured update rates. Firsthand diagnostics and real firmware deviations provide non-obvious actionable knowledge, particularly for distinguishing Bluetooth-link backlog from device-side throttling and accepting unexpectedly short frames. The main limitations are some product framing and the supplied text being truncated during the investigation of a firmware-freezing failure.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:52:22.797271",
+      "image_url": "https://crunchybagel.com/content/images/size/w1200/2026/11/feature-1.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7696,
+      "source_id": 34,
+      "original_url": "https://brennanmceachran.com/blog/how-i-built-anatomy-of-an-agent-harness",
+      "title": "How I Built Anatomy of an Agent Harness",
+      "summary": "Details a reproducible 4-step process for collaborating with AI to create complex technical outputs: braindump with multiple-choice interviews, metaphor development, prompt-driven slide creation with iterative rubric-teaching, and procedure-based goal execution with clear exit criteria.",
+      "ideas": [
+        "Use multiple-choice questions with \"Other\" option to guide AI decisions efficiently",
+        "Write a master plan after each interview to prevent knowledge compression loss",
+        "Develop a consistent metaphor before creating visual slides to maintain story coherence",
+        "Define clear exit criteria as a procedure goal for AI agents to enable autonomous loop execution"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Provides a detailed, firsthand account of collaborating with AI tools (Codex) to create a technical presentation. Contains concrete substance: specific 4-step process with measurable investments (4,300 words, 5-hour goal run), multiple-choice interviewing technique, metaphor development procedure, and clear exit-criteria looping. Technically relevant to AI/agent harness engineering with real framework mentions (Mastra) and architectural example. Strong hard-won practitioner insight, though value is inherently tied to AI-assisted creation context.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:48:36.948826"
+    },
+    {
+      "id": 7695,
+      "source_id": 34,
+      "original_url": "https://bosnadev.com/2026/11/05/sshhole-openssh-musl-star-password",
+      "title": "https://bosnadev.com/2026/11/05/sshhole-openssh-musl-star-password",
+      "summary": "A password of 257‑1024 bytes can bypass OpenSSH authentication on musl‑based Linux when an account has ‘*’ in /etc/shadow, due to a mismatch between musl’s crypt() error handling and OpenSSH’s salt logic.",
+      "ideas": [
+        "musl returns '*' on crypt() failure for passwords >256 bytes, matching the stored '*' and allowing login.",
+        "OpenSSH’s 2016 timing fix reuses another account’s $6$ salt, exposing the bug on musl without PAM.",
+        "Patch adds MIN_PASSWORD_HASH_LEN check, preventing matches on stored fields shorter than four characters.",
+        "Mitigation: update OpenSSH to 10.6p2 on musl, or disable PasswordAuthentication until patched."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "The article provides concrete, reproducible evidence of a serious OpenSSH authentication bypass on musl systems, including code excerpts, benchmark tables, and step‑by‑step mitigation instructions. It explains the underlying bug, its history, and the exact conditions required for exploitation, offering clear value to security engineers and sysadmins. Limited only by its focus on Alpine/musl, it remains highly relevant and technically dense.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:48:08.425294",
+      "image_url": "https://bosnadev.com/og/2026/11/05/sshhole-openssh-musl-star-password.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "*sshole: how * became a password in OpenSSH on musl"
+    },
+    {
+      "id": 7694,
+      "source_id": 34,
+      "original_url": "https://blog.sonnes.cloud/github-backup-tool-update-1-4-1-0-is-out/",
+      "title": "GitHub Backup Tool - update 1.4.0.0 is out",
+      "summary": "Introduces owner-based repository filtering and git.exe clone fallback for network/UNC paths where LibGit2Sharp fails, plus reliability improvements for repeated backup runs.",
+      "ideas": [
+        "-owner <owner> argument filters backups by repository owner login",
+        "Clone fallback using git.exe with safe.directory for network/UNC paths where LibGit2Sharp reports ownership issues",
+        "Recreating target folders before clone improves reliability in repeated backup runs"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Concrete technical update for GitHub Backup Tool with genuine new mechanisms like owner filtering and git.exe clone fallback for network/UNC paths. Includes specific fixes (culture-dependent DateTime formatting), branch-targeted cloning improvements, and Task Scheduler documentation. Strong practical value for sysadmin/DevOps audiences managing Git backups, though structured as a release announcement rather than deep technical research.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:46:00.333916",
+      "image_url": "https://blog.sonnes.cloud/github-backup-tool-update-1-4-1-0-is-out/feature.png",
+      "image_width": 1113,
+      "image_height": 626,
+      "image_alt": ""
+    },
+    {
+      "id": 7693,
+      "source_id": 34,
+      "original_url": "https://blog.outmanos.com/posts/the-api-client-cycle/",
+      "title": "The API client microcosm of the VC shit economy",
+      "summary": "Traces the pattern of API client platforms progressively restricting offline use and adding account/telemetry requirements, ending with the author's restless fork as a controlled offline alternative.",
+      "ideas": [
+        "Bruno sent anonymous PostHog pings at startup with no opt-out for over two years despite 'offline-only' claims",
+        "Insomnia 8.0 (Sept 2023) locked projects behind account creation, removing local access without warning",
+        "restless is an offline-first Insomnia fork inspired by Insomnium, initiated after Insomnia's account login enforcement",
+        "npm audit on Insomnium (Electron 25.2.0) found 127 vulnerabilities, 16 critical, making it insecure for internet-connected use"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "Maps the concrete enshittification trajectory of major API clients with exact dates, GitHub issue references, and version-level detail. Documents how VC funding drives account-locking and telemetry, including the author's hard-won fork of Insomnia into restless and the multi-year battle to prune Bruno's default telephony.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:45:32.305554"
+    },
+    {
+      "id": 7692,
+      "source_id": 34,
+      "original_url": "https://blog.csongor.co.uk/cachet-grids-and-tiles/",
+      "title": "Write your own kernel optimiser",
+      "summary": "A compiler can preserve program semantics while exposing cache, vector, and matrix-unit scheduling as explicit, checkable transformations, demonstrated through measured matrix-multiplication kernels.",
+      "ideas": [
+        "Loop interchange improved one-core matrix multiplication from 1.17 to 33 GFLOP/s.",
+        "Cachet checks rewrites for aliasing and bitwise floating-point equivalence.",
+        "Schedules separate semantic contractions from cache, vector, and GPU transformations.",
+        "Naive matrix multiplication achieved only 1.1% of OpenBLAS throughput."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is exceptional, hands-on kernel-systems material: it derives matrix-multiplication schedules from an equation, explains how Cachet checks that rewrites preserve bitwise results, and reports concrete performance measurements rather than relying on intuition. The cache analysis, blocking, vectorization, and GPU scheduling provide mechanisms and implementation details directly useful to performance-focused engineers. The main limitations are that this centers on the author's own project, only one laptop's measurements are visible, and the supplied excerpt truncates before the complete blocking and GPU results.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:43:17.828202"
+    },
+    {
+      "id": 7691,
+      "source_id": 34,
+      "original_url": "https://blog.debargha.com/essays/when-diff-works/",
+      "title": "Why a One-Line Baseline Does Well on Time Series Anomaly Detection Benchmarks: A Follow-up to Wu and Keogh",
+      "summary": "A rigorously derived explanation that differencing baselines win on anomaly benchmarks because labelled anomalies are jumps far exceeding step-scale noise, while differencing provably discards the level and sign information needed for other anomaly types.",
+      "ideas": [
+        "Threshold on |Δx| is exact iff anomaly jump J exceeds twice the noise bound B",
+        "Differencing loses level and step sign: ramp and oscillation share identical scores",
+        "Point adjustment plus per-series F1-maximizing thresholds inflate all detector scores",
+        "Sub-Gaussian noise yields error bound 2·exp(−J²/16σ²) for the differencing detector",
+        "Classifiers reach zero error on signed steps but chance level on Diff scores"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "An original, well-supported analysis of why the trivial one-line differencing baseline matches deep anomaly detectors: it derives the exact separation condition J > 2B via the reverse triangle inequality, gives sub-Gaussian error bounds with concrete constants, proves what information differencing discards, and backs the theory with EasyTSAD benchmark runs, Monte Carlo validation, and classifier experiments demonstrating the feature map's Bayes error. This is directly relevant to ML evaluation methodology, benchmarking pitfalls, and anomaly detection for monitoring. Limitations: partly pedagogical framing aimed at undergraduates, reliance on standard tools (triangle inequality, Chernoff bounds) rather than novel mathematics, and moderately niche scope within time series anomaly detection; the provided content is also truncated near the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:43:11.136828"
+    },
+    {
+      "id": 7690,
+      "source_id": 34,
+      "original_url": "https://apievangelist.com/2026/11/06/payments-and-banking-a-bundle-for-the-shape-of-the-answer/",
+      "title": "Payments And Banking: A Bundle For The Shape Of The Answer",
+      "summary": "A practical JSON Schema bundle for ISO 20022 credit transfers with rule-based validation that catches arithmetic, formatting, and consistency errors a pure schema would miss.",
+      "ideas": [
+        "Money must be strings with strict decimal patterns to avoid floating point corruption in payments",
+        "CtrlSum and NbOfTxs arithmetic validation requires rules beyond JSON Schema's token-at-a-time limitations",
+        "IBAN validation needs explicit mod-97 functions since patterns only verify structural form"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete technical substance by detailing a JSON Schema bundle for ISO 20022 payments with rule-based validation that addresses critical gaps in token-at-a-time grammars. It provides measurable evidence (144ms runtime), firsthand decoder behavior observations, and practical rule implementations for arithmetic checking, IBAN validation, and duplicate detection. The author transparently documents limitations while showing how constraints migrate from schema into rules. Highly relevant for anyone building structured output systems for financial data.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:41:20.066353",
+      "image_url": "https://kinlane-images.s3.amazonaws.com/apievangelist/api-evangelist-images/payments-and-banking-a-bundle-for-the-shape-of-the-answer.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": "Payments And Banking: A Bundle For The Shape Of The Answer"
+    },
+    {
+      "id": 7689,
+      "source_id": 34,
+      "original_url": "https://acid.vegas/blog/pushing-the-limits-with-getaddrinfo/",
+      "title": "Pushing the Limits with getaddrinfo",
+      "summary": "Unicode look‑alike characters can be mapped by IDN processing into valid numeric IPs, bypassing simple string‑based filters.",
+      "ideas": [
+        "AI_IDN flag triggers IDNA mapping before numeric parsing, enabling Unicode digits to become IPv4 numbers.",
+        "Various Unicode digits, symbols, and invisible characters map to 0‑9, a‑f, ‘x’, and ‘.’ for inet_aton.",
+        "Filters that only regex plain IP strings miss these transformed addresses, exposing SSRF and phishing risks.",
+        "Defence: resolve hostnames first, then validate the resulting numeric address rather than the raw string."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a deep, reproducible analysis of how glibc’s AI_IDN flag lets Unicode look‑alike characters be interpreted as numeric IPv4 addresses, showing real commands, source snippets, and mitigation advice. It is highly relevant to security, networking, and sysadmin work, and the concrete examples and code make it immediately actionable. Minor noise (profanity, informal intro) and some repetition keep it from the top tier, but the technical substance and novelty are strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-06T22:40:55.157252"
+    },
+    {
+      "id": 7688,
+      "source_id": 27,
+      "original_url": "https://github.com/blacklanternsecurity/bbot",
+      "title": "blacklanternsecurity/bbot",
+      "summary": "BBOT is a versatile, open‑source scanner that automates reconnaissance, bug‑bounty, and attack‑surface management via a rich CLI and Python API.",
+      "ideas": [
+        "NLP‑powered subdomain mutation engine for extensive domain enumeration"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Problem significance 22 (addresses critical recon/ASM needs), technical novelty 15 (adds many integrations and NLP mutations but builds on existing tools), practical utility 22 (production-ready CLI/library with extensive modules), documentation quality 20 (detailed README, examples, migration guide). No penalties applied; domain relevance bonus +8 for security tooling. Total 87.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-11-06T22:33:19.936505",
+      "image_url": "https://opengraph.githubassets.com/7e4cbb71a5f43c8074687abf145eeb3613c46fe3bcd57c32c9f30ced43014d29/blacklanternsecurity/bbot",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "The recursive internet scanner for hackers. 🧡. Contribute to blacklanternsecurity/bbot development by creating an account on GitHub."
+    },
+    {
+      "id": 7687,
+      "source_id": 27,
+      "original_url": "https://github.com/sandbox-quantum/switch",
+      "title": "sandbox-quantum/switch",
+      "summary": "Open-source AI teammates that turn every team channel into a collaborative room where humans and AI agents work together, supporting any agent model and self-hosting.",
+      "ideas": [
+        "Any agent any model protocol for multi-agent chat orchestration",
+        "Turn every channel into a room for people and AI teammates",
+        "MCP integration with Claude Code, Codex, OpenCode"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 93,
+      "rating_reason": "Strong project addressing significant problem of integrating AI agents into team communication. Technical novelty in multi-platform agent orchestration with MCP support for Claude Code, Codex, OpenCode. Good practical utility with desktop clients across platforms and clear four-level adoption framework. Excellent documentation signals engineering maturity with thorough telemetry, contributing, and getting-started details. No automatic penalties apply.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-11-06T22:33:13.347566",
+      "image_url": "https://opengraph.githubassets.com/695a27f9f9c7fdf2f4bc371e0ce0927010e3066d9cd317292614b66135caeecb/sandbox-quantum/switch",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Open-source AI teammates in Slack, Teams, Discord, Telegram and Mattermost. Self-host it, with any agent harness and any model. - sandbox-quantum/switch"
+    },
+    {
+      "id": 7686,
+      "source_id": 26,
+      "original_url": "https://github.com/vercel-labs/agent-browser",
+      "title": "vercel-labs/agent-browser",
+      "summary": "A Rust‑based CLI that lets AI agents drive a browser via snapshots and refs for automated web interaction.",
+      "ideas": [
+        "Ref‑based snapshot system lets agents interact with web pages step‑by‑step via simple CLI commands"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The repo tackles a real need for AI agents to perform browser automation (22/25), offers a novel ref‑based CLI approach beyond typical Selenium wrappers (18/25), is production‑ready with binaries and extensive features (22/25), and provides clear, thorough documentation (20/25). No penalties apply, and it earns an 8‑point AI domain bonus, yielding a total of 90.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-06T22:32:49.210321",
+      "image_url": "https://opengraph.githubassets.com/abc5752871455e55510e5d851a663707fd89070681f53c7bee799e8252972c63/vercel-labs/agent-browser",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Browser automation CLI for AI agents. Contribute to vercel-labs/agent-browser development by creating an account on GitHub."
+    },
+    {
+      "id": 7685,
+      "source_id": 26,
+      "original_url": "https://github.com/lz4/lz4",
+      "title": "lz4/lz4",
+      "summary": "A mature, production-grade lossless compression library delivering 500+ MB/s compression and GB/s decompression, backed by a benchmark-proven design and maintained by an expert team.",
+      "ideas": [
+        "Extreme-speed lossless compression with tunable tradeoffs",
+        "Dictionary compression via Zstandard Dictionary Builder",
+        "High-compression LZ4_HC derivative with identical decompression speed",
+        "Well-specified block and frame formats for interoperability",
+        "Multi-platform builds: CMake, Meson, vcpkg"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "Problem significance (24/25) and practical utility (25/25) are exceptional - LZ4 is a foundational compression library embedded in the Linux kernel, filesystems, and countless databases. Technical novelty (17/25) is moderate since the algorithm is mature, but this is the canonical, actively-maintained reference implementation (4,406 commits, 207 contributors, OSS fuzzer integration, security policy). Documentation (21/25) is strong with rigorous benchmark methodology, format specs, and clear API docs, earning an infrastructure/data engineering bonus of +5. No penalties apply.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-06T22:32:23.880367",
+      "image_url": "https://opengraph.githubassets.com/aac805c5c95be1a52332b6c87a76a9436380d35d04605629c4fd20e3031fdd7a/lz4/lz4",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Extremely Fast Compression algorithm. Contribute to lz4/lz4 development by creating an account on GitHub."
+    },
+    {
+      "id": 7684,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/ai-and-ml/2026/11/06/uk-ministers-seek-powers-to-investigate-when-ai-agents-are-let-off-the-leash/5307889",
+      "title": "Jump to main content",
+      "summary": "UK ministers are seeking new powers under the Cyber Security and Resilience Bill to regulate AI agents when operators lose control, including investigatory powers like inspector appointments and premises searches, with accountability falling on deployers rather than model builders.",
+      "ideas": [
+        "UK seeks powers to regulate AI agents losing control",
+        "Ministers can appoint inspectors search seize premises",
+        "OpenAI agents breached Hugging Face platform",
+        "Accountability falls on AI agent deployers",
+        "Critical infrastructure operators most affected",
+        "Model builders distinct from deployers in regulatory scope",
+        "Ministers can introduce rules through secondary legislation",
+        "AmanTrue CEO highlights deployer accountability"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "This article delivers solid value by reporting on a meaningful regulatory development regarding AI agent control. It contains 8 distinct quality ideas: the UK government's proposed regulatory framework, specific investigatory powers (inspectors, search, seizure), reference to real OpenAI incidents (Hugging Face breach, agents straying beyond scope), expert commentary on accountability structures, identification of affected sectors (utilities, MSPs, cloud providers), and the crucial distinction between model builders and deployers. Thematic relevance is strong for AI and CyberSecurity. No significant penalties apply - the reporting is substantive without padding or clickbait.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-06T22:32:20.741575",
+      "image_url": "https://image.theregister.com/2918046.jpg?imageId=2918046&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+      "image_width": 1200,
+      "image_height": 683,
+      "image_alt": ""
+    },
     {
       "id": 7683,
       "source_id": 4,
@@ -4947,11 +5634,7 @@
       "rating_reason": "This article provides strong, substantive technical coverage of a rapidly evolving AI image generation ecosystem. It offers original evidence through Civitai API download counts, specific quantization size measurements (INT8 5.04 GiB vs BF16 9.47 GiB), benchmark timing data (8.03s to 5.26s text encoder caching), and detailed ComfyUI integration timelines with PR numbers. The survey documents novel community mechanisms like unused conditioning slot reference injection and varied LoRA step-distillation approaches. While valuable, it stops short of exceptional because the author acknowledges no hands-on generation testing, and the content remains a survey rather than deep technical investigation of model internals.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-02T17:16:30.769865",
-      "image_url": "https://lilting.ch/og/images/hero/ogp.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "MOSS-Image Derivative Checkpoints, LoRAs, and Workflows (November 2026) | lilting channel"
+      "published_at": "2026-11-02T17:16:30.769865"
     },
     {
       "id": 7502,
@@ -8548,11 +9231,7 @@
       "rating_reason": "The article delivers a meticulously traced root-cause analysis of a phpMyAdmin WebAuthn registration failure: raw 16-byte AAGUIDs stored unencoded cause json_encode() to return false, which under strict typing in escapeString() triggers a TypeError that blocks credential persistence. It provides concrete code snippets, Docker-based reproduction evidence, empirical probability math on UTF-8 validity, and a critical migration insight for web-authn-lib compatibility. The depth of mechanism explanation, original experiments, and practical fix strongly justify a high rating.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-30T05:03:04.062059",
-      "image_url": "https://lilting.ch/og/images/hero/ogp.ogp.jpg",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "phpMyAdmin 5.2 WebAuthn Key Registration Fails with TypeError Due to Raw AAGUID Bytes | lilting channel"
+      "published_at": "2026-10-30T05:03:04.062059"
     },
     {
       "id": 7367,
@@ -28950,11 +29629,7 @@
       "rating_reason": "The article delivers concrete, agent‑focused technical changes—detailed JSON correction output, new command‑line options, a revised MCP server, sandbox resilience, and extensive autocorrection bug fixes—giving readers actionable mechanisms. It is highly relevant to AI‑oriented developers but assumes prior RuboCop knowledge, limiting its accessibility. The depth and specificity merit a strong score, though the niche audience slightly tempers its universal value.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-11T05:17:03.478296",
-      "image_url": "https://metaredux.com/assets/og-image.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-10-11T05:17:03.478296"
     },
     {
       "id": 6594,
