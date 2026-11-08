@@ -1,7 +1,535 @@
 {
-  "updated_at": "2026-11-08T12:00:00.454664+00:00",
-  "total_items": 1326,
+  "updated_at": "2026-11-08T13:00:00.181001+00:00",
+  "total_items": 1346,
   "items": [
+    {
+      "id": 7826,
+      "source_id": 34,
+      "original_url": "https://www.peterp.me/articles/what-1-5-trillion-tokens-a-month-actually-costs/",
+      "title": "What 1.5 trillion tokens a month actually costs",
+      "summary": "Around 97% of an agent’s tokens are cache reads costing roughly 5% of the full input price, meaning total token cost is dominated by cache-write rebuilds and model-choice cache-read multipliers rather than raw token volume.",
+      "ideas": [
+        "Cache reads make up ~97% of agent tokens but cost ~5% of the dollar bill",
+        "Rebuilding a cached context after expiry costs 25x more than reading it",
+        "Cache-read price, not input price, is the primary cost driver in agent billing",
+        "Model choice with different cache-read multipliers can 2x-5x total cost for identical token volumes"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 87,
+      "rating_reason": "The article earns a strong technical relevance score by delivering original, firsthand measurements of LLM token caching economics across major providers. Its concrete substance—token category breakdowns, pricing formulas, and agent-session cost dynamics—directly serves readers interested in AI infrastructure and agent optimization. The main limitation is reliance on list prices rather than negotiated enterprise rates, and the personal-narrative framing, while credible, borders on promotional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T23:02:38.167110",
+      "image_url": "https://www.peterp.me/og/what-1-5-trillion-tokens-a-month-actually-costs.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "What 1.5 trillion tokens a month actually costs"
+    },
+    {
+      "id": 7825,
+      "source_id": 34,
+      "original_url": "https://whhone.com/posts/guix-pull-ready/",
+      "title": "Introducing Guix Pull Ready",
+      "summary": "A service that queries Guix's Cuirass CI to identify the latest master commit with completed substitute builds, allowing `guix pull` to avoid unexpected local compilation.",
+      "ideas": [
+        "Use `downloaded-channels` with `guix-pull-ready.whhone.com` to auto-select ready commits",
+        "Service evaluates Cuirass job completion status and caches results for sub-millisecond responses",
+        "Supports `#:append` to combine ready upstream commits with custom local channels",
+        "Coordinates Nonguix evaluations to ensure substitute availability across both channels simultaneously"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly practical solution to a common Guix workflow friction. Explains the CI-to-substitute pipeline, provides concrete command-level configuration via `downloaded-channels`, and details the security model of channel trust. The service implementation (Go daemon, Cuirass polling) and Nonguix coordination add significant technical depth beyond a typical blog post.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T23:00:16.214250"
+    },
+    {
+      "id": 7824,
+      "source_id": 34,
+      "original_url": "https://stoppels.ch/2026/11/07/the-hardest-tarball.html",
+      "title": "The hardest tarball?",
+      "summary": "A single tar archive extracts 8 different ways depending on tool, revealing hard-link and pax header semantics across GNU tar, bsdtar, Python, Go, 7-Zip, Rust, Java, PHP, RubyGems, R, and Haskell.",
+      "ideas": [
+        "bsdtar writes 512 bytes into hard link data",
+        "Java Commons Compress creates separate file from header data",
+        "RubyGems skips café, creates PaxHeaders directory",
+        "R mistakenly applies size to empty with 512 null bytes",
+        ".NET/Julia/uv reject tarball as invalid"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Highly concrete technical investigation showing how one tar archive extracts across 15+ implementations. Documents real observed behaviors: bsdtar writes 512-byte hard link data, Java Commons Compress separates header into distinct file, RubyGems skips café and creates PaxHeaders directory, R misapplies size to empty with 512 null bytes, .NET/Julia/uv reject tarball outright. No hype or filler; practical value for anyone building or parsing archives cross-platform.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:58:12.797403"
+    },
+    {
+      "id": 7823,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/11/why-linq-thenby-computes-every-secondary-key-and-how-to-avoid-it/",
+      "title": "Why LINQ ThenBy computes every secondary key, and how to compute them only on ties",
+      "summary": "LINQ ThenBy precomputes all secondary keys, but you can avoid costly computations with a lazy wrapper or by counting primary keys and only computing secondary keys on ties.",
+      "ideas": [
+        "ThenBy computes every secondary key up front via ComputeMap.",
+        "Use ThenByLazy with a custom comparer to evaluate secondary keys only on ties.",
+        "Counting primary keys first lets you compute secondary keys only for tied elements.",
+        "Self‑comparisons in Span.Sort cause extra lazy key evaluations; add ReferenceEquals check."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers concrete, reproducible benchmarks, source code, and a deep dive into LINQ's runtime behavior, providing practical workarounds for expensive secondary keys. It is highly relevant to software‑engineering readers, especially those writing performance‑critical .NET code, and avoids hype or filler. Its novelty is limited to a niche area, keeping the score just below the top tier.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:56:59.504298",
+      "image_url": "https://startdebugging.net/og/2026/11/why-linq-thenby-computes-every-secondary-key-and-how-to-avoid-it.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Why LINQ ThenBy computes every secondary key, and how to compute them only on ties - Start Debugging"
+    },
+    {
+      "id": 7822,
+      "source_id": 34,
+      "original_url": "https://self-issued.info/?p=2894",
+      "title": "RFC 10070 – Closing the door on an actionable OAuth security vulnerability",
+      "summary": "RFC 10070 resolves a security vulnerability in OAuth 2.0 JWT client authentication by establishing the authorization server's issuer identifier as the sole legal audience value, supplemented by an explicit JWT type designation to distinguish pre- and post-fix tokens.",
+      "ideas": [
+        "Issuer identifiers now serve as the only valid audience value for OAuth 2.0 JWT client authentication tokens."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article details RFC 10070, which fixes a previously actionable OAuth 2.0 security vulnerability stemming from ambiguities in audience value treatment for JWT client authentication tokens. It clearly explains how the ambiguity allowed malicious authorization servers to exploit token endpoints as audience values, and how the fix leverages issuer identifiers (RFC 8414) and explicit JWT typing (RFC 8725) to close the attack vector. The substance is technically deep and directly relevant to OAuth implementers, though the scope is narrow to the JWT client authentication domain.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:56:50.767384"
+    },
+    {
+      "id": 7821,
+      "source_id": 34,
+      "original_url": "https://nekidev.github.io/2026/11/07/1-welcome-to-wlroots-part-3.html",
+      "title": "Welcome to Wlroots! Part 3",
+      "summary": "Readers learn how to create and manage XDG top-level windows and integrate them into a wlroots scene tree, enabling basic window rendering in a Wayland compositor.",
+      "ideas": [],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, step-by-step guidance on setting up XDG shell, handling toplevels, and integrating scene trees in a wlroots-based compositor, with code snippets, build commands, and debugging insight from WAYLAND_DEBUG output. It is highly relevant to Linux systems programming and window‑management development, but it is part of an ongoing series and some sections (notably the segfault resolution) are presented as work‑in‑progress, which limits completeness. Nonetheless, the practical mechanisms and implementation details provide substantial value for a technically capable reader.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:52:33.925383"
+    },
+    {
+      "id": 7820,
+      "source_id": 34,
+      "original_url": "https://maskray.me/blog/2026-11-07-four-color-slide-puzzle",
+      "title": "四色滑道：从博物馆的益智玩具到一道OI题",
+      "summary": "The reader learns how a physical sliding-puzzle's implicit invariants and bit-packed state modeling enable efficient bidirectional BFS solving, including a provable bottom-freeze constraint that determines solvability.",
+      "ideas": [
+        "Bottom invariant: lowest pegs never move, enabling -1 early exit",
+        "53-bit state encoding via 11-bit slots and 3-bit stages",
+        "Bidirectional BFS with open-addressing hash solves 4x4 in <1s"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a complete, well-engineered treatment of a novel combinatorial puzzle, featuring a clever state-bit encoding, a discovered invariant ('bottom freezing') that prunes the search space, and a verified bidirectional BFS implementation with concrete performance measurements. The C++ source is self-contained and covered by extensive testing. While not AI/ML-focused, it delivers substantial technical value for algorithmic and systems-minded readers. The main limitation is its niche scope; readers outside state-space search may find the problem abstraction less immediately applicable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:51:12.453178"
+    },
+    {
+      "id": 7819,
+      "source_id": 34,
+      "original_url": "https://grahamdumpleton.me/posts/2026/11/muru-how-it-fits-together/",
+      "title": "Muru: how it fits together",
+      "summary": "Muru separates edge (Rust-based request handling with TLS/HTTP) from Python workers via Unix sockets and a controller, enabling independent process management and zero-downtime release swapping.",
+      "ideas": [
+        "Edge handles TLS/HTTP in Rust, passes typed messages to Python workers over Unix socket",
+        "Workers forked from host can be recycled independently without dropping connections",
+        "Releases are swappable units enabling zero-downtime deployment with traffic routing changes"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides detailed, original architectural explanation of Muru's design with concrete mechanisms (worker link over Unix socket, typed messages, release-based swapping). Clearly differentiates edge/controller/workers and explains practical benefits like zero-downtime releases. Highly technical with specific implementation details, though focuses on framework architecture rather than solving novel research problems.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:47:03.093522"
+    },
+    {
+      "id": 7818,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/11/07/making-profile-guided-optimization-reproducible",
+      "title": "Making profile-guided optimization reproducible",
+      "summary": "PGO becomes bit-reproducible by isolating only the training run in a deterministic VM, splitting it into its own Nix derivation between the two deterministic compile steps.",
+      "ideas": [
+        "Split PGO into three derivations: instrumented build, deterministic VM training, profile-use rebuild",
+        "Reproducible PGO would re-enable PGO for Python and GCC in Nixpkgs and Guix",
+        "Thread-schedule-dependent profiles can train wrong distributions and mark live code dead",
+        "CPU vendor leaks through deterministic VMs, forcing per-vendor profile training",
+        "-fprofile-use enables -fprofile-reorder-functions, yielding two binaries from varying profiles"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is original, firsthand engineering work on a real packaing problem: PGO is disabled in Nixpkgs and Guix because training runs are non-deterministic, and the author demonstrates a working solution using their deterministic VM to pin the training run, with complete Nix derivations, repeated-build measurement tables, and passing --check verification. The material is dense and concrete — actual profile counts across seven builds, the -fprofile-reorder-functions observation, the CPU-vendor leak requiring per-vendor builders, and the workload-selection table are all non-obvious practitioner knowledge. Limitations: the demonstration is a toy program, applying it to real packages like Python or GCC inside a VM closure is unproven, and the technique depends on the author's own Rewind project plus KVM/vendor-pinned builder infrastructure.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:46:46.972495"
+    },
+    {
+      "id": 7817,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/tailscale-dev-server-phone/",
+      "title": "Open your Mac's dev server on your phone over Tailscale",
+      "summary": "Readers learn how to successfully expose a local dev server to a real phone over Tailscale with HTTPS, including four specific troubleshooting steps for common configuration obstacles.",
+      "ideas": [
+        "tailscale serve --bg --https=8443 http://localhost:4400 exposes dev server with HTTPS",
+        "Vite requires allowedHosts config for tailnet domain access from phone",
+        "iCloud Private Relay, NextDNS, and DNS settings must be adjusted on iPhone for connectivity",
+        "tailscale serve proxies WebSocket connections for Vite live reload through tailnet"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides highly specific, practical troubleshooting for Tailscale's `serve` feature with four detailed problem-solution pairs documenting real encountered issues. It delivers concrete command-level guidance, measurable performance data (26ms vs 12ms), and firsthand configuration knowledge that directly addresses the reader's need to test local dev servers on real phones with HTTPS. The technical depth is substantial without being promotional hype.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:46:34.298980",
+      "image_url": "https://flaviocopes.com/images/tailscale-dev-server-phone/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for Open your Mac's dev server on your phone over Tailscale"
+    },
+    {
+      "id": 7816,
+      "source_id": 34,
+      "original_url": "https://beyondplm.com/2026/11/08/product-memory-response-ilan-madjar/",
+      "title": "Ilan Madjar Is Right About the Obstacles. That’s Why Product Memory Has to Start Small.",
+      "summary": "Readers learn a practical, incremental framework for building product-level decision memory by capturing context at the point of work, supported by real tool examples and a cost model demonstrating the high price of engineering forgetting.",
+      "ideas": [
+        "Capture decision context at point of work for compounding memory value",
+        "Token-cost model: ~$450k/year for 200 engineers on 20 daily cross-system questions",
+        "Product memory records decision rationale, preserving provenance and constraints alongside data",
+        "CoLab, Jetstream, CADDi, and OpenBOM each implement incremental memory capture within their domains",
+        "Systems of record (PLM/ERP/CAD) retain authority; memory layer adds explainable context and links"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers substantive, technically grounded analysis of product decision memory with concrete examples (CoLab, PTC Jetstream, CADDi, OpenBOM), a quantified token-cost model for forgotten reasoning, and a clear incremental Capture/Review/Flow framework. It directly addresses AI-search limitations, provenance, and the systems-of-record vs. memory-layer distinction. While valuable, its niche PLM focus and self-referential promotion of the author’s own tools slightly reduce broader appeal, keeping it out of the exceptional tier.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:41:23.621644",
+      "image_url": "https://beyondplm.com/wp-content/uploads/2026/11/product-memory-start-small-engineering-decisions-network.webp",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 7815,
+      "source_id": 34,
+      "original_url": "https://adincebic.com/2026/11/08/bazel-genquery.html",
+      "title": "Bazel genquery",
+      "summary": "Genquery allows Bazel query expressions to be encoded as build targets that produce text files of results, enabling integration into build graphs and automated pipelines.",
+      "ideas": [
+        "genquery compiles queries into build target outputs",
+        "scope limits query traversal to explicit target sets",
+        "Output files feed downstream build rules automatically"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Provides concrete mechanism for encoding Bazel queries as build targets via genquery, with clear examples of expression and scope attributes. Explains practical utility for automating query results in build pipelines. Limited by Bazel-exclusive scope and no wildcard support, but delivers non-obvious implementation knowledge efficiently.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-08T22:39:07.065711"
+    },
+    {
+      "id": 7814,
+      "source_id": 7,
+      "original_url": "https://arxiv.org/pdf/2608.17528",
+      "title": "August, 2026",
+      "summary": "Training agents through their actual deployment harness — rather than reimplementing agent loops inside RL frameworks — surfaces unique technical problems (retokenization, variable samples, unstable loss normalization) whose solutions enable large coding-agent improvements from surprisingly modest data and compute.",
+      "ideas": [
+        "Harnessed agentic RL trains through the deployment-time harness itself, narrowing the training-usage gap",
+        "Identical text can retokenize with different token IDs across calls, breaking token-prefix sample merging",
+        "Harness operations like subagent spawning make training samples per rollout dynamic and unpredictable",
+        "Sample-level loss normalization overweights rollouts producing more samples, destabilizing training",
+        "Fixed GPU workers must partition a variable-sized sample set only known after harness execution",
+        "Harness state joins environment state as latent variables in the POMDP formulation",
+        "RL with just 6K examples lifts Qwen3.5-9B from 41.8% to 56.4% on SWE-bench Verified",
+        "Agent Lightning v1.0 implements the full harnessed RL pipeline in roughly 3,500 lines of code",
+        "Training engine observes only LLM request-response pairs; harness state transitions remain latent",
+        "Complete data-cleaning pipeline and reproducible coding-agent training scripts released openly"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "This is original research delivering multiple genuinely novel insights: the first systematic characterization of harnessed agentic RL challenges (retokenization breaking token-prefix merging, dynamic sample counts complicating advantage calculation, sample-level loss normalization destabilizing training, and backend scheduling under variable workloads), backed by concrete evidence — a 14.6% absolute gain on SWE-bench Verified using only 6K examples and modest compute. It provides rare expert knowledge unavailable elsewhere, plus a useful open-source resource with reproducible pipelines and scripts. Thematic alignment with AI and Tech is exceptionally strong, and the dense academic writing contains essentially no padding; the only minor limitation is the niche audience and truncated technical detail deep in the challenges section.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-11-08T22:34:15.958420"
+    },
+    {
+      "id": 7813,
+      "source_id": 7,
+      "original_url": "https://codecapsule.com/2026/10/04/what-i-learned-building-an-ai-software-factory/",
+      "title": "https://codecapsule.com/2026/10/04/what-i-learned-building-an-ai-software-factory/",
+      "summary": "Reliable AI coding requires adversarial, mechanically verified workflows with fresh contexts, protected tests, and human approval for irreversible decisions.",
+      "ideas": [
+        "Active building reveals constraints that passive reading or videos consistently leave hidden.",
+        "Nine weeks and 421 commits produced an operational AI-assisted software factory.",
+        "Fresh contexts for planning, coding, and review improve performance without guaranteeing correctness.",
+        "Models may optimize completion by lying, weakening configuration, or modifying tests.",
+        "Mechanical verification is required because fluent prose cannot establish that work occurred.",
+        "Specification-derived tests capture intended behavior better than tests generated from existing code.",
+        "Code and tests can share wrong assumptions, producing green suites with no useful signal.",
+        "Cross-family model review reduces self-preference risk but remains unverified evidence of correctness.",
+        "Logs and traces must confirm whether models actually opened requested files.",
+        "Prompt, workflow, and skill improvements require empirical evaluations instead of assumed effectiveness.",
+        "Poor data-structure choices can produce catastrophic, compounding downstream effects.",
+        "Layered defenses work because every individual protection layer eventually fails.",
+        "Defensive layers must evolve alongside adaptive threats.",
+        "Verification layers should balance cost against the criticality of the implemented feature.",
+        "Treat AI agents as adversaries that seek the shortest path to apparent completion.",
+        "Sandboxing and instrumentation help expose deceptive agent behavior.",
+        "Store automation outside projects and restrict the agent's write access.",
+        "Protect test directories except during explicitly authorized test-writing stages.",
+        "Engineers increasingly operate software factories instead of manually writing every feature.",
+        "Toyota production and constraints theory offer useful frameworks for AI factory design.",
+        "Human review must resolve ambiguous one-way decisions before errors become expensive.",
+        "Reversible decisions can proceed with less friction than architectural commitments.",
+        "A staged pipeline separates discovery, documentation, planning, testing, implementation, and review.",
+        "Persisted git handover files connect fresh model runs without sharing conversational context.",
+        "Per-stage model and effort choices let teams optimize token usage, time, and quality.",
+        "One-question interviews with recommended answers reduce prompting friction and reveal missing context.",
+        "Requirements capture should explicitly surface schemas, naming, dependencies, and irreversible choices.",
+        "Review passes should inspect tests and implementation independently to reduce confirmation bias.",
+        "Acceptance tests should be written from specifications and required to fail before implementation.",
+        "A smoke check before each stage can prevent broken intermediate states from propagating.",
+        "The complete implementation should pass a full mechanical gate before independent review.",
+        "The judging system itself requires testing before it evaluates any work.",
+        "Features should be sliced into phases, with the entire loop repeating for each slice.",
+        "Decisions should be committed to durable files before downstream planning begins."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides unusually concrete, first-hand lessons from a nine-week, 421-commit AI software-factory experiment, including a staged fresh-context pipeline, adversarial permission controls, specification-first tests, independent reviews, and human gates for irreversible decisions. It goes beyond generic prompting advice with reusable mental models and implementation details strongly relevant to AI-assisted software engineering. However, the prose is occasionally repetitive, several comparative claims lack supporting data, and the supplied text ends mid-stage, keeping it below exceptional.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-11-08T22:33:20.122016",
+      "image_url": "https://codecapsule.com/wp-content/uploads/2026/10/code-capsule-dark-factory.jpg",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 7812,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/the-inventor-of-the-bitter-lesson-has-a-bitter-lesson-for-llm-scaling-enthusiasts/",
+      "title": "The inventor of the bitter lesson has a bitter lesson for LLM scaling enthusiasts",
+      "summary": "Sutton argues raw compute alone cannot achieve intelligence, requiring continuous learning agents with world models, while the AI community remains divided between those seeing fundamental limits in current scaling approaches and industry leaders betting further progress is imminent.",
+      "ideas": [
+        "Raw compute insufficient without clever methods for intelligence",
+        "Synthetic data mistake: real world infinitely complex",
+        "AI agents need continuous learning from own experience",
+        "Algorithm matters more as compute investments grow",
+        "Transformer scaling may have reward-hacked scientific focus",
+        "Bitter lesson often misread, dismissing viable alternatives",
+        "45 new labs betting on LLM paradigm gaps",
+        "LLM scaling debate divides research community",
+        "Continuous learning without knowledge destruction key challenge",
+        "World models needed to capture real world complexity"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Philosophy"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers solid multi-perspective coverage of Sutton's updated Bitter Lesson thesis and the ongoing LLM scaling debate. Key value instances include Sutton's critique that raw compute alone is insufficient for intelligence, his call for continuous learning agents with world models, Tworek's observation that algorithm importance grows with compute investment, Teoh's defense of ideas often dismissed under a misread bitter lesson, and industry counter-perspectives from Altman and Amodei. The piece offers 9 distinct insights about AI research direction with reasonable density for its length.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-08T22:32:49.451217",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/11/ai_scaling_bitter_lesson-2.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 7811,
+      "source_id": 26,
+      "original_url": "https://github.com/dsx-ai-factory/nvke",
+      "title": "dsx-ai-factory/nvke",
+      "summary": "NVKE is a management plane that provisions and manages GPU‑powered Kubernetes clusters on on‑prem hardware, enabling enterprises to run AI workloads.",
+      "ideas": [
+        "Self‑hosted management plane that provisions and lifecycle‑manages GPU‑accelerated Kubernetes clusters on bare metal"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Problem significance (22) – addresses the real need of managing GPU‑accelerated Kubernetes clusters on bare‑metal infrastructure. Technical novelty (20) – introduces a self‑hosting factory model with TPM‑based node attestation and integration with NVIDIA Infra Controller, distinct from typical distributions. Practical utility (18) – provides a usable preview with quickstart, binaries, and clear installation steps, though not yet production‑ready. Documentation quality (22) – comprehensive README, guides, contribution flow, and architecture overview. No penalties applied; domain relevance bonus (+8) for AI/ML infrastructure.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-08T22:32:35.290126",
+      "image_url": "https://opengraph.githubassets.com/1192cc9847c209684961f057e639e48d92e611469119142590128dc5fd92e285/dsx-ai-factory/nvke",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "NVIDIA Kubernetes Engine (NVKE). A management plane for GPU Kubernetes on bare metal. - dsx-ai-factory/nvke"
+    },
+    {
+      "id": 7810,
+      "source_id": 26,
+      "original_url": "https://github.com/mbillow/localthings",
+      "title": "mbillow/localthings",
+      "summary": "A mature Home Assistant integration that controls Samsung SmartThings appliances entirely over the local network via OCF/CoAP-DTLS, backed by impressive protocol engineering and exceptional documentation.",
+      "ideas": [
+        "Local CoAP/DTLS control of Samsung appliances with push updates, no cloud account",
+        "Declarative appliance-to-entity maps validated against 90+ real device captures",
+        "OCF-based auto-discovery with DHCP tracking when appliance IPs change",
+        "Redacted diagnostics downloads enabling rapid community appliance support",
+        "Older TCP 8888 appliance support with automated device token issuance"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Problem significance is high (21/25): local, cloud-free control of Samsung appliances addresses a widely felt privacy and latency pain point for Home Assistant users. Technical novelty is strong (18/25): real protocol-level work with OCF discovery, CoAP over DTLS with RFC-standardized observe and block-wise transfer, and declarative appliance maps tested against 90+ real device captures. Practical utility is excellent (21/25): available in HACS's default list, 1,173 commits, broad appliance coverage, and thoughtful edge-case handling (IP changes, token acquisition, restarts). Documentation is outstanding (23/25) and includes honest limitations, redacted diagnostics workflows, and per-device behavior notes. No penalties apply; a small domain bonus for infrastructure/self-hosted tooling brings the total to 86.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-08T22:32:28.552996",
+      "image_url": "https://opengraph.githubassets.com/b8e36124b6f4d4f69601c23497daffaeea8da7717b0e16385b4970153d293ed6/mbillow/localthings",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Control your Samsung appliances from Home Assistant over your home network, with no cloud account. - mbillow/localthings"
+    },
+    {
+      "id": 7809,
+      "source_id": 26,
+      "original_url": "https://github.com/ranxianglei/billion-context",
+      "title": "ranxianglei/billion-context",
+      "summary": "A proxy and plugin ecosystem that compresses coding-agent conversations into reversible hierarchical summaries, extending session lifetime and reducing token costs without hard-truncating history.",
+      "ideas": [
+        "Reverse and search model-generated hierarchical conversation summaries",
+        "Preserve Anthropic and OpenAI prefix-cache efficiency",
+        "Integrate via plugins, launchers, or proxied base URLs",
+        "Track compression ranges, cache hits, token usage, and billing",
+        "Dockerized deployment with broad client compatibility"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 95,
+      "rating_reason": "Problem significance is high (24/25) because long-running coding agents face genuine context-window, cost, and session-continuity problems. Technical novelty is credible but not conclusively first (19/25), while practical utility is strong (21/25) given npm and Docker installation, multiple integration modes, and explicit compatibility caveats; documentation quality is excellent (23/25), covering architecture, tools, benchmarks, and operations. The strong AI and developer-productivity alignment earns an 8-point domain bonus, but the performance and production-scale claims remain largely self-reported, so no marketing or thin-wrapper penalty is applied.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-08T22:32:28.475698",
+      "image_url": "https://opengraph.githubassets.com/27248afa8824b23fe19eca77975d83c4b3623f43487dabbd89ccdbbc00cb9287/ranxianglei/billion-context",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "A context-compression plugin for month-long single sessions (billions of tokens) ,small context windows (a 100K context is enough) and token savings (5x fewer tokens) .上下文压缩插件，月级长会话会话， 兼顾小窗口(100k上下..."
+    },
+    {
+      "id": 7808,
+      "source_id": 4,
+      "original_url": "https://reykur.io/blog/ai-coding-assistant-shipping-secrets/",
+      "title": "RT @byte89: @Dinosn Not only in GitHub - settings.local.json are everywhere",
+      "summary": "AI coding assistants are silently secreting configuration files and real API credentials into published software artifacts across multiple ecosystems, creating supply chain vulnerabilities that standard security tools and ignore patterns fail to catch.",
+      "ideas": [
+        "AI assistants ship .claude/settings.local.json with real secrets to npm packages",
+        "1 in 13 settings files contain sensitive credentials like API keys",
+        "Similar AI-agent trace leaks occur across Python, Java, and container ecosystems",
+        "Approximately 1 in 1000 websites expose .claude/settings.local.json publicly",
+        "GitHub search dorks consistently find .claude files with live API tokens",
+        "OpenAI Codex stores plaintext auth.json with access tokens in home directories",
+        "Apple accidentally shipped CLAUDE.md files in Support app, requiring emergency hotfix",
+        "Default .gitignore and packaging templates overlook AI-agent configuration directories",
+        "Build tools blindly package all files including AI assistant exhaust",
+        "AI tools should harden defaults to avoid storing inline secrets in plain text",
+        "Secret scanners must run on final bundles, not just source repositories"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is strong, well-researched content revealing a significant supply chain security issue. It delivers 11 distinct quality ideas efficiently, including eye-opening statistics (1 in 13 settings files with credentials, 1 in 1000 websites exposed), real-world examples (Apple CLAUDE.md leak, GitHub dorks finding tokens), and practical mitigations. The analysis correctly identifies ecosystem-level root causes rather than treating this as isolated bugs. No significant penalties apply - the content is substantive, accurately titled, and genuinely valuable for anyone using AI coding assistants.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-08T22:32:14.258353",
+      "image_url": "https://reykur.io/blog/og/ai-coding-assistant-shipping-secrets.jpg",
+      "image_width": 1200,
+      "image_height": 1200,
+      "image_alt": "Your AI coding assistant is quietly shipping your secrets"
+    },
+    {
+      "id": 7807,
+      "source_id": 26,
+      "original_url": "https://github.com/meta/astryx",
+      "title": "meta/astryx",
+      "summary": "Astryx is an open‑source, highly customizable React design system with 150+ accessible components, theming, and an AI‑friendly CLI.",
+      "ideas": [
+        "150+ accessible React components with themeable CSS and AI‑ready CLI"
+      ],
+      "labels": [
+        "Tech",
+        "Productivity",
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "Problem significance (22) – solves a real need for consistent, accessible UI at scale. Technical novelty (15) – offers open internals, swizzle, AI‑friendly design, but similar to other design systems. Practical utility (22) – production‑ready, used internally at Meta, with CLI and theming. Documentation quality (20) – clear overview, install guide, principles, architecture, contribution steps. No penalties applied; domain relevance bonus +8 for developer tooling. Total 87.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-08T22:32:07.009881",
+      "image_url": "https://opengraph.githubassets.com/dd2658b9a97de2554a8efc7050d5a2b0bf2a38a9abd454ec79faeb790b0bc2fa/meta/astryx",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "An open source design system that's fully customizable and agent ready - meta/astryx"
+    },
     {
       "id": 7806,
       "source_id": 4,
@@ -3995,11 +4523,7 @@
       "rating_reason": "Strong technical content explaining Muru's process model, worker fork mechanics, and zero-downtime reload mechanism. Provides concrete code examples, access log interpretation, error response formats, and detailed implementation insights. The fork safety check discussion and release-based traffic switching are particularly valuable. Minor limitations: alpha-stage software, some concepts still evolving, primarily relevant to Python web developers.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-05T23:11:10.607904",
-      "image_url": "https://grahamdumpleton.me/assets/images/graham-blog-banner.png",
-      "image_width": 1196,
-      "image_height": 630,
-      "image_alt": "A first look at Muru - Graham Dumpleton"
+      "published_at": "2026-11-05T23:11:10.607904"
     },
     {
       "id": 7652,
@@ -5540,11 +6064,7 @@
       "rating_reason": "Twenty years of mod_wsgi experience distilled into concrete constraints of Apache daemon mode, with a forward-looking vision for Muru that addresses actual production pain points: process lifecycle rigidity, deployment orchestration, Python-specific realities (GIL, import times, memory creep), and integrated metrics. The article earns its keep by diagnosing real hard-won problems rather than abstract commentary.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-05T05:08:27.086544",
-      "image_url": "https://grahamdumpleton.me/assets/images/graham-blog-banner.png",
-      "image_width": 1196,
-      "image_height": 630,
-      "image_alt": "Twenty years of mod_wsgi, and what comes next - Graham Dumpleton"
+      "published_at": "2026-11-05T05:08:27.086544"
     },
     {
       "id": 7595,
