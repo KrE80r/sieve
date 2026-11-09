@@ -1,11 +1,404 @@
 {
   "schema_version": 1,
-  "sequence": 1914,
-  "revision": "sha256:d7e8883ebe578bcff1b753a087feb074dd26215d50fb3075e38277ce1e1e67d3",
-  "generated_at": "2026-11-09T18:00:00.367402+00:00",
+  "sequence": 1915,
+  "revision": "sha256:b5062b375341908f30e56a1ad0d6f41fa262c4cceaf4d49230aaa59fe388c36f",
+  "generated_at": "2026-11-09T19:00:00.188111+00:00",
   "complete": true,
-  "total_items": 1258,
+  "total_items": 1277,
   "items": [
+    {
+      "article_id": "article:7858",
+      "original_url": "https://www.fratepietro.com/2026/moe-layout-megatron-pipeline-planner-mtp/",
+      "title": "One Stage Sets the Pace: Planning Megatron Pipeline Layouts for MoE Models with MTP",
+      "summary": "Profiling actual stage costs and simulating pipeline schedules can balance MoE training pipelines far better than Megatron's default layer allocation.",
+      "rating": 88,
+      "rating_reason": "This is focused, unusually actionable ML systems engineering: it presents a working planner that profiles Megatron, estimates unit costs, simulates 1F1B scheduling, and searches memory-feasible MoE/MTP layouts. Its original A100 and H200 experiments report a 1.39x improvement over Megatron's default on 8x H200 and demonstrate that FLOPs estimates produce materially wrong costs, with commands and an implementation supporting reproducibility. Evidence remains limited to one node, one model shape, short early-training runs, a reduced H200 batch, and unmodeled interleaving and jitter, but these limitations are clearly identified.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:27:09.065385+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:27:09.065385+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7857",
+      "original_url": "https://vivianvoss.net/blog/alpine-sshd-star",
+      "title": "Alpine's sshd Matched a Star",
+      "summary": "A cross-project interaction between musl's crypt failure value, OpenSSH's invalid-account salt borrowing, and Alpine's no-PAM configuration allowed overlong SSH passwords to authenticate against locked accounts.",
+      "rating": 95,
+      "rating_reason": "The article gives an unusually precise, source-backed analysis of an Alpine SSH authentication bypass caused by musl returning \"*\" on crypt failure, OpenSSH borrowing a salt, and locked shadow entries also using \"*\". It supports the mechanism with a 17,600-login build matrix, relevant commits and code paths, a contrasting FreeBSD implementation, and concrete fixes, making the finding non-obvious and operationally useful. It is not a complete exploit reproduction, and its broader \"one tree\" argument is interpretive, but these limitations do not materially weaken the core result.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:24:35.640428+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:24:35.640428+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7856",
+      "original_url": "https://techaddo.com/posts/claude-code-prompt-caching",
+      "title": "Claude Code's prompt cache: a cold miss costs more than no cache",
+      "summary": "Claude Code sessions become cheaper when users preserve stable prefixes, avoid cache-breaking changes, compact while warm, and select cache TTLs according to session length.",
+      "rating": 86,
+      "rating_reason": "This is a dense, directly relevant explanation of Claude Code's prompt-cache behavior, including exact-prefix matching, invalidation triggers, cache lifetimes, break-even arithmetic, and operational ways to reduce inference cost. It provides concrete commands, configuration details, sourced calculations, and an honest account of unresolved subscription-accounting questions. Its main limitation is that it largely synthesizes vendor documentation and list prices rather than presenting independent measurements, making its numerical guidance sensitive to rapid product and pricing changes.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:23:05.185768+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:23:05.185768+00:00",
+      "image": {
+        "url": "https://techaddo.com/posts/claude-code-prompt-caching/cover.png",
+        "width": 1600,
+        "height": 800,
+        "alt": "Diagram titled 'A cold miss costs more than no cache': the same request (system + tools, CLAUDE.md, messages, new) drawn twice. On the warm turn a grey line marks the prefix as read at 0.05x and a green line marks the new message as written"
+      }
+    },
+    {
+      "article_id": "article:7855",
+      "original_url": "https://peng.fyi/post/sysfs-superblock-race/",
+      "title": "Remount sysfs to make its superblock rw: mount -o remount,rw /sys",
+      "summary": "In a shared network namespace, the first sysfs mount determines whether all containers use a read-only or read-write sysfs superblock, and remounting the superblock with mount -o remount,rw /sys makes EFS readahead tuning work.",
+      "rating": 90,
+      "rating_reason": "The article combines a concrete performance symptom with a detailed, code-backed explanation of sysfs superblock and network-namespace sharing, then gives a precise remediation command. It is highly relevant to Linux container storage tuning and explains permissions, mount-layer semantics, and why simpler remounts fail. Its value is somewhat scoped to EFS/containerd environments, but the kernel mechanism is broadly useful.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:16:58.061622+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:16:58.061622+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7854",
+      "original_url": "https://nathan.rs/posts/weight-space-lp/",
+      "title": "Can a Linear Program Do Weight-Space Programming?",
+      "summary": "A linear program can replace expensive trial‑and‑error searches to edit transformer weights and eliminate looping behavior, achieving comparable accuracy with far fewer weight changes.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete, reproducible details on turning weight‑space programming into a linear‑programming problem, including equations, LP formulation, GPU solver implementation, and benchmark results that cut edit time from hours to minutes. It is directly relevant to AI model‑editing and inference steering, offering novel insight beyond the original paper. Limitations include testing on a single model, reliance on Astra for direction vectors, and modest generality, which keeps it from the highest tier.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:12:46.354392+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:12:46.354392+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7853",
+      "original_url": "https://matthewgribben.com/blog/written-neural-nets-functional",
+      "title": "Can LLM Hand-Written Neural Networks Be Useful?",
+      "summary": "LLM-authored, reproducible small neural networks can detect coding-agent loops more robustly off-distribution than a conventionally trained equivalent and approximate cumulus-cloud light transport interactively in the browser.",
+      "rating": 88,
+      "rating_reason": "The article presents two concrete LLM-authored neural-network experiments with detailed metrics, costs, runtime figures, reproducibility claims, and implementation mechanisms, including off-distribution and held-out evaluations. It is technically dense and directly relevant to ML engineering and graphics, though its conclusions are limited by single authoring runs, synthetic data/scenes, and unverified model claims.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:10:30.924603+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:10:30.924603+00:00",
+      "image": {
+        "url": "https://matthewgribben.com/api/media/file/written-neural-nets-functional-social-1794207780254.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7852",
+      "original_url": "https://jimbobbennett.dev/blogs/missing-chicken-agent-handoffs/",
+      "title": "The missing chicken - why you need to check handoffs between AI agents",
+      "summary": "Multi-agent handoffs should be verified against the recipient's actual state, not only the sender's tool-reported success.",
+      "rating": 88,
+      "rating_reason": "The article combines a concrete multi-agent handoff failure with useful evaluation guidance: compare the sender's tool/report claim against the recipient's actual state, trace each hop separately, and retain final-state checks. It adds grounded evidence from a Minecraft agent run, MAST's verifier-failure statistics, false-success benchmarks, error amplification comparisons, and trade-offs around verification cost. Its main limits are that some supporting statistics come from cited studies rather than original analysis, and part of the advice summarizes known multi-agent evaluation practices.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:02:39.207569+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:02:39.207569+00:00",
+      "image": {
+        "url": "https://jimbobbennett.dev/blogs/missing-chicken-agent-handoffs/cover.png",
+        "width": 1920,
+        "height": 1080,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7851",
+      "original_url": "https://janni.turunen.in/glm-53-flash-on-one-b200/",
+      "title": "GLM-5.3-Flash fits on one B200",
+      "summary": "Selective caching of active MoE experts can run an otherwise oversized 313B-parameter model on one B200, but it is a memory-fitting fallback rather than a fast production path.",
+      "rating": 89,
+      "rating_reason": "This is unusually concrete, firsthand inference engineering: it explains sparse-MoE expert residency, PCIe transfer costs, memory-budget arithmetic, and a tested FreeToken configuration on a single B200. The 497 successful requests, loading time, throughput, and power draw provide useful original measurements while explicitly distinguishing feasibility from speed. Its main limitation is the uncontrolled one-hour test, with no latency distribution, model-quality evaluation, or realistic multi-user serving assessment.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:02:11.442098+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:02:11.442098+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7850",
+      "original_url": "https://internals-for-interns.com/posts/go-compiler-pgo/",
+      "title": "Inside PGO",
+      "summary": "Go's PGO reduces CPU profiles to weighted call edges keyed by line offsets from function starts, enabling guarded devirtualization, hot-site-only inlining at a 2000 budget, and cache-line loop alignment for hot functions.",
+      "rating": 88,
+      "rating_reason": "This is a mechanism-level deep dive into Go's PGO implementation, backed by exact source citations (cmd/internal/pgo, devirtualize/pgo.go, inline/inl.go), concrete thresholds (80 vs 2000 inline budgets, 99% CDF hot-edge cut), and a worked example tracing how a real profile becomes compiler edges. It delivers genuinely non-obvious findings: profiles are trimmed to caller-callee edges keyed by function-relative line offsets, those offsets silently break on edits inside a function, devirtualization ignores the hotness cut and just picks the most-sampled type, and the 2000 inline budget applies per hot call site rather than per function. The explanation is didactic rather than original measurement, and the content is truncated near the end, but the depth and source-grounded precision clearly exceed typical PGO documentation or tutorials. Directly relevant to compiler internals and software-engineering practice.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:01:17.670649+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:01:17.670649+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7849",
+      "original_url": "https://homenetworkguy.com/homelab-storage/oupes-ups1200-nut-automatic-shutdown/",
+      "title": "Configure NUT for Automatic UPS Shutdowns on Linux with the OUPES UPS1200",
+      "summary": "The reader gains a practical architecture and tested configuration for reliably coordinating graceful Linux shutdowns from a poorly reporting USB UPS through NUT.",
+      "rating": 87,
+      "rating_reason": "This is a strong, hands-on Linux and sysadmin guide with concrete NUT configurations, systemd commands, shutdown topology, and device-specific troubleshooting. Its most valuable contribution is the tested OUPES and nutdrv_qx battery-scaling workaround, together with candid caveats about inferred charge, runtime reporting, DHCP dependence, and communication paths during outages. It is somewhat promotional and the supplied excerpt ends mid-configuration, but the documented material remains highly actionable and mechanism-rich.",
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:00:43.083025+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:00:43.083025+00:00",
+      "image": {
+        "url": "https://homenetworkguy.com/images/homelab-storage/oupes-ups1200-nut-automatic-shutdown/featured.jpg",
+        "width": 1440,
+        "height": 810,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7848",
+      "original_url": "https://hiraditya.github.io/posts/apple-has-the-silicon-not-the-language/",
+      "title": "Apple Has the Silicon for AI Agents. It Doesn't Have the Language.",
+      "summary": "Apple’s heterogeneous silicon can be programmed coherently with Vx, but Core ML’s ANE placement is opaque and depends on graph structure, not just operation type.",
+      "rating": 85,
+      "rating_reason": "The article delivers concrete Vx code, detailed dispatcher logs, and original measurements of Core ML’s ANE placement, exposing undocumented thresholds and copy overheads. It directly addresses the challenge of unifying CPU, GPU, and Neural Engine programming for on‑device agents, which is highly relevant to AI/ML systems engineers. The depth is strong, though the focus is niche to Apple silicon and the Vx framework, limiting broader novelty.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T05:00:09.560157+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T05:00:09.560157+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7847",
+      "original_url": "https://cekrem.github.io/posts/csharp-15-union-types/",
+      "title": "C# 15: Union Types, Closed Hierarchies, and the One Value™ That Isn't Any of Them",
+      "summary": "C# 15 unions enable useful closed-case pattern matching but retain sharp edges around exhaustiveness, default values, allocation, serialization, and cross-language use.",
+      "rating": 88,
+      "rating_reason": "This is a dense, reproducible investigation of C# 15 unions using a specific SDK release candidate rather than a summary of feature announcements. Its valuable findings include unenforced exhaustiveness, unchecked switch statements, an unmatched default struct state, boxing, ambiguous JSON round-tripping, and weak interoperability with F# discriminated unions. The comparisons are occasionally opinionated and RC behavior may change before GA, but the compiler examples make the article highly actionable for .NET engineers.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T04:52:51.882960+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:52:51.882960+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7846",
+      "original_url": "https://boring-observability.dev/blog/laravel-wheredate-mysql-index",
+      "title": "https://boring-observability.dev/blog/laravel-wheredate-mysql-index",
+      "summary": "Several common Eloquent date, JSON, LIKE, and cross-type filters become non-sargable SQL unless rewritten or supported by a matching indexed expression or generated column.",
+      "rating": 92,
+      "rating_reason": "The article pairs EXPLAIN results with concrete Laravel/MySQL rewrites for whereDate, whereYear, LIKE, type-mismatched comparisons, and JSON access, including subtle Carbon mutation and timestamp-precision failure modes. It provides measured, practitioner-focused substance and clear remediation rather than generic indexing advice. It is framework- and engine-specific, and the captured text ends mid-sentence, so a small portion of the final EXPLAIN guidance is incomplete.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T04:52:18.944998+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:52:18.944998+00:00",
+      "image": {
+        "url": "https://boring-observability.dev/og/blog/laravel-wheredate-mysql-index.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Skyline — queue control for Laravel Horizon."
+      }
+    },
+    {
+      "article_id": "article:7845",
+      "original_url": "https://blog.victorsilva.com.uy/oci-terraform-backend-object-storage/",
+      "title": "Terraform OCI Backend: Securing State in Object Storage",
+      "summary": "The reader gains a practical blueprint for securing Terraform state in OCI, including a likely documentation defect, precise object permissions, locking mechanics, encryption caveats, and secret-exposure risks.",
+      "rating": 87,
+      "rating_reason": "This is a dense, implementation-level guide covering Terraform's OCI backend, least-privilege IAM, KMS-backed Object Storage, state migration, locking, versioning, and lifecycle controls. Its standout finding is that overwriting existing state requires OBJECT_OVERWRITE, which appears to be missing from HashiCorp's documented permission list, while the source-level explanation of conditional locking and ETag compare-and-delete is unusually useful. The main limitations are that the permission discrepancy was inferred rather than reproduced in a tenancy, some operational details remain version-dependent, and the supplied article is truncated during its access-logging section.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T04:51:13.554752+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:51:13.554752+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7844",
+      "original_url": "https://arthurbrugiere.fr/blog/2026/11/small-coding-model-arc-igpu/",
+      "title": "Tuning small LLM on my ThinkPad iGPU: from backend, to fast(-ish) long context",
+      "summary": "Hands-on Intel iGPU experiments show that driver choice, architecture, and weight movement—not short-prompt speed—dominate small-LLM performance as context grows.",
+      "rating": 86,
+      "rating_reason": "The post provides unusually concrete, reproducible llama.cpp and SYCL guidance, including kernel flags, backend trade-offs, quantization settings, and context-depth benchmarks on an Arrow Lake iGPU. Its measurements reveal non-obvious effects—xe substantially outperforming i915, dense models scaling better than MoE models at long context, and limited versus global attention tracking degradation—although some comparisons use different builds or model sizes and the causal explanations remain partly speculative. The supplied article is truncated midway through the speculative-decoding section, so its advertised long-context speculation result is not substantiated here.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T04:44:40.187454+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:44:40.187454+00:00",
+      "image": {
+        "url": "https://arthurbrugiere.fr/blog/2026/11/small-coding-model-arc-igpu.webp",
+        "width": 1200,
+        "height": 630,
+        "alt": "Tuning small LLM on my ThinkPad iGPU: from backend, to fast(-ish) long context — Arthur Brugière"
+      }
+    },
+    {
+      "article_id": "article:7843",
+      "original_url": "https://www.certkit.io/ca-report",
+      "title": "Certificate authority list: every CA's incident record since 2017",
+      "summary": "Per million peak certificates, small and regional CAs show dramatically higher incident rates than high-volume providers like Let's Encrypt.",
+      "rating": 82,
+      "rating_reason": "Original compiled dataset tracking 1,581 incidents across 108 CAs (2017–Nov 2026), with a transparent methodology and downloadable CSVs, plus novel per-certificate normalization that reveals small CAs can have incident rates 1000x higher than large ones (e.g., Netlock at 15,169 vs. Let's Encrypt at 0.047 per million peak). Multiple value instances including severity tiers, late-revocation and slow-answer tracking, self-report rates, and distrust history (Entrust 2024, eMudhra 2026). Minor penalty: embedded CertKit product promotion and heavy navigation/footer boilerplate. Strong thematic alignment with cybersecurity and infrastructure.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-10T04:34:56.745965+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:34:56.745965+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7842",
+      "original_url": "https://the-decoder.com/tencents-ai-chief-says-ai-bioweapons-are-coming-but-closing-off-models-isnt-the-answer/",
+      "title": "Tencent's AI chief says AI bioweapons are coming, but closing off models isn't the answer",
+      "summary": "AI bioweapon risks require combining open and closed models, with safety embedded during training instead of relying on easily removable filters.",
+      "rating": 80,
+      "rating_reason": "The article delivers multiple concrete insights with strong AI/cybersecurity relevance: it clarifies the limits of the Hugging Face case, explains how abliteration bypasses open-model filters, notes that training-data filtering resists such removal, and reports specific industry policies from Anthropic and Tencent. The density is good for its length and the details are attributed rather than generic. No major clickbait or padding penalties apply.",
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "source_id": 28,
+      "source_name": "The Decoder",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T04:34:14.911274+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:34:14.911274+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7841",
+      "original_url": "https://sebastianraschka.com/blog/2026/open-october-llm-architecture-releases.html",
+      "title": "Open October LLM Architecture Roundup",
+      "summary": "October produced a surge of open LLM releases, each introducing distinct attention or sparsity mechanisms.",
+      "rating": 82,
+      "rating_reason": "The post delivers ten concrete, technical insights about newly released open-weight LLM architectures, offering a concise reference for AI practitioners. It aligns strongly with the AI theme and maintains high value density with minimal filler or promotional fluff. Minor self‑promotion (future Substack article) does not detract from its overall usefulness.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 17,
+      "source_name": "Sebastian Raschka",
+      "source_type": "rss",
+      "admitted_at": "2026-11-10T04:33:38.720583+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:33:38.720583+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7840",
+      "original_url": "https://thehackernews.com/2026/11/default-adminadmin-server-password.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Misconfigured default admin access on identity platforms can let attackers remotely unlock and start connected cars.",
+      "rating": 82,
+      "rating_reason": "The article provides several concrete value instances: a novel exploit using default admin credentials and URL encoding tricks, practical mitigation steps for identity teams, real-world evidence of remote car control, and broader industry context about similar misconfigurations. It stays focused on cybersecurity with minimal promotional fluff, so only a small penalty applies. The density of insights (5‑6) in a medium‑length piece yields a solid good rating.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-10T04:32:08.414008+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-10T04:32:08.414008+00:00",
+      "image": null
+    },
     {
       "article_id": "article:7839",
       "original_url": "https://vincentzed.com/writing/softmax-wall",
