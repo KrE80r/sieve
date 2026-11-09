@@ -1,7 +1,291 @@
 {
-  "updated_at": "2026-11-09T06:00:00.393330+00:00",
-  "total_items": 1249,
+  "updated_at": "2026-11-09T07:00:00.182642+00:00",
+  "total_items": 1260,
   "items": [
+    {
+      "id": 7839,
+      "source_id": 34,
+      "original_url": "https://vincentzed.com/writing/softmax-wall",
+      "title": "The Softmax Wall and the 2:4 Sparse Attention Trap",
+      "summary": "Softmax has become the primary bottleneck for low‑precision Transformer attention, and fine‑grained 2:4 sparsity harms performance, while coarse token‑level sparsity and softmax‑specific optimizations restore efficiency.",
+      "ideas": [
+        "Softmax latency dominates when matrix cores reach FP8/F4 throughput.",
+        "Lean P replaces exponential with a multiply‑add + conversion, cutting softmax cycles by >50%.",
+        "2:4 sparse Tensor Cores shift work to registers and memory, causing net slowdowns.",
+        "Coarse token‑level pruning (top‑k) skips >99% of attention work with minimal accuracy loss.",
+        "Empirical data across 221k configs shows dense FP8/NVFP4 always beats 2:4 sparsity."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides deep, measurement‑backed analysis of why softmax, not GEMM, now dominates Transformer attention on modern GPUs, complete with per‑SM cycle budgets, hardware‑specific tricks, and a rigorous critique of 2:4 sparsity. It includes concrete numbers, kernel‐level observations, and reproducible experiments (e.g., Lean P, TMEM round‑trip costs), offering actionable insight for AI engineers. The content is highly focused and technically dense, though its length and occasional marketing‑style phrasing slightly reduce efficiency.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T17:20:33.845242"
+    },
+    {
+      "id": 7838,
+      "source_id": 34,
+      "original_url": "https://naveensrinivasan.com/posts/2026-11-08-my-wx-hook-was-letting-things-be-w-plus-x/",
+      "title": "My W^X Hook Was Letting Things Be W+X",
+      "summary": "An mprotect policy must reject requested write and execute permissions together rather than treating an already-executable mapping as harmless.",
+      "ideas": [
+        "Request RWX on an RX mapping to bypass a hook checking only current executability.",
+        "Evaluate requested permission transitions, not merely existing VMA permissions.",
+        "Test adding write permission to already-executable memory mappings."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a focused, technically substantive account of an eBPF LSM W^X enforcement bypass, with the relevant hook code, exploit sequence, fix, and missing test case. It demonstrates the important general lesson that authorization logic must evaluate requested permission transitions rather than assume the current state cannot become more dangerous. The article is brief and does not explore VMA granularity, kernel-version caveats, or the complete implementation, but its concrete firsthand finding is highly actionable for security and kernel engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T17:07:10.304377"
+    },
+    {
+      "id": 7837,
+      "source_id": 34,
+      "original_url": "https://marzer.github.io/blog_2026_11_08.html",
+      "title": "gg, weeks 12 to 15: rain, snow, lightning, and back on the 3070",
+      "summary": "The article demonstrates how careful device validation, GPU-accelerated testing, deterministic simulation, and empirical rendering measurements can produce a substantially more robust engine.",
+      "ideas": [
+        "A Vulkan renderer can silently fall back to Mesa lavapipe after an NVIDIA userspace/kernel mismatch.",
+        "GPU-recorded goldens reduced a growing visual suite from 48 minutes to 14.",
+        "B10G11R11 writes truncate on the tested GPUs, requiring explicit shader rounding.",
+        "Weather uses scaled particle lanes, veil layers, and extinction to control rain cost.",
+        "Tick-seeded lightning and distance-based thunder remain deterministic and replayable.",
+        "Claim-based camera arbitration separates editor, cutscene, and gameplay viewpoints."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a dense firsthand rendering-engine devlog with unusually concrete implementation and measurement details, including Vulkan device fallback diagnosis, GPU golden-test timing, format-rounding behavior, shader-pipeline compilation costs, and deterministic weather and camera systems. The Linux/NVIDIA troubleshooting advice and visual-test strategy are directly actionable, while the graphics work offers useful mechanisms for simulation-heavy software. It is partly project-specific, contains several project-specific visual-tuning anecdotes, and the supplied text is truncated mid-section, so it falls short of exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T17:05:09.164587"
+    },
+    {
+      "id": 7836,
+      "source_id": 34,
+      "original_url": "https://ispcol.potaroo.net/2026-11/dodnssec.html",
+      "title": "The DO's and Don'ts of Post-Quantum DNSSEC",
+      "summary": "ML-DSA-44 DNSSEC responses are large enough to exceed common UDP limits, making TCP fallback, EDNS buffer sizing, and IP-fragmentation behavior central to Post-Quantum DNSSEC deployment.",
+      "ideas": [
+        "ML-DSA-44-signed DNS responses are about 2.5 KB.",
+        "Most recursive queries advertise a 1,410-byte EDNS buffer.",
+        "PQC DNSSEC signatures often trigger TCP retries.",
+        "Conservative EDNS sizing reduces reliance on IP fragmentation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides substantive, mechanism-level analysis of how Post-Quantum DNSSEC signature sizes affect DNS transport behavior, including a concrete response-size comparison and a large APNIC measurement of EDNS buffer sizes. Its limitations include an abruptly truncated ending and comparatively narrow operational guidance beyond transport behavior.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T17:00:27.100964"
+    },
+    {
+      "id": 7835,
+      "source_id": 34,
+      "original_url": "https://greg.molnar.io/blog/the-critical-active-storage-imagemagick-issue/",
+      "title": "The critical Active Storage ImageMagick issue",
+      "summary": "Active Storage’s ImageMagick analyzer can be abused via an SVG invoking the MSL coder to read and write arbitrary files on the server.",
+      "ideas": [
+        "Active Storage runs MiniMagick::Image#valid?, which calls ImageMagick's identify and triggers MSL scripts.",
+        "An SVG with an <image xlink:href=\"msl:/path/to/script.msl\"> can cause arbitrary read/write via MSL coder.",
+        "Default ImageMagick policy.xml on many distros does not disable the MSL coder, leaving the bug exploitable.",
+        "Disabling the MSL coder (or all rw+ coders) in policy.xml mitigates the vulnerability.",
+        "Using S3 as storage does not stop the exploit because blobs are downloaded to local tempfiles for analysis."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible exploit for a critical Rails Active Storage vulnerability, complete with code, commands, and policy analysis. It delivers deep insight into ImageMagick coders, the role of MiniMagick, and how default policies allow arbitrary file reads/writes, which is directly useful for security engineers. The only limitation is its narrow focus on Rails/ActiveStorage, but the underlying lessons apply broadly to ImageMagick hardening.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T16:58:25.178773",
+      "image_url": "https://greg.molnar.io/images/og/posts/the-critical-active-storage-imagemagick-issue.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "The critical Active Storage ImageMagick issue"
+    },
+    {
+      "id": 7834,
+      "source_id": 34,
+      "original_url": "https://explainanalyze.com/p/clustered-vs-non-clustered-index-the-table-is-the-index-in-mysql/",
+      "title": "Clustered vs Non-Clustered Index: The Table Is the Index in MySQL",
+      "summary": "Choosing a clustered primary key that keeps related rows together can drastically reduce page reads, but it increases insert cost, page splits, and secondary-index size.",
+      "ideas": [
+        "Clustering assets by client cut page reads from 45 to about 1.7.",
+        "Secondary indexes store the primary key, raising lookups and index size.",
+        "Composite clustered inserts were about 3 to 4.5 times slower.",
+        "Random client inserts caused tens of thousands of page splits.",
+        "OPTIMIZE TABLE can rebuild and compact a split-heavy table.",
+        "A PostgreSQL covering index matched the clustered lookup page count."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article is technically substantive, with schemas, EXPLAIN output, page-read measurements, insert timings, and index-size comparisons that directly illuminate MySQL clustered-index trade-offs. It also includes a useful PostgreSQL contrast and concrete practitioner constraints such as secondary-index key duplication and page splits. Its main limitations are environment-specific benchmark conditions and an apparently truncated final section on fill factor.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T16:54:57.784194"
+    },
+    {
+      "id": 7833,
+      "source_id": 34,
+      "original_url": "https://danvk.github.io/2026/11/08/mapsnap-keymaps.html",
+      "title": "Sanborn keymaps: location priors, if you can read them",
+      "summary": "Combining custom page-number recognition with keymap location priors can transform noisy OCR and ambiguous geospatial matching into a much more reliable georeferencing pipeline.",
+      "ideas": [
+        "Tile full-scale scans because EasyOCR silently downsamples images beyond 2560 pixels.",
+        "Custom MobileNetV3 detector plus CRNN raised page-number accuracy from 37% to 93%.",
+        "Restrict OCR street vocabulary using keymap priors to disambiguate locations and marginal reads.",
+        "RANSAC pair enumeration scales poorly with tens of thousands of candidate intersections.",
+        "Reject georeferenced keymaps spanning under 2.5 km after catastrophic placement failures.",
+        "Held-out page-number accuracy was 74%, varying sharply by map typeface.",
+        "Detect misleading graphic-of-volumes insets before interpreting numbers as page numbers."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides unusually concrete, firsthand engineering detail: OCR scaling behavior, tiled inference, a custom MobileNetV3/CRNN pipeline, label counts, comparative accuracy, RANSAC failure modes, and operational guardrails based on failed placements. Keymap-derived location priors are a strong systems insight, reducing ambiguous street vocabulary and making georeferencing substantially more reliable without labeling every page. It falls short of exceptional because evaluation is small and typeface-sensitive, important implementation details are omitted, and the colored-region detector remains unreliable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T16:50:36.351649"
+    },
+    {
+      "id": 7832,
+      "source_id": 34,
+      "original_url": "https://blog.antosubash.com/posts/parallel-ai-agents-crashed-my-workstation",
+      "title": "When Parallel Coding Agents Crash Your Workstation",
+      "summary": "Controlling parallel-agent workstation failures requires bounding test fan-out, tracking spawned process trees, gating resource-heavy jobs, and cleaning stale services.",
+      "ideas": [
+        "systemd-oomd kills entire inherited scopes, not individual processes",
+        "Parallel pytest-xdist workers multiply memory use across agent worktrees",
+        "Tag inherited environment variables to stop orphaned process trees reliably",
+        "Cap worker fan-out and gate heavy jobs on memory and load",
+        "Stale MCP and Codex servers can exhaust inotify instance limits",
+        "Kernel OOM tables and systemd memory peaks reveal resource-heavy cgroups"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin",
+        "Productivity"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a concrete firsthand Linux incident report connecting parallel coding-agent workloads to cgroup-wide oomd termination, multiplicative pytest-xdist fan-out, orphaned Celery workers, and exhausted inotify instances. Its journal inspection commands, process accounting, resource caps, inherited-environment tagging, and cleanup procedures provide unusually actionable diagnostic and mitigation patterns. The guardrails remain somewhat heuristic and workstation-specific—particularly the load threshold, age-based process killing, and simplified process-table parsing—but the measured failures and reproductions make the article strong practical evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T16:44:29.246584",
+      "image_url": "https://blog.antosubash.com/og/parallel-ai-agents-crashed-my-workstation.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7831,
+      "source_id": 34,
+      "original_url": "https://andpalmier.com/posts/artex-source-behind-iocs/",
+      "title": "ARTEX: reading the source behind the IOCs",
+      "summary": "Most observed ARTEX IOCs stem from the LLM‑generated commands or underlying tools, not from the framework's static code.",
+      "ideas": [
+        "User‑agents observed in the wild are generated by the model or tools, not hard‑coded in ARTEX.",
+        "Enrichment engine code never runs; its user‑agent is never sent to targets.",
+        "Basic realm=\"ARTEX\" fingerprint was added and later removed by a popular fork in days.",
+        "Enabling ARTEX's traffic recorder changes curl’s TLS handshake to Go’s JA4 fingerprint.",
+        "repopsy can track string introduction across all forks and PRs, revealing indicator lifespans."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, reproducible analysis of the ARTEX LLM‑driven pentesting framework, including git‑history tracing, custom tooling (repopsy), lab‑controlled TLS fingerprint measurements, and a timeline of indicator changes. It is highly relevant to security and AI‑agent detection, offering novel insight into where IOCs originate and how they evolve, with minimal hype. The only limitation is its focus on a single threat actor, which narrows broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T16:40:16.381842",
+      "image_url": "https://andpalmier.com/posts/artex-source-behind-iocs/featured.jpg",
+      "image_width": 1000,
+      "image_height": 785,
+      "image_alt": ""
+    },
+    {
+      "id": 7830,
+      "source_id": 34,
+      "original_url": "https://alexmarquardt.com/ai-tools/agent-fleet-token-efficiency/",
+      "title": "The same work on a third of the tokens: tuning a fleet of coding agents",
+      "summary": "Measuring agent transcripts by useful work shows that shorter sessions, smaller contexts, and preventing prompt-cache expiry can substantially reduce coding-agent costs without proportionally increasing output.",
+      "ideas": [
+        "Measure coding-agent efficiency by tokens per changed line, not tokens per PR.",
+        "Short-lived agents and cache-warm execution cut median request context from 218k to 101k.",
+        "Cache expiry consumed 31% of agent usage before scheduling reduced it to 0.7%.",
+        "Encoding rules in code and delegating routine coordination reduced avoidable model work.",
+        "Bundled changes prevent causal attribution, while reverts and fix rounds increased slightly."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a strong, directly relevant account of optimizing coding-agent fleets using transcript-level measurements, changed-line normalization, weighted token costs, and concrete interventions. The reported 3.3x raw-token reduction, 2.5x price-weighted reduction, and cache-expiry diagnosis are actionable and supported by detailed operational data. Confidence is limited by one project, concurrent interventions, shifting model and issue mixes, and a slight increase in rework and reverts, although the article explicitly acknowledges these confounders.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-09T16:38:50.751989",
+      "image_url": "https://alexmarquardt.com/social-card-square.png",
+      "image_width": 675,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 7829,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Nov/9/details-summary/",
+      "title": "Hide your slop PR descriptions behind <details><summary>",
+      "summary": "AI thoroughness reads as slop to human reviewers, so hide the agent's full PR essay behind <details><summary> and lead with a short, human-judged opener instead.",
+      "ideas": [
+        "Agent-written PR descriptions are accurate but overwhelm readers; information overload, not inaccuracy, is the real problem.",
+        "GitHub Markdown supports <details><summary>, letting you collapse verbose agent text in PR descriptions.",
+        "Write a short human-curated opener explaining the PR at a high level, often paired with a screenshot.",
+        "Label the collapsed section with the model name and effort level, e.g. 'Claude Opus 5.5 Medium'.",
+        "The opener is a promise: it represents human judgment about what is definitely worth the reader's time.",
+        "Sometimes the agent already wrote a useful opener buried in the text avalanche—extract rather than rewrite it.",
+        "Mnemonic: say 'details-summary' aloud—two syllables then three rolls off the tongue and locks in the tag order.",
+        "Treat the PR as the unit of work with coding agents: bundling commits, documenting decisions, and merging.",
+        "Readers resist text that takes longer to read than it took the author to write—even when the author is themselves."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "This post delivers a genuinely actionable technique—using GitHub Markdown's <details><summary> support to collapse verbose agent-written PR descriptions into a collapsed section beneath a human-curated opener—supported by five real, copy-able PR examples. The most valuable insight is the framing that over-comprehensive AI writing 'reads like slop' even when accurate, and that a human-judged opener functions as a promise to readers about what deserves their attention. Density is high for the length (a mnemonic, workflow pattern, and concrete examples pack a short post), but the scope is narrow—a single workflow tip—which caps it below the exceptional range. Thematic relevance is strong for AI-assisted software development and engineering practices, with no clickbait or padding penalties.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-11-09T16:32:14.318615",
+      "image_url": "https://static.simonwillison.net/static/2026/details-summary-card.webp",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
     {
       "id": 7828,
       "source_id": 1,
