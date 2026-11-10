@@ -1,7 +1,240 @@
 {
-  "updated_at": "2026-11-10T13:00:00.208325+00:00",
-  "total_items": 1267,
+  "updated_at": "2026-11-10T14:00:00.276451+00:00",
+  "total_items": 1275,
   "items": [
+    {
+      "id": 7887,
+      "source_id": 34,
+      "original_url": "https://zhul.in/2026/11/10/xiaomi-double-click-power-google-wallet/",
+      "title": "Opening Google Wallet with a Double Press of the Power Button on a China-Version Xiaomi 15: It Only Takes One adb Command",
+      "summary": "HyperOS contains a hidden native Quick Access Wallet action that can be enabled with ADB, but wallet switching and persistence require coordinating system settings, NFC defaults, and privileged automation.",
+      "ideas": [
+        "HyperOS exposes hidden launch_QAW_wallet for double-power-button wallet access",
+        "QAW follows the default NFC payment component rather than a fixed wallet",
+        "HyperOS may clear unsupported double-click values during boot",
+        "A privileged app can self-pair through wireless debugging for shell settings writes",
+        "Wallet switching must synchronize both gesture and NFC defaults"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides unusually concrete, first-hand reverse engineering of Xiaomi HyperOS internals, including logs, settings namespaces, permission behavior, and the relationship between Quick Access Wallet and the default NFC payment service. It also documents a working implementation, test matrix, boot-time failure modes, and security-relevant caveats around shell privileges and wireless-debugging keys. Its usefulness is constrained by the niche setup requirements, incomplete edge-case testing, and an admitted lack of deep understanding of the AI-assisted ADB protocol implementation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:51:18.124626"
+    },
+    {
+      "id": 7886,
+      "source_id": 36,
+      "original_url": "https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/",
+      "title": "Amazon saves millions by replacing Sonnet 4.6 with Strands Decider",
+      "summary": "A decision model can replace an LLM for high-volume closed-choice classification, reducing cost and latency while requiring careful confidence thresholds, context fitting, and shadow evaluation.",
+      "ideas": [
+        "Decision models can replace LLMs for high-volume closed-choice ticket classification.",
+        "Strands Decider cut ticket-labeling costs by about 98 percent.",
+        "Decision models return per-option probabilities and confidence rather than generated text.",
+        "Closed catalogs suit decision models; changing catalogs or explanatory labels do not.",
+        "Compress long label catalogs into one- or two-sentence criteria to fit token windows.",
+        "Drop oldest comments on long tickets to fit decision-model context.",
+        "Use shadow DUAL mode to compare models on real traffic before cutover.",
+        "JSON key order can shift decision-model probabilities by up to 0.19.",
+        "Sort request JSON keys before comparing decision-model runs.",
+        "Decision-model endpoint averaged 897 ms versus Sonnet's 4,215 ms.",
+        "One ml.g5.xlarge instance handles about 5,600 tickets hourly.",
+        "Decision-model cost is about $500 per million tickets versus $22,200 for Sonnet.",
+        "Autoscaling SageMaker endpoint isolates network and loads weights from S3.",
+        "Reverting production labeling is a quick AppConfig configuration change.",
+        "Three-way AppConfig switch supports Bedrock, dual, or Decider labeling modes.",
+        "E4B Gemma build outperformed the original 2B Strands Decider and production Sonnet.",
+        "Tune confidence thresholds before automatically applying a model's label."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, actionable production details including per-ticket cost and token metrics, a three-way shadow-evaluation switch, infrastructure architecture, and a non-obvious JSON key-order issue. Its thematic relevance to AI and production engineering is strong, although it remains partly promotional because it is a vendor case study for Strands Decider. The practical lessons and migration caveats make it more valuable than a typical announcement.",
+      "source_type": "rss",
+      "source_name": "Mario Zechner Recommended",
+      "published_at": "2026-11-10T23:50:30.579187",
+      "image_url": "https://strandsagents.com/blog/og/amazon-saves-millions-replacing-sonnet-with-strands-decider.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Amazon saves millions by replacing Sonnet 4.6 with Strands Decider"
+    },
+    {
+      "id": 7885,
+      "source_id": 34,
+      "original_url": "https://www.tunbury.org/2026/11/09/week-45/",
+      "title": "Notes from week 45",
+      "summary": "A dense engineering diary reveals concrete cross-platform failure mechanisms, benchmarked fixes, and production incident diagnoses useful beyond its OCaml tooling context.",
+      "ideas": [
+        "Read-only cache plus in-container layer assembly avoided Windows bind-mount symlink failures.",
+        "OCaml 5 lost Ctrl-Break handling because a Windows signal-routing define was dropped.",
+        "A GLOB primary-key lookup reduced commit queries from 968 milliseconds to about 1.",
+        "Windows FsDepends leaked thousands of detached minifilter instances, consuming 10.3 GB nonpaged pool.",
+        "Pinning CephFS maps to an idle MDS restored sub-millisecond latency after rank-zero thrashing.",
+        "Recording dependency solutions in layer metadata prevented rebases from pruning packages incorrectly.",
+        "GitHub Actions accidentally passed MSVC compiler jobs by failing to build requested packages.",
+        "CVE filters stayed effective across 88 hosts; nftables enforcement mattered more than disabling MPTCP.",
+        "A proof-of-work challenge failed against scrapers; indexed queries delivered the practical performance fix."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 91,
+      "rating_reason": "This is a dense firsthand engineering log with unusually concrete evidence: CI matrices and match rates, layer-copy timings, query-latency measurements, kernel-pool accounting, and reproducible Windows-container failures. It exposes mechanisms and trade-offs across OCaml CI, Windows and FreeBSD, CephFS, ZFS, NVMe firmware, and CVE mitigation rather than merely announcing changes. The episodic format leaves some context implicit, the FsDepends leak mechanism unresolved, and the supplied excerpt truncates its final item, but most findings are technically rare and actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:48:38.768723",
+      "image_url": "https://www.tunbury.org/images/day10-vs-gha-windows.png",
+      "image_width": 1350,
+      "image_height": 540,
+      "image_alt": ""
+    },
+    {
+      "id": 7884,
+      "source_id": 34,
+      "original_url": "https://www.tunbury.org/2026/11/09/tessera-on-endeavour/",
+      "title": "Tessera on Intel Endeavour: from 56 to 136 tiles an hour, and then the GPU gets the same treatment",
+      "summary": "Careful low‑level tuning (thread pinning, weight packing, memory allocation, and cache‑aware blocking) can boost AMX‑based CPU inference from ~56 to over 136 tiles per hour, matching GPU performance.",
+      "ideas": [
+        "Pinning OpenMP threads to physical cores speeds inference nine‑fold.",
+        "Reordering weights into AMX‑blocked layout cuts matrix‑multiply time dramatically.",
+        "Disabling glibc mmap for large allocations saves ~30% of per‑call overhead.",
+        "Processing 32‑pixel blocks fits cache, yielding ~20% layer speedup.",
+        "Using OMP_WAIT_POLICY=ACTIVE removes millions of thread‑wake penalties.",
+        "A pure C++ encoder reaches 136 tiles/hour, 2× faster than the original PyTorch path.",
+        "Similar small‑chunk blocking improves L4 GPU TensorRT performance."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides deep, reproducible engineering details on extracting CPU inference performance from Intel AMX using oneDNN, weight packing, thread pinning, memory allocation tweaks, and cache‑friendly blocking, backed by many concrete measurements. It also shows comparable GPU tuning steps. While focused on a specific model, the techniques are broadly useful for AI inference on modern CPUs, though the length and model‑specific code limit universal novelty.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:48:23.191989"
+    },
+    {
+      "id": 7883,
+      "source_id": 34,
+      "original_url": "https://www.simonpainter.com/ipv8-protocol-or-product",
+      "title": "IPv8 -04: is it a protocol or a product?",
+      "summary": "IPv8 is more accurately an IPv4-based enterprise routing system built around remote VRFs and VPNs than a genuinely new end-to-end IP protocol.",
+      "ideas": [
+        "IPv8 preserves an unmodified IPv4 header behind an eight-octet shim.",
+        "8-over-4 effectively behaves as a stateful tunnel despite authors' terminology.",
+        "Raw IP protocol 253 faces enterprise firewall and CGNAT filtering risks.",
+        "IPv8 Route Numbers closely reproduce VPNv4 route distinguishers and targets.",
+        "IPv8's jumbo MTU defaults depend on an unimplemented path-MTU relay.",
+        "Implementations include Linux kernel modules, an FRR fork, and a Zone Server."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides unusually concrete, technically grounded analysis of IPv8's wire format, encapsulation behavior, MTU handling, and mapping onto inter-AS L3VPN, using quotations from an advance draft and firsthand discussion with its author. It identifies operational constraints such as firewall filtering of raw IP protocol 253, missing path-MTU relay support, and the practical equivalence between Route Numbers and remote VRFs. The analysis is valuable, but the draft is pre-release and the supplied article text ends mid-sentence, limiting independent verification and completeness.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:47:22.139577",
+      "image_url": "https://www.simonpainter.com/img/social-card.png",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 7882,
+      "source_id": 34,
+      "original_url": "https://vpetkov.net/2026/11/09/forward-it-dont-click-it-an-ai-phishing-checker/",
+      "title": "Forward It, Don't Click It: An AI Phishing Checker",
+      "summary": "Reliable AI phishing triage depends more on fail-closed orchestration, defensive parsing, and deterministic guardrails than on the model's verdict alone.",
+      "ideas": [
+        "Fail closed: analysis errors must never yield a safe verdict.",
+        "Apply deterministic rules that can only escalate model-assessed severity.",
+        "Treat hidden instructions to AI scanners as strong phishing evidence.",
+        "Inspect links, QR codes, and PDFs offline without fetching attacker URLs.",
+        "Trust only SES-written DMARC results, not attacker-controlled envelope headers.",
+        "Use fixed reply subjects and sanitize output to avoid becoming an attack surface.",
+        "Cache only reusable system prompts, not unique email requests."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is unusually concrete, firsthand security engineering: it describes a year-long service, 229 measured reports, deterministic escalation rules, prompt-injection handling, offline link/QR/PDF analysis, and a complete SES/Lambda/DynamoDB architecture. The linked implementation and specific lessons—errors must never default to safe, only SES-authored DMARC results are trustworthy, and replies require strict output sanitization—are non-obvious and directly actionable. The main limitation is that model accuracy is not rigorously benchmarked: the sample is small and self-reported, with no false-negative rate, held-out evaluation, or comparison against established mail-security tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:37:39.496970"
+    },
+    {
+      "id": 7881,
+      "source_id": 34,
+      "original_url": "https://vincent.bernat.ch/en/blog/2026-linux-performance-ipv4-ipv6-route-lookup",
+      "title": "Performance evolution of route lookup on Linux",
+      "summary": "AMD SRSO mitigation caused a large IPv6 route-lookup regression, while reordering the linkdown condition removes unnecessary IPv4 lookup overhead.",
+      "ideas": [
+        "Linux 6.5 SRSO mitigation adds ~200ns IPv6 route lookup",
+        "IPv4 SRSO impact smaller due to fewer function calls",
+        "Reordering linkdown condition avoids ip_ignore_linkdown normally",
+        "Mitigation costs vary by CPU architecture",
+        "Disabling SRSO lowers route-lookup latency"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a version-by-version Linux route-lookup benchmark with concrete CPU, table, and measurement details, plus specific kernel commits affecting performance. Its strongest substantive contribution is identifying the Linux 6.5 SRSO mitigation as a major regression contributor and documenting a small condition-reordering optimization that improves median lookup cost from 132 to 126 cycles. It is dense and relevant but mostly a focused performance investigation rather than a broader engineering guide.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:36:17.609688",
+      "image_url": "https://media-bernat-ch.b-cdn.net/images/covers/en/blog/2026-linux-performance-ipv4-ipv6-route-lookup.9293adda723305.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7880,
+      "source_id": 34,
+      "original_url": "https://vanja.io/claude-fable-mythos-5-2/",
+      "title": "Twice the Price, Half the Bill",
+      "summary": "Fable 5.2 can match Opus 5.5’s performance on coding tasks at about half the cost per completed task, and scales 1,000 sandboxed agents effectively when isolated with shared state and monitors.",
+      "ideas": [
+        "Measure cost per finished task, not per token, when comparing LLM pricing.",
+        "Use the /advisor mode to call a stronger model only for critical decisions.",
+        "Isolate each agent in its own VM and guard tool calls with classifiers for safe scaling.",
+        "Fable 5.2’s safety filters reduce blocked cyber‑security requests by ~55% versus Fable 5.1."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete benchmark numbers, cost‑per‑task analysis, and a detailed engineering walkthrough of a 1,000‑agent proof‑assistant, all directly relevant to LLM agents and security‑aware deployment. It includes reproducible testing steps, safety mechanisms, and real‑world trade‑offs, though it contains some marketing language and lacks raw data releases, tempering the score slightly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:34:55.443696",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/feature-1.png",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": ""
+    },
     {
       "id": 7879,
       "source_id": 34,
@@ -23,7 +256,11 @@
       "rating_reason": "This is a strongly source- and binary-backed comparison of Codex, Claude Code, and pi, with exact compaction formulas, source snippets, token-estimation methods, prompt-cache layouts, and tool-output truncation policies. It exposes non-obvious engineering differences and failure modes directly relevant to building or operating agent harnesses. Most session-level comparisons are explicitly synthetic rather than measured, findings are tightly coupled to the listed software versions, and the supplied excerpt ends mid-example.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-10T23:29:14.885812"
+      "published_at": "2026-11-10T23:29:14.885812",
+      "image_url": "https://rwilinski.ai/og-image/harness-teardown.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 7878,
@@ -49,7 +286,11 @@
       "rating_reason": "This is exemplary firsthand inference-engineering work: the author benchmarks a computer-use VLM (Holo 3.1 4B) on a 16 GB GPU with vLLM, publishes the server flags, troubleshooting steps, analysis scripts, and raw logs, and explains mechanisms quantitatively — KV-cache bytes per token derived from the architecture, a decode bandwidth floor corrected for tied embeddings and the skipped vision encoder, and a measured slowdown (0.36 ms) matching the predicted KV-cache growth (0.34 ms). The prefix-caching result (30% run-time reduction, TTFT 6.29s→2.21s) and the concavity of multi-agent throughput (166 tok/s at 4 agents, 90 at 8) are concrete, falsifiable, and practically useful. The main limitations are the niche scope (one model, one GPU) and the excerpt truncating mid-article, but the demonstrated substance is dense, original, and precisely targeted at LLM inference and agent-serving interests.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-10T23:28:14.882196"
+      "published_at": "2026-11-10T23:28:14.882196",
+      "image_url": "https://rdiachenko.com/posts/inference/computer-use-agent-vllm/computer-use-agent-vllm-cover.png",
+      "image_width": 4800,
+      "image_height": 2520,
+      "image_alt": ""
     },
     {
       "id": 7877,
