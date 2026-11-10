@@ -1,7 +1,299 @@
 {
-  "updated_at": "2026-11-10T12:00:00.892136+00:00",
-  "total_items": 1256,
+  "updated_at": "2026-11-10T13:00:00.208325+00:00",
+  "total_items": 1267,
   "items": [
+    {
+      "id": 7879,
+      "source_id": 34,
+      "original_url": "https://rwilinski.ai/posts/harness-teardown/",
+      "title": "Three harnesses, one window: context in Codex, Claude Code and pi",
+      "summary": "Coding-agent harnesses use similar append-only context mechanisms but differ materially in compaction triggers, retained state, cache invalidation, and oversized-output handling.",
+      "ideas": [
+        "Codex triggers at 90%; Claude subtracts output and 13K; pi reserves 16,384.",
+        "Codex keeps recent user text; Claude reloads files; pi retains a 20K mixed tail.",
+        "Append-only history protects prompt caches; compaction and clearing deliberately invalidate prefixes.",
+        "Byte-based token estimates undercount dense and multilingual tool output.",
+        "Output caps preserve different ends of logs, changing which failures models see."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a strongly source- and binary-backed comparison of Codex, Claude Code, and pi, with exact compaction formulas, source snippets, token-estimation methods, prompt-cache layouts, and tool-output truncation policies. It exposes non-obvious engineering differences and failure modes directly relevant to building or operating agent harnesses. Most session-level comparisons are explicitly synthetic rather than measured, findings are tightly coupled to the listed software versions, and the supplied excerpt ends mid-example.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:29:14.885812"
+    },
+    {
+      "id": 7878,
+      "source_id": 34,
+      "original_url": "https://rdiachenko.com/posts/inference/computer-use-agent-vllm/",
+      "title": "Serving a Computer-Use Agent on a 16 GB GPU with vLLM",
+      "summary": "Serving a computer-use agent on a 16 GB GPU, prefix caching cut a 10-step run's time by 30% by eliminating re-reading of prompt history, while careful memory-bandwidth accounting shows decode speed is bounded by weights plus per-token KV-cache reads.",
+      "ideas": [
+        "Prefix caching cut agent run time 30%, mostly via faster time-to-first-token",
+        "KV cache per token: 2×8 full-attention layers×4 heads×256 dims×2 bytes",
+        "Decode floor of 9.5 ms/token after excluding tied embeddings and vision encoder",
+        "Measured 754 GB/s memory bandwidth utilization (84% of spec) during decode",
+        "CUDA graph OOM fixed by reducing max-num-seqs, shrinking capture sizes",
+        "Screenshots tokenize to 1000 tokens via 16px patches merged 2×2",
+        "8 concurrent agents produced fewer tokens/second than 4 due to queueing"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "This is exemplary firsthand inference-engineering work: the author benchmarks a computer-use VLM (Holo 3.1 4B) on a 16 GB GPU with vLLM, publishes the server flags, troubleshooting steps, analysis scripts, and raw logs, and explains mechanisms quantitatively — KV-cache bytes per token derived from the architecture, a decode bandwidth floor corrected for tied embeddings and the skipped vision encoder, and a measured slowdown (0.36 ms) matching the predicted KV-cache growth (0.34 ms). The prefix-caching result (30% run-time reduction, TTFT 6.29s→2.21s) and the concavity of multi-agent throughput (166 tok/s at 4 agents, 90 at 8) are concrete, falsifiable, and practically useful. The main limitations are the niche scope (one model, one GPU) and the excerpt truncating mid-article, but the demonstrated substance is dense, original, and precisely targeted at LLM inference and agent-serving interests.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T23:28:14.882196"
+    },
+    {
+      "id": 7877,
+      "source_id": 34,
+      "original_url": "https://djnn.sh/posts/rehosting-haxx/",
+      "title": "firmware rehosting haxx",
+      "summary": "A faithful firmware rehost requires matching the kernel and ABI while validating vendor-specific behavior rather than treating any HTTP response as successful emulation.",
+      "ideas": [
+        "Match kernel version and CPU ABI before booting unmodified vendor userspace as PID 1.",
+        "Require vendor-specific behavior, not merely HTTP responses, to define rehosting success.",
+        "Validate rehosted findings against physical hardware because approximations can mislead.",
+        "Old kernel toolchains and exact float ABIs are essential compatibility constraints."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a concrete, technically strong method for rehosting embedded firmware: match the kernel version and CPU ABI, run unmodified vendor userspace as PID 1, and emulate expected devices below the kernel. It adds valuable firsthand detail about compatibility pitfalls, misleading success metrics across research tools, and an end-to-end vulnerability-validation example. The main limitation is that device behavior, kernel configuration, and ioctl semantics remain approximations, so physical-device validation is still required.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T22:58:42.045257"
+    },
+    {
+      "id": 7876,
+      "source_id": 34,
+      "original_url": "https://arthurbrugiere.fr/blog/2026/11/trying-openvino-arc-igpu/",
+      "title": "Trying OpenVINO on my ThinkPad's Arc iGPU",
+      "summary": "OpenVINO on Intel Arc iGPU beats llama.cpp SYCL on empty-context prefill (~2,263 vs 800 t/s) but loses at real-world context lengths, requires forced 4-bit requantization, crashes on MoE models, and its NPU path is slower than CPU decode.",
+      "ideas": [
+        "OpenVINO backend silently defaults to CPU despite -ngl 99; device set via GGML_OPENVINO_DEVICE",
+        "GGML_OPENVINO_REQUANT_KQUANT=q4_asym64_all works around GPU crash on Q6_K weights",
+        "OpenVINO precomputes a fixed execution graph, so MoE routers fail with dynamic-dimension errors",
+        "KV cache kept inside the compiled model via GGML_OPENVINO_STATEFUL_EXECUTION=1",
+        "Prefill 3x advantage evaporates at 8k context; OpenVINO trails SYCL at 16k and 32k",
+        "NPU decode (10.8 t/s) is slower than CPU, collapsing ~6x by 8k context",
+        "OpenVINO GenAI FP16 GPU path runs ~4x slower than SYCL and is not plug-and-play",
+        "OpenVINO GenAI requires HF-to-IR export (optimum-cli) since it cannot read GGUF"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A firsthand, reproducible engineering log of running llama.cpp with the OpenVINO backend and OpenVINO GenAI against a SYCL baseline on an Intel Arc iGPU (ThinkPad E16, Core Ultra 7 255H). It delivers concrete artifacts the reader can act on: exact error traces for MoE and Q6_K GPU crashes, the non-obvious env vars needed (GGML_OPENVINO_DEVICE defaults to CPU, GGML_OPENVINO_STATEFUL_EXECUTION, GGML_OPENVINO_REQUANT_KQUANT), benchmark tables showing the 3x prefill advantage collapsing past 8k context, and NPU throughput decaying to ~36 t/s prefill at 8k. Limitations are acknowledged honestly (single machine/model, one month of testing, no power measurement, and a 4-bit requantized model racing a 6-bit baseline), and the self-described novice framing plus some table repetition cost a few points, but the substance is dense, verifiable, and non-obvious.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T22:46:20.306951",
+      "image_url": "https://arthurbrugiere.fr/blog/2026/11/trying-openvino-arc-igpu.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Trying OpenVINO on my ThinkPad's Arc iGPU — Arthur Brugière"
+    },
+    {
+      "id": 7875,
+      "source_id": 34,
+      "original_url": "https://alexander.holbreich.org/posts/2026/agent-context-anatomy/",
+      "title": "What's actually in your agent's context",
+      "summary": "Agent context is dominated by accumulated tool results and conversation history, while harness-specific heads and lazy-loaded skills account for a relatively small share of consumed tokens.",
+      "ideas": [
+        "Tool results and reads dominate agent context, not system prompts.",
+        "Harness heads range from about 1.3K to 65K tokens.",
+        "Deferred tool definitions can add 27K latent prompt tokens.",
+        "Chat templates render tool calls into model-specific syntaxes.",
+        "Compaction replaces older history while recent tail stays.",
+        "A skill index can cost 1K versus 29K loaded."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides concrete, measurement-backed analysis of LLM agent context, including token counts, harness-specific head sizes, compaction behavior, tokenization, and chat-template differences. Its strongest value comes from real session-derived data showing that tool results dominate context rather than system prompts or instruction files. The main limitations are that several figures are approximate, provider-specific, or based on the author's own workflows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-10T22:43:21.468099",
+      "image_url": "https://alexander.holbreich.org/posts/2026/agent-context-anatomy/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7874,
+      "source_id": 26,
+      "original_url": "https://github.com/google-deepmind/mujoco",
+      "title": "google-deepmind/mujoco",
+      "summary": "MuJoCo is a production-grade, performance-optimized physics simulator for articulated and contact-rich systems, and a de facto standard for robotics simulation and differentiable reinforcement learning research.",
+      "ideas": [
+        "Differentiable physics via MJX on JAX/XLA for gradient-based policy training",
+        "Soft-constraint contact solver optimized for fast articulated-body dynamics",
+        "Interactive desktop and WebAssembly viewers for model inspection",
+        "MJCF-based declarative model composition and procedural editing",
+        "Bindings for Python, C#, Unity, MATLAB, Rust, Julia, and Java"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 99,
+      "rating_reason": "Problem significance is 24/25: fast, accurate contact-rich simulation of articulated structures is a well-defined need spanning robotics, biomechanics, graphics, and machine learning. Technical novelty is 20/25: while built on established physics ideas, MuJoCo's reduced-coordinate articulated dynamics, soft-constraint solver, MJCF XML compiler, and differentiable MJX/XLA backend are distinctive, substantial contributions rather than a clone or wrapper. Practical utility is 25/25, with prebuilt binaries, PyPI wheels, C/Python/C#/Unity bindings, a WASM viewer, tutorials, converters, and regular versioned releases, while documentation quality is 23/25 given the clear problem statement, architecture overview, concrete usage examples, and honest caveats about unstable main-branch builds. A domain bonus applies for AI/ML and developer tooling, and no automatic penalties apply.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (All)",
+      "published_at": "2026-11-10T22:34:20.936044",
+      "image_url": "https://opengraph.githubassets.com/96cd15f51782467f02f4ecab247ba534353eb7da90483643b3b97a0fa0305c1f/google-deepmind/mujoco",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Multi-Joint dynamics with Contact. A general purpose physics simulator. - google-deepmind/mujoco"
+    },
+    {
+      "id": 7873,
+      "source_id": 7,
+      "original_url": "https://www.raindrop.ai/blog/agent-swarm-leadership/",
+      "title": "The surprising leadership dynamics in agent swarms",
+      "summary": "Agent leadership in swarms emerges from subtle, invisible factors—underlying model and even the order of names in the system prompt—so developers must treat minor configuration details as behaviorally significant.",
+      "ideas": [
+        "Only 5% of peer agent teams produced a true leader despite 86% having instruction-issuing agents",
+        "Underlying model predicts leadership: Claude and GPT led roughly 1.7x more than Gemini",
+        "Agent listed first in the system prompt was three times more likely to issue plans",
+        "Reversing the name list reversed the effect, proving position—not name—caused the behavior",
+        "Issuing plans is not influence: GPT had the most obeyed orders despite issuing fewer plans",
+        "A shared communication channel cut duplicated agent actions from 4.4 to 0.3 per experiment",
+        "Counterfactual replays (A minus B weighting) distinguish genuine influence from mere compliance",
+        "42% of agents that changed decisions due to an order never mentioned the order at all",
+        "All four models followed leader instructions at approximately equal rates",
+        "Seemingly trivial swarm configuration details can materially alter multi-agent coordination"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is original research with genuine novelty: the counterfactual replay methodology for verifying real influence, the discovery that prompt name-ordering tripled plan issuance (with a reversal test proving causation), and model-level leadership differences across 2,160 experiments are insights readers won't find elsewhere. The write-up includes useful empirical data (5% leadership rate, 4.4-to-0.3 duplication reduction via shared channels, 42% of influenced agents couldn't articulate why) and practical guidance for developers building agent swarms. Minor penalties apply for repetition of the same leader statistics across sections and a truncated ending, but thematic relevance to AI and emergent multi-agent behavior is strong and the value density is high.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-11-10T22:34:13.189265",
+      "image_url": "https://www.raindrop.ai/blog/agent-swarm-leadership/opengraph-image/",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The surprising leadership dynamics in agent swarms"
+    },
+    {
+      "id": 7872,
+      "source_id": 27,
+      "original_url": "https://github.com/snap-stanford/memorilla",
+      "title": "snap-stanford/memorilla",
+      "summary": "Memorilla compresses large document collections into a fixed set of query-dependent latent memory tokens for a frozen LLM, with training and evaluation recipes, checkpoints, and benchmark comparisons.",
+      "ideas": [
+        "Compresses long collections into fixed memory tokens",
+        "Queries frozen LLM with around 16 tokens",
+        "Trains encoder and memory module end-to-end",
+        "Evaluates closed-book, RAG, and context baselines",
+        "Supports custom parquet datasets and checkpoints"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "Strong, well-defined long-context memory and personalization problem (23/25); documented latent, query-dependent memory-token approach appears novel, though architecture details are only summarized in the README (19/25); usable research pipeline with checkpoints, recipes, and baselines, but heavy H100/GPU and data requirements limit practical adoption (12/25); README is thorough across setup, training, evaluation, benchmarks, data formats, and limitations (18/25). No automatic penalties applied.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-11-10T22:33:13.184815",
+      "image_url": "https://opengraph.githubassets.com/99351bb0209d194150374ca952e116dede31cd3a24b97b326120bf3182a979d3/snap-stanford/memorilla",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "🦍 Memorilla: Latent Semantic Memory for LLMs. Contribute to snap-stanford/memorilla development by creating an account on GitHub."
+    },
+    {
+      "id": 7871,
+      "source_id": 27,
+      "original_url": "https://github.com/opensandbox-group/OpenSandbox",
+      "title": "opensandbox-group/OpenSandbox",
+      "summary": "OpenSandbox provides fast, secure sandboxes for AI agents to run code, manage files, and access networks, enabling safe execution on local or Kubernetes environments.",
+      "ideas": [
+        "Fast Firecracker sandboxes with unified multi‑language API for secure AI agent workloads"
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Problem significance (22) – addresses real need for safe AI agent execution. Technical novelty (18) – combines fast Firecracker sandboxes with unified API and credential vault, a notable but incremental advance. Practical utility (22) – production‑ready Docker/Kubernetes deployment, multi‑language SDKs, CLI, and MCP support. Documentation quality (20) – thorough README with quick‑start, examples, and links to detailed guides. No penalties applied; domain relevance bonus (+8) for AI tooling and infrastructure.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-11-10T22:33:02.012620",
+      "image_url": "https://repository-images.githubusercontent.com/1118085970/4e9a8d1f-1394-4210-8c11-d77301b62b39",
+      "image_width": 1280,
+      "image_height": 640,
+      "image_alt": "Secure, Fast, and Extensible Sandbox runtime for AI agents. - opensandbox-group/OpenSandbox"
+    },
+    {
+      "id": 7870,
+      "source_id": 27,
+      "original_url": "https://github.com/hummingbot/hummingbot",
+      "title": "hummingbot/hummingbot",
+      "summary": "Hummingbot is an open‑source framework for building and running automated crypto trading bots across many exchanges.",
+      "ideas": [
+        "Modular framework with dozens of exchange connectors and CLI for live trading"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Problem significance (22) is high as it tackles automated high‑frequency crypto trading, a real need. Technical novelty (15) is moderate; while comprehensive, similar bots exist, but its modular connector system adds value. Practical utility (23) is strong with production‑ready CLI, Docker support, and many strategies. Documentation quality (20) is solid with clear setup and usage instructions. A domain relevance bonus of 8 points is added for AI integration and infrastructure tooling.",
+      "source_type": "github",
+      "source_name": "GitHub Trending (Python)",
+      "published_at": "2026-11-10T22:32:38.106580",
+      "image_url": "https://repository-images.githubusercontent.com/179163124/7fd92800-eb15-11ea-9c00-e48d8a17b594",
+      "image_width": 1280,
+      "image_height": 640,
+      "image_alt": "Open source software that helps you create and deploy high-frequency crypto trading bots - hummingbot/hummingbot"
+    },
+    {
+      "id": 7868,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Nov/10/muse-ember/",
+      "title": "Introducing Our Smallest, Most Efficient Model: Muse Ember",
+      "summary": "Muse Ember delivers high‑efficiency reasoning at a price point that sits on the LLM cost‑performance Pareto frontier.",
+      "ideas": [
+        "Muse Ember is Meta's smallest, most efficient LLM for complex reasoning tasks.",
+        "Ember pricing: $0.10 per million input tokens up to 200k, then $0.30 beyond.",
+        "Reasoning levels range from minimal to max, but visual quality doesn't map linearly.",
+        "Intelligence Index vs Cost per Task chart places Ember on the efficiency frontier.",
+        "Price‑per‑token is misleading; reasoning token usage varies widely across models.",
+        "Ember is cheaper than Claude Fable 5.2 and comparable to GPT‑6 Luna and Claude Haiku."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The piece offers several concrete, actionable insights for AI practitioners: detailed pricing tiers, a better cost‑effectiveness metric (Intelligence Index vs Cost per Task), and observations about reasoning levels and efficiency frontiers. The content is concise (<500 words) yet packs 5‑6 value instances, yielding high value density. It aligns strongly with the AI theme and contains no clickbait or excessive padding, only a brief sponsorship note.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-11-10T22:32:08.479784",
+      "image_url": "https://static.simonwillison.net/static/2026/muse-ember.webp",
+      "image_width": 1828,
+      "image_height": 1280,
+      "image_alt": ""
+    },
     {
       "id": 7867,
       "source_id": 4,
