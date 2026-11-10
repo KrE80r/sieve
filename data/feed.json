@@ -1,7 +1,170 @@
 {
-  "updated_at": "2026-11-10T06:00:00.456993+00:00",
-  "total_items": 1251,
+  "updated_at": "2026-11-10T07:00:00.257537+00:00",
+  "total_items": 1256,
   "items": [
+    {
+      "id": 7867,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "AI agents can magnify cyberattack scale against weak infrastructure, but hallucinations and basic access controls still constrain their impact.",
+      "ideas": [
+        "Nine active AI agents helped one attacker target hundreds of organizations in eleven-plus countries.",
+        "Commercial models refused offensive requests, shifting attacks toward locally abliterated models.",
+        "BOSSAI assigned infrastructure, scanning, and attack functions across twelve agents.",
+        "Operators transferred outputs manually because the agents never communicated autonomously.",
+        "One scanner invented CVEs, with over half its critical findings false or misclassified.",
+        "Another agent reported compromises that never actually occurred.",
+        "Automation accelerated reconnaissance against weak targets but failed against enforced authentication and filtering.",
+        "Default credentials, public APIs, SQL injection, and hardcoded keys caused most confirmed access.",
+        "Root credentials exposed eighteen-plus database tables at a fire-dispatch technology vendor.",
+        "Front-end JavaScript exposed an AES-256 key, session cookies, and an administrator’s identity.",
+        "Sensitive records were extracted from emergency, medical, lending, university, and telecom systems.",
+        "Emergency records covered seven Taipei districts but were historical cases, not live tracking.",
+        "Agents selected 489 potential targets across 45 Thai institutions and compromised three.",
+        "Agents collected roughly 206,800 Mexican phone-and-address records using public datasets.",
+        "Attribution depended on reused identities, infrastructure artifacts, and a leaked home IP address.",
+        "Motivation and possible state sponsorship remain unresolved despite technical attribution.",
+        "Safeguard removal enables offensive use without guaranteeing reliable agent behavior.",
+        "Most successful exploitation depended on longstanding configuration failures, not sophisticated novel techniques.",
+        "Researchers identified nine IP addresses and nine domains as attack indicators."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 81,
+      "rating_reason": "The article provides a dense, technically specific case study showing how abliterated AI agents scaled reconnaissance and exploitation across multiple countries. It supplies actionable lessons about default credentials, public APIs, hardcoded keys, SQL injection, authentication, and endpoint filtering, while documenting agent failures such as invented CVEs, false-positive findings, and fabricated compromises. Attribution, motive, and disclosure remain uncertain, and the promotional page clutter reduces efficiency, but the core reporting remains substantive and highly relevant to cybersecurity and AI.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-10T16:34:46.142704"
+    },
+    {
+      "id": 7866,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/11/09/attackers-backdoor-trusted-aws-integrations-to-steal-secrets/5308553",
+      "title": "Jump to main content",
+      "summary": "Stale third-party AWS trust relationships can enable broad credential theft, requiring historical session hunting and active-secret revocation.",
+      "ideas": [
+        "Compromised Qubole IAM credentials enabled attackers to assume roles across customer AWS accounts.",
+        "Forgotten cross-account trust policies let attackers persist after customers stopped using Qubole.",
+        "Two Qubole IAM users generated temporary customer credentials through the sts:AssumeRole API.",
+        "Sentra flagged suspicious activity, prompting Wiz and Mandiant to trace the compromise.",
+        "Attackers harvested secrets from Lambda, Secrets Manager, SSM Parameter Store, Entra ID, and Okta.",
+        "TruffleHog testing exposed valid victim credentials and enabled OAuth token requests through discovered Okta clients.",
+        "The opportunistic attackers sometimes downloaded entire S3 buckets rather than targeting specific information.",
+        "Rotating credentials does not revoke temporary sessions attackers obtained before the rotation.",
+        "Review CloudTrail from October 1 for AssumeRole events tied to Qubole account 805246085872.",
+        "Prioritize role sessions originating from non-AWS IP addresses when hunting for suspicious assumptions.",
+        "After detecting assumed roles, rotate every accessible secret and revoke active role sessions.",
+        "A separate early campaign used customer-owned access keys, but investigators could not definitively link it.",
+        "Multiple customer environments were affected, but the total victim count remained undisclosed.",
+        "Investigators identified no threat group or intended downstream use for the stolen data.",
+        "Initial compromise details remain unclear because AWS and Qubole did not respond to inquiries."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides a detailed, actionable case study of a Qubole-to-AWS supply-chain compromise, including concrete IAM identifiers, affected cloud services, and CloudTrail hunting steps. Its guidance on stale cross-account trust, temporary-session persistence, credential rotation, and secret revocation is operationally useful for cloud-security teams. It falls short of exceptional because the initial credential-compromise mechanism, victim count, attribution, and relationship between two campaigns remain unclear.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-10T16:33:24.599457",
+      "image_url": "https://image.theregister.com/1681829.jpg?imageId=1681829&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+      "image_width": 1200,
+      "image_height": 683,
+      "image_alt": ""
+    },
+    {
+      "id": 7865,
+      "source_id": 4,
+      "original_url": "https://born0monday.me/posts/ha-green-mosquitto-rce/",
+      "title": "born0monday",
+      "summary": "A length-accounting flaw in Mosquitto's WebSocket reader that upstream dismissed as harmless is fully exploitable to unauthenticated RCE, so operators must firewall the WebSocket port or update the Home Assistant add-on immediately.",
+      "ideas": [
+        "Empty WebSocket frames make Mosquitto return header byte counts, breaking the read_length ≤ to_process invariant",
+        "Empty-frame handling returns header bytes as payload length, unbounded by the requested count",
+        "to_process uint32 underflow (~4GB) advances pos past the buffer, enabling pre-auth heap OOB write",
+        "Send header-only MQTT packet, withhold body, then send empty masked frames to underflow the counter",
+        "MQTT packet reassembly is a resumable per-connection parser with resume gates in stages A through C",
+        "A GitHub issue classified the bug as harmless to memory safety; it enables full RCE",
+        "Fuzzing uncovered the bug; AI models also found it but misjudged its severity",
+        "Hunting OSS-Fuzz harness coverage gaps is an effective strategy for finding memory corruption",
+        "Exploit chain: heap leak, absolute address recovery, arbitrary read/write, libc and PIE leaks, RCE",
+        "Mosquitto 2.1.x with built-in WebSocket listener is unpatched upstream; restrict or firewall the WS port",
+        "Home Assistant Mosquitto add-on ≤7.1.1 is vulnerable by default; fixed in 7.1.2",
+        "Container RCE is only the first stage; a follow-up post covers escaping to full device compromise"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "This is original, first-hand security research with exceptional value density: the author independently discovered a real memory-corruption bug in Eclipse Mosquitto, disproves the upstream GitHub issue's 'no memory safety impact' conclusion, and walks through the entire exploitation chain (heap leak, arbitrary read/write, libc and PIE leaks, RCE) with code-level detail. Practical value instances include explicit affected-version guidance (Mosquitto 2.1.x with WebSocket listener, HA add-on ≤7.1.1 fixed in 7.1.2), immediate mitigations, and a disclosure timeline. The methodology sections add rare expert insight: exploiting OSS-Fuzz harness coverage gaps as a bug-hunting strategy and a concrete demonstration that frontier AI models found the bug but failed to correctly assess its memory-safety severity. No clickbait, padding, or promotional penalties apply; the only limitation is niche audience, but for the cybersecurity theme this is near top-tier.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-10T16:33:17.322205"
+    },
+    {
+      "id": 7864,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html",
+      "title": "#1 Trusted Cybersecurity News Platform",
+      "summary": "Vendor roles with publicly visible external IDs can be abused, so enforce strict IAM controls and monitor AssumeRole activity.",
+      "ideas": [
+        "AssumeRole with external ID can be abused if not kept secret.",
+        "Check CloudTrail for AssumeRole requests from Qubole account with external IPs.",
+        "Monitor specific IAM principal IDs and suspicious IP addresses.",
+        "Rotate all secrets and revoke active sessions after a breach.",
+        "Remove unused Qubole roles or limit trust to specific IAM principals.",
+        "Add source IP condition to limit vendor role assumptions.",
+        "Use unique external IDs per role; don't rely on them as sole control.",
+        "Enable S3 data events or server access logs for sensitive buckets."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 82,
+      "rating_reason": "The article delivers multiple concrete value instances: it explains the AssumeRole/external ID flaw, provides step‑by‑step log‑checking guidance, lists specific IAM IDs and IPs to watch, and offers detailed remediation actions. The content is directly relevant to cybersecurity and is dense enough for its length, with only minor promotional padding at the end.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-10T16:32:45.189572"
+    },
+    {
+      "id": 7863,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Nov/9/mysterious-beeps/",
+      "title": "Locating the source of a mysterious beep with Claude",
+      "summary": "LLMs can be equipped with audio perception to autonomously coordinate devices and pinpoint a sound source.",
+      "ideas": [
+        "Use multiple consumer devices as acoustic sensors to triangulate a beep source",
+        "Implement a Python web server with WebSocket connections for real-time audio streaming",
+        "Detect beeps using FFT and high-pass filter in browser JavaScript",
+        "Align audio clips via a chirp emitted by the device with lowest round-trip time",
+        "Provide a UI with drag‑and‑drop “rough mode” for manual device placement",
+        "Hot‑swap code to listeners over WebSocket to update functionality without manual reloads",
+        "Leverage Claude Code to autonomously develop and iterate the system",
+        "Apply BeepBeep research methods (two‑way sensing, self‑recording, sample counting) to COTS devices",
+        "Use clapping mode to test and validate sound localization",
+        "Suggest optimal new listener locations based on collected data"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 80,
+      "rating_reason": "The post delivers multiple practical insights—building a multi‑device acoustic locator, using WebSockets and FFT detection, hot‑swapping code, and giving Claude audio perception—providing clear, actionable knowledge for developers. It aligns strongly with AI and technology themes and contains no clickbait or padding, resulting in a solid value density for its length.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-11-10T16:32:31.246060",
+      "image_url": "https://static.simonwillison.net/static/2026/beep-locator-card.jpg",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
     {
       "id": 7862,
       "source_id": 28,
