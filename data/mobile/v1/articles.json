@@ -1,11 +1,245 @@
 {
   "schema_version": 1,
-  "sequence": 1963,
-  "revision": "sha256:9c83a7a88c76b0cf95f8ea82edef9a99ba3c6805153d1eb9a4cd9369d802ebec",
-  "generated_at": "2026-11-11T19:00:00.209373+00:00",
+  "sequence": 1964,
+  "revision": "sha256:777e8c425e194f73162b1e344d6b3884c8ec6ffc6132369afc7e60993fa00233",
+  "generated_at": "2026-11-11T20:00:00.257033+00:00",
   "complete": true,
-  "total_items": 1258,
+  "total_items": 1268,
   "items": [
+    {
+      "article_id": "article:7920",
+      "original_url": "https://www.juststeveking.com/articles/rebuilding-resends-php-sdk/",
+      "title": "Rebuilding Resend's PHP SDK",
+      "summary": "Reliable SDK behavior depends on preserving response metadata, classifying error bodies, and handling framework interoperability rather than merely wrapping HTTP calls.",
+      "rating": 87,
+      "rating_reason": "This is a dense, evidence-led PHP and API-engineering comparison backed by code, contract tests, reproducible failure scenarios, and dependency measurements. It identifies several non-obvious behaviors involving PSR-18 exception semantics, error-body-aware retries, malformed gateway responses, webhook header interoperability, typed hydration, and compatibility costs. The evaluation is limited by its three-endpoint rebuild, simplistic package-size measurements, the author's stake in sdk-toolbox, and the supplied article's abrupt truncation.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T06:24:19.217264+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T06:24:19.217264+00:00",
+      "image": {
+        "url": "https://www.juststeveking.com/og/articles/rebuilding-resends-php-sdk.webp",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7919",
+      "original_url": "https://www.jjd.io/posts/a-resolution-dial-for-e-means.html",
+      "title": "A Resolution Dial for e-means",
+      "summary": "Applying dyf's graph-Louvain resolution dial to a flat e-means codebook yields k-free clustering that beats the shipped tree, while revealing dyf's re-cut step was covering for weak tree cells.",
+      "rating": 87,
+      "rating_reason": "A rigorous empirical study testing Meta FAIR's newly released e-means against and inside the author's dyf clustering system, with concrete ARI measurements, seed counts, timings, and a released experimental protocol. The central mechanism — dyf's re-cut step masking weak tree cell quality so optimizer gains only surface once smoothing is removed, plus a k-free resolution dial on a flat k-means codebook reaching 0.83 ARI on MNIST — is non-obvious, verifiable, and directly useful to ML practitioners working with vector codebooks and faiss. Limitations include modest average gains away from MNIST (+0.023), laptop-scale codebooks (900-3,500 centroids) far below the e-means paper's regime, reliance on a fifty-label resolution pick, and an acknowledged long-standing over-segment-then-merge recipe. The explicit honest-accounting section and careful grounding notes raise trust without inflating the claims.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T06:22:32.121959+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T06:22:32.121959+00:00",
+      "image": {
+        "url": "https://jjd.io/posts/images/lens_on_codebook_mnist_three_panels_og.png",
+        "width": 1800,
+        "height": 942,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7918",
+      "original_url": "https://www.grahambrooks.com/post/optimizing-agentic-development/",
+      "title": "Optimizing Agentic Development: The Signal Ratio",
+      "summary": "Optimizing LLM coding agents by maximizing the signal ratio—essential tokens over total tokens—drastically improves cost, speed, and reasoning quality.",
+      "rating": 85,
+      "rating_reason": "The article offers concrete, measurement‑backed guidance for reducing unnecessary token usage in LLM‑powered coding agents, introducing the actionable \"signal ratio\" metric and concrete tooling patterns (semantic retrieval, structured tool output, sub‑agent summarization, prompt caching, and model routing). It references real‑world data (e.g., token bloat factors, 70% tool‑output reduction, 85% cost cut with RouteLLM) and links to recent research, making it directly useful for AI engineering practitioners. The content stays focused on engineering mechanisms rather than hype, though some claims rely on internal or unpublished numbers, limiting full verification.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T06:20:26.912165+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T06:20:26.912165+00:00",
+      "image": {
+        "url": "https://www.grahambrooks.com/images/cards/post-optimizing-agentic-development.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7917",
+      "original_url": "https://www.dariuszparys.com/three-gates-between-a-pdf-and-your-storage-account",
+      "title": "Three Gates Between a PDF and Your Storage Account",
+      "summary": "A file name is untrusted user input that can independently break upload validation, HTTP transport via metadata headers, and WAF multipart inspection, with concrete fixes and log-audit techniques for each layer.",
+      "rating": 85,
+      "rating_reason": "This is a dense, first-hand incident investigation with concrete mechanisms: browser extension-derived File.type, non-ASCII blob metadata crashing .NET HttpClient behind SDK retries (the 27-second 'transient' 500), and specific Front Door WAF DRS rules (200002/200003, 920120/920121, anomaly rule 949110) that would block ordinary multipart uploads in Block mode. It includes working code, KQL queries for Application Insights and Log Analytics, an honest note that the blocking numbers are illustrative, and a reusable three-layer model of file names as untrusted user input. The extension-sniffing material is fairly well-known, which keeps it out of the exceptional band, but the WAF-before-Block auditing practice and the header-encoding failure mode are genuinely non-obvious operational knowledge directly relevant to security, infrastructure, and engineering practice.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T06:17:18.025654+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T06:17:18.025654+00:00",
+      "image": {
+        "url": "https://www.dariuszparys.com/social-cards/three-gates-between-a-pdf-and-your-storage-account.png?v=56e4c79",
+        "width": 1200,
+        "height": 630,
+        "alt": "Three Gates Between a PDF and Your Storage Account social card"
+      }
+    },
+    {
+      "article_id": "article:7916",
+      "original_url": "https://worksonmymachine.io/posts/007-elvi-firmware/",
+      "title": "My Charger's Manufacturer Left. Its Certificate Didn't Get the Memo.",
+      "summary": "A methodical OCPP investigation finds that weak Wi-Fi, rather than the remote backend, prevented an EV charger firmware update, while also showcasing local backend testing and the need to verify AI-generated troubleshooting advice.",
+      "rating": 86,
+      "rating_reason": "This is a strong firsthand debugging report with an original end-to-end investigation, reproducible OCPP/FTP procedures, firmware-specific evidence, and useful packet and Wi-Fi measurements. It demonstrates why server-side transfer completion does not imply reliable client receipt and provides a practical path for testing orphaned charging hardware locally. The final radio-deadline explanation remains speculative, and the AI commentary adds some length, but the operational findings are unusually concrete.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T06:12:14.397754+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T06:12:14.397754+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7915",
+      "original_url": "https://vanja.io/stop-at-high/",
+      "title": "Stop at High",
+      "summary": "A hands‑on guide shows how to benchmark Claude model effort levels and choose cheaper configurations without sacrificing task success.",
+      "rating": 86,
+      "rating_reason": "The article delivers a concrete, reproducible methodology for measuring Claude model effort levels and costs, complete with detailed benchmark tables, cost breakdowns, and step‑by‑step instructions. It is directly relevant to AI engineering and LLM cost optimization, offering non‑obvious findings about when higher effort or larger models are worthwhile. While the narrative includes some marketing language, the core technical content is dense and actionable, making it valuable for a technically capable reader.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T06:08:08.181023+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T06:08:08.181023+00:00",
+      "image": {
+        "url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/stop-at-high-bead632f6a2a.png",
+        "width": 1200,
+        "height": 675,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7914",
+      "original_url": "https://startdebugging.net/2026/11/fix-cs8620-params-method-in-csharp-14-extension-block/",
+      "title": "Fix: CS8620 \"Argument of type 'string' cannot be used for parameter ... due to differences in the nullability\" on a params method in a C# 14 extension block",
+      "summary": "Roslyn mishandles params arguments in C# 14 extension blocks on .NET SDK 10.0.1xx, producing false CS8620 warnings that disappear with SDK 10.0.200 or later.",
+      "rating": 88,
+      "rating_reason": "This is a focused, reproducible .NET debugging article that traces a false CS8620 diagnostic in C# 14 extension blocks to Roslyn’s receiver-parameter ordinal handling. It provides a minimal project, an SDK-version comparison matrix, a primary SDK upgrade fix, CI/container implications, and narrowly scoped workarounds without hiding genuine nullability warnings. Its highly version-specific and narrow focus limits general value, but the linked Roslyn issue and fix PR plus firsthand build comparisons make it unusually actionable for affected developers.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T05:59:06.423401+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T05:59:06.423401+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/11/fix-cs8620-params-method-in-csharp-14-extension-block.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Fix: CS8620 \"Argument of type 'string' cannot be used for parameter ... due to differences in the nullability\" on a params method in a C# 14 extension block - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:7913",
+      "original_url": "https://nesbitt.io/2026/11/11/this-week-in-source-control.html",
+      "title": "This Week in Source Control: 11 November 2026",
+      "summary": "The roundup explains how modern Git forges scale and harden source control through Ref-CAS-backed storage, optimized reference handling, and coordinated vulnerability fixes.",
+      "rating": 87,
+      "rating_reason": "This is a dense, highly relevant digest of Git internals, forge architecture, release changes, and security fixes. It provides concrete mechanisms and measurements, including GitHub's quorum-CAS reference service, 7,200 pushes per second under 5,000 concurrent agents, a 17% ref-deletion improvement, and specific path-traversal, memory-safety, and privilege vulnerabilities with affected versions. Its main limitation is that it is a secondary roundup: several items summarize or link to deeper primary analyses, while UI announcements and routine release notes dilute the strongest material.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T05:44:07.272922+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T05:44:07.272922+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7912",
+      "original_url": "https://kean.blog/post/release-testing-with-agents",
+      "title": "Release Testing with Agents",
+      "summary": "A firsthand, quantified workflow uses scenario-driven agents, simulator orchestration, and independent verification to scale mobile release testing.",
+      "rating": 89,
+      "rating_reason": "This is a concrete, firsthand account of building an agent-driven mobile regression system, with implementation architecture, run scale, cost, a concrete defect diagnosis, and cross-platform results. The scenario format, parallel simulator orchestration, verifier pattern, and diffed reports offer unusually actionable insight into LLM-agent evaluation and software testing. It falls short of fully exceptional because it provides few reusable artifacts or controlled comparisons with traditional UI automation, and its reliability evidence is largely anecdotal; the author also notes nondeterminism, false positives, and simulator limitations.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T05:31:06.906598+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T05:31:06.906598+00:00",
+      "image": {
+        "url": "https://kean.blog/images/posts/release-testing/cover.png",
+        "width": 2560,
+        "height": 1280,
+        "alt": "A QA report that reads: No showstoppers, 7 major issues, 95% of test cases passed, 40 issues found. On either side, the Pocket Casts player on a phone: on iOS, and in Arabic on Android."
+      }
+    },
+    {
+      "article_id": "article:7911",
+      "original_url": "https://kasad.com/blog/2026/11/11/podman-unix-socket-forwarding/",
+      "title": "Forcing Podman containers to listen on UNIX domain sockets",
+      "summary": "A systemd-created Unix socket can be inherited by a socat sidecar in a shared Podman network namespace, exposing a TCP-only service without publishing a host port.",
+      "rating": 86,
+      "rating_reason": "The article provides a focused, reproducible way to prevent users on a shared host from bypassing Caddy by avoiding Podman port publication and bridging TCP to a permission-controlled Unix socket. It explains Podman network namespaces, systemd socket activation, inherited file descriptors, rootless UID/GID mapping, and supplies concrete Podman, Quadlet, socat, ACL, and startup configuration. It is highly actionable and non-obvious, though the security discussion omits directory-traversal requirements and readers must verify the required Podman/Quadlet socket-activation behavior.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-12T05:30:35.717484+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-12T05:30:35.717484+00:00",
+      "image": {
+        "url": "https://kasad.com/blog/2026/11/11/podman-unix-socket-forwarding/og.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Simplified preview screenshot of the post"
+      }
+    },
     {
       "article_id": "article:7910",
       "original_url": "https://joe.blog.freemansoft.com/2026/11/tuning-entity-matcher-fix-candidate.html",
@@ -23,7 +257,12 @@
       "admitted_at": "2026-11-12T05:28:18.656524+00:00",
       "source_published_at": null,
       "expires_at": "2026-12-12T05:28:18.656524+00:00",
-      "image": null
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWYXnlKvWxHAVBi9ek9j_8hIMfmqAbj6w1plu_RjHZLrrtKzgCtmpz6U2q-pKfTh1lY4rZs80B3wssvHDeLryPMxzMGzeTtrC8ITyfPEx5DkWk8eb0A_0RS64humuED9e6lB5ZqZPVnORrkPexJ7tc-5DOUrb3yhE4xF90vHY04AS7Ejd4pjC0rNv4Kgsw/w1200-h630-p-k-no-nu/Screenshot%202026-11-10%20at%208.31.53%E2%80%AFAM.png",
+        "width": 1111,
+        "height": 630,
+        "alt": ""
+      }
     },
     {
       "article_id": "article:7909",
@@ -43,7 +282,12 @@
       "admitted_at": "2026-11-12T05:26:59.727145+00:00",
       "source_published_at": null,
       "expires_at": "2026-12-12T05:26:59.727145+00:00",
-      "image": null
+      "image": {
+        "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrfUIjpEpvcjzbM3j496FZVxdb7r1_BQfK-yawpsvwga3Nq-kjgrX9NiI0fg_prm58YsUsKeM71zLSTKLb-IzQK0SZRfR04ZiXDSF8JQgm21hRc5e4n67OiXWuayhINZmK80wLE-whR4RIu-lElP99XZVhuJs78toEpIIG2fitE_TxZv8r6QM1kMIF5yOO/w1200-h630-p-k-no-nu/diagram-1.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
     },
     {
       "article_id": "article:7908",
@@ -3094,12 +3338,7 @@
       "admitted_at": "2026-11-07T23:20:33.110343+00:00",
       "source_published_at": null,
       "expires_at": "2026-12-07T23:20:33.110343+00:00",
-      "image": {
-        "url": "https://nesbitt.io/images/boxes.png",
-        "width": 1200,
-        "height": 630,
-        "alt": ""
-      }
+      "image": null
     },
     {
       "article_id": "article:7770",
@@ -16504,12 +16743,7 @@
       "admitted_at": "2026-10-25T05:19:23.000835+00:00",
       "source_published_at": null,
       "expires_at": "2026-11-24T05:19:23.000835+00:00",
-      "image": {
-        "url": "https://nesbitt.io/images/boxes.png",
-        "width": 1200,
-        "height": 630,
-        "alt": ""
-      }
+      "image": null
     },
     {
       "article_id": "article:7165",

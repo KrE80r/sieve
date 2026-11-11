@@ -1,7 +1,278 @@
 {
-  "updated_at": "2026-11-11T19:00:00.209373+00:00",
-  "total_items": 1258,
+  "updated_at": "2026-11-11T20:00:00.257033+00:00",
+  "total_items": 1268,
   "items": [
+    {
+      "id": 7920,
+      "source_id": 34,
+      "original_url": "https://www.juststeveking.com/articles/rebuilding-resends-php-sdk/",
+      "title": "Rebuilding Resend's PHP SDK",
+      "summary": "Reliable SDK behavior depends on preserving response metadata, classifying error bodies, and handling framework interoperability rather than merely wrapping HTTP calls.",
+      "ideas": [
+        "PSR-18 disables Guzzle HTTP exceptions, preserving 4xx and 5xx error bodies.",
+        "Status-only retries mishandle Resend's terminal invalid_idempotent_request 409.",
+        "Malformed HTML 502 responses can erase status and trigger retriable misclassification.",
+        "Official SDK webhook verification breaks on header casing and PSR-7 arrays.",
+        "Typed hydration improved errors but increased dependencies and delayed API compatibility.",
+        "Default retries improve delivery resilience while introducing controller latency."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a dense, evidence-led PHP and API-engineering comparison backed by code, contract tests, reproducible failure scenarios, and dependency measurements. It identifies several non-obvious behaviors involving PSR-18 exception semantics, error-body-aware retries, malformed gateway responses, webhook header interoperability, typed hydration, and compatibility costs. The evaluation is limited by its three-endpoint rebuild, simplistic package-size measurements, the author's stake in sdk-toolbox, and the supplied article's abrupt truncation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T06:24:19.217264",
+      "image_url": "https://www.juststeveking.com/og/articles/rebuilding-resends-php-sdk.webp",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7919,
+      "source_id": 34,
+      "original_url": "https://www.jjd.io/posts/a-resolution-dial-for-e-means.html",
+      "title": "A Resolution Dial for e-means",
+      "summary": "Applying dyf's graph-Louvain resolution dial to a flat e-means codebook yields k-free clustering that beats the shipped tree, while revealing dyf's re-cut step was covering for weak tree cells.",
+      "ideas": [
+        "Resolution dial on e-means codebook reaches 0.83 ARI on MNIST without knowing k",
+        "At ~100 centroids, initialization matters ~2.5x more than the optimizer choice",
+        "Downstream smoothing steps can mask weak cell quality and erase optimizer gains",
+        "E-means builds 3,500-centroid codebooks about three times faster than Lloyd",
+        "Hyperplane tree cells win on coarse text topics; flat codebooks win on images"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "A rigorous empirical study testing Meta FAIR's newly released e-means against and inside the author's dyf clustering system, with concrete ARI measurements, seed counts, timings, and a released experimental protocol. The central mechanism — dyf's re-cut step masking weak tree cell quality so optimizer gains only surface once smoothing is removed, plus a k-free resolution dial on a flat k-means codebook reaching 0.83 ARI on MNIST — is non-obvious, verifiable, and directly useful to ML practitioners working with vector codebooks and faiss. Limitations include modest average gains away from MNIST (+0.023), laptop-scale codebooks (900-3,500 centroids) far below the e-means paper's regime, reliance on a fifty-label resolution pick, and an acknowledged long-standing over-segment-then-merge recipe. The explicit honest-accounting section and careful grounding notes raise trust without inflating the claims.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T06:22:32.121959",
+      "image_url": "https://jjd.io/posts/images/lens_on_codebook_mnist_three_panels_og.png",
+      "image_width": 1800,
+      "image_height": 942,
+      "image_alt": ""
+    },
+    {
+      "id": 7918,
+      "source_id": 34,
+      "original_url": "https://www.grahambrooks.com/post/optimizing-agentic-development/",
+      "title": "Optimizing Agentic Development: The Signal Ratio",
+      "summary": "Optimizing LLM coding agents by maximizing the signal ratio—essential tokens over total tokens—drastically improves cost, speed, and reasoning quality.",
+      "ideas": [
+        "Measure and publish the signal ratio (inherent/total tokens) to gauge agent efficiency.",
+        "Replace grep‑and‑read with LSP/Tree‑sitter‑based symbol graph queries to cut incidental tokens.",
+        "Design tool outputs as compact JSON or structured data, achieving up to 70% token reduction.",
+        "Use sub‑agents to summarize large file reads, keeping the planner’s context small.",
+        "Route simple schema‑bound calls to cheap specialist models (e.g., 7B) and reserve frontier models for planning."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article offers concrete, measurement‑backed guidance for reducing unnecessary token usage in LLM‑powered coding agents, introducing the actionable \"signal ratio\" metric and concrete tooling patterns (semantic retrieval, structured tool output, sub‑agent summarization, prompt caching, and model routing). It references real‑world data (e.g., token bloat factors, 70% tool‑output reduction, 85% cost cut with RouteLLM) and links to recent research, making it directly useful for AI engineering practitioners. The content stays focused on engineering mechanisms rather than hype, though some claims rely on internal or unpublished numbers, limiting full verification.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T06:20:26.912165",
+      "image_url": "https://www.grahambrooks.com/images/cards/post-optimizing-agentic-development.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7917,
+      "source_id": 34,
+      "original_url": "https://www.dariuszparys.com/three-gates-between-a-pdf-and-your-storage-account",
+      "title": "Three Gates Between a PDF and Your Storage Account",
+      "summary": "A file name is untrusted user input that can independently break upload validation, HTTP transport via metadata headers, and WAF multipart inspection, with concrete fixes and log-audit techniques for each layer.",
+      "ideas": [
+        "Browsers derive File.type from the extension; validate uploads by magic bytes on both client and server",
+        "Non-ASCII blob metadata makes .NET HttpClient throw; SDK retries disguise it as a transient 500",
+        "Encode user strings with Uri.EscapeDataString or keep them out of HTTP headers and blob metadata",
+        "WAF log-only mode hides would-be blocks; audit DRS rules 200002 and 200003 before switching to Block",
+        "Front Door field exclusions cover values, not body-parsing rules or multipart file names",
+        "Join App Insights requests and exceptions tables to find inner exceptions behind retry failures",
+        "Contract-test uploads with names like 'Prüfung ß.pdf' and apostrophes against Azurite"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a dense, first-hand incident investigation with concrete mechanisms: browser extension-derived File.type, non-ASCII blob metadata crashing .NET HttpClient behind SDK retries (the 27-second 'transient' 500), and specific Front Door WAF DRS rules (200002/200003, 920120/920121, anomaly rule 949110) that would block ordinary multipart uploads in Block mode. It includes working code, KQL queries for Application Insights and Log Analytics, an honest note that the blocking numbers are illustrative, and a reusable three-layer model of file names as untrusted user input. The extension-sniffing material is fairly well-known, which keeps it out of the exceptional band, but the WAF-before-Block auditing practice and the header-encoding failure mode are genuinely non-obvious operational knowledge directly relevant to security, infrastructure, and engineering practice.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T06:17:18.025654",
+      "image_url": "https://www.dariuszparys.com/social-cards/three-gates-between-a-pdf-and-your-storage-account.png?v=56e4c79",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Three Gates Between a PDF and Your Storage Account social card"
+    },
+    {
+      "id": 7916,
+      "source_id": 34,
+      "original_url": "https://worksonmymachine.io/posts/007-elvi-firmware/",
+      "title": "My Charger's Manufacturer Left. Its Certificate Didn't Get the Memo.",
+      "summary": "A methodical OCPP investigation finds that weak Wi-Fi, rather than the remote backend, prevented an EV charger firmware update, while also showcasing local backend testing and the need to verify AI-generated troubleshooting advice.",
+      "ideas": [
+        "Certificate expiry can depend on the exact firmware build suffix, not just the visible version.",
+        "OCPP logs and packet counters help distinguish client-side transfer failures from server-side completion.",
+        "A complete FTP server log does not prove the charger received every byte reliably.",
+        "SteVe and pyftpdlib provide a local OCPP and firmware-update test path.",
+        "A nearby hotspot can rescue long OTA downloads on weak Wi-Fi links.",
+        "Claude's incorrect advice demonstrates the need to verify AI-derived troubleshooting assumptions."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a strong firsthand debugging report with an original end-to-end investigation, reproducible OCPP/FTP procedures, firmware-specific evidence, and useful packet and Wi-Fi measurements. It demonstrates why server-side transfer completion does not imply reliable client receipt and provides a practical path for testing orphaned charging hardware locally. The final radio-deadline explanation remains speculative, and the AI commentary adds some length, but the operational findings are unusually concrete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T06:12:14.397754"
+    },
+    {
+      "id": 7915,
+      "source_id": 34,
+      "original_url": "https://vanja.io/stop-at-high/",
+      "title": "Stop at High",
+      "summary": "A hands‑on guide shows how to benchmark Claude model effort levels and choose cheaper configurations without sacrificing task success.",
+      "ideas": [
+        "Measure per‑task cost and success across model/effort cells using /usage token counts.",
+        "Opus 5.5 at high effort solved as many tasks as xhigh at ~40% of the cost.",
+        "Fable 5.2 at high was three times more expensive than Opus 5.5 at high and solved fewer tasks.",
+        "Caching subagents for an hour increased costs by 4.5% versus a five‑minute TTL.",
+        "A cascade (low then re‑run failures at high) reduced spend by ~40% while maintaining ~97% success."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers a concrete, reproducible methodology for measuring Claude model effort levels and costs, complete with detailed benchmark tables, cost breakdowns, and step‑by‑step instructions. It is directly relevant to AI engineering and LLM cost optimization, offering non‑obvious findings about when higher effort or larger models are worthwhile. While the narrative includes some marketing language, the core technical content is dense and actionable, making it valuable for a technically capable reader.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T06:08:08.181023",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/stop-at-high-bead632f6a2a.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 7914,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/11/fix-cs8620-params-method-in-csharp-14-extension-block/",
+      "title": "Fix: CS8620 \"Argument of type 'string' cannot be used for parameter ... due to differences in the nullability\" on a params method in a C# 14 extension block",
+      "summary": "Roslyn mishandles params arguments in C# 14 extension blocks on .NET SDK 10.0.1xx, producing false CS8620 warnings that disappear with SDK 10.0.200 or later.",
+      "ideas": [
+        "Roslyn’s receiver slot breaks last-parameter detection for params extension members.",
+        "Upgrade to SDK 10.0.200+ or pass arguments in normal collection form.",
+        "Pin SDK feature bands with global.json to prevent CI regressions.",
+        "Avoid blanket CS8620 suppression because genuine nullability mismatches still occur.",
+        "Static calls and classic extension methods bypass the buggy receiver path."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a focused, reproducible .NET debugging article that traces a false CS8620 diagnostic in C# 14 extension blocks to Roslyn’s receiver-parameter ordinal handling. It provides a minimal project, an SDK-version comparison matrix, a primary SDK upgrade fix, CI/container implications, and narrowly scoped workarounds without hiding genuine nullability warnings. Its highly version-specific and narrow focus limits general value, but the linked Roslyn issue and fix PR plus firsthand build comparisons make it unusually actionable for affected developers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:59:06.423401",
+      "image_url": "https://startdebugging.net/og/2026/11/fix-cs8620-params-method-in-csharp-14-extension-block.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: CS8620 \"Argument of type 'string' cannot be used for parameter ... due to differences in the nullability\" on a params method in a C# 14 extension block - Start Debugging"
+    },
+    {
+      "id": 7913,
+      "source_id": 34,
+      "original_url": "https://nesbitt.io/2026/11/11/this-week-in-source-control.html",
+      "title": "This Week in Source Control: 11 November 2026",
+      "summary": "The roundup explains how modern Git forges scale and harden source control through Ref-CAS-backed storage, optimized reference handling, and coordinated vulnerability fixes.",
+      "ideas": [
+        "GitHub's Rubicon combines blob-backed packs, quorum compare-and-swap refs, and verified compaction.",
+        "Internal tests sustained 7,200 pushes per second across 5,000 concurrent agents.",
+        "Copying retained ref bytes eliminated formatting overhead, improving deletion speed by about 17%.",
+        "Git 2.56.1 fixes path traversal, symlink, overflow, and unsafe-import vulnerabilities.",
+        "lazygit now rejects submodule paths escaping the repository before performing deletion.",
+        "Gerrit's targeted tag-detail construction reduced listing latency from 450ms to 15–35ms."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a dense, highly relevant digest of Git internals, forge architecture, release changes, and security fixes. It provides concrete mechanisms and measurements, including GitHub's quorum-CAS reference service, 7,200 pushes per second under 5,000 concurrent agents, a 17% ref-deletion improvement, and specific path-traversal, memory-safety, and privilege vulnerabilities with affected versions. Its main limitation is that it is a secondary roundup: several items summarize or link to deeper primary analyses, while UI announcements and routine release notes dilute the strongest material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:44:07.272922"
+    },
+    {
+      "id": 7912,
+      "source_id": 34,
+      "original_url": "https://kean.blog/post/release-testing-with-agents",
+      "title": "Release Testing with Agents",
+      "summary": "A firsthand, quantified workflow uses scenario-driven agents, simulator orchestration, and independent verification to scale mobile release testing.",
+      "ideas": [
+        "Markdown behavioral scenarios let agents infer UI steps instead of brittle selectors.",
+        "Verifier agents corroborate candidate defects with code evidence and duplicate checks.",
+        "Five simulators reduce nine agent-hours to roughly two elapsed hours.",
+        "Accessibility and localization sweeps uncovered 60 Android issues in 191 cases.",
+        "Nondeterministic agent tests complement rather than replace deterministic merge gates."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a concrete, firsthand account of building an agent-driven mobile regression system, with implementation architecture, run scale, cost, a concrete defect diagnosis, and cross-platform results. The scenario format, parallel simulator orchestration, verifier pattern, and diffed reports offer unusually actionable insight into LLM-agent evaluation and software testing. It falls short of fully exceptional because it provides few reusable artifacts or controlled comparisons with traditional UI automation, and its reliability evidence is largely anecdotal; the author also notes nondeterminism, false positives, and simulator limitations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:31:06.906598",
+      "image_url": "https://kean.blog/images/posts/release-testing/cover.png",
+      "image_width": 2560,
+      "image_height": 1280,
+      "image_alt": "A QA report that reads: No showstoppers, 7 major issues, 95% of test cases passed, 40 issues found. On either side, the Pocket Casts player on a phone: on iOS, and in Arabic on Android."
+    },
+    {
+      "id": 7911,
+      "source_id": 34,
+      "original_url": "https://kasad.com/blog/2026/11/11/podman-unix-socket-forwarding/",
+      "title": "Forcing Podman containers to listen on UNIX domain sockets",
+      "summary": "A systemd-created Unix socket can be inherited by a socat sidecar in a shared Podman network namespace, exposing a TCP-only service without publishing a host port.",
+      "ideas": [
+        "Podman pods share network namespaces, allowing sidecars to reach services through container-local loopback.",
+        "Systemd socket activation passes a host Unix socket to socat as descriptor 3.",
+        "Avoid published ports when shared-host users could bypass an HTTP reverse proxy.",
+        "Host-side ACLs avoid rootless container UID and GID mapping complexity.",
+        "The socket proxy avoids maintaining a custom application container image."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a focused, reproducible way to prevent users on a shared host from bypassing Caddy by avoiding Podman port publication and bridging TCP to a permission-controlled Unix socket. It explains Podman network namespaces, systemd socket activation, inherited file descriptors, rootless UID/GID mapping, and supplies concrete Podman, Quadlet, socat, ACL, and startup configuration. It is highly actionable and non-obvious, though the security discussion omits directory-traversal requirements and readers must verify the required Podman/Quadlet socket-activation behavior.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:30:35.717484",
+      "image_url": "https://kasad.com/blog/2026/11/11/podman-unix-socket-forwarding/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Simplified preview screenshot of the post"
+    },
     {
       "id": 7910,
       "source_id": 34,
@@ -28,7 +299,11 @@
       "rating_reason": "A dense, measurement-backed practitioner guide to tuning an Elasticsearch-based entity matcher on 2.1M public records, with concrete before/after numbers (limit hits 43,111 to 30,989; top-tier pairs 581 to 819), config fragments, and named code artifacts. The central insight — candidate search recall caps everything downstream, so no weight or threshold can recover a pair the search never fetched — is non-obvious and generalizes to any recall/precision pipeline. Specific failure modes (lowercased queries on case-sensitive keyword fields, a 200-value terms-aggregation cap silently truncating, guards counting signals instead of independent evidence sources) are exactly the kind of hard-won detail that justifies reading. Limits are honest and acknowledged: dataset-specific numbers, a specialist subject, and scores explicitly unvalidated against labeled ground truth.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-12T05:28:18.656524"
+      "published_at": "2026-11-12T05:28:18.656524",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWYXnlKvWxHAVBi9ek9j_8hIMfmqAbj6w1plu_RjHZLrrtKzgCtmpz6U2q-pKfTh1lY4rZs80B3wssvHDeLryPMxzMGzeTtrC8ITyfPEx5DkWk8eb0A_0RS64humuED9e6lB5ZqZPVnORrkPexJ7tc-5DOUrb3yhE4xF90vHY04AS7Ejd4pjC0rNv4Kgsw/w1200-h630-p-k-no-nu/Screenshot%202026-11-10%20at%208.31.53%E2%80%AFAM.png",
+      "image_width": 1111,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 7909,
@@ -55,7 +330,11 @@
       "rating_reason": "This is a strong engineering postmortem grounded in two real datasets, concrete Elasticsearch configurations, measurements, failure cases, and regression tests. It exposes valuable mechanisms around silent data corruption, candidate-generation coverage, cardinality-based signal weighting, configuration boundaries, and safe reruns. The evidence is mostly self-reported and lacks precision-recall or ground-truth evaluation for the matches, while the supplied article is truncated during its final failure analysis.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-12T05:26:59.727145"
+      "published_at": "2026-11-12T05:26:59.727145",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrfUIjpEpvcjzbM3j496FZVxdb7r1_BQfK-yawpsvwga3Nq-kjgrX9NiI0fg_prm58YsUsKeM71zLSTKLb-IzQK0SZRfR04ZiXDSF8JQgm21hRc5e4n67OiXWuayhINZmK80wLE-whR4RIu-lElP99XZVhuJs78toEpIIG2fitE_TxZv8r6QM1kMIF5yOO/w1200-h630-p-k-no-nu/diagram-1.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 7908,
@@ -3855,11 +4134,7 @@
       "rating_reason": "This is an unusually strong, data-driven software supply-chain study covering thousands of critical repositories, with original measurements on revivals, agent-assisted commits, vulnerabilities, releases, maintainers, and advisory-processing delays. It surfaces non-obvious findings about AI-assisted maintenance, dormant-project triage, and GitHub advisory latency while explicitly documenting methodology and caveats. Limitations include lower-bound agent detection, unobservable private vulnerability reports, and correlations that do not establish causality, but the substance and practical value remain exceptional.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-07T23:20:33.110343",
-      "image_url": "https://nesbitt.io/images/boxes.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-11-07T23:20:33.110343"
     },
     {
       "id": 7770,
@@ -19953,11 +20228,7 @@
       "rating_reason": "This dense package-management roundup reports concrete, high-impact mechanisms rather than generic news: recoverable private keys in compromised eMudhra intermediates, credential-stealing startup hooks in a malicious LiteLLM release, npm Trusted Publishing identity confusion affecting more than 1,500 packages, and a pnpm metadata substitution that bypassed allowBuilds rules. Specific affected versions, mitigations, and ecosystem changes make it actionable for maintainers and operators. The main limitation is that most entries briefly summarize announcements or linked research, so independent verification and deeper mechanism analysis are limited.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-10-25T05:19:23.000835",
-      "image_url": "https://nesbitt.io/images/boxes.png",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": ""
+      "published_at": "2026-10-25T05:19:23.000835"
     },
     {
       "id": 7165,
