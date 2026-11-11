@@ -1,7 +1,382 @@
 {
-  "updated_at": "2026-11-11T18:00:00.361690+00:00",
-  "total_items": 1244,
+  "updated_at": "2026-11-11T19:00:00.209373+00:00",
+  "total_items": 1258,
   "items": [
+    {
+      "id": 7910,
+      "source_id": 34,
+      "original_url": "https://joe.blog.freemansoft.com/2026/11/tuning-entity-matcher-fix-candidate.html",
+      "title": "Tuning an entity matcher: fix the candidate search before the weights - 2",
+      "summary": "In entity matching, recall is fixed by the candidate search, so fix seeds, ignored values, and guards before touching weights or thresholds.",
+      "ideas": [
+        "Pairs never returned by candidate search are unreachable by any threshold or weight",
+        "Seed on rare, decisive values; common seed values flood past the candidate limit",
+        "Lowercased queries against case-sensitive keyword fields fail silently with no signal",
+        "Terms-aggregation size caps silently drop over-shared values; raise the limit deliberately",
+        "Treat missing data as absent, never as disagreement or zero in scoring",
+        "Guards should count independent evidence sources, not the number of signals",
+        "Use normalized IDF rather than 1-minus-share for shared-value rarity scoring",
+        "Blend Jaccard and containment so dropped words rank between partial and exact matches",
+        "Make rare decisive signals conclusive instead of inflating their weights",
+        "Scores without labeled outcomes are review-queue rankings, not probabilities"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 85,
+      "rating_reason": "A dense, measurement-backed practitioner guide to tuning an Elasticsearch-based entity matcher on 2.1M public records, with concrete before/after numbers (limit hits 43,111 to 30,989; top-tier pairs 581 to 819), config fragments, and named code artifacts. The central insight — candidate search recall caps everything downstream, so no weight or threshold can recover a pair the search never fetched — is non-obvious and generalizes to any recall/precision pipeline. Specific failure modes (lowercased queries on case-sensitive keyword fields, a 200-value terms-aggregation cap silently truncating, guards counting signals instead of independent evidence sources) are exactly the kind of hard-won detail that justifies reading. Limits are honest and acknowledged: dataset-specific numbers, a specialist subject, and scores explicitly unvalidated against labeled ground truth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:28:18.656524"
+    },
+    {
+      "id": 7909,
+      "source_id": 34,
+      "original_url": "https://joe.blog.freemansoft.com/2026/11/building-general-entity-matcher.html",
+      "title": "\"Building a general entity matcher requires more than one dataset - 3",
+      "summary": "Applying one entity-resolution framework across dissimilar datasets revealed several silent correctness failures that realistic cross-domain testing and explicit validation can prevent.",
+      "ideas": [
+        "A second dataset exposed silent failures hidden by snake_case column assumptions.",
+        "Normalize join keys and dates during ingestion, then validate mappings.",
+        "Rejected bulk requests can silently omit documents sharing deterministic identifiers.",
+        "Treat low-cardinality values as weak evidence, not identifiers.",
+        "Separate candidate-generation signals from scoring to avoid silent recall loss.",
+        "Fail runs when malformed outputs resemble valid successful results.",
+        "Use versioned result indices to prevent reruns from corrupting comparisons.",
+        "Keep dataset-specific behavior in validated configuration rather than shared code."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a strong engineering postmortem grounded in two real datasets, concrete Elasticsearch configurations, measurements, failure cases, and regression tests. It exposes valuable mechanisms around silent data corruption, candidate-generation coverage, cardinality-based signal weighting, configuration boundaries, and safe reruns. The evidence is mostly self-reported and lacks precision-recall or ground-truth evaluation for the matches, while the supplied article is truncated during its final failure analysis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:26:59.727145"
+    },
+    {
+      "id": 7908,
+      "source_id": 34,
+      "original_url": "https://itsgg.com/blog/2026/11/11/generating-text-one-scale-at-a-time/",
+      "title": "Generating text one scale at a time",
+      "summary": "NCM generates fixed-length text coarse-to-fine by predicting parallel code levels that add residual corrections to a shared learned representation.",
+      "ideas": [
+        "NCM generates text across 12 hierarchical learned code levels",
+        "Early codes capture broad story beats better than fine details",
+        "Parallel sampling within each level can produce repeated adjacent words",
+        "NCM trades 12 sequential passes for 128-token fixed-length output",
+        "Quality versus next-token baselines is mixed despite higher speed"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives a clear, mechanism-level explanation of next-concept modeling, including residual quantization, two-stage training, hierarchical code counts, generation flow, and concrete qualitative outputs from a released model. It also includes useful limitations and empirical trade-offs, though some interpretations are qualitative and it does not provide timings or code-level reproducibility details.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:24:15.505431",
+      "image_url": "https://itsgg.com/assets/og/posts/generating-text-one-scale-at-a-time.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7907,
+      "source_id": 34,
+      "original_url": "https://incolumitas.com/2026/11/10/the-machine-behind-the-browser/",
+      "title": "The Machine Behind the Browser: New Chrome Automation Signals and Timing Side Channels on botstop.io",
+      "summary": "Mechanism-level Chrome and machine-timing probes can distinguish automated browsers from ordinary traffic, but must be rigorously calibrated against real user sessions.",
+      "ideas": [
+        "Runtime.enable changes eval error source URLs",
+        "Network.enable reverses iframe load/message ordering",
+        "Headless Linux lacks pointing devices and uses SwiftShader",
+        "Hardware timing probes can expose mismatched GPU claims",
+        "Initial side-channel probes falsely flagged 29% of paying users",
+        "Rejected probes are a major part of the methodology"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a practitioner-level breakdown of numerous Chrome automation signals, traces many of them to specific CDP domains, launch switches, or headless-build differences, and includes code and real-traffic calibration data. Its strongest value is the concrete mapping between observed browser behavior and its mechanism, including CDP and timing side-channel results. The provided text is truncated before fully documenting many hardware probes and the list of rejected approaches, limiting full assessment of Part II and Part III. Overall, it is dense, specific, and more useful than most browser-detection writing, but some of its highest-value empirical conclusions are only partially shown.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:22:18.810995",
+      "image_url": "https://incolumitas.com/images/botstop-hardware-behind-the-browser.webp",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 7906,
+      "source_id": 34,
+      "original_url": "https://hugovk.dev/blog/2026/lock-github-actions/",
+      "title": "Lock your GitHub Actions",
+      "summary": "It shows how to generate, maintain, and verify GitHub Actions lockfiles to prevent supply‑chain attacks.",
+      "ideas": [
+        "Install the gh‑actions‑lock extension and run `gh actions-lock` to convert action references to tag‑based pins.",
+        "Commit the generated `.github/workflows/actions.lock` alongside workflow files for reproducible builds.",
+        "Add a CI job that runs `gh actions-lock --verify` to ensure lockfiles stay in sync."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article walks through a concrete workflow for securing GitHub Actions with the new lockfile feature, providing real commands, diff output, and a CI verification job. It demonstrates integration with Renovate, Dependabot, and the zizmor linter, giving actionable steps a practitioner can adopt immediately. The content is focused, well‑structured, and free of hype, though it assumes familiarity with GitHub Actions and does not explain the underlying lockfile format in depth.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:20:23.920923",
+      "image_url": "https://hugovk.dev/blog/2026/lock-github-actions/feature.jpg",
+      "image_width": 1524,
+      "image_height": 1112,
+      "image_alt": ""
+    },
+    {
+      "id": 7905,
+      "source_id": 34,
+      "original_url": "https://hetmehta.com/posts/mcp-server-security-checklist/",
+      "title": "An MCP Server Security Checklist for Authors (With the Real Bugs Behind Each Item)",
+      "summary": "The clearest practical lesson is that MCP server tool inputs—including paths and CLI arguments—are attacker-controlled when the calling LLM is steered by untrusted content, so validation must compare resolved real paths, use argument arrays, enforce token audience binding, and avoid giving one agent access, untrusted input, and an outbound channel simultaneously.",
+      "ideas": [
+        "Compare resolved real paths, never string prefixes, to check path containment",
+        "Call CLIs with argument arrays and -- separator; reject dash-prefixed user values",
+        "Never pass through client OAuth tokens; get separate tokens per downstream API",
+        "Validate token audience (RFC 8707 resource parameter); reject foreign-audience tokens",
+        "Lethal trifecta: private access, untrusted input, external channel must not combine",
+        "Listening on localhost is not a security control against malicious web pages",
+        "Tool annotations (readOnlyHint etc.) are hints only, never a security control"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "A highly substantive security checklist for MCP server authors where every item is anchored to a real CVE, specification clause, or documented incident (mcp-remote, MCP Inspector, Filesystem/Git servers, GitHub toxic flow), plus a tested path-containment function with eight verified cases and honest limitations (TOCTOU, case-insensitivity). The content is directly relevant to LLM engineering and security practice, with concrete mechanisms like prefix-collision path bypasses, argument injection, token audience validation, and Protected Resource Metadata. Its main limits are that individual lessons synthesize publicly known CVEs and familiar concepts (Willison's lethal trifecta, realpath comparison) rather than presenting original research, and the provided content is truncated mid-checklist.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:19:12.463759",
+      "image_url": "https://hetmehta.com/posts/an-mcp-server-security-checklist-for-authors-with-the-real-bugs-behind-each-item/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7904,
+      "source_id": 34,
+      "original_url": "https://genbox.github.io/2026/11/mono-interpreter-conditional-rotation.html",
+      "title": "When the .NET WebAssembly interpreter rotates by the wrong number of bits",
+      "summary": "Mono's WebAssembly intrinsic optimizer trusts the last emitted instruction without checking it belongs to the current basic block, collapsing conditional rotation constants to a single branch's value.",
+      "ideas": [
+        "Mono's WASM intrinsic lowering reads the last emitted instruction, ignoring basic-block boundaries",
+        "Conditional rotation counts collapse to one branch's constant in the Mono interpreter",
+        "MONO_VERBOSE_METHOD exposes Mono intermediate-representation traces for diagnosing miscompiles",
+        "Fix pattern: require last_ins to equal the current basic block's last_ins before folding",
+        "Hoisting the conditional count into a variable works around the miscompilation"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A compact but complete miscompilation investigation: the author found a real bug in Mono's WebAssembly interpreter, provided a minimal reproducer with concrete outputs, verified the IL was correct, traced the fault to Mono's IR via MONO_VERBOSE_METHOD, identified the responsible source pattern (td->last_ins consulted across basic-block boundaries in transform.c) and even the originating 2023 commit, then validated a one-line fix plus workaround across 20 test cases. This is original, firsthand, verifiable practitioner knowledge about runtime/compiler internals with near-zero padding. The scope is narrow and the mechanism, once shown, is simple, which keeps it out of the exceptional tier, but it is squarely strong material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T05:16:27.971217",
+      "image_url": "https://genbox.github.io/assets/social/2026-11-mono-interpreter-conditional-rotation.png?v=a261a6f4c78419b5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7903,
+      "source_id": 34,
+      "original_url": "https://bogoyavlensky.com/blog/clj-pulse/",
+      "title": "clj-pulse: a fast Clojure language server",
+      "summary": "clj-pulse demonstrates that staged, syntax-based indexing can provide substantially faster Clojure navigation than full classpath analysis, with clear compromises in semantic accuracy and feature coverage.",
+      "ideas": [
+        "Staged indexing makes project navigation available before full classpath analysis completes.",
+        "Native tree-sitter parsing avoids JVM startup on request hot paths.",
+        "JAR indexes persist on disk, keyed by modification time.",
+        "On Metabase, first navigation drops from 91 seconds to 2.4 seconds.",
+        "Syntax-based analysis agrees with clj-kondo on 94% of 5,032 queries.",
+        "Missing refactors and limited Java support constrain clojure-lsp parity."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a strong technical account of a Clojure language server, with concrete architecture choices, startup and memory measurements, accuracy testing, installation instructions, and explicit feature gaps. The staged tree-sitter indexing and JVM-free hot path are particularly useful mechanisms, while the comparison against clojure-lsp is actionable for tool selection. Confidence is limited by benchmarks on one machine and two projects, a single cold-run sample, and the author's inherent promotion bias, while the syntactic approach still has a 6% disagreement rate with clj-kondo analysis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T04:58:45.452085",
+      "image_url": "https://bogoyavlensky.com/assets/images/og/clj-pulse.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7902,
+      "source_id": 34,
+      "original_url": "https://blog.lyc8503.net/en/post/java-card-explore/",
+      "title": "A First Look at Java Card Smart Card Development and Applications (e.g., DIY a Physically Secure YubiKey Alternative / OpenPGP Card)",
+      "summary": "A reproducible Java Card workflow can turn inexpensive certified secure elements into programmable FIDO2 or OpenPGP hardware, while leaving custom-applet security and card provenance as major trust boundaries.",
+      "ideas": [
+        "Java Card 3.0.5 on J3R180 exposes EAL6+ hardware through standardized GlobalPlatform tooling.",
+        "JCAlgTest’s 98.7% fingerprint match supports authenticity but cannot exclude perfect clones.",
+        "GlobalPlatformPro loads CAP applets and exposes card security domains through JRE 11.",
+        "Persistent allocations and immutable fields can unintentionally leak secrets into flash.",
+        "Underlying hardware certification does not certify custom FIDO2 or OpenPGP applets."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a concrete, reproducible path for programming an EAL6+ J3R180 Java Card, including reader setup, GlobalPlatform commands, CAP compilation, applet source, and APDU testing. Particularly valuable findings include JCAlgTest-based counterfeit detection, severe Java Card persistence and resource constraints, and the distinction between certified secure hardware and uncertified custom FIDO2/OpenPGP applets. It is not a substitute for audited implementations or trusted procurement, and some application sections defer to external guides, but these limitations are stated explicitly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T04:56:20.662727"
+    },
+    {
+      "id": 7901,
+      "source_id": 34,
+      "original_url": "https://avishek.net/2026/11/10/automated-domain-object-extraction-matrix-factorisation.html",
+      "title": "Automated domain object candidate extraction in COBOL using matrix factorisation",
+      "summary": "Byte-level co-usage across COBOL paragraphs can be factorized by NMF into candidate domain object fields and the paragraphs that own them.",
+      "ideas": [
+        "NMF can cluster COBOL byte-level field co-usage into domain object candidates.",
+        "COBOL names alias memory, so byte extents improve the usage matrix.",
+        "Shared fields reveal which paragraphs likely own each candidate entity.",
+        "Commarea and session groups appear as non-domain shared clusters."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, non-obvious reverse-engineering workflow: building a paragraph-by-field usage matrix from byte-level COBOL dataflow, then applying NMF to expose candidate domain objects and their owning paragraphs. It includes worked matrices, COBOL aliasing examples, expected findings, and large-corpus scaling anecdotes, making it more actionable than a purely conceptual post. Its value is strongest for legacy modernization, while the incomplete details and tool-specific focus limit broader reproducibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T04:48:24.894763"
+    },
+    {
+      "id": 7900,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/astryx",
+      "title": "Astryx: what Meta's design system tells an agent, and how its search ranks",
+      "summary": "Astryx exposes a well-instrumented agent interface, but its search quality and version consistency depend materially on choosing the project-local CLI over the hosted MCP server.",
+      "ideas": [
+        "Project-local CLI documentation stays version-matched; hosted MCP documentation can drift.",
+        "Keyword-index matches flatten relevance into ties, favoring alphabetical registry order.",
+        "Substring matching creates false positives such as “as” inside “toast.”",
+        "Experience-style queries ranked the expected component first in 11 of 24 tests.",
+        "Full component documentation costs roughly 2,600 tokens per retrieval.",
+        "Published CLI lagged its repository package version by one patch release.",
+        "Astryx documents 198 component parts across 104 component directories."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is unusually substantive original analysis: the author clones Astryx, inspects its implementation, exercises both CLI and hosted MCP interfaces, and reports reproducible repository statistics, version metadata, response sizes, and query-ranking results. The most valuable findings are concrete mechanisms, including project-versioned CLI documentation versus drift-prone hosted MCP documentation, flat keyword-index scoring, alphabetical tie-breaking, and substring false positives such as “as” matching inside “toast.” The evaluation is limited by only 24 subjective queries, a reasoned rather than executed whole-word comparison, rough token estimates, unverified internal-adoption claims, and the supplied article’s truncation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T04:45:02.593239",
+      "image_url": "https://ai.satyajit.si/articles/astryx/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 7899,
+      "source_id": 34,
+      "original_url": "https://2bab.me/en/blog/2026-11-11-antigravity-hub-vs-acp/",
+      "title": "Choosing Between --hub and Built-in ACP in Antigravity CLI 1.5.5",
+      "summary": "Built-in ACP is the simpler integration for chat hosts, while hub offers richer editor-state control at the cost of substantial adapter complexity.",
+      "ideas": [
+        "Official Antigravity extension spawns agy --hub and bridges WebSocket state over a sidebar Webview.",
+        "ACP uses JSON-RPC over stdio for sessions, tools, permissions, steering, and resume.",
+        "Hub beat ACP in 5/6 text trials but only 2/6 file trials.",
+        "Transport choice changed medians by seconds; redundant tool rounds dominated an eleven-minute wait.",
+        "Hub steering can trigger parallel planning and duplicate replies requiring step attribution.",
+        "Nonexistent session loads falsely succeeded, while session/resume returned explicit errors."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides unusually concrete, first-hand engineering evidence: it reverse-engineers the VS Code extension’s hub/WebSocket path, documents ACP’s JSON-RPC-over-stdio model, and explains adapter changes for steering and session recovery. Its 24-run comparison and failure analysis are useful, particularly the finding that transport differences were small while redundant tool/model rounds dominated latency and that hub steering can produce duplicate replies from parallel planning steps. The evidence is limited by a small sample, mismatched backend versions and policies, and no final same-build latency comparison between built-in ACP and hub, but it remains strong practitioner-level material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-12T04:44:19.292857"
+    },
+    {
+      "id": 7898,
+      "source_id": 4,
+      "original_url": "https://github.com/chu0119/vc-strike",
+      "title": "https://github.com/chu0119/vc-strike",
+      "summary": "VC‑Strike lets authorized testers fully automate detection, exploitation, and remediation of vCenter CVE‑2026‑59309/59310 vulnerabilities.",
+      "ideas": [
+        "VC‑Strike automates detection and exploitation of vCenter CVE‑2026‑59309/59310.",
+        "Rsyslog path traversal writes a cron file for root remote code execution.",
+        "SRP authentication bypass enables arbitrary read/write of the SSO directory.",
+        "One‑click chain creates an admin account and provides UI login access.",
+        "Tool offers both GUI and CLI interfaces with zero external dependencies.",
+        "Provides mitigation steps like disabling rsyslog templates and firewalling vulnerable ports.",
+        "Supports vSphere management tasks such as VM inventory enumeration.",
+        "Generates logs and clean‑up scripts to erase testing artifacts.",
+        "Runs on Python 3.8+ and Windows, with pre‑compiled executables available.",
+        "Legal disclaimer restricts usage to authorized penetration testing only."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The README delivers concrete, actionable exploit techniques and mitigation guidance for critical VMware vCenter CVEs, offering both GUI and CLI tools with detailed usage commands. It provides several genuine value instances (exploit chain, SRP bypass, one‑click admin creation, mitigation steps) without clickbait or fluff, though its niche focus limits broader appeal.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-12T04:36:42.909867",
+      "image_url": "https://opengraph.githubassets.com/74d9be60590074092c2a3531654d84ec57eb9bd9a1ec30a24cdc11ddbd16c4bd/chu0119/vc-strike",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "VC-Strike — VMware vCenter CVE-2026-59310 (unauth root RCE) & CVE-2026-59309 (SRP auth bypass) authorized pentest suite. GUI+CLI, multi-session C2, stdlib-only. 授权测试专用 - chu0119/vc-strike"
+    },
+    {
+      "id": 7897,
+      "source_id": 4,
+      "original_url": "https://ministryofcyberaffairs.com/news/india-s-enforcement-directorate-seizes-1-5-million-in-hashpe-crypto-ponzi-that-promised-1-daily-returns-four-promoters-in-custody-84bed10c-f022-4940-bde6-13bea92c37c8",
+      "title": "India's Enforcement Directorate Seizes $1.5 Million in HashPe Crypto Ponzi That Promised 1% Daily Returns; Four Promoters in Custody",
+      "summary": "Fixed‑return promises, recruitment incentives, and untradeable tokens are hallmark signs of crypto Ponzi scams.",
+      "ideas": [
+        "Crypto Ponzi schemes often promise fixed daily returns like 1% per day.",
+        "Recruitment commissions and luxury rewards signal fraudulent crypto projects.",
+        "In‑house tokens that don’t trade on any exchange are red flags.",
+        "Authorities can seize assets such as real estate, cars, and bank balances.",
+        "Victims can report scams to cybercrime.gov.in or the 1930 helpline.",
+        "Enforcement Directorate uses the PMLA to attach assets in crypto fraud cases."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 81,
+      "rating_reason": "The article provides concrete, actionable information about a crypto Ponzi scheme, including enforcement details, red‑flag indicators, and reporting resources, giving 5 clear value instances for a medium‑length piece. It aligns well with the CyberSecurity theme and contains no clickbait, padding, or promotional content, resulting in a solid good rating.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-12T04:33:29.258543",
+      "image_url": "https://ministryofcyberaffairs.com/news/india-s-enforcement-directorate-seizes-1-5-million-in-hashpe-crypto-ponzi-that-promised-1-daily-returns-four-promoters-in-custody-84bed10c-f022-4940-bde6-13bea92c37c8/opengraph-image?f9fddc7462b6f618",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Ministry of Cyber Affairs article"
+    },
     {
       "id": 7896,
       "source_id": 7,
