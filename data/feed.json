@@ -1,7 +1,453 @@
 {
-  "updated_at": "2026-11-13T18:00:00.409261+00:00",
-  "total_items": 1216,
+  "updated_at": "2026-11-13T19:00:00.214589+00:00",
+  "total_items": 1232,
   "items": [
+    {
+      "id": 7969,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/11/fix-package-is-incompatible-with-all-frameworks-in-project-dotnet-add-package/",
+      "title": "Fix: \"Package 'X' is incompatible with 'all' frameworks in project\" on dotnet add package",
+      "summary": "The misleading “incompatible with all frameworks” message represents a generic restore failure, so the preceding NuGet error and source configuration reveal the actual cause.",
+      "ideas": [
+        "`dotnet add package` summarizes any restore failure as framework incompatibility.",
+        "Remove `--source` or configure multiple feeds through `nuget.config`.",
+        "Read NU1101, NU1102, NU1202, or NU1301 for the actual failure.",
+        "Warm package caches can conceal source-selection and mapping errors.",
+        "Use `--no-restore` followed by explicit restore for controlled feed lists.",
+        "Package source mappings require patterns covering each private package ID."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a focused, reproducible .NET/NuGet troubleshooting guide explaining why `dotnet add package` reports any trial-restore failure as framework incompatibility. It maps specific NU errors to distinct causes and provides concrete fixes for source selection, package source mapping, authentication, and cache-dependent symptoms. The guidance is highly actionable and efficient, though it is narrowly scoped and the claim that .NET 9 reached end of support in November 2026 appears inaccurate.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:24:23.918774",
+      "image_url": "https://startdebugging.net/og/2026/11/fix-package-is-incompatible-with-all-frameworks-in-project-dotnet-add-package.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: \"Package 'X' is incompatible with 'all' frameworks in project\" on dotnet add package - Start Debugging"
+    },
+    {
+      "id": 7968,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/11/fix-coverlet-uncovered-branch-on-async-iasyncenumerable-with-enumeratorcancellation/",
+      "title": "Fix: coverlet reports an uncovered branch on the closing brace of an async IAsyncEnumerable<T> method",
+      "summary": "The uncovered closing-brace branch comes from disposing the compiler-generated linked cancellation token source in [EnumeratorCancellation] async iterators; Coverlet 10 or later filters it, while older versions fail to do so for generic iterators.",
+      "ideas": [
+        "Coverlet before 10 misses generic IAsyncEnumerable cancellation branch.",
+        "Microsoft CodeCoverage reports branch for every iterator.",
+        "Complete enumeration with two tokens covers completion branch."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives a concrete, version-specific explanation of a compiler-generated cancellation linked-token branch, including IL evidence, tool measurements, reproducible tests, and actionable fixes. It also usefully distinguishes Coverlet behavior from Microsoft.CodeCoverage and notes Fine Code Coverage caveats. Its main limitation is that the value is concentrated on a narrow .NET code-coverage edge case.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:24:14.195018",
+      "image_url": "https://startdebugging.net/og/2026/11/fix-coverlet-uncovered-branch-on-async-iasyncenumerable-with-enumeratorcancellation.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: coverlet reports an uncovered branch on the closing brace of an async IAsyncEnumerable<T> method - Start Debugging"
+    },
+    {
+      "id": 7967,
+      "source_id": 34,
+      "original_url": "https://robinvdvleuten.nl/post/finding-hills-in-a-flat-country-with-phoenix-and-a-rust-nif",
+      "title": "Finding hills in a flat country with Phoenix and a Rust NIF",
+      "summary": "A Rust NIF-powered Phoenix application efficiently discovers repeatable elevation loops while carefully validating elevation measurements against terrain artifacts.",
+      "ideas": [
+        "Beam search matched exhaustive loop enumeration in 0.2 seconds versus 2.5 minutes.",
+        "A Rust NIF moved CPU-heavy path search off BEAM schedulers into native threads.",
+        "Twenty-metre smoothing and one-metre thresholds reduced elevation inflation versus earlier settings.",
+        "Fine elevation data introduced station pits, missing bridge decks, and tree-canopy artifacts.",
+        "Storing paths in links prevented changed OSM data from silently redirecting saved loops.",
+        "Pre-filtering starts by local gradient halved searches while preserving six of seven result sets."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a strong engineering case study combining original measurements, algorithm design, runtime integration, and failure analysis. It provides concrete benchmarks for beam search, calibrated elevation-processing parameters, artifact-handling details, and a well-explained Rust NIF architecture that keeps CPU-heavy work off BEAM schedulers. Its practical scope is narrow, and several evaluations use small local samples, but the mechanisms and implementation lessons remain reusable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:20:12.552638",
+      "image_url": "https://robinvdvleuten.nl/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Finding hills in a flat country with Phoenix and a Rust NIF"
+    },
+    {
+      "id": 7966,
+      "source_id": 34,
+      "original_url": "https://research.veryserious.systems/w-hat-the-fx-infrastructure-re-use-on-the-biggest-github-action-attack-ever/",
+      "title": "W(hat the) FX: Infrastructure re-use on the biggest Github action attack ever?",
+      "summary": "The WFX GitHub Actions campaign exfiltrated CI secrets via commit-message-hidden scripts and evolved its exfiltration path from a self-hosted endpoint to a Telegram bot worker pool, with the operator's own VPN relay infrastructure overlapping the C2.",
+      "ideas": [
+        "Exfil evolved from dedicated server to AWS EC2 to Telegram bot API worker pool",
+        "Dead localhost callback http://127.0.0.1:1/x left as artifact after Telegram switch",
+        "C2 was a decommissioned Samsung/Akamai IP, inheriting Samsung's commercial IP reputation",
+        "Commit-message artifacts distinguish three injection methods: ci refresh build cache, chore add ci helper",
+        "One of five Telegram exfil bots was kicked, silently dropping that share of data",
+        "Same hijacked accounts appear in both GhostAction and WFX waves, suggesting one operator",
+        "Stolen GitHub OIDC tokens were exchanged into AWS/GCP/Azure cloud sessions",
+        "Sample of 2,000 of 32,601 commits extrapolated to 22,000-32,000 victim repositories",
+        "Exfil host also served as the operator's personal node in a commercial VPN relay network"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "A firsthand supply-chain attack investigation with dense, verifiable technical content: three distinct GitHub Actions injection methods mapped to commit-message and workflow-file artifacts, a documented exfiltration evolution from a dedicated server to AWS EC2 to a Telegram bot-API worker pool, full IOC tables, and a sampled victim-count extrapolation (2,000 of ~32,600 commits paginated to estimate 22k-32k repos). The original infrastructure pivoting is the strongest part — showing the C2 was a decommissioned Samsung/Akamai edge IP rented from Regxa (carrying Samsung's commercial IP reputation), and that the same host served as the exfil box and a commercial VPN relay node. It explicitly defers malware internals to other analyses and some attribution (same actor across GhostAction and WFX) is inference rather than proof, but overall it is efficient, non-obvious, and actionable for defensive CI/CD and detection engineering.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:19:30.991529",
+      "image_url": "https://research.veryserious.systems/content/images/2026/11/banner-what-the-fx-infrastructure-reuse-on.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7965,
+      "source_id": 34,
+      "original_url": "https://oguzpastirmaci.com/posts/getting-rdma-into-kubernetes-pods-part-2-sriov-vfs/",
+      "title": "Getting RDMA into Kubernetes Pods, Part 2: SR-IOV VFs",
+      "summary": "It shows how to provision SR‑IOV virtual functions for RDMA in Kubernetes pods and quantifies the bandwidth impact of different VF allocation strategies.",
+      "ideas": [
+        "Using one VF per PF gives identical NCCL bandwidth to hostNetwork (≈190 GB/s).",
+        "Two VFs per PF allow two pods to each get full rails, achieving ~96 GB/s per job concurrently.",
+        "Sharing a PF’s port between two VF‑pairs halves the per‑rail bandwidth (~49 GB/s each).",
+        "Per‑rail custom resources (16 policies) are needed to ensure each pod receives a VF on every rail.",
+        "Changing VF count triggers node drains; plan scheduling to avoid runtime interruptions."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible manifests, scripts, and performance measurements for enabling RDMA over SR‑IOV VFs in Kubernetes, directly addressing GPU‑accelerated AI training workloads. It reveals non‑obvious trade‑offs (bandwidth sharing, per‑rail resources, node draining) and documents configuration pitfalls in shared vs exclusive RDMA namespaces. Its depth and practical guidance outweigh its cloud‑specific context, though the relevance is limited to similar hardware and environments.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:16:39.564998",
+      "image_url": "https://oguzpastirmaci.com/images/og/getting-rdma-into-kubernetes-pods-part-2-sriov-vfs.png",
+      "image_width": 1200,
+      "image_height": 627,
+      "image_alt": ""
+    },
+    {
+      "id": 7964,
+      "source_id": 34,
+      "original_url": "https://mnapoli.fr/bref-runtime-in-rust/",
+      "title": "Exploring a Rust runtime for Bref",
+      "summary": "Profiling before rewriting showed the PHP runtime costs almost nothing, so the real Lambda cold-start lever is eliminating a duplicate binary load, and ARM Lambda benchmarking must control for unpredictable Graviton CPU generations.",
+      "ideas": [
+        "Measure first: Bref's PHP runtime costs under 0.5 ms per request, blocking any Rust rewrite case",
+        "Rust ext-php-rs event loop gained only 0.3 ms warm with zero cold-start improvement",
+        "Rust binary embedding PHP cut cold starts ~100 ms by removing a second 25 MB binary load",
+        "Compiling php and php-fpm into one binary captures most of that gain while keeping PHP-FPM",
+        "PHP's longjmp-based fatal-error handling conflicts with Rust embedding of PHP internals",
+        "AWS Lambda ARM unpredictably mixes Graviton2/3/4; log /proc/cpuinfo before comparing benchmarks",
+        "Laravel cold starts improve most from config and opcode cache warming, not runtime changes"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a first-hand performance engineering experiment with concrete measurements: a profile breakdown showing Bref's PHP runtime costs <0.5 ms per request, two Rust prototypes benchmarked on Lambda, and a mechanism explaining the ~100 ms cold-start gain as loading a duplicate 25 MB binary rather than any Rust superiority. It delivers several non-obvious, actionable findings, including the single-binary php/php-fpm compilation result and the undocumented pitfall that AWS Lambda ARM randomly assigns Graviton2/3/4, which silently invalidates naive A/B benchmarks. Limitations keep it out of the exceptional range: the scope is niche (PHP/Bref on Lambda), sample sizes are small, and one anomaly (Octane cold-start regression) is left uninvestigated. Noise is minimal and the honest negative-result framing raises rather than lowers trust.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:14:13.728938",
+      "image_url": "https://mnapoli.fr/images/posts/bref-runtime-flow.png",
+      "image_width": 2200,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 7963,
+      "source_id": 34,
+      "original_url": "https://martinhicks.dev/articles/dynamodb-partiql-sort-key-operand-order",
+      "title": "DynamoDB's PartiQL reads some comparisons backwards",
+      "summary": "DynamoDB's PartiQL misinterprets literal‑first comparisons on a sort key, leading to reversed query results.",
+      "ideas": [
+        "Literal-first comparison (e.g., 3 < sk) returns opposite partition range.",
+        "Bug occurs only when DynamoDB can use the comparison as a key condition.",
+        "Non‑key attributes and scans treat the comparison correctly.",
+        "Work‑around: always place the attribute on the left side of the operator."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, reproducible bug in DynamoDB's PartiQL where value‑first comparisons on a sort key are evaluated incorrectly, with clear CLI commands and observed results. It offers actionable advice, a plausible internal explanation, and outlines the limited scope of impact, which is valuable for developers and operators of DynamoDB. The content is highly technical and specific, though it includes some speculative discussion without formal AWS confirmation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:11:02.731607",
+      "image_url": "https://martinhicks.dev/images/articles/dynamodb-partiql-sort-key-operand-order.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7962,
+      "source_id": 34,
+      "original_url": "https://kuchaev.com/2026/11/post-training.html",
+      "title": "LLM post-training",
+      "summary": "Production LLM post-training in 2026 is an industrial data-and-verification discipline where mid-training composition, loss mechanics, decontamination, eval-gated pipelines, and anti-hackable reward design—documented here with concrete recipes and numbers—determine outcomes.",
+      "ideas": [
+        "Mid-training with agent traces lifted SWE-bench Verified from 48.4 to 61.8",
+        "o3-class models name SWE-bench buggy files from issue text alone 76% of the time",
+        "Two-stage SFT: global token normalization builds reasoning; per-conversation restores short outputs",
+        "Nemotron decontamination removed 20,671 samples matching 1,808 benchmark questions",
+        "Anti-hacking reward design: fixed references, rubric means, principle constraints, length penalties",
+        "DeepSeek-R1's entire RL compute cost was $294K on 512 H800s for roughly 80 hours",
+        "Llama 4 deleted over half its SFT data as too easy, leaving RL room to explore",
+        "One RLHF stage consumes 20B tokens; post-training is now a pretraining-scale compute sink",
+        "Synthetic data pattern: taxonomy, synthetic tasks, strong-model trajectories, verification, training"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "An insider practitioner lecture from NVIDIA's senior director of applied research, dense with concrete production detail: measured mid-training ablations (SWE-bench Verified 48.4 to 61.8 from agent-trace data), exact SFT blends and loss-normalization mechanics, synthetic data pipeline anatomy with sample counts, contamination findings (o3 naming buggy files 76% of the time from issue text alone), and quantified compute economics. The material is highly relevant, largely unavailable elsewhere, and grounded in the Nemotron technical reports. The main limitation is that it is a slide transcript cut off mid-way through the RLHF section, missing RL-for-reasoning, distillation, and open problems, with telegraphic formatting and minor typos that reduce readability without undermining substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:07:11.112983"
+    },
+    {
+      "id": 7961,
+      "source_id": 34,
+      "original_url": "https://karansaini.com/embridge/",
+      "title": "Unauthenticated LocalSystem file enumeration in eMudhra emBridge",
+      "summary": "emBridge's unauthenticated LocalSystem-backed API allows local processes and LAN-hosted web pages to enumerate protected file-system paths because its encrypted envelope uses attacker-selectable hardcoded keys and its responses permit cross-origin access.",
+      "ideas": [
+        "Unauthenticated emBridge API runs as LocalSystem and exposes directory listings.",
+        "Hardcoded dictionary derives AES key from attacker-controlled key ID.",
+        "Wildcard CORS lets LAN-hosted pages read local file listings.",
+        "Local-to-loopback browser requests bypass Local Network Access restrictions.",
+        "Patched versions remove GetDrives and GetContent endpoints."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post provides a concrete, firsthand vulnerability analysis with useful technical detail: LocalSystem API endpoints, the flawed client-controlled encryption key lookup, wildcard CORS behavior, privilege-protected path enumeration, and an accurate Local Network Access boundary analysis. It also gives affected versions, remediation, and disclosure context. Its main limitations are narrow impact, relatively short treatment, and reliance on connected exploit mechanics rather than full source-level detail.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:04:41.739747"
+    },
+    {
+      "id": 7960,
+      "source_id": 34,
+      "original_url": "https://blog.dfb.sh/blog/claude-desktop-freeze/",
+      "title": "A 27-byte telemetry response nobody reads freezes Claude Desktop every two days",
+      "summary": "A 27-byte telemetry response that nobody reads accumulates open file descriptors in Chromium's renderer until the process freezes or crashes.",
+      "ideas": [
+        "Unread 27-byte telemetry bodies retain file descriptors and freeze Chromium",
+        "Nine hundred-plus 2 MiB response buffers can exhaust renderer descriptors",
+        "Datadog's browser SDK reportedly retained these responses without consuming them",
+        "V8's 1.5 TiB address-space reservation made the renderer core dump enormous",
+        "Renderer seccomp policy blocked MADV_DONTDUMP on the sandbox reservation",
+        "Freed Mojo buffer copies preserved request and response history in the dump",
+        "Sparse core files can be searched efficiently using SEEK_DATA and SEEK_HOLE"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 95,
+      "rating_reason": "This is a deep, firsthand debugging account with a precise, unusual root cause: unread 27-byte telemetry response bodies held file descriptors open until the Chromium renderer exhausted them. It also explains supporting mechanisms such as Mojo buffering copies, V8's enormous reserved address space, Linux core-dump behavior, and the renderer's file-descriptor limit, with concrete code references and a minimal reproduction path. The main limitations are its narrow, environment-specific scope and the provided text being truncated near the end, but the central finding is well supported and highly actionable for Chromium and Electron debugging.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T04:45:06.315149",
+      "image_url": "https://blog.dfb.sh/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7959,
+      "source_id": 34,
+      "original_url": "https://blog.albedoweb.com/building-a-system-design-game-with-hermes-part-1",
+      "title": "48 closed cards, no passing design: a multi-agent build with Hermes Agent, part 1",
+      "summary": "A multi-agent Kanban build produced many reviewed cards while the feature remained broken until the author reduced scope and human-playtested it.",
+      "ideas": [
+        "Closed cards did not guarantee a runnable feature.",
+        "Limit mismatches caused most of 22 idle hours.",
+        "One super-task blocked twelve dependent cards.",
+        "Fifteen minutes human play beat fifty-six card reviews.",
+        "Coordinator dominated cost at roughly $350 versus $40."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a firsthand, measurement-backed account of a multi-agent Kanban build, with useful details on review gaps, bottleneck cards, model costs, and limit-induced idle time. Its limitations are that it reflects a single self-directed project, gives few implementation-level artifacts, and relies on the author's own metrics and counterfactuals.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T04:44:34.044183",
+      "image_url": "https://blog.albedoweb.com/api/og/post?og=eyJhdXRob3IiOiJOaWtvbGF5JTIwRm9raW4iLCJyZWFkVGltZSI6MTEsImNvbW1lbnRzIjowLCJyZWFjdGlvbnMiOjAsImRvbWFpbiI6ImJsb2cuYWxiZWRvd2ViLmNvbSIsInRpdGxlIjoiNDglMjBjbG9zZWQlMjBjYXJkcyUyQyUyMG5vJTIwcGFzc2luZyUyMGRlc2lnbiUzQSUyMGElMjBtdWx0aS1hZ2VudCUyMGJ1aWxkJTIwd2l0aCUyMEhlcm1lcyUyMEFnZW50JTJDJTIwcGFydCUyMDEiLCJwaG90byI6Imh0dHBzOi8vY2RuLmhhc2hub2RlLmNvbS91cGxvYWRzL2F2YXRhcnMvNmFlZmUzNTRmODQxODQxOTAwOWE4ODQ1LzBkNGIwZjViLWQxOGYtNGFjMi1iZThkLWNiOGRiYmI1ZTAyNi5qcGciLCJsb2dvIjpudWxsLCJmYXZpY29uIjpudWxsLCJwdWJsaXNoZWRBdCI6IjIwMjYtMTEtMTJUMDI6Mzg6MzQuMjczWiIsInVwZGF0ZWRBdCI6IjIwMjYtMTEtMTNUMDI6Mjk6MzkuNjQ1WiIsImJsb2dOYW1lIjoiQWxiZWRvJTIwTGFiIiwiaGlkZUJyYW5kaW5nIjp0cnVlfQ==",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7958,
+      "source_id": 34,
+      "original_url": "https://andpalmier.com/posts/agentic-frameworks-beyond-artex/",
+      "title": "Beyond ARTEX: what 14 AI pentest tools give away",
+      "summary": "Popular AI pentesting tools leak operator-side telemetry, leave model-specific forensic fingerprints in target traffic, and often expose unauthenticated control panels, all documented with commit-level evidence and verifiable detection heuristics.",
+      "ideas": [
+        "Strix sends every finding with severity and CWE to PostHog and Scarf by default",
+        "Fake git/2.43.0 user agent differs from real git via missing Git-Protocol and Pragma headers",
+        "Shannon claims Chrome 124 UA but client hints and navigator.userAgentData reveal 149",
+        "PentAGI victims callback on ports 28000-29999, a concrete reverse-shell detection pattern",
+        "PentestGPT 1.0 shipped hard-coded Langfuse keys and uploaded targets, commands, and flags",
+        "HexStrike and PentestAgent MCP panels bind all interfaces without authentication",
+        "About one in four commits across 14 AI pentest tools carries an AI co-author trailer",
+        "Shannon's 'Native Client' navigator.plugins spoof stands out against modern Chrome"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 94,
+      "rating_reason": "Firsthand, lab-verified research into 14 open-source agentic pentest frameworks, with exact-commit references, request-level comparisons (fake git user agents, Chrome version mismatches between UA and client hints), default telemetry behavior, and defender-applicable fingerprints like PentAGI's 28000-29999 callback ports. The analysis is squarely within the reader's interests and delivers original, actionable detection engineering knowledge rather than rehashed announcements. Minor limitations: the delivered content is truncated mid-way through the PentestGPT section, and some tools (HexStrike, CAI, Cairn) are covered only via the summary table rather than full sections.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T04:40:43.725532",
+      "image_url": "https://andpalmier.com/posts/agentic-frameworks-beyond-artex/featured.png",
+      "image_width": 822,
+      "image_height": 373,
+      "image_alt": ""
+    },
+    {
+      "id": 7957,
+      "source_id": 34,
+      "original_url": "https://alistair.sh/thenables",
+      "title": "Fixing a WebKit bug to see if promises are made of train tracks",
+      "summary": "JavaScriptCore's promise resolution path performed the species lookup before creating resolving functions, so a throwing getter on the thenable's constructor left the promise pending forever; fixing the ordering allows the thrown error to reject it.",
+      "ideas": [
+        "JavaScriptCore created resolving functions after species lookup",
+        "Promise resolve reads value.then, which can throw via getters",
+        "Engines can reject promises without userland reject calls",
+        "TypeScript cannot reliably model Promise rejection types"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a substantive, firsthand analysis of a JavaScriptCore promise-resolution bug, including a reproduction, the relevant spec procedure, thenable assimilation, species-constructor timing, and the concrete fix. It also derives a useful type-system insight about why Promise rejection cannot be statically modeled. Its railway analogy and TypeScript discussion are more tangential than the core bug analysis, but they do not undermine the technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T04:40:33.144786",
+      "image_url": "https://alistair.sh/api/og?slug=thenables",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7956,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/beach-house-on-a-3090",
+      "title": "One beach house on an RTX 3090: what open image and video models fit in 24 GB on Ampere",
+      "summary": "On a 24 GB RTX 3090, FLUX.2 klein 4B and Z-Image-Turbo fit resident at 1024 px, while Qwen-Image-2.1 needs offloading and Ampere FP8 storage merely casts to BF16 rather than multiplying in FP8.",
+      "ideas": [
+        "FP8 storage on Ampere casts to BF16 for compute, saving memory not speed",
+        "RTX 3090 runs FLUX.2 klein and Z-Image Turbo resident at 1024",
+        "Offloading saves VRAM but adds ~9 seconds per image via PCIe",
+        "FP8 quantization shifts 4-step 3090 image by 7.2 gray levels/channel",
+        "Image denoising uses ~56 TFLOPS, leaving headroom from quantization minimal"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is an original, measurement-heavy practitioner benchmark of open image models on a real consumer GPU, covering VRAM, host RAM, wall time, token scaling, OOM behavior, offload tradeoffs, and the practical FP8 limitation on Ampere. It explains mechanisms and costs clearly and includes useful cautions such as n=1 caveats and pixel drift from FP8 storage. Its main limitations are that video-generation behavior is less fully measured than image generation and that some setup and licensing constraints limit direct reuse.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T04:38:49.510266",
+      "image_url": "https://ai.satyajit.si/articles/beach-house-on-a-3090/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 7955,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/baphomet-1-1-4b",
+      "title": "Baphomet 1.1 4B: eight Qwen3.5 fine-tunes, eight numbers searched, and a gain its author calls noise",
+      "summary": "A close inspection of Baphomet shows that evolutionary merging optimized eight global coefficients on an optimistic fitness set while revealing important compatibility, interference, and overfitting constraints.",
+      "ideas": [
+        "Search-set gains can overstate held-out improvement after evolutionary model merging.",
+        "Baphomet searches only eight global coefficients, not per-layer weights or densities.",
+        "Safetensors headers reveal tensor mismatches and bf16 rounding artifacts.",
+        "Near-orthogonal task vectors can still conflict on benchmark-critical weights.",
+        "EvoGM learns mutation and crossover generators from prior search history."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is unusually substantive AI engineering analysis: it reconstructs the merge formulation, inspects safetensors headers, traces EvoGM's implementation, and explains how fitness-set optimization can diverge from held-out performance. The concrete findings about global versus per-layer search, tensor compatibility, dtype artifacts, and task-vector interference are both non-obvious and practically useful. The main limitation is that the author did not execute the model or inspect weight values, leaving ancestry and some causal claims unverified.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T04:38:29.153403",
+      "image_url": "https://ai.satyajit.si/articles/baphomet-1-1-4b/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 7954,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/former-openai-researcher-says-he-found-nvidia-blackwell-fingerprints-hidden-inside-six-chinese-ai-models/",
+      "title": "Former OpenAI researcher says he found Nvidia Blackwell fingerprints hidden inside six Chinese AI models",
+      "summary": "The random-number initialization patterns baked into published AI model weights can fingerprint the exact GPU generation used to train them, revealing Blackwell hardware access by six Chinese labs.",
+      "ideas": [
+        "Model weights retain chip-specific fingerprints from random-seed initialization core counts.",
+        "Hopper chips have 132 cores; Blackwell chips have 148 or 152 cores.",
+        "PyTorch seeds random numbers split across GPU cores before training begins.",
+        "Unused vocabulary slots keep initial random values, preserving a statistical hardware echo.",
+        "Six Chinese models released since April 2026 show Blackwell initialization signatures.",
+        "DeepSeek-V4-Flash and MiniMax-M3 map to 148-core B200/B300 Blackwell chips.",
+        "DeepSeek-V4-Pro, Kimi K3, Kimi K3.1-Pro, and Ling-3.1-flash map to 152-core GB200/GB300.",
+        "Five examined training runs used ~12,000 Blackwell GPUs costing over $500 million.",
+        "Kimi K3 alone consumed ~4,500 Blackwell GPUs over roughly 70 days.",
+        "The method correctly identified 24 control models with known hardware.",
+        "Senior researchers at OpenAI and Anthropic independently confirmed the findings.",
+        "AMD MI300X was ruled out using tiny floating-point rounding differences.",
+        "The fingerprint shows initialization hardware, not legal violations or GPU locations.",
+        "Other Chinese labs including Qwen and Zhipu still show only Hopper signatures.",
+        "Verification code was published on GitHub for independent reproduction.",
+        "DeepSeek's architecture shifted from Hopper-tailored to Blackwell-tailored design."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 83,
+      "rating_reason": "Delivers a genuinely novel forensic method—chip-specific core counts (132 Hopper vs. 148/152 Blackwell) left as statistical echoes in unused weight slots—backed by model-by-model hardware attribution, control validation across 24 models, independent confirmation by senior OpenAI and Anthropic researchers, SemiAnalysis corroboration, published GitHub verification code, and cost estimates exceeding $500M. Minor penalties for embedded subscription CTAs and reliance primarily on one researcher's analysis; findings explicitly cannot alone prove legal violations. Strong thematic alignment with AI and tech trends.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-14T04:32:49.117203",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/06/china_vs_usa_ai_race.png",
+      "image_width": 1376,
+      "image_height": 768,
+      "image_alt": ""
+    },
     {
       "id": 7953,
       "source_id": 27,

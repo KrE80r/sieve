@@ -1,11 +1,383 @@
 {
   "schema_version": 1,
-  "sequence": 2010,
-  "revision": "sha256:01c5c6b5b24b16b7f9e865fafa0cc128a01d6ffbb7c9fbd351b7a5733e02f7f3",
-  "generated_at": "2026-11-13T18:00:00.409261+00:00",
+  "sequence": 2011,
+  "revision": "sha256:d5f120fd3f743472004b3a61647a4788f3e40c0d5d29482e75cdb1d2a8761b79",
+  "generated_at": "2026-11-13T19:00:00.214589+00:00",
   "complete": true,
-  "total_items": 1212,
+  "total_items": 1228,
   "items": [
+    {
+      "article_id": "article:7969",
+      "original_url": "https://startdebugging.net/2026/11/fix-package-is-incompatible-with-all-frameworks-in-project-dotnet-add-package/",
+      "title": "Fix: \"Package 'X' is incompatible with 'all' frameworks in project\" on dotnet add package",
+      "summary": "The misleading “incompatible with all frameworks” message represents a generic restore failure, so the preceding NuGet error and source configuration reveal the actual cause.",
+      "rating": 87,
+      "rating_reason": "This is a focused, reproducible .NET/NuGet troubleshooting guide explaining why `dotnet add package` reports any trial-restore failure as framework incompatibility. It maps specific NU errors to distinct causes and provides concrete fixes for source selection, package source mapping, authentication, and cache-dependent symptoms. The guidance is highly actionable and efficient, though it is narrowly scoped and the claim that .NET 9 reached end of support in November 2026 appears inaccurate.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:24:23.918774+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:24:23.918774+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/11/fix-package-is-incompatible-with-all-frameworks-in-project-dotnet-add-package.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Fix: \"Package 'X' is incompatible with 'all' frameworks in project\" on dotnet add package - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:7968",
+      "original_url": "https://startdebugging.net/2026/11/fix-coverlet-uncovered-branch-on-async-iasyncenumerable-with-enumeratorcancellation/",
+      "title": "Fix: coverlet reports an uncovered branch on the closing brace of an async IAsyncEnumerable<T> method",
+      "summary": "The uncovered closing-brace branch comes from disposing the compiler-generated linked cancellation token source in [EnumeratorCancellation] async iterators; Coverlet 10 or later filters it, while older versions fail to do so for generic iterators.",
+      "rating": 85,
+      "rating_reason": "The article gives a concrete, version-specific explanation of a compiler-generated cancellation linked-token branch, including IL evidence, tool measurements, reproducible tests, and actionable fixes. It also usefully distinguishes Coverlet behavior from Microsoft.CodeCoverage and notes Fine Code Coverage caveats. Its main limitation is that the value is concentrated on a narrow .NET code-coverage edge case.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:24:14.195018+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:24:14.195018+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/11/fix-coverlet-uncovered-branch-on-async-iasyncenumerable-with-enumeratorcancellation.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Fix: coverlet reports an uncovered branch on the closing brace of an async IAsyncEnumerable<T> method - Start Debugging"
+      }
+    },
+    {
+      "article_id": "article:7967",
+      "original_url": "https://robinvdvleuten.nl/post/finding-hills-in-a-flat-country-with-phoenix-and-a-rust-nif",
+      "title": "Finding hills in a flat country with Phoenix and a Rust NIF",
+      "summary": "A Rust NIF-powered Phoenix application efficiently discovers repeatable elevation loops while carefully validating elevation measurements against terrain artifacts.",
+      "rating": 86,
+      "rating_reason": "This is a strong engineering case study combining original measurements, algorithm design, runtime integration, and failure analysis. It provides concrete benchmarks for beam search, calibrated elevation-processing parameters, artifact-handling details, and a well-explained Rust NIF architecture that keeps CPU-heavy work off BEAM schedulers. Its practical scope is narrow, and several evaluations use small local samples, but the mechanisms and implementation lessons remain reusable.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:20:12.552638+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:20:12.552638+00:00",
+      "image": {
+        "url": "https://robinvdvleuten.nl/og-default.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Finding hills in a flat country with Phoenix and a Rust NIF"
+      }
+    },
+    {
+      "article_id": "article:7966",
+      "original_url": "https://research.veryserious.systems/w-hat-the-fx-infrastructure-re-use-on-the-biggest-github-action-attack-ever/",
+      "title": "W(hat the) FX: Infrastructure re-use on the biggest Github action attack ever?",
+      "summary": "The WFX GitHub Actions campaign exfiltrated CI secrets via commit-message-hidden scripts and evolved its exfiltration path from a self-hosted endpoint to a Telegram bot worker pool, with the operator's own VPN relay infrastructure overlapping the C2.",
+      "rating": 86,
+      "rating_reason": "A firsthand supply-chain attack investigation with dense, verifiable technical content: three distinct GitHub Actions injection methods mapped to commit-message and workflow-file artifacts, a documented exfiltration evolution from a dedicated server to AWS EC2 to a Telegram bot-API worker pool, full IOC tables, and a sampled victim-count extrapolation (2,000 of ~32,600 commits paginated to estimate 22k-32k repos). The original infrastructure pivoting is the strongest part — showing the C2 was a decommissioned Samsung/Akamai edge IP rented from Regxa (carrying Samsung's commercial IP reputation), and that the same host served as the exfil box and a commercial VPN relay node. It explicitly defers malware internals to other analyses and some attribution (same actor across GhostAction and WFX) is inference rather than proof, but overall it is efficient, non-obvious, and actionable for defensive CI/CD and detection engineering.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:19:30.991529+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:19:30.991529+00:00",
+      "image": {
+        "url": "https://research.veryserious.systems/content/images/2026/11/banner-what-the-fx-infrastructure-reuse-on.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7965",
+      "original_url": "https://oguzpastirmaci.com/posts/getting-rdma-into-kubernetes-pods-part-2-sriov-vfs/",
+      "title": "Getting RDMA into Kubernetes Pods, Part 2: SR-IOV VFs",
+      "summary": "It shows how to provision SR‑IOV virtual functions for RDMA in Kubernetes pods and quantifies the bandwidth impact of different VF allocation strategies.",
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible manifests, scripts, and performance measurements for enabling RDMA over SR‑IOV VFs in Kubernetes, directly addressing GPU‑accelerated AI training workloads. It reveals non‑obvious trade‑offs (bandwidth sharing, per‑rail resources, node draining) and documents configuration pitfalls in shared vs exclusive RDMA namespaces. Its depth and practical guidance outweigh its cloud‑specific context, though the relevance is limited to similar hardware and environments.",
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:16:39.564998+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:16:39.564998+00:00",
+      "image": {
+        "url": "https://oguzpastirmaci.com/images/og/getting-rdma-into-kubernetes-pods-part-2-sriov-vfs.png",
+        "width": 1200,
+        "height": 627,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7964",
+      "original_url": "https://mnapoli.fr/bref-runtime-in-rust/",
+      "title": "Exploring a Rust runtime for Bref",
+      "summary": "Profiling before rewriting showed the PHP runtime costs almost nothing, so the real Lambda cold-start lever is eliminating a duplicate binary load, and ARM Lambda benchmarking must control for unpredictable Graviton CPU generations.",
+      "rating": 85,
+      "rating_reason": "This is a first-hand performance engineering experiment with concrete measurements: a profile breakdown showing Bref's PHP runtime costs <0.5 ms per request, two Rust prototypes benchmarked on Lambda, and a mechanism explaining the ~100 ms cold-start gain as loading a duplicate 25 MB binary rather than any Rust superiority. It delivers several non-obvious, actionable findings, including the single-binary php/php-fpm compilation result and the undocumented pitfall that AWS Lambda ARM randomly assigns Graviton2/3/4, which silently invalidates naive A/B benchmarks. Limitations keep it out of the exceptional range: the scope is niche (PHP/Bref on Lambda), sample sizes are small, and one anomaly (Octane cold-start regression) is left uninvestigated. Noise is minimal and the honest negative-result framing raises rather than lowers trust.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:14:13.728938+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:14:13.728938+00:00",
+      "image": {
+        "url": "https://mnapoli.fr/images/posts/bref-runtime-flow.png",
+        "width": 2200,
+        "height": 720,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7963",
+      "original_url": "https://martinhicks.dev/articles/dynamodb-partiql-sort-key-operand-order",
+      "title": "DynamoDB's PartiQL reads some comparisons backwards",
+      "summary": "DynamoDB's PartiQL misinterprets literal‑first comparisons on a sort key, leading to reversed query results.",
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, reproducible bug in DynamoDB's PartiQL where value‑first comparisons on a sort key are evaluated incorrectly, with clear CLI commands and observed results. It offers actionable advice, a plausible internal explanation, and outlines the limited scope of impact, which is valuable for developers and operators of DynamoDB. The content is highly technical and specific, though it includes some speculative discussion without formal AWS confirmation.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:11:02.731607+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:11:02.731607+00:00",
+      "image": {
+        "url": "https://martinhicks.dev/images/articles/dynamodb-partiql-sort-key-operand-order.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7962",
+      "original_url": "https://kuchaev.com/2026/11/post-training.html",
+      "title": "LLM post-training",
+      "summary": "Production LLM post-training in 2026 is an industrial data-and-verification discipline where mid-training composition, loss mechanics, decontamination, eval-gated pipelines, and anti-hackable reward design—documented here with concrete recipes and numbers—determine outcomes.",
+      "rating": 92,
+      "rating_reason": "An insider practitioner lecture from NVIDIA's senior director of applied research, dense with concrete production detail: measured mid-training ablations (SWE-bench Verified 48.4 to 61.8 from agent-trace data), exact SFT blends and loss-normalization mechanics, synthetic data pipeline anatomy with sample counts, contamination findings (o3 naming buggy files 76% of the time from issue text alone), and quantified compute economics. The material is highly relevant, largely unavailable elsewhere, and grounded in the Nemotron technical reports. The main limitation is that it is a slide transcript cut off mid-way through the RLHF section, missing RL-for-reasoning, distillation, and open problems, with telegraphic formatting and minor typos that reduce readability without undermining substance.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:07:11.112983+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:07:11.112983+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7961",
+      "original_url": "https://karansaini.com/embridge/",
+      "title": "Unauthenticated LocalSystem file enumeration in eMudhra emBridge",
+      "summary": "emBridge's unauthenticated LocalSystem-backed API allows local processes and LAN-hosted web pages to enumerate protected file-system paths because its encrypted envelope uses attacker-selectable hardcoded keys and its responses permit cross-origin access.",
+      "rating": 88,
+      "rating_reason": "The post provides a concrete, firsthand vulnerability analysis with useful technical detail: LocalSystem API endpoints, the flawed client-controlled encryption key lookup, wildcard CORS behavior, privilege-protected path enumeration, and an accurate Local Network Access boundary analysis. It also gives affected versions, remediation, and disclosure context. Its main limitations are narrow impact, relatively short treatment, and reliance on connected exploit mechanics rather than full source-level detail.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T05:04:41.739747+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T05:04:41.739747+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7960",
+      "original_url": "https://blog.dfb.sh/blog/claude-desktop-freeze/",
+      "title": "A 27-byte telemetry response nobody reads freezes Claude Desktop every two days",
+      "summary": "A 27-byte telemetry response that nobody reads accumulates open file descriptors in Chromium's renderer until the process freezes or crashes.",
+      "rating": 95,
+      "rating_reason": "This is a deep, firsthand debugging account with a precise, unusual root cause: unread 27-byte telemetry response bodies held file descriptors open until the Chromium renderer exhausted them. It also explains supporting mechanisms such as Mojo buffering copies, V8's enormous reserved address space, Linux core-dump behavior, and the renderer's file-descriptor limit, with concrete code references and a minimal reproduction path. The main limitations are its narrow, environment-specific scope and the provided text being truncated near the end, but the central finding is well supported and highly actionable for Chromium and Electron debugging.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:45:06.315149+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:45:06.315149+00:00",
+      "image": {
+        "url": "https://blog.dfb.sh/og.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7959",
+      "original_url": "https://blog.albedoweb.com/building-a-system-design-game-with-hermes-part-1",
+      "title": "48 closed cards, no passing design: a multi-agent build with Hermes Agent, part 1",
+      "summary": "A multi-agent Kanban build produced many reviewed cards while the feature remained broken until the author reduced scope and human-playtested it.",
+      "rating": 85,
+      "rating_reason": "This is a firsthand, measurement-backed account of a multi-agent Kanban build, with useful details on review gaps, bottleneck cards, model costs, and limit-induced idle time. Its limitations are that it reflects a single self-directed project, gives few implementation-level artifacts, and relies on the author's own metrics and counterfactuals.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:44:34.044183+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:44:34.044183+00:00",
+      "image": {
+        "url": "https://blog.albedoweb.com/api/og/post?og=eyJhdXRob3IiOiJOaWtvbGF5JTIwRm9raW4iLCJyZWFkVGltZSI6MTEsImNvbW1lbnRzIjowLCJyZWFjdGlvbnMiOjAsImRvbWFpbiI6ImJsb2cuYWxiZWRvd2ViLmNvbSIsInRpdGxlIjoiNDglMjBjbG9zZWQlMjBjYXJkcyUyQyUyMG5vJTIwcGFzc2luZyUyMGRlc2lnbiUzQSUyMGElMjBtdWx0aS1hZ2VudCUyMGJ1aWxkJTIwd2l0aCUyMEhlcm1lcyUyMEFnZW50JTJDJTIwcGFydCUyMDEiLCJwaG90byI6Imh0dHBzOi8vY2RuLmhhc2hub2RlLmNvbS91cGxvYWRzL2F2YXRhcnMvNmFlZmUzNTRmODQxODQxOTAwOWE4ODQ1LzBkNGIwZjViLWQxOGYtNGFjMi1iZThkLWNiOGRiYmI1ZTAyNi5qcGciLCJsb2dvIjpudWxsLCJmYXZpY29uIjpudWxsLCJwdWJsaXNoZWRBdCI6IjIwMjYtMTEtMTJUMDI6Mzg6MzQuMjczWiIsInVwZGF0ZWRBdCI6IjIwMjYtMTEtMTNUMDI6Mjk6MzkuNjQ1WiIsImJsb2dOYW1lIjoiQWxiZWRvJTIwTGFiIiwiaGlkZUJyYW5kaW5nIjp0cnVlfQ==",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7958",
+      "original_url": "https://andpalmier.com/posts/agentic-frameworks-beyond-artex/",
+      "title": "Beyond ARTEX: what 14 AI pentest tools give away",
+      "summary": "Popular AI pentesting tools leak operator-side telemetry, leave model-specific forensic fingerprints in target traffic, and often expose unauthenticated control panels, all documented with commit-level evidence and verifiable detection heuristics.",
+      "rating": 94,
+      "rating_reason": "Firsthand, lab-verified research into 14 open-source agentic pentest frameworks, with exact-commit references, request-level comparisons (fake git user agents, Chrome version mismatches between UA and client hints), default telemetry behavior, and defender-applicable fingerprints like PentAGI's 28000-29999 callback ports. The analysis is squarely within the reader's interests and delivers original, actionable detection engineering knowledge rather than rehashed announcements. Minor limitations: the delivered content is truncated mid-way through the PentestGPT section, and some tools (HexStrike, CAI, Cairn) are covered only via the summary table rather than full sections.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:40:43.725532+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:40:43.725532+00:00",
+      "image": {
+        "url": "https://andpalmier.com/posts/agentic-frameworks-beyond-artex/featured.png",
+        "width": 822,
+        "height": 373,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7957",
+      "original_url": "https://alistair.sh/thenables",
+      "title": "Fixing a WebKit bug to see if promises are made of train tracks",
+      "summary": "JavaScriptCore's promise resolution path performed the species lookup before creating resolving functions, so a throwing getter on the thenable's constructor left the promise pending forever; fixing the ordering allows the thrown error to reject it.",
+      "rating": 88,
+      "rating_reason": "The article provides a substantive, firsthand analysis of a JavaScriptCore promise-resolution bug, including a reproduction, the relevant spec procedure, thenable assimilation, species-constructor timing, and the concrete fix. It also derives a useful type-system insight about why Promise rejection cannot be statically modeled. Its railway analogy and TypeScript discussion are more tangential than the core bug analysis, but they do not undermine the technical value.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:40:33.144786+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:40:33.144786+00:00",
+      "image": {
+        "url": "https://alistair.sh/api/og?slug=thenables",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7956",
+      "original_url": "https://ai.satyajit.si/articles/beach-house-on-a-3090",
+      "title": "One beach house on an RTX 3090: what open image and video models fit in 24 GB on Ampere",
+      "summary": "On a 24 GB RTX 3090, FLUX.2 klein 4B and Z-Image-Turbo fit resident at 1024 px, while Qwen-Image-2.1 needs offloading and Ampere FP8 storage merely casts to BF16 rather than multiplying in FP8.",
+      "rating": 92,
+      "rating_reason": "This is an original, measurement-heavy practitioner benchmark of open image models on a real consumer GPU, covering VRAM, host RAM, wall time, token scaling, OOM behavior, offload tradeoffs, and the practical FP8 limitation on Ampere. It explains mechanisms and costs clearly and includes useful cautions such as n=1 caveats and pixel drift from FP8 storage. Its main limitations are that video-generation behavior is less fully measured than image generation and that some setup and licensing constraints limit direct reuse.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:38:49.510266+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:38:49.510266+00:00",
+      "image": {
+        "url": "https://ai.satyajit.si/articles/beach-house-on-a-3090/opengraph-image?79f7495b0e7a4bc5",
+        "width": 1200,
+        "height": 630,
+        "alt": "Article"
+      }
+    },
+    {
+      "article_id": "article:7955",
+      "original_url": "https://ai.satyajit.si/articles/baphomet-1-1-4b",
+      "title": "Baphomet 1.1 4B: eight Qwen3.5 fine-tunes, eight numbers searched, and a gain its author calls noise",
+      "summary": "A close inspection of Baphomet shows that evolutionary merging optimized eight global coefficients on an optimistic fitness set while revealing important compatibility, interference, and overfitting constraints.",
+      "rating": 91,
+      "rating_reason": "This is unusually substantive AI engineering analysis: it reconstructs the merge formulation, inspects safetensors headers, traces EvoGM's implementation, and explains how fitness-set optimization can diverge from held-out performance. The concrete findings about global versus per-layer search, tensor compatibility, dtype artifacts, and task-vector interference are both non-obvious and practically useful. The main limitation is that the author did not execute the model or inspect weight values, leaving ancestry and some causal claims unverified.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:38:29.153403+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:38:29.153403+00:00",
+      "image": {
+        "url": "https://ai.satyajit.si/articles/baphomet-1-1-4b/opengraph-image?79f7495b0e7a4bc5",
+        "width": 1200,
+        "height": 630,
+        "alt": "Article"
+      }
+    },
+    {
+      "article_id": "article:7954",
+      "original_url": "https://the-decoder.com/former-openai-researcher-says-he-found-nvidia-blackwell-fingerprints-hidden-inside-six-chinese-ai-models/",
+      "title": "Former OpenAI researcher says he found Nvidia Blackwell fingerprints hidden inside six Chinese AI models",
+      "summary": "The random-number initialization patterns baked into published AI model weights can fingerprint the exact GPU generation used to train them, revealing Blackwell hardware access by six Chinese labs.",
+      "rating": 83,
+      "rating_reason": "Delivers a genuinely novel forensic method—chip-specific core counts (132 Hopper vs. 148/152 Blackwell) left as statistical echoes in unused weight slots—backed by model-by-model hardware attribution, control validation across 24 models, independent confirmation by senior OpenAI and Anthropic researchers, SemiAnalysis corroboration, published GitHub verification code, and cost estimates exceeding $500M. Minor penalties for embedded subscription CTAs and reliance primarily on one researcher's analysis; findings explicitly cannot alone prove legal violations. Strong thematic alignment with AI and tech trends.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 28,
+      "source_name": "The Decoder",
+      "source_type": "rss",
+      "admitted_at": "2026-11-14T04:32:49.117203+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-14T04:32:49.117203+00:00",
+      "image": {
+        "url": "https://the-decoder.com/wp-content/uploads/2026/06/china_vs_usa_ai_race.png",
+        "width": 1376,
+        "height": 768,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:7953",
       "original_url": "https://github.com/Qiskit/qiskit",
