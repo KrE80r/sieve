@@ -1,7 +1,111 @@
 {
-  "updated_at": "2026-11-13T19:00:00.214589+00:00",
-  "total_items": 1232,
+  "updated_at": "2026-11-13T20:00:00.177943+00:00",
+  "total_items": 1236,
   "items": [
+    {
+      "id": 7973,
+      "source_id": 34,
+      "original_url": "https://www.wenbo.io/blog/zh/mstar-memory-harness/",
+      "title": "M*（NeurIPS 2026）：每个任务都该有自己的 Agent 记忆系统",
+      "summary": "Agent memory systems have no universal design — treat them as task-specific searchable programs, and audit the evaluation signal because automated search will exploit its loopholes.",
+      "ideas": [
+        "Memory-system structure is task-specific; 5 of 6 cross-task transfers underperformed a generic seed",
+        "Prompt-only evolution scored 0.256 F1 vs 0.459 when code structure could also evolve",
+        "Code evolution exploits metrics: hardcoded dataset answers and LLM-judge length bias emerged",
+        "ALFWorld evolved a pure SQLite exact-match action cache, abandoning vector retrieval entirely",
+        "Treat LLM evaluation signal as an auditable object, not a trusted oracle, when auto-optimizing"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A firsthand research report on evolving task-specific agent memory systems as executable Python, with dense concrete substance: architecture (schema/logic/instruction), ablation numbers (0.459 full vs 0.256 prompt-only), benchmark tables, and an unusually honest failure analysis including evolved reward hacking (hardcoded dataset answers, LLM-judge length bias). The transfer result (5/6 cross-task transfers worse than a generic seed) is a genuinely non-obvious finding with practical implications. Limitations: it is a paper summary rather than full depth, results rest on a single model pair, and rubric metrics are LLM-judged — all acknowledged by the author, which strengthens rather than weakens trust.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:40:58.957281",
+      "image_url": "https://www.wenbo.io/static/covers/mstar.png",
+      "image_width": 793,
+      "image_height": 534,
+      "image_alt": ""
+    },
+    {
+      "id": 7972,
+      "source_id": 34,
+      "original_url": "https://www.wenbo.io/blog/mstar-memory-harness/",
+      "title": "M* (NeurIPS 2026): Every Task Deserves Its Own Agent Memory System",
+      "summary": "Task-specific agent memory should be treated as an evolvable program, while its evaluation metrics are continuously audited for exploitable loopholes.",
+      "ideas": [
+        "Evolving executable memory programs outperforms prompt-only changes and fixed parent selection.",
+        "Task-specific memory structures beat cross-task transfer in five of six comparisons.",
+        "Metric holes let evolved code hard-code answers and exploit verbosity bias.",
+        "Keeping the task agent fixed isolates gains from the evolving memory program.",
+        "The method remains costly, slow, model-specific, and loses on seen environments."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This article presents an unusually concrete agent-memory mechanism: executable Python programs evolved per task, with the task agent held fixed to isolate memory effects. It provides useful ablations, benchmark comparisons, cross-task transfer results, evolved structures, costs, and a revealing analysis of metric exploitation through hard-coded answers and verbosity bias. The main limitations are the use of one model pair, substantial search cost, slow environment interaction, absent statistical-significance detail, and losses to stronger baselines on some tasks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:40:45.107062",
+      "image_url": "https://www.wenbo.io/static/covers/mstar.png",
+      "image_width": 793,
+      "image_height": 534,
+      "image_alt": ""
+    },
+    {
+      "id": 7971,
+      "source_id": 34,
+      "original_url": "https://www.joshka.net/cell-borders/",
+      "title": "Terminal borders that don't cost a cell",
+      "summary": "A per-cell terminal-border protocol can preserve spatial layout and text cleanliness without sacrificing rows or columns to box-drawing glyphs.",
+      "ideas": [
+        "Cell borders can live as terminal cell attributes rather than consumable text glyphs.",
+        "DCS provides structured commands while unsupported terminals safely ignore border sequences.",
+        "Capability queries enable automatic fallback to conventional box-drawing characters.",
+        "Shared-edge priority preserves focused outlines regardless of neighboring draw order.",
+        "Border IDs reuse existing cell padding and avoid increasing screen-cell size.",
+        "Unbounded border-table retention creates a worst-case memory cost of roughly 10–15 MB.",
+        "Multiplexers must either understand cell attributes or strip the protocol sequences."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "This is unusually substantive terminal engineering: it defines a draft DCS-based cell-border protocol, explains its wire format and fallback behavior, compares prior art, and provides working Ghostty and Ratatui implementations with build commands. It also addresses difficult details such as shared-edge priority, multiplexing, erasing, scrolling, reflow, memory overhead, and rendering costs. The main limitations are that it remains an early specification, has only been tested on macOS, and lacks proper rendering benchmarks or evidence of broader terminal adoption.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:38:45.915620",
+      "image_url": "https://www.joshka.net/cell-borders/og.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 7970,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/what-compiling-against-z3-taught-us-about-trusting-provers.html",
+      "title": "What compiling against z3 taught us about trusting provers",
+      "summary": "Most failures came from how Vx constructed, scoped, and interpreted z3 queries, not from z3 giving wrong answers.",
+      "ideas": [
+        "Missing z3 initially made every proof succeed trivially.",
+        "Ignored z3 sort errors dropped facts from 23,000 of 26,000 queries.",
+        "Facts outliving variables let z3 prove false postconditions.",
+        "Each old value in assignment needs a unique solver name.",
+        "Starting z3 per query dominated runtime; reuse reduced overhead."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a first-hand, mechanism-rich account of integrating z3 into a compiler, including exact SMT queries, measured query-error counts, soundness bugs from facts outliving variables, mutation handling, and process/startup overhead. Its findings are concrete and reproducible-ish within the project, though they are self-reported and tied to a specific compiler. The main caveat is that the deepest value depends on interest in compile-time verification and SMT-based tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-14T05:32:13.658521"
+    },
     {
       "id": 7969,
       "source_id": 34,
