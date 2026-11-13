@@ -1,11 +1,200 @@
 {
   "schema_version": 1,
-  "sequence": 1992,
-  "revision": "sha256:9760469de77ec6aaedf1db26c7e4d74cccfb7f4fc0727b238792f9c1637fd0d3",
-  "generated_at": "2026-11-13T00:00:00.433631+00:00",
+  "sequence": 1993,
+  "revision": "sha256:76f8bbba818e46192f063206edcb7c666369ffedeafa9d0bea938fce71d3be8c",
+  "generated_at": "2026-11-13T01:00:00.358144+00:00",
   "complete": true,
-  "total_items": 1248,
+  "total_items": 1256,
   "items": [
+    {
+      "article_id": "article:7939",
+      "original_url": "https://kqx.io/writeups/krwldt/",
+      "title": "krwldt - TORX CTF 2026",
+      "summary": "A removed mm-comparison check in flush_ldt, combined with lazily trimmed mm_cpumask, lets two processes share one LDT, enabling forgeable call gates that bypass SMAP via the unmasked EFLAGS.AC flag.",
+      "rating": 95,
+      "rating_reason": "A deep, firsthand kernel exploitation writeup tracing a two-line flush_ldt patch to a cross-process LDT sharing primitive, UAF, and ring-3-to-ring-0 call gate compromise. It delivers concrete mechanisms (lazy mm_cpumask trimming, ldt_struct reclamation via perf pages, EFLAGS.AC defeating SMAP through unmasked call-gate transitions, KASLR via prefetch entry bleed) plus complete trigger code and ROP plumbing. The undocumented observation that AMD and Intel iret differ on accepting user-space stacks with EFLAGS.AC set is original, falsifiable hardware-behavior knowledge rarely found elsewhere. Only limitation: the final exploit listing is truncated, but the writeup's substantive analysis is complete.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T11:20:51.006941+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T11:20:51.006941+00:00",
+      "image": {
+        "url": "https://kqx.io/images/banner.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7938",
+      "original_url": "https://grahamdumpleton.me/posts/2026/11/muru-releases-not-restarts/",
+      "title": "Muru: releases, not restarts",
+      "summary": "Muru deploys applications as isolated, ready-to-serve releases beside the current one, enabling zero-downtime activation, failure containment, and near-instant rollback.",
+      "rating": 85,
+      "rating_reason": "The article gives a detailed, first-hand-style walkthrough of Muru's release-based deployment model, including concrete commands, environment isolation, failed-release handling, zero-downtime traffic switching, warm retained releases, and fast rollback. It is directly relevant to infrastructure and deployment practice and explains mechanisms rather than merely promoting a tool. Its main limits are that it centers on one specific tool and lacks broader comparative evidence or benchmarks.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T11:10:40.873988+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T11:10:40.873988+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7937",
+      "original_url": "https://garrettstimpson.ca/posts/2026/11/12/emacs-dir-locals-el-code-execution-cve-2026-96269/",
+      "title": "The Config File That Executes You: Emacs 31.1 and the .dir-locals.el Code Execution Flaw (CVE-2026-96269)",
+      "summary": "Emacs 31.1’s .dir‑locals.el handling can run arbitrary Lisp as a mode hook, enabling silent code execution without the usual prompt.",
+      "rating": 86,
+      "rating_reason": "The article delivers a concrete, reproducible exploit for a newly disclosed Emacs vulnerability, including code snippets, a PoC, and the upstream patch. It is highly relevant to security engineers and sysadmins who rely on Emacs, and it offers practical mitigation steps. The write‑up is concise and free of clickbait, though the broader context is limited to Emacs users, keeping the overall novelty moderate rather than exceptional.",
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T11:08:35.527759+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T11:08:35.527759+00:00",
+      "image": {
+        "url": "https://garrettstimpson.ca/assets/img/og-card.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Garrett Stimpson: in-the-wild exploits, PoC breakdowns and vulnerability research"
+      }
+    },
+    {
+      "article_id": "article:7936",
+      "original_url": "https://gabeorlanski.github.io/posts/slop-moves-up/",
+      "title": "Slop Is Moving Up the Stack",
+      "summary": "Coding agents produce cleaner local code while increasingly failing at library reuse and architectural design, making higher-level evaluation essential.",
+      "rating": 89,
+      "rating_reason": "The article presents an original, technically concrete evaluation of coding agents across 36 evolving Python tasks, 196 hidden-test checkpoints, AST-based quality metrics, and dedicated library design/use benchmarks. Its measurements and source examples show that line-level slop is declining while architectural problems, broad exception handling, and library reimplementation are increasing; over 73% of library-use solutions duplicated core functionality. This is highly valuable for agent evaluation, though the evidence is self-reported, model and harness changes complicate trend comparisons, and the supplied article is truncated during its final analysis.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T11:08:26.477368+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T11:08:26.477368+00:00",
+      "image": {
+        "url": "https://gabeorlanski.github.io/posts/slop-moves-up/index.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7935",
+      "original_url": "https://chrisbanes.me/posts/robolectric-missing-gradle-task-caching/",
+      "title": "Robolectric and the case of the missing Gradle task caching",
+      "summary": "A 150MB Gradle cache upload failed with 413 primarily because the cache hostname was proxied through Cloudflare, not because the cache node rejected it.",
+      "rating": 85,
+      "rating_reason": "This is a focused build-infrastructure debugging case with concrete logs, measurements, root-cause isolation, and a verified runtime improvement. Its most useful contribution is identifying a Cloudflare proxied-host request-body limit as the actual cause of a Gradle remote-cache 413, rather than an uncacheable task or misconfigured cache node. It is narrower in audience and somewhat dependent on specific Gradle and tooling versions, but the diagnostic path is broadly applicable.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T11:01:02.864588+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T11:01:02.864588+00:00",
+      "image": {
+        "url": "https://chrisbanes.me/posts/robolectric-missing-gradle-task-caching/feature.png",
+        "width": 2172,
+        "height": 724,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7934",
+      "original_url": "https://blog.trine.dev/posts/2026-11-12-units/",
+      "title": "On Units: The PR and Its Author",
+      "summary": "Treat each agent-generated PR as a trust unit, grading review depth by mutation resistance, rework, durability, and blast radius rather than green tests or volume.",
+      "rating": 87,
+      "rating_reason": "This is a strong, firsthand account of scaling agent-generated pull requests, with concrete operational rules: one issue per PR, commit-specific evidence, revert-sensitive tests, mutation testing, and behavioral checks using real binaries. It surfaces non-obvious failure modes, including repository-controlled code execution during git status, interaction bugs invisible to screenshots, and coordination failures caused by concurrency, budgets, and lost state, while comparing its trust model with established merge-queue practices. The central credit model remains unimplemented and lightly validated, and most operational evidence is anecdotal rather than reproducible, so it falls short of exceptional.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Productivity"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T10:57:04.683946+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T10:57:04.683946+00:00",
+      "image": {
+        "url": "https://blog.trine.dev/posts/on-units-the-pr-and-its-author.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7933",
+      "original_url": "https://blog.lukaszolejnik.com/alone-among-a-thousand-the-european-commissions-anonymisation-of-europeans-google-searches-is-broken/",
+      "title": "Alone among a thousand: the European Commission's \"anonymisation\" of Europeans' Google searches is broken",
+      "summary": "A regulator-mandated 'anonymisation' scheme for European Google search data fails in practice because it ignores browser display language as an identifier and permits linkage within the dataset, enabling isolation, re-identification-level inference, and national-security-relevant exposure.",
+      "rating": 92,
+      "rating_reason": "This is exceptional first-hand security research: the author audited the DMA-mandated anonymisation of Google search data on hundreds of billions of records and demonstrates concrete failure mechanisms with real numbers, including half a million isolated searches, 85,000 searches unique even at country level, and over 200,000 cross-linked sessions despite a three-query cap. The mechanism is non-obvious and clearly explained: the generalisation scheme treats query language as the only linguistic quasi-identifier while ignoring persistent browser display language, and regulators' guidelines overlook intra-dataset linkage. It is directly relevant to privacy engineering, defensive security, and anonymisation practice, and it carries concrete policy implications for EDPB guidance. The main limitations are that this post summarizes a fuller commissioned report, some claims (e.g., AI-scale inference) are described only at a high level, and Google funded the work, though the funding is transparently disclosed.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T10:52:33.298932+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T10:52:33.298932+00:00",
+      "image": {
+        "url": "https://blog.lukaszolejnik.com/content/images/2026/11/alone1000.png",
+        "width": 1042,
+        "height": 546,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7932",
+      "original_url": "https://bhargav.dev/writing/pdf-ten-second-open/",
+      "title": "How to speed up PDF rendering in the browser with pdf.js",
+      "summary": "Most of the slow PDF open was caused by app-level request waterfalls, repeated parsing, and analytics session-replay blocking, and it can be improved with pdf.js range loading plus viewer-specific replay blocking.",
+      "rating": 86,
+      "rating_reason": "The article offers original, instrumented performance evidence and two actionable fixes: eliminating session-replay main-thread blocking over the PDF viewer and rendering page one through partial HTTP range requests. Its concrete timings, profiling details, and implementation snippets make it highly useful for web performance work with pdf.js. It is somewhat limited by one-off measurements and partially described server behavior, but the central findings are specific and well supported.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-13T10:47:47.773725+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-13T10:47:47.773725+00:00",
+      "image": {
+        "url": "https://media.bhargav.dev/blog/pdf-ten-second-open/cover.png",
+        "width": 2400,
+        "height": 1260,
+        "alt": "bhargav.dev — ENG · BERLIN"
+      }
+    },
     {
       "article_id": "article:7931",
       "original_url": "https://the-decoder.com/google-deepmind-shifts-genomics-ai-from-bulk-tissue-predictions-to-single-cell-type-resolution-with-alphagenome-2/",
