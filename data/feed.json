@@ -1,7 +1,76 @@
 {
-  "updated_at": "2026-11-14T18:00:00.402089+00:00",
-  "total_items": 1215,
+  "updated_at": "2026-11-14T19:00:00.197549+00:00",
+  "total_items": 1217,
   "items": [
+    {
+      "id": 7987,
+      "source_id": 4,
+      "original_url": "https://igumnoff.com/2026/11/14/zip-trap-git-status.html",
+      "title": "How I received a job offer, and they hid a way to launch malicious code through Git inside the ZIP",
+      "summary": "Untrusted ZIP repositories can execute remote code through preconfigured Git filters and hooks, so developers must inspect Git metadata before opening them in any tool.",
+      "ideas": [
+        "A ZIP can weaponize Git's local configuration to execute code without an obvious installer.",
+        "Git hooks and filters are legitimate execution mechanisms attackers can preconfigure inside untrusted repositories.",
+        "Redirecting core.hooksPath concealed a post-checkout hook inside an obscure Git objects directory.",
+        "A post-checkout hook can invoke git status immediately after switching repository branches.",
+        "Wildcard attributes applied a custom clean filter to every file in the repository.",
+        "Git status may invoke clean filters while calculating working-tree changes, enabling execution without checkout.",
+        "The malicious filter returned unchanged input through cat, preserving Git's expected behavior.",
+        "Timestamp-based debouncing delayed execution until Git stopped invoking the filter repeatedly.",
+        "A lock directory prevented multiple watcher processes from launching concurrently.",
+        "The payload downloaded and executed operating-system-specific commands across Linux, macOS, and Windows.",
+        "Git for Windows can execute Bash hooks without users launching Git Bash themselves.",
+        "VS Code trust and repository detection can create an automatic attack path.",
+        "Git-aware terminal prompts may trigger status checks merely when users enter the directory.",
+        "Normal cloning excludes local Git configuration, while a ZIP can preserve attacker-controlled settings.",
+        "README instructions deliberately guided users toward switching branches and triggering hooks.",
+        "Background execution and suppressed output made the malicious filter less noticeable to users.",
+        "Inspect suspicious archives without running Git, checking configuration, attributes, hooks, and filters.",
+        "Rotate potentially exposed credentials from a trusted device after a suspicious filter may have run.",
+        "Blank legal terms and incomplete hiring materials supplied contextual signs of the recruiting scam.",
+        "The unknown remote payload prevented definitive conclusions about the downloader's ultimate actions."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a strong, technically detailed first-hand security analysis that explains a complete malicious-Git chain: hidden hook paths, wildcard filter attributes, filter invocation through git status, and remote payload execution. It distinguishes ZIP delivery from ordinary cloning, safely tests trigger conditions, weighs IDE and terminal risks with appropriate caveats, and provides concrete inspection and incident-response steps. It falls short of exceptional because the ultimate payload, durable indicators of compromise, and evidence about the attack's prevalence are unavailable, while some repetition reduces efficiency.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-15T04:34:17.111025",
+      "image_url": "https://igumnoff.com/assets/img/posts/zip-trap-git-status.jpg",
+      "image_width": 780,
+      "image_height": 440,
+      "image_alt": ""
+    },
+    {
+      "id": 7986,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/2026/11/14/htb-nimbus.html",
+      "title": "0xdf hacks stuff",
+      "summary": "Chaining an SSRF to instance metadata with unsafe YAML deserialization lets you steal AWS credentials and escape the container to root.",
+      "ideas": [
+        "Use decimal IP SSRF to bypass hostname blocklist and access instance metadata.",
+        "Retrieve AWS credentials from metadata and interact with emulated AWS services.",
+        "Send crafted YAML to SQS queue that PyYAML deserializes unsafely for code execution.",
+        "Detect Python backend by observing single‑quoted dict output in responses.",
+        "Test PyYAML loader safety using !!python/tuple tag to reveal unsafe loading.",
+        "Enumerate hidden subdomains with ffuf and add them to /etc/hosts for scanning.",
+        "Use feroxbuster to discover hidden directories and API endpoints.",
+        "Identify LocalStack emulator via AWS‑style error responses and health endpoint.",
+        "Create privileged CodeBuild project and exploit modprobe path to escape container.",
+        "Leverage IAM proxy to access Floci emulator and gain further privileges."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 84,
+      "rating_reason": "The write‑up provides numerous actionable techniques (SSRF to metadata, unsafe PyYAML deserialization, container escape via CodeBuild) and clear insights (detecting Python via output, testing loader safety), all tightly focused on cybersecurity exploitation, with no clickbait or padding.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-15T04:32:09.169991"
+    },
     {
       "id": 7985,
       "source_id": 7,
