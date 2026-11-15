@@ -1,7 +1,43 @@
 {
-  "updated_at": "2026-11-15T06:00:00.354643+00:00",
-  "total_items": 1195,
+  "updated_at": "2026-11-15T07:00:00.174669+00:00",
+  "total_items": 1196,
   "items": [
+    {
+      "id": 7988,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-20131-cisco-fmc-rce/",
+      "title": "https://blog.securelayer7.net/cve-2026-20131-cisco-fmc-rce/",
+      "summary": "Deserialization gadgets execute inside readObject() before any validation or authentication check runs, which is why an unauthenticated crafted byte stream gave a ransomware group root on Cisco's firewall management appliances as a zero-day.",
+      "ideas": [
+        "FMC web services run as root, so deserialization RCE grants root immediately without secondary escalation.",
+        "Java readObject() executes gadget callbacks before application validation; type-casting cannot prevent exploitation.",
+        "Interlock exploited CVE-2026-20131 as a zero-day weeks before Cisco disclosed it, per AWS MadPot.",
+        "Zscaler telemetry shows attack payloads match public ysoserial output, not custom-built exploits.",
+        "Cisco's CVE-2015-6420 history suggests Commons Collections/Beanutils likely exist in FMC's classpath.",
+        "Serialization magic bytes AC ED 00 05 probes can fingerprint vulnerable deserialization endpoints pre-exploitation.",
+        "Broader Java classpaths increase usable gadget chains; CommonsBeanutils needs two JARs, CommonsCollections one.",
+        "HTTPD-layer authentication suggests the sink sits on a pre-authentication path proxied to the Java tier.",
+        "Gadget chains combine existing classpath classes into unintended call sequences without uploading new code.",
+        "Tenable's 2017 Cisco SecretServiceServlet case proved failed casts happen only after gadgets already executed.",
+        "URLDNS chains trigger DNS lookups via readObject(), useful for detection rather than code execution.",
+        "CISA added the CVE to KEV with a three-day federal remediation deadline for agencies.",
+        "Lab requirements: FMCv image, 28GB RAM, 4 vCPUs, virtio NIC, isolated segment, TCP 443 only.",
+        "Changed-scope CVSS justification reflects root access extending beyond the vulnerable web component itself."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "This is dense, well-sourced vulnerability research that synthesizes AWS MadPot telemetry, Zscaler threat analysis, public PoC behavior, Cisco advisory data, and architectural analysis into a coherent technical narrative. Strong value instances include the documented Interlock zero-day exploitation timeline predating disclosure, the insight that FMC web services already run as root, a practical gadget-chain families table, the AC ED 00 05 fingerprinting probe methodology, and the honest labeling of reconstructed versus lab-verified findings. Deductions apply because the actual deserialization sink and gadget chain remain publicly unknown (limiting actionable depth), much content aggregates other researchers' work (though properly attributed), the reconstruction is unverified, and the article trails off mid-exposition.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-15T16:32:31.994538",
+      "image_url": "https://blog.securelayer7.net/wp-content/uploads/2026/11/CVE-2026-20131-Cisco-FMC-RCE-Vulnerability-1-1200x630.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 7987,
       "source_id": 4,
