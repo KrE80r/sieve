@@ -1,7 +1,364 @@
 {
-  "updated_at": "2026-11-16T00:00:00.439796+00:00",
-  "total_items": 1201,
+  "updated_at": "2026-11-16T01:00:00.204689+00:00",
+  "total_items": 1214,
   "items": [
+    {
+      "id": 8006,
+      "source_id": 34,
+      "original_url": "https://hwtn.io/essays/t0401-binance-part-one",
+      "title": "The Binance heist, Part One: fifty valid signatures, one that landed, and an authority that stood for 3 hours 49 minutes",
+      "summary": "Fifty valid EIP-7702 signatures form a nonce band in which only the authorization matching the wallet's live nonce executes, leaving attacker code running from a compromised hot wallet for nearly four hours outside the reach of a withdrawal suspension.",
+      "ideas": [
+        "Valid EIP-7702 signatures form nonce bands; only the one matching the live nonce executes",
+        "EIP-7702 authorizations carry no timestamp; a nonce match at execution is the only gate",
+        "Descending nonce order in a delegation attack spends one nonce instead of installing sixteen",
+        "An ordinary customer withdrawal shifted the wallet nonce and decided which attacker authorization landed",
+        "Delegation-created on-chain authority survives withdrawal suspension until explicitly cleared on chain",
+        "Leftover unused signatures could undo an early revocation during the first minutes"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is original on-chain incident forensics of unusually high rigor: the author decoded a type-4 transaction across a measured block range via two RPC providers, published exact hashes, nonces, timestamps, and a methodology with a claim register that cleanly separates measurements from editorial readings. The core mechanism is genuinely non-obvious and useful to custody, incident-response, and detection engineers: 50 valid EIP-7702 authorizations form a nonce band where only the signature matching the wallet's live nonce executes, descending ordering conserves nonces, and the resulting delegated authority stood outside the control path a withdrawal suspension reaches. Deductions come from glossary-level definitions and cross-section repetition that inflate a already long read into ~35 minutes, deferral of root cause (signing-service compromise) to Part Two, and measurements that, while carefully documented with reproducible artifacts, were not independently reproduced.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:29:01.780000"
+    },
+    {
+      "id": 8005,
+      "source_id": 34,
+      "original_url": "https://harrisonsec.com/blog/my-second-iphone-lives-at-home/",
+      "title": "My Second iPhone Lives at Home. I Use It From Anywhere.",
+      "summary": "A remote-access gateway lets a stock iPhone be fully used from another phone by re-encoding its USB screen feed and emulating keyboard, mouse, headset, and notification accessories over Bluetooth.",
+      "ideas": [
+        "USB H.264 phone feed is re-encoded to a few Mbit/s",
+        "Linux Bluetooth can emulate a keyboard, mouse, and HFP headset",
+        "ANCS notifications expose call and WeChat events remotely",
+        "Rate matching fixes cumulative audio-video drift",
+        "Low-latency VA-API decoding prevents stale frames",
+        "Pipeline restart leaks caused GPU startup failure",
+        "Filtering self-handled call-end pushes removes phantom rings"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a substantive firsthand engineering writeup with concrete mechanisms, measurements, and debugging outcomes for remotely controlling a stock iPhone through Bluetooth HID/HFP, ANCS, USB capture, Sunshine, Tailscale, and CallKit. The five failure analyses are especially useful, including clock drift compensation, BLE appearance/address fixes, VA-API latency, thread leaks, and VoIP push handling. It is somewhat promotional around the author's app and services, and some deeper details are deferred to related posts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:27:01.455220"
+    },
+    {
+      "id": 8004,
+      "source_id": 34,
+      "original_url": "https://flaneur2020.github.io/posts/2026-11-14-reproducing-strata-in-rust/",
+      "title": "Reproducing Strata in Rust",
+      "summary": "Reproducing Strata in Rust shows that expert-cache scheduling with predictive prefetch and CPU fallback, plus careful synchronization, routing, and thread-pool tuning, can run a ~170B sparse MoE at usable speed on a single 12 GiB consumer GPU.",
+      "ideas": [
+        "Sparse MoE serving keeps only predicted-active experts in VRAM; cache misses run on CPU",
+        "Prefill stays fast by batching roughly 3k tokens to overlap PCIe transfers with compute",
+        "Decode dispatches experts via three paths: GPU-resident, PCIe-streamed, or CPU-computed",
+        "CUDA Graphs cannot record CPU sync; shared-memory doorbell spin-waits bridge the gap",
+        "Retrofitting CUDA Graph capture into an existing Rust tensor stack is impractically invasive",
+        "Busy-polling thread pools pinned to physical cores cut CPU expert latency 1-2 ms",
+        "Reducing expert lookahead-swaps from two to one stopped cache thrashing and saved 0.9 ms",
+        "Detailed instrumented attribution outperformed direct optimization prompting for agent-driven tuning"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A substantive firsthand engineering log: the author reproduces a sparse-MoE expert-scheduling inference stack in Rust with concrete benchmarks (about 27.2 tok/s decode, 1k tok/s prefill on an RTX 4070 with 12 GiB VRAM), a linked repository, and quantified optimization outcomes (0.9-2 ms per change). The non-obvious findings — three-path expert dispatch, shared-memory doorbell spin-waits since CUDA Graphs cannot capture CPU sync, retrofitting graph capture being impractically invasive, lookahead-induced cache thrashing, and busy-polling pinned thread pools beating rayon — are directly useful to LLM inference engineers. Limitations: blog-level depth rather than exhaustive source analysis, some narrative padding, reliance on model names that cannot be independently verified, and an agent-workflow section that is insightful but secondary.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:20:56.816461"
+    },
+    {
+      "id": 8003,
+      "source_id": 34,
+      "original_url": "https://coey.dev/c4",
+      "title": "c4",
+      "summary": "A Connect 4 agent benchmark shows deterministic minimax search outperforming LLM move selection in speed and reliability, while also documenting concrete prompt-tuning and implementation failures.",
+      "ideas": [
+        "Prompt-only tweaks cut move latency but not blunders",
+        "Depth-5 minimax blocks the three-move opening trap",
+        "Comparing circuits against a search solver catches hidden bugs"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article combines a reproducible minimax solver implementation with concrete browser-based LLM benchmark measurements, prompt and model comparisons, blunder grading, and a discovered bug case. It delivers actionable engineering evidence about latency, illegal moves, and search depth, though the experiments use small sample counts and are partly tied to the author's own tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:10:51.070962",
+      "image_url": "https://coey.dev/og-image?article=c4&title=c4&description=A%20benchmark%20for%20hand%3A%20LLM%20agents%20played%20Connect%204%20against%20me%20in%20a%20real%20browser%2C%20at%2020.7%20s%20and%20%240.022%20a%20move%2C%20and%20lost%20every%20game%20they%20finished.%20The%2080-line%20solver%20that%20graded%20them%20plays%20in%20under%20a%20second%20for%20nothing.%20Play%20it%2C%20and%20watch%20two%20solvers%20play%20each%20other.",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "c4"
+    },
+    {
+      "id": 8002,
+      "source_id": 34,
+      "original_url": "https://briancaffey.github.io/2026/11/13/hnfm-a-year-on",
+      "title": "hn.fm, a year on: Hacker News as episodes, digests, a radio station and directed video",
+      "summary": "A production-minded local AI pipeline succeeds by separating deterministic code from narrowly constrained agent choices, validating outputs mechanically, and degrading safely when models fail.",
+      "ideas": [
+        "Staged filtering scored 19,322 of 21,069 fetched submissions.",
+        "Shared briefs let multiple media formats reuse one research pass.",
+        "Scene cards prevented agents from directly generating complex HTML.",
+        "Grounding checks rejected charts containing unnarrated labels.",
+        "Disabling reasoning cut one card from three minutes to four seconds.",
+        "Tool-less API profiles reduced agent capabilities and prompt-injection risk.",
+        "Real-request health checks exposed silently unavailable model services.",
+        "Separate Kubernetes workers isolated slow rendering from ingestion."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a concrete, firsthand account of a local AI media pipeline, with useful operational details on staged filtering, shared research briefs, constrained agent decisions, validation, fallbacks, service health checks, and Kubernetes worker isolation. Specific failure cases—fabricated numerical claims, unnarrated chart labels, stale stories, prompt-example copying, and silent outages—provide unusually actionable engineering lessons. The evidence remains largely self-reported, with little source code, prompt detail, evaluation methodology, or independent verification, and the supplied text ends mid-section, preventing an exceptional score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:04:21.040418",
+      "image_url": "https://briancaffey.github.io/static/hnfm/2026/cover.jpg",
+      "image_width": 1200,
+      "image_height": 628,
+      "image_alt": ""
+    },
+    {
+      "id": 8001,
+      "source_id": 34,
+      "original_url": "https://blog.tymscar.com/posts/studiodisplayethernet/",
+      "title": "My Monitor Was Cutting My Download Speed by 75%",
+      "summary": "A USB Ethernet adapter can lose throughput behind a display because short USB bursts and hub response latency cause its receive buffer to overflow, which flow control or larger USB bursts can mitigate.",
+      "ideas": [
+        "USB Ethernet burst size and hub latency can bottleneck throughput behind displays.",
+        "Enabling Ethernet flow control reduced packet loss and restored roughly 2 Gbps downloads.",
+        "RTL8156B's four-packet USB bursts capped delivery near 168,000 frames per second.",
+        "Inspecting USB descriptors exposed bMaxBurst differences between the RTL8156B and RTL8157.",
+        "The RTL8157's faster link and larger bursts eliminated observed packet drops."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "This is a focused, evidence-driven networking investigation that isolates a highly non-obvious interaction among USB burst size, hub round-trip latency, receive-buffer overflow, and Ethernet packet loss. Measurements, adapter counters, USB descriptor inspection, driver comparisons, and flow-control experiments provide unusually concrete support for the proposed mechanism. The main limitation is that the evidence comes from one display and two adapters, leaving some of the causal model hardware-specific and somewhat inferred.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:01:37.377207",
+      "image_url": "https://blog.tymscar.com/studio-display-ethernet/og-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8000,
+      "source_id": 34,
+      "original_url": "https://blog.tomecek.net/post/postgresql-9-to-17-in-one-go/",
+      "title": "PostgreSQL 9.6 to 17 in one go, driven from my phone",
+      "summary": "Safe PostgreSQL major upgrades require version-aware dump handling, production-like rehearsals, immutable rollback data, and row-count verification rather than merely successful commands.",
+      "ideas": [
+        "Rehearse restores with production schema history, not merely fresh-install data.",
+        "Identify old dump formats from headers, not schema-entry heuristics.",
+        "Keep the old PostgreSQL data directory untouched for reliable rollback.",
+        "Verify migration integrity with per-table row counts, not exit codes.",
+        "Use an immutable migration snapshot to avoid backup-timer races.",
+        "Support both IPv4 and IPv6 loopback when clients resolve localhost to ::1.",
+        "Require human approval before agents execute production migration commands."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides unusually concrete, firsthand evidence for a risky PostgreSQL major-version migration, including immutable rollback directories, checksummed backups, restore guards, schema-history pitfalls, and per-table row-count verification. Its agentic workflow is substantive rather than promotional: independent rehearsal and review caught defects, while explicit human approval constrained production actions. The treatment remains a narrow homelab case study and exposes little of the underlying code or infrastructure, limiting its breadth and reproducibility.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:01:08.544876"
+    },
+    {
+      "id": 7999,
+      "source_id": 34,
+      "original_url": "https://bhargav.dev/writing/pdf-ten-second-open",
+      "title": "How to speed up PDF rendering in the browser with pdf.js",
+      "summary": "A PDF reader's slow first-page rendering was dominated by analytics recording and inefficient request flows, not pdf.js parsing.",
+      "ideas": [
+        "pdf.js parsed and opened pages in under 0.3 seconds",
+        "Session replay serialization of PDF text layers blocked the main thread",
+        "Blocking the PDF viewer prevents recorder work without losing replay value",
+        "HTTP range requests allowed page 1 to render from a small file prefix",
+        "Encoding ownership in the R2 key removed a database check per range"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The article is a measured, firsthand engineering investigation with concrete timings, code snippets, and implementation changes for a real web PDF reader. It identifies substantial non-obvious bottlenecks beyond pdf.js, especially session replay recording of dynamic text layers and avoidable request waterfalls. Limitations include a single-application case and results that depend on network conditions and PDF structure.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T10:52:15.721136",
+      "image_url": "https://media.bhargav.dev/blog/pdf-ten-second-open/cover.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": "bhargav.dev — ENG · BERLIN"
+    },
+    {
+      "id": 7998,
+      "source_id": 34,
+      "original_url": "https://avishek.net/2026/11/10/asking-z3-about-cobol-programs.html",
+      "title": "Asking Z3 About COBOL Programs",
+      "summary": "A detailed, measurement-backed log of verifying COBOL program behavior with a solver, including where the encoding was unsound or slow and how assume-guarantee splits sped it up.",
+      "ideas": [
+        "Byte-extent state fixed all seven spurious-unsat cases",
+        "Z3 strings caused 30-minute hang; bit-vectors fixed it",
+        "Unreachable-to-goal tests can be dropped safely",
+        "CEGAR refined fields zero to three in four rounds",
+        "Chaining tasks exposed how normal users reach admin",
+        "Assume-guarantee split proved the gate in ~25 seconds",
+        "Free commarea bytes let any user type be claimed",
+        "COPY trailing bytes need EIBCALN-aware encoding"
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "First-hand engineering of encoding COBOL/CICS control flow as constrained Horn clauses and querying it with Z3/Spacer, with concrete measurements (rule counts, byte counts, timings) and non-obvious mechanisms (byte-extent state, spurious-unsat fixes, CEGAR refinement, cut of bytes unreachable to the goal, assume-guarantee split). It documents real failures, including seven ways unsat could be proven wrongly, and a genuine defect found (account balance rewritten after transaction-file failure). Main limitations are extreme domain specificity, dependence on the author's own tooling and a partial truncation, plus reliance on an LLM for judgement-heavy steps that only the solver can certify.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T10:46:52.164738"
+    },
+    {
+      "id": 7997,
+      "source_id": 34,
+      "original_url": "https://arrangeactassert.com/posts/test-lambda-durable-functions-without-deploying/",
+      "title": "Test Lambda durable functions without deploying",
+      "summary": "It shows how to test every branch of a Lambda durable approval workflow locally with the durable execution test runner and fake timers.",
+      "ideas": [
+        "Run durable handlers in-process with LocalDurableTestRunner.",
+        "Use skipTime for waits but callback timeouts still real.",
+        "Wait for createCallback with waitForData() no status.",
+        "Treat manager decline and callback failure differently.",
+        "Fake timers alter Date.now readings."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives a runnable, focused example of testing AWS Lambda durable functions in-process, including installation commands, handler code, vitest tests, callback handling, and operation-history assertions. It also documents useful non-obvious gotchas: `createCallback` requires `waitForData()` without a status, fake timers skip waits but not callback timeouts, fake clocks affect `Date.now()`, and the emulator cannot run the durable SDK. Its main limitation is that it is narrowly scoped to one AWS SDK and version, so its API details may become outdated.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T10:44:43.997575",
+      "image_url": "https://arrangeactassert.com/_astro/test-lambda-durable-functions-without-deploying.CePG3v4Y_2l7loK.webp",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 7996,
+      "source_id": 34,
+      "original_url": "https://aminrj.com/posts/agent-hooks-fail-open/",
+      "title": "When a Pre-Tool Hook Crashes, CrewAI and the Claude Agent SDK Run the Tool Anyway",
+      "summary": "A reproducible five-framework comparison finds that several agent frameworks execute tools after policy-hook exceptions and documents framework-specific ways to enforce fail-closed behavior.",
+      "ideas": [
+        "CrewAI swallows most before-tool hook exceptions and executes the tool.",
+        "Claude Agent SDK enforcement requires on_failure=\"block\" for exceptions.",
+        "LangChain callback hooks require raise_error=True to abort execution.",
+        "Only Claude Agent SDK timed out hooks among the five tested frameworks.",
+        "CrewAI redaction failures can expose unredacted tool output to models.",
+        "None of five frameworks cryptographically pinned tool schemas.",
+        "Fail-closed enforcement requires wrapping hooks with explicit exception-to-denial conversion."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "The article provides original, version-pinned experiments comparing hook failure behavior across five agent frameworks, supported by source inspection, reproducible harness references, and concrete mitigation code. It reveals non-obvious distinctions between fail-open callbacks, fail-closed middleware, timeout handling, and failed output redaction that have direct security implications. The evidence is limited to selected Python hook paths, some untested interception variants, and a directly invoked CrewAI executor, while the supplied text is truncated near the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T10:40:59.930650",
+      "image_url": "https://aminrj.com/assets/media/ai-security/agent-hooks-fail-open.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Title card: when a pre-tool hook crashes, two of five agent frameworks run the tool anyway"
+    },
+    {
+      "id": 7995,
+      "source_id": 34,
+      "original_url": "https://adamwulf.me/2026/11/kokoro-coreml-masked-export/",
+      "title": "A Better Kokoro Voice for iPhone: 5, 10, and 15 Second Core ML Exports",
+      "summary": "Masking LSTM state over padded sequence steps can eliminate Core ML speech artifacts while longer output windows reduce segmentation and improve prosody.",
+      "ideas": [
+        "Padded bidirectional LSTM steps corrupted Kokoro duration and pitch predictions.",
+        "Masked re-exports achieved 0.998 waveform correlation with PyTorch.",
+        "Fifteen-second windows removed sentence-boundary pitch resets in blind tests.",
+        "Five-second fp16 CPU synthesis took roughly 200 milliseconds per pass.",
+        "Core ML conversion silently zeroed harmonics through incorrect modulo handling.",
+        "Short replies required length-specific voice rows and corrected start/end tokens.",
+        "Core ML speech latency scaled poorly with output-window length, not text length.",
+        "An incorrect AdaIN frame-mask length broke coremltools interpolation conversion."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is unusually concrete ML deployment research: it diagnoses how padded bidirectional LSTM steps corrupted duration and pitch prediction in Core ML exports of Kokoro, then documents masked re-exports with waveform-level parity checks. It also supplies measured inference timings, pitch-jitter analysis, and blind listening comparisons across multiple output windows, yielding reusable knowledge about deploying padded sequence models on Apple hardware. The evidence is limited by modest test samples, one model family, a partly AI-written narrative, and the supplied article ending mid-section, but the technical mechanisms and linked export recipe make it strong practitioner material.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T10:36:56.009463"
+    },
+    {
+      "id": 7994,
+      "source_id": 4,
+      "original_url": "https://octri.dev/blog/java-unicode-escape-comment",
+      "title": "https://octri.dev/blog/java-unicode-escape-comment",
+      "summary": "Code generators must account for each target language's lexical and comment rules, because arbitrary specification text can otherwise become executable or semantically altered code.",
+      "ideas": [
+        "Java Unicode escapes are processed before comments, allowing code after \\u000a.",
+        "PHP ?> inside a line comment can exit PHP mode.",
+        "Ruby double-quoted strings evaluate #{...} interpolation expressions.",
+        "Preserve exact OpenAPI values; compilers cannot detect semantic changes.",
+        "OpenAPI text becomes source code with language-specific meaning.",
+        "SDK generators must sanitize based on target language and context.",
+        "Go raw string literals terminate on backticks.",
+        "Python triple-quoted docstrings terminate on matching triple quotes.",
+        "Python unrecognized backslash escapes can cause warnings.",
+        "JavaDoc HTML validation can fail documentation generation.",
+        "Rust fences in docs can become executable doc tests.",
+        "Rust generators should choose text, ignore, or no_run fences.",
+        "Java line comments and JavaDoc comments need different handling.",
+        "OpenAPI examples, defaults, and enums also need literal escaping.",
+        "Test generated code with compiler/tooling, not just build success."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "The article delivers multiple concrete, security-relevant insights: Java Unicode escapes can activate commented code, PHP tags can break comment boundaries, Ruby interpolation can alter literal values, and several language-specific escaping pitfalls are surveyed. It also provides actionable generator guidance, such as preserving exact OpenAPI values, using context-specific handling, and testing with the actual compiler. Mild promotional Octri context is present but does not dominate the substantive technical content.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-16T10:32:19.164336",
+      "image_url": "https://artifacts.octri.dev/blog/covers/java-unicode-escape-comment-eafee18d4143135e.png",
+      "image_width": 1600,
+      "image_height": 840,
+      "image_alt": "A Unicode Escape Can Turn a Java Comment Into Executable Code"
+    },
     {
       "id": 7993,
       "source_id": 7,

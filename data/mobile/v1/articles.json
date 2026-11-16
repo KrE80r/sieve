@@ -1,11 +1,296 @@
 {
   "schema_version": 1,
-  "sequence": 2064,
-  "revision": "sha256:b3762735730c32af626a47ee49c5065d5f1aeb8140b0fc8d93dea4745a558ce4",
-  "generated_at": "2026-11-16T00:00:00.439796+00:00",
+  "sequence": 2065,
+  "revision": "sha256:4682e1d85edf9e38a256afa29b651f1574b56f616262fb0fcf0b7bf7da5375d9",
+  "generated_at": "2026-11-16T01:00:00.204689+00:00",
   "complete": true,
-  "total_items": 1163,
+  "total_items": 1165,
   "items": [
+    {
+      "article_id": "article:8006",
+      "original_url": "https://hwtn.io/essays/t0401-binance-part-one",
+      "title": "The Binance heist, Part One: fifty valid signatures, one that landed, and an authority that stood for 3 hours 49 minutes",
+      "summary": "Fifty valid EIP-7702 signatures form a nonce band in which only the authorization matching the wallet's live nonce executes, leaving attacker code running from a compromised hot wallet for nearly four hours outside the reach of a withdrawal suspension.",
+      "rating": 88,
+      "rating_reason": "This is original on-chain incident forensics of unusually high rigor: the author decoded a type-4 transaction across a measured block range via two RPC providers, published exact hashes, nonces, timestamps, and a methodology with a claim register that cleanly separates measurements from editorial readings. The core mechanism is genuinely non-obvious and useful to custody, incident-response, and detection engineers: 50 valid EIP-7702 authorizations form a nonce band where only the signature matching the wallet's live nonce executes, descending ordering conserves nonces, and the resulting delegated authority stood outside the control path a withdrawal suspension reaches. Deductions come from glossary-level definitions and cross-section repetition that inflate a already long read into ~35 minutes, deferral of root cause (signing-service compromise) to Part Two, and measurements that, while carefully documented with reproducible artifacts, were not independently reproduced.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:29:01.780000+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:29:01.780000+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8005",
+      "original_url": "https://harrisonsec.com/blog/my-second-iphone-lives-at-home/",
+      "title": "My Second iPhone Lives at Home. I Use It From Anywhere.",
+      "summary": "A remote-access gateway lets a stock iPhone be fully used from another phone by re-encoding its USB screen feed and emulating keyboard, mouse, headset, and notification accessories over Bluetooth.",
+      "rating": 88,
+      "rating_reason": "This is a substantive firsthand engineering writeup with concrete mechanisms, measurements, and debugging outcomes for remotely controlling a stock iPhone through Bluetooth HID/HFP, ANCS, USB capture, Sunshine, Tailscale, and CallKit. The five failure analyses are especially useful, including clock drift compensation, BLE appearance/address fixes, VA-API latency, thread leaks, and VoIP push handling. It is somewhat promotional around the author's app and services, and some deeper details are deferred to related posts.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:27:01.455220+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:27:01.455220+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8004",
+      "original_url": "https://flaneur2020.github.io/posts/2026-11-14-reproducing-strata-in-rust/",
+      "title": "Reproducing Strata in Rust",
+      "summary": "Reproducing Strata in Rust shows that expert-cache scheduling with predictive prefetch and CPU fallback, plus careful synchronization, routing, and thread-pool tuning, can run a ~170B sparse MoE at usable speed on a single 12 GiB consumer GPU.",
+      "rating": 85,
+      "rating_reason": "A substantive firsthand engineering log: the author reproduces a sparse-MoE expert-scheduling inference stack in Rust with concrete benchmarks (about 27.2 tok/s decode, 1k tok/s prefill on an RTX 4070 with 12 GiB VRAM), a linked repository, and quantified optimization outcomes (0.9-2 ms per change). The non-obvious findings — three-path expert dispatch, shared-memory doorbell spin-waits since CUDA Graphs cannot capture CPU sync, retrofitting graph capture being impractically invasive, lookahead-induced cache thrashing, and busy-polling pinned thread pools beating rayon — are directly useful to LLM inference engineers. Limitations: blog-level depth rather than exhaustive source analysis, some narrative padding, reliance on model names that cannot be independently verified, and an agent-workflow section that is insightful but secondary.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:20:56.816461+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:20:56.816461+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8003",
+      "original_url": "https://coey.dev/c4",
+      "title": "c4",
+      "summary": "A Connect 4 agent benchmark shows deterministic minimax search outperforming LLM move selection in speed and reliability, while also documenting concrete prompt-tuning and implementation failures.",
+      "rating": 86,
+      "rating_reason": "The article combines a reproducible minimax solver implementation with concrete browser-based LLM benchmark measurements, prompt and model comparisons, blunder grading, and a discovered bug case. It delivers actionable engineering evidence about latency, illegal moves, and search depth, though the experiments use small sample counts and are partly tied to the author's own tooling.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:10:51.070962+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:10:51.070962+00:00",
+      "image": {
+        "url": "https://coey.dev/og-image?article=c4&title=c4&description=A%20benchmark%20for%20hand%3A%20LLM%20agents%20played%20Connect%204%20against%20me%20in%20a%20real%20browser%2C%20at%2020.7%20s%20and%20%240.022%20a%20move%2C%20and%20lost%20every%20game%20they%20finished.%20The%2080-line%20solver%20that%20graded%20them%20plays%20in%20under%20a%20second%20for%20nothing.%20Play%20it%2C%20and%20watch%20two%20solvers%20play%20each%20other.",
+        "width": 1200,
+        "height": 630,
+        "alt": "c4"
+      }
+    },
+    {
+      "article_id": "article:8002",
+      "original_url": "https://briancaffey.github.io/2026/11/13/hnfm-a-year-on",
+      "title": "hn.fm, a year on: Hacker News as episodes, digests, a radio station and directed video",
+      "summary": "A production-minded local AI pipeline succeeds by separating deterministic code from narrowly constrained agent choices, validating outputs mechanically, and degrading safely when models fail.",
+      "rating": 87,
+      "rating_reason": "This is a concrete, firsthand account of a local AI media pipeline, with useful operational details on staged filtering, shared research briefs, constrained agent decisions, validation, fallbacks, service health checks, and Kubernetes worker isolation. Specific failure cases—fabricated numerical claims, unnarrated chart labels, stale stories, prompt-example copying, and silent outages—provide unusually actionable engineering lessons. The evidence remains largely self-reported, with little source code, prompt detail, evaluation methodology, or independent verification, and the supplied text ends mid-section, preventing an exceptional score.",
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:04:21.040418+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:04:21.040418+00:00",
+      "image": {
+        "url": "https://briancaffey.github.io/static/hnfm/2026/cover.jpg",
+        "width": 1200,
+        "height": 628,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8001",
+      "original_url": "https://blog.tymscar.com/posts/studiodisplayethernet/",
+      "title": "My Monitor Was Cutting My Download Speed by 75%",
+      "summary": "A USB Ethernet adapter can lose throughput behind a display because short USB bursts and hub response latency cause its receive buffer to overflow, which flow control or larger USB bursts can mitigate.",
+      "rating": 87,
+      "rating_reason": "This is a focused, evidence-driven networking investigation that isolates a highly non-obvious interaction among USB burst size, hub round-trip latency, receive-buffer overflow, and Ethernet packet loss. Measurements, adapter counters, USB descriptor inspection, driver comparisons, and flow-control experiments provide unusually concrete support for the proposed mechanism. The main limitation is that the evidence comes from one display and two adapters, leaving some of the causal model hardware-specific and somewhat inferred.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:01:37.377207+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:01:37.377207+00:00",
+      "image": {
+        "url": "https://blog.tymscar.com/studio-display-ethernet/og-card.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8000",
+      "original_url": "https://blog.tomecek.net/post/postgresql-9-to-17-in-one-go/",
+      "title": "PostgreSQL 9.6 to 17 in one go, driven from my phone",
+      "summary": "Safe PostgreSQL major upgrades require version-aware dump handling, production-like rehearsals, immutable rollback data, and row-count verification rather than merely successful commands.",
+      "rating": 87,
+      "rating_reason": "The article provides unusually concrete, firsthand evidence for a risky PostgreSQL major-version migration, including immutable rollback directories, checksummed backups, restore guards, schema-history pitfalls, and per-table row-count verification. Its agentic workflow is substantive rather than promotional: independent rehearsal and review caught defects, while explicit human approval constrained production actions. The treatment remains a narrow homelab case study and exposes little of the underlying code or infrastructure, limiting its breadth and reproducibility.",
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:01:08.544876+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:01:08.544876+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7999",
+      "original_url": "https://bhargav.dev/writing/pdf-ten-second-open",
+      "title": "How to speed up PDF rendering in the browser with pdf.js",
+      "summary": "A PDF reader's slow first-page rendering was dominated by analytics recording and inefficient request flows, not pdf.js parsing.",
+      "rating": 90,
+      "rating_reason": "The article is a measured, firsthand engineering investigation with concrete timings, code snippets, and implementation changes for a real web PDF reader. It identifies substantial non-obvious bottlenecks beyond pdf.js, especially session replay recording of dynamic text layers and avoidable request waterfalls. Limitations include a single-application case and results that depend on network conditions and PDF structure.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T10:52:15.721136+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T10:52:15.721136+00:00",
+      "image": {
+        "url": "https://media.bhargav.dev/blog/pdf-ten-second-open/cover.png",
+        "width": 2400,
+        "height": 1260,
+        "alt": "bhargav.dev — ENG · BERLIN"
+      }
+    },
+    {
+      "article_id": "article:7998",
+      "original_url": "https://avishek.net/2026/11/10/asking-z3-about-cobol-programs.html",
+      "title": "Asking Z3 About COBOL Programs",
+      "summary": "A detailed, measurement-backed log of verifying COBOL program behavior with a solver, including where the encoding was unsound or slow and how assume-guarantee splits sped it up.",
+      "rating": 87,
+      "rating_reason": "First-hand engineering of encoding COBOL/CICS control flow as constrained Horn clauses and querying it with Z3/Spacer, with concrete measurements (rule counts, byte counts, timings) and non-obvious mechanisms (byte-extent state, spurious-unsat fixes, CEGAR refinement, cut of bytes unreachable to the goal, assume-guarantee split). It documents real failures, including seven ways unsat could be proven wrongly, and a genuine defect found (account balance rewritten after transaction-file failure). Main limitations are extreme domain specificity, dependence on the author's own tooling and a partial truncation, plus reliance on an LLM for judgement-heavy steps that only the solver can certify.",
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T10:46:52.164738+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T10:46:52.164738+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7997",
+      "original_url": "https://arrangeactassert.com/posts/test-lambda-durable-functions-without-deploying/",
+      "title": "Test Lambda durable functions without deploying",
+      "summary": "It shows how to test every branch of a Lambda durable approval workflow locally with the durable execution test runner and fake timers.",
+      "rating": 85,
+      "rating_reason": "The article gives a runnable, focused example of testing AWS Lambda durable functions in-process, including installation commands, handler code, vitest tests, callback handling, and operation-history assertions. It also documents useful non-obvious gotchas: `createCallback` requires `waitForData()` without a status, fake timers skip waits but not callback timeouts, fake clocks affect `Date.now()`, and the emulator cannot run the durable SDK. Its main limitation is that it is narrowly scoped to one AWS SDK and version, so its API details may become outdated.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T10:44:43.997575+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T10:44:43.997575+00:00",
+      "image": {
+        "url": "https://arrangeactassert.com/_astro/test-lambda-durable-functions-without-deploying.CePG3v4Y_2l7loK.webp",
+        "width": 1672,
+        "height": 941,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:7996",
+      "original_url": "https://aminrj.com/posts/agent-hooks-fail-open/",
+      "title": "When a Pre-Tool Hook Crashes, CrewAI and the Claude Agent SDK Run the Tool Anyway",
+      "summary": "A reproducible five-framework comparison finds that several agent frameworks execute tools after policy-hook exceptions and documents framework-specific ways to enforce fail-closed behavior.",
+      "rating": 91,
+      "rating_reason": "The article provides original, version-pinned experiments comparing hook failure behavior across five agent frameworks, supported by source inspection, reproducible harness references, and concrete mitigation code. It reveals non-obvious distinctions between fail-open callbacks, fail-closed middleware, timeout handling, and failed output redaction that have direct security implications. The evidence is limited to selected Python hook paths, some untested interception variants, and a directly invoked CrewAI executor, while the supplied text is truncated near the end.",
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T10:40:59.930650+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T10:40:59.930650+00:00",
+      "image": {
+        "url": "https://aminrj.com/assets/media/ai-security/agent-hooks-fail-open.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Title card: when a pre-tool hook crashes, two of five agent frameworks run the tool anyway"
+      }
+    },
+    {
+      "article_id": "article:7995",
+      "original_url": "https://adamwulf.me/2026/11/kokoro-coreml-masked-export/",
+      "title": "A Better Kokoro Voice for iPhone: 5, 10, and 15 Second Core ML Exports",
+      "summary": "Masking LSTM state over padded sequence steps can eliminate Core ML speech artifacts while longer output windows reduce segmentation and improve prosody.",
+      "rating": 88,
+      "rating_reason": "This is unusually concrete ML deployment research: it diagnoses how padded bidirectional LSTM steps corrupted duration and pitch prediction in Core ML exports of Kokoro, then documents masked re-exports with waveform-level parity checks. It also supplies measured inference timings, pitch-jitter analysis, and blind listening comparisons across multiple output windows, yielding reusable knowledge about deploying padded sequence models on Apple hardware. The evidence is limited by modest test samples, one model family, a partly AI-written narrative, and the supplied article ending mid-section, but the technical mechanisms and linked export recipe make it strong practitioner material.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T10:36:56.009463+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T10:36:56.009463+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:7994",
+      "original_url": "https://octri.dev/blog/java-unicode-escape-comment",
+      "title": "https://octri.dev/blog/java-unicode-escape-comment",
+      "summary": "Code generators must account for each target language's lexical and comment rules, because arbitrary specification text can otherwise become executable or semantically altered code.",
+      "rating": 84,
+      "rating_reason": "The article delivers multiple concrete, security-relevant insights: Java Unicode escapes can activate commented code, PHP tags can break comment boundaries, Ruby interpolation can alter literal values, and several language-specific escaping pitfalls are surveyed. It also provides actionable generator guidance, such as preserving exact OpenAPI values, using context-specific handling, and testing with the actual compiler. Mild promotional Octri context is present but does not dominate the substantive technical content.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 4,
+      "source_name": "Nicolas Krassas",
+      "source_type": "nitter",
+      "admitted_at": "2026-11-16T10:32:19.164336+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T10:32:19.164336+00:00",
+      "image": {
+        "url": "https://artifacts.octri.dev/blog/covers/java-unicode-escape-comment-eafee18d4143135e.png",
+        "width": 1600,
+        "height": 840,
+        "alt": "A Unicode Escape Can Turn a Java Comment Into Executable Code"
+      }
+    },
     {
       "article_id": "article:7993",
       "original_url": "https://www.crissyfield.de/research/lovable-en/",
@@ -25609,242 +25894,6 @@
         "height": 630,
         "alt": ""
       }
-    },
-    {
-      "article_id": "article:6838",
-      "original_url": "https://startdebugging.net/2026/10/what-does-a-csharp-with-expression-actually-copy/",
-      "title": "What Does a C# `with` Expression Actually Copy, and Why Don't Computed Record Properties Recalculate?",
-      "summary": "A `with` expression uses a compiler‑generated clone that copies fields byte‑wise and only runs init accessors, causing computed properties that rely on field initializers or caches to become stale.",
-      "rating": 94,
-      "rating_reason": "The article provides deep, original technical analysis of C# record `with` semantics, showing concrete compiler-generated mechanisms, copy constructor behavior, and practical pitfalls such as stale computed properties and equality anomalies. It offers actionable solutions and a concise checklist, making it highly valuable for technically adept readers. Limitations include the need for manual overrides of equality and careful handling of derived records, which the article notes but does not eliminate. Overall, the coverage is exceptionally thorough and directly applicable to programming practice.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:50:59.248238+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:50:59.248238+00:00",
-      "image": {
-        "url": "https://startdebugging.net/og/2026/10/what-does-a-csharp-with-expression-actually-copy.png",
-        "width": 1200,
-        "height": 630,
-        "alt": "What Does a C# `with` Expression Actually Copy, and Why Don't Computed Record Properties Recalculate? - Start Debugging"
-      }
-    },
-    {
-      "article_id": "article:6837",
-      "original_url": "https://seylox.github.io/2026/10/15/blog-agents-meta-repo-pattern-october-2026-update.html",
-      "title": "In Which the Agents Meta-Repo Pattern Gets Its October 2026 Update",
-      "summary": "The highest-value part of codified agent context is the team-shared clone that propagates every engineer's lessons to all colleagues' agents daily, not per-agent orientation across repositories.",
-      "rating": 85,
-      "rating_reason": "A substantive, firsthand practitioner update on a team-scale context-engineering setup for AI coding agents, with concrete artifacts: a four-level meta-repo layout, include-based workspace generation with drift checks, trigger-phrase workflow files, autonomy buckets with stop-loss rules, and quantified costs (64,000 lines of markdown, three quarters archived, live portion still rotting). Its genuinely non-obvious insight is that the valuable axis is 'many people, one agent memory' rather than 'one agent, many repositories,' supported by the observed failure of copied implementations and by a seven-month prediction retrospective. Relevance to agent engineering and software practice is high and the claims are candidly bounded (no atomic cross-repo commits, maintenance burden remains). Minor deductions for recap material for readers of the earlier post, narrative sections, and truncation that loses the closing sections.",
-      "labels": [
-        "AI",
-        "Tech",
-        "Productivity"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:48:20.649534+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:48:20.649534+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6836",
-      "original_url": "https://rimusz.net/atr-how-i-finally-got-my-coding-agents-working-while-i-sleep/",
-      "title": "atr: How I Finally Got My Coding Agents Working While I Sleep",
-      "summary": "atr is a local task runner that enables unattended execution of coding agents while intelligently managing weekly limits and caching to maximize tool usage.",
-      "rating": 85,
-      "rating_reason": "atr addresses a real pain point with coding agents (weekly limits, need for keyboard presence) with concrete technical solutions. The caching strategy details (cache_control, server-side caching, prefix stability) and agent-switching at 90% limits are well-grounded engineering decisions. However, it remains primarily a tool description rather than deep technical innovation, keeping it out of the 90+ range.",
-      "labels": [
-        "AI",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:41:47.004446+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:41:47.004446+00:00",
-      "image": {
-        "url": "https://storage.ghost.io/c/c0/29/c0291139-5530-4e42-8132-5ec5bf8e096f/content/images/size/w1200/2026/10/atr-hero.jpg",
-        "width": 1200,
-        "height": 675,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6835",
-      "original_url": "https://redvice.org/2026/github-cve-delays/",
-      "title": "GitHub Security Advisory CVE Delays",
-      "summary": "A maintainer's attempt to assign a CVE for an Aegisub vulnerability resulted in 3+ week delays and missed GitHub deadlines, exposing systemic bottlenecks in the GitHub CNA process that can impede timely vulnerability fixes.",
-      "rating": 85,
-      "rating_reason": "The article documents a firsthand experience of severe delays in GitHub's CNA CVE assignment process, measuring waits of 3+ weeks and missed 72-hour publication deadlines. It is directly relevant to vulnerability disclosure and infrastructure security practices, providing concrete timing data and insight into the operational friction of the advisory system. However, its value is constrained to the specific anecdote of GitHub CNA bottlenecks rather than offering broader technical guidance or universal solutions.",
-      "labels": [
-        "CyberSecurity",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:36:57.252634+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:36:57.252634+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6834",
-      "original_url": "https://readwriterachel.com/things-i-learned/2026/10/15/noodle-broken.html",
-      "title": "My Favorite Side Project Was Broken In Safari For Years And Nobody Noticed",
-      "summary": "The author discovered Safari's `activeElement` does not update when clicking buttons unless 'Full Keyboard Access' is enabled, breaking calendar navigation, and the fix involved switching to `e.target`.",
-      "rating": 85,
-      "rating_reason": "Delivers a concise, non-obvious DOM quirk specific to Safari's `activeElement` behavior on macOS/iOS, with a clear mechanism explanation and a practical one-line fix. The author provides reproducible investigation steps, honest self-analysis, and the fix restores full functionality. High value per minute with no detectable noise, hype, or promotion.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:34:30.840693+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:34:30.840693+00:00",
-      "image": {
-        "url": "https://www.readwriterachel.com/assets/opengraph/2026-10-15-noodle-broken.png",
-        "width": 1210,
-        "height": 640,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6833",
-      "original_url": "https://quaoar.su/blog/page/andronov-cad-live",
-      "title": "A3CAD live",
-      "summary": "Readers gain practical insight into using SMLib as a geometric kernel, bridging it with OpenCascade for STEP compatibility, and the real-world trade-offs of AI-assisted CAD development.",
-      "rating": 85,
-      "rating_reason": "The article delivers concrete, firsthand engineering lessons on bridging SMLib with OpenCascade translators, exporting analytical surfaces to STEP, and building a VTK-based GUI with AI assistance. It sharply evaluates kernel trade-offs and licenses the project under BSD 3-Clause, critiquing AGPL dynamics in AI-assisted FOSS. While lacking hard benchmarks, the specificity of mechanisms and practitioner insight makes it strongly valuable for readers in geometric modeling or CAD tooling.",
-      "labels": [
-        "Tech",
-        "AI"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:33:11.154563+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:33:11.154563+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6832",
-      "original_url": "https://pberba.github.io/security/2026/10/14/silent-vscode/",
-      "title": "Silently Install VSCode Extensions",
-      "summary": "macOS VSCodium-family IDEs leave extension directories unprotected and integrity-free, letting attackers silently install, hide, hollow out, and brand-spoof extensions, while defense hinges on file-integrity monitoring of extensions.json and the extensions directory.",
-      "rating": 85,
-      "rating_reason": "Firsthand security research with concrete, reproducible substance: silent extension installation in VSCode/Cursor via direct extensions.json manipulation and the directory-watcher __metadata propagation trick, hiding via isBuiltin, verified-badge spoofing, and an extension-hollowing injector that forwards lifecycle calls to the original module. The defensive half is equally actionableâjq hunt queries, FIM scope, an osquery limitation (vscode_extensions omits isBuiltin), Cursor's extension lineage env vars, and Santa/MDM mitigations. Novelty is moderate since the author adapts known Silent_Chrome techniques to a surface with fewer integrity checks, and the content is truncated mid-conclusion, but the attack techniques, detection guidance, and published scripts make this highly valuable for both offensive and defensive engineering.",
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:26:07.985784+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:26:07.985784+00:00",
-      "image": {
-        "url": "https://pberba.github.io/assets/posts/20261014/header.jpg",
-        "width": 1024,
-        "height": 1024,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6831",
-      "original_url": "https://orlp.net/blog/black-box-hashdos/",
-      "title": "Black-Box HashDoS: Attacking Hash Tables Without Knowing the Hash Function",
-      "summary": "Hash tables with randomized seeds (Rust, Python) remain vulnerable to algorithmic complexity attacks via timing side-channels, enabling an O(n log n) setup attack that forces O(n) lookups without knowing the hash function.",
-      "rating": 92,
-      "rating_reason": "Original security research presenting a novel black-box HashDoS technique that bypasses randomized hash seeding (previously considered sufficient mitigation) using timing side-channels. The article provides concrete algorithmic details with rigorous complexity analysis (Chernoff bounds, harmonic series), demonstrates a working attack against Rust's standard library hash table, and covers both linear and quadratic probing schemes. The content is truncated mid-section but the core contribution and methodology are fully present and technically deep.",
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:21:10.005610+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:21:10.005610+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6830",
-      "original_url": "https://nohzafk.github.io/posts/2026-10-15-merge-the-folds/",
-      "title": "Merge the Folds: A Binary Counter Over the Title List",
-      "summary": "Long-running LLM agent context can be managed with a title-list 'cover' that follows binary-counter alignment rules, merged only on unit close to ride existing prefix-cache rewrites, with empirically measured retrieval trade-offs.",
-      "rating": 90,
-      "rating_reason": "Exceptional original engineering research with concrete measurements. The author replays 168 sessions under four schedules, runs a 184-question retrieval evaluation across block sizes, derives a prefix-cache cost model, and proves out an aligned-block structure (binary counter with carry) that makes merging provably cheap. Insights like 'merge only when a unit closes because it rides on the existing tail rewrite,' 'cover is for orientation, grep is for finding,' and the steep found-rate drop with block size are non-obvious and directly actionable for anyone building long-running LLM agents. The idiosyncrasy of the prose and partial article truncation slightly reduce value per minute but the underlying substance is unusually strong.",
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:13:45.919749+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:13:45.919749+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6829",
-      "original_url": "https://minikin.me/blog/uikit-as-a-test-oracle/",
-      "title": "An Oracle for Coding Agents: Testing a Flutter Popover Against UIKit",
-      "summary": "Differential testing against UIKit/AppKit turned into a black-box oracle that lets coding agents refactor a Flutter popover safely, with hard-won measurements of path geometry, glass parameters, springs, and agent guardrails.",
-      "rating": 89,
-      "rating_reason": "Exceptionally substantive engineering writeup describing differential testing applied to UI components, with concrete implementation: probe Swift apps that extract UIKit path geometry via CGPath.applyWithBlock, 31/171 fixture paths compared element-by-element, and parameter fitting where exact extraction fails (shadow blur sigma 210, glass color matrix, spring mass/stiffness/damping). Includes genuinely non-obvious findings: Impeller gives BackdropFilter inside Opacity an empty backdrop; NSPopover animates in the window server so CGWindowListCreateImage cannot see it; a luminance switch (0.23) computed via WCAG contrast for light/dark glass selection. The guardrails-for-agents framing (fixtures agents cannot edit, 75% mutation threshold, golden tests in Docker) is practical and well-reasoned. Mild self-promotion for the package is the main weakness.",
-      "labels": [
-        "AI",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:08:39.967482+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:08:39.967482+00:00",
-      "image": {
-        "url": "https://minikin.me/og/uikit-as-a-test-oracle.jpg",
-        "width": 1200,
-        "height": 630,
-        "alt": "An Oracle for Coding Agents: Testing a Flutter Popover Against UIKit"
-      }
-    },
-    {
-      "article_id": "article:6828",
-      "original_url": "https://mainlymatmul.com/blog/deepseek-v4-flash-tpu-v6e/",
-      "title": "Running DeepSeek V4 Flash on TPU v6",
-      "summary": "Custom kernel modifications enable accurate and faster 4‑bit MoE inference on TPU v6, matching bf16 accuracy and outperforming bf16 speed.",
-      "rating": 89,
-      "rating_reason": "The article provides deep, reproducible engineering details for running a 4‑bit MoE LLM on TPU v6, including a custom decode kernel, performance benchmarks, and a fix for a prefix‑caching crash. The concrete code, measurements, and error analysis are highly relevant to AI inference engineers, while the content is free of hype and well‑focused. Novelty and practical utility are strong, though the scope is limited to a specific hardware generation.",
-      "labels": [
-        "AI",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T00:04:34.353652+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T00:04:34.353652+00:00",
-      "image": null
     }
   ]
 }
