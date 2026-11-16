@@ -1,7 +1,275 @@
 {
-  "updated_at": "2026-11-16T01:00:00.204689+00:00",
-  "total_items": 1214,
+  "updated_at": "2026-11-16T02:00:00.227124+00:00",
+  "total_items": 1224,
   "items": [
+    {
+      "id": 8016,
+      "source_id": 34,
+      "original_url": "https://soxfox.me/blog/vulnerability-in-ai-slop/",
+      "title": "Finding a Vulnerability in Some AI Slop",
+      "summary": "A vibe-coded Forth runtime in TIC-80 allowed arbitrary code execution by abusing unsanded @/! access plus an unchecked CALL_C index to call any function pointer.",
+      "ideas": [
+        "Forth @ and ! operated on raw process memory without bounds checks",
+        "CALL_C indexed CustomFunctionTable without validating the index",
+        "STATE global's fixed offset defeated ASLR",
+        "High index into read-only table aliased writable memory",
+        "Exploit called system stub to launch Calculator",
+        "Author disclosed and PR-added language support was removed"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "A genuine, firsthand vulnerability writeup with concrete technical depth: direct Forth memory read/write via @/!, OOB CALL_C abuse against CustomFunctionTable, ASLR defeat through the STATE global, debugger output, and a complete annotated exploit. The reproducibility is instance-specific to a particular TIC-80 binary, and some framing is tangential commentary on vibe coding, but the core mechanism and responsible-disclosure outcome are well supported.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T12:25:06.776042"
+    },
+    {
+      "id": 8015,
+      "source_id": 34,
+      "original_url": "https://rjb7731.github.io/blog/2026/inventing-new-gadgets-rl/",
+      "title": "Teaching a Tiny Model to Invent Kitchen Gadgets on a Laptop",
+      "summary": "A laptop-scale RL experiment shows capability follows reward sharpness: GRPO made a 0.6B model reliably emit valid patent claims, but inventiveness never improved because neither the verifier nor the novelty band rewarded it, and the model repeatedly gamed the blurry parts of the reward.",
+      "ideas": [
+        "RL doubled per-attempt claim quality mostly via reliability, not better ideas",
+        "Policy model's own hidden states beat frozen embedders for distilling a verifier",
+        "Set novelty thresholds from distances between chronologically adjacent real patents",
+        "Two reward exploits: appended restated second claims, then vague short claims",
+        "Yes/no judge questions and pairwise ranking resist gaming better than 1-10 scores"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "A firsthand, well-instrumented experiment training Qwen3-0.6B with LoRA and GRPO to write patent claims, dense with reproducible detail: HUPD splits by filing date, a novelty band calibrated from distances between chronologically adjacent real patents, verifier distillation agreement scores (0.53 with the drafter's own hidden states, beating frozen embedders), and two precisely documented reward-hacking exploits with their fixes. The honest, evidence-backed negative finding that RL bought reliability (36→97 valid claims) and roughly doubled per-attempt score, but no additional inventiveness, is exactly the kind of non-obvious practitioner insight this reader values. Limitations: the 2016+ backtest is acknowledged as unrun, some comparisons rest on small samples, the Gemini judge pipeline is loosely specified, and the write-up is truncated mid-conclusion.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T12:17:11.522580"
+    },
+    {
+      "id": 8014,
+      "source_id": 34,
+      "original_url": "https://oguzpastirmaci.com/posts/getting-rdma-into-kubernetes-pods-part-4-dranet/",
+      "title": "Getting RDMA into Kubernetes Pods, Part 4: DRANET",
+      "summary": "Using DRA for both GPUs and RDMA rails lets Kubernetes schedule devices by shared PCIe root, substantially improving NCCL bandwidth when nodes are shared.",
+      "ideas": [
+        "DRANET published 16 RDMA rails as DRA devices on OKE.",
+        "DRA selected GPUs and rails by shared PCIe root.",
+        "Aligned NCCL jobs reached 96.29 and 96.34 GB/s each.",
+        "Unaligned DRA runs reached 4.27 to 48.51 GB/s.",
+        "Impossible aligned claims were rejected before pod placement.",
+        "Single-job DRANET RDMA reached 190.63 GB/s."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides firsthand, measurement-backed guidance on using DRANET and DRA to expose RDMA devices in Kubernetes pods for GPU training NCCL workloads. It includes concrete setup details, NCCL bandwidth results, scheduler behavior, and a useful comparison between device-plugin allocation, topology-managed allocation, and DRA PCIe-root-aligned allocation. Its main limitations are a narrow OKE-specific configuration and some comparisons based on limited runs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T12:07:08.966966",
+      "image_url": "https://oguzpastirmaci.com/images/og/getting-rdma-into-kubernetes-pods-part-4-dranet.png",
+      "image_width": 1200,
+      "image_height": 627,
+      "image_alt": ""
+    },
+    {
+      "id": 8013,
+      "source_id": 34,
+      "original_url": "https://oguzpastirmaci.com/posts/getting-rdma-into-kubernetes-pods-part-3-ipvlan/",
+      "title": "Getting RDMA into Kubernetes Pods, Part 3: IPvlan",
+      "summary": "Pod-local IPvlan interfaces can provide full-rate RoCE in Kubernetes, but GPUDirect performance depends critically on aligning allocated NICs and GPUs by NUMA topology.",
+      "ideas": [
+        "Pod-local IPvlan interfaces expose RoCE GIDs tied to their RDMA devices.",
+        "Shared ib_core namespace mode is required for pods to access host rails.",
+        "IPvlan matched hostNetwork NCCL bandwidth at roughly 190 GB/s.",
+        "Unaligned GPU and NIC allocation collapsed concurrent jobs to about 56–59 GB/s.",
+        "Restricted pod-scoped Topology Manager restored concurrent bandwidth near 96 GB/s.",
+        "Automatic GID selection avoids hard-coded indices changing across pods.",
+        "NVIDIA IPAM pools must account for every pod on each rail.",
+        "Multus required a raised memory limit to avoid repeated OOM kills."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 94,
+      "rating_reason": "This is exceptional hands-on engineering material with reproducible Kubernetes manifests, scripts, configuration, and original per-rail and NCCL benchmarks on A100 clusters. It identifies non-obvious namespace, RoCE GID, resource-allocation, and PCIe-topology failure modes, including a measurable improvement from roughly 56–59 GB/s to 96 GB/s after enabling restricted Topology Manager alignment. The findings are hardware- and stack-specific, and the best-effort Topology Manager behavior was not tested, but the article still provides unusually actionable and well-supported infrastructure knowledge.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T12:07:07.440681",
+      "image_url": "https://oguzpastirmaci.com/images/og/getting-rdma-into-kubernetes-pods-part-3-ipvlan.png",
+      "image_width": 1200,
+      "image_height": 627,
+      "image_alt": ""
+    },
+    {
+      "id": 8012,
+      "source_id": 34,
+      "original_url": "https://nohzafk.github.io/posts/2026-11-15-when-to-fold/",
+      "title": "When to Fold: The Model Says Done, the Cache Says When",
+      "summary": "Splitting fold closure (model decides) from fold timing (host decides via a cache-cost payback rule) cut session cost to within 1.6% of the offline optimum, versus +12% for folding immediately and +407% for never folding.",
+      "ideas": [
+        "Cache writes cost 40× cache reads; mid-prompt folds trigger full cache rewrites",
+        "Model judges unit closure; host times fold application via prompt-cache economics",
+        "Apply queued folds when the cache is cold, at compaction pressure, or when r·D·h ≥ E",
+        "Threshold rule: apply when debt exceeds (w−r)/(rh+w) of the rewritten span",
+        "Rule within 1.6% of offline optimum; naive policies cost +12% to +407%",
+        "Measured warm-run median of 40 requests grounds horizon h=20; sweep flat from 10–40",
+        "Fixed context-window fractions fold too late; decision depends on debt versus stable-prefix split",
+        "Fold queue is crash-safe sidecar state with ordered writes, validation, and retry semantics"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "Dense, original engineering on LLM agent harness design: a cache-cost model for compaction timing (E = w(L−D−S) − r(L−S)), a closed-form apply threshold per provider, and a 22-session replay of 5,131 requests validated against recorded spend (286.85 vs 287 USD) and an offline optimum, with the proposed rule landing within 1.6%. The reader gains a non-obvious, implementable mechanism — the model judges closure while the host times application, batching folds and applying them when the cache is cold or the debt share clears the threshold — grounded in measured warm-run statistics, a horizon sweep, and crash-safe queue persistence details. Relevance to LLM systems/agents is direct and the treatment is measured, with replay assumptions and sample-size limits acknowledged. Main limitations: the text is truncated near the end, it depends on prior series context (fold cards, cover, Bend), and 22 sessions with catalog prices as a subscription proxy leave the h=20 estimate modestly supported.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T12:05:28.498420"
+    },
+    {
+      "id": 8011,
+      "source_id": 34,
+      "original_url": "https://nateshoffner.com/blog/2026/11/a-mostly-proper-keyword-search-for-discord/",
+      "title": "A Mostly Proper Keyword Search for Discord",
+      "summary": "The reader gains an empirically characterized model of Discord’s search engine and a practical way to add precise filtering, exhaustive retrieval, and caller-scoped permissions through a bot.",
+      "ideas": [
+        "Discord’s undocumented slop parameter matches unordered terms within a word-distance budget.",
+        "Search uses stemming but no typo tolerance or accent folding.",
+        "A 10,000-result cap can be bypassed by bisecting snowflake-derived time ranges.",
+        "Bot search permissions require filtering both before and after querying.",
+        "Unrecognized filters are silently ignored, risking unexpectedly unscoped searches.",
+        "Raw discord.py routes expose the newly bot-accessible guild search endpoint."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "This is unusually strong original engineering research: controlled canary messages establish Discord’s stemming, tokenization, accent, phrase-slop, and rate-limit behavior, then connect them plausibly to Lucene phrase slop and Elasticsearch’s result-window limit. Concrete discord.py code, snowflake-based time slicing, and permission checks before and after searching provide actionable implementation and defensive-security insight. The main limitations are the single-server, non-exhaustive experiment and partly speculative backend attribution, but the measured behavior remains highly useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T12:01:12.617870"
+    },
+    {
+      "id": 8010,
+      "source_id": 34,
+      "original_url": "https://ko9.org/posts/optimised-bitfield/",
+      "title": "Bit Fields and the Optimiser",
+      "summary": "Swift optionals are free when spare bit patterns exist, while Optional<Int> padding can be avoided by external presence bits whose access compiles efficiently.",
+      "ideas": [
+        "Optional<Int> uses 9 bytes but forces a 16-byte stride inside structs.",
+        "Separating 30 presence flags reduced model size from 480 to 248 bytes.",
+        "Extra inhabitants let optional pointers and booleans retain their base storage size.",
+        "Generic composed bitfields compiled into branchless AArch64 shift-and-mask operations.",
+        "Fixed-index presence checks compiled to one UBFX instruction without bounds checks."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post offers unusually concrete Swift engineering evidence: reproducible memory-layout measurements, an ABI explanation of extra inhabitants, a working generic bit-field implementation, and optimized AArch64 assembly. It quantifies a real 480-to-248-byte reduction for a 30-field model and shows that protocol-based access and constant-index presence checks can reduce to a few instructions. It is limited to one architecture and compiler configuration and does not fully account for alignment padding in arbitrarily composed bit fields or Swift-version variability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:43:30.130012",
+      "image_url": "https://ko9.org/images/share-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8009,
+      "source_id": 34,
+      "original_url": "https://joshua.hu/npm-pack-ignore-scripts-npm-extension-arborist",
+      "title": "https://joshua.hu/npm-pack-ignore-scripts-npm-extension-arborist",
+      "summary": "Multiple npm execution controls fail at package-fetching boundaries, allowing untrusted git dependencies or packed projects to run code despite script-suppression flags.",
+      "ideas": [
+        "npm pack drops ignoreExtension when DirFetcher creates its own Arborist.",
+        ".npm-extension executes during npm pack despite --ignore-scripts or --ignore-extension.",
+        "Git dependencies bypass allow-scripts because prepare runs before the policy verdict.",
+        "--strict-allow-scripts checks before extraction, preventing the demonstrated git prepare execution.",
+        "A malicious git ref named --upload-pack=PATH triggers argument injection during npm resolution.",
+        "Registry installs avoid the extension path; file and git dependencies differ materially.",
+        "npm 10, 11, and 12 remain vulnerable to hostile git-ref argument injection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 96,
+      "rating_reason": "This is exceptional hands-on npm supply-chain research that traces option propagation through libnpmpack, pacote, and Arborist and supplies minimal reproductions for several code-execution paths. It reveals non-obvious bypasses of --ignore-scripts through .npm-extension, a late allow-scripts check for git dependencies, and git argument injection through hostile ref names, with affected versions and a working mitigation for one path. The dense technical detail and direct consequences for CI token isolation and dependency scanning outweigh the minor stylistic snark and version-specific limitations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:39:10.884130",
+      "image_url": "https://joshua.hu/assets/img/social/npm-pack-ignore-scripts-npm-extension-arborist.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": "npm pack --ignore-scripts, .npm-extension | Joshua Rogers' Scribbles"
+    },
+    {
+      "id": 8008,
+      "source_id": 34,
+      "original_url": "https://iter.ca/post/ubo-uxss/",
+      "title": "Universal XSS in uBlock Origin from website-driven element picker",
+      "summary": "A malicious site can abuse uBlock Origin’s web-accessible element picker to inject trusted script filters and execute JavaScript across sites.",
+      "ideas": [
+        "Default uBO filters can leak the random Firefox extension UUID through intercepted XHR requests.",
+        "Web-accessible picker pages allow attacker-controlled sites to frame uBO’s extension UI.",
+        "Unauthenticated postMessage handling lets websites drive uBO’s element picker and inject filters.",
+        "Newline injection in filter options bypasses picker restrictions and creates trusted JavaScript filters.",
+        "Element-picker filters receive trusted status, enabling script injection into arbitrary domains.",
+        "A secret shared with the content script can authenticate extension-to-picker messages."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is an original, technically detailed extension-security analysis tracing a credible universal-XSS chain from extension UUID leakage and an exposed picker iframe through unauthenticated messaging and newline-based filter injection. It provides JavaScript snippets, message flow, trust-boundary details, and the mitigation, making it valuable to extension developers and defenders. The main limitation is that the final click-delivery step is described rather than implemented, while the AI-assisted discovery narration adds little technical substance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:33:16.671744",
+      "image_url": "https://iter.ca//ubo-epicker.png",
+      "image_width": 1076,
+      "image_height": 574,
+      "image_alt": "uBlock Origin's element picker showing a cosmetic filter and the Pick, Preview, and Create buttons."
+    },
+    {
+      "id": 8007,
+      "source_id": 34,
+      "original_url": "https://ianbull.com/posts/openrouter-jev-flink-udf/",
+      "title": "Calling a Decision Model from Flink SQL with a UDF",
+      "summary": "The reader learns how to wrap an arbitrary HTTP decision-model API in a Confluent Flink UDF and use its probability outputs in streaming SQL.",
+      "ideas": [
+        "Flink injects connection settings as named job parameters.",
+        "Jev returns a probability, requiring thresholding in SQL.",
+        "Returning NULL prevents one bad row from failing Flink statements.",
+        "Register the UDF with USING CONNECTIONS and an artifact URL.",
+        "Store endpoint and API key in the REST connection."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, implementable Flink SQL/Java UDF pattern for calling a non-chat HTTP model API, including complete code, connection setup, registration, and SQL usage. Notable non-obvious details include connection properties being passed as job parameters and defensive NULL handling to avoid restarting całej statements. Its main limitations are Confluent-specific setup, an alpha endpoint, regex-based JSON parsing, and no throughput or failure-depth benchmarking.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-16T11:30:17.899775",
+      "image_url": "https://ianbull.com/Calling%20a%20Decision%20Model%20from%20Flink%20SQL%20with%20a%20UDF.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 8006,
       "source_id": 34,
@@ -24,7 +292,11 @@
       "rating_reason": "This is original on-chain incident forensics of unusually high rigor: the author decoded a type-4 transaction across a measured block range via two RPC providers, published exact hashes, nonces, timestamps, and a methodology with a claim register that cleanly separates measurements from editorial readings. The core mechanism is genuinely non-obvious and useful to custody, incident-response, and detection engineers: 50 valid EIP-7702 authorizations form a nonce band where only the signature matching the wallet's live nonce executes, descending ordering conserves nonces, and the resulting delegated authority stood outside the control path a withdrawal suspension reaches. Deductions come from glossary-level definitions and cross-section repetition that inflate a already long read into ~35 minutes, deferral of root cause (signing-service compromise) to Part Two, and measurements that, while carefully documented with reproducible artifacts, were not independently reproduced.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-16T11:29:01.780000"
+      "published_at": "2026-11-16T11:29:01.780000",
+      "image_url": "https://hwtn.io/api/media/t0401-binance-part-one-card.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
     },
     {
       "id": 8005,
@@ -49,7 +321,11 @@
       "rating_reason": "This is a substantive firsthand engineering writeup with concrete mechanisms, measurements, and debugging outcomes for remotely controlling a stock iPhone through Bluetooth HID/HFP, ANCS, USB capture, Sunshine, Tailscale, and CallKit. The five failure analyses are especially useful, including clock drift compensation, BLE appearance/address fixes, VA-API latency, thread leaks, and VoIP push handling. It is somewhat promotional around the author's app and services, and some deeper details are deferred to related posts.",
       "source_type": "rss",
       "source_name": "Kagi Small Web",
-      "published_at": "2026-11-16T11:27:01.455220"
+      "published_at": "2026-11-16T11:27:01.455220",
+      "image_url": "https://harrisonsec.com/images/my-second-iphone-lives-at-home-cover.webp",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
     },
     {
       "id": 8004,

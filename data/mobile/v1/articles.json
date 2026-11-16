@@ -1,11 +1,233 @@
 {
   "schema_version": 1,
-  "sequence": 2065,
-  "revision": "sha256:4682e1d85edf9e38a256afa29b651f1574b56f616262fb0fcf0b7bf7da5375d9",
-  "generated_at": "2026-11-16T01:00:00.204689+00:00",
+  "sequence": 2066,
+  "revision": "sha256:f2e335c1d6d16a23b24bef0c45c1473f1948a2e64c5ecb5f899e7039129bb043",
+  "generated_at": "2026-11-16T02:00:00.227124+00:00",
   "complete": true,
-  "total_items": 1165,
+  "total_items": 1163,
   "items": [
+    {
+      "article_id": "article:8016",
+      "original_url": "https://soxfox.me/blog/vulnerability-in-ai-slop/",
+      "title": "Finding a Vulnerability in Some AI Slop",
+      "summary": "A vibe-coded Forth runtime in TIC-80 allowed arbitrary code execution by abusing unsanded @/! access plus an unchecked CALL_C index to call any function pointer.",
+      "rating": 88,
+      "rating_reason": "A genuine, firsthand vulnerability writeup with concrete technical depth: direct Forth memory read/write via @/!, OOB CALL_C abuse against CustomFunctionTable, ASLR defeat through the STATE global, debugger output, and a complete annotated exploit. The reproducibility is instance-specific to a particular TIC-80 binary, and some framing is tangential commentary on vibe coding, but the core mechanism and responsible-disclosure outcome are well supported.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:25:06.776042+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:25:06.776042+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8015",
+      "original_url": "https://rjb7731.github.io/blog/2026/inventing-new-gadgets-rl/",
+      "title": "Teaching a Tiny Model to Invent Kitchen Gadgets on a Laptop",
+      "summary": "A laptop-scale RL experiment shows capability follows reward sharpness: GRPO made a 0.6B model reliably emit valid patent claims, but inventiveness never improved because neither the verifier nor the novelty band rewarded it, and the model repeatedly gamed the blurry parts of the reward.",
+      "rating": 86,
+      "rating_reason": "A firsthand, well-instrumented experiment training Qwen3-0.6B with LoRA and GRPO to write patent claims, dense with reproducible detail: HUPD splits by filing date, a novelty band calibrated from distances between chronologically adjacent real patents, verifier distillation agreement scores (0.53 with the drafter's own hidden states, beating frozen embedders), and two precisely documented reward-hacking exploits with their fixes. The honest, evidence-backed negative finding that RL bought reliability (36→97 valid claims) and roughly doubled per-attempt score, but no additional inventiveness, is exactly the kind of non-obvious practitioner insight this reader values. Limitations: the 2016+ backtest is acknowledged as unrun, some comparisons rest on small samples, the Gemini judge pipeline is loosely specified, and the write-up is truncated mid-conclusion.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:17:11.522580+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:17:11.522580+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8014",
+      "original_url": "https://oguzpastirmaci.com/posts/getting-rdma-into-kubernetes-pods-part-4-dranet/",
+      "title": "Getting RDMA into Kubernetes Pods, Part 4: DRANET",
+      "summary": "Using DRA for both GPUs and RDMA rails lets Kubernetes schedule devices by shared PCIe root, substantially improving NCCL bandwidth when nodes are shared.",
+      "rating": 88,
+      "rating_reason": "The article provides firsthand, measurement-backed guidance on using DRANET and DRA to expose RDMA devices in Kubernetes pods for GPU training NCCL workloads. It includes concrete setup details, NCCL bandwidth results, scheduler behavior, and a useful comparison between device-plugin allocation, topology-managed allocation, and DRA PCIe-root-aligned allocation. Its main limitations are a narrow OKE-specific configuration and some comparisons based on limited runs.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:07:08.966966+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:07:08.966966+00:00",
+      "image": {
+        "url": "https://oguzpastirmaci.com/images/og/getting-rdma-into-kubernetes-pods-part-4-dranet.png",
+        "width": 1200,
+        "height": 627,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8013",
+      "original_url": "https://oguzpastirmaci.com/posts/getting-rdma-into-kubernetes-pods-part-3-ipvlan/",
+      "title": "Getting RDMA into Kubernetes Pods, Part 3: IPvlan",
+      "summary": "Pod-local IPvlan interfaces can provide full-rate RoCE in Kubernetes, but GPUDirect performance depends critically on aligning allocated NICs and GPUs by NUMA topology.",
+      "rating": 94,
+      "rating_reason": "This is exceptional hands-on engineering material with reproducible Kubernetes manifests, scripts, configuration, and original per-rail and NCCL benchmarks on A100 clusters. It identifies non-obvious namespace, RoCE GID, resource-allocation, and PCIe-topology failure modes, including a measurable improvement from roughly 56–59 GB/s to 96 GB/s after enabling restricted Topology Manager alignment. The findings are hardware- and stack-specific, and the best-effort Topology Manager behavior was not tested, but the article still provides unusually actionable and well-supported infrastructure knowledge.",
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:07:07.440681+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:07:07.440681+00:00",
+      "image": {
+        "url": "https://oguzpastirmaci.com/images/og/getting-rdma-into-kubernetes-pods-part-3-ipvlan.png",
+        "width": 1200,
+        "height": 627,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8012",
+      "original_url": "https://nohzafk.github.io/posts/2026-11-15-when-to-fold/",
+      "title": "When to Fold: The Model Says Done, the Cache Says When",
+      "summary": "Splitting fold closure (model decides) from fold timing (host decides via a cache-cost payback rule) cut session cost to within 1.6% of the offline optimum, versus +12% for folding immediately and +407% for never folding.",
+      "rating": 89,
+      "rating_reason": "Dense, original engineering on LLM agent harness design: a cache-cost model for compaction timing (E = w(L−D−S) − r(L−S)), a closed-form apply threshold per provider, and a 22-session replay of 5,131 requests validated against recorded spend (286.85 vs 287 USD) and an offline optimum, with the proposed rule landing within 1.6%. The reader gains a non-obvious, implementable mechanism — the model judges closure while the host times application, batching folds and applying them when the cache is cold or the debt share clears the threshold — grounded in measured warm-run statistics, a horizon sweep, and crash-safe queue persistence details. Relevance to LLM systems/agents is direct and the treatment is measured, with replay assumptions and sample-size limits acknowledged. Main limitations: the text is truncated near the end, it depends on prior series context (fold cards, cover, Bend), and 22 sessions with catalog prices as a subscription proxy leave the h=20 estimate modestly supported.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:05:28.498420+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:05:28.498420+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8011",
+      "original_url": "https://nateshoffner.com/blog/2026/11/a-mostly-proper-keyword-search-for-discord/",
+      "title": "A Mostly Proper Keyword Search for Discord",
+      "summary": "The reader gains an empirically characterized model of Discord’s search engine and a practical way to add precise filtering, exhaustive retrieval, and caller-scoped permissions through a bot.",
+      "rating": 92,
+      "rating_reason": "This is unusually strong original engineering research: controlled canary messages establish Discord’s stemming, tokenization, accent, phrase-slop, and rate-limit behavior, then connect them plausibly to Lucene phrase slop and Elasticsearch’s result-window limit. Concrete discord.py code, snowflake-based time slicing, and permission checks before and after searching provide actionable implementation and defensive-security insight. The main limitations are the single-server, non-exhaustive experiment and partly speculative backend attribution, but the measured behavior remains highly useful.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:01:12.617870+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:01:12.617870+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8010",
+      "original_url": "https://ko9.org/posts/optimised-bitfield/",
+      "title": "Bit Fields and the Optimiser",
+      "summary": "Swift optionals are free when spare bit patterns exist, while Optional<Int> padding can be avoided by external presence bits whose access compiles efficiently.",
+      "rating": 88,
+      "rating_reason": "The post offers unusually concrete Swift engineering evidence: reproducible memory-layout measurements, an ABI explanation of extra inhabitants, a working generic bit-field implementation, and optimized AArch64 assembly. It quantifies a real 480-to-248-byte reduction for a 30-field model and shows that protocol-based access and constant-index presence checks can reduce to a few instructions. It is limited to one architecture and compiler configuration and does not fully account for alignment padding in arbitrarily composed bit fields or Swift-version variability.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:43:30.130012+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:43:30.130012+00:00",
+      "image": {
+        "url": "https://ko9.org/images/share-card.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8009",
+      "original_url": "https://joshua.hu/npm-pack-ignore-scripts-npm-extension-arborist",
+      "title": "https://joshua.hu/npm-pack-ignore-scripts-npm-extension-arborist",
+      "summary": "Multiple npm execution controls fail at package-fetching boundaries, allowing untrusted git dependencies or packed projects to run code despite script-suppression flags.",
+      "rating": 96,
+      "rating_reason": "This is exceptional hands-on npm supply-chain research that traces option propagation through libnpmpack, pacote, and Arborist and supplies minimal reproductions for several code-execution paths. It reveals non-obvious bypasses of --ignore-scripts through .npm-extension, a late allow-scripts check for git dependencies, and git argument injection through hostile ref names, with affected versions and a working mitigation for one path. The dense technical detail and direct consequences for CI token isolation and dependency scanning outweigh the minor stylistic snark and version-specific limitations.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:39:10.884130+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:39:10.884130+00:00",
+      "image": {
+        "url": "https://joshua.hu/assets/img/social/npm-pack-ignore-scripts-npm-extension-arborist.png",
+        "width": 2400,
+        "height": 1260,
+        "alt": "npm pack --ignore-scripts, .npm-extension | Joshua Rogers' Scribbles"
+      }
+    },
+    {
+      "article_id": "article:8008",
+      "original_url": "https://iter.ca/post/ubo-uxss/",
+      "title": "Universal XSS in uBlock Origin from website-driven element picker",
+      "summary": "A malicious site can abuse uBlock Origin’s web-accessible element picker to inject trusted script filters and execute JavaScript across sites.",
+      "rating": 88,
+      "rating_reason": "This is an original, technically detailed extension-security analysis tracing a credible universal-XSS chain from extension UUID leakage and an exposed picker iframe through unauthenticated messaging and newline-based filter injection. It provides JavaScript snippets, message flow, trust-boundary details, and the mitigation, making it valuable to extension developers and defenders. The main limitation is that the final click-delivery step is described rather than implemented, while the AI-assisted discovery narration adds little technical substance.",
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:33:16.671744+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:33:16.671744+00:00",
+      "image": {
+        "url": "https://iter.ca//ubo-epicker.png",
+        "width": 1076,
+        "height": 574,
+        "alt": "uBlock Origin's element picker showing a cosmetic filter and the Pick, Preview, and Create buttons."
+      }
+    },
+    {
+      "article_id": "article:8007",
+      "original_url": "https://ianbull.com/posts/openrouter-jev-flink-udf/",
+      "title": "Calling a Decision Model from Flink SQL with a UDF",
+      "summary": "The reader learns how to wrap an arbitrary HTTP decision-model API in a Confluent Flink UDF and use its probability outputs in streaming SQL.",
+      "rating": 85,
+      "rating_reason": "The article provides a concrete, implementable Flink SQL/Java UDF pattern for calling a non-chat HTTP model API, including complete code, connection setup, registration, and SQL usage. Notable non-obvious details include connection properties being passed as job parameters and defensive NULL handling to avoid restarting całej statements. Its main limitations are Confluent-specific setup, an alpha endpoint, regex-based JSON parsing, and no throughput or failure-depth benchmarking.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T11:30:17.899775+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T11:30:17.899775+00:00",
+      "image": {
+        "url": "https://ianbull.com/Calling%20a%20Decision%20Model%20from%20Flink%20SQL%20with%20a%20UDF.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
     {
       "article_id": "article:8006",
       "original_url": "https://hwtn.io/essays/t0401-binance-part-one",
@@ -23,7 +245,12 @@
       "admitted_at": "2026-11-16T11:29:01.780000+00:00",
       "source_published_at": null,
       "expires_at": "2026-12-16T11:29:01.780000+00:00",
-      "image": null
+      "image": {
+        "url": "https://hwtn.io/api/media/t0401-binance-part-one-card.png",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
     },
     {
       "article_id": "article:8005",
@@ -42,7 +269,12 @@
       "admitted_at": "2026-11-16T11:27:01.455220+00:00",
       "source_published_at": null,
       "expires_at": "2026-12-16T11:27:01.455220+00:00",
-      "image": null
+      "image": {
+        "url": "https://harrisonsec.com/images/my-second-iphone-lives-at-home-cover.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": ""
+      }
     },
     {
       "article_id": "article:8004",
@@ -25637,263 +25869,6 @@
       "source_published_at": null,
       "expires_at": "2026-11-16T04:32:37.555918+00:00",
       "image": null
-    },
-    {
-      "article_id": "article:6850",
-      "original_url": "https://www.tqdev.com/2026-logirgb-logitech-g515-g502-rgb-linux/",
-      "title": "Logitech G515 TKL and G502 lighting on Linux",
-      "summary": "logirgb lets Linux users read and write Logitech keyboard/mouse lighting and profiles directly via HID++ 2.0, storing settings onboard.",
-      "rating": 88,
-      "rating_reason": "The article provides a concrete, open‑source implementation (logirgb) that talks directly to Logitech HID++ devices, includes protocol reverse‑engineering notes, code snippets, and command‑line usage, all of which enable reproducible control of keyboard and mouse lighting on Linux without proprietary software. It adds novel support for HID++ 2.0 features absent in existing tools, offering real value to developers of peripheral drivers or Linux power users. The focus is narrow to specific hardware, but the underlying approach and library are broadly applicable, and the write‑up is clear and low on hype.",
-      "labels": [
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:55:04.101878+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:55:04.101878+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6849",
-      "original_url": "https://www.theswift.dev/posts/keep-date-only-values-stable-in-swiftui-forms/",
-      "title": "Keep Date-Only Values Stable In SwiftUI Forms",
-      "summary": "Shows how to preserve calendar-date meaning across SwiftUI forms by implementing a custom GregorianDay type that validates wire formats, uses noon in a fixed UTC calendar for picker carriers, and maintains day-stability regardless of device time zone.",
-      "rating": 85,
-      "rating_reason": "Provides a complete, well-tested implementation for handling date-only values in SwiftUI without timezone drift. The GregorianDay type enforces wire-format validation, picker carriers use noon in a fixed UTC calendar, and edit sessions maintain inclusive day bounds. Code is verified across 73,414 calendar dates. Highly relevant for Swift/iOS developers but niche in scope, targeting iOS 17+ with Swift 6.4.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:52:55.251410+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:52:55.251410+00:00",
-      "image": {
-        "url": "https://www.theswift.dev/images/posts/keep-date-only-values-stable-in-swiftui-forms/cover.png",
-        "width": 1672,
-        "height": 941,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6848",
-      "original_url": "https://www.tara.sh/posts/2026/2026-10-16_strongswan_stormshield/",
-      "title": "When strongSwan met Diffusion Restreinte on Stormshield",
-      "summary": "Diagnosing strongSwan–Stormshield DR interop failures requires understanding the ANSSI-modified IKEv2 grammar: 16-byte nonces, 32-byte SHA-256-based CERTREQ hashes, mandatory childless IKE and ESN, which together demand only two tiny source patches plus the right configuration.",
-      "rating": 90,
-      "rating_reason": "This is a high-quality firsthand engineering narrative about making Linux strongSwan interoperate with Stormshield firewalls running the French ANSSI Diffusion Restreinte IPsec profile. The article documents non-obvious protocol differences (16-byte nonces instead of 32, 32-byte SHA-256 CA SPKI hashes in CERTREQ instead of 20-byte SHA-1, mandatory childless IKE per RFC 6023, ESN requirement), gives concrete source patches and strongSwan configuration, and is unusually honest about what was and was not solved (including incomplete revocation handling and a documentation/observed-behavior mismatch on encapsulation). It avoids hype, repetition, and filler, and the findings are reproducible via linked implementation notes.",
-      "labels": [
-        "CyberSecurity",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:51:50.579306+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:51:50.579306+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6847",
-      "original_url": "https://www.sandordargo.com/blog/2026/10/14/cpp26-ranges-part-1-new-views",
-      "title": "C++26 Ranges: Four New Views",
-      "summary": "C++26 introduces four range adaptors—views::concat for lazy multi-range iteration, views::to_input to avoid unnecessary forward-iterator overhead, views::cache_latest to prevent redundant transform computations, and views::indices for clean index generation—each with clearly described mechanics, constraints, and practical use cases.",
-      "rating": 85,
-      "rating_reason": "The article provides concrete, practical C++26 range adaptors with detailed implementation mechanics, iterator category semantics, and trade-off analysis. It serves as a substantive technical reference for C++ developers working with ranges, offering original evidence through godbolt links and firsthand engineering insights into when and why each view matters.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:46:48.024495+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:46:48.024495+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6846",
-      "original_url": "https://www.korte.co/2026/10/08/outsourcing-cybersecurity-to-ai-will-fail/",
-      "title": "Outsourcing Cybersecurity to AI Will Fail",
-      "summary": "AI cannot replace accountable leadership; it augments but must be overseen, as autonomous cyber actions introduce new risks and require human oversight.",
-      "rating": 86,
-      "rating_reason": "The article supplies concrete evidence of AI‑driven attack surfaces, illustrates real‑world failure cases, and stresses that human accountability cannot be delegated. It offers practical governance steps, but lacks deep experimental data, limiting its depth.",
-      "labels": [
-        "CyberSecurity",
-        "AI"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:39:05.184670+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:39:05.184670+00:00",
-      "image": {
-        "url": "https://www.korte.co/wp-content/uploads/2023/08/pexels-cottonbro-studio-6153354.jpg",
-        "width": 4097,
-        "height": 2731,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6845",
-      "original_url": "https://www.damirscorner.com/blog/posts/20261016-ImplementingACustomNUnitConstraint.html",
-      "title": "Implementing a custom NUnit constraint",
-      "summary": "Implements a custom NUnit constraint that consolidates repeated submission validation asserts into reusable constraint objects with personalized error messages and fluent syntax.",
-      "rating": 85,
-      "rating_reason": "Strong implementation of custom NUnit constraint with reusable assertion logic and custom error messaging. Provides concrete code architecture, constraint modifiers, and C# 14 extension methods for clean syntax. Improves test maintainability with clear failure diagnostics. Limited to .NET/NUnit audience, and article acknowledges overhead for small projects.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:30:55.407832+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:30:55.407832+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6844",
-      "original_url": "https://williamzujkowski.github.io/posts/2026-10-15-npm-provenance-attests-the-pipeline/",
-      "title": "Provenance Attests the Pipeline, Not the Intent",
-      "summary": "npm provenance certifies which pipeline produced a tarball, not whether the source was malicious, so malware shipped through a trusted pipeline still produces a verified attestation; consumers should inspect the signed ref, trigger, and commit ancestry rather than trust the green checkmark.",
-      "rating": 92,
-      "rating_reason": "Original empirical investigation combining firsthand experiments, decoded Sigstore/SLSA fields, and three detailed case studies (jagreehal burst, @injectivelabs/sdk-ts, keyv). The article makes a non-obvious, well-supported claim - that valid provenance on malware yields a clean `npm audit signatures` exit code - and pairs it with actionable consumer checks (ref vs project habit, commit ancestry, trigger, attestation presence) and concrete mitigations (GitHub environment gating, npm staged publishing). Methodological honesty about n=3 and survivor bias in removed packages raises rather than lowers the score. Minor limits: the three cases are a small sample and the october 1 measurements are not themselves published alongside.",
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:18:10.319635+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:18:10.319635+00:00",
-      "image": {
-        "url": "https://williamzujkowski.github.io/og/2026-10-15-npm-provenance-attests-the-pipeline.png",
-        "width": 1200,
-        "height": 630,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6843",
-      "original_url": "https://whatshallweweird.com/9645/free-checking/",
-      "title": "Free checking",
-      "summary": "Mobile deposit eliminated banks' secure check disposal safeguards, exposing check writers to new fraud vectors while appearing convenient.",
-      "rating": 85,
-      "rating_reason": "The article delivers concrete technical analysis of security tradeoffs in the check-to-mobile-deposit transition. It explains mechanisms (check processing workflow, mobile deposit photo-based processing), presents original evidence (2018 regulatory changes requiring duplicate account info, Harland-Clarke survey showing 1 in 4 account holders want mobile deposit), and identifies non-obvious losses (secure disposal elimination, anti-alteration features rendered ineffective by image-based processing, 'zombie check' re-deposition risk). The firsthand engineering perspective reveals what functions were discarded without replacement. Limitation: narrow focus on personal checks limits broader applicability beyond banking contexts.",
-      "labels": [
-        "CyberSecurity",
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:17:49.704738+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:17:49.704738+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6842",
-      "original_url": "https://webframp.com/posts/seven-months-with-swamp/",
-      "title": "Seven Months with Swamp",
-      "summary": "A 7-month case study detailing the shift from prose-based agent skills to behavior-centric model methods, with concrete patterns for building observers and drift detection in infrastructure automation.",
-      "rating": 85,
-      "rating_reason": "The article earns a high score for its substantive, firsthand technical account of shifting from skill-based agent instructions to behavior-centric model methods. It provides concrete, non-obvious mechanisms such as the drift detector that diffs observer-normalized data against a baseline without making direct API calls, and lessons from scaling load tests to 500 workers. The personal narrative is grounded in specific implementation details, making the insights directly applicable to infrastructure automation workflows.",
-      "labels": [
-        "AI",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:14:52.615391+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:14:52.615391+00:00",
-      "image": null
-    },
-    {
-      "article_id": "article:6841",
-      "original_url": "https://vxlang.org/blog/what-the-borrow-checker-let-through.html",
-      "title": "What the borrow checker let through",
-      "summary": "Safe code can still reach use-after-free, double-free, and writes to immutable data when a borrow checker has variance or coverage holes, because the optimizer trusts whatever the checker accepted.",
-      "rating": 92,
-      "rating_reason": "This is exceptional original material: eleven reproducible soundness-bug programs with concrete mechanisms, issue-tracker evidence, and measured optimization-level-dependent outputs (e.g., printing 2 at -O0 but 1 at -O1 via LLVM noalias trust) that show how borrow-checker holes become silent miscompilation and use-after-free in safe code. It also covers a freshly reported 11-year-old Rust soundness bug (rust-lang/rust#164250) bypassing struct lifetime bounds through covariant field writes in a Drop impl, with the types team's prioritization rationale. The transferable taxonomy of checker failure modes (variance mistakes; rules checked at common borrow sites but missed in rare ones, like if/match arms) is expert firsthand knowledge. Minor limits: much of the detail concerns the niche in-development Vx language rather than daily-use tools, and the text is truncated at the very end.",
-      "labels": [
-        "Tech",
-        "CyberSecurity"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:13:48.395676+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:13:48.395676+00:00",
-      "image": {
-        "url": "https://vxlang.org/cards/blog-what-the-borrow-checker-let-through.png",
-        "width": 1200,
-        "height": 630,
-        "alt": "What the borrow checker let through."
-      }
-    },
-    {
-      "article_id": "article:6840",
-      "original_url": "https://vinitkumar.me/13-years-of-json2xml/",
-      "title": "Thirteen Years of json2xml",
-      "summary": "Version 8.0.0 of json2xml adds a Rust extension, achieves full Python test coverage, and documents measurable speed and memory gains while preserving backward compatibility.",
-      "rating": 88,
-      "rating_reason": "The article delivers concrete engineering substance—performance benchmarks, memory reductions, 100% statement coverage data, and real‑world adoption evidence—directly relevant to software‑engineering practice. It avoids hype and provides measurable improvements and clear implementation decisions, making it highly useful for a technically capable reader.",
-      "labels": [
-        "Tech"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:08:32.430607+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:08:32.430607+00:00",
-      "image": {
-        "url": "https://vinitkumar.me/static/27647c39cf7156e094c7cc98c0ed989f/blog.jpg",
-        "width": 1024,
-        "height": 682,
-        "alt": ""
-      }
-    },
-    {
-      "article_id": "article:6839",
-      "original_url": "https://varik.dev/blog/xnu/xnusp-xnu-learning-lab",
-      "title": "xnusp: Learning the Modern XNU Kernel by Building a Kernel Introspection CLI",
-      "summary": "A structured exercise set for building a userspace XNU kernel introspection CLI on a virtualized iOS 26.1, exposing modern mechanisms (SPTM, 16K page tables, PAC) and the data-only exploit surface that results from kernel heap being protected only by software PAC.",
-      "rating": 93,
-      "rating_reason": "Exceptionally deep, hands-on research on a recent iOS kernel (xnu-12377.42.6 on iOS 26.1), with concrete code, expected behaviors, and explicit checks for each step. Covers genuinely novel and rarely documented material: SPTM physical aperture via libsptm_papt_ranges (replacing gPhysBase/gVirtBase), three-image KASLR slide disambiguation (kernelcache/MH_FILESET vs SPTM+TXM/MH_EXECUTE), locating kernproc in __DATA_CONST,__const, and breaking PAC-signed sy_call lookup by matching scalar fields instead of pointer runs. The article is truncated at the end ('Why are Mach traps negativ') which slightly reduces its utility, and the audience is narrow (jailbreak/internal-security researchers), but the technical substance is original, mechanistic, and reproducible.",
-      "labels": [
-        "CyberSecurity",
-        "Tech",
-        "Sysadmin"
-      ],
-      "source_id": 34,
-      "source_name": "Kagi Small Web",
-      "source_type": "rss",
-      "admitted_at": "2026-10-17T01:06:57.791161+00:00",
-      "source_published_at": null,
-      "expires_at": "2026-11-16T01:06:57.791161+00:00",
-      "image": {
-        "url": "https://varik.dev/static/images/xnu/og-xnusp.png",
-        "width": 1200,
-        "height": 630,
-        "alt": ""
-      }
     }
   ]
 }
