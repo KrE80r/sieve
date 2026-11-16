@@ -1,11 +1,146 @@
 {
   "schema_version": 1,
-  "sequence": 2066,
-  "revision": "sha256:f2e335c1d6d16a23b24bef0c45c1473f1948a2e64c5ecb5f899e7039129bb043",
-  "generated_at": "2026-11-16T02:00:00.227124+00:00",
+  "sequence": 2067,
+  "revision": "sha256:375770568c2709288bcb985315101f03e59374556d4b5c2a3b3d9f00d5b423f3",
+  "generated_at": "2026-11-16T03:00:00.305772+00:00",
   "complete": true,
-  "total_items": 1163,
+  "total_items": 1169,
   "items": [
+    {
+      "article_id": "article:8022",
+      "original_url": "https://www.michelebologna.net/2026/zsh-startup-count-processes/",
+      "title": "Cutting my Zsh startup time: count the processes, not the lines",
+      "summary": "Zsh startup and prompt latency are often dominated by many small spawned processes rather than by Zsh itself.",
+      "rating": 90,
+      "rating_reason": "This is a detailed, measurement-backed case study of Zsh startup and prompt-latency optimization, with concrete profiling commands, cached initialization patterns, hook cleanup, and before/after timings. It is especially useful for Linux and shell practitioners, though some optimizations are specific to the author's setup and tools.",
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:55:01.178528+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:55:01.178528+00:00",
+      "image": {
+        "url": "https://www.michelebologna.net/og/2026/zsh-startup-count-processes.jpg",
+        "width": 1200,
+        "height": 630,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8021",
+      "original_url": "https://www.bencteux.fr/posts/auditd_fanotify/",
+      "title": "Hiding file access to the audit subsystem with fanotify",
+      "summary": "A fanotify event descriptor can expose file contents without generating the open-family syscall event expected by Linux audit file-watch rules.",
+      "rating": 85,
+      "rating_reason": "This is a strong, directly relevant Linux security investigation that explains a concrete audit coverage gap: file-watch rules observe open-family calls, while a fanotify notification descriptor permits content access without another audited open. It includes a practical C proof of concept, sample audit records, detection rules, and explicit prerequisites. The demonstrated stealth advantage is limited by the need for CAP_SYS_ADMIN and easily detectable fanotify API calls, especially when root can simply disable auditing, but the article still provides valuable offensive insight and defensive guidance.",
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:46:31.919318+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:46:31.919318+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8020",
+      "original_url": "https://vxlang.org/blog/plain-loops-at-the-speed-of-cuda.html",
+      "title": "Plain loops at the speed of CUDA",
+      "summary": "Statically checked GPU loop annotations can match or beat hand-tuned CUDA performance while rejecting data races and divergent barriers at compile time.",
+      "rating": 93,
+      "rating_reason": "Original, deeply technical language-design and benchmarking work: Vx compiles statically checked structured loop nests to A100 performance within 5% of hand-tuned llm.c CUDA kernels (softmax faster), backed by exact timings, source code, a specific MLIR lowering fix (#3354), and PTX inspections against OpenMP, OpenACC, and stdpar. The affine mixed-radix race proofs, bit-deterministic lanes::sum collectives, and call-site fast math primitives are concrete, non-obvious mechanisms with measured impact, e.g., 1188-instruction OpenMP kernels and silently compiled races in nvc++ pragmas. Limitations include benchmarks from a single A100 by the language's own authors, a PTX-only (unexecuted) comparison for pragma toolchains, and truncated ending text; these temper but do not undermine the rigor.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:42:13.061805+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:42:13.061805+00:00",
+      "image": null
+    },
+    {
+      "article_id": "article:8019",
+      "original_url": "https://vladkens.me/wavo-agents/",
+      "title": "Wanted a Dictation App, Got Three Libraries",
+      "summary": "Building custom local speech-recognition and native Rust tooling produced substantial performance gains while revealing that cross-platform operating-system integration often dominates implementation effort.",
+      "rating": 87,
+      "rating_reason": "This is unusually substantive first-hand engineering work covering local speech recognition, GPU compute, Rust build optimization, and native cross-platform UI integration. It provides concrete measurements for inference latency, compilation time, dependency counts, memory use, and binary size, plus useful mechanisms involving GGUF execution, flash attention, WGSL backends, and system text rendering. The evidence is weakened by limited benchmark methodology, little rigorous accuracy evaluation, reliance on agent-generated code, untested GPU configurations, and an abruptly truncated ending.",
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:41:08.026053+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:41:08.026053+00:00",
+      "image": {
+        "url": "https://vladkens.me/og/wavo-agents.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Wanted a Dictation App, Got Three Libraries"
+      }
+    },
+    {
+      "article_id": "article:8018",
+      "original_url": "https://terminalbytes.com/kitten-tts-2-home-assistant-mini-pc/",
+      "title": "Kitten-TTS 2 vs Piper on a CPU: local Home Assistant voice",
+      "summary": "Kitten‑TTS 2 can run on CPUs but needs many cores to hit real‑time, making Piper the better choice for low‑power Home Assistant boxes.",
+      "rating": 86,
+      "rating_reason": "The article offers concrete benchmarks, code, and a minimal Wyoming server, giving clear, reproducible data on CPU inference performance and integration steps for Home Assistant. It directly addresses AI inference on edge hardware, thread scaling, memory use, and deployment considerations, which are highly relevant to the target reader. Limitations include testing only on a high‑end Mac (not the target mini‑PC) and a small set of sentences, but the evidence and practical guidance outweigh these caveats.",
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:33:35.201266+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:33:35.201266+00:00",
+      "image": {
+        "url": "https://terminalbytes.com/kitten-tts-2-home-assistant-mini-pc/kitten-tts-2-home-assistant-mini-pc.jpg",
+        "width": 1344,
+        "height": 768,
+        "alt": ""
+      }
+    },
+    {
+      "article_id": "article:8017",
+      "original_url": "https://startdebugging.net/2026/11/fix-blazor-oninitializedasync-not-called-prerender-false-after-upgrading-to-dotnet-10/",
+      "title": "Fix: OnInitializedAsync not called with InteractiveWebAssemblyRenderMode(prerender: false) after upgrading Blazor to .NET 10",
+      "summary": "On .NET 10, an empty Blazor WebAssembly page with prerender disabled can be caused by a 404 for /_framework/blazor.web.js, typically fixed by switching to MapStaticAssets or adjusting static-file routing and restore handling.",
+      "rating": 87,
+      "rating_reason": "The article provides a concrete diagnosis of a .NET 10 Blazor regression where blazor.web.js returns 404, preventing component lifecycle methods from running. It backs this with a reproducibility matrix, exact pipeline and SDK versions, and actionable fixes including MapStaticAssets, explicit routing order, and Docker restore settings. It also helps distinguish similar failures, though its future-dated citations and AI authorship disclosure warrant some caution.",
+      "labels": [
+        "Tech"
+      ],
+      "source_id": 34,
+      "source_name": "Kagi Small Web",
+      "source_type": "rss",
+      "admitted_at": "2026-11-16T12:30:17.556639+00:00",
+      "source_published_at": null,
+      "expires_at": "2026-12-16T12:30:17.556639+00:00",
+      "image": {
+        "url": "https://startdebugging.net/og/2026/11/fix-blazor-oninitializedasync-not-called-prerender-false-after-upgrading-to-dotnet-10.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "Fix: OnInitializedAsync not called with InteractiveWebAssemblyRenderMode(prerender: false) after upgrading Blazor to .NET 10 - Start Debugging"
+      }
+    },
     {
       "article_id": "article:8016",
       "original_url": "https://soxfox.me/blog/vulnerability-in-ai-slop/",
