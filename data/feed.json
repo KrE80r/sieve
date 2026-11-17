@@ -1,7 +1,442 @@
 {
-  "updated_at": "2026-11-17T12:00:00.489843+00:00",
-  "total_items": 1134,
+  "updated_at": "2026-11-17T14:00:00.148000+00:00",
+  "total_items": 1150,
   "items": [
+    {
+      "id": 8043,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/an-escape-hatch-the-size-of-one-fact.html",
+      "title": "An escape hatch the size of one fact",
+      "summary": "Vx's Distinct<T> type encodes 'no repeated index elements' as a checked runtime fact, enabling race-free GPU scatter-add kernels that C restrict, assumes, and classic affine race analysis cannot certify.",
+      "ideas": [
+        "Type-level Distinct fact lets compilers verify GPU scatter-add without disabling race checks",
+        "Runtime index arrays place writes outside affine race models; only programmer facts close the gap",
+        "C restrict cannot state element uniqueness; false assume_safety pragmas silently corrupt results",
+        "Distinct facts keep SMT queries quantifier-free in QF_UFLIA, preserving decidability",
+        "Checked facts paid once at construction beat per-launch predicates and whole-loop unsafe pragmas"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Expert firsthand design work on a compiler race checker, with concrete code, real error messages, an empirical race demonstration against C's assume_safety pragma, and grounded references to polyhedral analysis, inspector-executor methods, and SMT decision procedures. It explains a genuinely non-obvious mechanism: encoding a runtime data fact (index uniqueness) in a type so the compiler keeps checking everything else, and shows exactly why restrict and vectorization pragmas cannot express it. The scoring is tempered only by the niche, new-language context and slight project-blog promotional framing, though honesty about limitations (optimizer not yet using the fact, overflow subtleties, atomics still needed) is strong.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-18T00:11:20.436240",
+      "image_url": "https://vxlang.org/cards/blog-an-escape-hatch-the-size-of-one-fact.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "An escape hatch the size of one fact: Distinct tells the race checker that no two indices are equal."
+    },
+    {
+      "id": 8042,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/11/fix-unobfuscated-dwarf-debugging-information-warning-in-flutter-android-builds/",
+      "title": "Fix: The generated ELF library contains unobfuscated DWARF debugging information (Flutter --obfuscate --split-debug-info)",
+      "summary": "Flutter 3.44 now leaves DWARF symbols in an intermediate libapp.so, but AGP strips them before packaging, so the warning can be safely ignored.",
+      "ideas": [
+        "Flutter 3.44 disables --strip in gen_snapshot; AGP handles symbol stripping.",
+        "The warning refers to an intermediate ELF file, not the shipped libapp.so.",
+        "Verify the final AAB/APK with llvm-readelf; the shipped libapp.so lacks .debug and .symtab sections.",
+        "For APK pipelines you can silence the warning with --extra-gen-snapshot-options=--strip, but this removes native symbols from bundle metadata."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a detailed, reproducible investigation of Flutter 3.44's changed symbol‑stripping behavior, complete with CLI commands, ELF inspection steps, and concrete guidance for CI pipelines. It explains the underlying mechanism in the Dart AOT compiler and Android Gradle Plugin, making the warning meaningful and actionable. The content is highly technical, low on hype, and directly useful for developers maintaining secure, obfuscated Android builds.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-18T00:02:25.797601",
+      "image_url": "https://startdebugging.net/og/2026/11/fix-unobfuscated-dwarf-debugging-information-warning-in-flutter-android-builds.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix: The generated ELF library contains unobfuscated DWARF debugging information (Flutter --obfuscate --split-debug-info) - Start Debugging"
+    },
+    {
+      "id": 8041,
+      "source_id": 34,
+      "original_url": "https://savyasacheejha.com/posts/why-odhcpd/",
+      "title": "IPv6 delegation, an unusually subtle failure mode",
+      "summary": "IPv6 prefix changes can leave stale addresses on clients; using odhcpd to correctly advertise zero‑lifetime prefixes resolves the issue.",
+      "ideas": [
+        "Networkd lacks RFC 9096 support, causing stale IPv6 prefixes after PPPd renegotiation.",
+        "odhcpd can advertise zero‑lifetime prefixes, prompting clients to drop old addresses promptly.",
+        "Router advertisements may be missed by sleeping devices, leading to delayed prefix updates.",
+        "Deploying odhcpd on NixOS requires custom packaging and integration with device units."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, reproducible steps for diagnosing IPv6 renumbering failures, explains RFC 9096 requirements, and demonstrates a practical workaround using odhcpd on NixOS. It includes command output, packet‑capture observations, and configuration nuances, making it highly relevant to sysadmin and networking readers. Its focus on a home router limits broader impact, but the depth and originality of the solution justify a strong score.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:58:35.442832",
+      "image_url": "https://savyasacheejha.com/processed_images/cover.9c945b52eb23e34e.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8040,
+      "source_id": 34,
+      "original_url": "https://research.veryserious.systems/load-root-loot-coruna-ios-hits-the-mainstream/",
+      "title": "Load, Root, Loot - Coruna IOS hits the mainstream",
+      "summary": "The author pulled the Coruna iOS exploit chain from live mirrors before takedown, documenting how a compromised script host delivers per-iOS-version WebKit exploits that implant inside powerd to escape the sandbox and dump the keychain, app containers, and crypto wallets.",
+      "ideas": [
+        "Compromised third-party JS host served 188 injected track.js files across major sites",
+        "track.js XOR key d7K9mP2x sits in cleartext beside its own decode function",
+        "Fifth IOC domain 5vobauua3ojpklx.icu was missing from every public list and stayed live longest",
+        "Chain uses CVE-2022-48503, CVE-2023-43000, and CVE-2024-23222 per iOS generation",
+        "Bluebird WebKit exploit and four PAC-bypass modules have no public CVE",
+        "powerd implant communicates with page JS via /tmp/nb_cmd, nb_result, nb_lock files",
+        "Injection config decodes to magic 0xDEADD00F followed by ASCII target 'powerd'",
+        "post_exploit.js enforces 24 MB total / 4 MB per-file exfil cap per victim",
+        "collectWallets grabs full app containers for 21 named crypto wallet bundles",
+        "Swap wallet runs daily zero-value self-transfers to poison transaction history",
+        "Module 0x0a family wipes WebContent, launchd, and Safari logs as anti-forensics",
+        "Powerd implant loaded via dlopen of /tmp/nb_daemon.dylib, Mach-O arm64e with PAC00",
+        "post_exploit.js ships as unobfuscated vanilla JS while surrounding code is armored",
+        "Compromise indicators: nb_cmd/nb_result files and missing Safari crash logs"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a first-hand capture-and-reverse-engineering report of the Coruna/DarkSword iOS exploit kit delivered through a compromised third-party JS host, with concrete artifacts rather than secondhand summary: SHA-256 hashes, the previously unpublished host 5vobauua3ojpklx.icu, the full stage tree (boot.js → per-iOS-version WebKit exploits → PAC bypass → sandbox escape → platform_module/platform dylibs), a decoded injection config blob showing magic 0xDEADD00F plus the ASCII target 'powerd', the IPC design (nb_cmd/nb_result/nb_lock) that gives in-browser JS arbitrary command execution via a powerd implant, verbatim loot-module function names (collectKeychain, collectWallets, collectPhotos) with the per-victim 24 MB/4 MB exfil cap, and a 21-wallet target list. It adds a seventh IOC domain absent from all public lists, maps stages to specific CVEs (2022-48503, 2023-43000, 2024-23222) while noting five components with no public CVE, and explicitly separates what it could not verify. Minor deductions for mild sensational framing, some redundancy between the stage tree and the tables, and attribution resting partly on circumstantial signals (Chinese comments, corelliumd path), plus reliance on Zimperium for ecosystem framing.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:55:56.484756",
+      "image_url": "https://research.veryserious.systems/content/images/2026/11/banner-load-root-loot-coruna-ios-hits-the-m.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8039,
+      "source_id": 34,
+      "original_url": "https://ralch.com/blog/keyless-cloudflare-access-from-ci/",
+      "title": "Keyless Cloudflare Access from CI",
+      "summary": "A carefully scoped Cloudflare credential broker can let CI systems obtain short-lived, policy-controlled credentials without storing a long-lived token in every repository.",
+      "ideas": [
+        "GitHub OIDC exchanges for short-lived Cloudflare credentials through an account-owned Rust Worker.",
+        "Cedar policies bind numeric repository IDs, refs, and environments to token profiles.",
+        "Profiles mint API tokens, prefix-scoped R2 credentials, and Cloudflare Access service tokens.",
+        "The broker retains one powerful secret but avoids distributing long-lived CI credentials.",
+        "Version 0.23 removes broker token signing and rejects legacy version-three policies."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article presents a concrete, technically credible design for replacing repository-stored Cloudflare secrets with OIDC-based token exchange, including a Rust Worker broker, RFC 8693 and RFC 7009 flows, Cedar authorization, TTLs, revocation, and scoped R2 and Access credentials. It usefully exposes non-obvious trust details such as numeric repository IDs, branch and environment restrictions, policy caching, and the residual privileged token needed to mint other credentials. Its value is limited by being a first-party description of a pre-1.0 project without an independent audit or extensive failure-mode analysis, but the implementation details remain highly actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:54:17.333393",
+      "image_url": "https://ralch.com/img/og-default.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8038,
+      "source_id": 34,
+      "original_url": "https://julesbelveze.github.io/the-model-had-the-answer/",
+      "title": "This model knows the answer. It just can’t stop thinking.",
+      "summary": "A careful investigation shows that the model’s failure to stop thinking is due to a logit gap and looping behavior, which can be mitigated by a small weight edit or by forcing an answer after a token budget.",
+      "ideas": [
+        "Detect looping by spotting repeated 12‑token windows in generated text.",
+        "Measure the logit gap to </think> to predict where stopping will occur.",
+        "A 0.016% weight edit in two attention layers suppresses repeat‑inducing directions.",
+        "Appending </think> and a partial answer after 8k thinking tokens raises accuracy to ~50%."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article delivers concrete, reproducible analysis of why a small reasoning LLM loops, including detailed token‑budget experiments, logit‑gap measurements, and a clear description of the weight‑edit that improves performance. It provides code snippets, data, and a step‑by‑step method to detect loops, which are directly useful to AI engineers working on LLM reasoning and inference control. The writing is technical with little hype, though it is specific to one model and benchmark, limiting broader generality.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:30:21.402289",
+      "image_url": "https://julesbelveze.github.io/assets/images/stop-button/teaser.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8037,
+      "source_id": 34,
+      "original_url": "https://joshuamandel.com/blog/posts/deathbot",
+      "title": "Deathbot: Can AI Facilitate End-of-Life Conversations?",
+      "summary": "A tightly measured LLM test bed shows models can explain treatments and state forms well, but still mishandle refusals, fatigue, and reassuring claims compared with trained human facilitators.",
+      "ideas": [
+        "Reply-tool turn ends stopped models acting before responses.",
+        "Trimming guides 42% raised blind reviewer scores.",
+        "Models challenge requests for everything more than refusals.",
+        "Quoted prompt text leaked into patient-facing replies.",
+        "Single markdown notes file beat background scribe.",
+        "AI-drafted state files needed 170 corrections."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a detailed, firsthand account of building and evaluating an end-of-life planning AI system, including architecture, prompt-instruction failures, turn-control mechanisms, scoring tables, and cost breakdowns. Its strongest substance is operational AI engineering guidance—such as prompt-quote leakage, overlong guide reduction, and tool-enforced turn boundaries—rather than clinically validated outcomes. It is transparent that all evaluations used simulated personas and model reviewers, so confidence in human-facing effectiveness remains limited.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:29:15.689818"
+    },
+    {
+      "id": 8036,
+      "source_id": 34,
+      "original_url": "https://grahamdumpleton.me/posts/2026/11/muru-scaling-from-what-the-workers-report/",
+      "title": "Muru: scaling from what the workers report",
+      "summary": "Per-worker diagnostics (CPU, GIL wait, GC fraction, event-loop lag) can diagnose why requests wait and prescribe the right fix, revealing bottlenecks that busy-slot-based autoscalers like HPA or uWSGI cheaper mode structurally cannot see.",
+      "ideas": [
+        "Diagnose I/O, GIL, GC, and event-loop bottlenecks that slot-based autoscalers can't see",
+        "Removing reference cycles dropped GC pause share from 73% to zero, quadrupling throughput",
+        "Free-threaded CPython 3.15t matched nine GIL-bound single-threaded workers with only two workers",
+        "Event loop heartbeat lag exposes blocking synchronous calls invisible to slot autoscalers",
+        "Isolate slow endpoints in dedicated worker groups to protect fast-path p99 latency",
+        "Fork-based worker growth from a pre-imported host reaches serving state within seconds"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Dense, firsthand engineering content from a credible Python WSGI practitioner, with real configuration, measured request counts, latency percentiles, and memory figures across I/O-bound, GIL-bound, GC-bound, and event-loop-blocked scenarios. The concrete numbers are inherently reusable: removing one reference cycle cut GC share from 73% to zero and quadrupled throughput, and free-threaded CPython 3.15t matched nine GIL-bound single-threaded workers with just two workers. Limitations: it is partly a walkthrough of the author's own Muru tool (overt self-promotion, not hidden), some scaling-policy detail is tool-specific, and the content is truncated mid-sentence at the end.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:18:55.034769"
+    },
+    {
+      "id": 8035,
+      "source_id": 34,
+      "original_url": "https://getjump.me/posts/03-huntrole-fake-take-home/",
+      "title": "A Recruiter Sent Me a Take-Home Test. It Takes Its Orders From an Ethereum Wallet.",
+      "summary": "The article shows how a fake recruiter lure can use a VS Code extension and an Ethereum wallet transaction stream to resolve and rotate malware command-and-control servers.",
+      "ideas": [
+        "Ethereum recipient addresses encode IPv4 C2 addresses.",
+        "Displayed code and executed code can differ server-side.",
+        "Public blockchain transactions expose server history and timing.",
+        "Blockchain pointers avoid registrars and cheaply rotate servers.",
+        "RAT and stealer arrive after extension installation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "The article is an original, evidence-backed reverse-engineering investigation with concrete mechanisms: a VS Code extension that displays benign code while executing a different loader, a blockchain-based command-and-control pointer, wallet and server correlation, and malware capabilities including credential theft and persistence. It also provides actionable indicators and explains operational tradeoffs and attribution clues. Its main limitations are that some sections are summarized or not reproduced and portions of the longer narrative depend on public-record interpretation rather than live execution.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:18:40.054940",
+      "image_url": "https://getjump.me/og/03-huntrole-fake-take-home.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "A Recruiter Sent Me a Take-Home Test. It Takes Its Orders From an Ethereum Wallet."
+    },
+    {
+      "id": 8034,
+      "source_id": 34,
+      "original_url": "https://eorlov.org/posts/2026/filetrace-file-to-network-observability/",
+      "title": "Filetrace: connecting file reads to network traffic with eBPF",
+      "summary": "Reliably linking file reads to network sends requires respecting kernel semantics, using per-thread byte budgets and deferred evidence windows in eBPF, and honestly labeling heuristic associations instead of promoting them.",
+      "ideas": [
+        "Trace sendfile via fexit on do_splice_direct; account the return value, not the requested length",
+        "Per-thread byte budgets in BPF task storage attribute reads to sends without touching the app",
+        "Exclude MSG_SPLICE_PAGES bytes from read/send correlation to avoid double-counting spliced pages",
+        "Rotate duplicate BPF counter maps and drain after the RCU grace period to keep concurrent increments",
+        "Held first-flight and reply windows discard file attributions contradicted by handshakes or replies",
+        "Retain bounded recent large-read candidates to recover attribution when connects follow file reads"
+      ],
+      "labels": [
+        "Tech",
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "A dense, first-hand engineering writeup on a genuinely hard problem: attributing file reads to network sends from kernel probes, with concrete BPF code, exact kernel mechanisms (do_splice_direct fexit, MSG_SPLICE_PAGES, task storage, array-of-maps rotation with RCU drain), and explicit heuristic thresholds. The design discussion of EXACT versus INFERRED associations, byte budgets, held windows, and counter-draining concurrency is non-obvious and directly useful for anyone building eBPF observability or exfiltration-tracing tools. Limitations: the content is truncated mid-article, the trade-off thresholds are practitioner assumptions rather than measured results, and no performance data is presented.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:14:12.947284"
+    },
+    {
+      "id": 8033,
+      "source_id": 34,
+      "original_url": "https://deadlovelll.github.io/2026-11-16-failed-eager-task-breaks-event-loop/",
+      "title": "The task that failed to start and left asyncio stuck",
+      "summary": "A failed eager‑start task can leave the event loop stuck; the bug is fixed by rolling back the current‑task swap and unregistering the child in the C implementation.",
+      "ideas": [
+        "Eager‑start tasks swap the current task before context entry, causing a stale child task on failure.",
+        "When _PyContext_Enter fails, the C constructor must restore the parent task and unregister the child.",
+        "Setting task_log_destroy_pending to zero suppresses spurious pending‑task warnings after a failed eager start."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article gives a concrete, reproducible example of a deep asyncio bug, explains the C‑level root cause, and shows the exact fix that landed in CPython. It contains real code, low‑level implementation details, and a practical mitigation, which is highly valuable for Python async engineers. The write‑up is focused and free of hype, though its narrow scope limits broader appeal.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T23:09:04.670298",
+      "image_url": "https://deadlovelll.github.io/assets/img/og-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8032,
+      "source_id": 34,
+      "original_url": "https://botsinproduction.com/blog/dropdown-validation-for-ai-written-rows/",
+      "title": "Dropdowns Are the Schema: Letting an AI Write Rows Into Google Sheets",
+      "summary": "Reliable LLM-generated data requires schema validation, explicit write-time guards, drift detection, and semantic correction measurement rather than dropdown compliance alone.",
+      "ideas": [
+        "Google Sheets API writes bypass onEdit triggers, requiring bots to set validation explicitly.",
+        "Allowlist validation prevents invalid categories but cannot ensure semantically correct classifications.",
+        "Vocabulary drift left the bot knowing only 34 of 51 permitted detail values.",
+        "Only 2.1% of human corrections required words absent from the bot vocabulary.",
+        "Prompt rules and correction logs exposed semantic errors hidden by valid dropdown values.",
+        "Runtime vocabulary comparisons can detect drift before schemas silently diverge."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides unusually concrete, first-hand production evidence from an LLM-driven Google Sheets workflow, including live-row probes, correction counts, vocabulary-drift measurements, and application-level validation guards. Its most valuable findings are that dropdown validity does not imply semantic correctness, API writes bypass onEdit, and missing vocabulary explained only a small fraction of corrections, making prompt rules and correction telemetry essential. It is limited to one small deployment, omits much of the implementation code, and offers little statistical or causal analysis, but remains highly actionable for schema-constrained AI systems.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T22:59:27.828230",
+      "image_url": "https://botsinproduction.com/images/dropdowns-hero.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8031,
+      "source_id": 34,
+      "original_url": "https://alexlitzenberger.com/blog/the_emulation_frontier",
+      "title": "The Emulation Frontier",
+      "summary": "Architectural emulation can be systematically reduced to tested constructions whose costs are KV cache, width, depth, masking, or bounded approximation.",
+      "ideas": [
+        "3,906 decoder checkpoints collapse to at most 293 native-emulation hosts under defined constraints.",
+        "Efficient architectures trade cache, width, depth, or masking cost when emulated.",
+        "RoPE and attention-scaling limits can reproduce ALiBi and NoPE behavior.",
+        "Dense FFNs emulate routed MoEs, but top-k routing boundaries prevent exact reverse emulation.",
+        "Practical softmax-to-SSM emulation collapses agreement despite extreme head or depth costs.",
+        "LayerNorm folds into RMSNorm only after untied embeddings and bias handling."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is unusually substantive LLM-systems research: it defines native architectural emulation, analyzes 3,906 decoder checkpoints, quantifies a 265–320-model frontier, and provides concrete constructions, resource costs, and numerical error checks for attention, normalization, MoE, positional encoding, and activation differences. The explicit assumptions and runnable constructions make the findings directly useful for architecture analysis and inference efficiency. Limitations include the abruptly truncated activation table, reliance on bespoke allowances such as a BOS marker and configurable RoPE parameters, and headline corpus counts whose significance depends on the underlying methodology.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T22:41:16.132487",
+      "image_url": "https://alexlitzenberger.com/blog/assets/model-subsets-funnel.png",
+      "image_width": 1066,
+      "image_height": 546,
+      "image_alt": ""
+    },
+    {
+      "id": 8030,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/biollm-8b",
+      "title": "BioLLM-8B: what its own results file says about neurons in Qwen3-8B",
+      "summary": "BioLLM's public file supports a bounded, CL1-conditioned activation write into Qwen3-8B MLP neurons but not its stronger claims about biological neuron mapping or consciousness.",
+      "ideas": [
+        "Served adapter is a frozen Qwen3-8B MLP gain write from recorded CL1 rows",
+        "Six-symbol held-out readout scores 0.43 versus controls near 0.16-0.20",
+        "code27 array mean reaches 0.77-0.83, failing the neuron-specific control",
+        "H01 neuron placement is explicitly labeled hypothetical, not CL1 anatomy",
+        "Random or shuffled inputs also move words; only control margin counts"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "A strong, concrete audit of BioLLM's published results file, covering the frozen Qwen3-8B architecture, CL1-derived MLP gain write, held-out six-symbol readout scores, and failed nuisance controls. It clearly separates supported mechanism-level findings from unsupported biological or consciousness claims. The supplied text ends mid-sentence during the alphabet experiment, leaving some later verdicts unavailable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T22:39:02.466286",
+      "image_url": "https://ai.satyajit.si/articles/biollm-8b/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 8029,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/baseten-deepseek-engine",
+      "title": "deepseek-ultrafast: Baseten's one-model engine, and what 1,740 tokens a second measures",
+      "summary": "A detailed analysis of Baseten's Rust + CUDA inference engine reveals how hardware‑aware optimizations achieve ~1.7k tokens/s per single request on Blackwell GPUs.",
+      "ideas": [
+        "Engine runs one request per replica; no batching, yielding latency‑optimized throughput.",
+        "MoE experts are sliced by hidden dimension across GPUs, avoiding all‑to‑all token routing.",
+        "Custom all‑reduce uses NVLink stores, eliminating NCCL overhead for single‑stream decoding.",
+        "Speculative decoding drafts up to 6 tokens; verifier accepts ~4.6 on average per step."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers a deep, reproducible teardown of Baseten's DeepSeek‑ultrafast engine, including concrete kernel counts, memory‑bandwidth calculations, and measured token‑throughput numbers. It explains the engineering trade‑offs (single‑request latency focus, expert slicing, custom all‑reduce) with real code excerpts, making it highly valuable for LLM inference engineers. It stays technical without hype, though its length and focus on a specific model may limit broader applicability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-17T22:38:52.947913",
+      "image_url": "https://ai.satyajit.si/articles/baseten-deepseek-engine/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 8028,
+      "source_id": 4,
+      "original_url": "https://www.sekoia.com/blog/neighbors-being-neighborly-a-glimpse-into-the-india-china-cyber-espionage-landscape",
+      "title": "A Glimpse Into The India-China Cyber Espionage Landscape",
+      "summary": "State‑backed cyber espionage between India and China mirrors their geopolitical and economic rivalry, targeting strategic sectors and infrastructure.",
+      "ideas": [
+        "Cyber espionage between India and China has been constant since the 2010s, enabling strategic intelligence with plausible deniability.",
+        "Border disputes, especially the Galwan Valley clash, trigger spikes in state‑sponsored intrusion activity.",
+        "Chinese groups RedFoxtrot and RedEcho target Indian defense, telecom, and power sector infrastructure.",
+        "Indian groups Patchwork and BitterAPT conduct espionage against Chinese energy and research institutions.",
+        "Tibetan exile community sites in India are specific intelligence targets for China‑linked campaigns.",
+        "Hydropower projects and transboundary river control are strategic cyber espionage objectives for China.",
+        "Pharmaceutical and medical research institutions are heavily targeted by both nations to gain biotech advantages.",
+        "Economic interdependence drives monitoring of trade, FDI, and financial flows via cyber operations.",
+        "Pre‑positioning attacks establish persistent access to critical infrastructure before crises."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The piece delivers multiple concrete insights: it maps specific intrusion sets to geopolitical events, details sector‑specific targeting (defense, energy, pharma, Tibetan exile sites), explains pre‑positioning versus espionage, and links economic interdependence to cyber monitoring. These constitute 8‑9 genuine value instances in a ~2000‑word analysis, giving solid density without clickbait or padding. The content aligns strongly with the CyberSecurity theme, earning a good score.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-17T22:32:15.135344",
+      "image_url": "https://cdn.prod.website-files.com/69b190e7f47e4c44b0ee07d8/6afad71afdbd6b7658df2cc4_blog-neighbors-being-neighborly-a-glimpse-into-the-india-china-cyber-espionage-img-cover.webp",
+      "image_width": 1024,
+      "image_height": 908,
+      "image_alt": ""
+    },
     {
       "id": 8027,
       "source_id": 4,
