@@ -1,7 +1,92 @@
 {
-  "updated_at": "2026-11-17T14:00:00.148000+00:00",
-  "total_items": 1150,
+  "updated_at": "2026-11-17T15:00:00.216818+00:00",
+  "total_items": 1153,
   "items": [
+    {
+      "id": 8046,
+      "source_id": 34,
+      "original_url": "https://yaqeen.me/blog/i-built-a-code-mode-sandbox",
+      "title": "I Built a Code Mode Sandbox",
+      "summary": "Building a small interpreter-based sandbox reveals subtle host-leak risks and provides practical design guidance for running model-generated code safely.",
+      "ideas": [
+        "node:vm's global object leaks host Function escape path",
+        "Interpreters reduce escape surface by refusing unsupported JavaScript",
+        "Guest property lookups need null-prototype method tables",
+        "Per-statement fuel plus yielding keeps runaway loops non-blocking",
+        "Heap sampling can stop memory bombs before exhausting host memory"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The article gives firsthand, concrete detail on sandbox mechanisms, including a node:vm host-object escape, generator-based fuel scheduling, null-prototype lookup-table patching, heap sampling, and comparative benchmark claims. Its practitioner observations are non-obvious and directly useful for evaluating code-mode sandbox approaches. Some claims are informal or self-measured, but they fit the exploratory context and do not undermine the core technical value.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-18T00:39:12.104016"
+    },
+    {
+      "id": 8045,
+      "source_id": 34,
+      "original_url": "https://xusheng.dev/posts/windows-coding-agent-telemetry/",
+      "title": "Windows 11 Is Collecting Data on Which Coding Agents and Developer Tools You Use",
+      "summary": "Windows 11 detects named coding agents and developer tools, stores their usage as category bitmasks, and queues the data for optional diagnostic upload unless telemetry is disabled.",
+      "ideas": [
+        "Windows telemetry recognizes Codex, Claude, Copilot, Cursor, Antigravity, and other developer executables.",
+        "MissionControlAggregator persists detected tool categories and emits bitmasked Segments.SubCohorts ETW reports.",
+        "Renaming cmd.exe to codex.exe or gcc.exe triggered corresponding telemetry slots.",
+        "Optional diagnostics queue coding-agent bitmasks for upload by default in a tested US installation.",
+        "DiagTrack listens for both process-summary events and MissionControlAggregator's resulting telemetry reports."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "This is an unusually concrete reverse-engineering investigation that traces coding-agent detection from Windows event sources through MissionControlAggregator's persisted bitmask state to a DiagTrack upload-queue entry, supported by PowerShell queries and a reproducible executable-renaming test. It directly informs AI-tool users about Windows telemetry while exposing useful ETW, service, and diagnostic internals rather than relying on speculation. The main limitations are its scope—specific ARM64 Windows 11 builds and one US default configuration—and that an upload-queue entry demonstrates preparation for transmission, not conclusive proof of successful delivery to Microsoft.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-18T00:38:58.200193",
+      "image_url": "https://xusheng.dev/posts/windows-coding-agent-telemetry/agent-names.jpeg",
+      "image_width": 1626,
+      "image_height": 1166,
+      "image_alt": ""
+    },
+    {
+      "id": 8044,
+      "source_id": 34,
+      "original_url": "https://www.tunbury.org/2026/11/16/week-46/",
+      "title": "Notes from week 46",
+      "summary": "Concrete experiments expose cross-platform build-system and CephFS failure modes that can be diagnosed and fixed with specific architectural or configuration changes.",
+      "ideas": [
+        "FreeBSD unionfs rejects directory-over-directory renames with EINVAL, unaffected by mount options.",
+        "Real-root builds with layer manifests and pkg register replaced FreeBSD unionfs.",
+        "CephFS directory prefetch disabled reduced metadata requests from 52 to 3,400/s.",
+        "Twenty-four million CephFS strays drained after identifying metadata contention.",
+        "Parallel indexer requests at 166k/s saturated CephFS metadata ranks.",
+        "ZFS exposed controller errors despite clean raw I/O, implicating SGL command mapping.",
+        "Windows path-length limits required relocating opam outside APPDATA.",
+        "macOS CI builds use isolated VMs and timestamp-based layer change collection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "This is unusually dense, firsthand systems engineering rather than generic commentary. It provides reproducible cross-platform CI details and measured failure analysis: FreeBSD unionfs rename semantics, Windows path and rate-limit constraints, macOS VM layering, and CephFS metadata contention where disabling directory prefetch cut requests from 52 to about 3,400/s and enabled 24.6 million strays to drain. Several items remain status notes or open questions, particularly the FsDepends leak, and the AI inference work receives only brief treatment, but the original measurements and actionable operational detail make the article strongly valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-18T00:35:31.079369",
+      "image_url": "https://www.tunbury.org/images/day10-parity.png",
+      "image_width": 1354,
+      "image_height": 514,
+      "image_alt": ""
+    },
     {
       "id": 8043,
       "source_id": 34,
