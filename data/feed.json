@@ -1,7 +1,107 @@
 {
-  "updated_at": "2026-11-18T06:00:01.073949+00:00",
-  "total_items": 1119,
+  "updated_at": "2026-11-18T07:00:00.272036+00:00",
+  "total_items": 1122,
   "items": [
+    {
+      "id": 8058,
+      "source_id": 4,
+      "original_url": "https://calif.io/java4shell",
+      "title": "Skip to content calif.io Calif Research ↗",
+      "summary": "Java's memory-safety reputation is undermined by hand-optimized assembly inside the JVM itself, and AI-augmented researchers can now find and weaponize such critical bugs for under $200 - suggesting the future of security lies in deleting unneeded code as much as writing new code.",
+      "ideas": [
+        "Critical memory-corruption bug CVE-2026-114938 in OpenJDK's optimized Base64 decoder enables unauthenticated remote code execution",
+        "Trigger input is just 64 'A' characters followed by '='; OpenJDK 17 requires 128",
+        "The bug is a mask-calculation underflow in hand-written AVX-512 assembly, not in memory-safe Java code",
+        "Demonstrated pre-auth RCE affects Keycloak, Jenkins, Jira, Confluence, Artifactory, and PingFederate in default configs",
+        "Post-auth RCE demonstrated against Kafka, Solr, Elasticsearch, Gerrit, and Spinnaker",
+        "Heap Feng Shui converts a fixed-value overwrite into writer and reader primitives for heap leaks",
+        "JavaBleed can leak PII, private keys, and tokens from the Java heap without full code execution",
+        "Client-side attack: a Java program merely connecting to a malicious TLS server can be compromised",
+        "A researcher found the bug in one hour and built an exploit in two, using AI for under $200 in tokens",
+        "Centaur hacking: human context plus AI horsepower outperforms either working alone",
+        "AI initially produced unusable findings; persistence and better prompting eventually surfaced the gold",
+        "Shared software stacks force everyone to inherit risk from optimizations only a few applications need",
+        "Vibe-uncoding: use AI to identify and delete dead code, shrinking attack surface",
+        "Java's memory safety applies to user code but not the JVM's own C++ and assembly internals",
+        "No universal exploit exists; exploitation steps vary by how each application uses Base64"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "This is original security research with exceptional value density: an original CVE disclosure (9.2 CVSS) including exact trigger inputs, a concrete affected-products list (Keycloak, Jenkins, Jira, Elasticsearch, Kafka, etc.), and a deep root-cause analysis of the AVX-512 intrinsic bug. Beyond the vulnerability itself, it delivers several novel frameworks - the 'centaur hacker' model ($200 in AI tokens to find and weaponize a critical bug), 'JavaBleed' heap-disclosure primitives via Heap Feng Shui, and 'vibe-uncoding' as a security philosophy. The content strongly aligns with cybersecurity and AI themes, is written by domain experts with first-hand knowledge, and would leave both practitioners and system administrators significantly better off. Minor deductions for promotional framing of Calif Research and truncation of the full write-up.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-18T16:33:50.578893"
+    },
+    {
+      "id": 8057,
+      "source_id": 4,
+      "original_url": "https://www.wiz.io/blog/cve-2026-114938-rce-java4shell-openjdk",
+      "title": "CVE-2026-114938 RCE in OpenJDK: Everything You Need to Know",
+      "summary": "A specific input pattern causes a heap overflow in OpenJDK's AVX-512 Base64 intrinsic, so patch or apply documented JVM workarounds and verify AVX-512 CPU flags.",
+      "ideas": [
+        "Java4Shell RCE stems from a mismatch in the OpenJDK AVX-512 Base64 decoding intrinsic.",
+        "Input with 64 'A' characters followed by one '=' triggers a length underflow heap overflow.",
+        "Unauthenticated remote exploitation proven against Jenkins, Confluence, Tomcat, and others.",
+        "Affected systems run OpenJDK 17.0.6+ on AVX-512 VBMI x86-64 hardware; ARM64 is safe.",
+        "Many major distributions are affected, including Corretto, Temurin, Zulu, Liberica, and Oracle Java SE.",
+        "Vulnerable CPUs include Intel Xeon Ice Lake-class parts and AMD Zen 4 or newer.",
+        "Detect affected hosts by grepping /proc/cpuinfo for avx512f, avx512bw, avx512vbmi, and bmi2.",
+        "Patch using the November 17, 2026 security releases or downstream vendor builds.",
+        "Mitigate by adding -XX:-UseBASE64Intrinsics or -XX:UseAVX=2 to JVM startup flags.",
+        "Both workarounds may reduce application performance.",
+        "WAFs cannot cover every code path or home-grown applications, so patching remains best.",
+        "Wiz Atlas generated a working proof-of-concept exploit within two hours using AI."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 81,
+      "rating_reason": "High value density for a vendor advisory: it gives a precise root cause (Base64 intrinsic length underflow on a 64-'A'-plus-'=' input), a concrete affected-version and CPU list, a runnable /proc/cpuinfo check, proven-vulnerable applications, and exact JVM workaround flags. Strong CyberSecurity/Tech relevance. Score reduced slightly for Wiz product promotion and marketing CTAs embedded around the advisory.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-18T16:33:32.261943",
+      "image_url": "https://www.datocms-assets.com/75231/1794954804-threat-update-large-title_custom.jpeg?fm=webp",
+      "image_width": 1365,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 8056,
+      "source_id": 4,
+      "original_url": "https://ministryofcyberaffairs.com/news/chinese-led-syndicates-in-cambodia-are-weaponizing-meta-business-suite-inbox-as-a-scam-crm-targeting-indonesia-74ee361b-5f46-4094-8ab3-2ac51cc048d3",
+      "title": "https://ministryofcyberaffairs.com/news/chinese-led-syndicates-in-cambodia-are-weaponizing-meta-business-suite-inbox-as-a-scam-crm-targeting-indonesia-74ee361b-5f46-4094-8ab3-2ac51cc048d3",
+      "summary": "Scam syndicates use Meta Business Suite as a resilient, cross-platform CRM, so investigators must preserve underlying assets and script fingerprints rather than only chasing individual Pages.",
+      "ideas": [
+        "Chinese syndicates use front businesses with local workers and foreign branding.",
+        "Business Suite Inbox acts as a unified scam CRM across Meta channels.",
+        "Operators receive translated scripts from Chinese-language command chats.",
+        "Labels and notes track victims from first contact through payment.",
+        "Cloud-based CRM lets operations survive Page bans and raids.",
+        "Script stage order remains stable despite changing Page names.",
+        "Investigators should preserve asset IDs, admin patterns, and saved replies.",
+        "Detained foreign workers may be both suspects and trafficking victims.",
+        "Southeast Asian scam networks are estimated at $64 billion annually.",
+        "Meta has removed over 150,000 accounts tied to scam centres."
+      ],
+      "labels": [
+        "CyberSecurity"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers concrete operational details from the Bavet raids, explains a two-layer scam structure, and identifies how Meta Business Suite features are misused as a free CRM. It also provides actionable investigator pivots, including preserving asset IDs, fingerprinting scripts, and tracking labor chains. Its thematic fit with cybersecurity is strong, while minor clutter from site ads and related links is not enough to outweigh the substance.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-18T16:32:22.381769",
+      "image_url": "https://ministryofcyberaffairs.com/news/chinese-led-syndicates-in-cambodia-are-weaponizing-meta-business-suite-inbox-as-a-scam-crm-targeting-indonesia-74ee361b-5f46-4094-8ab3-2ac51cc048d3/opengraph-image?f9fddc7462b6f618",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Ministry of Cyber Affairs article"
+    },
     {
       "id": 8055,
       "source_id": 28,
