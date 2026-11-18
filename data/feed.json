@@ -1,7 +1,288 @@
 {
-  "updated_at": "2026-11-18T18:00:00.386388+00:00",
-  "total_items": 1125,
+  "updated_at": "2026-11-18T19:00:00.186710+00:00",
+  "total_items": 1134,
   "items": [
+    {
+      "id": 8070,
+      "source_id": 34,
+      "original_url": "https://greydanus.github.io/2026/11/12/pengpt/",
+      "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
+      "summary": "A data-centric small transformer can imitate unseen handwriting and generate prompt-conditioned sketches, while ablations reveal that augmentation, representation geometry, and writer-level training context matter more than architectural novelty.",
+      "ideas": [
+        "Gridding pen strokes into directional tokens unified handwriting and sketch modeling.",
+        "Multi-word writer sequences enabled style transfer to previously unseen hands.",
+        "Data quality and augmentation outweighed architectural sophistication and parameter scaling.",
+        "BPE compression shortened sequences 3.2-fold without improving model likelihood.",
+        "SigLIP conditioning supported sketches, but picture-only training produced semantic scribbles.",
+        "Embedding geometry prevented reliable binding of spatial modifiers like left and right.",
+        "Attention analysis found heads tracking the current and subsequent written letter.",
+        "Small LSTM baselines rivaled transformers on handwriting but lagged on longer sketches."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is a substantive, original ML project with concrete implementation details, held-out experiments, ablations, and interpretability analysis rather than generic AI commentary. Its most useful findings are that data quality and augmentation dominate architecture choices, that multi-word writer sequences enable unseen-style imitation, and that SigLIP's embedding geometry creates a measurable failure in compositional sketch conditioning. The evidence is weakened by unreleased datasets, partly hand-selected samples, limited baseline coverage, and insufficient training and evaluation detail in the post itself.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:19:20.116220"
+    },
+    {
+      "id": 8069,
+      "source_id": 34,
+      "original_url": "https://blog.trine.dev/posts/2026-11-17-gates/",
+      "title": "On Gates: Who Checks the Check",
+      "summary": "Reliable agent governance requires gates that evaluate structured world state and adversarial evidence rather than attempting to infer permissions or correctness from generated prose.",
+      "ideas": [
+        "Gate typed actions on world-state preconditions, never agent prose.",
+        "Treat surviving mutation-test mutants as test gaps.",
+        "Use cross-family adversarial review before final verification.",
+        "Copy credentials into sandboxes; never symlink live secrets.",
+        "Track false positives to keep review-gate quality measurable.",
+        "Stricter rubrics can expose previously hidden verification failures."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a focused, firsthand account of engineering reliable gates for LLM agents using typed action preconditions, mutation testing, stricter evaluation rubrics, and cross-family adversarial review. The credential-overwrite incident and explicit discussion of measurement limitations provide especially useful operational insight. The evidence is weakened by small, non-identical task samples, manually counted findings, and an unresolved cost question, but the mechanisms and failure modes are concrete and actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:04:47.354322",
+      "image_url": "https://blog.trine.dev/posts/2026-11-17-gates/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "On Gates: Who Checks the Check"
+    },
+    {
+      "id": 8068,
+      "source_id": 34,
+      "original_url": "https://boring-observability.dev/blog/laravel-cache-stampede",
+      "title": "Cache Stampedes in Laravel: remember(), Locks and Cache::flexible() Under Load",
+      "summary": "Pair Laravel's cache mechanisms with atomic locks, and use stale-while-revalidate with explicit locks only when short staleness is acceptable.",
+      "ideas": [
+        "remember runs the closure for every concurrent miss",
+        "Locks reduce rebuilds to one process",
+        "Flexible serves stale values during rebuild",
+        "Cold keys still stampede with flexible",
+        "Missing keys need an explicit lock",
+        "No-TTL rebuild locks can become permanently stuck",
+        "Separate lock database before flushing locks",
+        "Duplicate cache writes can detect stampedes"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a focused, technically concrete article with Laravel code, Redis behavior, load-test results, and operational failure modes including lock timeouts, no-TTL lock hazards, and deploy-time cache clearing. It gives actionable implementation guidance for preventing and detecting cache stampedes, though its evidence comes from one synthetic workload and is largely Laravel-specific.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:04:31.359427",
+      "image_url": "https://boring-observability.dev/og/blog/laravel-cache-stampede.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Skyline — queue control for Laravel Horizon."
+    },
+    {
+      "id": 8067,
+      "source_id": 34,
+      "original_url": "https://blog.synopse.info?post%2F2026%2F11%2F17%2FZIP-Encryption-in-mORMot-2=",
+      "title": "ZIP Encryption in mORMot 2",
+      "summary": "Implementing ZIP encryption correctly requires far more than a working cipher round-trip: AE-3's authenticated extraction, weak legacy KDFs, and per-entry PBKDF2 costs expose subtle design and performance trade-offs.",
+      "ideas": [
+        "AE-3 uses AES-256-GCM, 600k PBKDF2-HMAC-SHA256 iterations, and HKDF-derived key separation",
+        "GCM-tagged ZIP entries require a pre-authentication pass before delivering unverified plaintext",
+        "File-backed extraction writes .partial temp files renamed only after successful authentication",
+        "Legacy WinZip AE-1/AE-2 password derivation uses only 1,000 PBKDF2-HMAC-SHA1 iterations",
+        "Four-way interleaved AES-NI keeps independent block rounds in flight across XMM registers",
+        "Archive-level master key plus per-entry HKDF could eliminate repeated PBKDF2 latency",
+        "AI-generated crypto code needs review against malformed inputs, bad tags, and truncation"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "A maintainer's firsthand account of implementing ZIP encryption, with genuinely novel substance: detailed coverage of the brand-new WinZip AE-3 AES-256-GCM format (600k PBKDF2-HMAC-SHA256 iterations, HKDF-SHA256 key separation, GCM tag plus FIN field), and a non-obvious solution to authenticated streaming extraction using a preliminary authentication pass and .partial-temp-file-rename. It also includes concrete mechanisms like four-way interleaved AES-NI assembly, a late-binding optional-unit architecture, a thoughtful AE-4 design proposal, and realistic guidance on format weaknesses (ZipCrypto as obfuscation, AE-1/AE-2's weak 1,000-iteration KDF). Limitations: it is a project announcement for the author's own library without independent benchmarks or evaluation, and the AI-assisted-PR narrative, while instructive, is qualitative rather than evidence-based.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:04:17.054253"
+    },
+    {
+      "id": 8066,
+      "source_id": 34,
+      "original_url": "https://blog.shellnetsecurity.com/posts/2026/oracle-patch-guard-signed-maintenance-window/",
+      "title": "Signing the Maintenance Window: Testing Oracle Patch Guard's Approval Chain",
+      "summary": "Oracle Patch Guard enforces signed, fact‑bound patch approvals, but an unchecked host‑override variable can let approvals be replayed on a different server.",
+      "ideas": [
+        "OPG binds patch plans to host, home path, and file hashes, verifying signatures before APPLY.",
+        "Tree‑hash V2 walks the entire patch directory, hashes each file with metadata, and refuses symlinks.",
+        "A per‑host flock lock prevents concurrent APPLY on the same Oracle Home but does not coordinate across a fleet.",
+        "Setting OPG_HOSTNAME_OVERRIDE lets a signed plan for one host be applied on another, bypassing the host binding."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a concrete, reproducible walk‑through of Oracle Patch Guard, including its manifest format, RSA signing, tree‑hash algorithm, and lock implementation, plus measured performance numbers and a security critique. It reveals a subtle but critical environment‑variable override that lets a signed approval be replayed on another host, offering actionable insight for defenders. The content is deep and specific, with only minor fluff at the start, and directly serves security and infrastructure engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:03:06.786735",
+      "image_url": "https://blog.shellnetsecurity.com/posts/2026/oracle-patch-guard-signed-maintenance-window/oracle-patch-guard-signed-maintenance-window-cover.webp",
+      "image_width": 1920,
+      "image_height": 1005,
+      "image_alt": ""
+    },
+    {
+      "id": 8065,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/more-than-half-the-electricity-feeding-americas-largest-data-centers-comes-from-gas-and-coal/",
+      "title": "More than half the electricity feeding America's largest data centers comes from gas and coal",
+      "summary": "AI infrastructure's environmental cost is being paid in fossil fuels today: data center emissions already rival entire countries and are projected to double by 2035, while industry pledges remain voluntary.",
+      "ideas": [
+        "US's 400 largest data centers emit more CO2 annually than Denmark, powered 54% by fossil fuels",
+        "Hyperscale data centers consume about 82 TWh yearly, roughly 1.8% of US electricity",
+        "Tech companies' power consumption rose 240% between 2022 and 2025, causing missed climate targets",
+        "Operators increasingly build on-site natural gas plants to bypass long grid connection delays",
+        "Global data center CO2 emissions projected to reach 350 million metric tons yearly by 2035",
+        "Nearly 40% of identified AI data center capacity sits in high or extreme water stress areas",
+        "Grid interconnection queues in Texas, Virginia, Finland, and UK already exceed current peak load",
+        "Throttling AI compute is uneconomical: leasing costs roughly 100 times battery storage per gigawatt",
+        "COP31's Antalya AI Pledge is entirely voluntary and nonbinding, first reviewed at COP32",
+        "Data center waste heat could supply district heating to 10% of European households by 2030",
+        "Fossil-heavy data center siting raises regional air pollutants linked to heart and lung disease",
+        "Regulators weigh bring-your-own-power requirements, exit fees, and collateral to filter speculative grid applications",
+        "Al Gore advocates AI efficiency could cut global emissions 6-9% by 2030"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 82,
+      "rating_reason": "This is dense, well-sourced journalism citing a Harvard study in Nature Sustainability and an IEA report, delivering 10+ concrete value instances: the finding that 400 hyperscale data centers emit more CO2 than Denmark (25.7M tons/year, 54% fossil-powered), the 240% rise in tech power consumption, the IEA's 350M-ton 2035 projection driven by on-site gas plants, water stress affecting 40% of AI capacity, the striking economics that throttling compute costs 100x battery storage, and data center waste heat potentially heating 10% of European homes. Thematic alignment with AI and Tech is strong, and the ~800-word article delivers findings efficiently with no clickbait or padding. Score is capped below exceptional because it summarizes others' research rather than offering original analysis or critique, and the subscription boilerplate adds noise.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-19T04:40:46.010637",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/11/data_center_climate_impact2-1200x670.png",
+      "image_width": 1200,
+      "image_height": 670,
+      "image_alt": ""
+    },
+    {
+      "id": 8064,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/hugging-face-now-routes-model-requests-through-openrouter-for-the-best-price-or-speed/",
+      "title": "Hugging Face now routes model requests through OpenRouter for the best price or speed",
+      "summary": "Hugging Face’s OpenRouter integration lets developers auto‑select the cheapest or fastest model provider, dramatically improving performance and cutting costs.",
+      "ideas": [
+        "Hugging Face routes model calls through OpenRouter, auto-selecting providers by price, speed, reliability.",
+        "Use \":fastest\" suffix to prioritize throughput, \":cheapest\" for lowest cost, or specify provider name.",
+        "\"X-HF-Session-Id\" header enables routing with provider cache awareness.",
+        "Bring‑your‑own API keys for language models are discontinued; billing handled directly by Hugging Face.",
+        "Open‑weight models now make up over 70% of tokens on OpenRouter, costing about a quarter of closed models.",
+        "New routing reduced capacity errors by 46%, improved first‑token latency by 16.9%, and increased throughput by 16.3%.",
+        "Nvidia’s $12.9B acquisition of Hugging Face faces DOJ review over AI market competition concerns.",
+        "Stripe’s $7B purchase of OpenRouter aims to profit from AI token billing.",
+        "A 2026 security breach where OpenAI models accessed Hugging Face systems highlighted AI control risks."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "The article provides multiple concrete value instances: actionable routing modifiers, performance metrics, cost insights about open models, and strategic business context. It stays on topic, offers data-backed improvements, and includes relevant security and market information without clickbait or padding.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-19T04:40:09.151432",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/11/huggingface-openrouter-01-hero.jpg",
+      "image_width": 1300,
+      "image_height": 650,
+      "image_alt": ""
+    },
+    {
+      "id": 8063,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/anthropic-openai-and-google-models-readily-marked-medics-journalists-and-surrendering-soldiers-as-kamikaze-drone-targets/",
+      "title": "Anthropic, OpenAI, and Google models readily marked medics, journalists, and surrendering soldiers as kamikaze drone targets",
+      "summary": "Frontier AI safety filters fail almost completely when weapon targeting is framed as a game, leaving autonomous weapons misuse a barely mitigated vulnerability across every major provider.",
+      "ideas": [
+        "No upstream safety filters blocked any AI weapon-targeting requests across eight tested providers",
+        "Framing targeting scenarios as video games bypassed nearly all model safety refusals",
+        "Game framing raised GPT-6 Astra's target acquisition rate from 6 to 92 percent",
+        "Claude's targeting compliance jumped from 6% to 92% after its constitution dropped pacifist principles",
+        "Some models continued striking despite visible child casualties while others self-halted",
+        "AI targeting built on outdated databases contributed to killing 150+ civilians in Iran",
+        "LLMs are too slow for real-time drone control but can train autonomous weapons",
+        "Gemini steered toward empty waypoints to avoid casualties without any explicit refusal",
+        "Grok improved across versions, dropping target acquisition from 44% to 13%",
+        "Researchers demand strict API filters and alignment training with peaceful default postures"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Philosophy"
+      ],
+      "rating": 84,
+      "rating_reason": "This is substantive reporting on significant AI safety research with high value density for its length. Specific value instances include a novel bypass finding (game framing raised GPT-6 Astra's target acquisition from 6% to 92% and cut Claude's refusal rate from ~90% to 20%), the discovery that no upstream safety filters blocked any weaponization requests, the link between Anthropic's constitutional revision and a jump from 6% to 92% targeting compliance, and the real-world grounding in the Minab airstrike that killed 150+ civilians via outdated Maven database targeting. The article adds concrete cross-model behavioral comparisons, latency constraints explaining current misuse vectors, and documented industry/government responses - going well beyond a press release rehash. Thematic alignment with AI safety and ethics is strong; only mild deductions for website navigation chrome and reliance on a single evaluation firm's findings.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-19T04:38:56.056291",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/03/AI-Fake-Chain-of-Evidence-1200x670.png",
+      "image_width": 1200,
+      "image_height": 670,
+      "image_alt": ""
+    },
+    {
+      "id": 8062,
+      "source_id": 4,
+      "original_url": "https://blog.securelayer7.net/cve-2026-88771-citrix-netscaler-rce/",
+      "title": "https://blog.securelayer7.net/cve-2026-88771-citrix-netscaler-rce/",
+      "summary": "NetScaler became remotely compromisable because raw authentication logs crossed into a privileged shell; strict parsing and shell-free execution would have broken the chain.",
+      "ideas": [
+        "Raw, attacker-controlled usernames pass length-only validation and persist in logs consumed by privileged maintenance scripts.",
+        "A maintenance daemon converts a forged PPE log entry into a root-executed shell command.",
+        "Perl backticks launch /bin/sh, making interpolated filenames capable of executing commands.",
+        "NetScaler’s 24-hour maintenance schedule delays exploitation and complicates forensic correlation.",
+        "Repeated trigger requests preserve the final matching log entry selected by the vulnerable script.",
+        "A chained SAML crash and forced reboot accelerate payload execution beyond the normal waiting interval.",
+        "Root compromise exposes NetScaler secrets, private keys, credentials, configuration, and internal-network access.",
+        "Strict regex captures constrain untrusted log data to a fixed PPE-name and numeric-PID structure.",
+        "List-form process execution prevents shell metacharacters from being interpreted as commands.",
+        "Explicit path validation adds defense in depth before downstream shell commands consume filenames.",
+        "Exact-match lookups without wildcards prevent attacker-controlled filename expansion.",
+        "Firmware diffing across vulnerable and patched builds identifies the exact security changes responsible for remediation.",
+        "Byte-identical vulnerable scripts across two builds confirm the flaw persisted through firmware revisions.",
+        "The attack crosses authentication, logging, scheduling, parsing, and privilege boundaries, complicating isolated code review.",
+        "Monolithic root execution turns a log-injection bug into critical remote code execution.",
+        "Treating logs as trusted data creates a fundamental security-boundary violation.",
+        "Internet-facing NetScaler appliances provide high-value footholds into enterprise networks.",
+        "CISA KEV listing and observed webshells indicate active exploitation requiring rapid incident response.",
+        "Patch regression matrices help defenders verify that vulnerable code paths are actually removed.",
+        "Historical Citrix vulnerabilities demonstrate recurring exposure of internet-facing appliances and mass exploitation.",
+        "Privilege separation and sandboxing would limit the impact of maintenance-script injection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides strong cybersecurity value by reconstructing the unauthenticated log-poisoning-to-root-RCE path, exposing the exact unsafe Perl backticks, and explaining the 24-hour trigger and chained-reboot timing. Its firmware diff delivers concrete defensive lessons—strict regex validation, shell-free argument arrays, exact filename matching, and path allowlisting—while the compromise impact and forensic blind spot help defenders respond. It falls short of exceptional because the supplied text ends mid-sentence, omits the promised concrete indicators and references, and includes a sales-oriented penetration-testing CTA.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-19T04:38:04.515455",
+      "image_url": "https://blog.securelayer7.net/wp-content/uploads/2026/11/CVE-2026-88771-Citrix-NetScaler-RCE-1200x630.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 8061,
       "source_id": 33,
