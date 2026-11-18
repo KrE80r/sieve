@@ -1,7 +1,447 @@
 {
-  "updated_at": "2026-11-18T19:00:00.186710+00:00",
-  "total_items": 1134,
+  "updated_at": "2026-11-18T20:00:00.243591+00:00",
+  "total_items": 1151,
   "items": [
+    {
+      "id": 8087,
+      "source_id": 34,
+      "original_url": "https://www.simonpainter.com/same-threat-intelligence-different-plumbing-infoblox-google-cloud-aws",
+      "title": "Same engine, different plumbing: Infoblox protective DNS in Google Cloud and AWS",
+      "summary": "Whether protective DNS sits inside the resolver (AWS: can block, hybrid in scope) or beside it (Google: detect-only with broad exclusions) determines real protection, and cloud integrations carry non-obvious coverage gaps like hub-and-spoke DNS peering.",
+      "ideas": [
+        "Google DNS Armor analyzes off-path after answering and can only log, never block",
+        "DNS Armor misses hub-and-spoke DNS peering, hybrid VPN paths, Cloud Run, App Engine",
+        "Infoblox DFP forwards queries over DNS-over-TLS while preserving original client IP attribution",
+        "Vendor false-positive claims without denominators are marketing numbers, not facts",
+        "AWS Infoblox managed rules require Marketplace subscription plus Route 53 DNS Firewall Advanced plan"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A practitioner-level comparison of how the same Infoblox threat intelligence integrates three different ways: Google Cloud DNS Armor analyzes off-path after answering (detect-and-log only, with a documented exclusion set covering hub-and-spoke DNS peering, Cloud Run/App Engine, and hybrid VPN paths), AWS Route 53 DNS Firewall managed rules filter inline with hybrid coverage, and full Infoblox Threat Defense is the resolver itself. The inline-versus-off-path architectural distinction, the concrete gcloud setup, and especially the deployment-gap analysis ('enable it on the project' is not 'it's protecting everything') are non-obvious and directly actionable for cloud DNS security design, backed by sound skepticism toward vendor false-positive claims lacking denominators. Limitations keep it out of exceptional territory: the work is largely a critical documentation synthesis rather than hands-on measurement (latency tests planned but not run), whether behavioral detection survives as per-query logic inside AWS managed rules is explicitly unresolved, and the article cuts off mid-sentence in the Azure section.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:29:07.220769"
+    },
+    {
+      "id": 8086,
+      "source_id": 34,
+      "original_url": "https://www.simonpainter.com/aws-azure-interconnect-goes-ga",
+      "title": "AWS to Azure interconnect goes GA, and I get to mark my own homework",
+      "summary": "AWS–Azure interconnects are operationally viable, but real topology can sharply increase AWS tier costs and bandwidth behavior needs validation.",
+      "ideas": [
+        "Model AWS interconnect tier from reachable Cloud WAN edges, not intended geography.",
+        "Build GA circuits beside preview circuits before migrating routes.",
+        "Expect four connections with facility-level ECMP and default MACsec.",
+        "Monitor latency, loss, and bandwidth while BGP health remains opaque.",
+        "Retest aggregate and single-flow throughput for possible GA policing.",
+        "Confirm supported region pairs before relying on west-coast connectivity."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a dense, directly relevant cloud-networking field report that goes beyond an announcement recap: it covers GA regions, ECMP and MACsec design, bandwidth resizing, monitoring gaps, and concrete AWS and Azure pricing. The most valuable finding is operational: a global Direct Connect gateway's Cloud WAN topology can trigger a substantially higher pricing tier, while claimed capacity and GA throughput policing still require live validation. The author's preview measurements and explicit caveats add credibility, although several GA properties remain documentation-based rather than independently tested.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:28:49.645919"
+    },
+    {
+      "id": 8085,
+      "source_id": 34,
+      "original_url": "https://www.jonolick.com/home/lz-rdo-lands-in-arms-astc-encoder",
+      "title": "LZ-RDO lands in ARM's astc-encoder",
+      "summary": "LZ-RDO deliberately chooses slightly different ASTC encodings that create reusable bit patterns, improving downstream LZ compression without changing decoded texture dimensions.",
+      "ideas": [
+        "ASTC RDO selects slightly worse encodings that preserve matches for downstream LZ compression.",
+        "Activity weighting preserves smooth-region quality while relaxing errors in noisy textures.",
+        "Endpoint and weight move-to-front histories enable candidate splicing across ASTC blocks.",
+        "Higher RDO lambda values favor smaller compressed output over closer texture fidelity.",
+        "The implementation supports parallel passes, progress reporting, cancellation, and LDR encoding."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is substantive compression-engineering material with an unusually detailed explanation of ASTC rate-distortion optimization, including activity-weighted error modeling, move-to-front histories, candidate generation, and an LZ-aware cost function. It provides actionable CLI and API usage, tuning guidance, implementation constraints, and operational details such as parallel passes and cancellation. The main limitation is the absence of quantitative benchmark results or comparisons of encoding time and compressed-size gains.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:23:15.380371"
+    },
+    {
+      "id": 8084,
+      "source_id": 34,
+      "original_url": "https://www.allddd.onl/blog/what-systemd-time-leaves-out/",
+      "title": "What systemd.time(7) leaves out",
+      "summary": "Systemd’s time parsing has many undocumented quirks—such as month length calculation, case‑sensitive units, daylight‑saving handling, and hidden “infinity” values—exposed through systematic testing.",
+      "ideas": [
+        "Months are parsed as a year divided by 12 (30.4375 days), not 30.44 days, causing a 3 min 36 s error per month.",
+        "Upper‑case ‘M’ denotes months while lower‑case ‘m’ denotes minutes; other units are case‑sensitive.",
+        "Bare numbers default to seconds, even when appended to a larger span (e.g., “1hr30” → 1 h 30 s).",
+        "Systemd supports ‘infinity’ as a time span, representing the maximum uint64 value.",
+        "Two‑digit years follow strptime rules: 00‑68 → 2000‑2068, 69‑99 → 1969‑1999 for timestamps.",
+        "Daylight‑saving transitions affect calendar events: missing hours are skipped, repeated hours cause double‑hour gaps.",
+        "Timezone abbreviations only work if present in the IANA database or match the local zone.",
+        "Weekday ranges do not wrap; Fri..Mon is invalid, must be expressed as Mon,Fri..Sun.",
+        "Trailing spaces on timestamps cause parse failures because a timezone is expected."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers a comprehensive, evidence‑backed walkthrough of systemd.time(7) edge cases, showing exact commands and outputs that reveal undocumented behaviours and bugs. This concrete, reproducible information is directly useful for developers and sysadmins working with systemd timers, journald, and related tooling. The content is dense but focused, with minimal hype, making it high‑value for a technically capable audience.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:16:11.176494"
+    },
+    {
+      "id": 8083,
+      "source_id": 34,
+      "original_url": "https://wietsevenema.eu/blog/2026/cloud-run-ephemeral-disk/",
+      "title": "Using ephemeral disks on Cloud Run for temporary storage",
+      "summary": "Cloud Run ephemeral disks provide a practical way to handle large temporary files without charging them against container RAM or forcing additional CPU capacity.",
+      "ideas": [
+        "Cloud Run's default writable container layer consumes the instance's memory allocation.",
+        "Disk-backed emptyDir volumes isolate large temporary files from RAM.",
+        "Ephemeral disks are per-microVM, deleted on shutdown, and shareable by sidecars.",
+        "A 1 GiB root-layer write triggered an OOM kill, while the /tmp write succeeded.",
+        "Disk provisioning can avoid vCPU upgrades required by equivalent RAM capacity."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a focused, reproducible Cloud Run engineering guide with exact deployment, SSH, logging, and YAML commands plus observed filesystem, OOM, quota, and pricing behavior. It demonstrates the important mechanism that the default writable layer consumes container memory, while a disk-backed emptyDir mounted at /tmp permits large temporary files without increasing the memory limit, and clearly explains lifecycle and sidecar-sharing semantics. Its main limitations are dependence on a newly available platform feature, some preview-dependent tooling, and approximate cost comparisons, but the central findings are well demonstrated and directly actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:14:26.142158",
+      "image_url": "https://wietsevenema.eu/blog/2026/cloud-run-ephemeral-disk/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Using ephemeral disks on Cloud Run for temporary storage"
+    },
+    {
+      "id": 8082,
+      "source_id": 34,
+      "original_url": "https://vxlang.org/blog/vx-meets-postgres.html",
+      "title": "Vx meets Postgres",
+      "summary": "VxVector trains k-means centroids in Vx for PostgreSQL vector indexes, with fast Apple-GPU execution and real-world compiler/prover bug discoveries.",
+      "ideas": [
+        "GPU k-means is 24x to 28x faster than CPU",
+        "One SQL call samples, trains, and builds index",
+        "Same Vx source targets Metal and PTX",
+        "Prover found and fixed six compiler issues"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete engineering detail on a PostgreSQL vector-index extension: SQL workflow, architecture, CPU/GPU k-means kernels, measured speedups, recall checks, and compiler/prover findings. Its evidence is largely self-reported from one machine and the NVIDIA path is not yet validated, but the technical depth and specificity are high. Some value depends on interest in the niche Vx language and its tooling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:13:31.604315",
+      "image_url": "https://vxlang.org/cards/blog-vx-meets-postgres.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Vx meets Postgres: k-means for a vector index, trained in Vx on the CPU or the GPU."
+    },
+    {
+      "id": 8081,
+      "source_id": 34,
+      "original_url": "https://vanja.io/gpt-6-2-astra-sol/",
+      "title": "Cheaper per Task, Harder to Watch",
+      "summary": "GPT-6.2 Astra offers substantial per-task cost savings but introduces supervision and failure-reporting regressions that require explicit mitigations before migration.",
+      "ideas": [
+        "Set effort explicitly; Astra accepts no none.",
+        "Remove sampling parameters from 6.2 requests.",
+        "Reasoning items drop after prefix edits.",
+        "Astra omits blockers 22.28% versus 11.09%.",
+        "Direct API lacks Codex blocker mitigation.",
+        "Use a different-family monitor for reasoning."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The article provides a concrete migration checklist, detailed pricing and context-window guidance, and independently oriented benchmark comparisons for GPT-6.2 Astra and Sol. Its most valuable contribution is the system-card analysis of regressions such as blocker omission, weaker test robustness, monitor evasion, and correlated monitor failures, especially for unattended agents. Its limitations are reliance on vendor claims in some comparisons, launch-day opinions, and no original measurements by the author.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:10:03.054176",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/gpt-6-2-astra-sol-83cdf7c10957.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 8080,
+      "source_id": 34,
+      "original_url": "https://tapoueh.org/blog/2026/11/distributed-primary-keys/",
+      "title": "Distributed primary keys",
+      "summary": "A systematic benchmark shows that uuidv7 and a time‑based bigint give low‑overhead, conflict‑free primary keys for multi‑region PostgreSQL, while random UUIDs and per‑region sequences have significant WAL or failover drawbacks.",
+      "ideas": [
+        "uuidv7 behaves like a sequence: low WAL per row and high index fill factor.",
+        "random uuid (gen_random_uuid) causes many full‑page WAL writes due to random page splits.",
+        "Per‑region sequences repeat IDs after standby promotion, breaking uniqueness.",
+        "A time‑based bigint embeds region and counter, requiring synchronized clocks but avoiding extra indexes."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article offers concrete DDL, benchmark scripts, and detailed WAL, size, and index‑miss measurements for five ID schemes in a multi‑region PostgreSQL setup, which directly serves readers interested in database architecture and replication. It also analyses failure‑mode nuances such as standby promotion and clock drift, providing actionable insight. The only drawbacks are that the experiments run on a single laptop and on a release‑candidate version, which may limit real‑world extrapolation, but the depth and reproducibility outweigh these concerns.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T06:01:54.128742"
+    },
+    {
+      "id": 8079,
+      "source_id": 34,
+      "original_url": "https://solomonmg.github.io/blog/hidden-measurement-error-llm-evals/",
+      "title": "Hidden error in LLM pipelines leads to benchmark hacking and undercoverage",
+      "summary": "Total Evaluation Error (TEE) quantifies and mitigates hidden sources of variance in LLM benchmarks, revealing why confidence intervals are under‑covered and how to allocate evaluation resources effectively.",
+      "ideas": [
+        "Use multiple judges and prompts to halve evaluation error with modest API cost.",
+        "Run a pilot (≈30 items, 3 prompts, 2 judges, 3 replications) to estimate variance components before large‑scale benchmarking.",
+        "Standard confidence intervals that ignore prompt/judge variance can have <10% coverage on large item sets."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article presents a concrete, measurement‑focused framework (TEE) for quantifying hidden variance in LLM evaluation pipelines, backed by real benchmark data, simulations, and an open‑source R package. It offers actionable guidance on pilot design and API‑budget allocation, which is directly useful for building reliable LLM benchmarks. The content is technical and evidence‑based, though it contains some promotional language about the author’s tools, which slightly reduces its purity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:58:47.356944",
+      "image_url": "https://solomonmg.github.io/blog/hidden-measurement-error-llm-evals/featured.png",
+      "image_width": 2049,
+      "image_height": 1549,
+      "image_alt": ""
+    },
+    {
+      "id": 8078,
+      "source_id": 34,
+      "original_url": "https://routerjockey.com/spanning-tree-deep-dive/",
+      "title": "Spanning Tree Deep Dive, Part 1: The Standard Never Shuts a Port Down",
+      "summary": "The reader gains an experimentally validated, wire-level model of RSTP election, timers, forwarding, and tie-breaking, including important differences between IEEE behavior and vendor extensions.",
+      "ideas": [
+        "STP-disabled switches deliberately forward BPDUs so neighboring bridges can still detect loops.",
+        "RSTP BPDUs lack EtherType and instead use 802.2 LLC framing.",
+        "Message Age behaves as hop aging, so large Layer 2 diameters can destabilize spanning tree.",
+        "Receivers add ingress-port cost; downstream switches cannot see upstream cost changes.",
+        "Bridge and port priorities are encoded as concatenated fields, not added together.",
+        "RSTP required a new BPDU type because legacy switches discarded unknown-version frames."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "This is an unusually strong networking deep dive: it dissects RSTP BPDUs byte by byte, relates them to IEEE standards and open-source implementations, and validates behavior through Arista and Linux experiments. It provides valuable operational insight into BPDU forwarding, hop aging, path-cost handling, ID tie-breaking, and vendor-specific extensions. The supplied text ends mid-section, and the standards history is somewhat lengthy, but the completed technical material is exceptionally concrete and well supported.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:55:13.105793",
+      "image_url": "https://routerjockey.com/images/og/spanning-tree-deep-dive.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8077,
+      "source_id": 34,
+      "original_url": "https://petros-papatheodorou.dev/writing/mezura/counting-the-linux-kernel/",
+      "title": "What it takes to count the Linux kernel's 36M lines of code in under 70ms",
+      "summary": "A firsthand case study shows how hardware-floor modeling, syscall reduction, parser redesign, and OS-level diagnostics cut kernel code counting from 400 ms to 67 ms.",
+      "ideas": [
+        "Avoid Linux statx calls by exploiting short reads and known file sizes.",
+        "Measure hardware floors to avoid optimizing within a poor architecture.",
+        "Interpret phase timers carefully because scheduling delays resemble CPU costs.",
+        "Disable Windows minifilter drivers that silently tax every file operation.",
+        "Benchmark branchless transformations by wall time, not branch misses.",
+        "Warm-cache file I/O can remain bottlenecked by VFS contention."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides unusually concrete, first-hand systems engineering: it derives a 41–42 ms hardware floor for a 1.37 GB warm-cache scan and explains how architecture changes, SIMD, mmap, batching, and scheduling reduced execution to 67 ms. Its Linux statx avoidance and Windows investigation are especially useful, with reproducible evidence about VFS contention, misleading flamegraphs, minifilter overhead, and Defender filename exclusions. The supplied text is truncated mid-article, correctness discussion is deferred, and results from one CPU, operating-system configuration, and kernel tree limit generalization.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:50:42.614508"
+    },
+    {
+      "id": 8076,
+      "source_id": 34,
+      "original_url": "https://parameterfree.com/2026/11/18/the-wrong-explanation-of-preconditioning/",
+      "title": "The Wrong Explanation of Preconditioning",
+      "summary": "The popular full-matrix AdaGrad regret-bound story does not actually justify matrix preconditioning in deep learning optimizers, because its guarantee is provably worse than the scalar version's by discarding domain geometry through a trace bound.",
+      "ideas": [
+        "Full-matrix AdaGrad bound never beats scalar AdaGrad-norm on a fixed sequence",
+        "Matrix bound can be sqrt(d) worse via Cauchy–Schwarz",
+        "Trace estimate in OMD proof discards geometry; scalar matrix becomes optimal",
+        "Hindsight-optimal preconditioner is inverse square root of accumulated gradient outer products",
+        "McMahan & Streeter 2010 already contained the scalar-vs-matrix comparison",
+        "Alchemistic deep learning: real heuristics justified by incoherent theory"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Francesco Orabona, a leading online-learning theorist, provides a complete OMD derivation showing that the classical full-matrix AdaGrad regret bound is never better than—and up to sqrt(d) worse than—the scalar AdaGrad-norm bound on a fixed gradient sequence, undermining the standard 'adaptive geometry' story used to motivate preconditioned optimizers like Shampoo. The substance is high: explicit theorems, the Cauchy–Schwarz gap factor, the trace-bound-vs-sharper-estimate explanation of why the 'optimal' matrix loses, an operator-monotonicity appendix, and precise citations (McMahan & Streeter 2010, Cutkosky 2020, Nemirovski 2005) grounding a pointed critique of alchemy-style deep learning justifications. Limitations: the central comparison is a clarification of known results rather than new evidence, the practical payoff is conceptual rather than immediately actionable, and the scraped text has lost most displayed equations, requiring optimization-theory background to follow.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:48:36.549153"
+    },
+    {
+      "id": 8075,
+      "source_id": 34,
+      "original_url": "https://notesbylex.com/weight-space-programming-1990s.html",
+      "title": "Weight-Space Programming builds neural networks like a 1990s researcher",
+      "summary": "Under strict no-training constraints, the LLM recovered a classical feature-engineering and naive-Bayes digit classifier rather than a learned neural solution.",
+      "ideas": [
+        "Claude hand-wrote MNIST filters, templates, and naive Bayes weights.",
+        "Measured feature rates improved accuracy from 83% to 91%.",
+        "Dogs-versus-cats exposed limits, scoring 61.6%.",
+        "The Go network encoded classical heuristics via hand-set config values."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides a detailed, concrete experiment in which an LLM writes neural-network weights under strict no-training constraints, revealing recovery of classical hand-crafted vision features and naive-Bayes scoring. It includes architecture details, feedback loops, measurement-driven refinement, accuracy comparisons, a harder image-classification case, and parallels to a handcrafted Go policy. Limitations include reliance on an unusual future-model setup, some secondhand Go interpretation, and an apparently incomplete final section.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:44:40.103958",
+      "image_url": "https://notesbylex.com/_media/llm-descent/weight-space-programming-1990s-cover.jpg",
+      "image_width": 1536,
+      "image_height": 1024,
+      "image_alt": ""
+    },
+    {
+      "id": 8074,
+      "source_id": 34,
+      "original_url": "https://muratbuffalo.blogspot.com/2026/11/tlaps-bench-formally-proving.html",
+      "title": "TLAPS-Bench: Formally Proving Correctness Of Real-World System Specifications With TLA+ Proof System",
+      "summary": "AI agents can already prove some difficult real-world distributed-system properties in TLA+, but invariant discovery and rigorous benchmark design remain major bottlenecks.",
+      "ideas": [
+        "TLAPS-Bench contains 265 targets from 95 real-world TLA+ specifications.",
+        "The best model solved 31 of 70 hard proof targets.",
+        "Cheap model checking can falsify candidate inductive invariants before costly TLAPS proofs.",
+        "Read-only contexts, dependency tracking, and clean-room grading prevent benchmark cheating.",
+        "TLA+ natively supports temporal safety, liveness, and refinement proofs."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is unusually substantive at the intersection of AI evaluation and formal verification: it describes a 265-target benchmark drawn from 95 real-system TLA+ specifications, reports results on 70 difficult targets, and explains the harness operationally. The TLC/Apalache-based falsification loop for candidate inductive invariants and the context-integrity, dependency-tracking, and clean-room anti-cheating controls are concrete, actionable mechanisms covering safety, liveness, and refinement. It remains a secondary account with a truncated ending, and the benchmark's validity and results are not independently examined within the article, so it falls just short of exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:39:40.692761",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0P-JLG88Qg09MOJZogrRZmX61fBYkpRfHWr6sfcjftFwNo-AvXof_B1bxp0JpjZKlo-Qgg1dE0P8hqaWlB_bUqdANOP7zNXb8D_3g1ILF8TasvLQZeGlfKg4WlY9c7lI4aW6vpR40lyvqrIpB3_N3vt9vWrqazwneQft6chJHhRobJv7BcGN1HSgZ2gI/w1200-h630-p-k-no-nu/Screenshot%202026-11-17%20at%2010.12.06%E2%80%AFPM.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8073,
+      "source_id": 34,
+      "original_url": "https://marekfiser.com/blog/windows-10-slow-start-menu-after-screen-sharing/",
+      "title": "Windows 10 Start menu and Alt+Tab slow after screen sharing",
+      "summary": "Windows window capture can leave Explorer with thousands of dead-process listeners, progressively crippling the Start menu and Alt-Tab on Windows 10.",
+      "ideas": [
+        "Windows 10 window capture leaks stale Explorer listeners at roughly 20 per second.",
+        "Each dead-process listener adds approximately 0.24 milliseconds of notification latency.",
+        "Sharing screens or tabs avoids the leak; restarting Explorer clears accumulated listeners.",
+        "Testing CreateForWindow isolated it as the capture path triggering the leak.",
+        "Profiler stack sampling and memory inspection connected Explorer stalls to stale listeners."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 92,
+      "rating_reason": "This is an unusually strong firsthand debugging account: the author isolates CreateForWindow as the trigger, profiles Explorer's notification thread, counts 32,182 stale listeners, and measures their UI cost. It provides a reproducible PowerShell diagnostic and concrete workarounds for a consequential Windows 10 bug. The evidence is largely confined to one machine and Chromium-family behavior, with some browser claims untested, but the central mechanism and measurements are unusually concrete and verifiable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:33:14.319334",
+      "image_url": "https://marekfiser.com/blog/windows-10-slow-start-menu-after-screen-sharing/img/hero-w1200-h600.12112d4b.png",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
+    {
+      "id": 8072,
+      "source_id": 34,
+      "original_url": "https://lyonwj.com/blog/relate-embedded-graph-database-ios",
+      "title": "A Graph Database in Your Pocket: Relate, Extensions, and an iOS Reading App",
+      "summary": "A local, single-file Cypher graph can support an iOS reading app with vector search and constrained MCP extensions, provided memory, artifact size, trust, and backup limitations are acceptable.",
+      "ideas": [
+        "Relate extensions act as MCP clients using five database operations.",
+        "Extension executables retain ordinary filesystem and network permissions.",
+        "Idempotent MERGE imports preserve stable graph keys across reruns.",
+        "Graph context disambiguates catalog place names before geocoding.",
+        "The embedded graph remains memory-resident with single-writer constraints.",
+        "Embeddings expanded a 7 MB store to roughly 46 MB.",
+        "SwiftPM ships a checksum-pinned prebuilt multi-platform XCFramework.",
+        "iOS backups may expose locally stored graph data."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a substantive first-hand engineering case study with Cypher schemas, Swift integration code, extension interfaces, measured import times, and concrete binary and storage footprints. The MCP extension boundary, transaction semantics, graph-based geocoding disambiguation, and iOS packaging details are particularly actionable. However, it is also a first-party showcase of Relate without independent or comparative evaluation, and the supplied article ends mid-sentence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:31:57.762351",
+      "image_url": "https://lyonwj.com/static/images/relate-embedded-graph-database-ios/app-overview.png",
+      "image_width": 2000,
+      "image_height": 1063,
+      "image_alt": "A Graph Database in Your Pocket: Relate, Extensions, and an iOS Reading App"
+    },
+    {
+      "id": 8071,
+      "source_id": 34,
+      "original_url": "https://luisalima.com/notes/the-fridges-that-went-offline/",
+      "title": "Tracking the fridges that went offline",
+      "summary": "Internet-wide scans suggest retailers removed many exposed refrigeration controllers after attacks, but no compensating VPN or ZTNA migration could be identified.",
+      "ideas": [
+        "5,985 European commercial refrigeration controls were internet-reachable before reported attacks.",
+        "Exposed refrigerator controls fell 57%, while other device classes barely changed.",
+        "Responses varied from Romania’s 92% reduction to Spain’s 2%.",
+        "DNS, certificates, and hiring data showed no clear ZTNA migration signal.",
+        "Offline exposure can mean unplugging, firewalling, VPN access, or scan failure."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides an original, transparent investigation of exposed commercial refrigeration controllers, combining daily Shadowserver measurements with country-level, vendor-category, DNS, certificate-transparency, and hiring-data checks. Its useful finding is that exposed fridge-control counts dropped 57% after the reported attacks, while comparable device classes barely moved and external evidence did not establish whether remediation involved VPNs, ZTNA, or disconnection. The analysis is limited because internet exposure does not prove device control, offline status is ambiguous, vendor fingerprints can be noisy, and observational proxies cannot reliably identify causal security changes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T05:31:23.349926",
+      "image_url": "https://luisalima.com/notes/the-fridges-that-went-offline/index.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 8070,
       "source_id": 34,
