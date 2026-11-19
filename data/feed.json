@@ -1,7 +1,128 @@
 {
-  "updated_at": "2026-11-19T13:00:00.183171+00:00",
-  "total_items": 1154,
+  "updated_at": "2026-11-19T14:00:00.229573+00:00",
+  "total_items": 1159,
   "items": [
+    {
+      "id": 8113,
+      "source_id": 34,
+      "original_url": "https://xinmingtu.github.io/blog/2026/claude-opus-5-5-protein-sequences/",
+      "title": "Claude was trained on protein sequences at scale",
+      "summary": "Latest Claude models behave like protein language models on obscure proteins, suggesting large-scale protein sequence training while most tested frontier models do not.",
+      "ideas": [
+        "Little-studied proteins distinguish memorization from reasoning",
+        "Family-depth scaling implicates sequence training data",
+        "Claude beats open protein language models tested",
+        "No papers needed for strong protein prediction",
+        "Opus 5.5 predicts coding DNA not genome"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article is a substantive, well-controlled benchmark that uses little-studied protein families to distinguish genuine sequence knowledge from recitation of famous proteins. It reports concrete methods, datasets, comparisons across many LLMs and protein language models, family-depth scaling, controls for papers and reasoning, and DNA follow-up results. Its main limitation is that key causal claims about training data are inferred from behavioral tests rather than directly verified, and it is a research blog post rather than independently reviewed work.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-20T00:01:20.058378"
+    },
+    {
+      "id": 8112,
+      "source_id": 34,
+      "original_url": "https://www.scrivano.org/posts/2026-11-18-velarx/",
+      "title": "Velarx: a container engine with a chain of trust",
+      "summary": "Velarx implements per‑file fs‑verity verification and a composefs‑based store, achieving faster container start‑up and secure image verification.",
+      "ideas": [
+        "Stores each regular file once under objects/ named by its fs‑verity digest, enabling constant‑time container start.",
+        "Uses a single SQLite DB for all metadata, allowing atomic updates and simple garbage collection.",
+        "Benchmarks show Velarx exec runs ~7× faster than Podman and container start times are ~20% of Podman's.",
+        "Peer‑to‑peer fetching cuts a 300 MB pull from 47 s to 25 s across 20 nodes on 1 Gbps links.",
+        "Rootless operation requires a FUSE layer; a kernel fix (ovl: follow lower to lowerdata redirects) resolves multi‑layer performance issues."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, reproducible engineering details about a new container engine, including storage layout, fs‑verity chain of trust, performance benchmarks against Podman, and kernel overlayfs patches. It contains code snippets, measured results, and explicit implementation steps that a practitioner can verify or adopt, though some of the discussion is a project overview rather than a systematic guide. The depth and originality make it highly useful for Linux/container security engineers, but the niche nature and reliance on upcoming kernel fixes keep it from being exceptional.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T23:55:58.089142",
+      "image_url": "https://scrivano.org/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8111,
+      "source_id": 34,
+      "original_url": "https://www.jeffgeerling.com/blog/2026/i-joined-the-ntp-pool/",
+      "title": "I joined the NTP Pool, but not with my Stratum 1 Pi",
+      "summary": "A practical NTP-pool deployment reveals useful design trade-offs and failure modes in maintaining a public, GNSS-disciplined time service.",
+      "ideas": [
+        "Pool membership requires stable IP, sustained uptime, and accurate time.",
+        "Route Stratum 1 timing to a nearby VPS over WireGuard.",
+        "Chrony's refclock PHC avoided phc2sys-induced 200 millisecond clock jumps.",
+        "Debian's chrony DHCP sourcing unexpectedly overrode superior GNSS-derived time.",
+        "Public NTP operators face DDoS risk, persistent traffic, and automated firewall blocks.",
+        "Pool scoring recovery after outages took roughly six to twelve hours.",
+        "Unattended kernel upgrades caused an unexpected public timing-server outage."
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a substantive, firsthand account of operating a GNSS-disciplined Stratum 1 server and a publicly reachable Stratum 2 NTP node. It provides concrete architecture, chrony configuration, hardware-timestamping details, and non-obvious failure modes involving phc2sys, DHCP-provided time sources, firewalls, and unattended kernel upgrades. The hardware-heavy implementation and limited quantitative methodology keep it from exceptional status.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T23:50:16.862621"
+    },
+    {
+      "id": 8110,
+      "source_id": 34,
+      "original_url": "https://www.codedump.info/en/post/20261118-lance-1/",
+      "title": "Understanding Lance (Part 1): File Organization",
+      "summary": "Lance implements MVCC on object storage using immutable manifests, versioned fragments, and auxiliary files for transactions, deletions, indices, and tagging/branching.",
+      "ideas": [
+        "Manifests are complete snapshots enabling O(1) version access without replay.",
+        "Fragments are immutable groups of data files; new data writes create new fragments instead of modifying files.",
+        "Deletion files store row IDs to avoid rewriting full data files, using Arrow IPC or Roaring bitmaps.",
+        "Transaction files record intent (append/delete/etc.) for conflict detection and audit.",
+        "Tags and branches are lightweight JSON pointers allowing stable naming and parallel dataset evolution."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides concrete, detailed information about Lance's file organization for object storage, including manifest structure, version handling, fragment immutability, deletion files, transaction formats, and tag/branch metadata. This is directly relevant to infrastructure and storage engineers and offers non‑obvious design mechanisms not covered in generic Parquet discussions. It lacks performance benchmarks or code samples, but the depth of architectural insight justifies a strong rating.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T23:46:09.044654"
+    },
+    {
+      "id": 8109,
+      "source_id": 34,
+      "original_url": "https://scottstuff.net/posts/2026/11/18/video-encoding-2026-part6/",
+      "title": "Video Encoding for the Web in 2026: Part 6: Hardware vs Software Encoding",
+      "summary": "At 1080p, hardware encoders are usually speed-optimal, while slower software presets can reduce bitrate substantially with little metric-detectable quality difference.",
+      "ideas": [
+        "Across 15 videos and 45,000 encodes, hardware encoders dominate speed while software wins compression.",
+        "Slow x264 needs 11% fewer bits; slow x265 needs 13.7% fewer bits than best hardware.",
+        "SVT-AV1 saves 46% bitrate but takes 64 times longer than effective NVENC.",
+        "At VMAF 95, metric differences among encoders were generally negligible.",
+        "Only current NVENC reliably encoded all 15 AV1 test videos."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "This is a strong, evidence-heavy engineering comparison based on 15 videos, more than 45,000 encodes, Pareto frontiers, and four quality metrics. It provides actionable findings: hardware encoding generally wins on speed, while slower software presets substantially reduce bitrate—especially by 46% for AV1—without obvious quality differences at 1080p. The narrow corpus, limited manual inspection, and methodology deferred to Part 1 constrain generalization, but the measurements remain unusually useful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-19T23:34:40.140523"
+    },
     {
       "id": 8108,
       "source_id": 34,
