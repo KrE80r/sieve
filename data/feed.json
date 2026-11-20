@@ -1,7 +1,393 @@
 {
-  "updated_at": "2026-11-20T18:00:00.356045+00:00",
-  "total_items": 1158,
+  "updated_at": "2026-11-20T19:00:00.183821+00:00",
+  "total_items": 1171,
   "items": [
+    {
+      "id": 8135,
+      "source_id": 34,
+      "original_url": "https://schalkneethling.com/posts/moving-bcd-embed-to-content-addressed-publication/",
+      "title": "Moving bcd-embed to content-addressed publication",
+      "summary": "A stalled socket pool during conditional streaming writes caused upload failures, solved by switching to buffer uploads and a content‑addressed naming scheme.",
+      "ideas": [
+        "Conditional writes with If-None-Match prevent accidental overwrites but cause 412 responses for existing objects.",
+        "Streaming uploads can exhaust a fixed‑size connection pool when the server refuses the request before reading the body.",
+        "Replacing streams with in‑memory buffers avoids socket leakage and restores throughput.",
+        "Naming objects by SHA‑256 of their bytes enables content‑addressed storage, eliminating unchanged‑file uploads."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "The article provides concrete, reproducible evidence of a publishing pipeline failure caused by a stalled connection pool when streaming large objects, and it details a content‑addressed redesign that cuts millions of redundant uploads. It includes logs, metrics, a local S3‑server test, and a reusable SHA‑256 naming scheme, all of which are directly applicable to cloud‑storage and CI/CD engineering. The only limitation is that the root‑cause on the real R2 service is inferred, not fully verified.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:23:13.267459",
+      "image_url": "https://schalkneethling.com/og/posts/moving-bcd-embed-to-content-addressed-publication.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8134,
+      "source_id": 34,
+      "original_url": "https://routerjockey.com/tailcat/",
+      "title": "Tailcat: Netcat Over Tailscale's Data Plane, No Account Required",
+      "summary": "Tailcat delivers netcat-style connectivity over Tailscale's WireGuard data plane with the address itself acting as the credential, and this hands-on test empirically characterizes its performance, NAT traversal behavior, and two-layer access control model.",
+      "ideas": [
+        "Tailcat folds WireGuard keys and DERP region into an address that serves as the credential",
+        "Direct UDP path reached ~760 Mbit/s; rate-limited DERP relay fallback only ~19 Mbit/s",
+        "--allow pins client WireGuard keys; unknown handshakes get no reply, hiding server existence",
+        "Public DNS TXT addresses can't be credentials; such servers need --allow or SSH key auth",
+        "Write-only file dropbox uses server-chosen names, preventing overwrites and file probing",
+        "Host key checking is safely disabled because server identity is pinned by the address's WireGuard key"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "A firsthand, well-instrumented evaluation of a new networking tool with original measurements (0.25s SSH cold start, ~760 Mbit/s direct vs ~19 Mbit/s DERP fallback, hash-verified transfers), controlled adversarial tests (iptables UDP blocking, Docker NAT), and reproduced commands throughout. It explains non-obvious mechanisms — the address-as-credential design, identity pinning by WireGuard key making host-key checks redundant, the write-only dropbox preventing file probing — and honestly documents security and stability limitations from the project's own docs. It's directly relevant to infrastructure, networking, and security practice with no hype or padding; the ceiling is that it's a tool review rather than deep internals or vulnerability analysis.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:21:28.790454",
+      "image_url": "https://routerjockey.com/images/og/tailcat.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8133,
+      "source_id": 34,
+      "original_url": "https://metebalci.com/blog/a-message-relay-for-claude-code-sessions/",
+      "title": "A Message Relay for Claude Code Sessions",
+      "summary": "The article details a self-hosted ntfy-based relay that connects many Claude Code sessions with truthful sender identity, routed inboxes, and browser-based permission handling.",
+      "ideas": [
+        "Derive Claude Code channel identity from ntfy topics, not messages.",
+        "Use numbered per-inbox copies to detect missed messages.",
+        "Reply context helps an agent map browser replies to messages.",
+        "Agents' permission answers target only one open dialog id.",
+        "Self-hosted ntfy quirks require GET, login, and bandwidth hardening.",
+        "Stable IDs allow renames without changing topics or history."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article is a substantive, firsthand systems design write-up with concrete mechanisms for multi-agent session orchestration, including topic-derived sender identity, routed inboxes, permission-prompt handling, files, presence, and archive/search. It also shares specific operational pitfalls around ntfy, including failed-login lockouts, GET-based publishing, bandwidth limits, and attachment sandboxing. Its limitations are that it is a personal, unverified setup description with little code or measurement, so some details may not generalize.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:12:58.240891"
+    },
+    {
+      "id": 8132,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/php-8-5-13-critical-cves-fpm-session/",
+      "title": "PHP 8.5.13 Fixes 7 Critical CVEs Including FPM Request Smuggling and Session RCE",
+      "summary": "FastCGI connection reuse plus unread php://input bodies lets unauthenticated attackers inject forged FastCGI records that override SCRIPT_FILENAME and PHP_ADMIN_VALUE for unauthenticated RCE, fixable only by patching or disabling connection reuse.",
+      "ideas": [
+        "FastCGI connection reuse lets leftover php://input body bytes execute as forged FastCGI requests",
+        "Forged FastCGI records set SCRIPT_FILENAME and PHP_ADMIN_VALUE, chaining auto_prepend_file=php://input RCE",
+        "Mixed session.serialize_handler configs let upload-progress keys become injectable serialized objects",
+        "Confirmed gadget chains in Guzzle and Monolog turned session deserialization flaws into command execution",
+        "In-place session file overwrites without truncation concatenate old bytes into valid serialized objects",
+        "Startup warnings written to file error_log leave a dangling timezone cache FPM workers inherit",
+        "PHP 8.5 fatal_error_backtraces introduce two critical UAFs gated on non-default INI settings",
+        "Workarounds: disable connection reuse, pm.max_requests=1, or session.upload_progress.enabled=0"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is substantive, urgent security analysis with deep mechanism explanations: FastCGI request smuggling via lazy php://input reading enabling SCRIPT_FILENAME and PHP_ADMIN_VALUE override RCE, session serializer-confusion deserialization with confirmed Guzzle/Monolog gadget chains, session-file truncation omission, and multiple use-after-free triggers with per-CVE working conditions verified against specific PHP versions. It goes beyond advisory summaries by documenting frontend default states, mitigation gaps in the patch (handler consistency still unverified), and reproducible check commands like nginx -T filtering and enablereuse greps. Directly serves reader interests in vulnerability analysis, defensive engineering, and infrastructure practice. Main limitations: it synthesizes upstream advisories rather than presenting original research, the Japanese origin and trailing truncation slightly reduce polish, and relevance is strongest for operators of PHP stacks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:08:44.552317"
+    },
+    {
+      "id": 8131,
+      "source_id": 34,
+      "original_url": "https://junaidqadir.com/blog/claude-code-code-mode-fix-your-hooks-first/",
+      "title": "Claude Code Code Mode: fix your hooks first",
+      "summary": "Claude Code Code Mode makes raw compound Bash hooks a routine attack surface and requires hooks to inspect every shell subcommand rather than only command prefixes.",
+      "ideas": [
+        "Code Mode hooks receive raw compound commands, unlike permission rules.",
+        "Naive prefix hooks miss later subcommands after &&.",
+        "Split Bash command hooks on shell separators and ask for substitutions.",
+        "Auto-mode classifier sees code, not runtime values.",
+        "Missing jq or timed-out hooks can fail calls in Code Mode."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article gives a concrete, security-relevant mechanism: Code Mode tool calls still pass through PreToolUse hooks as raw compound Bash strings, so prefix-based allow/block hooks can miss dangerous subcommands after separators. It also includes original hook tests, a safer splitting approach with caveats, the runtime-values limitation in auto mode, and behavioral changes around hook timeouts/failures. Limitations include dependence on documentation rather than live Code Mode testing and an admitted remaining gap for forms like git -C.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:05:38.239958",
+      "image_url": "https://junaidqadir.com/og/claude-code-code-mode-fix-your-hooks-first.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8130,
+      "source_id": 34,
+      "original_url": "https://gautamparab.com/writing/off-by-point-eight-with-a-margin-of-fourteen/",
+      "title": "Off by 0.8, With a Margin of Fourteen",
+      "summary": "Agreement among programs generated by the same AI is weak verification because their errors can be correlated, making independent human checks more valuable.",
+      "ideas": [
+        "Same-model implementations share training blind spots, weakening agreement as independent verification.",
+        "Human validation found a discrepancy the AI-generated implementations had not resolved.",
+        "Known-answer gates detect some shared errors but miss untested common-mode mistakes.",
+        "Claim-status labels and error margins distinguish proved results from robust calculations.",
+        "Publishing claimed Lean proofs would make verification independently inspectable."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "This is unusually substantive technical criticism of AI-assisted research: it combines verification design, correlated-failure evidence from N-version programming, a concrete numerical discrepancy, and explicit robustness margins. It also distinguishes a computer-assisted theorem from a calculation whose principal cross-check consists of implementations generated by the same model. The analysis is strong but not definitive because the author cannot independently referee the physics or verify the claimed absence of a Lean formalization, and a common-mode failure could remain untested.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T04:56:20.326453"
+    },
+    {
+      "id": 8129,
+      "source_id": 34,
+      "original_url": "https://feniix-hq.net/blog/back-to-the-default-reranker/",
+      "title": "Going Back to Hindsight's Default Reranker",
+      "summary": "A pre-registered benchmark shows a long-context reranker beats MiniLM by ~0.09 nDCG@10, but safe cap reduction depends on stripping chat headers first, and Apple Silicon GPU reranking requires a separate native server due to unbounded MPS cache growth.",
+      "ideas": [
+        "Chat-context headers push relevant memories below RRF rank 100, so cap quality cost depends on query construction",
+        "Long-context reranker gains +0.380 nDCG over 512-token MiniLM on headered queries",
+        "Cap 100 passes on clean queries (−0.006) but fails on headered queries (−0.063)",
+        "MPS keeps unbounded per-shape caches and concurrent encodes abort, so Hindsight runs rerankers on CPU",
+        "Serve Apple-GPU reranker as native FP16 process behind TEI-compatible HTTP with CPU fallback",
+        "Synthetic benchmark requests ran 10–14% faster than real replayed requests at p50",
+        "Pre-registered LLM-graded evals: bootstrap intervals, pass bars, two-grader kappa checking"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "This is a rigorous practitioner evaluation of reranker choice, candidate caps, and latency for an agent-memory system, with pre-registered hypotheses, blind LLM grading with two graders and kappa reporting, bootstrap intervals, and replication on a second install and corpus. The non-obvious findings—chat-context headers push relevant memories below RRF rank 100 so cap cost depends on query construction, and Apple Silicon MPS fails on variable-length inputs—come with concrete configurations, latency tables, and a publishable benchmark proxy. It is squarely relevant to LLM systems, retrieval, evals, and inference engineering. Limitations: grading is LLM-only without human validation, timings come from one Mac and one assistant's traffic, and the Hindsight-specific detail narrows transferability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T04:54:12.026035",
+      "image_url": "https://feniix-hq.net/images/back-to-the-default-reranker.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Going Back to Hindsight's Default Reranker"
+    },
+    {
+      "id": 8128,
+      "source_id": 34,
+      "original_url": "https://dev.profullstack.com/~anthony/blog/277-post.html",
+      "title": "Post-mortem: how an attacker got a shell through our Postgres",
+      "summary": "A leaked SSH key and Docker firewall misconfiguration let an attacker execute commands via Postgres, prompting concrete hardening steps.",
+      "ideas": [
+        "Private SSH key in repo enabled remote Postgres login",
+        "Docker publishes ports bypassing ufw; need DOCKER-USER chain rules",
+        "COPY … FROM PROGRAM lets Postgres run host commands",
+        "Log_min_messages=fatal hid critical backend‑kill signal",
+        "Intrusion daemon missed container logs; now reads Docker API"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The post‑mortem gives concrete, reproducible details about how a private SSH key and Docker iptables mis‑config allowed remote Postgres access, including the use of COPY … FROM PROGRAM and firewall chain nuances. It documents specific failures in logging and mitigation steps, offering actionable checks and hardening measures. While the incident type is familiar, the depth of implementation detail and the Docker‑specific firewall fix make it highly valuable for security‑focused sysadmins.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T04:50:34.823231"
+    },
+    {
+      "id": 8127,
+      "source_id": 34,
+      "original_url": "https://asubedi.com.np/blog/why-antigravity-eats-weekly-quota-fast/",
+      "title": "Why Antigravity Eats Weekly Quota Fast - and What I Measured",
+      "summary": "A Gemini implicit prompt cache can expire after roughly 4m45s–5m00s of idleness, but a cheap warm ping can preserve cached context and prevent large re-ingest costs.",
+      "ideas": [
+        "Implicit Gemini cache expires after 4m45s-5m00s idle",
+        "Antigravity keep-alive is gated by Mendel flags and provider enum",
+        "One warm ping can save ~133k effective tokens at 150k context",
+        "Separate CLI processes always miss the implicit cache",
+        "Each keep-alive ping resets implicit cache TTL"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article delivers concrete, non-obvious technical findings about Gemini implicit cache eviction, Antigravity CLI process behavior, and the economics of keep-alive pings, including measured token costs and exact idle-time boundaries. Its firsthand profiling and reverse-engineering give practitioner value, though it is tightly coupled to one commercial tool and its reported measurements are author-derived rather than independently verified.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T04:39:19.799109"
+    },
+    {
+      "id": 8126,
+      "source_id": 34,
+      "original_url": "https://aminrj.com/posts/mcp-agent-identity-not-the-agent/",
+      "title": "MCP Can Name the User, the App or the Workload. Not Yet the Agent.",
+      "summary": "MCP authorization can currently identify users, clients, workloads, or key possession, but cannot yet natively identify an autonomous agent and its delegated task authority.",
+      "ideas": [
+        "Current MCP tokens identify users, clients, or workloads—not autonomous agents acting for absent users.",
+        "DPoP proves key possession but neither names the key holder nor prevents confused-deputy attacks.",
+        "Token exchange must safely bind subject and actor tokens to prevent authority-splicing attacks.",
+        "Separate workload-issuer trust from per-workload authorization to contain multi-tenant compromise.",
+        "Keep agent credentials outside model-readable tools; otherwise DPoP behaves like bearer authentication.",
+        "Audit audience enforcement, key isolation, and tool-call attribution before trusting MCP authorization."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a dense, specification-grounded comparison of MCP authorization, separating user, client, workload, actor, and key identity rather than treating them as interchangeable. It identifies concrete delegation-splicing, confused-deputy, multi-tenant issuer, and credential-exposure risks, then supplies actionable validation and deployment guidance. Its main limitation is that several proposed mechanisms remain drafts or roadmap items, and it offers specification analysis rather than a reproduced exploit or production incident.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T04:38:58.726314",
+      "image_url": "https://aminrj.com/assets/media/ai-security/mcp-agent-identity-not-the-agent.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Four MCP authorization mechanisms and what each access token can name, with no mechanism naming an agent acting for an absent user"
+    },
+    {
+      "id": 8125,
+      "source_id": 4,
+      "original_url": "https://github.com/mandiant/capa",
+      "title": "https://github.com/mandiant/capa",
+      "summary": "Behavior-based, ATT&CK-mapped evidence turns opaque binaries into testable hypotheses while preserving analyst verification and sandbox fallback.",
+      "ideas": [
+        "capa identifies executable behaviors and maps them to ATT&CK tactics and techniques.",
+        "Supported inputs include PE, ELF, .NET modules, shellcode, and sandbox analysis reports.",
+        "Verbose mode exposes matching evidence, rule logic, and binary locations for analyst verification.",
+        "Combining HTTP, encryption, service, and process capabilities can support a backdoor hypothesis.",
+        "Dynamic reports from CAPE, DRAKVUF, and VMRay can reveal capabilities hidden from static analysis.",
+        "Packed or obfuscated binaries can produce misleading static results; unpack them or use sandbox execution.",
+        "The rule format combines YAML structure with YARA-like features and OpenIOC-style metadata.",
+        "Custom rules can extend detection while including namespaces, ATT&CK mappings, scopes, and examples.",
+        "The bundled rules repository provides hundreds of standard capability definitions for reuse.",
+        "Standalone binaries, library integration, and an offline browser interface support varied analysis workflows.",
+        "The Explorer interface analyzes results interactively in-browser or through a standalone offline HTML file.",
+        "Rules encode evidence at static basic-block or dynamic call scopes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "The README presents a genuinely useful malware-analysis workflow: capa maps executable behaviors to ATT&CK, exposes matching evidence with verbose output, supports static and sandbox-derived inputs, and warns that packing can make static results unreliable. It also gives actionable extension paths through standard and custom rules, library integration, and an offline browser interface. GitHub navigation noise and lengthy example outputs reduce efficiency, but the tool, caveats, and examples remain a strong cybersecurity resource.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-21T04:34:59.324489"
+    },
+    {
+      "id": 8124,
+      "source_id": 4,
+      "original_url": "https://securityaffairs.com/203598/hacking/hackers-exploit-cisco-expressway-flaw-cve-2026-76466-to-breach-russian-organization.html",
+      "title": "Hackers Exploit Cisco Expressway Flaw CVE-2026-76466 to Breach Russian Organization",
+      "summary": "Defenders should immediately patch Cisco Expressway and hunt for the documented Erlang and staging artifacts after this Russian breach.",
+      "ideas": [
+        "CVE-2026-76466 is a critical Cisco Expressway vulnerability scored CVSS 9.8.",
+        "Unauthenticated remote attackers can execute root commands on affected devices.",
+        "Weak client certificate checks plus persistent cookies enable exploitation.",
+        "Cisco patched the vulnerability on October 21, not zero-day.",
+        "F6 observed first wild exploitation on Expressway X15.5.3.",
+        "Attackers exploited after a public GitHub proof-of-concept appeared.",
+        "Two internet-facing Expressway nodes were compromised initially.",
+        "Attackers reached two internal cluster nodes for lateral movement.",
+        "Custom Python scripts scanned SMB, SQL Server, WinRM, and GitLab.",
+        "Goal was credential and sensitive information theft.",
+        "Script comments suggest possible AI-assisted malware development.",
+        "Indicators include IP addresses and Erlang log nodeup entries.",
+        "No known threat group has been publicly attributed yet.",
+        "Defenders should patch immediately and hunt for indicators."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 80,
+      "rating_reason": "The article delivers dense, actionable cybersecurity value: it documents a critical CVSS 9.8 flaw, attack path, root cause, patch status, observed exploitation, lateral movement, custom tooling, suspected AI use, indicators, and defender guidance. It aligns strongly with security and infrastructure themes, with little padding or clickbait.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-21T04:34:18.325164",
+      "image_url": "https://securityaffairs.com/wp-content/uploads/2014/07/cisco-building.jpg",
+      "image_width": 680,
+      "image_height": 400,
+      "image_alt": ""
+    },
+    {
+      "id": 8123,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/11/20/dispatches-from-o-reilly-inside-a-software-factory/",
+      "title": "Dispatches from O'Reilly: Inside a software factory",
+      "summary": "Human judgment should concentrate in product framing, planning, and final approval, while agents execute through context-rich, observable, interruptible development loops.",
+      "ideas": [
+        "Software factories automate the development lifecycle while humans retain high-leverage decisions and approval gates.",
+        "Actionable outcomes matter more than fashionable labels such as loop engineering or graph engineering.",
+        "Eight connected stages transform intake signals into planned, implemented, reviewed, released, and monitored software.",
+        "Triage should classify, deduplicate, and route incoming bugs, features, and incidents.",
+        "Brainstorming combines market analysis, user data, technical research, and human product taste.",
+        "Planning should produce implementation-ready tickets, Architecture Decision Records, and a shared glossary.",
+        "Agents should inspect code and project instructions while planning in read-only mode.",
+        "A strong context layer expands possible solutions; weak examples prompt generic predictions.",
+        "LLM wikis turn scattered files into structured, queryable memory for coding agents.",
+        "Humans should define the product problem before agents help design its technical solution.",
+        "During planning, examine feasibility, architecture, interfaces, data flow, cost, and latency.",
+        "Strongest models belong upstream, where strong plans make cheaper execution models economical.",
+        "Weak plans force smaller models to retry until reasoning costs exceed premium-model usage.",
+        "Implementation agents should consume scoped, documentation-backed tickets through a repeatable loop.",
+        "Separate implementation and QA agents reduce self-grading bias in generated code.",
+        "For testing, agents need reproducible application startup and user-equivalent interfaces.",
+        "Layer inexpensive and expensive feedback loops so agents receive progressively stronger quality signals.",
+        "Repeated agent failures usually indicate missing plumbing rather than insufficient model intelligence.",
+        "Review should validate requirements, code quality, AI slop, and delivery-pipeline reliability.",
+        "Failed review or CI checks should automatically become implementation tasks.",
+        "Production alerts and incidents should loop back into intake for prioritization.",
+        "Between implementation and release, humans should inspect and merge final pull requests.",
+        "Reliable factories need granular commands plus optional end-to-end autonomy, interruption, and redirection.",
+        "Feature dependencies make human judgment an intentional bottleneck in many development systems.",
+        "Parallel agents should use isolated worktrees; remote-agent overhead must justify itself.",
+        "Automate the most time-consuming bottlenecks first, adding complexity only as adoption proves value.",
+        "Fundamentally, a coding harness differs from a software factory, which primarily encodes a team's process.",
+        "Small teams can build factories from portable skills and agent definitions instead of proprietary platforms.",
+        "Process fit matters more than tool choice because mismatched workflows prevent adoption.",
+        "Unsupervised agents make observability, tracing, cost tracking, and billing operational requirements.",
+        "Off-the-shelf factories become sensible when agent supervision becomes a full-time operations burden.",
+        "Before production deployment, retain explicit human deployment checks.",
+        "Not every project needs every review layer; process complexity should fit the team."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 82,
+      "rating_reason": "This is a dense, actionable framework for AI-assisted software delivery, covering an eight-stage factory, context-layer design, upstream human planning, split implementation and QA loops, layered validation, interruption controls, and build-versus-buy criteria. Its strongest insight is that human judgment belongs mainly in brainstorming, planning, and final approval, while good context and plans make downstream agent execution cheaper and more reliable. It is strongly relevant to AI, software engineering, and developer productivity, but it relies mostly on synthesis and assertions rather than quantified evidence, includes mild vendor and course promotion, and the supplied text ends mid-sentence.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-11-21T04:33:33.637896",
+      "image_url": "https://cdn.stackoverflow.co/images/jo7n4k8s/production/f67d094b96bec257c2011a99f351211c369ba0b2-12000x6300.jpg?w=1200&h=630&auto=format",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
     {
       "id": 8122,
       "source_id": 4,
