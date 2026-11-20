@@ -1,7 +1,131 @@
 {
-  "updated_at": "2026-11-20T19:00:00.183821+00:00",
-  "total_items": 1171,
+  "updated_at": "2026-11-20T20:00:00.239065+00:00",
+  "total_items": 1176,
   "items": [
+    {
+      "id": 8140,
+      "source_id": 34,
+      "original_url": "https://www.pedroalonso.net/blog/minimax-h3-image-local-4090/",
+      "title": "MiniMax H3 Image on One RTX 4090: 4 MP in 15 Seconds, Perfect Typography, and an Edit Model That Doesn't Chain",
+      "summary": "H3 Image can render print-ready 4 MP text and images in roughly 15 seconds on one RTX 4090, but only with 50+ GB of system RAM and careful model placement; its chained edits accumulate texture and attribute leakage, making re-anchoring or another editor preferable for iterative workflows.",
+      "ideas": [
+        "DiT stays resident while the 32B text encoder streams through pinned RAM",
+        "Native 4 MP generation takes about 15 seconds warm on a 4090",
+        "OCR benchmark scored 34/34 exact strings across twelve text prompts",
+        "Six chained edits caused visible texture drift and leaked color changes",
+        "VAE-only and dequantized-weight ablations ruled out inference as the drift cause"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The article provides firsthand, reproducible technical findings on running a 20B plus 32B INT8 image model on a 24 GB GPU, including a concrete memory-placement strategy, measured wall-clock performance, OCR and prompt-adherence benchmarks, and an edit-stability failure analysis with ablations. Its benchmarks are self-run and use automated VLM judgments, so they are practical but not independently validated. The embedded promotional material is secondary to the substantial engineering detail.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:50:25.065879",
+      "image_url": "https://www.pedroalonso.net/blog/minimax-h3-image-local-4090/hero.webp",
+      "image_width": 1344,
+      "image_height": 768,
+      "image_alt": ""
+    },
+    {
+      "id": 8139,
+      "source_id": 34,
+      "original_url": "https://www.pedroalonso.net/blog/lora-moss-qwen21-4090/",
+      "title": "Training LoRAs for MOSS-Image and Qwen-Image 2.1 on One RTX 4090: 24 Photos, Under an Hour, ~12 GB of VRAM",
+      "summary": "Training LoRAs for MOSS‑Image and Qwen‑Image 2.1 on a single RTX 4090 can be done in under an hour with ~12 GB VRAM, but careful handling of model layer names and prompt design is required.",
+      "ideas": [
+        "INT8 quantization lets both models train under 12 GB VRAM on a 24 GB card.",
+        "Rank‑16 LoRA for MOSS‑Image matches rank‑32 quality on a 24‑photo dataset.",
+        "Training on the Base checkpoint avoids unwanted text rendering seen when training on SFT.",
+        "Qwen‑Image 2.1 LoRA files miss a sixth of tensors unless the fused gate_up layer is split.",
+        "Overfitting appears around 1,250–1,500 steps for 24 images; checkpoint selection should be visual."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The article provides a concrete, reproducible experiment measuring wall‑time, VRAM, and quality trade‑offs when training LoRAs on two recent diffusion models, including hyper‑parameters, batch size, and quantization details. It documents a non‑obvious bug in Qwen‑Image 2.1 LoRA conversion and supplies a working code fix, which is valuable for practitioners. The narrative is focused on engineering outcomes with minimal fluff, though some promotional sections add slight noise.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:50:21.210006",
+      "image_url": "https://www.pedroalonso.net/blog/lora-moss-qwen21-4090/hero.webp",
+      "image_width": 1400,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 8138,
+      "source_id": 34,
+      "original_url": "https://www.lifewaza.com/llm-transcripts/roomsense-iq-revisited-vizualization/",
+      "title": "Transcript: RoomSense IQ Revisited (visualization)",
+      "summary": "It shows how to pull LD2410 radar profiles via WebSocket, stream them as JSON over MQTT, and visualize them live with a lightweight Python/SSE dashboard or Grafana, while quantifying data costs and hardware limits.",
+      "ideas": [
+        "LD2410 provides 1‑D range profiles (9 gates, 0‑6.75 m) via a single 24 GHz Doppler beam.",
+        "A JSON blob per second costs ~106 B; 1 Hz adds ~25 % to existing MQTT traffic per unit.",
+        "radar-view.py captures websocket data and renders PNG waterfall images using Pillow.",
+        "radar-live.py is a stdlib‑only poller + SSE server that streams live waterfalls at ~220 ms CPU.",
+        "Switching to LD2450 hardware yields X/Y coordinates for up to 3 targets without custom fusion."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The transcript provides concrete, reproducible details on extracting, visualizing, and integrating LD2410 radar data, including exact MQTT payload sizes, Python scripts, Home Assistant discovery structs, and Grafana setups. It also quantifies bandwidth and storage impacts, offers hardware upgrade paths, and documents real‑world troubleshooting, giving a technically capable reader actionable knowledge. The only downside is the conversational format and occasional narrative fluff, but the core technical content is dense and valuable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:48:09.307504"
+    },
+    {
+      "id": 8137,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/geom-stacks",
+      "title": "GEOM Stacks Disks Like Pipes",
+      "summary": "GEOM represents every storage transformation as a consumer below and a provider above, allowing arbitrary composable disk stacks with automatic assembly and failure propagation.",
+      "ideas": [
+        "GEOM composes mirrors, partitions, encryption, and test layers freely",
+        "Tasting automatically rebuilds stacks from on-disk metadata",
+        "Spoiling invalidates metadata-derived geoms after external writes",
+        "Direct dispatch can pass I/O in the caller thread",
+        "Linux equivalents need multiple frameworks and far more userland code"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "A substantive, well-sourced walkthrough of FreeBSD GEOM’s composable storage graph, including universal consumer/provider layers, tasting, spoiling, orphanization, direct I/O dispatch, and a quantitative comparison with Linux frameworks. It offers concrete commands, source references, and operational behavior rather than generic storage advice. Its main limitations are a FreeBSD-centric framing and overview-level depth that rarely reaches implementation internals.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:34:30.279910"
+    },
+    {
+      "id": 8136,
+      "source_id": 34,
+      "original_url": "https://tracyatteberry.com/posts/sw_reaction_batching/",
+      "title": "What batching did for Speechwave's reaction limit",
+      "summary": "Server-side batching and direct page subscriptions can sharply reduce Phoenix broadcast overhead and failure rates for high-volume real-time events.",
+      "ideas": [
+        "Server-side batching cuts Phoenix broadcast fanout from quadratic delivery to fixed page updates.",
+        "Rescuing pool timeouts and SQLite busy errors prevents insert failures from crashing LiveView.",
+        "Same-host benchmarks show CPU dropping to roughly one-third with full delivery and zero crashes.",
+        "Memory, extension fanout, and new reaction-limit ceilings remain unresolved.",
+        "Random sampling bounds display load while sacrificing visibility into excess reactions."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "This is a strong, focused engineering case study with original before-and-after measurements, implementation code, and a clear architectural explanation of Phoenix broadcast costs. Server-side batching and per-page subscriptions substantially reduce CPU, eliminate observed crashes, and preserve delivery under tested load. The evidence is limited by single 60-second runs, only 11 timing probes, unresolved memory and extension bottlenecks, and the intentional 250 ms latency increase.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-21T05:31:00.601678"
+    },
     {
       "id": 8135,
       "source_id": 34,
