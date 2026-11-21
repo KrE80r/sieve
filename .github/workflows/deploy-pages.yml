@@ -51,27 +51,31 @@ jobs:
         with:
           path: _site
 
-      # deploy-pages looks the artifact up right after upload finalizes and
-      # intermittently sees 0 artifacts; wait until the API lists it.
-      - name: Wait for artifact to be listed
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          for i in $(seq 1 12); do
-            n=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=github-pages" --jq .total_count)
-            [ "$n" = 1 ] && exit 0
-            sleep 5
-          done
-          echo "github-pages artifact never listed (count=$n)"; exit 1
-
+      # deploy-pages intermittently sees 0 artifacts right after upload (a
+      # retry 1s later fails too; a REST poll passed while it still failed), and
+      # Pages sometimes answers "Deployment failed, try again later". Retry with
+      # growing gaps; the later attempts only run if the earlier ones failed.
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deploy1
         uses: actions/deploy-pages@v5
         continue-on-error: true
 
-      # Pages itself sometimes reports "Deployment failed, try again later".
-      - name: Retry deploy to GitHub Pages
-        if: steps.deployment.outcome == 'failure'
+      - name: Wait before retry 1
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry deploy to GitHub Pages (1)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+
+      - name: Wait before retry 2
+        if: steps.deploy2.outcome == 'failure'
+        run: sleep 90
+
+      - name: Retry deploy to GitHub Pages (2)
+        if: steps.deploy2.outcome == 'failure'
         uses: actions/deploy-pages@v5
 
       - name: Verify public snapshots advanced
