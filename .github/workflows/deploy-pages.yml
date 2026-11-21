@@ -47,36 +47,44 @@ jobs:
         uses: actions/configure-pages@v6
 
       - name: Upload artifact
+        id: upload
         uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
-      # deploy-pages intermittently sees 0 artifacts right after upload (a
-      # retry 1s later fails too; a REST poll passed while it still failed), and
-      # Pages sometimes answers "Deployment failed, try again later". Retry with
-      # growing gaps; the later attempts only run if the earlier ones failed.
+      # Not actions/deploy-pages: it finds the artifact by name through the
+      # Actions artifact service, which lags behind upload finalization and
+      # intermittently returns 0 artifacts. The Pages API takes the artifact id
+      # straight from the upload step, so no lookup is needed. This does what
+      # deploy-pages does otherwise: OIDC token, create deployment, poll status.
       - name: Deploy to GitHub Pages
-        id: deploy1
-        uses: actions/deploy-pages@v5
-        continue-on-error: true
-
-      - name: Wait before retry 1
-        if: steps.deploy1.outcome == 'failure'
-        run: sleep 30
-
-      - name: Retry deploy to GitHub Pages (1)
-        id: deploy2
-        if: steps.deploy1.outcome == 'failure'
-        uses: actions/deploy-pages@v5
-        continue-on-error: true
-
-      - name: Wait before retry 2
-        if: steps.deploy2.outcome == 'failure'
-        run: sleep 90
-
-      - name: Retry deploy to GitHub Pages (2)
-        if: steps.deploy2.outcome == 'failure'
-        uses: actions/deploy-pages@v5
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
+        run: |
+          api=repos/$GITHUB_REPOSITORY/pages/deployments
+          id=
+          # A newer push cancels this run; cancel the Pages deployment with it.
+          trap '[ -n "$id" ] && gh api -X POST "$api/$id/cancel" >/dev/null || true; exit 1' TERM INT
+          for attempt in 1 2 3; do
+            id=
+            token=$(curl -sf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
+            if resp=$(gh api -X POST "$api" -F artifact_id="$ARTIFACT_ID" -f pages_build_version="$GITHUB_SHA" -f oidc_token="$token"); then
+              id=$(jq -r '.id // (.status_url | split("/") | last)' <<<"$resp")
+              for _ in $(seq 1 120); do
+                status=$(gh api "$api/$id" --jq .status || echo unknown)
+                echo "deployment $id: $status"
+                case $status in
+                  succeed) exit 0 ;;
+                  deployment_failed|deployment_content_failed|deployment_cancelled|deployment_lost) break ;;
+                esac
+                sleep 5
+              done
+            fi
+            echo "attempt $attempt failed"
+            sleep 30
+          done
+          exit 1
 
       - name: Verify public snapshots advanced
         run: |
