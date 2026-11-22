@@ -1,7 +1,217 @@
 {
-  "updated_at": "2026-11-22T07:00:00.338243+00:00",
-  "total_items": 1121,
+  "updated_at": "2026-11-22T08:00:00.316697+00:00",
+  "total_items": 1129,
   "items": [
+    {
+      "id": 8172,
+      "source_id": 34,
+      "original_url": "https://vanja.io/agent-crews/",
+      "title": "Don't Let the Safecracker Grade the Job",
+      "summary": "A three-role Claude Code workflow separates read-only exploration, bounded implementation, and independent skeptical review. Reported multi-agent results range from +80.8% to -70.0%, while coordinated validation reduces trace-error amplification from 17.2× to 4.4×.",
+      "ideas": [
+        "Delegate only tasks with clean, independent work boundaries.",
+        "Keep workers read-only when exploration must not modify code.",
+        "Specify objectives, output formats, sources, and boundaries in every brief.",
+        "Separate implementation from skeptical verification to curb self-approval bias.",
+        "Avoid parallel edits when agents share files or one critical path.",
+        "Measure per-role effort because cost scales with each context."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get a reproducible Claude Code crew design: scoped subagent prompts, tool permissions, routing criteria, and evaluation patterns. The comparisons quantify where multi-agent setups win, collide, and multiply errors.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:27:39.084553"
+    },
+    {
+      "id": 8171,
+      "source_id": 34,
+      "original_url": "https://typegraph.dev/blog/the-update-that-needed-analyze/",
+      "title": "The Bulk Update That Was Fast Until Nobody Ran ANALYZE",
+      "summary": "A TypeGraph bulk update collapsed because PostgreSQL's autovacuum never re-analyzed a large shared multi-tenant table, so the planner priced a new graph kind as one row. Running ANALYZE cut the import from 131 to 22 seconds at 10,000 rows.",
+      "ideas": [
+        "Default autovacuum threshold (50 rows + 10%) never re-analyzes large multi-tenant tables after small bulk loads",
+        "Constant predicates on a misestimated kind made the planner rescan the candidate subquery per row",
+        "DISTINCT blocks subquery flattening, so moving graph/kind constants into the key set defeats stale estimates",
+        "Correctness fix verified only against fresh statistics regressed cubically: 259 s for 1,000 rows",
+        "Splitting into two statements can patch re-created rows carrying the same id and version",
+        "Trade: one-candidate calls now scan the whole table, 367 ms versus 1 ms before",
+        "ALTER TABLE setting: scale_factor=0 with threshold=10000 triggers analyze on absolute changes regardless of size"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Reading gives the full plan archaeology: EXPLAIN numbers for the nested-loop collapse, three failed rewrites and why each kept the wrong estimate, the DISTINCT-subquery fix with benchmark tables, and the autovacuum ALTER TABLE settings.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:26:43.711116"
+    },
+    {
+      "id": 8170,
+      "source_id": 34,
+      "original_url": "https://tlindner.macmess.org/how-i-use-claude-code-to-develop-mame-and-coco-software/",
+      "title": "How I Use Claude Code to Develop MAME and CoCo Software",
+      "summary": "Tim Lindner describes a Claude Code workflow for MAME CoCo and Dragon driver work, including skills, memory, headless Lua tests, and upstream guardrails. Key details include a 14,318,176 Hz CoCo master clock and pixel-checked timing validation across seven machines.",
+      "ideas": [
+        "Debug MAME builds use driver subsets and -ferror-limit=1.",
+        "Claude tests changes via headless MAME Lua scripts and pixel snapshots.",
+        "Follow9 disassembles 6809/6309 binaries as a personal Claude skill.",
+        "Memory files record debugging pitfalls so mistakes persist across sessions.",
+        "Guardrails keep untracked CLAUDE.md and the debugger patch local."
+      ],
+      "labels": [
+        "AI",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading it hands over exact build settings, Claude skills, memory practices, headless MAME Lua harnesses, pixel comparisons, and upstream guardrails behind several validated emulator fixes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:25:06.198527"
+    },
+    {
+      "id": 8169,
+      "source_id": 34,
+      "original_url": "https://thinhcorner.com/writing/expo-to-native",
+      "title": "I Rewrote My Expo App in Swift and Kotlin in Four Days",
+      "summary": "An Expo legal-information app was rebuilt as native Swift and Kotlin using coordinated coding agents, yielding 76 unit tests per platform and parity checks across 29 screens. The four-day effort used 1.36B tokens, cut Android memory 57%, and slowed iOS launch by 100 ms.",
+      "ideas": [
+        "Running app becomes executable specification for agent-driven native ports",
+        "Independent platform ports expose parity gaps through 87 UI states",
+        "Streamed chat reader must preserve blank lines for valid JSON",
+        "Shared fixtures and decision logs reduce cross-platform merge drift",
+        "Real-device medians expose Android memory gains and iOS launch regression",
+        "Agent sessions consumed 1.36B tokens, with half from cache reads",
+        "Quotas and simulator contention constrained merge batch size"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "It provides an agent-porting workflow: use the running app as spec, port independently, test screen states, and reconcile shared resources. Device benchmarks, token costs, quotas, and bugs ground the results, though one app limits generalization.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:23:44.109320",
+      "image_url": "https://thinhcorner.com/writing/expo-to-native/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "I Rewrote My Expo App in Swift and Kotlin in Four Days"
+    },
+    {
+      "id": 8168,
+      "source_id": 34,
+      "original_url": "https://montemagno.com/adding-webmcp-to-a-static-hugo-site-on-github-pages/",
+      "title": "Adding WebMCP to a Static Hugo Site on GitHub Pages",
+      "summary": "Hugo’s WebMCP integration exposes six read-only, JSON Schema-defined tools backed by generated metadata and Pagefind, without a server. It lazy-loads data, filters unpublished content, caps responses at 4,000 characters, and connects Edge or Chrome to Copilot CLI through MCP-B’s port-9334 loopback relay.",
+      "ideas": [
+        "Generate WebMCP catalogs through Hugo custom output formats and shared eligibility partials.",
+        "Lazy-load catalogs and Pagefind only when browser tools are invoked.",
+        "Validate JSON Schema inputs and expose read-only, paginated tool contracts.",
+        "Exclude drafts, future posts, redirects, and noindex pages from public catalogs.",
+        "Bridge Copilot CLI to Edge WebMCP through MCP-B’s port-9334 loopback relay.",
+        "Treat WebMCP and noindex as public exposure, not access controls.",
+        "Test publication gates and tool contracts with 83 offline fixtures."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get a concrete Hugo-to-browser architecture, reusable JavaScript tool schemas, publication-filtering rules, lazy-loading safeguards, pagination semantics, and tested Edge/Copilot relay commands. The 83 passing gate tests and explicit 4,000-character cap make the implementation unusually actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:56:26.326462",
+      "image_url": "https://montemagno.com/content/images/2026/11/webmcp-static-site-cover.jpg",
+      "image_width": 1774,
+      "image_height": 887,
+      "image_alt": ""
+    },
+    {
+      "id": 8167,
+      "source_id": 34,
+      "original_url": "https://master--ytulsiani.netlify.app/blog/furrytails/",
+      "title": "Teaching Home Assistant to Talk to My Litter Box",
+      "summary": "The author reverse engineered an Android litter-box app, reproduced its signed cloud API, decoded its MQTT command channel, and built a local Home Assistant bridge. A cleaning command ultimately reduces to protobuf bytes 08 01 10 01 inside CRC-8-protected RISP and several protobuf/IM wrappers.",
+      "ideas": [
+        "Reproduce X-UBT-Sign from timestamp, app key, nonce, and device ID",
+        "Derive regional API keys through the app's bootstrap flow",
+        "Decode MQTT credentials and topics from an IM login response",
+        "Reconstruct a four-byte cleaning command across protobuf and RISP wrappers",
+        "Use Frida hooks and raw MQTT capture to inspect serialization layers",
+        "Expose device telemetry and controls through a Home Assistant bridge"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "You get a reproducible reverse-engineering chain: recover an Android app’s request-signing scheme, derive MQTT credentials, reconstruct nested Protocol Buffers/RISP frames, and drive the device from Home Assistant.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:49:13.159867",
+      "image_url": "https://master--ytulsiani.netlify.app/blog/furrytails/maisie-header.png",
+      "image_width": 1672,
+      "image_height": 941,
+      "image_alt": ""
+    },
+    {
+      "id": 8166,
+      "source_id": 34,
+      "original_url": "https://loomcycle.dev/blog/decision-models-a-new-primitive-for-agent-runtimes.html",
+      "title": "Decision models: a new primitive for agent runtimes",
+      "summary": "loomcycle’s essay defines a typed decision-model primitive that returns probabilities for small fixed-option questions, then shows it replacing reranking, routing, injection checks, KB routing, and classification. One 9B model matched a 27B chat model at 93.3% top-5 accuracy in 1.45 seconds on ConditionalQA.",
+      "ideas": [
+        "Typed decision model returns probabilities for 2-26 choices.",
+        "9B vs 27B: equal 93.3% top-five reranking recall.",
+        "Median decision reranking latency was 1.45 seconds.",
+        "Injection judge borderline 0.3-0.7 escalates to chat.",
+        "Uncalibrated: answers above 0.9 were right 42% once.",
+        "nimble fits 8194 tokens; clef fits 16384.",
+        "Ollama 0.35+ is the sole serving backend."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Beyond the pitch, the full piece gives exact request and response shapes, measured ConditionalQA and injection-judge results, threshold bands, failure modes, and operational constraints like Ollama-only serving.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:42:53.277028",
+      "image_url": "https://loomcycle.dev/og-image.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8165,
+      "source_id": 34,
+      "original_url": "https://kaashif.co.uk/2026/11/20/unavoidable-legal-pressures-reduce-ai-interpretability/",
+      "title": "Unavoidable legal pressures reduce AI interpretability",
+      "summary": "Kaashif argues legal scrutiny after the Hugging Face incident can push firms toward less observable AI, since published reasoning traces become court evidence. A cited OpenAI agent trace quotes: \"This is arguably unauthorized.\"",
+      "ideas": [
+        "Legal liability can incentivize less monitorable AI.",
+        "AI providers face pressure to avoid readable reasoning traces.",
+        "Regulators' retention rules differ for outsourced and local models.",
+        "Human scheming often leaves no provable documentation."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "It lays out the incentive chain from monitorable traces to legal liability, citing regulatory retention rules and enforcement examples.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:34:35.118975"
+    },
     {
       "id": 8164,
       "source_id": 28,
