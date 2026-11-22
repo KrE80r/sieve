@@ -1,316 +1,137 @@
 {
   "schema_version": 2,
-  "batch_id": "f77a5a9bd6f4025bd4d45980fdc029cf",
-  "published_at": "2026-11-21T07:32:00.000599+00:00",
-  "scheduled_for": "2026-11-21T07:30:00+00:00",
-  "next_update_at": "2026-11-21T19:30:00+00:00",
+  "batch_id": "48eee58629b6da6de8718824fed2dc00",
+  "published_at": "2026-11-22T07:32:00.001492+00:00",
+  "scheduled_for": "2026-11-22T07:30:00+00:00",
+  "next_update_at": "2026-11-22T19:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-11-20T07:30:00+00:00",
-    "ends_at": "2026-11-21T07:30:00+00:00"
+    "starts_at": "2026-11-21T07:30:00+00:00",
+    "ends_at": "2026-11-22T07:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 22,
+  "total_developments": 14,
   "developments": [
     {
-      "id": "2e4bb69394efcf69f8c9f82d7ca4b4fb",
-      "occurred_at": "2026-11-20T11:39:30+00:00",
+      "id": "9f0d7196e0f47448c99beaa79bc24f72",
+      "occurred_at": "2026-11-21T07:50:55+00:00",
       "updated_at": null,
-      "expires_at": "2026-11-21T11:39:30+00:00",
-      "title": "Pi v1.6.0 released with GPT-6.2 default models and API changes",
+      "expires_at": "2026-11-22T07:50:55+00:00",
+      "title": "ODS demos run local Qwen 3.8 Next Flash on RTX Spark at its official launch",
       "detail": [
-        "Pi version 1.6.0 has been launched, making GPT‑6.2 Sol the default model for the openai, azure, and openai‑codex providers, while also offering GPT‑6.2 Astra across all three. The update introduces a breaking change: the extension render() function now returns a readonly string[] and Container returns its cached array, requiring callers to copy before modifying. Additionally, the find tool’s path patterns are now relative to the search directory, mirroring grep’s glob syntax (e.g., **/src/*.ts)."
+        "Ahmad reports that the official RTX Spark launch event in San Francisco drew lines of attendees waiting to try local AI demos on the device. The demos were built with ODS and ran a local Qwen 3.8 Next Flash model rather than cloud inference.",
+        "He adds that local AI is becoming capable on hardware that does not require a basement setup or 240V breakers."
       ],
-      "why_it_matters": "The default model shift immediately alters the behavior of applications using Pi’s providers, and the API breaking changes require developers to adjust code to avoid runtime errors.",
+      "why_it_matters": "A complete local model stack — ODS software serving Qwen 3.8 Next Flash — ran directly on the RTX Spark at its launch, letting attendees try capable local inference on hardware without a dedicated high-power setup.",
       "sources": [
         {
-          "author_name": "Pi Changelog",
-          "author_username": "PiChangelog",
-          "url": "https://x.com/PiChangelog/status/2123743030129709196",
+          "author_name": "Ahmad",
+          "author_username": "TheAhmadOsman",
+          "url": "https://x.com/TheAhmadOsman/status/2112254499226329338",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HVA8KJ4bMAAG1iG.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HVA8KJ4bMAAG1iG.jpg:small",
+              "width": 1448,
+              "height": 1086
+            }
+          ]
+        },
+        {
+          "author_name": "Ahmad",
+          "author_username": "TheAhmadOsman",
+          "url": "https://x.com/TheAhmadOsman/status/2124047892939694334",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "5a64703bf991000405544f8c18f43c2a",
+      "occurred_at": "2026-11-21T11:26:59+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-22T11:26:59+00:00",
+      "title": "maya-ik2 runs Inkling 2 Mini at 128 tok/s with 344K context on one RTX 3090",
+      "detail": [
+        "Alexey Fateev reports that his maya-ik2 engine runs Inkling 2 Mini on a single RTX 3090 at 128.7 tok/s decode, or 129.5 tok/s over HTTP, with a 344K context. The GitHub listing corroborates the project's headline 128 tok/s and 344K-context results; his measurements show 124.2 tok/s at 4K context and 62.3 tok/s at 340K, versus 57.0 tok/s from llama.cpp for short prompts. The engine keeps all 3,072 experts resident in VRAM, consolidates 7,350 kernel launches into 781 within one CUDA graph, and uses custom FP8 KV-attention and NVFP4 expert kernels. On the RTX 3090, the expert kernel unpacks 4-bit weights into FP16 registers for Tensor Core processing; Fateev also moved BF16 vision processing to CPU, added a thinking-off toggle, and reports GSM8K scores of 74/96 versus 73/96 for the scalar path, with a 5.7e-5 KL difference."
+      ],
+      "why_it_matters": "Users can now use the published configuration as a baseline when choosing between llama.cpp and a CUDA-graph, expert-resident engine for long-context local inference.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2124102269138346409",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2124100886997700608/img/uDD1NdJPO_orOyKL.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2124100886997700608/img/uDD1NdJPO_orOyKL.jpg:small",
+              "width": 1080,
+              "height": 1080
+            }
+          ]
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://github.com/alesha-pro/maya-inkling-mini",
+          "domain": "github.com",
+          "title": "GitHub - alesha-pro/maya-inkling-mini: Inkling 2 Mini on one RTX 3090: 128 tok/s, 344K context, images and tools. A Project Maya engine (maya-ik2) with every expert in VRAM. · GitHub",
+          "preview_image_url": "https://opengraph.githubassets.com/d43b8c9ec03222ae36cb85f1c2eb3dc06f25f2eb9ea22364e2764e14dade20d2/alesha-pro/maya-inkling-mini"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "a38fe3870977a692585912ac20251d80",
+      "occurred_at": "2026-11-21T13:09:51+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-22T13:09:51+00:00",
+      "title": "Alexey Fateev open-sources a playbook for optimizing 400B+ MoE models on 4x RTX 3090s",
+      "detail": [
+        "Alexey Fateev released a playbook based on optimizing 400B+ MoE models on four RTX 3090s, with a workflow and skill usable in Claude Code or Codex. It catalogs 102 tested hypotheses across six models and 16 chapters, including 40 failures and exact hardware conditions.",
+        "Reported results include a 3.6x speedup for cold CPU experts after disabling PDEP and a DeepSeek V4.1 Flash 32K prefill increase from 430 to 2,199 tokens/sec after rewriting DMA and chunked loading. Reported negative or mixed results include prompt-selected experts covering only 48% of answer experts on Hy4 Flash, a static hot-expert profile reaching 64-69% versus 61% random placement on MiniMax-M3.1-Flash in simulation, and a Cyrillic draft vocabulary raising Qwen3.8-Flash-Next acceptance from 32% to 54%.",
+        "Each entry includes hardware tags, raw measurements, failure details, and retesting guidance. The repository is intended for reuse by users and coding agents."
+      ],
+      "why_it_matters": "Engineers running large MoE models on consumer GPUs can use hardware-tagged pass and fail results to decide which optimizations are worth retesting on their setup.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2124128158072922512",
           "role": "source",
           "media": [
             {
               "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXkNB9oWUAEbRQV.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXkNB9oWUAEbRQV.jpg:small",
-              "width": 1600,
-              "height": 900
+              "url": "https://pbs.twimg.com/media/HXpqOxYWYAEubex.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HXpqOxYWYAEubex.jpg:small",
+              "width": 1803,
+              "height": 1603
             }
           ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "2230281f6dfbdef9a431bbd55a372579",
-      "occurred_at": "2026-11-20T11:58:57+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T11:58:57+00:00",
-      "title": "T3 Code’s latest stable release targets significant Antigravity/Gemini support improvements",
-      "detail": [
-        "Theo - t3.gg says the latest stable release of T3 Code should bring a significant improvement in Antigravity/Gemini support.",
-        "Josh says T3 Code usually moves from finding an annoying bug to finding the tweet shipping the fix within 24 to 48 hours, and says first-party harnesses are not in the same league without naming them."
-      ],
-      "why_it_matters": "T3 Code users working with Antigravity or Gemini may get notably better support from the current stable release.",
-      "sources": [
-        {
-          "author_name": "Theo - t3.gg",
-          "author_username": "theo",
-          "url": "https://x.com/theo/status/2123720628100628521",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Josh",
-          "author_username": "jjpcodes",
-          "url": "https://x.com/jjpcodes/status/2123747925310292023",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "102b4bc2044c56e03b7da3d6e2dd39c2",
-      "occurred_at": "2026-11-20T12:07:14+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T12:07:14+00:00",
-      "title": "OpenAI GPT-6.2 Astra and Sol top‑level instructions caching bug",
-      "detail": [
-        "A bug has been identified in the OpenAI Responses API for GPT‑6.2 Astra and Sol where any content placed in the top‑level instructions field is not cached, despite diagnostics indicating a cache hit. The bug leaves the cached token count at zero for each turn, causing the system to bill full‑price tokens.",
-        "The issue reduces actual cache‑hit rates from 97.4 % on GPT‑6.1 Sol to 46.4 % on GPT‑6.2 Sol, resulting in an extra 64 K–72 K system tokens billed per step. A temporary workaround is to move the system prompt into a leading developer message within the input, which forces proper caching."
-      ],
-      "why_it_matters": "The bug inflates token costs dramatically for developers, potentially adding tens of thousands of full‑price system tokens per request and impacting budgeting for AI‑powered applications.",
-      "sources": [
-        {
-          "author_name": "bebu",
-          "author_username": "bebuu_ai",
-          "url": "https://x.com/bebuu_ai/status/2123291268814094409",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Mario Zechner",
-          "author_username": "badlogicgames",
-          "url": "https://x.com/badlogicgames/status/2123750011355676805",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "1560736d6d13f429ce5b8b8122097632",
-      "occurred_at": "2026-11-20T14:15:23+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T14:15:23+00:00",
-      "title": "HD Moore reports AI service canary study exposing compromised providers",
-      "detail": [
-        "HD Moore seeded two million canary prompts into popular AI services and tracked their theft and abuse. The investigation identified three compromised providers, reseller networks that steal prompts via built‑in logging, and providers that ignore zero‑day‑response (ZDR) and privacy flags.",
-        "The findings highlight concrete security gaps in the AI service supply chain, showing that current enterprise and privacy assurances may lack enforceable control over data handling and prompt leakage."
-      ],
-      "why_it_matters": "The study reveals immediate vulnerabilities in AI services, prompting providers to strengthen logging, privacy flag enforcement, and supply‑chain oversight.",
-      "sources": [
-        {
-          "author_name": "HD Moore",
-          "author_username": "hdmoore",
-          "url": "https://x.com/hdmoore/status/2123451306685661416",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXgDtd6XkAAzrku.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXgDtd6XkAAzrku.jpg:small",
-              "width": 1440,
-              "height": 987
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXgDtdSXsAIDZtt.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXgDtdSXsAIDZtt.jpg:small",
-              "width": 1440,
-              "height": 901
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXgDteQXYAA82aM.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXgDteQXYAA82aM.jpg:small",
-              "width": 1440,
-              "height": 1340
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXgDtfRXcAAP4wr.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXgDtfRXcAAP4wr.jpg:small",
-              "width": 1440,
-              "height": 1857
-            }
-          ]
-        },
-        {
-          "author_name": "dax",
-          "author_username": "thdxr",
-          "url": "https://x.com/thdxr/status/2123782259916349514",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai",
-        "web_security"
-      ]
-    },
-    {
-      "id": "636effdf0e87cb8b51f85ea8f26b6c24",
-      "occurred_at": "2026-11-20T15:05:38+00:00",
-      "updated_at": "2026-11-21T02:15:00.000872+00:00",
-      "expires_at": "2026-11-21T15:05:38+00:00",
-      "title": "Riemann Hypothesis reportedly solved with Claude",
-      "detail": [
-        "Ethan Mollick relayed a report that the Riemann Hypothesis may have been solved with help from Claude. The supplied material contains no proof text, derivation, or independent review, so the claim remains unverified."
-      ],
-      "why_it_matters": "The immediate consequence is evidentiary: Claude's reported contribution is not established by the supplied evidence and cannot yet be treated as a proven solution to the problem.",
-      "sources": [
-        {
-          "author_name": "Harry Stoltz",
-          "author_username": "HarryStoltz1",
-          "url": "https://x.com/HarryStoltz1/status/2123775783189827655",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXkqx-iWIAA-1Ej.png",
-              "preview_url": "https://pbs.twimg.com/media/HXkqx-iWIAA-1Ej.png:small",
-              "width": 1226,
-              "height": 364
-            }
-          ]
-        },
-        {
-          "author_name": "Scott Armstrong",
-          "author_username": "scottnarmstrong",
-          "url": "https://x.com/scottnarmstrong/status/2123773647919661288",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXkoiilWgAAAeN1.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXkoiilWgAAAeN1.jpg:small",
-              "width": 2048,
-              "height": 987
-            }
-          ]
-        },
-        {
-          "author_name": "Ethan Mollick",
-          "author_username": "emollick",
-          "url": "https://x.com/emollick/status/2123800664845500602",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXlBZhoW0AE03EW.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXlBZhoW0AE03EW.jpg:small",
-              "width": 1936,
-              "height": 781
-            }
-          ]
-        },
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2123851806501405138",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXluCIlWgAANqq4.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXluCIlWgAANqq4.jpg:small",
-              "width": 2048,
-              "height": 987
-            }
-          ]
-        },
-        {
-          "author_name": "dan",
-          "author_username": "irl_danB",
-          "url": "https://x.com/irl_danB/status/2123794905998758146",
-          "role": "commentary",
-          "media": []
-        },
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2123797627175342375",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXk-e97WIAAfRDj.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXk-e97WIAAfRDj.jpg:small",
-              "width": 2048,
-              "height": 987
-            }
-          ]
-        },
-        {
-          "author_name": "Mckay Wrigley",
-          "author_username": "mckaywrigley",
-          "url": "https://x.com/mckaywrigley/status/2123961058532757790",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "14ad20c1d5770f161cff3967ee16d3c0",
-      "occurred_at": "2026-11-20T17:03:58+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T17:03:58+00:00",
-      "title": "pstack v0.15.46 adds Gemini 4 Neon reviewer and skill pruning",
-      "detail": [
-        "The pstack plugin for Grok Bot and Cursor was updated to version 0.15.46. The release shortens skill definitions, removes unused components, and introduces Gemini 4 Neon as a new panel reviewer.",
-        "The update is automatically applied for Grok Bot and Cursor users, and model routing can be reconfigured by rerunning the /setup-pstack command."
-      ],
-      "why_it_matters": "Automatic delivery of the new version ensures that all Grok Bot and Cursor users immediately benefit from the streamlined skills and expanded model options without manual upgrades.",
-      "sources": [
-        {
-          "author_name": "lauren",
-          "author_username": "poteto",
-          "url": "https://x.com/poteto/status/2123824683862855898",
-          "role": "source",
-          "media": []
         }
       ],
       "evidence_state": "reported",
       "external_links": [
         {
-          "url": "https://x.ai/bot/plugin/9717366",
-          "domain": "x.ai",
-          "title": "pstack for Grok Bot",
-          "preview_image_url": "https://x.ai/bot/plugin/9717366/opengraph-image-1vmpwd?938a80f4d99b085f"
+          "url": "https://github.com/alesha-pro/inference-optimization-playbook",
+          "domain": "github.com",
+          "title": "GitHub - alesha-pro/inference-optimization-playbook: 97 tested hypotheses on making huge MoE LLMs fast on consumer GPUs (4x RTX 3090 + experts in RAM): what worked, what failed and why. A playbook for people and a ready skill for coding agents. · GitHub",
+          "preview_image_url": "https://opengraph.githubassets.com/81489a599956428077089bd93737cd18123777473ea61b41d7b789699222a7f4/alesha-pro/inference-optimization-playbook"
         }
       ],
       "interest_slugs": [
@@ -318,29 +139,70 @@
       ]
     },
     {
-      "id": "9ce8eb11acffe857c96ba0380ec6f452",
-      "occurred_at": "2026-11-20T17:34:56+00:00",
+      "id": "fbb302cbc2e56636e7303243b6d20ef1",
+      "occurred_at": "2026-11-21T13:31:00+00:00",
       "updated_at": null,
-      "expires_at": "2026-11-21T17:34:56+00:00",
-      "title": "LM Harnesses are Compositional Generalizers paper released",
+      "expires_at": "2026-11-22T13:31:00+00:00",
+      "title": "Maziyar Panahi trains a robot arm to rack specimen vials",
       "detail": [
-        "Alex Zhang announced a new paper titled “LM Harnesses are Compositional Generalizers,” which investigates how harness abstractions let large language models compose existing capabilities to generalize over task length, strategies, and recursion.",
-        "The work includes logs, code, and data, showing that harnesses can keep individual LLM calls in-distribution, enabling more data‑efficient training on long or synthetic tasks.",
-        "The authors argue that harnesses remain valuable even as models become stronger, countering the view that they will become obsolete."
+        "Maziyar Panahi reports a robot arm learning to rack specimen vials across 4,096 simulated benches, reaching 1,010 successful racks out of 1,024 attempts after about 27 minutes on one GPU. Progress was zero at iteration 200, then 24 at 250 and 843 at 300."
       ],
-      "why_it_matters": "The paper provides concrete methods for improving LLM training efficiency and generalization, offering practitioners a pathway to build more capable systems without proportionally larger data or compute costs.",
+      "why_it_matters": "Lab automation engineers can use this run as a reference point for reinforcement-learning pick-and-place training on a single GPU.",
       "sources": [
         {
-          "author_name": "alex zhang",
-          "author_username": "a1zhang",
-          "url": "https://x.com/a1zhang/status/2123774098241147225",
+          "author_name": "Maziyar PANAHI",
+          "author_username": "MaziyarPanahi",
+          "url": "https://x.com/MaziyarPanahi/status/2124133477922824193",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2124095110690258944/img/-drJwustsgZgh9uj.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2124095110690258944/img/-drJwustsgZgh9uj.jpg:small",
+              "width": 1080,
+              "height": 1350
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "d17f28b6b0b3711466a68ed8a1839456",
+      "occurred_at": "2026-11-21T14:01:10+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-22T14:01:10+00:00",
+      "title": "M3 Ultra Mac Studio cluster runs GLM‑5.3 8‑bit model",
+      "detail": [
+        "A user reported optimizing GLM‑5.3 8‑bit inference on Apple M3 Ultra Mac Studio hardware.",
+        "The same poster notes they are operating four such machines together as a cluster.",
+        "This shows that high‑throughput local inference of the GLM‑5.3 model is feasible on Apple silicon."
+      ],
+      "why_it_matters": "You can now run GLM‑5.3 locally on affordable Mac hardware, enabling private inference without cloud services.",
+      "sources": [
+        {
+          "author_name": "خالد بن الوليد Khaled Alwaleed",
+          "author_username": "KhaledAlwaleed",
+          "url": "https://x.com/KhaledAlwaleed/status/2124122890576724242",
           "role": "quoted_source",
-          "media": []
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2124122760888602624/img/zbVmrRP0XRzlk9tI.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2124122760888602624/img/zbVmrRP0XRzlk9tI.jpg:small",
+              "width": 1152,
+              "height": 2048
+            }
+          ]
         },
         {
-          "author_name": "Drew Breunig",
-          "author_username": "dbreunig",
-          "url": "https://x.com/dbreunig/status/2123832478490329271",
+          "author_name": "Alex Cheema",
+          "author_username": "alexocheema",
+          "url": "https://x.com/alexocheema/status/2124141071777370396",
           "role": "commentary",
           "media": []
         }
@@ -352,16 +214,234 @@
       ]
     },
     {
-      "id": "4623f930783086c49945e69fcc7eb8e4",
-      "occurred_at": "2026-11-20T19:29:07+00:00",
+      "id": "760bbaa21164df02ba13f169f0424938",
+      "occurred_at": "2026-11-21T17:11:06+00:00",
       "updated_at": null,
-      "expires_at": "2026-11-21T19:29:07+00:00",
-      "title": "ChatGPT adds Space for Plus users and rebuilds threads with a redesigned, faster app",
+      "expires_at": "2026-11-22T17:11:06+00:00",
+      "title": "Lean and Mathlib certify Levent Alpöge's Lean proof of the Riemann Hypothesis",
       "detail": [
-        "Andrew Ambrosino announced new ChatGPT app changes, including ChatGPT Space for Plus users, a simpler visual design across the app, and huge performance improvements. The update also completely rebuilds threads, redesigns the Space home, makes pages and slides faster, enables page editing on mobile, and makes Codex Remote more reliable.",
-        "Tibo echoed the announcement and urged users to upgrade their desktop apps for a faster, simpler, more pleasant experience."
+        "Levent Alpöge released a proof of the Riemann Hypothesis as a Lean library of 17 million lines on November 20. The Lean and Mathlib communities subsequently verified it and issued a joint statement certifying it as correct.",
+        "The proof comprises 175,000 modules and compiled with three standard axioms; independent checkers cleared a 61.6 GB proof export. The 17-million-line library is described as Claude-written Lean.",
+        "Lean FRO's statement says it looks forward to mathematical community activity that will explain the new ideas in the proof."
       ],
-      "why_it_matters": "Plus users gain access to ChatGPT Space, while the broader redesign and performance work change how threads, pages, slides, and Codex Remote behave in the app.",
+      "why_it_matters": "Researchers can now build on or audit a machine-checked proof rather than an unchecked 940-page human draft.",
+      "sources": [
+        {
+          "author_name": "Lean",
+          "author_username": "leanprover",
+          "url": "https://x.com/leanprover/status/2124159121645801562",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXqGwBnaUAA8Pvd.png",
+              "preview_url": "https://pbs.twimg.com/media/HXqGwBnaUAA8Pvd.png:small",
+              "width": 2048,
+              "height": 1152
+            }
+          ]
+        },
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2124188867263664287",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXqiVsrXkAAHdI5.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HXqiVsrXkAAHdI5.jpg:small",
+              "width": 1679,
+              "height": 1357
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "ee9e8af3ee09ad42021b70409790a248",
+      "occurred_at": "2026-11-21T19:06:22+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-22T19:06:22+00:00",
+      "title": "Gemini 4 Hydrogen's 'xhigh' thinking effort draws roughly 6x the tokens and cost of 'high' in Simon Willison's pelican comparison",
+      "detail": [
+        "Simon Willison reports a very significant gap between Gemini 4 Hydrogen running at 'high' versus 'xhigh' thinking effort, sharing side-by-side pelican outputs for the two settings. The 'high' run used 5,311 output tokens and cost 3.99 cents, while the identical model at 'xhigh' used 31,477 output tokens and cost 23.61 cents. That is roughly a sixfold increase in both output tokens and dollar cost driven only by the effort setting."
+      ],
+      "why_it_matters": "For the exact same model, moving the thinking-effort dial from 'high' to 'xhigh' multiplied output token count and cost by about six times. Thinking-effort selection is therefore a direct, immediate cost lever when running Gemini 4 Hydrogen.",
+      "sources": [
+        {
+          "author_name": "Simon Willison",
+          "author_username": "simonw",
+          "url": "https://x.com/simonw/status/2124217876777464269",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXq82B8b0AAIxPm.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HXq82B8b0AAIxPm.jpg:small",
+              "width": 1036,
+              "height": 882
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXq8Q5Ha8AAVH6_.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HXq8Q5Ha8AAVH6_.jpg:small",
+              "width": 1036,
+              "height": 828
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "55758afe0793150b86157518c31f9f44",
+      "occurred_at": "2026-11-21T22:16:42+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-22T22:16:42+00:00",
+      "title": "DeepSeek Flash and GLM 5.3 priced 60% lower than Fireworks and Baseten",
+      "detail": [
+        "The provider announced that DeepSeek Flash and GLM 5.3 are being sold at a price 60% lower than competing offerings from Fireworks and Baseten.",
+        "A quoted OpenCode post confirms that both models are currently listed at a 60% discount.",
+        "The announcement also claims the service now handles more inference volume than the competitors, though that aspect lacks independent verification."
+      ],
+      "why_it_matters": "The steep price reduction makes high‑performance large language models more accessible to cost‑sensitive users, potentially shifting demand away from existing commercial providers.",
+      "sources": [
+        {
+          "author_name": "OpenCode",
+          "author_username": "opencode",
+          "url": "https://x.com/opencode/status/2124265178267005017",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "dax",
+          "author_username": "thdxr",
+          "url": "https://x.com/thdxr/status/2124265777217802707",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "00025d6a9a4625cb7ccdcf43ab1c7374",
+      "occurred_at": "2026-11-21T23:32:40+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-22T23:32:40+00:00",
+      "title": "Tesla FSD v15 adds Reality View, a live visualization of FSD's planned driving actions",
+      "detail": [
+        "A quoted post says Tesla FSD v15 adds \"Reality View,\" described as a live visualization of the drive.",
+        "According to that post, the feature lets users see and control what FSD is planning to do."
+      ],
+      "why_it_matters": "The feature gives drivers visibility into FSD's planned actions and an ability to control those plans during a drive.",
+      "sources": [
+        {
+          "author_name": "Smoke-away",
+          "author_username": "SmokeAwayyy",
+          "url": "https://x.com/SmokeAwayyy/status/2124226544659038335",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXrEnUzbIAAc7gm.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HXrEnUzbIAAc7gm.jpg:small",
+              "width": 1519,
+              "height": 857
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXrEnXCaYAAbxnr.png",
+              "preview_url": "https://pbs.twimg.com/media/HXrEnXCaYAAbxnr.png:small",
+              "width": 733,
+              "height": 459
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXrEnU4akAAbc_P.png",
+              "preview_url": "https://pbs.twimg.com/media/HXrEnU4akAAbc_P.png:small",
+              "width": 735,
+              "height": 451
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXrEnU3a4AAAC4z.png",
+              "preview_url": "https://pbs.twimg.com/media/HXrEnU3a4AAAC4z.png:small",
+              "width": 735,
+              "height": 457
+            }
+          ]
+        },
+        {
+          "author_name": "tobi lutke",
+          "author_username": "tobi",
+          "url": "https://x.com/tobi/status/2124284894830354483",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "8e9fd84373ca206cb5ae32be52527da1",
+      "occurred_at": "2026-11-22T01:03:00+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-23T01:03:00+00:00",
+      "title": "Hex dictation app launches on iOS App Store",
+      "detail": [
+        "Hex, a fully local fast dictation tool, has been released on the iOS App Store.",
+        "The app offers 100% free usage and performs speech‑to‑text processing entirely on‑device, eliminating the need for cloud services."
+      ],
+      "why_it_matters": "Users can now perform offline, privacy‑preserving dictation on iOS devices without paying for a subscription.",
+      "sources": [
+        {
+          "author_name": "Anomaly",
+          "author_username": "anomalyco",
+          "url": "https://x.com/anomalyco/status/2124306356073320584",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "dax",
+          "author_username": "thdxr",
+          "url": "https://x.com/thdxr/status/2124307624480903433",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "ae33c857ce8e412b558c6ab7f6e6c8a5",
+      "occurred_at": "2026-11-22T02:03:58+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-23T02:03:58+00:00",
+      "title": "ChatGPT/Codex Desktop App Update Adds Space for Plus and Performance Boosts",
+      "detail": [
+        "The latest desktop app release introduces ChatGPT Space for Plus, a redesigned visual layout, and rebuilt thread handling for faster performance. Additional enhancements include a refreshed Space home, quicker page and slide rendering, mobile page editing, and a more reliable Codex Remote connection."
+      ],
+      "why_it_matters": "You can now edit pages on mobile, enabling on‑the‑go content creation without relying on cloud services.",
       "sources": [
         {
           "author_name": "Andrew Ambrosino",
@@ -381,7 +461,7 @@
         {
           "author_name": "Tibo",
           "author_username": "thsottiaux",
-          "url": "https://x.com/thsottiaux/status/2123861214644347122",
+          "url": "https://x.com/thsottiaux/status/2124322968499282388",
           "role": "commentary",
           "media": []
         }
@@ -393,577 +473,120 @@
       ]
     },
     {
-      "id": "fbc8e3c6504f48db4d47c118ba2a5293",
-      "occurred_at": "2026-11-20T20:50:46+00:00",
-      "updated_at": "2026-11-21T02:32:00.000475+00:00",
-      "expires_at": "2026-11-21T20:50:46+00:00",
-      "title": "Thinking Machines releases 26B Inkling 2 Mini for local AI",
-      "detail": [
-        "Thinking Machines announced Inkling 2 Mini, a 26-billion-parameter looped transformer designed for agentic work and local inference on a laptop or consumer RTX 3080. Reported performance claims include a 20.1 AA Index score and results surpassing Qwen 3.8 27B, alongside a separate claim of performance comparable to Opus 4.5."
-      ],
-      "why_it_matters": "Running a capable 26B model on consumer hardware could broaden local AI development and reduce reliance on cloud inference services.",
-      "sources": [
-        {
-          "author_name": "Thinking Machines",
-          "author_username": "thinkymachines",
-          "url": "https://x.com/thinkymachines/status/2123871643797995872",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2123881763923746906",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXmLNTsWAAAUciH.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXmLNTsWAAAUciH.jpg:small",
-              "width": 1320,
-              "height": 1250
-            }
-          ]
-        },
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2012238061313110474",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2123936559447920931",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "909fe2c823df484ebbf507588d94b1ea",
-      "occurred_at": "2026-11-20T21:06:09+00:00",
+      "id": "f65e970c91edafd89e212664a17e14bf",
+      "occurred_at": "2026-11-22T03:57:35+00:00",
       "updated_at": null,
-      "expires_at": "2026-11-21T21:06:09+00:00",
-      "title": "Eve personal-shopper agent gains mature messaging channels and major performance improvements",
+      "expires_at": "2026-11-23T03:57:35+00:00",
+      "title": "macOS version of cc-switcher targets purpose-isolated subscriptions",
       "detail": [
-        "Guillermo Rauch says Eve has progressed from an internal pre-release personal-shopper agent, where a basic “hello world” test lacked infrastructure, to a setup built on AgentCard HQ, improved models, and mature iMessage and WhatsApp channels. He reports sharply improved performance without sacrificing durability or encryption, and says a Muse/Instinct-caliber platform can now be shipped with full user control on Eve’s open intelligence stack using a provided template.",
-        "Rauch’s quoted update provides no benchmark figures or independent validation for the claimed performance and platform-quality improvements."
+        "Greg Pstrucha created a macOS version of cc-switcher for workflows where subscriptions are kept purpose-isolated.",
+        "The implementation is intended for cases where CLIProxy is unnecessary, and users can point their agent at the repository to request setup.",
+        "It adapts the existing project to macOS rather than introducing a broader cross-platform rewrite."
       ],
-      "why_it_matters": "Eve now supports shipping a customizable personal-shopper platform through mature messaging channels on an open intelligence stack while retaining encryption and durability.",
+      "why_it_matters": "Mac users with separate agent subscriptions can switch contexts without adopting CLIProxy.",
       "sources": [
         {
-          "author_name": "Guillermo Rauch",
-          "author_username": "rauchg",
-          "url": "https://x.com/rauchg/status/2123879031049449791",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Malte Ubl",
-          "author_username": "cramforce",
-          "url": "https://x.com/cramforce/status/2123885632984613067",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "094032024cfa89927f438e4023371d4b",
-      "occurred_at": "2026-11-20T21:17:23+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T21:17:23+00:00",
-      "title": "OpenAI shares research on combating model distillation and disrupting coordinated attempts",
-      "detail": [
-        "Distillation can reproduce powerful AI capabilities without the safeguards built around them, and OpenAI has shared new research on its work to combat distillation of its models. The research covers how capabilities transfer through distillation and how OpenAI detects and disrupts coordinated attempts targeting its models.",
-        "OpenAI states the findings are already sharpening its defenses and are being used to support safeguards across the industry. The announcement text itself does not include technical methods, detection results, or case details, only the summary of the shared research."
-      ],
-      "why_it_matters": "Distillation copying model capabilities without their surrounding safeguards is an active protection problem for frontier model developers, and OpenAI's detection and disruption methods address that gap now, with findings it says feed industry-wide safeguards.",
-      "sources": [
-        {
-          "author_name": "OpenAI",
-          "author_username": "OpenAI",
-          "url": "https://x.com/OpenAI/status/2123862344422088794",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Mia",
-          "author_username": "MiaAI_lab",
-          "url": "https://x.com/MiaAI_lab/status/2123888461312823793",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "b569ee118620cb580d2fb295bbf104af",
-      "occurred_at": "2026-11-20T21:25:56+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T21:25:56+00:00",
-      "title": "Muse Code adds textured 3D model generation through its CLI",
-      "detail": [
-        "Charlie Holtz announced that Muse Code can now generate textured 3D models suitable for printing and use as game assets. The update is available now in the Muse Code CLI."
-      ],
-      "why_it_matters": "Users can create printable, textured 3D models and game assets directly through the Muse Code CLI.",
-      "sources": [
-        {
-          "author_name": "Charlie Holtz",
-          "author_username": "charlieholtz",
-          "url": "https://x.com/charlieholtz/status/2123890610616860695",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2123890467268071424/img/V7tq5vNzDESZBSMT.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2123890467268071424/img/V7tq5vNzDESZBSMT.jpg:small",
-              "width": 708,
-              "height": 720
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "9c6c7358bad431c3061eb53ccce542f9",
-      "occurred_at": "2026-11-20T21:58:26+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T21:58:26+00:00",
-      "title": "pstack offers a /no-comments skill for agent-driven code comment cleanup",
-      "detail": [
-        "lauren recommends pstack's /no-comments skill, telling developers to give it a try or to have their coding agent turn it into a lint rule. The skill is published as a SKILL.md file at pstack/skills/no-comments in the cursor/plugins GitHub repository, so the recommendation points to a concrete, inspectable artifact.",
-        "The tip was shared alongside Matt Pocock's quoted \"prompt of the day,\" which has an agent categorize every code comment as a tautology, an excuse for a hacky implementation, a stale note, or a decision record — deleting the first three, filing issues for the hacks behind excuses, moving decision records into an ADR, and finishing with a ratcheting lint rule that bans comments. Pocock closes the prompt by declaring comments \"considered harmful\" under this workflow."
-      ],
-      "why_it_matters": "Teams using coding agents can apply the packaged /no-comments skill today to strip low-value comments and enforce no-comment policies through lint rules, instead of rerunning Matt Pocock's multi-step audit prompt manually.",
-      "sources": [
-        {
-          "author_name": "Matt Pocock",
-          "author_username": "mattpocockuk",
-          "url": "https://x.com/mattpocockuk/status/2123798388227403983",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "lauren",
-          "author_username": "poteto",
-          "url": "https://x.com/poteto/status/2123898792487576021",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [
-        {
-          "url": "https://github.com/cursor/plugins/blob/main/pstack/skills/no-comments/SKILL.md",
-          "domain": "github.com",
-          "title": "plugins/pstack/skills/no-comments/SKILL.md at main · cursor/plugins · GitHub",
-          "preview_image_url": "https://avatars.githubusercontent.com/u/126759922?s=400&v=4"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "97cc2d38b4b22c0973a58ec2907fd48d",
-      "occurred_at": "2026-11-20T22:17:47+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T22:17:47+00:00",
-      "title": "Oracle says it secured funding to fulfill its OpenAI contract",
-      "detail": [
-        "Oracle says it secured all funding needed to fulfill its contract with OpenAI and describes itself as the first hyperscaler fully funded for this investment cycle. It states that financing outlined at Oracle Investor Day, including vendor financing, is in place and that any further private vendor discussions are additional options on which delivery does not depend. The statement also says its Abilene campus, where Astra-6 was trained, is nearly complete; Shackelford, its next gigawatt-scale campus, is fully permitted; and handover of NVIDIA Vera Rubin racks in its data halls is on track for the coming weeks. Oracle says it continues to expect positive free cash flow in the second half of fiscal 2028, targets more than $30 billion in free cash flow in fiscal 2029, and expects to self-fund future growth beginning that year."
-      ],
-      "why_it_matters": "It directly addresses reports about funding by asserting that delivery of the OpenAI contract does not depend on additional vendor financing. It also supplies named infrastructure milestones and free-cash-flow targets tied to the partnership.",
-      "sources": [
-        {
-          "author_name": "Oracle",
-          "author_username": "Oracle",
-          "url": "https://x.com/Oracle/status/2123884437045760420",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Jake Colling",
-          "author_username": "JacobColling",
-          "url": "https://x.com/JacobColling/status/2123903661814563210",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "dcd56ced080110382f1dd870eea67759",
-      "occurred_at": "2026-11-20T23:11:55+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T23:11:55+00:00",
-      "title": "Nvidia server partners suspend Southeast Asia shipments amid US export curbs",
-      "detail": [
-        "At least two of Nvidia's server suppliers have halted shipments to customers in Southeast Asia due to recent U.S. export controls.",
-        "The suspension adds pressure to Nvidia's supply chain, which is already dealing with fallout from broader regulatory actions.",
-        "The halt affects AI hardware availability for regional data centers and enterprises relying on Nvidia GPUs."
-      ],
-      "why_it_matters": "The disruption reduces the availability of Nvidia AI accelerators in Southeast Asia, potentially delaying AI workloads and cloud services for customers in the region.",
-      "sources": [
-        {
-          "author_name": "P Equity Research 📰",
-          "author_username": "pequityresearch",
-          "url": "https://x.com/pequityresearch/status/2123914295125635116",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXmUQRnWkAATcqC.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXmUQRnWkAATcqC.jpg:small",
-              "width": 1200,
-              "height": 630
-            }
-          ]
-        },
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2123917283596603627",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXmrg1JWwAA90GU.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXmrg1JWwAA90GU.jpg:small",
-              "width": 986,
-              "height": 791
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "5a1cfc449495b34e2941dbfdfaf9979a",
-      "occurred_at": "2026-11-20T23:49:30+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T23:49:30+00:00",
-      "title": "Vercel Board skill gains per-harness tool mappings for inter-agent communication",
-      "detail": [
-        "Malte Ubl said per-harness tool mappings were merged into the Vercel Board skill, mapping each harness's internal tools for inter-agent communication to equivalent Vercel Board commands.",
-        "The change means a model reinforced on one harness's own tools can transfer that reinforcement learning to operate the cloud-based board.",
-        "Mappings are shipped for all common harnesses, including Codex and Claude."
-      ],
-      "why_it_matters": "The mappings let models trained on harness-native inter-agent tools use equivalent cloud Board commands without separate adaptation, covering common harnesses such as Codex and Claude.",
-      "sources": [
-        {
-          "author_name": "Malte Ubl",
-          "author_username": "cramforce",
-          "url": "https://x.com/cramforce/status/2123926740842213768",
+          "author_name": "Greg Pstrucha",
+          "author_username": "grichadev",
+          "url": "https://x.com/grichadev/status/2124351561405227275",
           "role": "source",
           "media": [
             {
               "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXmzUZ6awAAjf84.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXmzUZ6awAAjf84.jpg:small",
-              "width": 1966,
-              "height": 702
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "0a1bc0a4f1b3c313183771ec06b1c8e1",
-      "occurred_at": "2026-11-20T23:55:31+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-21T23:55:31+00:00",
-      "title": "Dot can now be called from Apple CarPlay",
-      "detail": [
-        "Romain Huet announced that users can now call their Dot directly from Apple CarPlay. The announcement invites drivers to give it a try on their next drive and get things done simply by talking to it."
-      ],
-      "why_it_matters": "Dot is now reachable through the car's built-in CarPlay interface, letting drivers interact with the assistant by voice while on the road.",
-      "sources": [
-        {
-          "author_name": "Romain Huet",
-          "author_username": "romainhuet",
-          "url": "https://x.com/romainhuet/status/2123924316110966824",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2123923474649579520/img/rPRwLrSOvTiVl1Qh.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2123923474649579520/img/rPRwLrSOvTiVl1Qh.jpg:small",
-              "width": 1920,
-              "height": 1080
-            }
-          ]
-        },
-        {
-          "author_name": "eric provencher",
-          "author_username": "pvncher",
-          "url": "https://x.com/pvncher/status/2123928255556129226",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "27166277f8fd9de3af2dd139a5c1399c",
-      "occurred_at": "2026-11-21T00:39:27+00:00",
-      "updated_at": "2026-11-21T01:45:00.002675+00:00",
-      "expires_at": "2026-11-22T00:39:27+00:00",
-      "title": "Inkling 26.4B looped transformer visualized as a particle accelerator",
-      "detail": [
-        "nisten shared a particle-accelerator visualization of the Inkling 26.4B looped transformer. The supplied evidence does not expose the visualization’s contents or include independent technical findings about the model."
-      ],
-      "why_it_matters": "The linked page provides a concrete particle-accelerator view of Inkling 26.4B, but the announcement establishes no benchmark result or new model capability from the visualization.",
-      "sources": [
-        {
-          "author_name": "nisten",
-          "author_username": "nisten",
-          "url": "https://x.com/nisten/status/2123939310776844704",
-          "role": "source",
-          "media": []
-        },
-        {
-          "author_name": "nisten",
-          "author_username": "nisten",
-          "url": "https://x.com/nisten/status/2123947091646943321",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [
-        {
-          "url": "https://claude.ai/artifact/LeGadP5RgRatm46MUHfpet",
-          "domain": "claude.ai",
-          "title": "Claude Artifact",
-          "preview_image_url": "https://claude.ai/images/claude_ogimage.png"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "e2ae3e87cf44138a73deaac5a10abb64",
-      "occurred_at": "2026-11-21T02:32:42+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-22T02:32:42+00:00",
-      "title": "METR Time Horizons 2.0 reports 3.6‑month doubling rate and ~40‑hour task duration for Opus 5.5 and GPT‑6 Astra",
-      "detail": [
-        "METR released its Time Horizons 2.0 update, stating that AI capabilities are doubling roughly every 3.6 months. The update also notes that a typical evaluation task now takes about 40 hours for the Opus 5.5 and GPT‑6 Astra models.",
-        "The metrics are presented as a concise summary of recent research progress, highlighting faster capability growth and longer evaluation cycles for state‑of‑the‑art models."
-      ],
-      "why_it_matters": "These benchmarks provide the AI research community with concrete data on how quickly model capabilities are advancing, helping teams plan evaluation schedules and resource allocation.",
-      "sources": [
-        {
-          "author_name": "METR",
-          "author_username": "METR_Evals",
-          "url": "https://x.com/METR_Evals/status/2123864981506798012",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXl78dBa4AA8nq9.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXl78dBa4AA8nq9.jpg:small",
-              "width": 1200,
-              "height": 675
-            }
-          ]
-        },
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2123967813857468795",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXnZYyaXUAAaHaU.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXnZYyaXUAAaHaU.jpg:small",
-              "width": 1327,
-              "height": 1041
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "c3d4a19b2048892c30b580fb92ea9cb9",
-      "occurred_at": "2026-11-21T03:51:12+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-22T03:51:12+00:00",
-      "title": "Terry Tao, in a Dwarkesh Patel interview, says the Riemann hypothesis likely requires new mathematics",
-      "detail": [
-        "In the quoted post, Dwarkesh Patel says he interviewed Terry Tao in March and asked him about AI solving the Riemann hypothesis.",
-        "Tao is quoted as saying problems like the Riemann hypothesis are prized because a new type of mathematics likely must be created, and that it does not feel like a problem solvable by exhaustively checking cases."
-      ],
-      "why_it_matters": "It records Terry Tao's stated view that the Riemann hypothesis may require new mathematical ideas, not just exhaustive computation.",
-      "sources": [
-        {
-          "author_name": "Dwarkesh Patel",
-          "author_username": "dwarkesh_sp",
-          "url": "https://x.com/dwarkesh_sp/status/2123966918688403756",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2123966359264759808/img/ZzNybMOwtt9iGo-f.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2123966359264759808/img/ZzNybMOwtt9iGo-f.jpg:small",
-              "width": 2048,
-              "height": 2048
-            }
-          ]
-        },
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2123987565594497477",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "f7d5e305d4655d398ef71d6ce713ed7f",
-      "occurred_at": "2026-11-21T04:43:29+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-22T04:43:29+00:00",
-      "title": "Osmantic ODS V3 enters public pre-release for private local AI servers",
-      "detail": [
-        "Osmantic’s ODS V3 is available as a public pre-release for testing and refinement ahead of the official V3 launch. The project is designed to turn a PC, Mac, or Linux machine into a private AI server. Ahmad says partnerships including NVIDIA are being used to optimize ODS for the local AI experience."
-      ],
-      "why_it_matters": "The public pre-release gives users an early ODS build to test private local AI serving across desktop and Linux systems before the official V3 launch.",
-      "sources": [
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2123985368110321779",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXno_Q-XMAAhBrd.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXno_Q-XMAAhBrd.jpg:small",
-              "width": 2048,
+              "url": "https://pbs.twimg.com/media/HXs2VGXbEAA1yWs.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HXs2VGXbEAA1yWs.jpg:small",
+              "width": 1344,
               "height": 1168
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HXs2WQKbUAA5i6h.png",
+              "preview_url": "https://pbs.twimg.com/media/HXs2WQKbUAA5i6h.png:small",
+              "width": 764,
+              "height": 381
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [
+        {
+          "url": "https://github.com/dcramer/cc-switcher",
+          "domain": "github.com",
+          "title": "GitHub - dcramer/cc-switcher · GitHub",
+          "preview_image_url": "https://opengraph.githubassets.com/8b53c1b866894c2607416dc90a2bd6a174567d8df002fe5b96124512f33e168b/dcramer/cc-switcher"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "78585875de693c4e533214321d9257a1",
+      "occurred_at": "2026-11-22T04:31:13+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-23T04:31:13+00:00",
+      "title": "Quinn Slack trains a local \"Hey Puck\" wake-word model with Amp-generated data",
+      "detail": [
+        "Quinn Slack reports training a local wake-word model that triggers on \"Hey Puck,\" with the Amp coding agent generating the synthetic training data. The model was trained on 77.2 hours of Slack's own dictation recordings, with no training on other people's data.",
+        "Amp also helped gather recordings from additional microphones and built native Swift, Kotlin, and Web implementations of the wake word."
+      ],
+      "why_it_matters": "Developers can hand a coding agent their own recordings and get a private cross-platform wake word without collecting any third-party training data.",
+      "sources": [
+        {
+          "author_name": "Quinn Slack",
+          "author_username": "sqs",
+          "url": "https://x.com/sqs/status/2124273011868246368",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2124272380600311808/img/G7z51_xostLYm7bk.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2124272380600311808/img/G7z51_xostLYm7bk.jpg:small",
+              "width": 2048,
+              "height": 1323
             }
           ]
         },
         {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2124000724099252376",
+          "author_name": "Beyang",
+          "author_username": "beyang",
+          "url": "https://x.com/beyang/status/2124360026357923848",
           "role": "commentary",
           "media": []
         }
       ],
-      "evidence_state": "source_backed",
-      "external_links": [
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "a8e6f813726cb52b7dce8afc04425387",
+      "occurred_at": "2026-11-22T05:07:47+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-23T05:07:47+00:00",
+      "title": "Vercel Labs deepsec uses glm‑flash for continuous local security scanning",
+      "detail": [
+        "Vercel Labs’ deepsec tool is being run continuously with the local glm‑flash model to scan for security issues.",
+        "The setup has identified hundreds of vulnerabilities over a week, which are then handed off to an agent council using Theo’s tstack skill for remediation."
+      ],
+      "why_it_matters": "You can now run nonstop AI‑driven vulnerability detection locally, reducing reliance on cloud services and catching issues faster.",
+      "sources": [
         {
-          "url": "https://github.com/Osmantic/ODS",
-          "domain": "github.com",
-          "title": "GitHub - Osmantic/ODS: ODS V3 Pre-Release: Public testing and refinement ahead of the official V3 launch. Turn your PC, Mac, or Linux box into a private AI server. · GitHub",
-          "preview_image_url": "https://repository-images.githubusercontent.com/1153579168/59958025-e61d-42bc-b8a4-f1c401650b17"
+          "author_name": "joel ⛈️",
+          "author_username": "joelhooks",
+          "url": "https://x.com/joelhooks/status/2124369230154064301",
+          "role": "source",
+          "media": []
         }
       ],
+      "evidence_state": "reported",
+      "external_links": [],
       "interest_slugs": [
         "ai",
-        "linux"
-      ]
-    },
-    {
-      "id": "157b46246dfb726d2cb28a3fe34c8e0c",
-      "occurred_at": "2026-11-21T05:34:39+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-22T05:34:39+00:00",
-      "title": "Hex Android APK built directly on phone",
-      "detail": [
-        "John Lindquist reported that he compiled the Hex tool into an Android APK entirely on his phone, using Tailscale to install the package without ever touching a laptop. The build ran while he was running errands, and the resulting app is functional after a day of testing. He plans to submit a pull request to the Hex project and offers to maintain the Android build."
-      ],
-      "why_it_matters": "The ability to build and run Hex on Android from a mobile device removes the need for a traditional development workstation, making the tool more accessible to developers who work primarily on phones.",
-      "sources": [
-        {
-          "author_name": "John Lindquist",
-          "author_username": "johnlindquist",
-          "url": "https://x.com/johnlindquist/status/2124013602961342735",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXoDG8SaIAA3nsH.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXoDG8SaIAA3nsH.jpg:small",
-              "width": 918,
-              "height": 2048
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXoDHJtbEAEQcRI.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXoDHJtbEAEQcRI.jpg:small",
-              "width": 918,
-              "height": 2048
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HXoDHY9aUAAwKOH.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HXoDHY9aUAAwKOH.jpg:small",
-              "width": 918,
-              "height": 2048
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "linux"
+        "os_security"
       ]
     }
   ]
