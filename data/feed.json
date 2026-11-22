@@ -1,7 +1,164 @@
 {
-  "updated_at": "2026-11-22T08:00:00.316697+00:00",
-  "total_items": 1129,
+  "updated_at": "2026-11-22T09:00:00.424021+00:00",
+  "total_items": 1135,
   "items": [
+    {
+      "id": 8178,
+      "source_id": 34,
+      "original_url": "https://zbruceli.org/blog/trillion-parameter-diffusion-llm/",
+      "title": "Can a Trillion-Parameter Diffusion LLM Actually Work? Inside Nvidia's Bet on Parallel Text Generation",
+      "summary": "The post synthesizes diffusion LLM status, an author-run Mercury 3 benchmark, and a roofline model for a trillion-parameter MoE model. Diffusion is only about 1.4x faster than autoregression for one user but has a stronger 8-128 user throughput.",
+      "ideas": [
+        "A 64-token diffusion block can load about 96% of 160 top-8 MoE experts",
+        "Mercury 3 decoded about 850-900 tokens per second directly; gpt-oss on Cerebras decoded about 2,400",
+        "Left-to-right diffusion solved 21.3% of problems; arbitrary order solved only 0.6% uniquely",
+        " MoE diffusion's sweet spot is 8-128 concurrent users rather than one user"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Direct benchmark data, scaling-study summaries, and a roofline model reveal concrete trade-offs for large Mixture-of-Experts diffusion models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:56:18.503693",
+      "image_url": "https://zbruceli.org/images/trillion-parameter-diffusion-llm/main.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 8177,
+      "source_id": 34,
+      "original_url": "https://www.yoyo-code.com/derive-debug-compile-time-improvements/",
+      "title": "Compile time improvements for derive(Debug)",
+      "summary": "Rust's derive(Debug) pipeline was optimized by concatenating variant names, moving common formatting into std, and reducing generated AST, HIR, and MIR. A stress-test benchmark reported 10% lower compile time and 90% lower memory, while bitflags discriminant mutation and MSP430 code-size regressions forced redesigns.",
+      "ideas": [
+        "Replace string-valued match arms with integer indices to shrink MIR and borrow-check costs.",
+        "Concatenate enum and struct field names to avoid per-field compiler IR nodes.",
+        "Avoid discriminants in generated Debug code because later macros may mutate enum values.",
+        "Replace UTF-8 splitting and indexing to prevent embedded binary-size regressions.",
+        "Benchmark stress cases to detect silent compiler performance regressions."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "You gain the implementation history behind Rust's derive(Debug) speedups, with MIR/AST trade-offs, macro-ordering hazards, and embedded binary-size pitfalls. Patch details, failure modes, and benchmark methodology are directly useful for Rust compiler work.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:55:39.653396"
+    },
+    {
+      "id": 8176,
+      "source_id": 34,
+      "original_url": "https://www.simonpainter.com/multi-region-cloud-networking",
+      "title": "Multi-region Azure networking with VNRA and a shared internet edge",
+      "summary": "It builds a multi-region Azure hub-and-spoke design where VNRA carries internet defaults to a shared edge and regional firewalls handle private flows. The key constraint is stateful return routing: replies must re-enter the same NAT/firewall path, while VNRA bandwidth cannot be changed in place.",
+      "ideas": [
+        "VNRA carries default internet routes while regional firewalls handle private transit.",
+        "Return traffic must re-enter the same stateful NAT and firewall path.",
+        "Hub-only summaries can pass probes while leaving attached spokes unreachable.",
+        "Route propagation and device routing tables require separate validation.",
+        "VNRA throughput cannot be resized in place, requiring replacement capacity.",
+        "Test from workload spokes using DNS, TLS, effective routes, and path-specific logs."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "You get a concrete asymmetric-routing design for Azure VNRA: UDR next hops, inter-region return paths, firewall state and NAT placement, route-summary coverage, and validation checks that expose plausible but broken topologies.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:51:41.957778"
+    },
+    {
+      "id": 8175,
+      "source_id": 34,
+      "original_url": "https://www.michelebologna.net/2026/homelab-patches-itself-without-collisions/",
+      "title": "Let your homelab patch itself overnight without the updates colliding",
+      "summary": "Michele Bologna details a UTC-ordered maintenance night for a homelab running k3s, Renovate, unattended-upgrades and kured, plus four update collisions he hit. Ubuntu has no security-reboot flag, so an hourly timer derives one from /run/reboot-required.pkgs and apt's -security pocket.",
+      "ideas": [
+        "kured blockingPodSelector must target upgrade.cattle.io/plan, not the controller Deployment that never exits",
+        "systemctl is-active reports an activating oneshot as inactive; guard with ActiveState instead",
+        "Ubuntu lacks a security reboot flag; derive one from reboot-required.pkgs and the -security pocket",
+        "Livepatch-patched kernels skip reboots unless Livepatch coverage ends within 14 days",
+        "kured's hourly default gives one or two reboot chances per window; set period 10m",
+        "Longhorn jobs and etcd snapshots have no timezone setting, forcing fleet-wide UTC schedules"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading gives the exact kured blockingPodSelector and sentinel configs, the Livepatch-aware reboot-flag derivation, and the drain and timezone traps like ActiveState versus is-active.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:46:59.245780",
+      "image_url": "https://www.michelebologna.net/og/2026/homelab-patches-itself-without-collisions.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8174,
+      "source_id": 34,
+      "original_url": "https://www.grahambrooks.com/post/give-agents-addresses-not-strings/",
+      "title": "Give agents addresses, not strings",
+      "summary": "Colab adds structure-addressed Markdown edits for coding agents, treating headings, rows, list items, links, and code blocks as addressable data rather than quoted text. Its eval reports 60% fewer calls and 88% less read data for selected documentation workflows, though paragraph editing remains unsupported and baselines are partly modeled.",
+      "ideas": [
+        "Addressing Markdown by headings, rows, list items, links, and code blocks.",
+        "Refusing ambiguous matches and enforcing idempotent, link-safe writes.",
+        "Outline calls reduced four-file reads from 104 KB to 12.7 KB.",
+        "Structured edits saved 66% across 27 rules and three files.",
+        "Link checking found 11 pre-existing broken documentation anchors.",
+        "Paragraph and unlabeled code-block editing remain unsupported."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get the exact address grammar, idempotent Markdown refactoring rules, link-invariant checks, and implementation details behind measured agent savings. The write-path caveats and one-repository methodology are unusually candid.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:44:12.130698",
+      "image_url": "https://www.grahambrooks.com/images/cards/post-give-agents-addresses-not-strings.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8173,
+      "source_id": 34,
+      "original_url": "https://www.fratepietro.com/2026/wind-over-the-monti-dauni-openfoam/",
+      "title": "Can a CFD model find the wind farms? Wind over the Monti Dauni and the Gargano with OpenFOAM",
+      "summary": "Puglia-wind used OpenFOAM and ERA5 to model 100 m winds over Apulia, comparing them with OpenStreetMap turbines and adding a browser viewer. Rotating its 576,000-cell mesh 15° fixed 11 of 12 convergence failures; the median turbine reached the 80th same-elevation wind percentile.",
+      "ideas": [
+        "Rotating the CFD mesh 15° prevents inlet/outlet boundary oscillation",
+        "Median turbine occupies the 80th percentile among similarly elevated ground",
+        "Atmospheric OpenFOAM inlets still require an explicit inletOutlet value",
+        "Spack toolchains pin C, C++, and Fortran to one compiler family",
+        "GNU Make 4.3 silently breaks Spack's OpenFOAM parallel build jobserver",
+        "GCC and AOCC OpenFOAM builds agree within 0.0021 m/s RMS"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 87,
+      "rating_reason": "You get reproducible OpenFOAM setup details, a diagnosed inlet/outlet convergence failure and fix, and exact Spack build pitfalls plus field-equivalence tolerances for GCC and AOCC.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T18:42:49.157673",
+      "image_url": "https://www.fratepietro.com/assets/images/posts/puglia-wind-mean.png",
+      "image_width": 983,
+      "image_height": 913,
+      "image_alt": ""
+    },
     {
       "id": 8172,
       "source_id": 34,
