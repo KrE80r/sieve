@@ -1,7 +1,583 @@
 {
-  "updated_at": "2026-11-22T06:00:00.798191+00:00",
-  "total_items": 1100,
+  "updated_at": "2026-11-22T07:00:00.338243+00:00",
+  "total_items": 1121,
   "items": [
+    {
+      "id": 8164,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/openai-shares-new-prompting-tips-for-gpt-6-2-astra-and-sol-to-fix-brief-answers-and-unnecessary-questions/",
+      "title": "OpenAI shares new prompting tips for GPT-6.2 Astra and Sol to fix brief answers and unnecessary questions",
+      "summary": "OpenAI issued new system‑prompt templates for GPT‑6.2 Astra and Sol to shape writing style, initiative, and coding behavior. The API now removes temperature/top_p and erases prior reasoning when history is edited, with Astra pricing starting at $8 per million input tokens.",
+      "ideas": [
+        "Use system prompts to make GPT‑6.2 answer briefly by default.",
+        "Instruct the model to act on reversible assumptions and pause only for major scope changes.",
+        "Reuse existing repository logic in generated code and avoid unnecessary helper functions.",
+        "Generate new tests only when requested, required, or needed for specific regressions.",
+        "Make final answers self‑contained, without relying on earlier reasoning or shorthand.",
+        "Editing conversation history now discards earlier reasoning, raising token usage.",
+        "Temperature and top_p parameters are no longer supported in GPT‑6.2.",
+        "Tailor prompts for internal versus external audiences using active voice and key points first.",
+        "Astra pricing begins at $8 per million input tokens and $40 per million output tokens up to 272k tokens."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "It supplies actionable prompting templates and API updates that let developers get concise, self‑contained answers and leaner code from GPT‑6.2.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-22T17:23:37.220604"
+    },
+    {
+      "id": 8163,
+      "source_id": 34,
+      "original_url": "https://junaidqadir.com/blog/php-8-6-what-changes-in-code-you-already-have/",
+      "title": "PHP 8.6: what changes in code you already have",
+      "summary": "The author tests PHP 8.6.0 against 8.5.13 on official Docker images, exercising partial application, clamp(), Time\\Duration, and deprecations. Hardest fact: with no php.ini, session cookies silently flip to strict mode, HttpOnly, and SameSite=Lax on upgrade.",
+      "ideas": [
+        "Unguarded global clamp() helpers fatal-error; function_exists guards silently bind PHP's built-in",
+        "Swapped-argument clamp helpers either return identical results or throw ValueError, never wrong numbers",
+        "SortDirection RFC found 178 unnamespaced-clash candidates on GitHub",
+        "PFA closures evaluate arguments at creation time and drop extras unless ... is used",
+        "new ArrayObject(?) is a fatal error; static factory methods work as partials",
+        "trim() now strips form feed; mb_ereg, spl_object_hash, finally returns deprecated"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading the full piece gives hands-on verification the release notes lack: tested clamp() collision semantics, ini_get deltas on stock Docker images, PFA edge cases, and runnable grep and upgrade checks.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:21:00.754249",
+      "image_url": "https://junaidqadir.com/og/php-8-6-what-changes-in-code-you-already-have.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8162,
+      "source_id": 34,
+      "original_url": "https://ideia.me/layered-centroids-register-fastscan-morton-octree-ecfp4-rangefinder-pg-bio",
+      "title": "Adopting pg_vectorsearch’s Best Ideas for 3D Atoms, Molecules &amp; Active Sites: 100% Lossless Layered Centroids and Register-Direct Fastscan in pg_bio",
+      "summary": "Jônatas Paganini ported pg_vectorsearch's centroid-routing and fastscan ideas into pg_bio's Rust/PostgreSQL indexes for 3D atoms, molecules, and pockets. His 24-byte ECFP4 sketch prunes 99.89% of 10,000 Tanimoto candidates with zero false negatives, cutting queries from 529.65 ms to 16.98 ms.",
+      "ideas": [
+        "Octree sphere bounds decompose Morton-code ranges losslessly, skipping sqrt rechecks for fully contained cubes",
+        "Swamidass–Baldi popcount inequality restricts Tanimoto scans to a provable popcount window",
+        "8-block histogram plus OR-folded 128-bit sketch yields a zero-false-negative Tanimoto upper bound",
+        "Storing sketches as bigint columns passes them through FFI in CPU registers, avoiding varlena detoast",
+        "SOAR layered-centroid mode hits 158× speedup but drops recall to 75.17%"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get the actual mathematical bounds—octree sphere pruning, block-histogram and OR-fold Tanimoto caps—plus working SQL, pgrx register-passing rationale, and per-query benchmark tables.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:14:50.058389"
+    },
+    {
+      "id": 8161,
+      "source_id": 34,
+      "original_url": "https://iaziz786.com/blog/upgrading-to-postgresql-19/",
+      "title": "What breaks in PostgreSQL 19, and how to check before you upgrade",
+      "summary": "PostgreSQL 19 upgrade testing exposes btree_gist inet/cidr indexes as binary-upgrade blockers and maps authentication, configuration, and result-semantics changes. The sharpest trap is that pg_upgrade --check passes while RADIUS removal, forced standard_conforming_strings, and changed lock defaults still disrupt production.",
+      "ideas": [
+        "Query pg_index to find obsolete gist_inet_ops and gist_cidr_ops indexes.",
+        "Recreate affected indexes so PostgreSQL 19 uses built-in inet_ops.",
+        "pg_upgrade --check misses configuration and behavioral incompatibilities.",
+        "Double custom max_locks_per_transaction values after PostgreSQL 19 changes lock-space sizing.",
+        "Reindex FTS and pg_trgm indexes on ICU or builtin locales after upgrading.",
+        "Search application code for json_array NULL checks and foreign-data-wrapper writes.",
+        "Move RADIUS authentication to another method before PostgreSQL 19 upgrades.",
+        "A Docker reproduction stopped before data movement and preserved all 100 rows."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "You get a reproducible catalog query, exact pg_upgrade output, and a production preflight for silent blockers such as RADIUS removal, forced string escaping, and changed lock capacity.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:14:49.081132"
+    },
+    {
+      "id": 8160,
+      "source_id": 34,
+      "original_url": "https://gautamparab.com/writing/plus-point-five-in-forty-eight-layers/",
+      "title": "Plus 0.5 in Forty-Eight Layers",
+      "summary": "Fan et al. let Qwen3.5-27B edit its own weights, and this audit finds the best edit mainly reduced token-budget truncation rather than improving reasoning. A +0.5 time-step bias across 48 layers raised accuracy from 57.2% to 63.8%, while completed-answer accuracy stayed near 86%.",
+      "ideas": [
+        "The gain came mainly from fewer token-budget truncations, not better reasoning.",
+        "Completed-answer accuracy remained 86.1% before editing and 86.3% afterward.",
+        "All sessions started from base weights, so improvements did not compound.",
+        "The 512-answer selection check could not reliably rank submitted edits.",
+        "The scale claim rests on one self-edit session per model size.",
+        "Noise-corrupted matrix repair recovered 55% accuracy on 200 problems."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "You get a forensic decomposition of the 6.6-point result, including the truncation shift, protocol-order effects, winner’s curse, weak-baseline problem, and weak scale evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:10:38.958585"
+    },
+    {
+      "id": 8159,
+      "source_id": 34,
+      "original_url": "https://garrettstimpson.ca/posts/2026/11/21/redcap-survey-link-quiet-exploitation/",
+      "title": "The Survey Link That Ran Code: REDCap’s Quiet Two Months",
+      "summary": "Researchers disclosed CVE‑2026‑90817, an unauthenticated RCE in REDCap’s public survey handler. The attack leverages a double‑encoded __passthru parameter and PHP stream filters to write a web‑shell, achieving cryptomining and persistence.",
+      "ideas": [
+        "Double‑encoded __passthru bypasses REDCap’s allowlist, loading the dispatcher.",
+        "Survey context builds rights before identity, treating undefined super‑user flag as admin.",
+        "PHP stream filter chain writes attacker PHP into REDCap’s Blade template cache, creating a web shell.",
+        "Unit 42 observed miners with watchdog processes that pause when an admin logs in."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You’ll see the full exploit chain—from double‑encoded survey links to PHP stream‑filter file writes—and concrete IOCs plus a ready‑to‑run scanner for detecting compromised REDCap instances.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:10:09.666405",
+      "image_url": "https://garrettstimpson.ca/assets/og/posts/2026/11/21/redcap-survey-link-quiet-exploitation/index-09f5ea8721e6.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The Survey Link That Ran Code: REDCap's Quiet Two Months"
+    },
+    {
+      "id": 8158,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/11/20/genrules-all-the-way-down",
+      "title": "Genrules all the way down",
+      "summary": "The author built fzakaria/genrulify-nixpkgs, converting Nixpkgs packages into 2,386 Bazel genrules with NAR-backed, content-addressed store targets. The demo spans 219 of 74,957 derivations, runs about 70 conversions per hour, and highlights non-reproducible outputs as a cache-efficiency obstacle.",
+      "ideas": [
+        "Model Nix store paths as Bazel targets, bind-mounting NAR contents at expected paths.",
+        "Split package conversion from workspace linking to support incremental Bazel migration.",
+        "Classify packages as nix_built, nix_fetched, or checked-in nix_source.",
+        "Nine VM forks per command limit conversion to roughly 70 derivations hourly.",
+        "Bazel’s granular actions skip unused Nix derivation steps but expose reproducibility gaps."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get concrete architecture, Bazel code, sandboxing mechanics, and measured throughput for transpiling Nix derivations into genrules. It also exposes the key trade-off: finer Bazel actions versus Nixpkgs’ lack of bit-reproducibility guarantees.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:09:17.332075"
+    },
+    {
+      "id": 8157,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/unattended-upgrades/",
+      "title": "Turn on automatic security updates on your VPS (and decide about auto-reboot)",
+      "summary": "It shows a fresh Ubuntu 24.04 test VPS patching vulnerable NGINX via unattended-upgrades with security-only defaults. The unattended run took about 13 seconds, while auto-reboot caused 21 seconds of downtime.",
+      "ideas": [
+        "Security-only upgrades installed 3 packages; -updates added 19 more including kernel",
+        "Auto-reboot finished at 07:40:56 and rebooted at 07:45, causing 21-second downtime",
+        "Needrestart restarted NGINX, SSH, journald and deferred systemd-logind",
+        "Docker containers bundling their own libraries are not patched by host upgrades",
+        "A systemd override moved the upgrade timer from default 06:00 to 03:30"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "The piece walks through exact dpkg-query checks, unattended-upgrades overrides, needrestart behavior, and tested 21-second auto-reboot downtime.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:08:18.495058",
+      "image_url": "https://flaviocopes.com/images/unattended-upgrades/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for Turn on automatic security updates on your VPS (and decide about auto-reboot)"
+    },
+    {
+      "id": 8156,
+      "source_id": 34,
+      "original_url": "https://feniix-hq.net/blog/fix-the-query-before-the-reranker/",
+      "title": "Fix the Query Before the Reranker",
+      "summary": "Sebastian Otaegui found chat-context headers in Hindsight recall queries masked user intent, then evaluated deterministic trimming across MiniLM-L6 and hs-rerank-1. On 40 headed queries, MiniLM-L6 improved from 0.092 to 0.437 nDCG@10 at cap 300.",
+      "ideas": [
+        "Trimming chat headers lifted MiniLM-L6 nDCG@10 from 0.092 to 0.437.",
+        "Median headed query length fell from 190.5 to 67 characters.",
+        "Cap 300-to-100 cost 0.063 nDCG for untrimmed headed queries.",
+        "Trimmed query boost matched or exceeded the reranker model switch.",
+        "Long 3125-character prompts reranked in 46.3s, versus 11.1s trimmed."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading it gives you the deterministic trim function, query-format regex, nDCG@10 paired results, cap-cost measurements, long-prompt timings, and methodological guardrails.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:07:22.063815",
+      "image_url": "https://feniix-hq.net/images/fix-the-query-before-the-reranker.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Fix the Query Before the Reranker"
+    },
+    {
+      "id": 8155,
+      "source_id": 34,
+      "original_url": "https://duan.ca/2026/11/21/ubuntu-on-hp-omnibook-ultra-16/",
+      "title": "Ubuntu on the HP OmniBook Ultra 16 (RTX Spark N1X)",
+      "summary": "Ubuntu 26.04 on the Arm HP OmniBook Ultra 16 is documented with working NVIDIA graphics, SoundWire audio, battery, thermals, USB-C, and fan telemetry. A DKMS module repairs an HP ACPI overflow; microphone clipping at 100% becomes about −54 dBFS at 40% gain.",
+      "ideas": [
+        "N1X support requires Ubuntu's linux-nvidia-bos kernel and signed 595 modules.",
+        "Patch HP's oversized FFA0.RBUF ACPI field and redirect BAT0._BST to UPBS().",
+        "Install a pinned mt8901 UCM profile privately through ALSA_CONFIG_UCM2.",
+        "DKMS module relies on ACPICA struct offsets +32 and +48.",
+        "Measured fan reached about 3990 RPM during a 75-second 20-core load.",
+        "Microphone gain near 40% avoids clipping from the CS42L43's +31.5 dB maximum."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "You get Ubuntu fixes for the Arm HP OmniBook Ultra 16: signed NVIDIA modules, a PipeWire UCM override, and a DKMS ACPI patch. Exact firmware offsets, commands, and measured fan/thermal behavior make it unusually actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T17:03:11.512153"
+    },
+    {
+      "id": 8154,
+      "source_id": 34,
+      "original_url": "https://blog.tomecek.net/post/replaying-code-reviews-to-compare-models/",
+      "title": "Replaying old code reviews to compare Claude models and effort levels",
+      "summary": "A 50-review Claude benchmark replays identical historical pull requests across Sonnet, Haiku, and Fable at multiple effort levels. With only four valid bug cases, max-effort Sonnet caught one extra destructive restore-script bug but cost a median $1.46 and took 404 seconds per review.",
+      "ideas": [
+        "Replaying historical commits with merge-base diffs prevents later comments from leaking answers.",
+        "Across 50 runs, Fable low matched default detections while costing 17% less.",
+        "Max-effort Sonnet caught one additional destructive restore bug at roughly 30 times runtime.",
+        "Haiku max produced sixteen ancillary findings and approved only one of five clean pull requests.",
+        "Regex scoring missed paraphrased bugs, requiring manual finding-by-finding validation.",
+        "Historical replay still leaked answers through edited pull-request descriptions and repository state."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "The full post provides a concrete replay harness, corrected hand-labeled results, per-model cost, latency, and finding counts, plus candid leakage caveats that make the agent-evaluation trade-offs actionable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:51:03.371943"
+    },
+    {
+      "id": 8153,
+      "source_id": 34,
+      "original_url": "https://blog.shellnetsecurity.com/posts/2026/ai-alert-triage-copilot-fail-open/",
+      "title": "It Said Threat, It Stored False Alarm: Stress-Testing an AI Alert Triage Copilot",
+      "summary": "The author stress-tested the open-source AI-Powered Alert Triage Copilot in Docker, probing its Gemini-driven alert classification with handcrafted fixtures, poisoning, and load tests. Across 14 live calls, every alert including an 847-attempt SSH brute force was stored as a false alarm.",
+      "ideas": [
+        "Fail-open design: every parser, schema, or rules failure exits to false positive, suppressing real threats",
+        "Schema demands exactly three remediation steps; Gemini wrote four or five, voiding every true positive",
+        "Attacker-controlled SSH banner injected approval text; Gemini 2.5 Flash suppressed the threat 4/4 times",
+        "Unauthenticated feedback endpoint accepts poisoning that rewrites verdicts and ground-truth metrics",
+        "README precision demo used a hardcoded mock classifier; default model was dead before first commit",
+        "SQLite handled 11,500 concurrent writes at ~500 alerts/sec; tail latency climbed 4ms to 1.8s"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading the full lab gives the pinned-commit Dockerfile, alert fixtures, and failure metrics: schema checks storing every true threat as false alarm, unauthenticated feedback poisoning, and banner-based injection counts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:50:51.165882",
+      "image_url": "https://blog.shellnetsecurity.com/posts/2026/ai-alert-triage-copilot-fail-open/ai-alert-triage-copilot-fail-open-cover.webp",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 8152,
+      "source_id": 34,
+      "original_url": "https://blog.malwaremustdie.org/2026/11/mmd-073-2026-linuxeasyshell-new-rust.html",
+      "title": "MMD-073-2026 - Linux/EasyShell, a new Rust RAT implant and beacon aims Linux and MacOS",
+      "summary": "A new Rust‑based RAT named EasyShell was uncovered targeting Linux and macOS, including LoongArch64. The implant uses a 32‑byte XOR‑0x5A‑encrypted config and masquerades as kernel‑thread names.",
+      "ideas": [
+        "Stager selects one of seven payloads based on uname architecture.",
+        "Implant posts HTTPS to /api/v2/sync with X‑Client‑Id header.",
+        "Uses rustls TLS and XOR‑0x5A string pool for obfuscation.",
+        "Anti‑sandbox checks DMI, hypervisor, mouse activity, CPU and RAM."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "It gives the full static dissection of the Rust EasyShell implant, exposing its XOR‑protected strings, 32‑byte config constant, anti‑sandbox checks, and ready‑to‑use YARA/Sigma rules.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:48:56.427377",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMkWkDMDgi2Js8k-Dol_ZZ9cxGmZEvPOHRM0XBlmngnJ1cs9e8Wli21HmtU5IhmrJKaA-BpfV5wabSpuXwEjiscBNTgciyW-RTSEkGl-ACOt-2soXMZrRCp0av-0oh6DhrhBbI-8x0HarFyObzk3oXbnQOVe0rITX3uM5-QC2CfV12AeSczn1ICw1AdSE/w1200-h630-p-k-no-nu/image.png",
+      "image_width": 920,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8151,
+      "source_id": 34,
+      "original_url": "https://blog.jarv.dev//reverse-engineering-a-legacy-nooie-camera",
+      "title": "Reverse-Engineering a Legacy Nooie Camera",
+      "summary": "The author reverse-engineered Nooie IPC100B’s legacy Apeman UDP protocol from an unstripped Android library. It uses ENet commands and media packets whose first 256 HEVC bytes are Twofish-CBC encrypted, with 10-second heartbeat keepalive.",
+      "ideas": [
+        "Android APK contained unstripped libnooie.so with 10216 symbols",
+        "Legacy protocol uses ENet peer on UDP P2pConn port",
+        "Media header starts 0xaa55 with type 5 HEVC frames",
+        "Only first 256 bytes of each Annex-B frame are Twofish-CBC",
+        "Heartbeat command 0x000E every ten seconds keeps peer alive"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 90,
+      "rating_reason": "It documents the Apeman UDP handshake, ENet command and media packet formats, Twofish encryption boundaries, and the on-demand pi5 service design, enabling reproduction of the camera integration.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:48:15.999480"
+    },
+    {
+      "id": 8150,
+      "source_id": 34,
+      "original_url": "https://blog.bosscher.ch/posts/adguard_home_next_gen/",
+      "title": "AdGuard Home: Next-Gen — Blocking 2.3 million addresses without crashing a $10 OpenStick and having fun while doing so!",
+      "summary": "Bosscher built AdGuard Home–Next-Gen, which sends simple domains to an mmap-backed hash blob and leaves complex rules in urlfilter. On a 465 MiB OpenStick, 2.18 million hashes used 11 MiB steady RSS and 122 MiB during rebuild; upstream was estimated near 2.3 GB.",
+      "ideas": [
+        "93.2% of 2.3 million filter lines fit a simple hash path",
+        "Sorted mmap hashes cut steady RSS to 11 MiB",
+        "Streaming merge-sort caps builder scratch near 16 MiB",
+        "Parent-suffix matching reduces stored domain variants",
+        "Dual engines trade memory gains for additional bug surface"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 92,
+      "rating_reason": "The full write-up provides the Go memory model, dual lookup architecture, external-sort pipeline, mmap strategy, and reproducible RSS and latency benchmarks behind a working AdGuard Home fork.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:44:19.848731"
+    },
+    {
+      "id": 8149,
+      "source_id": 34,
+      "original_url": "https://baeke.info/2026/11/20/how-knowledge-graphs-work-in-foundry-iq/",
+      "title": "How knowledge graphs work in Foundry IQ",
+      "summary": "The author builds Kestrel Graph Lab to compare plain RAG with Foundry IQ entity graphs across 246 synthetic documents, exposing ingestion, GQL, and knowledge-base configuration. On 24 questions, graphs scored 57% versus 62% for ten-passage RAG; ontology revisions raised counting accuracy from 0/5 to 4/5.",
+      "ideas": [
+        "Entity graphs store extracted triples as ordinary search-index documents, not in a graph database.",
+        "Foundry IQ requires one chat-model extraction call per chunk, scaling cost with corpus size.",
+        "Planner-generated GQL consumed 12,325 input tokens for a graph-selection decision.",
+        "Medium reasoning combined graph and text search on 11 of 15 graph questions.",
+        "Graph retrieval took 8–17 seconds versus roughly one second for plain RAG.",
+        "Ontology revisions moved counting accuracy from 0/5 to 4/5, despite valid empty results.",
+        "Existing knowledge-source ontologies are fixed without creation-time reprocessing-cache configuration.",
+        "Entity graphs require API version 2026-11-01-preview and a new knowledge base."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 91,
+      "rating_reason": "You get a reproducible Foundry IQ lab with ontology JSON, API payloads, GQL, and an agent-ready MCP endpoint, plus firsthand benchmarks exposing why graph retrieval sometimes loses to plain RAG.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:43:00.058106",
+      "image_url": "https://baeke.info/_astro/card.8DQm6XX3_1XDey8.png",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 8148,
+      "source_id": 34,
+      "original_url": "https://acostanza.com/benchmarks/qwen38-27b-dflash2-rejects/",
+      "title": "76–82% of DFlash2 rejects on Qwen3.8-27B NVFP4 happen where the target's top token is under 90% likely",
+      "summary": "DFlash2 speculative decoding on Qwen3.8-27B NVFP4 produced rejections concentrated where target confidence was low: 76–82% had top-token probability below 0.9. The rejected drafter token ranked second in 41–43% of cases, while optimistic repair of confident-token rejects added 12–16% tokens per step.",
+      "ideas": [
+        "76–82% of DFlash2 rejects occurred below 0.9 target top-token probability.",
+        "The rejected drafter token was the target's second choice in 41–43% of cases.",
+        "Optimistic repair of confident-token rejects increased tokens per step by 12–16%.",
+        "The logits hook reduced single-request throughput by approximately 5–7%.",
+        "Coding prompts averaged 5.98 tokens per step; roleplay averaged 2.53.",
+        "Bootstrap intervals measured prompt variation, not run-to-run variance."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "You get a reproducible breakdown of DFlash2 rejections, with SGLang flags, prompt protocol, bootstrap intervals, and a read-only logits hook exposing rejected-token rankings. Careful caveats distinguish measured results from optimistic replay and confounded comparisons.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-22T16:38:21.568880"
+    },
+    {
+      "id": 8147,
+      "source_id": 4,
+      "original_url": "https://pwn.ai/upload2shell/research.html",
+      "title": "Skip to article",
+      "summary": "PWN.AI researchers walk through CVE-2026-125396, a use-after-free in Ghostscript's Type 1 font loader that converts routine image uploads into remote command execution through ImageMagick, Pillow, and Roundcube despite -dSAFER. Four writes at gs_lib_ctx_core_t+156 zero path_control_active; a CUPS job then ran %pipe% as uid 7 (lp).",
+      "ideas": [
+        "Files named .jpg or .png can carry PostScript bytes that delegates hand to Ghostscript",
+        "Bound error handler on the stack recovers .forceput from executeonly-protected font helper",
+        "Type mismatch in string copy triggers controlled typecheck, resuming helper with attacker operands",
+        "Global dictionary retaining a local reference across restore creates interpreter-side use-after-free",
+        "Marker-value heap spray locates freed allocation reuse without guessing absolute addresses",
+        "Forged string ref over device pointer walks Ghostscript refs to path_control_active",
+        "Four byte writes zeroing path_control_active disable -dSAFER at native memory level",
+        "PermitFileWriting wildcard and forced LockFilePermissions false together unlock %pipe% command execution",
+        "Swapping mul's native function pointer with sub proves dispatch-level code control",
+        "Pillow load, crop, imageio, libvips, and Qt decoders silently invoke Ghostscript on EPS",
+        "Viewing a Roundcube email triggers server-side Ghostscript rendering with no click needed",
+        "CUPS-bound proof executed as uid 7 (lp), the renderer's service account"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Reading gives the full chain: PostScript typecheck trap recovering .forceput, save/restore dangling reference, marker heap spray, pointer walk to path_control_active, and %pipe% RCE proof in CUPS.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-22T16:34:50.903829",
+      "image_url": "https://pwn.ai/upload2shell-share.png?v=2",
+      "image_width": 2400,
+      "image_height": 1256,
+      "image_alt": "Upload2Shell title above a ghost escaping a glass box"
+    },
+    {
+      "id": 8146,
+      "source_id": 17,
+      "original_url": "https://sebastianraschka.com/blog/2026/us-china-open-weight-feedback-loop.html",
+      "title": "The US-China Open-Weight Feedback Loop",
+      "summary": "Sebastian Raschka maps the exchange of architectural ideas between US and Chinese open‑weight LLMs. The article lists nine specific innovations, from rotary embeddings to quantile balancing, and the year each model introduced them.",
+      "ideas": [
+        "LLaMA adopts RoFormer’s rotary position embeddings (RoPE) for token position encoding.",
+        "DeepSeek LLM 67B uses grouped‑query attention, sharing keys/values across query heads.",
+        "OLMoE adopts DeepSeekMoE’s fine‑grained expert design for mixture‑of‑experts.",
+        "DeepSeek‑V3 incorporates Meta’s multi‑token prediction objective during training.",
+        "Kimi K2 popularizes multi‑head latent attention (MLA) for KV‑cache reduction.",
+        "Qwen3‑Next employs a hybrid attention design using the gated delta rule.",
+        "Trinity Large applies a learned sigmoid gate to scale attention output before projection.",
+        "Instella‑MoE combines MLA with attention output gating, modulating output by input.",
+        "Marin Mochi (Open Athena) uses quantile balancing to adjust expert routing bias."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "You’ll see exactly which architectural tricks each open‑weight model borrowed, with links to deeper explanations, so you can trace the evolution of key LLM components.",
+      "source_type": "rss",
+      "source_name": "Sebastian Raschka",
+      "published_at": "2026-11-22T16:34:25.459609",
+      "image_url": "https://sebastianraschka.com/images/blog/2026/us-china-open-weight-feedback-loop/how-llms-build-on-each-other-preview.webp?v=2",
+      "image_width": 1920,
+      "image_height": 1920,
+      "image_alt": "Timeline of US and Chinese LLMs from 2021 to 2026, with arrows tracing rotary embeddings, grouped-query attention, and other ideas between models"
+    },
+    {
+      "id": 8145,
+      "source_id": 4,
+      "original_url": "https://github.com/ThreatDefence/agentic-attack-detections",
+      "title": "https://github.com/ThreatDefence/agentic-attack-detections",
+      "summary": "The repository provides open‑source detection rules, hunting queries, and indicator feeds for agentic attack frameworks such as ARTEX, Cairn, PentAGI, HexStrike, CyberStrikeAI, Strix, Hermes Agent, and Agent Zero. It includes 514 IOC entries and conversion tools for Sentinel, Suricata, Zeek, YARA, Sigma and STIX formats.",
+      "ideas": [
+        "Folder‑structured detection rules for each agentic framework.",
+        "Shared behavior rules capture common AI agent attack patterns.",
+        "CSV file lists 514 indicators with confidence levels.",
+        "Feeds generated in STIX, Sentinel watchlist, and plain lists.",
+        "Quick‑start guides for Sentinel, Suricata, Zeek, YARA, Sigma integration.",
+        "Confidence tiers (high, medium, low) guide alerting and baselining.",
+        "Validation scripts test rule syntax across multiple security platforms.",
+        "Contribution process allows adding new indicators or frameworks.",
+        "All rules are experimental; no real‑intrusion testing yet.",
+        "Conversion tools produce Splunk SPL, Elastic ES|QL, and backend‑specific formats."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "It delivers ready‑to‑use detection rules, indicator feeds, and step‑by‑step integration scripts for hunting AI‑driven attack frameworks across Sentinel, Suricata, Zeek, YARA and Sigma.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-22T16:34:09.606309",
+      "image_url": "https://opengraph.githubassets.com/119307b448413d85fa1db3320bd979c0fed1dbbcb69600037ead17d5d399a484/ThreatDefence/agentic-attack-detections",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Detection rules, KQL hunts, Sigma, Suricata, YARA and indicators for agentic attack frameworks: ARTEX, Cairn and the behaviors they share - ThreatDefence/agentic-attack-detections"
+    },
+    {
+      "id": 8144,
+      "source_id": 4,
+      "original_url": "https://github.com/bol-van/zapret2/blob/master/docs/manual.en.md",
+      "title": "https://github.com/bol-van/zapret2/blob/master/docs/manual.en.md",
+      "summary": "The document is the zapret2 manual: packet-level DPI bypass engine nfqws2, Lua libraries, profiles, filters, traffic scheme, installation and automation. It spans 5,707 lines and 341 KB of implementation-specific behavior and APIs.",
+      "ideas": [
+        "zapret2 manipulates packets in real time to bypass DPI blocks.",
+        "nfqws2 performs interception, filtering, protocol detection, host lists, and raw sends.",
+        "Traffic modification logic lives in Lua, not the C nfqws2 core.",
+        "Linux intercepts via iptables or nftables; FreeBSD uses ipfw and OpenBSD pf.",
+        "Windows interception is built into winws2 via the WinDivert driver.",
+        "macOS is unsupported due to missing suitable packet interception tools.",
+        "Profiles are scanned in order and first matching L3-L7 filters wins.",
+        "conntrack tracks flows, packet counts, byte counts, and sequence numbers.",
+        "Multi-packet payloads are buffered, reassembled, then decrypted if needed.",
+        "In-profile payload and byte-range filters reduce slow Lua invocations.",
+        "Lua instances execute sequentially according to --lua-desync parameter order.",
+        "desync table exposes dissect structures and conntrack state to Lua.",
+        "Lua code can persist state globally or in track.lua_state.",
+        "zapret-lib.lua base functions include dissection, reconstruction, and packet helpers.",
+        "zapret-antidpi.lua implements HTTP, fake, TCP segmentation, and UDP tricks.",
+        "zapret-auto.lua records success, failure, and orchestrates strategy decisions.",
+        "blockcheck2 automates strategy testing and supports IP-only block checks.",
+        "mdig resolves hostlists at scale and ip2net aggregates IP subnets.",
+        "Installation scripts support systemd, OpenRC, and OpenWrt environments.",
+        "IP lists, hostlists, and ipset scripts are managed by helper utilities.",
+        "Timer and execution-plan APIs allow scheduled or canceled Lua work.",
+        "Raw packet sending, reconstruction, and fooling primitives are C-exposed."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 84,
+      "rating_reason": "Reading the full manual gives exact nfqws2 and Lua details for profiles, conntrack, payload reassembly, raw sending, timer APIs, and blockcheck automation.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-22T16:33:27.588044",
+      "image_url": "https://opengraph.githubassets.com/c28a6fc7ed730249e7c6260860e389336fe3620ff03c286976515898b6da4798/bol-van/zapret2",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "anti-dpi software. Contribute to bol-van/zapret2 development by creating an account on GitHub."
+    },
     {
       "id": 8143,
       "source_id": 4,
