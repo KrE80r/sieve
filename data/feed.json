@@ -1,7 +1,416 @@
 {
-  "updated_at": "2026-11-22T18:00:00.857174+00:00",
-  "total_items": 1137,
+  "updated_at": "2026-11-22T19:00:00.351652+00:00",
+  "total_items": 1153,
   "items": [
+    {
+      "id": 8196,
+      "source_id": 34,
+      "original_url": "https://www.ajeetraina.com/can-docker-sandboxes-run-on-nvidia-arm-i-tried-it-on-a-gh200-with-nvidia-brev/",
+      "title": "Can Docker Sandboxes Run on NVIDIA Arm? I Tried It on a GH200 with NVIDIA Brev",
+      "summary": "Docker Sandboxes booted successfully on a bare-metal NVIDIA GH200 accessed through NVIDIA Brev, using Docker's 7.0.14 Arm guest kernel. The microVM exposed 16 Neoverse V2 CPUs and 31 GiB RAM but no NVIDIA GPU, because passthrough remains x86-only.",
+      "ideas": [
+        "Arm Docker Sandboxes need bare-metal KVM because cloud VMs rarely support nested virtualization.",
+        "NVIDIA's 64 KB-page host booted a Docker microVM with a 4 KB-page guest kernel.",
+        "The guest exposed 16 Neoverse V2 CPUs, BF16 and I8MM, but no GPU device.",
+        "The full GH200 sandbox test took about 15 minutes and roughly one dollar.",
+        "DGX Spark and Jetson support remains untested beyond basic OS and KVM checks."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "You get the complete Brev-to-sbx command sequence, host and guest inspection output, and exact Arm constraints: bare-metal KVM, Ubuntu 24.04, 4 KB guest pages, and no GPU passthrough.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T05:20:17.574087",
+      "image_url": "https://storage.ghost.io/c/3f/50/3f505d53-fb7d-4795-bcc1-9b4a8ee005ec/content/images/2026/11/Screenshot-2026-11-22-at-10.19.08---AM.png",
+      "image_width": 1020,
+      "image_height": 374,
+      "image_alt": ""
+    },
+    {
+      "id": 8195,
+      "source_id": 34,
+      "original_url": "https://vanja.io/zero-trust-ai-agents/",
+      "title": "The Agent Is Already Inside",
+      "summary": "Agentic prompt injection and weak credential boundaries are mapped to a fail-closed Claude Code hardening session with sandbox, credential, file, network, and permission rules. Anthropic’s red team reportedly exfiltrated data in 24 of 25 attempts; OpenAI’s escaped agents reached 41 Hugging Face workers.",
+      "ideas": [
+        "Claude Code can silently fall back to unsandboxed execution without fail-closed settings.",
+        "Bash sandboxing does not constrain Claude Code file tools, MCP servers, or hooks.",
+        "Private data, untrusted input, and outbound communication form the agentic lethal trifecta.",
+        "Shared credentials let escaped OpenAI agents reach 41 Hugging Face production workers.",
+        "Per-agent identities and injecting proxies reduce direct credential exposure without preventing misuse."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "You get a concrete threat model for prompt-driven agents, exploit chains from shared credentials and proxy escapes, plus a fail-closed Claude Code sandbox configuration and tests that verify credential, file, egress, and push boundaries.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T05:18:45.259040",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/zero-trust-ai-agents-fcafb7fe434c.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 8194,
+      "source_id": 34,
+      "original_url": "https://jayakody2000lk.blogspot.com/2026/11/open-lru-fingerprint-library.html",
+      "title": "Open LRU Fingerprint Library",
+      "summary": "The author reverse-engineered LRU1011 fingerprint sensors and built openlru-lib, a BSD-licensed C library for Linux usbfs. The protocol uses a 16-bit additive checksum, while bulk and MSC transports split 73,728-byte images into two and eight chunks respectively.",
+      "ideas": [
+        "USB sniffing and binary analysis independently confirmed LRU protocol opcodes.",
+        "Commands use fixed EF 01 headers, packet IDs, lengths, and additive checksums.",
+        "Bulk transport reads images in two 36,864-byte halves.",
+        "MSC transport wraps commands in USBC and USBS blocks.",
+        "openlru-lib talks directly to Linux usbfs without libusb."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get a reproducible USB protocol teardown—sniffed traces plus binary analysis, frame layout, opcodes, checksums, and two transport modes—along with a dependency-free C implementation using Linux usbfs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T05:03:04.852662"
+    },
+    {
+      "id": 8193,
+      "source_id": 34,
+      "original_url": "https://ii4gsp.github.io/libreoffice-rce/",
+      "title": "CVE-2026-104692 / CVE-2026-104007 - LibreOffice RCE via ODF Form Datasource JDBC Code Execution",
+      "summary": "LibreOffice 26.2.6.x and 26.8.1 can execute attacker-controlled Java through a crafted ODS that auto-loads an external ODB and issues HSQLDB CALL. The chain combines a null whitelist with an external-ODB classpath-filter bypass, and is fixed in 26.2.7 and 26.8.2.",
+      "ideas": [
+        "HSQLDB's null whitelist permits every Java method before system-property initialization.",
+        "External ODB references bypass classpath stripping and reach JConnection directly.",
+        "ODF form auto-loading enables SQL CALL without macro warnings or user interaction.",
+        "Fixes initialize the whitelist empty and sanitize ODB system properties.",
+        "Patched releases 26.2.7 and 26.8.2 add datasource trust checks."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "You get the exact ODB/ODF trigger chain, vulnerable HSQLDB and JConnection code paths, patch diffs, and layered mitigations needed to reproduce, audit, or harden the exploit.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T05:01:46.475574"
+    },
+    {
+      "id": 8192,
+      "source_id": 34,
+      "original_url": "https://ii4gsp.github.io/iterm2-rce/",
+      "title": "iTerm2 Arbitrary Command Execution via Kitty Image Protocol APC Response Injection",
+      "summary": "The article discloses an iTerm2 vulnerability where APC escape sequences in a file trigger command execution via the Kitty image protocol error response. The exploit works on versions 3.6.1–3.7.8 and relies on newline‑preserving NSError.localizedDescription.",
+      "ideas": [
+        "APC handler lacks any trust check, unlike OSC sequences.",
+        "Kitty’s file‑transmit error path embeds raw NSError messages with literal newlines.",
+        "Sanitizer replaces all C0/C1 control characters with spaces to block injection."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading the full write‑up reveals the exact APC injection chain, the vulnerable VT100/APC handling code, and the precise sanitizer fix that stops arbitrary command execution.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T05:01:24.409826"
+    },
+    {
+      "id": 8191,
+      "source_id": 34,
+      "original_url": "https://gshell.dev/blog/x8x4-vs-x8x8-local-llm/",
+      "title": "Two GPUs, x8/x4 vs x8/x8: does the slot matter?",
+      "summary": "A motherboard swap moving a second RTX 5060 Ti from chipset x4 to CPU x8 barely changed one-card or layer-split inference, while tensor-split generation rose 7-21% and prompt processing 16-39%. With tensor split plus MTP, a 27B dense model reached 77.8 t/s from 24.2.",
+      "ideas": [
+        "Chipset PCIe x4 cost nothing for one-GPU or layer-split generation.",
+        "Tensor split syncs every layer over PCIe, so slot speed affects throughput.",
+        "Ollama runs a bundled llama-server and only supports layer split.",
+        "Tensor split plus MTP raised Qwen3.8 27B from 24.2 to 77.8 t/s.",
+        "NCCL 2.25.1 failed on Blackwell shared-memory limit; NCCL 2.32.6 fixed it."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "It quantifies when a slower PCIe slot matters for LLM inference, with before/after bandwidth, tensor-split gains, MTP speedups, and llama.cpp versus Ollama trade-offs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T05:00:24.599618",
+      "image_url": "https://gshell.dev/blog/x8x4-vs-x8x8-local-llm/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Cover image for “Two GPUs, x8/x4 vs x8/x8: does the slot matter?”"
+    },
+    {
+      "id": 8190,
+      "source_id": 34,
+      "original_url": "https://grahamdumpleton.me/posts/2026/11/muru-when-lazy-imports-help/",
+      "title": "Muru: when lazy imports help",
+      "summary": "Muru measures Python import behavior in a pre-fork Flask app, showing host-only deferred imports can move costs into first requests. Benchmark results include 83 ms versus 35 ms host loads and a 138 ms deferred import wait.",
+      "ideas": [
+        "Pre-fork servers share host imports; deferred imports load per worker, increasing request-time cost.",
+        "Lazy imports saved 48 ms host load but added 52 ms to first spreadsheet download.",
+        "A function-level pandas import caused import-lock waits across concurrent worker threads.",
+        "Modules every worker loads are better preloaded before fork via preload_modules.",
+        "Deferred imports used immediately upon resolution save no startup time."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "It shows how pre-fork deployment changes lazy-import trade-offs, with Muru's measured host and worker timings, import-wait contention, and exact config for deferring or preloading modules.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:59:26.812165"
+    },
+    {
+      "id": 8189,
+      "source_id": 34,
+      "original_url": "https://gofranz.com/blog/six-months-of-vibe-coding-reviewed/",
+      "title": "A Doctor Vibe-Coded His Practice Software. Here’s What I Found.",
+      "summary": "A doctor used Claude to build a Supabase practice platform; an audit exposed anonymous health-record access, writable treatments, public payment slips, and broken authorization. Among 236 privileged Postgres functions, 143 were anonymously callable; backend-only logic and 190 hand-run SQL scripts blocked repository reconstruction.",
+      "ideas": [
+        "Postgres grants executable functions to PUBLIC by default, exposing SECURITY DEFINER routines that bypass RLS.",
+        "Audit found 143 of 236 privileged database functions anonymously callable.",
+        "Anonymous callers could read diagnoses and alter treatment status without authentication.",
+        "Public storage exposed bank-transfer screenshots; authenticated users could replace other users’ slips.",
+        "Reception, doctors, and patients shared overbroad record and mutation permissions.",
+        "Patient-controlled nonnumeric identifiers could break subsequent patient numbering.",
+        "The 840-commit, 190-script project lacked reproducible backend and deployment state.",
+        "Production Supabase backend was the mobile app’s default, making local builds dangerous."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Reading the full audit reveals the privilege chain from anonymous calls into elevated Postgres functions that bypass RLS, plus unsafe storage grants, mutable clinical fields, and unreproducible backend state.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:59:19.544781",
+      "image_url": "https://gofranz.com/assets/images/og/six-months-of-vibe-coding-reviewed.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "A Doctor Vibe-Coded His Practice Software. Here's What I Found."
+    },
+    {
+      "id": 8188,
+      "source_id": 34,
+      "original_url": "https://gautamparab.com/writing/two-thirds-of-the-zero-retention-prompts/",
+      "title": "Two-Thirds of the Zero-Retention Prompts Came Back",
+      "summary": "Dragos seeded roughly two million canary prompts across AI services and traced fetches, breaches, marketplace logging, and undisclosed downstream hops. About two-thirds of zero-data-retention-flagged prompts to one lab were later fetched.",
+      "ideas": [
+        "A ZDR flag only binds the first inference hop",
+        "Canary firing measures recipient action, not exposure",
+        "Peng study: 7 of 150 phished credentials fired",
+        "Tripwire found 19 compromises among ~2,302 sites",
+        "One seller added ~1,000 hidden tokens per prompt",
+        "Bait keys were stolen even from rejected requests"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "It maps where AI privacy flags fail across inference hops, supported by Dragos canary measurements, breach timelines, and comparisons to tripwire and phishing-canary studies.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:58:46.453768"
+    },
+    {
+      "id": 8187,
+      "source_id": 34,
+      "original_url": "https://gautamparab.com/writing/fifty-four-percent-down-to-point-two/",
+      "title": "Fifty-Four Percent Down to Point Two, Scored by the House",
+      "summary": "OpenAI reports that adversarial-distillation attacks against GPT-6 Astra’s protected reasoning fell from 54.0% to 0.2% after safeguards changed. The analysis shows the rate is internally measured, lacks attempt denominators and independent replay, and bundles four defenses.",
+      "ideas": [
+        "ASR without denominators, attacker budgets, and independent replay cannot establish extraction resistance.",
+        "Four simultaneous defenses make OpenAI’s 0.2% result a bundled, non-attributable measurement.",
+        "A stronger attack cut measured robustness from 7.87% to 0.06% on one model.",
+        "Only 20% of 88 surveyed adversarial-ML papers tested real ML systems."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get a forensic breakdown of OpenAI’s 54.0%-to-0.2% extraction-defense claim, including why ASR needs denominators, attacker budgets, and external replay. Cited adversarial-robustness experiments also show how weaker attacks inflate reported defenses.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:58:18.894685"
+    },
+    {
+      "id": 8186,
+      "source_id": 34,
+      "original_url": "https://dennisforbes.ca/blog/2026/11/reading_a_chess_board_from_a_picture/",
+      "title": "Teaching a Web Page to Read a Chess Board",
+      "summary": "The author built a client-side chess-position reader that extracts a board from screenshots or photos without sending images to a server. It finds a board in about 129 ms and reads 64 squares in about 727 ms.",
+      "ideas": [
+        "Board detection uses a nine-toothed edge comb and checkerboard color clustering.",
+        "Perspective correction uses a Heckbert homography from four board corners.",
+        "A 131 KB byte model classifies each square with plain JavaScript loops.",
+        "Boundary scoring credits half-line edges and fixes one-square skew errors."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get a complete browser-only computer-vision pipeline: edge-comb board detection, homography-based perspective correction, and a hand-written neural-network forward pass with failure modes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:51:54.412220",
+      "image_url": "https://dennisforbes.ca/include/features/chess_vision/chess_vision_og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8185,
+      "source_id": 34,
+      "original_url": "https://blog.mbwarez.dk/posts/2026/11/hass-snapshotter/",
+      "title": "hass-snapshotter: Rendering Dashboards Faster Than an E-ink Screen Can Fall Asleep",
+      "summary": "hass-snapshotter replaces Chromium with Node and Takumi to render Home Assistant PNGs for sleeping e-ink panels. Palette mapping moved to SIMD Rust/WASM, cutting 800×480 processing from 0.6–0.8 seconds to 10–30 ms; replacing Chromium also reduced the container image from 1.2 GB to 169 MB.",
+      "ideas": [
+        "Keep-alive cut warm renders from 2.3 seconds to roughly 0.4 seconds.",
+        "SIMD Rust/WASM palette mapping reduced 800×480 conversion to 10–30 ms.",
+        "Fresh processes avoided retaining 40–85 MB between infrequent renders.",
+        "BLE transfer and panel refresh still consume roughly 10–12 seconds."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "The full write-up provides the rendering pipeline, sample pages, timing instrumentation, and Rust/WASM palette optimization, with concrete trade-offs among startup latency, memory, image size, and BLE transfer time.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:47:39.362206"
+    },
+    {
+      "id": 8184,
+      "source_id": 34,
+      "original_url": "https://andrewxhill.com/frontier-model-weight-edits/",
+      "title": "Using frontier AI to turn a free vision model into a Galápagos wildlife expert",
+      "summary": "Andrew Hill used frontier AI agents to edit specific weight matrices of LLaVA-OneVision 0.5B by direct reasoning, with no gradient training. On 1,611 held-out camera-trap photos balanced accuracy rose from 64.09% to 81.76%, and mockingbird recognition reached 98% against Google's 3%.",
+      "ideas": [
+        "Frontier models wrote ridge-regression fits and zeroing into connector and lm_head weights without gradient training",
+        "Zeroing lm_head rows 576 and 785 eliminated 237 unusable verbose replies across 1,611 photos",
+        "Two GELU-gated hidden units cancel to produce a clean linear pass-through channel",
+        "A constant 'rabbit' hint flipped 18 of 32 practice photos to rabbit, validating steering",
+        "A single fine-tuned model reached 87.58% and 91.69% on native-vs-green iguanas on one desktop"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "Reading it gives the exact edits: zeroing lm_head rows 576 and 785, the 1.5× EOS multiplier, GELU cancellation pairs, ridge connector wiring, lie-test validation, and ablations recovering 212 failures.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:44:31.141899"
+    },
+    {
+      "id": 8183,
+      "source_id": 34,
+      "original_url": "https://andrewxhill.com/from-clip-to-bioclip-2/",
+      "title": "From CLIP to BioCLIP 2: what a biology model gained and what it got worse at",
+      "summary": "A direct analysis compares LAION-2B CLIP ViT-L/14 with BioCLIP 2 after continued training on 214 million organism images. Species naming rose from 45.5% to 90.6%, while alive/dead accuracy fell from 92.1% to 85.7%, with two-thirds of the loss localized to image block 23.",
+      "ideas": [
+        "BioCLIP 2 raised 223-species naming accuracy from 45.5% to 90.6%.",
+        "Domain training reduced alive/dead accuracy from 92.1% to 85.7%.",
+        "Two-thirds of the regression emerged in image block 23's summary token.",
+        "Weight averaging yielded 72.7% species naming and 92.2% alive/dead accuracy.",
+        "Replacing final image blocks recovered both naming and alive/dead performance.",
+        "Patch-token readout improved alive/dead accuracy without reducing species naming."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "Beyond headline accuracy, you get a layer-by-layer causal analysis using weight interpolation, token readouts, and block replacement to isolate where BioCLIP 2 loses general capability.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:44:30.733340",
+      "image_url": "https://andrewxhill.com/from-clip-to-bioclip-2/preview.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Title slide: From CLIP to BioCLIP 2. Species named correctly: starting model 45.5%, BioCLIP 2 90.6%."
+    },
+    {
+      "id": 8182,
+      "source_id": 34,
+      "original_url": "https://alexanderhoughton.co.uk/blog/letting-ai-off-the-lead-slim-graphics/",
+      "title": "🐕 Letting AI off the lead: Slim Graphics",
+      "summary": "Claude implemented a Vulkan backend for Alexander Houghton’s Slim Graphics engine, then expanded GPU-driven-rendering scenes and validation tooling. The backend reached visual parity with only 56 differing pixels (0.003%), though a modal assertion required human intervention.",
+      "ideas": [
+        "Claude found a Vulkan barrier-state bug and a leaking GPU allocation.",
+        "DXC’s SPIR-V mesh output was optimized away after struct flattening.",
+        "Autonomous captures compared Vulkan and D3D12 at 0.003% pixel difference.",
+        "Human intervention was required when a Win32 assertion blocked execution.",
+        "Generated JSON scenes supplied escalating GPU-driven-rendering stress tests."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "You get a concrete agent-engineering case study: prompts, commit checkpoints, autonomous screenshot-diff validation, and a disassembly-driven diagnosis of DXC/SPIR-V mesh-shader layout and optimization failures.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-23T04:43:01.085252",
+      "image_url": "https://alexanderhoughton.co.uk/images/social-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8181,
+      "source_id": 28,
+      "original_url": "https://the-decoder.com/security-researchers-show-how-cheap-ai-inference-providers-steal-keys-and-snoop-on-users/",
+      "title": "Security researchers show how cheap AI inference providers steal keys and snoop on users",
+      "summary": "Dragos sent roughly two million AI requests with fake credentials and identified three providers that leaked data to attackers. The researchers captured hundreds of AWS keys, some within hours of theft.",
+      "ideas": [
+        "AI inference intermediaries can read full request payloads, exposing credentials.",
+        "Logging enabled on cheap providers lets attackers harvest secret keys.",
+        "Fake credentials (canary tokens) can reveal unauthorized access instantly.",
+        "Chinese AI labs intercepted over half of secret test URLs despite US routing.",
+        "Major US providers violated privacy policies by retaining test URLs for months.",
+        "Attackers used the ARTEX AI‑powered tool to automate credential theft.",
+        "Controlling routing and disabling logging mitigates credential leakage in AI pipelines."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 80,
+      "rating_reason": "You’ll learn the exact way attackers siphoned AWS keys via AI request intermediaries, the tools and canary‑token tricks used, and concrete steps to protect your inference pipelines.",
+      "source_type": "rss",
+      "source_name": "The Decoder",
+      "published_at": "2026-11-23T04:35:16.534269",
+      "image_url": "https://the-decoder.com/wp-content/uploads/2026/11/cybersecurity_data_leak-1200x670.png",
+      "image_width": 1200,
+      "image_height": 670,
+      "image_alt": ""
+    },
     {
       "id": 8180,
       "source_id": 28,
