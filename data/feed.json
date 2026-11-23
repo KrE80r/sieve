@@ -1,7 +1,318 @@
 {
-  "updated_at": "2026-11-23T18:00:00.794120+00:00",
-  "total_items": 1057,
+  "updated_at": "2026-11-23T19:00:00.286945+00:00",
+  "total_items": 1069,
   "items": [
+    {
+      "id": 8208,
+      "source_id": 34,
+      "original_url": "https://ideia.me/know-thy-neighbour-zca-whitening-inline-biovecint8g128-pains-enzref-storm-pg-bio",
+      "title": "Know Thy Neighbour in PostgreSQL: Full Symmetric ZCA Whitening, 1,304-Byte Zero-TOAST BioVecInt8G128, Kabsch/PAINS Hygiene &amp; Stage-2.5 EnzRef/STORM Re-Rankers in pg_bio",
+      "summary": "PR #15 in pg_bio adds symmetric ZCA whitening, an inline 1,304-byte BioVecInt8G128 vector type, structure and chemical hygiene checks, and CPU re-rankers. The changes lift SCOPe held-out superfamily Top-1 retrieval from 58.55% to 88.32%.",
+      "ideas": [
+        "Full symmetric ZCA whitening raises retrieval to 88.32%.",
+        "The 1,304-byte varlena type avoids TOAST entirely.",
+        "Ridge-shrunk covariance eigensolver supports SIMD whitening.",
+        "Single-threaded Kabsch repair and PAINS filtering sanitize inputs."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading it reveals the complete ZCA covariance math, SIMD kernel details, 1,304-byte varlena layout, and measured retrieval and latency improvements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:20:51.853337"
+    },
+    {
+      "id": 8207,
+      "source_id": 34,
+      "original_url": "https://genbox.github.io/2026/11/verifying-roslyn-three-parsing-bugs.html",
+      "title": "Verifying Roslyn led to three parsing bugs",
+      "summary": "A Z3-backed differential harness compared fresh and incremental Roslyn parses across 4,224 edit states, reducing 54 discrepancies to three parser bugs. The most serious reused a class-body constructor as a script global, producing an InvalidCastException during diagnostics and Emit.",
+      "ideas": [
+        "Generated edits exposed 54 differences in 4,224 Roslyn parse states.",
+        "Script-root reuse can cast a source constructor as a synthesized script constructor.",
+        "Interpolated-string token reuse can suppress the CS8086 lexical diagnostic.",
+        "Stale trailing trivia shifted a missing-brace diagnostic nine characters backward."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "The full write-up gives the differential-testing setup and traces how reused Roslyn syntax nodes cause a compiler crash, suppress CS8086, and misplace CS1513 by nine characters.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:15:54.118582",
+      "image_url": "https://genbox.sh/assets/social/2026-11-verifying-roslyn-three-parsing-bugs.png?v=629e68a897856ccf",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8206,
+      "source_id": 34,
+      "original_url": "https://garrettstimpson.ca/posts/2026/11/23/dorsett-infoscan-water-scada-vulnerabilities/",
+      "title": "The Water Utility Software That Shipped a Map of Its Own Customers",
+      "summary": "CISA disclosed six vulnerabilities in Dorsett Controls InfoScan 1.45.0 and earlier, affecting water and wastewater systems worldwide. Their chain exposes customers and accounts, unlocks locally stored MongoDB credentials, and bypasses Electron TLS validation; InfoScan 1.46 fixes them.",
+      "ideas": [
+        "Unauthenticated endpoints disclose usernames, MFA status, versions, firmware, and BACnet/IP ports.",
+        "Installer files leak customer hostnames and Dorsett development infrastructure.",
+        "Hard-coded MongoDB key turns local registry access into database credentials.",
+        "Electron disables certificate validation, context isolation, web security, and enables Node integration.",
+        "Malformed login requests expose Node.js paths, source locations, and line numbers.",
+        "An unauthenticated local endpoint serves sales-automation templates without session validation.",
+        "InfoScan 1.46 fixes the flaws, but operators must still rotate exposed credentials."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "You get the reconnaissance-to-compromise chain across six InfoScan flaws: customer-host leakage, pre-auth enumeration, a shipped database key, disabled Electron TLS checks, and sessionless templates, plus concrete operator remediation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:15:32.519730",
+      "image_url": "https://garrettstimpson.ca/assets/og/posts/2026/11/23/dorsett-infoscan-water-scada-vulnerabilities/index-d6ef0a5a41b0.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The Water Utility Software That Shipped a Map of Its Own Customers"
+    },
+    {
+      "id": 8205,
+      "source_id": 34,
+      "original_url": "https://frn.sh/postgres-io/",
+      "title": "A short history of read streams in Postgres",
+      "summary": "PostgreSQL read streams combine adjacent page reads, but a cached page can terminate one range and force another. Postgres 17 introduced the stream API, while Postgres 18 adds io_combine_limit and asynchronous I/O infrastructure; every-other-page cache hits can produce eight separate 8 KiB requests.",
+      "ideas": [
+        "Shared-buffer hits split PostgreSQL combined reads at the cached page boundary.",
+        "Read streams debuted in PostgreSQL 17; io_combine_limit arrived in PostgreSQL 18.",
+        "Every-other-page cache hits can reduce a 128 KiB range to eight requests.",
+        "Asynchronous I/O overlaps latency; read combining reduces request count.",
+        "Lookahead changes separate I/O distance from eligible block combining."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "You learn why a shared-buffer hit can split PostgreSQL’s combined read, plus how lookahead and async I/O evolved through versions 8.3–18. Mailing-list excerpts and bufmgr.c behavior ground the explanation in concrete implementation details.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:14:35.731505"
+    },
+    {
+      "id": 8204,
+      "source_id": 34,
+      "original_url": "https://flaviocopes.com/claude-code-guide/",
+      "title": "The complete guide to Claude Code",
+      "summary": "A handbook for Claude Code v2.1 covering its agent loop, prompt caching, tools, permissions, hooks, skills, MCP, plugins, CI, and SDK. A three-turn benchmark shows resuming on Sonnet costing $0.0048 after a $0.0970 cold start, while switching models cost $0.1896.",
+      "ideas": [
+        "Switching models invalidates prompt cache; changing effort preserves it.",
+        "MCP schemas load on demand through ToolSearch, keeping startup context small.",
+        "Compacting resets cached history and writes one shorter prefix.",
+        "Fast mode and standard speed maintain separate prompt caches."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "It provides concrete Claude Code mechanisms, exact commands, measured cache behavior across turns, and configuration details you can apply directly.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:13:22.723568",
+      "image_url": "https://flaviocopes.com/images/claude-code-guide/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Preview image for The complete guide to Claude Code"
+    },
+    {
+      "id": 8203,
+      "source_id": 34,
+      "original_url": "https://deaddropgame.com/devlog/one-simulation-two-machines-bit-for-bit/",
+      "title": "One simulation, two machines: agreeing on every step and every shot",
+      "summary": "Dead Drop runs the same simulation on client and server for movement, guns, inventory, and vehicles, using hashes to detect prediction mismatches. Shots carry fractional tick timing and aim plus a bounded rewind to the shooter's view.",
+      "ideas": [
+        "Client and server run identical Rust simulation steps",
+        "32-bit state hashes detect any prediction mismatch",
+        "Inputs record target update for collision history",
+        "Shots include fractional tick timing and aim",
+        "Rewind cap favors the player being shot at",
+        "15 animated capsules define server hit zones"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "It details deterministic shared-simulation rules, state hashes, history rewind, and animation-posed hit zones.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:09:16.563819",
+      "image_url": "https://deaddropgame.com/og/devlog/one-simulation-two-machines-bit-for-bit.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Sunday Drop: One simulation, two machines: agreeing on every step and every shot"
+    },
+    {
+      "id": 8202,
+      "source_id": 34,
+      "original_url": "https://boring-observability.dev/blog/laravel-migrations-best-practices",
+      "title": "18 Best Practices for Laravel Database Migrations",
+      "summary": "The article gives 18 Laravel/MySQL migration practices covering schema changes, backfilling, locking, deploy ordering, and metadata-lock hazards. It shows foreign keys added in-place with checks disabled after orphan checks, plus exact ALTER behavior for varchar width changes.",
+      "ideas": [
+        "Add new columns nullable or defaulted so old release inserts keep working",
+        "change() omits modifiers and can accidentally make columns NOT NULL",
+        "Guard each migration step so partially failed migrations can rerun",
+        "Use chunkById batching for backfills to avoid long table locks",
+        "Foreign keys copy tables unless foreign_key_checks is disabled"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "It translates Laravel migration rules into concrete MySQL behavior, including ALTER algorithms, error codes, metadata-lock hazards, and guarded reruns with exact code snippets.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T04:58:51.963238",
+      "image_url": "https://boring-observability.dev/og/blog/laravel-migrations-best-practices.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Skyline — queue control for Laravel Horizon."
+    },
+    {
+      "id": 8201,
+      "source_id": 34,
+      "original_url": "https://blog.shakiltech.com/emudhra-ca-key-compromise-postmortem/",
+      "title": "eMudhra CA Key Compromise: A Technical Postmortem (2026)",
+      "summary": "eMudhra’s intermediate CA certificates were issued with ECDSA‑P‑384 private keys truncated to a single byte, allowing anyone to reconstruct them. The eight compromised keys had values 4, 56, 66, 115, 155, 156, 230 and 237.",
+      "ideas": [
+        "Custom Python wrap/unwrap script truncated EC private keys to one byte, causing the compromise."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading the full postmortem reveals the exact Python key‑handling bug that reduced ECDSA private scalars to a single byte and the step‑by‑step exploit used to forge certificates.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T04:56:46.050096"
+    },
+    {
+      "id": 8200,
+      "source_id": 34,
+      "original_url": "https://aydinnyunus.github.io/2026/11/22/nanomq-basic-authorize-heap-underflow/",
+      "title": "Heap Buffer Underflow in NanoMQ rest_api.c basic_authorize()",
+      "summary": "The author discovered a heap buffer underflow in NanoMQ’s basic_authorize() that crashes the broker with a six‑byte “Basicc” request. The bug arises from unchecked decode_len causing unsigned underflow writes, and the fix adds length checks and zero‑initialized allocation.",
+      "ideas": [
+        "A six‑byte “Basicc” Authorization header triggers an out‑of‑bounds null write via unsigned wrap.",
+        "decode_len underflows when token length is <3, causing writes to SIZE_MAX addresses.",
+        "Fix replaces sscanf with explicit prefix check and uses nng_zalloc to eliminate manual padding writes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "It shows the six‑byte “Basicc” payload that triggers an out‑of‑bounds write, explains the unsigned‑wrap arithmetic, and provides the exact patch steps to harden NanoMQ.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T04:49:19.940698"
+    },
+    {
+      "id": 8199,
+      "source_id": 34,
+      "original_url": "https://aydinnyunus.github.io/2026/11/22/nanomq-basic-authorize-heap-underflow-tr/",
+      "title": "NanoMQ rest_api.c basic_authorize() Heap Buffer Underflow",
+      "summary": "A libFuzzer-discovered pre-auth heap buffer underflow in NanoMQ rest_api.c basic_authorize() was fixed in 0.24.14. A one-character token makes decode_len 1, causing unsigned underflow to SIZE_MAX heap indices.",
+      "ideas": [
+        "Six-byte input Basicc triggers pre-auth heap underflow",
+        "decode_len 1 wraps decode_len-2 to SIZE_MAX",
+        "Three unconditional null writes without length checks",
+        "Fix rejects tokens shorter than four Base64 chars",
+        "DoS only; constant null write yields no RCE"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading it shows the unsigned wraparound turning a one-byte token into huge heap indices, plus the exact six-byte Basicc trigger and smallest safe patch.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T04:48:46.212634"
+    },
+    {
+      "id": 8198,
+      "source_id": 34,
+      "original_url": "https://aliirz.com/the-port-passed-it-was-still-wrong",
+      "title": "The port passed. It was still wrong.",
+      "summary": "fast-anything profiles Python hot functions, generates Rust replacements, and verifies them through recorded calls and derived edge cases. Its apparently perfect 35-check port disagreed on 3,341 of 20,000 random inputs because Python and Rust split whitespace and round ties differently.",
+      "ideas": [
+        "Recorded-call verification missed 16.7% of random Python-to-Rust mismatches.",
+        "Python split() recognizes four ASCII whitespace characters Rust split_whitespace() omits.",
+        "Rust f64::round breaks ties away from zero, unlike Python round ties-to-even.",
+        "Feeding adversarial calls into recordings expanded verification from 35 to 56 cases.",
+        "The port delivered 150× speedup on pure-Python arithmetic but 3.6× on C-backed sets.",
+        "Unicode 15.1 versus 16.0 produced 27 lowercase differences on Python-unassigned characters.",
+        "Fast-anything silently falls back to Python when its ignored Rust library is absent."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "You get a reproducible differential-testing investigation of Python-to-Rust ports: fuzzing exposes whitespace and rounding semantic mismatches, targeted workloads repair verification, and benchmarks show profile-dependent speedups.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T04:43:55.709564",
+      "image_url": "https://aliirz.com/images/fast-anything-header.jpg",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": ""
+    },
+    {
+      "id": 8197,
+      "source_id": 7,
+      "original_url": "https://newsletter.systemdesignclassroom.com/p/ai-agents-just-rediscovered-the-dual-write-problem",
+      "title": "AI Agents Just Rediscovered the Dual-Write Problem",
+      "summary": "It walks through an AI support agent refunding a customer twice after a crash, then builds an idempotent workflow around it. Key fact: provider timeouts leave actions UNKNOWN and require reconciliation before retry.",
+      "ideas": [
+        "Refund agents can duplicate refunds when reasoning recovers but effects remain unseen.",
+        "Agent state has conversation, workflow, and external-effect layers.",
+        "A saved conversation cannot prove an external action completed.",
+        "External success plus missing app record creates a dual-write gap.",
+        "At-least-once retries can duplicate unsafe real-world actions.",
+        "Effectively-once effects need identity, idempotency, durable state, reconciliation.",
+        "Give each business action a stable ID reused across retries.",
+        "Idempotency keys must scope to one approved action, not whole order.",
+        "Record authorized intent before executing the external call.",
+        "Use a durable worker plus unique action ID to serialize execution.",
+        "Treat provider timeouts as UNKNOWN, then reconcile before retrying.",
+        "FAILED_FINAL requires authoritative evidence, not network uncertainty.",
+        "Generate idempotency keys outside checkpointed steps to avoid duplicates.",
+        "Checkpointing, workflow idempotency, and business idempotency protect different layers.",
+        "Approval must bind to order version, amount, currency, and expiry.",
+        "Verify state in one transaction before submission to stop stale approvals.",
+        "Deliberately test crash points before and after provider success.",
+        "Monitor actions stuck in SUBMITTING or UNKNOWN to prevent trapped money."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "Reading the full piece gives a concrete crash-safe refund design: stable action IDs, a pre-execution intent log with a unique constraint, timeout reconciliation, and optimistic concurrency on approval.",
+      "source_type": "nitter",
+      "source_name": "Bilgin Ibryam",
+      "published_at": "2026-11-24T04:40:22.411551",
+      "image_url": "https://substackcdn.com/image/fetch/$s_!zseW!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c34453a-4f28-4bff-a989-cb479d56ce25_1774x887.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
     {
       "id": 8196,
       "source_id": 34,
