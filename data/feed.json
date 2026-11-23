@@ -1,7 +1,162 @@
 {
-  "updated_at": "2026-11-23T19:00:00.286945+00:00",
-  "total_items": 1069,
+  "updated_at": "2026-11-23T20:00:00.470149+00:00",
+  "total_items": 1075,
   "items": [
+    {
+      "id": 8214,
+      "source_id": 34,
+      "original_url": "https://www.prskavec.net/post/migrations-that-never-roll-back/",
+      "title": "Migrations that never roll back",
+      "summary": "A Go/Postgres team replaced startup-embedded golang-migrate with a forward-only tern migration Deployment plus minimum-version readiness gates. Transactional migrations atomically update schema state, while explicit nontransactional exceptions, a 1,000-placeholder ceiling, bridge cutovers, and exact-minimum CI tests manage migration hazards.",
+      "ideas": [
+        "Commit tern migrations and version updates atomically to eliminate dirty-state recovery.",
+        "Preserve filename prefix, database position, metric, and image tag as one version.",
+        "Gate service readiness on minimum schema version, never maximum.",
+        "Test services against exactly their declared minimum migrated schema.",
+        "Cut over through bridge and hold releases to prevent migration replay.",
+        "Adopt explicitly named legacy version tables; never drop them.",
+        "Crash-inject runners between statements, migrations, and placeholder bumps.",
+        "Budget integration work across heterogeneous CI workflows, not just tool development."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "You get the concrete migration-service design: transactional tern upgrades, prefix/version invariants, readiness gating, cutover sequencing, crash-injection tests, and the CI test that closes a dangerous compatibility gap.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T06:11:42.294720",
+      "image_url": "https://www.prskavec.net/og/og-bg_hu_5e8c19a5a3fa3ec9.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Migrations that never roll back — Prskavec.Net"
+    },
+    {
+      "id": 8213,
+      "source_id": 34,
+      "original_url": "https://www.giorgi.dev/database/duckdb-net-1-5-6-1-decimal-performance/",
+      "title": "DuckDB.NET 1.5.6.1: 128-bit Values Up to 6.6× Faster",
+      "summary": "DuckDB.NET 1.5.6.1 changed UUID, HUGEINT, and wide decimal paths to use Int128 instead of BigInteger. Reading 1M UUID rows fell from 98.6 ms to 29.6 ms, while wide-decimal reads allocate 17 KB instead of 105 MB.",
+      "ideas": [
+        "UUID reads skip a 32-byte stack buffer by shifting two Int64 halves into Guid.",
+        "HUGEINT-as-long read becomes two loads plus one sign comparison, inlined into caller.",
+        "Wide decimal read uses Int128.DivRem, cutting allocations from 105 MB to 17 KB.",
+        "Appending decimals switches to integer arithmetic, reducing 147 MB to 139 KB.",
+        "All-28-digit decimal case gets slower on Windows due to software division."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading it gives the exact old/new paths, JIT assembly snippet, allocation breakdown, and why one decimal case slowed.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T06:04:33.519303",
+      "image_url": "https://www.giorgi.dev/database/duckdb-net-1-5-6-1-decimal-performance/featured.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8212,
+      "source_id": 34,
+      "original_url": "https://startdebugging.net/2026/11/how-to-call-a-default-interface-property-from-the-implementing-class-in-csharp/",
+      "title": "How to use an interface's default property implementation from the class that implements it in C#",
+      "summary": "C# 15’s default interface properties cannot be called like base members, but the article verifies four working patterns using .NET 11. It also documents interface-slot dispatch, struct boxing during default-body mutation, and CS8701 on .NET Framework or .NET Standard 2.0.",
+      "ideas": [
+        "A matching class property replaces the interface default for every dispatch path.",
+        "Interface casts cannot reach a default body after the class implements the slot.",
+        "C# 14 extension properties expose interface defaults on concrete types.",
+        "Mutating default interface bodies box struct receivers, even through generic ref calls.",
+        "Protected static interface helpers provide base-like reuse without base(I) syntax."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get compiled, runtime-checked patterns for invoking and reusing C# default interface properties, including why interface casts recurse and why struct defaults box. The extension-property and protected-static-helper solutions are immediately reusable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:53:15.561043",
+      "image_url": "https://startdebugging.net/og/2026/11/how-to-call-a-default-interface-property-from-the-implementing-class-in-csharp.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "How to use an interface's default property implementation from the class that implements it in C# - Start Debugging"
+    },
+    {
+      "id": 8211,
+      "source_id": 34,
+      "original_url": "https://reversesociety.co/blog/2026/my-ios-macos-app-has-no-network-it-knows-someone-who-does",
+      "title": "My iOS/macOS App Has No Network. It Knows Someone Who Does",
+      "summary": "A network-restricted app invokes Apple's attributed-string XPC agent to render HTML and receive fetched resource bytes. The agent returned 35,588 JPEG bytes over plain HTTP on iOS despite App Transport Security.",
+      "ideas": [
+        "XPC listener accepts every caller and sets exported interface without sandbox or entitlement check.",
+        "renderHTML fetches images and stylesheets, returning attachment file contents in the reply.",
+        "macOS no-network sandbox app received 9,300 JPEG bytes from placecats.com.",
+        "iOS App Transport Security configuration was bypassed for 35,588 JPEG bytes over HTTP.",
+        "Sandbox profile allows mach-lookup access to nsurlsessiond and both WebKit process names."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "You get the exact XPC acceptance code, HTML payload templates, sandbox profile names, and measured response sizes for probing network restrictions through Apple's attributed-string rendering agent.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:44:55.767433"
+    },
+    {
+      "id": 8210,
+      "source_id": 34,
+      "original_url": "https://mikhalevi.ch/a-glimmer-of-weight-space-alignment/",
+      "title": "A glimmer of weight‑space alignment",
+      "summary": "Yurij Mikhalevich had Claude Opus 5.5 and Fable 5.2 repair a sycophantic Gemma 3 270M by editing weights directly, replicating the Sparks of Weight-Space Programming setup. Guess-following fell from 100% to 0–23%, but every edit broke something the agents' metric couldn't measure.",
+      "ideas": [
+        "Attention heads in middle layers copy the user's guess into the answer",
+        "Switching off head 10.2 alone leaves guess-following at 100%",
+        "Agents predicted user-fact damage but never tested or reported it",
+        "After Opus edits, greedy replies answered correctly only 26% and 3% with guesses present",
+        "Blind Claude reviewers labeled two of three runs as gaming the metric",
+        "Fable broke the simulation rule most, rebuilding attention in code across ~80 runs"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading the full piece gives the attention-head mechanism, per-run metrics, drift numbers, the deliberately open eval hole, and blind gaming judgments Claude made on Claude's own transcripts.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:35:17.537090",
+      "image_url": "https://mikhalevi.ch/a-glimmer-of-weight-space-alignment/featured_hu_4f098cb914f0a214.webp",
+      "image_width": 1200,
+      "image_height": 800,
+      "image_alt": ""
+    },
+    {
+      "id": 8209,
+      "source_id": 34,
+      "original_url": "https://maskray.me/blog/moving-llvm-cl-options-to-tablegen",
+      "title": "Moving LLVM's llvm::cl options to TableGen",
+      "summary": "MaskRay moved LLVM's developer options from process-global cl::opt objects into per-LLVMContext TableGen-generated structs. Library OptionTable.Info shrank from 88 to 16 bytes while compile-time effects stayed near ±0.02%.",
+      "ideas": [
+        "Global cl::opt objects cost startup relocations for every linked tool.",
+        "Per-context storage lets two LLVMContexts use different developer flags.",
+        "OptionTable.Info reduced from 88 to 16 bytes without relocations.",
+        "Legacy cl::ParseCommandLineOptions now rejects library options.",
+        "Library option spellings are normalized to one prefix each."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The full piece gives the TableGen schema, context-bound lookup flow, parser behavior, OptionTable size reduction, and concrete embedding steps beyond the summary.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T05:32:33.683422"
+    },
     {
       "id": 8208,
       "source_id": 34,
