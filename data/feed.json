@@ -1,7 +1,87 @@
 {
-  "updated_at": "2026-11-24T07:00:00.439674+00:00",
-  "total_items": 1052,
+  "updated_at": "2026-11-24T08:00:00.579492+00:00",
+  "total_items": 1055,
   "items": [
+    {
+      "id": 8233,
+      "source_id": 34,
+      "original_url": "https://yogthos.net/posts/2026-11-23-b+trees.html",
+      "title": "Swapping Jolt's sorted collections to a B+tree",
+      "summary": "Jolt's sorted-map, sorted-set, and TreeMap shims were moved from a persistent red-black tree to a persistent B+tree. Peak memory for a 4M-entry benchmark fell from 1.73 GB to 1.04 GB, with tree depth cut from 22 to 5 levels.",
+      "ideas": [
+        "Persistent B+tree stores 16-entry leaves as one vector: 17 bytes per entry vs red-black's 48",
+        "4M-entry tree depth drops from 22 to 5 levels, collapsing heap-scattered cache misses on lookup",
+        "B+tree builds run ~15% slower under ~100 entries unless a batch-load fast path is added",
+        "Appending past either end starts a fresh node, packing leaves for ascending-key construction",
+        "Reduce-kv reaches 0.06x by passing leaf pairs straight to the function, skipping entry allocation",
+        "headMap size via whole-leaf counting: 2.7 ms per 200 calls vs JVM's 9.3 ms",
+        "Scrambled builds cliff between 1M-2M entries when the working set leaves CPU cache"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Firsthand data-structure rewrite with node layouts, per-entry byte math, and full benchmark tables against the JVM, plus the batch-build path that erases the small-map regression.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:42:16.358854"
+    },
+    {
+      "id": 8232,
+      "source_id": 34,
+      "original_url": "https://www.gregoryalexander.com/blog/2026/11/23/a-missing-slash-let-a-bot-fetch-every-page-in-every-theme",
+      "title": "A Missing Slash Let a Bot Fetch Every Page in Every Theme",
+      "summary": "A missing slash in Lucee theme links created thousands of crawlable URLs whose bot traffic exhausted MariaDB connections on Apache/Linux. At peak, Apache logged 566 requests in one minute while about 240 Lucee threads ran; defenses inspect THE_REQUEST and defer visitor writes to JavaScript.",
+      "ideas": [
+        "An empty base path made theme links page-relative, multiplying every page into crawlable theme variants.",
+        "THE_REQUEST preserves original paths after Apache friendly-URL rewrites, unlike REQUEST_URI.",
+        "Cookie-less bot requests created one anonymous visitor database write per request.",
+        "Early parameter allowlisting blocked SQL injection scans before MariaDB work began.",
+        "Correlating datasource failures with Apache access logs exposed concurrency spikes."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "You get a concrete incident chain from relative theme URLs to crawler-driven database exhaustion, plus usable Apache and ColdFusion mitigations, including why THE_REQUEST survives rewrites and how cookie-less traffic creates write amplification.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:34:58.296623",
+      "image_url": "https://www.gregoryalexander.com/blog/enclosures/bots.webp",
+      "image_width": 1605,
+      "image_height": 900,
+      "image_alt": ""
+    },
+    {
+      "id": 8231,
+      "source_id": 34,
+      "original_url": "https://vpetersson.com/2026/11/23/state-of-the-commercial-raspberry-pi-ecosystem/",
+      "title": "The State of Commercial Raspberry Pi Security: I Scanned Every Paid-For OS in Raspberry Pi Imager",
+      "summary": "The author downloaded every paid‑for OS from Raspberry Pi Imager, built SBOMs and scanned them with OSV‑Scanner, exposing thousands of unpatched CVEs. The worst findings include the default pi/raspberry password and identical private SSH host keys across devices.",
+      "ideas": [
+        "Commercial Pi images often ship with the default \"pi/raspberry\" password.",
+        "Several vendors embed the same private SSH host key in every image.",
+        "Debian‑based images freeze on outdated releases, lacking a viable upgrade path.",
+        "Vulnerability scans can miss issues on EOL bases because advisory data stops being published.",
+        "Image‑based OTA (A/B or snaps) offers a safer OS upgrade route than apt‑only devices."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "It reveals exact vulnerable package counts, default credentials, and shared SSH keys in commercial Raspberry Pi images, plus the flawed update mechanisms you can verify and remediate.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:31:25.064117",
+      "image_url": "https://vpetersson.com/assets/images/site/talk.webp",
+      "image_width": 892,
+      "image_height": 851,
+      "image_alt": ""
+    },
     {
       "id": 8230,
       "source_id": 34,
