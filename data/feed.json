@@ -1,7 +1,40 @@
 {
-  "updated_at": "2026-11-24T18:00:00.796975+00:00",
-  "total_items": 1055,
+  "updated_at": "2026-11-24T19:00:00.385416+00:00",
+  "total_items": 1056,
   "items": [
+    {
+      "id": 8234,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/11/24/prompt-injection-fixes-need-regression-tests/",
+      "title": "Prompt Injection Fixes Need Regression Tests",
+      "summary": "Stack Overflow presents a regression-testing strategy for prompt-injection fixes in AI agents and RAG systems. In one case, a retrieval-borne jailbreak returned after a model upgrade increased compliance, despite unchanged prompts.",
+      "ideas": [
+        "Periodic security reviews miss regressions introduced between audits by rapidly changing agent stacks.",
+        "Model upgrades can reopen patched injections even when application prompts remain completely unchanged.",
+        "Pin model versions so upgrades become reviewed releases rather than silent provider-side swaps.",
+        "Every patched jailbreak should become a fixture pairing its payload with the expected rejection.",
+        "Regression fixtures should run in the pipeline stage that can block a release.",
+        "Suites must trigger whenever prompt code, model versions, or retrieval connectors change.",
+        "User-typed payloads and infected external documents require separate attack fixtures.",
+        "Retrieved documents can carry commands that exploit RAG systems when agents read them.",
+        "Zero-trust validation should treat every inter-agent output as untrusted input.",
+        "Logging inter-agent messages provides concrete evidence that tests can assert against.",
+        "Full-session testing exposes malicious instructions that persist beyond a single request.",
+        "Memory writes need validation, plus purging mechanisms that remove incidents from stored context.",
+        "Testing each agent separately is insufficient because one can relay poisoned instructions downstream.",
+        "Security should define the safety bar while delivery teams enforce it in release pipelines.",
+        "Each incident can seed a stronger payload variant, continuously expanding the regression library."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 85,
+      "rating_reason": "You get a concrete CI design for turning prior jailbreaks into release-blocking fixtures, including multi-turn, memory, RAG, and inter-agent test cases.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-11-25T04:36:34.132036"
+    },
     {
       "id": 8233,
       "source_id": 34,
