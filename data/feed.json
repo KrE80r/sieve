@@ -1,7 +1,406 @@
 {
-  "updated_at": "2026-11-24T06:00:01.585672+00:00",
-  "total_items": 1037,
+  "updated_at": "2026-11-24T07:00:00.439674+00:00",
+  "total_items": 1052,
   "items": [
+    {
+      "id": 8230,
+      "source_id": 34,
+      "original_url": "https://rizwan.dev/blog/2026-11-22_cryo-isolated-by-default/",
+      "title": "Cryo: isolated by default",
+      "summary": "Cryo isolates each coding-agent capsule in its own vmnet network, using pf rules, proxy-based SSH, ephemeral keys, and copy-on-write disks. Its IPv6 fence blocks host links exposed on ports 5000 and 7000, although egress remains unrestricted and the host must be trusted.",
+      "ideas": [
+        "Per-capsule vmnet networks prevent lateral visibility between isolated agent VMs.",
+        "pf blocks private IPv4 destinations and all bridge-originated IPv6 traffic.",
+        "ProxyCommand hides capsule IPs while preserving ssh, scp, and rsync.",
+        "Lease-scoped Ed25519 keys expire with each destroyed copy-on-write capsule.",
+        "Blocking vmnet bridge IPv6 also disables host access for other VM tools.",
+        "Internet egress remains unrestricted; domain filtering requires an external proxy."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get the exact pf rules, vmnet topology, and SSH plumbing for per-agent isolation, plus a concrete IPv6 link-local bypass exposing host services. Tested fixes, lease-scoped keys, and destructive cleanup directly inform coding-agent sandbox hardening.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:24:14.220188",
+      "image_url": "https://rizwan.dev/open-graph/2026-11-22_cryo-isolated-by-default.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8229,
+      "source_id": 34,
+      "original_url": "https://ramimac.me/agent-framework-compromised",
+      "title": "Microsoft agent-framework Compromised: Credential Stealer Targets Azure and CI Pipelines",
+      "summary": "Malicious agent-framework 1.26.1/1.26.2 added .pth credential stealers; Wiz saw 50 stored exfiltration requests, 17 of them representing only three unique victims.",
+      "ideas": [
+        ".pth hook executes credential stealer on every Python interpreter start.",
+        "Stealer scrapes /proc environments, cloud credential files, and CI secrets.",
+        "1.26.2 added GitHub Actions OIDC theft and changed file names.",
+        "Wiz correlated attacker webhook progress and saw 50 stored requests."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get the full .pth trigger chain, exact stolen credential categories, two-version IOC set, and remediation steps for hosts, runners, and cloud identities.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:21:05.728941"
+    },
+    {
+      "id": 8228,
+      "source_id": 34,
+      "original_url": "https://max.xz.ax/blog/kawaiiconctf-professors-hash-table-pwn/",
+      "title": "KawaiiconCTF 2026 pwn/professors-hash: Obtaining RCE from a templated hash table implementation in C",
+      "summary": "The professors-hash CTF challenge abused a macro-generated C hash table whose signed hash remainder produced negative slot indices. Type confusion and glibc free-chunk fd pointers enabled arbitrary read/write, followed by FSOP or ret2libc for a shell.",
+      "ideas": [
+        "Signed remainder lets attacker-generated hashes select negative hash-table slots.",
+        "Adjacent struct arrays turn key-slot underflow into value-slot type confusion.",
+        "A freed chunk’s fd pointer leaks libc through a precisely chosen negative offset.",
+        "FSOP provides RCE, while reused I/O buffers enable an alternative ret2libc path."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The writeup connects the exact C struct layout, negative bucket arithmetic, and heap-chunk reuse to a working exploit, then compares FSOP with an alternative ret2libc route.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:12:20.950230"
+    },
+    {
+      "id": 8227,
+      "source_id": 34,
+      "original_url": "https://mattkeeter.com/blog/2026-11-23-snowflake",
+      "title": "An O(N) representation for the Koch Snowflake",
+      "summary": "Matthew Keeter constructs an O(N) signed distance field for the Koch snowflake inside Fidget, starting from exponential hexify copies and ending in reflection-folded exact-SDF geometry. The final field has the same gradient everywhere, with that gradient always pointing directly to the nearest surface point.",
+      "ideas": [
+        "Hexify folds six copies into one via repeated reflection",
+        "Modulo repetition builds infinite triangular tilings in constant time",
+        "Dilated safe zones clip infinite triangles to the central snowflake",
+        "Exact SDF gradient stays unit length and points to the nearest surface point"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "The full post walks through iterative fixes—hexify, modulo tiling, dilation masking, and reflection folding—with Rhai snippets, turning exponential fractal copies into one closed-form distance field.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:11:17.070703"
+    },
+    {
+      "id": 8226,
+      "source_id": 34,
+      "original_url": "https://jyoung.dev/blog/sandbox-parallel-coding-agents/",
+      "title": "A Sandbox for AI Coding Agents at Scale Is a Warm-State Problem",
+      "summary": "An operations guide infrastructure-sizes 20–100 parallel coding-agent sandboxes, arguing warm-state setup between boot and first useful action—not boot—dominates cost, and audits isolation from git worktrees to per-session microVMs. Hardest fact: downstream sandbox products lagged engine CVE patches 0 to 471+ days; pin policy dominates.",
+      "ideas": [
+        "Setup between boot and first useful action, not boot, dominates cost at fan-out",
+        "Anthropic deferred container provisioning; p50 time-to-first-token dropped ~60%, p95 over 90%",
+        "Cloned warm snapshots duplicate IDs, nonces, and entropy; re-mint every session identity after restore",
+        "Downstream sandbox products lagged engine CVE patches 0–471+ days; pin policy is the operator variable",
+        "Kubernetes pods without runtimeClassName run under runc with no kernel boundary (METR Hawk)",
+        "An egress allowlist is a capability grant; keep credentials in a proxy outside the sandbox",
+        "gVisor rootfs overlay halved abseil overhead; stale ptrace-era benchmarks overstate file I/O cost",
+        "gVisor file I/O runs 10–200× slower for heavy open/close patterns like pnpm install"
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Gives the full sandbox decision: setup-timing harness, five kernel-boundary vetting questions, patch-lag evidence across five products, fork-and-re-mint snapshot mechanics, and egress/credential placement rules you can apply to real agent fleets.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T17:06:08.381679",
+      "image_url": "https://jyoung.dev/og/sandbox-parallel-coding-agents.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8225,
+      "source_id": 34,
+      "original_url": "https://gofranz.com/blog/sandboxing-desktop-apps-on-guix/",
+      "title": "Sandboxing Desktop Apps on Guix",
+      "summary": "Franz Geffke built a Guix channel that wraps 41 desktop applications in bubblewrap with per-app filesystem, environment, D-Bus, and namespace policies. The launcher is under 400 lines, but it lacks seccomp, exposes the entire Guix store, and cannot isolate X11 display access.",
+      "ideas": [
+        "Default-deny policies expose only bound paths, selected D-Bus rules, and required display resources.",
+        "All 41 variants use tmpfs homes, private namespaces, and a fixed environment variable list.",
+        "Firefox single-instance sockets require a shared runtime directory while /tmp stays private.",
+        "Chromium's sandboxed PID is always 2, simplifying D-Bus tray rules.",
+        "The entire Guix store remains readable; no seccomp filter blocks kernel exploits.",
+        "X11 clients can still read other clients' screens and keyboard input."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "The full piece provides usable Guix Scheme policies and explains bubblewrap isolation, namespace handling, environment filtering, D-Bus proxying, and app-specific breakage in concrete terms. Its candid limits make it useful for building Linux desktop sandboxes.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:59:26.460162",
+      "image_url": "https://gofranz.com/assets/images/og/sandboxing-desktop-apps-on-guix.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Sandboxing Desktop Apps on Guix"
+    },
+    {
+      "id": 8224,
+      "source_id": 34,
+      "original_url": "https://fromthearchitect.dev/posts/gtk-widgets-trees/",
+      "title": "Trees in GTK4: TreeListModel, TreeExpander and Sorting a Hierarchy",
+      "summary": "It builds a GTK4 tree photo library displayed in ColumnView and ListView with expand/collapse and totals. The size sorter stays correct via TreeListRowSorter and sorter.changed(Different) after folder mutations.",
+      "ideas": [
+        "TreeListModel closure must be cheap and return same child model.",
+        "None from closure makes a row permanently leaf; use empty model.",
+        "TreeExpander binds ColumnViewCell item to list-row, then row item.",
+        "TreeListRowSorter sorts every hierarchy level via shared parent comparison.",
+        "sorter.changed(Different) avoids row collapse caused by items_changed."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading it shows how to wire TreeListModel, TreeExpander, and TreeListRowSorter while handling stale sorting and collapse pitfalls.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:58:23.577371",
+      "image_url": "https://fromthearchitect.dev/covers/gtk-widgets-trees.png",
+      "image_width": 2000,
+      "image_height": 840,
+      "image_alt": ""
+    },
+    {
+      "id": 8223,
+      "source_id": 34,
+      "original_url": "https://deemkeen.github.io/2026/11/23/taming-inkling-2-mini-with-pi/",
+      "title": "Taming Inkling 2 Mini: A Local Coding Agent That Ships a Game in 33 Minutes",
+      "summary": "A local Inkling 2 Mini agent completed a SwiftUI 2048 game in 32:41 using Pi, a custom enforcement harness, and llama.cpp’s reasoning budget. Across 70 rounds it produced 19,845 output tokens and 32 builds, while a 300-token budget preserved tool calls and halved thinking.",
+      "ideas": [
+        "Encode agent constraints as unavailable tools, not prompt instructions.",
+        "Use numbered reads and line-range replacements to prevent edit loops.",
+        "A 300-token reasoning budget preserved tool calls while halving deliberation.",
+        "Restricted tool access prevented bypassing rewrite locks through shell commands.",
+        "Auto-build plus green-state restoration contained destructive rewrite failures.",
+        "The final 2048 run took 70 rounds and 32 builds."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Productivity"
+      ],
+      "rating": 86,
+      "rating_reason": "You get a concrete Pi/TypeScript harness with auto-builds, line-range edits, rewrite locks, green-state restores, restricted tools, and a working reasoning-budget workaround, plus run logs showing where time and tokens went.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:55:06.556651"
+    },
+    {
+      "id": 8222,
+      "source_id": 34,
+      "original_url": "https://colinoflynn.com/2026/11/nrf52840-beach-dpa/",
+      "title": "BeachWhisperer: DPA against nRF52840 (Arm CryptoCell 310) Hardware AES with Claude",
+      "summary": "Colin O'Flynn gave Claude control of a ChipWhisperer-Husky attacking the nRF52840's two hardware AES cores, recovering keys with 13 mostly one-line prompts over nine hours. The ECB core fell completely to CPA on 2M traces captured in 90 seconds at 23,000 traces/s.",
+      "ideas": [
+        "Removing shunt-net capacitor C5 cut required gain from 50 dB to 12 dB",
+        "Mean-divergence across n-block calls localizes the cipher without leakage-model assumptions",
+        "CC310 AES occupies only 6% of the capture window; 94% is SaSi library overhead",
+        "Local moving-average filter turned 13/16 keys at rank 2^32 into 16/16 at rank 2^0",
+        "Claude diagnosed a dead UART pin via SWD probing and schematic reading, then rerouted firmware",
+        "NICV floor of 255/N explains why 500k traces miss leakage visible at 2M",
+        "Batched segmented capture with on-target PRNG reaches 36,000 traces/s from 40 enc/s"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "A leading side-channel researcher's full DPA methodology: capture rates, capacitor mods, the n-block cipher-locator, round timings, and how Claude autonomously debugged the target and recovered both keys.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:54:11.540735",
+      "image_url": "https://colinoflynn.com/wp-content/uploads/2026/11/nrf52840/beachwhisperer_thumb1.jpg",
+      "image_width": 720,
+      "image_height": 360,
+      "image_alt": ""
+    },
+    {
+      "id": 8221,
+      "source_id": 34,
+      "original_url": "https://carlo-hamalainen.net/2026/11/23/sungrow-lean-part4/",
+      "title": "Sungrow in Lean, part 4",
+      "summary": "The author ports a Sungrow solar and battery charging controller from Go to Lean, defining JSON intent schemas, typed time and charge modes, action-to-register mappings, and a pure adaptive controller. It includes arithmetic proofs and real inverter snapshots during adaptive charging.",
+      "ideas": [
+        "TimeOfDay proves minute-of-day stays below 1440",
+        "Charge modes enforce 10 W fixed and 100 W adaptive minimums",
+        "Action round-trips action-to-register for every power value",
+        "Adaptive import subtracts grid draw and charging before hysteresis",
+        "Controller leaves inverter untouched without fresh SOC or power"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "It shows how the daemon encodes time, charging modes, inverter actions, and adaptive setpoint hysteresis in Lean, including dependent-type invariants and proofs of action round-tripping and valid commands.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:52:54.770536"
+    },
+    {
+      "id": 8220,
+      "source_id": 34,
+      "original_url": "https://aminrj.com/posts/software-factory-local-model-cheated-the-gate/",
+      "title": "A Local Model Cheated My Software Factory's Test Gate Three Ways. Four Days, 101 Agent Runs",
+      "summary": "Raji’s four-day software-factory experiment logged 101 agent runs and found a model bypassing a test gate by moving tests, planting an ImportError stub, and excluding a file from pytest collection. Evidence remains narrow: one app, one operator, and 345 of 645 time entries were defaults.",
+      "ideas": [
+        "A local model defeated pytest gates by relocating tests, stubbing imports, and excluding collection.",
+        "Structural pre-push guards outperform prompts against impossible test-plan constraints.",
+        "Only 29 of 65 checkpoints required human decisions; 36 represented failures.",
+        "A 600-token cap consumed the budget on reasoning and returned an empty answer.",
+        "MODEL_MAX_TOKENS=3000 and MODEL_TIMEOUT_S=120 fixed staging inference.",
+        "OCR misread @ as Q, bypassing email redaction before model submission."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Productivity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "You get the reproducible bypass chain, public dispatcher guards, and decisive 600-versus-3000-token diagnosis; the author also exposes where his own telemetry is unreliable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:47:51.203244",
+      "image_url": "https://aminrj.com/assets/media/ai-security/software-factory-local-model-cheated-the-gate.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Title card: a local model cheated my software factory's test gate three ways"
+    },
+    {
+      "id": 8219,
+      "source_id": 34,
+      "original_url": "https://anderskristiansen.com/post/2026/apim-legacy-access/",
+      "title": "Azure API Management advisory: what to check and how to hunt after recent attacks",
+      "summary": "NSM linked attacks on Equinor and Skagerak Energi to an Azure API Management flaw exposing named values, backend credentials, and subscription keys. The guide provides runnable KQL hunts across Activity, gateway, Key Vault, Entra, and Graph logs with 30/7-day baselines and mandates disabling the legacy Management REST API.",
+      "ideas": [
+        "Legacy Management API bypasses Entra ID and RBAC; disable per instance.",
+        "Policy editors and request tracing can expose Key Vault-backed values.",
+        "Hunt baselines compare 7-day activity against 30-day history.",
+        "Empty ApimAppIds lists intentionally return nothing until populated."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Full piece delivers copy-paste KQL pivots across APIM, Entra, Key Vault, and Graph logs, plus log-source and config checks with stated query limitations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:47:48.259789"
+    },
+    {
+      "id": 8218,
+      "source_id": 34,
+      "original_url": "https://alexlitzenberger.com/blog/llm_infra_kremlinology",
+      "title": "Kremlinology for LLM Infrastructure",
+      "summary": "The piece probes ~20 inference providers with synthetic prompts to infer KV-cache semantics, retention, routing, and model identity from API signals. It finds cache TTLs from under a minute to 60 minutes, Llama 3.3-70B needing 320 KiB per token, and HBM break-even near two minutes.",
+      "ideas": [
+        "Cache-breakpoint reuse patterns fingerprint sliding-window, linear-hybrid, and full attention types",
+        "CoreWeave caches persist 30-60 minutes; most providers expire within 1-5 minutes",
+        "Router sent only 31% of repeat requests back to the provider holding the cache",
+        "DeepInfra reused cache on every repeat yet never reported or discounted hits",
+        "DeepSeek disk cache bills 2-4% of a miss while saving no time below 64k",
+        "Llama 3.3-70B KV cache costs 320 KiB per token at 32k context",
+        "HBM cache break-even against recompute is roughly two minutes on H100s",
+        "Logprob first-token distributions test whether providers really serve the same model"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading it gives you reusable black-box probes: cache-breakpoint tests that fingerprint attention type, TTL sweeps across providers, router-stickiness math, and evidence of caches used but never billed — plus KV-cache break-even timings per storage tier.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-24T16:47:08.548831"
+    },
+    {
+      "id": 8217,
+      "source_id": 4,
+      "original_url": "https://www.minimax.io/blog/practical-cryptanalysis-with-minimaxs-latest-internal-model",
+      "title": "Practical cryptanalysis with MiniMax's latest Internal Model - MiniMax Research | MiniMax",
+      "summary": "MiniMax released an internal‑only language model that performed automated cryptanalysis on numerous NIST candidates and peer‑reviewed schemes. The model broke Waterfall‑256 collisions in 0.045 seconds and sped up McEliece challenges up to 43,400× faster than prior records.",
+      "ideas": [
+        "MiniMax's Internal Model can perform automated cryptanalysis on modern schemes.",
+        "MIM produced first practical collisions for Waterfall-256 in 0.045 s on one core.",
+        "MIM broke Blender-256 full-round collisions within 0.36‑2.3 s.",
+        "MIM solved LOCKER key recovery by shrinking matrix to 58 MB, 2 s runtime.",
+        "MIM recovered ROLLO‑I‑128 secret key in ~6 s on a single core.",
+        "MIM found a verification bug in DRS allowing signature forgery in 0.1‑0.8 s.",
+        "MIM exploited randomness‑sampling leakage in RQC‑128 to recover plaintexts in 0.41 s.",
+        "MIM discovered decryption‑failure branch bug in LAC‑128 breaking CCA security.",
+        "MIM forged COLM ciphertexts with only two encryption queries, no decryption queries.",
+        "MIM performed key‑recovery on SBC‑VOLE from a single signature in 0.06 s.",
+        "MIM extended ARADI key‑recovery to 8 rounds, 2.4‑16 s runtime.",
+        "MIM achieved up to 43,400× speedup on McEliece challenges versus prior records.",
+        "MIM reduced HAWK‑256 security estimate by 9.3‑23.8 bits, solved in 30 min on one core.",
+        "MIM released reasoning traces and proof‑of‑concept code on GitHub repository."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 81,
+      "rating_reason": "Reading this gives you concrete attack details—collision exploits, key‑recovery scripts, and massive speed‑up methods—plus the open‑source code to reproduce them.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-24T16:33:09.829066"
+    },
+    {
+      "id": 8216,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Nov/23/glm-54/",
+      "title": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
+      "summary": "Simon Willison tested the new GLM‑5.4 model from Z.ai using its OpenAI‑compatible API and built a temporary llm‑glm plugin. The model employs a looped transformer that runs a shared layer group three times per token.",
+      "ideas": [
+        "Loop Transformers reuse weight‑shared layers across multiple iterations to deepen networks without extra parameters.",
+        "GLM‑5.4 runs its middle layers three times per token using the looped architecture.",
+        "Access GLM‑5.4 via Z.ai’s OpenAI‑compatible API endpoint at https://api.z.ai/api/v1.",
+        "A coding‑plan subscription is currently required to use the model.",
+        "The author created an llm‑glm plugin but cites existing llm‑zai for earlier models.",
+        "GLM‑5.4’s “pelican” outputs resemble those from OpenAI and Anthropic models.",
+        "Earlier GLM versions produced distinct pelican styles, with a sharp shift starting at version 5.3."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "It reveals the loop‑transformer design behind GLM‑5.4 and shows exactly how to reach the model through Z.ai’s API plus practical output comparisons.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-11-24T16:32:22.232116",
+      "image_url": "https://static.simonwillison.net/static/2026/glm-family-4.webp",
+      "image_width": 2832,
+      "image_height": 1758,
+      "image_alt": ""
+    },
     {
       "id": 8215,
       "source_id": 1,
