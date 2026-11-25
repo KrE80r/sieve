@@ -1,624 +1,20 @@
 {
   "schema_version": 2,
-  "batch_id": "d0cc05c6c9611703a9034cb3304e79f9",
-  "published_at": "2026-11-25T07:32:00.000724+00:00",
-  "scheduled_for": "2026-11-25T07:30:00+00:00",
-  "next_update_at": "2026-11-25T19:30:00+00:00",
+  "batch_id": "b6f707b004c6bc6fc5be8a06cf60cdf2",
+  "published_at": "2026-11-25T19:32:00.001065+00:00",
+  "scheduled_for": "2026-11-25T19:30:00+00:00",
+  "next_update_at": "2026-11-26T02:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-11-24T07:30:00+00:00",
-    "ends_at": "2026-11-25T07:30:00+00:00"
+    "starts_at": "2026-11-24T19:30:00+00:00",
+    "ends_at": "2026-11-25T19:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 37,
+  "total_developments": 35,
   "developments": [
-    {
-      "id": "59d39b8c79608f46d670dba0af12d9b3",
-      "occurred_at": "2026-11-24T08:08:24+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T08:08:24+00:00",
-      "title": "Inkling 2 Mini reports 207 tok/s on RTX 3090 and new platform support PRs",
-      "detail": [
-        "Alexey Fateev reports that Inkling 2 Mini, a 26B-total Apache 2.0 open-weight model with 3.4B active and 5.4B effective parameters across three loops, reached #1 trending on Hugging Face. In the Project Maya fork, a single RTX 3090 achieved 207 tok/s on code and 212 tok/s on edits, while llama.cpp ran the model at 57 tok/s and the fork ran 128 tok/s plain or 182–212 tok/s with the official DSpark drafter. He states that it beats Qwen3.8-27B on coding benchmarks while fitting 24 GB VRAM, with up to 344K context, vision, and tool calling.",
-        "Over the prior 48 hours, contributors merged PRs for 8 GB GPU support at about 41 tok/s, AMD GPU support via HIP, Windows MSVC builds, native --parallel continuous batching, and conversation slot caching in host RAM using IK2_SLOT_KEEP. RTX 50-series and AMD RDNA4 PRs are already open."
-      ],
-      "why_it_matters": "Users with 24 GB VRAM can run a reported 26B coding model at up to 212 tokens/s using the supplied Maya fork and DSpark drafter.",
-      "sources": [
-        {
-          "author_name": "Alexey Fateev",
-          "author_username": "superalesha",
-          "url": "https://x.com/superalesha/status/2125139458076905882",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/ext_tw_video_thumb/2125139377953148928/pu/img/0Y9QRHii1abajwfL.jpg",
-              "preview_url": "https://pbs.twimg.com/ext_tw_video_thumb/2125139377953148928/pu/img/0Y9QRHii1abajwfL.jpg:small",
-              "width": 1080,
-              "height": 1080
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "eba2178f674b39cc8ad7aa4f649106d8",
-      "occurred_at": "2026-11-24T09:10:28+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T09:10:28+00:00",
-      "title": "OpenRouter adds fast and flex tiers for Inkling 2 Mini",
-      "detail": [
-        "Vik reports that OpenRouter added “fast” and “flex” service tiers for Inkling 2 Mini. The supplied evidence does not specify pricing, latency, throughput, or routing behavior for either tier."
-      ],
-      "why_it_matters": "OpenRouter users can now choose between two named serving options for Inkling 2 Mini instead of relying on a single listed configuration.",
-      "sources": [
-        {
-          "author_name": "vik",
-          "author_username": "vikhyatk",
-          "url": "https://x.com/vikhyatk/status/2125155077761691761",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX4RJPOXEAEeLVa.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX4RJPOXEAEeLVa.jpg:small",
-              "width": 1804,
-              "height": 816
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "ce328044ebe8a5220e049c99691a9d08",
-      "occurred_at": "2026-11-24T12:14:08+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T12:14:08+00:00",
-      "title": "Ant Group’s LingSante-3.1-air-VL quantized to INT4 W4A16 runs 138.9 tok/s on 4× RTX 3090",
-      "detail": [
-        "Alexey Fateev quantized the 124 B‑parameter LingSante-3.1-air-VL model to INT4 (W4A16) by compressing only the routed expert tensors, reducing the checkpoint to 70.85 GiB and achieving 138.9 tokens/s decode speed on a 1 K prompt with a 4‑GPU RTX 3090 setup.",
-        "The quantized checkpoint and exact SGLang build flags were uploaded to Hugging Face, enabling anyone with four 24 GB GPUs to run the model locally; synthetic multimodal medical tests show a slight quality gain (94.6% vs 93.5% on the cloud BF16 API)."
-      ],
-      "why_it_matters": "You can now run a 125 B‑parameter multimodal model on a sub‑100 GiB VRAM rig, unlocking high‑quality local inference without cloud resources.",
-      "sources": [
-        {
-          "author_name": "Alexey Fateev",
-          "author_username": "superalesha",
-          "url": "https://x.com/superalesha/status/2125201297368342862",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX47US3XcAAWrzP.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX47US3XcAAWrzP.jpg:small",
-              "width": 1600,
-              "height": 900
-            }
-          ]
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://huggingface.co/alesha-pro/LingSante-3.1-air-VL-W4A16",
-          "domain": "huggingface.co",
-          "title": "alesha-pro/LingSante-3.1-air-VL-W4A16 · Hugging Face",
-          "preview_image_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/alesha-pro/LingSante-3.1-air-VL-W4A16.png"
-        }
-      ],
-      "interest_slugs": [
-        "ai",
-        "linux"
-      ]
-    },
-    {
-      "id": "7b520d1168f7b35941690bd71710e03e",
-      "occurred_at": "2026-11-24T13:02:10+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T13:02:10+00:00",
-      "title": "OpenTrawl Spotlight Search for AI agents",
-      "detail": [
-        "OpenTrawl announced a sneak‑preview of Spotlight Search, letting AI agents query a user’s messages, email, notes, photos, calendar, finances and command‑history across devices.",
-        "A paid always‑on version with trusted‑computing on AWS/Azure will be end‑to‑end encrypted, even in RAM, so the AI can access a private archive without exposing data to anyone else."
-      ],
-      "why_it_matters": "You can replace cloud‑based indexing with locally encrypted search, enabling truly private AI assistants.",
-      "sources": [
-        {
-          "author_name": "Josh",
-          "author_username": "jjpcodes",
-          "url": "https://x.com/jjpcodes/status/2125213387315372489",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5Fp6CWkAE8Vd7.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5Fp6CWkAE8Vd7.jpg:small",
-              "width": 2048,
-              "height": 1352
-            }
-          ]
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://opentrawl.sh",
-          "domain": "opentrawl.sh",
-          "title": "OpenTrawl: Spotlight for the Agentic OS",
-          "preview_image_url": "https://opentrawl.sh/card.png"
-        },
-        {
-          "url": "https://executor.sh",
-          "domain": "executor.sh",
-          "title": "Executor — Everything you use, connected in one place.",
-          "preview_image_url": "https://executor.sh/og-image.png"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "cd20fd311dea5527a3f8455e48d48621",
-      "occurred_at": "2026-11-24T13:32:00+00:00",
-      "updated_at": "2026-11-24T19:32:00.042280+00:00",
-      "expires_at": "2026-11-25T13:32:00+00:00",
-      "title": "Maziyar Panahi’s Saturday robot arm reaches 1,019 correct placements in simulation",
-      "detail": [
-        "Maziyar Panahi reports giving Saturday’s robot arm the required vial slot as input and running 4,096 simulated lab benches over 41 minutes on one GPU.",
-        "At iteration 500, 15 of 1,024 placements were correct, all in slot 1; by iteration 600, 901 were correct.",
-        "The final run placed 1,019 of 1,024 correctly, with none in the wrong slot."
-      ],
-      "why_it_matters": "Researchers evaluating constrained robot-arm training can use the reported single-GPU result as a reference point; physical-robot performance remains unestablished.",
-      "sources": [
-        {
-          "author_name": "Maziyar PANAHI",
-          "author_username": "MaziyarPanahi",
-          "url": "https://x.com/MaziyarPanahi/status/2125220893206966319",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2125148759986155520/img/PRovf3cghGQuXB8Y.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125148759986155520/img/PRovf3cghGQuXB8Y.jpg:small",
-              "width": 1080,
-              "height": 1350
-            }
-          ]
-        },
-        {
-          "author_name": "Maziyar PANAHI",
-          "author_username": "MaziyarPanahi",
-          "url": "https://x.com/MaziyarPanahi/status/2125269966307950896",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5uw6cXEAA8QT_.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5uw6cXEAA8QT_.jpg:small",
-              "width": 960,
-              "height": 1200
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "2c518e82d814626c01b4f415b1476cc9",
-      "occurred_at": "2026-11-24T15:07:42+00:00",
-      "updated_at": "2026-11-24T15:20:00.001424+00:00",
-      "expires_at": "2026-11-25T15:07:42+00:00",
-      "title": "Unsloth releases free Inkling 2 Mini fine-tuning notebook for 22GB VRAM",
-      "detail": [
-        "Unsloth released a free notebook for fine-tuning Inkling 2 Mini, with local training that works in 22GB of VRAM. Unsloth reports that its setup trains 1.8–3.1× faster and uses 50% less VRAM than other setups, with no accuracy loss.",
-        "A setup guide and accompanying code are also available for reproducing the workflow."
-      ],
-      "why_it_matters": "The notebook and guide reduce setup work, giving users a direct path to reproduce Inkling 2 Mini fine-tuning locally rather than assemble the workflow themselves.",
-      "sources": [
-        {
-          "author_name": "Unsloth AI",
-          "author_username": "UnslothAI",
-          "url": "https://x.com/UnslothAI/status/2125243469094605071",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5hB0ebkAA3bgx.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5hB0ebkAA3bgx.jpg:small",
-              "width": 1870,
-              "height": 2048
-            }
-          ]
-        },
-        {
-          "author_name": "Daniel Han",
-          "author_username": "danielhanchen",
-          "url": "https://x.com/danielhanchen/status/2125244976246521969",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [
-        {
-          "url": "https://github.com/unslothai/unsloth",
-          "domain": "github.com",
-          "title": "GitHub - unslothai/unsloth: Local UI to run and train LLMs and diffusion models. Supports GGUF, MLX, Qwen3.8, DeepSeek-V4.1, MiniMax-H3, Gemma 4, FLUX and more. · GitHub",
-          "preview_image_url": "https://opengraph.githubassets.com/f21a9a28ca839b504f5857a9d531941de9c465d773335998aeac88d57452fcd8/unslothai/unsloth"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "e55ce79c0af0d268e515df853481fb79",
-      "occurred_at": "2026-11-24T15:49:13+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T15:49:13+00:00",
-      "title": "Vercel Board launched for AI agents to coordinate tasks",
-      "detail": [
-        "Vercel announced Vercel Board, an experimental shared message board that lets AI agents exchange context and work together across tools.",
-        "The feature is available on Vercel as an experimental primitive, enabling multi‑agent workflows without custom infrastructure."
-      ],
-      "why_it_matters": "Developers can now enable coordinated AI‑agent pipelines instantly on Vercel, accelerating complex automation projects.",
-      "sources": [
-        {
-          "author_name": "Malte Ubl",
-          "author_username": "cramforce",
-          "url": "https://x.com/cramforce/status/2125255425377611985",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://vercel.com/blog/introducing-vercel-board",
-          "domain": "vercel.com",
-          "title": "Introducing Vercel Board",
-          "preview_image_url": "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/ca600397c120c7550d2d2c36/e9a2d078b2229c537525478b237c707a/og-board__1_.png"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "1e8505cab882333841a28a0e3e659ff0",
-      "occurred_at": "2026-11-24T15:52:48+00:00",
-      "updated_at": "2026-11-24T23:05:00.001078+00:00",
-      "expires_at": "2026-11-25T15:52:48+00:00",
-      "title": "Gemini 4 Neon exceeds human means on two PI-18 worldview measures",
-      "detail": [
-        "Dan McAteer ran Gemini 4 Neon through the PI-18 psychology survey across 10 independent runs, following the methodology in “Worldviews in Large Language Models” (arXiv:2611.22670). He reports an average score of 3.17 for Safe versus a 2.88 human mean, and 3.87 for Enticing versus a 3.83 human mean; the paper’s eight-model average was below the human baseline across all four primal measures.",
-        "McAteer interprets Neon’s two above-human results as evidence of an empirically optimistic, secular worldview. The supplied evidence does not provide comparable Good and Alive scores or independent replication."
-      ],
-      "why_it_matters": "Model evaluators can add PI-18 to worldview testing, while the 0.04-point Enticing margin warrants checking against sampling variation.",
-      "sources": [
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2125256328264188102",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5qUlWW8AAMHA8.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5qUlWW8AAMHA8.jpg:small",
-              "width": 1932,
-              "height": 1428
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5qpR_W4AEMize.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5qpR_W4AEMize.jpg:small",
-              "width": 1940,
-              "height": 1582
-            }
-          ]
-        },
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2125356197415178411",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX7IJHoXQAAkPCG.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX7IJHoXQAAkPCG.jpg:small",
-              "width": 1470,
-              "height": 1356
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "222bd1ab99a881eaf69e74a745af80e1",
-      "occurred_at": "2026-11-24T16:22:36+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T16:22:36+00:00",
-      "title": "Steel launches session metadata and signals for browser-agent runs",
-      "detail": [
-        "Steel launched Session Metadata and Signals for browser runs. Users can attach custom tags to runs and combine them with Steel’s automatic post-session signals.",
-        "The combined metadata lets users locate browser-agent sessions they want to review."
-      ],
-      "why_it_matters": "Browser-agent users can retrieve runs using their own labels alongside Steel-generated signals instead of relying only on automatic session metadata.",
-      "sources": [
-        {
-          "author_name": "Steel",
-          "author_username": "steeldotdev",
-          "url": "https://x.com/steeldotdev/status/2125261198006604249",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Niko(la)",
-          "author_username": "nibzard",
-          "url": "https://x.com/nibzard/status/2125263824991514796",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "859ad536e4f0593b2f4b94e4af037b5a",
-      "occurred_at": "2026-11-24T17:18:30+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T17:18:30+00:00",
-      "title": "Anton Zolotov turns Tobi Lütke’s state-machine audit method into an AI skill",
-      "detail": [
-        "Anton Zolotov turned a podcast suggestion from Tobi Lütke into an AI skill for finding bugs through formal state-machine analysis. The workflow asks an AI to identify implicit state machines in a codebase, map their states and transitions, and build a TLA model. Zolotov reports that applying the skill surfaced more than 10 bugs."
-      ],
-      "why_it_matters": "Developers can reproduce the workflow to formalize hidden state transitions and systematically investigate bugs in their codebases.",
-      "sources": [
-        {
-          "author_name": "Anton Zolotov",
-          "author_username": "azolotov",
-          "url": "https://x.com/azolotov/status/2125273542568853615",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "tobi lutke",
-          "author_username": "tobi",
-          "url": "https://x.com/tobi/status/2125277893223940424",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "3653f99c8b10fcada412ae7617a39ecc",
-      "occurred_at": "2026-11-24T18:14:56+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T18:14:56+00:00",
-      "title": "Claude Code supports MCP servers shipping bundled skills",
-      "detail": [
-        "Claude Code can now use skills that ship inside MCP servers, making a server’s bundled operating instructions available to the coding agent. ClaudeDevs describes this as part of MCP’s evolution from connecting AI applications to tools and data toward standardizing how agents communicate and orchestrate work, alongside Tasks."
-      ],
-      "why_it_matters": "MCP server maintainers can package tool-use guidance with the server, so Claude Code users get the intended workflow without separately configuring a skill.",
-      "sources": [
-        {
-          "author_name": "ClaudeDevs",
-          "author_username": "ClaudeDevs",
-          "url": "https://x.com/ClaudeDevs/status/2125289794871963935",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "animated_gif",
-              "url": "https://pbs.twimg.com/tweet_video_thumb/HX6JrwjXAAEU2N4.jpg",
-              "preview_url": "https://pbs.twimg.com/tweet_video_thumb/HX6JrwjXAAEU2N4.jpg:small",
-              "width": 1280,
-              "height": 720
-            }
-          ]
-        },
-        {
-          "author_name": "Boris Cherny",
-          "author_username": "bcherny",
-          "url": "https://x.com/bcherny/status/2125292098165612585",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "0b6f441167f0cf6b6687c828e16b567a",
-      "occurred_at": "2026-11-24T18:16:00+00:00",
-      "updated_at": "2026-11-25T07:32:00.000724+00:00",
-      "expires_at": "2026-11-25T18:16:00+00:00",
-      "title": "GLM-5.4 Loop Transformer Model Adds Vision and Multimodal Coding",
-      "detail": [
-        "Z.ai announced GLM-5.4, a loop transformer that re-uses layers of the GLM-5 base model for deeper reasoning and adds vision for multimodal coding across video, games, 3D shaders, and CAD modeling.",
-        "API access is described as pending safety evaluation and responsible weight release, while another description says API access and the official weight release are pending safety evaluation and that users must wait for weights before hosting locally."
-      ],
-      "why_it_matters": "Teams building GLM-5.4 workflows should keep API and local-hosting dependencies flexible until the weights are released.",
-      "sources": [
-        {
-          "author_name": "Z.ai",
-          "author_username": "Zai_org",
-          "url": "https://x.com/Zai_org/status/2124811995912286352",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Maziyar PANAHI",
-          "author_username": "MaziyarPanahi",
-          "url": "https://x.com/MaziyarPanahi/status/2125292363891216797",
-          "role": "commentary",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5vji6WMAAcZLH.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5vji6WMAAcZLH.jpg:small",
-              "width": 960,
-              "height": 1200
-            }
-          ]
-        },
-        {
-          "author_name": "Ahmad",
-          "author_username": "TheAhmadOsman",
-          "url": "https://x.com/TheAhmadOsman/status/2125469071441547514",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "1a0791b2a992580c9b214acc18fee34d",
-      "occurred_at": "2026-11-24T18:18:58+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T18:18:58+00:00",
-      "title": "Conductor 0.99 adds auto-resume for usage-limited agent chats",
-      "detail": [
-        "Conductor 0.99 adds auto-resume for agent chats that stop after reaching a usage limit. Conductor resumes the chat automatically once the limit resets. The release also lists a background-subagent interface, faster workspace rendering, full-width inline artifacts, and a Codex ultrafast option, without further detail."
-      ],
-      "why_it_matters": "Users no longer need to manually restart an agent chat stopped by a usage limit.",
-      "sources": [
-        {
-          "author_name": "Charlie Holtz",
-          "author_username": "charlieholtz",
-          "url": "https://x.com/charlieholtz/status/2125293109546561740",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "3f5a8034866cc84230784d994b54b9eb",
-      "occurred_at": "2026-11-24T18:27:17+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T18:27:17+00:00",
-      "title": "GPT-6.2 Astra identifies Chabot as the artist of an 1808 Yale sketchbook",
-      "detail": [
-        "Mark Humphries reports that GPT-6.2 Astra used publicly available sources to identify the vicomte de Chabot as the artist behind an anonymous Yale Beinecke Library sketchbook documenting an 1808 journey from Montreal to Lake Superior and back. Following Astra’s suggestion, Humphries obtained scans of a little-known Chabot diary whose handwriting, itinerary, dated drawings, and journal entry describing Fort St. Joseph matched the sketchbook.",
-        "Humphries also says the newly surfaced diary contains about 162 notebook pages and came with excerpts from destroyed North West Company papers, journals, and letters. He describes Astra’s role as an end-to-end research assistant that searched forward from the artwork and backward through the historical record, while Humphries restricted access to the relevant documents."
-      ],
-      "why_it_matters": "Researchers can now evaluate Astra beyond benchmarks by checking whether its archival leads produce primary evidence whose handwriting, dates, and itinerary align.",
-      "sources": [
-        {
-          "author_name": "Mark Humphries",
-          "author_username": "HistoryGPT",
-          "url": "https://x.com/HistoryGPT/status/2125213218045858149",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX5BE8cWcAEYigq.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX5BE8cWcAEYigq.jpg:small",
-              "width": 1272,
-              "height": 826
-            }
-          ]
-        },
-        {
-          "author_name": "eric provencher",
-          "author_username": "pvncher",
-          "url": "https://x.com/pvncher/status/2125295204336820295",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "2fa3d2be745111ec376215d4610224ca",
-      "occurred_at": "2026-11-24T19:20:18+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-25T19:20:18+00:00",
-      "title": "Superlogical Rex beta offers macOS app and Linux, FreeBSD, and Windows server builds",
-      "detail": [
-        "Daniel Miessler describes Superlogical's Rex as a unified system for using AI across terminals, applications, TUIs, and orchestration, positioning it as an alternative to separate Electron, orchestrator, and terminal tools.",
-        "Rex's installation documentation says the project is in beta, with a macOS application and Linux, FreeBSD, and Windows server available to testers."
-      ],
-      "why_it_matters": "Linux and FreeBSD testers can install the server beta and evaluate whether one interface can cover several AI workflows they currently split across tools.",
-      "sources": [
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2125308548636881234",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX6cDmnbwAAlZQS.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX6cDmnbwAAlZQS.jpg:small",
-              "width": 2048,
-              "height": 1265
-            }
-          ]
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://www.superlogical.com/rex/docs/installation",
-          "domain": "www.superlogical.com",
-          "title": "Installation · Rex Docs",
-          "preview_image_url": "https://www.superlogical.com/rex/docs/og/installation.webp"
-        }
-      ],
-      "interest_slugs": [
-        "ai",
-        "linux"
-      ]
-    },
     {
       "id": "99c864abdc58a07682095ce708645547",
       "occurred_at": "2026-11-24T19:47:05+00:00",
@@ -1391,6 +787,555 @@
           "url": "https://x.com/superalesha/status/2125475380920258585",
           "role": "commentary",
           "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "5418315b26b3ee3f97eeaa03289a3d87",
+      "occurred_at": "2026-11-25T08:14:01+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T08:14:01+00:00",
+      "title": "Huawei Atlas 300I Duo offers 96GB for $1,400 with llama.cpp CANN quants limited to F16, Q4_0, and Q8_0",
+      "detail": [
+        "KyzoroX reports that Huawei's Atlas 300I Duo, a 150W single-slot server card with two Ascend 310P chips, 96GB of LPDDR4X, and no Nvidia silicon, is sold by Chinese sellers at $1,400 to $2,800 depending on order size, and that llama.cpp already has a backend for it. Each chip reads only its own 48GB at 204 GB/s during inference, capping a Q4 70B dense model at roughly 5-10 tok/s versus about 22 tok/s on two RTX 3090s, with early benchmarks around 15 tok/s on Qwen3 32B. The card runs Linux only and is built for Huawei's Kunpeng servers.",
+        "Alexey Fateev argues the dense-70B framing is outdated because local inference has moved to sparse MoE models holding 100B-600B parameters while activating only 3B-8B per token. At 5.5B active parameters in 4-bit, the ~3 GB read per token puts the 204 GB/s memory ceiling near 65 tok/s, and the full 96GB fits 120B+ MoE models with no RAM offload. He says the real home-use blockers are the split 48GB-per-chip memory pool, the passive card's rack airflow needs, and Huawei's CANN backend in llama.cpp covering only F16, Q4_0, and Q8_0, with no IQ quants and no custom MoE kernels."
+      ],
+      "why_it_matters": "Buyers get about three times an RTX 5090's 32GB for less money, but must plan for Linux-only server operation and Huawei's limited CANN quant formats.",
+      "sources": [
+        {
+          "author_name": "KyzoroX",
+          "author_username": "kyzoroX",
+          "url": "https://x.com/kyzoroX/status/2125159904511942955",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2125159874447224832/img/Yjm-arWnkI4SUV0z.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125159874447224832/img/Yjm-arWnkI4SUV0z.jpg:small",
+              "width": 1080,
+              "height": 1350
+            }
+          ]
+        },
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2125503259775209615",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "cd01934cb75f158601631658a284b42e",
+      "occurred_at": "2026-11-25T08:57:52+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T08:57:52+00:00",
+      "title": "OpenAI quota fix makes GPT-6.2 Astra and Sol reach Codex usage limits sooner",
+      "detail": [
+        "OpenAI emailed Codex users that it fixed a bug in which GPT-6.2 Astra and GPT-6.2 Sol consumed less of their usage quota than intended, so subscribers may reach their limits sooner while the subscription price stays unchanged. The notice was reportedly sent around 3 AM UTC with no public announcement and contained no percentage or token breakdown of the new consumption rate for Ultrafast or standard runs. The affected plans cost $200 to $500 per month.",
+        "The change follows an Oct 29 post by Codex lead Thibault Sottiaux stating that Pro 200 limits would not be cut and that efficiency gains would increase effective usage over time. In December, ChatGPT and Codex are set to merge into a single shared allowance, putting coding sessions in the same pool as ChatGPT usage."
+      ],
+      "why_it_matters": "Subscribers should re-baseline how many GPT-6.2 coding runs a monthly allowance now supports and measure Ultrafast versus standard drain themselves.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2125514295760875615",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX9X-y9X0AA3zDM.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX9X-y9X0AA3zDM.jpg:small",
+              "width": 1350,
+              "height": 900
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "6eb47f9c0f816e79cdfcca99be0df3b2",
+      "occurred_at": "2026-11-25T12:13:15+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T12:13:15+00:00",
+      "title": "Alexey Fateev’s llm.asm runs Qwen3-0.6B inference in 12 KB of x86-64 assembly",
+      "detail": [
+        "Alexey Fateev says llm.asm is a 12,120-byte static Linux ELF that runs the full 28-layer Qwen3-0.6B forward pass from 3,688 lines of NASM, using Q8_0 mmap weights, 16Q/8KV GQA, QK-Norm, split-half RoPE, SwiGLU, a KV cache, and greedy/top-p sampling. The implementation uses AVX2/FMA matrix multiplication, custom polynomial expf and sincosf, an assembly BPE tokenizer, and raw clone()/futex() threading without libc, libm, pthreads, or shared libraries.",
+        "On an EPYC 7642, Fateev reports 105.39 tokens/s peak decode, 64 greedy tokens matching a PyTorch FP32 reference, bit-identical output from 1 through 47 threads, and 1.000000000 cosine similarity against a Python Q8_0 reference. He says the project includes the source and build guide."
+      ],
+      "why_it_matters": "Linux developers can now audit and test Qwen3 inference with a 12 KB runtime instead of provisioning PyTorch’s multi-gigabyte runtime.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2125563464424862044",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/ext_tw_video_thumb/2125563424989978625/pu/img/6Wllxf1cDh2AYzFm.jpg",
+              "preview_url": "https://pbs.twimg.com/ext_tw_video_thumb/2125563424989978625/pu/img/6Wllxf1cDh2AYzFm.jpg:small",
+              "width": 1920,
+              "height": 1368
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai",
+        "linux"
+      ]
+    },
+    {
+      "id": "c7916769c313a64a3f77bf85d7ea1aa9",
+      "occurred_at": "2026-11-25T13:44:58+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T13:44:58+00:00",
+      "title": "Pi v1.6.1 adds callable GitHub Copilot and Radius decision models",
+      "detail": [
+        "Pi 1.6.1 introduces decision models from GitHub Copilot (gpt-6-luna-decisions) and Radius that can be invoked through the codemode models.classify() API, now returning a responseId in the results.",
+        "The release also replaces the single showCacheMissNotices flag with four per‑transcript notice settings and removes the SettingsManager getters and setters for that flag."
+      ],
+      "why_it_matters": "Developers can now invoke Copilot and Radius decision models directly, enabling richer automated reasoning without manual API calls.",
+      "sources": [
+        {
+          "author_name": "Pi Changelog",
+          "author_username": "PiChangelog",
+          "url": "https://x.com/PiChangelog/status/2125586545457631402",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX-Zstua4AA49jT.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX-Zstua4AA49jT.jpg:small",
+              "width": 1600,
+              "height": 900
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "ed6021c60dd832603db911b22b999d90",
+      "occurred_at": "2026-11-25T15:48:13+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T15:48:13+00:00",
+      "title": "Ciarán Cotter unveils new AI hacking techniques using data compression and linguistic gadgets",
+      "detail": [
+        "Ciarán Cotter announced the creation of novel AI hacking methods that leverage data compression tricks and linguistic‑based gadgets, first presented at the Prompt2Pwn conference.",
+        "He provided a write‑up of the techniques via a linked post for the community to review."
+      ],
+      "why_it_matters": "Researchers can test these compression‑based attacks to strengthen model defenses and improve AI security practices.",
+      "sources": [
+        {
+          "author_name": "Ciarán Cotter",
+          "author_username": "monkehack",
+          "url": "https://x.com/monkehack/status/2125568597774750138",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
+          "author_username": "DanielMiessler",
+          "url": "https://x.com/DanielMiessler/status/2125617560649687462",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai",
+        "os_security"
+      ]
+    },
+    {
+      "id": "f8a118116d2f31de930ad906c286b6a3",
+      "occurred_at": "2026-11-25T16:41:00+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T16:41:00+00:00",
+      "title": "PrismML releases Ternary Bonsai 2.5 27B model",
+      "detail": [
+        "PrismML announced the availability of Ternary Bonsai 2.5, a 27‑billion‑parameter model built on Qwen3.8. The new version retains the 5.9 GB footprint of its predecessor while delivering substantially stronger agentic coding, multi‑turn tool use, and long‑horizon task execution. Benchmarks show it scores 73.9 on tau3‑bench and 75.6 on SWE‑Bench‑Verified, making it the strongest model of its size for agentic workloads.",
+        "Compared with Ternary Bonsai 2, the 2.5 release completes tasks in fewer turns, consumes fewer tokens, and produces results faster and more accurately. The model is released under the Apache 2.0 license, enabling local deployment and experimentation."
+      ],
+      "why_it_matters": "You can now run high‑performance agentic coding locally with a 5.9 GB model, lowering hardware requirements for complex AI‑driven workflows.",
+      "sources": [
+        {
+          "author_name": "PrismML",
+          "author_username": "PrismML",
+          "url": "https://x.com/PrismML/status/2125310762390552588",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX6bsk1a0AAiHcR.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX6bsk1a0AAiHcR.jpg:small",
+              "width": 1830,
+              "height": 1455
+            }
+          ]
+        },
+        {
+          "author_name": "Maziyar PANAHI",
+          "author_username": "MaziyarPanahi",
+          "url": "https://x.com/MaziyarPanahi/status/2125630844140147078",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "bd2cb011d1e0a3e2002a97eb5ee7c4f4",
+      "occurred_at": "2026-11-25T17:06:24+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T17:06:24+00:00",
+      "title": "Ramp Labs introduces speculative encoding, a 2.35B MoE that translates hidden states between models",
+      "detail": [
+        "Ramp Labs introduced speculative encoding, a single 2.35B-parameter MoE model that translates hidden states directly between different LLMs. The stated goal is that shared context gets read once and reused across every model in a multi-agent swarm instead of being re-read for each.",
+        "In benchmarks across 7 models, the technique reportedly preserves 96.9% of base accuracy while cutting prefill latency by up to 7.5× on long documents."
+      ],
+      "why_it_matters": "Builders of multi-model agent pipelines can share a single translated context across model swaps instead of re-prefilling after each switch, accepting up to 3.1% accuracy loss.",
+      "sources": [
+        {
+          "author_name": "Ramp Labs",
+          "author_username": "RampLabs",
+          "url": "https://x.com/RampLabs/status/2125627502802653330",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2125626154140700672/img/dgqH1utiZMYlJpVd.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125626154140700672/img/dgqH1utiZMYlJpVd.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "cole murray",
+          "author_username": "colemurray",
+          "url": "https://x.com/colemurray/status/2125637237190906139",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "b1d38d3551d42d324990f30ee9e54fd6",
+      "occurred_at": "2026-11-25T17:32:31+00:00",
+      "updated_at": "2026-11-25T18:30:00.002289+00:00",
+      "expires_at": "2026-11-26T17:32:31+00:00",
+      "title": "Factory makes its individual developer tier free with bring-your-own inference",
+      "detail": [
+        "Factory has made its product free for individual developers who bring their own inference: users download the app, add their own API key, and start their first task. As a limited-time holiday bonus, Factory is also adding free Droid Computer hours to every account."
+      ],
+      "why_it_matters": "Developers holding an existing inference API key can now run Factory's agent app without paying Factory, and their accounts pick up free Droid Computer hours while the offer lasts.",
+      "sources": [
+        {
+          "author_name": "Factory",
+          "author_username": "factory",
+          "url": "https://x.com/factory/status/2125637084522447202",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_Hqbda4AAC_rm.png",
+              "preview_url": "https://pbs.twimg.com/media/HX_Hqbda4AAC_rm.png:small",
+              "width": 1200,
+              "height": 675
+            }
+          ]
+        },
+        {
+          "author_name": "Eno Reyes",
+          "author_username": "EnoReyes",
+          "url": "https://x.com/EnoReyes/status/2125643809803420074",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "dex",
+          "author_username": "dexhorthy",
+          "url": "https://x.com/dexhorthy/status/2125653369301991764",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "9a9bbb1d5bb9b11b3d7e386494922361",
+      "occurred_at": "2026-11-25T17:33:08+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T17:33:08+00:00",
+      "title": "Alperen Keleş's Ephyra at Datadog finds 535 previously unknown bugs in Lean, OCaml, SQLite, PostgreSQL, and FoundationDB",
+      "detail": [
+        "Alperen Keleş announced that his first project at Datadog, Ephyra, is now public: an agentic property-based testing framework with built-in autonomous generator optimization.",
+        "He reports that Ephyra found 535 previously unknown bugs across Lean, OCaml, SQLite, PostgreSQL, FoundationDB, and other heavily tested systems."
+      ],
+      "why_it_matters": "Engineers testing systems like SQLite, PostgreSQL, and FoundationDB can now apply Ephyra's public framework, whose autonomous generators exposed 535 defects that existing testing in such well-tested projects had missed.",
+      "sources": [
+        {
+          "author_name": "Alperen Keleş",
+          "author_username": "Keleesssss",
+          "url": "https://x.com/Keleesssss/status/2125344793936937470",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX690xYXMAAdZ9k.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX690xYXMAAdZ9k.jpg:small",
+              "width": 1234,
+              "height": 973
+            }
+          ]
+        },
+        {
+          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
+          "author_username": "DanielMiessler",
+          "url": "https://x.com/DanielMiessler/status/2125643963550077398",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "0bc31aad981dd4aefc8f719d1f384211",
+      "occurred_at": "2026-11-25T18:02:16+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T18:02:16+00:00",
+      "title": "Josh's Claude-powered photo classification tool",
+      "detail": [
+        "Josh announced a new feature that classifies entire photo collections using Claude. The system sends each image with its EXIF metadata and location to the model, processing batches of roughly 45 000 photos for about $500 in API credits.",
+        "The model returns searchable tags and extracted text, enabling queries that locate images by where they were taken, embedded text, or other visual cues in milliseconds."
+      ],
+      "why_it_matters": "You can instantly query large photo libraries without manual tagging, saving hours of organization work.",
+      "sources": [
+        {
+          "author_name": "Josh",
+          "author_username": "jjpcodes",
+          "url": "https://x.com/jjpcodes/status/2125651295113462138",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_TeK6WsAAgTLA.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_TeK6WsAAgTLA.jpg:small",
+              "width": 2048,
+              "height": 1285
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_UTqZXAAAbkRK.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_UTqZXAAAbkRK.jpg:small",
+              "width": 2048,
+              "height": 1285
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [
+        {
+          "url": "https://opentrawl.sh",
+          "domain": "opentrawl.sh",
+          "title": "OpenTrawl: Spotlight for the Agentic OS",
+          "preview_image_url": "https://opentrawl.sh/card.png"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "dab8c32a1e5ce2262950dc516dae8a15",
+      "occurred_at": "2026-11-25T18:15:13+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T18:15:13+00:00",
+      "title": "Google forbids AI agents from using Workspace APIs",
+      "detail": [
+        "Google announced that its new Model Control Plane (MCP) will block AI agents, including tools like gog and openclaw, from accessing Workspace APIs unless the agents are paid for.",
+        "This policy change restricts the capabilities of third‑party AI agents that rely on Google Workspace integrations, forcing developers to either obtain paid access or redesign their agents."
+      ],
+      "why_it_matters": "AI‑agent developers must adjust or pay for Workspace API access, or their tools will lose functionality.",
+      "sources": [
+        {
+          "author_name": "Guido Pettinari",
+          "author_username": "coccoinomane",
+          "url": "https://x.com/coccoinomane/status/2125547127803985932",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX91R_pXMAAzEGD.png",
+              "preview_url": "https://pbs.twimg.com/media/HX91R_pXMAAzEGD.png:small",
+              "width": 1928,
+              "height": 492
+            }
+          ]
+        },
+        {
+          "author_name": "Peter Steinberger",
+          "author_username": "steipete",
+          "url": "https://x.com/steipete/status/2125654555262431248",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "ab77644713c705f30fcee2f1c08cc99d",
+      "occurred_at": "2026-11-25T18:19:42+00:00",
+      "updated_at": "2026-11-25T19:32:00.001065+00:00",
+      "expires_at": "2026-11-26T18:19:42+00:00",
+      "title": "Daniel Miessler adds one-way-door escalation to his AI system's deploy review",
+      "detail": [
+        "Daniel Miessler says he added a constitution rule to his AI system based on Jeff Bezos's one-way and two-way door distinction. Most actions are reversible because code is kept in git and actions are logged, so those receive less upfront checking and are verified afterward.",
+        "Actions that cannot be undone, such as pushing an API key to a public repository or exposing customer data, receive more upfront validation, including review by a second model from another laboratory. In code, when an AI reviewer blocks a deployment and the AI disputes it, a model from another lab rules on the appeal, except when the blocker is a one-way-door change, which always goes to Miessler."
+      ],
+      "why_it_matters": "Practitioners can use reversibility to separate fast-checked agent actions from irreversible ones that require human or independent-model escalation.",
+      "sources": [
+        {
+          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
+          "author_username": "DanielMiessler",
+          "url": "https://x.com/DanielMiessler/status/2125655686038372580",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg:small",
+              "width": 2048,
+              "height": 1143
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png",
+              "preview_url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png:small",
+              "width": 2048,
+              "height": 1044
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg:small",
+              "width": 2048,
+              "height": 1051
+            }
+          ]
+        },
+        {
+          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
+          "author_username": "DanielMiessler",
+          "url": "https://x.com/DanielMiessler/status/2125657070120862133",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg:small",
+              "width": 2048,
+              "height": 1143
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png",
+              "preview_url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png:small",
+              "width": 2048,
+              "height": 1044
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg:small",
+              "width": 2048,
+              "height": 1051
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "2646860746b6cdae379b5f4587143e27",
+      "occurred_at": "2026-11-25T18:46:08+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-26T18:46:08+00:00",
+      "title": "GPT-Next reported to have proved the matrix multiplication exponent is exactly 9/4",
+      "detail": [
+        "Dan McAteer says GPT-Next has produced a proof that the matrix multiplication exponent is exactly 9/4, describing it as the resolution of a 57-year-old theoretical computer science problem that he says required superhuman AI to solve.",
+        "A proven exponent of exactly 9/4 would pin down the asymptotic cost of matrix multiplication, and McAteer's framing ties the result to direct implications for AI R&D.",
+        "No paper, proof sketch, or independent verification accompanies the claim, so the result currently stands as unconfirmed."
+      ],
+      "why_it_matters": "Until a verified proof or paper appears, readers should treat the 9/4 result as an unconfirmed claim rather than a settled theorem.",
+      "sources": [
+        {
+          "author_name": "Dan McAteer",
+          "author_username": "daniel_mac8",
+          "url": "https://x.com/daniel_mac8/status/2125662338145563116",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_ef9vWsAA0Dxc.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_ef9vWsAA0Dxc.jpg:small",
+              "width": 1642,
+              "height": 908
+            }
+          ]
         }
       ],
       "evidence_state": "reported",
