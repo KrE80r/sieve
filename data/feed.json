@@ -1,7 +1,42 @@
 {
-  "updated_at": "2026-11-25T00:00:01.713536+00:00",
-  "total_items": 1056,
+  "updated_at": "2026-11-25T01:00:00.421281+00:00",
+  "total_items": 1057,
   "items": [
+    {
+      "id": 8235,
+      "source_id": 13,
+      "original_url": "https://stackoverflow.blog/2026/11/24/idempotency-when-you-don-t-control-the-other-end/",
+      "title": "Idempotency when you don't control the other end",
+      "summary": "An accounting-integration engineer documents duplicate journal entries caused by retried writes across 30+ external ERP systems. He shows that caller-side lookup, batch detection, and later cleanup all fail under races, while provider-enforced keys or unique references should return 409 on reuse.",
+      "ideas": [
+        "Timeouts cannot reveal whether a request failed before arrival or after processing.",
+        "The same journal-entry batch can upload twice successfully without immediate duplicate rejection.",
+        "Import-time warnings may alert accountants while remaining invisible to the original caller.",
+        "Document numbers are not globally unique, so lookup-based deduplication can suppress legitimate new entries.",
+        "Matching account, amount, and date can still collide across genuinely separate transactions.",
+        "Overlapping retries can both pass a pre-write lookup before either transaction becomes visible.",
+        "Delayed search-index updates can hide completed writes from subsequent duplicate checks.",
+        "Mandatory lookup requests double API traffic, consume rate limits, and can provoke more timeouts.",
+        "Post-hoc cleanup exposes ledgers to duplicates and can create duplicate reversal entries.",
+        "Locked periods force corrections into later months, potentially changing which VAT return contains the error.",
+        "Long cleanup jobs compare changing monthly data against an outdated snapshot.",
+        "Caller-side idempotency only protects the hop where that key is stored.",
+        "Providers vary key placement, endpoint coverage, retention, request matching, and release-to-release behavior.",
+        "An in-flight reused key should return 409, while a mismatched body should return 422.",
+        "Transient failures should release the key instead of permanently caching the error.",
+        "A provider-enforced caller reference can guarantee exactly one journal entry per company.",
+        "Idempotency support should be regression-tested after every provider release.",
+        "Only the system storing the final entry can guarantee uniqueness across the complete request chain."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 84,
+      "rating_reason": "You gain a concrete distributed-systems failure model: ambiguous timeouts, check-then-write races, stale indexes, and corrective-entry hazards, plus precise API semantics for safe retries.",
+      "source_type": "rss",
+      "source_name": "stackoverflow.blog",
+      "published_at": "2026-11-25T10:35:20.177862"
+    },
     {
       "id": 8234,
       "source_id": 13,
