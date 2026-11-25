@@ -1,7 +1,264 @@
 {
-  "updated_at": "2026-11-25T13:00:00.365364+00:00",
-  "total_items": 1031,
+  "updated_at": "2026-11-25T14:00:00.629168+00:00",
+  "total_items": 1041,
   "items": [
+    {
+      "id": 8255,
+      "source_id": 34,
+      "original_url": "https://shimin.io/journal/fine-tuning-local-models-for-the-gpu-poor/",
+      "title": "Fine-Tuning Local Models for the GPU Poor — Teaching Qwen3.8-27B Narrow Tasks via QLoRA",
+      "summary": "A QLoRA pipeline fine-tunes Qwen3.8-27B for Blender 5.2 on one RTX 4090 by combining gradient checkpointing with 128-token loss chunking. On 100 held-out scripts, error-free executions rose from 42 to 85, while held-out loss moved from 0.370 to 0.365.",
+      "ideas": [
+        "Quantized 27B inference leaves about 6.9 GiB free on a 24 GiB card",
+        "Gradient checkpointing reduced the training memory footprint to 32 GiB",
+        "Length-128 loss chunking added only 3% to total step time",
+        "QLoRA increased successful Blender executions from 42/100 to 85/100",
+        "Two epochs over 2,000 synthetic Blender scripts took about six hours",
+        "Rank-16 adapters reduced one 89M-weight layer to 360K parameters"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You learn how to budget quantized 27B training on 24 GiB of VRAM with rank-16 adapters, checkpoint recomputation, and 128-token loss chunking. Measured memory, latency, and script-success results make the Blender task unusually concrete.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-26T00:28:22.383197"
+    },
+    {
+      "id": 8254,
+      "source_id": 34,
+      "original_url": "https://rust-glancer.github.io/blog/0-5-0/",
+      "title": "Rust Glancer 0.5.0: Matching rust-analyzer performance",
+      "summary": "Rust Glancer 0.5.0 adds a disk-backed Rust LSP with dirty-buffer analysis, proper async inference, macro-aware navigation, and Ajika-backed persistence. Reproducible scenario benchmarks claim parity with rust-analyzer on three hardware systems, though proc macros remain unsupported and Linux cold indexing needs mimalloc arenas.",
+      "ideas": [
+        "Disk-backed Rust LSP matches rust-analyzer latency across measured macOS and Debian projects.",
+        "Ajika overlays dirty buffers in memory while persisting indexed workspace data.",
+        "Sharded impl blocks and name indexes avoid unnecessary disk-backed query loads.",
+        "Linux mimalloc arena configuration materially affects cold-indexing speed.",
+        "Benchmark harness uses logical user scenarios rather than isolated cold requests.",
+        "Proc macro support remains the major missing LSP feature."
+      ],
+      "labels": [
+        "Tech",
+        "AI"
+      ],
+      "rating": 87,
+      "rating_reason": "You get the benchmark methodology and caveats, the query-first Ajika design, sharded and name-index optimizations, plus a reproducible `compare-lsp --mode full --pairs 5` command—not merely a release announcement.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-26T00:22:57.222612"
+    },
+    {
+      "id": 8253,
+      "source_id": 34,
+      "original_url": "https://nathan.rs/posts/tunazip/",
+      "title": "Device-Independent Neural Compression",
+      "summary": "Nathan Barry’s tunazip makes neural compression reproducible across GPUs by forcing bit-exact training and decoding. Its 10M-parameter model decoded correctly across six NVIDIA generations, costing roughly 3× runtime while staying within 5% of NNCP v2.",
+      "ideas": [
+        "Cross-device neural compression requires bit-exact matrix products, normalization, exponentiation, and random generation.",
+        "Sixteen-bit operands plus float64 accumulation keep products exact across summation orders.",
+        "A 10M-parameter tuner stays within 5% of NNCP v2 compression.",
+        "Cross-GPU failures began at the first or second token and corrupted 99.9% of output.",
+        "Exact decoding costs roughly 3× runtime while producing similar compressed sizes.",
+        "CUDA round-to-nearest primitives prevent compiler-dependent fused operations."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 95,
+      "rating_reason": "The full write-up gives you the reproducible arithmetic constraints, implementation details, failure measurements, and GitHub code needed to understand or extend tunazip’s cross-device neural compression. It is unusually strong firsthand engineering evidence.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-26T00:11:16.804123"
+    },
+    {
+      "id": 8252,
+      "source_id": 34,
+      "original_url": "https://m-compressors.github.io/2026/zstd-cve-2026-124851-mzstd/",
+      "title": "CVE-2026-124851 in the Zstandard decoder, and why mzstd is not affected",
+      "summary": "CVE-2026-124851 affects C zstd 1.5.1–1.5.7 and can disclose prior or uninitialized heap bytes through malformed streaming decompression; zstd 1.6.0 fixes it. A 3,099-byte frame leaked 15 secret bytes on 1.5.7 but was rejected by 1.6.0 and every tested mzstd release.",
+      "ideas": [
+        "Chunked literal copies exposed stale 64 KiB decoder-buffer bytes.",
+        "Ring-buffer wrap let offsets exceed the declared frame window.",
+        "A 3,099-byte frame leaked 15 prior-secret bytes on zstd 1.5.7.",
+        "zstd 1.6.0 trims history and zeroes 32-byte literal padding.",
+        "mzstd enforces RFC 8878 window bounds and rejects the exploit.",
+        "Static and vendored libzstd copies require independent upgrades."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 93,
+      "rating_reason": "You get the exact two-stage decoder failure, a 3,099-byte proof-of-concept frame, version-by-version results, and the window and dictionary checks that prevent exploitation in Rust.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-26T00:02:00.192541",
+      "image_url": "https://m-compressors.github.io/assets/img/og/zstd-cve-2026-124851-mzstd.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8251,
+      "source_id": 34,
+      "original_url": "https://lucumr.pocoo.org/2026/11/25/poisoning/",
+      "title": "Abolish Lock Poisoning",
+      "summary": "Armin Ronacher argues Rust's mutex poisoning should be removed or made opt-in, citing real failures in RLS, Mozilla application-services, Neon, cargo, and rustc. Hardest fact: PoisonError owns the guard, so returning a lock error can silently keep the mutex locked and deadlock later callers.",
+      "ideas": [
+        "PoisonError retains the guard; m.lock()? in error-wrapping code keeps the mutex locked until drop",
+        "Mozilla moved to parking_lot after PoisonError reached rank 5 in crash stats",
+        "std's own I/O, backtrace, and WASI locks ignore poisoning; open PR targets nonpoison",
+        "RefCell under tokio task panics has the same broken-invariant problem yet never poisons",
+        "clear_poison landed only in Rust 1.77, nine years after poisoning shipped",
+        "Proposal: std::sync::nonpoison default plus opt-in Poison<T> wrapper for any interior mutability type"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Backs the argument with real breakage: PoisonError guard-holding deadlocks, Mozilla crash stats, std ignoring its own poisoning, plus a concrete nonpoison and Poison<T> design you can evaluate.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-26T00:01:27.162160",
+      "image_url": "https://lucumr.pocoo.org/social/2026-11-25-poisoning-social.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8250,
+      "source_id": 34,
+      "original_url": "https://lilting.ch/en/articles/jquery-4-1-0-3-8-0-release/",
+      "title": "Comparing jQuery 4.1.0 and 3.8.0 Against Older Releases in Chrome and JavaScriptCore",
+      "summary": "The author benchmarks jQuery 3.7.1 through 4.1.0 across Chrome, Node, and JavaScriptCore, testing selector security, API changes, DOM behavior, sorting performance, and a Safari workaround. At 30 repeated hex escapes, vulnerable releases take about 18.3 seconds versus roughly 1 millisecond in patched versions.",
+      "ideas": [
+        "A 63-character selector triggers roughly 18-second exponential backtracking in jQuery 3.7.1 and 4.0.0.",
+        "Patched jQuery rejects the ReDoS pattern in about 1 millisecond across tested engines.",
+        "Safari 27's non-JIT regex interpreter breaks jQuery.escapeSelector in 132 of 198 control-character cases.",
+        "jQuery 4.1's uniqueSort changes duplicate removal from quadratic to linear behavior.",
+        "Form-associated custom elements need an explicit name getter for jQuery 4.1 serialization.",
+        "Object-form AJAX completion callbacks work only in jQuery 3.8.0 and 4.1.0."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 92,
+      "rating_reason": "You get a reproducible selector-ReDoS exploit pattern, its regex-level cause, browser/JIT-specific failure mechanics, and benchmark code for separating parsing, DOM-ordering, and sorting costs.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:58:43.398186",
+      "image_url": "https://lilting.ch/og/images/tags/verification.ogp.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Comparing jQuery 4.1.0 and 3.8.0 Against Older Releases in Chrome and JavaScriptCore | lilting channel"
+    },
+    {
+      "id": 8249,
+      "source_id": 34,
+      "original_url": "https://joshua.hu/asan-docker-ubuntu-mmap-rnd-bits-one-in-four",
+      "title": "Why ASan crashes one run in four in Docker on Ubuntu",
+      "summary": "The article explains why AddressSanitizer aborts about one in four runs of a Docker container on Ubuntu when vm.mmap_rnd_bits=32, because the executable lands in the 0x6000…0x6400 TiB range that collides with ASan’s fixed‑address heap. The failure disappears with vm.mmap_rnd_bits=28 or the April‑2023 runtime fix that moves the heap to 0x5000….",
+      "ideas": [
+        "ASan’s old heap is hard‑coded at 0x6000 0000 0000 (4 TiB); a PIE binary loaded above 0x6000 TiB overwrites it.",
+        "Ubuntu’s default vm.mmap_rnd_bits=32 randomizes PIE loads across a 16 TiB range, placing binaries in the colliding region ~25% of the time.",
+        "Lowering vm.mmap_rnd_bits to 28 or using the post‑April‑2023 runtime (heap at 0x5000…) eliminates the crash.",
+        "Both GCC and Clang runtimes exhibit the issue, but Clang crashes outright while GCC’s ASan handler loops on the fatal signal."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You’ll see the exact ASan heap‑collision mechanism, how vm.mmap_rnd_bits moves the PIE load address into the old 4 TiB ASan heap region, and the concrete fix via kernel setting or runtime patch.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:52:53.051636",
+      "image_url": "https://joshua.hu/assets/img/social/asan-docker-ubuntu-mmap-rnd-bits-one-in-four.png",
+      "image_width": 2400,
+      "image_height": 1260,
+      "image_alt": "Why ASan crashes one run in four in Docker on Ubuntu | Joshua Rogers' Scribbles"
+    },
+    {
+      "id": 8248,
+      "source_id": 34,
+      "original_url": "https://gshell.dev/blog/llamacpp-moe-beyond-vram/",
+      "title": "llama.cpp: 80 GB MoE models on 32 GB of VRAM",
+      "summary": "A homelab benchmark tested five llama.cpp settings on two roughly 80 GB MoE models using dual 16 GB GPUs, with fixed warm-up and measured requests. Qwen3.8-Flash-Next reached 803.1 prompt and 59.5 generation tokens/s after combining CPU-offloaded MoE, doubled cache, DirectIO, and 4096-token batches.",
+      "ideas": [
+        "--fit default keeps all layers on GPUs and moves only experts to CPU.",
+        "Doubling MoE cache above tuner's first-GPU-derived size raised Qwen generation 13%.",
+        "4096-token batches made prompts 2.5x faster by cutting expert-copy rounds.",
+        "With pinned memory, MoE CPU share 0 beat 0.8 after repeated requests.",
+        "DeepSeek needs RAM tiers because its 74 GiB experts cannot pin."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading it yields the exact flag stacks, measurement protocol, and multi-GPU MoE cache tuning traps for two 80 GB models, including the 13–14 % gain from doubling the recommended cache size.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:38:33.966223",
+      "image_url": "https://gshell.dev/blog/llamacpp-moe-beyond-vram/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Cover image for “llama.cpp: 80 GB MoE models on 32 GB of VRAM”"
+    },
+    {
+      "id": 8247,
+      "source_id": 34,
+      "original_url": "https://gautamparab.com/writing/twenty-eight-layers-run-twice/",
+      "title": "Twenty-Eight Layers, Run Twice",
+      "summary": "Z.ai’s GLM-5.4 runs 28 of GLM-5’s 78 layers twice, improving several reported benchmarks without adding weights. The audit estimates each answer now requires roughly 16–33% more layer work, while noting absent sample counts, compute-matched controls, and matched-hardware latency.",
+      "ideas": [
+        "Reusing 28 layers raises sequential layer passes from 78 to 106.",
+        "Reported token reductions translate into estimated 16–33% more work per answer.",
+        "AIME25 has 30 problems, making its sampling methodology material.",
+        "A compute-matched continued-training control is missing from the ablation.",
+        "Sequential recurrence increases latency beyond what FLOP counts predict."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "You get a compute-aware audit of GLM-5.4’s recurrent depth: it derives a roughly 36% layer-work increase, estimates 16–33% higher per-answer work, and identifies missing compute-, training-, and latency-matched controls.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:36:36.653649"
+    },
+    {
+      "id": 8246,
+      "source_id": 34,
+      "original_url": "https://fzakaria.com/2026/11/23/2035-came-early",
+      "title": "2035 came early",
+      "summary": "trynix.dev pairs Nix’s package universe with unkernel, a Linux-to-WebAssembly runtime that boots graphical applications, networking, and audio in a browser. It reports 2–32× gains over qemu-wasm, while nested Firefox required disabled JIT and took over four hours.",
+      "ideas": [
+        "unkernel runs Linux kernel components as WebAssembly while emulating user programs.",
+        "More than 300,000 Nix package versions become browser-accessible.",
+        "Wayland surfaces composite through wland and Mesa virgl over WebGL2.",
+        "TCP traffic reaches emulated systems through a WebSocket-based Wisp relay.",
+        "Recursive Firefox required disabled JIT and took over four hours.",
+        "Benchmarked workloads improved 2× to 32× over qemu-wasm."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "You get a concrete architecture tour of browser-native Linux—WebAssembly kernel, emulated user space, Wayland/WebGL2 compositing, and Wisp networking—plus candid performance and recursive-Firefox limitations.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:34:13.500317"
+    },
     {
       "id": 8245,
       "source_id": 34,
