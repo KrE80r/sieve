@@ -1,7 +1,96 @@
 {
-  "updated_at": "2026-11-25T06:00:00.871031+00:00",
-  "total_items": 1021,
+  "updated_at": "2026-11-25T07:00:00.842608+00:00",
+  "total_items": 1024,
   "items": [
+    {
+      "id": 8238,
+      "source_id": 4,
+      "original_url": "https://0xdf.gitlab.io/cheatsheets/ldap-enum",
+      "title": "LDAP Enumeration Cheatsheet | 0xdf hacks stuff",
+      "summary": "0xdf's LDAP enumeration cheatsheet is a repeatable Active Directory assessment workflow built around NetExec, BloodyAD, and Certipy. Default ms-DS-MachineAccountQuota lets any authenticated user join 10 machines to the domain.",
+      "ideas": [
+        "LDAP on 389 is core to Windows AD assessments",
+        "Any valid domain account reads almost the whole directory",
+        "Anonymous bind exposes only server basics",
+        "NetExec base run reveals hostname, domain, OS, signing",
+        "Kerberoasting targets accounts carrying SPNs",
+        "AS-REP roasting targets accounts lacking pre-auth",
+        "Default machine account quota is 10; best practice 0",
+        "NetExec --gmsa queries gMSA passwords directly",
+        "BloodyAD dumps DNS zones from a domain controller",
+        "Deleted objects remain retrievable as tombstones",
+        "Certipy find -vulnerable flags risky ADCS templates",
+        "rusthound-ce is the preferred Linux BloodHound collector",
+        "BloodyAD get writable lists objects you can write",
+        "ldapsearch works anonymously on namingContexts",
+        "Global catalog listens on 3268 and 3269 TLS",
+        "NetExec supports Kerberos with -k and KRB5CCNAME"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading the full cheatsheet gives exact NetExec and BloodyAD command-plus-output pairs for roasting, tombstones, gMSA, writable objects, and ADCS enumeration.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-25T16:34:38.660735"
+    },
+    {
+      "id": 8237,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/11/iran-aligned-volant-manticore-uses-ipfs.html",
+      "title": "Iran-Aligned Volant Manticore Uses IPFS-Based KuboShell Backdoor in Espionage Campaigns",
+      "summary": "Volant Manticore deployed the IPFS‑backed KuboShell and Homa framework against telecom and airline targets in Cyprus. The backdoor contacts hard‑coded IP 185.205.187[.]109:8000 and polls every 60 seconds.",
+      "ideas": [
+        "KuboShell uses IPFS via Pinata for command-and-control communications.",
+        "Victim MAC address becomes unique identifier and filename for registration files.",
+        "The backdoor polls Pinata every 60 seconds for new command files.",
+        "Commands run in hidden PowerShell; output saved to <MAC>re.txt file.",
+        "Loader chain: PowerShell stager, PowerShell loader, then JavaScript backdoor.",
+        "JavaScript backdoor can execute PowerShell, SSH, and cmd.exe commands.",
+        "Homa framework reimplements MuddyWater’s MuddyC2Go client in JavaScript.",
+        "Volant Manticore employs legitimate RMM tools like MeshCentral for persistence.",
+        "Phishing uses AI‑generated personas and fake CVs to deliver KuboShell.",
+        "Saudi campaigns distribute KuboShell via “AI_Healthcare_Seminar.zip” archives.",
+        "Macro‑enabled Word document “MilitaryHeritageProposal.doc” drops a VBA backdoor.",
+        "Group likely formed by ex‑MuddyWater operators around 2023.",
+        "Backdoor contains hard‑coded Pinata access token for IPFS uploads.",
+        "KuboShell checks admin privileges and triggers UAC prompt if absent."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You’ll get the exact KuboShell registration flow, its IPFS‑based C2 mechanics, and the three‑stage PowerShell‑to‑JavaScript loader used by Volant Manticore.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-25T16:34:25.321879"
+    },
+    {
+      "id": 8236,
+      "source_id": 4,
+      "original_url": "https://exploitreversing.com/2026/11/24/poc-2026/",
+      "title": "Data-Only Windows Kernel Exploitation | POC 2026 Talk",
+      "summary": "Alexandre Borges presented a slide deck on data‑only Windows kernel exploitation centered on CVE‑2024‑30085 in the Cloud Files mini‑filter. The talk details eight exploit chains, one of which spans a 13‑stage I/O Ring sequence on Windows 11 23H2/24H2.",
+      "ideas": [
+        "A 16‑byte out‑of‑bounds write in cldflt.sys can spawn eight data‑only kernel exploits.",
+        "One primitive evolves into a 13‑stage pure I/O Ring exploit chain.",
+        "An LSASS PPL bypass enables non‑admin credential dumping without shellcode.",
+        "Escalating to SYSTEM requires cleanup to avoid kernel bug checks.",
+        "Windows 11 24H2 handle‑leak restrictions break some primitives but not all."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "Reading the full deck reveals the eight distinct data‑only kernel exploit chains built from a 16‑byte OOB write, including the 13‑stage I/O Ring chain and LSASS PPL bypass, plus mitigation‑bypass details.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-25T16:34:09.471454"
+    },
     {
       "id": 8235,
       "source_id": 13,
