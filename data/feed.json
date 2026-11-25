@@ -1,7 +1,195 @@
 {
-  "updated_at": "2026-11-25T12:00:01.041502+00:00",
-  "total_items": 1024,
+  "updated_at": "2026-11-25T13:00:00.365364+00:00",
+  "total_items": 1031,
   "items": [
+    {
+      "id": 8245,
+      "source_id": 34,
+      "original_url": "https://e-infinity.space/writing/checking-a-claimed-lean-proof-of-rh/",
+      "title": "Checking a claimed Lean proof of the Riemann Hypothesis",
+      "summary": "An independent verification of Levent Alpöge's Lean 4.33.1 formalization of the Riemann Hypothesis was reproduced from source and confirmed by two independent checkers. The project spans 175,187 files and 17.4 million lines, exporting a 61,570,595,788-byte proof object accepted by nanoda and con-leche.",
+      "ideas": [
+        "Comparator checks untrusted Lean proofs via challenge statements, permitted axioms, and sandboxed replay.",
+        "Rebuild produced export byte-identical to published 61,570,595,788-byte proof object with matching SHA-256.",
+        "Lake's per-file import JSON scratch grew quadratically, filling 377 GB of a 500 GB disk.",
+        "Proof rests only on propext, Quot.sound, and Classical.choice across 1,478,219 declarations.",
+        "An empty GeoP geometry definition weakens intermediate lemmas without affecting the final Mathlib statement.",
+        "Independent Rust checker nanoda accepted the proof on 64 threads in 54 minutes."
+      ],
+      "labels": [
+        "Tech",
+        "AI",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading it gives you a reproducible recipe for auditing an untrusted Lean formalization: challenge files, sandboxed builds, byte-identical export matching, and independent kernel checks, plus Lake disk-bloat and empty-geometry findings.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:28:01.474988"
+    },
+    {
+      "id": 8244,
+      "source_id": 34,
+      "original_url": "https://carteakey.dev/blog/local-inference/optimizing-inkling-2-mini-on-an-rtx-4070/",
+      "title": "Optimizing Inkling 2 Mini on an RTX 4070: From 5.9 to 74.7 tok/s",
+      "summary": "The author ports Inkling 2 Mini to an RTX 4070, patches llama.cpp/PolyStrata for looped-MoE offloading, and compares five inference engines. PolyStrata reaches 74.7 tok/s decode and 2,153 tok/s prefill at 256k context using 11,622 MiB VRAM, versus 5.9 tok/s initially.",
+      "ideas": [
+        "Pinning looped MoE core raised llama.cpp decode from 33.1 to 44.1 tok/s.",
+        "A 70/30 CPU-to-PCIe cache-miss split peaked at 65.8 tok/s.",
+        "Hot-expert residency beat DSpark speculative decoding on constrained VRAM.",
+        "W4A8 INT8 activation kernels nearly doubled PolyStrata prefill throughput.",
+        "Elastic VRAM released MoE cache during prompts, then reclaimed it before decoding.",
+        "Measured bandwidth and tensor traffic estimated an 83–95 tok/s decode ceiling."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 89,
+      "rating_reason": "You get exact llama.cpp and PolyStrata flags, cache-splitting and elastic-VRAM mechanisms, plus a controlled five-engine benchmark explaining why hot-expert residency beats draft models.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:20:44.557605",
+      "image_url": "https://carteakey.dev/img/og/optimizing-inkling-2-mini-on-an-rtx-4070-stamp-trim-0ca8a58efdd2.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Transparent monochrome sketch of a dual-fan RTX 4070 GPU with a three-loop ribbon and tachometer"
+    },
+    {
+      "id": 8243,
+      "source_id": 34,
+      "original_url": "https://blog.howardjohn.info/posts/overhyped-ai-gateway-1-semantic-caching/",
+      "title": "Overhyped AI Gateway Features Part 1: Semantic Caching",
+      "summary": "An LLM gateway maintainer tested semantic caching against 15,000 prompts from 2,500 of his own Codex sessions at 0.90 and 0.99 similarity thresholds. Every plausible cache hit in the data was a false positive, yielding essentially zero real-world benefit.",
+      "ideas": [
+        "Measured 5-17% per-prompt hit rate was entirely false positives like 'wdyt' and 'keep going'",
+        "Agentic multi-turn requests defeat semantic caching: full-conversation keys never repeat, last-message keys lose context",
+        "'Convert 100 USD to EUR' versus reversed currency likely triggers an incorrect semantic cache hit",
+        "False sharing returns one user's cached response to another, leaking conversation content",
+        "Cross-session full-prompt hits drop to 1-3%, all harmful; same-conversation hits of 68% just ignore the last message"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Gives you the raw measurement: per-prompt hit rates at 0.90/0.99 thresholds across 2,500 Codex sessions, and why every hit — including 'fix issue 1234' near-matches — was harmful.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T23:11:12.806649"
+    },
+    {
+      "id": 8242,
+      "source_id": 34,
+      "original_url": "https://andlukyane.com/blog/cayley-graphs-and-torchtpu",
+      "title": "From CUDA and JAX to TorchTPU: Lessons from a Cayley Graph Solver",
+      "summary": "Ported his Cayley graph beam-search solver from CUDA/JAX to Google's TorchTPU, training a 3.4M-parameter PieceTransformer and rewriting the solver. Optimizations cut epoch time from 234.8s to 132.0s (1.08x faster than A100) and made beam search 25% faster per level than JAX on eight v6e chips.",
+      "ideas": [
+        "TORCH_TPU_DEFER_AND_FUSE=1 fused tiny eager ops better than torch.compile on data pipelines",
+        "Einsum attention beat SDPA 1.69x only when measured across forward+backward",
+        "Deferred DDP collectives caused checkpoint deadlock when only rank 0 saved",
+        "Data-dependent output ops force host round-trips and recompiles on TPU",
+        "Unstable torch.topk tie order changed beam path length via dedup sorting",
+        "Attention was 3% of FLOPs but 90% of runtime at 51-token sequence length",
+        "No silent CPU fallback: unimplemented TPU ops raise errors instead"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "Reading it gives you the exact TorchTPU failure modes and fixes: fused-eager DDP checkpoint deadlocks, static-shape and data-dependent-output recompiles, einsum attention beating SDPA only when measured across forward+backward, and topk tie-breaking interacting with unstable-sort deduplication.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T22:52:10.108959",
+      "image_url": "https://andlukyane.com/images/cayley_torchtpu/2026-11-24_09-02-21.jpg",
+      "image_width": 3798,
+      "image_height": 2824,
+      "image_alt": ""
+    },
+    {
+      "id": 8241,
+      "source_id": 34,
+      "original_url": "https://aminrj.com/posts/mcp-july-revision-six-checks/",
+      "title": "MCP's July Revision Moved Six Security Checks Into Your Code",
+      "summary": "The 2026-07-28 MCP revision moved six implicit security checks into implementer code across sessions, headers, issuer validation, credentials, registration, and scopes. It cites CVE-2026-19516 (CVSS 9.1 SSRF) and a Python SDK issuer bypass triggered by a 404 fallback that skipped validation.",
+      "ideas": [
+        "State handles must be keyed under authenticated user, never trusted alone.",
+        "Mcp-Param-* headers originate from model output; match checks ignore prompt-injection targeting.",
+        "Issuer validation must run on every discovery path, including 404-forced legacy fallbacks.",
+        "Credentials must be keyed by issuer; auth-server changes need re-registration or surfacing.",
+        "CIMD metadata fetch is an untrusted outbound request; SSRF checks must survive redirects.",
+        "Step-up authorization unions scopes, so long-lived agent tokens grow unless harnesses set ceilings."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Beyond the summary, the full piece walks through six spec-driven failure mechanics—handle hijacking, header-based SSRF, mix-up fallbacks, localhost impersonation—and one concrete test per check. Read it to get the exploit paths and verification commands, not just the headline.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T22:51:38.862631",
+      "image_url": "https://aminrj.com/assets/media/ai-security/mcp-july-revision-six-checks.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Six changes in the MCP 2026-07-28 specification and the check each one hands to implementers"
+    },
+    {
+      "id": 8240,
+      "source_id": 34,
+      "original_url": "https://aliirz.com/read-the-chart-not-the-diff",
+      "title": "Read the chart, not the diff",
+      "summary": "Ali Raza verifies AI-agent code with TLA+/TLC statecharts and Antithesis's Bombadil property-based browser testing instead of reading diffs, publishing the full experiment. TLC explores 246 states in 2.8s and breaks all four rules; Bombadil misses two bugs because random clicks never wait for an upload.",
+      "ideas": [
+        "Ticket sentences translate directly into TLA+ invariants and Bombadil always-properties",
+        "Cancel bug: a second timer keeps running, silently restarting a cancelled upload",
+        "Random browser clicking misses patient-user bugs; Chrome virtual time creates false violations",
+        "Timer races fixed by run counter in stopEverything and gating the Send state",
+        "Review artifacts scale with behavior, not code: 7 states, 39 vs 15 arrows",
+        "Check the model against real-browser findings or the chart is fiction",
+        "Agent explanatory comments are weeds; fence with lint rules against bare setTimeout"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get the whole worked method: ticket sentences as TLA+ invariants and Bombadil properties, TLC state counts, the run-scoped timer fix, and where browser fuzzing and virtual time each fail.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-25T22:50:15.693615"
+    },
+    {
+      "id": 8239,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html",
+      "title": "Hackers Exploited CVSS 10.0 RCE Flaw to Compromise 6 Package Registry Servers",
+      "summary": "Hackers exploited a CVSS 10.0 vulnerability in Hex.pm’s request‑body parser to gain remote code execution on six registry servers. The flaw allowed maps with a __struct__ key to invoke arbitrary functions, and the fix rejects such terms.",
+      "ideas": [
+        "Hex.pm flaw allowed unauthenticated POST to trigger struct parsing leading to RCE.",
+        "Exploit leveraged map with __struct__ key to masquerade as any loaded Elixir struct.",
+        "Error reporting code invoked attacker-chosen function via Ecto and DBConnection.",
+        "Patch rejects any term containing a map with __struct__ key.",
+        "Six servers compromised within milliseconds; 69 exploit attempts logged.",
+        "Attackers could have read email hashes, passwords, and 2FA secrets, but no package changes detected.",
+        "Users must reset passwords, 2FA, and re‑authenticate with updated Hex client.",
+        "API keys remain safe due to random 128‑bit HMAC‑SHA256 hashes.",
+        "Related library CVEs (ash, db_connection, flop) disclosed alongside incident.",
+        "Self‑hosted Hex registries must apply the same patch."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "You’ll see the full exploit chain from malformed struct parsing to OS command execution and the exact remediation steps for Hex.pm users.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-25T22:34:52.555886"
+    },
     {
       "id": 8238,
       "source_id": 4,
