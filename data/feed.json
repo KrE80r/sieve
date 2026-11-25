@@ -1,7 +1,98 @@
 {
-  "updated_at": "2026-11-25T18:00:00.838400+00:00",
-  "total_items": 1047,
+  "updated_at": "2026-11-25T19:00:00.349334+00:00",
+  "total_items": 1050,
   "items": [
+    {
+      "id": 8264,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/11/drupal-fail2install-exploit-details.html",
+      "title": "Drupal Fail2Install Exploit Details Emerge as Critical RCE Flaw Faces Active Exploitation",
+      "summary": "Searchlight Cyber detailed CVE-2026-132165, a pre-authentication Drupal core RCE already exploited in the wild and added to CISA’s KEV catalog. The chain abuses EMFILE, database, or TCP exhaustion, races installer checks, and writes PHP into an SQLite database served through Apache.",
+      "ideas": [
+        "CVE-2026-132165 is a CVSS 9.8 pre-authentication RCE in Drupal core.",
+        "The flaw allows attackers to reopen Drupal’s installer on an already-installed website.",
+        "EMFILE exhaustion can trick Drupal’s installation-state checks into misclassifying an existing site.",
+        "Database connection and TCP source-port exhaustion provide alternative paths to the same bypass.",
+        "A race condition makes a second database connectivity check succeed after earlier failures.",
+        "The vulnerable matrix covers Drupal 8.9, 9, 10, and 11.",
+        "Apache or PHP-FPM deployments with PostgreSQL or MySQL are affected.",
+        "The installer permits selected SQLite database paths without restricting file extensions.",
+        "A selected .php SQLite path creates a PHP-bearing database beneath the document root.",
+        "Drupal stores the submitted website name inside SQLite, allowing PHP payload bytes to be written.",
+        "Apache’s RewriteRule path handling can bypass the stock .htaccess block on direct PHP access.",
+        "Fixed releases are Drupal 11.4.13, 11.3.22, and 10.6.22.",
+        "CISA added the flaw to KEV with a November 27, 2026 federal remediation deadline.",
+        "Live exploitation was observed as early as November 19, 2026 at 19:00 UTC.",
+        "Resource-exhaustion availability failures can become security-boundary bypass primitives.",
+        "This is Drupal’s third actively exploited flaw of 2026, following two CVSS 6.5 issues."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 84,
+      "rating_reason": "You get a concrete unauthenticated exploit chain: exhaust file, database, or TCP resources, race Drupal’s installer checks, then plant PHP through SQLite and bypass Apache path controls.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-26T04:36:37.244008"
+    },
+    {
+      "id": 8263,
+      "source_id": 4,
+      "original_url": "https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html",
+      "title": "Hackers Exploit Two GeoServer Flaws as Researchers Warn of Unauthenticated RCE Chains",
+      "summary": "Researchers reported active exploitation of multiple GeoServer vulnerabilities and outlined a multi‑CVE unauthenticated remote code execution chain. The chain links CVE‑2026‑120705, CVE‑2026‑129245, CVE‑2026‑120704, and others, with CVSS scores up to 9.2.",
+      "ideas": [
+        "CVE‑2026‑120705 enables unauthenticated file read via a single WFS request.",
+        "CVE‑2026‑129245 uses a hard‑coded “geoserver” key to forge admin cookies.",
+        "CVE‑2026‑120704 allows code execution through malicious JDBC configuration.",
+        "A five‑step chain links five GeoServer CVEs for unauthenticated remote code execution.",
+        "Prefixing WFS name (x/WFS) bypasses admin‑only stored query rules.",
+        "Accessing users.xml reveals password hashes and signing key.",
+        "Updating to GeoServer 2.27.7, 2.28.6, 3.0.2 patches the discussed flaws.",
+        "Earlier CVE‑2026‑76904 was a zero‑day actively exploited."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "You’ll see the exact unauthenticated RCE chain across five GeoServer CVEs, with file‑read, cookie forging, and JDBC deserialization steps.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-26T04:34:35.722075"
+    },
+    {
+      "id": 8262,
+      "source_id": 4,
+      "original_url": "https://www.bleepingcomputer.com/news/security/infratrust-warns-of-exploited-supply-chain-flaws-in-network-appliances/",
+      "title": "InfraTrust warns of exploited supply chain flaws in network appliances",
+      "summary": "InfraTrust’s November report highlights exploited supply‑chain flaws in network appliances, focusing on PHP2Shell and other bundled‑software vulnerabilities. The report flags a critical CVSS 9.9 CVE‑2026‑114625 in Arista VeloCloud as the highest‑severity exploit.",
+      "ideas": [
+        "Most recent infrastructure advisories involve third‑party bundled software flaws, not vendor‑written code.",
+        "33 of 38 KEV‑listed exploits affect bundled PHP, Node.js, or OpenSSH components.",
+        "PHP2Shell (CVE‑2026‑109618/109619) is actively exploited against Palo Alto and Check Point firewalls.",
+        "Threat actors chain PHP flaws with other vulnerabilities to gain root access.",
+        "Patch delays occur because vendors must rebuild products after upstream fixes.",
+        "Critical CVEs to prioritize include Cisco Expressway CVE‑2026‑76466 and Arista VeloCloud CVE‑2026‑114625.",
+        "SonicWall CVE‑2026‑19868 enables MFA bypass on VPN single sign‑on.",
+        "Recommended mitigations: remove Internet‑exposed management interfaces, segment internally, investigate backdoors.",
+        "AI models accelerate discovery and exploitation of vulnerabilities, increasing urgency for defenses."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "It details the supply‑chain‑driven flaws, lists the exact CVEs to prioritize, and gives concrete pre‑patch mitigation steps for network appliances.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-26T04:32:40.910865",
+      "image_url": "https://www.bleepstatic.com/content/hl-images/2026/07/21/infratrust.jpg",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": ""
+    },
     {
       "id": 8261,
       "source_id": 34,
