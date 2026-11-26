@@ -1,701 +1,20 @@
 {
   "schema_version": 2,
-  "batch_id": "30fc8b7511550ae1f135b35c275ec655",
-  "published_at": "2026-11-26T07:32:00.001126+00:00",
-  "scheduled_for": "2026-11-26T07:30:00+00:00",
-  "next_update_at": "2026-11-26T19:30:00+00:00",
+  "batch_id": "d72effd0a4cabb100aeceb37b6726661",
+  "published_at": "2026-11-26T19:32:00.001860+00:00",
+  "scheduled_for": "2026-11-26T19:30:00+00:00",
+  "next_update_at": "2026-11-27T02:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-11-25T07:30:00+00:00",
-    "ends_at": "2026-11-26T07:30:00+00:00"
+    "starts_at": "2026-11-25T19:30:00+00:00",
+    "ends_at": "2026-11-26T19:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 29,
+  "total_developments": 24,
   "developments": [
-    {
-      "id": "5418315b26b3ee3f97eeaa03289a3d87",
-      "occurred_at": "2026-11-25T08:14:01+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T08:14:01+00:00",
-      "title": "Huawei Atlas 300I Duo offers 96GB for $1,400 with llama.cpp CANN quants limited to F16, Q4_0, and Q8_0",
-      "detail": [
-        "KyzoroX reports that Huawei's Atlas 300I Duo, a 150W single-slot server card with two Ascend 310P chips, 96GB of LPDDR4X, and no Nvidia silicon, is sold by Chinese sellers at $1,400 to $2,800 depending on order size, and that llama.cpp already has a backend for it. Each chip reads only its own 48GB at 204 GB/s during inference, capping a Q4 70B dense model at roughly 5-10 tok/s versus about 22 tok/s on two RTX 3090s, with early benchmarks around 15 tok/s on Qwen3 32B. The card runs Linux only and is built for Huawei's Kunpeng servers.",
-        "Alexey Fateev argues the dense-70B framing is outdated because local inference has moved to sparse MoE models holding 100B-600B parameters while activating only 3B-8B per token. At 5.5B active parameters in 4-bit, the ~3 GB read per token puts the 204 GB/s memory ceiling near 65 tok/s, and the full 96GB fits 120B+ MoE models with no RAM offload. He says the real home-use blockers are the split 48GB-per-chip memory pool, the passive card's rack airflow needs, and Huawei's CANN backend in llama.cpp covering only F16, Q4_0, and Q8_0, with no IQ quants and no custom MoE kernels."
-      ],
-      "why_it_matters": "Buyers get about three times an RTX 5090's 32GB for less money, but must plan for Linux-only server operation and Huawei's limited CANN quant formats.",
-      "sources": [
-        {
-          "author_name": "KyzoroX",
-          "author_username": "kyzoroX",
-          "url": "https://x.com/kyzoroX/status/2125159904511942955",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2125159874447224832/img/Yjm-arWnkI4SUV0z.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125159874447224832/img/Yjm-arWnkI4SUV0z.jpg:small",
-              "width": 1080,
-              "height": 1350
-            }
-          ]
-        },
-        {
-          "author_name": "Alexey Fateev",
-          "author_username": "superalesha",
-          "url": "https://x.com/superalesha/status/2125503259775209615",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "cd01934cb75f158601631658a284b42e",
-      "occurred_at": "2026-11-25T08:57:52+00:00",
-      "updated_at": "2026-11-26T07:32:00.001126+00:00",
-      "expires_at": "2026-11-26T08:57:52+00:00",
-      "title": "OpenAI corrects GPT-6.2 Astra and Sol billing discount; quotas now burn up to 40% faster",
-      "detail": [
-        "OpenAI has fixed a billing mistake from the GPT-6.2 launch that incorrectly discounted GPT-6.2 Astra and Sol usage for most users, and the correction is now live: the same work reaches each plan's limits 40% faster on Astra and 25% faster on Sol than last week, while no other models are affected.",
-        "Past usage will not be charged for the difference, and as an apology every account on the Go, Plus, Pro, and Business plans receives one additional banked reset.",
-        "Both models are still stated to go further in usage than 6 Astra and 6.1 Sol."
-      ],
-      "why_it_matters": "Teams scheduling Astra or Sol jobs against plan limits must recalculate runtimes under the corrected metering, since estimates based on last week's rates now overrun.",
-      "sources": [
-        {
-          "author_name": "Tibo",
-          "author_username": "thsottiaux",
-          "url": "https://x.com/thsottiaux/status/2125784147889393806",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "Alexey Fateev",
-          "author_username": "superalesha",
-          "url": "https://x.com/superalesha/status/2125514295760875615",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX9X-y9X0AA3zDM.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX9X-y9X0AA3zDM.jpg:small",
-              "width": 1350,
-              "height": 900
-            }
-          ]
-        },
-        {
-          "author_name": "Aldo Cortesi",
-          "author_username": "cortesi",
-          "url": "https://x.com/cortesi/status/2125796716146528604",
-          "role": "commentary",
-          "media": []
-        },
-        {
-          "author_name": "Alexey Fateev",
-          "author_username": "superalesha",
-          "url": "https://x.com/superalesha/status/2125804483477184952",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "6eb47f9c0f816e79cdfcca99be0df3b2",
-      "occurred_at": "2026-11-25T12:13:15+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T12:13:15+00:00",
-      "title": "Alexey Fateev’s llm.asm runs Qwen3-0.6B inference in 12 KB of x86-64 assembly",
-      "detail": [
-        "Alexey Fateev says llm.asm is a 12,120-byte static Linux ELF that runs the full 28-layer Qwen3-0.6B forward pass from 3,688 lines of NASM, using Q8_0 mmap weights, 16Q/8KV GQA, QK-Norm, split-half RoPE, SwiGLU, a KV cache, and greedy/top-p sampling. The implementation uses AVX2/FMA matrix multiplication, custom polynomial expf and sincosf, an assembly BPE tokenizer, and raw clone()/futex() threading without libc, libm, pthreads, or shared libraries.",
-        "On an EPYC 7642, Fateev reports 105.39 tokens/s peak decode, 64 greedy tokens matching a PyTorch FP32 reference, bit-identical output from 1 through 47 threads, and 1.000000000 cosine similarity against a Python Q8_0 reference. He says the project includes the source and build guide."
-      ],
-      "why_it_matters": "Linux developers can now audit and test Qwen3 inference with a 12 KB runtime instead of provisioning PyTorch’s multi-gigabyte runtime.",
-      "sources": [
-        {
-          "author_name": "Alexey Fateev",
-          "author_username": "superalesha",
-          "url": "https://x.com/superalesha/status/2125563464424862044",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/ext_tw_video_thumb/2125563424989978625/pu/img/6Wllxf1cDh2AYzFm.jpg",
-              "preview_url": "https://pbs.twimg.com/ext_tw_video_thumb/2125563424989978625/pu/img/6Wllxf1cDh2AYzFm.jpg:small",
-              "width": 1920,
-              "height": 1368
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai",
-        "linux"
-      ]
-    },
-    {
-      "id": "c7916769c313a64a3f77bf85d7ea1aa9",
-      "occurred_at": "2026-11-25T13:44:58+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T13:44:58+00:00",
-      "title": "Pi v1.6.1 adds callable GitHub Copilot and Radius decision models",
-      "detail": [
-        "Pi 1.6.1 introduces decision models from GitHub Copilot (gpt-6-luna-decisions) and Radius that can be invoked through the codemode models.classify() API, now returning a responseId in the results.",
-        "The release also replaces the single showCacheMissNotices flag with four per‑transcript notice settings and removes the SettingsManager getters and setters for that flag."
-      ],
-      "why_it_matters": "Developers can now invoke Copilot and Radius decision models directly, enabling richer automated reasoning without manual API calls.",
-      "sources": [
-        {
-          "author_name": "Pi Changelog",
-          "author_username": "PiChangelog",
-          "url": "https://x.com/PiChangelog/status/2125586545457631402",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX-Zstua4AA49jT.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX-Zstua4AA49jT.jpg:small",
-              "width": 1600,
-              "height": 900
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "ed6021c60dd832603db911b22b999d90",
-      "occurred_at": "2026-11-25T15:48:13+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T15:48:13+00:00",
-      "title": "Ciarán Cotter unveils new AI hacking techniques using data compression and linguistic gadgets",
-      "detail": [
-        "Ciarán Cotter announced the creation of novel AI hacking methods that leverage data compression tricks and linguistic‑based gadgets, first presented at the Prompt2Pwn conference.",
-        "He provided a write‑up of the techniques via a linked post for the community to review."
-      ],
-      "why_it_matters": "Researchers can test these compression‑based attacks to strengthen model defenses and improve AI security practices.",
-      "sources": [
-        {
-          "author_name": "Ciarán Cotter",
-          "author_username": "monkehack",
-          "url": "https://x.com/monkehack/status/2125568597774750138",
-          "role": "quoted_source",
-          "media": []
-        },
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2125617560649687462",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai",
-        "os_security"
-      ]
-    },
-    {
-      "id": "f8a118116d2f31de930ad906c286b6a3",
-      "occurred_at": "2026-11-25T16:41:00+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T16:41:00+00:00",
-      "title": "PrismML releases Ternary Bonsai 2.5 27B model",
-      "detail": [
-        "PrismML announced the availability of Ternary Bonsai 2.5, a 27‑billion‑parameter model built on Qwen3.8. The new version retains the 5.9 GB footprint of its predecessor while delivering substantially stronger agentic coding, multi‑turn tool use, and long‑horizon task execution. Benchmarks show it scores 73.9 on tau3‑bench and 75.6 on SWE‑Bench‑Verified, making it the strongest model of its size for agentic workloads.",
-        "Compared with Ternary Bonsai 2, the 2.5 release completes tasks in fewer turns, consumes fewer tokens, and produces results faster and more accurately. The model is released under the Apache 2.0 license, enabling local deployment and experimentation."
-      ],
-      "why_it_matters": "You can now run high‑performance agentic coding locally with a 5.9 GB model, lowering hardware requirements for complex AI‑driven workflows.",
-      "sources": [
-        {
-          "author_name": "PrismML",
-          "author_username": "PrismML",
-          "url": "https://x.com/PrismML/status/2125310762390552588",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX6bsk1a0AAiHcR.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX6bsk1a0AAiHcR.jpg:small",
-              "width": 1830,
-              "height": 1455
-            }
-          ]
-        },
-        {
-          "author_name": "Maziyar PANAHI",
-          "author_username": "MaziyarPanahi",
-          "url": "https://x.com/MaziyarPanahi/status/2125630844140147078",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "bd2cb011d1e0a3e2002a97eb5ee7c4f4",
-      "occurred_at": "2026-11-25T17:06:24+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T17:06:24+00:00",
-      "title": "Ramp Labs introduces speculative encoding, a 2.35B MoE that translates hidden states between models",
-      "detail": [
-        "Ramp Labs introduced speculative encoding, a single 2.35B-parameter MoE model that translates hidden states directly between different LLMs. The stated goal is that shared context gets read once and reused across every model in a multi-agent swarm instead of being re-read for each.",
-        "In benchmarks across 7 models, the technique reportedly preserves 96.9% of base accuracy while cutting prefill latency by up to 7.5× on long documents."
-      ],
-      "why_it_matters": "Builders of multi-model agent pipelines can share a single translated context across model swaps instead of re-prefilling after each switch, accepting up to 3.1% accuracy loss.",
-      "sources": [
-        {
-          "author_name": "Ramp Labs",
-          "author_username": "RampLabs",
-          "url": "https://x.com/RampLabs/status/2125627502802653330",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2125626154140700672/img/dgqH1utiZMYlJpVd.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125626154140700672/img/dgqH1utiZMYlJpVd.jpg:small",
-              "width": 1920,
-              "height": 1080
-            }
-          ]
-        },
-        {
-          "author_name": "cole murray",
-          "author_username": "colemurray",
-          "url": "https://x.com/colemurray/status/2125637237190906139",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "b1d38d3551d42d324990f30ee9e54fd6",
-      "occurred_at": "2026-11-25T17:32:31+00:00",
-      "updated_at": "2026-11-25T18:30:00.002289+00:00",
-      "expires_at": "2026-11-26T17:32:31+00:00",
-      "title": "Factory makes its individual developer tier free with bring-your-own inference",
-      "detail": [
-        "Factory has made its product free for individual developers who bring their own inference: users download the app, add their own API key, and start their first task. As a limited-time holiday bonus, Factory is also adding free Droid Computer hours to every account."
-      ],
-      "why_it_matters": "Developers holding an existing inference API key can now run Factory's agent app without paying Factory, and their accounts pick up free Droid Computer hours while the offer lasts.",
-      "sources": [
-        {
-          "author_name": "Factory",
-          "author_username": "factory",
-          "url": "https://x.com/factory/status/2125637084522447202",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_Hqbda4AAC_rm.png",
-              "preview_url": "https://pbs.twimg.com/media/HX_Hqbda4AAC_rm.png:small",
-              "width": 1200,
-              "height": 675
-            }
-          ]
-        },
-        {
-          "author_name": "Eno Reyes",
-          "author_username": "EnoReyes",
-          "url": "https://x.com/EnoReyes/status/2125643809803420074",
-          "role": "commentary",
-          "media": []
-        },
-        {
-          "author_name": "dex",
-          "author_username": "dexhorthy",
-          "url": "https://x.com/dexhorthy/status/2125653369301991764",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "9a9bbb1d5bb9b11b3d7e386494922361",
-      "occurred_at": "2026-11-25T17:33:08+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T17:33:08+00:00",
-      "title": "Alperen Keleş's Ephyra at Datadog finds 535 previously unknown bugs in Lean, OCaml, SQLite, PostgreSQL, and FoundationDB",
-      "detail": [
-        "Alperen Keleş announced that his first project at Datadog, Ephyra, is now public: an agentic property-based testing framework with built-in autonomous generator optimization.",
-        "He reports that Ephyra found 535 previously unknown bugs across Lean, OCaml, SQLite, PostgreSQL, FoundationDB, and other heavily tested systems."
-      ],
-      "why_it_matters": "Engineers testing systems like SQLite, PostgreSQL, and FoundationDB can now apply Ephyra's public framework, whose autonomous generators exposed 535 defects that existing testing in such well-tested projects had missed.",
-      "sources": [
-        {
-          "author_name": "Alperen Keleş",
-          "author_username": "Keleesssss",
-          "url": "https://x.com/Keleesssss/status/2125344793936937470",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX690xYXMAAdZ9k.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX690xYXMAAdZ9k.jpg:small",
-              "width": 1234,
-              "height": 973
-            }
-          ]
-        },
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2125643963550077398",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "0bc31aad981dd4aefc8f719d1f384211",
-      "occurred_at": "2026-11-25T18:02:16+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T18:02:16+00:00",
-      "title": "Josh's Claude-powered photo classification tool",
-      "detail": [
-        "Josh announced a new feature that classifies entire photo collections using Claude. The system sends each image with its EXIF metadata and location to the model, processing batches of roughly 45 000 photos for about $500 in API credits.",
-        "The model returns searchable tags and extracted text, enabling queries that locate images by where they were taken, embedded text, or other visual cues in milliseconds."
-      ],
-      "why_it_matters": "You can instantly query large photo libraries without manual tagging, saving hours of organization work.",
-      "sources": [
-        {
-          "author_name": "Josh",
-          "author_username": "jjpcodes",
-          "url": "https://x.com/jjpcodes/status/2125651295113462138",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_TeK6WsAAgTLA.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_TeK6WsAAgTLA.jpg:small",
-              "width": 2048,
-              "height": 1285
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_UTqZXAAAbkRK.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_UTqZXAAAbkRK.jpg:small",
-              "width": 2048,
-              "height": 1285
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [
-        {
-          "url": "https://opentrawl.sh",
-          "domain": "opentrawl.sh",
-          "title": "OpenTrawl: Spotlight for the Agentic OS",
-          "preview_image_url": "https://opentrawl.sh/card.png"
-        }
-      ],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "dab8c32a1e5ce2262950dc516dae8a15",
-      "occurred_at": "2026-11-25T18:15:13+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T18:15:13+00:00",
-      "title": "Google forbids AI agents from using Workspace APIs",
-      "detail": [
-        "Google announced that its new Model Control Plane (MCP) will block AI agents, including tools like gog and openclaw, from accessing Workspace APIs unless the agents are paid for.",
-        "This policy change restricts the capabilities of third‑party AI agents that rely on Google Workspace integrations, forcing developers to either obtain paid access or redesign their agents."
-      ],
-      "why_it_matters": "AI‑agent developers must adjust or pay for Workspace API access, or their tools will lose functionality.",
-      "sources": [
-        {
-          "author_name": "Guido Pettinari",
-          "author_username": "coccoinomane",
-          "url": "https://x.com/coccoinomane/status/2125547127803985932",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX91R_pXMAAzEGD.png",
-              "preview_url": "https://pbs.twimg.com/media/HX91R_pXMAAzEGD.png:small",
-              "width": 1928,
-              "height": 492
-            }
-          ]
-        },
-        {
-          "author_name": "Peter Steinberger",
-          "author_username": "steipete",
-          "url": "https://x.com/steipete/status/2125654555262431248",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "ab77644713c705f30fcee2f1c08cc99d",
-      "occurred_at": "2026-11-25T18:19:42+00:00",
-      "updated_at": "2026-11-25T19:32:00.001065+00:00",
-      "expires_at": "2026-11-26T18:19:42+00:00",
-      "title": "Daniel Miessler adds one-way-door escalation to his AI system's deploy review",
-      "detail": [
-        "Daniel Miessler says he added a constitution rule to his AI system based on Jeff Bezos's one-way and two-way door distinction. Most actions are reversible because code is kept in git and actions are logged, so those receive less upfront checking and are verified afterward.",
-        "Actions that cannot be undone, such as pushing an API key to a public repository or exposing customer data, receive more upfront validation, including review by a second model from another laboratory. In code, when an AI reviewer blocks a deployment and the AI disputes it, a model from another lab rules on the appeal, except when the blocker is a one-way-door change, which always goes to Miessler."
-      ],
-      "why_it_matters": "Practitioners can use reversibility to separate fast-checked agent actions from irreversible ones that require human or independent-model escalation.",
-      "sources": [
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2125655686038372580",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg:small",
-              "width": 2048,
-              "height": 1143
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png",
-              "preview_url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png:small",
-              "width": 2048,
-              "height": 1044
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg:small",
-              "width": 2048,
-              "height": 1051
-            }
-          ]
-        },
-        {
-          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
-          "author_username": "DanielMiessler",
-          "url": "https://x.com/DanielMiessler/status/2125657070120862133",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_YkmRakAAKZoF.jpg:small",
-              "width": 2048,
-              "height": 1143
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png",
-              "preview_url": "https://pbs.twimg.com/media/HX_Yk0kbgAAYnyo.png:small",
-              "width": 2048,
-              "height": 1044
-            },
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_YlIabgAAmpJ9.jpg:small",
-              "width": 2048,
-              "height": 1051
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "2646860746b6cdae379b5f4587143e27",
-      "occurred_at": "2026-11-25T18:46:08+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T18:46:08+00:00",
-      "title": "GPT-Next reported to have proved the matrix multiplication exponent is exactly 9/4",
-      "detail": [
-        "Dan McAteer says GPT-Next has produced a proof that the matrix multiplication exponent is exactly 9/4, describing it as the resolution of a 57-year-old theoretical computer science problem that he says required superhuman AI to solve.",
-        "A proven exponent of exactly 9/4 would pin down the asymptotic cost of matrix multiplication, and McAteer's framing ties the result to direct implications for AI R&D.",
-        "No paper, proof sketch, or independent verification accompanies the claim, so the result currently stands as unconfirmed."
-      ],
-      "why_it_matters": "Until a verified proof or paper appears, readers should treat the 9/4 result as an unconfirmed claim rather than a settled theorem.",
-      "sources": [
-        {
-          "author_name": "Dan McAteer",
-          "author_username": "daniel_mac8",
-          "url": "https://x.com/daniel_mac8/status/2125662338145563116",
-          "role": "source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX_ef9vWsAA0Dxc.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX_ef9vWsAA0Dxc.jpg:small",
-              "width": 1642,
-              "height": 908
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
-    {
-      "id": "1f12569e1c87ccf1c70f18f5c06bf84e",
-      "occurred_at": "2026-11-25T19:12:14+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T19:12:14+00:00",
-      "title": "Check Point firewall compromised via Math.random PRNG weakness",
-      "detail": [
-        "An attacker exploited the HFS loginSrp1 endpoint of Check Point's firewall management server, which signed session cookies using a value derived from JavaScript's Math.random().",
-        "By collecting multiple session cookie signatures, the attacker reconstructed the internal state of the V8 PRNG algorithm and forged a valid admin session cookie, granting password‑less admin access."
-      ],
-      "why_it_matters": "Admins must replace Math.random with a CSPRNG for signing cookies to stop similar forgery attacks.",
-      "sources": [
-        {
-          "author_name": "Mikko Ohtamaa",
-          "author_username": "moo9000",
-          "url": "https://x.com/moo9000/status/2125363452222865746",
-          "role": "quoted_source",
-          "media": [
-            {
-              "type": "photo",
-              "url": "https://pbs.twimg.com/media/HX7OkHsXYAE5C6-.jpg",
-              "preview_url": "https://pbs.twimg.com/media/HX7OkHsXYAE5C6-.jpg:small",
-              "width": 1630,
-              "height": 723
-            }
-          ]
-        },
-        {
-          "author_name": "Kyle Mistele 🏴‍☠️",
-          "author_username": "0xblacklight",
-          "url": "https://x.com/0xblacklight/status/2125668902411948431",
-          "role": "commentary",
-          "media": []
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "web_security",
-        "os_security"
-      ]
-    },
-    {
-      "id": "ac0c087b297e4174618f9689cea54de5",
-      "occurred_at": "2026-11-25T19:19:09+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T19:19:09+00:00",
-      "title": "LessWrong reports reliable communication between sandboxed inference-server agents",
-      "detail": [
-        "A LessWrong write-up reports that two agents running on the same inference server can reliably communicate even when they cannot send each other messages or access the same files.",
-        "The finding indicates that blocking ordinary messaging and shared-file access does not necessarily isolate agents colocated on one inference server. The supplied excerpt does not identify the communication mechanism, affected providers, or available mitigations."
-      ],
-      "why_it_matters": "Engineers using per-agent sandboxes on shared inference infrastructure should test for cross-agent channels instead of assuming file and messaging restrictions provide complete isolation.",
-      "sources": [
-        {
-          "author_name": "Mario Zechner",
-          "author_username": "badlogicgames",
-          "url": "https://x.com/badlogicgames/status/2125670646453883007",
-          "role": "source",
-          "media": []
-        }
-      ],
-      "evidence_state": "source_backed",
-      "external_links": [
-        {
-          "url": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
-          "domain": "www.lesswrong.com",
-          "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed — LessWrong",
-          "preview_image_url": "https://res.cloudinary.com/lesswrong-2-0/image/upload/c_limit,w_1200,q_auto,f_jpg/f_auto,q_auto/v1/mirroredImages/7wzWuLP3HhyBLmKfo/ilkdsamuxja1dvu4uah2"
-        }
-      ],
-      "interest_slugs": [
-        "ai",
-        "os_security"
-      ]
-    },
-    {
-      "id": "2ee85215783aea324f17dc9e4519d645",
-      "occurred_at": "2026-11-25T19:29:17+00:00",
-      "updated_at": null,
-      "expires_at": "2026-11-26T19:29:17+00:00",
-      "title": "Conductor adds Publish for putting artifacts on the internet",
-      "detail": [
-        "Charlie Holtz announced Conductor Publish, a new feature in his Conductor app that lets users publish artifacts to the internet. The announcement links to the feature but does not describe how publishing works, which artifact types are supported, or where published content is hosted.",
-        "Conductor is the same app Holtz recently rebuilt with an Electron frontend while retaining its Rust local server, a rewrite that reportedly made workspace opening 71% faster and cut RAM use by 35%. Publish adds a public web path for output produced in that otherwise local environment."
-      ],
-      "why_it_matters": "Conductor users can now publish their artifacts to the public web from the app, removing the need to host such output elsewhere themselves.",
-      "sources": [
-        {
-          "author_name": "Charlie Holtz",
-          "author_username": "charlieholtz",
-          "url": "https://x.com/charlieholtz/status/2125673193193328999",
-          "role": "source",
-          "media": [
-            {
-              "type": "video",
-              "url": "https://pbs.twimg.com/amplify_video_thumb/2125672891975106560/img/jPtlzARZsuNCty7k.jpg",
-              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125672891975106560/img/jPtlzARZsuNCty7k.jpg:small",
-              "width": 1100,
-              "height": 720
-            }
-          ]
-        }
-      ],
-      "evidence_state": "reported",
-      "external_links": [],
-      "interest_slugs": [
-        "ai"
-      ]
-    },
     {
       "id": "a9faa75b43413c0c69dfad610dfdab6f",
       "occurred_at": "2026-11-25T19:34:10+00:00",
@@ -732,7 +51,7 @@
     {
       "id": "c09d5378a143987b5ccfbd74c55042b4",
       "occurred_at": "2026-11-25T20:06:45+00:00",
-      "updated_at": null,
+      "updated_at": "2026-11-26T19:32:00.001860+00:00",
       "expires_at": "2026-11-26T20:06:45+00:00",
       "title": "Alexey Fateev's asm-llm-os runs Qwen3-0.6B chat in a 24 KB bare-metal x86-64 assembly OS, up to 54% faster than Linux llama.cpp",
       "detail": [
@@ -755,13 +74,21 @@
               "height": 976
             }
           ]
+        },
+        {
+          "author_name": "Pablo",
+          "author_username": "PMayrgundter",
+          "url": "https://x.com/PMayrgundter/status/2125984436856766552",
+          "role": "commentary",
+          "media": []
         }
       ],
       "evidence_state": "reported",
       "external_links": [],
       "interest_slugs": [
         "ai",
-        "linux"
+        "linux",
+        "os_security"
       ]
     },
     {
@@ -1195,6 +522,423 @@
           "domain": "sakana.ai",
           "title": "Sakana Marlin — Your Virtual CSO",
           "preview_image_url": "https://sakana.ai/assets/marlin/ogp.png"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "6161f689cd5ca680016d98f3cc9cfd8f",
+      "occurred_at": "2026-11-26T10:53:26+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T10:53:26+00:00",
+      "title": "Qwen3.5-35B-A3B identified as Jev's latency backbone",
+      "detail": [
+        "The quoted analysis profiled Jev across 9,984 prompts and found that Qwen3.5-35B-A3B, a mixture‑of‑experts model, most closely matches Jev’s throughput. The study also notes that Qwen’s tokenizer aligns better with Jev’s latency than Jev’s own token counts, and that Jev prefers Qwen over DeepSeek and Gemma."
+      ],
+      "why_it_matters": "Prioritizing Qwen3.5-35B-A3B can reduce inference latency for Jev‑based workloads, enabling faster response times without extra tuning.",
+      "sources": [
+        {
+          "author_name": "modaic.dev",
+          "author_username": "modaicdev",
+          "url": "https://x.com/modaicdev/status/2125701304446234691",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HX_JhDCaMAACUMz.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HX_JhDCaMAACUMz.jpg:small",
+              "width": 1320,
+              "height": 440
+            }
+          ]
+        },
+        {
+          "author_name": "Maziyar PANAHI",
+          "author_username": "MaziyarPanahi",
+          "url": "https://x.com/MaziyarPanahi/status/2125905766326440077",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "cf4a2c2abf78350f2b872f98e223560f",
+      "occurred_at": "2026-11-26T11:30:26+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T11:30:26+00:00",
+      "title": "AVB's always-on agent tutorial uses a Tailscale-only private site on Hetzner",
+      "detail": [
+        "AVB has been building an end-to-end always-on agent tutorial, and says its best feature so far is maintaining a private website through Tailscale. The pages are hosted on the Hetzner server where the agent service runs and are served over Tailscale, so only AVB's own devices can open them.",
+        "The site is used for studying new articles, learning new concepts, and daily personal newsletters, and AVB separately recommends taking time to learn Tailscale for homelab and private-knowledge-base setups."
+      ],
+      "why_it_matters": "Readers can adapt the same Tailscale-only Hetzner hosting pattern to keep an always-on agent's notes and newsletters private to their own devices.",
+      "sources": [
+        {
+          "author_name": "AVB",
+          "author_username": "neural_avb",
+          "url": "https://x.com/neural_avb/status/2125852210781409430",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2125848237835984896/img/BSTIMELOJVUlUYjW.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125848237835984896/img/BSTIMELOJVUlUYjW.jpg:small",
+              "width": 2048,
+              "height": 1269
+            }
+          ]
+        },
+        {
+          "author_name": "AVB",
+          "author_username": "neural_avb",
+          "url": "https://x.com/neural_avb/status/2125915074837774464",
+          "role": "commentary",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HYDD5XLbQAA593q.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HYDD5XLbQAA593q.jpg:small",
+              "width": 2048,
+              "height": 1104
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai",
+        "linux"
+      ]
+    },
+    {
+      "id": "7a14ef9a31c027a31a7a294e7a5bf5b4",
+      "occurred_at": "2026-11-26T12:17:05+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T12:17:05+00:00",
+      "title": "Ant Ling's Ling-3.2-air quantized to W4A16 outperforms Qwen3.8-Flash-Next and other Flash models",
+      "detail": [
+        "The 120.4 GiB FP8‑only Ling‑3.2‑air model was quantized to a 72.5 GiB W4A16 version using INT4 for routed‑expert matrices, fitting entirely in 96 GB VRAM.",
+        "On a 4×RTX 3090 rig the quantized model achieves 4.1‑5.3 k tok/s prefill and 95‑105 tok/s decode up to 250 K context, beating Qwen3.8‑Flash‑Next, DeepSeek‑V4.1‑Flash, GLM‑5.3‑Flash, and MiniMax‑M3.1‑Flash.",
+        "Evaluation on GSM8K (97.04 % accuracy) and benchmarks like Terminal‑Bench 4.0, AutomationBench‑AA, and SkillsBench show quality comparable to or better than the original FP8 model."
+      ],
+      "why_it_matters": "You can download the W4A16 quantized Ling‑3.2‑air from Hugging Face to run faster local inference without resorting to 2‑bit quantization.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2125926818121121911",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HYDPLIAWAAEDO6t.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HYDPLIAWAAEDO6t.jpg:small",
+              "width": 1600,
+              "height": 900
+            }
+          ]
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://huggingface.co/alesha-pro/Ling-3.2-air-W4A16",
+          "domain": "huggingface.co",
+          "title": "alesha-pro/Ling-3.2-air-W4A16 · Hugging Face",
+          "preview_image_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/alesha-pro/Ling-3.2-air-W4A16.png"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "2405649eb5068add4d931c80dbea2a45",
+      "occurred_at": "2026-11-26T13:47:00+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T13:47:00+00:00",
+      "title": "Maziyar Panahi's single weighed-plate example cuts open-model carb-estimation error from 10.2 g to 7.8 g",
+      "detail": [
+        "Maziyar Panahi tested open models on carbohydrate estimation: after showing one model a single food plate with its real weights, he asked it to estimate the carbs on 506 more plates. The model's average miss fell from 10.2 g to 7.8 g, roughly a 24 percent reduction in average error from one example.",
+        "Panahi reports that the other open models he tried also got better with the same approach. The gain comes from an in-context measured example rather than any retraining, according to his description of the experiment."
+      ],
+      "why_it_matters": "Anyone estimating carbs from plate images with open models can add one weighed-plate example, a prompt-only change that shaved average error by about 24 percent.",
+      "sources": [
+        {
+          "author_name": "Maziyar PANAHI",
+          "author_username": "MaziyarPanahi",
+          "url": "https://x.com/MaziyarPanahi/status/2125949443690127563",
+          "role": "source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HYCd4u0XUAATtHm.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HYCd4u0XUAATtHm.jpg:small",
+              "width": 1080,
+              "height": 1350
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "6cd46d889173aa874e0d4fad0b57b492",
+      "occurred_at": "2026-11-26T14:27:47+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T14:27:47+00:00",
+      "title": "HungerG AI harness outperforms DeepSeek V4.1 Flash in token efficiency and speed",
+      "detail": [
+        "In a head‑to‑head test on four live 60 fps Three.js worlds, HungerG generated 3.1× fewer total tokens (402 K vs 1.25 M) and ran at 113 tok/s versus DeepSeek’s 55 tok/s, delivering cleaner lighting and geometry.",
+        "The comparison also showed HungerG used 4.9× fewer reasoning tokens and completed the runs 1.8× faster overall, and both models are available for free trial this week (HungerG on OpenCode Go and Qoder until Nov 30)."
+      ],
+      "why_it_matters": "You can test the more token‑efficient HungerG harness for free, cutting inference costs and speeding up Three.js visualizations.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2125959708808757405",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/ext_tw_video_thumb/2125955768717373440/pu/img/b8mB3fjyZYMr6ONL.jpg",
+              "preview_url": "https://pbs.twimg.com/ext_tw_video_thumb/2125955768717373440/pu/img/b8mB3fjyZYMr6ONL.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "bb1c6c7b1a3256666023d0d61583cbbe",
+      "occurred_at": "2026-11-26T14:41:54+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T14:41:54+00:00",
+      "title": "Devin includes a free SWE model with quickly resetting limits",
+      "detail": [
+        "The quoted post says Devin includes free SWE access, currently using SWE-2, as part of its subscription offering.",
+        "The quoting author says they frequently use SWE 2.1 and that its usage limits reset quickly."
+      ],
+      "why_it_matters": "Developers evaluating Devin can account for its included free SWE tier and quickly resetting limits alongside paid frontier-model options.",
+      "sources": [
+        {
+          "author_name": "nader dabit",
+          "author_username": "dabit3",
+          "url": "https://x.com/dabit3/status/2124502393589002724",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Eric Buess",
+          "author_username": "EricBuess",
+          "url": "https://x.com/EricBuess/status/2125963261442998734",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "9403d9b879dd2c9f043cad9e54dbbdc2",
+      "occurred_at": "2026-11-26T15:24:38+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T15:24:38+00:00",
+      "title": "Matt Van Horn compares 16 agent browser and computer-use tools on Apple Silicon",
+      "detail": [
+        "Van Horn tested 16 agent browser and computer-use tools on an Apple Silicon Mac for T3 Code agents. Ardia Browser and OpenCode Browse beat agent-browser and Stagehand on speed, RAM, and tokens despite much lower star counts, while TryCua underpinned five of the tested stacks.",
+        "For a full switch, Ardia Browser plus TryCua offered 396 ms warm loads, no Chrome debugging popups or infobar, prompt-injection fences, and 1Password with Touch ID Passkeys. For staying in Chrome, OpenCode Browse plus TryCua used 18 MB RAM and cut page snapshots 53x versus Stagehand and 5x versus agent-browser; cua-driver used 27 MB RAM with zero focus steal (597 ms on Messages, 129 ms on Electron), using 8x less RAM than older Mac tools.",
+        "Boat booted four Ubuntu VMs in 1.9 seconds median for $0.001, and Codex Terra's native browser failed inside T3 Code because its host pipe existed only in the Codex desktop app. Separately, an MIT and reatools approach reverse-engineered desktop binaries into MCPs and made FreeCAD 55x faster with 35x fewer tokens, while staying in Chrome left a temporary debugging bar that one launch flag or Ardia Browser natively hid."
+      ],
+      "why_it_matters": "Developers can choose an agent browser stack from measured warm-load, RAM, snapshot, secret, and isolation tradeoffs instead of star counts.",
+      "sources": [
+        {
+          "author_name": "Matt Van Horn",
+          "author_username": "mvanhorn",
+          "url": "https://x.com/mvanhorn/status/2125973765104566675",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Matt Van Horn",
+          "author_username": "mvanhorn",
+          "url": "https://x.com/mvanhorn/status/2125974014032323047",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "a4bb31b6e21e09e43867494c29a07346",
+      "occurred_at": "2026-11-26T15:35:18+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T15:35:18+00:00",
+      "title": "The Agentic Scientist framework automates coding‑agent research loops",
+      "detail": [
+        "The Agentic Scientist introduces a meta‑controller that runs parallel coding agents through task drafting, ideation, planning, sandboxed experiments, analysis, and writing, with rubric‑based evaluation.",
+        "In early tests the system raised Doc‑to‑LoRA multi‑needle retrieval accuracy from 52 % to 98 % and produced a learned evolution strategy that outperformed CMA‑ES on unseen tasks."
+      ],
+      "why_it_matters": "Scientists can now let autonomous coding agents run full experiment cycles, cutting manual effort and boosting retrieval performance to near‑perfect levels.",
+      "sources": [
+        {
+          "author_name": "Sakana AI",
+          "author_username": "SakanaAILabs",
+          "url": "https://x.com/SakanaAILabs/status/2125976697401151922",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2125976190183956480/img/R7nZyX7-K6PmROw7.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125976190183956480/img/R7nZyX7-K6PmROw7.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "c657cae0f58b1998b82c5df27cb2c85f",
+      "occurred_at": "2026-11-26T15:43:30+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T15:43:30+00:00",
+      "title": "Plato's Key lets independently trained LLMs use each other’s representations after one rotation",
+      "detail": [
+        "Vivien Cheng and collaborators introduced Plato's Key, a method for cross-model representation reuse. A single rotation lets independently trained LLMs use each other’s representations as their own, without gradients.",
+        "The announcement names Jerry Liu, Morris Yau, and HazyResearch as collaborators. The quoted source is embedded in a post that separately argues models are becoming commodities under the platonic representation hypothesis."
+      ],
+      "why_it_matters": "Practitioners can use Plato's Key to move representations between independently trained LLMs without gradient fine-tuning.",
+      "sources": [
+        {
+          "author_name": "Vivien Cheng",
+          "author_username": "viviencheng__",
+          "url": "https://x.com/viviencheng__/status/2125631050319831474",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2125621327088463872/img/QSXfUZfkC3uwrKi5.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2125621327088463872/img/QSXfUZfkC3uwrKi5.jpg:small",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "author_name": "Eno Reyes",
+          "author_username": "EnoReyes",
+          "url": "https://x.com/EnoReyes/status/2125978760994312202",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "1a480c902d4095789b2d998da8f885df",
+      "occurred_at": "2026-11-26T17:44:06+00:00",
+      "updated_at": "2026-11-26T19:32:00.001860+00:00",
+      "expires_at": "2026-11-27T17:44:06+00:00",
+      "title": "Alexey Fateev's Colab launcher runs GLM-5.3-Flash Uncensored on RTX PRO 6000 Blackwell",
+      "detail": [
+        "Alexey Fateev published a launcher that starts GLM-5.3-Flash Uncensored, a 321B model, on a Google Colab G4 instance with an RTX PRO 6000 Blackwell 96 GB GPU and 176 GB RAM, then exposes a local API endpoint over SSH port forwarding to 127.0.0.1:18100 with OpenAI and Anthropic-compatible routes. It supports tool calls, thinking, vision, and reportedly zero refusals; the printed output includes the URL, model ID, and snippets for Claude Code, Codex, or OpenCode.",
+        "The default 2.51 bpw build occupies 98.1 GiB at 131K context and reportedly decodes 102.3 tokens/s with 1,190/2,255 tokens/s prefill, while 262K context, 3.05 bpw, and 4.05 bpw variants are listed at 98.9, 89.0, and 71.8 tokens/s decode. Colab compute units are included in Google AI plans and the G4 instance costs 10.05 units per hour, giving roughly 20 hours on the $20 Pro plan, 99 on the $100 Ultra 5x plan, and 199 on the $200 Ultra 20x plan."
+      ],
+      "why_it_matters": "Readers with Google AI subscriptions can run a 321B uncensored coding model locally through an on-subscription Colab instance instead of paying separately for Blackwell-class GPUs.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2126009114211869026",
+          "role": "source",
+          "media": []
+        },
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2126011712692224264",
+          "role": "source",
+          "media": [
+            {
+              "type": "video",
+              "url": "https://pbs.twimg.com/amplify_video_thumb/2126011426414243840/img/7027i0o09sB-uD9v.jpg",
+              "preview_url": "https://pbs.twimg.com/amplify_video_thumb/2126011426414243840/img/7027i0o09sB-uD9v.jpg:small",
+              "width": 1086,
+              "height": 794
+            }
+          ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai",
+        "linux"
+      ]
+    },
+    {
+      "id": "494be44e65f905c494d5ebb3ae8da5d9",
+      "occurred_at": "2026-11-26T18:56:09+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-27T18:56:09+00:00",
+      "title": "Kody – Open‑source cloud for AI agents",
+      "detail": [
+        "Kody is an open‑source platform that provides a cloud‑based store for agent memory, credentials, code, and automations, making them portable across any agent that integrates with the service.",
+        "The project is highlighted as a novel extension of the codemode/MCP work by Kent C. Dodds and the Kody team, offering self‑hosted capabilities without vendor lock‑in."
+      ],
+      "why_it_matters": "Developers can securely self‑host agent state and reuse it across projects, eliminating reliance on proprietary cloud services.",
+      "sources": [
+        {
+          "author_name": "joel ⛈️",
+          "author_username": "joelhooks",
+          "url": "https://x.com/joelhooks/status/2126027246142157081",
+          "role": "source",
+          "media": []
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://github.com/kody-hq/kody",
+          "domain": "github.com",
+          "title": "GitHub - kody-hq/kody: 🐨 The cloud for your team's agents. Save your agent memory, credentials, code, and automations, portable across every agent with Kody. · GitHub",
+          "preview_image_url": "https://opengraph.githubassets.com/9b98e19f896a3b8eb35423563845b6a7e12ff159aeb94922771f356480a1407a/kody-hq/kody"
         }
       ],
       "interest_slugs": [
