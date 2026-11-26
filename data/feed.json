@@ -1,7 +1,314 @@
 {
-  "updated_at": "2026-11-26T19:00:00.346319+00:00",
-  "total_items": 1039,
+  "updated_at": "2026-11-26T20:00:00.404265+00:00",
+  "total_items": 1051,
   "items": [
+    {
+      "id": 8285,
+      "source_id": 34,
+      "original_url": "https://www.jonadas.com/writing/research/state-of-external-agentic-exposure-2026-baseline",
+      "title": "The MCP Servers You Didn't Ship",
+      "summary": "Jónadas audited 100 major brands and statically inspected 632 unverified brand-named MCP packages, finding zero prompt-injection payloads but widespread supply-chain risks like mutable binaries and governance-bypass wrappers. Thirty-three brands sit in an Official Registry Vacuum where every MCP answer belongs to third parties.",
+      "ideas": [
+        "33 of 100 audited brands have an Official Registry Vacuum with no verified first-party MCP entry.",
+        "632 packages yielded zero hidden prompt-injection payloads but 117 declared lifecycle hooks and 3 postinstall binary downloaders.",
+        "One wrapper downloads a native binary via postinstall with no SHA-256 check, evading lockfile protection.",
+        "Six packages bundle Chrome TLS fingerprint impersonation to automate bot-protected portals.",
+        "A single maintainer account publishes for 23 of the 100 brands, acting as a cross-cohort skeleton key."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading gives the passive scan methodology, exact per-signal package counts with exploit chains like postinstall binary fetches and TLS impersonation, plus cohort tables no abstract reproduces.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:29:00.227126"
+    },
+    {
+      "id": 8284,
+      "source_id": 34,
+      "original_url": "https://www.jacobquatier.com/testing-tools-built-for-agents/",
+      "title": "Cold Agents - Testing a Tool Built for Agents",
+      "summary": "Squinch’s author built a gauntlet that gives fresh Claude agents identical skills, prompts, and binaries, then scores and logs their attempts. Across 40 rounds and nearly 5,000 checks, it exposed missing icons, misleading fixes, and harness gaps; one answer was discarded for an out-of-box path.",
+      "ideas": [
+        "Fresh-agent gauntlets expose documentation failures ordinary code tests miss.",
+        "Externally logged checker retries reveal tool and prompt weaknesses.",
+        "Bundling the CLI exposed a missing package.json version dependency.",
+        "Nearly 5,000 checks identified nonexistent and retired icon identifiers.",
+        "A suggested layout fix silently discarded requested requirements.",
+        "Prompt scoring should measure requested behavior, not author taste."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "You get a concrete agent-evaluation design: isolated prompt boxes, externally logged CLI calls, retry-based telemetry, and transcript-driven fixes, along with specific failures that exposed both documentation and checker defects.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:28:19.139127"
+    },
+    {
+      "id": 8283,
+      "source_id": 34,
+      "original_url": "https://www.catchkill9.dev/posts/etcd-service-nobody-called.html",
+      "title": "The Service nobody called: etcd writes with zero traffic",
+      "summary": "A platform engineer traced EKS etcd growth to an unused Service and duplicated PolicyEndpoints, then deleted the Service and merged six allow policies into one Egress. Seven NetworkPolicies on the same pods rewrite seven pod-list copies on every pod change.",
+      "ideas": [
+        "Rank etcd writers by write bytes, not request count, to find real culprits",
+        "Unused Services with large pod selectors still force Endpoints/EndpointSlice rewrites on churn",
+        "EKS network policy controller stores one PolicyEndpoints copy per selecting policy; merge allows",
+        "conntrack -L -d <ClusterIP> proves zero ClusterIP traffic; selector removal is reversible",
+        "rate[1m] windows carry pre-patch errors into post-patch samples; check raw logs",
+        "apiserver_storage_size_bytes includes free pages and shrinks only on defrag; watch in-use bytes"
+      ],
+      "labels": [
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "You get the PromQL for byte-ranked write attribution, the conntrack proof, the reversible selector-removal test, three misleading-metric traps, and the two-step policy merge sequence — reproducible on any EKS cluster.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:23:05.549781",
+      "image_url": "https://www.catchkill9.dev/_astro/card.Bv8e6P1K.jpg",
+      "image_width": 2400,
+      "image_height": 1256,
+      "image_alt": ""
+    },
+    {
+      "id": 8282,
+      "source_id": 34,
+      "original_url": "https://wenhaochai.com/blogs/agentic-ppl.html",
+      "title": "AgenticPPL: Perplexity (on what?) is intelligence",
+      "summary": "The article presents AgenticPPL, a metric that scores LLM agents by capping perplexity on selected command tokens. Using only 0.30% of bytes, it achieves a Spearman correlation of +0.89 with Terminal‑Bench 2.1.",
+      "ideas": [
+        "Select command tokens whose evaluator perplexity drops >0.5 bits when output appears.",
+        "Cap each token’s perplexity at 2 bits before averaging to boost correlation.",
+        "AgenticPPL scores models with only 0.30% of trajectory bytes yet outperforms plain perplexity."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "You’ll obtain the exact token‑selection rule, per‑token perplexity caps, and runnable toolkit that turn 0.30% of an agent’s output into a Spearman ρ≈+0.89 predictor of Terminal‑Bench performance.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:18:09.359955",
+      "image_url": "https://wenhaochai.com/assets/img/blogs/agentic-ppl/pretrain-ppl-eval-poster.jpg",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "AgenticPPL: Perplexity (on what?) is intelligence"
+    },
+    {
+      "id": 8281,
+      "source_id": 34,
+      "original_url": "https://vivianvoss.net/blog/kernel-on-orders",
+      "title": "The Kernel Loads Only on Orders",
+      "summary": "An nginx HTTP/2 flow-control bug chain can load the Linux kernel's SCTP module via an unprivileged socket call, reaching root and escaping containers. Debian 13 ships 4,230 kernel modules auto-loadable by any process that opens a socket.",
+      "ideas": [
+        "Unprivileged nginx worker loads Linux SCTP module via one socket call",
+        "FreeBSD refuses module loading from jails even for root",
+        "Ubuntu blacklists rare protocols except SCTP and DCCP",
+        "Autoloading has enabled unprivileged kernel code loading since DCCP 2017"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading the full piece gives the exact code paths behind Linux module autoloading, the CVE and version specifics, and the contrasting FreeBSD permission model.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:15:01.435384"
+    },
+    {
+      "id": 8280,
+      "source_id": 34,
+      "original_url": "https://vanja.io/claude-artifacts-desktop-apps/",
+      "title": "The Artifact Gets a Terminal",
+      "summary": "Claude’s Artifact runtime can install generated pages as Mac or Windows apps with tiered OS permissions. Runtime contract 0.2.99 exposes fs, childProcess, pty and shell after full-access consent, while remotely loaded CDN code can change without renewed approval and host actions are not audited.",
+      "ideas": [
+        "CDN-loaded scripts can change after consent, then reach an already-approved full-access shell.",
+        "Full access exposes fs, childProcess, pty and shell, making page CSP irrelevant.",
+        "Every published edit triggers a new permission prompt, including the author’s own changes.",
+        "Compliance records omit installs, permission decisions and host-level actions.",
+        "Revocation can leave detached processes alive for roughly twenty minutes.",
+        "Runtime contract 0.2.99 shares 32 process and terminal slots per artifact."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 87,
+      "rating_reason": "You learn the concrete path from a CDN-loaded script to a full-access shell without renewed consent, plus runtime API limits, revocation delays, and gaps that leave host activity unaudited.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:14:29.672602",
+      "image_url": "https://storage.ghost.io/c/fc/64/fc6494bc-dca3-43d9-aa38-8924d76cc047/content/images/size/w1200/2026/11/claude-artifacts-desktop-apps-e2bbd49a6ae8.png",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": ""
+    },
+    {
+      "id": 8279,
+      "source_id": 34,
+      "original_url": "https://useraven.org/news/stopped-queueing/",
+      "title": "Raven stopped queueing",
+      "summary": "Raven, a Linux-hosted Windows compatibility runtime, moved guest threads onto dedicated host threads and added layered sandboxing. Startup took 0.04 seconds versus Wine 11.0's 3.91 seconds, while Notepad++ opened in 0.52 seconds after fixing a thread-enqueue race.",
+      "ideas": [
+        "Guest threads now execute Windows calls concurrently on dedicated host threads.",
+        "Rust synchronization primitives were specified in TLA+ and checked with loom.",
+        "Landlock confines runtime access while per-program overlays isolate prefix changes.",
+        "Raven started programs in 0.04 seconds versus Wine 11.0's 3.91 seconds.",
+        "Fixing new-thread enqueueing cut repeated create-wait latency from 1.2 to 0.44 milliseconds.",
+        "Raw samples and commands enable independent reproduction of Raven's benchmark suite."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin",
+        "CyberSecurity"
+      ],
+      "rating": 89,
+      "rating_reason": "You get concrete implementation mechanics: per-thread Windows-call handling, Rust waits modeled in TLA+ and checked with loom, Landlock confinement, plus reproducible benchmarks and the 87-thread Notepad++ scheduling bug.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:12:52.466299",
+      "image_url": "https://useraven.org/covers/news/stopped-queueing.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Raven stopped queueing - Raven"
+    },
+    {
+      "id": 8278,
+      "source_id": 34,
+      "original_url": "https://strebkov.dev/posts/tell-clients-no/",
+      "title": "Tell clients no: load spikes, slowdowns and retries, live",
+      "summary": "The author rebuilt a simulated pipeline as a real Go, Redis, and browser-client system, then induced a metastable retry storm with an eight-second load spike. With a 429 in-flight quota of 70, the same spike held the queue at 66 items instead of 11,900.",
+      "ideas": [
+        "Retry storms are sustained in clients; flushing the queue fails until the loop is broken.",
+        "A 429 in-flight quota pinned the queue at 66 items versus 11,900 unmanaged.",
+        "Capacity is workers ÷ latency, so a 4× slowdown equals a 4× load spike.",
+        "Enable the quota before flushing; dead backlog items otherwise count as in-flight."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "You get the live dashboard runs, retry-loop arithmetic matching measured queue growth, the Go quota and deadline-margin code, and the ordering insight: break the retry loop before flushing the queue.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:08:05.176331"
+    },
+    {
+      "id": 8277,
+      "source_id": 34,
+      "original_url": "https://scarlet.engineering/blog/micropolis-and-the-math-behind-the-1989-simcity/",
+      "title": "Micropolis and the Math behind the 1989 SimCity",
+      "summary": "Micropolis is modeled as a phase-driven city simulation whose three demand valves steer residential, commercial, and industrial growth. Its proof shows growth never rests: incompatible residential and industrial equilibria, 50.5% versus 45.5% share, and conserved commercial loops.",
+      "ideas": [
+        "Zones grow or decline by scores z = v + s; net growth jumps near zero.",
+        "Every two weeks valves change by 600*(projection/population ratio −1), capped at limits.",
+        "Labor ratio L counts residents per job and saturates at 1.3 in commercial projection.",
+        "Residential and industrial equilibrium shares are 50.5% and 45.5%, preventing global rest.",
+        "Commercial loops conserve Φ(v)+Ψ(x), so neutral dynamics circle census targets forever.",
+        "Dead-zone growth +0.95% and stale census data add energy each loop."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading walks through the demand-valve update equations, census-lag proof, and how no-friction integral control with conflicting targets sustains perpetual city oscillation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:02:06.120121",
+      "image_url": "https://scarlet.engineering/blog/images/micropolis_01.png",
+      "image_width": 1526,
+      "image_height": 1251,
+      "image_alt": ""
+    },
+    {
+      "id": 8276,
+      "source_id": 34,
+      "original_url": "https://lemire.me/blog/2026/11/25/command-line-json-filtering-at-20-gb-s/",
+      "title": "Command-line JSON filtering at 20 GB/s",
+      "summary": "Daniel Lemire released sjq, a jq-compatible command-line filter built on simdjson, benchmarked on 1 GB of 230,138-tweet NDJSON. It filters at 3.5 GB/s single-threaded and 20 GB/s across 32 workers, versus jq 1.8.2's 0.1 GB/s.",
+      "ideas": [
+        "sjq runs real jq filters 37x faster single-threaded via simdjson",
+        "Filters that only navigate parse only the fields they need",
+        "Parallel workers shard NDJSON per line while ordered output is preserved",
+        "sjq passes 728 of jq's own 781 tests; failures in modules and wide numbers",
+        "Single large documents still run 12-18x faster on one core"
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Full piece gives the benchmark setup, the selective-parsing mechanism behind the speedup, jq-compatibility test results, and install commands for a drop-in jq replacement you can use today.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T05:35:24.654044",
+      "image_url": "https://lemire.me/blog/wp-content/uploads/2026/11/sjq-feature-1024x538.jpg",
+      "image_width": 1024,
+      "image_height": 538,
+      "image_alt": ""
+    },
+    {
+      "id": 8275,
+      "source_id": 34,
+      "original_url": "https://kendell.dev/blog/arkwrapper/",
+      "title": "Novita, StreamLake, etc are Ark wrappers",
+      "summary": "The author traces Novita, StreamLake, and Ant Digital API traffic back to ByteDance’s Ark model service, showing identical request IDs, tool‑call IDs, and censorship responses. Token volumes reached 120‑160 billion per day before the ZDR label was removed.",
+      "ideas": [
+        "Novita, StreamLake, and Ant Digital forward OpenRouter requests to ByteDance Ark, exposing internal routing.",
+        "Request IDs contain a \"02\" prefix plus millisecond timestamps, matching ByteDance’s format.",
+        "Tool‑call IDs use Ark’s \"call_00_\" prefix followed by 24 lowercase letters/digits.",
+        "Unique URLs embedded in MiniMax prompts were fetched 40–130 hours later, proving request leakage.",
+        "Novita’s V4.1 Flash traffic peaked at 120‑160 billion tokens daily before losing ZDR status."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading the full article gives you the precise routing evidence, request‑ID patterns, token‑volume metrics, and the URL‑leak experiment that reveal how these providers expose traffic to ByteDance’s Ark backend.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T05:33:10.042408"
+    },
+    {
+      "id": 8274,
+      "source_id": 34,
+      "original_url": "https://jm33.me/a-malware-factory-powered-by-ai-autonomous-evasion.html",
+      "title": "A Malware Factory Powered by AI: Autonomous Evasion",
+      "summary": "The author built an autonomous AI factory using the ARTEX harness to edit, rebuild, and test emp3r0r payloads, logging changes in SQLite and a shadow Git repo. In 17 Linux cycles detections fell to zero, and Windows static findings dropped from 30 to 1.",
+      "ideas": [
+        "Separate planner, editor, and debugger sessions prevent AI dead‑ends.",
+        "SQLite ledger stores all telemetry, avoiding large model context windows.",
+        "Per‑worker time and read‑call budgets enforce efficient AI usage.",
+        "Encoding /proc/self/maps eliminated Linux memory‑map YARA alerts.",
+        "Base64‑bounding ciphertext and freestanding loader reduced Windows PE entropy findings."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading it reveals the full AI‑driven malware‑evasion pipeline, including Go harness setup, SQLite ledger, budget enforcement, and measured detection reductions on Linux and Windows.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T05:30:45.767683"
+    },
     {
       "id": 8273,
       "source_id": 34,
