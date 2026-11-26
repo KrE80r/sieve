@@ -1,7 +1,167 @@
 {
-  "updated_at": "2026-11-26T18:00:01.135223+00:00",
-  "total_items": 1033,
+  "updated_at": "2026-11-26T19:00:00.346319+00:00",
+  "total_items": 1039,
   "items": [
+    {
+      "id": 8273,
+      "source_id": 34,
+      "original_url": "https://explainmeasured.com/posts/hash-joins-statistics-index-upkeep-pg18/",
+      "title": "Hash joins, planner statistics and index upkeep on PostgreSQL 18",
+      "summary": "A reproducible PostgreSQL 18.6 microbenchmark suite examines hash joins, planner statistics, HOT updates, index maintenance, and JSONB indexing. Its sharpest result is that a 4 MB hash join spilled 11,917 temp blocks yet ran about 90 ms faster than a single-batch join using 64 MB.",
+      "ideas": [
+        "PostgreSQL hash joins can outperform larger-memory plans despite temporary-file spills.",
+        "Raising statistics targets can improve common-value estimates while worsening rare-value estimates.",
+        "Extended statistics fix correlated-column selectivity and grouped-row estimates.",
+        "VACUUM leaves deleted-row B-tree index space intact until REINDEX.",
+        "Concurrent index builds cost modestly more time while blocking fewer writes.",
+        "JSONB path-ops accelerates containment but not key-value equality queries.",
+        "Parallel index builds require adequate maintenance_work_mem to outperform serial builds."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "Runnable scripts, raw results, exact PostgreSQL settings, and focused tests reveal planner-estimate errors, HOT-update behavior, index-bloat mechanics, and JSONB operator differences. Reproducible measurements expose several counterintuitive performance effects useful to database engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T05:20:14.244867"
+    },
+    {
+      "id": 8272,
+      "source_id": 34,
+      "original_url": "https://eldermoraes.com/zero-data-retention-and-ai-routers/",
+      "title": "Zero Data Retention and AI routers",
+      "summary": "Dragos sent two million canary‑laden prompts through AI routers, uncovering three compromised inference providers that leaked data despite Zero Data Retention flags. A Chinese lab exfiltrated two‑thirds of ZDR requests; Java canary code maps each leak to its router, provider, model, and privacy flag.",
+      "ideas": [
+        "ZDR only guarantees privacy on the first hop; downstream routers can still log prompts.",
+        "Dragos’ inference‑traceroute revealed anonymous hops and a marketplace that reroutes traffic undisclosed.",
+        "Embedding unique canary URLs in prompts enables pinpointing the exact path of a leak.",
+        "Two‑thirds of ZDR‑marked prompts were stolen by a Chinese AI lab."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI"
+      ],
+      "rating": 88,
+      "rating_reason": "You’ll learn a working Java canary generator, the inference‑traceroute method, and why Zero Data Retention only protects the first hop, letting you audit AI routing paths.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T05:18:10.172704"
+    },
+    {
+      "id": 8271,
+      "source_id": 34,
+      "original_url": "https://blog.victorsilva.com.uy/shirudo-ebpf-shields-ai-agent/",
+      "title": "Shirudo Hands-On: an AI Agent Writes an eBPF Shield",
+      "summary": "A hands-on lab runs Shirudo on an Azure QEMU target and has an agent write an eBPF shield against a pingsvc injection bug. Version 1 passed verification but blocked nothing; version 2 allowed 16 execs and refused 8, while echo remained a bypass.",
+      "ideas": [
+        "Execve allowlists block injected binaries but not shell builtins",
+        "Python thread group_leader comm breaks parent traversal",
+        "shirudo requires a bpf-next kernel and TPM 2.0",
+        "Sealed keyring prevents root from loading its own BPF",
+        "Verifier success alone does not prove a shield works"
+      ],
+      "labels": [
+        "CyberSecurity",
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 85,
+      "rating_reason": "It gives the command-injection exploit chain, bprm_check_security eBPF code, Python thread-traversal failure, Azure lab setup, and the shell-builtin bypass.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T05:07:17.617458"
+    },
+    {
+      "id": 8270,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/bispectrum-selective-g-bispectra",
+      "title": "bispectrum: a symmetry-invariant layer with no weights, and why it keeps the shape the power spectrum throws away",
+      "summary": "A PyTorch bispectrum layer preserves Fourier phase relationships for shift invariance, reducing a 256×256 torus case from 17.2 GB to 524 KB. Spherical MNIST results show a 0.3-point accuracy gap and up to 360× speedups, but the MLP is larger and spherical completeness is conjectured.",
+      "ideas": [
+        "Shift phases cancel in triple Fourier products, preserving relative harmonic geometry that power spectra discard.",
+        "Selective Cn bispectrum uses n coefficients and recursively reconstructs a generic spectrum up to shift.",
+        "A 256×256 torus full bispectrum occupies 17.2 GB; selective output occupies 524 KB.",
+        "Reproduction qualifies the weightless-layer claim because its following MLP exceeds the spherical CNN's parameter count.",
+        "Cyclic completeness fails for signals with zero Fourier coefficients, so inversion rejects those cases.",
+        "Spherical SO(3) bispectrum completeness remains conjectural despite the 380-versus-1,124 coefficient reduction."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 93,
+      "rating_reason": "You get the phase-cancellation derivation, an n-coefficient inversion recursion, PyTorch implementation paths, completeness caveats, and independently reproduced Spherical MNIST accuracy and latency measurements.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T04:47:29.281514",
+      "image_url": "https://ai.satyajit.si/articles/bispectrum-selective-g-bispectra/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 8269,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/claude-artifact-apps-and-webmcp",
+      "title": "Claude artifacts as desktop apps, and WebMCP in the AI SDK: the page is now the app and the tool surface",
+      "summary": "Four posts in seven hours cover Claude artifacts installable as desktop apps with three permission tiers and WebMCP exposing page JavaScript as agent tools. The transport caps tool names at 64 characters and prefixes cross-origin names with a SHA-256 of their origin.",
+      "ideas": [
+        "Installed artifacts call Claude and connectors on your login with no API key",
+        "Full-access apps load external scripts without re-approval on updates",
+        "WebMCP registerTool exposes page functions with JSON Schema to agents",
+        "Tool names capped at 64 chars, prefixed by SHA-256 of origin",
+        "Cookbook splits chat: server runs model, tab runs tools",
+        "Recipe validates 32 tool definitions and local-dev requests only",
+        "untrustedContentHint and consequentialHint annotate tool outputs",
+        "Listing tools before every request handles dynamic pages"
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading it walks through the transport's SHA-256 origin-prefixing of tool names, the cookbook's server round-trip loop, and the unreviewed-CDN dependency that full-access apps inherit.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T04:47:18.093642",
+      "image_url": "https://ai.satyajit.si/articles/claude-artifact-apps-and-webmcp/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 8268,
+      "source_id": 4,
+      "original_url": "https://www.theregister.com/security/2026/11/26/company-was-religious-about-backups-but-sinned-by-leaving-them-exposed/5312234",
+      "title": "Company was religious about backups but sinned by leaving them exposed",
+      "summary": "A Chinese vehicle parts manufacturer’s backup server was in the same Windows domain, allowing ransomware attackers to delete all restore points and encrypt production systems. The breach exploited a plaintext password reused for both the backup service account and a domain admin account.",
+      "ideas": [
+        "Keep backup servers outside the production domain.",
+        "Use unique credentials for backup services, never reuse passwords.",
+        "Enforce multi-factor authentication for backup accounts.",
+        "Maintain at least one offline backup copy.",
+        "Perform quarterly test restores to verify backup integrity.",
+        "Regularly audit scripts for exposed passwords.",
+        "Monitor backup success dashboards but also verify isolation."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin"
+      ],
+      "rating": 80,
+      "rating_reason": "Reading the full piece gives you concrete steps to isolate backups, use unique credentials with MFA, keep offline copies, and test restores to prevent losing critical data.",
+      "source_type": "nitter",
+      "source_name": "Nicolas Krassas",
+      "published_at": "2026-11-27T04:32:35.696939",
+      "image_url": "https://image.theregister.com/5312239.jpg?imageId=5312239&x=0&y=10.73&cropw=100&croph=72.88&panox=0&panoy=10.73&panow=100&panoh=72.88&width=1200&height=683",
+      "image_width": 1200,
+      "image_height": 683,
+      "image_alt": ""
+    },
     {
       "id": 8267,
       "source_id": 28,
