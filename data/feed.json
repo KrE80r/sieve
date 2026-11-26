@@ -1,7 +1,82 @@
 {
-  "updated_at": "2026-11-26T20:00:00.404265+00:00",
-  "total_items": 1051,
+  "updated_at": "2026-11-26T21:00:00.369678+00:00",
+  "total_items": 1054,
   "items": [
+    {
+      "id": 8288,
+      "source_id": 34,
+      "original_url": "https://www.vanille.de/blog/2026-j2534-for-candlelight-fd/",
+      "title": "A J2534 driver for the candleLight FD",
+      "summary": "Mickey built gs-usb-j2534, a Rust PassThru DLL letting Windows diagnostic tools use the candleLight FD adapter. A 4096-frame queue prevents ERR_BUFFER_FULL during 65-frame ISO-TP bursts, and bench tests achieved 10,000 BRS frames without an error.",
+      "ideas": [
+        "4096-frame queue feeds ten adapter slots to avoid ERR_BUFFER_FULL",
+        "BRS at 2 Mbit/s worked after fixes; 10,000 frames had no error",
+        "4 Mbit/s BRS failed unless sample point raised to 80 or 90 percent",
+        "5 Mbit/s BRS never worked; 1 and 2 Mbit/s passed 3,000-frame tests",
+        "install both 32-bit and 64-bit DLLs via install.cmd"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading it exposes the transmit-queue buffer-full root cause, BRS bit-timing failure, sample-point workaround, bench-test results, and installation details.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:40:17.138707"
+    },
+    {
+      "id": 8287,
+      "source_id": 34,
+      "original_url": "https://www.tunbury.org/2026/11/25/jupiter2/",
+      "title": "An RVA23 day10 worker on a Milk-V Jupiter 2",
+      "summary": "Mark Elvers documented converting a Milk-V Jupiter 2 into an Ubuntu 26.10 RISC-V day10 CI worker, including boot, storage, and fan fixes. Under load, the NVMe hit 95C/109C and the SoC reached 73C after fan control; a heatsink cut the NVMe peak to 67C.",
+      "ideas": [
+        "Ubuntu 26.04.1 has no K3 support; use 26.10 with maxcpus=8.",
+        "EDK2 firmware flash can overwrite the UFS partition table.",
+        "Ubuntu 7.3.0-10 ignores GRUB devicetree; extract kernel with objcopy.",
+        "Fan control needs ChromeOS EC and three vendor drivers; all seven thermal zones.",
+        "runc CPU affinity errors stop with nr_cpus=8 after maxcpus=8.",
+        "Watchdog stops worker at 80C NVMe or 90C SoC, never restarts."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading it gives the full GRUB/devicetree boot sequence, the exact kernel flags and blacklist needed for Ubuntu 26.10, the vendor thermal/fan porting notes, and the nr_cpus fix for runc.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:38:01.658482",
+      "image_url": "https://www.tunbury.org/images/jupiter2-pi5-serial.jpg",
+      "image_width": 1200,
+      "image_height": 1600,
+      "image_alt": ""
+    },
+    {
+      "id": 8286,
+      "source_id": 34,
+      "original_url": "https://www.lukasrieder.com/blog/h-subagent-status-and-macos-permissions/",
+      "title": "Subagent status and macOS permissions in H v0.5.0",
+      "summary": "H v0.5.0 adds submission-scoped subagent blocker reporting, live SSE updates, idle catalog deduplication, and a native macOS directory helper. Its helper enforces a two-second deadline, the BEAM port a three-second deadline, and an 8 MiB output cap.",
+      "ideas": [
+        "Parent status tracks awaited submissions, excluding unrelated conversation blockers.",
+        "Live subagent waits remain ephemeral instead of polluting durable transcripts.",
+        "Catalog backpressure allows 128 queued messages and 2 MiB before resnapshotting.",
+        "Idle catalog connections retain one snapshot and send 15-second keepalives.",
+        "Workspace operations bypass OTP’s shared file server to avoid permission-prompt blocking.",
+        "Directory helper enforces two-second process, three-second BEAM, and 8 MiB limits."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 88,
+      "rating_reason": "You get implementation-level detail on submission-scoped blocker propagation, ephemeral SSE state, catalog backpressure, and isolating macOS workspace calls from OTP’s shared file server, including regression-test design and explicit limits.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T06:31:33.860536"
+    },
     {
       "id": 8285,
       "source_id": 34,
