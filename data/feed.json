@@ -1,7 +1,165 @@
 {
-  "updated_at": "2026-11-27T06:00:01.323166+00:00",
-  "total_items": 995,
+  "updated_at": "2026-11-27T07:00:00.622781+00:00",
+  "total_items": 1001,
   "items": [
+    {
+      "id": 8294,
+      "source_id": 34,
+      "original_url": "https://www.cloudnativedeepdive.com/recovering-an-actor-from-worker-pod-loss-in-kagent-agent-substrate/",
+      "title": "Recovering an Actor from Worker Pod Loss in Kagent + Agent Substrate",
+      "summary": "Kagent and Agent Substrate recover an AI-agent Actor after its Kubernetes worker pod is deleted by reverting the session to a durable snapshot. The lab checks the Actor UID and snapshot UUID, waits up to 300 seconds for a replacement pod, then confirms marker continuity.",
+      "ideas": [
+        "Durable snapshots preserve suspended Actor state across worker pod loss.",
+        "RevertSession restores the original Actor UID and snapshot UUID.",
+        "WorkerPool creates a replacement pod after the original worker is deleted.",
+        "gRPC reflection exposes Protobuf schemas to any reachable caller."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get a reproducible recovery lab: capture an Actor snapshot, delete its worker pod, invoke RevertSession over gRPC, and verify continuity on a replacement pod. The jq checks and UID/snapshot assertions make durability behavior testable.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T17:14:54.163599",
+      "image_url": "https://storage.ghost.io/c/e1/89/e189dda3-b4ad-485b-b170-49b8fbc25bd1/content/images/size/w1200/2026/11/kagent-session-recovery-architecture-v2.jpg",
+      "image_width": 1200,
+      "image_height": 888,
+      "image_alt": ""
+    },
+    {
+      "id": 8293,
+      "source_id": 34,
+      "original_url": "https://stacktoheap.com/blog/2026/11/27/skills-over-mcp-skillwell/",
+      "title": "Skills over MCP: Two Competitors Meet",
+      "summary": "skillwell prototypes a unified MCP server for discovering, dynamically promoting, and securely loading agent skills across clients. In Claude Code 2.1.332 tests, an unlisted skill bypassed digest approval, while a BM25 router promoted two matches and completed its round trip in under two seconds.",
+      "ideas": [
+        "MCP SEP-2640 defines skills/list, skills/get, partial listings, and per-file SHA-256 digests.",
+        "Unlisted Claude Code skills bypass Skill-tool loading, digest checks, and approvals.",
+        "skillwell combines a router, dynamic promotion, BM25 ranking, and pinned or learned skills.",
+        "Claude Code 2.1.332 requires the 2026-07-28 MCP discovery protocol."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You get protocol-level spike findings, logged request traces, working MCP commands, BM25 search design, and exact Claude Code limitations around discovery, approvals, scripts, and context overhead.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T17:09:14.115005",
+      "image_url": "https://stacktoheap.com/images/skills-over-mcp-hero.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8292,
+      "source_id": 34,
+      "original_url": "https://quin.fyi/posts/how-winhelp-files-work.html",
+      "title": "How WinHelp files work",
+      "summary": "A pure-Rust libhlp reader reconstructs undocumented WinHelp .hlp archives, supporting WinHelp 3.0 and Windows 95-era variants. It explains B+ tree indexes, nested LZ77/phrase compression, hash-based links, code-page handling, and a one-bit phrase-index decoding bug.",
+      "ideas": [
+        "WinHelp files begin with magic 3F 5F 03 00 and use B+ tree indexes.",
+        "Topic blocks reserve 16 KB logical space while typically decompressing to roughly 4 KB.",
+        "LZ77 back-references encode 12-bit distances and four-bit lengths minus three.",
+        "Hall compression fits 128 phrases into one byte and tags literal or repeated runs.",
+        "Phrase indexes store lengths, not offsets, using file-wide power-of-two unary steps.",
+        "Context links hash case-insensitive target names through a signed substitution table.",
+        "WinHelp 3.0 uses uncompressed 2 KB blocks and topic-number links."
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "You learn an implementation-grade map of undocumented WinHelp internals: B+ tree indexes, LZ77 and Hall compression, hash-based links, and encoding quirks. Rust snippets and a phrase-index off-by-one bug make the mechanics directly usable in parsers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T17:05:46.027024"
+    },
+    {
+      "id": 8291,
+      "source_id": 34,
+      "original_url": "https://maori.geek.nz/posts/2026/nighttroop/",
+      "title": "$0.10 Per-User Per-Year: NightTroop",
+      "summary": "NightTroop is a Go/SQLite, per-site multi-tenant Nightscout service with one-click provisioning, rate limits, backups, metrics, and defenses for imported Nightscout URLs. A representative prototype sustained 4,000 requests/second on one Fly.io core, while prepared queries across 10,000 sites would consume about 16 GB.",
+      "ideas": [
+        "Per-site SQLite databases isolate tenants but require managing 10,001 databases.",
+        "Prepared queries ran 40% faster but cost 16 GB across 10,000 sites.",
+        "A one-core prototype sustained 4,000 requests/second with 256 MB RAM.",
+        "Connector defenses must block SSRF, synchronization loops, and outbound denial-of-service.",
+        "Data thinning and rollups reduced per-user database size by up to 90%.",
+        "Deployments stop HTTP and jobs, then back up every site database to S3."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "NightTroop provides reproducible Go/SQLite load numbers, prepared-query memory costs, tenant-isolation trade-offs, and defenses against SSRF, sync-loop abuse, and resource exhaustion. Its open code and deployment procedure expose assumptions that still lack production validation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T17:00:18.491034",
+      "image_url": "https://maori.geek.nz/posts/2026/nighttroop_screen.png",
+      "image_width": 787,
+      "image_height": 976,
+      "image_alt": ""
+    },
+    {
+      "id": 8290,
+      "source_id": 34,
+      "original_url": "https://html-in-canvas.page/dom-radiosity/",
+      "title": "DOM radiosity",
+      "summary": "A working WebGPU experiment turns live HTML into a global-illuminated scene: typed glyphs become emitters, dark elements become occluders, all classified GPU-side with zero CPU readback. Hardest fact: Chromium 157's drawElementImageToTexture() requires RENDER_ATTACHMENT on the rgba8unorm target.",
+      "ideas": [
+        "Classify DOM pixels as air, emitter, or occluder purely from unpremultiplied RGB and alpha",
+        "Texture-upload target needed RENDER_ATTACHMENT in Chromium 157",
+        "Nine ping-pong JFA passes seed a 4-cascade radiance-cascades solver",
+        "Downscale compute to 384 cells, composite full-res DOM to keep text crisp",
+        "Data-attribute toggle clears Chromium's hit-test cache after element moves"
+      ],
+      "labels": [
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading gives the full pipeline spec: pixel-classification thresholds, JFA ping-pong parameters, cascade geometry, Chromium texture-usage quirks, and runnable fixture checks probing undefined WebGPU behavior firsthand.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T16:50:51.928322",
+      "image_url": "https://html-in-canvas.page/social.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "The page \"DOM radiosity\" on HTML-in-canvas experiments, with its title on a dark band"
+    },
+    {
+      "id": 8289,
+      "source_id": 34,
+      "original_url": "https://charlesbine.com/blog/catching-gemini-4s-thought-summarizer-mid-rollout/",
+      "title": "Catching Gemini 4's leaking thought summarizer mid-rollout",
+      "summary": "The author logs thousands of Gemini 4 thought blocks and discovers the model’s internal summarizer leaking meta‑prompts and fabricated debug strings into its output. Leaked prompts disappear after a 4 pm ET rollout, identifiable by a change from triple‑newline to double‑newline delimiters and a 99.9% shift in summary‑tics.",
+      "ideas": [
+        "Gemini 4 inserts identical debug phrases like “Initial hypothesis” into 8% of thoughts before rollout.",
+        "Leaked summarizer prompts vanish after 2026‑11‑25 21:00 UTC, switching delimiters from \\n\\n\\n to \\n\\n.",
+        "Carbon‑High tier retains old leaks hours after other tiers, suggesting load‑balanced rollout.",
+        "Leak frequency spikes for long outputs (~1.7k tokens vs median 639)."
+      ],
+      "labels": [
+        "AI",
+        "CyberSecurity"
+      ],
+      "rating": 87,
+      "rating_reason": "It shows how to capture and analyze Gemini 4’s rolling thought‑summarizer leaks, with raw logs, statistical rollout fingerprints, and a reproducible benchmarking script.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-27T16:41:29.563855",
+      "image_url": "https://charlesbine.com/images/gemini4-summarizer/og-rollout.png",
+      "image_width": 1600,
+      "image_height": 900,
+      "image_alt": "Chart showing Gemini 4 thought-summarizer fallback rates dropping from 8.4% to 0.0% at 21:00 UTC on November 25 while v2 vocabulary jumps 12x, alongside a live Carbon High port-binding leak reproduction on a cold brew coffee prompt."
+    },
     {
       "id": 8288,
       "source_id": 34,
