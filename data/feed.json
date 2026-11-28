@@ -1,7 +1,270 @@
 {
-  "updated_at": "2026-11-28T18:00:00.353693+00:00",
-  "total_items": 959,
+  "updated_at": "2026-11-28T19:00:00.139722+00:00",
+  "total_items": 969,
   "items": [
+    {
+      "id": 8307,
+      "source_id": 34,
+      "original_url": "https://prakhargurunani.com/blog/building-openharness/",
+      "title": "Building OpenHarness: Every Part of the Agent Harness, Yours",
+      "summary": "The author built OpenHarness, a web UI and compiler that turns a 14-component agent spec into OS-specific OpenAI-compatible binaries. Its runtime layers a ReAct, plan-execute, or single-shot loop with tool pipelines, source-embedded build caches, and public-mode secret redaction.",
+      "ideas": [
+        "Spec is gzip+base64 injected at link time into prebuilt Go runtime.",
+        "Public mode makes runtime.LookupEnv return empty and removes shell/MCP.",
+        "Outbound requests are checked for private and loopback addresses after DNS.",
+        "Older tool results pruned before compaction; compaction never splits tool calls."
+      ],
+      "labels": [
+        "AI",
+        "Tech",
+        "CyberSecurity"
+      ],
+      "rating": 86,
+      "rating_reason": "It details the spec-driven runtime, tool pipeline, context compaction, public-mode secret and SSRF controls, and ldflags-based binary generation.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T05:29:11.800953"
+    },
+    {
+      "id": 8306,
+      "source_id": 34,
+      "original_url": "https://m17project.org/2026/11/27/tcp-ip-over-the-air-with-linht/",
+      "title": "TCP/IP over the air with LinHT",
+      "summary": "FART turns two 2 W SX1255 radios into a 161.7-km IP link carrying Quake and ordinary Linux packets. A wide-profile run reached 142 kbit/s with 121 ms median ping, but the original channel access limited game traffic to about 4.5 datagrams/s.",
+      "ideas": [
+        "FART exposes amateur-radio links as ordinary Linux network interfaces.",
+        "Cable benchmarks span 14–400 kbit/s across 13 modulation profiles.",
+        "A 2 W, 437 MHz link crossed 161.7 km at 142 kbit/s.",
+        "Charging required 5 dB more signal for equivalent frame loss.",
+        "Transmit-to-receive turnaround measured about 3.5 milliseconds."
+      ],
+      "labels": [
+        "Tech",
+        "Sysadmin"
+      ],
+      "rating": 91,
+      "rating_reason": "You get FART’s MAC behavior, modulation profiles, Linux integration, and field-test methodology, including turnaround timing and receiver-noise troubleshooting. Measured throughput, latency, packet-rate limits, and PCB fixes make it actionable for SDR and network engineers.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T05:16:59.255975"
+    },
+    {
+      "id": 8305,
+      "source_id": 34,
+      "original_url": "https://gshell.dev/blog/llm-engines-benchmark-rtx-5060-ti/",
+      "title": "Strata, Basalt, vLLM and llama.cpp on two RTX 5060",
+      "summary": "The author benchmarks Basalt, Strata, vLLM and llama.cpp on a dual‑RTX 5060 Ti system using Qwen3.8‑Flash‑Next (MoE) and Qwen3.8‑27B (dense) models. Basalt leads MoE inference with peer‑mode drafting (113 t/s prose, 193 t/s JSON) and vLLM tops dense chat (65/116 t/s), while Basalt reads long prompts 2.4× faster.",
+      "ideas": [
+        "Peer‑mode Basalt achieves 113 t/s prose and 193 t/s JSON on Qwen3.8‑Flash‑Next.",
+        "vLLM with tensor parallelism hits 65 t/s prose, 116 t/s JSON on Qwen3.8‑27B.",
+        "Two RTX 5060 Ti cards add only 7‑35 % speed for single‑user MoE inference.",
+        "Basalt reads a 252K‑token prompt in 114.5 s, 2.4‑2.5× faster than vLLM.",
+        "Layer‑split pipeline yields 229 t/s total for eight users on MoE model."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "Reading gives you exact token‑per‑second benchmarks and split‑strategy performance for Basalt, Strata, vLLM and llama.cpp on two RTX 5060 Ti, plus how models, drafting and prompt size affect multi‑GPU scaling.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T05:00:54.633345",
+      "image_url": "https://gshell.dev/blog/llm-engines-benchmark-rtx-5060-ti/og.jpg",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Cover image for “Strata, Basalt, vLLM and llama.cpp on two RTX 5060”"
+    },
+    {
+      "id": 8304,
+      "source_id": 34,
+      "original_url": "https://garrettstimpson.ca/posts/2026/11/27/xen-orchestra-empty-token-auth-bypass-cve-2026-133469/",
+      "title": "Your Xen Orchestra Login Logs Can Be Clean After an Admin Bypass",
+      "summary": "An authentication bypass in Xen Orchestra (CVE‑2026‑133469) grants attackers admin rights without a valid token. The bug parses an empty JSON object, causing a DB lookup that returns the first unexpired token and leaves no login log.",
+      "ideas": [
+        "Empty JSON token bypasses token validation and authenticates as the first unexpired token.",
+        "Exploitation leaves no login entries, requiring packet capture or proxy logs for detection.",
+        "Fixed by rejecting non‑string or empty token IDs in PR #10748."
+      ],
+      "labels": [
+        "CyberSecurity",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading the full article reveals the precise empty‑object token flaw, the silent admin takeover path, and the exact forensic artifacts needed to detect the breach.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T04:57:50.979974",
+      "image_url": "https://garrettstimpson.ca/assets/og/posts/2026/11/27/xen-orchestra-empty-token-auth-bypass-cve-2026-133469/index-9fb362bb2cc4.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Your Xen Orchestra Login Logs Can Be Clean After an Admin Bypass"
+    },
+    {
+      "id": 8303,
+      "source_id": 34,
+      "original_url": "https://eriskii.net/research/inkling-ikv",
+      "title": "Pre-Processed KV Cartridges & Sparse Paging",
+      "summary": "The author built a .ikv pre‑processing system for Inkling 2 Mini that lets agents load file KV caches directly, bypassing prefill. Experiments reported up to 50× faster first token latency and 15–28× memory reduction while keeping KL divergence below 0.01.",
+      "ideas": [
+        "Direct KV paste works with 0% recompute on Inkling 2 Mini, achieving 95/96 token match.",
+        "TokenDance sparse diffs (2–10% tokens) reduce memory 15–28x with <0.01 KL increase.",
+        "Preprocessed .ikv files enable up to 50× TTFT speedup and 10M-token context handling."
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 85,
+      "rating_reason": "Reading the full piece shows exactly how to pre‑process source files into KV caches, stitch them with zero recompute, and achieve massive TTFT speedups and memory savings on Inkling‑2‑Mini.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T04:55:15.179876",
+      "image_url": "https://eriskii.net/og-image.png",
+      "image_width": 1125,
+      "image_height": 588,
+      "image_alt": ""
+    },
+    {
+      "id": 8302,
+      "source_id": 34,
+      "original_url": "https://erichartford.com/quixiai-nvdriver",
+      "title": "QuixiAI/nvdriver",
+      "summary": "QuixiAI/nvdriver reconstructs NVIDIA 580.178.04’s Linux kernel driver in Rust and maps its GPU feature gates. The analysis reports 50 P2P-table entries, a 256 MiB BAR1 default, architecture cutoffs, and claimed bitwise parity with stock CUDA and PyTorch.",
+      "ideas": [
+        "GeForce P2P denial precedes NVIDIA’s own PCIe-switch allowlist entries.",
+        "Consumer BAR1 defaults to 256 MiB despite full-VRAM Resizable BAR support.",
+        "Driver identifies KVM, cloud providers, and license timers through CPUID and PCI IDs.",
+        "Unicorn binary oracles and stock-driver diffing underpin claimed zero-bit parity."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 86,
+      "rating_reason": "You get exact binary offsets and control flow for NVIDIA’s P2P, BAR1, architecture, and virtualization gates, plus a reproducible REA, Unicorn, and stock-driver comparison workflow.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T04:54:18.455186",
+      "image_url": "https://cdn.hashnode.com/uploads/covers/64211e437988b96a2e13d587/fb262edd-2f4d-43d4-80bd-e247822b10df.png",
+      "image_width": 1731,
+      "image_height": 909,
+      "image_alt": ""
+    },
+    {
+      "id": 8301,
+      "source_id": 34,
+      "original_url": "https://ai.satyajit.si/articles/llm-asm",
+      "title": "llm.asm: a Qwen3-0.6B forward pass in 12 KB of x86-64, and a 24 KB OS that runs nothing else",
+      "summary": "Alexey Fateev built a Qwen3‑0.6B inference engine in 12 KB of pure x86‑64 assembly and a 24 KB bootable OS; the OS runs up to 54 % faster than native llama.cpp on an EPYC CPU.",
+      "ideas": [
+        "12 KB binary contains 9.9 KB .text and 1.6 KB .rodata, no libc or dynamic linking.",
+        "Activations are quantized to int8 per 32‑weight block, reducing compute to ~10 instructions per block.",
+        "Memory layout aligns each weight row to 64‑byte boundaries for cache‑line efficiency.",
+        "Thread pool built using raw clone/futex syscalls without any C runtime.",
+        "FAST_Q8=1 kernel achieves 20.70 tok/s on EPYC, 54 % faster than llama.cpp baseline."
+      ],
+      "labels": [
+        "AI",
+        "Sysadmin",
+        "Tech"
+      ],
+      "rating": 88,
+      "rating_reason": "Reading the full piece reveals the exact NASM kernels, activation‑quantization scheme, thread‑without‑libc implementation, and performance methodology that enable a 12 KB Qwen3‑0.6B forward pass.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T04:34:47.709126",
+      "image_url": "https://ai.satyajit.si/articles/llm-asm/opengraph-image?79f7495b0e7a4bc5",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": "Article"
+    },
+    {
+      "id": 8300,
+      "source_id": 34,
+      "original_url": "https://a-r-r-o-w.github.io/blog/00006_compiling_python_to_sass/",
+      "title": "Compiling Python to SASS",
+      "summary": "The author built pycubin, a tiny Python-to-SASS compiler for Blackwell, and reverse-engineered the minimal cubin structure and instruction encoding. Hard facts include saxpy needing 20 SASS instructions, with arguments occupying 32 bytes starting at c[0x0][0x380].",
+      "ideas": [
+        "A vector-add kernel compiles to only 20 SASS instructions",
+        "Arguments occupy 32 bytes starting at c[0x0][0x380]",
+        "Only two EIATTR ids are needed for the argument records",
+        "Blackwell SASS encodings can be inferred by flipping individual bits"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 90,
+      "rating_reason": "The full piece gives the exact minimal cubin sections, metadata records, argument layout, and oracle-based bit-flipping workflow used to reverse-engineer Blackwell SASS.",
+      "source_type": "rss",
+      "source_name": "Kagi Small Web",
+      "published_at": "2026-11-29T04:34:25.142184",
+      "image_url": "https://a-r-r-o-w.github.io/assets/og/00006_compiling_python_to_sass.png",
+      "image_width": 1200,
+      "image_height": 630,
+      "image_alt": ""
+    },
+    {
+      "id": 8299,
+      "source_id": 33,
+      "original_url": "https://pluralistic.net/2026/11/28/power-player/",
+      "title": "Pluralistic: Stop hitting yourself (28 Nov 2026)",
+      "summary": "Doctorow argues conservatism and orthodox economics erase power, recasting coercion as voluntary choice, from the marshmallow-test myth to revealed-preference doctrine and binding arbitration. Hardest fact: Meta billed whistleblower Sarah Wynn-Williams an extra $50,000 for standing motionless and silent on stage.",
+      "ideas": [
+        "Conservatism operates by pretending power doesn't exist, so all outcomes look like voluntary choices.",
+        "Marshmallow test debunked: disadvantaged kids rationally ate now because authority figures broke promises before.",
+        "Revealed preferences mean nothing without meaningful choices; network effects make Facebook 'choices' coercion.",
+        "96% of iOS users opted out of Facebook spying when offered a one-click choice.",
+        "Requiring the same service to communicate is a 1990s walled-garden throwback; interoperability fixes it.",
+        "Neoliberal lawyers used a staged Supreme Court case playbook to entrench arbitration in adhesion contracts.",
+        "Arbitration clauses let corporations stack gag orders, noncompetes, and non-disparagement, enforceable via criminal sanctions.",
+        "Disney tried escaping an allergy-death lawsuit using a Disney+ free trial's arbitration clause.",
+        "Meta's private censorship exceeds libel laws: truth was the offense, decided by a paid arbitrator.",
+        "Blaming friends for using Facebook lets Zuckerberg off the hook; they're hostages, not users."
+      ],
+      "labels": [
+        "Philosophy",
+        "Tech"
+      ],
+      "rating": 80,
+      "rating_reason": "Reading the full essay gives you the marshmallow-test replication failure, the 96% iOS opt-out figure, the Scalia-built arbitration playbook, and Meta's $111m suit plus $50k Hay Festival surcharge against whistleblower Sarah Wynn-Williams.",
+      "source_type": "rss",
+      "source_name": "Pluralistic",
+      "published_at": "2026-11-29T04:33:34.891181"
+    },
+    {
+      "id": 8298,
+      "source_id": 1,
+      "original_url": "https://simonwillison.net/2026/Nov/28/code-driven-ai-illustrations/",
+      "title": "Code-driven AI illustrations are more useful than images from dedicated image models",
+      "summary": "Simon Willison demonstrates using Gemini 4 Neon in AI Studio to generate an SVG poster for the Kakapo recovery project. He notes that LLMs can output code for SVG, HTML Canvas, Blender scripts, PDFs, and other file types, enabling fully editable graphics.",
+      "ideas": [
+        "LLMs can generate SVG code for editable graphics",
+        "Code‑driven images allow direct text and element editing",
+        "Prompting Gemini 4 Neon produced a detailed Kakapo poster",
+        "Image‑output models suffer glitches and lack layer control",
+        "Coding agents can produce HTML Canvas, Blender scripts, PDFs, etc.",
+        "Recent LLMs (Claude Opus 5.5, GPT‑6 Astra) create game assets via code",
+        "Dedicated image models remain useful for photorealism only",
+        "Claude Design offers a code‑based design system platform"
+      ],
+      "labels": [
+        "AI",
+        "Tech"
+      ],
+      "rating": 82,
+      "rating_reason": "You’ll see a concrete workflow for prompting LLMs to produce SVG posters, how to edit them programmatically, and why code‑generated graphics avoid the glitches of bitmap generators.",
+      "source_type": "rss",
+      "source_name": "Simon Willison's Weblog",
+      "published_at": "2026-11-29T04:32:09.458020",
+      "image_url": "https://static.simonwillison.net/static/2026/kakapo-design-card.webp",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": ""
+    },
     {
       "id": 8297,
       "source_id": 36,
