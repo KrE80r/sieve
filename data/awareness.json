@@ -1,19 +1,19 @@
 {
   "schema_version": 2,
-  "batch_id": "4a3c03a8e371d5a596b788fa21c5a148",
-  "published_at": "2026-11-28T02:32:00.000646+00:00",
-  "scheduled_for": "2026-11-28T02:30:00+00:00",
-  "next_update_at": "2026-11-28T07:30:00+00:00",
+  "batch_id": "46a709108ea49691224f655e5288a83b",
+  "published_at": "2026-11-28T07:32:00.000846+00:00",
+  "scheduled_for": "2026-11-28T07:30:00+00:00",
+  "next_update_at": "2026-11-28T19:30:00+00:00",
   "timezone": "Australia/Adelaide",
   "window": {
-    "starts_at": "2026-11-27T02:30:00+00:00",
-    "ends_at": "2026-11-28T02:30:00+00:00"
+    "starts_at": "2026-11-27T07:30:00+00:00",
+    "ends_at": "2026-11-28T07:30:00+00:00"
   },
   "coverage": {
     "state": "incomplete",
     "message": "This update may be incomplete because one or more configured list reads or decisions were unavailable."
   },
-  "total_developments": 14,
+  "total_developments": 17,
   "developments": [
     {
       "id": "5c7193b5be696c7698a6411f044e88c0",
@@ -340,14 +340,14 @@
     {
       "id": "025a911cff74eb2ceb25c32d19135183",
       "occurred_at": "2026-11-27T20:58:37+00:00",
-      "updated_at": null,
+      "updated_at": "2026-11-28T07:30:00.001339+00:00",
       "expires_at": "2026-11-28T20:58:37+00:00",
-      "title": "Bare‑metal hypervisor runs 2B LLM in Ring ‑1 to patch kernel panics",
+      "title": "Alexey Fateev's 74 KB bare-metal hypervisor puts a 2B LLM in Ring -1 to patch Linux kernel panics live",
       "detail": [
-        "A 74 KB Type‑1 AMD SVM hypervisor written in NASM and zero‑libc C runs a 2 B parameter LLM in Ring ‑1, intercepts fatal kernel null‑pointer dereferences, and overwrites the faulting bytes in guest RAM without rebooting Linux.",
-        "On a test module with 122 unseen crash scenarios, the hypervisor’s GRPO‑trained MiniCPM5‑2B model achieved a 97.54 % pass@1 success rate while applying no dangerous patches, keeping Linux uptime uninterrupted."
+        "Alexey Fateev built a 74 KB Type-1 AMD SVM hypervisor in x86-64 NASM assembly and zero-libc C with no host OS, placing a GRPO-trained MiniCPM5-2B (Q4_K_M) below Linux in Ring -1. When the guest takes a fatal Ring 0 NULL-pointer write that instantly kills stock Linux, the hypervisor freezes it before the panic, runs the local model across 24 AVX2 cores in 11.1 seconds, and rewrites the 11 faulting bytes in guest .text physical RAM with 0x90 NOPs through nested page tables before resuming with VMRUN, so uptime never resets.",
+        "Using a /proc/surgeon_crash test module to trigger clean Ring 0 crashes, the checkpoint scored 97.54% pass@1 with zero dangerous patches across 122 unseen fault scenarios, versus 16.39% for the base model, including required refusals on unsafe spinlock crashes. The full NASM and C source (75,424-byte binary) is published in the MIT-licensed llm.asm repository."
       ],
-      "why_it_matters": "You can now recover a crashing Linux kernel without reboot, eliminating downtime for critical services by using the on‑device LLM‑driven hypervisor.",
+      "why_it_matters": "The MIT-licensed NASM and C source lets anyone with AMD SVM hardware reproduce this live kernel patching, so a fatal ring-0 fault no longer has to force a reboot.",
       "sources": [
         {
           "author_name": "Alexey Fateev",
@@ -378,6 +378,13 @@
               "height": 1102
             }
           ]
+        },
+        {
+          "author_name": "ᴅᴀɴɪᴇʟ ᴍɪᴇssʟᴇʀ 🛡️",
+          "author_username": "DanielMiessler",
+          "url": "https://x.com/DanielMiessler/status/2126571094710927781",
+          "role": "commentary",
+          "media": []
         }
       ],
       "evidence_state": "reported",
@@ -561,6 +568,136 @@
               "height": 1391
             }
           ]
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "67f6062c7c9098f018313a2eb0c05c92",
+      "occurred_at": "2026-11-28T03:43:13+00:00",
+      "updated_at": null,
+      "expires_at": "2026-11-29T03:43:13+00:00",
+      "title": "Inkling‑2‑Mini GGUF model released under Apache 2.0 with per‑tensor allocation",
+      "detail": [
+        "The Inkling‑2‑Mini model is now available in GGUF format on Hugging Face.",
+        "It is licensed under Apache 2.0 and includes per‑tensor allocation support."
+      ],
+      "why_it_matters": "You can now run Inkling‑2‑Mini locally in GGUF format with per‑tensor allocation, enabling finer‑grained memory control under an Apache‑2.0 license.",
+      "sources": [
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2126522271929950359",
+          "role": "source",
+          "media": []
+        }
+      ],
+      "evidence_state": "source_backed",
+      "external_links": [
+        {
+          "url": "https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF",
+          "domain": "huggingface.co",
+          "title": "ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF · Hugging Face",
+          "preview_image_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF.png"
+        }
+      ],
+      "interest_slugs": [
+        "ai"
+      ]
+    },
+    {
+      "id": "80175a79fd31f9fed464310100bdd8a5",
+      "occurred_at": "2026-11-28T04:17:51+00:00",
+      "updated_at": "2026-11-28T07:32:00.000846+00:00",
+      "expires_at": "2026-11-29T04:17:51+00:00",
+      "title": "Malicious GGUF model files on Hugging Face embed Windows trojan",
+      "detail": [
+        "Security researcher Root0ne reported that five GGUF model repositories on Hugging Face distribute a Windows trojan hidden in trailing bytes, evading standard loaders like llama.cpp and LM Studio, and that the campaign, named Mir2k, rewrites chat templates to prepend a PowerShell command that unpacks the payload.",
+        "The payload bundles Tor, exfiltrates browser and crypto‑wallet credentials, and mines Monero when idle; tools such as gguf‑radar can detect the suspicious templates and extra data."
+      ],
+      "why_it_matters": "Organizations should integrate GGUF scanning into deployment pipelines to block credential theft and unauthorized cryptocurrency mining.",
+      "sources": [
+        {
+          "author_name": "Loktar 🇺🇸",
+          "author_username": "loktar00",
+          "url": "https://x.com/loktar00/status/2126489284735819986",
+          "role": "quoted_source",
+          "media": [
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HYLOfpoWMAAgoLq.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HYLOfpoWMAAgoLq.jpg:small",
+              "width": 1529,
+              "height": 2048
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HYLOg6YXwAALODP.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HYLOg6YXwAALODP.jpg:small",
+              "width": 1920,
+              "height": 1772
+            },
+            {
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/HYLOiF0WAAA3Bna.jpg",
+              "preview_url": "https://pbs.twimg.com/media/HYLOiF0WAAA3Bna.jpg:small",
+              "width": 1419,
+              "height": 2048
+            }
+          ]
+        },
+        {
+          "author_name": "Ahmad",
+          "author_username": "TheAhmadOsman",
+          "url": "https://x.com/TheAhmadOsman/status/2126530989472022885",
+          "role": "commentary",
+          "media": []
+        }
+      ],
+      "evidence_state": "reported",
+      "external_links": [],
+      "interest_slugs": [
+        "ai",
+        "os_security"
+      ]
+    },
+    {
+      "id": "3234a6d501d352082aa69c4ade6f63db",
+      "occurred_at": "2026-11-28T05:28:58+00:00",
+      "updated_at": "2026-11-28T07:32:00.000846+00:00",
+      "expires_at": "2026-11-29T05:28:58+00:00",
+      "title": "Anthropic clarifies Fable 5.2 safeguards and LLM research training",
+      "detail": [
+        "Anthropic clarified that Claude’s Fable 5.2 did not silently sabotage ML research and was not trained to sabotage work; for the first two days of its June launch, non-visible safeguards were applied to some LLM or machine-learning research tasks and reversed on June 10.",
+        "Those safeguards now produce a visible block or fallback message, and some reported behavior may reflect overcaution, in which models create and follow overly strict self-rules during long tasks.",
+        "Anthropic also said Fable 5.2 was trained for LLM research capabilities at about the level of Opus 5.5, and users seeing problems are asked to share session IDs after running /status."
+      ],
+      "why_it_matters": "ML research teams can now compare visible safeguard messages with /status session reports when debugging unexpected restrictions.",
+      "sources": [
+        {
+          "author_name": "edwin",
+          "author_username": "edwinarbus",
+          "url": "https://x.com/edwinarbus/status/2126507795642187855",
+          "role": "quoted_source",
+          "media": []
+        },
+        {
+          "author_name": "Alexey Fateev",
+          "author_username": "superalesha",
+          "url": "https://x.com/superalesha/status/2126548887569563996",
+          "role": "commentary",
+          "media": []
+        },
+        {
+          "author_name": "Andi Marafioti",
+          "author_username": "andimarafioti",
+          "url": "https://x.com/andimarafioti/status/2126566770081231114",
+          "role": "commentary",
+          "media": []
         }
       ],
       "evidence_state": "reported",
